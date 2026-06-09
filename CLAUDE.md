@@ -96,12 +96,14 @@
 | `14_full_heatmap_anchored.html` | 类别移到左列 + 点击定位楼层 + 回到顶部 FAB |
 | `15_heatmap_hover.html` | 逐格悬浮看详情（每格说明过程，低分说问题），类别在左列 |
 | `16_detailed_hover.html` | 在 15 基础上把每格 tooltip 写**详细**——可抓取格写「抽到✓/缺失✕」、来源类格列「标题·域名·日期·版本号」、版本清晰格列实际并存版本号串；CUDA 四项缺口已重新检索补齐 |
-| **`17_official_site_focus.html`** | **当前主交互**：把「官方网站」提为左侧醒目大组（NVIDIA docs ｜ hiascend），内部分「能否触达（可发现·可抓取）/ 内容质量」两面；二手/模型/检索/产出视觉弱化；矩阵格已去掉描边 |
+| **`17_official_site_focus.html`** | **当前主交互**：把「官方网站」提为左侧醒目大组（NVIDIA docs ｜ hiascend），内部分「能否触达（可发现·可抓取）/ 内容质量（**正文详尽·版本清晰**）」；二手/模型/检索/产出视觉弱化；矩阵格已去掉描边。**2026-06-10 加③官方正文详尽度列**：CUDA 四任务逐一 web_fetch 官方页**实测=5**（命令+代码+表齐全）；CANN 四任务因 SPA 受阻、正文取不回，记**「受阻·无法实测」中性态（不打推断分）** |
 | **`18_metric_definition.html`** | **指标定义书（单独材料）**：核心被测对象 + 价值链概念模型 + 三源×两关网格 + 11 项逐个「定义/打分口径/为什么单独成项」+ 6 条设计决定（为什么分触达与质量、可抓取是公共常量、CANN正文记受阻、版本敏感不进列、产出是因变量、评分口径） |
 
 **当前最新主交互 = `17_official_site_focus.html`；指标定义书 = `18_metric_definition.html`。**
 
-> 本地工作目录：`/Users/hsin/Documents/Coding/opknow`（已是 git 仓库，远程 `git@github.com:SchihHsin/opknow.git`，经 GitHub Pages 发布；`index.html` 为根地址展示用的副本，**目前仍是 15 的副本，尚未同步到 17**）。注意：03–14 等早期文件目前只在旧容器 `/mnt/user-data/outputs/`，本地仅有 15/16/17/18/index/CLAUDE.md。
+> 本地工作目录：`/Users/hsin/Documents/Coding/opknow`（已是 git 仓库，远程 `git@github.com:SchihHsin/opknow.git`，经 GitHub Pages 发布；`index.html` 为根地址展示用的副本，**已同步到 17**）。注意：03–14 等早期文件目前只在旧容器 `/mnt/user-data/outputs/`，本地仅有 15/16/17/18/index/CLAUDE.md。
+
+> **CUDA 官方正文详尽度实测记录（2026-06-10 web_fetch）**：A TensorRT Quick Start → `trtexec --onnx=... --saveEngine=... --stronglyTyped` + 完整 C++/Python 运行时代码（旗标全表为跳转链接）；B Nsight Systems UserGuide → `nsys profile` 语法 + `--trace`/`--backtrace` 选项全表 + 环境变量模式；C cuBLAS → 完整 API 签名 + 状态码/参数表 + 两段 C 示例；D PyTorch cpp_custom_ops → setup.py + C++ 算子定义 + `STABLE_TORCH_LIBRARY` 注册 + 分步骤。四者均静态可抓、正文详尽 → ③=5（实测）。
 
 ---
 
