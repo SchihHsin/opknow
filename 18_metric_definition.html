@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>指标定义与理据 · 为什么这样度量「AI 可用性」</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{
+    --bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;
+    --nv:#76B900;--hw:#C8102E;--blue:#2563EB;--purple:#7e3fb0;
+    --touch:#2f56b3;--qual:#7e3fb0;--cost:#B45309;--out:#0E7C66;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:34px 0 64px;line-height:1.65;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px;}
+
+  .title{font-size:23px;font-weight:900;display:flex;align-items:center;gap:11px;}
+  .title::before{content:'';width:4px;height:23px;background:var(--black);border-radius:2px;}
+  .lead{font-size:13px;color:var(--g3);margin:9px 0 4px 15px;line-height:1.7;}
+  .lead b{color:var(--g1);}
+
+  h2{font-size:16px;font-weight:800;margin:36px 0 12px;display:flex;align-items:center;gap:9px;color:var(--g1);}
+  h2::before{content:'';width:4px;height:16px;background:var(--nv);border-radius:2px;}
+  h2 .en{font-size:10.5px;font-weight:500;color:var(--g4);letter-spacing:.4px;}
+
+  p.note{font-size:12.5px;color:var(--g2);margin:8px 2px;line-height:1.75;}
+  p.note b{color:var(--g1);}
+  .hl-nv{color:var(--nv);font-weight:700;}
+  .hl-hw{color:var(--hw);font-weight:700;}
+  code{background:#fff;border:1px solid var(--g6);border-radius:3px;padding:0 4px;font-size:11px;color:#9A4A12;word-break:break-all;}
+
+  /* 核心问句卡 */
+  .core{background:linear-gradient(135deg,#1f2a44,#2f3d63);color:#fff;border-radius:12px;padding:18px 22px;margin:18px 0 6px;}
+  .core .q{font-size:15.5px;font-weight:800;line-height:1.7;}
+  .core .q em{font-style:normal;color:#9fd35a;}
+  .core .sub{font-size:11.5px;opacity:.8;margin-top:7px;line-height:1.65;}
+
+  /* 价值链漏斗 */
+  .chain{display:flex;gap:8px;align-items:stretch;margin:14px 0;flex-wrap:wrap;}
+  .stage{flex:1;min-width:150px;background:#fff;border:1px solid var(--g6);border-radius:10px;padding:12px 14px;position:relative;}
+  .stage .k{font-size:10px;font-weight:800;letter-spacing:.4px;color:#fff;border-radius:5px;padding:2px 8px;display:inline-block;margin-bottom:7px;}
+  .stage.s-touch .k{background:var(--touch);} .stage.s-qual .k{background:var(--qual);}
+  .stage.s-cost .k{background:var(--cost);} .stage.s-out .k{background:var(--out);}
+  .stage h4{font-size:13px;font-weight:800;color:var(--g1);margin-bottom:3px;}
+  .stage p{font-size:10.5px;color:var(--g3);line-height:1.55;}
+  .arrow{align-self:center;color:var(--g4);font-weight:800;font-size:15px;}
+
+  /* 三源 × 两关 矩阵 */
+  table.fw{border-collapse:separate;border-spacing:3px;width:100%;margin:6px 0 4px;font-size:11.5px;}
+  table.fw th,table.fw td{padding:9px 11px;text-align:left;vertical-align:top;border-radius:8px;}
+  table.fw thead th{background:#2f3d63;color:#fff;font-size:11px;font-weight:800;text-align:center;}
+  table.fw thead th.t-touch{background:var(--touch);} table.fw thead th.t-qual{background:var(--qual);}
+  table.fw td.src{background:#E7EAF1;color:var(--g1);font-weight:800;font-size:11.5px;width:120px;vertical-align:middle;text-align:center;}
+  table.fw td.cellm{background:#fff;border:1px solid var(--g6);}
+  table.fw td.cellm .mname{font-weight:800;color:var(--g1);font-size:11.5px;display:block;}
+  table.fw td.cellm .mname.touch{color:var(--touch);} table.fw td.cellm .mname.qual{color:var(--qual);}
+  table.fw td.cellm small{color:var(--g4);font-size:9.5px;}
+  table.fw td.na{background:#FAFBFC;color:var(--g4);font-size:10.5px;font-style:italic;border:1px dashed var(--g6);}
+
+  /* 指标定义卡 */
+  .mcard{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:15px 18px;margin:11px 0;border-left:5px solid var(--g4);}
+  .mcard.touch{border-left-color:var(--touch);}
+  .mcard.qual{border-left-color:var(--qual);}
+  .mcard.cost{border-left-color:var(--cost);}
+  .mcard.out{border-left-color:var(--out);}
+  .mcard.sum{border-left-color:#5b6070;}
+  .mhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .mhead .nm{font-size:14.5px;font-weight:900;color:var(--g1);}
+  .mhead .en{font-size:10px;color:var(--g4);letter-spacing:.3px;}
+  .mhead .tag{font-size:9px;font-weight:800;color:#fff;border-radius:4px;padding:1px 7px;letter-spacing:.3px;}
+  .tag.touch{background:var(--touch);} .tag.qual{background:var(--qual);}
+  .tag.cost{background:var(--cost);} .tag.out{background:var(--out);} .tag.sum{background:#5b6070;}
+  .tag.rev{background:#9A4A12;}
+  .mrow{display:flex;gap:10px;font-size:11.5px;margin:5px 0;}
+  .mrow .lbl{flex:0 0 64px;font-weight:800;color:var(--g3);font-size:10.5px;padding-top:1px;}
+  .mrow .val{flex:1;color:var(--g2);line-height:1.65;}
+  .mrow .val b{color:var(--g1);}
+  .rubric{font-size:10.5px;color:var(--g3);background:#FAFBFC;border:1px solid var(--g6);border-radius:7px;padding:7px 10px;margin-top:6px;line-height:1.7;}
+  .rubric .lv{font-weight:800;color:var(--g2);}
+  .rubric b{color:var(--g1);}
+
+  .blocked{background:#FFF7ED;border:1px solid #FCD9A8;border-left:4px solid var(--cost);border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:11px;color:#7a4d08;line-height:1.65;}
+  .blocked b{color:#5a3a06;}
+
+  /* 设计决定 */
+  .dec{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:0;margin:11px 0;overflow:hidden;}
+  .dec .qd{background:#F1F3F7;padding:11px 16px;font-size:13px;font-weight:800;color:var(--g1);}
+  .dec .qd .n{color:var(--nv);margin-right:7px;}
+  .dec .ad{padding:11px 16px 13px;font-size:12px;color:var(--g2);line-height:1.75;}
+  .dec .ad b{color:var(--g1);}
+  .dec .ad .corr{display:inline-block;font-size:9.5px;font-weight:800;color:#fff;background:var(--hw);border-radius:4px;padding:1px 7px;margin-right:6px;letter-spacing:.3px;}
+
+  .legend{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:10px 2px;font-size:11px;color:var(--g3);}
+  .legend .item{display:flex;align-items:center;gap:6px;}
+  .legend .sw{width:30px;height:15px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;}
+  .v5{background:#BBF0D4;color:#04603A;} .v4{background:#DCF5E5;color:#0A6B4E;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FBE0CE;color:#9A4A12;} .v1{background:#F9D2D2;color:#A11414;}
+  .vNA{background:#E7EAF1;color:#5b6070;}
+
+  .foot{margin-top:34px;font-size:10.5px;color:var(--g4);border-top:1px solid var(--g6);padding-top:12px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="title">指标定义与理据 · 为什么这样度量「AI 可用性」</div>
+  <div class="lead">本材料是热力图各指标的<b>定义书</b>：先讲清到底在测什么，再给概念模型，逐项写明<b>定义 / 打分口径 / 为什么单独成项</b>，最后交代几条踩过坑、被纠正过的设计决定。配套热力图见 <code>17_official_site_focus.html</code>。</div>
+
+  <!-- 0. 核心被测对象 -->
+  <h2>0 · 到底在测什么 <span class="en">the thing being measured</span></h2>
+  <div class="core">
+    <div class="q">当我（Claude）回答某技术栈的某个开发任务时，能不能把一份<em>正确、具体、可锁定版本、可照抄复现</em>的答案搬进回复——以及要花多大力气。</div>
+    <div class="sub">这就是「AI 可用性」。它<b>不是</b>"这个栈好不好用"，而是"<b>站在一个会检索的 AI 助手视角，这个栈的知识好不好被我拿到、拿到的够不够答好</b>"。同一套任务在 CUDA 生态和昇腾社区各真实跑一遍，对比的就是这件事。</div>
+  </div>
+  <p class="note">关键认识：可用性是<b>"任务相关"</b>的，不是对一个栈一刀切的高或低。成熟通识类任务两边差距小，前沿开发差距被拉满。所以指标必须能<b>定位到是哪一关卡住</b>，而不只给一个总分。</p>
+
+  <!-- 1. 概念模型 -->
+  <h2>1 · 概念模型：一条"把知识搬进答案"的价值链 <span class="en">a value chain</span></h2>
+  <p class="note">一次问答，知识要从某个来源流到我的答案里。这条链有四段，任何一段断了，答案就打折：</p>
+  <div class="chain">
+    <div class="stage s-touch">
+      <span class="k">第 1 关</span>
+      <h4>能否触达</h4>
+      <p>知识进不进得了我的上下文：搜得到吗？搜到了抓得到正文吗？</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="stage s-qual">
+      <span class="k">第 2 关</span>
+      <h4>内容质量</h4>
+      <p>进来的知识够不够好：正文详尽吗？版本说得清吗？各源对得上吗？</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="stage s-cost">
+      <span class="k">摩擦</span>
+      <h4>检索成本</h4>
+      <p>走完前两关花了几轮搜索、几次抓取。越省越好（反向计分）。</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="stage s-out">
+      <span class="k">结果</span>
+      <h4>产出可用性</h4>
+      <p>最终答案能不能锁到确切版本、命令能不能照抄跑通。</p>
+    </div>
+  </div>
+  <p class="note">而知识有<b>三个来源渠道</b>：<b>官方一手</b>（NVIDIA docs ｜ 昇腾社区 hiascend）、<b>二手社区</b>（GitHub / SO / 知乎 / CSDN / 博客）、<b>模型先验</b>（我训练里已有的知识）。前两关（触达 / 质量）对<b>每个渠道</b>都要分别看——这就形成"三源 × 两关"的指标网格；成本与产出是跨渠道的，综合置信度收口。</p>
+
+  <table class="fw">
+    <thead>
+      <tr>
+        <th style="background:#2f3d63;width:120px">来源渠道 ＼ 关卡</th>
+        <th class="t-touch">第 1 关 · 能否触达</th>
+        <th class="t-qual">第 2 关 · 内容质量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="src">官方一手<br><small style="color:var(--g3);font-weight:400">本项目重点</small></td>
+        <td class="cellm"><span class="mname touch">① 官方可发现性</span><span class="mname touch">② 官方可抓取性</span><small>搜得到 + 抓得到正文</small></td>
+        <td class="cellm"><span class="mname qual">③ 官方正文详尽度</span><span class="mname qual">④ 版本清晰度</span><small>正文够细 + 版本说得清</small></td>
+      </tr>
+      <tr>
+        <td class="src">二手社区</td>
+        <td class="cellm"><span class="mname touch">⑤ 二手丰富度</span><small>GitHub/SO/博客的数量与可发现度</small></td>
+        <td class="cellm"><span class="mname qual">⑥ 二手可信度 / 一致性</span><small>权威吗、够新吗、彼此对得上吗</small></td>
+      </tr>
+      <tr>
+        <td class="src">模型先验</td>
+        <td class="cellm"><span class="mname touch">⑦ 先验强度</span><small>不检索也"自带"的覆盖密度</small></td>
+        <td class="na">质量并入 ⑦：先验的可靠度难与强度分离，统一在 ⑦ 内标注时效风险。</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="font-size:11.5px">跨渠道：<b>⑧ 检索成本</b>（摩擦，反向）｜产出：<b>⑨ 版本可锁定性</b>、<b>⑩ 步骤可复现性</b>｜收口：<b>⑪ 综合置信度</b>。</p>
+
+  <!-- 2. 逐项定义 -->
+  <h2>2 · 指标逐项定义 <span class="en">definitions &amp; scoring</span></h2>
+
+  <!-- 官方触达 -->
+  <div class="mcard touch">
+    <div class="mhead"><span class="nm">① 官方可发现性</span><span class="en">Discoverability</span><span class="tag touch">官方·触达</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">就这个任务做常规检索，官方文档<b>能不能出现、排名靠不靠前、几轮命中</b>。测的是"找得到官方源"这件事本身。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">"找得到"是触达的第一道门，和"抓不抓得到正文"（②）是两回事——可能首条就是官方链接，却点进去抓不到内容。</div></div>
+    <div class="rubric"><span class="lv">5</span> 首屏首条即官方、一轮命中 ｜ <span class="lv">3</span> 要翻页或加限定词 ｜ <span class="lv">1</span> 多轮仍难浮出官方源。</div>
+  </div>
+
+  <div class="mcard touch">
+    <div class="mhead"><span class="nm">② 官方可抓取性</span><span class="en">Crawlability / Fetchability</span><span class="tag touch">官方·触达</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">找到官方页后，web_fetch <b>能不能真的把正文取回上下文</b>：静态页可抓 vs SPA 单页应用只回导航 / robots 拦截。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val"><b>找得到 ≠ 抓得到</b>。这是 CANN 的<b>平台级、公共常量级</b>短板（见设计决定 §3.2），必须与可发现性拆开才看得清。</div></div>
+    <div class="rubric"><span class="lv">5</span> 静态 HTML，正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">2</span> SPA 只回导航+meta 摘要、正文抓不到（hiascend <code>/document/detail/</code>），或备用入口被 robots 拦（<code>/doc_center/source/</code>）。</div>
+  </div>
+
+  <!-- 官方质量 -->
+  <div class="mcard qual">
+    <div class="mhead"><span class="nm">③ 官方正文详尽度</span><span class="en">Body depth</span><span class="tag qual">官方·质量</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息够不够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字够不够答好"——两者正交。</div></div>
+    <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">3</span> 有正文但要东拼西凑 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
+    <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧因 ② 可抓取性受阻（SPA+robots），正文取不回来，<b>就无从评判详尽度</b>。这一格记 <b>「正文抓取受阻·无法实测」</b>的中性态，<b>不打推断分</b>——凭印象给分等于编造。受阻本身就是结论。CUDA 侧静态可抓，按实际抓到的正文如实评。</div>
+  </div>
+
+  <div class="mcard qual">
+    <div class="mhead"><span class="nm">④ 版本清晰度</span><span class="en">Version clarity</span><span class="tag qual">官方·质量</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">官方源里<b>容不容易选对版本</b>：是单一主线版本，还是多套版本号并存散乱（商用版 / 社区版 / alpha / RC 交错）。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是"内容质量"的另一面，和"详尽度"不同：正文可能很详尽，却因版本号散乱让人不知该照哪一版。CANN 跨任务普遍弱（实测多版本号并存）。</div></div>
+    <div class="rubric"><span class="lv">5</span> 单一主线版本、对应清楚 ｜ <span class="lv">2</span> 多版本号并存、需自行判断该用哪版（如 <code>8.0.RC2 / 8.0.RC3 / 800alpha001/003</code> 同存）。</div>
+  </div>
+
+  <!-- 二手 -->
+  <div class="mcard touch">
+    <div class="mhead"><span class="nm">⑤ 二手丰富度</span><span class="en">Secondary abundance</span><span class="tag touch">二手·触达</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">GitHub / Stack Overflow / 知乎 / CSDN / 博客等二手材料的<b>数量与可发现度</b>——当官方触达不到时，能否靠社区绕过去。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">二手是官方短板的<b>主要补偿渠道</b>。A/B/C 任务正是靠厚二手绕过了官方可抓取短板，D 任务二手薄才把短板放大到致命。</div></div>
+    <div class="rubric"><span class="lv">5</span> 多源、易找、覆盖该任务核心 ｜ <span class="lv">3</span> 有但零散 ｜ <span class="lv">1</span> 寥寥几篇、难覆盖。</div>
+  </div>
+
+  <div class="mcard qual">
+    <div class="mhead"><span class="nm">⑥ 二手可信度 / 一致性</span><span class="en">Credibility / Consistency</span><span class="tag qual">二手·质量</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">二手源<b>权威吗、够新吗、彼此对得上吗</b>：作者/平台可靠度、日期新鲜度、多源结论是否一致（还是互相矛盾、引用过时版本）。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">数量多（⑤）不等于可信。一致性低会逼我反复交叉验证、抬高检索成本，甚至无法定论。</div></div>
+    <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">3</span> 可用但需交叉核对 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
+  </div>
+
+  <!-- 先验 -->
+  <div class="mcard touch">
+    <div class="mhead"><span class="nm">⑦ 模型先验强度</span><span class="en">Model prior strength</span><span class="tag touch">先验·触达</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">这个任务在我训练数据里的<b>覆盖密度</b>——不检索能不能直接答出靠谱内容。把"自带知识"也视为一条触达渠道。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">先验强时可在外部源失败时兜底；先验弱时只能硬靠检索。它的"质量面"（时效/可靠）难与强度分离，故并入本项内标注，不再单列。</div></div>
+    <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">1</span> 几乎只能现查、先验易过时。</div>
+  </div>
+
+  <!-- 成本 -->
+  <div class="mcard cost">
+    <div class="mhead"><span class="nm">⑧ 检索成本</span><span class="en">Retrieval cost</span><span class="tag cost">过程</span><span class="tag rev">反向</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">答好这个任务实际花的<b>检索轮数 + 抓取次数</b>的摩擦。<b>反向计分：越少越好</b>，着色时高分=省力（绿）。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">它是过程代价，不是知识本身的属性。同样能答对，花 1 轮和花 6 轮的"可用性"体感差很多。</div></div>
+    <div class="rubric"><span class="lv">5</span> 1 轮内搞定 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">1</span> 多轮反复、抓取频繁仍吃力。</div>
+  </div>
+
+  <!-- 产出 -->
+  <div class="mcard out">
+    <div class="mhead"><span class="nm">⑨ 版本可锁定性</span><span class="en">Version-lockability</span><span class="tag out">产出·因变量</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">最终答案<b>能不能定到确切版本</b>（库版本 / 工具链版本 / soc_version 等），而不是含糊地"某个版本应该可以"。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是<b>结果（因变量）</b>，是前面几关的产物——版本清晰度④高、源够好，才锁得住。列出来是为让"输入好→产出好"闭环、并核对综合分，<b>不应与输入项重复加权</b>。</div></div>
+    <div class="rubric"><span class="lv">5</span> 能写出确切版本号 ｜ <span class="lv">3</span> 能给范围/主版本 ｜ <span class="lv">1</span> 只能模糊带过。</div>
+  </div>
+
+  <div class="mcard out">
+    <div class="mhead"><span class="nm">⑩ 步骤可复现性</span><span class="en">Reproducibility</span><span class="tag out">产出·因变量</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">答案里的<b>命令/步骤能不能照抄跑通</b>：完整命令行、必要参数、前置条件齐全，而非伪代码或缺步骤。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">同为产出侧因变量，但与"锁版本"正交：版本锁得住、命令却缺参数照样跑不通。直接对应正文详尽度③与二手质量⑥。</div></div>
+    <div class="rubric"><span class="lv">5</span> 命令照抄即跑 ｜ <span class="lv">3</span> 大体能跑、需小修 ｜ <span class="lv">1</span> 缺步骤/仅示意。</div>
+  </div>
+
+  <!-- 汇总 -->
+  <div class="mcard sum">
+    <div class="mhead"><span class="nm">⑪ 综合置信度</span><span class="en">Overall confidence</span><span class="tag sum">汇总</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">对"这个任务在这个栈上，我到底能多有把握答好"的<b>总评</b>，由前述各项汇总而成（非简单平均：触达若整段断、产出若锁不住版本会显著拉低）。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">给读者一个落地结论；同时与各分项并列，便于看"总分背后是哪一关贡献的"。</div></div>
+  </div>
+
+  <!-- 3. 设计决定 -->
+  <h2>3 · 关键设计决定（含踩过的坑） <span class="en">design rationale</span></h2>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.1</span>为什么把"触达"和"质量"硬拆成两关？</div>
+    <div class="ad"><b>因为"找得到 ≠ 抓得到 ≠ 够用"是三件会各自独立失败的事。</b>把它们打包成一个"官方源好不好"的笼统分，就看不出 CANN 到底卡在哪——实测里 A/B/C 官方都搜得到、却都 SPA 抓不到，只是二手够厚没触发短板；D 是可发现性+二手厚度双低，叠加可抓取短板才致命。拆开，才能把"平台级公共短板"与"任务级差异"分离。</div>
+  </div>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.2</span>为什么"官方可抓取性"对 CANN 是公共常量，不算任务差异？</div>
+    <div class="ad"><span class="corr">已纠正</span>hiascend 全站 <code>/document/detail/</code> 都是 SPA、<code>/doc_center/source/</code> 都被 robots 拦——<b>与具体任务无关</b>，所以 CANN 此项<b>统一记 2</b>、CUDA 静态站<b>统一记 5</b>。早期错误：曾给 D 记 1、A/B/C 记 3*，把"抓取失败有没有咬到最终结果"误当成"可抓取性本身的差异"。可抓取性是公共常量；D 垫底的真因是①可发现性+⑤二手厚度低，叠加这个公共短板才致命。</div>
+  </div>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.3</span>为什么 CANN 的"正文详尽度"记"受阻"而不打一个推断分？</div>
+    <div class="ad"><b>铁律 #1/#2：绝不编造、能实测才记分。</b>正文被 SPA 拦住根本取不回来，就没有事实依据评判它详不详尽；凭印象给个 3 分，是把"推断"伪装成"实测"。所以这一格用<b>独立中性态「受阻·无法实测」</b>，与 1–5 着色分区分开——<b>"未测"不等于"低分"</b>。而且受阻本身就是最有说服力的结论：官方可抓取性是 CANN 的平台级短板。</div>
+  </div>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.4</span>为什么"版本敏感度"不进矩阵当列？</div>
+    <div class="ad"><span class="corr">已纠正</span>版本敏感度是<b>任务属性、与栈无关</b>（同一任务在两栈取值相同），对"区分两个栈"的贡献为零。把它当列，只会在每行两栈位置填两个相同值、虚增维度。所以它<b>只做任务名旁的小标签</b>，不占矩阵列。真正区分两栈的是 ②③④⑤⑥（+⑦先验、⑧成本）。</div>
+  </div>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.5</span>为什么"产出"（⑨⑩）是因变量，要和输入项分开看？</div>
+    <div class="ad">版本可锁定、可复现是<b>前面触达+质量几关的结果</b>，不是独立输入。列它们是为了让"输入好 → 产出好"的链路闭环、并<b>反向校验综合分</b>（若输入都好、产出却差，说明评分有内在矛盾需复查）。但在心里加权时要清楚：它们与③④⑥高度相关，<b>不应被当成新增的独立证据重复计入</b>。</div>
+  </div>
+
+  <div class="dec">
+    <div class="qd"><span class="n">3.6</span>评分与着色口径</div>
+    <div class="ad">所有指标 <b>1–5 分，越高越好</b>；唯 <b>⑧检索成本反向</b>（分高=省力）。着色 v5 绿 → v1 红：</div>
+    <div class="ad" style="padding-top:0">
+      <div class="legend">
+        <span class="item"><span class="sw v5">5</span>很好</span>
+        <span class="item"><span class="sw v4">4</span></span>
+        <span class="item"><span class="sw v3">3</span>中</span>
+        <span class="item"><span class="sw v2">2</span></span>
+        <span class="item"><span class="sw v1">1</span>差</span>
+        <span class="item"><span class="sw vNA">受阻</span>无法实测（中性，非低分）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    口径与事实依据见项目 <code>CLAUDE.md</code> 第 3 节（度量体系）与第 9 节附录（已核实来源，勿改动事实）。本材料随指标定义更新而同步。<br>
+    色板：NVIDIA 绿 <code>#76B900</code> ／ 华为红 <code>#C8102E</code>；v5→v1 <code>#BBF0D4 / #DCF5E5 / #FCEFC7 / #FBE0CE / #F9D2D2</code>。
+  </div>
+
+</div>
+</body>
+</html>
