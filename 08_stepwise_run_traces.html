@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逐步运行轨迹 · 4 任务 × 2 栈</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;
+    --nv:#76B900;--hw:#C8102E;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:34px 40px 56px;min-width:1240px;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 22px 14px;line-height:1.6;}
+
+  .task{background:#fff;border:1px solid var(--g6);border-radius:13px;padding:0;margin-bottom:18px;overflow:hidden;}
+  .task-head{background:var(--black);color:#fff;padding:11px 18px;display:flex;align-items:baseline;gap:10px;}
+  .task-head .tk{font-size:9px;font-weight:800;letter-spacing:1.5px;color:rgba(255,255,255,.4);}
+  .task-head .nm{font-size:15px;font-weight:800;}
+  .task-head .vt{font-size:9px;font-weight:700;padding:1px 8px;border-radius:100px;margin-left:6px;}
+  .v-hi{background:#7a1420;color:#ffd9dd;} .v-mid{background:#6b5410;color:#ffeeb8;} .v-lo{background:#0d4f3c;color:#bff0dd;}
+  .task-head .q{font-size:11px;color:rgba(255,255,255,.55);margin-left:auto;}
+
+  .lane{padding:13px 18px;}
+  .lane+.lane{border-top:1px solid var(--g6);}
+  .lane-l{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .lane-badge{font-size:10px;font-weight:800;color:#fff;padding:2px 9px;border-radius:6px;}
+  .nv .lane-badge{background:var(--nv);} .hw .lane-badge{background:var(--hw);}
+  .lane-conf{font-size:10px;font-weight:700;padding:1px 8px;border-radius:100px;margin-left:auto;}
+  .c-hi{background:#ECFDF5;color:#0D7956;} .c-mid{background:#FEF7E6;color:#B45309;}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:start;row-gap:12px;}
+  .nd{display:flex;flex-direction:column;width:150px;border:1px solid #D9DCE3;border-radius:7px;overflow:hidden;background:#fff;}
+  .nd .ac{font-size:10.5px;font-weight:700;padding:5px 8px;line-height:1.3;background:#F4F6F8;color:var(--g1);border-bottom:1px solid #E8EBEF;}
+  .nd .io{font-size:9px;line-height:1.4;padding:4px 8px;color:var(--g3);}
+  .nd .io+.io{border-top:1px dashed #EEF0F3;}
+  .nd .io .l{font-weight:800;color:var(--g4);margin-right:2px;}
+  .nd .io.o .l{color:#0D7956;}
+  .nd .io b{color:var(--g2);font-weight:700;}
+  .nd .io code{font-family:ui-monospace,Menlo,monospace;background:#EEF0F4;border-radius:3px;padding:0 3px;font-size:8.5px;}
+  .nd.dec .ac{background:#FEF7E6;color:#92400E;} .nd.dec{border-left:3px solid #D97706;}
+  .nd.tool .ac{background:#ECFDF5;color:#0A4A39;} .nd.tool{border-left:3px solid #0D7956;}
+  .nd.warn{border:1px dashed #E0B070;border-left:3px dashed #B8860B;} .nd.warn .ac{background:#FFFBEB;color:#92400E;} .nd.warn .io.o,.nd.warn .io.o .l{color:#92400E;}
+  .nd.score .ac{background:#1C1C28;color:#fff;} .nd.score{border-left:3px solid #1C1C28;}
+  .nd.nosearch{background:#F7F8FA;border:1px dashed #DFE2E7;}
+  .nd.nosearch .ac{background:transparent;color:var(--g3);border-bottom:1px dashed #E8EBEF;}
+  .arr{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:15px;color:#B4B8C0;font-size:13px;font-weight:700;align-self:stretch;min-height:46px;}
+
+  .foot{font-size:11.5px;color:var(--g3);line-height:1.7;margin-top:8px;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:13px 18px;}
+  .foot b{color:var(--g1);}
+  .lg{font-size:10.5px;color:var(--g4);margin:0 0 18px 14px;display:flex;gap:14px;flex-wrap:wrap;}
+  .lg span{display:inline-flex;align-items:center;gap:5px;}
+  .sw{width:16px;height:10px;border-radius:3px;display:inline-block;}
+</style>
+</head>
+<body>
+
+<div class="title">逐步运行轨迹 · 4 任务 × 2 栈（每一步都摊开）</div>
+<div class="sub">不再只给结论。下面是我真实跑这 8 次检索时走过的<b>每一个步骤</b>：读题判定 → 定来源 → 每次 web_search（带真实 query）→ 看结果 → 必要时再搜/fetch → 拼链路 → 打分。每个节点标 input / output。</div>
+<div class="lg">
+  <span><i class="sw" style="background:#FEF7E6;border:1px solid #D97706"></i>判断/决策步</span>
+  <span><i class="sw" style="background:#ECFDF5;border:1px solid #0D7956"></i>真实工具调用</span>
+  <span><i class="sw" style="background:#FFFBEB;border:1px dashed #B8860B"></i>产出打折扣</span>
+  <span><i class="sw" style="background:#F7F8FA;border:1px dashed #DFE2E7"></i>决定不检索</span>
+  <span><i class="sw" style="background:#1C1C28"></i>打分</span>
+</div>
+
+<!-- ===== TASK A ===== -->
+<div class="task">
+  <div class="task-head"><span class="tk">TASK A</span><span class="nm">模型转换 / 导出</span><span class="vt v-hi">版本敏感·高</span><span class="q">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</span></div>
+
+  <div class="lane nv">
+    <div class="lane-l"><span class="lane-badge">CUDA</span><span class="lane-conf c-hi">置信度 高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io"><span class="l">in</span>"PyTorch 模型转 TensorRT 怎么做"</div><div class="io o"><span class="l">out</span>部署类·版本敏感·先验较强</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io"><span class="l">in</span>判定标签</div><div class="io o"><span class="l">out</span>搜 1 次取最新官方写法</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>PyTorch model export TensorRT convert onnx tutorial</code></div><div class="io o"><span class="l">out</span>NVIDIA 官方 docs(一周前)+Torch-TensorRT+GitHub×2+博客×3</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io"><span class="l">in</span>10 条结果</div><div class="io o"><span class="l">out</span>官方+二手均可靠，片段含 <code>torch.onnx.export</code>/<code>trtexec</code> 代码，直接可用</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼链路</div><div class="io"><span class="l">in</span>片段+先验</div><div class="io o"><span class="l">out</span>export(opset/dynamic_axes) → trtexec/Torch-TensorRT 建 engine → 部署</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②5 ③5 ④4 ⑤1搜 ⑥4 → 置信高</div></div>
+    </div>
+  </div>
+
+  <div class="lane hw">
+    <div class="lane-l"><span class="lane-badge">CANN</span><span class="lane-conf c-mid">置信度 中高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io"><span class="l">in</span>"用 ATC 把 onnx 转 om"</div><div class="io o"><span class="l">out</span>部署类·版本敏感·先验中(知道 ATC)</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>必须搜·优先官方</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>昇腾 ATC 模型转换 onnx om 官方文档</code></div><div class="io o"><span class="l">out</span>hiascend 快速入门(8.0.RC2)+知乎+阿里云(910B4 示例)+博客园×2+CSDN</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io"><span class="l">in</span>结果列表</div><div class="io o"><span class="l">out</span>官方+大量二手，<code>atc</code> 命令各源一致，片段含完整命令</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼链路</div><div class="io o"><span class="l">out</span><code>atc --framework=5 --model=x.onnx --soc_version=Ascend… --input_shape=…</code> → .om</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②4 ③4 ④3 ⑤1搜 ⑥4 → 中高</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TASK B ===== -->
+<div class="task">
+  <div class="task-head"><span class="tk">TASK B</span><span class="nm">Profiling 定位瓶颈</span><span class="vt v-mid">中</span><span class="q">Nsight ｜ msprof / Ascend PyTorch Profiler</span></div>
+
+  <div class="lane nv">
+    <div class="lane-l"><span class="lane-badge">CUDA</span><span class="lane-conf c-hi">置信度 高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io"><span class="l">in</span>"kernel 慢，怎么 profile"</div><div class="io o"><span class="l">out</span>调优类·中敏感·先验较强</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>搜 1 次校准工作流</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>Nsight Systems profile PyTorch GPU bottleneck tutorial</code></div><div class="io o"><span class="l">out</span>PyTorch 官方论坛+NVIDIA 论坛+Lightning 文档+博客×3(含 2026-01)</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io o"><span class="l">out</span>工作流清晰一致：<code>nsys</code>→<code>ncu</code>，NVTX 标注</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼链路</div><div class="io o"><span class="l">out</span>nsys profile 找慢区 → Nsight Compute 钻 kernel → 看 occupancy/访存</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②5 ③5 ④4 ⑤1搜 ⑥4 → 高</div></div>
+    </div>
+  </div>
+
+  <div class="lane hw">
+    <div class="lane-l"><span class="lane-badge">CANN</span><span class="lane-conf c-mid">置信度 中高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io o"><span class="l">out</span>调优类·中敏感·先验中</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>必须搜·优先官方</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>昇腾 msprof 性能分析 profiling 官方文档</code></div><div class="io o"><span class="l">out</span>hiascend MindStudio msprof+CANN6.0.1+mindspore+阿里云+CSDN×2+知乎</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io o"><span class="l">out</span>官方齐全，有对标 GPU 的 Ascend PyTorch Profiler；二手略少、版本跨度大</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼链路</div><div class="io o"><span class="l">out</span>msprof --export / PyTorch Profiler(with·schedule) → 看 op_summary/timeline → chrome://tracing</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②4 ③3 ④3 ⑤1搜 ⑥3 → 中高</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TASK C ===== -->
+<div class="task">
+  <div class="task-head"><span class="tk">TASK C</span><span class="nm">算子库选型</span><span class="vt v-lo">低</span><span class="q">cuBLAS/cuDNN/… ｜ AOL/ATB/TBE</span></div>
+
+  <div class="lane nv">
+    <div class="lane-l"><span class="lane-badge">CUDA</span><span class="lane-conf c-hi">置信度 高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io"><span class="l">in</span>"什么时候用现成库、什么时候自己写"</div><div class="io o"><span class="l">out</span>通识类·低敏感·先验强</div></div>
+      <div class="arr">→</div>
+      <div class="nd nosearch"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>可凭知识答，<b>决定不检索</b></div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">③凭先验作答</div><div class="io o"><span class="l">out</span>cuBLAS(线代)·cuDNN(DL)·cuFFT·cuSPARSE·Thrust/CUB(并行原语)，选型逻辑稳定</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">④打分</div><div class="io o"><span class="l">out</span>②5 ③5 ④5 ⑤0–1搜 ⑥5 → 高</div></div>
+    </div>
+  </div>
+
+  <div class="lane hw">
+    <div class="lane-l"><span class="lane-badge">CANN</span><span class="lane-conf c-hi">置信度 高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io o"><span class="l">out</span>通识类·低敏感·先验中(库名需确认)</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>方向可凭知识，<b>需 1 搜确认库名</b></div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>昇腾 CANN 算子加速库 AOL ATB 内置算子库</code></div><div class="io o"><span class="l">out</span>hiascend AOL API+ATB 文档+知乎+博客园+华为云</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·确认</div><div class="io o"><span class="l">out</span>AOL(NN/BLAS/DVPP/FlashAttn)·ATB(Transformer)·TBE(较老)</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼·映射</div><div class="io o"><span class="l">out</span>cuBLAS↔AOL-BLAS · cuDNN↔AOL-NN · transformer↔ATB</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②4 ③3 ④3 ⑤1搜 ⑥4 → 高</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TASK D ===== -->
+<div class="task">
+  <div class="task-head"><span class="tk">TASK D</span><span class="nm">自定义算子开发</span><span class="vt v-hi">版本敏感·高</span><span class="q">CUDA kernel+PyTorch ext ｜ Ascend C+msOpGen+aclnn</span></div>
+
+  <div class="lane nv">
+    <div class="lane-l"><span class="lane-badge">CUDA</span><span class="lane-conf c-hi">置信度 高</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io o"><span class="l">out</span>开发类·高敏感·先验强</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>搜 1 次取最新官方写法</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>custom CUDA kernel PyTorch extension add operator tutorial</code></div><div class="io o"><span class="l">out</span>docs.pytorch.org 官方+GitHub×4</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io o"><span class="l">out</span>注意 2.10+ 用 ABI-stable，旧教程用已废弃 THCudaTensor</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑤拼链路</div><div class="io o"><span class="l">out</span>.cu kernel → C++ 注册(TORCH_LIBRARY) → cpp_extension 编译 → import</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑥打分</div><div class="io o"><span class="l">out</span>②5 ③5 ④5 ⑤1搜 ⑥5 → 高</div></div>
+    </div>
+  </div>
+
+  <div class="lane hw">
+    <div class="lane-l"><span class="lane-badge">CANN</span><span class="lane-conf c-mid">置信度 中</span></div>
+    <div class="flow">
+      <div class="nd dec"><div class="ac">①读题·判定</div><div class="io o"><span class="l">out</span>开发类·高敏感·先验弱</div></div>
+      <div class="arr">→</div>
+      <div class="nd dec"><div class="ac">②定来源</div><div class="io o"><span class="l">out</span>必须搜·优先官方</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">③web_search①</div><div class="io"><span class="l">in</span><code>Ascend C 自定义算子开发 流程 昇腾</code></div><div class="io o"><span class="l">out</span>多为 CSDN/博客园二手</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">④看结果·判断</div><div class="io o"><span class="l">out</span>来源偏二手，<b>需官方核实</b> → 再搜一轮</div></div>
+      <div class="arr">→</div>
+      <div class="nd tool"><div class="ac">⑤web_search②</div><div class="io"><span class="l">in</span><code>昇腾社区 msOpGen 自定义算子工程 官方文档</code></div><div class="io o"><span class="l">out</span>命中 hiascend 多版本(8.2RC1/8.0RC3/RC2)</div></div>
+      <div class="arr">→</div>
+      <div class="nd warn"><div class="ac">⑥web_fetch</div><div class="io"><span class="l">in</span>官方 AddCustom 快速入门 URL</div><div class="io o"><span class="l">out</span>⚠ 官方站 SPA，正文抽取失败，只得 meta 摘要</div></div>
+      <div class="arr">→</div>
+      <div class="nd"><div class="ac">⑦拼链路</div><div class="io o"><span class="l">out</span>原型 json → msOpGen → host/kernel → .run → OPP → aclnn</div></div>
+      <div class="arr">→</div>
+      <div class="nd score"><div class="ac">⑧打分</div><div class="io o"><span class="l">out</span>②2 ③2 ④2 ⑤2搜+fetch失败 ⑥3 → 中</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <b>怎么读：</b>每条泳道就是我那一次检索的<b>完整步骤链</b>，节点数即步数——一眼能看出 CUDA 多为 6 步(读题→定来源→1 搜→判断→拼→打分)，C 任务 CUDA 甚至只 4 步(决定不搜)；而 D 任务 CANN 是唯一的 8 步链(2 搜 + 1 次失败的 fetch)。<b>步数本身就是"检索成本"维度的直观体现。</b>
+</div>
+
+</body>
+</html>

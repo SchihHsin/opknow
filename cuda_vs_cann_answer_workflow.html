@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUDA vs CANN · 同一算子问题的回答过程对照</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{
+    --bg:#F2F3F7; --white:#fff; --black:#0A0A0F;
+    --g1:#1C1C28; --g2:#3D3D50; --g3:#6B6B80; --g4:#A0A0B0; --g6:#ECEEF3;
+    --nv:#76B900; --hw:#C8102E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:36px 40px 56px;min-width:1380px;}
+  .page-title{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .page-title::before{content:'';width:4px;height:20px;background:var(--black);border-radius:2px;}
+  .page-sub{font-size:12px;color:var(--g4);margin:6px 0 18px 14px;}
+  .qbar{background:var(--white);border:1px solid var(--g6);border-left:4px solid var(--black);border-radius:8px;padding:11px 16px;margin-bottom:24px;font-size:12.5px;color:var(--g2);line-height:1.6;}
+  .qbar b{color:var(--black);}
+
+  .cmp{display:grid;grid-template-columns:60px repeat(7,1fr);gap:7px;align-items:start;}
+  .rowlabel{display:flex;align-items:center;justify-content:flex-end;font-size:11px;font-weight:800;color:var(--g3);padding-right:6px;text-align:right;line-height:1.3;align-self:center;}
+  .rl-nv{color:var(--nv);} .rl-hw{color:var(--hw);}
+
+  .ph{background:var(--black);color:#fff;border-radius:8px;padding:9px 10px;position:relative;}
+  .ph .n{font-size:9px;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,.4);}
+  .ph .nm{font-size:11.5px;font-weight:700;line-height:1.3;margin-top:2px;}
+  .ph:not(.last)::after{content:'→';position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:var(--g4);font-size:11px;font-weight:700;z-index:2;}
+
+  .cell{border-radius:7px;overflow:hidden;border:1px solid #D9DCE3;background:#fff;display:flex;flex-direction:column;}
+  .cell .act{font-size:10.5px;font-weight:700;line-height:1.3;padding:6px 8px;border-bottom:1px solid #E8EBEF;}
+  .cell .io{font-size:9.5px;line-height:1.4;color:var(--g3);padding:4px 8px;}
+  .cell .io+.io{border-top:1px dashed #EEF0F3;}
+  .cell .io b{color:var(--g2);font-weight:700;}
+  .cell .io .lbl{font-weight:700;color:var(--g4);margin-right:3px;}
+  .cell .io.out .lbl{color:#0D7956;}
+  .cell .io.src{color:var(--g4);font-size:8.5px;line-height:1.35;padding:3px 8px;}
+  .cell .io.src .lbl{color:var(--g4);}
+  .cell .io.src b{color:var(--g3);font-weight:700;}
+  .row-nv .cell{border-left:3px solid var(--nv);} .row-nv .act{background:#F1F8E8;color:#3a5a00;}
+  .row-hw .cell{border-left:3px solid var(--hw);} .row-hw .act{background:#FCEEF0;color:#7a0a1c;}
+  .cell.tool .act{background:#ECFDF5;color:#0A4A39;} .cell.tool{border-left-color:#0D7956!important;}
+  .cell.warn{border:1px dashed #E0B070;border-left:3px dashed #B8860B!important;} .cell.warn .act{background:#FFFBEB;color:#92400E;} .cell.warn .io.out,.cell.warn .io.out .lbl{color:#92400E;}
+  .cell.light{background:#F7F8FA;border:1px dashed #DFE2E7;align-items:center;justify-content:center;text-align:center;}
+  .cell.light .skip{font-size:10px;color:var(--g4);font-weight:600;padding:12px 8px;line-height:1.5;}
+
+  .why{background:#FAFBFC;border:1px solid #EEF0F3;border-radius:7px;padding:7px 9px;font-size:10px;line-height:1.55;color:var(--g2);}
+  .why b{color:var(--g1);}
+  .why .t-nv{color:var(--nv);font-weight:700;} .why .t-hw{color:var(--hw);font-weight:700;}
+
+  .legend{display:flex;gap:16px;align-items:center;margin:16px 0 0 60px;}
+  .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--g3);}
+  .legend-sw{width:18px;height:11px;border-radius:3px;}
+
+  .foot{margin-top:20px;font-size:11.5px;color:var(--g3);line-height:1.75;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:14px 18px;}
+  .foot b{color:var(--g1);}
+</style>
+</head>
+<body>
+
+<div class="page-title">同一个算子问题，两套技术栈 · 我的回答过程对照</div>
+<div class="page-sub">按阶段对齐：每一列里 CUDA / CANN 两步上下对照，最下面一行是该步「为什么不同」的原因。</div>
+
+<div class="qbar">
+  <b>本质相同的问题：</b>「如何开发一个自定义 Add 算子，并让它能在我的框架里被调用？」&nbsp;—&nbsp;
+  CUDA 版＝写 Add 的 CUDA kernel 并集成成 PyTorch 扩展；CANN 版＝用 Ascend C 写 AddCustom 并经 msOpGen 工程、aclnn 调用。下面是我<b>真的各跑一遍</b>留下的过程。
+</div>
+
+<div class="cmp">
+
+  <!-- header row -->
+  <div class="rowlabel"></div>
+  <div class="ph"><div class="n">01</div><div class="nm">判定类型</div></div>
+  <div class="ph"><div class="n">02</div><div class="nm">定知识来源</div></div>
+  <div class="ph"><div class="n">03</div><div class="nm">首次检索</div></div>
+  <div class="ph"><div class="n">04</div><div class="nm">收窄到官方</div></div>
+  <div class="ph"><div class="n">05</div><div class="nm">取全文</div></div>
+  <div class="ph"><div class="n">06</div><div class="nm">拼链路</div></div>
+  <div class="ph last"><div class="n">07</div><div class="nm">组织作答</div></div>
+
+  <!-- CUDA row -->
+  <div class="rowlabel rl-nv">CUDA</div>
+  <div class="row-nv"><div class="cell"><div class="act">读题 · 判定</div><div class="io out"><span class="lbl">out</span>版本敏感 · 生态成熟 · <b>先验强</b></div></div></div>
+  <div class="row-nv"><div class="cell"><div class="act">定知识来源</div><div class="io out"><span class="lbl">out</span>搜<b>一次校准</b>即可</div></div></div>
+  <div class="row-nv"><div class="cell tool"><div class="act">🔍 web_search ①</div><div class="io in"><span class="lbl">in</span>query「custom CUDA kernel PyTorch extension add operator tutorial」</div><div class="io out"><span class="lbl">out</span>一次命中<b>官方教程 + 大量可靠 GitHub</b></div><div class="io src"><span class="lbl">源</span><b>docs.pytorch.org</b>（官方）· github: <b>pytorch/extension-script</b> / chrischoy / sandeepkumar-skb / leelabcnbc</div><div class="io src"><span class="lbl">注</span>官方明示 2.10+ 用 ABI-stable，旧教程还在用已废弃的 THCudaTensor → 印证 CUDA 也版本敏感</div></div></div>
+  <div class="row-nv"><div class="cell light"><div class="skip">—<br>首屏已有官方<br>无需再搜</div></div></div>
+  <div class="row-nv"><div class="cell light"><div class="skip">—<br>片段已够<br>不必 fetch</div></div></div>
+  <div class="row-nv"><div class="cell"><div class="act">拼链路</div><div class="io out"><span class="lbl">out</span>.cu kernel → C++ 注册(TORCH_LIBRARY) → cpp_extension 编译 → import</div></div></div>
+  <div class="row-nv"><div class="cell"><div class="act">组织作答</div><div class="io out"><span class="lbl">out</span>答案 + 官方链接，<b>置信高</b></div></div></div>
+
+  <!-- CANN row -->
+  <div class="rowlabel rl-hw">CANN</div>
+  <div class="row-hw"><div class="cell"><div class="act">读题 · 判定</div><div class="io out"><span class="lbl">out</span>版本敏感 · 生态较新 · <b>先验弱</b></div></div></div>
+  <div class="row-hw"><div class="cell"><div class="act">定知识来源</div><div class="io out"><span class="lbl">out</span><b>必须搜 · 优先官方</b></div></div></div>
+  <div class="row-hw"><div class="cell tool"><div class="act">🔍 web_search ①</div><div class="io in"><span class="lbl">in</span>query「Ascend C 自定义算子开发 流程 昇腾」</div><div class="io out"><span class="lbl">out</span>结果<b>多为二手源</b>，官方排不到前面</div><div class="io src"><span class="lbl">源</span><b>blog.csdn.net</b> ×2 · <b>cnblogs.com</b>（博客园·华为云）· ascendai.csdn.net · 仅 1 条 mindspore.cn</div></div></div>
+  <div class="row-hw"><div class="cell tool"><div class="act">🔍 web_search ②</div><div class="io in"><span class="lbl">in</span>query「昇腾社区 Ascend C 算子开发 msOpGen 自定义算子工程 官方文档」</div><div class="io out"><span class="lbl">out</span>第 2 轮才命中 <b>hiascend.com 官方</b></div><div class="io src"><span class="lbl">源</span>官方多版本并存：CANN <b>8.2.RC1</b> / 商用 <b>8.0.RC3</b> / 8.0.RC2 / 8.0.0.alpha —— 需自己挑版本</div></div></div>
+  <div class="row-hw"><div class="cell warn"><div class="act">🔍 web_fetch</div><div class="io in"><span class="lbl">in</span>hiascend.com/.../atlas_ascendc_10_0006.html（AddCustom 快速入门）</div><div class="io out"><span class="lbl">out</span>⚠ 官方站是 <b>JS 单页应用</b>，正文没抽出</div><div class="io src"><span class="lbl">实得</span>只拿到导航菜单 + meta 摘要：「动态 shape 的 Add 算子…用 msOpGen 工程创建…定义算子类型 AddCustom」</div></div></div>
+  <div class="row-hw"><div class="cell"><div class="act">拼链路</div><div class="io out"><span class="lbl">out</span>原型 json → msOpGen → host/kernel → .run → OPP → aclnn</div></div></div>
+  <div class="row-hw"><div class="cell warn"><div class="act">组织作答</div><div class="io out"><span class="lbl">out</span>答案 + 链接 + 前提，<b>置信中</b></div></div></div>
+
+  <!-- reason row -->
+  <div class="rowlabel">原因</div>
+  <div class="why">两边问题<b>其实都版本敏感</b>（CUDA 的 PyTorch 扩展 API 跨版本变，CANN 随版本/芯片变），都不能凭记忆乱答；差的不是问题本身，而是<b>我的先验强度</b> —— CUDA 资料在训练数据里极多，CANN 少。</div>
+  <div class="why">怎么搜取决于<b>二手源可信度</b>：CUDA 可靠、CANN 稀缺，只能把可信度压到官方。</div>
+  <div class="why"><b>社区内容沉淀量</b>差异 —— CUDA 十多年积累，优质内容铺满首屏；CANN 生态新，少。</div>
+  <div class="why">CANN 官方文档<b>排不到首屏</b>，得显式补「官方」关键词，<span class="t-hw">多花一轮</span>；CUDA 第一屏就有。</div>
+  <div class="why"><b>搜索片段信息密度</b>不同：CUDA 片段已能确证；CANN 摘要不足，才去尝试读全文。</div>
+  <div class="why"><b>工程链路长度</b>不同 —— CUDA 靠 pybind11/cpp_extension 一条龙；CANN 多出 msOpGen / .run 打包 / OPP 部署。</div>
+  <div class="why"><b>不确定性累积</b> —— CANN 版本没锁定 + 官方全文没读全，折扣叠加，自评只能给「中」。</div>
+
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-sw" style="background:#F1F8E8;border:1px solid #76B900"></div>CUDA 步骤</div>
+  <div class="legend-item"><div class="legend-sw" style="background:#FCEEF0;border:1px solid #C8102E"></div>CANN 步骤</div>
+  <div class="legend-item"><div class="legend-sw" style="background:#ECFDF5;border:1px solid #0D7956"></div>真实工具调用</div>
+  <div class="legend-item"><div class="legend-sw" style="background:#FFFBEB;border:1px dashed #B8860B"></div>产出打折扣</div>
+  <div class="legend-item"><div class="legend-sw" style="background:#F7F8FA;border:1px dashed #DFE2E7"></div>该步无需做</div>
+</div>
+
+<div class="foot">
+  <b>一句话结论：</b>两个问题<b>本质上都版本敏感</b>（PyTorch ABI 与 CANN 版本/芯片都会变），所以该搜的都得搜。真正拉开差距的是<b>生态成熟度</b> —— CUDA 这条又快又稳（二手可信、先验强、一搜到位，第 04/05 阶段直接跳过）；CANN 这条更费力且置信更低（二手稀且易过时，要两轮才到官方，连官方站做 web_fetch 都因 SPA 抽不出正文而打折扣）。
+  <br><span style="color:var(--g4)">＊ 每格里灰色的「源 / 实得 / 注」行，都是我这次<b style="color:var(--g3)">真实搜到</b>的具体来源与内容，未做美化。</span>
+</div>
+
+</body>
+</html>

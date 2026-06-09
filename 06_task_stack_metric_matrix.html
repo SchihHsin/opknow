@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>任务 × 栈 可用性矩阵（已跑）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;
+    --nv:#76B900;--hw:#C8102E;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:36px 40px 56px;min-width:1180px;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 22px 14px;line-height:1.6;}
+  .h2{font-size:15px;font-weight:700;margin:26px 0 12px;display:flex;align-items:center;gap:9px;}
+  .h2::before{content:'';width:4px;height:16px;background:var(--black);border-radius:2px;}
+
+  table.mx{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--g6);border-radius:10px;overflow:hidden;font-size:11.5px;}
+  table.mx th,table.mx td{padding:8px 9px;text-align:center;border-bottom:1px solid var(--g6);border-right:1px solid var(--g6);}
+  table.mx th:last-child,table.mx td:last-child{border-right:none;}
+  table.mx thead .grp{font-size:11.5px;font-weight:800;color:#fff;}
+  table.mx thead .grp.ga{background:#475569;} table.mx thead .grp.gb{background:#5b6577;} table.mx thead .grp.gc{background:#475569;} table.mx thead .grp.gd{background:#5b6577;}
+  table.mx thead .sub-nv{background:var(--nv);color:#fff;font-size:10.5px;font-weight:700;}
+  table.mx thead .sub-hw{background:var(--hw);color:#fff;font-size:10.5px;font-weight:700;}
+  table.mx td.dim{text-align:left;font-weight:700;color:var(--g2);background:#FAFBFC;width:165px;}
+  table.mx td.dim small{display:block;font-weight:400;color:var(--g4);font-size:9px;}
+  table.mx tr.conf td{background:#F4F6FF;font-weight:700;} table.mx tr.conf td.dim{background:#E9EDFB;}
+  table.mx tr.vrow td{background:#FBFAF7;}
+
+  .sc{display:inline-block;min-width:30px;padding:2px 7px;border-radius:5px;font-size:10.5px;font-weight:800;}
+  .hi{background:#ECFDF5;color:#0D7956;} .mid{background:#FEF7E6;color:#B45309;} .lo{background:#FEF2F2;color:#B91C1C;}
+  .lv{background:#F1F2F6;color:#5A5A6E;font-weight:700;}
+
+  .legend{font-size:10.5px;color:var(--g4);margin-top:9px;line-height:1.7;}
+  .legend .sc{min-width:0;padding:1px 6px;font-size:9.5px;margin:0 2px;}
+
+  .ins{display:flex;flex-direction:column;gap:9px;}
+  .insi{background:#fff;border:1px solid var(--g6);border-left:4px solid var(--g2);border-radius:0 9px 9px 0;padding:11px 15px;font-size:12px;color:var(--g2);line-height:1.65;}
+  .insi b{color:var(--g1);} .insi .t-nv{color:var(--nv);font-weight:700;} .insi .t-hw{color:var(--hw);font-weight:700;}
+  .insi.key{border-left-color:var(--hw);background:#FFFBFB;}
+
+  .foot{font-size:11.5px;color:var(--g3);line-height:1.75;margin-top:6px;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:15px 19px;}
+  .foot b{color:var(--g1);}
+  .caveat{font-size:11px;color:var(--g4);margin-top:9px;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="title">任务 × 栈 可用性矩阵（真实跑完 4 个任务）</div>
+<div class="sub">用 04 的 7 维度量，对 4 个开发者任务在 CUDA 生态与昇腾社区各跑一遍后的打分。重点不是绝对分，而是<b>维度能否区分出任务之间、栈之间的真实差异</b>。</div>
+
+<div class="h2">评分矩阵</div>
+<table class="mx">
+  <thead>
+    <tr>
+      <th rowspan="2" class="dim" style="background:#2D2D3A;color:#fff;border-radius:0;">度量维度</th>
+      <th colspan="2" class="grp ga">A · 模型转换/导出</th>
+      <th colspan="2" class="grp gb">B · Profiling</th>
+      <th colspan="2" class="grp gc">C · 算子库选型</th>
+      <th colspan="2" class="grp gd">D · 自定义算子开发</th>
+    </tr>
+    <tr>
+      <th class="sub-nv">CUDA</th><th class="sub-hw">CANN</th>
+      <th class="sub-nv">CUDA</th><th class="sub-hw">CANN</th>
+      <th class="sub-nv">CUDA</th><th class="sub-hw">CANN</th>
+      <th class="sub-nv">CUDA</th><th class="sub-hw">CANN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="vrow">
+      <td class="dim">① 版本敏感度<small>任务属性 · 与栈无关</small></td>
+      <td colspan="2"><span class="lv">高</span></td>
+      <td colspan="2"><span class="lv">中</span></td>
+      <td colspan="2"><span class="lv">低</span></td>
+      <td colspan="2"><span class="lv">高</span></td>
+    </tr>
+    <tr>
+      <td class="dim">② 一手源可达性</td>
+      <td><span class="sc hi">5</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc lo">2</span></td>
+    </tr>
+    <tr>
+      <td class="dim">③ 二手生态厚度</td>
+      <td><span class="sc hi">5</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc lo">2</span></td>
+    </tr>
+    <tr>
+      <td class="dim">④ 模型先验强度</td>
+      <td><span class="sc hi">4</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">4</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc lo">2</span></td>
+    </tr>
+    <tr>
+      <td class="dim">⑤ 检索成本<small>轮数 · 越少越好</small></td>
+      <td><span class="sc hi">1 搜</span></td><td><span class="sc hi">1 搜</span></td>
+      <td><span class="sc hi">1 搜</span></td><td><span class="sc hi">1 搜</span></td>
+      <td><span class="sc hi">0–1</span></td><td><span class="sc hi">1 搜</span></td>
+      <td><span class="sc hi">1 搜</span></td><td><span class="sc lo">2 搜+fetch失败</span></td>
+    </tr>
+    <tr>
+      <td class="dim">⑥ 答案可验证性</td>
+      <td><span class="sc hi">4</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">4</span></td><td><span class="sc mid">3</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc hi">4</span></td>
+      <td><span class="sc hi">5</span></td><td><span class="sc mid">3</span></td>
+    </tr>
+    <tr class="conf">
+      <td class="dim">⑦ 综合置信度</td>
+      <td><span class="sc hi">高</span></td><td><span class="sc hi">中高</span></td>
+      <td><span class="sc hi">高</span></td><td><span class="sc hi">中高</span></td>
+      <td><span class="sc hi">高</span></td><td><span class="sc hi">高</span></td>
+      <td><span class="sc hi">高</span></td><td><span class="sc mid">中</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="legend">
+  打分：<span class="sc hi">绿＝强(4–5)</span><span class="sc mid">黄＝中(3)</span><span class="sc lo">红＝弱(1–2)</span>；①为任务属性用<span class="sc lv">灰</span>表深浅；⑤为反向（轮数越少越好，故少＝绿）。
+</div>
+
+<div class="h2">跑出来的几个发现</div>
+<div class="ins">
+  <div class="insi key">
+    <b>① 维度真的区分得开 —— 昇腾社区可用性是「任务相关」，不是一刀切的低。</b>同一个 <span class="t-hw">CANN</span>，自定义算子开发(D)在 ②③④ 全红，但模型转换(A)、Profiling(B)、算子库选型(C) 的 ②③ 大多是绿/黄。把"昇腾难用"当成统一结论，是被单个任务误导。
+  </div>
+  <div class="insi">
+    <b>② 成熟工具类任务，社区沉淀已经厚。</b>ATC（模型转换）、msprof（Profiling）、AOL/ATB（算子库）都是高频常用工具，<span class="t-hw">CANN</span> 侧一搜就同时命中 hiascend 官方 + 知乎/阿里云/博客园大量二手，命令在各源间一致 —— 这类任务两边差距已不大。
+  </div>
+  <div class="insi">
+    <b>③ 真正的短板集中在「前沿开发」。</b>写 Ascend C 自定义算子才是重灾区：二手稀缺、官方文档密集且站点是 SPA 抓不到全文。差距在这一类任务被放到最大。
+  </div>
+  <div class="insi">
+    <b>④ 二手厚度(③) 能救一手可达性(②)。</b>算子开发时官方 SPA 抓不到很致命；但转换/Profiling 时知乎/阿里云/博客园内容足够厚，即便官方文档分版本，也能交叉补全 —— 所以同样"官方不完美"，结果天差地别。
+  </div>
+  <div class="insi">
+    <b>⑤ ① 版本敏感度是任务属性、与栈无关。</b>转换/开发=高、Profiling=中、库选型=低，CUDA 与 CANN 取值一致 —— 验证了把它放在"任务轴"是对的。
+  </div>
+</div>
+
+<div class="h2">从用户场景看昇腾社区的 AI 可用性</div>
+<div class="foot">
+  <b>结论：</b>对"<b>部署 / 调优 / 选型</b>"这类常见、成熟的任务，昇腾社区的 AI 可用性已经不错（官方 + 二手都好查，置信度能到"中高"甚至"高"）。真正的短板高度集中在"<b>自定义算子开发</b>"这类前沿、官方文档密集且<b>抓取不友好（SPA）</b>的场景。
+  <br><br><b>对社区的启示（按这套度量）：</b>要提升 AI（及开发者）对昇腾的可用性，性价比最高的不是再堆部署教程，而是 ——（a）把官方算子开发文档站做得<b>可抓取</b>（静态化/提供纯文本入口），直接抬升 ② 一手源可达性；（b）在前沿开发场景<b>补高质量二手内容</b>（带版本号的完整示例），抬升 ③；这两项正是 D 类任务现在最低的维度。
+  <div class="caveat">＊ 说明：表中分数是我基于本次<b>真实检索</b>的主观评估，重在<b>相对区分</b>而非绝对精确；样本是每任务每栈各 1 次检索，扩大样本后分值会更稳。</div>
+</div>
+
+</body>
+</html>

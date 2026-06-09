@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开发者任务清单（细分）· 可套用度量结构</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;
+    --hi:#DC2626;--mid:#CA8A04;--lo:#0D9488;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:38px 44px 56px;max-width:1200px;margin:0 auto;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 18px 14px;line-height:1.6;}
+  .legendbar{display:flex;gap:18px;align-items:center;margin:0 0 24px 14px;flex-wrap:wrap;}
+  .lg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--g3);}
+  .vtag{font-size:9.5px;font-weight:700;padding:1px 8px;border-radius:100px;}
+  .v-hi{background:#FEF2F2;color:var(--hi);} .v-mid{background:#FEFCE8;color:var(--mid);} .v-lo{background:#F0FDFA;color:var(--lo);}
+  .ran{font-size:9.5px;font-weight:700;color:#0D7956;background:#ECFDF5;padding:1px 8px;border-radius:100px;}
+
+  .cat{background:#fff;border:1px solid var(--g6);border-radius:12px;padding:16px 18px 18px;margin-bottom:14px;}
+  .cathead{display:flex;align-items:center;gap:10px;margin-bottom:13px;}
+  .catnum{font-size:11px;font-weight:800;color:#fff;background:var(--black);width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .catname{font-size:14.5px;font-weight:700;color:var(--g1);}
+  .caten{font-size:10px;color:var(--g4);text-transform:uppercase;letter-spacing:.5px;}
+
+  .leaves{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;}
+  .leaf{border:1px solid var(--g6);border-radius:8px;padding:9px 11px;background:#FBFCFD;}
+  .leaf .lt{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap;}
+  .leaf .ln{font-size:12px;font-weight:700;color:var(--g1);}
+  .leaf .ex{font-size:10px;color:var(--g4);line-height:1.5;}
+  .leaf.done{border-color:#9FE0C6;background:#F4FCF8;}
+
+  .foot{font-size:11.5px;color:var(--g3);line-height:1.7;margin-top:14px;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:14px 18px;}
+  .foot b{color:var(--g1);}
+</style>
+</head>
+<body>
+
+<div class="title">开发者任务清单（细分）· 可套用 04 度量结构</div>
+<div class="sub">把粗桶拆细：同属"算子开发"，写新算子、排精度、调 Tiling 的社区可查难度差很远，应各自成项。每个细分任务可单独用 <b>community-grounded-answer 技能</b> 去跑、再用 <b>7 维度量</b>打分。标签为该任务的「版本敏感度」预判。</div>
+
+<div class="legendbar">
+  <div class="lg"><span class="vtag v-hi">版本敏感·高</span>必须检索、要锁版本</div>
+  <div class="lg"><span class="vtag v-mid">中</span>多为版本相关，部分通用</div>
+  <div class="lg"><span class="vtag v-lo">低</span>偏概念/通识，可凭知识</div>
+  <div class="lg"><span class="ran">✓ 已跑</span>本对话已演示过</div>
+</div>
+
+<!-- 1 环境 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">1</span><span class="catname">环境与安装</span><span class="caten">Environment & Setup</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">版本兼容排查</span><span class="vtag v-hi">高</span></div><div class="ex">"nvcc 与 nvidia-smi 版本不一致 / CANN 配哪个驱动固件？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">安装与环境变量</span><span class="vtag v-hi">高</span></div><div class="ex">"装 CANN 后 ASCEND_HOME / LD_LIBRARY_PATH 怎么配？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">容器 / 镜像搭建</span><span class="vtag v-mid">中</span></div><div class="ex">"昇腾 / CUDA 的官方 docker 镜像怎么起、要挂哪些设备？"</div></div>
+  </div>
+</div>
+
+<!-- 2 算子开发 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">2</span><span class="catname">算子开发</span><span class="caten">Operator Development</span></div>
+  <div class="leaves">
+    <div class="leaf done"><div class="lt"><span class="ln">自定义算子开发</span><span class="vtag v-hi">高</span><span class="ran">✓ 已跑</span></div><div class="ex">"写一个 Add 算子并集成进框架调用"（本对话样例）</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">算子精度排查</span><span class="vtag v-mid">中</span></div><div class="ex">"算子输出与 CPU 标杆差 1e-3，怎么定位？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">动态 shape / Tiling</span><span class="vtag v-hi">高</span></div><div class="ex">"动态 shape 下 Tiling / 启动配置怎么自适应？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">算子融合</span><span class="vtag v-hi">高</span></div><div class="ex">"把 conv+bias+relu 融成一个 kernel/算子"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">注册与框架集成</span><span class="vtag v-hi">高</span></div><div class="ex">"自定义算子怎么注册到 PyTorch / MindSpore？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">算子库选型</span><span class="vtag v-lo">低</span></div><div class="ex">"什么时候用 cuBLAS/cuDNN，什么时候自己写？"</div></div>
+  </div>
+</div>
+
+<!-- 3 训练 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">3</span><span class="catname">训练</span><span class="caten">Training</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">分布式训练配置</span><span class="vtag v-hi">高</span></div><div class="ex">"多卡通信 NCCL / HCCL 怎么配、卡死怎么查？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">混合精度训练</span><span class="vtag v-mid">中</span></div><div class="ex">"开 AMP / bf16 后 loss 变 NaN 怎么办？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">显存 / OOM 优化</span><span class="vtag v-mid">中</span></div><div class="ex">"显存爆了，梯度检查点 / offload 怎么用？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">精度 / 收敛排查</span><span class="vtag v-mid">中</span></div><div class="ex">"换到昇腾后 loss 和 GPU 对不齐怎么排查？"</div></div>
+  </div>
+</div>
+
+<!-- 4 推理部署 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">4</span><span class="catname">推理与部署</span><span class="caten">Inference & Deployment</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">模型转换 / 导出</span><span class="vtag v-hi">高</span></div><div class="ex">"模型转 TensorRT / 用 ATC 转 .om 报算子不支持"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">推理服务部署</span><span class="vtag v-hi">高</span></div><div class="ex">"用 Triton / MindIE 起推理服务怎么配？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">量化</span><span class="vtag v-mid">中</span></div><div class="ex">"int8 量化后精度掉太多怎么调？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">动态 batch / shape 推理</span><span class="vtag v-hi">高</span></div><div class="ex">"推理端怎么支持可变 batch / 序列长度？"</div></div>
+  </div>
+</div>
+
+<!-- 5 性能优化 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">5</span><span class="catname">性能优化</span><span class="caten">Performance Tuning</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">Profiling 定位瓶颈</span><span class="vtag v-mid">中</span></div><div class="ex">"用 Nsight / msprof 看瓶颈在哪？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">访存 / occupancy 优化</span><span class="vtag v-mid">中</span></div><div class="ex">"kernel 访存没合并、occupancy 低怎么提？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">计算与传输重叠</span><span class="vtag v-mid">中</span></div><div class="ex">"用 stream / 流水把 H2D 拷贝和计算重叠"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">多卡通信优化</span><span class="vtag v-mid">中</span></div><div class="ex">"all-reduce 成瓶颈，怎么压通信开销？"</div></div>
+  </div>
+</div>
+
+<!-- 6 调试 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">6</span><span class="catname">调试</span><span class="caten">Debugging</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">内存越界定位</span><span class="vtag v-mid">中</span></div><div class="ex">"illegal memory access，用 compute-sanitizer / 孪生调试查"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">报错码 / 异常排查</span><span class="vtag v-hi">高</span></div><div class="ex">"报了个 EZ9999 / CUDA error 700，啥意思？"</div></div>
+  </div>
+</div>
+
+<!-- 7 迁移 -->
+<div class="cat">
+  <div class="cathead"><span class="catnum">7</span><span class="catname">迁移</span><span class="caten">Migration / Porting</span></div>
+  <div class="leaves">
+    <div class="leaf"><div class="lt"><span class="ln">CUDA → 昇腾 迁移</span><span class="vtag v-hi">高</span></div><div class="ex">"一份 CUDA 训练代码怎么迁到昇腾跑？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">跨芯片迁移</span><span class="vtag v-hi">高</span></div><div class="ex">"910B 上跑通的算子迁到 310P 要改什么？"</div></div>
+    <div class="leaf"><div class="lt"><span class="ln">概念心智模型对照</span><span class="vtag v-lo">低</span></div><div class="ex">"CUDA 的 warp/tiling ↔ Ascend C 的对应概念"</div></div>
+  </div>
+</div>
+
+<div class="foot">
+  <b>怎么用：</b>这份清单是 <b>04 度量结构</b>的"任务轴"——任选一个叶子任务，用 community-grounded-answer 技能分别在 CUDA 生态与昇腾社区跑一遍，再按 7 维度打分，就能把单点对比扩展成一张<b>「任务 × 栈」的可用性矩阵</b>。其中标「✓ 已跑」的只有"自定义算子开发"一项。
+  <br><br>建议下一步挑 2–3 个跨度大的任务真去跑（例如：版本敏感·高的「模型转换/导出」、中等的「Profiling 定位瓶颈」、偏通识的「算子库选型」），这样最能检验度量维度区不区分得开。要我从哪几个开始跑？
+</div>
+
+</body>
+</html>

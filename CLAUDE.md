@@ -18,8 +18,8 @@
 
 1. **绝不编造**。来源标题、URL、日期、版本号若无把握，**重新检索拿到**再写，不能凭记忆杜撰。
 2. **区分"实测 / 推断 / 理想化"**。我没有昇腾专有知识库，只有训练先验（可能过时）+ 实时检索。凡推断必须标注（曾用 `*`），能实测就实测。
-3. **文件只往后编号，绝不覆盖**之前的（03、04…15…）。
-4. **容器会在会话间清空**：`/home/claude` 等临时目录会丢失。**所有产出直接写 `/mnt/user-data/outputs/`**，写完用 present_files 呈现。改旧文件前先确认它还在，必要时重建。
+3. **（已更新 2026-06-09）默认基于现有主文件原地改 + git push，不再每次新建编号文件**。原「只往后编号、绝不覆盖」是旧容器环境(产出会丢)的规矩；现工作目录 `/Users/hsin/Documents/Coding/opknow` 已是 git 仓库(远程 `git@github.com:SchihHsin/opknow.git`，经 GitHub Pages 发布)，历史由 commit 保留，原地改安全。只有用户显式要「新版本/保留对比」才新建。
+4. **本地 git 工作流**：改完主文件提交并 push 到 main(用户已授权，用于 Pages 发布)；若改主文件需同步把 `index.html` 更新为其副本，根地址才会刷新。本地预览 `python3 -m http.server` 会被沙箱拦，需关沙箱起。
 5. 结论要诚实标注**局限**（样本薄、主观评分等）。
 
 ---
@@ -88,20 +88,20 @@
 | `12_heatmap_interactive.html` | 行列对调（任务×栈为行、指标为列）+ 可点击 |
 | `13_full_heatmap_measured.html` | 全 26 任务（22 待跑）+ 可抓取性改实测 |
 | `14_full_heatmap_anchored.html` | 类别移到左列 + 点击定位楼层 + 回到顶部 FAB |
-| **`15_heatmap_hover.html`** | **当前主交互**：去掉点击楼层/FAB，改为**逐格悬浮**看详情（每格说明过程，低分说问题），类别在左列 |
+| `15_heatmap_hover.html` | 逐格悬浮看详情（每格说明过程，低分说问题），类别在左列 |
+| **`16_detailed_hover.html`** | **当前主交互**：在 15 基础上把每格 tooltip 写**详细**——可抓取格写「抽到✓/缺失✕」、来源类格列「标题·域名·日期·版本号」、版本清晰格列实际并存版本号串；CUDA 四项缺口已重新检索补齐 |
 
-**当前最新主文件 = `15_heatmap_hover.html`。**
+**当前最新主文件 = `16_detailed_hover.html`。**
+
+> 本地工作目录：`/Users/hsin/Documents/Coding/opknow`（已是 git 仓库，远程 `git@github.com:SchihHsin/opknow.git`，经 GitHub Pages 发布；`index.html` 为根地址展示用的副本）。注意：03–14 等早期文件目前只在旧容器 `/mnt/user-data/outputs/`，本地仅有 15/16/index/CLAUDE.md。
 
 ---
 
 ## 7. 进行中的任务（未完成）
 
-用户要求：**悬浮卡片要更具体**——不能只说"正文抽不出""在某平台找到"，要写清：
-- 可抓取性：**具体抽到了什么 / 缺失什么**；
-- 二手/官方源：**具体哪几篇**（标题 + 域名 + **日期**）、**版本号**；
-- 这个深度要应用到**所有指标**，不只是官方一手源。
-
-为此正在重新检索拿准确数据，准备据此做 `16`（在 15 基础上把每格 tooltip 写详细）。已重新拉到的具体数据见下方附录，**还需补**：CUDA A(TensorRT)、CUDA B(Nsight)、CUDA D(PyTorch custom ops)、CANN C(AOL/ATB) 的准确标题/日期。
+~~用户要求悬浮卡片更具体~~ → **已在 `16_detailed_hover.html` 完成**：可抓取格写「抽到✓/缺失✕」，来源类格列「标题·域名·日期·版本号」，覆盖所有指标。CUDA A(TensorRT)/B(Nsight)/D(PyTorch custom ops)、CANN C(AOL/ATB) 的来源已重新检索补齐（见 16 内数据 + 下方附录）。
+- 待办：16 尚未在真实浏览器目测（本地 `python http.server` 被沙箱拦，仅用 node 跑通数据/渲染逻辑验证）。
+- 可能的后续：把 4 个已跑任务的 CUDA 侧也逐一 web_fetch 实测可抓取性（目前由搜索片段佐证，未逐一 fetch）；继续跑 22 个待跑任务。
 
 ## 7b. 全部待跑任务（22 个，矩阵中标"待跑"）
 

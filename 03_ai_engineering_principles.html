@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>背后的 AI 工程原理 · 我怎么落地回答技术社区问题</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;
+    --c1:#2563EB;--c2:#0D9488;--c3:#7C3AED;--c4:#DC2626;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:38px 44px 56px;max-width:1180px;margin:0 auto;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 26px 14px;line-height:1.6;}
+
+  .phaserail{display:flex;align-items:stretch;gap:0;margin-bottom:30px;}
+  .prail{flex:1;background:var(--black);color:#fff;border-radius:9px;padding:12px 14px;position:relative;}
+  .prail+.prail{margin-left:18px;}
+  .prail:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--g4);font-size:14px;font-weight:700;}
+  .prail .n{font-size:9px;font-weight:800;letter-spacing:1.5px;color:rgba(255,255,255,.4);}
+  .prail .nm{font-size:13px;font-weight:700;margin-top:3px;}
+  .prail .d{font-size:10px;color:rgba(255,255,255,.55);margin-top:3px;line-height:1.5;}
+  .prail.p1{box-shadow:inset 0 -3px 0 var(--c1);} .prail.p2{box-shadow:inset 0 -3px 0 var(--c2);}
+  .prail.p3{box-shadow:inset 0 -3px 0 var(--c3);} .prail.p4{box-shadow:inset 0 -3px 0 var(--c4);}
+
+  .sec{background:#fff;border:1px solid var(--g6);border-radius:12px;padding:20px 22px;margin-bottom:18px;}
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .sec-badge{font-size:11px;font-weight:800;color:#fff;padding:3px 10px;border-radius:6px;}
+  .b1{background:var(--c1);} .b2{background:var(--c2);} .b3{background:var(--c3);} .b4{background:var(--c4);}
+  .sec-title{font-size:15px;font-weight:700;color:var(--g1);}
+  .sec-q{font-size:11.5px;color:var(--g4);margin-left:auto;}
+
+  .pts{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;}
+  .pt{display:flex;gap:9px;align-items:flex-start;}
+  .pt .dot{width:7px;height:7px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+  .pt .tx{font-size:12px;color:var(--g2);line-height:1.6;}
+  .pt .tx b{color:var(--g1);font-weight:700;}
+  .pt .tx em{font-style:normal;color:var(--g4);font-size:11px;}
+
+  /* source hierarchy */
+  .hier{display:flex;flex-direction:column;gap:5px;margin-top:6px;}
+  .tier{display:flex;align-items:center;gap:10px;padding:7px 12px;border-radius:7px;font-size:11.5px;}
+  .tier .rank{font-size:10px;font-weight:800;color:#fff;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .tier b{color:var(--g1);} .tier span{color:var(--g3);}
+  .t5{background:#ECFDF5;} .t5 .rank{background:#0D7956;}
+  .t4{background:#F0FDF9;} .t4 .rank{background:#0EA5A0;}
+  .t3{background:#FEFCE8;} .t3 .rank{background:#CA8A04;}
+  .t2{background:#FFF7ED;} .t2 .rank{background:#EA580C;}
+  .t1{background:#FEF2F2;} .t1 .rank{background:#DC2626;}
+
+  /* fallback ladder */
+  .ladder{display:flex;flex-direction:column;gap:0;}
+  .rung{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px dashed var(--g6);}
+  .rung:last-child{border-bottom:none;}
+  .rung .step{font-size:11px;font-weight:800;color:#fff;background:var(--c4);min-width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .rung .step.final{background:var(--g2);}
+  .rung .body{font-size:12px;color:var(--g2);line-height:1.6;}
+  .rung .body b{color:var(--g1);}
+  .arrowdown{color:var(--g4);font-size:11px;margin:2px 0 2px 9px;}
+
+  .note{font-size:11.5px;color:var(--g3);line-height:1.7;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:14px 18px;margin-top:6px;}
+  .note b{color:var(--g1);}
+</style>
+</head>
+<body>
+
+<div class="title">背后的 AI 工程原理 · 我怎么落地回答技术社区问题</div>
+<div class="sub">把前面跑昇腾 / CUDA 时的隐性过程显性化：从拿到一个问题，到在社区里找到、判断、并落地为可信答案的那套原则。</div>
+
+<div class="phaserail">
+  <div class="prail p1"><div class="n">PHASE 1</div><div class="nm">分析问题</div><div class="d">分类 · 抽实体 · 找缺口 · 定路径</div></div>
+  <div class="prail p2"><div class="n">PHASE 2</div><div class="nm">找社区信息</div><div class="d">广→窄检索 · 按来源层级取证</div></div>
+  <div class="prail p3"><div class="n">PHASE 3</div><div class="nm">识别原则</div><div class="d">权威 · 时效 · 一致 · 完整 · 自检</div></div>
+  <div class="prail p4"><div class="n">PHASE 4</div><div class="nm">找不到咋整</div><div class="d">兜底阶梯：换法→换源→澄清→诚实</div></div>
+</div>
+
+<!-- P1 -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-badge b1">1</span><span class="sec-title">如何分析问题</span><span class="sec-q">先想清楚"这是个什么问题"，再决定怎么答</span></div>
+  <div class="pts">
+    <div class="pt"><div class="dot" style="background:var(--c1)"></div><div class="tx"><b>给问题分类。</b>它是稳定通识、还是<b>版本敏感</b>（答案随版本/硬件变）、还是工具链特定、或时效性强？<em>这一步决定能否凭记忆答。</em></div></div>
+    <div class="pt"><div class="dot" style="background:var(--c1)"></div><div class="tx"><b>抽取关键实体。</b>产品 / 工具 / 版本号 / 芯片型号 / 框架 —— 把"可被检索的名词"拎出来。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c1)"></div><div class="tx"><b>识别隐含缺口。</b>用户没说但影响答案的约束：哪个版本？什么硬件？哪种调用方式？<em>缺口大就得澄清。</em></div></div>
+    <div class="pt"><div class="dot" style="background:var(--c1)"></div><div class="tx"><b>定路径。</b>通识 → 可凭知识直答；版本敏感/不确定 → <b>必须检索</b>，不靠记忆给命令。</div></div>
+  </div>
+</div>
+
+<!-- P2 -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-badge b2">2</span><span class="sec-title">如何找社区信息</span><span class="sec-q">广撒网定位 → 收窄到权威源</span></div>
+  <div class="pts" style="grid-template-columns:1fr;margin-bottom:12px;">
+    <div class="pt"><div class="dot" style="background:var(--c2)"></div><div class="tx"><b>检索策略：广 → 窄。</b>先用宽关键词定位领域，再迭代收窄——加「官方 / 文档 / 版本号 / 具体报错」等词，把权威源逼出来。多子问题就<b>各搜各的</b>，别合成一条。</div></div>
+  </div>
+  <div class="tx" style="font-size:11.5px;color:var(--g3);margin-bottom:7px;font-weight:600;">来源可信度层级（从高到低取证）：</div>
+  <div class="hier">
+    <div class="tier t5"><div class="rank">1</div><div><b>一手官方文档</b> <span>· 厂商 docs（hiascend.com / docs.pytorch.org）、SEC、论文、政府站 —— 最优先</span></div></div>
+    <div class="tier t4"><div class="rank">2</div><div><b>官方教程 / 官方仓库</b> <span>· 官方 GitHub、官方 Quickstart</span></div></div>
+    <div class="tier t3"><div class="rank">3</div><div><b>高信誉二手</b> <span>· 知名 GitHub 项目、Stack Overflow 高票答案</span></div></div>
+    <div class="tier t2"><div class="rank">4</div><div><b>普通技术博客</b> <span>· CSDN / 博客园 / Medium —— 可参考，但需官方交叉核实</span></div></div>
+    <div class="tier t1"><div class="rank">5</div><div><b>论坛 / UGC / 聚合站</b> <span>· 仅在更优源缺失时谨慎使用</span></div></div>
+  </div>
+</div>
+
+<!-- P3 -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-badge b3">3</span><span class="sec-title">识别信息的原则</span><span class="sec-q">同样一段文字，判断要不要信、信多少</span></div>
+  <div class="pts">
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>权威性。</b>官方 &gt; 二手；冲突时以一手为准。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>时效性。</b>看发布日期、看版本号——<b>版本对不上的"正确答案"也是错的</b>（如 PyTorch 2.10+ 用 ABI-stable，旧教程的 THCudaTensor 已废弃）。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>一致性。</b>多源交叉印证；说法冲突就存疑、再查，不挑一个顺眼的信。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>完整性。</b>搜索摘要不够确证细节时，<b>web_fetch 取全文</b>再下判断。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>版权。</b>改写、不照搬；引用极简、附原始链接。</div></div>
+    <div class="pt"><div class="dot" style="background:var(--c3)"></div><div class="tx"><b>自我校验。</b>随时问自己：<em>我现在是在凭记忆，还是凭刚取到的证据？</em>熟悉感 ≠ 当前正确。</div></div>
+  </div>
+</div>
+
+<!-- P4 -->
+<div class="sec">
+  <div class="sec-head"><span class="sec-badge b4">4</span><span class="sec-title">找不到 / 抓不到，咋整</span><span class="sec-q">一条逐级兜底的阶梯，绝不靠编造填空</span></div>
+  <div class="ladder">
+    <div class="rung"><div class="step">1</div><div class="body"><b>换关键词、换角度再搜。</b>同义词、英文原词、加具体报错信息或版本号。</div></div>
+    <div class="arrowdown">↓</div>
+    <div class="rung"><div class="step">2</div><div class="body"><b>换源。</b>官方站抓不到（如 JS 单页应用抽不出正文）→ 换官方教程、静态镜像、或换 web_fetch 的提取方式。</div></div>
+    <div class="arrowdown">↓</div>
+    <div class="rung"><div class="step">3</div><div class="body"><b>取全文补足。</b>对最权威的那条结果 web_fetch 读全文，而非停在摘要。</div></div>
+    <div class="arrowdown">↓</div>
+    <div class="rung"><div class="step">4</div><div class="body"><b>向用户澄清。</b>缺口大（版本 / 芯片 / 框架未知）就直接问，缩小搜索面。</div></div>
+    <div class="arrowdown">↓</div>
+    <div class="rung"><div class="step">5</div><div class="body"><b>退回先验，但显式标注。</b>实在查不到，可凭知识给方向，<b>但明说"未经官方核实"</b>，并附官方链接让用户自查最新。</div></div>
+    <div class="arrowdown">↓</div>
+    <div class="rung"><div class="step final">6</div><div class="body"><b>诚实说不知道。</b>查不到就说查不到、不确定就说不确定——<b>绝不编造命令、参数或出处</b>。</div></div>
+  </div>
+</div>
+
+<div class="note">
+  <b>贯穿全程的一条底线：</b>过程对用户透明——我用了哪些搜索、命中了什么源、哪一步打了折扣、最终置信度多少，都如实记录（这正是前面那些 workflow 图里"input / output / 源"行在做的事）。<b>可追溯，才可信。</b>
+</div>
+
+</body>
+</html>

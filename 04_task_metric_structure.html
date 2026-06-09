@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技术问答任务 · 度量结构</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g5:#D4D6DE;--g6:#ECEEF3;
+    --nv:#76B900;--hw:#C8102E;--blue:#2563EB;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:38px 44px 56px;max-width:1180px;margin:0 auto;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 24px 14px;line-height:1.6;}
+  .h2{font-size:15px;font-weight:700;margin:28px 0 13px;display:flex;align-items:center;gap:9px;}
+  .h2::before{content:'';width:4px;height:16px;background:var(--black);border-radius:2px;}
+
+  /* rubric cards */
+  .rubric{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .dim{background:#fff;border:1px solid var(--g6);border-left:4px solid var(--blue);border-radius:0 9px 9px 0;padding:12px 15px;}
+  .dim .dh{display:flex;align-items:baseline;gap:8px;margin-bottom:5px;}
+  .dim .dn{font-size:13px;font-weight:700;color:var(--g1);}
+  .dim .de{font-size:9.5px;color:var(--g4);text-transform:uppercase;letter-spacing:.5px;}
+  .dim .dd{font-size:11px;color:var(--g3);line-height:1.55;}
+  .dim .dd b{color:var(--g2);}
+  .dim .dir{font-size:9.5px;font-weight:700;padding:1px 7px;border-radius:100px;margin-left:auto;}
+  .dir-up{background:#ECFDF5;color:#0D7956;} .dir-down{background:#FEF2F2;color:#B91C1C;}
+
+  /* scorecard */
+  table.sc{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--g6);border-radius:10px;overflow:hidden;font-size:12px;margin-top:4px;}
+  table.sc th,table.sc td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--g6);vertical-align:middle;}
+  table.sc thead th{font-size:11.5px;font-weight:800;color:#fff;}
+  table.sc thead th:nth-child(1){background:var(--g2);width:210px;}
+  table.sc thead th:nth-child(2){background:var(--nv);}
+  table.sc thead th:nth-child(3){background:var(--hw);}
+  table.sc thead th:nth-child(4){background:var(--g4);}
+  table.sc td:nth-child(1){font-weight:700;color:var(--g2);background:#FAFBFC;}
+  table.sc tr:last-child td{border-bottom:none;}
+  table.sc tr.total td{background:#F4F6FF;}
+  table.sc tr.total td:nth-child(1){background:#E9EDFB;}
+
+  .meter{display:flex;align-items:center;gap:7px;}
+  .dots{display:flex;gap:3px;}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--g5);}
+  .dot.f-nv{background:var(--nv);} .dot.f-hw{background:var(--hw);} .dot.f-gray{background:var(--g3);}
+  .mlabel{font-size:10.5px;color:var(--g3);font-weight:600;}
+  .pending{font-size:11px;color:var(--g4);font-style:normal;}
+
+  .takeaway{background:#fff;border:1px solid var(--g6);border-radius:10px;padding:16px 20px;margin-top:4px;}
+  .takeaway .rule{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--g2);line-height:1.65;padding:7px 0;border-bottom:1px dashed var(--g6);}
+  .takeaway .rule:last-child{border-bottom:none;}
+  .takeaway .rule b{color:var(--g1);}
+  .takeaway .ico{font-size:13px;flex-shrink:0;margin-top:1px;}
+
+  .foot{font-size:11.5px;color:var(--g3);line-height:1.7;margin-top:18px;background:#fff;border:1px solid var(--g6);border-radius:8px;padding:14px 18px;}
+  .foot b{color:var(--g1);}
+  .legend{font-size:10.5px;color:var(--g4);margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="title">技术问答任务 · 度量结构</div>
+<div class="sub">把"同一问题在不同技术栈跑出来的差异"抽象成 7 个可复用维度。任何"在社区里找答案"的任务（算子开发 / 训练推理 / 部署调优…）都能用这套刻度打分、横向比较。</div>
+
+<div class="h2">七个度量维度（评分刻度 ●＝1，○＝0，满分 5）</div>
+<div class="rubric">
+  <div class="dim">
+    <div class="dh"><span class="dn">① 版本敏感度</span><span class="de">Version Sensitivity</span><span class="dir dir-up">高=必须查</span></div>
+    <div class="dd">答案随<b>版本 / 硬件</b>变化的程度。高 → 不能凭记忆，必须取证并锁版本。</div>
+  </div>
+  <div class="dim">
+    <div class="dh"><span class="dn">② 一手源可达性</span><span class="de">Source Reachability</span><span class="dir dir-up">高=好</span></div>
+    <div class="dd">官方文档<b>好不好找</b>（几轮命中）+ <b>好不好抓</b>（静态页 vs JS 单页应用）。</div>
+  </div>
+  <div class="dim">
+    <div class="dh"><span class="dn">③ 二手生态厚度</span><span class="de">Ecosystem Depth</span><span class="dir dir-up">高=好</span></div>
+    <div class="dd">高质量二手内容（GitHub / SO / 博客）的<b>丰富度与可信度</b>。</div>
+  </div>
+  <div class="dim">
+    <div class="dh"><span class="dn">④ 模型先验强度</span><span class="de">Prior Strength</span><span class="dir dir-up">高=好</span></div>
+    <div class="dd">训练数据中该主题的<b>覆盖密度</b> → 我能多大程度凭已有知识答。</div>
+  </div>
+  <div class="dim">
+    <div class="dh"><span class="dn">⑤ 检索成本</span><span class="de">Retrieval Cost</span><span class="dir dir-down">高=差</span></div>
+    <div class="dd">达到可靠答案所需的 <b>search / fetch 轮数</b>。越高越费力（此维度反向）。</div>
+  </div>
+  <div class="dim">
+    <div class="dh"><span class="dn">⑥ 答案可验证性</span><span class="de">Verifiability</span><span class="dir dir-up">高=好</span></div>
+    <div class="dd">能否<b>锁定版本、给出可复现步骤</b>，而非通用化的模糊步骤。</div>
+  </div>
+  <div class="dim" style="grid-column:1 / -1;border-left-color:var(--g2);">
+    <div class="dh"><span class="dn">⑦ 综合置信度</span><span class="de">Final Confidence</span><span class="dir dir-up">结果指标</span></div>
+    <div class="dd">前六维综合而来的<b>产出可信度</b>——是这套度量最终要预测的结果量。一般：②③④高、⑤低 → ⑦高。</div>
+  </div>
+</div>
+
+<div class="h2">样例打分：任务＝「开发自定义 Add 算子并在框架中调用」</div>
+<table class="sc">
+  <thead>
+    <tr><th>维度</th><th>CUDA / PyTorch</th><th>CANN / Ascend C</th><th>差距说明</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>① 版本敏感度</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">5 高</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot f-hw"></div></div><span class="mlabel">5 高</span></div></td>
+      <td>对称：两边都随版本/芯片变</td>
+    </tr>
+    <tr>
+      <td>② 一手源可达性</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">5</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">2</span></div></td>
+      <td>CUDA 1 轮+静态页；CANN 2 轮+官方站 SPA 抓不到正文</td>
+    </tr>
+    <tr>
+      <td>③ 二手生态厚度</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">5</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">2</span></div></td>
+      <td>CUDA：官方+大量 GitHub/SO；CANN：CSDN/博客园为主</td>
+    </tr>
+    <tr>
+      <td>④ 模型先验强度</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">5</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">2</span></div></td>
+      <td>训练数据里 CUDA 极多、CANN 少</td>
+    </tr>
+    <tr>
+      <td>⑤ 检索成本 <span style="font-weight:400;color:var(--g4)">（反向）</span></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-gray"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">低 · 1 搜</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-gray"></div><div class="dot f-gray"></div><div class="dot f-gray"></div><div class="dot f-gray"></div><div class="dot"></div></div><span class="mlabel">高 · 2 搜+1 fetch（失败）</span></div></td>
+      <td>CANN 多两步且其中一步打折</td>
+    </tr>
+    <tr>
+      <td>⑥ 答案可验证性</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">5</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">3</span></div></td>
+      <td>CANN 版本未锁、全文未读全</td>
+    </tr>
+    <tr class="total">
+      <td>⑦ 综合置信度</td>
+      <td><div class="meter"><div class="dots"><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div><div class="dot f-nv"></div></div><span class="mlabel">高</span></div></td>
+      <td><div class="meter"><div class="dots"><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot f-hw"></div><div class="dot"></div><div class="dot"></div></div><span class="mlabel">中</span></div></td>
+      <td>低分维度逐层传导到置信度</td>
+    </tr>
+  </tbody>
+</table>
+<div class="legend">＊ 维度 ⑤ 为反向指标：实心越多＝成本越高＝越差，故用灰色区别于正向维度。</div>
+
+<div class="h2">怎么用这套度量判断"类似任务"（判定速记）</div>
+<div class="takeaway">
+  <div class="rule"><span class="ico">🔎</span><div><b>先判 ①。</b>版本敏感度高 → 直接进入"必须检索"模式，不允许凭记忆给命令。</div></div>
+  <div class="rule"><span class="ico">📉</span><div><b>②③④ 同时偏低</b>（官方难达 + 二手薄 + 先验弱）→ 预判 <b>⑤ 检索成本会高、⑥⑦ 会降</b>。这正是 CANN 的画像。</div></div>
+  <div class="rule"><span class="ico">🧭</span><div><b>②③④ 同时偏高</b> → 一两轮即可收敛、可凭可靠源快速作答。这是 CUDA 的画像。</div></div>
+  <div class="rule"><span class="ico">⚠️</span><div><b>②（可达性）单独低</b>（官方是 SPA / 付费墙 / 抓取失败）→ 即使生态不薄，也要触发兜底：换源、换提取、或标注"全文未读全"。</div></div>
+  <div class="rule"><span class="ico">🎯</span><div><b>⑥ 低（锁不了版本）</b> → 必须向用户澄清版本/硬件，否则置信度封顶为"中"。</div></div>
+</div>
+
+<div class="h2">下一步可填充：换任务再跑一遍</div>
+<table class="sc">
+  <thead>
+    <tr><th>任务类型</th><th>CUDA / 生态</th><th>CANN / 昇腾社区</th><th>状态</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>自定义算子开发</td><td>已跑（见上）</td><td>已跑（见上）</td><td><span class="pending">✓ 完成</span></td></tr>
+    <tr><td>训练 / 推理部署</td><td><span class="pending">— 待跑 —</span></td><td><span class="pending">— 待跑 —</span></td><td><span class="pending">○ 未运行</span></td></tr>
+    <tr><td>性能调优 / Profiling</td><td><span class="pending">— 待跑 —</span></td><td><span class="pending">— 待跑 —</span></td><td><span class="pending">○ 未运行</span></td></tr>
+  </tbody>
+</table>
+
+<div class="foot">
+  <b>这套度量的价值：</b>它把"我答得顺不顺、信不信得过"从一句感觉，拆成了 7 个<b>可观测、可打分、可横向比</b>的维度。同一套刻度套到不同任务（训练/推理、调优）和不同栈（CUDA/昇腾）上，就能得到一张"<b>从用户场景看昇腾社区 AI 可用性</b>"的画像——哪些任务昇腾社区已经好查好用、哪些还需要补官方内容或改善文档可抓取性，一目了然。
+  <br><br>想让我现在真去跑「训练/推理部署」这一行（分别检索 CUDA 与昇腾社区），把空着的格子按这 7 维填上吗？
+</div>
+
+</body>
+</html>

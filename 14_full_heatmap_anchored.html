@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全任务可用性热力图 · 实测版（类别左列 + 定位）</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+  :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;--nv:#76B900;--hw:#C8102E;--blue:#2563EB;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:34px 36px 64px;min-width:1240px;}
+  .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
+  .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
+  .sub{font-size:12.5px;color:var(--g4);margin:7px 0 8px 14px;line-height:1.6;}
+  .hint{color:var(--nv);font-weight:700;}
+  .fix{background:#FFFBEB;border:1px solid #F4E2B8;border-left:4px solid #CA8A04;border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0 18px;font-size:11.5px;color:#7a5b08;line-height:1.6;}
+  .fix b{color:#5a4406;}
+
+  table.hm{border-collapse:separate;border-spacing:2px;background:#fff;border:1px solid var(--g6);border-radius:10px;padding:6px;font-size:10.5px;width:100%;}
+  table.hm th,table.hm td{padding:5px 5px;text-align:center;}
+  th.col{font-size:9px;font-weight:700;color:var(--g2);background:#FAFBFC;border-radius:5px;line-height:1.2;padding:6px 3px;vertical-align:bottom;}
+  th.col small{display:block;color:var(--g4);font-weight:400;font-size:7.5px;}
+  th.grp{font-size:8.5px;font-weight:800;color:#fff;border-radius:5px;padding:3px;}
+  .g-off{background:#475569;} .g-sec{background:#6b5b95;} .g-mod{background:#1d7a8c;} .g-ret{background:#a16207;} .g-out{background:#0d7956;} .g-sum{background:#1C1C28;}
+  td.catcol{background:#E7EAF1;color:var(--g1);font-weight:800;border-radius:5px;text-align:center;vertical-align:middle;width:64px;line-height:1.4;padding:4px 3px;font-size:10px;}
+  td.task{font-weight:700;color:var(--g1);background:#F1F3F7;border-radius:5px;text-align:left;padding:5px 9px;font-size:10.5px;width:152px;}
+  td.task.clk{cursor:pointer;} td.task.clk small{display:block;font-weight:400;color:var(--blue);font-size:8px;}
+  td.task.pend{color:var(--g4);font-weight:400;background:#FAFBFC;}
+  td.stk{font-size:9px;font-weight:800;color:#fff;border-radius:5px;width:42px;cursor:pointer;}
+  td.stk.nv{background:var(--nv);} td.stk.hw{background:var(--hw);}
+  tr.row.active td.task,tr.row.active td.stk{outline:2px solid var(--blue);}
+  tr.rrow{cursor:pointer;} tr.rrow:hover td.cell{filter:brightness(.97);}
+  .cell{border-radius:5px;font-weight:800;font-size:10px;}
+  .v5{background:#BBF0D4;color:#04603A;} .v4{background:#DCF5E5;color:#0A6B4E;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FBE0CE;color:#9A4A12;} .v1{background:#F9D2D2;color:#A11414;}
+  .pcell{background:#F4F5F8;color:var(--g4);border-radius:5px;font-size:9.5px;font-weight:600;letter-spacing:1px;}
+
+  .legend{display:flex;gap:8px;align-items:center;margin:13px 0 4px 6px;font-size:10.5px;color:var(--g3);flex-wrap:wrap;}
+  .legend .sw{width:20px;height:12px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;}
+
+  #detail{margin-top:24px;scroll-margin-top:16px;}
+  .dh{display:flex;align-items:baseline;gap:10px;margin:0 0 4px 2px;}
+  .dh .dn{font-size:17px;font-weight:800;} .dh .dv{font-size:9px;font-weight:700;padding:1px 8px;border-radius:100px;}
+  .v-hi{background:#FEF2F2;color:#B91C1C;} .v-mid{background:#FEFCE8;color:#A16207;} .v-lo{background:#F0FDFA;color:#0D7956;}
+  .dh .dq{font-size:11.5px;color:var(--g4);margin-left:auto;}
+  .lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;}
+  .lane{background:#fff;border:1px solid var(--g6);border-radius:12px;overflow:hidden;}
+  .lane-h{padding:10px 15px;display:flex;align-items:center;gap:9px;color:#fff;}
+  .lane.nv .lane-h{background:var(--nv);} .lane.hw .lane-h{background:var(--hw);}
+  .lane-h .who{font-size:13px;font-weight:800;} .lane-h .conf{font-size:10.5px;font-weight:700;margin-left:auto;background:rgba(255,255,255,.22);padding:2px 9px;border-radius:100px;}
+  .steps{padding:13px 15px;}
+  .step{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--g6);}
+  .step:last-child{border-bottom:none;}
+  .snum{font-size:10px;font-weight:800;color:#fff;background:var(--g3);min-width:21px;height:21px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .step.dec .snum{background:#D97706;} .step.tool .snum{background:#0D7956;} .step.warn .snum{background:#B8860B;} .step.score .snum{background:#1C1C28;} .step.nos .snum{background:#A0A0B0;}
+  .sbody{flex:1;} .sac{font-size:12px;font-weight:700;color:var(--g1);line-height:1.4;}
+  .sio{font-size:10.5px;color:var(--g3);line-height:1.55;margin-top:2px;}
+  .sio code{font-family:ui-monospace,Menlo,monospace;background:#EEF0F4;border-radius:3px;padding:0 4px;font-size:9.5px;color:var(--g2);}
+  .sio .l{font-weight:800;color:var(--g4);} .sio .lo{color:#0D7956;}
+  .prob{font-size:10.5px;color:#B91C1C;background:#FEF2F2;border:1px solid #F6D6D6;border-radius:6px;padding:5px 9px;margin-top:5px;line-height:1.5;}
+  .prob::before{content:'⚠ 问题：';font-weight:800;}
+  .noprob{font-size:10px;color:#0D7956;margin-top:4px;} .noprob::before{content:'✓ 顺利';font-weight:700;}
+  .pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}
+  .pcard{background:#fff;border:1px solid var(--g6);border-radius:12px;padding:14px 16px;}
+  .pcard.nv{border-top:3px solid var(--nv);} .pcard.hw{border-top:3px solid var(--hw);}
+  .pcard h4{font-size:13px;font-weight:800;margin-bottom:9px;} .pcard.nv h4{color:#4f7a00;} .pcard.hw h4{color:#9a0c22;}
+  .pl{font-size:9.5px;font-weight:800;letter-spacing:.4px;color:var(--g4);margin:7px 0 4px;}
+  .pitem{display:flex;gap:7px;font-size:11px;line-height:1.55;color:var(--g2);margin-bottom:4px;}
+  .pitem .mk{flex-shrink:0;font-weight:800;} .up .mk{color:#0D7956;} .down .mk{color:#B91C1C;}
+  .verdict{margin-top:14px;background:#fff;border:1px solid var(--g6);border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:13px 17px;font-size:12.5px;color:var(--g2);line-height:1.65;}
+  .verdict b{color:var(--g1);}
+
+  .fab{position:fixed;right:26px;bottom:26px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:11px 16px;border-radius:100px;box-shadow:0 6px 18px rgba(37,99,235,.42);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s,transform .22s;z-index:60;}
+  .fab.show{opacity:1;visibility:visible;transform:translateY(0);}
+  .fab:hover{background:#1d4ed8;}
+</style>
+</head>
+<body>
+
+<div class="title">全任务可用性热力图 · 实测版</div>
+<div class="sub">26 个任务全部列出（4 已跑 + 22 待跑），最左为<b>类别</b>列。<span class="hint">点已跑任务行 → 自动定位到下方详情楼层；向下滚动后右下角有「回到顶部」。</span></div>
+
+<div class="fix">
+  <b>「官方可抓取性」已实测：</b>hiascend 的 <code>/document/detail/</code> 在 A/B/D 三棵子树实测均 SPA、正文抽不出，备用 <code>/doc_center/source/</code> 被 robots 拦 → CANN 统一记 <b>2</b>（平台级常量）；CUDA 静态站记 5。已纠正此前 D=1 / A·B·C=3* 的错误——它是公共短板，只在二手稀的 D 任务上才致命。
+</div>
+
+<table class="hm">
+  <thead>
+    <tr>
+      <th class="col" rowspan="2" style="width:64px">类别</th>
+      <th class="col" rowspan="2" style="width:152px">任务</th>
+      <th class="col" rowspan="2" style="width:42px">栈</th>
+      <th class="grp g-off" colspan="3">官方一手源</th>
+      <th class="grp g-sec" colspan="2">二手源</th>
+      <th class="grp g-mod">模型</th>
+      <th class="grp g-ret">检索</th>
+      <th class="grp g-out" colspan="2">产出</th>
+      <th class="grp g-sum">汇总</th>
+    </tr>
+    <tr>
+      <th class="col">可发现<small>排名/轮数</small></th>
+      <th class="col">可抓取<small>静态/SPA</small></th>
+      <th class="col">版本清晰</th>
+      <th class="col">二手数量</th>
+      <th class="col">二手可信</th>
+      <th class="col">先验</th>
+      <th class="col">检索成本</th>
+      <th class="col">版本可锁</th>
+      <th class="col">可复现</th>
+      <th class="col">综合</th>
+    </tr>
+  </thead>
+  <tbody id="hmbody"></tbody>
+</table>
+
+<div class="legend">
+  <span>分值：</span><span class="sw v5">5</span><span class="sw v4">4</span><span class="sw v3">3</span><span class="sw v2">2</span><span class="sw v1">1</span>
+  <span style="margin-left:8px">越绿越好；检索成本已换算为好坏着色；<span class="pcell" style="padding:1px 8px">待跑</span>＝尚未实测。</span>
+</div>
+
+<div id="detail"></div>
+
+<div id="totop" class="fab">↑ 回到顶部</div>
+
+<script>
+const ROWS = {
+  A:{name:'模型转换 / 导出',vsens:'高',
+     cuda:[['v5','5'],['v5','5'],['v4','4'],['v5','5'],['v5','5'],['v4','4'],['v5','1搜'],['v5','5'],['v5','5'],['v5','高']],
+     cann:[['v4','4'],['v2','2'],['v2','2'],['v4','4'],['v4','4'],['v3','3'],['v5','1搜'],['v3','3'],['v4','4'],['v4','中高']]},
+  B:{name:'Profiling 定位瓶颈',vsens:'中',
+     cuda:[['v5','5'],['v5','5'],['v4','4'],['v5','5'],['v5','5'],['v4','4'],['v5','1搜'],['v4','4'],['v4','4'],['v5','高']],
+     cann:[['v4','4'],['v2','2'],['v2','2'],['v3','3'],['v3','3'],['v3','3'],['v5','1搜'],['v3','3'],['v3','3'],['v4','中高']]},
+  C:{name:'算子库选型',vsens:'低',
+     cuda:[['v5','5'],['v5','5'],['v5','5'],['v5','5'],['v5','5'],['v5','5'],['v5','0–1'],['v5','5'],['v5','5'],['v5','高']],
+     cann:[['v4','4'],['v2','2'],['v3','3'],['v3','3'],['v4','4'],['v3','3'],['v5','1搜'],['v4','4'],['v4','4'],['v5','高']]},
+  D:{name:'自定义算子开发',vsens:'高',
+     cuda:[['v5','5'],['v5','5'],['v3','3'],['v5','5'],['v5','5'],['v5','5'],['v5','1搜'],['v5','5'],['v5','5'],['v5','高']],
+     cann:[['v2','2'],['v2','2'],['v2','2'],['v2','2'],['v2','2'],['v2','2'],['v1','2搜✗'],['v2','2'],['v3','3'],['v3','中']]}
+};
+const CATS = [
+  {name:'1 环境与安装', tasks:[{t:'版本兼容排查'},{t:'安装与环境变量'},{t:'容器 / 镜像搭建'}]},
+  {name:'2 算子开发', tasks:[{t:'自定义算子开发',k:'D'},{t:'算子精度排查'},{t:'动态 shape / Tiling'},{t:'算子融合'},{t:'注册与框架集成'},{t:'算子库选型',k:'C'}]},
+  {name:'3 训练', tasks:[{t:'分布式训练配置'},{t:'混合精度训练'},{t:'显存 / OOM 优化'},{t:'精度 / 收敛排查'}]},
+  {name:'4 推理与部署', tasks:[{t:'模型转换 / 导出',k:'A'},{t:'推理服务部署'},{t:'量化'},{t:'动态 batch / shape 推理'}]},
+  {name:'5 性能优化', tasks:[{t:'Profiling 定位瓶颈',k:'B'},{t:'访存 / occupancy 优化'},{t:'计算与传输重叠'},{t:'多卡通信优化'}]},
+  {name:'6 调试', tasks:[{t:'内存越界定位'},{t:'报错码 / 异常排查'}]},
+  {name:'7 迁移', tasks:[{t:'CUDA → 昇腾 迁移'},{t:'跨芯片迁移'},{t:'概念心智模型对照'}]}
+];
+
+const DETAIL = {
+  A:{ q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om', cudaConf:'高', cannConf:'中高',
+    cuda:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 部署类·版本敏感·先验较强',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>PyTorch model export TensorRT convert onnx</code><br><span class="lo">命中</span> docs.nvidia.com（一周前）· Torch-TensorRT · GitHub×2 · 博客×3',ok:1},
+      {t:'',ac:'看结果·判断',io:'<span class="lo">out</span> 官方+二手都可靠，含 <code>torch.onnx.export</code>/<code>trtexec</code>',prob:'opset 9–22、部分算子需替换/写 plugin（官方已列明）'},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 A 行 → 高'}
+    ],
+    cann:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 部署类·版本敏感·先验中',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>昇腾 ATC 模型转换 onnx om 官方文档</code><br><span class="lo">命中</span> hiascend 快速入门(8.0.RC2) · 知乎 · 阿里云(910B4) · 博客园×2 · CSDN',prob:'官方文档多版本号并存，要选对版本'},
+      {t:'warn',ac:'官方可抓取性（实测）',io:'<span class="l">in</span> fetch hiascend ATC 快速入门页<br><span class="lo">out</span> SPA，正文抽不出（meta 恰好带了 atc 命令）',prob:'同 D 一样 SPA；但本任务靠搜索片段就够，故未受致命影响'},
+      {t:'',ac:'拼链路',io:'<span class="lo">out</span> <code>atc --framework=5 --model=x.onnx --soc_version=Ascend…</code> → .om',ok:1},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 A 行 → 中高'}
+    ],
+    cudaUp:['官方文档极新','Torch-TensorRT 近一键集成','社区案例海量'],
+    cudaDown:['opset/算子支持是常见坑'],
+    cannUp:['ATC 成熟常用，二手很厚','命令各源统一好抄','支持静态/动态 om'],
+    cannDown:['官方站 SPA 抓不到全文（实测）','官方多版本号要自挑','soc_version 绑芯片'],
+    verdict:'<b>差距小，两边都好查。</b>官方虽 SPA，但 ATC 二手厚、命令统一，搜索片段就够用——可抓取性这个公共短板没咬到这个任务。' },
+  B:{ q:'Nsight ｜ msprof / Ascend PyTorch Profiler', cudaConf:'高', cannConf:'中高',
+    cuda:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 调优类·中敏感·先验较强',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>Nsight Systems profile PyTorch GPU bottleneck</code><br><span class="lo">命中</span> PyTorch/NVIDIA 官方论坛 · Lightning 文档 · 博客×3',ok:1},
+      {t:'',ac:'看结果·判断',io:'<span class="lo">out</span> <code>nsys</code>→<code>ncu</code> 工作流清晰',prob:'驱动/版本不匹配会采不到 GPU 样本（论坛有记录）'},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 B 行 → 高'}
+    ],
+    cann:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 调优类·中敏感·先验中',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>昇腾 msprof 性能分析 profiling 官方文档</code><br><span class="lo">命中</span> hiascend MindStudio/CANN · mindspore · 阿里云 · CSDN×2 · 知乎',prob:'官方分散在 MindStudio/CANN 两套、版本跨度大'},
+      {t:'warn',ac:'官方可抓取性（实测）',io:'<span class="l">in</span> fetch hiascend msprof 页<br><span class="lo">out</span> SPA，正文抽不出（仅 meta 摘要）',prob:'同平台 SPA；二手够厚故影响有限'},
+      {t:'',ac:'拼链路',io:'<span class="lo">out</span> msprof --export / PyTorch Profiler → op_summary/timeline',ok:1},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 B 行 → 中高'}
+    ],
+    cudaUp:['工具链成熟','二手海量','宏观→微观两级清晰'],
+    cudaDown:['驱动/版本不匹配采不到样本'],
+    cannUp:['有对标 PyTorch-GPU 的 Ascend PyTorch Profiler','官方 msprof 文档齐'],
+    cannDown:['官方站 SPA 抓不到全文（实测）','官方跨两处、版本跨度','二手偏少'],
+    verdict:'<b>中等偏小差距。</b>官方 SPA 但二手够用；昇腾刻意对标 GPU 降低迁移成本。' },
+  C:{ q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE', cudaConf:'高', cannConf:'高',
+    cuda:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 通识·低敏感·先验强',ok:1},
+      {t:'nos',ac:'定来源',io:'<span class="lo">out</span> 可凭知识答，<b>决定不检索</b>',ok:1},
+      {t:'',ac:'凭先验作答',io:'<span class="lo">out</span> cuBLAS·cuDNN·cuFFT·cuSPARSE·Thrust/CUB',ok:1},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 C 行 → 高'}
+    ],
+    cann:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 通识·低敏感·先验中（库名需确认）',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>昇腾 CANN 算子加速库 AOL ATB</code><br><span class="lo">命中</span> hiascend AOL API · ATB 文档 · 知乎 · 博客园 · 华为云',prob:'库命名较新（AOL/ATB），先验不确定需核实'},
+      {t:'',ac:'确认·映射',io:'<span class="lo">out</span> AOL(NN/BLAS/DVPP/FA)·ATB(Transformer)·TBE(老)；cuBLAS↔AOL-BLAS …',ok:1},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 C 行 → 高'}
+    ],
+    cudaUp:['完全通识可直接答','库生态成熟、命名稳定'],
+    cudaDown:['几乎无'],
+    cannUp:['AOL/ATB 分类清晰、有 API 列表','与 CUDA 库映射明确'],
+    cannDown:['库命名较新仍在规整','先验弱需 1 次确认'],
+    verdict:'<b>差距小，属通识。</b>区别仅在 CUDA 可凭记忆、CANN 需 1 次确认库名。' },
+  D:{ q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn', cudaConf:'高', cannConf:'中',
+    cuda:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 开发类·高敏感·先验强',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>custom CUDA kernel PyTorch extension add operator</code><br><span class="lo">命中</span> docs.pytorch.org 官方 · GitHub×4',ok:1},
+      {t:'',ac:'看结果·判断',io:'<span class="lo">out</span> 拼出标准链路',prob:'2.10+ 用 ABI-stable，旧教程用废弃 THCudaTensor（官方已标注）'},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 D 行 → 高'}
+    ],
+    cann:[
+      {t:'dec',ac:'读题·判定',io:'<span class="lo">out</span> 开发类·高敏感·先验弱',ok:1},
+      {t:'tool',ac:'web_search ①',io:'<span class="l">query</span> <code>Ascend C 自定义算子开发 流程 昇腾</code><br><span class="lo">命中</span> 多为 CSDN/博客园二手',prob:'官方排不到首屏，二手参差'},
+      {t:'tool',ac:'web_search ②',io:'<span class="l">query</span> <code>昇腾社区 msOpGen 官方文档</code><br><span class="lo">命中</span> hiascend 多版本(8.2RC1/8.0RC3/RC2)',prob:'多版本并存要自己挑'},
+      {t:'warn',ac:'官方可抓取性（实测）',io:'<span class="l">in</span> fetch hiascend AddCustom 页<br><span class="lo">out</span> SPA，正文抽不出',prob:'与 A/B 同为平台级 SPA；但此任务二手稀、meta 不足以确证步骤 → 失败<b>致命</b>'},
+      {t:'',ac:'拼链路',io:'<span class="lo">out</span>（据摘要+二手）原型 json → msOpGen → host/kernel → .run → OPP → aclnn',prob:'只能基于碎片拼，未锁定版本'},
+      {t:'score',ac:'打分',io:'<span class="lo">out</span> 见上表 D 行 → 中'}
+    ],
+    cudaUp:['官方教程+海量 GitHub','版本差异官方讲清'],
+    cudaDown:['扩展 API 跨版本变化大，旧教程多'],
+    cannUp:['官方有完整自定义算子工程文档（若能读到）'],
+    cannDown:['二手稀缺（真因）','官方排不到首屏','官方站 SPA 抓不到（公共短板，在此致命）','多版本要自挑'],
+    verdict:'<b>4 任务里差距最大。</b>可抓取性是 CANN 公共短板（均 2），但只有在 D 这种<b>二手稀、强依赖官方全文</b>的任务上才致命；A/B/C 靠二手绕过了它。' }
+};
+
+function cell(c){return '<td class="cell '+c[0]+'">'+c[1]+'</td>';}
+function renderHM(){
+  let h='';
+  for(const cat of CATS){
+    const n=cat.tasks.reduce((a,tk)=>a+(tk.k?2:1),0);
+    let first=true;
+    for(const tk of cat.tasks){
+      const catTd=first?'<td class="catcol" rowspan="'+n+'">'+cat.name+'</td>':'';
+      if(tk.k){const r=ROWS[tk.k];
+        h+='<tr class="rrow row" data-k="'+tk.k+'">'+catTd+'<td class="task clk" rowspan="2">'+tk.k+' · '+tk.t+'<small>点击展开 ▸</small></td><td class="stk nv">CUDA</td>'+r.cuda.map(cell).join('')+'</tr>';
+        h+='<tr class="rrow row" data-k="'+tk.k+'"><td class="stk hw">CANN</td>'+r.cann.map(cell).join('')+'</tr>';
+      } else {
+        h+='<tr>'+catTd+'<td class="task pend">'+tk.t+'</td><td class="pcell" colspan="11">待 跑</td></tr>';
+      }
+      first=false;
+    }
+  }
+  document.getElementById('hmbody').innerHTML=h;
+  document.querySelectorAll('tr.rrow').forEach(tr=>tr.addEventListener('click',()=>select(tr.dataset.k,true)));
+}
+function stepHtml(s,i){const tail=s.prob?'<div class="prob">'+s.prob+'</div>':(s.ok?'<div class="noprob"></div>':'');
+  return '<div class="step '+s.t+'"><div class="snum">'+(i+1)+'</div><div class="sbody"><div class="sac">'+s.ac+'</div><div class="sio">'+s.io+'</div>'+tail+'</div></div>';}
+function laneHtml(side,arr,who,conf){return '<div class="lane '+side+'"><div class="lane-h"><span class="who">'+who+'</span><span class="conf">置信度 '+conf+'</span></div><div class="steps">'+arr.map(stepHtml).join('')+'</div></div>';}
+function pcList(arr,cls){return arr.map(x=>'<div class="pitem '+cls+'"><span class="mk">'+(cls==='up'?'＋':'－')+'</span><span>'+x+'</span></div>').join('');}
+function dvc(v){return {'高':'v-hi','中':'v-mid','低':'v-lo'}[v]||'';}
+function select(k,scroll){
+  document.querySelectorAll('tr.row').forEach(tr=>tr.classList.toggle('active',tr.dataset.k===k));
+  const r=ROWS[k],d=DETAIL[k];
+  document.getElementById('detail').innerHTML=
+    '<div class="dh"><span class="dn">'+k+' · '+r.name+'</span><span class="dv '+dvc(r.vsens)+'">版本敏感·'+r.vsens+'</span><span class="dq">'+d.q+'</span></div>'
+    +'<div class="lanes">'+laneHtml('nv',d.cuda,'英伟达 / NVIDIA 生态',d.cudaConf)+laneHtml('hw',d.cann,'昇腾社区',d.cannConf)+'</div>'
+    +'<div class="pc"><div class="pcard nv"><h4>NVIDIA 生态</h4><div class="pl">优势</div>'+pcList(d.cudaUp,'up')+'<div class="pl">劣势 / 坑</div>'+pcList(d.cudaDown,'down')+'</div>'
+    +'<div class="pcard hw"><h4>昇腾社区</h4><div class="pl">优势</div>'+pcList(d.cannUp,'up')+'<div class="pl">劣势 / 坑</div>'+pcList(d.cannDown,'down')+'</div></div>'
+    +'<div class="verdict"><b>对比结论：</b>'+d.verdict+'</div>';
+  if(scroll){document.getElementById('detail').scrollIntoView({behavior:'smooth',block:'start'});}
+}
+renderHM();
+select('A',false);
+
+const fab=document.getElementById('totop');
+window.addEventListener('scroll',()=>{fab.classList.toggle('show',window.scrollY>320);});
+fab.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>

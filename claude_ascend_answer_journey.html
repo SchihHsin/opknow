@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 回答昇腾算子问题的旅程</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
+
+  :root {
+    --bg: #F2F3F7;
+    --white: #FFFFFF;
+    --black: #0A0A0F;
+    --g1: #1C1C28;
+    --g2: #3D3D50;
+    --g3: #6B6B80;
+    --g4: #A0A0B0;
+    --g5: #D4D6DE;
+    --g6: #ECEEF3;
+    --red: #C8102E;
+    --col-w: 232px;
+    --label-w: 92px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    padding: 40px 48px 60px;
+    min-width: 1360px;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .page-title {
+    font-size: 20px; font-weight: 700; letter-spacing: -0.3px;
+    color: var(--black); display: flex; align-items: center; gap: 10px;
+  }
+  .page-title::before {
+    content: ''; width: 4px; height: 20px; background: var(--red); border-radius: 2px;
+  }
+  .page-subtitle { font-size: 12px; color: var(--g4); font-weight: 400; margin-left: 14px; }
+  .legend { display: flex; gap: 16px; align-items: center; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--g3); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  .question-bar {
+    background: var(--white); border: 1px solid var(--g6); border-left: 4px solid var(--red);
+    border-radius: 8px; padding: 11px 16px; margin-bottom: 28px;
+    font-size: 12.5px; color: var(--g2); display: flex; align-items: center; gap: 10px;
+  }
+  .question-bar b { color: var(--black); font-weight: 700; }
+  .q-tag {
+    font-size: 10px; font-weight: 700; color: var(--red); background: #FFF0F2;
+    padding: 2px 8px; border-radius: 100px;
+  }
+
+  .journey {
+    display: grid;
+    grid-template-columns: var(--label-w) repeat(5, var(--col-w));
+    gap: 0; background: transparent;
+  }
+
+  .phase-header-spacer {}
+  .phase-col { padding: 0 8px 0 0; }
+  .phase-card {
+    background: var(--black); color: white; border-radius: 12px 12px 0 0;
+    padding: 16px 18px 14px; position: relative; overflow: hidden;
+  }
+  .phase-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+  .phase-card.p1::after { background: #EF4444; }
+  .phase-card.p2::after { background: #F59E0B; }
+  .phase-card.p3::after { background: #3B82F6; }
+  .phase-card.p4::after { background: #10B981; }
+  .phase-card.p5::after { background: #8B5CF6; }
+
+  .phase-num {
+    font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 4px;
+  }
+  .phase-name { font-size: 15px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.3; }
+  .phase-desc { font-size: 10.5px; color: rgba(255,255,255,0.5); margin-top: 4px; line-height: 1.5; }
+
+  .row-label-cell { display: flex; flex-direction: column; justify-content: center; padding: 0 12px 0 0; }
+  .row-label-name { font-size: 11px; font-weight: 700; color: var(--g2); text-align: right; line-height: 1.4; }
+  .row-label-en { font-size: 9px; color: var(--g4); text-align: right; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .data-col { padding: 0 8px 0 0; }
+  .data-cell {
+    background: var(--white);
+    border-left: 1px solid var(--g6); border-right: 1px solid var(--g6); border-bottom: 1px solid var(--g6);
+    padding: 14px 15px; height: 100%; display: flex; flex-direction: column; gap: 8px;
+  }
+  .row-design .data-cell { border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--g5); }
+  .row-actual .data-cell { border-top: none; }
+  .row-flow .data-cell { border-top: 1px solid var(--g6); }
+  .row-pain .data-cell { border-top: 1px solid var(--g6); }
+  .row-design .data-cell { border-top: 1px solid var(--g6); }
+
+  .row-actual .data-cell { background: #EFFBF5; }
+  .row-flow .data-cell { background: var(--white); }
+  .row-pain .data-cell { background: #FFFDF7; }
+  .row-design .data-cell { background: #F7F8FF; }
+
+  /* actual-behavior horizontal workflow row */
+  .actual-strip { grid-column: 2 / -1; padding-right: 0; }
+  .wf-flow {
+    display: flex; flex-wrap: wrap; align-items: stretch;
+    gap: 0; row-gap: 14px;
+  }
+  .wf-node {
+    display: flex; flex-direction: column; width: 152px; overflow: hidden;
+    border: 1px solid #BFE9D7; border-radius: 7px; background: #fff;
+  }
+  .wf-act {
+    padding: 6px 8px; font-size: 11px; font-weight: 700; color: #0D5641;
+    background: #ECFDF5; line-height: 1.35; border-bottom: 1px solid #D6EFE4;
+  }
+  .wf-io { padding: 4px 8px; font-size: 9.5px; line-height: 1.45; color: var(--g3); }
+  .wf-io .lbl { font-weight: 700; color: var(--g4); margin-right: 2px; }
+  .wf-io.in { background: #FAFBFA; border-bottom: 1px dashed #E3E8E5; }
+  .wf-io.out .lbl { color: #1D9E75; }
+  .wf-io b { font-weight: 700; color: var(--g2); }
+  .wf-node.tool .wf-act { background: #D8F3E7; color: #0A4A39; }
+  .wf-node.hit { border-color: #1D9E75; }
+  .wf-node.hit .wf-act { background: #C7EDDB; color: #0A4A39; }
+  .wf-node.skip { border: 1px dashed #E89B9B; }
+  .wf-node.skip .wf-act { background: #FEF2F2; color: #B91C1C; }
+  .wf-node.skip .wf-io.out, .wf-node.skip .wf-io.out .lbl { color: #B91C1C; }
+  .wf-arr {
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; width: 16px; color: #9AA0AC; font-size: 13px; font-weight: 700;
+  }
+  .wf-arr.skip-arr { color: #E89B9B; }
+
+  /* screenshot/mini frame */
+  .screenshot-frame {
+    border-radius: 8px; overflow: hidden; border: 1px solid var(--g5);
+    background: #F8F9FB; flex-shrink: 0;
+  }
+  .sf-bar {
+    display: flex; align-items: center; gap: 4px; padding: 5px 8px;
+    background: #ECEEF2; border-bottom: 1px solid var(--g5);
+  }
+  .sf-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .sf-body { padding: 8px; }
+  .action-label { font-size: 11px; font-weight: 600; color: var(--g2); line-height: 1.5; }
+  .action-sub { font-size: 10.5px; color: var(--g4); line-height: 1.5; margin-top: 1px; }
+
+  .mbar { height: 4px; border-radius: 2px; background: #E2E5EB; }
+  .mrow { display: flex; gap: 3px; }
+
+  /* pain */
+  .pain-item { display: flex; gap: 7px; align-items: flex-start; }
+  .pain-icon {
+    width: 20px; height: 20px; border-radius: 5px; background: #FFFBEB; color: #92400E;
+    font-size: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .pain-text { font-size: 11px; color: var(--g2); line-height: 1.55; }
+
+  /* design */
+  .design-item { display: flex; gap: 7px; align-items: flex-start; }
+  .design-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .design-text { font-size: 11px; color: var(--g1); line-height: 1.55; font-weight: 500; }
+  .design-tag {
+    display: inline-block; font-size: 9.5px; font-weight: 700; padding: 1px 6px;
+    border-radius: 100px; margin-left: 4px; vertical-align: middle;
+  }
+
+  .footnote {
+    margin-top: 22px; font-size: 11px; color: var(--g3); line-height: 1.7;
+    background: var(--white); border: 1px solid var(--g6); border-radius: 8px; padding: 14px 18px;
+  }
+  .footnote b { color: var(--g1); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div>
+    <div class="page-title">
+      Claude 回答「昇腾算子开发」问题的旅程
+      <span class="page-subtitle">How I retrieve & answer · 五阶段内部流程</span>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>实际做了</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0D7956"></div>真实工具调用</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#DC2626"></div>跳过/没做</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div>下方为理想化归纳</div>
+  </div>
+</div>
+
+<div class="question-bar">
+  <span class="q-tag">示例问题</span>
+  <span><b>「如何用 Ascend C 开发一个自定义算子？」</b> —— 顶部绿色「实际行为」行是我这次<b>真正做了/没做</b>的横向流水账；下面的「我的动作 / 风险 / 应对策略」是较理想化的归纳，二者请对照看。</span>
+</div>
+
+<div class="journey">
+
+  <!-- ══ ROW 0: Phase headers ══ -->
+  <div class="phase-header-spacer"></div>
+
+  <div class="phase-col">
+    <div class="phase-card p1">
+      <div class="phase-num">01</div>
+      <div class="phase-name">理解 · 拆解</div>
+      <div class="phase-desc">读懂问题，拆出关键实体与隐含约束</div>
+    </div>
+  </div>
+
+  <div class="phase-col">
+    <div class="phase-card p2">
+      <div class="phase-num">02</div>
+      <div class="phase-name">判断知识来源</div>
+      <div class="phase-desc">凭记忆答 还是 实时检索？</div>
+    </div>
+  </div>
+
+  <div class="phase-col">
+    <div class="phase-card p3">
+      <div class="phase-num">03</div>
+      <div class="phase-name">检索取证</div>
+      <div class="phase-desc">广搜 → 收窄到官方权威源</div>
+    </div>
+  </div>
+
+  <div class="phase-col">
+    <div class="phase-card p4">
+      <div class="phase-num">04</div>
+      <div class="phase-name">核实 · 综合</div>
+      <div class="phase-desc">交叉验证、对齐版本、拼出完整链路</div>
+    </div>
+  </div>
+
+  <div class="phase-col">
+    <div class="phase-card p5">
+      <div class="phase-num">05</div>
+      <div class="phase-name">组织作答</div>
+      <div class="phase-desc">结构化步骤 + 引用 + 适用条件</div>
+    </div>
+  </div>
+
+  <!-- ══ ROW A: 实际行为 (honest horizontal workflow) ══ -->
+  <div class="row-label-cell row-actual">
+    <div class="row-label-name">实际<br>行为</div>
+    <div class="row-label-en">Actually Did</div>
+  </div>
+
+  <div class="data-col row-actual actual-strip">
+    <div class="data-cell">
+      <div class="wf-flow">
+
+        <div class="wf-node">
+          <div class="wf-io in"><span class="lbl">入</span>用户的问题文本</div>
+          <div class="wf-act">读题 · 判定类型</div>
+          <div class="wf-io out"><span class="lbl">出</span>标签<b>「版本敏感」</b>+ 实体（Ascend C / msOpGen / CANN）</div>
+        </div>
+        <div class="wf-arr skip-arr">→</div>
+
+        <div class="wf-node skip">
+          <div class="wf-io in"><span class="lbl">入</span>缺失约束（哪款芯片？哪个版本？）</div>
+          <div class="wf-act">✗ 没追问你</div>
+          <div class="wf-io out"><span class="lbl">出</span>无 → 默认按<b>通用情况</b>处理</div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node">
+          <div class="wf-io in"><span class="lbl">入</span>「版本敏感」标签</div>
+          <div class="wf-act">决定先搜·不靠记忆</div>
+          <div class="wf-io out"><span class="lbl">出</span>决策 = 调用 web_search</div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node tool">
+          <div class="wf-io in"><span class="lbl">入</span>query：<b>「Ascend C 自定义算子开发 流程 昇腾」</b></div>
+          <div class="wf-act">🔍 web_search ①</div>
+          <div class="wf-io out"><span class="lbl">出</span>5 条结果，<b>多为二手源</b>（CSDN/博客园/MindSpore）</div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node">
+          <div class="wf-io in"><span class="lbl">入</span>第 1 次的 5 条结果</div>
+          <div class="wf-act">看结果·判断来源</div>
+          <div class="wf-io out"><span class="lbl">出</span>判断：来源偏二手，<b>需官方核实</b></div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node tool">
+          <div class="wf-io in"><span class="lbl">入</span>query：<b>「昇腾社区…msOpGen 官方文档」</b></div>
+          <div class="wf-act">🔍 web_search ②</div>
+          <div class="wf-io out"><span class="lbl">出</span>命中 <b>hiascend.com</b> 官方 CANN 文档（多版本）</div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node hit">
+          <div class="wf-io in"><span class="lbl">入</span>第 2 次结果</div>
+          <div class="wf-act">选定官方文档</div>
+          <div class="wf-io out"><span class="lbl">出</span>以官方<b>摘要片段</b>为权威依据</div>
+        </div>
+        <div class="wf-arr skip-arr">→</div>
+
+        <div class="wf-node skip">
+          <div class="wf-io in"><span class="lbl">入</span>官方文档的 URL（本可打开全文）</div>
+          <div class="wf-act">✗ 跳过 web_fetch</div>
+          <div class="wf-io out"><span class="lbl">出</span>无 → 仅停留在<b>摘要级</b></div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node">
+          <div class="wf-io in"><span class="lbl">入</span>官方 + 二手摘要片段</div>
+          <div class="wf-act">交叉比对·拼链路</div>
+          <div class="wf-io out"><span class="lbl">出</span>6 步链路：原型 json → msOpGen → host/kernel → 编译 .run → ST 测试 → aclnn</div>
+        </div>
+        <div class="wf-arr skip-arr">→</div>
+
+        <div class="wf-node skip">
+          <div class="wf-io in"><span class="lbl">入</span>多个版本号（8.2RC1 / 8.0RC3…）</div>
+          <div class="wf-act">✗ 未锁定版本</div>
+          <div class="wf-io out"><span class="lbl">出</span>无 → 给<b>通用版</b>步骤</div>
+        </div>
+        <div class="wf-arr">→</div>
+
+        <div class="wf-node hit">
+          <div class="wf-io in"><span class="lbl">入</span>标准链路 + 官方 URL</div>
+          <div class="wf-act">改写 + 引用 + 标前提 → 输出</div>
+          <div class="wf-io out"><span class="lbl">出</span>给你的答案（自述改写 + hiascend 链接 + 「先装驱动 + CANN」前提）</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 1: Flow ══ -->
+  <div class="row-label-cell row-flow" style="padding-top:1px">
+    <div class="row-label-name">我的<br>动作</div>
+    <div class="row-label-en">Flow（理想流程）</div>
+  </div>
+
+  <!-- S1 flow: chat input -->
+  <div class="data-col row-flow">
+    <div class="data-cell">
+      <div class="screenshot-frame">
+        <div class="sf-bar">
+          <div class="sf-dot" style="background:#FF5F57"></div>
+          <div class="sf-dot" style="background:#FFBD2E"></div>
+          <div class="sf-dot" style="background:#28CA41"></div>
+          <div style="flex:1;height:6px;background:#ddd;border-radius:3px;margin-left:6px"></div>
+        </div>
+        <div class="sf-body">
+          <div style="background:#F1F4F9;border-radius:6px;padding:7px 8px;display:flex;flex-direction:column;gap:5px">
+            <div class="mbar" style="width:90%;background:#0A0A0F;height:5px"></div>
+            <div class="mbar" style="width:55%;background:#0A0A0F;height:5px"></div>
+            <div class="mrow" style="gap:3px;margin-top:3px">
+              <div style="height:13px;width:48px;background:#FFF0F2;border:1px solid #f3c7cd;border-radius:100px"></div>
+              <div style="height:13px;width:38px;background:#fff;border:1px solid #ddd;border-radius:100px"></div>
+              <div style="height:13px;width:54px;background:#fff;border:1px solid #ddd;border-radius:100px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="action-label">读题，标出关键词</div>
+      <div class="action-sub">Ascend C · 自定义算子 · msOpGen · CANN —— 识别为「版本敏感的工具链问题」</div>
+    </div>
+  </div>
+
+  <!-- S2 flow: fork decision -->
+  <div class="data-col row-flow">
+    <div class="data-cell">
+      <div class="screenshot-frame">
+        <div class="sf-bar">
+          <div class="sf-dot" style="background:#FF5F57"></div>
+          <div class="sf-dot" style="background:#FFBD2E"></div>
+          <div class="sf-dot" style="background:#28CA41"></div>
+          <div style="flex:1;height:6px;background:#ddd;border-radius:3px;margin-left:6px"></div>
+        </div>
+        <div class="sf-body">
+          <div style="display:flex;gap:6px;align-items:stretch">
+            <div style="flex:1;background:#fff;border:1.5px solid #ddd;border-radius:6px;padding:6px;opacity:0.55">
+              <div class="mbar" style="width:70%;background:#999;height:4px"></div>
+              <div class="mbar" style="width:50%;margin-top:3px"></div>
+              <div style="font-size:7px;color:#999;margin-top:5px;text-align:center">训练记忆</div>
+            </div>
+            <div style="display:flex;align-items:center;font-size:11px;color:#A0A0B0">›</div>
+            <div style="flex:1;background:#EEF4FF;border:1.5px solid #1A56DB;border-radius:6px;padding:6px">
+              <div class="mbar" style="width:70%;background:#1A56DB;height:4px"></div>
+              <div class="mbar" style="width:50%;margin-top:3px;background:#9DBBF5"></div>
+              <div style="font-size:7px;color:#1A56DB;font-weight:700;margin-top:5px;text-align:center">✓ 实时检索</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="action-label">选择「搜索优先」</div>
+      <div class="action-sub">命令、参数、API、版本号靠记忆都可能过时 —— 不直接凭记忆作答</div>
+    </div>
+  </div>
+
+  <!-- S3 flow: search results -> official doc -->
+  <div class="data-col row-flow">
+    <div class="data-cell">
+      <div class="screenshot-frame">
+        <div class="sf-bar">
+          <div class="sf-dot" style="background:#FF5F57"></div>
+          <div class="sf-dot" style="background:#FFBD2E"></div>
+          <div class="sf-dot" style="background:#28CA41"></div>
+          <div style="flex:1;height:6px;background:#ddd;border-radius:3px;margin-left:6px"></div>
+        </div>
+        <div class="sf-body">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="background:#fff;border:1px solid #e3e6ec;border-radius:5px;padding:4px 6px;opacity:0.6">
+              <div class="mbar" style="width:60%;height:4px;background:#bbb"></div>
+              <div style="font-size:7px;color:#bbb;margin-top:2px">CSDN / 博客园 · 二手</div>
+            </div>
+            <div style="background:#ECFDF5;border:1.5px solid #0D7956;border-radius:5px;padding:4px 6px">
+              <div class="mbar" style="width:75%;height:4px;background:#0D7956"></div>
+              <div style="font-size:7px;color:#0D7956;font-weight:700;margin-top:2px">hiascend.com · CANN 官方文档 ✓</div>
+            </div>
+            <div style="background:#fff;border:1px solid #e3e6ec;border-radius:5px;padding:4px 6px;opacity:0.6">
+              <div class="mbar" style="width:50%;height:4px;background:#bbb"></div>
+              <div style="font-size:7px;color:#bbb;margin-top:2px">MindSpore 教程 · 旁证</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="action-label">广搜 → 锁定官方源</div>
+      <div class="action-sub">第一轮拿大致流程，第二轮 web_fetch 昇腾社区文档核对命令与工程结构</div>
+    </div>
+  </div>
+
+  <!-- S4 flow: pipeline checklist -->
+  <div class="data-col row-flow">
+    <div class="data-cell">
+      <div class="screenshot-frame">
+        <div class="sf-bar">
+          <div class="sf-dot" style="background:#FF5F57"></div>
+          <div class="sf-dot" style="background:#FFBD2E"></div>
+          <div class="sf-dot" style="background:#28CA41"></div>
+          <div style="flex:1;height:6px;background:#ddd;border-radius:3px;margin-left:6px"></div>
+        </div>
+        <div class="sf-body">
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="display:flex;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:3px;background:#10B981"></div><div class="mbar" style="flex:1;background:#0A0A0F;height:4px"></div></div>
+            <div style="display:flex;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:3px;background:#10B981"></div><div class="mbar" style="flex:1;background:#0A0A0F;height:4px"></div></div>
+            <div style="display:flex;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:3px;background:#10B981"></div><div class="mbar" style="flex:1;height:4px"></div></div>
+            <div style="display:flex;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:3px;background:#10B981"></div><div class="mbar" style="flex:1;height:4px"></div></div>
+            <div style="display:flex;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:3px;background:#10B981"></div><div class="mbar" style="flex:1;width:70%;height:4px"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="action-label">拼出完整开发链路</div>
+      <div class="action-sub">原型 json → msOpGen 建工程 → host/kernel 实现 → 编译 .run 包 → ST 测试 / 精度校验 → aclnn 调用</div>
+    </div>
+  </div>
+
+  <!-- S5 flow: final answer -->
+  <div class="data-col row-flow">
+    <div class="data-cell">
+      <div class="screenshot-frame">
+        <div class="sf-bar">
+          <div class="sf-dot" style="background:#FF5F57"></div>
+          <div class="sf-dot" style="background:#FFBD2E"></div>
+          <div class="sf-dot" style="background:#28CA41"></div>
+          <div style="flex:1;height:6px;background:#ddd;border-radius:3px;margin-left:6px"></div>
+        </div>
+        <div class="sf-body">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div class="mbar" style="width:50%;background:#0A0A0F;height:5px"></div>
+            <div class="mbar" style="width:95%"></div>
+            <div class="mbar" style="width:88%"></div>
+            <div style="display:flex;gap:3px;margin-top:2px">
+              <div style="height:10px;width:34px;background:#EEF4FF;border:1px solid #9DBBF5;border-radius:100px"></div>
+              <div style="height:10px;width:28px;background:#EEF4FF;border:1px solid #9DBBF5;border-radius:100px"></div>
+              <div style="font-size:7px;color:#1A56DB;align-self:center">引用</div>
+            </div>
+            <div class="mbar" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="action-label">给出可执行答案</div>
+      <div class="action-sub">分步骤说明 + 官方链接 + 适用芯片 / 版本前提 + 坦诚标注不确定处</div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 2: Pain / Risk ══ -->
+  <div class="row-label-cell row-pain">
+    <div class="row-label-name">风险</div>
+    <div class="row-label-en">Risk</div>
+  </div>
+
+  <div class="data-col row-pain">
+    <div class="data-cell">
+      <div class="pain-item">
+        <div class="pain-icon">❓</div>
+        <div class="pain-text">问题留白多：哪款芯片（910B / 310P）？哪个 CANN 版本？调用走 aclnn 还是 aclop？</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🔤</div>
+        <div class="pain-text">昇腾术语密集易混：Ascend C、TIK、AscendCL、msOpGen、OPP 各指什么</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-pain">
+    <div class="data-cell">
+      <div class="pain-item">
+        <div class="pain-icon">⏳</div>
+        <div class="pain-text">我有知识截止时间，CANN 版本号、工具名、API 可能在那之后已经变了</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🎭</div>
+        <div class="pain-text">凭记忆直接给命令/参数，最容易"看似合理实则编造"，误导开发者</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-pain">
+    <div class="data-cell">
+      <div class="pain-item">
+        <div class="pain-icon">📰</div>
+        <div class="pain-text">二手博客（CSDN/博客园）版本滞后，命令、路径可能与当前 CANN 不符</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">✂️</div>
+        <div class="pain-text">搜索返回的只是片段，信息割裂，单独看某一段容易断章取义</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-pain">
+    <div class="data-cell">
+      <div class="pain-item">
+        <div class="pain-icon">🔀</div>
+        <div class="pain-text">不同 CANN 版本工程路径/参数有差异；"标准工程"与"简易 aclnn 工程"易混为一谈</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">©️</div>
+        <div class="pain-text">不能整段照搬官方文档（版权），又要保证步骤准确不走样</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-pain">
+    <div class="data-cell">
+      <div class="pain-item">
+        <div class="pain-icon">😎</div>
+        <div class="pain-text">过度自信、语气太满，会让用户以为答案一定适配其环境</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-icon">🧩</div>
+        <div class="pain-text">用户真实环境（芯片/版本/框架）我无法验证，给的命令未必直接可跑</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 3: Strategy ══ -->
+  <div class="row-label-cell row-design">
+    <div class="row-label-name">应对<br>策略</div>
+    <div class="row-label-en">Strategy</div>
+  </div>
+
+  <div class="data-col row-design">
+    <div class="data-cell">
+      <div class="design-item">
+        <div class="design-dot" style="background:#EF4444"></div>
+        <div class="design-text">先抽取关键实体与"它属于哪一类问题"，再决定路径<span class="design-tag" style="background:#FEE2E2;color:#991B1B">拆解</span></div>
+      </div>
+      <div class="design-item">
+        <div class="design-dot" style="background:#3B82F6"></div>
+        <div class="design-text">先答能答的部分，必要时再就"哪款芯片/版本"向用户澄清，不一上来就反问<span class="design-tag" style="background:#EEF4FF;color:#1A56DB">务实</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-design">
+    <div class="data-cell">
+      <div class="design-item">
+        <div class="design-dot" style="background:#F59E0B"></div>
+        <div class="design-text">判定"版本敏感" → 默认走检索，而不是凭记忆<span class="design-tag" style="background:#FEF3C7;color:#92400E">搜索优先</span></div>
+      </div>
+      <div class="design-item">
+        <div class="design-dot" style="background:#10B981"></div>
+        <div class="design-text">把"概念性知识"（如三段式流水原理）与"易变的命令/版本"分开处理<span class="design-tag" style="background:#ECFDF5;color:#0D7956">分层</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-design">
+    <div class="data-cell">
+      <div class="design-item">
+        <div class="design-dot" style="background:#10B981"></div>
+        <div class="design-text">优先原始权威源：昇腾社区 hiascend.com 官方 CANN 文档<span class="design-tag" style="background:#ECFDF5;color:#0D7956">权威</span></div>
+      </div>
+      <div class="design-item">
+        <div class="design-dot" style="background:#3B82F6"></div>
+        <div class="design-text">多源交叉印证，片段不够就 web_fetch 取全文再判断<span class="design-tag" style="background:#EEF4FF;color:#1A56DB">交叉</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-design">
+    <div class="data-cell">
+      <div class="design-item">
+        <div class="design-dot" style="background:#8B5CF6"></div>
+        <div class="design-text">标注版本号与适用芯片，区分"标准工程"与"简易 aclnn 工程"两条路<span class="design-tag" style="background:#F5F3FF;color:#5B21B6">版本对齐</span></div>
+      </div>
+      <div class="design-item">
+        <div class="design-dot" style="background:#10B981"></div>
+        <div class="design-text">用自己的话改写流程并附官方链接，不整段复制文档<span class="design-tag" style="background:#ECFDF5;color:#0D7956">改写引用</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-col row-design">
+    <div class="data-cell">
+      <div class="design-item">
+        <div class="design-dot" style="background:#F59E0B"></div>
+        <div class="design-text">写明前提（先装好驱动固件 + CANN 包），让答案可落地<span class="design-tag" style="background:#FEF3C7;color:#92400E">前提</span></div>
+      </div>
+      <div class="design-item">
+        <div class="design-dot" style="background:#EF4444"></div>
+        <div class="design-text">给官方链接让用户自查最新版，并坦诚标注我不确定的地方<span class="design-tag" style="background:#FEE2E2;color:#991B1B">诚实</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footnote">
+  <b>诚实补充：</b>原来的「风险」行是一份<b>泛化的、理论上可能存在的坑清单</b>，并不是我这次实际踩到或处理掉的；「应对策略」写的也是「我该怎么做」而非全部「这次真做了」。
+  顶部的<b>「实际行为」</b>行才是如实记录：我确实做了搜索优先、两轮检索收窄到官方源、改写引用；但我<b>没有</b>向你追问芯片/版本，<b>没有</b>真正 web_fetch 打开官方文档全文（只用了搜索摘要片段），也<b>没有</b>锁定具体 CANN 版本。流程图里画的「web_fetch 取全文」这一步，这次属于「画了但没做」。
+</div>
+
+</body>
+</html>
