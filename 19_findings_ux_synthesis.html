@@ -288,6 +288,7 @@ a.hit:hover{text-decoration:underline;color:#444}
       <li>报错信息里直接印 URL（CUDA 的 error code → SO 讨论这条路，昇腾要靠官方自建，因为二手生态薄、没人替你建）。</li>
       <li>这是开发者搜索意图最明确、情绪最焦灼的场景——搜「EZ9999」的人要的是答案，不是「错误码体系介绍」。</li>
     </ul>
+    <div class="nvref"><b>为什么不照抄英伟达的路：</b>英伟达的做法（官方只给一张 enum 表，案例靠 StackOverflow 生态接住）不是一种可移植的「实现」，而是两个前提的结果——① 错误码本身有语义（<code>cudaErrorIllegalAddress</code> 看名字就知道方向；EZ9999 是 catch-all、原因栏写 N/A，码本身信息量≈0）；② 有厚生态接住搜索意图（实测 CANN 二手仅 2–3 条、扎堆 CSDN）。两个前提昇腾都不具备，且生态是「等十年」的慢变量，官方页是华为唯一直接可控、当季能落地的杠杆——故短期走一码一页，生态扶持（第 6 条）作长期接力。</div>
     <div class="demotitle">Demo · 左：实测现状的兜底页；右：建议的一码一页 <span class="mockdisc">右侧内容为示意</span></div>
 <div class="demo">
   <div class="dnote">E 任务实测：搜 EZ9999 命中官方页、抓得到（②4），EZ9999 甚至有专属页——但内容是泛化兜底：原因栏写 N/A、只有通用处理建议，没有按触发场景的逐条解释（③2）。右侧示意「一码一页」该有什么。</div>
