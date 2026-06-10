@@ -120,6 +120,22 @@
   .blocked{background:#FFF7ED;border:1px solid #FCD9A8;border-left:4px solid var(--cost);border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:11px;color:#7a4d08;line-height:1.65;}
   .blocked b{color:#5a3a06;}
 
+  .cderiv{background:#FFFBF5;border:1px solid #EFD9BE;border-radius:9px;padding:11px 14px;margin-top:9px;}
+  .cderiv h5{margin:0 0 7px;font-size:11px;font-weight:800;color:#9A6A1F;letter-spacing:.3px;}
+  .cderiv .cfml{font-size:11.5px;color:var(--g2);background:#fff;border:1px solid #EFE2CE;border-radius:6px;padding:7px 11px;line-height:1.7;}
+  .cderiv .cfml b{color:#B26A12;}
+  .cderiv table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px;}
+  .cderiv td{padding:4px 7px;border-bottom:1px dashed #EFE2CE;color:var(--g2);}
+  .cderiv td:last-child{text-align:right;font-weight:800;color:var(--g1);white-space:nowrap;}
+  .cderiv td small{display:block;font-size:9.5px;color:var(--g4);font-weight:400;}
+  .cderiv tr.eff td{background:#FBEFD8;color:#9A4A12;font-weight:800;border-bottom:1px solid #E7C99B;}
+  .cderiv tr.eff td:last-child{color:#9A4A12;}
+  .cderiv tr:last-child td{border-bottom:none;}
+  .cderiv .why{margin-top:8px;background:#fff;border:1px solid #EFE2CE;border-radius:6px;padding:7px 11px;font-size:10.8px;color:var(--g3);line-height:1.65;}
+  .cderiv .why b{color:#9A4A12;} .cderiv .why u{text-decoration-color:#E7C99B;}
+  .cderiv .cseq{margin-top:8px;font-size:10.8px;color:var(--g3);line-height:1.7;}
+  .cderiv .cseq b{color:var(--g1);}
+
   /* 评分档 */
   .tier{display:flex;gap:11px;margin:9px 0;align-items:flex-start;}
   .tier .tk{flex:0 0 96px;font-size:10px;font-weight:800;color:#fff;border-radius:7px;padding:7px 8px;text-align:center;line-height:1.45;}
@@ -419,6 +435,19 @@
     <div class="mhead"><span class="nm">⑪ 综合置信度</span><span class="en">Overall confidence</span><span class="tag sum">汇总</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">对"这个任务在这个栈上，我到底能多有把握答好"的<b>总评</b>，由前述各项汇总而成（非简单平均：触达若整段断、产出若锁不住版本会显著拉低）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">给读者一个落地结论；同时与各分项并列，便于看"总分背后是哪一关贡献的"。</div></div>
+
+    <div class="cderiv">
+      <h5>怎么算出来的：可复核的研判主线（非简单平均，但有公式骨架）</h5>
+      <div class="cfml">综合置信度 ≈ <b>触达 + 内容质量基线</b>（②③④ 决定）− <b>有效外推风险</b> − <b>留白 / 受阻</b><br>其中 <b>有效外推风险 = 暴露面（类比外推占比）× 后果严重度（任务风险权重）</b></div>
+      <table>
+        <tr><td>暴露面 ＝ 类比外推占比<small>这次答案踩在"未验证外推"上的比例（来自来源构成第 4 段）</small></td><td>extra%</td></tr>
+        <tr><td>后果严重度 ＝ 任务风险权重<small>由"版本敏感 / 容错"定：高=<b>1.0</b>、中=<b>0.6</b>、低=<b>0.3</b></small></td><td>×w</td></tr>
+        <tr class="eff"><td>= 有效外推风险<small>暴露面 × 后果严重度</small></td><td>extra% × w</td></tr>
+      </table>
+      <div class="why"><b>为什么是"乘"不是"加"：</b>风险权重不是一项独立扣分，而是把外推的伤害<b>放大</b>——两者是放大关系。判据是边界情形：<b>外推占比为 0 时，有效外推风险必须为 0</b>（任务再高敏感，<u>没外推就没有外推风险</u>）。相乘满足；若写成 <code>a·外推 + b·风险权重</code>，高敏感任务哪怕零外推也被白扣分，是错的。故采用风险评估的标准式 <b>风险 = 暴露 × 后果</b>。</div>
+      <div class="cseq">四任务据此单调一致（有效外推风险越小、置信度越高）：<br><b>C</b> 算子库选型 20%×0.3 = <b>6.0</b> → 高 ｜ <b>B</b> Profiling 13%×0.6 = <b>7.8</b> → 中高 ｜ <b>A</b> 模型转换 10%×1.0 = <b>10.0</b> → 中高 ｜ <b>D</b> 自定义算子 35%×1.0 = <b>35</b>，再叠加 SPA 受阻 + 留白 15% → 中。<br>所以"<b>外推比例高 ≠ 置信度必低</b>"：要看外推落在容错高（选型 / 概念，错了易纠）还是容错低（版本 / 命令，错了即崩）的任务。<small style="color:var(--g4)">风险权重 0.3 / 0.6 / 1.0 为<b>锚定档位</b>、外推 % 为回顾性估计，均非逐 token 测得；此式与 17 矩阵 ⑪ 悬浮的 <code>confDeriv()</code> 同源。</small></div>
+    </div>
+
     <div class="rubric"><span class="lv">5/高</span> 各关均强、产出可锁可复现 ｜ <span class="lv">4/中高</span> 主路径强、仅深层短板、可绕过 ｜ <span class="lv">3/中</span> 多重折扣叠加但仍可作答 ｜ <span class="lv">2/低</span> 多关短板叠加、可用性差 ｜ <span class="lv">1</span> 基本不可用。<b>非简单平均</b>，为整体研判。</div>
   </div>
 
