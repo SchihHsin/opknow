@@ -85,9 +85,10 @@ ul.tight li{margin-bottom:6px}
 .bw .bbar{display:flex;align-items:center;gap:8px;background:#ececec;padding:7px 10px;border-bottom:1px solid #ddd}
 .bw .dots{display:flex;gap:4px}
 .bw .dots i{width:9px;height:9px;border-radius:50%;background:#cfcfcf;display:block}
-.bw .url{flex:1;background:#fff;border:1px solid #ddd;border-radius:6px;padding:1px 10px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bw .url{flex:1;min-width:0;background:#fff;border:1px solid #ddd;border-radius:6px;padding:1px 10px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bw .bbody{padding:14px 16px}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.duo>*{min-width:0}
 @media(max-width:860px){.duo{grid-template-columns:1fr}}
 .duolab{font-size:12px;font-weight:700;margin-bottom:6px}
 .duo .bad .duolab{color:var(--hw)} .duo .good .duolab{color:#3d7a00}
@@ -127,11 +128,13 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
 .combo table{background:transparent;margin:6px 0}
 .combo td,.combo th{border-color:#dce9c4;padding:4px 10px}
 .verbadge{display:inline-block;background:#EEF6E0;border:1px solid #cfe3a8;color:#4a7a00;font-size:11px;border-radius:10px;padding:0 8px}
-.tryurl{display:flex;align-items:center;gap:8px;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:4px 8px;margin:4px 0;color:#555}
+.tryurl{display:flex;align-items:center;gap:8px;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:4px 8px;margin:4px 0;color:#555;word-break:break-all}
 .tryurl .openbtn{flex:none;font-family:'Noto Sans SC';font-size:11px;background:#fff;border:1px solid #bbb;border-radius:6px;padding:0 8px;cursor:pointer;color:#333;text-decoration:none}
+.badnote{font-size:11.5px;color:#9a4444;background:#FBEDED;border-radius:6px;padding:5px 9px;margin-top:8px;line-height:1.7}
+.silence{text-align:center;color:#aaa;font-size:11.5px;padding:10px 0;letter-spacing:2px}
 .bw .url a{color:inherit;text-decoration:none}
 .bw .url a:hover{text-decoration:underline}
-a.hit{color:#777;text-decoration:none;font-family:ui-monospace,Menlo,monospace;font-size:10.5px}
+a.hit{color:#777;text-decoration:none;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;word-break:break-all}
 a.hit:hover{text-decoration:underline;color:#444}
 </style>
 </head>
@@ -414,17 +417,32 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>体验设计的新职责：让用户<b>一眼看出</b>答案里哪段是抓来的、哪段是推的（本项目 18 的「来源构成堆叠条」就是一个可直接复用的 UI 原型——外推段用警示色斜纹）。</li>
       <li>低置信段落在行内标注，而不是只在结尾放一句「请自行验证」。</li>
     </ul>
-    <div class="demotitle">Demo · 答案成色一眼可见（来源 chip 同时是 E「人审抓手」的入口）<span class="mockdisc">对话为示意稿</span></div>
+    <div class="demotitle">Demo · 左：现状——外推无痕混进答案；右：成色一眼可见（来源 chip 同时是 E「人审抓手」的入口）<span class="mockdisc">对话为示意稿</span></div>
 <div class="demo">
-  <div class="dnote">同一段回答里，哪句抓自官方、哪句来自二手、哪句是按 CUDA 经验外推的——行内直接标出来，顶部一条成分布局条（沿用 18 的五段口径）。</div>
-  <div class="chat">
-    <div class="bub user">把 ResNet50 的 ONNX 转成昇腾能跑的 .om，怎么做？</div>
-    <div class="bub">
-      <div style="font-size:11px;color:var(--sub)">本回答成分（点击成分条可只看某一类 · 示意）</div>
-      <div class="mixbar"><div class="seg-off" style="width:55%">官方一手 55%</div><div class="seg-sec" style="width:25%">二手 25%</div><div class="seg-own" style="width:8%">自带 8%</div><div class="seg-ext" style="width:8%">外推 8%</div><div class="seg-gap" style="width:4%">留白</div></div>
-      <p style="margin-top:8px"><mark class="m-off">用 ATC 工具转换：<code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --soc_version=...</code><span class="srcchip">官方 quickstart · hiascend · CANN 8.0.RC2 · 实测原文</span></mark>　<mark class="m-sec">在 Ascend 910B4 上若要动态 shape，需按实例配置 <code>--input_shape</code> 区间<span class="srcchip">阿里云开发者社区 · 2025-05</span></mark>　<mark class="m-ext">⚠ 转换失败时可先用 onnx-simplifier 化简再转——这是按 TensorRT 生态经验外推，未在昇腾官方文档验证</mark>　<mark class="m-gap">soc_version 的确切取值我没有把握：请在你机器上跑 npu-smi info 现场确认（诚实留白）</mark></p>
+  <div class="dnote">左右是<b>同一段回答</b>。区别只有一个：成分标没标。左侧四句话来源天差地别，却被抹平成同一种自信语气；右侧行内标出来，顶部一条成分布局条（沿用 18 的五段口径）。</div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ 现状 · 默认行为：流畅、自信、看不出成色</div>
+      <div class="chat">
+        <div class="bub user">把 ResNet50 的 ONNX 转成昇腾能跑的 .om，怎么做？</div>
+        <div class="bub">
+          <p>用 ATC 工具转换：<code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --soc_version=...</code>。在 Ascend 910B4 上若要动态 shape，按实例配置 <code>--input_shape</code> 区间。转换失败时可以先用 onnx-simplifier 化简模型再转。soc_version 填你芯片对应的取值即可。</p>
+        </div>
+        <div class="badnote">四句话的真实成色：①官方原文 ②二手教程 ③<b>按 TensorRT 经验外推、没在昇腾验证过</b> ④<b>其实没把握</b>——但全被抹平了，你一句也分辨不出来。18 的实测自检承认：外推≠0 且标注常不足，这正是幻觉高发区。</div>
+      </div>
     </div>
-    <div class="legend">图例：<mark class="m-off">官方一手</mark><mark class="m-sec">二手社区</mark><mark class="m-ext">类比外推·未验证（警示纹）</mark><mark class="m-gap">诚实留白</mark>　每个来源挂「标题·域名·日期·版本号」四元组 chip，点击跳原文。</div>
+    <div class="good">
+      <div class="duolab">✓ 建议 · 同一段回答，成色行内标出</div>
+      <div class="chat">
+        <div class="bub user">把 ResNet50 的 ONNX 转成昇腾能跑的 .om，怎么做？</div>
+        <div class="bub">
+          <div style="font-size:11px;color:var(--sub)">本回答成分（点击成分条可只看某一类 · 示意）</div>
+          <div class="mixbar"><div class="seg-off" style="width:55%">官方一手 55%</div><div class="seg-sec" style="width:25%">二手 25%</div><div class="seg-own" style="width:8%">自带 8%</div><div class="seg-ext" style="width:8%">外推 8%</div><div class="seg-gap" style="width:4%">留白</div></div>
+          <p style="margin-top:8px"><mark class="m-off">用 ATC 工具转换：<code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --soc_version=...</code><span class="srcchip">官方 quickstart · hiascend · CANN 8.0.RC2 · 实测原文</span></mark>　<mark class="m-sec">在 Ascend 910B4 上若要动态 shape，需按实例配置 <code>--input_shape</code> 区间<span class="srcchip">阿里云开发者社区 · 2025-05</span></mark>　<mark class="m-ext">⚠ 转换失败时可先用 onnx-simplifier 化简再转——这是按 TensorRT 生态经验外推，未在昇腾官方文档验证</mark>　<mark class="m-gap">soc_version 的确切取值我没有把握：请在你机器上跑 npu-smi info 现场确认（诚实留白）</mark></p>
+        </div>
+        <div class="legend">图例：<mark class="m-off">官方一手</mark><mark class="m-sec">二手社区</mark><mark class="m-ext">类比外推·未验证（警示纹）</mark><mark class="m-gap">诚实留白</mark>　来源挂「标题·域名·日期·版本号」四元组 chip，点击跳原文。</div>
+      </div>
+    </div>
   </div>
 </div>
     <div class="why">来自实测的诚实修正：被问「你平常会不会按 CUDA 经验外推编」时，承认外推≠0 且标注常不足。这是 Agent 产品共性问题，不是某一家的。</div>
@@ -438,22 +456,38 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>区分呈现三种状态：<b>没搜到</b>（换关键词可解）/ <b>抓不到</b>（技术受阻，给用户原始 URL 请他自己点开）/ <b>抓到但不够细</b>（明说缺什么，如「官方页只有概述、无参数表」）。</li>
       <li>受阻时把「我试过的 URL 清单」交给用户——把 Agent 的死路变成用户的捷径。本度量体系给「受阻」单设中性色（≠低分），同一思想可以直接搬进产品。</li>
     </ul>
-    <div class="demotitle">Demo · 诚实的失败态 + 检索过程可见（同时支撑 D 条；步骤来自 D 任务真跑旅程）</div>
+    <div class="demotitle">Demo · 左：现状——沉默转圈、缺口被藏起来；右：过程可见 + 诚实失败态（同时支撑 D 条；步骤来自 D 任务真跑旅程）</div>
 <div class="demo">
-  <div class="dnote">左半段：把 D 任务真跑时的绕路过程流式呈现给用户。右半段（受阻卡）：抓不到就明说，并把死路 URL 变成用户的捷径。步骤内容来自 D 任务实测旅程。</div>
-  <div class="chat">
-    <div class="bub user">想给 910B 写一个自定义 Add 算子，从工程创建到部署的完整流程？</div>
-    <div class="bub">
-      <div style="font-size:11px;color:var(--sub);margin-bottom:4px">检索中 · 第 3 / 4 步</div>
-      <ul class="steps">
-        <li><span class="st ok">✓ 命中</span><span>搜到官方 Ascend C 开发指南（devguide/opdevg，排名第 2）</span></li>
-        <li><span class="st blk">受阻</span><span>该页是 SPA，正文取不到——只拿到导航和一句摘要</span></li>
-        <li><span class="st try">↻ 绕行</span><span>改抓 80RC3 商用版镜像 + MindSpore 教程 + 2 篇带版本号的二手</span></li>
-        <li><span class="st ok">✓ 取得</span><span>msopgen 完整命令与 add_custom.json 样例（CANN 80RC2alpha001 实测）</span></li>
-      </ul>
-      <div class="warnline" style="margin-top:10px"><b>有 1 个权威页面我抓不到</b>（技术受阻，不代表内容差）——你直接打开会比我快：</div>
-      <div class="tryurl"><span style="flex:1">hiascend.com/…/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html</span><a class="openbtn" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html" target="_blank" rel="noopener">打开 ↗</a></div>
-      <div style="font-size:11.5px;color:var(--sub)">打开后把正文贴回来，我会按官方原文校正下面的回答。以下先基于已取得的 3 个来源作答（置信度：中）…</div>
+  <div class="dnote">同一次 D 任务式的提问。左侧：用户只看到长时间转圈，然后得到一段没有任何缺口声明的答案。右侧：绕路过程流式可见，抓不到的权威页明说、URL 交给用户。</div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ 现状 · 默认行为：黑箱等待 + 沉默的缺口</div>
+      <div class="chat">
+        <div class="bub user">想给 910B 写一个自定义 Add 算子，从工程创建到部署的完整流程？</div>
+        <div class="silence">● ● ●　思考中…（45 秒，没有任何反馈）</div>
+        <div class="bub">
+          <p>自定义算子开发流程：① 用 msopgen 创建算子工程 ② 编写 kernel 与 host 侧代码 ③ 编译生成 .run 包部署到 OPP ④ 通过 aclnn 接口调用验证。</p>
+        </div>
+        <div class="badnote">这段答案其实是<b>绕开了抓不到的官方 how-to 页</b>、用镜像和二手拼出来的（D 任务真跑事实）——但它只字未提：没说哪个权威页受阻、没给试过的 URL、没说置信度几何。等待是黑箱，信息缺口也是黑箱。</div>
+      </div>
+    </div>
+    <div class="good">
+      <div class="duolab">✓ 建议 · 绕路看得见，死路变捷径</div>
+      <div class="chat">
+        <div class="bub user">想给 910B 写一个自定义 Add 算子，从工程创建到部署的完整流程？</div>
+        <div class="bub">
+          <div style="font-size:11px;color:var(--sub);margin-bottom:4px">检索中 · 第 3 / 4 步</div>
+          <ul class="steps">
+            <li><span class="st ok">✓ 命中</span><span>搜到官方 Ascend C 开发指南（devguide/opdevg，排名第 2）</span></li>
+            <li><span class="st blk">受阻</span><span>该页是 SPA，正文取不到——只拿到导航和一句摘要</span></li>
+            <li><span class="st try">↻ 绕行</span><span>改抓 80RC3 商用版镜像 + MindSpore 教程 + 2 篇带版本号的二手</span></li>
+            <li><span class="st ok">✓ 取得</span><span>msopgen 完整命令与 add_custom.json 样例（CANN 80RC2alpha001 实测）</span></li>
+          </ul>
+          <div class="warnline" style="margin-top:10px"><b>有 1 个权威页面我抓不到</b>（技术受阻，不代表内容差）——你直接打开会比我快：</div>
+          <div class="tryurl"><span style="flex:1">hiascend.com/…/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html</span><a class="openbtn" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html" target="_blank" rel="noopener">打开 ↗</a></div>
+          <div style="font-size:11.5px;color:var(--sub)">打开后把正文贴回来，我会按官方原文校正下面的回答。以下先基于已取得的 3 个来源作答（置信度：中）…</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -469,18 +503,37 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>Agent 给命令时显式回显「以下命令针对 CANN 8.0.RC2，与你声明的环境一致 ✓」——把版本核对从用户的隐性负担变成系统的显性保证。</li>
       <li>对版本敏感度「高」的任务（转换/算子/迁移），无版本声明时主动追问而不是默认猜。</li>
     </ul>
-    <div class="demotitle">Demo · 环境卡长这样 <span class="mockdisc">版本号为占位示意</span></div>
+    <div class="demotitle">Demo · 左：现状——版本核对发生在跑炸之后；右：环境卡前置 <span class="mockdisc">版本号为占位示意</span></div>
 <div class="demo">
-  <div class="dnote">④版本散乱是 CANN 全局税（19 格中 8 格 2 分）。让用户一次声明环境、整段会话复用；Agent 每次给命令都回显版本核对结果。版本号为示意。</div>
-  <div class="chat">
-    <div class="envbar">我的环境：<span class="envchip">Atlas 800T A2</span><span class="envchip">CANN 8.0.RC2</span><span class="envchip">torch 2.1.0</span><span class="envchip">torch_npu 2.1.0.postX（示意）</span><span style="margin-left:auto;font-size:11px;text-decoration:underline;cursor:pointer">修改</span></div>
-    <div class="bub user">torch_npu 的 profiler 怎么开？</div>
-    <div class="bub">
-      <div class="okline">✓ 以下代码针对 CANN 8.0.RC2 + torch_npu 2.1，与你声明的环境一致</div>
-      <pre class="cmd">import torch_npu
+  <div class="dnote">同一个问题，有没有环境卡的两种命运。左侧是 ④ 版本散乱（19 格中 8 格 2 分）落到用户身上的真实体感：「看起来对、跑不通」。</div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ 现状 · 先答后炸，版本是事后才想起来的事</div>
+      <div class="chat">
+        <div class="bub user">torch_npu 的 profiler 怎么开？</div>
+        <div class="bub">
+          <p style="margin-bottom:6px">可以这样开启（来自一篇高赞教程）：</p>
+          <pre class="cmd">with torch.npu.profile(...):   # 旧版教程写法（示意）
+    ...</pre>
+        </div>
+        <div class="bub user">跑了报 AttributeError，没有这个接口…</div>
+        <div class="bub"><p>抱歉——你的 CANN / torch_npu 版本是多少？不同版本接口差异较大…</p></div>
+        <div class="badnote">版本核对发生在<b>跑炸之后</b>：Agent 检索到的教程基于旧版本树，而它根本不知道用户环境是什么。一来一回烧掉的不只是时间，还有信任——「看起来对、跑不通」是 ④ 最伤人的失败形态。</div>
+      </div>
+    </div>
+    <div class="good">
+      <div class="duolab">✓ 建议 · 环境一次声明，命令次次核对</div>
+      <div class="chat">
+        <div class="envbar">我的环境：<span class="envchip">Atlas 800T A2</span><span class="envchip">CANN 8.0.RC2</span><span class="envchip">torch 2.1.0</span><span class="envchip">torch_npu 2.1.0.postX（示意）</span><span style="margin-left:auto;font-size:11px;text-decoration:underline;cursor:pointer">修改</span></div>
+        <div class="bub user">torch_npu 的 profiler 怎么开？</div>
+        <div class="bub">
+          <div class="okline">✓ 以下代码针对 CANN 8.0.RC2 + torch_npu 2.1，与你声明的环境一致</div>
+          <pre class="cmd">import torch_npu
 with torch_npu.profiler.profile(...) as prof:   # 参数表见官方 ptmigr 页（实测可抓）
     ...</pre>
-      <div class="warnline">⚠ 检索到的一篇高赞教程基于 CANN 7.0 旧接口，与你的 8.0.RC2 不符——已弃用该来源，未混入回答</div>
+          <div class="warnline">⚠ 检索到的一篇高赞教程基于 CANN 7.0 旧接口，与你的 8.0.RC2 不符——已弃用该来源，未混入回答</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
