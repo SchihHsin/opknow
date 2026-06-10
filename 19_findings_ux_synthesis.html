@@ -287,8 +287,8 @@ a.hit:hover{text-decoration:underline;color:#444}
       <li>每个错误码（EZ9999、EE 系列…）独立静态页：含义 / 常见触发 / 排查步骤 / 修复样例，URL 含错误码本身。</li>
       <li>报错信息里直接印 URL（CUDA 的 error code → SO 讨论这条路，昇腾要靠官方自建，因为二手生态薄、没人替你建）。</li>
       <li>这是开发者搜索意图最明确、情绪最焦灼的场景——搜「EZ9999」的人要的是答案，不是「错误码体系介绍」。</li>
+      <li><b>为什么不直接沿用英伟达的模式</b>（官方只给一张 enum 表，案例靠 StackOverflow 生态接住）：那是「码有语义 + 生态厚」两个前提的结果，不是可移植的方案——<code>cudaErrorIllegalAddress</code> 看名字就知道方向，而 EZ9999 是 catch-all（原因栏写 N/A，码本身信息量≈0）；CANN 二手又薄（实测 2–3 条、扎堆 CSDN）。生态是慢变量，官方页是当季就能落地的可控杠杆——短期走一码一页，生态扶持（第 6 条）作长期接力。</li>
     </ul>
-    <div class="nvref"><b>为什么不照抄英伟达的路：</b>英伟达的做法（官方只给一张 enum 表，案例靠 StackOverflow 生态接住）不是一种可移植的「实现」，而是两个前提的结果——① 错误码本身有语义（<code>cudaErrorIllegalAddress</code> 看名字就知道方向；EZ9999 是 catch-all、原因栏写 N/A，码本身信息量≈0）；② 有厚生态接住搜索意图（实测 CANN 二手仅 2–3 条、扎堆 CSDN）。两个前提昇腾都不具备，且生态是「等十年」的慢变量，官方页是华为唯一直接可控、当季能落地的杠杆——故短期走一码一页，生态扶持（第 6 条）作长期接力。</div>
     <div class="demotitle">Demo · 左：实测现状的兜底页；右：建议的一码一页 <span class="mockdisc">右侧内容为示意</span></div>
 <div class="demo">
   <div class="dnote">E 任务实测：搜 EZ9999 命中官方页、抓得到（②4），EZ9999 甚至有专属页——但内容是泛化兜底：原因栏写 N/A、只有通用处理建议，没有按触发场景的逐条解释（③2）。右侧示意「一码一页」该有什么。</div>
@@ -367,6 +367,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>API 参考提供结构化索引（JSON/CSV 的算子-版本-签名表），让 AI 一次抓取拿到全量而非逐页翻。</li>
       <li>长期看还间接抬 ⑦：可抓的权威语料更容易进入下一代模型的训练集，慢慢补「自带知识薄」这个最深的洞。</li>
     </ul>
+    <div class="nvref"><b>NVIDIA 是怎么做的（2026-06-11 核实）：</b><a href="https://docs.nvidia.com/llms.txt" target="_blank" rel="noopener">docs.nvidia.com/llms.txt</a> 已上线——一份汇总索引列出约 20 个产品（CUDA Toolkit、NeMo、NIM、Jetson…）各自的 llms.txt，部分产品还给 llms-full.txt 全文版（2026-04-09 更新）。另外其 Sphinx 文档管线默认产出机器可读索引 <code>objects.inv</code>（PyTorch 文档站实测存在，全量 API 清单 188KB）——「结构化 API 索引」也有现成对照。即本卡的两条建议英伟达都已落地。</div>
     <div class="why">⑦ 短期内无法直接改（训练是模型厂的事），但「让语料可被收录」是站方唯一能做的杠杆。</div>
   </div>
 
