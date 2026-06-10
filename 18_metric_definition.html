@@ -342,14 +342,14 @@
     <div class="mhead"><span class="nm">① 官方可发现性</span><span class="en">Discoverability</span><span class="tag touch">官方·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">就这个任务做常规检索，官方文档<b>能不能出现、排名靠不靠前、几轮命中</b>。测的是"找得到官方源"这件事本身。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">"找得到"是触达的第一道门，和"抓不抓得到正文"（②）是两回事——可能首条就是官方链接，却点进去抓不到内容。</div></div>
-    <div class="rubric"><span class="lv">5</span> 首屏首条即官方、一轮命中 ｜ <span class="lv">3</span> 要翻页或加限定词 ｜ <span class="lv">1</span> 多轮仍难浮出官方源。</div>
+    <div class="rubric"><span class="lv">5</span> 首屏首条即官方、一轮命中 ｜ <span class="lv">4</span> 1 搜命中官方、但非绝对置顶（夹在二手中）｜ <span class="lv">3</span> 要翻页或加限定词才稳定命中官方 ｜ <span class="lv">2</span> 官方排不到首屏、靠二手关键词二次检索才定位 ｜ <span class="lv">1</span> 多轮仍难浮出官方源。</div>
   </div>
 
   <div class="mcard touch">
     <div class="mhead"><span class="nm">② 官方可抓取性</span><span class="en">Crawlability / Fetchability</span><span class="tag touch">官方·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">找到官方页后，web_fetch <b>能不能真的把正文取回上下文</b>：静态页可抓 vs SPA 单页应用只回导航 / robots 拦截。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val"><b>找得到 ≠ 抓得到</b>。点进官方页可能是静态正文、也可能是 SPA 只回导航；而且<b>同一站不同子树结果不同</b>（见 §6.2），必须与可发现性拆开、且<b>按子树</b>看才准。</div></div>
-    <div class="rubric"><span class="lv">5</span> 静态 HTML、正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">4</span> 入门 / how-to 子树服务端渲染、正文可抓（hiascend <code>quickstart/</code>、<code>modeldevpt/</code>）｜ <span class="lv">2</span> 该任务核心页落在 SPA 子树（<code>devguide/opdevg/</code>、<code>apiref/</code>）、且无可抓子树兜底（CANN-D）。</div>
+    <div class="rubric"><span class="lv">5</span> 静态 HTML、正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">4</span> 入门 / how-to 子树服务端渲染、正文可抓（hiascend <code>quickstart/</code>、<code>modeldevpt/</code>）｜ <span class="lv">3</span> 部分可抓：概述/接口机制有、算子列表/调用码缺（<code>doc_center</code> ATB）｜ <span class="lv">2</span> 该任务核心页落在 SPA 子树（<code>devguide/opdevg/</code>、<code>apiref/</code>）、且无可抓子树兜底（CANN-D）｜ <span class="lv">1</span> robots 全拦 / 完全抓不到。</div>
   </div>
 
   <!-- 官方质量 -->
@@ -357,7 +357,7 @@
     <div class="mhead"><span class="nm">③ 官方正文详尽度</span><span class="en">Body depth</span><span class="tag qual">官方·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息够不够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字够不够答好"——两者正交。</div></div>
-    <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">3</span> 有正文但偏概述、要东拼西凑 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
+    <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">4</span> 主路径正文详尽、仅穷尽参考表缺 ｜ <span class="lv">3</span> 有正文但偏概述、要东拼西凑 ｜ <span class="lv">2</span> 仅 meta / 片段 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
     <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧<b>按子树</b>评——入门子树可抓的 A/B，按抓回的正文如实评（③=4）；ATB 概述部分可抓的 C 偏概念、缺算子列表 → ③=3；唯独 <b>D</b>，核心 how-to（<code>add_custom.json</code> 完整字段、Tiling/Kernel 实现）整个压在 <code>devguide/opdevg/</code> SPA、<b>无可抓子树兜底</b> → 正文取不回来，记<b>「受阻·无法实测」</b>中性态，<b>不打推断分</b>（凭印象给分=把推断伪装成实测）。受阻本身就是 D 垫底最有力的证据。CUDA 侧静态可抓，按实际正文如实评。</div>
   </div>
 
@@ -365,7 +365,7 @@
     <div class="mhead"><span class="nm">④ 版本清晰度</span><span class="en">Version clarity</span><span class="tag qual">官方·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">官方源里<b>容不容易选对版本</b>：是单一主线版本，还是多套版本号并存散乱（商用版 / 社区版 / alpha / RC 交错）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是"内容质量"的另一面，和"详尽度"不同：正文可能很详尽，却因版本号散乱让人不知该照哪一版。CANN 跨任务普遍弱（实测多版本号并存）。</div></div>
-    <div class="rubric"><span class="lv">5</span> 单一主线版本、对应清楚 ｜ <span class="lv">2</span> 多版本号并存、需自行判断该用哪版（如 <code>8.0.RC2 / 8.0.RC3 / 800alpha001/003</code> 同存）。</div>
+    <div class="rubric"><span class="lv">5</span> 单一主线版本、对应清楚 ｜ <span class="lv">4</span> 多版本但官方列出支持矩阵、可对照 ｜ <span class="lv">3</span> 需同时定芯片 + 框架版本、部分可锁 ｜ <span class="lv">2</span> 多版本号并存散乱、需自行判断该用哪版（如 <code>8.0.RC2 / 8.0.RC3 / 800alpha001/003</code> 同存）｜ <span class="lv">1</span> 版本信息缺失 / 混乱。</div>
   </div>
 
   <!-- 二手 -->
@@ -373,14 +373,14 @@
     <div class="mhead"><span class="nm">⑤ 二手丰富度</span><span class="en">Secondary abundance</span><span class="tag touch">二手·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">GitHub / Stack Overflow / 知乎 / CSDN / 博客等二手材料的<b>数量与可发现度</b>——当官方触达不到时，能否靠社区绕过去。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">二手是官方短板的<b>主要补偿渠道</b>。A/B/C 任务正是靠厚二手绕过了官方可抓取短板，D 任务二手薄才把短板放大到致命。</div></div>
-    <div class="rubric"><span class="lv">5</span> 多源、易找、覆盖该任务核心 ｜ <span class="lv">3</span> 有但零散 ｜ <span class="lv">1</span> 寥寥几篇、难覆盖。</div>
+    <div class="rubric"><span class="lv">5</span> 多源、易找、覆盖该任务核心 ｜ <span class="lv">4</span> 知乎/阿里云/博客园/华为云较丰富 ｜ <span class="lv">3</span> 有但零散、比 CUDA 少 ｜ <span class="lv">2</span> 仅零星 CSDN/博客园/MindSpore ｜ <span class="lv">1</span> 寥寥几篇、难覆盖。</div>
   </div>
 
   <div class="mcard qual">
     <div class="mhead"><span class="nm">⑥ 二手可信度 / 一致性</span><span class="en">Credibility / Consistency</span><span class="tag qual">二手·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">二手源<b>权威吗、够新吗、彼此对得上吗</b>：作者/平台可靠度、日期新鲜度、多源结论是否一致（还是互相矛盾、引用过时版本）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">数量多（⑤）不等于可信。一致性低会逼我反复交叉验证、抬高检索成本，甚至无法定论。</div></div>
-    <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">3</span> 可用但需交叉核对 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
+    <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">4</span> 命令骨架一致、差异主要在版本号 ｜ <span class="lv">3</span> 基本一致但深度参差、需交叉核对 ｜ <span class="lv">2</span> 各源版本/写法不一、难交叉印证 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
   </div>
 
   <!-- 自带知识 -->
@@ -388,7 +388,7 @@
     <div class="mhead"><span class="nm">⑦ 模型自带知识</span><span class="en">Built-in knowledge</span><span class="tag touch">自带·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">这个任务在我训练数据里的<b>覆盖密度</b>——不检索能不能直接答出靠谱内容。把"模型自带、不靠检索的知识"也视为一条触达渠道（即原先说的"先验"）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">自带知识多时可在外部源失败时兜底；自带知识少时只能硬靠检索。它的"质量面"（时效/可靠）难与多寡分离，故并入本项内标注，不再单列。</div></div>
-    <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">1</span> 几乎只能现查、自带知识易过时。</div>
+    <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">4</span> 流程熟悉、可凭自带知识给骨架 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">2</span> 自带知识弱、不敢凭记忆给命令 ｜ <span class="lv">1</span> 几乎只能现查、自带知识易过时。</div>
   </div>
 
   <!-- 成本 -->
@@ -396,7 +396,7 @@
     <div class="mhead"><span class="nm">⑧ 检索成本</span><span class="en">Retrieval cost</span><span class="tag cost">过程</span><span class="tag rev">反向</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">答好这个任务实际花的<b>检索轮数 + 抓取次数</b>的摩擦。<b>反向计分：越少越好</b>，着色时高分=省力（绿）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">它是过程代价，不是知识本身的属性。同样能答对，花 1 轮和花 6 轮的"可用性"体感差很多。</div></div>
-    <div class="rubric"><span class="lv">5</span> 1 轮内搞定 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">1</span> 多轮反复、抓取频繁仍吃力。</div>
+    <div class="rubric"><span class="lv">5</span> 1 轮内搞定 ｜ <span class="lv">4</span> 1 搜 + 偶尔一次抓取 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">2</span> 多轮检索 ｜ <span class="lv">1</span> 多轮反复 + 抓取失败（SPA），成本最高。</div>
   </div>
 
   <!-- 产出 -->
@@ -404,14 +404,14 @@
     <div class="mhead"><span class="nm">⑨ 版本可锁定性</span><span class="en">Version-lockability</span><span class="tag out">产出·因变量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">最终答案<b>能不能定到确切版本</b>（库版本 / 工具链版本 / soc_version 等），而不是含糊地"某个版本应该可以"。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是<b>结果（因变量）</b>，是前面几关的产物——版本清晰度④高、源够好，才锁得住。列出来是为让"输入好→产出好"闭环、并核对综合分，<b>不应与输入项重复加权</b>。</div></div>
-    <div class="rubric"><span class="lv">5</span> 能写出确切版本号 ｜ <span class="lv">3</span> 能给范围/主版本 ｜ <span class="lv">1</span> 只能模糊带过。</div>
+    <div class="rubric"><span class="lv">5</span> 能写出确切版本号 + opset ｜ <span class="lv">4</span> 工具版本基本可定 ｜ <span class="lv">3</span> 能给范围/主版本、部分可锁 ｜ <span class="lv">2</span> 多版本 + 正文抽不出、无法定死 ｜ <span class="lv">1</span> 只能模糊带过。</div>
   </div>
 
   <div class="mcard out">
     <div class="mhead"><span class="nm">⑩ 步骤可复现性</span><span class="en">Reproducibility</span><span class="tag out">产出·因变量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">答案里的<b>命令/步骤能不能照抄跑通</b>：完整命令行、必要参数、前置条件齐全，而非伪代码或缺步骤。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">同为产出侧因变量，但与"锁版本"正交：版本锁得住、命令却缺参数照样跑不通。直接对应正文详尽度③与二手质量⑥。</div></div>
-    <div class="rubric"><span class="lv">5</span> 命令照抄即跑 ｜ <span class="lv">3</span> 大体能跑、需小修 ｜ <span class="lv">1</span> 缺步骤/仅示意。</div>
+    <div class="rubric"><span class="lv">5</span> 命令照抄即跑 ｜ <span class="lv">4</span> 命令完整、替好参数即可照抄 ｜ <span class="lv">3</span> 大体能跑、需小修/部分依赖环境 ｜ <span class="lv">2</span> 仅骨架可述、细节无法确证 ｜ <span class="lv">1</span> 缺步骤/仅示意。</div>
   </div>
 
   <!-- 汇总 -->
@@ -419,6 +419,7 @@
     <div class="mhead"><span class="nm">⑪ 综合置信度</span><span class="en">Overall confidence</span><span class="tag sum">汇总</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">对"这个任务在这个栈上，我到底能多有把握答好"的<b>总评</b>，由前述各项汇总而成（非简单平均：触达若整段断、产出若锁不住版本会显著拉低）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">给读者一个落地结论；同时与各分项并列，便于看"总分背后是哪一关贡献的"。</div></div>
+    <div class="rubric"><span class="lv">5/高</span> 各关均强、产出可锁可复现 ｜ <span class="lv">4/中高</span> 主路径强、仅深层短板、可绕过 ｜ <span class="lv">3/中</span> 多重折扣叠加但仍可作答 ｜ <span class="lv">2/低</span> 多关短板叠加、可用性差 ｜ <span class="lv">1</span> 基本不可用。<b>非简单平均</b>，为整体研判。</div>
   </div>
 
   <!-- 5. 评分怎么打 -->
