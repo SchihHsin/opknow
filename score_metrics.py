@@ -67,6 +67,35 @@ def recency_factor(dates, today=TODAY):
     if med <= 48:  return -0.25
     return -0.5
 
+# ------------------------------------------------------------
+# 因子 B：来源独立性 / 平台多样性 —— ⑥ 二手可信度的「只罚不奖」修正项
+#   动机：3 条来源若全挤在一个平台(CSDN×2…)、彼此互抄，则「一致性 high」
+#         可能只是回声、并非独立互证；真实覆盖被高估。
+#   量化：去重平台域名数 / 来源总数 = 独立度 indep。
+#         indep≥0.8 不罚 / ≥0.6 −0.25 / <0.6 −0.5（只罚不奖：多样是基线）。
+#   platforms = 每条二手来源的平台/域名 token 列表（与 sources 一一对应）。
+# ------------------------------------------------------------
+def independence_factor(platforms):
+    if not platforms:
+        return 0.0
+    indep = len(set(platforms)) / len(platforms)
+    if indep >= 0.8:  return 0.0
+    if indep >= 0.6:  return -0.25
+    return -0.5
+
+# ------------------------------------------------------------
+# 因子 A：知识截止 gap —— ⑦ 模型自带知识的「只罚不奖」修正项
+#   动机：⑦ 原是全 11 项里唯一纯自评、无客观锚。技术迭代越快，
+#         我的训练知识越可能落后于最新版本(知识截止 gap 越大)。
+#   量化：按该任务相关工具/API 的迭代节奏 churn 给罚分——
+#         stable(API 早已稳定、知识可靠) 0 / moderate −0.25 / fast(alpha/RC 高频刷新) −0.5。
+#   churn 由 task_run_log 观测的版本扩散 + 各生态公开发布节奏判定(非纯主观自评)。
+# ------------------------------------------------------------
+CHURN = {"stable": 0.0, "moderate": -0.25, "fast": -0.5}
+
+def cutoff_gap_factor(churn):
+    return CHURN[churn]
+
 
 # ============================================================
 # 1. 原始观测数据（每格 = 一个任务×一个栈；字段全部来自 task_run_log.md 实测）
@@ -85,8 +114,11 @@ def recency_factor(dates, today=TODAY):
 #  ver_irrelev   该任务是否本质与版本无关（选型类）
 #  two_axis      是否需同时定「芯片+框架」两轴但可锁
 #  sources       二手来源类型清单（用于 ⑤数量 与 ⑥可信度）
+#  platforms     每条二手来源的平台/域名 token（与 sources 一一对应；因子 B 算独立性）
+#  dates         每条二手来源发表月份 'YYYY-MM'（None=未拿到确切日；⑥时效罚分用）
 #  consist       二手一致性档：high/mid/low
 #  own           ⑦自带知识自评档 1–5（唯一显式自评项，注明）
+#  churn         相关工具/API 迭代节奏：stable/moderate/fast（因子 A 算知识截止 gap）
 #  pin           版本可锁定性：exact / range / none
 #  repro         步骤可复现性：copyrun / minor_fix / skeleton / sketch
 # ⚠ sources 只列**真正的二手**（非一手）：官方文档/官方代码仓(github.com/pytorch、
@@ -98,17 +130,19 @@ RAW = {
      n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
      # learnopencv / towardsdatascience / medium / github-sithu(个人仓) / seeed-wiki
      sources=["tech_blog","tech_blog","tech_blog","tech_blog","aggregator"],
+     platforms=["learnopencv","towardsdatascience","medium","github","seeed"],
      # learnopencv 2023-01-24（PyTorch→TensorRT），余无确切发表日
      dates=["2023-01", None, None, None, None],
-     consist="high", own=4, pin="exact", repro="copyrun"),
+     consist="high", own=4, churn="moderate", pin="exact", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=3, fetch_fail=0,
      core_fetch="ssr", exec=True, ref_level="core_only",
      n_versions=5, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # zhihu / aliyun / cnblogs×2 / csdn
      sources=["qa_reputation","cloud_vendor","tech_blog","tech_blog","tech_blog"],
+     platforms=["zhihu","aliyun","cnblogs","cnblogs","csdn"],
      # aliyun 1662723 2025-05-06、racesnail 飞桨x昇腾 2025-05；zhihu p/393169777 引 EOL 旧版无确切日
      dates=[None, "2025-05", "2025-05", None, None],
-     consist="high", own=3, pin="range", repro="params"),
+     consist="high", own=3, churn="moderate", pin="range", repro="params"),
  },
  "B": {
   "cuda": dict(rounds=1, rank=3, refine=False, fetch=1, fetch_fail=0,
@@ -116,17 +150,19 @@ RAW = {
      n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
      # mcarilli-gist / medium-Yuanzhe / harvard-handbook / practical-ml-arikpoz / aceCloud
      sources=["tech_blog","tech_blog","cloud_vendor","tech_blog","tech_blog"],
+     platforms=["github","medium","harvard","practical-ml","acecloud"],
      # medium Yuanzhe Dong nsys 2022-07-07、practical-ml arikpoz 2025-05-25、AceCloud ~2026-01
      dates=[None, "2022-07", None, "2025-05", "2026-01"],
-     consist="high", own=4, pin="mostly", repro="copyrun"),
+     consist="high", own=4, churn="stable", pin="mostly", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=2, fetch_fail=0,
      core_fetch="ssr", exec=True, ref_level="core_only",
      n_versions=6, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # aliyun / csdn×2 / zhihu
      sources=["cloud_vendor","tech_blog","tech_blog","qa_reputation"],
+     platforms=["aliyun","csdn","csdn","zhihu"],
      # CSDN msprof 2025-06，余无确切日
      dates=[None, "2025-06", None, None],
-     consist="mid", own=3, pin="range", repro="partial"),
+     consist="mid", own=3, churn="moderate", pin="range", repro="partial"),
  },
  "C": {
   "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
@@ -134,17 +170,19 @@ RAW = {
      n_versions=1, ver_matrix=True, ver_irrelev=True, two_axis=False,
      # siboehm / abhik.ai / toolscope / matlab-gpucoder / medium / 53ai
      sources=["tech_blog","tech_blog","aggregator","cloud_vendor","tech_blog","aggregator"],
+     platforms=["siboehm","abhik","toolscope","mathworks","medium","53ai"],
      # siboehm CUDA-MMM 2022-12-31，余无确切日
      dates=["2022-12", None, None, None, None, None],
-     consist="high", own=5, pin="exact", repro="copyrun"),
+     consist="high", own=5, churn="stable", pin="exact", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=1, fetch_fail=0,
      core_fetch="partial", exec=False, ref_level="overview",
      n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # csdn / zhihu / 华为云bbs （Gitee 蓝区仓属官方、不计二手）
      sources=["tech_blog","qa_reputation","cloud_vendor"],
+     platforms=["csdn","zhihu","huaweicloud"],
      # 53ai AOL/ATB 2024-07-18、arxiv 2506.12708 2025-06
      dates=["2024-07", "2025-06", None],
-     consist="high", own=3, pin="mostly", repro="params"),
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
  },
  "D": {
   "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
@@ -152,17 +190,19 @@ RAW = {
      n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=True,
      # apxml课程 / 个人博客×2 / medium / learn-blog （pytorch/extension-cpp 属官方仓）
      sources=["aggregator","tech_blog","tech_blog","tech_blog","tech_blog"],
+     platforms=["apxml","blog-a","blog-b","medium","learn-blog"],
      # 二手均无确切发表日（pytorch 官方教程属①、不计二手）
      dates=[None, None, None, None, None],
-     consist="high", own=5, pin="exact", repro="copyrun"),
+     consist="high", own=5, churn="moderate", pin="exact", repro="copyrun"),
   "cann": dict(rounds=2, rank=8, refine=True, fetch=1, fetch_fail=1,
      core_fetch="spa", exec=None, ref_level="none",
      n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # csdn / ai6s / cnblogs （MindSpore官方doc 属官方、不计二手）
      sources=["tech_blog","aggregator","tech_blog"],
+     platforms=["csdn","ai6s","cnblogs"],
      # CSDN xyz3120 2024-11-09、ai6s 2025-12-05、ZOMI cnblogs 2024-11-21
      dates=["2024-11", "2025-12", "2024-11"],
-     consist="low", own=2, pin="none", repro="partial"),
+     consist="low", own=2, churn="fast", pin="none", repro="partial"),
  },
 }
 
@@ -228,17 +268,23 @@ def score5_sec_qty(r):
     return 1
 
 def score6_sec_cred(r):
-    """⑥ 二手可信度/一致性 = 来源可信度均分 + 一致性因子 + 时效罚分，clamp 1..5。
+    """⑥ 二手可信度/一致性 = 来源可信度均分 + 一致性因子 + 时效罚分 + 独立性罚分，clamp 1..5。
        —— 用 SOURCE_CRED 表给每条来源打基准分取均值；按一致性档加减；
-          再按二手发表日期中位月龄「只罚不奖」(够新基线、过时才扣)。"""
+          按二手发表日期中位月龄「只罚不奖」(够新基线、过时才扣)；
+          再按来源平台独立度「只罚不奖」(平台多样基线、互抄回声才扣，因子 B)。"""
     creds = [SOURCE_CRED[s] for s in r["sources"]]
     mean = sum(creds) / len(creds)
-    val = mean + CONSIST[r["consist"]] + recency_factor(r.get("dates", []))
+    val = (mean + CONSIST[r["consist"]]
+           + recency_factor(r.get("dates", []))
+           + independence_factor(r.get("platforms", [])))
     return max(1, min(5, round(val)))
 
 def score7_own(r):
-    """⑦ 模型自带知识 —— 唯一显式自评项（训练覆盖密度），用 1–5 档，注明非客观实测。"""
-    return r["own"]
+    """⑦ 模型自带知识 = 自评档 own + 知识截止 gap 罚分（因子 A），clamp 1..5。
+       —— own 是唯一显式自评；cutoff_gap_factor(churn) 按相关工具迭代节奏「只罚不奖」
+          给客观锚：迭代越快(fast)、我的训练知识越可能落后于最新版本。"""
+    val = r["own"] + cutoff_gap_factor(r.get("churn", "stable"))
+    return max(1, min(5, round(val)))
 
 def score8_cost(r):
     """⑧ 检索成本（反向，越省越高）= f(轮数, 抓取次数, 抓取失败惩罚)。"""
