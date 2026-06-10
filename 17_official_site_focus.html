@@ -80,7 +80,7 @@
 <div class="sub">真正区分两栈、且属平台级结论的，是<b style="color:var(--g2)">官方网站</b>这一块——已提为左侧醒目大组，内部再分「<span style="color:#2563EB;font-weight:700">能否触达</span>（可发现·可抓取）」与「<span style="color:#9333EA;font-weight:700">内容质量</span>（正文详尽·版本清晰）」两面；二手 / 模型 / 检索 / 产出为支撑维度，视觉弱化。<span class="hint">悬浮任意格看该环节具体过程与来源。</span></div>
 
 <div class="fix">
-  <b>头条对比 = 官方网站：</b><span style="color:var(--nv);font-weight:700">NVIDIA docs</span> 静态可抓 + 单一版本主线 → 触达/质量双 5；<span style="color:var(--hw);font-weight:700">昇腾社区 hiascend</span> 的 <code>/document/detail/</code> 实测均 SPA、正文抽不出（备用 <code>/doc_center/source/</code> 被 robots 拦）+ 多版本号散乱 → 可抓取统一 <b>2</b>、版本清晰普遍偏低。悬浮官网大组各格看<b>抽到 vs 缺失</b>实测。
+  <b>头条对比 = 官方网站：</b><span style="color:var(--nv);font-weight:700">NVIDIA docs</span> 静态可抓 + 单一版本主线 → 触达/质量双 5；<span style="color:var(--hw);font-weight:700">昇腾社区 hiascend</span> 的可抓取性<b>按子树而非全站</b>（本轮真跑实测修正旧「统一记 2」说）：入门 <code>quickstart/</code>(A)、<code>modeldevpt/</code>(B) 子树服务端渲染、正文可抓；<code>doc_center/</code>(C-ATB) 部分可抓；而 <code>devaids/</code> <code>devguide/opdevg/</code> <code>apiref/</code> 等<b>深层参考 / 前沿开发页为 SPA</b>、正文抽不出。结果：<b>SPA 短板只在二手稀薄、无可抓子树兜底的 D（自定义算子）真正咬到结果</b>——A/B 有可抓子树兜底、C 靠厚二手绕过。叠加多版本号散乱，前沿开发差距被拉满。悬浮各格看<b>抽到 vs 缺失</b>实测。
 </div>
 
 <table class="hm">
@@ -145,8 +145,8 @@ const ROWS={
    N('v5','高','官方新、二手厚、先验强，三者齐备。')],
   cann:[
    N('v4','4','1 搜命中 hiascend ATC 快速入门，但夹在二手中、非绝对置顶。',{srcs:[['ATC 快速入门 quickstart_18_0012','hiascend.com/document/detail',' ','canncommercial 8.0.RC2'],['ATC 工具使用参考 atlasatc_16_0001','hiascend.com',' ',' ']]}),
-   N('v2','2','实测 SPA：正文抽不出，只回 meta 摘要（恰好含一条命令）。',{got:'meta 里那条：<code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --input_shape="actual_input_1:1,3,224,224" --soc_version=&lt;soc_version&gt;</code>',miss:'各参数说明表、<code>soc_version</code> 获取步骤、完整正文均抽不到。',warn:'<code>/document/detail/</code> 为客户端渲染 SPA；备用 <code>/doc_center/source/</code> 被 robots 拦，两条路都堵。'}),
-   N('blk','受阻','官方正文 SPA 受阻、取不回 → 无从评判详尽度，按铁律记中性「无法实测」，不打推断分。',{warn:'与②同因：<code>/document/detail/</code> SPA、<code>/doc_center/source/</code> 被 robots 拦。受阻 ≠ 低分。'}),
+   N('v4','4','本轮实测推翻「全站 SPA」：可抓取性是<b>子树相关</b>——<code>quickstart/</code> 子树服务端渲染、正文可抓。',{got:'完整 <code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --input_shape="actual_input_1:1,3,224,224" --soc_version=&lt;soc_version&gt;</code> + 参数说明表 + <code>npu-smi info</code> 取 soc_version 步骤全抓到（quickstart_18_0012 商用80RC2 / 18_0010 社区800alpha001 两版一致）。',miss:'仅 AIPP / 高级参数的穷尽参考落在 <code>devaids/</code> 子树 SPA（atlasatc_16_0001），抽不到。',warn:'入门 quickstart 可抓；只有深层参考页 SPA。'}),
+   N('v4','4','本轮真去 fetch 实测：quickstart 正文详尽，命令+参数表+取值步骤齐全。',{got:'<code>atc</code> 完整命令 + <code>--model/--framework/--output/--input_shape/--soc_version</code> 参数说明表 + <code>npu-smi info</code> 查询步骤正文全抓到。',miss:'AIPP 配置、ATC 完整参数穷尽表落在 <code>devaids/</code> SPA 页（atlasatc_16_0001），抽不到。',srcs:[['ATC 快速入门 quickstart_18_0012（实测 fetch）','hiascend.com/document/detail',' ','canncommercial 8.0.RC2']]}),
    N('v2','2','官方多版本号并存，要自己判断用哪个、易选错。',{vers:'8.0.RC2／8.0.RC3／800alpha001／旧 V100R020C10／5.0.1 同时存在。',warn:'多版本号散乱，无单一权威主线。'}),
    N('v4','4','知乎 / 阿里云 / 博客园 / 华为云，较丰富。',{srcs:[['ONNX 转 om 模型','zhihu.com/zhuanlan/p/393169777',' ','旧 V100R020C10/5.0.1'],['Ascend910B4 ATC 动静态 shape 实例','developer.aliyun.com/article/1662723','2025-05-06',' '],['飞桨 x 昇腾 ATC','cnblogs.com/racesnail/18860625',' ',' '],['华为云 ATC 实践','bbs.huaweicloud.com/17163186',' ',' ']]}),
    N('v4','4','各源 atc 命令骨架一致（--model / --framework / --soc_version），可交叉印证；差异主要落在版本号上。'),
@@ -154,7 +154,7 @@ const ROWS={
    N('v5','1搜','1 次检索即拿到官方 + 二手。'),
    N('v3','3','需同时指定 soc_version（芯片）+ CANN 版本，部分可锁。',{vers:'soc_version 依芯片取值 + CANN 版本号二选一。'}),
    N('v4','4','atc 命令完整、替好 soc_version 即可照抄。'),
-   N('v4','中高','官方虽 SPA，但 ATC 二手厚、命令统一、搜索片段够用，绕过了平台短板。')]},
+   N('v4','中高','官方 quickstart 子树实测可抓、命令统一，二手又厚；仅深层 AIPP 参考 SPA，不影响主路径。')]},
  B:{name:'Profiling 定位瓶颈',
   cuda:[
    N('v5','5','PyTorch Dev 论坛 / NVIDIA 论坛排前，1 搜命中。',{srcs:[['Using Nsight Systems to profile GPU workload','dev-discuss.pytorch.org/t/.../59',' ',' ']]}),
@@ -170,8 +170,8 @@ const ROWS={
    N('v5','高','工具成熟 + 二手海量。')],
   cann:[
    N('v4','4','1 搜命中 hiascend MindStudio/CANN + mindspore 官方。',{srcs:[['msprof 性能数据采集 atlasprofiling_16_0010','hiascend.com/document/detail',' ','社区版 8.0.RC3.alpha003'],['Ascend PyTorch Profiler','hiascend.com / mindspore.cn',' ',' ']]}),
-   N('v2','2','实测 SPA：msprof 官方页正文抽不出，仅得 meta 摘要。',{got:'meta 摘要：「msprof 采集通用命令…AI 任务运行性能数据…采集和解析能力」。',miss:'msprof 各参数、<code>--export</code> 解析步骤、完整正文抽不出。',warn:'atlasprofiling_16_0010 为 SPA，与 A/D 同因。'}),
-   N('blk','受阻','msprof 官方页 SPA，正文取不回 → 详尽度无法实测。',{warn:'atlasprofiling_16_0010 为 SPA，仅得 meta 摘要；受阻 ≠ 低分，不打推断分。'}),
+   N('v4','4','子树相关：<code>modeldevpt/ptmigr/</code> 子树服务端渲染、正文可抓（实测命中 AImpug_000068）；仅 msprof 原生命令参考 SPA。',{got:'AImpug_000068 抓到完整 <code>torch_npu.profiler.profile(...)</code> 代码 + 参数说明表。',miss:'msprof 原生命令穷尽参考（atlasprofiling_16_0010，<code>devguide/devtools/</code> 子树）为 SPA，抽不到。',warn:'面向 PyTorch 的 Profiling how-to 在可抓子树；只有 msprof 原生参考 SPA。'}),
+   N('v4','4','本轮真去 fetch 实测：Ascend PyTorch Profiler 正文详尽、代码完整。',{got:'完整 <code>torch_npu.profiler.profile(activities=[CPU,NPU], schedule=schedule(wait=1,warmup=1,active=2,repeat=2,skip_first=10), on_trace_ready=tensorboard_trace_handler("./result"), experimental_config=…)</code> + 三种采集方式（TB 自动解析 / export_chrome_trace / 离线 analyse）+ 参数表全抓到。',miss:'msprof 原生命令的穷尽参考仍在 SPA 页，抽不到。',srcs:[['Ascend PyTorch Profiler 数据采集 AImpug_000068（实测 fetch）','hiascend.com/document/detail',' ','canncommercial 700']]}),
    N('v2','2','同一工具散落 MindStudio 与 CANN 两套文档、版本跨度大。',{vers:'商用版 5.0.4.6／6.0.1／8.0.RC2 + 社区版 8.0.RC3.alpha003／8.1.RC1.alpha001 + MindStudio 7.0.RC2（2025-04-07）／8.1.RC1。',warn:'同工具版本号横跨两套文档体系，难对齐。'}),
    N('v3','3','阿里云 / CSDN×2 / 知乎，中等，比 CUDA 少。',{srcs:[['msprof 性能分析实践','developer.aliyun.com',' ',' '],['昇腾 msprof 采集解析','blog.csdn.net（两篇）',' ',' '],['Ascend Profiler 上手','zhihu.com',' ',' ']]}),
    N('v3','3','基本一致，但深度参差。'),
@@ -179,7 +179,7 @@ const ROWS={
    N('v5','1搜','一次到位。'),
    N('v3','3','工具 / 版本部分可锁。'),
    N('v3','3','<code>msprof --export</code> 命令可抄，部分依赖环境。'),
-   N('v4','中高','有完全对标 PyTorch-GPU 用法的 Ascend PyTorch Profiler（with / start-stop / schedule）加分。')]},
+   N('v4','中高','PyTorch Profiler 子树实测可抓、正文完整，且 API 完全对标 PyTorch-GPU（with / schedule / on_trace_ready）；仅 msprof 原生参考 SPA。')]},
  C:{name:'算子库选型',
   cuda:[
    N('v5','5','通识题，无需检索即可定位 cuBLAS / cuDNN / CUTLASS / Thrust / CUB。'),
@@ -195,8 +195,8 @@ const ROWS={
    N('v5','高','完全通识。')],
   cann:[
    N('v4','4','1 搜命中 hiascend AOL / ATB 官方。',{srcs:[['算子加速库接口 简介 operatorlist_0001','hiascend.com/document/detail/.../apiref/aolapi',' ','社区版 8.0.RC3.alpha003'],['CANN 算子库 AOL','hiascend.com/cann/aol',' ',' '],['aclnn / AOL / acldvpp 算子列表','hiascend.com (CannCommunityOplist)',' ',' ']]}),
-   N('v2','2','同平台 SPA；但通识题靠 API 列表摘要 + 二手即可，未受致命影响。',{got:'AOL 接口列表页 meta 可见 AOL / aclnn 命名与分类（NN / BLAS / DVPP / FlashAttention）。',miss:'各接口详细签名正文抽不全。'}),
-   N('blk','受阻','AOL/ATB 接口正文 SPA 受阻，仅 meta 可见命名分类 → 详尽度无法实测。',{warn:'operatorlist_0001 等为 SPA，各接口详细签名抽不全；通识题可靠列表+二手答，但「正文详尽度」本身无法实测，记受阻。'}),
+   N('v4','4','子树相关：ATB 概述页（<code>doc_center/source/</code>）<b>部分可抓</b>（非 robots 全拦，实测命中）；仅 AOL 穷尽算子表（<code>apiref/aolapi/</code>）为 SPA。',{got:'ascendtb_0001 抓到 ATB 能力概述 + 三大接口机制（基础算子 Operation / 插件 Plugin / 图算子 Graph）+ 框架支持。',miss:'具体算子列表、调用示例代码抽不到（落在 Gitee 蓝区仓 + CSDN）；AOL 穷尽算子表 operatorlist_0001 为 SPA。',warn:'选型层概述可抓；只有穷尽算子签名表 SPA。'}),
+   N('v3','3','本轮真去 fetch 实测：ATB 概述可抓但偏概念，缺算子列表 / 调用码。',{got:'ATB 能力概述 + 接口机制（Operation / Plugin / Graph）+ 多框架支持（PyTorch / MindSpore / Paddle）正文抓到。',miss:'具体算子列表、调用示例代码未内联（需到 Gitee ascend-transformer-boost 蓝区仓 + CSDN 代码级文章）。',srcs:[['ATB 加速库 ascendtb_0001（实测 fetch）','hiascend.com/doc_center/source',' ','canncommercial 80RC2']]}),
    N('v3','3','AOL / ATB 命名较新、仍在规整，但选型逻辑本身与版本无关。',{vers:'AOL / ATB 命名随 8.0.RC3 等仍在演进，TBE 为较老一代。'}),
    N('v3','3','知乎 / 博客园 / 华为云 / arXiv，中等。',{srcs:[['华为 CANN 介绍及与英伟达 CUDA 区别','53ai.com/news/...62930','2024-07-18',' '],['Serving LLMs on Huawei CloudMatrix384','arxiv.org/pdf/2506.12708','2025',' '],['ZOMI CANN 算子','cnblogs.com',' ',' '],['昇腾算子库讨论','bbs.huaweicloud.com',' ',' ']]}),
    N('v4','4','各源对「AOL = cuDNN+cuBLAS 对应、ATB = Transformer/大模型加速」的定位一致。'),
@@ -220,7 +220,7 @@ const ROWS={
    N('v5','高','官方 + 海量 GitHub。')],
   cann:[
    N('v2','2','第 1 搜官方排不到首屏（多为 CSDN / 博客园），需补关键词第 2 搜才命中 hiascend。',{srcs:[['Ascend C 算子开发 atlas_ascendc_10_0064','hiascend.com/document/detail',' ','商用版 8.0.RC3'],['完整 add_custom.json 示例 atlas_ascendc_10_0005','hiascend.com',' ','社区版 80RC2alpha001']],warn:'官方可发现性低，靠二手关键词二次检索才定位。'}),
-   N('v2','2','实测 SPA：AddCustom 官方页正文抽不出。此任务二手稀、强依赖官方全文 → 这里最致命。',{got:'meta + 部分命令：<code>msopgen gen -i $HOME/sample/add_custom.json -c ai_core-&lt;soc_version&gt; -lan cpp -out $HOME/sample/AddCustom</code>',miss:'add_custom.json 完整字段、Tiling / Kernel 实现正文、编译部署完整步骤抽不出。',warn:'SPA 短板叠加「二手稀薄」，在 D 上致命。'}),
+   N('v2','2','实测 SPA：AddCustom 官方页正文抽不出，且<b>无可抓子树兜底</b>（不像 A-quickstart / B-modeldevpt 有服务端渲染页）——核心 how-to 整个压在 <code>devguide/opdevg/</code> SPA。',{got:'meta + 部分命令：<code>msopgen gen -i $HOME/sample/add_custom.json -c ai_core-&lt;soc_version&gt; -lan cpp -out $HOME/sample/AddCustom</code>',miss:'add_custom.json 完整字段、Tiling / Kernel 实现正文、编译部署完整步骤抽不出。',warn:'四任务里唯一「SPA 短板真正咬到结果」者：无可抓子树兜底 + 二手稀薄，叠加在 D 上致命。'}),
    N('blk','受阻','AddCustom/Ascend C 官方正文 SPA 受阻，最致命处恰恰无法实测。',{warn:'atlas_ascendc_* 为 SPA，add_custom.json 完整字段、Tiling/Kernel 实现正文抽不出；此任务二手又稀、最依赖官方全文却抓不到——正是 D 垫底的核心证据。受阻 ≠ 低分。'}),
    N('v2','2','hiascend 多版本并存，要自己挑。',{vers:'80RC2alpha001／80RC3／82RC1alpha003 同时存在。',warn:'前沿能力版本号迭代快、并存多。'}),
    N('v2','2','仅 CSDN / 博客园 / MindSpore 零星，质量参差。',{srcs:[['AscendC 从入门到精通系列（三）','blog.csdn.net/xyz3120/143643855','2024-11-09',' '],['Ascend C 算子开发全流程揭秘','ai6s.net/69322a96','2025-12-05',' '],['op_custom_ascendc 自定义算子','mindspore.cn',' ','MindSpore 2.3.1']],warn:'二手数量远少于 CUDA，且多为入门科普。'}),
@@ -232,10 +232,10 @@ const ROWS={
    N('v3','中','四重折扣叠加（二手稀 + 官方难找 + SPA + 多版本）。')]}
 };
 const TASKOVER={
- A:{q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om',cu:'高',ca:'中高',v:'差距小，两边都好查；官方虽 SPA 但 ATC 二手厚、命令统一。'},
- B:{q:'Nsight ｜ msprof / Ascend PyTorch Profiler',cu:'高',ca:'中高',v:'中等偏小差距；官方 SPA 但二手够用，昇腾对标 GPU 降低迁移成本。'},
- C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'高',v:'差距小，属通识；CUDA 可凭记忆，CANN 需 1 次确认库名。'},
- D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'中',v:'4 任务里差距最大；可抓取性是公共短板，只在二手稀的 D 上致命。'}
+ A:{q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om',cu:'高',ca:'中高',v:'差距小，两边都好查；官方 quickstart 子树实测可抓、命令统一，仅深层 AIPP 参考 SPA。'},
+ B:{q:'Nsight ｜ msprof / Ascend PyTorch Profiler',cu:'高',ca:'中高',v:'中等偏小差距；官方 PyTorch Profiler 子树实测可抓、对标 GPU，仅 msprof 原生参考 SPA。'},
+ C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。'},
+ D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'中',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。'}
 };
 const CATS=[
  {name:'1 环境与安装',tasks:[{t:'版本兼容排查'},{t:'安装与环境变量'},{t:'容器 / 镜像搭建'}]},
