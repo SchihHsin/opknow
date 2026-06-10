@@ -539,8 +539,9 @@ function tipCell(k,s,ci){
  let html='<div class="th">'+k+' · '+r.name+' — '+stack+'</div>';
  html+='<div class="ti">'+COLS[ci]+' <span class="sc '+c.c+'">'+c.d+'</span></div>';
  html+='<div class="body">'+c.t+'</div>';
- if(ci===10){ html+=srcMixBlock(k,s); html+=confDeriv(k,s); }
+ if(ci===10){ html+=srcMixBlock(k,s); }
  html+=rubBlock(ci,c);
+ if(ci===10){ html+=confDeriv(k,s); }   // 「综合置信度怎么算出来的」放在评分标尺之后
  if(c.got) html+='<div class="got">'+c.got+'</div>';
  if(c.miss) html+='<div class="miss">'+c.miss+'</div>';
  if(c.vers) html+='<div class="vers">'+c.vers+'</div>';
