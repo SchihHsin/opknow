@@ -50,6 +50,12 @@
 
   #tip{position:fixed;z-index:100;width:360px;max-width:360px;background:#fff;border:1px solid var(--g6);border-radius:11px;box-shadow:0 10px 32px rgba(0,0,0,.18);padding:12px 14px;font-size:11.5px;line-height:1.6;color:var(--g2);pointer-events:none;opacity:0;transition:opacity .12s;}
   #tip.show{opacity:1;}
+  #tipmask{position:fixed;inset:0;z-index:99;background:rgba(22,26,34,.30);opacity:0;pointer-events:none;transition:opacity .14s;}
+  #tipmask.show{opacity:1;pointer-events:auto;}
+  #tip.pinned{pointer-events:auto;box-shadow:0 20px 56px rgba(0,0,0,.34);max-height:calc(100vh - 24px);overflow-y:auto;}
+  #tip .pinclose{position:sticky;top:-2px;float:right;margin:-4px -4px 0 8px;width:22px;height:22px;border:none;background:#f1f3f7;color:var(--g3);border-radius:50%;font-size:15px;line-height:20px;cursor:pointer;font-weight:700;z-index:2;}
+  #tip .pinclose:hover{background:#e2e6ee;color:var(--g1);}
+  #tip .pinhint{clear:both;margin-top:8px;padding-top:6px;border-top:1px dashed var(--g6);font-size:9px;color:var(--g4);text-align:center;letter-spacing:.3px;}
   #tip .th{font-size:9.5px;font-weight:800;color:var(--g4);letter-spacing:.4px;margin-bottom:4px;}
   #tip .ti{font-size:13px;font-weight:800;color:var(--g1);display:flex;align-items:center;gap:8px;margin-bottom:6px;}
   #tip .ti .sc{font-size:11px;font-weight:800;padding:1px 9px;border-radius:5px;}
@@ -100,6 +106,19 @@
   #tip .smix .snote{margin-top:6px;font-size:9.3px;color:var(--g3);line-height:1.55;}
   #tip .smix .scav{margin-top:5px;padding-top:5px;border-top:1px dashed #E4E7EE;font-size:8.9px;color:var(--g4);line-height:1.5;}
   #tip .smix .scav b{color:var(--g1);}
+  #tip .cder{margin-top:7px;background:#FFFBF5;border:1px solid #EFD9BE;border-radius:7px;padding:7px 9px;}
+  #tip .cder .slbl{font-size:9px;font-weight:800;color:#9A6A1F;letter-spacing:.3px;margin-bottom:4px;}
+  #tip .cder .cfx{font-size:9.6px;color:var(--g2);background:#fff;border:1px solid #EFE2CE;border-radius:5px;padding:4px 7px;margin-bottom:5px;}
+  #tip .cder .cfx b{color:#B26A12;}
+  #tip .cder .ctb{width:100%;border-collapse:collapse;font-size:9.4px;}
+  #tip .cder .ctb td{padding:2.5px 4px;border-bottom:1px dashed #EFE2CE;color:var(--g2);}
+  #tip .cder .ctb td:last-child{text-align:right;font-weight:800;color:var(--g1);white-space:nowrap;}
+  #tip .cder .ctb td span{display:block;font-size:8.3px;color:var(--g4);font-weight:400;}
+  #tip .cder .ctb tr.ceff td{background:#FBEFD8;color:#9A4A12;font-weight:800;border-bottom:1px solid #E7C99B;}
+  #tip .cder .ctb tr.ceff td:last-child{color:#9A4A12;}
+  #tip .cder .ctb tr:last-child td{border-bottom:none;}
+  #tip .cder .cnote{margin-top:5px;font-size:9.1px;color:var(--g3);line-height:1.55;}
+  #tip .cder .cnote b{color:var(--g1);}
 </style>
 </head>
 <body>
@@ -151,6 +170,7 @@
   <span style="margin-left:8px">越绿越好；检索成本已换算为好坏着色；<span class="cell blk" style="padding:1px 8px">受阻</span>＝正文被 SPA 拦、无法实测（中性，非低分）；<span class="pcell" style="padding:1px 8px">待跑</span>＝尚未实测。</span>
 </div>
 
+<div id="tipmask"></div>
 <div id="tip"></div>
 
 <script>
@@ -184,6 +204,23 @@ const SRC_MIX={
     cann:{m:[15,22,13,35,15],n:'核心 how-to SPA 受阻、二手稀、自带弱 → 大量靠类比 CUDA/Ascend C 模式外推（风险最高），最抓不到处诚实留白。'}}
 };
 const SEGDEF=[['off','官方一手'],['sec','二手社区'],['own','自带·有把握'],['extra','类比外推·未验证'],['gap','诚实留白·受阻']];
+// 任务风险权重：由「版本敏感度 / 容错」定——错了即崩(高敏感)的任务，外推的代价更大。
+const RISKW={A:{s:'高',w:1.0},B:{s:'中',w:0.6},C:{s:'低',w:0.3},D:{s:'高',w:1.0}};
+// 综合置信度(⑪)的可复核研判主线：把上面的「类比外推」按任务风险加权，写清它怎么影响置信度。
+function confDeriv(k,s){
+ const o=SRC_MIX[k]&&SRC_MIX[k][s]; const rw=RISKW[k]; if(!o||!rw) return '';
+ const extra=o.m[3], gap=o.m[4], eff=(extra*rw.w).toFixed(1);
+ let h='<div class="cder"><div class="slbl">综合置信度怎么算出来的（可复核主线）</div>';
+ h+='<div class="cfx">置信度 ≈ 触达+内容质量基线 − <b>有效外推风险</b> − 留白/受阻</div>';
+ h+='<table class="ctb">';
+ h+='<tr><td>任务风险权重<span>版本敏感 / 容错 = '+rw.s+'</span></td><td>×'+rw.w.toFixed(1)+'</td></tr>';
+ h+='<tr><td>类比外推占比<span>未验证、可能错</span></td><td>'+extra+'%</td></tr>';
+ h+='<tr class="ceff"><td>= 有效外推风险<span>外推占比 × 风险权重</span></td><td>'+eff+'</td></tr>';
+ h+='<tr><td>诚实留白 / 受阻</td><td>'+gap+'%</td></tr>';
+ h+='</table>';
+ h+='<div class="cnote">外推比例高 <b>≠</b> 置信度必低：要看外推落在<b>容错高</b>（选型 / 概念，错了易纠）还是<b>容错低</b>（版本 / 命令，错了即崩）的任务。<br>对比：C 外推 20%×低敏感 0.3 = <b>6.0</b> ＜ A 外推 10%×高敏感 1.0 = <b>10.0</b> → 故 C「高」反而高于 A「中高」；D 35%×1.0 = <b>35</b> 再叠加 SPA 受阻 + 留白 15% → 压到「中」。风险权重 0.3/0.6/1.0 为锚定档位，非逐 token 测得。</div></div>';
+ return h;
+}
 function srcMixBlock(k,s){
  const o=SRC_MIX[k]&&SRC_MIX[k][s]; if(!o) return '';
  const m=o.m;
@@ -337,8 +374,9 @@ function renderHM(){
  bind();
 }
 const tip=document.getElementById('tip');
-function showTip(html,el){
- tip.innerHTML=html; tip.classList.add('show');
+const mask=document.getElementById('tipmask');
+let pinned=false;
+function positionTip(el){
  const r=el.getBoundingClientRect(), t=tip.getBoundingClientRect();
  let left=r.left, top=r.bottom+8;
  if(left+t.width>window.innerWidth-12) left=window.innerWidth-12-t.width;
@@ -346,7 +384,28 @@ function showTip(html,el){
  if(top+t.height>window.innerHeight-12) top=Math.max(8,r.top-8-t.height);
  tip.style.left=left+'px'; tip.style.top=top+'px';
 }
-function hideTip(){tip.classList.remove('show');}
+function showTip(html,el){
+ if(pinned) return;            // 模态固定时，悬浮不抢占
+ tip.innerHTML=html; tip.classList.add('show');
+ positionTip(el);
+}
+function hideTip(){ if(pinned) return; tip.classList.remove('show'); }
+function pinTip(html,el){
+ pinned=true;
+ tip.innerHTML='<button class="pinclose" aria-label="关闭">×</button>'+html+'<div class="pinhint">已固定 · 点击空白处或 × 关闭</div>';
+ tip.classList.add('show','pinned');
+ mask.classList.add('show');
+ tip.scrollTop=0;
+ positionTip(el);
+ tip.querySelector('.pinclose').addEventListener('click',unpin);
+}
+function unpin(){
+ pinned=false;
+ tip.classList.remove('pinned','show');
+ mask.classList.remove('show');
+}
+document.addEventListener('click',e=>{ if(pinned && !tip.contains(e.target)) unpin(); });
+document.addEventListener('keydown',e=>{ if(pinned && e.key==='Escape') unpin(); });
 function srcRow(s){
  const parts=[s[1],s[2],s[3]].map(x=>(x||'').trim()).filter(Boolean);
  let meta='';
@@ -378,7 +437,7 @@ function tipCell(k,s,ci){
  let html='<div class="th">'+k+' · '+r.name+' — '+stack+'</div>';
  html+='<div class="ti">'+COLS[ci]+' <span class="sc '+c.c+'">'+c.d+'</span></div>';
  html+='<div class="body">'+c.t+'</div>';
- if(ci===10) html+=srcMixBlock(k,s);
+ if(ci===10){ html+=srcMixBlock(k,s); html+=confDeriv(k,s); }
  html+=rubBlock(ci,c);
  if(c.got) html+='<div class="got">'+c.got+'</div>';
  if(c.miss) html+='<div class="miss">'+c.miss+'</div>';
@@ -393,10 +452,12 @@ function bind(){
  document.querySelectorAll('td.cell').forEach(el=>{
    el.addEventListener('mouseenter',()=>showTip(tipCell(el.dataset.k,el.dataset.s,+el.dataset.c),el));
    el.addEventListener('mouseleave',hideTip);
+   el.addEventListener('click',e=>{ e.stopPropagation(); pinTip(tipCell(el.dataset.k,el.dataset.s,+el.dataset.c),el); });
  });
  document.querySelectorAll('[data-task]').forEach(el=>{
    el.addEventListener('mouseenter',()=>showTip(tipTask(el.dataset.task),el));
    el.addEventListener('mouseleave',hideTip);
+   el.addEventListener('click',e=>{ e.stopPropagation(); pinTip(tipTask(el.dataset.task),el); });
  });
  document.querySelectorAll('td.pend, td.pendcell').forEach(el=>{
    el.addEventListener('mouseenter',()=>showTip('<div class="th">待跑</div><div class="body">该任务尚未实测，暂无评分。</div>',el));
