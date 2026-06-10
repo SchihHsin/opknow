@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>19 · 阶段性梳理：昇腾问题清单 → UX 发力点 → Agent 时代的体验设计</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nv:#76B900; --hw:#C8102E;
+  --v5:#BBF0D4; --v4:#DCF5E5; --v3:#FCEFC7; --v2:#FBE0CE; --v1:#F9D2D2;
+  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#fafafa; --card:#fff;
+  --blocked:#E3E0EE;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:40px 24px 80px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:26px;font-weight:900;letter-spacing:.5px}
+.subtitle{color:var(--sub);font-size:13.5px;margin-top:6px}
+h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-left:4px solid var(--ink)}
+h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
+h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
+.sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.cards2{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.tag.ev{background:#EEF6E0;color:#4a7a00;border:1px solid #cfe3a8}
+.tag.hw{background:#FBE9EC;color:var(--hw);border:1px solid #f0c4cc}
+.tag.gray{background:#f0f0f0;color:#555;border:1px solid #ddd}
+.tag.warn{background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8}
+.tag.pend{background:var(--blocked);color:#5b5390;border:1px solid #cfc9e6}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f4f4;font-weight:700;white-space:nowrap}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3f3f3;border-radius:4px;padding:1px 5px}
+.pill{display:inline-block;min-width:44px;text-align:center;font-size:12px;font-weight:700;border-radius:6px;padding:1px 7px}
+.t-high{background:var(--v5)} .t-mh{background:var(--v4)} .t-mid{background:var(--v3)} .t-low{background:var(--v1)}
+.note{font-size:12.5px;color:var(--sub);margin-top:10px}
+.prob-id{display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;border-radius:8px;background:var(--hw);color:#fff;font-weight:900;font-size:15px;margin-right:10px;flex:none}
+.prob{display:flex;gap:4px;align-items:flex-start}
+.prob .body{flex:1}
+.prob h3{margin:2px 0 6px}
+.prob p{font-size:13.5px}
+.evline{font-size:12.5px;color:#4a7a00;background:#F4FAEA;border-left:3px solid var(--nv);padding:6px 10px;border-radius:0 6px 6px 0;margin-top:8px}
+.evline b{color:#3d6500}
+/* 漏斗条 */
+.funnel{margin:18px 0 6px}
+.frow{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:12.5px}
+.flabel{width:230px;flex:none;text-align:right;color:#333}
+.flabel small{color:var(--sub)}
+.fbarwrap{flex:1;background:#f0f0f0;border-radius:5px;height:22px;position:relative;overflow:hidden}
+.fbar{height:100%;border-radius:5px 0 0 5px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;font-weight:700;font-size:11.5px;color:#333;min-width:36px}
+.fgroup{font-weight:900;font-size:13px;margin:16px 0 8px;color:#444}
+.fgroup small{font-weight:400;color:var(--sub)}
+ul.tight{padding-left:20px;font-size:13.5px}
+ul.tight li{margin-bottom:6px}
+.uxcard{border-top:4px solid var(--nv)}
+.uxcard.agent{border-top-color:#5b5390}
+.uxcard .who{font-size:11.5px;color:var(--sub);margin-bottom:2px}
+.uxcard h3{margin-top:0}
+.uxcard .why{font-size:12.5px;color:var(--sub);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+.bigidea{background:#1d1d1f;color:#f5f5f5;border-radius:12px;padding:24px 26px;margin:24px 0;font-size:14.5px}
+.bigidea b{color:#BBF0D4}
+.bigidea .lead{font-size:16.5px;font-weight:700;margin-bottom:8px;color:#fff}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.toc a{font-size:12.5px;color:#333;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:4px 13px}
+.toc a:hover{border-color:#999}
+.limit{background:#FFFDF4;border:1px solid #ecd9a8;border-radius:10px;padding:16px 20px;font-size:13px;color:#6b5510;margin-top:40px}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+@media(max-width:860px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center}
+.stat .num{font-size:26px;font-weight:900}
+.stat .lab{font-size:12px;color:var(--sub);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>阶段性梳理：实测暴露的昇腾问题 → UX 发力点 → Agent 时代的体验设计</h1>
+<div class="subtitle">
+  编号 19 · 基于 <b>19 / 26</b> 个开发者任务的双栈真跑实测（A–H 八任务已完整落库；I–S 十一任务原始观测已录入 <code>score_metrics.py</code> 并由公式算分，过程记录落库待补）。
+  评分全部由 <code>score_metrics.py</code> 的 score_N() 公式从实测原始观测算出，非主观打分。生成日期 2026-06-11。
+</div>
+
+<div class="toc">
+  <a href="#s0">0 数据底座</a>
+  <a href="#s1">1 昇腾侧暴露的七个问题</a>
+  <a href="#s2">2 漏斗视图：问题在栈里的分布</a>
+  <a href="#s3">3 UX 发力点 · 面向昇腾社区（供给侧）</a>
+  <a href="#s4">4 UX 新关注点 · 用户使用 Agent 的过程（使用侧）</a>
+  <a href="#s5">5 哪些要等全部跑完才能形成</a>
+</div>
+
+<!-- ============ 0 数据底座 ============ -->
+<h2 id="s0"><span class="no">§0</span>数据底座：现在手里有什么</h2>
+<div class="sechint">先交代证据从哪来、可信到什么程度，再谈结论。</div>
+
+<div class="statgrid">
+  <div class="stat"><div class="num">19 / 26</div><div class="lab">已实测任务（38 格双栈）</div></div>
+  <div class="stat"><div class="num" style="color:var(--nv)">19 全「高」</div><div class="lab">CUDA 侧综合置信度</div></div>
+  <div class="stat"><div class="num" style="color:var(--hw)">5高 11中高<br>2中 1低</div><div class="lab">CANN 侧综合置信度分布</div></div>
+  <div class="stat"><div class="num">.41 – .86</div><div class="lab">CANN 综合分跨度（CUDA .83–1.0）</div></div>
+</div>
+
+<div class="card">
+  <ul class="tight">
+    <li><span class="tag ev">已完整落库</span><b>A–H 八任务</b>：真跑过程记录在 <code>task_run_log.md</code>，分数已进 17 矩阵与 18 方法论说明书。</li>
+    <li><span class="tag pend">已算分·过程记录待补</span><b>I–S 十一任务</b>（版本兼容 I / 安装环境 J / 容器镜像 K / 算子精度 L / 动态shape·Tiling M / 算子融合 N / 注册集成 O / 混合精度 P / 显存OOM Q / 收敛排查 R / 推理部署 S）：sub-agent 并行检索后由主会话清洗判分，原始观测（命中排名、抓取形态、来源平台与日期、版本扩散）已写入 <code>score_metrics.py</code> 的 RAW 字典，⑪ 综合由噪声-OR 公式算出；但 <code>task_run_log.md</code> 的逐步过程记录与 17/18 的矩阵落库<b>尚未补</b>。本页引用这批分数时默认其原始观测真实，结论以「已算分」级别标注。</li>
+    <li><span class="tag gray">未跑</span><b>剩余 7 任务</b>：动态 batch/shape 推理、访存/occupancy 优化、计算与传输重叠、多卡通信优化、内存越界定位、跨芯片迁移、概念心智模型对照。</li>
+  </ul>
+</div>
+
+<!-- ============ 1 七个问题 ============ -->
+<h2 id="s1"><span class="no">§1</span>实测反映的昇腾侧七个问题（按证据强度排序）</h2>
+<div class="sechint">每条都给出「证据来自哪几格、哪个指标」。绿色框 = 实测证据；问题间不是并列的，#1、#2 是结构性的，#4–#5 是被本项目修正过的「比传言更窄」的精准版本。</div>
+
+<div class="card"><div class="prob"><span class="prob-id">1</span><div class="body">
+  <h3>版本清晰度是唯一的「全局性」短板：到处都是多版本号并存，没有权威「当前版」</h3>
+  <p>同一份文档/工具散落在 <code>8.0.RC2 / 80RC3alpha / 82RC1alpha / 商用版·社区版</code> 等多个版本树下，互相之间无 canonical 指向；CANN↔driver↔torch↔torch_npu 是多轴配套，配错任何一轴都跑不起来。这是 19 个任务里<b>覆盖面最大</b>的问题，且与任务深浅无关。</p>
+  <div class="evline"><b>证据</b>：④版本清晰度 CANN 侧 19 格中 <b>8 格 = 2 分</b>（A/B/E/F/H/J/L/N），无一格 5 分；CUDA 侧最低 3 分、多数 4–5。I 任务（版本兼容排查）实测配套要查 6 个并存版本号、双轴矩阵。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">2</span><div class="body">
+  <h3>模型自带知识系统性偏薄：AI 助手「不检索就答不了」，而 CUDA 多数能直接答</h3>
+  <p>⑦ 模型自带知识 CANN 侧均值约 2.9（多数 2–3 分），CUDA 侧 4–5 分。含义：对 CUDA 问题，AI 凭训练知识就能给七八成正确答案、检索只是校准版本；对 CANN 问题，<b>检索是答案的唯一来源</b>——一旦检索链路任何一环断掉（搜不到/抓不到/抓到不够细），答案质量直接坍塌，没有兜底。这放大了下面所有问题的后果。</p>
+  <div class="evline"><b>证据</b>：⑦ 列 CANN 2 分格有 6 个（D/E/I/M/N/S），CUDA 侧无一格低于 4。训练语料里 CANN 内容密度低 + 迭代快（churn=fast 的 D/I/S 再罚 0.5）。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">3</span><div class="body">
+  <h3>二手生态「少而同质」：条数少、扎堆 CSDN、互抄回声、英文内容近乎缺席</h3>
+  <p>CANN 侧二手来源普遍 2–3 条且集中在 CSDN/华为云 bbs，多次出现「CSDN×2 互抄」（独立性因子被罚）；知乎多次 403 抓不到。对照 CUDA：StackOverflow、独立技术博客、大学课程、英文教程构成多平台互证网。二手是官方文档之外唯一的「绕行通道」，这条通道窄，官方文档的任何缺陷就无法被社区内容补偿。</p>
+  <div class="evline"><b>证据</b>：⑤二手丰富度 CANN 19 格均 ≤4、K/M/N/S 仅 2；⑥ 一致性多为 mid；independence_factor 实罚 B.cann（CSDN×2）。注意时效<b>不是</b>短板——实测 CANN 二手多为 2024–2026 新文。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">4</span><div class="body">
+  <h3>官方文档 SPA 抓不到——但实测把这个传言收窄成「单点」：19 格里只有 D（Ascend C 自定义算子）真被咬到</h3>
+  <p>旧认知是「hiascend 文档站全站 SPA、AI 一律抓不到」。三批实测推翻了它：E–S 的官方页<b>全部服务端渲染可抓</b>，连 opdevg 子树里的 Tiling 正文页（M）都可抓，O 还有 doc_center SSR 镜像兜底。<b>唯一</b>无可抓子树兜底的是 D 的核心 how-to（<code>devguide/opdevg/</code> 引导链路）。这意味着修复成本远比「全站静态化」小——是「补一个子树」而不是「重做网站」。</p>
+  <div class="evline"><b>证据</b>：②可抓取性 CANN 19 格中 18 格 = 4–5（ssr/static），仅 D = 2；③正文详尽度仅 D 记「受阻」。M 任务实测 <code>opdevg .../10_0047</code>（Tiling 正文）ssr 可抓、仅 quickstart 引导页 spa——连「opdevg 全 SPA」也不成立。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">5</span><div class="body">
+  <h3>「抓得到 ≠ 够用」：错误码查询落在通用兜底页，与「抓不到」是两种正交的失败</h3>
+  <p>E 任务（报错码排查）暴露新失败模式：搜 EZ9999 能命中官方错误码页、也抓得到（②=4），但那是一张<b>通用兜底页</b>，没有具体错误码的逐条解释（③=2）。对照 CUDA：每个 error code 有明确语义 + 海量 SO 讨论。报错排查是开发者情绪最焦灼、最高频的场景，却是 CANN 实测最弱的格之一（综合 .55，全栈倒数第二）。</p>
+  <div class="evline"><b>证据</b>：E.cann ②4 但 ③2、⑦2、综合 .55「中」。区别于 D 的「受阻」（抓不到正文）——两种短板要用两种药。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">6</span><div class="body">
+  <h3>「采纳漏斗」规律：越靠用户上手侧可用性越高，越往深处自研越塌</h3>
+  <p>把 19 个任务按「用户在昇腾生态里的深入程度」排：迁移/安装/容器/部署等上手侧任务（G .84、J .80、K .86）多为「高」；训练日常使用（P .83、Q .86、F .72）高/中高；而越深入算子自研，分数单调下滑：算子精度 L .69 → Tiling M .63 → 自定义算子 D .41。解读：华为的投入跟着「获客漏斗」走，上手侧体验被刻意做厚，<b>深水区留给了最没有二手生态兜底的人群（算子开发者）</b>——恰恰是 §4a 四角色中最需要权威文档的角色。</p>
+  <div class="evline"><b>证据</b>：见 §2 漏斗图。三组均值：上手/环境侧 ≈ .77、训练使用侧 ≈ .74、算子自研侧 ≈ .67（D .41 为深谷）。样本仍偏小，单调性待 26 任务全量后检验（见 §5）。</div>
+</div></div></div>
+
+<div class="card"><div class="prob"><span class="prob-id">7</span><div class="body">
+  <h3>检索成本「尖刺」：多数任务成本正常，但个别任务一次失败抓取就把成本打穿</h3>
+  <p>⑧检索成本 CANN 侧多数 3–5（正常），但 D/K/O 跌到 1：fetch 失败后要换 URL、换子树、换关键词绕行，轮数与抓取次数翻倍。对用户的含义：AI 助手回答这些任务时<b>响应慢、且过程中容易「看起来在瞎逛」</b>——这是体验设计要直面的（见 §4）。</p>
+  <div class="evline"><b>证据</b>：⑧ = 1 的格：D.cann、K.cann、O.cann（均含 fetch_fail≥1，公式 cost = rounds + 0.5·fetch + 4·fetch_fail）。</div>
+</div></div></div>
+
+<!-- ============ 2 漏斗 ============ -->
+<h2 id="s2"><span class="no">§2</span>漏斗视图：19 个任务的 CANN 综合分，按生态深入程度分组</h2>
+<div class="sechint">条长 = ⑪ 综合置信度（score_metrics.py 噪声-OR 公式值，0–1）。颜色 = 档位（高/中高/中/低，与 17 矩阵同色阶）。CUDA 侧 19 格全部「高」（.83–1.0），不再单列。</div>
+
+<div class="card">
+  <div class="funnel" id="funnel"></div>
+  <div class="note">分组是分析透镜而非官方分类：同一任务可被多角色使用（详见 17 的 4 角色卡）。「↧」标注的 D 为全栈唯一「低」档，是漏斗深谷。</div>
+</div>
+
+<div class="bigidea">
+  <div class="lead">一句话概括 19 任务实测：</div>
+  昇腾的 AI 可用性问题<b>不是「文档烂」这种一刀切的故事</b>。上手侧（迁移/安装/部署）已经做到接近 CUDA 的水平；真正的结构性缺口是三个：<b>① 版本体系混乱（全局税）、② 模型自带知识＋二手生态双薄（检索链路没有兜底）、③ 深水区单点塌方（Ascend C 自定义算子 + 报错码两个场景）</b>。修复优先级应该按这个结构排，而不是泛泛「改进文档」。
+</div>
+
+<!-- ============ 3 供给侧 UX ============ -->
+<h2 id="s3"><span class="no">§3</span>UX/UIUX 发力点 · 面向昇腾社区（供给侧：文档与站点该怎么改）</h2>
+<div class="sechint">按「本度量体系下抬分效率」排序——每条注明它抬的是哪个指标、影响哪些格。核心视角转变：<b>文档站的新「用户」是 AI Agent</b>，传统 UIUX 优化（视觉、导航、信息架构）之外，要加一层「Agent 体验（AX）」设计。</div>
+
+<div class="cards2">
+  <div class="card uxcard">
+    <div class="who">抬 ④ 版本清晰度 · 影响全部 19 格 · 性价比第一</div>
+    <h3>1. 版本体系「一站收口」：canonical 版本 + 配套矩阵工具</h3>
+    <ul class="tight">
+      <li>每篇文档给 <b>canonical URL</b> 指向当前推荐版（多版本树继续保留，但搜索引擎/AI 默认落到 canonical）。</li>
+      <li>做一个「配套查询器」：输入芯片型号 + torch 版本 → 输出 CANN/driver/torch_npu 的<b>唯一</b>配套组合（I 任务实测要人肉对 6 个版本号、双轴矩阵）。</li>
+      <li>页面顶部显式声明「本文适用 CANN x.y，最后验证日期」——这是 AI 引用时判断时效的直接信号。</li>
+    </ul>
+    <div class="why">为什么第一：④ 是唯一全局性短板（8 格 2 分），其它问题都是局部的；且版本错误产出的答案「看起来对、跑不通」，是最伤信任的失败。</div>
+  </div>
+
+  <div class="card uxcard">
+    <div class="who">抬 ③ 正文详尽度 · 直接救 E（全栈最弱场景之一）</div>
+    <h3>2. 错误码「一码一页」：把兜底页拆成可着陆的逐条解释</h3>
+    <ul class="tight">
+      <li>每个错误码（EZ9999、EE 系列…）独立静态页：含义 / 常见触发 / 排查步骤 / 修复样例，URL 含错误码本身。</li>
+      <li>报错信息里直接印 URL（CUDA 的 error code → SO 讨论这条路，昇腾要靠官方自建，因为二手生态薄、没人替你建）。</li>
+      <li>这是开发者搜索意图最明确、情绪最焦灼的场景——搜「EZ9999」的人要的是答案，不是「错误码体系介绍」。</li>
+    </ul>
+    <div class="why">E.cann 综合 .55，败因正是「抓得到但是通用兜底页」（③=2）。一码一页同时喂人和喂 AI。</div>
+  </div>
+
+  <div class="card uxcard">
+    <div class="who">抬 ② 可抓取性 · 救 D（全栈唯一「低」）· 范围已被实测收窄到一个子树</div>
+    <h3>3. 把 <code>devguide/opdevg/</code> 的核心 how-to 链路静态化</h3>
+    <ul class="tight">
+      <li>实测已证明这<b>不需要全站重做</b>：18/19 格官方页可抓，连 opdevg 的 Tiling 正文页都是 SSR——只剩 D 的自定义算子 how-to 引导链路是 SPA。</li>
+      <li>最小动作：为该链路提供 SSR 镜像（O 任务的 doc_center 镜像就是现成模式），或提供 markdown/纯文本导出。</li>
+      <li>叠加效应最大：D 同时踩「SPA + 二手稀 + 版本散」三重坑，解开第一重，另两重的权重也会下降（AI 能抓到权威正文后对二手依赖骤减）。</li>
+    </ul>
+    <div class="why">D.cann .41 是整张热力图的唯一深谷，且受害者（算子开发者）是最无替代信息源的角色。</div>
+  </div>
+
+  <div class="card uxcard">
+    <div class="who">抬 ②③⑦ · Agent 体验（AX）基建 · 面向所有 AI 工具</div>
+    <h3>4. 机器可读出口：llms.txt / markdown 导出 / 结构化 API 索引</h3>
+    <ul class="tight">
+      <li>提供 <code>llms.txt</code>（站点级 AI 阅读指引）与每页「View as markdown」出口——这正在成为开发者文档站对 AI 的标准礼仪。</li>
+      <li>API 参考提供结构化索引（JSON/CSV 的算子-版本-签名表），让 AI 一次抓取拿到全量而非逐页翻。</li>
+      <li>长期看还间接抬 ⑦：可抓的权威语料更容易进入下一代模型的训练集，慢慢补「自带知识薄」这个最深的洞。</li>
+    </ul>
+    <div class="why">⑦ 短期内无法直接改（训练是模型厂的事），但「让语料可被收录」是站方唯一能做的杠杆。</div>
+  </div>
+
+  <div class="card uxcard">
+    <div class="who">抬 ⑤⑥ 二手生态 · 慢变量、需运营</div>
+    <h3>5. 二手生态扶持：把「少而同质」变「多平台互证」</h3>
+    <ul class="tight">
+      <li>官方认证教程计划：鼓励在 CSDN <b>之外</b>的平台（知乎专栏、个人博客、B站、英文 Medium/dev.to）产出带版本号的完整教程——独立性因子实测在罚「CSDN×2 回声」。</li>
+      <li>每篇扶持内容硬性要求：注明 CANN 版本 + 完整可复制命令 + 发表日期（这三项正是 ⑤⑥⑨⑩ 的得分点）。</li>
+      <li>优先覆盖漏斗深水区（算子开发、Tiling、报错案例集），上手侧已经不缺。</li>
+    </ul>
+    <div class="why">二手是官方文档的「冗余备份通道」。CUDA 的韧性正来自这条通道极厚——官方页再差也有 SO 兜底。</div>
+  </div>
+
+  <div class="card uxcard">
+    <div class="who">UIUX 经典议题在 AI 时代的重写</div>
+    <h3>6. 给「人」的站内体验：跟着同一套指标走就不会错</h3>
+    <ul class="tight">
+      <li>本项目最反直觉的发现：<b>给 AI 修路和给人修路是同一条路</b>——参数表齐全、命令可复制、版本明确、URL 可直达，对人和对 Agent 是同一组需求。</li>
+      <li>不需要为 AI 单独立项「AI 友好改造」，把 ①–⑩ 指标当成文档站的体验验收清单即可（如：新页面发布前跑一次「无 JS 抓取」冒烟测试 = ②；查正文是否含可执行命令 = ③⑩）。</li>
+      <li>站内搜索按错误码/API 名直达（①），减少「搜得到列表页、找不到正文」的两段式挫败。</li>
+    </ul>
+    <div class="why">把度量体系反向用作供给侧验收标准，是这套研究对站方最可直接落地的输出。</div>
+  </div>
+</div>
+
+<!-- ============ 4 使用侧 UX ============ -->
+<h2 id="s4"><span class="no">§4</span>UX 新关注点 · 用户「使用 Agent」过程中的体验设计（使用侧）</h2>
+<div class="sechint">这部分回答「用户使用 agent 的过程，体验设计应该咋融入、关注哪些新变化」。素材直接来自本项目 Agent 真跑 19 个任务时反复出现的过程现象——每个现象对应一个传统 UX 里不存在、Agent 产品里必须新设计的环节。</div>
+
+<div class="cards2">
+  <div class="card uxcard agent">
+    <div class="who">新对象：置信度，而不只是答案</div>
+    <h3>A. 把「答案的成色」做成一等公民的 UI</h3>
+    <p style="font-size:13.5px">本项目实测发现答案由五种成分混合而成：<b>官方一手 / 二手社区 / 自带知识·有把握 / 类比外推·未验证 / 诚实留白</b>——其中「类比外推」（按 CUDA 经验猜 CANN）是幻觉高发区，且 Agent 默认行为里它常被悄悄混进答案、不标注。</p>
+    <ul class="tight">
+      <li>体验设计的新职责：让用户<b>一眼看出</b>答案里哪段是抓来的、哪段是推的（本项目 18 的「来源构成堆叠条」就是一个可直接复用的 UI 原型——外推段用警示色斜纹）。</li>
+      <li>低置信段落在行内标注，而不是只在结尾放一句「请自行验证」。</li>
+    </ul>
+    <div class="why">来自实测的诚实修正：被问「你平常会不会按 CUDA 经验外推编」时，承认外推≠0 且标注常不足。这是 Agent 产品共性问题，不是某一家的。</div>
+  </div>
+
+  <div class="card uxcard agent">
+    <div class="who">新状态：「受阻」≠「低质量」</div>
+    <h3>B. 为「我抓不到」设计诚实的失败态</h3>
+    <p style="font-size:13.5px">D 任务里官方正文整段抓不到（SPA），E 任务里抓到的是兜底页。两种失败用户感知完全不同，但多数 Agent 产品把它们统统糊成一段含混的回答。</p>
+    <ul class="tight">
+      <li>区分呈现三种状态：<b>没搜到</b>（换关键词可解）/ <b>抓不到</b>（技术受阻，给用户原始 URL 请他自己点开）/ <b>抓到但不够细</b>（明说缺什么，如「官方页只有概述、无参数表」）。</li>
+      <li>受阻时把「我试过的 URL 清单」交给用户——把 Agent 的死路变成用户的捷径。本度量体系给「受阻」单设中性色（≠低分），同一思想可以直接搬进产品。</li>
+    </ul>
+    <div class="why">⑧成本尖刺格（D/K/O）的真跑过程里，绕路重试占了大半时间。失败不可耻，不可见才致命。</div>
+  </div>
+
+  <div class="card uxcard agent">
+    <div class="who">新输入：环境版本是对话的前置上下文</div>
+    <h3>C. 把「版本声明」设计进对话的最前面</h3>
+    <p style="font-size:13.5px">④版本混乱是 CANN 全局税（19 格中 8 格 2 分）。对 Agent 产品的含义：用户不先说清自己的 CANN/driver/torch_npu 版本，再好的检索也可能答到另一个版本树上去。</p>
+    <ul class="tight">
+      <li>对话前置一个轻量「环境卡」：芯片型号 + CANN 版本 + 框架版本，一次填、整段会话复用（类似 IDE 的 SDK 选择器，而非每次问答口头重复）。</li>
+      <li>Agent 给命令时显式回显「以下命令针对 CANN 8.0.RC2，与你声明的环境一致 ✓」——把版本核对从用户的隐性负担变成系统的显性保证。</li>
+      <li>对版本敏感度「高」的任务（转换/算子/迁移），无版本声明时主动追问而不是默认猜。</li>
+    </ul>
+    <div class="why">版本敏感度在本体系里是任务属性：高敏任务上外推风险权重 1.0（C 的 20% 外推无害、A 的 10% 反而危险）。UI 应对高敏任务更保守。</div>
+  </div>
+
+  <div class="card uxcard agent">
+    <div class="who">新过程：检索过程本身成为体验对象</div>
+    <h3>D. 长检索的过程可见性：让「绕路」看起来像工作而不是卡死</h3>
+    <p style="font-size:13.5px">CANN 任务的检索轮数与抓取次数显著高于 CUDA（⑧列对比），且带失败重试。用户侧感知就是「问 CUDA 秒回、问昇腾转圈」。</p>
+    <ul class="tight">
+      <li>过程流式可见：「命中官方页 → 正文受阻 → 换 doc_center 镜像 → 已取到参数表」——每一步都是进度，而非沉默等待。</li>
+      <li>预期管理：对已知高成本任务（如自定义算子）提前说「这个问题官方资料较难获取，需要多查几轮」。</li>
+      <li>过程记录可回放（本项目的 <code>task_run_log.md</code> 就是范本）：用户事后可审计 Agent 当时看了什么、漏了什么。</li>
+    </ul>
+    <div class="why">同一个 Agent，在两个生态上的体感差距主要来自检索摩擦——体验设计无法消除摩擦，但能把摩擦翻译成信任。</div>
+  </div>
+
+  <div class="card uxcard agent">
+    <div class="who">新关系：用户从「读文档的人」变成「审 Agent 的人」</div>
+    <h3>E. 为「人审」设计：可核对、可下钻、可纠错</h3>
+    <p style="font-size:13.5px">Agent 时代用户的核心动作从「自己找答案」变成「验收 Agent 的答案」。验收需要抓手。</p>
+    <ul class="tight">
+      <li>每条关键结论挂来源锚点（标题·域名·日期·版本号四元组——本项目 tooltip 的最小来源单元，实测足以支撑人工核验）。</li>
+      <li>可下钻：摘要 → 展开原文段落 → 跳原始 URL，三级递进（17 矩阵的「悬浮看详情 → 点击固定模态」就是这个交互模式）。</li>
+      <li>可纠错回流：用户发现「这个命令在我的版本跑不通」时，一键把失败反馈进会话上下文，而不是从头重问。</li>
+    </ul>
+    <div class="why">本项目本身就是「人审 Agent」的工作流：用户连续纠正了角色倒推、主观打分、外推标注……这些纠错之所以可能，是因为过程全程留痕。</div>
+  </div>
+
+  <div class="card uxcard agent">
+    <div class="who">新分层：按角色而不是按功能组织体验</div>
+    <h3>F. 角色感知的 Agent 体验：同一问题，四种用户要不同的答案</h3>
+    <p style="font-size:13.5px">17 的四角色层（应用开发者 / 迁移工程师 / 算子开发者 / 系统调优）在 Agent 体验上含义直接：同样问「算子慢」，应用开发者要「换个库」、算子开发者要「改 Tiling」。</p>
+    <ul class="tight">
+      <li>会话级角色画像（从用户问法自动推断 + 允许显式声明），影响答案的深度档位与术语密度。</li>
+      <li>风险提示按角色定制：对算子开发者（落在漏斗深谷的人群），Agent 应主动声明「这个领域我的资料可信度低于平均」——置信度披露本身也要分角色校准。</li>
+    </ul>
+    <div class="why">漏斗发现的本质是「不同角色享受的生态质量不同」，Agent 的体验设计若对角色无感知，等于把深水区用户的高风险藏起来。</div>
+  </div>
+</div>
+
+<!-- ============ 5 待全部跑完 ============ -->
+<h2 id="s5"><span class="no">§5</span>哪些梳理必须等 26 任务全部跑完（以及第三批的落库欠账）</h2>
+<div class="sechint">诚实划界：本页 §1–§4 的定性结论在 19 任务下已相当稳；以下五项是「现在做会失真」的，列明各自缺什么。</div>
+
+<table>
+<tr><th style="width:230px">待全量才能形成的梳理</th><th>为什么现在不能做</th><th>还缺哪些任务</th></tr>
+<tr>
+  <td><b>1. 漏斗规律的定量检验</b><br><span class="tag warn">现为观察，待为结论</span></td>
+  <td>「越深越塌」目前是三组均值的观察（.77/.74/.67）。剩余 7 任务里恰好有 4 个落在性能优化深水区（访存 occupancy、计算传输重叠、多卡通信、内存越界）——它们会显著增加深水区样本，单调性成立或被推翻都要等这批。</td>
+  <td>访存/occupancy、计算与传输重叠、多卡通信优化、内存越界定位</td>
+</tr>
+<tr>
+  <td><b>2. 四角色的完整可用性画像</b><br><span class="tag warn">每角色任务束未跑全</span></td>
+  <td>角色卡的任务束是多对多的；系统调优角色的任务束（Profiling + 访存 + 重叠 + 多卡通信）目前只实测了 Profiling 一项，给这个角色下「生态质量」结论为时尚早。应用开发者束还缺动态 batch/shape 推理。</td>
+  <td>同上 4 项 + 动态 batch/shape 推理</td>
+</tr>
+<tr>
+  <td><b>3. 改进建议的量化 ROI 排序</b><br><span class="tag warn">§3 现按定性排序</span></td>
+  <td>终极形态是「每条改进 → 抬哪些格的哪个指标 → ⑪ 公式重算 → 总抬升量排序」（噪声-OR 公式支持这种反事实推演）。26 格全量后才能算出公平的总账，现在算会偏向已跑任务覆盖的领域。</td>
+  <td>全部剩余 7 项</td>
+</tr>
+<tr>
+  <td><b>4. 七大类工作流阶段热力总览</b><br><span class="tag warn">三类覆盖不全</span></td>
+  <td>性能优化类 3/4 未跑、推理部署类缺动态 batch、迁移类缺跨芯片迁移与概念对照。按「类别」聚合的热力图与雷达图要等各类至少基本覆盖。</td>
+  <td>全部剩余 7 项</td>
+</tr>
+<tr>
+  <td><b>5. 「软任务」可能引入的新失败模式</b><br><span class="tag warn">未知的未知</span></td>
+  <td>概念心智模型对照、跨芯片迁移属于「无标准答案」的软任务，可能暴露与 D（受阻）、E（兜底页）都不同的第三类失败模式（如：概念对照表根本不存在、各家口径打架）。失败模式分类学要等它们跑完才能收口。</td>
+  <td>概念心智模型对照、跨芯片迁移</td>
+</tr>
+</table>
+
+<h3 style="margin-top:28px">另：第三批（I–S）的落库欠账 ≠ 待跑任务</h3>
+<div class="card">
+  <ul class="tight">
+    <li>I–S 的<b>检索与判分已完成</b>（RAW 在 <code>score_metrics.py</code>，分数见 §0/§2），但按本项目标准作业还欠三步：① <code>task_run_log.md</code> 补「第三批真跑」逐步过程记录；② 17 矩阵 + index 加 I–S 行（ROWS/TASKOVER/SRC_MIX/角色卡 badge）；③ 18 §1 抽样表与 §4 复算表扩到 19 任务。</li>
+    <li>本页引用的 I–S 数字以 <code>score_metrics.py</code> 公式输出为准；若落库过程中发现原始观测需修正，本页同步更新。</li>
+  </ul>
+</div>
+
+<div class="limit">
+  <b>局限声明</b>：① 单 Agent（Claude）视角的「AI 可用性」，不代表所有 AI 工具的检索能力；② ⑦ 自带知识仍是半自评指标（已加 churn 客观锚但无法外部量测）；③ 19/26 样本对任务级结论足够、对类别级/角色级聚合仍偏薄（§5 已划界）；④ I–S 批次过程记录待补，其原始观测暂未经第二轮抽检；⑤ 所有「UX 发力点」是按本度量体系的推演，未经站方数据（真实用户行为/流量）验证。
+</div>
+
+<div class="note" style="margin-top:30px">关联材料：<b>17_official_site_focus.html</b>（主交互矩阵）· <b>18_metric_definition.html</b>(方法论说明书) · <b>score_metrics.py</b>（量化打分管线）· <b>task_run_log.md</b>（真跑过程记录，A–H）。本页由 19 任务实测数据梳理生成，编号 19。</div>
+
+</div>
+
+<script>
+// ⑪ 综合分数据：score_metrics.py 2026-06-11 输出（CANN 侧），按生态深入程度分组
+const GROUPS = [
+  {name:"上手 / 环境侧", hint:"装好、跑起来、搬上来——华为投入最足的一段",
+   rows:[
+    ["K 容器/镜像搭建", .86, "高"],
+    ["G CUDA→昇腾迁移", .84, "高"],
+    ["J 安装与环境变量", .80, "高"],
+    ["A 模型转换 ATC", .75, "中高"],
+    ["S 推理服务部署", .74, "中高"],
+    ["I 版本兼容排查", .73, "中高"],
+    ["H 量化 AMCT", .69, "中高"],
+   ]},
+  {name:"训练 / 日常使用侧", hint:"跑训练、调问题——整体中高，报错码是异常弱点",
+   rows:[
+    ["Q 显存/OOM 优化", .86, "高"],
+    ["P 混合精度训练", .83, "高"],
+    ["R 精度/收敛排查", .75, "中高"],
+    ["F 分布式 HCCL", .72, "中高"],
+    ["E 报错码排查", .55, "中"],
+   ]},
+  {name:"算子 / 深处自研侧", hint:"写 kernel、调 Tiling——分数单调下滑，D 是深谷",
+   rows:[
+    ["C 算子库选型", .77, "中高"],
+    ["N 算子融合", .74, "中高"],
+    ["O 注册与框架集成", .72, "中高"],
+    ["B Profiling msprof", .70, "中高"],
+    ["L 算子精度排查", .69, "中高"],
+    ["M 动态shape/Tiling", .63, "中"],
+    ["D 自定义算子 Ascend C ↧", .41, "低"],
+   ]},
+];
+const COLOR = {"高":"var(--v5)","中高":"var(--v4)","中":"var(--v3)","低":"var(--v1)"};
+const el = document.getElementById("funnel");
+let html = "";
+for(const g of GROUPS){
+  const avg = (g.rows.reduce((s,r)=>s+r[1],0)/g.rows.length).toFixed(2);
+  html += `<div class="fgroup">${g.name} <small>· ${g.hint} · 组均值 ${avg}</small></div>`;
+  for(const [label,v,tier] of g.rows){
+    html += `<div class="frow">
+      <div class="flabel">${label} <small>${tier}</small></div>
+      <div class="fbarwrap"><div class="fbar" style="width:${(v*100).toFixed(0)}%;background:${COLOR[tier]}">${v.toFixed(2)}</div></div>
+    </div>`;
+  }
+}
+el.innerHTML = html;
+</script>
+</body>
+</html>
