@@ -110,6 +110,9 @@
   #tip .cder .slbl{font-size:9px;font-weight:800;color:#9A6A1F;letter-spacing:.3px;margin-bottom:4px;}
   #tip .cder .cfx{font-size:9.6px;color:var(--g2);background:#fff;border:1px solid #EFE2CE;border-radius:5px;padding:4px 7px;margin-bottom:5px;}
   #tip .cder .cfx b{color:#B26A12;}
+  #tip .cder .cfx .cfx2{display:block;margin-top:3px;padding-top:3px;border-top:1px dashed #EFE2CE;font-size:9.2px;color:var(--g3);}
+  #tip .cder .crat{margin-top:5px;background:#fff;border:1px solid #EFE2CE;border-radius:5px;padding:5px 7px;font-size:9.1px;color:var(--g3);line-height:1.55;}
+  #tip .cder .crat b{color:#9A4A12;} #tip .cder .crat u{text-decoration-color:#E7C99B;}
   #tip .cder .ctb{width:100%;border-collapse:collapse;font-size:9.4px;}
   #tip .cder .ctb td{padding:2.5px 4px;border-bottom:1px dashed #EFE2CE;color:var(--g2);}
   #tip .cder .ctb td:last-child{text-align:right;font-weight:800;color:var(--g1);white-space:nowrap;}
@@ -211,14 +214,15 @@ function confDeriv(k,s){
  const o=SRC_MIX[k]&&SRC_MIX[k][s]; const rw=RISKW[k]; if(!o||!rw) return '';
  const extra=o.m[3], gap=o.m[4], eff=(extra*rw.w).toFixed(1);
  let h='<div class="cder"><div class="slbl">综合置信度怎么算出来的（可复核主线）</div>';
- h+='<div class="cfx">置信度 ≈ 触达+内容质量基线 − <b>有效外推风险</b> − 留白/受阻</div>';
+ h+='<div class="cfx">置信度 ≈ 触达+内容质量基线 − <b>有效外推风险</b> − 留白/受阻<br><span class="cfx2">有效外推风险 = <b>暴露面</b>（外推占比）<b>×</b> <b>后果严重度</b>（风险权重）</span></div>';
  h+='<table class="ctb">';
- h+='<tr><td>任务风险权重<span>版本敏感 / 容错 = '+rw.s+'</span></td><td>×'+rw.w.toFixed(1)+'</td></tr>';
- h+='<tr><td>类比外推占比<span>未验证、可能错</span></td><td>'+extra+'%</td></tr>';
- h+='<tr class="ceff"><td>= 有效外推风险<span>外推占比 × 风险权重</span></td><td>'+eff+'</td></tr>';
+ h+='<tr><td>外推占比 <b>＝暴露面</b><span>这次答案踩在未验证外推上的比例</span></td><td>'+extra+'%</td></tr>';
+ h+='<tr><td>风险权重 <b>＝后果严重度</b><span>版本敏感 / 容错 = '+rw.s+'，错一次的代价</span></td><td>×'+rw.w.toFixed(1)+'</td></tr>';
+ h+='<tr class="ceff"><td>= 有效外推风险<span>暴露面 × 后果严重度</span></td><td>'+eff+'</td></tr>';
  h+='<tr><td>诚实留白 / 受阻</td><td>'+gap+'%</td></tr>';
  h+='</table>';
- h+='<div class="cnote">外推比例高 <b>≠</b> 置信度必低：要看外推落在<b>容错高</b>（选型 / 概念，错了易纠）还是<b>容错低</b>（版本 / 命令，错了即崩）的任务。<br>对比：C 外推 20%×低敏感 0.3 = <b>6.0</b> ＜ A 外推 10%×高敏感 1.0 = <b>10.0</b> → 故 C「高」反而高于 A「中高」；D 35%×1.0 = <b>35</b> 再叠加 SPA 受阻 + 留白 15% → 压到「中」。风险权重 0.3/0.6/1.0 为锚定档位，非逐 token 测得。</div></div>';
+ h+='<div class="crat"><b>为什么是「乘」不是「加」：</b>风险权重不是一项独立扣分，而是把外推的伤害<b>放大</b>。两者是放大关系——外推占比为 0 时，有效外推风险即为 0（任务再高敏感，<u>没外推就没外推风险</u>）；若改成相加，高敏感任务哪怕零外推也被白扣分，是错的。故 风险 = 暴露 × 后果。</div>';
+ h+='<div class="cnote">于是外推比例高 <b>≠</b> 置信度必低：要看外推落在<b>容错高</b>（选型 / 概念，错了易纠）还是<b>容错低</b>（版本 / 命令，错了即崩）的任务。<br>对比：C 外推 20%×低敏感 0.3 = <b>6.0</b> ＜ A 外推 10%×高敏感 1.0 = <b>10.0</b> → 故 C「高」反而高于 A「中高」；D 35%×1.0 = <b>35</b> 再叠加 SPA 受阻 + 留白 15% → 压到「中」。风险权重 0.3/0.6/1.0 为锚定档位，非逐 token 测得。</div></div>';
  return h;
 }
 function srcMixBlock(k,s){
