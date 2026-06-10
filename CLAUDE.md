@@ -111,7 +111,19 @@
 
 ~~用户要求悬浮卡片更具体~~ → **已在 `16_detailed_hover.html` 完成**：可抓取格写「抽到✓/缺失✕」，来源类格列「标题·域名·日期·版本号」，覆盖所有指标。CUDA A(TensorRT)/B(Nsight)/D(PyTorch custom ops)、CANN C(AOL/ATB) 的来源已重新检索补齐（见 16 内数据 + 下方附录）。
 - 待办：16 尚未在真实浏览器目测（本地 `python http.server` 被沙箱拦，仅用 node 跑通数据/渲染逻辑验证）。
-- 可能的后续：把 4 个已跑任务的 CUDA 侧也逐一 web_fetch 实测可抓取性（目前由搜索片段佐证，未逐一 fetch）；继续跑 22 个待跑任务。
+
+### 7a. （2026-06-10 完成）真跑 4 任务并记录问题+过程 → `task_run_log.md`
+用户要求「实际跑这些任务，把每个任务用的问题和过程记录下来（md 即可）」。已在 **`task_run_log.md`** 完整记录 A/B/C/D 四个任务：每个任务设计「本质相同、仅技术栈不同」的一对问题，按我平常解题工作流真跑 web_search / web_fetch，逐步记命中与打分。
+
+**本次真跑得到的关键修正（比旧记录更精确，⚠ 17/18 HTML 尚未同步）：**
+- **②可抓取性是「子树相关」，不是平台公共常量**。实测：`quickstart/`(A)、`modeldevpt/ptmigr/`(B `AImpug_000068`，torch_npu.profiler 完整代码+参数表) = 服务端渲染**可抓**；`doc_center/`(C-ATB) = **部分可抓**（概述+接口机制有、算子列表/调用码无）；`devaids/`(A-ATC参考)、`devguide/devtools/`(B-msprof)、`apiref/aolapi/`(C-AOL)、`devguide/opdevg/`(D-AscendC) = SPA。
+- 据此 **B、C 的 CANN ②③ 应由旧「2 / 受阻」上修**（B ②4③4、C ②4③3，均实测有正文）；**A 此前已上修**；**只有 D 仍 ②2、③受阻**（核心 how-to 整个压在 devguide/opdevg SPA，无可抓子树兜底）。
+- 即：**SPA 短板只在 D 真正咬到结果**（A/B 有可抓子树兜主路径、C 靠厚二手绕过）。中心论点更精准 = **越深入前沿开发，越同时掉进 SPA + 二手碎片 + 版本散乱三重坑**。
+- **待办**：把上述修正同步进 `17_official_site_focus.html`（目前 17 仍把 CANN B/C 记「受阻」，与 task_run_log 实测不一致，需调和）。
+
+### 7b-续. 可能的后续
+- 继续跑 22 个待跑任务（清单见下）；优先：报错码排查、分布式训练 HCCL、CUDA→昇腾迁移。
+- 把 4 个已跑任务的 CUDA 侧也逐一 web_fetch 实测可抓取性（目前 A/B fetch 过，C/D 由片段+既有记录佐证）。
 
 ## 7b. 全部待跑任务（22 个，矩阵中标"待跑"）
 
