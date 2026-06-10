@@ -471,10 +471,19 @@ const mask=document.getElementById('tipmask');
 let pinned=false;
 function positionTip(el){
  const r=el.getBoundingClientRect(), t=tip.getBoundingClientRect();
+ const M=12, GAP=10;
+ // 默认：格子下方、左缘对齐
  let left=r.left, top=r.bottom+8;
- if(left+t.width>window.innerWidth-12) left=window.innerWidth-12-t.width;
- if(left<8) left=8;
- if(top+t.height>window.innerHeight-12) top=Math.max(8,r.top-8-t.height);
+ // 若按默认会顶破右边界（典型＝最右列 ⑪），改把卡片放到格子【左侧】、纵向与格子顶对齐，
+ // 这样既不挡住触发格、也不会因卡片太高翻到格子上方盖住鼠标。
+ if(left+t.width>window.innerWidth-M){
+   const leftSide=r.left-GAP-t.width;
+   if(leftSide>=M){ left=leftSide; top=r.top; }      // 卡片整体落到格子左边，不覆盖
+   else{ left=window.innerWidth-M-t.width; }          // 实在放不下才退回右对齐钳制
+ }
+ if(left<M) left=M;
+ // 纵向兜底：超出视口底部则上移（保持水平不变，仍在格子左侧、不覆盖触发格）
+ if(top+t.height>window.innerHeight-M) top=Math.max(M, window.innerHeight-M-t.height);
  tip.style.left=left+'px'; tip.style.top=top+'px';
 }
 function showTip(html,el){
