@@ -437,18 +437,29 @@
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">给读者一个落地结论；同时与各分项并列，便于看"总分背后是哪一关贡献的"。</div></div>
 
     <div class="cderiv">
-      <h5>怎么算出来的：可复核的研判主线（非简单平均，但有公式骨架）</h5>
-      <div class="cfml">综合置信度 ≈ <b>触达 + 内容质量基线</b>（②③④ 决定）− <b>有效外推风险</b> − <b>留白 / 受阻</b><br>其中 <b>有效外推风险 = 暴露面（类比外推占比）× 后果严重度（任务风险权重）</b></div>
+      <h5>怎么算出来的：量化公式（三源噪声-OR）· 可复现 · 代入①–⑧ 直接算</h5>
+      <div class="cfml">综合 = <b>知识可得性 K</b> × <b>版本因子</b> × <b>成本因子</b><br>
+      <b>K = 1 − (1−OFF)(1−SEC)(1−OWN)</b>　← 官方/二手/自带<u>三渠道任一扛住即可答</u>（噪声-OR，取"至少一条送达"而非简单平均）<br>
+      <span style="font-size:10.5px;color:var(--g3)">OFF = ①发现 × ②抓取 × ③详尽　｜　SEC = ⑤数量 × ⑥可信　｜　OWN = ⑦　（各档先归一 nm(v)=v/5，<b>受阻渠道记 0</b>）</span><br>
+      <span style="font-size:10.5px;color:var(--g3)">版本因子 = 0.7 + 0.3·nm(④)（跨渠道 ±30%）　｜　成本因子 = 0.9 + 0.1·nm(⑧)（±10%）</span></div>
       <table>
-        <tr><td>暴露面 ＝ 类比外推占比<small>这次答案踩在"未验证外推"上的比例（来自来源构成第 4 段）</small></td><td>extra%</td></tr>
-        <tr><td>后果严重度 ＝ 任务风险权重<small>由"版本敏感 / 容错"定：高=<b>1.0</b>、中=<b>0.6</b>、低=<b>0.3</b></small></td><td>×w</td></tr>
-        <tr class="eff"><td>= 有效外推风险<small>暴露面 × 后果严重度</small></td><td>extra% × w</td></tr>
+        <tr><td>档位 cutoff（唯一人工锚点）<small>对照综合分落档</small></td><td>≥.80 高 / ≥.63 中高 / ≥.45 中 / ≥.24 低 / &lt;.24 很低</td></tr>
       </table>
-      <div class="why"><b>为什么是"乘"不是"加"：</b>风险权重不是一项独立扣分，而是把外推的伤害<b>放大</b>——两者是放大关系。判据是边界情形：<b>外推占比为 0 时，有效外推风险必须为 0</b>（任务再高敏感，<u>没外推就没有外推风险</u>）。相乘满足；若写成 <code>a·外推 + b·风险权重</code>，高敏感任务哪怕零外推也被白扣分，是错的。故采用风险评估的标准式 <b>风险 = 暴露 × 后果</b>。</div>
-      <div class="cseq">四任务据此单调一致（有效外推风险越小、置信度越高）：<br><b>C</b> 算子库选型 20%×0.3 = <b>6.0</b> → 高 ｜ <b>B</b> Profiling 13%×0.6 = <b>7.8</b> → 中高 ｜ <b>A</b> 模型转换 10%×1.0 = <b>10.0</b> → 中高 ｜ <b>D</b> 自定义算子 35%×1.0 = <b>35</b>，再叠加 SPA 受阻 + 留白 15% → 中。<br>所以"<b>外推比例高 ≠ 置信度必低</b>"：要看外推落在容错高（选型 / 概念，错了易纠）还是容错低（版本 / 命令，错了即崩）的任务。<small style="color:var(--g4)">风险权重 0.3 / 0.6 / 1.0 为<b>锚定档位</b>、外推 % 为回顾性估计，均非逐 token 测得；此式与 17 矩阵 ⑪ 悬浮的 <code>confDeriv()</code> 同源。</small></div>
+      <div class="why"><b>设计取舍：</b>① 用<b>噪声-OR</b>而非加权平均——知识只要一条渠道扛得住就能答，这正是为什么 <b>D 三渠道同时塌</b>才致命、A/B/C 靠某一条兜住仍中高；② <b>④版本 / ⑧成本是跨渠道</b>影响、作全局乘子；③ <b>⑨⑩ 不进公式</b>（产出/因变量，进了=重复加权，见 §6.5）；④ <b>受阻渠道记 0</b>＝该渠道没送达内容，<u>不是给③打 1 分</u>（矩阵显示仍保留"受阻≠低分"中性态）。</div>
+      <table style="margin-top:9px">
+        <tr><td colspan="2"><b>八格复算结果</b>（直接代入各格①–⑧ 当前分）<small>cu = CUDA ｜ ca = CANN；每格 = K × 版本 × 成本</small></td></tr>
+        <tr><td>A 模型转换<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.93×.88×.97=.76</small></td><td>cu .94 高 ｜ ca .76 中高</td></tr>
+        <tr><td>B Profiling<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.88×.88×.94=.72</small></td><td>cu .94 高 ｜ ca .72 中高</td></tr>
+        <tr><td>C 算子库选型<small>cu: K1.00×1.0×1.0=1.00 ｜ ca: K.87×.88×1.0=.77</small></td><td>cu 1.00 高 ｜ ca .77 中高</td></tr>
+        <tr class="eff"><td>D 自定义算子<small>cu: K1.00×.94×1.0=.88 ｜ ca: K.50×.82×.92=.37（三渠道同时塌）</small></td><td>cu .88 高 ｜ ca .37 低</td></tr>
+      </table>
+      <div class="cseq"><b>本次按公式下修的两格（旧分系"整体研判"、偏乐观；新分纯由①–⑧ 代入、可复现）：</b><br>
+      <b>C.cann 旧「高」→ 中高（.77）</b>：自带⑦仅 3（AOL/ATB 命名需查证）、官方③仅 3（ATB 概述偏概念），撑不到「高」(≥.80)。<br>
+      <b>D.cann 旧「中」→ 低（.37）</b>：官方受阻 OFF≈0、二手稀 SEC≈.16、自带弱 OWN .40 → K 仅 .50，无一条渠道扛得住，到不了「中」(≥.45)。<br>
+      <b>自洽校验</b>：来源构成前三段「有把握来源」之和与公式 K 同量级（D.cann 50% ≈ K .50；C.cann 75% ≈ K .87；A.cann 90% ≈ K .93）——两套独立估计互证。<small style="color:var(--g4)">①–⑧ 分为锚定/半实测、cutoff 为人工锚点，均非逐 token 测得；此式与 17 矩阵 ⑪ 悬浮的 <code>confCompute()/confDeriv()</code> 完全同源、逐字一致。</small></div>
     </div>
 
-    <div class="rubric"><span class="lv">5/高</span> 各关均强、产出可锁可复现 ｜ <span class="lv">4/中高</span> 主路径强、仅深层短板、可绕过 ｜ <span class="lv">3/中</span> 多重折扣叠加但仍可作答 ｜ <span class="lv">2/低</span> 多关短板叠加、可用性差 ｜ <span class="lv">1</span> 基本不可用。<b>非简单平均</b>，为整体研判。</div>
+    <div class="rubric"><span class="lv">5/高</span> 各关均强、产出可锁可复现（综合≥.80）｜ <span class="lv">4/中高</span> 主路径强、仅深层短板、可绕过（≥.63）｜ <span class="lv">3/中</span> 多重折扣叠加但仍可作答（≥.45）｜ <span class="lv">2/低</span> 多关短板叠加、可用性差（≥.24）｜ <span class="lv">1/很低</span> 基本不可用（&lt;.24）。<b>非简单平均</b>，由上方<b>三源噪声-OR 公式</b>代入①–⑧ 算出、落 cutoff 档。</div>
   </div>
 
   <!-- 5. 评分怎么打 -->

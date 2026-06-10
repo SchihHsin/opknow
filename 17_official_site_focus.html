@@ -104,6 +104,8 @@
   #tip .smix .sleg b{color:var(--g1);font-weight:700;}
   #tip .smix .wn{color:#C8102E;font-weight:700;}
   #tip .smix .snote{margin-top:6px;font-size:9.3px;color:var(--g3);line-height:1.55;}
+  #tip .smix .sxk{margin-top:6px;background:#F0FAF4;border:1px solid #CBE9D7;border-radius:5px;padding:5px 7px;font-size:9px;color:#1d6b4a;line-height:1.5;}
+  #tip .smix .sxk b{color:#13502f;font-weight:800;}
   #tip .smix .scav{margin-top:5px;padding-top:5px;border-top:1px dashed #E4E7EE;font-size:8.9px;color:var(--g4);line-height:1.5;}
   #tip .smix .scav b{color:var(--g1);}
   #tip .cder{margin-top:7px;background:#FFFBF5;border:1px solid #EFD9BE;border-radius:7px;padding:7px 9px;}
@@ -119,6 +121,8 @@
   #tip .cder .ctb td span{display:block;font-size:8.3px;color:var(--g4);font-weight:400;}
   #tip .cder .ctb tr.ceff td{background:#FBEFD8;color:#9A4A12;font-weight:800;border-bottom:1px solid #E7C99B;}
   #tip .cder .ctb tr.ceff td:last-child{color:#9A4A12;}
+  #tip .cder .ctb tr.cfin td{background:#F0FAF4;color:#1d6b4a;font-weight:800;border-top:1px solid #CDEBD9;}
+  #tip .cder .ctb tr.cfin td:last-child{color:#04603A;}
   #tip .cder .ctb tr:last-child td{border-bottom:none;}
   #tip .cder .cnote{margin-top:5px;font-size:9.1px;color:var(--g3);line-height:1.55;}
   #tip .cder .cnote b{color:var(--g1);}
@@ -207,22 +211,40 @@ const SRC_MIX={
     cann:{m:[15,22,13,35,15],n:'核心 how-to SPA 受阻、二手稀、自带弱 → 大量靠类比 CUDA/Ascend C 模式外推（风险最高），最抓不到处诚实留白。'}}
 };
 const SEGDEF=[['off','官方一手'],['sec','二手社区'],['own','自带·有把握'],['extra','类比外推·未验证'],['gap','诚实留白·受阻']];
-// 任务风险权重：由「版本敏感度 / 容错」定——错了即崩(高敏感)的任务，外推的代价更大。
-const RISKW={A:{s:'高',w:1.0},B:{s:'中',w:0.6},C:{s:'低',w:0.3},D:{s:'高',w:1.0}};
-// 综合置信度(⑪)的可复核研判主线：把上面的「类比外推」按任务风险加权，写清它怎么影响置信度。
+// 综合置信度(⑪) = 量化公式，从子指标①②③④⑤⑥⑦⑧ 直接代入算出（可复现，不再凭整体研判）。
+// 模型：三源噪声-OR——知识有官方/二手/自带三条渠道，任一扛住即可答（故 D「三渠道同时塌」才致命）。
+// nm: 归一 5→1.0…1→0.2；受阻→0（该渠道送达失败，仅用于综合，不改矩阵③的中性受阻态）。
+function nmCls(c){ return c==='blk'?0 : (+LV[c])/5; }
+function confCompute(k,s){
+ const r=ROWS[k][s], n=i=>nmCls(r[i].c);
+ const OFF=n(0)*n(1)*n(2);        // 官方：发现×抓取×详尽
+ const SEC=n(4)*n(5);             // 二手：数量×可信
+ const OWN=n(6);                  // 自带知识
+ const K=1-(1-OFF)*(1-SEC)*(1-OWN); // 噪声-OR：任一渠道强→K 高
+ const vf=0.7+0.3*n(3);           // 版本因子（跨渠道全局拖累 ±30%）
+ const cf=0.9+0.1*n(7);           // 成本因子（轻微调节 ±10%）
+ const score=K*vf*cf;
+ const band = score>=0.80?['高',5,'v5'] : score>=0.63?['中高',4,'v4'] : score>=0.45?['中',3,'v3'] : score>=0.24?['低',2,'v2'] : ['很低',1,'v1'];
+ return {OFF,SEC,OWN,K,vf,cf,score,band};
+}
 function confDeriv(k,s){
- const o=SRC_MIX[k]&&SRC_MIX[k][s]; const rw=RISKW[k]; if(!o||!rw) return '';
- const extra=o.m[3], gap=o.m[4], eff=(extra*rw.w).toFixed(1);
- let h='<div class="cder"><div class="slbl">综合置信度怎么算出来的（可复核主线）</div>';
- h+='<div class="cfx">置信度 ≈ 触达+内容质量基线 − <b>有效外推风险</b> − 留白/受阻<br><span class="cfx2">有效外推风险 = <b>暴露面</b>（外推占比）<b>×</b> <b>后果严重度</b>（风险权重）</span></div>';
+ const r=ROWS[k][s], x=confCompute(k,s);
+ const lv=i=>r[i].c==='blk'?'受阻':LV[r[i].c];          // 原始档(1–5或受阻)
+ const nv=i=>nmCls(r[i].c).toFixed(r[i].c==='blk'?0:2);  // 归一值
+ const f2=v=>v.toFixed(2);
+ let h='<div class="cder"><div class="slbl">综合置信度怎么算出来的（量化公式 · 代入①–⑧ 实时算出）</div>';
+ h+='<div class="cfx">综合 = <b>知识可得性 K</b> × <b>版本因子</b> × <b>成本因子</b><br><span class="cfx2">K = 1−(1−<b>OFF</b>)(1−<b>SEC</b>)(1−<b>OWN</b>)　← 三渠道任一扛住即可答（噪声-OR）</span></div>';
  h+='<table class="ctb">';
- h+='<tr><td>外推占比 <b>＝暴露面</b><span>这次答案踩在未验证外推上的比例</span></td><td>'+extra+'%</td></tr>';
- h+='<tr><td>风险权重 <b>＝后果严重度</b><span>版本敏感 / 容错 = '+rw.s+'，错一次的代价</span></td><td>×'+rw.w.toFixed(1)+'</td></tr>';
- h+='<tr class="ceff"><td>= 有效外推风险<span>暴露面 × 后果严重度</span></td><td>'+eff+'</td></tr>';
- h+='<tr><td>诚实留白 / 受阻</td><td>'+gap+'%</td></tr>';
+ h+='<tr><td>OFF 官方渠道<span>①发现×②抓取×③详尽 = '+nv(0)+'×'+nv(1)+'×'+nv(2)+'（档 '+lv(0)+'/'+lv(1)+'/'+lv(2)+'）</span></td><td>'+f2(x.OFF)+'</td></tr>';
+ h+='<tr><td>SEC 二手渠道<span>⑤数量×⑥可信 = '+nv(4)+'×'+nv(5)+'（档 '+lv(4)+'/'+lv(5)+'）</span></td><td>'+f2(x.SEC)+'</td></tr>';
+ h+='<tr><td>OWN 自带知识<span>⑦（档 '+lv(6)+'）</span></td><td>'+f2(x.OWN)+'</td></tr>';
+ h+='<tr class="ceff"><td>知识可得性 K<span>= 1−(1−OFF)(1−SEC)(1−OWN)</span></td><td>'+f2(x.K)+'</td></tr>';
+ h+='<tr><td>× 版本因子<span>0.7+0.3×④归一('+nv(3)+'，档 '+lv(3)+')</span></td><td>×'+f2(x.vf)+'</td></tr>';
+ h+='<tr><td>× 成本因子<span>0.9+0.1×⑧归一('+nv(7)+'，档 '+lv(7)+')</span></td><td>×'+f2(x.cf)+'</td></tr>';
+ h+='<tr class="cfin"><td>= 综合置信度<span>对照档位 ≥.80高 / ≥.63中高 / ≥.45中 / ≥.24低</span></td><td>'+x.score.toFixed(2)+' → '+x.band[0]+'</td></tr>';
  h+='</table>';
- h+='<div class="crat"><b>为什么是「乘」不是「加」：</b>风险权重不是一项独立扣分，而是把外推的伤害<b>放大</b>。两者是放大关系——外推占比为 0 时，有效外推风险即为 0（任务再高敏感，<u>没外推就没外推风险</u>）；若改成相加，高敏感任务哪怕零外推也被白扣分，是错的。故 风险 = 暴露 × 后果。</div>';
- h+='<div class="cnote">于是外推比例高 <b>≠</b> 置信度必低：要看外推落在<b>容错高</b>（选型 / 概念，错了易纠）还是<b>容错低</b>（版本 / 命令，错了即崩）的任务。<br>对比：C 外推 20%×低敏感 0.3 = <b>6.0</b> ＜ A 外推 10%×高敏感 1.0 = <b>10.0</b> → 故 C「高」反而高于 A「中高」；D 35%×1.0 = <b>35</b> 再叠加 SPA 受阻 + 留白 15% → 压到「中」。风险权重 0.3/0.6/1.0 为锚定档位，非逐 token 测得。</div></div>';
+ h+='<div class="crat"><b>为什么这么算：</b>知识有<b>官方/二手/自带</b>三条渠道，<u>任一条扛得住就能答</u>，故用噪声-OR 取「至少一条送达」而非简单平均——这正是为什么 <b>D 三渠道同时塌</b>才致命、A/B/C 靠某一条兜住仍中高。④版本、⑧成本是<b>跨渠道</b>影响，作全局乘子。<b>⑨⑩ 不进公式</b>（它们是产出/因变量，进了=重复加权）；<b>受阻渠道记 0</b>（=没送达内容，非给③打 1 分）。档位 cutoff 是唯一人工锚点。</div>';
+ h+='<div class="cnote">据此公式复算：A.cann .76、B.cann .72、C.cann .77 → 均<b>中高</b>；D.cann .37 → <b>低</b>；四个 CUDA .88–1.0 → <b>高</b>。其中 <b>C.cann（旧「高」→中高）</b>、<b>D.cann（旧「中」→低）</b>为本次按公式<b>下修</b>的两格——旧分系整体研判、偏乐观；新分纯由①–⑧ 代入，可复现。</div></div>';
  return h;
 }
 function srcMixBlock(k,s){
@@ -234,7 +256,9 @@ function srcMixBlock(k,s){
  SEGDEF.forEach((d,i)=>{ const wn=(d[0]==='extra')?' class="wn"':''; leg+='<span><i class="'+d[0]+'"></i><span'+wn+'>'+d[1]+' <b>'+m[i]+'%</b></span></span>'; });
  let h='<div class="smix"><div class="slbl">这次回答的来源构成（回顾性估计 · 与综合置信度互证）</div>';
  h+='<div class="sbar">'+bar+'</div><div class="sleg">'+leg+'</div>';
+ const avail=m[0]+m[1]+m[2], K100=Math.round(confCompute(k,s).K*100);
  h+='<div class="snote">'+o.n+'</div>';
+ h+='<div class="sxk">自洽校验：前三段「有把握来源」之和 = <b>'+avail+'%</b>，与综合公式的<b>知识可得性 K = '+K100+'%</b> 同量级——两套独立估计（来源构成 vs 噪声-OR）互相印证。</div>';
  h+='<div class="scav"><b>「凭空瞎编」≈ 0</b>（拿不准不杜撰命令/版本/URL）；但<span class="wn">第 4 段「类比外推·未验证」≠ 0</span>——按 CUDA/通用模式推、未经证实、可能错，是最该警惕处。★五段为回顾性估计、非逐 token 测量，外推段尤难自量。</div></div>';
  return h;
 }
@@ -314,7 +338,7 @@ const ROWS={
    N('v5','1搜','1 次确认库名。'),
    N('v4','4','选型与版本基本无关。'),
    N('v4','4','映射清晰：cuBLAS↔AOL-BLAS、cuDNN↔AOL-NN、transformer↔ATB，结论可用。'),
-   N('v5','高','通识题，确认库名后即高置信。')]},
+   N('v4','中高','量化公式复算 = K .87 × 版本因子 .88 × 成本 1.0 = .77 → 中高（旧「高」系整体研判、偏乐观；新分由①–⑧ 代入：自带⑦仅 3（AOL/ATB 命名需查）、官方③仅 3（ATB 概述偏概念），撑不到「高」）。')]},
  D:{name:'自定义算子开发',
   cuda:[
    N('v5','5','docs.pytorch.org 官方教程置顶。',{srcs:[['Custom C++ and CUDA Operators','docs.pytorch.org/tutorials/advanced/cpp_custom_ops',' ','PyTorch 2.12'],['Custom C++ and CUDA Extensions','docs.pytorch.org/tutorials/advanced/cpp_extension',' ',' ']]}),
@@ -339,13 +363,13 @@ const ROWS={
    N('v1','2搜✗','2 轮检索 + 1 次 web_fetch 失败（SPA），成本最高。',{warn:'唯一触发多轮检索 + 抓取失败的任务。'}),
    N('v2','2','未能锁定具体 CANN 版本。',{warn:'多版本并存 + 正文抽不出，版本无法定死。'}),
    N('v3','3','链路骨架可述（msopgen → 编译 custom_opp_*.run → 部署 OPP vendors/customize），但 Kernel 命令细节无法逐条确证。'),
-   N('v3','中','四重折扣叠加（二手稀 + 官方难找 + SPA + 多版本）。')]}
+   N('v2','低','量化公式复算 = K .50 × 版本因子 .82 × 成本 .92 = .37 → 低（旧「中」系整体研判、偏乐观）。三渠道同时塌：官方受阻 OFF≈0、二手稀 SEC .16、自带弱 OWN .40 → 知识可得性 K 仅 .50，无一条扛得住。')]}
 };
 const TASKOVER={
  A:{q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om',cu:'高',ca:'中高',v:'差距小，两边都好查；官方 quickstart 子树实测可抓、命令统一，仅深层 AIPP 参考 SPA。'},
  B:{q:'Nsight ｜ msprof / Ascend PyTorch Profiler',cu:'高',ca:'中高',v:'中等偏小差距；官方 PyTorch Profiler 子树实测可抓、对标 GPU，仅 msprof 原生参考 SPA。'},
- C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。'},
- D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'中',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。'}
+ C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'中高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。CANN 侧公式复算 .77→中高（自带⑦/官方③ 各仅 3，撑不到「高」）。'},
+ D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'低',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。CANN 侧公式复算 .37→低（三渠道同时塌、K 仅 .50）。'}
 };
 const CATS=[
  {name:'1 环境与安装',tasks:[{t:'版本兼容排查'},{t:'安装与环境变量'},{t:'容器 / 镜像搭建'}]},
