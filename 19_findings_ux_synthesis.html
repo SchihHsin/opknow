@@ -128,9 +128,9 @@ ul.tight li{margin-bottom:6px}
 </div></div></div>
 
 <div class="card"><div class="prob"><span class="prob-id">3</span><div class="body">
-  <h3>二手生态「少而同质」：条数少、扎堆 CSDN、互抄回声、英文内容近乎缺席</h3>
-  <p>CANN 侧二手来源普遍 2–3 条且集中在 CSDN/华为云 bbs，多次出现「CSDN×2 互抄」（独立性因子被罚）；知乎多次 403 抓不到。对照 CUDA：StackOverflow、独立技术博客、大学课程、英文教程构成多平台互证网。二手是官方文档之外唯一的「绕行通道」，这条通道窄，官方文档的任何缺陷就无法被社区内容补偿。</p>
-  <div class="evline"><b>证据</b>：⑤二手丰富度 CANN 19 格均 ≤4、K/M/N/S 仅 2；⑥ 一致性多为 mid；independence_factor 实罚 B.cann（CSDN×2）。注意时效<b>不是</b>短板——实测 CANN 二手多为 2024–2026 新文。</div>
+  <h3>二手生态「少而同质」，且各平台对 Agent 的可抓取程度参差：有的抓得全、有的整站抓不到</h3>
+  <p>CANN 侧二手来源普遍 2–3 条且集中在 CSDN/华为云 bbs，多次出现「CSDN×2 互抄」（独立性因子被罚）。叠加一个容易被忽略的维度——<b>二手平台本身的可抓性分层</b>：CSDN、博客园、华为云 bbs、segmentfault、阿里云/天翼云开发者社区实测可整页抓全；<b>知乎反爬 403</b>，实测多次取不到正文、只剩搜索结果摘要可用。后果是双重的：① 对 Agent 而言<b>有效二手 = 条数 × 可抓性</b>，知乎上的优质长文对 AI 助手近乎不存在，Agent 视角的二手生态比人眼看到的更窄；② 「可抓的恰好是 CSDN」反过来加剧了同质化——Agent 能用的来源被进一步压向单一平台。对照 CUDA：StackOverflow、独立技术博客、大学课程、英文教程构成多平台互证网且基本可抓。二手是官方文档之外唯一的「绕行通道」，这条通道窄，官方文档的任何缺陷就无法被社区内容补偿。</p>
+  <div class="evline"><b>证据</b>：⑤二手丰富度 CANN 19 格均 ≤4、K/M/N/S 仅 2；⑥ 一致性多为 mid；independence_factor 实罚 B.cann（CSDN×2）。知乎 403 见 N/O/Q 三任务 RAW 注记（O 明确「未取得不计」，不进 ⑤⑥）；抓取失败按 ⑧ 公式 <code>4·fetch_fail</code> 重罚。注意时效<b>不是</b>短板——实测 CANN 二手多为 2024–2026 新文。</div>
 </div></div></div>
 
 <div class="card"><div class="prob"><span class="prob-id">4</span><div class="body">
@@ -239,7 +239,8 @@ ul.tight li{margin-bottom:6px}
     <div class="who">抬 ⑤⑥ 二手生态 · 慢变量、需运营</div>
     <h3>6. 二手生态扶持：把「少而同质」变「多平台互证」</h3>
     <ul class="tight">
-      <li>官方认证教程计划：鼓励在 CSDN <b>之外</b>的平台（知乎专栏、个人博客、B站、英文 Medium/dev.to）产出带版本号的完整教程——独立性因子实测在罚「CSDN×2 回声」。</li>
+      <li>官方认证教程计划：鼓励在 CSDN <b>之外</b>的平台（个人博客、英文 Medium/dev.to 等）产出带版本号的完整教程——独立性因子实测在罚「CSDN×2 回声」。</li>
+      <li><b>选平台先看 Agent 可抓性</b>：实测知乎反爬 403（N/O/Q 三任务均未取得正文）——优质教程发在知乎，对 AI 助手近乎不存在；CSDN/博客园/华为云 bbs/segmentfault/云厂商社区实测可整页抓取。扶持内容应优先落在可抓平台，或硬性要求同步一份到可抓渠道（如官方博客/gitee 仓 markdown）。</li>
       <li>每篇扶持内容硬性要求：注明 CANN 版本 + 完整可复制命令 + 发表日期（这三项正是 ⑤⑥⑨⑩ 的得分点）。</li>
       <li>优先覆盖漏斗深水区（算子开发、Tiling、报错案例集），上手侧已经不缺。</li>
     </ul>
