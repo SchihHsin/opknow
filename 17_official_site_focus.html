@@ -72,6 +72,15 @@
   #tip .src .vr{color:var(--hw);font-weight:700;}
   #tip .ptip{margin-top:6px;color:#B91C1C;background:#FEF2F2;border:1px solid #F6D6D6;border-radius:7px;padding:7px 10px;font-size:10.5px;}
   #tip .ptip::before{content:'⚠ 问题：';font-weight:800;}
+  #tip .rub{margin-top:7px;background:#FAFBFC;border:1px solid var(--g6);border-radius:7px;padding:6px 9px;}
+  #tip .rub .rlbl{font-size:9px;font-weight:800;color:var(--g4);letter-spacing:.3px;margin-bottom:3px;}
+  #tip .rub .rlv{font-size:9.8px;line-height:1.5;color:var(--g4);padding:1.5px 0;display:flex;gap:6px;opacity:.62;}
+  #tip .rub .rlv .lv{font-weight:800;color:var(--g3);min-width:30px;flex-shrink:0;}
+  #tip .rub .rlv.on{opacity:1;color:var(--g1);font-weight:600;}
+  #tip .rub .rlv.on .lv{color:#fff;background:var(--g1);border-radius:4px;text-align:center;}
+  #tip .rub .rlv code{background:#fff;border:1px solid #e2e6ee;border-radius:3px;padding:0 2px;font-size:8.8px;}
+  #tip .rub .rwhy{margin-top:4px;padding-top:4px;border-top:1px dashed #E4E7EE;font-size:9.5px;color:var(--g3);}
+  #tip .rub .rwhy b{color:var(--g1);}
 </style>
 </head>
 <body>
@@ -128,6 +137,21 @@
 <script>
 const COLS=['官方可发现性','官方可抓取性','官方正文详尽度','版本清晰度','二手数量','二手可信度 / 一致性','模型自带知识','检索成本','版本可锁定性','步骤可复现性','综合置信度'];
 // 每格对象：{c:色,d:显示文本,t:主述,got:抽到,miss:缺失,vers:版本号串,srcs:[[标题,域名,日期,版本]],warn:问题}
+// 每列的评分标尺（5→1 锚点，与方法论 18 §4 一致）。用于回答「为什么是这个分」。
+const RUBRIC=[
+ [['5','首屏首条即官方、一轮命中'],['4','1 搜命中官方、但非绝对置顶（夹在二手中）'],['3','要翻页或加限定词才稳定命中官方'],['2','官方排不到首屏、靠二手关键词二次检索才定位'],['1','多轮仍难浮出官方源']],
+ [['5','静态 HTML、正文/参数表/命令全抓到（CUDA docs）'],['4','入门/how-to 子树服务端渲染、正文可抓（<code>quickstart/</code>、<code>modeldevpt/</code>）'],['3','部分可抓：概述/接口机制有、算子列表/调用码缺（<code>doc_center</code> ATB）'],['2','核心页落在 SPA 子树（<code>devguide/opdevg/</code>、<code>apiref/</code>）且无可抓子树兜底'],['1','robots 全拦/完全抓不到']],
+ [['5','正文含完整参数/分步命令/JSON，照抄即用'],['4','主路径正文详尽、仅穷尽参考表缺'],['3','有正文但偏概述、要东拼西凑'],['2','仅 meta/片段'],['1','仅概述、缺关键细节']],
+ [['5','单一主线版本、对应清楚'],['4','多版本但官方列出支持矩阵、可对照'],['3','需同时定芯片+框架版本、部分可锁'],['2','多版本号并存散乱、需自行判断该用哪版'],['1','版本信息缺失/混乱']],
+ [['5','多源、易找、覆盖该任务核心'],['4','知乎/阿里云/博客园/华为云较丰富'],['3','有但零散、比 CUDA 少'],['2','仅零星 CSDN/博客园/MindSpore'],['1','寥寥几篇、难覆盖']],
+ [['5','权威、近期、多源互证'],['4','命令骨架一致、差异主要在版本号'],['3','基本一致但深度参差、需交叉核对'],['2','各源版本/写法不一、难交叉印证'],['1','陈旧/矛盾/来源存疑']],
+ [['5','覆盖密集、可凭知识直接答且大体可靠'],['4','流程熟悉、可凭自带知识给骨架'],['3','有概念但细节/版本需检索补'],['2','自带知识弱、不敢凭记忆给命令'],['1','几乎只能现查、自带知识易过时']],
+ [['5','1 轮内搞定'],['4','1 搜 + 偶尔一次抓取'],['3','数轮 + 少量抓取'],['2','多轮检索'],['1','多轮反复 + 抓取失败（SPA），成本最高']],
+ [['5','能写出确切版本号 + opset'],['4','工具版本基本可定'],['3','能给范围/主版本、部分可锁'],['2','多版本 + 正文抽不出、无法定死'],['1','只能模糊带过']],
+ [['5','命令照抄即跑'],['4','命令完整、替好参数即可照抄'],['3','大体能跑、需小修/部分依赖环境'],['2','仅骨架可述、细节无法确证'],['1','缺步骤/仅示意']],
+ [['5','各关均强、产出可锁可复现（显示「高」）'],['4','主路径强、仅深层短板、可绕过（显示「中高」）'],['3','多重折扣叠加但仍可作答（显示「中」）'],['2','多关短板叠加、可用性差'],['1','基本不可用']]
+];
+const LV={v5:'5',v4:'4',v3:'3',v2:'2',v1:'1'}; // blk→受阻 单独处理
 const N=(c,d,t,extra)=>Object.assign({c:c,d:d,t:t},extra||{});
 const ROWS={
  A:{name:'模型转换 / 导出',
@@ -286,11 +310,30 @@ function srcRow(s){
  if(s[3]&&s[3].trim()) meta+=' · <span class="vr">'+s[3].trim()+'</span>';
  return '<div class="src"><span class="nm">'+s[0]+'</span><span class="meta">'+meta+'</span></div>';
 }
+function rubBlock(ci,c){
+ const scale=RUBRIC[ci]; if(!scale) return '';
+ const lvl=LV[c.c]||null; // null = 受阻(blk)
+ let h='<div class="rub"><div class="rlbl">评分标尺 · 为什么是「'+c.d+'」（依据方法论 §4 锚点）</div>';
+ for(const [lv,txt] of scale){
+   const on=(lvl===lv)?' on':'';
+   h+='<div class="rlv'+on+'"><span class="lv">'+lv+'</span><span>'+txt+'</span></div>';
+ }
+ let why;
+ if(lvl===null){
+   why='本格 <b>受阻</b>：官方正文为 SPA、抓不到 → 记<b>中性受阻态</b>，不按推断打分（受阻 ≠ 低分）。';
+ }else{
+   why='本格落在<b>第 '+lvl+' 档</b>（上方高亮）；具体命中依据见顶部叙述'+(c.got?'与「抽到/缺失」':'')+(c.srcs?'、「具体来源」':'')+'。';
+   if(ci===10) why+=' ⑪ 综合为各关<b>整体研判</b>、非分项简单平均。';
+ }
+ h+='<div class="rwhy">'+why+'</div></div>';
+ return h;
+}
 function tipCell(k,s,ci){
  const r=ROWS[k],c=r[s][ci],stack=(s==='cuda')?'CUDA / NVIDIA':'CANN / 昇腾';
  let html='<div class="th">'+k+' · '+r.name+' — '+stack+'</div>';
  html+='<div class="ti">'+COLS[ci]+' <span class="sc '+c.c+'">'+c.d+'</span></div>';
  html+='<div class="body">'+c.t+'</div>';
+ html+=rubBlock(ci,c);
  if(c.got) html+='<div class="got">'+c.got+'</div>';
  if(c.miss) html+='<div class="miss">'+c.miss+'</div>';
  if(c.vers) html+='<div class="vers">'+c.vers+'</div>';
