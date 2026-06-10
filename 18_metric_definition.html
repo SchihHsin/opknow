@@ -239,6 +239,18 @@
   </table>
   <p class="note">A→D 恰好"越来越深入、越来越前沿"。真跑结果印证了抽样意图：<b>A/B/C 两栈差距小，D 差距被拉满</b>——这条结论可信，正因为底层是<b>一张求全的清单 + 一次有意铺开的抽样</b>，不是凑巧挑了几个。</p>
 
+  <p class="note" style="margin-top:18px"><b>另一种正交的切法：按「谁在用昇腾」分 4 类使用者角色。</b>上面 7 大类是<b>工作流阶段</b>（纵向生命周期）；这里换一条轴——<b>按使用者人群</b>（横向角色）。两者是<b>同一张 26 任务清单</b>的两个透镜：一个任务属于某个生命周期阶段，同时被一个或多个角色做。<b>角色的切法独立于「跑了哪几个任务」</b>——以官方 API 分层为骨（AscendCL ｜ 框架插件 torch_npu / ATC / GE 图 ｜ Ascend C ｜ 最底层资源），从「现实里到底有几种人在用昇腾」推出，而不是从已跑任务倒推：</p>
+  <table class="ttab">
+    <thead><tr><th style="width:152px">使用者角色（对的 API 层）</th><th>会做的任务束（从 26 清单按职责挑，多对多）</th></tr></thead>
+    <tbody>
+      <tr><td><b>① 应用开发者</b><br><small style="color:var(--g4)">AscendCL / 高层库 · 上层推理应用，不碰底层、不做框架迁移</small></td><td>推理服务部署 · 动态 batch / shape 推理 · <b style="color:var(--hw)">算子库选型 (C)</b> · 量化 · 报错码 / 异常排查 · 安装与环境变量 · 概念心智模型对照</td></tr>
+      <tr><td><b>② 模型 / 框架迁移工程师</b><br><small style="color:var(--g4)">torch_npu · ATC · GE 图 · 迁移与转换，一般不写 kernel</small></td><td><b style="color:var(--hw)">模型转换 / 导出 (A)</b> · CUDA→昇腾迁移 · 跨芯片迁移 · 注册与框架集成 · 分布式训练配置 · 混合精度训练 · 显存 / OOM 优化 · 精度 / 收敛排查 · 版本兼容排查 · 容器 / 镜像搭建</td></tr>
+      <tr><td><b>③ 算子开发者</b><br><small style="color:var(--g4)">Ascend C kernel · 现成算子不够用 / 性能不达标才介入，最深</small></td><td><b style="color:var(--hw)">自定义算子开发 (D)</b> · 算子精度排查 · 动态 shape / Tiling · 算子融合 · 注册与框架集成 · 内存越界定位</td></tr>
+      <tr><td><b>④ 系统调优 / 生态贡献者</b><br><small style="color:var(--g4)">最底层资源 · 通信 · 编译链 · 极致调优 + 往社区贡献</small></td><td><b style="color:var(--hw)">Profiling 定位瓶颈 (B)</b> · 访存 / occupancy 优化 · 计算与传输重叠 · 多卡通信优化 · 算子融合 · 分布式训练配置</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><b>多对多、且独立于已跑：</b>注册与框架集成被 ②③ 共有、算子融合被 ③④ 共有、分布式训练被 ②④ 共有——一个任务可被多个角色做、一个角色做一束任务。表里标 <b style="color:var(--hw)">(A/B/C/D)</b> 的只是该任务身上<b>「已实测」的状态标</b>，<b>不是角色的定义</b>：先按「有几种人」把角色独立切出来，任务再按职责挂上去；某任务跑没跑，与它属于哪个角色无关。这正是把「笼统任务」按<b>真实使用者</b>细化的那一层。</p>
+
   <!-- 2. 问题怎么形成 -->
   <h2 id="s2">2 · 问题是怎么形成的 <span class="en">how the question pairs were designed</span></h2>
   <p class="note">每个任务编成<b>一对</b>问题，守一条铁律：<b>开发意图本质相同，只换技术栈</b>——CUDA 一条、昇腾一条，其余全对齐（同场景、同样索要"完整步骤 + 可照抄命令/代码"）。这样两栏的差异才能归因到"<b>栈 / 生态</b>"，而不是"问题问得不一样"。三个设计要点：</p>
