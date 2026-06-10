@@ -241,17 +241,31 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
       <li>做一个「配套查询器」：输入芯片型号 + torch 版本 → 输出 CANN/driver/torch_npu 的<b>唯一</b>配套组合（I 任务实测要人肉对 6 个版本号、双轴矩阵）。</li>
       <li>页面顶部显式声明「本文适用 CANN x.y，最后验证日期」——这是 AI 引用时判断时效的直接信号。</li>
     </ul>
-    <div class="demotitle">Demo · 配套查询器长这样——下拉框可以真的点选 <span class="mockdisc">占位数据，非真实配套</span></div>
+    <div class="demotitle">Demo · 左：现状的版本迷宫（实测）；右：建议的配套查询器——下拉框可以真的点选 <span class="mockdisc">右侧为示意，占位数据非真实配套</span></div>
 <div class="demo">
-  <div class="dnote">现状（I 任务实测）：CANN↔driver↔torch↔torch_npu 配套要在 6 个并存版本号、双轴矩阵里人肉对。建议形态：两次点选 → <b>唯一</b>答案 + 可复制安装命令 + 最后验证日期。</div>
-  <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/compat-picker（示意 URL）</span></div>
-  <div class="bbody">
-    <div class="picker">
-      <div><label>芯片 / 整机</label><select id="pkChip"><option>Atlas 800T A2</option><option>Atlas 300I Duo</option></select></div>
-      <div><label>PyTorch 版本</label><select id="pkTorch"><option>2.1.0</option><option>2.6.0</option></select></div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ 现状 · 同一篇文档散在多棵版本树，配套要跨三个站自己拼（A / I 任务实测）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">搜索：hiascend atc 模型转换（实测命中形态）</span></div>
+      <div class="bbody" style="font-size:12px">
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC2</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/canncommercial/<b>80RC2</b>/…/quickstart_18_0012.html（实测 URL）</span></div>
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC3</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/canncommercial/<b>80RC3</b>/…/quickstart_18_0010.html（实测 URL）</span></div>
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">社区版 800alpha001</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/CANNCommunityEdition/<b>800alpha001</b>/…/quickstart_18_0010.html（实测 URL）</span></div>
+        <p style="color:#999;font-size:11.5px;margin-top:8px">同一篇内容在三棵版本树各一份、互不指向 canonical——人和 AI 都随机落进某一版。<br>配套关系另散在三处（I 任务实测）：gitee 仓 README ＋ PyPI 页 ＋ hiascend 配套表，driver↔CANN↔torch↔torch_npu 双轴、<b>6 个版本号人肉对</b>。</p>
+      </div></div>
     </div>
-    <div class="combo" id="pkOut"></div>
-  </div></div>
+    <div class="good">
+      <div class="duolab">✓ 建议 · 两次点选 → 唯一答案 + 可复制命令 + 最后验证日期</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/compat-picker（示意 URL）</span></div>
+      <div class="bbody">
+        <div class="picker">
+          <div><label>芯片 / 整机</label><select id="pkChip"><option>Atlas 800T A2</option><option>Atlas 300I Duo</option></select></div>
+          <div><label>PyTorch 版本</label><select id="pkTorch"><option>2.1.0</option><option>2.6.0</option></select></div>
+        </div>
+        <div class="combo" id="pkOut"></div>
+      </div></div>
+    </div>
+  </div>
 </div>
     <div class="why">为什么第一：④ 是唯一全局性短板（8 格 2 分），其它问题都是局部的；且版本错误产出的答案「看起来对、跑不通」，是最伤信任的失败。</div>
   </div>
