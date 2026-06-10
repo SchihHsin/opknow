@@ -44,6 +44,8 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3f3f
 .prob p{font-size:13.5px}
 .evline{font-size:12.5px;color:#4a7a00;background:#F4FAEA;border-left:3px solid var(--nv);padding:6px 10px;border-radius:0 6px 6px 0;margin-top:8px}
 .evline b{color:#3d6500}
+.nvref{font-size:12.5px;background:#F0F7E6;border-left:3px solid var(--nv);padding:6px 10px;border-radius:0 6px 6px 0;margin-top:10px}
+.nvref>b:first-child{color:#3d6500}
 /* 漏斗条 */
 .funnel{margin:18px 0 6px}
 .frow{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:12.5px}
@@ -248,6 +250,7 @@ a.hit:hover{text-decoration:underline;color:#444}
       <li>做一个「配套查询器」：输入芯片型号 + torch 版本 → 输出 CANN/driver/torch_npu 的<b>唯一</b>配套组合（I 任务实测要人肉对 6 个版本号、双轴矩阵）。</li>
       <li>页面顶部显式声明「本文适用 CANN x.y，最后验证日期」——这是 AI 引用时判断时效的直接信号。</li>
     </ul>
+    <div class="nvref"><b>NVIDIA 是怎么做的（2026-06-11 核实）：</b>① canonical 机制——<code>docs.nvidia.com/cuda/</code> 永远指当前版，历史版本统一收进 <a href="https://docs.nvidia.com/cuda/archive/" target="_blank" rel="noopener">/cuda/archive/</a>（8.0→12.5 一页列全），同一篇文档不会以多棵并存版本树混排；② 「配套查询器」的现成范本是 <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">PyTorch 官方安装选择器</a>——五个维度点选（构建/OS/包管理器/语言/计算平台）→ 输出唯一 pip 命令。这解释了 ④ 版本清晰度 CUDA 侧 19 格无一低于 3 分。</div>
     <div class="demotitle">Demo · 左：现状的版本迷宫（实测）；右：建议的配套查询器——下拉框可以真的点选 <span class="mockdisc">右侧为示意，占位数据非真实配套</span></div>
 <div class="demo">
   <div class="duo">
@@ -323,6 +326,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>最小动作：为该链路提供 SSR 镜像（O 任务的 doc_center 镜像就是现成模式），或提供 markdown/纯文本导出。</li>
       <li>叠加效应最大：D 同时踩「SPA + 二手稀 + 版本散」三重坑，解开第一重，另两重的权重也会下降（AI 能抓到权威正文后对二手依赖骤减）。</li>
     </ul>
+    <div class="nvref"><b>NVIDIA 是怎么做的（实测）：</b>docs.nvidia.com 全站静态可抓——19 个任务实测 CUDA 官方页 ② 全部 5 分：TensorRT Quick Start、Nsight UserGuide、cuBLAS 参考、compute-sanitizer……Agent 抓回的都是完整正文。「无 JS 也能抓全」在英伟达侧不是特性，是默认。</div>
     <div class="demotitle">Demo · 同一个站，人眼 vs Agent 两双眼睛（同时支撑第 5 条「页面组织规范」）</div>
 <div class="demo">
   <div class="dnote">人眼里这两个页面渲染后几乎一样、都「有内容」。下面展示的是 <b>Agent 实际抓到的东西</b>——②可抓取性 19 格的全部分差就来自这个差别。左侧即 D 任务实测形态。</div>
@@ -377,6 +381,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li><b>版本号写进正文头部的文字里</b>，别只放在 JS 版本切换器组件里——切换器对 Agent 不存在，正文里的版本声明才是它能读到、能引用的。</li>
       <li><b>robots.txt 别拦正文目录</b>：<code>doc_center/source/</code> 实测 ROBOTS_DISALLOWED，整棵子树对 Agent 直接消失。</li>
     </ul>
+    <div class="nvref"><b>NVIDIA 是怎么做的（实测原文佐证）：</b>正面样本就是我们抓回的页面本身——TensorRT Quick Start：trtexec 命令与完整 C++/Python 运行时代码全为可复制文本、旗标全表做成跳转链接；Nsight UserGuide：<code>nsys profile</code> 语法 + <code>--trace</code>/<code>--backtrace</code> 选项全表（均为 2026-06-10 web_fetch 实测记录，③ 全 5）。上面 7 条规范，这些页面几乎条条都中。</div>
     <div class="why">可视对照见第 3 条卡内 Demo「人眼 vs Agent 两双眼睛」。这是「界面设计」在 Agent 时代的直译：视觉层之下的 HTML 结构层就是 Agent 的界面。以上每条都有 19 任务实测的正反例支撑，不是泛泛的 SEO 建议。注意：本研究测不到「人看的视觉界面」好不好（方法盲区，未测≠没问题），人因层的界面问题需另做用户研究。</div>
   </div>
 
@@ -389,6 +394,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
       <li>每篇扶持内容硬性要求：注明 CANN 版本 + 完整可复制命令 + 发表日期（这三项正是 ⑤⑥⑨⑩ 的得分点）。</li>
       <li>优先覆盖漏斗深水区（算子开发、Tiling、报错案例集），上手侧已经不缺。</li>
     </ul>
+    <div class="nvref"><b>NVIDIA 是怎么做的（实测）：</b>官方亲自下场补二手——developer.nvidia.com/blog 的技术博客在 L（算子精度）、N（算子融合）两任务实测中直接成为可用来源，覆盖「正式文档不会写、社区暂时没人写」的中间地带；开发者论坛（forums.developer.nvidia.com）在 B/E 实测中兜住长尾问答。即「二手厚」不全是自然生长，官方供给占了一角。</div>
     <div class="why">二手是官方文档的「冗余备份通道」。CUDA 的韧性正来自这条通道极厚——官方页再差也有 SO 兜底。</div>
   </div>
 
