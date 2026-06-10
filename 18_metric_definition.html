@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>指标定义与理据 · 为什么这样度量「AI 可用性」</title>
+<title>方法论说明书 · 任务怎么选 / 问题怎么编 / 指标怎么形成 / 分怎么打</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
   :root{
@@ -20,7 +20,12 @@
   .lead{font-size:13px;color:var(--g3);margin:9px 0 4px 15px;line-height:1.7;}
   .lead b{color:var(--g1);}
 
-  h2{font-size:16px;font-weight:800;margin:36px 0 12px;display:flex;align-items:center;gap:9px;color:var(--g1);}
+  /* 目录 */
+  .toc{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 4px 15px;}
+  .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:20px;padding:4px 12px;text-decoration:none;transition:.15s;}
+  .toc a:hover{border-color:var(--nv);color:var(--nv);}
+
+  h2{font-size:16px;font-weight:800;margin:38px 0 12px;display:flex;align-items:center;gap:9px;color:var(--g1);scroll-margin-top:14px;}
   h2::before{content:'';width:4px;height:16px;background:var(--nv);border-radius:2px;}
   h2 .en{font-size:10.5px;font-weight:500;color:var(--g4);letter-spacing:.4px;}
 
@@ -58,6 +63,38 @@
   table.fw td.cellm small{color:var(--g4);font-size:9.5px;}
   table.fw td.na{background:#FAFBFC;color:var(--g4);font-size:10.5px;font-style:italic;border:1px dashed var(--g6);}
 
+  /* 任务表 */
+  table.ttab{border-collapse:separate;border-spacing:3px;width:100%;margin:10px 0 4px;font-size:11.5px;}
+  table.ttab th{background:#2f3d63;color:#fff;font-weight:800;font-size:11px;padding:8px 10px;text-align:left;border-radius:6px;}
+  table.ttab td{background:#fff;border:1px solid var(--g6);padding:8px 11px;vertical-align:top;border-radius:6px;color:var(--g2);line-height:1.6;}
+  table.ttab td.cd{font-weight:900;color:var(--g1);font-size:15px;text-align:center;width:34px;}
+  table.ttab td b{color:var(--g1);}
+  .vs{display:inline-block;font-size:9px;font-weight:800;color:#fff;border-radius:4px;padding:1px 7px;letter-spacing:.3px;}
+  .vs.hi{background:var(--hw);} .vs.mid{background:var(--cost);} .vs.lo{background:var(--out);}
+
+  /* 问题对 */
+  .qp{background:#fff;border:1px solid var(--g6);border-radius:11px;margin:11px 0;overflow:hidden;}
+  .qp .qph{background:#F1F3F7;padding:9px 16px;font-size:12.5px;font-weight:800;color:var(--g1);display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .qp .qph .cd{font-size:14px;font-weight:900;color:var(--nv);}
+  .qp .qph .vsen{font-size:10px;font-weight:600;color:var(--g4);}
+  .qp .qpb{display:grid;grid-template-columns:1fr 1fr;}
+  .qp .side{padding:12px 16px;font-size:11.5px;line-height:1.7;color:var(--g2);}
+  .qp .side.cu{border-right:1px solid var(--g6);}
+  .qp .side .st{font-size:9.5px;font-weight:800;color:#fff;border-radius:4px;padding:1px 7px;display:inline-block;margin-bottom:7px;letter-spacing:.3px;}
+  .qp .side.cu .st{background:var(--nv);} .qp .side.ca .st{background:var(--hw);}
+  .qp .side .qq{color:var(--g1);font-weight:600;}
+  @media(max-width:680px){.qp .qpb{grid-template-columns:1fr;}.qp .side.cu{border-right:none;border-bottom:1px solid var(--g6);}}
+
+  /* 演化时间线 */
+  .evo{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:6px 4px;margin:11px 0;}
+  .evo .step{display:flex;gap:12px;padding:9px 14px;border-bottom:1px dashed var(--g6);}
+  .evo .step:last-child{border-bottom:none;}
+  .evo .step .ver{flex:0 0 92px;font-size:10.5px;font-weight:800;color:var(--g3);}
+  .evo .step .ver b{display:block;color:var(--g1);font-size:11.5px;}
+  .evo .step .txt{flex:1;font-size:11.5px;color:var(--g2);line-height:1.65;}
+  .evo .step .txt b{color:var(--g1);}
+  .evo .step .txt .corr{display:inline-block;font-size:9px;font-weight:800;color:#fff;background:var(--hw);border-radius:4px;padding:1px 6px;margin-right:5px;letter-spacing:.3px;}
+
   /* 指标定义卡 */
   .mcard{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:15px 18px;margin:11px 0;border-left:5px solid var(--g4);}
   .mcard.touch{border-left-color:var(--touch);}
@@ -83,6 +120,21 @@
   .blocked{background:#FFF7ED;border:1px solid #FCD9A8;border-left:4px solid var(--cost);border-radius:0 8px 8px 0;padding:9px 13px;margin-top:8px;font-size:11px;color:#7a4d08;line-height:1.65;}
   .blocked b{color:#5a3a06;}
 
+  /* 评分档 */
+  .tier{display:flex;gap:11px;margin:9px 0;align-items:flex-start;}
+  .tier .tk{flex:0 0 96px;font-size:10px;font-weight:800;color:#fff;border-radius:7px;padding:7px 8px;text-align:center;line-height:1.45;}
+  .tier.t1 .tk{background:var(--out);} .tier.t2 .tk{background:var(--cost);} .tier.t3 .tk{background:var(--g3);}
+  .tier .tv{flex:1;font-size:11.5px;color:var(--g2);line-height:1.7;padding-top:2px;}
+  .tier .tv b{color:var(--g1);}
+  .pbox{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:13px 17px;margin:11px 0;}
+  .pbox h4{font-size:12.5px;font-weight:800;color:var(--g1);margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+  .pbox h4::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--nv);}
+  .pbox ul{margin:0 0 0 4px;list-style:none;}
+  .pbox li{font-size:11.5px;color:var(--g2);line-height:1.7;padding:3px 0 3px 16px;position:relative;}
+  .pbox li::before{content:'›';position:absolute;left:2px;color:var(--g4);font-weight:800;}
+  .pbox li b{color:var(--g1);}
+  .pbox.lim h4::before{background:var(--hw);}
+
   /* 设计决定 */
   .dec{background:#fff;border:1px solid var(--g6);border-radius:11px;padding:0;margin:11px 0;overflow:hidden;}
   .dec .qd{background:#F1F3F7;padding:11px 16px;font-size:13px;font-weight:800;color:var(--g1);}
@@ -103,20 +155,94 @@
 <body>
 <div class="wrap">
 
-  <div class="title">指标定义与理据 · 为什么这样度量「AI 可用性」</div>
-  <div class="lead">本材料是热力图各指标的<b>定义书</b>：先讲清到底在测什么，再给概念模型，逐项写明<b>定义 / 打分口径 / 为什么单独成项</b>，最后交代几条踩过坑、被纠正过的设计决定。配套热力图见 <code>17_official_site_focus.html</code>。</div>
+  <div class="title">方法论说明书 · 这套「AI 可用性」热力图是怎么做出来的</div>
+  <div class="lead">一份讲全、<b>不分散在别处</b>的说明书：从<b>任务怎么选</b>、<b>问题怎么编</b>，到<b>指标体系怎么一步步长出来</b>、<b>每项指标到底是什么意思</b>、再到<b>1–5 分凭什么判定</b>。配套热力图见 <code>17_official_site_focus.html</code>，逐步真跑过程见 <code>task_run_log.md</code>。</div>
+
+  <div class="toc">
+    <a href="#s0">0 · 到底在测什么</a>
+    <a href="#s1">1 · 任务怎么形成</a>
+    <a href="#s2">2 · 问题怎么形成</a>
+    <a href="#s3">3 · 指标怎么形成</a>
+    <a href="#s4">4 · 指标逐项定义</a>
+    <a href="#s5">5 · 评分 1–5 怎么判定</a>
+    <a href="#s6">6 · 关键设计决定</a>
+  </div>
 
   <!-- 0. 核心被测对象 -->
-  <h2>0 · 到底在测什么 <span class="en">the thing being measured</span></h2>
+  <h2 id="s0">0 · 到底在测什么 <span class="en">the thing being measured</span></h2>
   <div class="core">
     <div class="q">当我（Claude）回答某技术栈的某个开发任务时，能不能把一份<em>正确、具体、可锁定版本、可照抄复现</em>的答案搬进回复——以及要花多大力气。</div>
     <div class="sub">这就是「AI 可用性」。它<b>不是</b>"这个栈好不好用"，而是"<b>站在一个会检索的 AI 助手视角，这个栈的知识好不好被我拿到、拿到的够不够答好</b>"。同一套任务在 CUDA 生态和昇腾社区各真实跑一遍，对比的就是这件事。</div>
   </div>
-  <p class="note">关键认识：可用性是<b>"任务相关"</b>的，不是对一个栈一刀切的高或低。成熟通识类任务两边差距小，前沿开发差距被拉满。所以指标必须能<b>定位到是哪一关卡住</b>，而不只给一个总分。</p>
+  <p class="note">关键认识：可用性是<b>"任务相关"</b>的，不是对一个栈一刀切的高或低。成熟通识类任务两边差距小，前沿开发差距被拉满。所以指标必须能<b>定位到是哪一关卡住</b>，而不只给一个总分。下面四节就按"任务 → 问题 → 指标 → 评分"的顺序，交代每一步是怎么来的。</p>
 
-  <!-- 1. 概念模型 -->
-  <h2>1 · 概念模型：一条"把知识搬进答案"的价值链 <span class="en">a value chain</span></h2>
-  <p class="note">一次问答，知识要从某个来源流到我的答案里。这条链有四段，任何一段断了，答案就打折：</p>
+  <!-- 1. 任务怎么形成 -->
+  <h2 id="s1">1 · 任务是怎么形成的 <span class="en">how the tasks were chosen</span></h2>
+  <p class="note">不是随手挑 4 个。底层有一张<b>26 个开发任务 × 7 大类</b>的清单（见 <code>05 taxonomy</code>）；从里面沿一条<b>"成熟通识 → 前沿开发"的光谱</b>挑了 4 个代表，目的就是让前面那个关键认识——"可用性是任务相关的"——能被真正看见。挑选守三条准则：</p>
+  <div class="pbox">
+    <ul>
+      <li><b>覆盖不同成熟度</b>：从工具链通识，一路铺到最前沿的底层 kernel 开发，好让"差距随深入而放大"显形。</li>
+      <li><b>都是真实高频的开发动作</b>：每个任务都是工程师真会做、真会来问我的事，不是生造的考题。</li>
+      <li><b>版本敏感度有高有低</b>：好检验"版本"类指标（④⑨）的区分力——版本敏感的任务才考验得出版本清晰度。</li>
+    </ul>
+  </div>
+  <table class="ttab">
+    <thead><tr><th style="width:34px">代号</th><th>开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置 · 为什么选它</th><th style="width:74px">版本敏感</th></tr></thead>
+    <tbody>
+      <tr><td class="cd">A</td><td><b>模型转换 / 导出</b><br><small style="color:var(--g4)">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</small></td><td>成熟通识：部署必经路，两栈都有官方主线工具与快速入门。</td><td><span class="vs hi">高</span></td></tr>
+      <tr><td class="cd">B</td><td><b>Profiling 定位瓶颈</b><br><small style="color:var(--g4)">Nsight ｜ msprof / Ascend PyTorch Profiler</small></td><td>成熟工具类：性能调优的入口，两栈都有成熟工具、且昇腾有对标 GPU 的 Profiler。</td><td><span class="vs mid">中</span></td></tr>
+      <tr><td class="cd">C</td><td><b>算子库选型</b><br><small style="color:var(--g4)">cuBLAS/cuDNN/… ｜ AOL/ATB</small></td><td>通识 / 选型类：知识密集但不必写底层码，考验"找对库 + 讲清映射"。</td><td><span class="vs lo">低</span></td></tr>
+      <tr><td class="cd">D</td><td><b>自定义算子开发</b><br><small style="color:var(--g4)">CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn</small></td><td>前沿开发：最深、最依赖完整官方 how-to，是检验"前沿差距"的关键样本。</td><td><span class="vs hi">高</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">A→D 恰好"越来越深入、越来越前沿"。真跑结果印证了挑选意图：<b>A/B/C 两栈差距小，D 差距被拉满</b>——这条结论之所以可信，正因为任务是按光谱<b>有意铺开</b>的，不是凑巧。</p>
+
+  <!-- 2. 问题怎么形成 -->
+  <h2 id="s2">2 · 问题是怎么形成的 <span class="en">how the question pairs were designed</span></h2>
+  <p class="note">每个任务编成<b>一对</b>问题，守一条铁律：<b>开发意图本质相同，只换技术栈</b>——CUDA 一条、昇腾一条，其余全对齐（同场景、同样索要"完整步骤 + 可照抄命令/代码"）。这样两栏的差异才能归因到"<b>栈 / 生态</b>"，而不是"问题问得不一样"。三个设计要点：</p>
+  <div class="pbox">
+    <ul>
+      <li><b>真实开发者口吻</b>：用"利用率不高怎么定位""怎么导出去部署"这种实际会冒出来的问法，不是查词条式的"X 是什么"。</li>
+      <li><b>明确索要可复现产出</b>：每条都要"命令 / <code>setup.py</code> / 注册代码 / 分步骤"，逼出产出侧指标（⑨版本可锁定、⑩可复现）的真实差异。</li>
+      <li><b>难度对等</b>：CUDA 侧不放水、昇腾侧不刁难，两边都问得"刚好需要完整答案"，差距才来自生态本身。</li>
+    </ul>
+  </div>
+
+  <div class="qp">
+    <div class="qph"><span class="cd">A</span>模型转换 / 导出 <span class="vsen">— 同一意图：把训练好的模型导出成目标格式去部署</span></div>
+    <div class="qpb">
+      <div class="side cu"><span class="st">CUDA</span><div class="qq">训练好的 PyTorch 模型怎么导出成 TensorRT engine 部署？给出 PyTorch→ONNX→TensorRT 完整步骤和命令。</div></div>
+      <div class="side ca"><span class="st">昇腾</span><div class="qq">ONNX 模型怎么在昇腾上转成 .om 离线模型部署？给出 ONNX→ATC→.om 完整步骤和命令。</div></div>
+    </div>
+  </div>
+  <div class="qp">
+    <div class="qph"><span class="cd">B</span>Profiling 定位瓶颈 <span class="vsen">— 同一意图：抓 timeline 找性能瓶颈</span></div>
+    <div class="qpb">
+      <div class="side cu"><span class="st">CUDA</span><div class="qq">PyTorch 模型 GPU 利用率不高，怎么用 Nsight Systems 抓 timeline 定位瓶颈？给出采集命令和分析步骤。</div></div>
+      <div class="side ca"><span class="st">昇腾</span><div class="qq">昇腾上跑 PyTorch 想定位瓶颈，怎么用 msprof / Ascend PyTorch Profiler 采集分析？给出代码和步骤。</div></div>
+    </div>
+  </div>
+  <div class="qp">
+    <div class="qph"><span class="cd">C</span>算子库选型 <span class="vsen">— 同一意图：矩阵乘/卷积该用哪个官方加速库、怎么调</span></div>
+    <div class="qpb">
+      <div class="side cu"><span class="st">CUDA</span><div class="qq">稠密矩阵乘 / 卷积，CUDA 上有哪些官方加速库（cuBLAS/cuDNN/cuSPARSE）？怎么选怎么调用。</div></div>
+      <div class="side ca"><span class="st">昇腾</span><div class="qq">昇腾上做矩阵乘 / 卷积 / Transformer，有哪些官方加速库（AOL/ATB）？怎么选怎么调用。</div></div>
+    </div>
+  </div>
+  <div class="qp">
+    <div class="qph"><span class="cd">D</span>自定义算子开发 <span class="vsen">— 同一意图：写个自定义算子并集成进 PyTorch</span></div>
+    <div class="qpb">
+      <div class="side cu"><span class="st">CUDA</span><div class="qq">怎么写自定义 CUDA kernel 并集成进 PyTorch（C++ extension）？给出完整步骤、<code>setup.py</code> 和注册代码。</div></div>
+      <div class="side ca"><span class="st">昇腾</span><div class="qq">怎么用 Ascend C 开发自定义算子并集成进 PyTorch（msOpGen / aclnn）？给出完整步骤。</div></div>
+    </div>
+  </div>
+  <p class="note">这 8 条问题<b>一字未改地</b>记录在 <code>task_run_log.md</code> 里，连同每条真跑时走的 web_search / web_fetch 步骤——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
+
+  <!-- 3. 指标怎么形成 -->
+  <h2 id="s3">3 · 指标是怎么形成的 <span class="en">how the metric system was derived</span></h2>
+  <p class="note">指标不是先列一张表再去套，而是<b>从"到底在测什么"一步步推出来</b>的。推导链如下：</p>
+
+  <p class="note" style="margin-top:14px"><b>第一步：把被测对象拆成一条"把知识搬进答案"的价值链。</b>一次问答，知识要从某个来源流到我的答案里。这条链有四段，任何一段断了，答案就打折：</p>
   <div class="chain">
     <div class="stage s-touch">
       <span class="k">第 1 关</span>
@@ -142,7 +268,8 @@
       <p>最终答案能不能锁到确切版本、命令能不能照抄跑通。</p>
     </div>
   </div>
-  <p class="note">而知识有<b>三个来源渠道</b>：<b>官方一手</b>（NVIDIA docs ｜ 昇腾社区 hiascend）、<b>二手社区</b>（GitHub / SO / 知乎 / CSDN / 博客）、<b>模型先验</b>（我训练里已有的知识）。前两关（触达 / 质量）对<b>每个渠道</b>都要分别看——这就形成"三源 × 两关"的指标网格；成本与产出是跨渠道的，综合置信度收口。</p>
+
+  <p class="note"><b>第二步：把"来源渠道"叠上去，让网格自然长出指标。</b>知识有<b>三个来源渠道</b>：<b>官方一手</b>（NVIDIA docs ｜ 昇腾社区 hiascend）、<b>二手社区</b>（GitHub / SO / 知乎 / CSDN / 博客）、<b>模型先验</b>（我训练里已有的知识）。前两关（触达 / 质量）对<b>每个渠道</b>都要分别看——"三源 × 两关"一交叉，指标就长出来了；成本与产出是跨渠道的，综合置信度收口。</p>
 
   <table class="fw">
     <thead>
@@ -170,10 +297,30 @@
       </tr>
     </tbody>
   </table>
-  <p class="note" style="font-size:11.5px">跨渠道：<b>⑧ 检索成本</b>（摩擦，反向）｜产出：<b>⑨ 版本可锁定性</b>、<b>⑩ 步骤可复现性</b>｜收口：<b>⑪ 综合置信度</b>。</p>
+  <p class="note" style="font-size:11.5px">跨渠道：<b>⑧ 检索成本</b>（摩擦，反向）｜产出：<b>⑨ 版本可锁定性</b>、<b>⑩ 步骤可复现性</b>｜收口：<b>⑪ 综合置信度</b>。三源×两关 + 这 4 项 = <b>11 项</b>。</p>
 
-  <!-- 2. 逐项定义 -->
-  <h2>2 · 指标逐项定义 <span class="en">definitions &amp; scoring</span></h2>
+  <p class="note" style="margin-top:14px"><b>第三步：一条"长出来即可用"的指标，必须同时过三道关。</b>形成每一项时都拿这三条筛：</p>
+  <div class="pbox">
+    <ul>
+      <li><b>能独立失败（正交）</b>：它代表的那件事，必须能在别项都好时单独崩掉。"搜得到"与"抓得到"会各自失败 → 拆成①②；"抓得到"与"够详尽"会各自失败 → 拆出③。不正交的就不单列。</li>
+      <li><b>能区分两栈、或定位卡点</b>：留下来的指标要么能拉开 CUDA / 昇腾差距，要么能指出"卡在哪一关"。对区分毫无贡献的，降级或剔除（如"版本敏感度"，见 §6.4）。</li>
+      <li><b>可实测，或明确标注主观</b>：能从真跑过程里读出来的（①②③⑧）优先；只能判断或自评的（⑦⑨⑩⑪）照留，但在 §5 里挑明其主观性，绝不伪装成实测。</li>
+    </ul>
+  </div>
+
+  <p class="note" style="margin-top:14px"><b>第四步：体系是迭代纠偏出来的，不是一次定稿。</b>从最初的 7 维到现在的 11 项，关键几次调整：</p>
+  <div class="evo">
+    <div class="step"><div class="ver"><b>v1 · 7 维</b><small>04 文件</small></div><div class="txt">最早只有 7 个维度，"内容质量"笼统一项、把"可抓取"混在"可发现"里、版本敏感度还占着矩阵一列。能用，但看不清 CANN 到底卡在哪。</div></div>
+    <div class="step"><div class="ver"><b>v2 · 拆触达</b></div><div class="txt">把<b>② 可抓取性</b>从"可发现性"里独立出来——实测发现"搜得到却抓不到正文"是真实存在的独立失败，必须分开看。</div></div>
+    <div class="step"><div class="ver"><b>v3 · 补质量</b></div><div class="txt">用户指"内容质量只有一个指标太少"。于是从质量面拆出<b>③ 正文详尽度</b>：抓得到（②）≠ 够用（③），两者正交。</div></div>
+    <div class="step"><div class="ver"><b>v4 · 降维</b><small>纠偏</small></div><div class="txt"><span class="corr">已纠正</span>把<b>版本敏感度</b>从矩阵列降为"任务名旁的小标签"——它是任务属性、与栈无关，当列只会在两栏填相同值、虚增维度（§6.4）。</div></div>
+    <div class="step"><div class="ver"><b>v5 · 明确因变量</b></div><div class="txt">把<b>⑨⑩ 产出</b>明确标成"因变量"——它们是前几关的结果，列出来是为闭环与校验，<b>不再与输入项重复加权</b>（§6.5）。定稿为 11 项。</div></div>
+    <div class="step"><div class="ver"><b>v5.1 · 子树纠偏</b><small>真跑</small></div><div class="txt"><span class="corr">已纠正</span>真跑后推翻"②可抓取性是平台常量、CANN 统一记 2"：它是<b>子树相关</b>的——入门子树可抓、深层/前沿页才 SPA（§6.2）。这改了打分，但没改指标本身。</div></div>
+  </div>
+
+  <!-- 4. 逐项定义 -->
+  <h2 id="s4">4 · 指标逐项定义与解释 <span class="en">definitions &amp; per-item rationale</span></h2>
+  <p class="note">每张卡：<b>定义</b>（这项到底测什么）·<b>为什么单独</b>（凭什么不和别项合并）·<b>打分口径</b>（5/3/1 锚点；⑧反向）。这就是 §3 里"能独立失败"那条准则落到每一项的样子。</p>
 
   <!-- 官方触达 -->
   <div class="mcard touch">
@@ -186,8 +333,8 @@
   <div class="mcard touch">
     <div class="mhead"><span class="nm">② 官方可抓取性</span><span class="en">Crawlability / Fetchability</span><span class="tag touch">官方·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">找到官方页后，web_fetch <b>能不能真的把正文取回上下文</b>：静态页可抓 vs SPA 单页应用只回导航 / robots 拦截。</div></div>
-    <div class="mrow"><div class="lbl">为什么单独</div><div class="val"><b>找得到 ≠ 抓得到</b>。这是 CANN 的<b>平台级、公共常量级</b>短板（见设计决定 §3.2），必须与可发现性拆开才看得清。</div></div>
-    <div class="rubric"><span class="lv">5</span> 静态 HTML，正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">2</span> SPA 只回导航+meta 摘要、正文抓不到（hiascend <code>/document/detail/</code>），或备用入口被 robots 拦（<code>/doc_center/source/</code>）。</div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val"><b>找得到 ≠ 抓得到</b>。点进官方页可能是静态正文、也可能是 SPA 只回导航；而且<b>同一站不同子树结果不同</b>（见 §6.2），必须与可发现性拆开、且<b>按子树</b>看才准。</div></div>
+    <div class="rubric"><span class="lv">5</span> 静态 HTML、正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">4</span> 入门 / how-to 子树服务端渲染、正文可抓（hiascend <code>quickstart/</code>、<code>modeldevpt/</code>）｜ <span class="lv">2</span> 该任务核心页落在 SPA 子树（<code>devguide/opdevg/</code>、<code>apiref/</code>）、且无可抓子树兜底（CANN-D）。</div>
   </div>
 
   <!-- 官方质量 -->
@@ -195,8 +342,8 @@
     <div class="mhead"><span class="nm">③ 官方正文详尽度</span><span class="en">Body depth</span><span class="tag qual">官方·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息够不够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字够不够答好"——两者正交。</div></div>
-    <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">3</span> 有正文但要东拼西凑 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
-    <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧因 ② 可抓取性受阻（SPA+robots），正文取不回来，<b>就无从评判详尽度</b>。这一格记 <b>「正文抓取受阻·无法实测」</b>的中性态，<b>不打推断分</b>——凭印象给分等于编造。受阻本身就是结论。CUDA 侧静态可抓，按实际抓到的正文如实评。</div>
+    <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">3</span> 有正文但偏概述、要东拼西凑 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
+    <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧<b>按子树</b>评——入门子树可抓的 A/B，按抓回的正文如实评（③=4）；ATB 概述部分可抓的 C 偏概念、缺算子列表 → ③=3；唯独 <b>D</b>，核心 how-to（<code>add_custom.json</code> 完整字段、Tiling/Kernel 实现）整个压在 <code>devguide/opdevg/</code> SPA、<b>无可抓子树兜底</b> → 正文取不回来，记<b>「受阻·无法实测」</b>中性态，<b>不打推断分</b>（凭印象给分=把推断伪装成实测）。受阻本身就是 D 垫底最有力的证据。CUDA 侧静态可抓，按实际正文如实评。</div>
   </div>
 
   <div class="mcard qual">
@@ -259,37 +406,65 @@
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">给读者一个落地结论；同时与各分项并列，便于看"总分背后是哪一关贡献的"。</div></div>
   </div>
 
-  <!-- 3. 设计决定 -->
-  <h2>3 · 关键设计决定（含踩过的坑） <span class="en">design rationale</span></h2>
+  <!-- 5. 评分怎么打 -->
+  <h2 id="s5">5 · 评分是怎么打的：1–5 凭什么判定 <span class="en">how scores are assigned</span></h2>
+  <p class="note">一句话原则：<b>每一分都锚在"跑这一遍时能指认的证据"上，不凭印象。</b>但不同指标的证据强度不一样——按强弱分三档，越往下越带主观成分，读分时要知道每格的可靠度不同。</p>
+
+  <div class="tier t1"><div class="tk">硬实测<br>①②③⑧</div><div class="tv"><b>直接来自真跑的过程记录。</b>第几轮命中（①）、web_fetch 成不成功（②）、抓回的正文里有没有参数表/命令（③）、总共几轮几次抓取（⑧）——这些都白纸黑字写在 <code>task_run_log.md</code> 里，可复核。</div></div>
+  <div class="tier t2"><div class="tk">半实测<br>④⑤⑥</div><div class="tv"><b>能观察，但"够不够清楚/可信"要判断。</b>数版本号（④）、数二手源（⑤）、看日期与一致性（⑥）都是可观察事实，但从事实到分数留有口径空间，不是纯客观读数。</div></div>
+  <div class="tier t3"><div class="tk">自评 / 因变量<br>⑦⑨⑩⑪</div><div class="tv"><b>最主观，故不与输入项重复加权。</b>⑦是我对自己训练覆盖的主观估计；⑨⑩是前几关的<b>结果</b>（因变量）；⑪是收口总评。它们与③④⑥高度相关，列出来是为闭环校验，不当新证据。</div></div>
+
+  <div class="pbox" style="margin-top:16px">
+    <h4>1–5 怎么落到具体一格</h4>
+    <ul>
+      <li><b>锚定法</b>：5 = 该指标的理想态（②静态全抓、④单一主线版本…）；1 = 几乎不可用；3 = 中间、要费点劲。每项<b>具体的 5/3/1（及 4/2）锚点</b>就写在 §4 每张卡的"打分口径"里，这里不重复。</li>
+      <li><b>相对锚定</b>：CUDA 官方静态站作为"触达/质量"的上锚取 <b>5</b>，昇腾相对它定位——这是<b>有意</b>的，因为问题本身就是"相对 CUDA 差在哪"。</li>
+      <li><b>受阻态 ≠ 低分</b>：正文被 SPA 拦、根本没取回来 → 记独立中性<b>「受阻」</b>，不塞进 1 分。把"没数据"和"数据显示差"分开（D 的③就是受阻，不是 1）。</li>
+      <li><b>反向项</b>：仅 <b>⑧ 检索成本</b>反向——分高=省力，着色时高分仍为绿。</li>
+    </ul>
+  </div>
+
+  <div class="pbox lim">
+    <h4>诚实标注的局限</h4>
+    <ul>
+      <li><b>n≈1</b>：每个任务每栈只真跑了一次，换个问法 / 换个时间，命中可能不同。</li>
+      <li><b>时间快照</b>：2026-06 这一时点的检索结果；文档站改版、二手增减都会让分数变。</li>
+      <li><b>主观分</b>：t3 档（⑦⑨⑩⑪）带个人判断，不同人可能 ±1。</li>
+      <li><b>样本薄</b>：4 任务只覆盖 26 任务清单的一小块；"任务相关"这条结论成立，但<b>单格分数别过度解读</b>。</li>
+    </ul>
+  </div>
+
+  <!-- 6. 设计决定 -->
+  <h2 id="s6">6 · 关键设计决定（含踩过的坑） <span class="en">design rationale</span></h2>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.1</span>为什么把"触达"和"质量"硬拆成两关？</div>
-    <div class="ad"><b>因为"找得到 ≠ 抓得到 ≠ 够用"是三件会各自独立失败的事。</b>把它们打包成一个"官方源好不好"的笼统分，就看不出 CANN 到底卡在哪——实测里 A/B/C 官方都搜得到、却都 SPA 抓不到，只是二手够厚没触发短板；D 是可发现性+二手厚度双低，叠加可抓取短板才致命。拆开，才能把"平台级公共短板"与"任务级差异"分离。</div>
+    <div class="qd"><span class="n">6.1</span>为什么把"触达"和"质量"硬拆成两关？</div>
+    <div class="ad"><b>因为"找得到 ≠ 抓得到 ≠ 够用"是三件会各自独立失败的事。</b>打包成一个笼统的"官方源好不好"分，就看不出 CANN 到底卡在哪——实测里 A/B/C/D 官方都搜得到（①≈4），但<b>抓不抓得到要看落在哪个子树</b>（②），抓到了还要看正文够不够细（③）。拆开，才能把"哪一关、哪个子树"的问题精确定位，而不是一个混沌总分。</div>
   </div>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.2</span>为什么"官方可抓取性"对 CANN 是公共常量，不算任务差异？</div>
-    <div class="ad"><span class="corr">已纠正</span>hiascend 全站 <code>/document/detail/</code> 都是 SPA、<code>/doc_center/source/</code> 都被 robots 拦——<b>与具体任务无关</b>，所以 CANN 此项<b>统一记 2</b>、CUDA 静态站<b>统一记 5</b>。早期错误：曾给 D 记 1、A/B/C 记 3*，把"抓取失败有没有咬到最终结果"误当成"可抓取性本身的差异"。可抓取性是公共常量；D 垫底的真因是①可发现性+⑤二手厚度低，叠加这个公共短板才致命。</div>
+    <div class="qd"><span class="n">6.2</span>为什么"官方可抓取性"按子树判定，不是平台常量？</div>
+    <div class="ad"><span class="corr">已纠正</span>早期说法："hiascend 全站 <code>/document/detail/</code> 都是 SPA，CANN ②统一记 2"。<b>本轮真跑实测推翻</b>：可抓取性是<b>子树相关</b>的——入门 <code>quickstart/</code>(A)、<code>modeldevpt/ptmigr/</code>(B) 子树服务端渲染、正文可抓（②记 4）；<code>doc_center/</code>(C-ATB) 部分可抓（②记 4）；而 <code>devaids/</code>、<code>devguide/opdevg/</code>、<code>apiref/aolapi/</code> 等<b>深层参考 / 前沿开发页</b>才是 SPA。所以 CANN 的②不再统一记 2，而是 <b>A/B/C=4、D=2</b>。含义更精准：SPA 短板不是"CANN 文档一律抓不到"，而是"<b>越深入前沿开发越掉进坑</b>"——只有 D 既无可抓子树兜底、二手又稀，才被真正咬到。</div>
   </div>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.3</span>为什么 CANN 的"正文详尽度"记"受阻"而不打一个推断分？</div>
-    <div class="ad"><b>铁律 #1/#2：绝不编造、能实测才记分。</b>正文被 SPA 拦住根本取不回来，就没有事实依据评判它详不详尽；凭印象给个 3 分，是把"推断"伪装成"实测"。所以这一格用<b>独立中性态「受阻·无法实测」</b>，与 1–5 着色分区分开——<b>"未测"不等于"低分"</b>。而且受阻本身就是最有说服力的结论：官方可抓取性是 CANN 的平台级短板。</div>
+    <div class="qd"><span class="n">6.3</span>为什么 CANN 的"正文详尽度"只有 D 记"受阻"？</div>
+    <div class="ad"><span class="corr">已纠正</span>早期把整列 CANN 的③都记受阻。按子树修正后：入门子树可抓的 <b>A/B</b> 按抓回的正文如实评（③=4）；ATB 概述部分可抓的 <b>C</b> 偏概念、缺算子列表 → ③=3；唯独 <b>D</b>，核心 how-to（<code>add_custom.json</code> 完整字段、Tiling/Kernel 实现）整个压在 <code>devguide/opdevg/</code> SPA、且<b>无可抓子树兜底</b> → 正文取不回来，记「受阻·无法实测」。<b>铁律 #1/#2：取不回就不打推断分</b>，凭印象给分=把推断伪装成实测。受阻本身就是 D 垫底最有力的证据，<b>受阻 ≠ 低分</b>。</div>
   </div>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.4</span>为什么"版本敏感度"不进矩阵当列？</div>
+    <div class="qd"><span class="n">6.4</span>为什么"版本敏感度"不进矩阵当列？</div>
     <div class="ad"><span class="corr">已纠正</span>版本敏感度是<b>任务属性、与栈无关</b>（同一任务在两栈取值相同），对"区分两个栈"的贡献为零。把它当列，只会在每行两栈位置填两个相同值、虚增维度。所以它<b>只做任务名旁的小标签</b>，不占矩阵列。真正区分两栈的是 ②③④⑤⑥（+⑦先验、⑧成本）。</div>
   </div>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.5</span>为什么"产出"（⑨⑩）是因变量，要和输入项分开看？</div>
+    <div class="qd"><span class="n">6.5</span>为什么"产出"（⑨⑩）是因变量，要和输入项分开看？</div>
     <div class="ad">版本可锁定、可复现是<b>前面触达+质量几关的结果</b>，不是独立输入。列它们是为了让"输入好 → 产出好"的链路闭环、并<b>反向校验综合分</b>（若输入都好、产出却差，说明评分有内在矛盾需复查）。但在心里加权时要清楚：它们与③④⑥高度相关，<b>不应被当成新增的独立证据重复计入</b>。</div>
   </div>
 
   <div class="dec">
-    <div class="qd"><span class="n">3.6</span>评分与着色口径</div>
-    <div class="ad">所有指标 <b>1–5 分，越高越好</b>；唯 <b>⑧检索成本反向</b>（分高=省力）。着色 v5 绿 → v1 红：</div>
+    <div class="qd"><span class="n">6.6</span>评分与着色口径</div>
+    <div class="ad">所有指标 <b>1–5 分，越高越好</b>；唯 <b>⑧检索成本反向</b>（分高=省力）。着色 v5 绿 → v1 红，受阻态用独立中性色：</div>
     <div class="ad" style="padding-top:0">
       <div class="legend">
         <span class="item"><span class="sw v5">5</span>很好</span>
@@ -303,7 +478,7 @@
   </div>
 
   <div class="foot">
-    口径与事实依据见项目 <code>CLAUDE.md</code> 第 3 节（度量体系）与第 9 节附录（已核实来源，勿改动事实）。本材料随指标定义更新而同步。<br>
+    口径与事实依据见项目 <code>CLAUDE.md</code> 第 3 节（度量体系）与第 9 节附录（已核实来源，勿改动事实）；逐任务真跑过程与 8 条原始问题见 <code>task_run_log.md</code>；落分热力图见 <code>17_official_site_focus.html</code>。本材料随指标与打分更新而同步。<br>
     色板：NVIDIA 绿 <code>#76B900</code> ／ 华为红 <code>#C8102E</code>；v5→v1 <code>#BBF0D4 / #DCF5E5 / #FCEFC7 / #FBE0CE / #F9D2D2</code>。
   </div>
 
