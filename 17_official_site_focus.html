@@ -292,7 +292,15 @@ const SRC_MIX={
  C:{cuda:{m:[18,18,60,4,0],n:'通识题、主要凭自带知识定位库，官方/二手佐证；几乎不外推。'},
     cann:{m:[25,28,22,20,5],n:'ATB 概述官方部分可抓但偏概念；cuBLAS↔AOL 等映射部分靠类比外推；穷尽算子表抓不全→少量留白。'}},
  D:{cuda:{m:[45,25,25,5,0],n:'PyTorch 官方教程完整 + 海量 GitHub，自带也熟；外推极少。'},
-    cann:{m:[15,22,13,35,15],n:'核心 how-to SPA 受阻、二手稀、自带弱 → 大量靠类比 CUDA/Ascend C 模式外推（风险最高），最抓不到处诚实留白。'}}
+    cann:{m:[15,22,13,35,15],n:'核心 how-to SPA 受阻、二手稀、自带弱 → 大量靠类比 CUDA/Ascend C 模式外推（风险最高），最抓不到处诚实留白。'}},
+ E:{cuda:{m:[40,28,27,5,0],n:'compute-sanitizer 官方可抓+穷尽、二手厚、自带熟；外推极少。'},
+    cann:{m:[15,32,22,20,11],n:'官方错误码页可抓但泛化兜底（有把握官方一手少）；知识主要靠二手案例 + 自带方法论，具体 EZ9999 根因靠经验外推、部分诚实留白。'}},
+ F:{cuda:{m:[42,25,28,5,0],n:'PyTorch DDP 官方穷尽、工具成熟、自带熟；外推极少。'},
+    cann:{m:[40,25,23,8,4],n:'官方 trainingmigrguide 子树可抓且对标 DDP（有把握官方一手高）；二手补、自带中；少量多机环境细节靠经验。'}},
+ G:{cuda:{m:[42,25,28,5,0],n:'AMD ROCm 官方文档完备 + 二手齐、自带熟；外推极少。'},
+    cann:{m:[42,26,22,7,3],n:'官方自动迁移页可抓且详尽 + 华为云成体系最佳实践（有把握官方一手高，迁移是采纳漏斗）；少量复杂场景/自定义算子靠适配经验。'}},
+ H:{cuda:{m:[42,25,28,5,0],n:'Torch-TensorRT PTQ 官方穷尽 + 二手齐、自带熟；外推极少。'},
+    cann:{m:[28,30,22,15,5],n:'官方 AMCT 页可抓但偏算法原理；可跑 W8A8 命令在 Gitee 蓝区仓+CSDN（二手撑）；少量工具版本差异靠经验外推。'}}
 };
 const SEGDEF=[['off','官方一手'],['sec','二手社区'],['own','自带·有把握'],['extra','类比外推·未验证'],['gap','诚实留白·受阻']];
 // 综合置信度(⑪) = 量化公式，从子指标①②③④⑤⑥⑦⑧ 直接代入算出（可复现，不再凭整体研判）。
@@ -328,7 +336,7 @@ function confDeriv(k,s){
  h+='<tr class="cfin"><td>= 综合置信度<span>对照档位 ≥.80高 / ≥.63中高 / ≥.45中 / ≥.24低</span></td><td>'+x.score.toFixed(2)+' → '+x.band[0]+'</td></tr>';
  h+='</table>';
  h+='<div class="crat"><b>为什么这么算：</b>知识有<b>官方/二手/自带</b>三条渠道，<u>任一条扛得住就能答</u>，故用噪声-OR 取「至少一条送达」而非简单平均——这正是为什么 <b>D 三渠道同时塌</b>才致命、A/B/C 靠某一条兜住仍中高。④版本、⑧成本是<b>跨渠道</b>影响，作全局乘子。<b>⑨⑩ 不进公式</b>（它们是产出/因变量，进了=重复加权）；<b>受阻渠道记 0</b>（=没送达内容，非给③打 1 分）。档位 cutoff 是唯一人工锚点。</div>';
- h+='<div class="cnote">据此公式复算：A.cann .75、B.cann .70、C.cann .77 → 均<b>中高</b>；D.cann .41 → <b>低</b>；四个 CUDA .88–1.0 → <b>高</b>。其中 <b>C.cann（旧「高」→中高）</b>、<b>D.cann（旧「中」→低）</b>为本次按公式<b>下修</b>的两格——旧分系整体研判、偏乐观；新分纯由①–⑧ 代入，可复现（①–⑧ 各分本身亦由 <code>score_metrics.py</code> 公式算出）。</div></div>';
+ h+='<div class="cnote">据此公式复算（第一批 A–D）：A.cann .75、B.cann .70、C.cann .77 → 均<b>中高</b>；D.cann .41 → <b>低</b>；四个 CUDA .88–1.0 → <b>高</b>。其中 <b>C.cann（旧「高」→中高）</b>、<b>D.cann（旧「中」→低）</b>为按公式<b>下修</b>的两格——旧分系整体研判、偏乐观；新分纯由①–⑧ 代入，可复现（①–⑧ 各分本身亦由 <code>score_metrics.py</code> 公式算出）。<br><b>第二批 E–H（2026-06-10 新跑）：</b>E.cann .55→<b>中</b>（官方错误码泛化兜底+自带弱）、F.cann .72→<b>中高</b>、G.cann .84→<b>高</b>（迁移=采纳漏斗、官方投入最重）、H.cann .69→<b>中高</b>；四个 CUDA 均 .88–.99→<b>高</b>。规律：可用性随任务在「采纳漏斗」上的位置变化——迁移(G)最厚、前沿算子(D)最薄、排障(E)依赖具体案例知识居中偏弱。</div></div>';
  return h;
 }
 function srcMixBlock(k,s){
@@ -447,22 +455,126 @@ const ROWS={
    N('v1','2搜✗','2 轮检索 + 1 次 web_fetch 失败（SPA），成本最高。',{warn:'唯一触发多轮检索 + 抓取失败的任务。'}),
    N('v2','2','未能锁定具体 CANN 版本。',{warn:'多版本并存 + 正文抽不出，版本无法定死。'}),
    N('v3','3','链路骨架可述（msopgen → 编译 custom_opp_*.run → 部署 OPP vendors/customize），但 Kernel 命令细节无法逐条确证。'),
-   N('v2','低','量化公式复算 = K .54 × 版本因子 .82 × 成本 .92 = .41 → 低（旧「中」系整体研判、偏乐观）。三渠道同时塌：官方受阻 OFF≈0、二手稀 SEC .24、自带弱 OWN .40 → 知识可得性 K 仅 .54，无一条扛得住。')]}
+   N('v2','低','量化公式复算 = K .54 × 版本因子 .82 × 成本 .92 = .41 → 低（旧「中」系整体研判、偏乐观）。三渠道同时塌：官方受阻 OFF≈0、二手稀 SEC .24、自带弱 OWN .40 → 知识可得性 K 仅 .54，无一条扛得住。')]},
+ E:{name:'报错码 / 异常排查',
+  cuda:[
+   N('v4','4','1 搜命中 compute-sanitizer 官方文档；NVIDIA 论坛 / PyTorch issues 常压过官方、名次≈2。',{srcs:[['compute-sanitizer 官方文档','docs.nvidia.com/cuda/compute-sanitizer',' ','latest'],['CUDA error device-side assert 定位','PyTorch issues #21819/#171660',' ',' ']]}),
+   N('v5','5','NVIDIA 文档静态站，正文可抓。',{got:'<code>compute-sanitizer --tool memcheck ./app</code>、memcheck/racecheck/initcheck/synccheck 各 tool、退出码与报告格式正文可抓。',miss:'无明显缺失。'}),
+   N('v5','5','实测 fetch：compute-sanitizer 正文详尽。',{got:'各 tool 用法 + <code>CUDA_LAUNCH_BLOCKING=1</code> + <code>TORCH_USE_CUDA_DSA</code> + cuda-gdb + CUDA core dump 环境变量全抓到。',miss:'无明显缺失。',srcs:[['compute-sanitizer User Manual（实测 fetch）','docs.nvidia.com/cuda/compute-sanitizer',' ',' ']]}),
+   N('v5','5','调试工具版本稳定、与 CUDA 版本线一致。',{vers:'compute-sanitizer 随 CUDA Toolkit、单一主线。'}),
+   N('v4','4','SO / vLLM 博客 / medium / tds / 调试科普，公式计数 5 → 档 4（NVIDIA 论坛、PyTorch issues 属官方①不计二手）。',{srcs:[['CUDA device-side assert 排查','stackoverflow.com',' ',' '],['vLLM CUDA error 调试','vLLM blog','2025-08',' ']]}),
+   N('v4','4','各源排查路径一致、平台多样；均分≈3 + 一致性 high(+1) = 4。'),
+   N('v4','4','CUDA 报错定位（LAUNCH_BLOCKING / sanitizer / cuda-gdb）我很熟。'),
+   N('v5','1搜·1抓','成本 = 轮数1 + 0.5×抓取1 = 1.5 → 档 5。'),
+   N('v4','4','可锁工具版本、定位流程确定。'),
+   N('v5','5','<code>CUDA_LAUNCH_BLOCKING=1 python app.py</code> + sanitizer 命令照抄即跑。'),
+   N('v5','高','官方静态可抓且穷尽、二手厚、自带知识强。')],
+  cann:[
+   N('v3','3','官方错误码页搜得到但非置顶；可用信息要补第 2 搜（vllm-ascend issues / CSDN 案例）才凑齐。',{srcs:[['错误码 EZ9999 atlaserrorcode_15_0313','hiascend.com/document/detail',' ','canncommercial 80RC1'],['EZ9999 Inner Error 排查','gitee vllm-ascend issues #5695/#2763',' ',' ']]}),
+   N('v4','4','官方错误码页 ssr 可抓（推翻「全站 SPA」）。',{got:'错误码条目页正文可抓到。',miss:'但内容是泛化兜底（见③）。',warn:'抓得到 ≠ 够用。'}),
+   N('v2','2','实测 fetch：抓到正文，但是泛化兜底、骨架化、近乎无用。',{got:'EZ9999 =「Inner Error / 内部错误」条目抓到。',miss:'cause 写 N/A、只给 2 条「查日志 / 联系支持」式通用建议；具体根因 / 案例全在二手。',warn:'EZ9999 本身是 catch-all，官方难穷举；这是「②可抓但③无用」的典型——与 D 的「受阻（抓不到）」不同。',srcs:[['错误码页 atlaserrorcode_15_0313（实测 fetch）','hiascend.com/document/detail',' ','canncommercial 80RC1']]}),
+   N('v2','2','错误码跨版本散落、难对齐。',{vers:'同类错误码跨 CANN 多版本，无统一索引。'}),
+   N('v3','3','CSDN×2 / 知乎，真二手不厚（MindSpore 教程、vllm-ascend issues 属官方①不计二手）。',{srcs:[['昇腾 EZ9999 报错排查','blog.csdn.net','2024-12',' '],['torch_npu 训练报错案例','blog.csdn.net','2025-03',' ']]}),
+   N('v3','3','一致性中、平台偏集中（CSDN×2）；均分≈3 + mid(0) − 独立性 ≈ 3。'),
+   N('v2','2','具体 Ascend 错误码我自带知识弱，不敢凭记忆给根因。',{warn:'EZ9999 类 catch-all，训练覆盖薄。'}),
+   N('v4','2搜·1抓','成本 = 轮数2 + 0.5×抓取1 = 2.5 → 档 4。'),
+   N('v3','3','根因依赖上下文，部分可锁。'),
+   N('v3','3','诊断步骤大体可述，需结合 plog / 日志环境。'),
+   N('v3','中','量化公式复算 = K .69 × 版本 .82 × 成本 .98 = .55 → 中。这批 CANN 最弱：官方错误码页泛化兜底（③2）+ 自带知识弱（⑦2）+ 二手碎散，三者叠加——恰如 A–D 里 D 之于算子开发。')]},
+ F:{name:'分布式训练配置',
+  cuda:[
+   N('v5','5','PyTorch 官方 tutorials / examples 置顶。',{srcs:[['Distributed Data Parallel','docs.pytorch.org/tutorials/intermediate/ddp_tutorial',' ',' '],['torchrun (Elastic Launch)','docs.pytorch.org/docs/stable/elastic/run',' ',' ']]}),
+   N('v5','5','PyTorch 文档静态可抓。',{got:'init_process_group / DDP / torchrun 正文可抓。',miss:'无明显缺失。'}),
+   N('v5','5','实测 fetch：DDP 教程正文详尽。',{got:'<code>init_process_group(backend="nccl")</code> + <code>DistributedDataParallel(model)</code> + <code>torchrun --nnodes --nproc_per_node --rdzv_endpoint</code> + MASTER_ADDR/PORT/WORLD_SIZE/RANK + SLURM 全抓到。',miss:'无明显缺失。',srcs:[['DDP Tutorial（实测 fetch）','docs.pytorch.org/tutorials',' ',' ']]}),
+   N('v3','3','launch→torchrun 两套启动并存，但官方标注清楚。',{vers:'torch.distributed.launch（旧）/ torchrun（新）两套。'}),
+   N('v3','3','medium / SO / 博客 / lambda labs，公式计数 4 → 档 3（pytorch examples 属官方①）。',{srcs:[['Multi-node DDP 实践','medium.com',' ',' '],['NCCL 多机配置','stackoverflow.com',' ',' ']]}),
+   N('v4','4','各源启动方式一致、平台多样；均分≈3.1 + 一致性 high(+1) = 4。'),
+   N('v4','4','NCCL / torchrun / DDP 我熟。'),
+   N('v5','1搜·1抓','成本 = 1 + 0.5×1 = 1.5 → 档 5。'),
+   N('v4','4','可锁 torch / 启动器版本。'),
+   N('v5','5','torchrun 命令照抄即跑。'),
+   N('v5','高','官方穷尽 + 工具成熟。')],
+  cann:[
+   N('v4','4','1 搜命中 hiascend trainingmigrguide，非绝对置顶。',{srcs:[['分布式训练迁移 PT_LMTMOG_0024','hiascend.com/document/detail',' ','Pytorch 60RC1'],['torch_npu HCCL 分布式','blog.csdn.net','2025-06',' ']]}),
+   N('v4','4','子树相关：<code>ptmoddevg/trainingmigrguide/</code> 服务端渲染、正文可抓。',{got:'PT_LMTMOG_0024 正文可抓。',miss:'无明显缺失（主路径全）。',warn:'分布式 how-to 落在可抓子树，非 SPA。'}),
+   N('v4','4','实测 fetch：HCCL 分布式正文详尽、对标 DDP。',{got:'<code>init_process_group(backend="hccl")</code> + <code>device=torch.device("npu",local_rank)</code> + DDP + 5 种拉起方式（含 torch_npu_run，PyTorch 1.11.0）+ hccn_tool 配多机 IP + HCCL AllReduce/AllGather 全抓到。',miss:'穷尽 HCCL 原生 API 参考需另查。',srcs:[['分布式训练迁移 PT_LMTMOG_0024（实测 fetch）','hiascend.com/document/detail',' ','Pytorch 60RC1']]}),
+   N('v2','2','torch_npu / PyTorch / CANN 多版本号并存、散。',{vers:'PyTorch 1.11/2.1 + torch_npu + CANN 多版本。',warn:'多版本散乱。'}),
+   N('v3','3','CSDN×3 / 知乎，平台集中（torchtitan-npu 社区仓另计）。',{srcs:[['昇腾多机多卡 HCCL','blog.csdn.net','2025-06',' '],['torch_npu DDP 实践','blog.csdn.net',' ',' ']]}),
+   N('v3','3','一致性中、平台独立性低（CSDN×3）；均分≈3 + mid(0) − 独立性(−0.5) = 3。'),
+   N('v3','3','DDP + backend=hccl 改法我知道，细节需查。'),
+   N('v5','1搜·1抓','成本 = 1 + 0.5×1 = 1.5 → 档 5。'),
+   N('v3','3','工具 / 版本部分可锁。'),
+   N('v3','3','init + 启动可抄，多机需 hccn_tool 配 IP、部分依赖环境。'),
+   N('v4','中高','量化公式复算 = K .88 × 版本 .82 × 成本 1.0 = .72 → 中高。官方可抓且对标 PyTorch DDP（backend 改 hccl、device 改 npu，其余几乎一致）；短板在版本散（④2）与二手平台集中。')]},
+ G:{name:'CUDA → 昇腾 迁移',
+  cuda:[
+   N('v5','5','跨平台移植对照（CUDA→ROCm/HIP）：AMD ROCm 官方文档置顶。',{srcs:[['HIPIFY','rocm.docs.amd.com/projects/HIPIFY',' ',' '],['Porting CUDA to HIP','rocm.docs.amd.com',' ',' ']]}),
+   N('v5','5','AMD 官方文档静态可抓。',{got:'hipify-clang / hipify-perl / --examine / --inplace 正文可抓。',miss:'无明显缺失。'}),
+   N('v5','5','实测：HIP 移植文档正文详尽。',{got:'<code>hipify-perl src.cu &gt; src.cpp</code> / <code>hipify-clang --examine</code> / <code>--inplace</code> / hipify_torch 全抓到。',miss:'无明显缺失。',srcs:[['HIPIFY（实测）','rocm.docs.amd.com',' ',' ']]}),
+   N('v3','3','hipify / ROCm 多版本，但官方标注。',{vers:'ROCm / hipify 多版本。'}),
+   N('v3','3','hipify_torch 社区仓 / medium / SO / 博客，公式计数 4 → 档 3（rocm.docs 属官方①）。'),
+   N('v4','4','各源一致、平台多样；均分≈3.1 + high(+1) = 4。'),
+   N('v4','4','HIP 移植套路我大体熟。'),
+   N('v5','1搜','成本低。'),
+   N('v4','4','可锁工具版本。'),
+   N('v5','5','hipify 命令照抄即跑。'),
+   N('v5','高','AMD 官方文档完备 + 二手齐。')],
+  cann:[
+   N('v4','4','1 搜命中 hiascend 自动迁移 + 华为云 ModelArts 最佳实践。',{srcs:[['自动迁移 atlasfmkt_16_0036','hiascend.com/document/detail',' ','社区版 80RC3alpha003'],['ModelArts 迁移最佳实践 modelarts_10_2501','support.huaweicloud.com',' ',' ']]}),
+   N('v4','4','官方自动迁移页 ssr 可抓。',{got:'迁移页正文可抓。',miss:'无明显缺失。',warn:'devaids/auxiliarydevtool 子树实测可抓、非 SPA。'}),
+   N('v4','4','实测 fetch：自动迁移正文详尽。',{got:'<code>from torch_npu.contrib import transfer_to_npu</code>（一行接管）+ 步骤 + NCCL→HCCL 自动转 + troubleshooting（不支持 API 用 ms_fmk_transplt 识别 / 改 npu_native_functions.yaml 挪 CPU）全抓到。',miss:'复杂场景 / 自定义算子需手工适配。',srcs:[['自动迁移 atlasfmkt_16_0036（实测 fetch）','hiascend.com/document/detail',' ','社区版 80RC3alpha003']]}),
+   N('v4','4','官方明列支持 PyTorch 1.11.0 / 2.1.0 / 2.2.0，版本矩阵清楚。',{vers:'明确支持 PyTorch 1.11/2.1/2.2，有版本矩阵。'}),
+   N('v3','3','华为云 / 知乎 / 博客园 / CSDN，公式计数 4 → 档 3（ms_fmk_transplt 属官方工具不计二手）。',{srcs:[['昇腾 PyTorch 迁移实践','zhihu.com',' ',' '],['transfer_to_npu 自动迁移','cnblogs.com',' ',' ']]}),
+   N('v4','4','华为云（基准4）+ 知乎 + 博客园 + CSDN 平台多样、一致；均分≈3.4 + high(+1) = 4。'),
+   N('v3','3','transfer_to_npu 一行迁移我知道，工具细节需查。'),
+   N('v5','1搜·1抓','成本 = 1 + 0.5×1 = 1.5 → 档 5。'),
+   N('v4','4','可锁支持的 PyTorch 版本。'),
+   N('v4','4','import 一行 + 跑，简单场景可照抄；自定义算子需适配。'),
+   N('v5','高','量化公式复算 = K .90 × 版本 .94 × 成本 1.0 = .84 → 高。迁移是华为推 CUDA 用户上昇腾的核心采纳漏斗、官方投入最重：transfer_to_npu 一行自动迁移 + 文档可抓详尽 + 华为云成体系最佳实践。这批唯一达「高」的 CANN 格。局限：一键迁移只覆盖简单场景，自定义算子仍需适配。')]},
+ H:{name:'量化',
+  cuda:[
+   N('v5','5','Torch-TensorRT 官方文档置顶。',{srcs:[['Post Training Quantization (PTQ)','pytorch.org/TensorRT',' ','v2.5.0/v1.4.0'],['TensorRT INT8 Calibration','docs.nvidia.com/deeplearning/tensorrt',' ',' ']]}),
+   N('v5','5','官方文档静态可抓。',{got:'CacheCalibrator / calibration.cache / FP32→INT8 正文可抓。',miss:'无明显缺失。'}),
+   N('v5','5','实测：PTQ 文档正文详尽。',{got:'<code>CacheCalibrator</code> 用法 + calibration.cache 生成 + FP32→INT8 流程全抓到。',miss:'无明显缺失。',srcs:[['Torch-TensorRT PTQ（实测）','pytorch.org/TensorRT',' ','v2.5.0']]}),
+   N('v3','3','Torch-TRT v1.4 / v2.5 API 有别，但官方标注。',{vers:'Torch-TensorRT v1.4.0 / v2.5.0 API 不同。'}),
+   N('v3','3','NVIDIA 博客 / medium / github 示例 / SO，公式计数 4 → 档 3。'),
+   N('v4','4','各源一致、平台多样；均分≈3.4 + high(+1) = 4。'),
+   N('v4','4','TensorRT INT8 校准流程我熟。'),
+   N('v5','1搜','成本低。'),
+   N('v4','4','可锁 TRT 版本。'),
+   N('v5','5','校准脚本照抄即跑。'),
+   N('v5','高','官方穷尽 + 二手齐。')],
+  cann:[
+   N('v3','3','msmodelslim Gitee 蓝区仓搜得到，官方文档页非置顶、需第 2 搜定位 AMCT。',{srcs:[['msmodelslim 大模型量化','gitee.com/ascend/msit',' ',' '],['AMCT 量化 atlasamct_16_0385','hiascend.com/document/detail',' ','社区版 800alpha002']]}),
+   N('v4','4','官方 AMCT 页 ssr 可抓（推翻「devaids/devtools 为 SPA」的此前假设）。',{got:'AMCT 页正文可抓。',miss:'但只讲算法原理（见③）。',warn:'实测可抓、非 SPA。'}),
+   N('v3','3','实测 fetch：抓到正文，但只讲量化算法原理、无落地命令。',{got:'对称量化 <code>q=round(r/scale)</code>、<code>scale=max(|r|)/127</code>、非对称 <code>q=round(r/scale)+offset</code> 抓到。',miss:'落地命令 / 参数表无；W8A8 可跑命令在 Gitee 蓝区仓(①) + CSDN。',srcs:[['AMCT 量化 atlasamct_16_0385（实测 fetch）','hiascend.com/document/detail',' ','社区版 800alpha002']]}),
+   N('v2','2','msmodelslim / AMCT 两套并存、CANN 版本散。',{vers:'msmodelslim（新）/ AMCT（旧）两套量化工具并存。',warn:'两套工具版本散。'}),
+   N('v4','4','CSDN×3 / 知乎 / 53ai，公式计数 5 → 档 4（Gitee msmodelslim、vLLM-Ascend 属官方①）。',{srcs:[['msmodelslim W8A8 量化实战','blog.csdn.net','2025-01',' '],['昇腾大模型量化部署','ascendai.csdn.net','2025-05',' ']]}),
+   N('v3','3','一致性中、平台集中（CSDN×3）；均分≈3 + mid(0) − 独立性 ≈ 3。'),
+   N('v3','3','量化概念我熟，msmodelslim 具体命令需查。'),
+   N('v4','2搜·1抓','成本 = 轮数2 + 0.5×抓取1 = 2.5 → 档 4。'),
+   N('v4','4','W8A8 具体配置可锁。'),
+   N('v5','5','Gitee / CSDN 给出 <code>git clone gitee.com/ascend/msit.git</code> → <code>bash install.sh</code> → <code>python3 quant_deepseek_w8a8.py --model_path --save_path</code> 可照抄。'),
+   N('v4','中高','量化公式复算 = K .85 × 版本 .82 × 成本 .98 = .69 → 中高。官方页能抓但偏理论（③3），真正可跑的 W8A8 命令在 Gitee 蓝区仓 + CSDN（⑩5 可照抄）；短板仍是 msmodelslim/AMCT 版本散乱（④2）。')]}
 };
 const TASKOVER={
  A:{q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om',cu:'高',ca:'中高',v:'差距小，两边都好查；官方 quickstart 子树实测可抓、命令统一，仅深层 AIPP 参考 SPA。'},
  B:{q:'Nsight ｜ msprof / Ascend PyTorch Profiler',cu:'高',ca:'中高',v:'中等偏小差距；官方 PyTorch Profiler 子树实测可抓、对标 GPU，仅 msprof 原生参考 SPA。'},
  C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'中高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。CANN 侧公式复算 .77→中高（自带⑦/官方③ 各仅 3，撑不到「高」）。'},
- D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'低',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。CANN 侧公式复算 .41→低（三渠道同时塌、K 仅 .54）。'}
+ D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'低',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。CANN 侧公式复算 .41→低（三渠道同时塌、K 仅 .54）。'},
+ E:{q:'CUDA 报错码定位 ｜ EZ9999 排查',cu:'高',ca:'中',v:'第二批 CANN 最弱格。官方错误码页 ssr 可抓但是泛化兜底（Inner Error/cause N/A，③2），加自带知识弱（⑦2）、二手碎散——「②可抓但③无用」的典型，公式复算 .55→中。'},
+ F:{q:'PyTorch DDP+NCCL ｜ torch_npu DDP+HCCL',cu:'高',ca:'中高',v:'官方 trainingmigrguide 子树可抓且详尽，HCCL 几乎逐项对标 PyTorch DDP（backend 改 hccl、device 改 npu）；短板在版本散与二手平台集中，公式复算 .72→中高。'},
+ G:{q:'CUDA→ROCm/HIP 移植 ｜ GPU→NPU transfer_to_npu',cu:'高',ca:'高',v:'迁移是华为推 CUDA 用户上昇腾的核心采纳漏斗、官方投入最重：transfer_to_npu 一行自动迁移 + 文档可抓详尽 + 华为云最佳实践，公式复算 .84→高（第二批唯一达「高」的 CANN 格）。局限：一键迁移只覆盖简单场景。'},
+ H:{q:'TensorRT INT8 PTQ ｜ msmodelslim W8A8',cu:'高',ca:'中高',v:'官方 AMCT 页 ssr 可抓但偏算法原理（③3），真正可跑的 W8A8 命令在 Gitee 蓝区仓 + CSDN（⑩5 可照抄）；短板是 msmodelslim/AMCT 版本散乱，公式复算 .69→中高。'}
 };
 const CATS=[
  {name:'1 环境与安装',tasks:[{t:'版本兼容排查'},{t:'安装与环境变量'},{t:'容器 / 镜像搭建'}]},
  {name:'2 算子开发',tasks:[{t:'自定义算子开发',k:'D'},{t:'算子精度排查'},{t:'动态 shape / Tiling'},{t:'算子融合'},{t:'注册与框架集成'},{t:'算子库选型',k:'C'}]},
- {name:'3 训练',tasks:[{t:'分布式训练配置'},{t:'混合精度训练'},{t:'显存 / OOM 优化'},{t:'精度 / 收敛排查'}]},
- {name:'4 推理与部署',tasks:[{t:'模型转换 / 导出',k:'A'},{t:'推理服务部署'},{t:'量化'},{t:'动态 batch / shape 推理'}]},
+ {name:'3 训练',tasks:[{t:'分布式训练配置',k:'F'},{t:'混合精度训练'},{t:'显存 / OOM 优化'},{t:'精度 / 收敛排查'}]},
+ {name:'4 推理与部署',tasks:[{t:'模型转换 / 导出',k:'A'},{t:'推理服务部署'},{t:'量化',k:'H'},{t:'动态 batch / shape 推理'}]},
  {name:'5 性能优化',tasks:[{t:'Profiling 定位瓶颈',k:'B'},{t:'访存 / occupancy 优化'},{t:'计算与传输重叠'},{t:'多卡通信优化'}]},
- {name:'6 调试',tasks:[{t:'内存越界定位'},{t:'报错码 / 异常排查'}]},
- {name:'7 迁移',tasks:[{t:'CUDA → 昇腾 迁移'},{t:'跨芯片迁移'},{t:'概念心智模型对照'}]}
+ {name:'6 调试',tasks:[{t:'内存越界定位'},{t:'报错码 / 异常排查',k:'E'}]},
+ {name:'7 迁移',tasks:[{t:'CUDA → 昇腾 迁移',k:'G'},{t:'跨芯片迁移'},{t:'概念心智模型对照'}]}
 ];
 
 // 使用者角色：独立按「有几种人在用昇腾」切（官方 API 分层为骨），与已跑任务无关。
@@ -471,11 +583,11 @@ const ROLES=[
  {n:'① 应用开发者', api:'AscendCL / 高层库',
   who:'基于 AscendCL（及高层库）做上层 AI 应用 / 推理服务：管资源·内存、加载模型、Host↔Device 搬数据、同步 / 异步下发计算。',
   edge:'不写底层 kernel，一般不做框架级迁移。',
-  tasks:[{t:'推理服务部署'},{t:'动态 batch / shape 推理'},{t:'算子库选型',run:'C'},{t:'量化'},{t:'报错码 / 异常排查'},{t:'安装与环境变量'},{t:'概念心智模型对照'}]},
+  tasks:[{t:'推理服务部署'},{t:'动态 batch / shape 推理'},{t:'算子库选型',run:'C'},{t:'量化',run:'H'},{t:'报错码 / 异常排查',run:'E'},{t:'安装与环境变量'},{t:'概念心智模型对照'}]},
  {n:'② 模型 / 框架迁移工程师', api:'torch_npu · ATC · GE 图',
   who:'用框架插件（torch_npu）+ ATC 转换（必要时 GE 图接口），把 PyTorch / TF / Paddle 模型迁到昇腾训练或推理。',
   edge:'一般不写底层 kernel。',
-  tasks:[{t:'模型转换 / 导出',run:'A'},{t:'CUDA → 昇腾 迁移'},{t:'跨芯片迁移'},{t:'注册与框架集成'},{t:'分布式训练配置'},{t:'混合精度训练'},{t:'显存 / OOM 优化'},{t:'精度 / 收敛排查'},{t:'版本兼容排查'},{t:'容器 / 镜像搭建'}]},
+  tasks:[{t:'模型转换 / 导出',run:'A'},{t:'CUDA → 昇腾 迁移',run:'G'},{t:'跨芯片迁移'},{t:'注册与框架集成'},{t:'分布式训练配置',run:'F'},{t:'混合精度训练'},{t:'显存 / OOM 优化'},{t:'精度 / 收敛排查'},{t:'版本兼容排查'},{t:'容器 / 镜像搭建'}]},
  {n:'③ 算子开发者', api:'Ascend C kernel',
   who:'框架算子不支持、或现有算子性能不达标时，用 Ascend C 写底层 kernel。最深、最贴硬件。',
   edge:'',
@@ -483,7 +595,7 @@ const ROLES=[
  {n:'④ 系统调优 / 生态贡献者', api:'最底层资源 · 通信 · 编译链',
   who:'偏底层的高级角色：算子库优化、通信算法、编译链层面的极致调优，并可能往社区贡献高性能算子 / 通信实践。',
   edge:'',
-  tasks:[{t:'Profiling 定位瓶颈',run:'B'},{t:'访存 / occupancy 优化'},{t:'计算与传输重叠'},{t:'多卡通信优化'},{t:'算子融合'},{t:'分布式训练配置'}]}
+  tasks:[{t:'Profiling 定位瓶颈',run:'B'},{t:'访存 / occupancy 优化'},{t:'计算与传输重叠'},{t:'多卡通信优化'},{t:'算子融合'},{t:'分布式训练配置',run:'F'}]}
 ];
 function renderRoles(){
  const sub='按「谁在用昇腾」<b>独立切出</b>的 4 类使用者（以官方 API 分层为骨；<b>与已跑 / 待跑无关</b>）。每个角色会做下方<b>一束任务</b>（多对多：注册集成被 ②③ 共有、算子融合被 ③④ 共有、分布式被 ②④ 共有）。<b style="color:var(--hw)">带「✓ 已跑」的</b>是该角色任务束里碰巧已实测的、点它跳到矩阵对应行；其余为该角色工作面里的待跑任务。';

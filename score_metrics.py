@@ -204,6 +204,88 @@ RAW = {
      dates=["2024-11", "2025-12", "2024-11"],
      consist="low", own=2, churn="fast", pin="none", repro="partial"),
  },
+ # ── 第二批真跑（2026-06-10）：E/F/G/H 四任务 ──────────────────
+ "E": {  # 报错码 / 异常排查（调试类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=2, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # StackOverflow / vLLM 博客 / medium / towardsdatascience / 调试科普
+     #（NVIDIA 论坛=官方论坛①、pytorch issues=官方仓①，均不计二手）
+     sources=["qa_reputation","tech_blog","tech_blog","tech_blog","aggregator"],
+     platforms=["stackoverflow","vllm-blog","medium","tds","aggr"],
+     dates=[None, "2025-08", None, None, None],
+     consist="high", own=4, churn="stable", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=2, rank=3, refine=False, fetch=1, fetch_fail=0,
+     # 官方 EZ9999 页可抓(ssr)但泛化兜底(Inner Error/cause N/A)→正文骨架化(fragment)
+     core_fetch="ssr", exec=False, ref_level="fragment",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # CSDN×2 / 知乎（MindSpore 教程=官方doc①、vllm-ascend issues=官方仓①，不计二手）
+     sources=["tech_blog","tech_blog","qa_reputation"],
+     platforms=["csdn","csdn","zhihu"],
+     dates=["2024-12", "2025-03", None],
+     consist="mid", own=2, churn="moderate", pin="range", repro="partial"),
+ },
+ "F": {  # 分布式训练 HCCL（训练类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # medium / StackOverflow / 训练博客 / lambda labs（pytorch tutorials+examples=官方①）
+     sources=["tech_blog","qa_reputation","tech_blog","cloud_vendor"],
+     platforms=["medium","stackoverflow","blog","lambda"],
+     dates=[None, None, None, None],
+     consist="high", own=4, churn="stable", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=3, refine=False, fetch=1, fetch_fail=0,
+     # 官方 PT_LMTMOG_0024 可抓且详尽：hccl init_process_group+DDP+5种拉起+hccn_tool
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # CSDN×3 / 知乎（torchtitan-npu 社区仓计二手不在此、归官方风格外；此处只列真二手）
+     sources=["tech_blog","tech_blog","tech_blog","qa_reputation"],
+     platforms=["csdn","csdn","csdn","zhihu"],
+     dates=["2025-06", None, None, None],
+     consist="mid", own=3, churn="moderate", pin="range", repro="partial"),
+ },
+ "G": {  # CUDA→昇腾迁移（迁移类，版本敏感 高）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     # CUDA→ROCm/HIP 移植类比（同栈无关、跨平台迁移的对照）
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # hipify_torch 社区仓 / medium / SO / 博客（rocm.docs.amd.com=官方doc①）
+     sources=["tech_blog","tech_blog","qa_reputation","tech_blog"],
+     platforms=["github","medium","stackoverflow","blog"],
+     dates=[None, None, None, None],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=2, refine=False, fetch=1, fetch_fail=0,
+     # 官方自动迁移页可抓且详尽：transfer_to_npu import+步骤+NCCL→HCCL+ms_fmk_transplt，
+     # 明列支持 PyTorch 1.11/2.1/2.2（→ver_matrix）
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=3, ver_matrix=True, ver_irrelev=False, two_axis=False,
+     # 华为云 ModelArts 最佳实践 / 知乎 / 博客园 / CSDN
+     #（hiascend 页=官方①、ms_fmk_transplt=官方工具，不计二手）
+     sources=["cloud_vendor","qa_reputation","tech_blog","tech_blog"],
+     platforms=["huaweicloud","zhihu","cnblogs","csdn"],
+     dates=[None, None, None, None],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "H": {  # 量化 / 推理部署（推理部署类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # NVIDIA 开发者博客 / medium / github 示例 / SO（Torch-TensorRT docs=官方doc①）
+     sources=["cloud_vendor","tech_blog","tech_blog","qa_reputation"],
+     platforms=["nvidia-blog","medium","github","stackoverflow"],
+     dates=[None, None, None, None],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=2, rank=4, refine=False, fetch=1, fetch_fail=0,
+     # 官方 AMCT 页可抓(ssr)但仅讲量化算法原理(对称/非对称公式)、无落地命令→概述级
+     core_fetch="ssr", exec=False, ref_level="overview",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # msmodelslim 命令在 Gitee 蓝区仓(①)+CSDN；CSDN×3 / 知乎 / 53ai
+     #（Gitee msmodelslim=官方仓①、vLLM-Ascend=官方仓①，不计二手）
+     sources=["tech_blog","tech_blog","tech_blog","qa_reputation","aggregator"],
+     platforms=["csdn","csdn","csdn","zhihu","53ai"],
+     dates=["2025-01", "2025-05", None, None, None],
+     consist="mid", own=3, churn="moderate", pin="mostly", repro="copyrun"),
+ },
 }
 
 # 旧手评矩阵（从 17_official_site_focus.html 的 ROWS 提取，用于对比 diff）
@@ -336,9 +418,11 @@ METRICS = [score1_discover, score2_fetch, score3_detail, score4_version,
 LABELS = ["①发现","②抓取","③详尽","④版本清","⑤二手量","⑥二手信",
           "⑦自带","⑧成本","⑨版本锁","⑩复现","⑪综合"]
 
+TASKS = ["A","B","C","D","E","F","G","H"]
+
 def compute():
     out = {}
-    for t in ["A","B","C","D"]:
+    for t in TASKS:
         out[t] = {}
         for st in ["cuda","cann"]:
             r = RAW[t][st]
@@ -359,14 +443,14 @@ def main():
     print("量化公式复算矩阵（score_metrics.py）")
     print("="*108)
     print("格    " + "  ".join(f"{l:>5}" for l in LABELS))
-    for t in ["A","B","C","D"]:
+    for t in TASKS:
         for st in ["cuda","cann"]:
             row = res[t][st]
             cells = [fmt(x) for x in row["scores"]] + [f'{row["overall"]:.2f}{row["band"]}']
             print(f"{t}.{st:4} " + "  ".join(f"{c:>5}" for c in cells))
     if diff:
-        print("\n与旧手评的差异（新→旧）：")
-        for t in ["A","B","C","D"]:
+        print("\n与旧手评的差异（新→旧；仅 A–D 有旧手评）：")
+        for t in [k for k in TASKS if k in OLD]:
             for st in ["cuda","cann"]:
                 new = res[t][st]["scores"]; old = OLD[t][st]
                 for i,(n,o) in enumerate(zip(new,old)):
@@ -375,9 +459,10 @@ def main():
         # ⑪ 档位对比
         print("\n⑪ 综合档位：")
         oldband={"A":["高","中高"],"B":["高","中高"],"C":["高","中高"],"D":["高","低"]}
-        for t in ["A","B","C","D"]:
+        for t in TASKS:
             for j,st in enumerate(["cuda","cann"]):
-                print(f"  {t}.{st}: {res[t][st]['overall']:.2f} {res[t][st]['band']}  (旧手评 {oldband[t][j]})")
+                ob = f"  (旧手评 {oldband[t][j]})" if t in oldband else "  (新跑·无旧手评)"
+                print(f"  {t}.{st}: {res[t][st]['overall']:.2f} {res[t][st]['band']}{ob}")
 
 if __name__ == "__main__":
     main()

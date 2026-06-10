@@ -227,17 +227,21 @@
   </table>
   <p class="note">7 个阶段把"装→开发→训练→部署→调优→调试→迁移"这条完整链路铺满，共 <b>26 个任务</b>。这才是"任务是怎么形成的"的主体——一张<b>有意求全</b>的工作面清单。</p>
 
-  <p class="note" style="margin-top:16px"><b>再从这张全清单里抽样真跑（次要的一步）。</b>26 个不可能一次跑完，于是先抽 <b>4 个</b>（标 <span class="vs hi" style="background:var(--hw)">A/B/C/D</span>）做真检索实测、其余 22 个标"待跑"。抽样不是随机，而是<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>，好让"可用性是任务相关的"显形：</p>
+  <p class="note" style="margin-top:16px"><b>再从这张全清单里抽样真跑（次要的一步）。</b>26 个不可能一次跑完，于是分两批抽 <b>8 个</b>（标 <span class="vs hi" style="background:var(--hw)">A–H</span>）做真检索实测、其余 18 个标"待跑"。抽样不是随机，而是<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>，好让"可用性是任务相关的"显形：</p>
   <table class="ttab">
-    <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th></tr></thead>
+    <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th><th style="width:96px">CANN 综合</th></tr></thead>
     <tbody>
-      <tr><td class="cd">A</td><td><b>模型转换 / 导出</b><br><small style="color:var(--g4)">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</small></td><td>成熟通识：部署必经路。</td><td><span class="vs hi">高</span></td></tr>
-      <tr><td class="cd">B</td><td><b>Profiling 定位瓶颈</b><br><small style="color:var(--g4)">Nsight ｜ msprof / Ascend PyTorch Profiler</small></td><td>成熟工具类：调优入口。</td><td><span class="vs mid">中</span></td></tr>
-      <tr><td class="cd">C</td><td><b>算子库选型</b><br><small style="color:var(--g4)">cuBLAS/cuDNN/… ｜ AOL/ATB</small></td><td>通识 / 选型类：知识密集。</td><td><span class="vs lo">低</span></td></tr>
-      <tr><td class="cd">D</td><td><b>自定义算子开发</b><br><small style="color:var(--g4)">CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn</small></td><td>前沿开发：最深、最依赖官方 how-to。</td><td><span class="vs hi">高</span></td></tr>
+      <tr><td class="cd">A</td><td><b>模型转换 / 导出</b><br><small style="color:var(--g4)">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</small></td><td>成熟通识：部署必经路。</td><td><span class="vs hi">高</span></td><td><span class="vs mid">中高 .75</span></td></tr>
+      <tr><td class="cd">B</td><td><b>Profiling 定位瓶颈</b><br><small style="color:var(--g4)">Nsight ｜ msprof / Ascend PyTorch Profiler</small></td><td>成熟工具类：调优入口。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .70</span></td></tr>
+      <tr><td class="cd">C</td><td><b>算子库选型</b><br><small style="color:var(--g4)">cuBLAS/cuDNN/… ｜ AOL/ATB</small></td><td>通识 / 选型类：知识密集。</td><td><span class="vs lo">低</span></td><td><span class="vs mid">中高 .77</span></td></tr>
+      <tr><td class="cd">D</td><td><b>自定义算子开发</b><br><small style="color:var(--g4)">CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn</small></td><td>前沿开发：最深、最依赖官方 how-to。</td><td><span class="vs hi">高</span></td><td><span class="vs hi">低 .41</span></td></tr>
+      <tr><td class="cd">E</td><td><b>报错码 / 异常排查</b><br><small style="color:var(--g4)">CUDA 报错码定位 ｜ EZ9999 排查</small></td><td>排障类：依赖具体案例知识。</td><td><span class="vs mid">中</span></td><td><span class="vs hi">中 .55</span></td></tr>
+      <tr><td class="cd">F</td><td><b>分布式训练 HCCL</b><br><small style="color:var(--g4)">PyTorch DDP+NCCL ｜ torch_npu DDP+HCCL</small></td><td>训练类：迁移友好场景。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .72</span></td></tr>
+      <tr><td class="cd">G</td><td><b>CUDA → 昇腾 迁移</b><br><small style="color:var(--g4)">CUDA→ROCm/HIP ｜ GPU→NPU transfer_to_npu</small></td><td>迁移类：官方采纳漏斗、投入最重。</td><td><span class="vs hi">高</span></td><td><span class="vs lo">高 .84</span></td></tr>
+      <tr><td class="cd">H</td><td><b>量化 / 推理部署</b><br><small style="color:var(--g4)">TensorRT INT8 PTQ ｜ msmodelslim W8A8</small></td><td>部署类：工具链较新。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .69</span></td></tr>
     </tbody>
   </table>
-  <p class="note">A→D 恰好"越来越深入、越来越前沿"。真跑结果印证了抽样意图：<b>A/B/C 两栈差距小，D 差距被拉满</b>——这条结论可信，正因为底层是<b>一张求全的清单 + 一次有意铺开的抽样</b>，不是凑巧挑了几个。</p>
+  <p class="note">第一批 A→D 沿"越来越深入、越来越前沿"铺开，印证 <b>A/B/C 两栈差距小、D 差距被拉满</b>。第二批 E–H 进一步发现：<b>可用性还随任务在"采纳漏斗"上的位置变化</b>——<b>迁移(G) 被官方刻意做厚、唯一达「高」</b>（transfer_to_npu 一行自动迁移 + 文档可抓详尽 + 华为云最佳实践）；<b>前沿算子(D) 最薄、唯一「低」</b>；<b>排障(E) 居中偏弱</b>（官方错误码页泛化兜底、依赖具体案例知识）。八格 CANN 综合（CUDA 侧均 .88–1.0 高）由 <code>score_metrics.py</code> 代入①–⑧ 算出，可复现。结论可信，正因为底层是<b>一张求全的清单 + 两批有意铺开的抽样</b>，不是凑巧挑了几个。<br><b>新洞见（②可抓取性）：</b>E/F/G/H 的官方页（错误码 / trainingmigrguide / devaids 自动迁移 / devaids·devtools AMCT）<b>实测全部 ssr 可抓</b>——连此前以为是 SPA 的 <code>devaids/devtools/amct</code> 也可抓；<b>至今唯一确证「SPA 咬到结果」的仍只有 D 的 <code>devguide/opdevg/</code></b>。但 E 暴露了新形态：<b>抓得到 ≠ 够用</b>——官方错误码页可抓但是泛化兜底（②4 但 ③2），与 D 的「受阻（抓不到）」是两种不同短板。</p>
 
   <p class="note" style="margin-top:18px"><b>另一种正交的切法：按「谁在用昇腾」分 4 类使用者角色。</b>上面 7 大类是<b>工作流阶段</b>（纵向生命周期）；这里换一条轴——<b>按使用者人群</b>（横向角色）。两者是<b>同一张 26 任务清单</b>的两个透镜：一个任务属于某个生命周期阶段，同时被一个或多个角色做。<b>角色的切法独立于「跑了哪几个任务」</b>——以官方 API 分层为骨（AscendCL ｜ 框架插件 torch_npu / ATC / GE 图 ｜ Ascend C ｜ 最底层资源），从「现实里到底有几种人在用昇腾」推出，而不是从已跑任务倒推：</p>
   <table class="ttab">
@@ -491,15 +495,20 @@
       </table>
       <div class="why"><b>设计取舍：</b>① 用<b>噪声-OR</b>而非加权平均——知识只要一条渠道扛得住就能答，这正是为什么 <b>D 三渠道同时塌</b>才致命、A/B/C 靠某一条兜住仍中高；② <b>④版本 / ⑧成本是跨渠道</b>影响、作全局乘子；③ <b>⑨⑩ 不进公式</b>（产出/因变量，进了=重复加权，见 §6.5）；④ <b>受阻渠道记 0</b>＝该渠道没送达内容，<u>不是给③打 1 分</u>（矩阵显示仍保留"受阻≠低分"中性态）。</div>
       <table style="margin-top:9px">
-        <tr><td colspan="2"><b>八格复算结果</b>（直接代入各格①–⑧ 当前分）<small>cu = CUDA ｜ ca = CANN；每格 = K × 版本 × 成本</small></td></tr>
+        <tr><td colspan="2"><b>十六格复算结果</b>（直接代入各格①–⑧ 当前分；A–D 首批、E–H 第二批）<small>cu = CUDA ｜ ca = CANN；每格 = K × 版本 × 成本</small></td></tr>
         <tr><td>A 模型转换<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.93×.82×.98=.75</small></td><td>cu .94 高 ｜ ca .75 中高</td></tr>
         <tr><td>B Profiling<small>cu: K.99×.94×1.0=.93 ｜ ca: K.88×.82×.98=.70</small></td><td>cu .93 高 ｜ ca .70 中高</td></tr>
         <tr><td>C 算子库选型<small>cu: K1.00×1.0×1.0=1.00 ｜ ca: K.87×.88×1.0=.77</small></td><td>cu 1.00 高 ｜ ca .77 中高</td></tr>
         <tr class="eff"><td>D 自定义算子<small>cu: K1.00×.88×1.0=.88 ｜ ca: K.54×.82×.92=.41（三渠道同时塌）</small></td><td>cu .88 高 ｜ ca .41 低</td></tr>
+        <tr><td>E 报错码排查<small>cu: K.99×1.0×1.0=.99 ｜ ca: K.69×.82×.98=.55</small></td><td>cu .99 高 ｜ ca .55 中</td></tr>
+        <tr><td>F 分布式 HCCL<small>cu: K1.00×.88×1.0=.88 ｜ ca: K.88×.82×1.0=.72</small></td><td>cu .88 高 ｜ ca .72 中高</td></tr>
+        <tr><td>G CUDA→昇腾迁移<small>cu: K1.00×.88×1.0=.88 ｜ ca: K.90×.94×1.0=.84</small></td><td>cu .88 高 ｜ ca .84 高</td></tr>
+        <tr><td>H 量化<small>cu: K1.00×.88×1.0=.88 ｜ ca: K.85×.82×.98=.69</small></td><td>cu .88 高 ｜ ca .69 中高</td></tr>
       </table>
       <div class="cseq"><b>本次按公式下修的两格（旧分系"整体研判"、偏乐观；新分纯由①–⑧ 代入、可复现）：</b><br>
       <b>C.cann 旧「高」→ 中高（.77）</b>：自带⑦仅 3（AOL/ATB 命名需查证）、官方③仅 3（ATB 概述偏概念），撑不到「高」(≥.80)。<br>
       <b>D.cann 旧「中」→ 低（.41）</b>：官方受阻 OFF≈0、二手稀 SEC≈.24、自带弱 OWN .40 → K 仅 .54，无一条渠道扛得住，到不了「中」(≥.45)。<br>
+      <b>第二批 E–H（2026-06-10 新跑·无旧手评、纯公式）：</b>E.cann <b>.55 中</b>（官方报错页 EZ9999 抓得到却是通用兜底③2、自带⑦2、二手散→K.69，<u>「抓得到≠够用」</u>新短板，区别于 D 的「抓不到」）；F.cann <b>.72 中高</b>（HCCL 文档 ssr 可抓、华为云实践厚）；G.cann <b>.84 高</b>（迁移是华为投入最足的采纳漏斗场景：<code>transfer_to_npu</code> 一行 + 可抓详尽文档 + 华为云最佳实践，<u>八格中 CANN 唯一到「高」</u>）；H.cann <b>.69 中高</b>（AMCT 量化文档可抓但偏算法理论③3）。<b>规律：CANN 可用性沿「采纳漏斗」单调——越靠用户上手侧（迁移 G/部署 F/H）华为投入越足、可用性越高；越靠深处自研（D 自定义算子）越塌。</b><br>
       <b>自洽校验</b>：来源构成前三段「有把握来源」之和与公式 K 同量级（D.cann 50% ≈ K .54；C.cann 75% ≈ K .87；A.cann 90% ≈ K .93）——两套独立估计互证。<small style="color:var(--g4)">①–⑩ 各分本身亦由 <code>score_metrics.py</code> 的 score_N() 公式从可量化原始观测算出（非主观研判）；cutoff 为人工锚点；此式与 17 矩阵 ⑪ 悬浮的 <code>confCompute()/confDeriv()</code> 完全同源、逐字一致。</small></div>
     </div>
 

@@ -183,3 +183,148 @@
 - **②可抓取性是"子树相关"不是平台常量**：`quickstart/`(A)、`modeldevpt/ptmigr/`(B)= 服务端渲染可抓；`doc_center/`(C-ATB)= 部分可抓（概述有、算子表无）；`devaids/`(A-ATC参考) `devguide/devtools/`(B-msprof) `apiref/aolapi/`(C-AOL) `devguide/opdevg/`(D-AscendC) = SPA。
 - **SPA 短板恰好卡在"前沿/参考深层页"**：A/B 有可抓子树兜住主路径 how-to → 短板没咬到；C 靠厚二手绕过；**只有 D 没有兜底子树、核心 how-to 整个压在 SPA → 差距拉满**。
 - 这让中心论点更精准：**不是 CANN 文档一律抓不到，而是越深入前沿开发、越掉进 SPA + 二手碎片 + 版本散乱的三重坑**。
+
+---
+
+# 第二批真跑（2026-06-10）：E / F / G / H 四任务
+
+> 接续上面 A–D，再跑四个任务（用户指定：报错码排查 / 分布式 HCCL / CUDA→昇腾迁移 / 量化部署）。
+> 同样：每任务一对「本质相同、仅栈不同」的问题，按平常工作流真跑 web_search / web_fetch，逐步记命中与打分。
+> 分数由 `score_metrics.py` 代入下列原始观测算出（非手评）；`python3 score_metrics.py --diff` 可复算。
+
+## 任务 E · 报错码 / 异常排查
+
+**版本敏感度：中**
+
+**使用的问题（本质相同，仅栈不同）：**
+- **CUDA**：「我的 PyTorch/CUDA 程序报 `RuntimeError: CUDA error: device-side assert triggered`，怎么定位是哪一行、哪个 kernel 出的问题？」
+- **CANN**：「我在昇腾上跑训练/推理，报 `EZ9999` 之类的错误码，怎么定位根因、怎么排查？」
+
+### CUDA 侧过程
+
+1. **web_search**：`CUDA error device-side assert triggered debug locate kernel compute-sanitizer`
+   - 命中：NVIDIA **compute-sanitizer** 官方文档（docs.nvidia.com，静态站）、`CUDA_LAUNCH_BLOCKING=1`、`cuda-gdb`、`TORCH_USE_CUDA_DSA`、CUDA core dump 环境变量；PyTorch issues #21819 / #171660 / #99372（官方仓①）、NVIDIA 开发者论坛（官方论坛①）、vLLM 博客（2025-08-11）、StackOverflow。**1 轮齐备**。
+2. **web_fetch**：compute-sanitizer 官方文档（静态）→ 正文实测抓到：`compute-sanitizer --tool memcheck ./app`、各 tool（memcheck/racecheck/initcheck/synccheck）、退出码与报告格式全表。
+
+**CUDA-E 评分**：①4(论坛/SO 常压过官方) ②5 ③5(实测·穷尽) ④5(工具版本稳定) ⑤4 ⑥4 ⑦4(CUDA 调试熟) ⑧5(1搜1抓) ⑨4 ⑩5 → 综合 **高(.99)**。
+
+### CANN 侧过程
+
+1. **web_search（第1轮）**：`昇腾 Ascend EZ9999 错误码 定位 根因 排查` → 命中 hiascend 错误码页 + MindSpore 教程(mindspore.cn，官方doc①) + vllm-ascend issues #5695/#2763/#6679(官方仓①) + Gitee Ascend issues + CSDN。官方页搜得到但「能不能用」存疑。
+2. **web_search（第2轮）**：补 `EZ9999 Inner Error torch_npu 训练 报错 案例` 找可用二手（官方兜底页信息量低，需二手补）。
+3. **web_fetch**：hiascend 错误码页 `atlaserrorcode_15_0313.html`（canncommercial/80RC1）→ **页面 ssr 可抓**，但正文是**泛化兜底**：「Inner Error / 内部错误」、cause 写 N/A、只给 2 条通用「检查日志 / 联系支持」式处理建议——**抓到了正文但近乎无用（骨架化 fragment）**。真正可用的根因/案例都在二手（vllm-ascend issues、CSDN、MindSpore 教程）。
+
+**关键观察**：E 与 D 的「受阻」不同——E.cann 官方页**抓得到（②4），但内容兜底无用（③2）**；这恰好印证「②可抓 ≠ ③够用」两关正交。EZ9999 本身是 catch-all 错误码，连华为官方都难穷举，知识天然散在社区。
+
+**CANN-E 评分**：①3(2轮才凑齐可用信息) ②4(官方页 ssr 可抓) **③2(抓到但泛化兜底、骨架化)** ④2(错误码跨版本散) ⑤3(CSDN×2/知乎，真二手不厚) ⑥3 ⑦2(具体 Ascend 错误码自带知识弱) ⑧4 ⑨3 ⑩3 → 综合 **中(.55)**。
+
+**E 小结**：报错码排查是这批里 CANN 最弱的一格（中）。不是抓不到官方页，而是**官方错误码页是泛化兜底（catch-all）＋ 我自带知识弱 ＋ 二手碎散**三者叠加；恰如 A–D 里 D 之于算子开发——**越是「需要具体案例知识」的排障类，越掉坑**。
+
+---
+
+## 任务 F · 分布式训练 HCCL
+
+**版本敏感度：中**
+
+**使用的问题：**
+- **CUDA**：「怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。」
+- **CANN**：「怎么在昇腾上做多机多卡分布式训练（DDP + HCCL）？给出初始化和启动方式。」
+
+### CUDA 侧过程
+
+1. **web_search**：`PyTorch distributed data parallel DDP NCCL torchrun multi-node init_process_group` → PyTorch 官方 tutorials + examples（官方①，置顶）、`torchrun`/`torch.distributed.launch`、`MASTER_ADDR/MASTER_PORT/WORLD_SIZE/RANK`、SLURM 启动；medium、SO、lambda labs。
+2. **web_fetch**：PyTorch DDP tutorial（静态）→ 实测：`init_process_group(backend="nccl")`、`DistributedDataParallel(model)`、`torchrun --nnodes --nproc_per_node --rdzv_endpoint` 全套。
+
+**CUDA-F 评分**：①5 ②5 ③5(实测) ④3(launch→torchrun 过渡有两套) ⑤3 ⑥4 ⑦4 ⑧5 ⑨4 ⑩5 → 综合 **高(.88)**。
+
+### CANN 侧过程
+
+1. **web_search**：`昇腾 NPU 分布式训练 HCCL DDP torch_npu init_process_group 多机多卡` → 命中 hiascend `PT_LMTMOG_0024`（Pytorch/60RC1/ptmoddevg/trainingmigrguide）、CSDN×3、知乎、torchtitan-npu(社区 FSDP 移植，官方风格仓)。
+2. **web_fetch**：hiascend `PT_LMTMOG_0024.html`（`ptmoddevg/trainingmigrguide/` 子树）→ **ssr 可抓且详尽**：`torch.distributed.init_process_group(backend="hccl")`、`device=torch.device('npu', local_rank)`、`DistributedDataParallel`、**5 种拉起方式**（含 `torch_npu_run`，PyTorch 1.11.0）、`hccn_tool` 配多机 IP、HCCL `AllReduce/AllGather` 说明。
+
+**关键观察**：F 是「可抓子树兜住主路径」的正例——分布式训练落在 `ptmoddevg/trainingmigrguide/`（服务端渲染），核心代码+启动方式全抓得到；这与 D 的 `devguide/opdevg/`（SPA）形成对比。
+
+**CANN-F 评分**：①4 ②4(ssr 可抓) ③4(实测·主路径全) ④2(torch_npu/PyTorch/CANN 多版本散) ⑤3(CSDN×3 平台集中) ⑥3(一致性中、平台独立性低) ⑦3 ⑧5 ⑨3 ⑩3 → 综合 **中高(.72)**。
+
+**F 小结**：分布式训练官方文档可抓且对标 PyTorch DDP（backend 从 nccl 改 hccl、device 改 npu，其余几乎一致）——是 CANN 迁移友好的体现。短板在版本号散乱（④2）与二手平台集中（CSDN×3）。
+
+---
+
+## 任务 G · CUDA→昇腾迁移
+
+**版本敏感度：高**
+
+**使用的问题：**
+- **CUDA**（同栈无关，用「跨平台移植」做对照）：「我有一份 CUDA 代码/PyTorch GPU 脚本，怎么移植到 AMD ROCm 平台？给出 hipify 工具用法。」
+- **CANN**：「我有一份 GPU(PyTorch CUDA) 训练脚本，怎么迁移到昇腾 NPU？给出迁移方式和工具。」
+
+### CUDA 侧过程（CUDA→ROCm/HIP 移植对照）
+
+1. **web_search**：`CUDA to ROCm HIP port hipify-clang hipify-perl hipify_torch migrate` → rocm.docs.amd.com（AMD 官方doc①，文档完备）、`hipify-clang`/`hipify-perl`、`--examine`/`--inplace`、`hipify_torch`；medium、SO、博客。
+2. （官方静态站，正文穷尽）
+
+**CUDA-G 评分**：①5 ②5 ③5(实测) ④3(hipify/ROCm 多版本) ⑤3 ⑥4 ⑦4 ⑧5 ⑨4 ⑩5 → 综合 **高(.88)**。
+
+### CANN 侧过程
+
+1. **web_search**：`昇腾 PyTorch GPU 迁移 NPU transfer_to_npu 自动迁移 ms_fmk_transplt` → hiascend 自动迁移页、`ms_fmk_transplt`（分析迁移工具，出迁移报告）、华为云 ModelArts 迁移最佳实践（modelarts_10_2501）、知乎/博客园/CSDN。
+2. **web_fetch**：hiascend 自动迁移页 `atlasfmkt_16_0036.html`（devaids/auxiliarydevtool）→ **ssr 可抓且详尽**：
+   - `import torch; import torch_npu; from torch_npu.contrib import transfer_to_npu`（一行接管）
+   - 步骤（改脚本→直接跑→存权重验证成功）、**NCCL backend 自动转 HCCL**（显式判断 backend 字符串处需手改 "nccl"→"hccl"）、troubleshooting（不支持 API 用分析迁移工具识别 / 自定义 Ascend C 算子 / 改 `npu_native_functions.yaml` 把不支持算子挪 CPU）。
+   - **明列支持 PyTorch 1.11.0 / 2.1.0 / 2.2.0**（→ 版本矩阵清楚，④4）。
+
+**关键观察（重要、可能改结论）**：**G 是这批里 CANN 唯一达到「高(.84)」的格**。迁移是华为推动 CUDA 用户上昇腾的**核心采纳漏斗**，投入最重：`transfer_to_npu` 一行自动迁移是旗舰特性、官方文档 ssr 可抓且详尽、华为云有成体系最佳实践。诚实标注**局限**：一键迁移只覆盖简单场景，自定义算子/`torch.jit.script`/`channel_last` 仍需手工适配（官方页自己也这么说）。
+
+**CANN-G 评分**：①4 ②4(ssr 可抓) ③4(实测·主路径全) ④4(明列支持版本矩阵) ⑤3 ⑥4(华为云+知乎+博客园+CSDN 平台多样) ⑦3 ⑧5 ⑨4 ⑩4 → 综合 **高(.84)**。
+
+**G 小结**：迁移场景是 CANN 官方投入最重、可用性最接近 CUDA 的场景——印证「可用性是任务相关的」：不是 CANN 一律弱，**采纳漏斗上的场景（迁移）被刻意做厚**，而前沿开发（D 算子）被拉满差距。
+
+---
+
+## 任务 H · 量化 / 推理部署
+
+**版本敏感度：中**
+
+**使用的问题：**
+- **CUDA**：「怎么用 TensorRT 把模型量化成 INT8 做推理部署？给出校准（calibration）流程。」
+- **CANN**：「怎么在昇腾上把大模型量化（W8A8）做推理部署？给出量化工具和流程。」
+
+### CUDA 侧过程
+
+1. **web_search**：`TensorRT INT8 PTQ calibration CacheCalibrator calibration.cache deploy` → Torch-TensorRT 官方文档（v2.5.0 / v1.4.0，官方①）、`CacheCalibrator`、`calibration.cache`、FP32→INT8 流程、NVIDIA 开发者博客；medium、github 示例、SO。
+2. （官方文档静态可抓、正文穷尽）
+
+**CUDA-H 评分**：①5 ②5 ③5(实测) ④3(Torch-TRT v1.4/v2.5 API 有别) ⑤3 ⑥4 ⑦4 ⑧5 ⑨4 ⑩5 → 综合 **高(.88)**。
+
+### CANN 侧过程
+
+1. **web_search（第1轮）**：`昇腾 大模型量化 W8A8 msmodelslim 部署 MindIE vLLM` → 命中 Gitee **Ascend/msmodelslim** 蓝区仓（官方仓①，README 有完整命令：`git clone gitee.com/ascend/msit.git` → `bash install.sh` → `python3 quant_deepseek_w8a8.py --model_path --save_path`）、AMCT（旧量化工具）、适配 MindIE / vLLM-Ascend；CSDN×3、ascendai.csdn.net×3、知乎、53ai。
+2. **web_search（第2轮）**：补 `AMCT 昇腾 量化 PTQ QAT 官方文档` 定位官方页。
+3. **web_fetch**：hiascend AMCT 页 `atlasamct_16_0385.html`（CANNCommunityEdition/800alpha002/devaids/devtools/amct）→ **ssr 可抓**（此前误判为 SPA，本次实测可抓），但正文**只讲量化算法原理**：对称量化 `q=round(r/scale)`、`scale=max(|r|)/127`、非对称 `q=round(r/scale)+offset`——**有正文但是概述级、无落地命令/参数表**（③3）。可跑命令在 Gitee 蓝区仓(①) + CSDN(二手)。
+
+**关键观察**：H 与 H 的官方页都「可抓」，区别在**官方页给的是理论不是命令**（③3 概述），靠 msmodelslim Gitee 仓 + CSDN 把落地命令补齐。
+
+**CANN-H 评分**：①3(2轮，官方页非置顶) ②4(ssr 可抓) ③3(抓到但仅算法概述、无命令) ④2(msmodelslim/AMCT/CANN 版本散) ⑤4(CSDN×3+知乎+53ai) ⑥3(平台集中) ⑦3 ⑧4 ⑨4 ⑩5(Gitee/CSDN 命令可照抄) → 综合 **中高(.69)**。
+
+**H 小结**：量化部署 CANN 中高——官方页能抓但偏理论，真正可跑的 W8A8 命令在 Gitee 蓝区仓 + CSDN（命令具体、⑩5 可照抄）。短板仍是版本散乱（msmodelslim 与 AMCT 两套并存）。
+
+---
+
+## 八任务总览（A–H，2026-06-10 全部真跑后）
+
+| 代号 | 任务 | 版本敏感 | CUDA | CANN | 关键 |
+|---|---|---|---|---|---|
+| A | 模型转换/ATC | 高 | 高(.94) | 中高(.75) | 核心在可抓 quickstart |
+| B | Profiling | 中 | 高(.93) | 中高(.70) | torch_npu.profiler 对标 GPU |
+| C | 算子库选型 | 低 | 高(1.0) | 中高(.77) | 命名映射清楚、Gitee 蓝区仓厚 |
+| D | 自定义算子 | 高 | 高(.88) | **低(.41)** | SPA+二手碎+版本散 三叠加 |
+| **E** | **报错码排查** | 中 | 高(.99) | **中(.55)** | 官方错误码泛化兜底+自带知识弱 |
+| **F** | **分布式 HCCL** | 中 | 高(.88) | 中高(.72) | 官方可抓详尽、对标 DDP |
+| **G** | **CUDA→昇腾迁移** | 高 | 高(.88) | **高(.84)** | 采纳漏斗、官方投入最重 |
+| **H** | **量化部署** | 中 | 高(.88) | 中高(.69) | 官方给理论、命令在 Gitee/CSDN |
+
+**第二批新增的跨任务规律：**
+- **可用性是「任务在采纳漏斗上的位置」相关**：迁移(G)被官方刻意做厚 → 唯一达「高」；前沿算子(D)无人兜底 → 唯一「低」；排障类(E)依赖具体案例知识、官方兜底页无用 → 「中」。
+- **E.cann 的「③2 抓到但无用」是新形态**：不同于 D 的「受阻（抓不到）」，E 抓得到官方页、但官方页是泛化兜底——再次证「②可抓 ≠ ③够用」两关正交。
+- **②可抓取性进一步被证「子树相关」**：E/F/G/H 的官方页（错误码 / trainingmigrguide / devaids自动迁移 / devaids·devtools AMCT）**全部 ssr 可抓**；连此前以为是 SPA 的 `devaids/devtools/amct` 也实测可抓。**至今唯一确证 SPA 咬到结果的仍只有 D 的 `devguide/opdevg/`**。
+- **版本散乱（④）是 CANN 跨任务最普遍短板**：A/B/D/F/H 的 ④ 都因多版本号并存被压到 2。
