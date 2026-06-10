@@ -107,7 +107,7 @@
       <th class="col oc">版本清晰<small>多版本散乱?</small></th>
       <th class="col">二手数量</th>
       <th class="col">二手可信</th>
-      <th class="col">先验</th>
+      <th class="col">自带知识</th>
       <th class="col">检索成本</th>
       <th class="col">版本可锁</th>
       <th class="col">可复现</th>
@@ -126,7 +126,7 @@
 <div id="tip"></div>
 
 <script>
-const COLS=['官方可发现性','官方可抓取性','官方正文详尽度','版本清晰度','二手数量','二手可信度 / 一致性','模型先验强度','检索成本','版本可锁定性','步骤可复现性','综合置信度'];
+const COLS=['官方可发现性','官方可抓取性','官方正文详尽度','版本清晰度','二手数量','二手可信度 / 一致性','模型自带知识','检索成本','版本可锁定性','步骤可复现性','综合置信度'];
 // 每格对象：{c:色,d:显示文本,t:主述,got:抽到,miss:缺失,vers:版本号串,srcs:[[标题,域名,日期,版本]],warn:问题}
 const N=(c,d,t,extra)=>Object.assign({c:c,d:d,t:t},extra||{});
 const ROWS={
@@ -138,11 +138,11 @@ const ROWS={
    N('v4','4','需匹配 ONNX opset 与 TRT 版本，但官方明确列出支持矩阵、可对照。',{vers:'TensorRT latest／opset_version 由用户显式指定，单一主线版本号。'}),
    N('v5','5','官方教程 + 多篇高质量二手，海量。',{srcs:[['How to Convert a Model from PyTorch to TensorRT','learnopencv.com',' ',' '],['How to Convert Your Custom Model into TensorRT','towardsdatascience.com',' ',' '],['Accelerating Model inference with TensorRT','medium.com (zergtant)',' ',' '],['PyTorch-ONNX-TRT','github.com/sithu31296',' ',' ']]}),
    N('v5','5','官方 Quick Start 与各教程的 torch.onnx.export → trtexec 两段式写法高度一致，可交叉印证。'),
-   N('v4','4','torch.onnx.export / trtexec 流程我已熟悉，可凭先验给出骨架。'),
+   N('v4','4','torch.onnx.export / trtexec 流程我已熟悉，可凭自带知识给出骨架。'),
    N('v5','1搜','一次检索即同时覆盖官方 + 二手。'),
    N('v5','5','可锁定到具体 TRT 版本 + opset，产出确定。'),
    N('v5','5','命令与脚本可直接照抄运行。'),
-   N('v5','高','官方新、二手厚、先验强，三者齐备。')],
+   N('v5','高','官方新、二手厚、自带知识强，三者齐备。')],
   cann:[
    N('v4','4','1 搜命中 hiascend ATC 快速入门，但夹在二手中、非绝对置顶。',{srcs:[['ATC 快速入门 quickstart_18_0012','hiascend.com/document/detail',' ','canncommercial 8.0.RC2'],['ATC 工具使用参考 atlasatc_16_0001','hiascend.com',' ',' ']]}),
    N('v4','4','本轮实测推翻「全站 SPA」：可抓取性是<b>子树相关</b>——<code>quickstart/</code> 子树服务端渲染、正文可抓。',{got:'完整 <code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --input_shape="actual_input_1:1,3,224,224" --soc_version=&lt;soc_version&gt;</code> + 参数说明表 + <code>npu-smi info</code> 取 soc_version 步骤全抓到（quickstart_18_0012 商用80RC2 / 18_0010 社区800alpha001 两版一致）。',miss:'仅 AIPP / 高级参数的穷尽参考落在 <code>devaids/</code> 子树 SPA（atlasatc_16_0001），抽不到。',warn:'入门 quickstart 可抓；只有深层参考页 SPA。'}),
@@ -225,7 +225,7 @@ const ROWS={
    N('v2','2','hiascend 多版本并存，要自己挑。',{vers:'80RC2alpha001／80RC3／82RC1alpha003 同时存在。',warn:'前沿能力版本号迭代快、并存多。'}),
    N('v2','2','仅 CSDN / 博客园 / MindSpore 零星，质量参差。',{srcs:[['AscendC 从入门到精通系列（三）','blog.csdn.net/xyz3120/143643855','2024-11-09',' '],['Ascend C 算子开发全流程揭秘','ai6s.net/69322a96','2025-12-05',' '],['op_custom_ascendc 自定义算子','mindspore.cn',' ','MindSpore 2.3.1']],warn:'二手数量远少于 CUDA，且多为入门科普。'}),
    N('v2','2','各源版本 / 写法不一，难交叉印证。',{warn:'msopgen 脚手架结构、aclnn vs c++ infer 路线各源不同，无法互相印证。'}),
-   N('v2','2','Ascend C 算子开发我先验弱，不敢凭记忆给命令。',{warn:'Copy-In/Compute/Copy-Out 三段流水线属前沿，训练先验覆盖薄。'}),
+   N('v2','2','Ascend C 算子开发我自带知识弱，不敢凭记忆给命令。',{warn:'Copy-In/Compute/Copy-Out 三段流水线属前沿，训练自带知识覆盖薄。'}),
    N('v1','2搜✗','2 轮检索 + 1 次 web_fetch 失败（SPA），成本最高。',{warn:'唯一触发多轮检索 + 抓取失败的任务。'}),
    N('v2','2','未能锁定具体 CANN 版本。',{warn:'多版本并存 + 正文抽不出，版本无法定死。'}),
    N('v3','3','链路骨架可述（msopgen → 编译 custom_opp_*.run → 部署 OPP vendors/customize），但 Kernel 命令细节无法逐条确证。'),

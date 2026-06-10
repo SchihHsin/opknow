@@ -284,7 +284,7 @@
     </div>
   </div>
 
-  <p class="note"><b>第二步：把"来源渠道"叠上去，让网格自然长出指标。</b>知识有<b>三个来源渠道</b>：<b>官方一手</b>（NVIDIA docs ｜ 昇腾社区 hiascend）、<b>二手社区</b>（GitHub / SO / 知乎 / CSDN / 博客）、<b>模型先验</b>（我训练里已有的知识）。前两关（触达 / 质量）对<b>每个渠道</b>都要分别看——"三源 × 两关"一交叉，指标就长出来了；成本与产出是跨渠道的，综合置信度收口。</p>
+  <p class="note"><b>第二步：把"来源渠道"叠上去，让网格自然长出指标。</b>知识有<b>三个来源渠道</b>：<b>官方一手</b>（NVIDIA docs ｜ 昇腾社区 hiascend）、<b>二手社区</b>（GitHub / SO / 知乎 / CSDN / 博客）、<b>模型自带知识</b>（我训练里已经有、不靠检索就能答的那部分）。前两关（触达 / 质量）对<b>每个渠道</b>都要分别看——"三源 × 两关"一交叉，指标就长出来了；成本与产出是跨渠道的，综合置信度收口。</p>
 
   <table class="fw">
     <thead>
@@ -306,9 +306,9 @@
         <td class="cellm"><span class="mname qual">⑥ 二手可信度 / 一致性</span><small>权威吗、够新吗、彼此对得上吗</small></td>
       </tr>
       <tr>
-        <td class="src">模型先验</td>
-        <td class="cellm"><span class="mname touch">⑦ 先验强度</span><small>不检索也"自带"的覆盖密度</small></td>
-        <td class="na">质量并入 ⑦：先验的可靠度难与强度分离，统一在 ⑦ 内标注时效风险。</td>
+        <td class="src">模型自带知识</td>
+        <td class="cellm"><span class="mname touch">⑦ 模型自带知识</span><small>不检索也"自带"的覆盖密度</small></td>
+        <td class="na">质量并入 ⑦：自带知识的可靠度难与强度分离，统一在 ⑦ 内标注时效风险。</td>
       </tr>
     </tbody>
   </table>
@@ -383,12 +383,12 @@
     <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">3</span> 可用但需交叉核对 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
   </div>
 
-  <!-- 先验 -->
+  <!-- 自带知识 -->
   <div class="mcard touch">
-    <div class="mhead"><span class="nm">⑦ 模型先验强度</span><span class="en">Model prior strength</span><span class="tag touch">先验·触达</span></div>
-    <div class="mrow"><div class="lbl">定义</div><div class="val">这个任务在我训练数据里的<b>覆盖密度</b>——不检索能不能直接答出靠谱内容。把"自带知识"也视为一条触达渠道。</div></div>
-    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">先验强时可在外部源失败时兜底；先验弱时只能硬靠检索。它的"质量面"（时效/可靠）难与强度分离，故并入本项内标注，不再单列。</div></div>
-    <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">1</span> 几乎只能现查、先验易过时。</div>
+    <div class="mhead"><span class="nm">⑦ 模型自带知识</span><span class="en">Built-in knowledge</span><span class="tag touch">自带·触达</span></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">这个任务在我训练数据里的<b>覆盖密度</b>——不检索能不能直接答出靠谱内容。把"模型自带、不靠检索的知识"也视为一条触达渠道（即原先说的"先验"）。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">自带知识多时可在外部源失败时兜底；自带知识少时只能硬靠检索。它的"质量面"（时效/可靠）难与多寡分离，故并入本项内标注，不再单列。</div></div>
+    <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">1</span> 几乎只能现查、自带知识易过时。</div>
   </div>
 
   <!-- 成本 -->
@@ -469,7 +469,7 @@
 
   <div class="dec">
     <div class="qd"><span class="n">6.4</span>为什么"版本敏感度"不进矩阵当列？</div>
-    <div class="ad"><span class="corr">已纠正</span>版本敏感度是<b>任务属性、与栈无关</b>（同一任务在两栈取值相同），对"区分两个栈"的贡献为零。把它当列，只会在每行两栈位置填两个相同值、虚增维度。所以它<b>只做任务名旁的小标签</b>，不占矩阵列。真正区分两栈的是 ②③④⑤⑥（+⑦先验、⑧成本）。</div>
+    <div class="ad"><span class="corr">已纠正</span>版本敏感度是<b>任务属性、与栈无关</b>（同一任务在两栈取值相同），对"区分两个栈"的贡献为零。把它当列，只会在每行两栈位置填两个相同值、虚增维度。所以它<b>只做任务名旁的小标签</b>，不占矩阵列。真正区分两栈的是 ②③④⑤⑥（+⑦自带知识、⑧成本）。</div>
   </div>
 
   <div class="dec">
