@@ -286,6 +286,221 @@ RAW = {
      dates=["2025-01", "2025-05", None, None, None],
      consist="mid", own=3, churn="moderate", pin="mostly", repro="copyrun"),
  },
+ # ── 第三批真跑（2026-06-11，sub-agent 并行检索→主会话清洗判分）：I–N ──
+ "I": {  # 版本兼容排查（环境类，版本敏感 高）
+  "cuda": dict(rounds=2, rank=2, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # markaicode / devzery（discuss.pytorch.org=官方论坛①，不计二手）
+     sources=["aggregator","tech_blog"],
+     platforms=["markaicode","devzery"],
+     dates=["2026-03", "2024-08"],
+     consist="high", own=4, churn="moderate", pin="exact", repro="copyrun"),
+  "cann": dict(rounds=2, rank=1, refine=False, fetch=2, fetch_fail=0,
+     # 配套表 GitHub/PyPI/hiascend 均可抓(ssr)，npu-smi info 可执行；多轴碎(driver↔HDK↔CANN↔torch↔torch_npu)
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=6, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # CSDN×2 / hwcomputing（Ascend/pytorch 仓+PyPI=官方①，不计二手）
+     sources=["tech_blog","tech_blog","cloud_vendor"],
+     platforms=["csdn","csdn","hwcomputing"],
+     dates=["2026-01", "2025-11", None],
+     consist="high", own=3, churn="fast", pin="exact", repro="copyrun"),
+ },
+ "J": {  # 安装与环境变量（环境类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=5, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # chrispaquin / cherryservers / vultr / medium
+     sources=["tech_blog","tech_blog","cloud_vendor","tech_blog"],
+     platforms=["chrispaquin","cherryservers","vultr","medium"],
+     dates=["2025-02", "2025-11", None, None],
+     consist="high", own=5, churn="stable", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     # 官方 envref set_env.sh 页 ssr 可抓且详尽(各 source 命令+环境变量表)
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # CSDN×2 / 华为云bbs / 知乎专栏
+     sources=["tech_blog","tech_blog","cloud_vendor","tech_blog"],
+     platforms=["csdn","csdn","huaweicloud","zhihu"],
+     dates=["2025-08", None, None, None],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="copyrun"),
+ },
+ "K": {  # 容器/镜像搭建（环境类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="core_only",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # lambda.ai / redhat / digitalocean / gpu-mart（NVIDIA docs+NGC=官方①）
+     sources=["tech_blog","tech_blog","cloud_vendor","tech_blog"],
+     platforms=["lambda","redhat","digitalocean","gpu-mart"],
+     dates=["2021-07", "2025-08", None, None],
+     consist="high", own=5, churn="stable", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=4, fetch_fail=1,
+     # 官方 doc_center dlruntime 页静态可抓且详尽(/dev 挂载表完整、6硬件配置)
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # CSDN×2（gitee Ascend/pytorch=官方仓①，不计二手）
+     sources=["tech_blog","tech_blog"],
+     platforms=["csdn","csdn"],
+     dates=["2026-04", None],
+     consist="mid", own=3, churn="moderate", pin="mostly", repro="copyrun"),
+ },
+ "L": {  # 算子精度排查（调试类，版本敏感 中）
+  "cuda": dict(rounds=2, rank=3, refine=True, fetch=2, fetch_fail=1,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # NVIDIA dev blog / vLLM blog（forums.developer.nvidia.com+discuss.pytorch=官方论坛①，不计二手）
+     sources=["tech_blog","tech_blog"],
+     platforms=["developer.nvidia.com","vllm"],
+     dates=[None, "2025-08"],
+     consist="high", own=4, churn="stable", pin="mostly", repro="params"),
+  "cann": dict(rounds=2, rank=1, refine=True, fetch=1, fetch_fail=0,
+     # 官方 devaids/auxiliarydevtool 精度比对页 ssr 可抓且详尽(msaccucmp 命令+参数表+示例)
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # 知乎 / 华为云ModelArts最佳实践 / segmentfault（bbs.huaweicloud 官方论坛①，不计二手）
+     sources=["qa_reputation","cloud_vendor","tech_blog"],
+     platforms=["zhihu","huaweicloud","segmentfault"],
+     dates=[None, None, None],
+     consist="high", own=3, churn="moderate", pin="range", repro="params"),
+ },
+ "M": {  # 动态 shape / Tiling（算子开发类，版本敏感 高）
+  "cuda": dict(rounds=1, rank=1, refine=True, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
+     # stevengong / medium
+     sources=["tech_blog","tech_blog"],
+     platforms=["stevengong","medium"],
+     dates=["2025-07", "2024-02"],
+     consist="high", own=5, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=2, rank=1, refine=True, fetch=2, fetch_fail=0,
+     # 关键：opdevg Tiling 正文页(10_0047)实测 ssr 可抓且详尽(BEGIN_TILING_DATA_DEF 等)，
+     # 仅 quickstart 引导页(10_0046)为 spa——opdevg 子树非全 SPA
+     core_fetch="ssr", exec=False, ref_level="exhaustive",
+     n_versions=3, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # CSDN / 博客园（CANN训练营笔记）
+     sources=["tech_blog","tech_blog"],
+     platforms=["csdn","cnblogs"],
+     dates=["2023-12", "2024-01"],
+     consist="high", own=3, churn="fast", pin="mostly", repro="params"),
+ },
+ "N": {  # 算子融合（算子开发/性能类，版本敏感 中）
+  "cuda": dict(rounds=2, rank=2, refine=True, fetch=3, fetch_fail=1,
+     core_fetch="static", exec=True, ref_level="core_only",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # NVIDIA dev blog / medium（NVIDIA/TensorRT issues=官方仓①，不计二手）
+     sources=["tech_blog","tech_blog"],
+     platforms=["developer.nvidia.com","medium"],
+     dates=["2017-04", "2020-10"],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="params"),
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     # 官方 graphubfusionref 子树 ssr 可抓且详尽(fusion_switch_file+JSON+规则清单)
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # CSDN / 知乎(403)
+     sources=["tech_blog","tech_blog"],
+     platforms=["csdn","zhihu"],
+     dates=["2026-06", None],
+     consist="mid", own=2, churn="moderate", pin="mostly", repro="params"),
+ },
+ # ── 第三批·续（2026-06-11，sub-agent 并行检索→主会话清洗判分）：O–S ──
+ "O": {  # 注册与框架集成（算子开发/迁移类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=4, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # github sandeepkumar / medium justygwen（docs.pytorch dispatcher/operators=官方doc①）
+     sources=["tech_blog","tech_blog"],
+     platforms=["github","medium"],
+     dates=[None, "2025-01"],
+     consist="high", own=5, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=2, rank=1, refine=True, fetch=4, fetch_fail=1,
+     # 头条 how-to devguide/opdevg/...10_0065=SPA(fetch_fail计1)，但 doc_center/...10_0045
+     # SSR 镜像可抓且正文穷尽(yaml/EXEC_NPU_CMD/AddCustomKernelNpu.cpp/build.sh)→有兜底子树、非 D 式受阻
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=True,
+     # aliyun / ctyun / monsoon-cs（gitee op-plugin+docs.pytorch=官方①，知乎403未取得不计）
+     sources=["cloud_vendor","cloud_vendor","tech_blog"],
+     platforms=["aliyun","ctyun","monsoon-cs"],
+     dates=["2024-12", "2024-09", "2023-11"],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="copyrun"),
+ },
+ "P": {  # 混合精度训练（训练类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=3, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # digitalocean / apxml / mljourney（docs.pytorch AMP recipe+amp.html=官方①）
+     sources=["tech_blog","aggregator","tech_blog"],
+     platforms=["digitalocean","apxml","mljourney"],
+     dates=["2024-09", None, "2026-05"],
+     consist="high", own=5, churn="moderate", pin="exact", repro="copyrun"),
+  "cann": dict(rounds=2, rank=1, refine=False, fetch=5, fetch_fail=0,
+     # Pytorch/60RC1/ptmoddevg 子树 SSR 可抓且含 NPU 专属 dynamic/init_scale 参数表+DDP代码；
+     # modeldevpt/ptmigr 子树才是 SPA——再证「可抓取子树相关」
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=3, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # CSDN / 华为云bbs(371074 通用AMP) / 知乎
+     sources=["tech_blog","cloud_vendor","qa_reputation"],
+     platforms=["csdn","huaweicloud","zhihu"],
+     dates=["2024-12", "2022-08", None],
+     consist="mid", own=4, churn="moderate", pin="mostly", repro="params"),
+ },
+ "Q": {  # 显存 / OOM 优化（训练/性能类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=2, fetch_fail=1,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # geeksforgeeks / aliyun / saturncloud（discuss.pytorch.org=官方论坛①已剔除）
+     sources=["tech_blog","cloud_vendor","qa_reputation"],
+     platforms=["geeksforgeeks","aliyun","saturncloud"],
+     dates=["2025-07", "2023-11", None],
+     consist="high", own=5, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=4, fetch_fail=0,
+     # 官方 comref/Envvariables/Envir_012 子树 SSR 全表可抓(5选项+3条export)，非 SPA
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # 53ai / aliyun / 华为云bbs(412890偏算子融合) / 知乎(403)
+     sources=["aggregator","cloud_vendor","cloud_vendor","qa_reputation"],
+     platforms=["53ai","aliyun","huaweicloud","zhihu"],
+     dates=["2024-07", "2025-01", "2023-10", None],
+     consist="mid", own=3, churn="moderate", pin="range", repro="params"),
+ },
+ "R": {  # 精度 / 收敛排查（调试/训练类，版本敏感 中）
+  "cuda": dict(rounds=2, rank=2, refine=False, fetch=1, fetch_fail=0,
+     # 官方 numerical_accuracy 页是精度参考、非排查 how-to(无 detect_anomaly/梯度裁剪步骤)→core_only
+     core_fetch="static", exec=True, ref_level="core_only",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # tds / chaimrand-medium / apxml / kdnuggets（discuss.pytorch.org=官方论坛①已剔除）
+     sources=["tech_blog","tech_blog","tech_blog","aggregator"],
+     platforms=["towardsdatascience","chaimrand-medium","apxml","kdnuggets"],
+     dates=[None, "2025-02", None, "2017-08"],
+     consist="high", own=5, churn="stable", pin="mostly", repro="params"),
+  "cann": dict(rounds=2, rank=3, refine=False, fetch=3, fetch_fail=0,
+     # 官方 mindstudio 实战页 toolsample3_018 SSR 全文可抓(msprobe+dump JSON+ASCEND_LAUNCH_BLOCKING+2案例)
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=True,
+     # cnblogs(SAM迁移) / support.huaweicloud(msprobe最佳实践) / segmentfault / 知乎
+     sources=["tech_blog","cloud_vendor","tech_blog","qa_reputation"],
+     platforms=["cnblogs","huaweicloud","segmentfault","zhihu"],
+     dates=["2025-01", None, None, None],
+     consist="high", own=3, churn="moderate", pin="range", repro="params"),
+ },
+ "S": {  # 推理服务部署（推理部署类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=True,
+     # aws blog / medium / softwaremill（docs.nvidia Triton=官方doc①）
+     sources=["cloud_vendor","tech_blog","tech_blog"],
+     platforms=["aws","medium","softwaremill"],
+     dates=["2023-05", None, None],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="copyrun"),
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=3, fetch_fail=0,
+     # 官方 MindIE 启动页 mindie_service0004 + LLM config 页全 SSR 可抓(daemon启动+config.json)，非SPA
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # CSDN(MnivL DeepSeek-R1) / 知乎（mindspore.cn=昇思社区官方doc①已剔除→二手仅2条、偏薄）
+     sources=["tech_blog","qa_reputation"],
+     platforms=["csdn","zhihu"],
+     dates=["2025-02", None],
+     consist="high", own=2, churn="fast", pin="mostly", repro="params"),
+ },
 }
 
 # 旧手评矩阵（从 17_official_site_focus.html 的 ROWS 提取，用于对比 diff）
@@ -325,10 +540,12 @@ def score3_detail(r):
         return BLK
     exec_ok = bool(r["exec"])
     ref = r["ref_level"]
-    if exec_ok and ref == "exhaustive":  return 5   # 命令/代码全 + 穷尽参考，照抄即用
-    if exec_ok and ref == "core_only":   return 4   # 主路径详尽，仅穷尽参考表缺
-    if ref == "overview":                return 3   # 有正文但偏概述，要东拼西凑
-    if ref == "fragment":                return 2
+    # 穷尽/主路径正文：可执行(命令/代码照抄即用)再 +1 档；
+    # 不可执行但正文穷尽(如 Tiling 结构定义/参考手册)仍属详尽，不应跌到骨架级。
+    if ref == "exhaustive":  return 5 if exec_ok else 4
+    if ref == "core_only":   return 4 if exec_ok else 3
+    if ref == "overview":    return 3   # 有正文但偏概述，要东拼西凑
+    if ref == "fragment":    return 2
     return 1
 
 def score4_version(r):
@@ -418,7 +635,8 @@ METRICS = [score1_discover, score2_fetch, score3_detail, score4_version,
 LABELS = ["①发现","②抓取","③详尽","④版本清","⑤二手量","⑥二手信",
           "⑦自带","⑧成本","⑨版本锁","⑩复现","⑪综合"]
 
-TASKS = ["A","B","C","D","E","F","G","H"]
+TASKS = ["A","B","C","D","E","F","G","H",
+         "I","J","K","L","M","N","O","P","Q","R","S"]
 
 def compute():
     out = {}
