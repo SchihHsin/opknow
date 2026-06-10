@@ -128,7 +128,11 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
 .combo td,.combo th{border-color:#dce9c4;padding:4px 10px}
 .verbadge{display:inline-block;background:#EEF6E0;border:1px solid #cfe3a8;color:#4a7a00;font-size:11px;border-radius:10px;padding:0 8px}
 .tryurl{display:flex;align-items:center;gap:8px;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:4px 8px;margin:4px 0;color:#555}
-.tryurl .openbtn{flex:none;font-family:'Noto Sans SC';font-size:11px;background:#fff;border:1px solid #bbb;border-radius:6px;padding:0 8px;cursor:pointer;color:#333}
+.tryurl .openbtn{flex:none;font-family:'Noto Sans SC';font-size:11px;background:#fff;border:1px solid #bbb;border-radius:6px;padding:0 8px;cursor:pointer;color:#333;text-decoration:none}
+.bw .url a{color:inherit;text-decoration:none}
+.bw .url a:hover{text-decoration:underline}
+a.hit{color:#777;text-decoration:none;font-family:ui-monospace,Menlo,monospace;font-size:10.5px}
+a.hit:hover{text-decoration:underline;color:#444}
 </style>
 </head>
 <body>
@@ -198,7 +202,7 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
 
 <div class="card"><div class="prob"><span class="prob-id">5</span><div class="body">
   <h3>「抓得到 ≠ 够用」：错误码查询落在通用兜底页，与「抓不到」是两种正交的失败</h3>
-  <p>E 任务（报错码排查）暴露新失败模式：搜 EZ9999 能命中官方错误码页、也抓得到（②=4），但那是一张<b>通用兜底页</b>，没有具体错误码的逐条解释（③=2）。对照 CUDA：每个 error code 有明确语义 + 海量 SO 讨论。报错排查是开发者情绪最焦灼、最高频的场景，却是 CANN 实测最弱的格之一（综合 .55，全栈倒数第二）。</p>
+  <p>E 任务（报错码排查）暴露新失败模式：搜 EZ9999 能命中官方错误码页、也抓得到（②=4），EZ9999 甚至有专属页——但<b>内容是泛化兜底</b>：原因栏写 N/A、只有「检查 CANN 包 / 查日志」两条通用建议，没有按触发场景的逐条解释（③=2）。对照 CUDA：每个 error code 有明确语义 + 海量 SO 讨论。报错排查是开发者情绪最焦灼、最高频的场景，却是 CANN 实测最弱的格之一（综合 .55，全栈倒数第二）。</p>
   <div class="evline"><b>证据</b>：E.cann ②4 但 ③2、⑦2、综合 .55「中」。区别于 D 的「受阻」（抓不到正文）——两种短板要用两种药。</div>
 </div></div></div>
 
@@ -248,10 +252,10 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
       <div class="duolab">✕ 现状 · 同一篇文档散在多棵版本树，配套要跨三个站自己拼（A / I 任务实测）</div>
       <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">搜索：hiascend atc 模型转换（实测命中形态）</span></div>
       <div class="bbody" style="font-size:12px">
-        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC2</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/canncommercial/<b>80RC2</b>/…/quickstart_18_0012.html（实测 URL）</span></div>
-        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC3</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/canncommercial/<b>80RC3</b>/…/quickstart_18_0010.html（实测 URL）</span></div>
-        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">使用ATC转换模型 - CANN <b style="color:var(--hw)">社区版 800alpha001</b></b><br><span style="color:#777;font-family:ui-monospace,Menlo,monospace;font-size:10.5px">…/CANNCommunityEdition/<b>800alpha001</b>/…/quickstart_18_0010.html（实测 URL）</span></div>
-        <p style="color:#999;font-size:11.5px;margin-top:8px">同一篇内容在三棵版本树各一份、互不指向 canonical——人和 AI 都随机落进某一版。<br>配套关系另散在三处（I 任务实测）：gitee 仓 README ＋ PyPI 页 ＋ hiascend 配套表，driver↔CANN↔torch↔torch_npu 双轴、<b>6 个版本号人肉对</b>。</p>
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">将ONNX模型转换为OM模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC2</b></b><br><a class="hit" href="https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/quickstart/quickstart/quickstart_18_0012.html" target="_blank" rel="noopener">hiascend.com/document/detail/zh/canncommercial/<b>80RC2</b>/quickstart/quickstart/quickstart_18_0012.html ↗</a></div>
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">将ONNX模型转换为OM模型 - CANN <b style="color:var(--hw)">商用版 8.0.RC3</b></b><br><a class="hit" href="https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/quickstart/quickstart/quickstart_18_0010.html" target="_blank" rel="noopener">hiascend.com/document/detail/zh/canncommercial/<b>80RC3</b>/quickstart/quickstart/quickstart_18_0010.html ↗</a></div>
+        <div style="border-bottom:1px dashed #eee;padding:5px 0"><b style="color:#1a0dab">将ONNX模型转换为OM模型 - CANN <b style="color:var(--hw)">社区版 800alpha001</b></b><br><a class="hit" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/quickstart/quickstart/quickstart_18_0010.html" target="_blank" rel="noopener">hiascend.com/document/detail/zh/CANNCommunityEdition/<b>800alpha001</b>/quickstart/quickstart/quickstart_18_0010.html ↗</a></div>
+        <p style="color:#999;font-size:11.5px;margin-top:8px">三条均为<b>现网真实地址、可点击验证</b>（2026-06-11 复核可访问，其中两条活体验证正文同含 atc 命令）：同一篇内容在三棵版本树各一份、互不指向 canonical——人和 AI 都随机落进某一版。<br>配套关系另散在三处（I 任务实测）：gitee 仓 README ＋ PyPI 页 ＋ hiascend 配套表，driver↔CANN↔torch↔torch_npu 双轴、<b>6 个版本号人肉对</b>。</p>
       </div></div>
     </div>
     <div class="good">
@@ -280,15 +284,15 @@ mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
     </ul>
     <div class="demotitle">Demo · 左：实测现状的兜底页；右：建议的一码一页 <span class="mockdisc">右侧内容为示意</span></div>
 <div class="demo">
-  <div class="dnote">E 任务实测：搜 EZ9999 命中的官方页抓得到（②4），但是通用兜底页、没有这个码的逐条解释（③2）。右侧示意「一码一页」该有什么。</div>
+  <div class="dnote">E 任务实测：搜 EZ9999 命中官方页、抓得到（②4），EZ9999 甚至有专属页——但内容是泛化兜底：原因栏写 N/A、只有通用处理建议，没有按触发场景的逐条解释（③2）。右侧示意「一码一页」该有什么。</div>
   <div class="duo">
     <div class="bad">
-      <div class="duolab">✕ 现状 · 通用兜底页（实测形态）</div>
-      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/...错误码参考（实测：所有码共用此页）</span></div>
+      <div class="duolab">✕ 现状 · EZ9999 有专属页、内容却是兜底（实测原文形态，点地址栏可验证）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><a href="https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0313.html" target="_blank" rel="noopener">hiascend.com/document/detail/zh/canncommercial/80RC1/…/atlaserrorcode_15_0313.html ↗（现网真实地址）</a></span></div>
       <div class="bbody" style="color:#555">
-        <b style="color:#222">错误码说明</b>
-        <p style="margin:8px 0">EZ9999：内部错误。请根据报错日志中的具体信息进一步定位，或前往社区论坛求助。</p>
-        <p style="font-size:12px;color:#999">（无具体触发场景 · 无排查步骤 · 无修复样例——搜这个码的人在最焦灼的时刻拿到一句正确的废话）</p>
+        <b style="color:#222">EZ9999 AclNN Inner Error</b>
+        <p style="margin:8px 0">错误信息不固定，请根据具体提示检查。<b>可能原因：N/A</b>。处理建议：检查 CANN 包是否正确；根据日志进一步定位。</p>
+        <p style="font-size:12px;color:#999">（实测要点复述：原因写 N/A、仅 2 条通用建议——无触发场景 · 无排查步骤 · 无修复样例。搜这个码的人在最焦灼的时刻拿到一句正确的废话；真正可用的根因案例散在 vllm-ascend issues 和 CSDN）</p>
       </div></div>
     </div>
     <div class="good">
@@ -322,7 +326,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
   <div class="duo">
     <div class="bad">
       <div class="duolab">✕ SPA 页：Agent 抓到的（D 任务 <code>devguide/opdevg</code> 实测形态）</div>
-      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">.../atlas_ascendc_10_0006.html（实测 URL）</span></div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><a href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html" target="_blank" rel="noopener">hiascend.com/…/CANNCommunityEdition/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html ↗（现网真实地址）</a></span></div>
       <div class="bbody" style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#888">
         &lt;title&gt;算子开发-CANN文档&lt;/title&gt;<br>
         导航：首页 / 开发者 / 文档 / 社区 / 下载 …<br>
@@ -332,7 +336,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
     </div>
     <div class="good">
       <div class="duolab">✓ SSR 页：Agent 抓到的（A 任务 <code>quickstart</code> 实测形态）</div>
-      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">.../quickstart_18_0012.html（实测 URL）</span></div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><a href="https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/quickstart/quickstart/quickstart_18_0012.html" target="_blank" rel="noopener">hiascend.com/…/canncommercial/80RC2/quickstart/quickstart/quickstart_18_0012.html ↗（现网真实地址）</a></span></div>
       <div class="bbody">
         <b style="font-size:12.5px">使用 ATC 转换模型（正文完整可抓 · 实测原文）</b>
         <pre class="cmd">atc --model=resnet50.onnx --framework=5 --output=resnet50
@@ -448,7 +452,7 @@ npu-smi info                        # ② 核对芯片型号与 soc_version</pre
         <li><span class="st ok">✓ 取得</span><span>msopgen 完整命令与 add_custom.json 样例（CANN 80RC2alpha001 实测）</span></li>
       </ul>
       <div class="warnline" style="margin-top:10px"><b>有 1 个权威页面我抓不到</b>（技术受阻，不代表内容差）——你直接打开会比我快：</div>
-      <div class="tryurl"><span style="flex:1">hiascend.com/.../devguide/opdevg/.../atlas_ascendc_10_0006.html</span><span class="openbtn">打开 ↗</span></div>
+      <div class="tryurl"><span style="flex:1">hiascend.com/…/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html</span><a class="openbtn" href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/opdevg/Ascendcopdevg/atlas_ascendc_10_0006.html" target="_blank" rel="noopener">打开 ↗</a></div>
       <div style="font-size:11.5px;color:var(--sub)">打开后把正文贴回来，我会按官方原文校正下面的回答。以下先基于已取得的 3 个来源作答（置信度：中）…</div>
     </div>
   </div>
