@@ -409,7 +409,7 @@
     <div class="mhead"><span class="nm">⑥ 二手可信度 / 一致性</span><span class="en">Credibility / Consistency</span><span class="tag qual">二手·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">二手源<b>权威吗、够新吗、彼此对得上吗</b>：作者/平台可靠度、日期新鲜度、多源结论是否一致（还是互相矛盾、引用过时版本）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">数量多（⑤）不等于可信。一致性低会逼我反复交叉验证、抬高检索成本，甚至无法定论。</div></div>
-    <div class="mfml"><span class="ftag">量化公式 score6_sec_cred(r)</span>每条二手来源按<b>类型</b>查 <code>SOURCE_CRED</code> 基准分、取均值，再按一致性档 <code>CONSIST</code> 加减：<br><b>得分 = clamp( 均分(各源 SOURCE_CRED) + 一致性因子 , 1, 5 )</b>；一致性 high 互证 +1.0 / mid 参差 0 / low 矛盾 −1.0。<br>这正是用户要的「来源可信度排序」——一张<b>可复核的锚定表</b>，非逐条拍脑袋：
+    <div class="mfml"><span class="ftag">量化公式 score6_sec_cred(r)</span>每条二手来源按<b>类型</b>查 <code>SOURCE_CRED</code> 基准分取均值，按一致性档 <code>CONSIST</code> 加减，再按发表日期做<b>时效罚分</b>：<br><b>得分 = clamp( 均分(各源 SOURCE_CRED) + 一致性因子 + 时效罚分 , 1, 5 )</b>；一致性 high 互证 +1.0 / mid 参差 0 / low 矛盾 −1.0。<br><b>时效（score 里 <code>recency_factor</code>，只罚不奖）</b>：取各二手<b>发表日期中位月龄</b>（today=2026-06，确切日由 web_search 实测、未拿到的诚实留空不计中位）——≤36 月不罚 / ≤48 月 −0.25 / >48 月 −0.5。<b>为何只罚不奖</b>：够新是基线（给加分会把临界格虚高地推过整数档），过时才是缺陷。<b>实测结论</b>：CANN 二手多为 2024–2025 新文（A.cann 2025-05、C.cann 2024-07/2025-06、D.cann 2024-11/2025-12）→ <b>时效不构成 CANN 二手短板</b>；仅 CUDA 侧 A(learnopencv 2023-01)、C(siboehm 2022-12) 两格各 −0.25，均<b>未翻档</b>（⑥ 仍 4）。<br>「来源可信度排序」——一张<b>可复核的锚定表</b>，非逐条拍脑袋：
       <table class="credtb">
         <tr><td>official_doc 一手官方文档镜像（docs.nvidia.com / hiascend）</td><td>5.0</td></tr>
         <tr><td>official_repo 官方代码仓（github.com/pytorch、gitee ascend 蓝区仓）</td><td>5.0</td></tr>
@@ -421,7 +421,7 @@
         <tr><td>aggregator 聚合站/科普号（ai6s、53ai、转载号）</td><td>2.5</td></tr>
       </table>
       <span style="font-size:9.5px;color:var(--g4)">⚠ official_* 三类基准分高、但它们在打分时归入①官方渠道、<b>不进⑤⑥</b>；上表列出仅为给「类型→基准分」一张完整对照（CUDA ⑥多为个人博客 tech_blog≈3.0、+一致性 high → 落 4，而非 5）。</span></div>
-    <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">4</span> 命令骨架一致、差异主要在版本号 ｜ <span class="lv">3</span> 基本一致但深度参差、需交叉核对 ｜ <span class="lv">2</span> 各源版本/写法不一、难交叉印证 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
+    <div class="rubric"><span class="lv">5</span> 权威、近期（中位月龄 ≤36）、多源互证 ｜ <span class="lv">4</span> 命令骨架一致、差异主要在版本号 ｜ <span class="lv">3</span> 基本一致但深度参差、需交叉核对 ｜ <span class="lv">2</span> 各源版本/写法不一、难交叉印证 ｜ <span class="lv">1</span> 陈旧（中位月龄 >48 触发时效罚分）/矛盾/来源存疑。</div>
   </div>
 
   <!-- 自带知识 -->

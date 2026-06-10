@@ -42,6 +42,31 @@ SOURCE_CRED = {
 # 一致性因子：各源对「命令/版本/写法」是否对得上。high=互证、mid=深度参差、low=彼此矛盾
 CONSIST = {"high": +1.0, "mid": 0.0, "low": -1.0}
 
+# ------------------------------------------------------------
+# 时效性（recency）—— ⑥ 二手可信度的「只罚不奖」修正项
+#   设计取舍：① 够新是基线、不是加分（给加分会把临界格虚高地推过整数档）；
+#            ② 过时才是缺陷、扣分；③ 阈值按二手来源**发表日期中位数**的月龄。
+#   today 固定为 (2026,6) 与 task_run_log 真跑日同月，便于复算。
+#   各源真实发表日期由 web_search 实测取得，None=未拿到确切日期(诚实留空、不参与中位)。
+# ------------------------------------------------------------
+TODAY = (2026, 6)
+
+def _age_months(ym, today=TODAY):
+    y, m = int(ym[:4]), int(ym[5:7])
+    return (today[0] - y) * 12 + (today[1] - m)
+
+def recency_factor(dates, today=TODAY):
+    """二手来源发表日期中位月龄 → ⑥ 罚分。≤36mo 不罚、≤48mo −0.25、>48mo −0.5。
+       dates 为 'YYYY-MM' 串列表；None/空跳过；全空→0(无据不罚)。"""
+    ages = sorted(_age_months(d, today) for d in dates if d)
+    if not ages:
+        return 0.0
+    n = len(ages)
+    med = ages[n // 2] if n % 2 else (ages[n // 2 - 1] + ages[n // 2]) / 2
+    if med <= 36:  return 0.0
+    if med <= 48:  return -0.25
+    return -0.5
+
 
 # ============================================================
 # 1. 原始观测数据（每格 = 一个任务×一个栈；字段全部来自 task_run_log.md 实测）
@@ -73,26 +98,34 @@ RAW = {
      n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
      # learnopencv / towardsdatascience / medium / github-sithu(个人仓) / seeed-wiki
      sources=["tech_blog","tech_blog","tech_blog","tech_blog","aggregator"],
+     # learnopencv 2023-01-24（PyTorch→TensorRT），余无确切发表日
+     dates=["2023-01", None, None, None, None],
      consist="high", own=4, pin="exact", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=3, fetch_fail=0,
      core_fetch="ssr", exec=True, ref_level="core_only",
      n_versions=5, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # zhihu / aliyun / cnblogs×2 / csdn
      sources=["qa_reputation","cloud_vendor","tech_blog","tech_blog","tech_blog"],
+     # aliyun 1662723 2025-05-06、racesnail 飞桨x昇腾 2025-05；zhihu p/393169777 引 EOL 旧版无确切日
+     dates=[None, "2025-05", "2025-05", None, None],
      consist="high", own=3, pin="range", repro="params"),
  },
  "B": {
   "cuda": dict(rounds=1, rank=3, refine=False, fetch=1, fetch_fail=0,
      core_fetch="static", exec=True, ref_level="exhaustive",
      n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
-     # mcarilli-gist / medium / harvard-handbook / practical-ml / modular
+     # mcarilli-gist / medium-Yuanzhe / harvard-handbook / practical-ml-arikpoz / aceCloud
      sources=["tech_blog","tech_blog","cloud_vendor","tech_blog","tech_blog"],
+     # medium Yuanzhe Dong nsys 2022-07-07、practical-ml arikpoz 2025-05-25、AceCloud ~2026-01
+     dates=[None, "2022-07", None, "2025-05", "2026-01"],
      consist="high", own=4, pin="mostly", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=2, fetch_fail=0,
      core_fetch="ssr", exec=True, ref_level="core_only",
      n_versions=6, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # aliyun / csdn×2 / zhihu
      sources=["cloud_vendor","tech_blog","tech_blog","qa_reputation"],
+     # CSDN msprof 2025-06，余无确切日
+     dates=[None, "2025-06", None, None],
      consist="mid", own=3, pin="range", repro="partial"),
  },
  "C": {
@@ -101,12 +134,16 @@ RAW = {
      n_versions=1, ver_matrix=True, ver_irrelev=True, two_axis=False,
      # siboehm / abhik.ai / toolscope / matlab-gpucoder / medium / 53ai
      sources=["tech_blog","tech_blog","aggregator","cloud_vendor","tech_blog","aggregator"],
+     # siboehm CUDA-MMM 2022-12-31，余无确切日
+     dates=["2022-12", None, None, None, None, None],
      consist="high", own=5, pin="exact", repro="copyrun"),
   "cann": dict(rounds=1, rank=4, refine=False, fetch=1, fetch_fail=0,
      core_fetch="partial", exec=False, ref_level="overview",
      n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # csdn / zhihu / 华为云bbs （Gitee 蓝区仓属官方、不计二手）
      sources=["tech_blog","qa_reputation","cloud_vendor"],
+     # 53ai AOL/ATB 2024-07-18、arxiv 2506.12708 2025-06
+     dates=["2024-07", "2025-06", None],
      consist="high", own=3, pin="mostly", repro="params"),
  },
  "D": {
@@ -115,12 +152,16 @@ RAW = {
      n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=True,
      # apxml课程 / 个人博客×2 / medium / learn-blog （pytorch/extension-cpp 属官方仓）
      sources=["aggregator","tech_blog","tech_blog","tech_blog","tech_blog"],
+     # 二手均无确切发表日（pytorch 官方教程属①、不计二手）
+     dates=[None, None, None, None, None],
      consist="high", own=5, pin="exact", repro="copyrun"),
   "cann": dict(rounds=2, rank=8, refine=True, fetch=1, fetch_fail=1,
      core_fetch="spa", exec=None, ref_level="none",
      n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
      # csdn / ai6s / cnblogs （MindSpore官方doc 属官方、不计二手）
      sources=["tech_blog","aggregator","tech_blog"],
+     # CSDN xyz3120 2024-11-09、ai6s 2025-12-05、ZOMI cnblogs 2024-11-21
+     dates=["2024-11", "2025-12", "2024-11"],
      consist="low", own=2, pin="none", repro="partial"),
  },
 }
@@ -187,11 +228,12 @@ def score5_sec_qty(r):
     return 1
 
 def score6_sec_cred(r):
-    """⑥ 二手可信度/一致性 = 来源可信度均分 + 一致性因子，clamp 1..5。
-       —— 用 SOURCE_CRED 表给每条来源打基准分，取均值，再按一致性档加减。"""
+    """⑥ 二手可信度/一致性 = 来源可信度均分 + 一致性因子 + 时效罚分，clamp 1..5。
+       —— 用 SOURCE_CRED 表给每条来源打基准分取均值；按一致性档加减；
+          再按二手发表日期中位月龄「只罚不奖」(够新基线、过时才扣)。"""
     creds = [SOURCE_CRED[s] for s in r["sources"]]
     mean = sum(creds) / len(creds)
-    val = mean + CONSIST[r["consist"]]
+    val = mean + CONSIST[r["consist"]] + recency_factor(r.get("dates", []))
     return max(1, min(5, round(val)))
 
 def score7_own(r):
