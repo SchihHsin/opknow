@@ -135,6 +135,14 @@
   .cderiv .why b{color:#9A4A12;} .cderiv .why u{text-decoration-color:#E7C99B;}
   .cderiv .cseq{margin-top:8px;font-size:10.8px;color:var(--g3);line-height:1.7;}
   .cderiv .cseq b{color:var(--g1);}
+  .mfml{margin-top:8px;background:#F7FAFE;border:1px solid #D6E3F2;border-radius:7px;padding:7px 11px;font-size:11px;color:var(--g2);line-height:1.7;}
+  .mfml .ftag{display:inline-block;font-size:9.5px;font-weight:800;color:#1d5a93;background:#E6EFFA;border:1px solid #C9DCF0;border-radius:4px;padding:1px 6px;margin-right:7px;letter-spacing:.3px;}
+  .mfml code{background:#fff;border:1px solid #DCE6F2;border-radius:3px;padding:0 3px;font-size:10px;color:#1d5a93;}
+  .mfml b{color:#1d5a93;}
+  .mfml .credtb{width:100%;border-collapse:collapse;font-size:10px;margin-top:5px;}
+  .mfml .credtb td{padding:2px 7px;border-bottom:1px dashed #E0E8F2;}
+  .mfml .credtb td:last-child{text-align:right;font-weight:800;color:#1d5a93;white-space:nowrap;}
+  .mfml .credtb tr:last-child td{border-bottom:none;}
 
   /* 评分档 */
   .tier{display:flex;gap:11px;margin:9px 0;align-items:flex-start;}
@@ -351,13 +359,14 @@
 
   <!-- 4. 逐项定义 -->
   <h2 id="s4">4 · 指标逐项定义与解释 <span class="en">definitions &amp; per-item rationale</span></h2>
-  <p class="note">每张卡：<b>定义</b>（这项到底测什么）·<b>为什么单独</b>（凭什么不和别项合并）·<b>打分口径</b>（5/3/1 锚点；⑧反向）。这就是 §3 里"能独立失败"那条准则落到每一项的样子。</p>
+  <p class="note">每张卡：<b>定义</b>（这项到底测什么）·<b>为什么单独</b>（凭什么不和别项合并）·<b style="color:#1d5a93">量化公式</b>（蓝框：把可量化原始观测映射到 1–5 的 <code>score_N()</code>，与 <code>score_metrics.py</code> 逐一对应、可复现）·<b>打分口径</b>（5→1 锚点；⑧反向）。这就是 §3 里"能独立失败"那条准则落到每一项的样子。<b>①–⑥⑧ 由实测观测代公式算出</b>（非主观研判）；唯 <b>⑦自带知识</b>无法外部量测、显式标为自评；<b>⑨⑩</b>为产出因变量、照打但不进⑪。运行 <code>python3 score_metrics.py --diff</code> 即复现全 8 格 × 11 项。</p>
 
   <!-- 官方触达 -->
   <div class="mcard touch">
     <div class="mhead"><span class="nm">① 官方可发现性</span><span class="en">Discoverability</span><span class="tag touch">官方·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">就这个任务做常规检索，官方文档<b>能不能出现、排名靠不靠前、几轮命中</b>。测的是"找得到官方源"这件事本身。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">"找得到"是触达的第一道门，和"抓不抓得到正文"（②）是两回事——可能首条就是官方链接，却点进去抓不到内容。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score1_discover(r)</span>输入 = 命中排名 <code>rank</code> · 检索轮数 <code>rounds</code> · 是否换词二搜 <code>refine</code>。<b>换词二搜才浮出官方</b>(rounds≥2&refine)→2；rounds≥2→3；一轮内 rank=1→5 / ≤6→4 / ≤10→3 / 更后→2。<b>纯由实测名次/轮数映射、无主观成分。</b></div>
     <div class="rubric"><span class="lv">5</span> 首屏首条即官方、一轮命中 ｜ <span class="lv">4</span> 1 搜命中官方、但非绝对置顶（夹在二手中）｜ <span class="lv">3</span> 要翻页或加限定词才稳定命中官方 ｜ <span class="lv">2</span> 官方排不到首屏、靠二手关键词二次检索才定位 ｜ <span class="lv">1</span> 多轮仍难浮出官方源。</div>
   </div>
 
@@ -365,6 +374,7 @@
     <div class="mhead"><span class="nm">② 官方可抓取性</span><span class="en">Crawlability / Fetchability</span><span class="tag touch">官方·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">找到官方页后，web_fetch <b>能不能真的把正文取回上下文</b>：静态页可抓 vs SPA 单页应用只回导航 / robots 拦截。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val"><b>找得到 ≠ 抓得到</b>。点进官方页可能是静态正文、也可能是 SPA 只回导航；而且<b>同一站不同子树结果不同</b>（见 §6.2），必须与可发现性拆开、且<b>按子树</b>看才准。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score2_fetch(r)</span>输入 = 核心 how-to 页抓取形态 <code>core_fetch</code>（实测 web_fetch 结果分类）。<b>static→5 / ssr·partial→4 / spa→2 / robots→1</b>。形态由真去 fetch 判定（子树相关、非平台常量，见 §6.2）。</div>
     <div class="rubric"><span class="lv">5</span> 静态 HTML、正文/参数表/命令全抓到（CUDA docs）｜ <span class="lv">4</span> 入门 / how-to 子树服务端渲染、正文可抓（hiascend <code>quickstart/</code>、<code>modeldevpt/</code>）｜ <span class="lv">3</span> 部分可抓：概述/接口机制有、算子列表/调用码缺（<code>doc_center</code> ATB）｜ <span class="lv">2</span> 该任务核心页落在 SPA 子树（<code>devguide/opdevg/</code>、<code>apiref/</code>）、且无可抓子树兜底（CANN-D）｜ <span class="lv">1</span> robots 全拦 / 完全抓不到。</div>
   </div>
 
@@ -373,6 +383,7 @@
     <div class="mhead"><span class="nm">③ 官方正文详尽度</span><span class="en">Body depth</span><span class="tag qual">官方·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息够不够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字够不够答好"——两者正交。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score3_detail(r)</span>输入 = 是否含可执行核心 <code>exec</code>（命令/可跑代码）· 参考完整度 <code>ref_level</code>。<b>②为 spa/robots（抓不到正文）→ 受阻中性态（不打分，≠1）</b>；exec&穷尽 exhaustive→5 / exec&主路径 core_only→4 / 概述 overview→3 / 片段 fragment→2 / 余1。</div>
     <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">4</span> 主路径正文详尽、仅穷尽参考表缺 ｜ <span class="lv">3</span> 有正文但偏概述、要东拼西凑 ｜ <span class="lv">2</span> 仅 meta / 片段 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
     <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧<b>按子树</b>评——入门子树可抓的 A/B，按抓回的正文如实评（③=4）；ATB 概述部分可抓的 C 偏概念、缺算子列表 → ③=3；唯独 <b>D</b>，核心 how-to（<code>add_custom.json</code> 完整字段、Tiling/Kernel 实现）整个压在 <code>devguide/opdevg/</code> SPA、<b>无可抓子树兜底</b> → 正文取不回来，记<b>「受阻·无法实测」</b>中性态，<b>不打推断分</b>（凭印象给分=把推断伪装成实测）。受阻本身就是 D 垫底最有力的证据。CUDA 侧静态可抓，按实际正文如实评。</div>
   </div>
@@ -381,6 +392,7 @@
     <div class="mhead"><span class="nm">④ 版本清晰度</span><span class="en">Version clarity</span><span class="tag qual">官方·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">官方源里<b>容不容易选对版本</b>：是单一主线版本，还是多套版本号并存散乱（商用版 / 社区版 / alpha / RC 交错）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是"内容质量"的另一面，和"详尽度"不同：正文可能很详尽，却因版本号散乱让人不知该照哪一版。CANN 跨任务普遍弱（实测多版本号并存）。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score4_version(r)</span>输入 = 并存版本号个数 <code>n_versions</code>（去重）· 官方是否给支持矩阵 <code>ver_matrix</code> · 是否版本无关/双轴。<b>版本无关或 n≤1→5 / 有支持矩阵→4 / 双轴可锁→3 / n≥3 散乱→2 / 余3</b>。版本号个数 = 实测检索去重所得。</div>
     <div class="rubric"><span class="lv">5</span> 单一主线版本、对应清楚 ｜ <span class="lv">4</span> 多版本但官方列出支持矩阵、可对照 ｜ <span class="lv">3</span> 需同时定芯片 + 框架版本、部分可锁 ｜ <span class="lv">2</span> 多版本号并存散乱、需自行判断该用哪版（如 <code>8.0.RC2 / 8.0.RC3 / 800alpha001/003</code> 同存）｜ <span class="lv">1</span> 版本信息缺失 / 混乱。</div>
   </div>
 
@@ -389,6 +401,7 @@
     <div class="mhead"><span class="nm">⑤ 二手丰富度</span><span class="en">Secondary abundance</span><span class="tag touch">二手·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">GitHub / Stack Overflow / 知乎 / CSDN / 博客等二手材料的<b>数量与可发现度</b>——当官方触达不到时，能否靠社区绕过去。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">二手是官方短板的<b>主要补偿渠道</b>。A/B/C 任务正是靠厚二手绕过了官方可抓取短板，D 任务二手薄才把短板放大到致命。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score5_sec_qty(r)</span>输入 = 去重二手来源条数 <code>n</code>。<b>n≥6→5 / ≥5→4 / ≥3→3 / ≥1→2 / 0→1</b>。⚠ 官方文档/官方代码仓（<code>github.com/pytorch</code>、gitee 蓝区仓）/官方论坛属①官方渠道、<b>不计二手</b>，避免与①重复加权。</div>
     <div class="rubric"><span class="lv">5</span> 多源、易找、覆盖该任务核心 ｜ <span class="lv">4</span> 知乎/阿里云/博客园/华为云较丰富 ｜ <span class="lv">3</span> 有但零散、比 CUDA 少 ｜ <span class="lv">2</span> 仅零星 CSDN/博客园/MindSpore ｜ <span class="lv">1</span> 寥寥几篇、难覆盖。</div>
   </div>
 
@@ -396,6 +409,18 @@
     <div class="mhead"><span class="nm">⑥ 二手可信度 / 一致性</span><span class="en">Credibility / Consistency</span><span class="tag qual">二手·质量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">二手源<b>权威吗、够新吗、彼此对得上吗</b>：作者/平台可靠度、日期新鲜度、多源结论是否一致（还是互相矛盾、引用过时版本）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">数量多（⑤）不等于可信。一致性低会逼我反复交叉验证、抬高检索成本，甚至无法定论。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score6_sec_cred(r)</span>每条二手来源按<b>类型</b>查 <code>SOURCE_CRED</code> 基准分、取均值，再按一致性档 <code>CONSIST</code> 加减：<br><b>得分 = clamp( 均分(各源 SOURCE_CRED) + 一致性因子 , 1, 5 )</b>；一致性 high 互证 +1.0 / mid 参差 0 / low 矛盾 −1.0。<br>这正是用户要的「来源可信度排序」——一张<b>可复核的锚定表</b>，非逐条拍脑袋：
+      <table class="credtb">
+        <tr><td>official_doc 一手官方文档镜像（docs.nvidia.com / hiascend）</td><td>5.0</td></tr>
+        <tr><td>official_repo 官方代码仓（github.com/pytorch、gitee ascend 蓝区仓）</td><td>5.0</td></tr>
+        <tr><td>official_forum 官方论坛/邮件列表（dev-discuss.pytorch.org、NVIDIA 论坛）</td><td>4.5</td></tr>
+        <tr><td>cloud_vendor 大厂云技术博客（aliyun developer、华为云 bbs）</td><td>4.0</td></tr>
+        <tr><td>arxiv 学术论文</td><td>4.0</td></tr>
+        <tr><td>qa_reputation 有声誉的问答/专栏（zhihu 专栏、StackOverflow）</td><td>3.5</td></tr>
+        <tr><td>tech_blog CSDN / 博客园 / Medium 个人技术博客</td><td>3.0</td></tr>
+        <tr><td>aggregator 聚合站/科普号（ai6s、53ai、转载号）</td><td>2.5</td></tr>
+      </table>
+      <span style="font-size:9.5px;color:var(--g4)">⚠ official_* 三类基准分高、但它们在打分时归入①官方渠道、<b>不进⑤⑥</b>；上表列出仅为给「类型→基准分」一张完整对照（CUDA ⑥多为个人博客 tech_blog≈3.0、+一致性 high → 落 4，而非 5）。</span></div>
     <div class="rubric"><span class="lv">5</span> 权威、近期、多源互证 ｜ <span class="lv">4</span> 命令骨架一致、差异主要在版本号 ｜ <span class="lv">3</span> 基本一致但深度参差、需交叉核对 ｜ <span class="lv">2</span> 各源版本/写法不一、难交叉印证 ｜ <span class="lv">1</span> 陈旧/矛盾/来源存疑。</div>
   </div>
 
@@ -404,6 +429,7 @@
     <div class="mhead"><span class="nm">⑦ 模型自带知识</span><span class="en">Built-in knowledge</span><span class="tag touch">自带·触达</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">这个任务在我训练数据里的<b>覆盖密度</b>——不检索能不能直接答出靠谱内容。把"模型自带、不靠检索的知识"也视为一条触达渠道（即原先说的"先验"）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">自带知识多时可在外部源失败时兜底；自带知识少时只能硬靠检索。它的"质量面"（时效/可靠）难与多寡分离，故并入本项内标注，不再单列。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score7_own(r)</span>输入 = 训练覆盖密度自评档 <code>own</code>(1–5)，直接取用。<b>⚠ 全 11 项里唯一非客观实测的输入</b>——自带知识无法外部量测，故显式标注为<b>自评</b>（不像①–⑥⑧ 由可量化原始观测映射）。</div>
     <div class="rubric"><span class="lv">5</span> 覆盖密集、可凭知识答且大体可靠 ｜ <span class="lv">4</span> 流程熟悉、可凭自带知识给骨架 ｜ <span class="lv">3</span> 有概念但细节/版本需检索补 ｜ <span class="lv">2</span> 自带知识弱、不敢凭记忆给命令 ｜ <span class="lv">1</span> 几乎只能现查、自带知识易过时。</div>
   </div>
 
@@ -412,6 +438,7 @@
     <div class="mhead"><span class="nm">⑧ 检索成本</span><span class="en">Retrieval cost</span><span class="tag cost">过程</span><span class="tag rev">反向</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">答好这个任务实际花的<b>检索轮数 + 抓取次数</b>的摩擦。<b>反向计分：越少越好</b>，着色时高分=省力（绿）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">它是过程代价，不是知识本身的属性。同样能答对，花 1 轮和花 6 轮的"可用性"体感差很多。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score8_cost(r)</span>输入 = 检索轮数 <code>rounds</code> · web_fetch 次数 <code>fetch</code> · 抓取失败次数 <code>fetch_fail</code>。<br><b>cost = rounds + 0.5·fetch + 4.0·fetch_fail</b>（SPA 抓空重罚 4.0）；cost≤1.5→5 / ≤2.5→4 / ≤4→3 / ≤6→2 / 余1。这是 D.cann 成本垫底（一次 SPA 抓空）的来源。</div>
     <div class="rubric"><span class="lv">5</span> 1 轮内搞定 ｜ <span class="lv">4</span> 1 搜 + 偶尔一次抓取 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">2</span> 多轮检索 ｜ <span class="lv">1</span> 多轮反复 + 抓取失败（SPA），成本最高。</div>
   </div>
 
@@ -420,6 +447,7 @@
     <div class="mhead"><span class="nm">⑨ 版本可锁定性</span><span class="en">Version-lockability</span><span class="tag out">产出·因变量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">最终答案<b>能不能定到确切版本</b>（库版本 / 工具链版本 / soc_version 等），而不是含糊地"某个版本应该可以"。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是<b>结果（因变量）</b>，是前面几关的产物——版本清晰度④高、源够好，才锁得住。列出来是为让"输入好→产出好"闭环、并核对综合分，<b>不应与输入项重复加权</b>。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score9_pin(r)</span>输入 = <code>pin</code> 档：<b>exact 确切版本号+opset→5 / mostly 工具版本基本可定→4 / range 范围/部分可锁→3 / none 抽不出无法定死→2</b>。<b>产出/因变量 → 不进⑪</b>（进了=与输入项重复加权）。</div>
     <div class="rubric"><span class="lv">5</span> 能写出确切版本号 + opset ｜ <span class="lv">4</span> 工具版本基本可定 ｜ <span class="lv">3</span> 能给范围/主版本、部分可锁 ｜ <span class="lv">2</span> 多版本 + 正文抽不出、无法定死 ｜ <span class="lv">1</span> 只能模糊带过。</div>
   </div>
 
@@ -427,6 +455,7 @@
     <div class="mhead"><span class="nm">⑩ 步骤可复现性</span><span class="en">Reproducibility</span><span class="tag out">产出·因变量</span></div>
     <div class="mrow"><div class="lbl">定义</div><div class="val">答案里的<b>命令/步骤能不能照抄跑通</b>：完整命令行、必要参数、前置条件齐全，而非伪代码或缺步骤。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">同为产出侧因变量，但与"锁版本"正交：版本锁得住、命令却缺参数照样跑不通。直接对应正文详尽度③与二手质量⑥。</div></div>
+    <div class="mfml"><span class="ftag">量化公式 score10_repro(r)</span>输入 = <code>repro</code> 档：<b>copyrun 照抄即跑→5 / params 替好参数即可照抄→4 / partial 大体能跑需小修→3 / skeleton 仅骨架可述→2</b>。同⑨为产出/因变量 → <b>不进⑪</b>。</div>
     <div class="rubric"><span class="lv">5</span> 命令照抄即跑 ｜ <span class="lv">4</span> 命令完整、替好参数即可照抄 ｜ <span class="lv">3</span> 大体能跑、需小修/部分依赖环境 ｜ <span class="lv">2</span> 仅骨架可述、细节无法确证 ｜ <span class="lv">1</span> 缺步骤/仅示意。</div>
   </div>
 
@@ -448,15 +477,15 @@
       <div class="why"><b>设计取舍：</b>① 用<b>噪声-OR</b>而非加权平均——知识只要一条渠道扛得住就能答，这正是为什么 <b>D 三渠道同时塌</b>才致命、A/B/C 靠某一条兜住仍中高；② <b>④版本 / ⑧成本是跨渠道</b>影响、作全局乘子；③ <b>⑨⑩ 不进公式</b>（产出/因变量，进了=重复加权，见 §6.5）；④ <b>受阻渠道记 0</b>＝该渠道没送达内容，<u>不是给③打 1 分</u>（矩阵显示仍保留"受阻≠低分"中性态）。</div>
       <table style="margin-top:9px">
         <tr><td colspan="2"><b>八格复算结果</b>（直接代入各格①–⑧ 当前分）<small>cu = CUDA ｜ ca = CANN；每格 = K × 版本 × 成本</small></td></tr>
-        <tr><td>A 模型转换<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.93×.88×.97=.76</small></td><td>cu .94 高 ｜ ca .76 中高</td></tr>
-        <tr><td>B Profiling<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.88×.88×.94=.72</small></td><td>cu .94 高 ｜ ca .72 中高</td></tr>
+        <tr><td>A 模型转换<small>cu: K1.00×.94×1.0=.94 ｜ ca: K.93×.82×.98=.75</small></td><td>cu .94 高 ｜ ca .75 中高</td></tr>
+        <tr><td>B Profiling<small>cu: K.99×.94×1.0=.93 ｜ ca: K.88×.82×.98=.70</small></td><td>cu .93 高 ｜ ca .70 中高</td></tr>
         <tr><td>C 算子库选型<small>cu: K1.00×1.0×1.0=1.00 ｜ ca: K.87×.88×1.0=.77</small></td><td>cu 1.00 高 ｜ ca .77 中高</td></tr>
-        <tr class="eff"><td>D 自定义算子<small>cu: K1.00×.94×1.0=.88 ｜ ca: K.50×.82×.92=.37（三渠道同时塌）</small></td><td>cu .88 高 ｜ ca .37 低</td></tr>
+        <tr class="eff"><td>D 自定义算子<small>cu: K1.00×.88×1.0=.88 ｜ ca: K.54×.82×.92=.41（三渠道同时塌）</small></td><td>cu .88 高 ｜ ca .41 低</td></tr>
       </table>
       <div class="cseq"><b>本次按公式下修的两格（旧分系"整体研判"、偏乐观；新分纯由①–⑧ 代入、可复现）：</b><br>
       <b>C.cann 旧「高」→ 中高（.77）</b>：自带⑦仅 3（AOL/ATB 命名需查证）、官方③仅 3（ATB 概述偏概念），撑不到「高」(≥.80)。<br>
-      <b>D.cann 旧「中」→ 低（.37）</b>：官方受阻 OFF≈0、二手稀 SEC≈.16、自带弱 OWN .40 → K 仅 .50，无一条渠道扛得住，到不了「中」(≥.45)。<br>
-      <b>自洽校验</b>：来源构成前三段「有把握来源」之和与公式 K 同量级（D.cann 50% ≈ K .50；C.cann 75% ≈ K .87；A.cann 90% ≈ K .93）——两套独立估计互证。<small style="color:var(--g4)">①–⑧ 分为锚定/半实测、cutoff 为人工锚点，均非逐 token 测得；此式与 17 矩阵 ⑪ 悬浮的 <code>confCompute()/confDeriv()</code> 完全同源、逐字一致。</small></div>
+      <b>D.cann 旧「中」→ 低（.41）</b>：官方受阻 OFF≈0、二手稀 SEC≈.24、自带弱 OWN .40 → K 仅 .54，无一条渠道扛得住，到不了「中」(≥.45)。<br>
+      <b>自洽校验</b>：来源构成前三段「有把握来源」之和与公式 K 同量级（D.cann 50% ≈ K .54；C.cann 75% ≈ K .87；A.cann 90% ≈ K .93）——两套独立估计互证。<small style="color:var(--g4)">①–⑩ 各分本身亦由 <code>score_metrics.py</code> 的 score_N() 公式从可量化原始观测算出（非主观研判）；cutoff 为人工锚点；此式与 17 矩阵 ⑪ 悬浮的 <code>confCompute()/confDeriv()</code> 完全同源、逐字一致。</small></div>
     </div>
 
     <div class="rubric"><span class="lv">5/高</span> 各关均强、产出可锁可复现（综合≥.80）｜ <span class="lv">4/中高</span> 主路径强、仅深层短板、可绕过（≥.63）｜ <span class="lv">3/中</span> 多重折扣叠加但仍可作答（≥.45）｜ <span class="lv">2/低</span> 多关短板叠加、可用性差（≥.24）｜ <span class="lv">1/很低</span> 基本不可用（&lt;.24）。<b>非简单平均</b>，由上方<b>三源噪声-OR 公式</b>代入①–⑧ 算出、落 cutoff 档。</div>
