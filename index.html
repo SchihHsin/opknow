@@ -81,6 +81,25 @@
   #tip .rub .rlv code{background:#fff;border:1px solid #e2e6ee;border-radius:3px;padding:0 2px;font-size:8.8px;}
   #tip .rub .rwhy{margin-top:4px;padding-top:4px;border-top:1px dashed #E4E7EE;font-size:9.5px;color:var(--g3);}
   #tip .rub .rwhy b{color:var(--g1);}
+  #tip .smix{margin-top:7px;background:#FAFBFC;border:1px solid var(--g6);border-radius:7px;padding:7px 9px;}
+  #tip .smix .slbl{font-size:9px;font-weight:800;color:var(--g4);letter-spacing:.3px;margin-bottom:4px;}
+  #tip .smix .sbar{display:flex;height:14px;border-radius:4px;overflow:hidden;border:1px solid #DFE3EA;}
+  #tip .smix .sseg{height:100%;}
+  #tip .smix .sseg.off{background:#2E6CA4;}
+  #tip .smix .sseg.sec{background:#3FA6A0;}
+  #tip .smix .sseg.own{background:#8AA05A;}
+  #tip .smix .sseg.extra{background:repeating-linear-gradient(45deg,#EBA255,#EBA255 4px,#DB7C2E 4px,#DB7C2E 8px);}
+  #tip .smix .sseg.gap{background:#C2C6CE;}
+  #tip .smix .sleg{display:flex;flex-wrap:wrap;gap:3px 9px;margin-top:6px;font-size:9px;color:var(--g3);line-height:1.5;}
+  #tip .smix .sleg>span{display:flex;align-items:center;gap:3px;}
+  #tip .smix .sleg i{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+  #tip .smix .sleg i.off{background:#2E6CA4;} #tip .smix .sleg i.sec{background:#3FA6A0;}
+  #tip .smix .sleg i.own{background:#8AA05A;} #tip .smix .sleg i.extra{background:#DB7C2E;} #tip .smix .sleg i.gap{background:#C2C6CE;}
+  #tip .smix .sleg b{color:var(--g1);font-weight:700;}
+  #tip .smix .wn{color:#C8102E;font-weight:700;}
+  #tip .smix .snote{margin-top:6px;font-size:9.3px;color:var(--g3);line-height:1.55;}
+  #tip .smix .scav{margin-top:5px;padding-top:5px;border-top:1px dashed #E4E7EE;font-size:8.9px;color:var(--g4);line-height:1.5;}
+  #tip .smix .scav b{color:var(--g1);}
 </style>
 </head>
 <body>
@@ -152,6 +171,32 @@ const RUBRIC=[
  [['5','各关均强、产出可锁可复现（显示「高」）'],['4','主路径强、仅深层短板、可绕过（显示「中高」）'],['3','多重折扣叠加但仍可作答（显示「中」）'],['2','多关短板叠加、可用性差'],['1','基本不可用']]
 ];
 const LV={v5:'5',v4:'4',v3:'3',v2:'2',v1:'1'}; // blk→受阻 单独处理
+// 这次回答的「来源构成」五段（回顾性估计，和=100；与 ⑪ 综合置信度互证）。
+// 顺序：[官方一手, 二手社区, 自带·有把握, 类比外推·未验证(风险区), 诚实留白·受阻]；凭空瞎编≈0、不进条。
+const SRC_MIX={
+ A:{cuda:{m:[45,20,30,5,0],n:'官方 Quick Start 抓到完整命令+运行代码，自带搭骨架、二手补；个别旗标按通用模式补。'},
+    cann:{m:[42,28,20,10,0],n:'quickstart 子树可抓 atc 命令+参数表，二手厚补版本；AIPP 等高级参数官方受阻处按经验外推。'}},
+ B:{cuda:{m:[40,28,27,5,0],n:'Nsight 指南可抓、二手海量、自带熟；外推极少。'},
+    cann:{m:[45,22,20,13,0],n:'PyTorch Profiler 子树抓到完整代码（对标 GPU）；msprof 原生参数受阻处靠类比外推。'}},
+ C:{cuda:{m:[18,18,60,4,0],n:'通识题、主要凭自带知识定位库，官方/二手佐证；几乎不外推。'},
+    cann:{m:[25,28,22,20,5],n:'ATB 概述官方部分可抓但偏概念；cuBLAS↔AOL 等映射部分靠类比外推；穷尽算子表抓不全→少量留白。'}},
+ D:{cuda:{m:[45,25,25,5,0],n:'PyTorch 官方教程完整 + 海量 GitHub，自带也熟；外推极少。'},
+    cann:{m:[15,22,13,35,15],n:'核心 how-to SPA 受阻、二手稀、自带弱 → 大量靠类比 CUDA/Ascend C 模式外推（风险最高），最抓不到处诚实留白。'}}
+};
+const SEGDEF=[['off','官方一手'],['sec','二手社区'],['own','自带·有把握'],['extra','类比外推·未验证'],['gap','诚实留白·受阻']];
+function srcMixBlock(k,s){
+ const o=SRC_MIX[k]&&SRC_MIX[k][s]; if(!o) return '';
+ const m=o.m;
+ let bar='';
+ SEGDEF.forEach((d,i)=>{ if(m[i]>0) bar+='<div class="sseg '+d[0]+'" style="width:'+m[i]+'%"></div>'; });
+ let leg='';
+ SEGDEF.forEach((d,i)=>{ const wn=(d[0]==='extra')?' class="wn"':''; leg+='<span><i class="'+d[0]+'"></i><span'+wn+'>'+d[1]+' <b>'+m[i]+'%</b></span></span>'; });
+ let h='<div class="smix"><div class="slbl">这次回答的来源构成（回顾性估计 · 与综合置信度互证）</div>';
+ h+='<div class="sbar">'+bar+'</div><div class="sleg">'+leg+'</div>';
+ h+='<div class="snote">'+o.n+'</div>';
+ h+='<div class="scav"><b>「凭空瞎编」≈ 0</b>（拿不准不杜撰命令/版本/URL）；但<span class="wn">第 4 段「类比外推·未验证」≠ 0</span>——按 CUDA/通用模式推、未经证实、可能错，是最该警惕处。★五段为回顾性估计、非逐 token 测量，外推段尤难自量。</div></div>';
+ return h;
+}
 const N=(c,d,t,extra)=>Object.assign({c:c,d:d,t:t},extra||{});
 const ROWS={
  A:{name:'模型转换 / 导出',
@@ -333,6 +378,7 @@ function tipCell(k,s,ci){
  let html='<div class="th">'+k+' · '+r.name+' — '+stack+'</div>';
  html+='<div class="ti">'+COLS[ci]+' <span class="sc '+c.c+'">'+c.d+'</span></div>';
  html+='<div class="body">'+c.t+'</div>';
+ if(ci===10) html+=srcMixBlock(k,s);
  html+=rubBlock(ci,c);
  if(c.got) html+='<div class="got">'+c.got+'</div>';
  if(c.miss) html+='<div class="miss">'+c.miss+'</div>';
