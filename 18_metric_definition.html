@@ -177,25 +177,40 @@
   <p class="note">关键认识：可用性是<b>"任务相关"</b>的，不是对一个栈一刀切的高或低。成熟通识类任务两边差距小，前沿开发差距被拉满。所以指标必须能<b>定位到是哪一关卡住</b>，而不只给一个总分。下面四节就按"任务 → 问题 → 指标 → 评分"的顺序，交代每一步是怎么来的。</p>
 
   <!-- 1. 任务怎么形成 -->
-  <h2 id="s1">1 · 任务是怎么形成的 <span class="en">how the tasks were chosen</span></h2>
-  <p class="note">不是随手挑 4 个。底层有一张<b>26 个开发任务 × 7 大类</b>的清单（见 <code>05 taxonomy</code>）；从里面沿一条<b>"成熟通识 → 前沿开发"的光谱</b>挑了 4 个代表，目的就是让前面那个关键认识——"可用性是任务相关的"——能被真正看见。挑选守三条准则：</p>
+  <h2 id="s1">1 · 任务是怎么形成的 <span class="en">how the task universe was built</span></h2>
+  <p class="note">关键不在"先跑了哪 4 个"，而在底下这张 <b>26 个开发任务 × 7 大类</b> 的<b>全清单本身是怎么来的</b>（见 <code>05 taxonomy</code>）。做这张图，是为了让"AI 可用性"的度量<b>覆盖一个加速器栈开发者真实的工作面，而不是挑几个好测的来测</b>——有了全清单，才谈得上"哪些跑了、哪些待跑"，结论才不挑食。它的形成守三条准则：</p>
   <div class="pbox">
     <ul>
-      <li><b>覆盖不同成熟度</b>：从工具链通识，一路铺到最前沿的底层 kernel 开发，好让"差距随深入而放大"显形。</li>
-      <li><b>都是真实高频的开发动作</b>：每个任务都是工程师真会做、真会来问我的事，不是生造的考题。</li>
-      <li><b>版本敏感度有高有低</b>：好检验"版本"类指标（④⑨）的区分力——版本敏感的任务才考验得出版本清晰度。</li>
+      <li><b>按"开发者工作流的生命周期"划大类，不按技术概念分</b>：把一个工程师在异构加速栈（CUDA / 昇腾）上从头到尾会经历的阶段走一遍——<b>装环境 → 开发算子 → 训练 → 推理部署 → 性能优化 → 调试 → 迁移</b>。这 7 个阶段，就是 7 大类。</li>
+      <li><b>每个大类下，再穷举该阶段真实高频的具体任务</b>：力求把这一阶段工程师真会做、真会来问我的事铺满（MECE 式覆盖），合计 26 个。不是生造考题，而是把真实活动落成清单。</li>
+      <li><b>每个任务标注版本敏感度</b>：这是<b>任务自身的属性</b>（与栈无关），用来后续检验"版本"类指标的区分力（详见 §6.4 为什么它不进矩阵当列）。</li>
     </ul>
   </div>
   <table class="ttab">
-    <thead><tr><th style="width:34px">代号</th><th>开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置 · 为什么选它</th><th style="width:74px">版本敏感</th></tr></thead>
+    <thead><tr><th style="width:128px">大类（工作流阶段）</th><th>该阶段穷举出的开发任务</th><th style="width:42px">数量</th></tr></thead>
     <tbody>
-      <tr><td class="cd">A</td><td><b>模型转换 / 导出</b><br><small style="color:var(--g4)">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</small></td><td>成熟通识：部署必经路，两栈都有官方主线工具与快速入门。</td><td><span class="vs hi">高</span></td></tr>
-      <tr><td class="cd">B</td><td><b>Profiling 定位瓶颈</b><br><small style="color:var(--g4)">Nsight ｜ msprof / Ascend PyTorch Profiler</small></td><td>成熟工具类：性能调优的入口，两栈都有成熟工具、且昇腾有对标 GPU 的 Profiler。</td><td><span class="vs mid">中</span></td></tr>
-      <tr><td class="cd">C</td><td><b>算子库选型</b><br><small style="color:var(--g4)">cuBLAS/cuDNN/… ｜ AOL/ATB</small></td><td>通识 / 选型类：知识密集但不必写底层码，考验"找对库 + 讲清映射"。</td><td><span class="vs lo">低</span></td></tr>
-      <tr><td class="cd">D</td><td><b>自定义算子开发</b><br><small style="color:var(--g4)">CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn</small></td><td>前沿开发：最深、最依赖完整官方 how-to，是检验"前沿差距"的关键样本。</td><td><span class="vs hi">高</span></td></tr>
+      <tr><td><b>1 环境与安装</b></td><td>版本兼容排查 · 安装与环境变量 · 容器 / 镜像搭建</td><td style="text-align:center">3</td></tr>
+      <tr><td><b>2 算子开发</b></td><td><b style="color:var(--hw)">自定义算子开发 (D)</b> · 算子精度排查 · 动态 shape / Tiling · 算子融合 · 注册与框架集成 · <b style="color:var(--hw)">算子库选型 (C)</b></td><td style="text-align:center">6</td></tr>
+      <tr><td><b>3 训练</b></td><td>分布式训练配置 · 混合精度训练 · 显存 / OOM 优化 · 精度 / 收敛排查</td><td style="text-align:center">4</td></tr>
+      <tr><td><b>4 推理与部署</b></td><td><b style="color:var(--hw)">模型转换 / 导出 (A)</b> · 推理服务部署 · 量化 · 动态 batch / shape 推理</td><td style="text-align:center">4</td></tr>
+      <tr><td><b>5 性能优化</b></td><td><b style="color:var(--hw)">Profiling 定位瓶颈 (B)</b> · 访存 / occupancy 优化 · 计算与传输重叠 · 多卡通信优化</td><td style="text-align:center">4</td></tr>
+      <tr><td><b>6 调试</b></td><td>内存越界定位 · 报错码 / 异常排查</td><td style="text-align:center">2</td></tr>
+      <tr><td><b>7 迁移</b></td><td>CUDA → 昇腾 迁移 · 跨芯片迁移 · 概念心智模型对照</td><td style="text-align:center">3</td></tr>
     </tbody>
   </table>
-  <p class="note">A→D 恰好"越来越深入、越来越前沿"。真跑结果印证了挑选意图：<b>A/B/C 两栈差距小，D 差距被拉满</b>——这条结论之所以可信，正因为任务是按光谱<b>有意铺开</b>的，不是凑巧。</p>
+  <p class="note">7 个阶段把"装→开发→训练→部署→调优→调试→迁移"这条完整链路铺满，共 <b>26 个任务</b>。这才是"任务是怎么形成的"的主体——一张<b>有意求全</b>的工作面清单。</p>
+
+  <p class="note" style="margin-top:16px"><b>再从这张全清单里抽样真跑（次要的一步）。</b>26 个不可能一次跑完，于是先抽 <b>4 个</b>（标 <span class="vs hi" style="background:var(--hw)">A/B/C/D</span>）做真检索实测、其余 22 个标"待跑"。抽样不是随机，而是<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>，好让"可用性是任务相关的"显形：</p>
+  <table class="ttab">
+    <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th></tr></thead>
+    <tbody>
+      <tr><td class="cd">A</td><td><b>模型转换 / 导出</b><br><small style="color:var(--g4)">PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om</small></td><td>成熟通识：部署必经路。</td><td><span class="vs hi">高</span></td></tr>
+      <tr><td class="cd">B</td><td><b>Profiling 定位瓶颈</b><br><small style="color:var(--g4)">Nsight ｜ msprof / Ascend PyTorch Profiler</small></td><td>成熟工具类：调优入口。</td><td><span class="vs mid">中</span></td></tr>
+      <tr><td class="cd">C</td><td><b>算子库选型</b><br><small style="color:var(--g4)">cuBLAS/cuDNN/… ｜ AOL/ATB</small></td><td>通识 / 选型类：知识密集。</td><td><span class="vs lo">低</span></td></tr>
+      <tr><td class="cd">D</td><td><b>自定义算子开发</b><br><small style="color:var(--g4)">CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn</small></td><td>前沿开发：最深、最依赖官方 how-to。</td><td><span class="vs hi">高</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">A→D 恰好"越来越深入、越来越前沿"。真跑结果印证了抽样意图：<b>A/B/C 两栈差距小，D 差距被拉满</b>——这条结论可信，正因为底层是<b>一张求全的清单 + 一次有意铺开的抽样</b>，不是凑巧挑了几个。</p>
 
   <!-- 2. 问题怎么形成 -->
   <h2 id="s2">2 · 问题是怎么形成的 <span class="en">how the question pairs were designed</span></h2>
