@@ -72,6 +72,62 @@ ul.tight li{margin-bottom:6px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center}
 .stat .num{font-size:26px;font-weight:900}
 .stat .lab{font-size:12px;color:var(--sub);margin-top:2px}
+/* ===== Demo 示意稿 ===== */
+.demotitle{font-size:14.5px;font-weight:900;margin:26px 0 4px;display:flex;align-items:center;gap:8px}
+.demotitle::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--nv);flex:none}
+.agentset .demotitle::before{background:#5b5390}
+.demo{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:8px 0 24px}
+.demo .dnote{font-size:12.5px;color:var(--sub);margin-bottom:12px}
+.mockdisc{display:inline-block;font-size:11px;background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8;border-radius:10px;padding:0 8px;margin-left:6px;vertical-align:2px;font-weight:400}
+/* 浏览器窗框 */
+.bw{border:1px solid #d8d8d8;border-radius:10px;overflow:hidden;background:#fff;font-size:12.5px}
+.bw .bbar{display:flex;align-items:center;gap:8px;background:#ececec;padding:7px 10px;border-bottom:1px solid #ddd}
+.bw .dots{display:flex;gap:4px}
+.bw .dots i{width:9px;height:9px;border-radius:50%;background:#cfcfcf;display:block}
+.bw .url{flex:1;background:#fff;border:1px solid #ddd;border-radius:6px;padding:1px 10px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bw .bbody{padding:14px 16px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.duo{grid-template-columns:1fr}}
+.duolab{font-size:12px;font-weight:700;margin-bottom:6px}
+.duo .bad .duolab{color:var(--hw)} .duo .good .duolab{color:#3d7a00}
+/* 对话窗框 */
+.chat{background:#f3f4f7;border:1px solid #e2e3e8;border-radius:12px;padding:14px;font-size:13px}
+.bub{background:#fff;border:1px solid #e4e4e4;border-radius:10px;padding:12px 14px;margin:8px 0;max-width:94%}
+.bub.user{background:#e9f2dc;margin-left:auto;border-color:#d4e6b8;max-width:80%}
+.envbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff;border:1px dashed #c9cbd4;border-radius:10px;padding:8px 12px;font-size:12px;color:var(--sub)}
+.envchip{background:#f0f1f5;border:1px solid #dcdde4;border-radius:14px;padding:1px 10px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#333}
+.okline{font-size:12px;color:#3d7a00;background:#F2FAE8;border-radius:6px;padding:4px 9px;margin:6px 0}
+.warnline{font-size:12px;color:#9a6b00;background:#FDF3E0;border-radius:6px;padding:4px 9px;margin:6px 0}
+pre.cmd{background:#1d1d1f;color:#d8f3c0;border-radius:8px;padding:10px 12px;font-size:12px;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;line-height:1.6}
+/* 过程步骤 */
+.steps{list-style:none;font-size:12.5px;padding:0}
+.steps li{display:flex;gap:10px;align-items:baseline;padding:5px 0;border-bottom:1px dashed #eee}
+.steps li:last-child{border-bottom:none}
+.steps .st{flex:none;width:64px;font-weight:700;font-size:11px;border-radius:8px;text-align:center;padding:1px 0}
+.st.ok{background:var(--v5);color:#2c5a18} .st.blk{background:var(--blocked);color:#5b5390} .st.try{background:#FCEFC7;color:#8a6d1a}
+/* 答案成分 */
+.mixbar{display:flex;height:20px;border-radius:6px;overflow:hidden;font-size:10.5px;font-weight:700;color:#333;margin:8px 0 4px}
+.mixbar div{display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}
+.seg-off{background:var(--v5)} .seg-sec{background:#CFE3F5} .seg-own{background:#E2DCF5}
+.seg-ext{background:repeating-linear-gradient(45deg,#F9D9A8,#F9D9A8 6px,#FBE7C6 6px,#FBE7C6 12px)}
+.seg-gap{background:#e8e8e8;color:#777}
+mark.m-off{background:#E4F6E0;border-bottom:2px solid var(--nv);padding:0 2px}
+mark.m-sec{background:#E7F1FA;border-bottom:2px solid #5B92C4;padding:0 2px}
+mark.m-ext{background:repeating-linear-gradient(45deg,#FBE7C6,#FBE7C6 6px,#FDF3E0 6px,#FDF3E0 12px);border-bottom:2px solid #D99A2B;padding:0 2px}
+mark.m-gap{background:#efefef;color:#666;font-style:italic;padding:0 2px}
+.srcchip{display:inline-block;font-size:10px;background:#fff;border:1px solid #ccc;border-radius:8px;padding:0 6px;vertical-align:2px;margin-left:2px;color:#555;font-style:normal}
+.legend{font-size:11.5px;color:var(--sub);margin-top:8px}
+.legend mark{margin-right:6px}
+/* 配套查询器 */
+.picker{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.picker label{font-size:12px;color:var(--sub);display:block;margin-bottom:3px}
+.picker select{font-family:inherit;font-size:13px;padding:6px 10px;border:1px solid #ccc;border-radius:8px;background:#fff}
+.combo{margin-top:12px;background:#F4FAEA;border:1px solid #cfe3a8;border-radius:10px;padding:12px 14px;font-size:13px}
+.combo table{background:transparent;margin:6px 0}
+.combo td,.combo th{border-color:#dce9c4;padding:4px 10px}
+.verbadge{display:inline-block;background:#EEF6E0;border:1px solid #cfe3a8;color:#4a7a00;font-size:11px;border-radius:10px;padding:0 8px}
+.tryurl{display:flex;align-items:center;gap:8px;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:4px 8px;margin:4px 0;color:#555}
+.tryurl .openbtn{flex:none;font-family:'Noto Sans SC';font-size:11px;background:#fff;border:1px solid #bbb;border-radius:6px;padding:0 8px;cursor:pointer;color:#333}
 </style>
 </head>
 <body>
@@ -259,6 +315,78 @@ ul.tight li{margin-bottom:6px}
   </div>
 </div>
 
+<h3 style="margin-top:36px">§3 的建议长什么样 · 三张 Demo 示意稿 <span class="mockdisc">界面为示意稿，版本号等占位数据非真实配套；标「实测原文」处为真</span></h3>
+
+<div class="demotitle">Demo 3-1 · 配套查询器（对应第 1 条「版本一站收口」）——下面的下拉框可以真的点选</div>
+<div class="demo">
+  <div class="dnote">现状（I 任务实测）：CANN↔driver↔torch↔torch_npu 配套要在 6 个并存版本号、双轴矩阵里人肉对。建议形态：两次点选 → <b>唯一</b>答案 + 可复制安装命令 + 最后验证日期。</div>
+  <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/compat-picker（示意 URL）</span></div>
+  <div class="bbody">
+    <div class="picker">
+      <div><label>芯片 / 整机</label><select id="pkChip"><option>Atlas 800T A2</option><option>Atlas 300I Duo</option></select></div>
+      <div><label>PyTorch 版本</label><select id="pkTorch"><option>2.1.0</option><option>2.6.0</option></select></div>
+    </div>
+    <div class="combo" id="pkOut"></div>
+  </div></div>
+</div>
+
+<div class="demotitle">Demo 3-2 · 错误码「一码一页」（对应第 2 条）——左：实测现状；右：建议形态</div>
+<div class="demo">
+  <div class="dnote">E 任务实测：搜 EZ9999 命中的官方页抓得到（②4），但是通用兜底页、没有这个码的逐条解释（③2）。右侧示意「一码一页」该有什么。</div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ 现状 · 通用兜底页（实测形态）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/...错误码参考（实测：所有码共用此页）</span></div>
+      <div class="bbody" style="color:#555">
+        <b style="color:#222">错误码说明</b>
+        <p style="margin:8px 0">EZ9999：内部错误。请根据报错日志中的具体信息进一步定位，或前往社区论坛求助。</p>
+        <p style="font-size:12px;color:#999">（无具体触发场景 · 无排查步骤 · 无修复样例——搜这个码的人在最焦灼的时刻拿到一句正确的废话）</p>
+      </div></div>
+    </div>
+    <div class="good">
+      <div class="duolab">✓ 建议 · 一码一页，URL 含错误码（内容为示意）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">hiascend.com/errors/EZ9999（示意 URL）</span></div>
+      <div class="bbody">
+        <b>EZ9999 — AI Core 算子执行内部错误</b> <span class="verbadge">适用 CANN 8.x · 最后验证 2026-06</span>
+        <p style="margin:6px 0 2px"><b>常见触发</b>（按频次）：① 算子输入 shape 与编译期不符 ② soc_version 与实际芯片不匹配 ③ 自定义算子未正确部署到 OPP</p>
+        <p style="margin:6px 0 2px"><b>排查步骤</b>：</p>
+        <pre class="cmd">export ASCEND_GLOBAL_LOG_LEVEL=0   # ① 开 debug 日志（示意）
+npu-smi info                        # ② 核对芯片型号与 soc_version</pre>
+        <p style="font-size:12px;color:var(--sub)">▸ 修复样例 1：shape 不符（含完整报错日志对照）　▸ 修复样例 2：OPP 部署路径错误</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="demotitle">Demo 3-3 · 同一个站，人眼 vs Agent 两双眼睛（对应第 3、5 条「可抓取性」）</div>
+<div class="demo">
+  <div class="dnote">人眼里这两个页面渲染后几乎一样、都「有内容」。下面展示的是 <b>Agent 实际抓到的东西</b>——②可抓取性 19 格的全部分差就来自这个差别。左侧即 D 任务实测形态。</div>
+  <div class="duo">
+    <div class="bad">
+      <div class="duolab">✕ SPA 页：Agent 抓到的（D 任务 <code>devguide/opdevg</code> 实测形态）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">.../atlas_ascendc_10_0006.html（实测 URL）</span></div>
+      <div class="bbody" style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#888">
+        &lt;title&gt;算子开发-CANN文档&lt;/title&gt;<br>
+        导航：首页 / 开发者 / 文档 / 社区 / 下载 …<br>
+        meta description：「编译 → custom_opp_*.run → 部署到 OPP…」（一句话摘要）<br>
+        <div style="text-align:center;color:#bbb;font-size:15px;padding:18px 0;font-family:'Noto Sans SC'">—— 正文 0 字 ——<br><span style="font-size:11.5px">（msopgen 命令、JSON 样例、参数表全在 JS 渲染后，Agent 拿不到）</span></div>
+      </div></div>
+    </div>
+    <div class="good">
+      <div class="duolab">✓ SSR 页：Agent 抓到的（A 任务 <code>quickstart</code> 实测形态）</div>
+      <div class="bw"><div class="bbar"><span class="dots"><i></i><i></i><i></i></span><span class="url">.../quickstart_18_0012.html（实测 URL）</span></div>
+      <div class="bbody">
+        <b style="font-size:12.5px">使用 ATC 转换模型（正文完整可抓 · 实测原文）</b>
+        <pre class="cmd">atc --model=resnet50.onnx --framework=5 --output=resnet50
+    --input_shape="actual_input_1:1,3,224,224"
+    --soc_version=&lt;soc_version&gt;</pre>
+        <table style="font-size:11.5px"><tr><th>参数</th><th>说明</th></tr><tr><td><code>--framework</code></td><td>5 = ONNX（参数表逐项可抓）</td></tr><tr><td><code>--soc_version</code></td><td>经 npu-smi info 查询（步骤可抓）</td></tr></table>
+      </div></div>
+    </div>
+  </div>
+  <div class="note">把这两栏给任何一个文档负责人看，「静态化抬②」就从抽象口号变成肉眼可见的差距。验收方法同卡 5：禁 JS 抓一遍，看右栏内容还剩多少。</div>
+</div>
+
 <!-- ============ 4 使用侧 UX ============ -->
 <h2 id="s4"><span class="no">§4</span>UX 新关注点 · 用户「使用 Agent」过程中的体验设计（使用侧）</h2>
 <div class="sechint"><b>本节改的是「做检索的 Agent 产品」</b>（§3 改的是「被检索的网站」）：前提恰恰相反——假设供给侧短期改不动（管不了对方的文档站），靠改呈现与交互，让用户在「原料就是差」的情况下仍获得可信的体验，即「答案不够好时，让用户仍然不被骗」。这部分回答「用户使用 agent 的过程，体验设计应该咋融入、关注哪些新变化」。素材直接来自本项目 Agent 真跑 19 个任务时反复出现的过程现象——每个现象对应一个传统 UX 里不存在、Agent 产品里必须新设计的环节。</div>
@@ -332,6 +460,60 @@ ul.tight li{margin-bottom:6px}
     </ul>
     <div class="why">漏斗发现的本质是「不同角色享受的生态质量不同」，Agent 的体验设计若对角色无感知，等于把深水区用户的高风险藏起来。</div>
   </div>
+</div>
+
+<div class="agentset">
+<h3 style="margin-top:36px">§4 的建议长什么样 · 三张 Demo 示意稿 <span class="mockdisc">对话为示意稿；标「实测」处来自真跑记录</span></h3>
+
+<div class="demotitle">Demo 4-1 · 答案成色一眼可见（对应 A「置信度成分 UI」+ E「人审抓手」）</div>
+<div class="demo">
+  <div class="dnote">同一段回答里，哪句抓自官方、哪句来自二手、哪句是按 CUDA 经验外推的——行内直接标出来，顶部一条成分布局条（沿用 18 的五段口径）。</div>
+  <div class="chat">
+    <div class="bub user">把 ResNet50 的 ONNX 转成昇腾能跑的 .om，怎么做？</div>
+    <div class="bub">
+      <div style="font-size:11px;color:var(--sub)">本回答成分（点击成分条可只看某一类 · 示意）</div>
+      <div class="mixbar"><div class="seg-off" style="width:55%">官方一手 55%</div><div class="seg-sec" style="width:25%">二手 25%</div><div class="seg-own" style="width:8%">自带 8%</div><div class="seg-ext" style="width:8%">外推 8%</div><div class="seg-gap" style="width:4%">留白</div></div>
+      <p style="margin-top:8px"><mark class="m-off">用 ATC 工具转换：<code>atc --model=resnet50.onnx --framework=5 --output=resnet50 --soc_version=...</code><span class="srcchip">官方 quickstart · hiascend · CANN 8.0.RC2 · 实测原文</span></mark>　<mark class="m-sec">在 Ascend 910B4 上若要动态 shape，需按实例配置 <code>--input_shape</code> 区间<span class="srcchip">阿里云开发者社区 · 2025-05</span></mark>　<mark class="m-ext">⚠ 转换失败时可先用 onnx-simplifier 化简再转——这是按 TensorRT 生态经验外推，未在昇腾官方文档验证</mark>　<mark class="m-gap">soc_version 的确切取值我没有把握：请在你机器上跑 npu-smi info 现场确认（诚实留白）</mark></p>
+    </div>
+    <div class="legend">图例：<mark class="m-off">官方一手</mark><mark class="m-sec">二手社区</mark><mark class="m-ext">类比外推·未验证（警示纹）</mark><mark class="m-gap">诚实留白</mark>　每个来源挂「标题·域名·日期·版本号」四元组 chip，点击跳原文。</div>
+  </div>
+</div>
+
+<div class="demotitle">Demo 4-2 · 检索过程可见 + 诚实的失败态（对应 B「受阻≠低质」+ D「绕路像工作」）</div>
+<div class="demo">
+  <div class="dnote">左半段：把 D 任务真跑时的绕路过程流式呈现给用户。右半段（受阻卡）：抓不到就明说，并把死路 URL 变成用户的捷径。步骤内容来自 D 任务实测旅程。</div>
+  <div class="chat">
+    <div class="bub user">想给 910B 写一个自定义 Add 算子，从工程创建到部署的完整流程？</div>
+    <div class="bub">
+      <div style="font-size:11px;color:var(--sub);margin-bottom:4px">检索中 · 第 3 / 4 步</div>
+      <ul class="steps">
+        <li><span class="st ok">✓ 命中</span><span>搜到官方 Ascend C 开发指南（devguide/opdevg，排名第 2）</span></li>
+        <li><span class="st blk">受阻</span><span>该页是 SPA，正文取不到——只拿到导航和一句摘要</span></li>
+        <li><span class="st try">↻ 绕行</span><span>改抓 80RC3 商用版镜像 + MindSpore 教程 + 2 篇带版本号的二手</span></li>
+        <li><span class="st ok">✓ 取得</span><span>msopgen 完整命令与 add_custom.json 样例（CANN 80RC2alpha001 实测）</span></li>
+      </ul>
+      <div class="warnline" style="margin-top:10px"><b>有 1 个权威页面我抓不到</b>（技术受阻，不代表内容差）——你直接打开会比我快：</div>
+      <div class="tryurl"><span style="flex:1">hiascend.com/.../devguide/opdevg/.../atlas_ascendc_10_0006.html</span><span class="openbtn">打开 ↗</span></div>
+      <div style="font-size:11.5px;color:var(--sub)">打开后把正文贴回来，我会按官方原文校正下面的回答。以下先基于已取得的 3 个来源作答（置信度：中）…</div>
+    </div>
+  </div>
+</div>
+
+<div class="demotitle">Demo 4-3 · 环境卡：版本声明前置（对应 C「版本是对话的前置上下文」）</div>
+<div class="demo">
+  <div class="dnote">④版本散乱是 CANN 全局税（19 格中 8 格 2 分）。让用户一次声明环境、整段会话复用；Agent 每次给命令都回显版本核对结果。版本号为示意。</div>
+  <div class="chat">
+    <div class="envbar">我的环境：<span class="envchip">Atlas 800T A2</span><span class="envchip">CANN 8.0.RC2</span><span class="envchip">torch 2.1.0</span><span class="envchip">torch_npu 2.1.0.postX（示意）</span><span style="margin-left:auto;font-size:11px;text-decoration:underline;cursor:pointer">修改</span></div>
+    <div class="bub user">torch_npu 的 profiler 怎么开？</div>
+    <div class="bub">
+      <div class="okline">✓ 以下代码针对 CANN 8.0.RC2 + torch_npu 2.1，与你声明的环境一致</div>
+      <pre class="cmd">import torch_npu
+with torch_npu.profiler.profile(...) as prof:   # 参数表见官方 ptmigr 页（实测可抓）
+    ...</pre>
+      <div class="warnline">⚠ 检索到的一篇高赞教程基于 CANN 7.0 旧接口，与你的 8.0.RC2 不符——已弃用该来源，未混入回答</div>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- ============ 5 待全部跑完 ============ -->
@@ -429,6 +611,32 @@ for(const g of GROUPS){
   }
 }
 el.innerHTML = html;
+
+// ---- Demo 3-1 配套查询器（数据为占位示意，非真实配套矩阵）----
+const PK = {
+  "Atlas 800T A2|2.1.0":  {cann:"8.0.RC2（示意）", drv:"24.1.x（示意）", tnpu:"2.1.0.postN（示意）"},
+  "Atlas 800T A2|2.6.0":  {cann:"8.2.RC1（示意）", drv:"25.0.x（示意）", tnpu:"2.6.0rcN（示意）"},
+  "Atlas 300I Duo|2.1.0": {cann:"8.0.RC3（示意）", drv:"24.1.x（示意）", tnpu:"2.1.0.postN（示意）"},
+  "Atlas 300I Duo|2.6.0": {cann:"8.2.RC1（示意）", drv:"25.0.x（示意）", tnpu:"2.6.0rcN（示意）"},
+};
+function pkRender(){
+  const chip = document.getElementById("pkChip").value;
+  const t = document.getElementById("pkTorch").value;
+  const c = PK[chip + "|" + t];
+  document.getElementById("pkOut").innerHTML =
+    `<b>唯一配套组合</b> <span class="verbadge">最后验证 2026-06（示意）</span>` +
+    `<table><tr><th>组件</th><th>版本</th></tr>` +
+    `<tr><td>CANN</td><td>${c.cann}</td></tr>` +
+    `<tr><td>驱动 / 固件</td><td>${c.drv}</td></tr>` +
+    `<tr><td>torch_npu</td><td>${c.tnpu}</td></tr></table>` +
+    `<pre class="cmd">pip3 install torch==${t} torch_npu==${c.tnpu.replace("（示意）","")}   # 占位示意命令</pre>` +
+    `<div style="font-size:11px;color:#7a8a5a">本查询器为 Demo：数据是占位示意，真实配套矩阵需由官方落地。体验点：两次点选 → 唯一答案，对照现状「6 个并存版本号人肉对」（I 任务实测）。</div>`;
+}
+if (typeof document.getElementById === "function" && document.getElementById("pkChip")) {
+  document.getElementById("pkChip").addEventListener("change", pkRender);
+  document.getElementById("pkTorch").addEventListener("change", pkRender);
+  pkRender();
+}
 </script>
 </body>
 </html>
