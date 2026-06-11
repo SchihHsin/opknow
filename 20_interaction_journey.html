@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 · 人机交互旅程：开发者完成一次昇腾算子开发的全程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nv:#76B900; --hw:#C8102E;
+  --v5:#BBF0D4; --v4:#DCF5E5; --v3:#FCEFC7; --v2:#FBE0CE; --v1:#F9D2D2;
+  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#F2F3F7; --card:#fff;
+  --blocked:#E3E0EE;
+  --human:#C8102E; --ai:#2f3d63;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:56px 24px 80px 188px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:26px;font-weight:900;letter-spacing:.5px}
+.subtitle{color:var(--sub);font-size:13.5px;margin-top:6px}
+h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-left:4px solid var(--ink)}
+h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
+h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
+.sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.tag.ev{background:#EEF6E0;color:#4a7a00;border:1px solid #cfe3a8}
+.tag.hw{background:#FBE9EC;color:var(--hw);border:1px solid #f0c4cc}
+.tag.ai{background:#EAEDF6;color:var(--ai);border:1px solid #c9d0e6}
+.tag.gray{background:#f0f0f0;color:#555;border:1px solid #ddd}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f4f4;font-weight:700;white-space:nowrap}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3f3f3;border-radius:4px;padding:1px 5px}
+.note{font-size:12.5px;color:var(--sub);margin-top:10px}
+ul.tight{padding-left:20px;font-size:13.5px}
+ul.tight li{margin-bottom:6px}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+@media(max-width:860px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center}
+.stat .num{font-size:24px;font-weight:900}
+.stat .lab{font-size:12px;color:var(--sub);margin-top:2px}
+.toc{position:fixed;top:64px;left:16px;width:160px;display:flex;flex-direction:column;gap:6px;z-index:150}
+.toc .toclbl{font-size:9px;font-weight:800;color:var(--sub);letter-spacing:.5px;margin:0 0 1px 4px}
+.toc a{font-size:11.5px;color:#333;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 11px;line-height:1.3}
+.toc a:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px}
+.pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
+.pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
+.limit{background:#FFFDF4;border:1px solid #ecd9a8;border-radius:10px;padding:16px 20px;font-size:13px;color:#6b5510;margin-top:40px}
+.dims{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch;margin:14px 0}
+@media(max-width:860px){.dims{grid-template-columns:1fr}}
+.dimcard{border-radius:12px;padding:16px 18px;font-size:13px}
+.dimcard.macro{background:#FCF3F4;border:1px solid #eccfd4}
+.dimcard.micro{background:#F1F3FA;border:1px solid #cdd4e8}
+.dimcard h3{margin:0 0 6px;font-size:14.5px}
+.dimcard.macro h3{color:var(--human)} .dimcard.micro h3{color:var(--ai)}
+.dimcard .lead{font-weight:700;margin-bottom:4px}
+
+/* ===== 泳道时序图 ===== */
+.legend2{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:12px;color:#444;margin:6px 0 14px}
+.legend2 .lg{display:inline-flex;align-items:center;gap:5px}
+.legend2 .sw{width:26px;height:14px;border-radius:4px;display:inline-block;border:1px solid #ccc}
+.legend2 .ico{font-weight:900}
+.swimscroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;padding:0}
+.swimhint{font-size:11.5px;color:var(--sub);padding:8px 14px 0}
+.swim{display:grid;align-items:stretch;min-width:max-content}
+.sc{padding:0;border-right:1px solid #f0f0f0}
+.lab{position:sticky;left:0;z-index:5;background:#fff;border-right:1px solid #e2e2e2;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;padding:0 8px;text-align:center}
+.lab.human{color:var(--human);background:#FCF3F4}
+.lab.ai{color:var(--ai);background:#F1F3FA}
+.lab.muted{color:var(--sub);font-weight:700;font-size:11px}
+.phase{padding:9px 10px 8px;border-bottom:1px solid #eee;background:#fafafa}
+.phase .pn{display:inline-block;font-size:10px;font-weight:900;color:#fff;background:var(--human);border-radius:6px;padding:0 6px;margin-right:6px}
+.phase.own-ai .pn{background:var(--ai)}
+.phase .pt{font-weight:700;font-size:12.5px}
+.phase .ow{font-size:10.5px;color:var(--sub);display:block;margin-top:2px}
+.phase .ow.h{color:var(--human)} .phase .ow.a{color:var(--ai)}
+.band{padding:8px;min-height:104px}
+.band.human{background:#FCF6F7}
+.band.ai{background:#F4F6FB}
+.lanedot{height:100%;display:flex;align-items:center;justify-content:center;color:#d9d9d9;font-size:18px}
+.node{border-radius:9px;padding:8px 9px;font-size:11.5px;line-height:1.55;border:1px solid #ddd;background:#fff;height:100%}
+.node.nh{border-color:#eccfd4}
+.node.na{border-color:#cdd4e8}
+.node .ntag{font-size:10px;font-weight:900;letter-spacing:.3px;margin-bottom:3px}
+.node.nh .ntag{color:var(--human)} .node.na .ntag{color:var(--ai)}
+.node .ntitle{font-weight:700;font-size:12px;margin-bottom:3px}
+.node .nbody{color:#444}
+.node .nbody code{font-size:10.5px;padding:0 3px}
+.node.dec{box-shadow:0 0 0 2px #c9d0e6}
+.node.deckey{box-shadow:0 0 0 2.5px #E0A100;border-color:#E0A100;background:#FFFCF3}
+.node.strong{border-color:#9ccB6a;background:#F6FBEF}
+.node.strong .ntag{color:#4a7a00}
+.decbadge{display:inline-block;font-size:9.5px;font-weight:900;border-radius:6px;padding:0 6px;margin-bottom:4px}
+.decbadge.norm{background:#EAEDF6;color:var(--ai)}
+.decbadge.key{background:#FBEFCB;color:#8a6300}
+.decbadge.good{background:#EEF6E0;color:#4a7a00}
+.decbadge.weak{background:#F0EDF8;color:#5b5390}
+.node.blk{border-color:#c9c2e0;background:#F4F2FA}
+.node.blk .ntag{color:#5b5390}
+.node.detour{border-style:dashed;border-color:#C8102E;background:#FFF7F8}
+.detbadge{display:inline-block;font-size:9.5px;font-weight:900;background:#FBE9EC;color:var(--hw);border-radius:6px;padding:0 6px;margin-bottom:4px}
+.retchip{display:inline-block;margin-top:5px;font-size:10px;font-weight:700;color:#fff;background:var(--human);border-radius:10px;padding:1px 8px}
+.absent{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b9b9c4;font-size:10.5px;border:1px dashed #d8d8e2;border-radius:9px;background:#fbfbfd;line-height:1.5;text-align:center}
+.absent b{font-size:13px;color:#c4c4cf}
+.hand{min-height:30px;display:flex;align-items:center;justify-content:center;position:relative;background:#fff}
+.hand .hl{position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(#eccfd4,#cdd4e8);transform:translateX(-50%);z-index:0}
+.hand .arr{font-size:15px;font-weight:900;line-height:1;position:relative;z-index:1;background:#fff;padding:0 4px}
+.hand.h2a{color:var(--human)} .hand.a2h{color:var(--ai)} .hand.both{color:#7a4fa0} .hand.loop{color:#c47a1a}
+.wt{padding:7px 8px;background:#fafafa;border-top:1px solid #eee}
+.wbar{display:flex;height:16px;border-radius:5px;overflow:hidden;font-size:9.5px;font-weight:900;color:#fff}
+.wbar .wh{background:var(--human);display:flex;align-items:center;justify-content:center;min-width:14px}
+.wbar .wa{background:var(--ai);display:flex;align-items:center;justify-content:center;min-width:14px}
+.wt .wcap{font-size:9.5px;color:var(--sub);text-align:center;margin-top:2px}
+.domwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.domwrap{grid-template-columns:1fr}}
+.dombar{display:flex;height:30px;border-radius:7px;overflow:hidden;font-size:12px;font-weight:800;color:#fff;margin:6px 0}
+.dombar .da{background:var(--ai);display:flex;align-items:center;justify-content:center}
+.dombar .dh{background:var(--human);display:flex;align-items:center;justify-content:center}
+.aichart{margin:8px 0}
+.airow{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:11.5px}
+.airow .al{width:150px;flex:none;text-align:right;color:#333}
+.airow .abw{flex:1;background:#f0f0f0;border-radius:5px;height:18px;overflow:hidden}
+.airow .ab{height:100%;border-radius:5px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:10px;font-weight:800;color:#fff}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0}
+.chain .dnode{background:#fff;border:2px solid var(--human);border-radius:10px;padding:7px 11px;font-size:12px;max-width:230px}
+.chain .dnode .dh{font-weight:900;color:var(--human);font-size:11px}
+.chain .arrc{color:#bbb;font-weight:900;font-size:16px}
+.aside{background:#F1F3FA;border:1px solid #cdd4e8;border-radius:10px;padding:6px 11px;font-size:11.5px;color:var(--ai)}
+.gb{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;margin:10px 0}
+@media(max-width:720px){.gb{grid-template-columns:1fr}}
+.gbcard{border-radius:10px;padding:11px 13px;font-size:12.5px}
+.gbcard.good{background:#F4FAEA;border:1px solid #cfe3a8}
+.gbcard.bad{background:#FBEDED;border:1px solid #f0c4cc}
+.gbcard .gbh{font-weight:900;font-size:12px;margin-bottom:5px}
+.gbcard.good .gbh{color:#4a7a00} .gbcard.bad .gbh{color:var(--hw)}
+.gbcard .q{font-style:normal;background:#fff;border-radius:6px;padding:5px 8px;margin:5px 0;font-size:12px}
+.evline{font-size:12.5px;color:#4a7a00;background:#F4FAEA;border-left:3px solid var(--nv);padding:6px 10px;border-radius:0 6px 6px 0;margin-top:8px}
+.zoomtag{display:inline-block;font-size:11px;font-weight:800;background:#F0EDF8;color:#5b5390;border:1px solid #d3cce8;border-radius:10px;padding:1px 9px;margin-left:6px;vertical-align:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="pagenav">
+  <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
+  <a class="pnlink" href="18_metric_definition.html">方法论</a>
+  <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
+  <a class="pnlink" href="19_findings_ux_synthesis.html">启发与方向</a>
+  <span class="pnlink cur">交互旅程</span>
+</div>
+
+<h1>人机交互旅程：开发者完成<u>一次开发</u>的全程，AI 在哪些段扶得住</h1>
+<div class="subtitle">
+  编号 20 · 不是「问一次问题」的旅程，而是<b>「从零做出并跑通一个自定义算子」整件事</b>的旅程——这中间开发者会反复离开对话去本机写码、编译、部署、调试，AI 是被一次次叫进来的<b>间歇顾问</b>。
+  取材自任务 <b>D（自定义算子开发）</b>的实测记录（<code>task_run_log.md</code>），它是 26 个任务里 AI 可用性最低的一格（综合 .41），所以「AI 在深水阶段掉链子」看得最清楚。
+</div>
+
+<div class="toc">
+  <div class="toclbl">本页目录</div>
+  <a href="#s0">两个维度的区别</a>
+  <a href="#s1">完成一次开发·全旅程</a>
+  <a href="#s2">谁主导·AI 何时掉链</a>
+  <a href="#s3">人必须自己上的节点</a>
+  <a href="#s4">下钻：放大一次问答</a>
+  <a href="#s5">CUDA 侧对照</a>
+</div>
+
+<!-- ===== §0 ===== -->
+<h2 id="s0"><span class="no">§0</span>先分清两个维度：缩放等级不同，主导方就反过来了</h2>
+<div class="sechint">同一件事，看「完成一次开发」还是看「问一次问题」，得到的「谁主导」答案是相反的——这正是本页要讲清的核心。</div>
+
+<div class="dims">
+  <div class="dimcard macro">
+    <h3>缩小看 · 完成一次开发（本页主图）</h3>
+    <div class="lead">主导方 = 人（开发者）</div>
+    开发这件事是<b>人在做</b>：写 json、写核函数、编译、部署、调试都在本机。AI 只是被反复叫进来的顾问，全程占比约 <b>1/3</b>，而且<b>越到深水阶段（写 kernel、排报错）越掉链子</b>。这就是采纳漏斗的「体验版」。
+  </div>
+  <div class="dimcard micro">
+    <h3>放大看 · 其中一次问 AI（下钻 §4）</h3>
+    <div class="lead">主导方 = AI</div>
+    把任意一次「问 AI」单独放大，<b>AI 主导</b>：它搜索、抓取、综合，人只负责提问和验收，AI 占比约 <b>3/4</b>。这是我们最熟悉的「AI 很能干」的画面。
+  </div>
+</div>
+<div class="card" style="margin-top:0">
+  <b style="color:var(--ai)">关键：这两个画面不矛盾，是缩放等级不同。</b><span style="font-size:13px">微观里 AI 很能干 ≠ 宏观里 AI 扛起了开发。昇腾的问题恰恰暴露在<b>宏观的深水阶段</b>——那里人最需要 AI 顶上，AI 却因「官方文档抓不到 + 自带知识薄 + 报错码泛化」而帮不上。下面主图就按「完成一次开发」展开。</span>
+</div>
+
+<div class="statgrid">
+  <div class="stat"><div class="num" style="color:var(--human)">≈ 65%</div><div class="lab">整个开发由人完成（本机写码/编译/调试）</div></div>
+  <div class="stat"><div class="num" style="color:var(--ai)">≈ 35%</div><div class="lab">AI 间歇支援的占比</div></div>
+  <div class="stat"><div class="num" style="color:#5b5390">2 段</div><div class="lab">AI 明显掉链子（写 kernel · 排报错）</div></div>
+  <div class="stat"><div class="num">4 次</div><div class="lab">人离开对话回本机做真实开发</div></div>
+</div>
+
+<div class="legend2">
+  <span class="lg"><span class="sw" style="background:#FCF6F7;border-color:#eccfd4"></span>人泳道</span>
+  <span class="lg"><span class="sw" style="background:#F4F6FB;border-color:#cdd4e8"></span>AI 泳道</span>
+  <span class="lg"><span class="sw" style="background:#F6FBEF;border:1px solid #9ccB6a"></span>AI 帮得上</span>
+  <span class="lg"><span class="sw" style="background:#F4F2FA;border-color:#c9c2e0"></span>AI 掉链子</span>
+  <span class="lg"><span class="sw" style="background:#fbfbfd;border:1px dashed #d8d8e2"></span>AI 缺席</span>
+  <span class="lg"><span class="sw" style="background:#FFF7F8;border:1px dashed #C8102E"></span>人离开对话做开发</span>
+  <span class="lg"><span class="ico" style="color:#c47a1a">↻</span> 报错回流循环</span>
+</div>
+
+<!-- ===== §1 主图 ===== -->
+<h2 id="s1"><span class="no">§1</span>完成一次开发的全旅程：9 个阶段，AI 时强时弱时缺席</h2>
+<div class="sechint">从「决定写这个算子」到「跑通验收」。人泳道几乎一路实心（一直在做事），AI 泳道时有时无——看它在哪些段帮得上、哪些段掉链子。横向可滚动。</div>
+
+<div class="swimscroll">
+  <div class="swimhint">← 横向滚动看完整 9 个开发阶段 →</div>
+  <div class="swim" id="swimDev"></div>
+</div>
+<div class="note">读法：<b>P4 写核函数/Tiling</b> 和 <b>P8 运行调试</b> 是两处 AI 掉链子的深水段（紫框）——前者官方 how-to 抓不到、AI 自带知识薄；后者报错码官方泛化兜底。这两段恰恰是开发最难、人最想被 AI 顶一把的地方，AI 却帮得最少。P6 部署 OPP 则是 AI 干脆缺席、人独自完成。</div>
+
+<!-- ===== §2 谁主导 ===== -->
+<h2 id="s2"><span class="no">§2</span>谁主导：宏观人扛大头，AI 的价值随深度衰减</h2>
+<div class="sechint">把每阶段 AI 的「帮上忙程度」连起来看，正好是一条随开发深入而下沉、又在浅处回升的曲线——采纳漏斗的体验版。</div>
+
+<div class="domwrap">
+  <div class="card">
+    <h3 style="margin-top:0">整段开发：人主导</h3>
+    <div class="dombar"><div class="dh" style="width:65%">人 ≈ 65%</div><div class="da" style="width:35%">AI ≈ 35%</div></div>
+    <div class="note">和「问一次问题」时 AI 占 ~75% 正好反过来。开发的<b>体力活与判断主体都是人</b>，AI 是点状支援。</div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">AI 在各阶段「帮上忙」的程度</h3>
+    <div class="aichart" id="aiHelp"></div>
+    <div class="note">P1 摸路 / P7 集成 PyTorch 时 AI 最给力（通识强）；<b>P4 写 kernel、P8 排报错时跌到谷底</b>——这两段正是开发的硬骨头。</div>
+  </div>
+</div>
+
+<div class="card">
+  <b style="font-size:13.5px;color:var(--ai)">这条曲线就是「采纳漏斗」长在交互体验上的样子：</b>
+  <span style="font-size:13px">越靠近上手侧（摸路、环境、集成框架）AI 越能帮；越钻进昇腾专有的深水（手写 Ascend C 核函数、啃专有报错码）AI 越使不上劲。19 号页用分数说的「.77 上手 → .67 深处自研」，在这里就是开发者<b>体感上的「越往后越孤立」</b>。</span>
+</div>
+
+<!-- ===== §3 人必须自己上 ===== -->
+<h2 id="s3"><span class="no">§3</span>人必须离开对话、自己上的几个节点</h2>
+<div class="sechint">开发旅程里，人有 4 次回到本机做真实工作；其中两次是「AI 帮不上、只能自己啃」，要特别标注。</div>
+
+<div class="card">
+  <h3 style="margin-top:0"><span class="detbadge">⎇ P2</span>环境准备：装 CANN/msopgen、查本机 soc_version</h3>
+  <p style="font-size:13px">这些是 AI <b>结构性拿不到</b>的本地信息——你机器装了哪版 CANN、芯片 <code>soc_version</code> 是什么，只能人自己 <code>npu-smi</code> 查。AI 能说「需要 ≥7.0.RC1」，但代不了你这一步。</p>
+  <div class="evline"><b>体验要点：</b>把本机版本/soc_version <b>一开始就告诉 AI</b>，后面所有阶段 AI 的答案都能从「外推」落到「贴合你环境」，省掉反复确认。</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0"><span class="detbadge">⎇ P4</span>写核函数 + Tiling：AI 掉链子、只能自己啃（深水谷底）</h3>
+  <p style="font-size:13px">Copy-In / Compute / Copy-Out 三段流水线、GM/Local/寄存器三级搬运——这是整件开发最硬、最耗时的一段，<b>本应最需要 AI 顶上</b>。但官方核心 how-to 压在 SPA 抓不到、AI 自带的 Ascend C 知识又薄，<b>AI 只能给骨架、深处全靠人啃文档和试</b>。</p>
+  <div class="evline"><b>体验要点：</b>这一段是昇腾相对 CUDA 差距被拉满的地方。处理办法不是反复追问 AI（它真的不知道），而是认清「此处 AI 是辅助、不是主力」，转去啃官方 SPA 页（人眼能渲染）+ 社区案例。</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0"><span class="decbadge weak">P8</span>运行调试：撞 EZ9999 等报错，AI 排错也偏弱</h3>
+  <p style="font-size:13px">跑起来撞报错 → 回流问 AI → 改 → 再跑，这个循环会转好几圈。但<b>报错码恰是 CANN 第二弱的一格</b>（综合 .55）：官方错误码页是泛化兜底（cause 写 N/A），二手案例又碎散。AI 帮上有限，常需人自己贴日志、翻社区 issue。</p>
+  <div class="evline"><b>体验要点：</b>这是开发者最容易「弃坑」的时刻——顺利时差距还好，<b>一出错差距就拉满</b>（19 号页：调试类两栈差距 .287，全类最大）。给 AI 喂上完整日志 + 环境信息，能把它的命中率拉高一点。</div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">人的决策链：开发者真正「拍板/上手」的点</h3>
+  <div class="chain">
+    <div class="dnode"><span class="dh">P1 起步</span><br>决定做什么、向 AI 要全景路线</div>
+    <span class="arrc">→</span>
+    <div class="dnode"><span class="dh">P2 环境</span><br>本机装环境、提供 soc_version</div>
+    <span class="arrc">→</span>
+    <div class="dnode"><span class="dh">P4 写码</span><br>深水手写 kernel（AI 帮不上）</div>
+    <span class="arrc">→</span>
+    <div class="dnode"><span class="dh">P8 调试</span><br>报错循环、判断根因</div>
+    <span class="arrc">→</span>
+    <div class="dnode"><span class="dh">P9 验收</span><br>对齐参考、收尾</div>
+  </div>
+  <div class="note">AI 主要在 P1/P3/P7 这类「问得清、有通识」的点上发力；P4/P8 这种「靠昇腾专有知识」的点，决策与执行都压在人身上。</div>
+</div>
+
+<!-- ===== §4 下钻 ===== -->
+<h2 id="s4"><span class="no">§4</span>下钻：把 P4 那一次「问 AI 怎么写核函数」放大 <span class="zoomtag">微观 · AI 主导</span></h2>
+<div class="sechint">上面是宏观开发旅程；现在放大其中<b>一次 AI 咨询</b>的内部——这一层 AI 是主导方，能看到它搜几次、为什么、怎么受阻。这正是 §0 说的「另一个维度」。</div>
+
+<div class="swimscroll">
+  <div class="swimhint">← 一次问答内部的 9 个微步 →</div>
+  <div class="swim" id="swimQA"></div>
+</div>
+<div class="note">这一层里人只在 S1（提问）、S7（补版本）、S9（验收）三处出手，其余 AI 自主跑——所以放大看是「AI 主导」。但请记得：这整段放大，只对应宏观主图里 <b>P4 的一小格</b>。</div>
+
+<h3>4-1　为什么这次 AI 搜 2 次，不是 1 次也不是 3 次</h3>
+<div class="card">
+  <p style="font-size:13px">检索轮数是<b>「缺口驱动」</b>——有信息缺口就再搜，缺口补上或确认补不上就停：</p>
+  <ul class="tight">
+    <li><b>第 1 轮（web_search）：</b>拿到步骤骨架 + 候选来源；细节没被官方背书 → 缺口仍在。</li>
+    <li><b>第 2 轮（web_fetch 官方页）：</b>想核对细节 → 撞 SPA 受阻，确认「官方正文这条路抓不通」。</li>
+    <li><b>不搜第 3 轮：</b>骨架已有、官方正文确认抓不到、再搜只会撞更多散乱版本号 → <b>边际信息 &lt; 噪声</b>，停手转综合 + 降置信。</li>
+  </ul>
+  <div class="evline"><b>同一个 AI、不同任务轮数随缺口浮动：</b>A 模型转换 <b>1 轮</b>即得（quickstart 可抓、命令统一）；E 报错码搜 <b>2 轮</b>（官方泛化兜底无用 → 必须补二手案例）。轮数本身就是「这道题对 AI 有多难」的读数。</div>
+</div>
+
+<h3>4-2　怎样表达需求，能让这次问答更准</h3>
+<div class="gb">
+  <div class="gbcard good">
+    <div class="gbh">✓ 信息充分</div>
+    <div class="q">「用 <b>Ascend C</b> 写自定义算子、<b>集成进 PyTorch（msOpGen/aclnn）</b>，给<b>完整步骤</b>」</div>
+    四要素齐：栈 + 目标框架 + 集成路径 + 交付形态 → AI 一次锁定检索词，不必回问、不必多搜一轮。
+  </div>
+  <div class="gbcard bad">
+    <div class="gbh">✕ 信息不足</div>
+    <div class="q">「昇腾自定义算子怎么写？」</div>
+    缺框架、集成方式、交付形态 → AI 只能回问、或多搜一轮试探、或答得很泛。版本敏感任务尤其吃亏。
+  </div>
+</div>
+<div class="card" style="margin-top:0"><b style="font-size:13px">省一整次往返的技巧：</b><span style="font-size:13px">把「我的 CANN 版本 / soc_version 是 XXX」一开始就附上——直接砍掉宏观图里 P2/S7 那次人工往返，版本部分从「外推」变「实测」。</span></div>
+
+<h3>4-3　这次问答里 AI 每步在忙什么</h3>
+<table>
+  <tr><th style="width:42px">微步</th><th>AI 的动作</th><th>优势 / 值得注意</th></tr>
+  <tr><td>S2</td><td>解析需求，识别「版本敏感 + 前沿」，预判官方深层页可能 SPA，定「先广搜 + 备降级」策略</td><td><b style="color:#4a7a00">优势：</b>提前估难度，不一头撞死</td></tr>
+  <tr><td>S3</td><td>web_search 广搜，召回知乎 / ai6s / MindSpore官方 / CSDN×3 / 华为云bbs</td><td><b style="color:#9a6b00">注意：</b>官方主文档<b>未置顶</b>，二手占多数</td></tr>
+  <tr><td>S5</td><td>web_fetch <code>atlas_ascendc_10_0006</code>（devguide/opdevg 子树）</td><td><b style="color:var(--hw)">风险：</b>SPA 受阻、正文 0 字，模板/Tiling 全抽不到</td></tr>
+  <tr><td>S6</td><td>受阻决策：不搜第 3 轮，转「综合二手 + 自带知识 + 降置信度」</td><td><b style="color:#9a6b00">注意：</b>此处<b>必须</b>标出外推部分，否则是高风险幻觉区</td></tr>
+  <tr><td>S8</td><td>产出步骤骨架（msopgen→核函数/Tiling→build→部署OPP→TORCH_LIBRARY→aclnn），标版本不确定区</td><td><b style="color:#4a7a00">优势：</b>骨架可用且诚实标注；细节需人按本机版本核对</td></tr>
+</table>
+
+<!-- ===== §5 CUDA 对照 ===== -->
+<h2 id="s5"><span class="no">§5</span>对照：同一件开发，CUDA 侧 AI 能一路扶到底</h2>
+<div class="sechint">同样「从零写一个自定义算子并集成进 PyTorch」，CUDA 侧的旅程里 AI 在<b>深水阶段（写 kernel、排错）照样在线</b>——这才是差距真正所在。</div>
+
+<div class="swimscroll">
+  <div class="swimhint">← CUDA 侧开发旅程，AI 深水不掉链 →</div>
+  <div class="swim" id="swimCuda"></div>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">差距不在「能不能做」，在「深水段 AI 还扶不扶得住」</h3>
+  <div class="domwrap">
+    <div>
+      <div class="aichart" id="aiHelpCuda"></div>
+      <div class="note">CUDA 侧 AI 帮上忙的曲线<b>没有 P4/P8 那两个谷底</b>——写 kernel 有官方教程+示例仓、排错有 compute-sanitizer 文档，AI 自带知识也厚。</div>
+    </div>
+    <div>
+      <ul class="tight" style="margin-top:0">
+        <li>写 kernel 段：CUDA 有 <code>cpp_custom_ops</code> 官方静态页 + <code>extension-cpp</code> 示例仓，AI 一抓即得完整可跑代码；昇腾这段 AI 掉进 SPA 受阻。</li>
+        <li>排错段：CUDA 有 <code>compute-sanitizer</code> 全量文档 + 厚 StackOverflow，AI 排错强；昇腾 EZ9999 泛化兜底、AI 偏弱。</li>
+        <li>结论：两边都「能做出来」，但 <b>CUDA 侧 AI 全程是主力顾问，昇腾侧 AI 在最难的两段退居辅助、把硬骨头还给人</b>。这就是采纳漏斗在体验上的代价。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="limit">
+  <b>读这张图的边界：</b>① 它刻画的是<b>任务 D 一次开发</b>的旅程结构，不是统计平均——选 D 因为它摩擦最全、最能暴露深水问题，别的任务（如 A 转换 / C 选型）开发旅程平顺得多、AI 全程在线。② 阶段划分与「参与比重 / AI 帮上忙程度」是对这条旅程的<b>结构刻画</b>，百分比为示意级估计，看相对轻重而非精确测量；分数锚点（深水 .41、报错 .55、上手 .77 等）取自 <code>score_metrics.py</code> 实测。③ 人侧的离场行为（回本机写码、查 soc_version、读 SPA 页）是基于「AI 拿不到本地环境 + SPA 人眼可渲染」两个实测事实的<b>合理推演</b>，非每个用户每次都如此。完整分数见 <a href="17_official_site_focus.html" style="color:#2f3d63;font-weight:700">热力矩阵</a>，方法论见 <a href="18_metric_definition.html" style="color:#2f3d63;font-weight:700">方法论</a>，结论见 <a href="19_findings_ux_synthesis.html" style="color:#2f3d63;font-weight:700">启发与方向</a>。
+</div>
+
+</div>
+
+<script>
+/* ============ 时序泳道渲染 ============ */
+// owner:'human'|'ai' 该阶段主导方（决定阶段头配色）
+// human/ai: {tag,title,body, deco?, badge?:{cls,txt}, detour?, ret?, absent?} | null
+// hand:'h2a'|'a2h'|'both'|'loop'|null   人在上 AI 在下
+// wh: 人参与比重 0-100
+const DEV = [
+  {n:'P1', phase:'明确目标 · 摸路', owner:'human', wh:40, hand:'both',
+    human:{tag:'人 · 起步', title:'决定写 AddCustom 算子', body:'目标清楚但不知整体流程，先向 AI 要一张路线图'},
+    ai:{tag:'AI · 全景', title:'给端到端路线', body:'msopgen→核函数/Tiling→build→部署OPP→接PyTorch；<b>通识层答得上</b>', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'P2', phase:'环境准备', owner:'human', wh:70, hand:'a2h',
+    human:{tag:'人 · 本机', title:'装 CANN/msopgen、查 soc_version', body:'离开对话在本机装环境、<code>npu-smi</code> 查芯片', detour:true, ret:'↩ 带回版本信息'},
+    ai:{tag:'AI · 答疑', title:'答版本/环境变量', body:'CANN≥7.0.RC1、环境变量；但具体版本需<b>人核对本机</b>'}},
+  {n:'P3', phase:'生成工程脚手架', owner:'human', wh:58, hand:'both',
+    human:{tag:'人 · 操作', title:'写 add_custom.json、跑 msopgen gen', body:'本机执行，生成算子工程目录'},
+    ai:{tag:'AI · 给模板', title:'给 json + 命令', body:'<code>msopgen gen -i … -lan cpp</code>；注意版本间路径会变（80RC3↔82RC1alpha003）'}},
+  {n:'P4', phase:'写核函数 + Tiling', owner:'human', wh:88, hand:'a2h',
+    human:{tag:'人 · 深水编码', title:'手写 Ascend C 核函数 + Tiling', body:'Copy-In/Compute/Copy-Out 三段流水线、GM/Local/寄存器三级搬运——<b>最硬、最耗时</b>', detour:true},
+    ai:{tag:'AI · 掉链子', title:'想帮但帮不上', body:'官方 how-to 压在 SPA 抓不到、自带知识薄 → <b>只能给骨架，深处靠人啃</b>', deco:'blk', badge:{cls:'weak',txt:'▼ 深水谷底'}}},
+  {n:'P5', phase:'编译打包', owner:'human', wh:64, hand:'loop',
+    human:{tag:'人 · 编译', title:'bash build.sh → .run', body:'本机编译；报错就回头问 AI（↻ 循环）'},
+    ai:{tag:'AI · 帮看编译错', title:'部分能帮', body:'通用 C++/CMake 错能帮；Ascend 专有报错较吃力'}},
+  {n:'P6', phase:'部署 OPP', owner:'human', wh:82, hand:null,
+    human:{tag:'人 · 部署', title:'装到 OPP vendors/customize', body:'本机部署算子包，照文档操作即可', detour:true},
+    ai:{absent:true}},
+  {n:'P7', phase:'集成 PyTorch', owner:'human', wh:55, hand:'both',
+    human:{tag:'人 · 集成', title:'写 TORCH_LIBRARY / aclnn 绑定', body:'把算子接进 PyTorch 调用'},
+    ai:{tag:'AI · 较给力', title:'PyTorch 侧通识强', body:'绑定范式 AI 熟；torch_npu 特有处略弱', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'P8', phase:'运行调试 · 报错回流', owner:'human', wh:60, hand:'loop',
+    human:{tag:'人 · 调试', title:'跑 → 撞 EZ9999 等报错', body:'反复 跑→报错→回流 AI→改→再跑（↻ 多圈）'},
+    ai:{tag:'AI · 排错偏弱', title:'报错码这格也弱', body:'EZ9999 官方泛化兜底、二手碎 → 帮上有限，常需人贴日志/翻 issue', deco:'blk', badge:{cls:'weak',txt:'▼ 易弃坑点'}}},
+  {n:'P9', phase:'验证 · 完成', owner:'human', wh:70, hand:'a2h',
+    human:{tag:'人 · 验收', title:'对齐参考结果、收尾', body:'精度/功能对齐参考实现 → 完成'},
+    ai:{tag:'AI · 给思路', title:'给验证思路', body:'对拍、边界用例建议'}},
+];
+
+// 下钻：放大 P4 的一次问答（微观，AI 主导）
+const QA = [
+  {n:'S1', phase:'提问', owner:'human', wh:85, hand:'h2a',
+    human:{tag:'人 · 需求', title:'一句话把题说清', body:'「用 Ascend C 写核函数、接 PyTorch（msOpGen/aclnn），给完整步骤」', deco:'dec', badge:{cls:'norm',txt:'◆ 表达质量'}}, ai:null},
+  {n:'S2', phase:'定策略', owner:'ai', wh:5, hand:null, human:null,
+    ai:{tag:'AI · 策略', title:'识别难度', body:'判「版本敏感+前沿」，预判 SPA → 先广搜、备降级', deco:'dec', badge:{cls:'norm',txt:'◆ 判断'}}},
+  {n:'S3', phase:'第 1 轮检索', owner:'ai', wh:2, hand:null, human:null,
+    ai:{tag:'AI · 检索', title:'web_search 广搜', body:'命中 知乎/ai6s/MindSpore官方/CSDN×3；<b>官方未置顶</b>'}},
+  {n:'S4', phase:'判断:够不够', owner:'ai', wh:2, hand:null, human:null,
+    ai:{tag:'AI · 判断', title:'骨架够、细节缺', body:'决定再 <code>web_fetch</code> 官方页核对', deco:'dec', badge:{cls:'norm',txt:'◆ 续抓?'}}},
+  {n:'S5', phase:'抓官方页', owner:'ai', wh:2, hand:null, human:null,
+    ai:{tag:'AI · 抓取', title:'撞 SPA · 受阻', body:'正文 0 字，模板/JSON/Tiling 全抽不到', deco:'blk'}},
+  {n:'S6', phase:'判断:受阻怎么办', owner:'ai', wh:2, hand:'a2h', human:null,
+    ai:{tag:'AI · 关键判断', title:'不搜第 3 轮', body:'骨架已有+同子树多 SPA+再搜撞散乱版本号 → 综合+<b>显式降置信</b>', deco:'deckey', badge:{cls:'key',txt:'★ 关键判断'}}},
+  {n:'S7', phase:'人补位', owner:'human', wh:90, hand:'h2a',
+    human:{tag:'人 · 补位', title:'给 AI 拿不到的版本', body:'本机 CANN 版本 / <code>soc_version</code>；可选：浏览器手开 SPA 页', detour:true, ret:'↩ 带回版本'}, ai:null},
+  {n:'S8', phase:'综合答案', owner:'ai', wh:25, hand:'both',
+    human:{tag:'人 · 输入', title:'版本被代入', body:'带回的版本进入答案'},
+    ai:{tag:'AI · 产出', title:'骨架 + 诚实标注', body:'给步骤骨架，标版本不确定区、区分实测/外推'}},
+  {n:'S9', phase:'验收', owner:'human', wh:80, hand:'a2h',
+    human:{tag:'人 · 终审', title:'判风险、决定下一步', body:'分辨实测/外推 → 照跑/补细节；<b>报错带回流</b>', deco:'deckey', badge:{cls:'key',txt:'★ 关键判断'}},
+    ai:{tag:'AI · 待命', title:'接报错回流', body:'若带回报错 → 回 S2 重新协同'}},
+];
+
+const CUDADEV = [
+  {n:'Q1', phase:'摸路', owner:'human', wh:40, hand:'both',
+    human:{tag:'人 · 起步', title:'决定写自定义 CUDA 算子', body:'向 AI 要整体路线'},
+    ai:{tag:'AI · 全景', title:'路线清楚', body:'pybind→.cu kernel→setup.py→注册；通识强', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'Q2', phase:'环境准备', owner:'human', wh:62, hand:'a2h',
+    human:{tag:'人 · 本机', title:'装 CUDA toolkit / 对齐 PyTorch 版本', body:'本机配环境', detour:true},
+    ai:{tag:'AI · 答疑', title:'版本对应清楚', body:'官方页写明 CUDA↔PyTorch 版本，AI 答得准'}},
+  {n:'Q3', phase:'写 kernel', owner:'human', wh:60, hand:'both',
+    human:{tag:'人 · 编码', title:'写 .cu kernel + C++ 绑定', body:'本机编码，但有强参照'},
+    ai:{tag:'AI · 深水不掉链', title:'官方教程+示例仓兜底', body:'<code>cpp_custom_ops</code> 静态可抓、<code>extension-cpp</code> 示例仓 → 一抓即得完整代码', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'Q4', phase:'编译集成', owner:'human', wh:52, hand:'both',
+    human:{tag:'人 · 编译', title:'setup.py 编译、接 PyTorch', body:'CUDAExtension + BuildExtension'},
+    ai:{tag:'AI · 给力', title:'范式 AI 熟', body:'setup.py / 注册 / ABI（2.10+）变更都答得清', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'Q5', phase:'调试', owner:'human', wh:55, hand:'loop',
+    human:{tag:'人 · 调试', title:'跑 → 报错 → 修', body:'device-side assert 等'},
+    ai:{tag:'AI · 排错不掉链', title:'工具+生态都厚', body:'<code>compute-sanitizer</code> 全文档 + 厚 SO → AI 排错强', deco:'strong', badge:{cls:'good',txt:'✓ 帮得上'}}},
+  {n:'Q6', phase:'验证完成', owner:'human', wh:65, hand:'a2h',
+    human:{tag:'人 · 验收', title:'对齐参考、收尾', body:'功能/精度对齐 → 完成'},
+    ai:{tag:'AI · 给思路', title:'验证建议', body:'对拍、边界用例'}},
+];
+
+function nodeHtml(d, lane){
+  if(!d) return '<div class="lanedot">·</div>';
+  if(d.absent) return '<div class="absent"><b>—</b>AI 缺席<br>人独自完成</div>';
+  let cls='node '+(lane==='human'?'nh':'na');
+  if(d.deco) cls+=' '+d.deco;
+  if(d.detour) cls+=' detour';
+  let h='<div class="'+cls+'">';
+  if(d.detour && lane==='human') h+='<span class="detbadge">⎇ 离开对话</span>';
+  else if(d.badge) h+='<span class="decbadge '+d.badge.cls+'">'+d.badge.txt+'</span>';
+  h+='<div class="ntag">'+d.tag+'</div>';
+  h+='<div class="ntitle">'+d.title+'</div>';
+  h+='<div class="nbody">'+d.body+'</div>';
+  if(d.ret) h+='<span class="retchip">'+d.ret+'</span>';
+  h+='</div>';
+  return h;
+}
+function handHtml(hand){
+  if(!hand) return '<div class="hand"></div>';
+  const m={h2a:{c:'h2a',a:'↓'}, a2h:{c:'a2h',a:'↑'}, both:{c:'both',a:'⇅'}, loop:{c:'loop',a:'↻'}};
+  const x=m[hand];
+  return '<div class="hand '+x.c+'"><span class="hl"></span><span class="arr">'+x.a+'</span></div>';
+}
+function wtHtml(wh){
+  const wa=100-wh;
+  return '<div class="wt"><div class="wbar">'+
+    '<div class="wh" style="width:'+wh+'%">'+(wh>=12?wh+'%':'')+'</div>'+
+    '<div class="wa" style="width:'+wa+'%">'+(wa>=12?wa+'%':'')+'</div>'+
+    '</div><div class="wcap">'+(wh>=50?'人主导':'AI 主导')+'</div></div>';
+}
+function renderSwim(id, steps){
+  const el=document.getElementById(id);
+  const N=steps.length;
+  el.style.gridTemplateColumns='96px repeat('+N+',minmax(196px,1fr))';
+  let c=[];
+  c.push('<div class="sc lab muted">阶段</div>');
+  steps.forEach(s=> c.push('<div class="sc phase own-'+s.owner+'"><span class="pn">'+s.n+'</span><span class="pt">'+s.phase+'</span>'+
+    '<span class="ow '+(s.owner==='human'?'h':'a')+'">'+(s.owner==='human'?'人主导':'AI 主导')+'</span></div>'));
+  c.push('<div class="sc lab human">人</div>');
+  steps.forEach(s=> c.push('<div class="sc band human">'+nodeHtml(s.human,'human')+'</div>'));
+  c.push('<div class="sc lab muted">协同</div>');
+  steps.forEach(s=> c.push('<div class="sc">'+handHtml(s.hand)+'</div>'));
+  c.push('<div class="sc lab ai">AI</div>');
+  steps.forEach(s=> c.push('<div class="sc band ai">'+nodeHtml(s.ai,'ai')+'</div>'));
+  c.push('<div class="sc lab muted">参与<br>比重</div>');
+  steps.forEach(s=> c.push('<div class="sc">'+wtHtml(s.wh)+'</div>'));
+  el.innerHTML=c.join('');
+}
+
+/* AI 帮上忙程度曲线（0–100，示意级） */
+function renderAiHelp(id, rows){
+  const el=document.getElementById(id);
+  el.innerHTML=rows.map(r=>{
+    const col = r.v>=70?'#5e9a2c' : r.v>=45?'#C9A227' : '#7a5fb0';
+    return '<div class="airow"><span class="al">'+r.l+'</span>'+
+      '<span class="abw"><span class="ab" style="width:'+r.v+'%;background:'+col+'">'+r.v+'</span></span></div>';
+  }).join('');
+}
+
+renderSwim('swimDev', DEV);
+renderSwim('swimQA', QA);
+renderSwim('swimCuda', CUDADEV);
+renderAiHelp('aiHelp', [
+  {l:'P1 摸路', v:75}, {l:'P2 环境', v:60}, {l:'P3 脚手架', v:55},
+  {l:'P4 写 kernel', v:22}, {l:'P5 编译', v:50}, {l:'P6 部署', v:35},
+  {l:'P7 集成 PyTorch', v:70}, {l:'P8 排报错', v:30}, {l:'P9 验证', v:55},
+]);
+renderAiHelp('aiHelpCuda', [
+  {l:'Q1 摸路', v:80}, {l:'Q2 环境', v:72}, {l:'Q3 写 kernel', v:78},
+  {l:'Q4 编译集成', v:75}, {l:'Q5 调试', v:80}, {l:'Q6 验证', v:65},
+]);
+</script>
+</body>
+</html>
