@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 · 人机协同旅程：一次「自定义算子开发」的全链路时序图 + Agent 系统工程拆解</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+:root{
+  --nv:#76B900; --hw:#C8102E;
+  --v5:#BBF0D4; --v4:#DCF5E5; --v3:#FCEFC7; --v2:#FBE0CE; --v1:#F9D2D2;
+  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#F2F3F7; --card:#fff;
+  --blocked:#E3E0EE;
+  --ai:#6B5BA8; --aifill:#ECE7F6; --hu:#2f3d63; --hufill:#DCE8F7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:56px 24px 80px 188px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:26px;font-weight:900;letter-spacing:.5px}
+.subtitle{color:var(--sub);font-size:13.5px;margin-top:6px}
+h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-left:4px solid var(--ink)}
+h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
+h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
+.sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.cards2{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.tag.ev{background:#EEF6E0;color:#4a7a00;border:1px solid #cfe3a8}
+.tag.hw{background:#FBE9EC;color:var(--hw);border:1px solid #f0c4cc}
+.tag.gray{background:#f0f0f0;color:#555;border:1px solid #ddd}
+.tag.warn{background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8}
+.tag.ai{background:#EFEAF7;color:#5b4f93;border:1px solid #d6cdec}
+.tag.hu{background:#E6EDF8;color:#2f3d63;border:1px solid #c5d3ec}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f4f4;font-weight:700;white-space:nowrap}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3f3f3;border-radius:4px;padding:1px 5px}
+.note{font-size:12.5px;color:var(--sub);margin-top:10px}
+ul.tight{padding-left:20px;font-size:13.5px}
+ul.tight li{margin-bottom:6px}
+.toc{position:fixed;top:64px;left:16px;width:160px;display:flex;flex-direction:column;gap:6px;z-index:150}
+.toc .toclbl{font-size:9px;font-weight:800;color:var(--sub);letter-spacing:.5px;margin:0 0 1px 4px}
+.toc a{font-size:11.5px;color:#333;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 11px;line-height:1.3}
+.toc a:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px}
+.pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
+.pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
+/* 时序图容器 */
+.chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px 0}
+#journey{display:block}
+.legendbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:12px;color:#444;margin:10px 2px 2px;padding:10px 14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.lgdot{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none}
+.lgsq{width:16px;height:14px;border-radius:3px;border:2px solid #999;flex:none}
+.lgdia{width:15px;height:15px;border:2px solid #8a6d1a;background:var(--v3);flex:none;transform:rotate(45deg)}
+.lgline{width:24px;height:0;border-top:3px solid #8156c9;flex:none}
+.lgline.thin{border-top:1.5px solid #bbb}
+.lgline.dash{border-top:2px dashed #2f3d63}
+.lgring{width:16px;height:16px;border-radius:50%;border:2px solid var(--hw);box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--hw);flex:none}
+/* tooltip */
+#tip{position:fixed;z-index:400;max-width:330px;background:#1d1d1f;color:#f3f3f3;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.65;box-shadow:0 6px 24px rgba(0,0,0,.28);pointer-events:none;opacity:0;transition:opacity .12s}
+#tip .tt-h{font-weight:800;font-size:12.5px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+#tip .tt-meta{font-size:10.5px;color:#b9b4d6;margin-bottom:5px}
+#tip .tt-b{color:#e2e2e2}
+#tip .tt-blk{color:#ffb3b3;margin-top:5px;font-size:11px}
+#tip b{color:#BBF0D4}
+.minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
+.mb-ai{background:#5b4f93;color:#fff}.mb-hu{background:#2f3d63;color:#fff}
+/* 工作量条 */
+.wl{display:flex;height:26px;border-radius:7px;overflow:hidden;font-size:12px;font-weight:700;color:#fff;margin:6px 0}
+.wl .ai{background:var(--ai);display:flex;align-items:center;justify-content:center}
+.wl .hu{background:var(--hu);display:flex;align-items:center;justify-content:center}
+/* 决策链流程 */
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
+.chain .ck{flex:1;min-width:120px;background:#F6F4FB;border:1px solid #ddd6ee;border-radius:9px;padding:9px 11px;font-size:12px;position:relative}
+.chain .arr{display:flex;align-items:center;color:#8156c9;font-weight:900;font-size:16px;padding:0 4px;flex:none}
+.chain .ck b{font-size:12.5px;color:#5b4f93}
+/* 主导方图例 */
+.ownleg{display:flex;gap:14px;font-size:12px;margin:6px 0 0}
+.ownleg span{display:inline-flex;align-items:center;gap:6px}
+.ownleg i{width:14px;height:14px;border-radius:3px;display:block}
+.i-hu{background:#9fb4dd}.i-ai{background:#b7a9e0}.i-co{background:#9bd3c8}
+/* 代码块 */
+pre.code{background:#1d1d1f;color:#e6e6e6;border-radius:10px;padding:16px 18px;font-size:12px;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;line-height:1.7;margin:8px 0}
+pre.code .c{color:#7fa86b}/* 注释 */
+pre.code .k{color:#c98fd6}/* 关键字 */
+pre.code .s{color:#d8a76a}/* 字符串 */
+pre.code .f{color:#6fb6e0}/* 函数/方法 */
+.disc{display:inline-block;font-size:11px;background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8;border-radius:10px;padding:1px 9px;font-weight:400;vertical-align:1px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:4px 10px;font-size:13px;margin:6px 0}
+.kv .k{color:var(--sub);font-weight:700}
+.dnode{background:#fff;border:1px solid var(--line);border-left:4px solid #8a6d1a;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:14px}
+.dnode h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.dnode .dlab{font-size:11px;background:var(--v3);color:#8a6d1a;border-radius:8px;padding:1px 9px;font-weight:700}
+.limit{background:#FFFDF4;border:1px solid #ecd9a8;border-radius:10px;padding:16px 20px;font-size:13px;color:#6b5510;margin-top:40px}
+.deliv{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.deliv:last-child{border-bottom:none}
+.deliv .dn{flex:none;width:30px;height:30px;line-height:30px;text-align:center;border-radius:8px;background:#2f3d63;color:#fff;font-weight:900;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="pagenav">
+  <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
+  <a class="pnlink" href="18_metric_definition.html">方法论</a>
+  <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
+  <a class="pnlink" href="19_findings_ux_synthesis.html">启发与方向</a>
+  <span class="pnlink cur">人机协同旅程</span>
+</div>
+
+<div class="toc">
+  <div class="toclbl">本页目录</div>
+  <a href="#s1">① 全链路时序图</a>
+  <a href="#s2">② 业务分析</a>
+  <a href="#s3">③ 主导权边界</a>
+  <a href="#s4">④ Agent 系统工程</a>
+  <a href="#s5">⑤ 用户决策节点</a>
+  <a href="#s6">⑥ 交付物汇总</a>
+</div>
+
+<h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
+<div class="subtitle">
+  编号 20 · 锚定真实任务 <b>D 自定义算子开发（Ascend C + msOpGen + aclnn → 接入 PyTorch）</b>——这是 26 个任务里 CANN 综合分唯一「低」(.41)、也是唯一「官方 SPA 短板真正咬到结果」的格。
+  下图把<b>开发者从立项到交付跑通的一整段旅程</b>（不是问一个问题）拆成「AI(Agent) / 人类用户」两条泳道，每一步 AI 的动作、后端检索调用、人机交接全部显性展示；再下沉到 Agent 底层系统工程逐段解析。
+  所有节点事实取自 <code>task_run_log.md</code> 的 D 任务实测检索记录，<b>受阻 / 卡点为实测、非演绎</b>。
+</div>
+
+<a id="s1"></a>
+<h2><span class="no">①</span>全链路时序图 · 左→右双泳道（悬浮看每步细节）</h2>
+<div class="sechint">上行 = <b style="color:var(--ai)">AI（Agent）</b>泳道，主线、每步细化；下行 = <b style="color:var(--hu)">人类用户</b>泳道，操作简洁、允许脱离 AI 的分支（自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。顶部色带 = 7 个开发阶段，底部色带 = 该段主导方。</div>
+
+<div class="chartwrap">
+  <svg id="journey"></svg>
+</div>
+
+<div class="legendbar">
+  <span class="lg"><i class="lgdot" style="background:var(--aifill);border-color:var(--ai)"></i> AI 节点</span>
+  <span class="lg"><i class="lgdot" style="background:var(--hufill);border-color:var(--hu)"></i> 用户节点</span>
+  <span class="lg"><i class="lgsq" style="background:var(--hufill);border-color:var(--hu)"></i> 本地执行 / 运行</span>
+  <span class="lg"><i class="lgdia"></i> 决策点</span>
+  <span class="lg"><i class="lgring"></i> 受阻 / 卡点</span>
+  <span class="lg"><i class="lgline"></i> 人机交接</span>
+  <span class="lg"><i class="lgline thin"></i> 同侧推进</span>
+  <span class="lg"><i class="lgline dash"></i> 用户独立分支</span>
+</div>
+<div class="ownleg">
+  <b style="font-size:12px;color:#444">底部主导方：</b>
+  <span><i class="i-hu"></i> 用户主导（最终决定权归人）</span>
+  <span><i class="i-co"></i> 人机协同（AI 起草 / 用户执行判断）</span>
+  <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
+</div>
+
+<a id="s2"></a>
+<h2><span class="no">②</span>业务分析 · 从这张图能直接读出什么</h2>
+<div class="sechint">下面五项均可在上图逐节点定位（节点编号 s1–s14 / d1–d3 / b1–b2 与图一致）。</div>
+
+<div class="cards2">
+  <div class="card">
+    <h3>任务分工：谁干哪些活</h3>
+    <p style="font-size:13px"><span class="tag ai">AI（7 步）</span>把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 <code>msopgen</code> 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。</p>
+    <p style="font-size:13px;margin-top:8px"><span class="tag hu">用户（10 步含分支）</span>立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 跑测试）、做 3 个关键决策、2 次脱离 AI 独立求证。</p>
+    <div class="wl"><div class="ai" style="width:41%">AI ≈ 41%</div><div class="hu" style="width:59%">用户 ≈ 59%</div></div>
+    <div class="note">量化口径：按节点计数（AI 7 / 用户 10），非工时。AI 在<b>检索阶段（P2）几乎独占</b>，用户在<b>环境执行与验收阶段（P3 / P5 / P7）独占</b>；这正是「越往本地落地，人的占比越高」。</div>
+  </div>
+
+  <div class="card">
+    <h3>用户决策依据：判断前必须先拿到什么</h3>
+    <p style="font-size:13px">三个决策点（图中 ◆ d1/d2/d3）做判断前各自需要的关键信息：</p>
+    <ul class="tight" style="margin-top:6px">
+      <li><b>d1 选 soc_version</b>：需先 <code>npu-smi info</code> 查到实际芯片型号（如 Ascend910B1）——AI 给不了，必须线下核验。</li>
+      <li><b>d2 版本对齐</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——因为 add_custom.json 字段与目录路径在版本间会变。</li>
+      <li><b>d3 精度是否达标</b>：需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「够不够准」。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>问题卡点 + 解决方案</h3>
+    <ul class="tight">
+      <li><b>卡点 s3（实测受阻）</b>：官方 how-to 整段压在 <code>devguide/opdevg/</code> SPA 子树，<code>web_fetch</code> 只回导航 + meta、<b>正文抓不到</b>。<br><span style="color:#3d6500">→ 解决：转走二手（s4）+ 让用户开浏览器人眼自查（分支 b1，人能看到 AI 抓不到的渲染后正文）。</span></li>
+      <li><b>卡点 s9（编译报错）</b>：build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。<br><span style="color:#3d6500">→ 解决：把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</span></li>
+      <li><b>卡点：版本散乱</b>贯穿全程（d2）。<br><span style="color:#3d6500">→ 解决：用户外部求证 Gitee samples 仓对齐版本（分支 b2）。</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>协同量化 · 交接次数</h3>
+    <p style="font-size:13px">全旅程 <b>8 次主导权易手</b>（图中紫色粗连线）：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</p>
+    <p style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
+    <p style="font-size:13px;margin-top:8px">2 条<b>用户独立分支</b>（不经 AI）：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。</p>
+  </div>
+</div>
+
+<h3>用户决策链：接收信息 → 思考研判 → 做出决策 → 反馈 AI（以 d1 选 soc_version 为例）</h3>
+<div class="chain">
+  <div class="ck"><b>① 接收信息</b><br>AI 在 s5 给出含 <code>&lt;soc_version&gt;</code> 占位的 msopgen 命令，并提示「此处需填你机器的实际芯片型号」。</div>
+  <div class="arr">→</div>
+  <div class="ck"><b>② 思考研判</b><br>用户意识到 AI 无法知道自己机器装的是哪颗 NPU，占位不能照抄。</div>
+  <div class="arr">→</div>
+  <div class="ck"><b>③ 做出决策</b><br>脱离 AI，本地 <code>npu-smi info</code> 查到 Ascend910B1，决定用 <code>ai_core_Ascend910B1</code>。</div>
+  <div class="arr">→</div>
+  <div class="ck"><b>④ 反馈 AI</b><br>把确定的 soc_version 回填，AI 据此在 s7 继续起草对应的核函数 / Tiling。</div>
+</div>
+
+<a id="s3"></a>
+<h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
+<div class="sechint">同一条旅程，主导方随阶段切换；上图底部色带即此表的可视化。</div>
+<table>
+  <thead><tr><th>阶段</th><th>节点</th><th>主导方</th><th>边界说明</th></tr></thead>
+  <tbody>
+    <tr><td>P1 立项</td><td>s1</td><td><span class="tag hu">用户主导</span></td><td>定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。</td></tr>
+    <tr><td>P2 检索方案</td><td>s2–s5</td><td><span class="tag ai">Agent 自动化主导</span></td><td>AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。这是全程唯一「AI 自主多轮迭代、用户仅验收」的区段。</td></tr>
+    <tr><td>P3 环境·工程生成</td><td>s6 / d1</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。</td></tr>
+    <tr><td>P4 写核函数·Tiling</td><td>s7 / d2</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。</td></tr>
+    <tr><td>P5 编译·部署</td><td>s8–s10</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。</td></tr>
+    <tr><td>P6 接入 PyTorch</td><td>s11 / s12</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。</td></tr>
+    <tr><td>P7 跑通·精度·交付</td><td>s13 / d3 / s14</td><td><span class="tag hu">用户主导</span></td><td>跑测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
+  </tbody>
+</table>
+<div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
+
+<a id="s4"></a>
+<h2><span class="no">④</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
+<div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部到底怎么跑」。</div>
+
+<h3>4.1 工具调用策略：为什么是有限次检索，而非更多 / 更少</h3>
+<div class="card">
+  <p style="font-size:13.5px">上图 s2–s4 里 AI 没有把检索工具刷到上限，实测 D 任务只搜了 ~1–2 轮就转入拼装。背后是两层机制叠加：</p>
+  <ul class="tight" style="margin-top:8px">
+    <li><b>硬上限 = <code>max_uses</code></b>：<code>web_search</code> 是 Anthropic Messages API 的<b>服务端工具</b>，注册时带 <code>max_uses</code> 封顶（如 5）；超过会返回 <code>max_uses_exceeded</code>，模型不能无限刷。</li>
+    <li><b>软停止 = 模型自主判断「够了」</b>：服务端工具在<b>同一轮</b>内自带 loop——模型决定搜什么 → 平台执行并回灌结果 → 模型判断信息是否足够 → 不够再搜、够了就停并生成终答（<code>stop_reason: end_turn</code>；长耗时会先 <code>pause_turn</code> 再续）。所以「调用 N 次」不是写死的常量，而是 <b>min(max_uses, 模型判断收敛点)</b>。</li>
+    <li><b>为什么 D 任务收敛得早</b>：实测前 1–2 条结果（知乎 / ai6s.net / MindSpore 官方 / CSDN）已能拼出步骤骨架，边际信息递减；继续搜更多只会拿到同质 CSDN 互抄（D 的二手本就薄），模型据此判断「再搜性价比低」→ 提前停。<b>检索次数少 ≠ 偷懒，而是边际收益判断</b>。</li>
+  </ul>
+  <h3 style="margin-top:18px">输入优化：用户怎么写指令能显著抬升输出精准度</h3>
+  <table>
+    <thead><tr><th>优化手段</th><th>对这条旅程的具体作用</th></tr></thead>
+    <tbody>
+      <tr><td><b>补约束</b>：写明「要<b>可照抄的完整命令 + 锁定版本号</b>」</td><td>逼 AI 在 s5 给出带真实 soc_version 占位说明的 msopgen 命令，而非泛泛描述，减少 d1 的来回。</td></tr>
+      <tr><td><b>限范围</b>：写明芯片型号 / CANN 版本（如 910B1 + 8.0.RC3）</td><td>直接消解 d2 版本对齐这个卡点——AI 不必在多版本间猜，输出一次到位。</td></tr>
+      <tr><td><b>限渠道</b>：写明「优先官方文档，拿不到说明受阻、不要编」</td><td>触发 AI 在 s3 受阻时<b>诚实标注 SPA 抓不到</b>并转二手，而不是用记忆补全一个看起来对、跑不通的步骤。</td></tr>
+      <tr><td><b>给反馈</b>：把 s9 的编译报错<b>原文</b>贴回</td><td>AI 解读的准确度直接取决于报错原文，而非「我编译失败了」这类模糊描述。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>4.2 大模型每一轮内部在做什么</h3>
+<div class="sechint">把 P2 检索区段拆成模型的内部动作循环，逐轮对应到上图节点。</div>
+<table>
+  <thead><tr><th>轮次</th><th>内部动作</th><th>对应图节点</th></tr></thead>
+  <tbody>
+    <tr><td>第 1 轮</td><td><b>规划</b>：解析「Ascend C 自定义算子 + 接 PyTorch」→ 拆成「找官方 how-to → 找工程脚手架 → 找 PyTorch 绑定方式」三个子目标；<b>决定先发 web_search</b>。</td><td>s2</td></tr>
+    <tr><td>（服务端）</td><td><b>读结果 + 研判</b>：扫一遍搜索摘要，识别出官方页 + 知乎 + MindSpore + CSDN；判断官方页最权威 → <b>决定 web_fetch 官方 URL</b>。</td><td>s2→s3</td></tr>
+    <tr><td>第 2 轮</td><td><b>遇阻分支判断</b>：fetch 回来只有 meta、正文缺失 → 识别为 SPA 受阻 → <b>不编造</b>，改判「靠二手 + 自带知识拼」→ 决定再读 MindSpore / CSDN。</td><td>s3（受阻）→s4</td></tr>
+    <tr><td>第 3 轮</td><td><b>结果生成</b>：把二手碎片 + 自带知识合成步骤骨架，按「环境→msopgen→核函数→编包→部署→绑定」排序，<b>给占位 + 标注哪些需用户核验</b>（soc_version / 版本）→ 输出，<code>end_turn</code>。</td><td>s5</td></tr>
+  </tbody>
+</table>
+<div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
+
+<h3>4.3 完整工程代码逐段解析 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
+<div class="sechint">下面是一个忠实于「我平常怎么跑」的最小 agent 循环：接收自然语言 → 模型自主调度工具 → 多轮回灌 → 终答。逐段注释对应上图与 §4.1/§4.2。</div>
+<pre class="code"><span class="k">import</span> anthropic
+client = anthropic.<span class="f">Anthropic</span>()
+
+<span class="c"># ① 工具注册：web_search 是服务端工具，max_uses 即 §4.1 的硬上限</span>
+TOOLS = [
+    {<span class="s">"type"</span>: <span class="s">"web_search_20250305"</span>, <span class="s">"name"</span>: <span class="s">"web_search"</span>, <span class="s">"max_uses"</span>: 5},
+    {<span class="s">"name"</span>: <span class="s">"web_fetch"</span>, <span class="s">"description"</span>: <span class="s">"抓取一个 URL 的正文"</span>,   <span class="c"># 客户端工具：演示通用 agent 循环</span>
+     <span class="s">"input_schema"</span>: {<span class="s">"type"</span>: <span class="s">"object"</span>,
+         <span class="s">"properties"</span>: {<span class="s">"url"</span>: {<span class="s">"type"</span>: <span class="s">"string"</span>}}, <span class="s">"required"</span>: [<span class="s">"url"</span>]}},
+]
+
+<span class="k">def</span> <span class="f">run_agent</span>(user_question):
+    <span class="c"># A. 接收并解析用户原始自然语言输入 —— 直接进 messages，模型负责理解</span>
+    messages = [{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: user_question}]
+
+    <span class="k">while</span> True:
+        <span class="c"># B. 调度：模型自己决定这一轮是搜 / 抓 / 还是直接答（§4.2 的「规划」）</span>
+        resp = client.messages.<span class="f">create</span>(
+            model=<span class="s">"claude-opus-4-8"</span>, max_tokens=4096,
+            system=<span class="s">"优先给可照抄命令、锁定版本号；官方抓不到就说明受阻，绝不编造。"</span>,
+            tools=TOOLS, messages=messages)
+        messages.<span class="f">append</span>({<span class="s">"role"</span>: <span class="s">"assistant"</span>, <span class="s">"content"</span>: resp.content})
+
+        <span class="c"># C. 终止条件：模型不再要工具 → 收敛、返回终答（对应图 s5 的 end_turn）</span>
+        <span class="k">if</span> resp.stop_reason != <span class="s">"tool_use"</span>:
+            <span class="k">return</span> <span class="s">""</span>.<span class="f">join</span>(b.text <span class="k">for</span> b <span class="k">in</span> resp.content <span class="k">if</span> b.type == <span class="s">"text"</span>)
+
+        <span class="c"># D. 多轮循环：执行客户端工具并把结果回灌（受阻时如实标注，不编造 → 图 s3）</span>
+        results = []
+        <span class="k">for</span> b <span class="k">in</span> resp.content:
+            <span class="k">if</span> b.type == <span class="s">"tool_use"</span> <span class="k">and</span> b.name == <span class="s">"web_fetch"</span>:
+                body = <span class="f">fetch_url</span>(b.input[<span class="s">"url"</span>])
+                results.<span class="f">append</span>({<span class="s">"type"</span>: <span class="s">"tool_result"</span>, <span class="s">"tool_use_id"</span>: b.id,
+                    <span class="s">"content"</span>: body <span class="k">or</span> <span class="s">"（SPA / robots：正文抽不到）"</span>})
+        messages.<span class="f">append</span>({<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: results})
+</pre>
+<div class="kv">
+  <div class="k">A 段</div><div>接收解析用户自然语言：原始问句直接进 <code>messages</code>，不做模板化预处理——理解交给模型本身。</div>
+  <div class="k">B 段</div><div>调度逻辑：每轮 <code>messages.create</code> 让模型自主决定搜 / 抓 / 答。<code>web_search</code> 的多轮在服务端同一次调用内闭环（§4.1 软停止）。</div>
+  <div class="k">C 段</div><div>终止逻辑：<code>stop_reason != "tool_use"</code> 即模型判断信息足够、收敛产出终答——对应图中 s5。</div>
+  <div class="k">D 段</div><div>多轮循环 + 受阻处理：客户端工具结果回灌；<b>抓不到正文时显式写「正文抽不到」而非留空或臆造</b>，这是「绝不编造」铁律在代码层的落点（图 s3 受阻）。</div>
+</div>
+<div class="note"><b>诚实边界：</b>上述为<b>公开 Messages API 的忠实示范</b>，用于解释 agent 循环骨架，<b>不是 Claude 产品的内部源码</b>；服务端 <code>web_search</code> 的内部检索 / 排序实现不可见，这里只能就「对外可观测的调用契约」作解。</div>
+
+<a id="s5"></a>
+<h2><span class="no">⑤</span>用户决策节点专项 · 为什么这三处非人不可</h2>
+<div class="sechint">图中三个 ◆ 决策点，逐一拆「介入原因 / 前置条件 / 执行动作」。</div>
+
+<div class="dnode">
+  <h3><span class="dlab">d1</span>选 soc_version（芯片型号）</h3>
+  <div class="kv">
+    <div class="k">介入原因</div><div>AI 不知道用户机器实际插的是哪颗 NPU——这是<b>本机环境事实</b>，不在任何文档 / 检索可得范围内，无法自动判定。</div>
+    <div class="k">前置条件</div><div>能访问目标机器、会用 <code>npu-smi info</code> 读硬件信息；知道 soc_version 会直接决定 msopgen 生成的工程能否在本机编译。</div>
+    <div class="k">执行动作</div><div>本地查到型号（如 Ascend910B1）→ 用 <code>ai_core_Ascend910B1</code> 替换 AI 给的占位 → 回填继续。</div>
+  </div>
+</div>
+
+<div class="dnode">
+  <h3><span class="dlab">d2</span>版本对齐（CANN / 路径 / json 字段）</h3>
+  <div class="kv">
+    <div class="k">介入原因</div><div>D 任务<b>版本散乱是实测短板</b>：80RC2alpha001 / 80RC3 / 82RC1alpha003 之间，add_custom.json 字段与文档目录路径都会变（连官方 URL 从 <code>devguide/opdevg/</code> 漂到 <code>opdevg/Ascendcopdevg/</code>）。AI 给的步骤未必匹配本机版本。</div>
+    <div class="k">前置条件</div><div>知道本机装的 CANN 确切版本；理解「同一份步骤换个版本可能跑不通」。</div>
+    <div class="k">执行动作</div><div>核对本机版本 → 必要时脱离 AI、去 Gitee samples 仓（分支 b2）对齐对应版本的样例 → 修正后再用。</div>
+  </div>
+</div>
+
+<div class="dnode">
+  <h3><span class="dlab">d3</span>精度是否达标（验收）</h3>
+  <div class="kv">
+    <div class="k">介入原因</div><div>「算子结果够不够准」是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型，AI 无法替用户拍板同意 / 驳回。</div>
+    <div class="k">前置条件</div><div>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>
+    <div class="k">执行动作</div><div>逐元素比对 → 达标则交付（s14）；不达标则<b>驳回</b>，回到 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>
+  </div>
+</div>
+
+<a id="s6"></a>
+<h2><span class="no">⑥</span>交付物汇总</h2>
+<div class="card">
+  <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析文档</b>（§2 / §3）：任务分工与工作量占比（AI 41% / 用户 59%）、用户决策依据、问题卡点 + 解决方案、协同交接量化、完整用户决策链、人机主导权边界逐阶段划分。</div></div>
+  <div class="deliv"><div class="dn">3</div><div><b>技术拆解文档</b>（§4 / §5）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化方案、大模型逐轮内部动作、忠实 agent 循环代码逐段解析、三个用户决策节点的介入原因 / 前置条件 / 执行动作专项剖析。</div></div>
+</div>
+
+<div class="limit">
+  <b>诚实声明与局限：</b>
+  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>，真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。
+  ② §4.3 代码是<b>公开 Messages API 的示范实现</b>，解释 agent 循环契约，<b>非 Claude 内部源码</b>；服务端 web_search 的检索 / 排序内部实现不可观测。
+  ③ 工作量占比按<b>节点计数</b>而非真实工时；不同开发者熟练度会显著改变人侧耗时。
+  ④ 本页只刻画 D 这一个「最难」任务的旅程；成熟任务（如 G 迁移、Z 概念对照）的人机协同形态会大不相同（AI 主导区段更长、卡点更少），详见 <a href="17_official_site_focus.html" style="color:#2f3d63">热力矩阵</a>与<a href="19_findings_ux_synthesis.html" style="color:#2f3d63">启发与方向</a>。
+</div>
+
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ===== 旅程数据（锚定 D 任务实测，节点编号与正文一致） ===== */
+const LANE = {ai:0, hu:1};
+const NODES = [
+  {id:"s1",  xi:0,  lane:"hu", kind:"start",   t:"立项·定目标",
+    meta:"用户主导 · P1", b:"明确要开发一个 Ascend C 自定义算子并接入 PyTorch（msOpGen/aclnn 路线）。需求归人，AI 不介入。"},
+  {id:"s2",  xi:1,  lane:"ai", kind:"search",  t:"web_search 找方案",
+    meta:"Agent 自主 · P2", b:"模型自主拆子目标（官方 how-to / 脚手架 / PyTorch 绑定）并发起检索。实测命中：知乎、ai6s.net、MindSpore 官方、CSDN×3、华为云 bbs。官方 hiascend 未置顶。"},
+  {id:"s3",  xi:2,  lane:"ai", kind:"fetch",   blocked:true, t:"web_fetch 官方 how-to",
+    meta:"Agent 自主 · P2 · 受阻", b:"抓 hiascend atlas_ascendc_10_0006（devguide/opdevg/ 子树）。", blk:"实测受阻：SPA 页，只回导航 + meta，参数表 / 完整命令正文抓不到。这是 26 任务里唯一「SPA 短板真正咬到结果」的格。"},
+  {id:"s4",  xi:3,  lane:"ai", kind:"search",  t:"拼二手 + 自带知识",
+    meta:"Agent 自主 · P2", b:"官方受阻后转 MindSpore 2.3.1 教程 + CSDN「AscendC 从入门到精通」+ 自带知识，合成步骤骨架。二手薄、且多扎堆 CSDN。"},
+  {id:"s5",  xi:4,  lane:"ai", kind:"draft",   t:"给 msopgen 命令 + json",
+    meta:"Agent 自主 · P2→交付", b:"输出步骤骨架：环境(CANN≥7.0.RC1)→ msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp 生成工程。标注 soc_version 需用户核验。end_turn。"},
+  {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地跑 msopgen 生成工程",
+    meta:"人机协同 · P3", b:"用户在本机执行 msopgen，生成算子工程骨架（host/kernel/Tiling 目录）。"},
+  {id:"d1",  xi:6,  lane:"hu", kind:"decision",t:"决策：选 soc_version",
+    meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
+  {id:"s7",  xi:7,  lane:"ai", kind:"draft",   t:"起草核函数 + Tiling",
+    meta:"人机协同 · P4", b:"AI 起草 Compute 核函数与三级 Tiling 框架（GM→Local→寄存器 的 Copy-In/Compute/Copy-Out 三段流水线）。"},
+  {id:"d2",  xi:8,  lane:"hu", kind:"decision",t:"决策：版本对齐",
+    meta:"用户决定 · P4", b:"确认本机 CANN 版本。实测版本散乱：80RC2alpha001 / 80RC3 / 82RC1alpha003，json 字段与目录路径随版本变。"},
+  {id:"s8",  xi:9,  lane:"hu", kind:"run",     t:"build.sh 编包 → 部署 OPP",
+    meta:"人机协同 · P5", b:"bash build.sh 生成 custom_opp_*.run，部署到 OPP vendors/customize。"},
+  {id:"s9",  xi:10, lane:"ai", kind:"draft",   blocked:true, t:"编译报错 · AI 解读",
+    meta:"人机协同 · P5 · 卡点", b:"编包 / 部署常因版本、soc_version、算子注册不匹配报错。", blk:"卡点：用户把报错原文回灌，AI 解读并给改法。报错原文质量直接决定解读准确度。"},
+  {id:"s10", xi:11, lane:"hu", kind:"run",     t:"改后重试 → 通过",
+    meta:"人机协同 · P5", b:"按 AI 给的改法修正，重新编译部署，通过。"},
+  {id:"s11", xi:12, lane:"ai", kind:"draft",   t:"给 TORCH_LIBRARY / aclnn 绑定",
+    meta:"人机协同 · P6", b:"AI 给 cpp_extension 方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL / PYBIND11_MODULE 接 PyTorch，调 autogen 的 aclnn API。"},
+  {id:"s12", xi:13, lane:"hu", kind:"run",     t:"集成进 PyTorch",
+    meta:"人机协同 · P6", b:"用户落地集成代码，编译扩展，import 验证算子可被 torch 调用。"},
+  {id:"s13", xi:14, lane:"hu", kind:"run",     t:"跑测试",
+    meta:"用户主导 · P7", b:"构造输入，跑算子，得到输出。"},
+  {id:"d3",  xi:15, lane:"hu", kind:"decision",t:"决策：精度是否达标",
+    meta:"用户决定 · P7 · 验收", b:"与 CPU/GPU 参考输出逐元素比对。达标→交付；不达标→驳回回 s7 重走 P4–P7。"},
+  {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
+    meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。AI 仅辅助结果汇总 / 格式整理。"},
+];
+/* 分支（用户脱离 AI 的独立动作） */
+const BRANCH = [
+  {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
+    b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。脱离 AI 的独立检索。"},
+  {id:"b2", from:"d2", xi:8,  t:"Gitee samples 仓求证",
+    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本的可跑样例。外部求证、独立于 AI。"},
+];
+/* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
+const OWNER = [
+  {a:0,  b:0,  k:"hu"},
+  {a:1,  b:4,  k:"ai"},
+  {a:5,  b:13, k:"co"},
+  {a:14, b:16, k:"hu"},
+];
+/* 阶段色带 */
+const PHASE = [
+  {a:0, b:0,  n:"P1 立项"},
+  {a:1, b:4,  n:"P2 检索方案"},
+  {a:5, b:6,  n:"P3 环境·生成"},
+  {a:7, b:8,  n:"P4 核函数·Tiling"},
+  {a:9, b:11, n:"P5 编译·部署"},
+  {a:12,b:13, n:"P6 接入 PyTorch"},
+  {a:14,b:16, n:"P7 跑通·精度·交付"},
+];
+
+/* ===== 布局 ===== */
+const padL=78, padT=64, dx=92, laneGap=150;
+const N = 17;
+const W = padL + (N-1)*dx + 70;
+const laneY = {ai: padT+38, hu: padT+38+laneGap};
+const branchY = laneY.hu + 92;
+const ownerY = branchY + 46;
+const H = ownerY + 56;
+const X = xi => padL + xi*dx;
+
+const svg = d3.select("#journey").attr("width", W).attr("height", H)
+  .attr("viewBox", `0 0 ${W} ${H}`);
+
+/* 箭头 marker */
+const defs = svg.append("defs");
+function arrow(id,color){
+  defs.append("marker").attr("id",id).attr("viewBox","0 0 10 10")
+    .attr("refX",8).attr("refY",5).attr("markerWidth",7).attr("markerHeight",7)
+    .attr("orient","auto-start-reverse")
+    .append("path").attr("d","M0,0 L10,5 L0,10 z").attr("fill",color);
+}
+arrow("ah","#8156c9"); arrow("at","#bbb"); arrow("ab","#2f3d63");
+
+/* 阶段色带 */
+const phaseColors=["#EEF1F7","#EFEAF7","#E9F4F0","#E9F4F0","#FBF0E0","#E9F4F0","#E6EDF8"];
+svg.selectAll(".phase").data(PHASE).enter().append("rect")
+  .attr("x", d=>X(d.a)-dx/2+6).attr("y", padT-6)
+  .attr("width", d=>(d.b-d.a)*dx + dx-12).attr("height", H-padT-46)
+  .attr("rx",8).attr("fill",(d,i)=>phaseColors[i]).attr("opacity",.55);
+svg.selectAll(".phaselab").data(PHASE).enter().append("text")
+  .attr("x", d=>(X(d.a)+X(d.b))/2).attr("y", padT+8)
+  .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
+  .attr("fill","#555").text(d=>d.n);
+
+/* 泳道标签 + 基线 */
+[["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
+  svg.append("line").attr("x1",padL-30).attr("x2",W-20)
+    .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#eee").attr("stroke-width",1);
+  svg.append("text").attr("x",8).attr("y",laneY[k]-26)
+    .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
+});
+
+const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
+function ny(n){ return laneY[n.lane]; }
+
+/* ===== 连线（主链顺序） ===== */
+for(let i=0;i<NODES.length-1;i++){
+  const a=NODES[i], b=NODES[i+1];
+  const cross = a.lane!==b.lane;
+  const x1=X(a.xi), y1=ny(a), x2=X(b.xi), y2=ny(b);
+  if(cross){
+    svg.append("path")
+      .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
+      .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
+      .attr("marker-end","url(#ah)").attr("opacity",.85);
+  } else {
+    svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
+      .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
+  }
+}
+
+/* ===== 分支连线（用户独立，虚线，向下到 branchY） ===== */
+BRANCH.forEach(br=>{
+  const src=byId[br.from];
+  const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
+  svg.append("path")
+    .attr("d", `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2-16}`)
+    .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
+    .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
+});
+
+/* ===== 节点绘制 ===== */
+const AIFILL="#ECE7F6", AISTROKE="#6B5BA8", HUFILL="#DCE8F7", HUSTROKE="#2f3d63";
+function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
+function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
+
+const g = svg.selectAll(".node").data(NODES).enter().append("g")
+  .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
+  .style("cursor","pointer")
+  .on("mousemove", (e,d)=>showTip(e,d))
+  .on("mouseleave", hideTip);
+
+g.each(function(d){
+  const sel=d3.select(this);
+  if(d.kind==="decision"){
+    sel.append("rect").attr("x",-17).attr("y",-17).attr("width",34).attr("height",34)
+      .attr("transform","rotate(45)").attr("rx",4)
+      .attr("fill","#FCEFC7").attr("stroke","#8a6d1a").attr("stroke-width",2);
+  } else if(d.kind==="run"||d.kind==="deliver"||d.kind==="start"){
+    sel.append("rect").attr("x",-23).attr("y",-18).attr("width",46).attr("height",36)
+      .attr("rx",7).attr("fill",fill(d)).attr("stroke",stroke(d)).attr("stroke-width",2);
+  } else { /* search / fetch / draft → 圆 */
+    sel.append("circle").attr("r",20).attr("fill",fill(d)).attr("stroke",stroke(d)).attr("stroke-width",2);
+  }
+  if(d.blocked){
+    sel.append("circle").attr("r",24).attr("fill","none").attr("stroke","#C8102E").attr("stroke-width",2.5);
+    sel.append("text").attr("x",18).attr("y",-16).attr("font-size",14).attr("font-weight",900)
+      .attr("fill","#C8102E").text("✕");
+  }
+  /* 节点 id 角标 */
+  sel.append("text").attr("text-anchor","middle").attr("dy",4)
+    .attr("font-size",11).attr("font-weight",800)
+    .attr("fill", d.kind==="decision"?"#8a6d1a":stroke(d)).text(d.id);
+});
+
+/* 节点标题（在节点上/下方交错，避免重叠） */
+g.append("text")
+  .attr("text-anchor","middle")
+  .attr("y", d=> d.lane==="ai" ? -30 : 34)
+  .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
+  .each(function(d){
+    const txt=d.t, max=8;
+    const el=d3.select(this);
+    if(txt.length>max){
+      el.append("tspan").attr("x",0).attr("dy",0).text(txt.slice(0,max));
+      el.append("tspan").attr("x",0).attr("dy",12).text(txt.slice(max));
+    } else { el.append("tspan").attr("x",0).text(txt); }
+  });
+
+/* ===== 分支节点 ===== */
+const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+  .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
+  .style("cursor","pointer")
+  .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+  .on("mouseleave",hideTip);
+gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
+  .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+  .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
+  .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+
+/* ===== 主导方色带 ===== */
+const ownColors={hu:"#9fb4dd",ai:"#b7a9e0",co:"#9bd3c8"};
+const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
+svg.append("text").attr("x",8).attr("y",ownerY+2).attr("font-size",11)
+  .attr("font-weight",800).attr("fill","#555").text("主导方");
+OWNER.forEach(o=>{
+  svg.append("rect").attr("x",X(o.a)-dx/2+6).attr("y",ownerY+8)
+    .attr("width",(o.b-o.a)*dx+dx-12).attr("height",26).attr("rx",6)
+    .attr("fill",ownColors[o.k]);
+  svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+25)
+    .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
+    .attr("fill","#2b2b2b").text(ownName[o.k]);
+});
+
+/* ===== tooltip ===== */
+const tip=document.getElementById("tip");
+function showTip(e,d){
+  const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
+            : d.lane==="hu" ? '<span class="minibadge mb-hu">用户</span>' : '';
+  let html = `<div class="tt-h">${badge}${d.id} · ${d.t}</div>`;
+  if(d.meta) html += `<div class="tt-meta">${d.meta}</div>`;
+  html += `<div class="tt-b">${d.b||""}</div>`;
+  if(d.blk) html += `<div class="tt-blk">⚠ ${d.blk}</div>`;
+  tip.innerHTML=html;
+  tip.style.opacity="1";
+  const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
+  if(y+th>window.innerHeight-8) y=e.clientY-pad-th;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+}
+function hideTip(){ tip.style.opacity="0"; }
+</script>
+</body>
+</html>
