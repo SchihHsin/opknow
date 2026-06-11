@@ -23,15 +23,16 @@
   /* 跨页导航：固定页面顶部一栏 */
   .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:rgba(242,243,247,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.04);}
   .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
+  .pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px;}
   .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
-  .pagenav a.pnlink:hover{border-color:var(--nv);color:var(--nv);}
-  .pagenav span.pnlink.cur{background:var(--nv);color:#fff;border-color:var(--nv);}
+  .pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63;}
+  .pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63;}
 
   /* 目录：固定左侧 */
   .toc{position:fixed;top:62px;left:16px;width:156px;display:flex;flex-direction:column;gap:6px;z-index:150;}
   .toc .toclbl{font-size:9px;font-weight:800;color:var(--g4);letter-spacing:.5px;margin:0 0 1px 4px;}
   .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:8px;padding:6px 11px;text-decoration:none;transition:.15s;}
-  .toc a:hover{border-color:var(--nv);color:var(--nv);}
+  .toc a:hover{border-color:#2f3d63;color:#2f3d63;}
 
   h2{font-size:16px;font-weight:800;margin:38px 0 12px;display:flex;align-items:center;gap:9px;color:var(--g1);scroll-margin-top:14px;}
   h2::before{content:'';width:4px;height:16px;background:var(--nv);border-radius:2px;}
@@ -191,10 +192,10 @@
 <div class="wrap">
 
   <div class="pagenav">
-    <span class="pnlabel">opknow 系列：</span>
-    <a class="pnlink" href="17_official_site_focus.html">17 矩阵</a>
-    <span class="pnlink cur">18 方法论</span>
-    <a class="pnlink" href="19_findings_ux_synthesis.html">19 阶段梳理</a>
+    <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
+    <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
+    <span class="pnlink cur">方法论</span>
+    <a class="pnlink" href="19_findings_ux_synthesis.html">阶段梳理</a>
   </div>
 
   <div class="title">方法论说明书 · 这套「AI 可用性」热力图是怎么做出来的</div>
