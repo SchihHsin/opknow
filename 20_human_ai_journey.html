@@ -137,7 +137,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（横向 / 竖向可切换，悬浮看每步细节）</h2>
-<div class="sechint">两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法）；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接）。</div>
+<div class="sechint">两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
 
 <div class="vtabs">
   <button class="vtab active" data-mode="h">横向时间轴 · 左→右</button>
@@ -452,6 +452,13 @@ function addDefs(){
       .append("path").attr("d","M0,0 L10,5 L0,10 z").attr("fill",color);
   }
   arrow("ah","#8156c9"); arrow("at","#bbb"); arrow("ab","#2f3d63");
+  /* 决策条斜纹底（竖向激活条用） */
+  const pat=defs.append("pattern").attr("id","diag")
+    .attr("patternUnits","userSpaceOnUse").attr("width",6).attr("height",6)
+    .attr("patternTransform","rotate(45)");
+  pat.append("rect").attr("width",6).attr("height",6).attr("fill","#FCEFC7");
+  pat.append("line").attr("x1",0).attr("y1",0).attr("x2",0).attr("y2",6)
+    .attr("stroke","#E0C589").attr("stroke-width",2);
 }
 
 /* 节点造型（朝向无关，横竖共用）：形状 + 受阻红环 + id 角标 */
@@ -484,6 +491,31 @@ function wrapText(el,txt,max,lh,anchorX,centerVert){
   lines.forEach((ln,i)=>{
     el.append("tspan").attr("x",anchorX).attr("dy", i===0?startDy:lh).text(ln);
   });
+}
+
+/* 竖向激活条（经典 sequence）：三类 kind 用三种填充样式区分
+   实色=AI 检索/起草 · 描边浅底=用户本地执行 · 斜条纹底=决策点；lane 仍用紫/蓝；受阻套红框✕ */
+const BARW=24, BARH=42;
+function drawBarV(sel,d){
+  let fillv, strokev, idcol, sw;
+  if(d.kind==="decision"){            // 斜条纹底
+    fillv="url(#diag)"; strokev="#8a6d1a"; idcol="#8a6d1a"; sw=2;
+  } else if(d.kind==="run"||d.kind==="start"||d.kind==="deliver"){ // 描边浅底
+    fillv = d.lane==="ai" ? "#fff" : "#F1F5FC"; strokev=stroke(d); idcol=stroke(d); sw=2.4;
+  } else {                            // 实色（AI search/fetch/draft）
+    fillv = d.lane==="ai" ? "#C9BBE8" : "#BFD2F0"; strokev=stroke(d); idcol=stroke(d); sw=1.5;
+  }
+  sel.append("rect").attr("x",-BARW/2).attr("y",-BARH/2).attr("width",BARW).attr("height",BARH)
+    .attr("rx",5).attr("fill",fillv).attr("stroke",strokev).attr("stroke-width",sw);
+  if(d.blocked){
+    sel.append("rect").attr("x",-BARW/2-4).attr("y",-BARH/2-4)
+      .attr("width",BARW+8).attr("height",BARH+8).attr("rx",7)
+      .attr("fill","none").attr("stroke","#C8102E").attr("stroke-width",2.5);
+    sel.append("text").attr("x",BARW/2+8).attr("y",-BARH/2+3).attr("font-size",14)
+      .attr("font-weight",900).attr("fill","#C8102E").text("✕");
+  }
+  sel.append("text").attr("text-anchor","middle").attr("dy",4)
+    .attr("font-size",10.5).attr("font-weight",800).attr("fill",idcol).text(d.id);
 }
 
 /* ===================== 横向视图（时间左→右） ===================== */
@@ -654,13 +686,13 @@ function renderV(){
     .attr("transform", d=>`translate(${cx(d)},${Y(d.xi)})`)
     .style("cursor","pointer")
     .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
-  g.each(function(d){ drawNodeShape(d3.select(this),d); });
-  /* 标题置于节点外侧（AI 在左、用户在右） */
+  g.each(function(d){ drawBarV(d3.select(this),d); });
+  /* 标题置于激活条外侧（AI 在左、用户在右） */
   g.append("text")
     .attr("text-anchor", d=> d.lane==="ai" ? "end" : "start")
     .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
     .each(function(d){
-      const ax = d.lane==="ai" ? -30 : 30;
+      const ax = d.lane==="ai" ? -(BARW/2+10) : (BARW/2+10);
       wrapText(d3.select(this), d.t, 7, 12, ax, true);
     })
     .attr("y",0);
