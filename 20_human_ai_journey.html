@@ -92,8 +92,8 @@ ul.tight li{margin-bottom:6px}
 .wl .hu{background:var(--hu);display:flex;align-items:center;justify-content:center}
 .axrow{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
 .axn{width:92px;color:#333;flex:none}
-.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:var(--hu)}
-.axbar>i{display:block;height:100%;background:var(--ai)}
+.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:#3BA8E8}
+.axbar>i{display:block;height:100%;background:#8A7FEA}
 .axw{width:120px;text-align:right;color:#666;flex:none}
 /* 决策链流程 */
 .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
@@ -472,7 +472,7 @@ const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
    动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
 const KIND_AXIS={search:0, fetch:0, draft:1, run:2, deliver:2, decision:3, start:3}; // 0检 1产 2执 3决
 const AXNAME=["检","产","执","决"];
-const DOT_AI="#7F77DD", DOT_HU="#378ADD", DOT_NA="#c4c4c0";
+const DOT_AI="#8A7FEA", DOT_HU="#3BA8E8", DOT_NA="#c7c7c3";
 function phaseStats(ph){
   let ai=0,hu=0; const axLane=[null,null,null,null];
   NODES.forEach(n=>{
