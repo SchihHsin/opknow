@@ -92,8 +92,8 @@ ul.tight li{margin-bottom:6px}
 .wl .hu{background:var(--hu);display:flex;align-items:center;justify-content:center}
 .axrow{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
 .axn{width:92px;color:#333;flex:none}
-.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:#3BA8E8}
-.axbar>i{display:block;height:100%;background:#8A7FEA}
+.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:#54BFEC}
+.axbar>i{display:block;height:100%;background:#9B91F0}
 .axw{width:120px;text-align:right;color:#666;flex:none}
 /* 决策链流程 */
 .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
@@ -472,7 +472,8 @@ const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
    动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
 const KIND_AXIS={search:0, fetch:0, draft:1, run:2, deliver:2, decision:3, start:3}; // 0检 1产 2执 3决
 const AXNAME=["检","产","执","决"];
-const DOT_AI="#8A7FEA", DOT_HU="#3BA8E8", DOT_NA="#c7c7c3";
+const DOT_AI="#9B91F0", DOT_HU="#54BFEC", DOT_NA="#d4d4cf";
+function dotTextColor(l){ return l==="ai"?"#3C3489" : l==="hu"?"#0C447C" : "#8a8a85"; }
 function phaseStats(ph){
   let ai=0,hu=0; const axLane=[null,null,null,null];
   NODES.forEach(n=>{
@@ -498,7 +499,7 @@ function drawAxisDots(parent, cx, y, st){
   st.axLane.forEach((l,i)=>{
     const g=parent.append("g").attr("transform",`translate(${cx-total/2+i*gap},${y})`);
     g.append("circle").attr("r",r).attr("fill",dotColor(l));
-    g.append("text").attr("text-anchor","middle").attr("dy",3.2).attr("font-size",9).attr("fill","#fff").text(AXNAME[i]);
+    g.append("text").attr("text-anchor","middle").attr("dy",3.2).attr("font-size",9).attr("font-weight",700).attr("fill",dotTextColor(l)).text(AXNAME[i]);
   });
 }
 /* 计数文字 AI n / 人 m（双色 tspan）；横竖共用 */
