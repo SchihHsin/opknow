@@ -328,3 +328,79 @@
 - **E.cann 的「③2 抓到但无用」是新形态**：不同于 D 的「受阻（抓不到）」，E 抓得到官方页、但官方页是泛化兜底——再次证「②可抓 ≠ ③够用」两关正交。
 - **②可抓取性进一步被证「子树相关」**：E/F/G/H 的官方页（错误码 / trainingmigrguide / devaids自动迁移 / devaids·devtools AMCT）**全部 ssr 可抓**；连此前以为是 SPA 的 `devaids/devtools/amct` 也实测可抓。**至今唯一确证 SPA 咬到结果的仍只有 D 的 `devguide/opdevg/`**。
 - **版本散乱（④）是 CANN 跨任务最普遍短板**：A/B/D/F/H 的 ④ 都因多版本号并存被压到 2。
+
+---
+
+# 第三批真跑（2026-06-11，sub-agent 并行检索 → 主会话清洗判分）：I–S 十一任务
+
+> 方法升级：本批由并行 sub-agent 各自真跑 web_search / web_fetch、回结构化原始观测（RAW），**主会话统一做「清洗」（把混进二手的官方源归回①渠道、避免与 OFF 重复加权）后代入 `score_metrics.py` 公式判分**。清洗 = 重新归类，不是删数据；拿不到的日期/版本一律留 None、绝不杜撰。每任务一对「本质相同、仅栈不同」问句同前两批。
+
+## 任务 I · 版本兼容排查（环境类，版本敏感 高）
+- 配对问句：CUDA「PyTorch / CUDA / 驱动版本怎么对齐、冲突怎么查」｜ CANN「driver↔HDK↔CANN↔torch↔torch_npu 五件套怎么配套」。
+- 官方：CANN 配套表（GitHub/PyPI/hiascend）ssr 可抓、`npu-smi info` 可执行；多轴碎（五件套）→ ④ 仍 4（有配套表兜）。CUDA 侧 PyTorch 安装矩阵 static。
+- 二手（已剔官方）：CANN = CSDN×2 / hwcomputing；CUDA = markaicode / devzery（discuss.pytorch.org 是官方论坛①，剔除）。
+- 分：I.cuda .85 高 / **I.cann .73 中高**（短板在 ⑦自带知识 2 + ⑧成本，配套五轴需多次核对）。
+
+## 任务 J · 安装与环境变量（环境类，版本敏感 中）
+- 官方 `envref/set_env.sh` 页 ssr 可抓且详尽（各 source 命令 + 环境变量表）→ ②4③5；CANN 官方命中 rank1。
+- 二手：CSDN×2 / 华为云bbs / 知乎专栏。
+- 分：J.cuda .88 / **J.cann .80 高**——这是上手侧（环境）华为投入足、官方一手就够的典型，CANN 到「高」。
+
+## 任务 K · 容器 / 镜像搭建（环境类，版本敏感 中）
+- 官方 doc_center dlruntime 页 static 可抓且详尽（/dev 挂载表完整、6 硬件配置）→ ②5③5。
+- 二手仅 CSDN×2（gitee Ascend/pytorch 是官方仓①，剔除）→ ⑤2⑥2 偏薄；⑧成本因 1 次 fetch_fail 被压到 1。
+- 分：K.cuda .98 / **K.cann .86 高**——官方一手强到能独立兜住，二手薄但不致命（噪声-OR 里 OFF 高即可）。
+
+## 任务 L · 算子精度排查（调试类，版本敏感 中）
+- 官方 `devaids/auxiliarydevtool` 精度比对页 ssr 可抓且详尽（msaccucmp 命令 + 参数表 + 示例）→ ②4③5。
+- 二手：知乎 / 华为云 ModelArts 最佳实践 / segmentfault。
+- 分：L.cuda .84 / **L.cann .69 中高**（①发现仅 2、需顺着工具名二搜；④版本散乱 2）。
+
+## 任务 M · 动态 shape / Tiling（算子开发类，版本敏感 高）
+- **关键**：opdevg Tiling 正文页（10_0047）实测 ssr 可抓且详尽（`BEGIN_TILING_DATA_DEF` 等），仅 quickstart 引导页（10_0046）是 spa——**opdevg 子树非全 SPA**，再缩「D 单点受阻」论断。
+- 因子修正：Tiling 页 exec=False（结构定义非可跑命令）但 ref_level=exhaustive，原 `score3` 把非 exec 一律跌到 1（误）；**本批已修公式**为「穷尽正文 exec 则 5、非 exec 仍 4」→ M.cann ③ 1→4、⑪ .56→.63。
+- 分：M.cuda .94 / **M.cann .63 中**（①发现 2、⑦自带 2，算子自研深水区）。
+
+## 任务 N · 算子融合（算子开发/性能类，版本敏感 中）
+- 官方 `graphubfusionref` 子树 ssr 可抓且详尽（fusion_switch_file + JSON + 规则清单）→ ②4③5；CANN 命中 rank1。
+- 二手：CSDN / 知乎（403 未取正文）。
+- 分：N.cuda .83 / **N.cann .74 中高**（④版本散乱 2、⑦自带 2）。
+
+## 任务 O · 注册与框架集成（算子开发/迁移类，版本敏感 中）
+- 配对问句：CUDA「自定义算子怎么注册进 `torch.ops`（TORCH_LIBRARY/dispatcher/autograd）」｜ CANN「Ascend C 算子怎么注册成 aclnn 并集成进 torch_npu」。
+- **可抓取关键**：头条 how-to `devguide/opdevg/...10_0065` = SPA（fetch_fail 计 1），但 `doc_center/...10_0045` **SSR 镜像可抓且正文穷尽**（npu_native_functions.yaml / EXEC_NPU_CMD / AddCustomKernelNpu.cpp / build.sh）→ **有兜底子树、不像 D 无镜像**，故 ②记 ssr、③5。
+- 二手（已剔官方）：aliyun / ctyun / monsoon-cs（gitee op-plugin + docs.pytorch 是官方①；知乎 403 未取得不计）。
+- 分：O.cuda .84 / **O.cann .72 中高**（①发现 2 需精化二搜、⑧成本 1 因 SPA 头条吃了 fetch_fail）。
+
+## 任务 P · 混合精度训练（训练类，版本敏感 中）
+- **可抓取关键**：`Pytorch/60RC1/ptmoddevg/` 子树 ssr 可抓且含 **NPU 专属 `dynamic`/`init_scale` 参数表 + 完整 DDP 代码**；`modeldevpt/ptmigr/` 子树才是 SPA——「可抓取子树相关」再获印证。
+- 二手：CSDN / 华为云bbs（371074 通用 AMP）/ 知乎。
+- 分：P.cuda .98 / **P.cann .83 高**——训练上手侧官方投入足；短板在版本双轴（CANN商用版 × Ascend-Extension-for-PyTorch）pin 仅 mostly、二手一致性 mid。
+
+## 任务 Q · 显存 / OOM 优化（训练/性能类，版本敏感 中）
+- 官方 `comref/Envvariables/Envir_012` 子树 ssr 全表可抓（5 选项参数表 + 3 条 export 示例）→ ②4③5，**非 SPA**。
+- 清洗：CUDA 侧 discuss.pytorch.org 是官方论坛①，从二手剔除；CANN 侧 53ai / aliyun / 华为云bbs(412890 偏算子融合) / 知乎(403)。
+- 分：Q.cuda .94 / **Q.cann .86 高**——官方环境变量页一手即够；短板在 ④版本四并存（双轴）pin range。
+
+## 任务 R · 精度 / 收敛排查（调试/训练类，版本敏感 中）
+- 官方 mindstudio 实战页 `toolsample3_018` ssr 全文可抓（msprobe + dump JSON 配置 + `ASCEND_LAUNCH_BLOCKING` + 两则案例）→ ②4③5，CANN 罕见的官方强项格。CUDA 侧 `numerical_accuracy` 是精度参考页、非排查 how-to（无 detect_anomaly/梯度裁剪步骤）→ ③4，靠厚二手补。
+- 清洗：CUDA 侧 discuss.pytorch.org 剔除；CANN 侧 cnblogs(SAM) / support.huaweicloud(msprobe最佳实践) / segmentfault / 知乎。
+- 分：R.cuda .98 / **R.cann .75 中高**（①发现 3 官方非首条、④版本散乱 3、⑦自带 3）。
+
+## 任务 S · 推理服务部署（推理部署类，版本敏感 中）
+- 官方 MindIE 启动页 `mindie_service0004` + LLM config 页全 SSR 可抓（daemon 启动命令 + config.json 的 ipAddress/port/npuDeviceIds）→ ②4③4，**非 SPA**。
+- 清洗：`mindspore.cn`（昇思社区官方文档）按官方①剔除 → CANN 二手仅剩 CSDN + 知乎 2 条、偏薄（⑤2）。CUDA 侧 aws / medium / softwaremill。
+- 分：S.cuda .94 / **S.cann .74 中高**（⑤二手薄 + ⑦自带 2 + 版本 1.0.0/1.0.RC3 并存）。
+
+## 十九任务总览（A–S，2026-06-11 第三批后）
+
+| 批 | 已实测 | CANN 档位分布 |
+|---|---|---|
+| A–D | 4 | 1 高(G尚未含) … 见下 |
+| A–S | **19/26** | **5 高（G/J/K/P/Q）｜ 11 中高 ｜ 2 中（E/M）｜ 1 低（D）** |
+
+**第三批跨任务规律（19 样本下更稳）：**
+- **SPA 短板进一步收窄到 D 单点**：M（opdevg Tiling 正文页 ssr）、O（doc_center 镜像 ssr）、P（ptmoddevg ssr）、Q（comref ssr）、R（mindstudio ssr）、S（MindIE ssr）官方核心页**全部可抓**。19 格里头条 how-to 真受阻、且无可抓镜像兜底的，仍只有 D。
+- **采纳漏斗在 19 样本下更稳**：上手/环境侧（J/K/Q/P）多到「高」，深处算子自研（D/M）塌到「中/低」。粗分组均值：上手环境 ≈ .77、训练 ≈ .74、算子自研 ≈ .67。
+- **CANN 短板从「抓不到」转移到「版本散乱 + 二手薄/自带知识弱」**：一旦官方页可抓（绝大多数任务），④版本（多并存/双轴）与 ⑤⑦（二手剔官方后变薄、深处自带知识 2–3）成为压低 ⑪ 的主因。
+- **公式修正（诚实留痕）**：`score3_detail` 补「正文穷尽但非可执行（如 Tiling 结构、参考手册）应记 4 而非跌到 1」，仅 M.cann 受影响（③1→4、⑪ 中→中高边界 .63）。
