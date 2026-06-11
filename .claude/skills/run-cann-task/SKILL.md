@@ -1,6 +1,6 @@
 ---
 name: run-cann-task
-description: 跑一个或多个「CANN vs CUDA AI 可用性」开发者任务的标准流程——真实检索打分、记录过程、落进 17/18 矩阵并 push。当用户说「再跑 X 任务 / 跑下一批 / 把 XX 任务也跑了 / 继续跑待跑清单」时使用。封装本 opknow 项目的全流程：选任务→编配对问句→真跑 web_search/web_fetch→按 score_metrics.py 公式打分→记 task_run_log.md→更新 17/index/18→验证→commit/push→更新 CLAUDE.md。
+description: 跑一个或多个「CANN vs CUDA AI 可用性」开发者任务的标准流程——真实检索打分、记录过程、落进 17/18 矩阵并 push。当用户说「再跑 X 任务 / 跑下一批 / 把 XX 任务也跑了 / 继续跑待跑清单」时使用。封装本 opknow 项目的全流程：选任务→编配对问句→实测检索 web_search/web_fetch→按 score_metrics.py 公式打分→记 task_run_log.md→更新 17/index/18→验证→commit/push→更新 CLAUDE.md。
 ---
 
 # run-cann-task — 跑任务并落库的标准作业
@@ -20,7 +20,7 @@ description: 跑一个或多个「CANN vs CUDA AI 可用性」开发者任务的
 - 每任务设计**一对**问题：CUDA 一句、CANN 一句，**解决的是同一类开发问题、只是技术栈不同**（例：A=「PyTorch 模型导出部署，CUDA 走 TensorRT｜昇腾走 ATC→.om」）。
 - 像我平常被开发者问到那样自然措辞，写进 `task_run_log.md`。
 
-## 3. 真跑（不可省、不可编造）
+## 3. 实测检索（不可省、不可编造）
 对**每栈**按我平常解题工作流跑：
 1. `web_search` 关键词（记**轮数 rounds**、官方文档命中**排名 rank**、是否需要**改写重搜 refine**）。
 2. 对最相关的官方页 `web_fetch`（记**抓取形态 core_fetch**：`static` 纯静态 / `ssr` 服务端渲染可抓 / `partial` 部分可抓 / `spa` 只回导航+meta / `robots` 被 robots 拦；记 **fetch 次数**、**fetch_fail** 失败次数）。

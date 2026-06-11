@@ -1,4 +1,4 @@
-# 任务真跑过程记录（CANN vs CUDA · AI 可用性）
+# 任务实测检索过程记录（CANN vs CUDA · AI 可用性）
 
 > 本文件记录**每个开发任务的实际检索过程**：用的问题、每一步 web_search / web_fetch、命中了什么、按指标怎么打分。
 > 方法：每个任务设计**本质相同、仅技术栈不同**的一对问题，用我（Claude）平常解答问题的真实工作流跑一遍，如实记录——能实测就实测，抓不到就如实说「受阻」。
@@ -170,7 +170,7 @@
 
 ---
 
-## 四任务总览（本次真跑后）
+## 四任务总览（本次实测检索后）
 
 | 代号 | 任务 | CUDA | CANN | 可抓取性是否咬到结果 | 关键 |
 |---|---|---|---|---|---|
@@ -186,10 +186,10 @@
 
 ---
 
-# 第二批真跑（2026-06-10）：E / F / G / H 四任务
+# 第二批实测检索（2026-06-10）：E / F / G / H 四任务
 
 > 接续上面 A–D，再跑四个任务（用户指定：报错码排查 / 分布式 HCCL / CUDA→昇腾迁移 / 量化部署）。
-> 同样：每任务一对「本质相同、仅栈不同」的问题，按平常工作流真跑 web_search / web_fetch，逐步记命中与打分。
+> 同样：每任务一对「本质相同、仅栈不同」的问题，按平常工作流实测检索 web_search / web_fetch，逐步记命中与打分。
 > 分数由 `score_metrics.py` 代入下列原始观测算出（非手评）；`python3 score_metrics.py --diff` 可复算。
 
 ## 任务 E · 报错码 / 异常排查
@@ -310,7 +310,7 @@
 
 ---
 
-## 八任务总览（A–H，2026-06-10 全部真跑后）
+## 八任务总览（A–H，2026-06-10 全部实测检索后）
 
 | 代号 | 任务 | 版本敏感 | CUDA | CANN | 关键 |
 |---|---|---|---|---|---|
@@ -331,9 +331,9 @@
 
 ---
 
-# 第三批真跑（2026-06-11，sub-agent 并行检索 → 主会话清洗判分）：I–S 十一任务
+# 第三批实测检索（2026-06-11，sub-agent 并行检索 → 主会话清洗判分）：I–S 十一任务
 
-> 方法升级：本批由并行 sub-agent 各自真跑 web_search / web_fetch、回结构化原始观测（RAW），**主会话统一做「清洗」（把混进二手的官方源归回①渠道、避免与 OFF 重复加权）后代入 `score_metrics.py` 公式判分**。清洗 = 重新归类，不是删数据；拿不到的日期/版本一律留 None、绝不杜撰。每任务一对「本质相同、仅栈不同」问句同前两批。
+> 方法升级：本批由并行 sub-agent 各自实测检索 web_search / web_fetch、回结构化原始观测（RAW），**主会话统一做「清洗」（把混进二手的官方源归回①渠道、避免与 OFF 重复加权）后代入 `score_metrics.py` 公式判分**。清洗 = 重新归类，不是删数据；拿不到的日期/版本一律留 None、绝不杜撰。每任务一对「本质相同、仅栈不同」问句同前两批。
 >
 > **问句溯源订正（2026-06-11）**：本批 sub-agent 当时只回传了结构化观测，问句原文一度只在 I/O 两个任务留了转述版。后从本会话 transcript（`637b50f9….jsonl`）里把每个 sub-agent 的 Agent prompt 捞回，其中含派给它的「一对问题」原文——故下方 I–S 各任务的「问句」行已全部订正为 transcript 还原的**真问句原文**（非事后补编，来源可复核）。
 
@@ -418,9 +418,9 @@
 
 ---
 
-# 第四批真跑 T–Z（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）
+# 第四批实测检索 T–Z（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）
 
-> 跑完最后 7 个任务，26/26 全量到位。每任务一对「本质相同、仅技术栈不同」问句，真跑 web_search/web_fetch，按 `score_metrics.py` 公式打分；RAW 已入库（见 score_metrics.py `T`–`Z` 段）。清洗：官方文档/仓/论坛（hiascend、doc_center 镜像、mindspore.cn、docs.nvidia.com、forums.developer.nvidia.com、discuss.pytorch.org、github、gitee）归①渠道、**不计入⑤⑥二手**；bbs.huaweicloud=云厂商二手；拿不到的发表日记 None，绝不杜撰。
+> 跑完最后 7 个任务，26/26 全量到位。每任务一对「本质相同、仅技术栈不同」问句，实测检索 web_search/web_fetch，按 `score_metrics.py` 公式打分；RAW 已入库（见 score_metrics.py `T`–`Z` 段）。清洗：官方文档/仓/论坛（hiascend、doc_center 镜像、mindspore.cn、docs.nvidia.com、forums.developer.nvidia.com、discuss.pytorch.org、github、gitee）归①渠道、**不计入⑤⑥二手**；bbs.huaweicloud=云厂商二手；拿不到的发表日记 None，绝不杜撰。
 
 ## 任务 T · 动态 batch / shape 推理（推理部署类，版本敏感 高）
 - 问句（transcript 原文）：CUDA「我用 TensorRT/Triton 部署模型，怎么配置动态 batch / 动态 shape 推理（optimization profile / dynamic batching / min-opt-max shape）？」｜ CANN「我用昇腾 MindIE/ACL/ATC 部署模型，怎么配置动态 batch / 动态 shape 推理（dynamic_dims / 分档 / 动态分辨率）？」

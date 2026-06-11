@@ -199,7 +199,7 @@
   </div>
 
   <div class="title">方法论说明书 · 这套「AI 可用性」热力图是怎么做出来的</div>
-  <div class="lead">一份讲全、<b>不分散在别处</b>的说明书：从<b>任务怎么选</b>、<b>问题怎么编</b>，到<b>指标体系怎么一步步长出来</b>、<b>每项指标到底是什么意思</b>、再到<b>1–5 分凭什么判定</b>。配套热力图见 <code>17_official_site_focus.html</code>，逐步真跑过程见 <code>task_run_log.md</code>。</div>
+  <div class="lead">一份讲全、<b>不分散在别处</b>的说明书：从<b>任务怎么选</b>、<b>问题怎么编</b>，到<b>指标体系怎么一步步长出来</b>、<b>每项指标到底是什么意思</b>、再到<b>1–5 分凭什么判定</b>。配套热力图见 <code>17_official_site_focus.html</code>，逐步实测检索过程见 <code>task_run_log.md</code>。</div>
 
   <div class="toc">
     <div class="toclbl">本页目录</div>
@@ -244,7 +244,7 @@
   </table>
   <p class="note">7 个阶段把"装→开发→训练→部署→调优→调试→迁移"这条完整链路铺满，共 <b>26 个任务</b>。这才是"任务是怎么形成的"的主体——一张<b>有意求全</b>的工作面清单。</p>
 
-  <p class="note" style="margin-top:16px"><b>再从这张全清单里真跑（次要的一步）。</b>26 个分四批跑完——首批 <b>A–D</b>（沿"成熟→前沿"光谱）、二批 <b>E–H</b>、三批 <b>I–S</b>、四批 <b>T–Z</b>，<b>26/26 现已全量实测</b>（标 <span class="vs hi" style="background:var(--hw)">A–Z</span>）。抽样不是随机，最初 4 个<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>让"可用性是任务相关的"显形；下表列出<b>全部 26 个</b>（四批代号 A–D / E–H / I–S / T–Z，CANN 综合为 score_metrics.py 公式值）：</p>
+  <p class="note" style="margin-top:16px"><b>再从这张全清单里实测检索（次要的一步）。</b>26 个分四批跑完——首批 <b>A–D</b>（沿"成熟→前沿"光谱）、二批 <b>E–H</b>、三批 <b>I–S</b>、四批 <b>T–Z</b>，<b>26/26 现已全量实测</b>（标 <span class="vs hi" style="background:var(--hw)">A–Z</span>）。抽样不是随机，最初 4 个<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>让"可用性是任务相关的"显形；下表列出<b>全部 26 个</b>（四批代号 A–D / E–H / I–S / T–Z，CANN 综合为 score_metrics.py 公式值）：</p>
   <table class="ttab">
     <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th><th style="width:96px">CANN 综合</th></tr></thead>
     <tbody>
@@ -332,13 +332,13 @@
   </div>
   
   <!--
-  ◇ 问句溯源说明（2026-06-11 修订）：第三批 I–S 由 sub-agent 并行真跑，当时
+  ◇ 问句溯源说明（2026-06-11 修订）：第三批 I–S 由 sub-agent 并行实测检索，当时
   task_run_log.md 只逐字留了 I/O 两个、其余 9 个（J–N、P–S）一度被记为「原文未留存」。
   后从本会话 transcript（637b50f9….jsonl）里把每个 sub-agent 的 Agent prompt 捞回，
   其中含派给它的「一对问题」原文——故下表 I–Z 现已全部填回 transcript 还原的真问句
   （非事后补编）。task_run_log.md 同步订正。来源 = 会话 transcript，可复核。
 -->
-  <p class="note" style="margin-top:18px"><b>其余 22 个任务的问句对（E–Z）。</b>格式同上四例——每张卡片头注「<b>同一意图</b>：两栏共同的开发诉求」，卡内左 CUDA、右 CANN 两条<b>真跑当时的问句原文</b>。E–H（单会话顺序真跑）一字未改地留在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行真跑）的原文从<b>本会话 transcript 里每个 sub-agent 的 Agent prompt</b>（派给它的「一对问题」原文，2026-06-11 捞回订正，非事后补编）还原，并已同步回 <code>task_run_log.md</code>：</p>
+  <p class="note" style="margin-top:18px"><b>其余 22 个任务的问句对（E–Z）。</b>格式同上四例——每张卡片头注「<b>同一意图</b>：两栏共同的开发诉求」，卡内左 CUDA、右 CANN 两条<b>实测检索当时的问句原文</b>。E–H（单会话顺序实测检索）一字未改地留在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行实测检索）的原文从<b>本会话 transcript 里每个 sub-agent 的 Agent prompt</b>（派给它的「一对问题」原文，2026-06-11 捞回订正，非事后补编）还原，并已同步回 <code>task_run_log.md</code>：</p>
   <div class="qp">
     <div class="qph"><span class="cd">E</span>报错码 / 异常排查 <span class="vsen">— 同一意图：遇到运行时报错码，怎么定位是哪一行、哪个根因</span></div>
     <div class="qpb">
@@ -493,7 +493,7 @@
       <div class="side ca"><span class="st">CANN</span><div class="qq">请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？</div></div>
     </div>
   </div>
-  <p class="note">上方 4 对详例 + 这 22 张卡片合计 <b>26 对问句</b>，<b>全部为真跑当时的原文</b>：A–H（单会话顺序真跑）一字未改地记录在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行真跑）的原文从本会话 transcript（<code>637b50f9….jsonl</code>）里每个 sub-agent 的 Agent prompt 捞回订正（2026-06-11），<b>非事后补编、来源可复核</b>，并已同步回 <code>task_run_log.md</code>。每对问句都连同真跑时走的 web_search / web_fetch 步骤一并记录——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
+  <p class="note">上方 4 对详例 + 这 22 张卡片合计 <b>26 对问句</b>，<b>全部为实测检索当时的原文</b>：A–H（单会话顺序实测检索）一字未改地记录在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行实测检索）的原文从本会话 transcript（<code>637b50f9….jsonl</code>）里每个 sub-agent 的 Agent prompt 捞回订正（2026-06-11），<b>非事后补编、来源可复核</b>，并已同步回 <code>task_run_log.md</code>。每对问句都连同实测检索时走的 web_search / web_fetch 步骤一并记录——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
 
   <!-- 3. 指标怎么形成 -->
   <h2 id="s3">3 · 指标是怎么形成的 <span class="en">how the metric system was derived</span></h2>
@@ -561,7 +561,7 @@
     <ul>
       <li><b>能独立失败（正交）</b>：它代表的那件事，必须能在别项都好时单独崩掉。"搜得到"与"抓得到"会各自失败 → 拆成①②；"抓得到"与"够详尽"会各自失败 → 拆出③。不正交的就不单列。</li>
       <li><b>能区分两栈、或定位卡点</b>：留下来的指标要么能拉开 CUDA / 昇腾差距，要么能指出"卡在哪一关"。对区分毫无贡献的，降级或剔除（如"版本敏感度"，见 §6.4）。</li>
-      <li><b>可实测，或明确标注主观</b>：能从真跑过程里读出来的（①②③⑧）优先；只能判断或自评的（⑦⑨⑩⑪）照留，但在 §5 里挑明其主观性，绝不伪装成实测。</li>
+      <li><b>可实测，或明确标注主观</b>：能从实测检索过程里读出来的（①②③⑧）优先；只能判断或自评的（⑦⑨⑩⑪）照留，但在 §5 里挑明其主观性，绝不伪装成实测。</li>
     </ul>
   </div>
 
@@ -572,7 +572,7 @@
     <div class="step"><div class="ver"><b>v3 · 补质量</b></div><div class="txt">用户指"内容质量只有一个指标太少"。于是从质量面拆出<b>③ 正文详尽度</b>：抓得到（②）≠ 够用（③），两者正交。</div></div>
     <div class="step"><div class="ver"><b>v4 · 降维</b><small>纠偏</small></div><div class="txt"><span class="corr">已纠正</span>把<b>版本敏感度</b>从矩阵列降为"任务名旁的小标签"——它是任务属性、与栈无关，当列只会在两栏填相同值、虚增维度（§6.4）。</div></div>
     <div class="step"><div class="ver"><b>v5 · 明确因变量</b></div><div class="txt">把<b>⑨⑩ 产出</b>明确标成"因变量"——它们是前几关的结果，列出来是为闭环与校验，<b>不再与输入项重复加权</b>（§6.5）。定稿为 11 项。</div></div>
-    <div class="step"><div class="ver"><b>v5.1 · 子树纠偏</b><small>真跑</small></div><div class="txt"><span class="corr">已纠正</span>真跑后推翻"②可抓取性是平台常量、CANN 统一记 2"：它是<b>子树相关</b>的——入门子树可抓、深层/前沿页才 SPA（§6.2）。这改了打分，但没改指标本身。</div></div>
+    <div class="step"><div class="ver"><b>v5.1 · 子树纠偏</b><small>实测检索</small></div><div class="txt"><span class="corr">已纠正</span>实测检索后推翻"②可抓取性是平台常量、CANN 统一记 2"：它是<b>子树相关</b>的——入门子树可抓、深层/前沿页才 SPA（§6.2）。这改了打分，但没改指标本身。</div></div>
   </div>
 
   <!-- 4. 逐项定义 -->
@@ -719,7 +719,7 @@
   <h2 id="s5">5 · 评分是怎么打的：1–5 凭什么判定 <span class="en">how scores are assigned</span></h2>
   <p class="note">一句话原则：<b>每一分都锚在"跑这一遍时能指认的证据"上，不凭印象。</b>但不同指标的证据强度不一样——按强弱分三档，越往下越带主观成分，读分时要知道每格的可靠度不同。</p>
 
-  <div class="tier t1"><div class="tk">硬实测<br>①②③⑧</div><div class="tv"><b>直接来自真跑的过程记录。</b>第几轮命中（①）、web_fetch 成不成功（②）、抓回的正文里有没有参数表/命令（③）、总共几轮几次抓取（⑧）——这些都白纸黑字写在 <code>task_run_log.md</code> 里，可复核。</div></div>
+  <div class="tier t1"><div class="tk">硬实测<br>①②③⑧</div><div class="tv"><b>直接来自实测检索的过程记录。</b>第几轮命中（①）、web_fetch 成不成功（②）、抓回的正文里有没有参数表/命令（③）、总共几轮几次抓取（⑧）——这些都白纸黑字写在 <code>task_run_log.md</code> 里，可复核。</div></div>
   <div class="tier t2"><div class="tk">半实测<br>④⑤⑥</div><div class="tv"><b>能观察，但"够不够清楚/可信"要判断。</b>数版本号（④）、数二手源（⑤）、看日期与一致性（⑥）都是可观察事实，但从事实到分数留有口径空间，不是纯客观读数。</div></div>
   <div class="tier t3"><div class="tk">自评 / 因变量<br>⑦⑨⑩⑪</div><div class="tv"><b>最主观，故不与输入项重复加权。</b>⑦是我对自己训练覆盖的主观估计（<b>2026-06 起加 churn 知识截止 gap 罚分，给了一个客观锚、半客观化</b>）；⑨⑩是前几关的<b>结果</b>（因变量）；⑪是收口总评。它们与③④⑥高度相关，列出来是为闭环校验，不当新证据。</div></div>
 
@@ -736,7 +736,7 @@
   <div class="pbox lim">
     <h4>诚实标注的局限</h4>
     <ul>
-      <li><b>n≈1</b>：每个任务每栈只真跑了一次，换个问法 / 换个时间，命中可能不同。</li>
+      <li><b>n≈1</b>：每个任务每栈只实测检索了一次，换个问法 / 换个时间，命中可能不同。</li>
       <li><b>时间快照</b>：2026-06 这一时点的检索结果；文档站改版、二手增减都会让分数变。</li>
       <li><b>主观分</b>：t3 档（⑦⑨⑩⑪）带个人判断，不同人可能 ±1。</li>
       <li><b>样本薄</b>：4 任务只覆盖 26 任务清单的一小块；"任务相关"这条结论成立，但<b>单格分数别过度解读</b>。</li>
@@ -753,7 +753,7 @@
 
   <div class="dec">
     <div class="qd"><span class="n">6.2</span>为什么"官方可抓取性"按子树判定，不是平台常量？</div>
-    <div class="ad"><span class="corr">已纠正</span>早期说法："hiascend 全站 <code>/document/detail/</code> 都是 SPA，CANN ②统一记 2"。<b>本轮真跑实测推翻</b>：可抓取性是<b>子树相关</b>的——入门 <code>quickstart/</code>(A)、<code>modeldevpt/ptmigr/</code>(B) 子树服务端渲染、正文可抓（②记 4）；<code>doc_center/</code>(C-ATB) 部分可抓（②记 4）；而 <code>devaids/</code>、<code>devguide/opdevg/</code>、<code>apiref/aolapi/</code> 等<b>深层参考 / 前沿开发页</b>才是 SPA。所以 CANN 的②不再统一记 2，而是 <b>A/B/C=4、D=2</b>。含义更精准：SPA 短板不是"CANN 文档一律抓不到"，而是"<b>越深入前沿开发越掉进坑</b>"——只有 D 既无可抓子树兜底、二手又稀，才被真正咬到。</div>
+    <div class="ad"><span class="corr">已纠正</span>早期说法："hiascend 全站 <code>/document/detail/</code> 都是 SPA，CANN ②统一记 2"。<b>本轮实测检索推翻</b>：可抓取性是<b>子树相关</b>的——入门 <code>quickstart/</code>(A)、<code>modeldevpt/ptmigr/</code>(B) 子树服务端渲染、正文可抓（②记 4）；<code>doc_center/</code>(C-ATB) 部分可抓（②记 4）；而 <code>devaids/</code>、<code>devguide/opdevg/</code>、<code>apiref/aolapi/</code> 等<b>深层参考 / 前沿开发页</b>才是 SPA。所以 CANN 的②不再统一记 2，而是 <b>A/B/C=4、D=2</b>。含义更精准：SPA 短板不是"CANN 文档一律抓不到"，而是"<b>越深入前沿开发越掉进坑</b>"——只有 D 既无可抓子树兜底、二手又稀，才被真正咬到。</div>
   </div>
 
   <div class="dec">
@@ -787,7 +787,7 @@
   </div>
 
   <div class="foot">
-    口径与事实依据见项目 <code>CLAUDE.md</code> 第 3 节（度量体系）与第 9 节附录（已核实来源，勿改动事实）；逐任务真跑过程与 8 条原始问题见 <code>task_run_log.md</code>；落分热力图见 <code>17_official_site_focus.html</code>。本材料随指标与打分更新而同步。<br>
+    口径与事实依据见项目 <code>CLAUDE.md</code> 第 3 节（度量体系）与第 9 节附录（已核实来源，勿改动事实）；逐任务实测检索过程与 8 条原始问题见 <code>task_run_log.md</code>；落分热力图见 <code>17_official_site_focus.html</code>。本材料随指标与打分更新而同步。<br>
     色板：NVIDIA 绿 <code>#76B900</code> ／ 华为红 <code>#C8102E</code>；v5→v1 <code>#BBF0D4 / #DCF5E5 / #FCEFC7 / #FBE0CE / #F9D2D2</code>。
   </div>
 

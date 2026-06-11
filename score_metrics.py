@@ -15,7 +15,7 @@ score_metrics.py — 「AI 可用性」11 项指标的量化打分管线
 
 设计原则
 --------
-1. 原始数据只来自真跑记录（task_run_log.md）；绝不为凑分而编。
+1. 原始数据只来自实测检索记录（task_run_log.md）；绝不为凑分而编。
 2. 凡天然是判断的输入（⑦自带知识、⑥一致性档），用**显式子档表**量化、注明是自评。
 3. ⑨⑩是产出/因变量，照打分但**不进⑪**（进了=重复加权）。
 4. 受阻（SPA 抓不到正文）记 BLOCKED，归一时按 0，且**不等于给③打1分**。
@@ -46,7 +46,7 @@ CONSIST = {"high": +1.0, "mid": 0.0, "low": -1.0}
 # 时效性（recency）—— ⑥ 二手可信度的「只罚不奖」修正项
 #   设计取舍：① 够新是基线、不是加分（给加分会把临界格虚高地推过整数档）；
 #            ② 过时才是缺陷、扣分；③ 阈值按二手来源**发表日期中位数**的月龄。
-#   today 固定为 (2026,6) 与 task_run_log 真跑日同月，便于复算。
+#   today 固定为 (2026,6) 与 task_run_log 实测检索日同月，便于复算。
 #   各源真实发表日期由 web_search 实测取得，None=未拿到确切日期(诚实留空、不参与中位)。
 # ------------------------------------------------------------
 TODAY = (2026, 6)
@@ -204,7 +204,7 @@ RAW = {
      dates=["2024-11", "2025-12", "2024-11"],
      consist="low", own=2, churn="fast", pin="none", repro="partial"),
  },
- # ── 第二批真跑（2026-06-10）：E/F/G/H 四任务 ──────────────────
+ # ── 第二批实测检索（2026-06-10）：E/F/G/H 四任务 ──────────────────
  "E": {  # 报错码 / 异常排查（调试类，版本敏感 中）
   "cuda": dict(rounds=1, rank=2, refine=False, fetch=1, fetch_fail=0,
      core_fetch="static", exec=True, ref_level="exhaustive",
@@ -286,7 +286,7 @@ RAW = {
      dates=["2025-01", "2025-05", None, None, None],
      consist="mid", own=3, churn="moderate", pin="mostly", repro="copyrun"),
  },
- # ── 第三批真跑（2026-06-11，sub-agent 并行检索→主会话清洗判分）：I–N ──
+ # ── 第三批实测检索（2026-06-11，sub-agent 并行检索→主会话清洗判分）：I–N ──
  "I": {  # 版本兼容排查（环境类，版本敏感 高）
   "cuda": dict(rounds=2, rank=2, refine=False, fetch=2, fetch_fail=0,
      core_fetch="static", exec=True, ref_level="exhaustive",
@@ -502,7 +502,7 @@ RAW = {
      consist="high", own=2, churn="fast", pin="mostly", repro="params"),
  },
 
- # ── 第四批·真跑（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）：T–Z 七任务 ──
+ # ── 第四批·实测检索（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）：T–Z 七任务 ──
  "T": {  # 动态 batch/shape 推理（推理部署类，版本敏感 高）
   # refine 清洗：官方两侧均 rank1 首轮命中；CUDA 的二搜是 404 后换页(已记 fetch_fail=1)、非发现失败→refine=False
   "cuda": dict(rounds=2, rank=1, refine=False, fetch=4, fetch_fail=1,
