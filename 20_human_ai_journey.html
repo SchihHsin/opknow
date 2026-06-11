@@ -56,7 +56,7 @@ ul.tight li{margin-bottom:6px}
 .vtab.active{background:#2f3d63;color:#fff}
 /* 时序图容器 */
 .chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px 0}
-#journey{display:block}
+#journey{display:block;margin:0 auto}
 .legendbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:12px;color:#444;margin:10px 2px 2px;padding:10px 14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px}
 .lg{display:inline-flex;align-items:center;gap:6px}
 .lgdot{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none}
@@ -638,7 +638,7 @@ function renderH(){
 function renderV(){
   const phX=4, phW=92, owX=100, owW=66;
   const colAi=320, colHu=560, branchMidX=440;
-  const vTop=96, dyV=56, Wv=740;
+  const vTop=96, dyV=56, Wv=690;
   const Y = xi => vTop + xi*dyV;
   const lastY = Y(16);
   const Hv = lastY + 70;
