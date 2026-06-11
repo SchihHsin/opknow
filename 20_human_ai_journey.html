@@ -49,13 +49,24 @@ ul.tight li{margin-bottom:6px}
 .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
 .pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
 .pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
+/* 控制行：左=自主度拖动条，右=横/竖 Tab */
+.ctrlrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:8px 0 2px}
+.lvlbox{flex:1;min-width:300px;max-width:440px}
+.lvlhead{font-size:12px;color:#444;font-weight:700;display:flex;gap:8px;align-items:center;margin-bottom:3px}
+.lvltag{font-size:10.5px;font-weight:600;padding:1px 8px;border-radius:8px;background:#E9F4F0;color:#0F6E56}
+.lvltag.infer{background:#FBE0CE;color:#993C1D}
+.lvlslider{width:100%;margin:2px 0 0;accent-color:#2f3d63}
+.lvlticks{display:flex;justify-content:space-between;font-size:10.5px;color:#aaa;margin-top:1px}
+.lvlticks span{cursor:pointer}
+.lvlticks span.on{color:#2f3d63;font-weight:700}
+.lvldesc{font-size:12px;color:var(--sub);margin:8px 2px 0;line-height:1.6}
 /* 横/竖向切换 Tab */
 .vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
 .vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
 .vtab:hover{color:#2f3d63}
 .vtab.active{background:#2f3d63;color:#fff}
 /* 时序图容器 */
-.chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px 0}
+.chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px auto;width:fit-content;max-width:100%}
 #journey{display:block;margin:0 auto}
 .legendbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:12px;color:#444;margin:10px 2px 2px;padding:10px 14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px}
 .lg{display:inline-flex;align-items:center;gap:6px}
@@ -79,6 +90,11 @@ ul.tight li{margin-bottom:6px}
 .wl{display:flex;height:26px;border-radius:7px;overflow:hidden;font-size:12px;font-weight:700;color:#fff;margin:6px 0}
 .wl .ai{background:var(--ai);display:flex;align-items:center;justify-content:center}
 .wl .hu{background:var(--hu);display:flex;align-items:center;justify-content:center}
+.axrow{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
+.axn{width:92px;color:#333;flex:none}
+.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:var(--hu)}
+.axbar>i{display:block;height:100%;background:var(--ai)}
+.axw{width:120px;text-align:right;color:#666;flex:none}
 /* 决策链流程 */
 .chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
 .chain .ck{flex:1;min-width:120px;background:#F6F4FB;border:1px solid #ddd6ee;border-radius:9px;padding:9px 11px;font-size:12px;position:relative}
@@ -136,13 +152,21 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <a id="s1"></a>
-<h2><span class="no">①</span>全链路时序图 · 双泳道（横向 / 竖向可切换，悬浮看每步细节）</h2>
-<div class="sechint">两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
+<h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
+<div class="sechint"><b>左侧拖动条 = AI 自主度场景</b>：拖到 <b>人主导·问答</b>（实测）→ <b>Vibe Coding</b> → <b>全自动</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、用户独立分支消失）。右侧 = 横/竖显示切换。每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
 
-<div class="vtabs">
-  <button class="vtab active" data-mode="h">横向时间轴 · 左→右</button>
-  <button class="vtab" data-mode="v">竖向时序 · 时间向下（经典 sequence）</button>
+<div class="ctrlrow">
+  <div class="lvlbox">
+    <div class="lvlhead">AI 自主度 <span class="lvltag" id="lvlTag">实测</span></div>
+    <input type="range" min="0" max="2" step="1" value="0" id="lvl" class="lvlslider" aria-label="AI 自主度档位">
+    <div class="lvlticks"><span class="on" data-lvl="0">人主导·问答</span><span data-lvl="1">Vibe Coding</span><span data-lvl="2">全自动</span></div>
+  </div>
+  <div class="vtabs">
+    <button class="vtab active" data-mode="h">横向时间轴</button>
+    <button class="vtab" data-mode="v">竖向时序</button>
+  </div>
 </div>
+<div class="lvldesc" id="lvlDesc"></div>
 
 <div class="chartwrap">
   <svg id="journey"></svg>
@@ -174,8 +198,12 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <h3>任务分工：谁干哪些活</h3>
     <p style="font-size:13px"><span class="tag ai">AI（7 步）</span>把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 <code>msopgen</code> 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。</p>
     <p style="font-size:13px;margin-top:8px"><span class="tag hu">用户（10 步含分支）</span>立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 跑测试）、做 3 个关键决策、2 次脱离 AI 独立求证。</p>
-    <div class="wl"><div class="ai" style="width:41%">AI ≈ 41%</div><div class="hu" style="width:59%">用户 ≈ 59%</div></div>
-    <div class="note">量化口径：按节点计数（AI 7 / 用户 10），非工时。AI 在<b>检索阶段（P2）几乎独占</b>，用户在<b>环境执行与验收阶段（P3 / P5 / P7）独占</b>；这正是「越往本地落地，人的占比越高」。</div>
+    <div style="font-size:12px;color:#555;margin:8px 0 4px">沿「把知识搬进答案」价值链拆四轴，各归谁（<span style="color:var(--ai)">紫=AI</span> / <span style="color:var(--hu)">蓝=人</span>）：</div>
+    <div class="axrow"><span class="axn">检索·找知识</span><div class="axbar"><i style="width:100%"></i></div><span class="axw">AI 100%</span></div>
+    <div class="axrow"><span class="axn">产出·写代码</span><div class="axbar"><i style="width:82%"></i></div><span class="axw">AI 为主</span></div>
+    <div class="axrow"><span class="axn">执行·动手跑</span><div class="axbar"><i style="width:0%"></i></div><span class="axw">人 100%（问答场景）</span></div>
+    <div class="axrow"><span class="axn">决策·拍板验收</span><div class="axbar"><i style="width:0%"></i></div><span class="axw">人 100%</span></div>
+    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是很弱的代理。换一个轴比例就翻——按<b>产出（写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看人 100%。所以拆四轴各看，比一个数诚实。每阶段的<b>动作数 + 四轴</b>见上方时序图的阶段卡。<br>⚠ 口径：此为<b>「人主导·问答」</b>这一档（实测）；沿自主度光谱往 Vibe Coding 走，「执行」这条会从蓝翻紫。</div>
   </div>
 
   <div class="card">
@@ -351,7 +379,7 @@ TOOLS = [
 <h2><span class="no">⑥</span>交付物汇总</h2>
 <div class="card">
   <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
-  <div class="deliv"><div class="dn">2</div><div><b>业务分析文档</b>（§2 / §3）：任务分工与工作量占比（AI 41% / 用户 59%）、用户决策依据、问题卡点 + 解决方案、协同交接量化、完整用户决策链、人机主导权边界逐阶段划分。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析文档</b>（§2 / §3）：任务分工（四轴：检索/产出归 AI、执行/决策归人）+ 每阶段动作数占比、用户决策依据、问题卡点 + 解决方案、协同交接量化、完整用户决策链、人机主导权边界逐阶段划分。</div></div>
   <div class="deliv"><div class="dn">3</div><div><b>技术拆解文档</b>（§4 / §5）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化方案、大模型逐轮内部动作、忠实 agent 循环代码逐段解析、三个用户决策节点的介入原因 / 前置条件 / 执行动作专项剖析。</div></div>
 </div>
 
@@ -440,6 +468,69 @@ function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
 function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
 const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
 
+/* 每阶段「人/AI 占比」——全部从真实节点的 kind/lane 现算（不手填）
+   动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
+const KIND_AXIS={search:0, fetch:0, draft:1, run:2, deliver:2, decision:3, start:3}; // 0检 1产 2执 3决
+const AXNAME=["检","产","执","决"];
+const DOT_AI="#7F77DD", DOT_HU="#378ADD", DOT_NA="#c4c4c0";
+function phaseStats(ph){
+  let ai=0,hu=0; const axLane=[null,null,null,null];
+  NODES.forEach(n=>{
+    if(n.xi>=ph.a && n.xi<=ph.b){
+      if(n.lane==="ai") ai++; else hu++;
+      const a=KIND_AXIS[n.kind];
+      if(a!==undefined && axLane[a]===null) axLane[a]=n.lane;
+    }
+  });
+  return {ai,hu,axLane};
+}
+function dotColor(l){ return l==="ai"?DOT_AI : l==="hu"?DOT_HU : DOT_NA; }
+/* 动作数条（紫 AI 段从左、蓝 人 段铺底）；横竖共用 */
+function drawRatioBar(parent, cx, y, width, st){
+  const tot=st.ai+st.hu; if(tot===0) return;
+  const x0=cx-width/2, aw=width*st.ai/tot;
+  parent.append("rect").attr("x",x0).attr("y",y).attr("width",width).attr("height",9).attr("rx",3).attr("fill",DOT_HU);
+  if(aw>0.5) parent.append("rect").attr("x",x0).attr("y",y).attr("width",aw).attr("height",9).attr("rx",3).attr("fill",DOT_AI);
+}
+/* 四轴点（检/产/执/决，色=该轴偏向谁）；横竖共用 */
+function drawAxisDots(parent, cx, y, st){
+  const r=7.5, gap=18, total=3*gap;
+  st.axLane.forEach((l,i)=>{
+    const g=parent.append("g").attr("transform",`translate(${cx-total/2+i*gap},${y})`);
+    g.append("circle").attr("r",r).attr("fill",dotColor(l));
+    g.append("text").attr("text-anchor","middle").attr("dy",3.2).attr("font-size",9).attr("fill","#fff").text(AXNAME[i]);
+  });
+}
+/* 计数文字 AI n / 人 m（双色 tspan）；横竖共用 */
+function drawCount(parent, cx, y, st){
+  const t=parent.append("text").attr("x",cx).attr("y",y).attr("text-anchor","middle").attr("font-size",10);
+  t.append("tspan").attr("fill","#3C3489").text("AI "+st.ai);
+  t.append("tspan").attr("fill","#999").text("  /  ");
+  t.append("tspan").attr("fill","#0C447C").text("人 "+st.hu);
+}
+
+/* ===== AI 自主度光谱（拖动条）：档位决定每个动作归谁，时序图随之 morph ===== */
+const LVL=[
+ {name:"人主导 · 问答", tag:"实测", infer:false,
+  desc:"用户是司机：AI 只在 P2 检索/起草，执行(run)与决策全归人。这是 task_run_log 的 D 任务<b>实测</b>。"},
+ {name:"Vibe Coding · AI 主导执行", tag:"推演", infer:true,
+  desc:"AI 直接调工具跑命令、读报错自迭代——<b>执行(run) 从人翻给 AI</b>，决策仍归人审批。用户独立分支(自查 SPA / 外部求证)<b>消失</b>＝人这层安全网被撤掉。"},
+ {name:"全自动 Agentic", tag:"推演", infer:true,
+  desc:"AI 端到端：连<b>决策也由 AI 提议执行</b>，人只保留立项与最终交付验收。深水区(D)知识有缺口时风险最高。"}
+];
+let curLvl=0;
+/* 某动作在某档位归谁——只看 kind，与当前 lane 无关；lvl0 复现实测 */
+function laneAt(n,lvl){
+  if(n.kind==="start"||n.kind==="deliver") return "hu";   // 立项 / 终交付恒人
+  const ax=KIND_AXIS[n.kind];
+  if(ax===0||ax===1) return "ai";        // 检索 / 产出 恒 AI
+  if(ax===2) return lvl>=1 ? "ai":"hu";  // 执行(run)：Vibe 档起转 AI
+  if(ax===3) return lvl>=2 ? "ai":"hu";  // 决策：全自动档起转 AI
+  return "hu";
+}
+/* 阶段主导方由当前档位下的多数 lane 推出（随拖动条 morph） */
+function phaseOwner(ph){ const s=phaseStats(ph); return s.ai>s.hu?"ai":(s.hu>s.ai?"hu":"co"); }
+
 const svg = d3.select("#journey");
 
 /* 箭头 marker（每次重绘后需重建） */
@@ -523,9 +614,9 @@ function renderH(){
   const padL=78, padT=64, dx=92;
   const N=17;
   const W = padL + (N-1)*dx + 70;
-  const phBandY=padT-6, phBandH=26;        // 顶部独立阶段标签带
-  const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在标签带之外）
-  const laneY = {ai:150, hu:300};
+  const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
+  const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在阶段卡之外）
+  const laneY = {ai:phBgY+44, hu:phBgY+194};
   const branchY = laneY.hu + 92;
   const ownerY = branchY + 46;
   const phBgH = ownerY-8-phBgY;
@@ -535,22 +626,27 @@ function renderH(){
 
   svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
 
-  /* 节点区淡阶段背景列（仅作分组、名称不在其中） */
+  /* 节点区淡阶段背景列（仅作分组） */
   PHASE.forEach((d,i)=>{
     svg.append("rect").attr("x",X(d.a)-dx/2+6).attr("y",phBgY)
       .attr("width",(d.b-d.a)*dx+dx-12).attr("height",phBgH)
       .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3);
   });
-  /* 顶部独立阶段标签带（名称在专属色块内、垂直居中，脱离节点底色块） */
-  svg.append("text").attr("x",8).attr("y",phBandY+phBandH/2).attr("dominant-baseline","central")
+  /* 顶部阶段卡（脱离节点底色块）：名称 → 动作数条 → 计数 → 四轴点 */
+  svg.append("text").attr("x",8).attr("y",phBandY+14).attr("dominant-baseline","central")
     .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("阶段");
+  svg.append("text").attr("x",8).attr("y",phBandY+44).attr("dominant-baseline","central")
+    .attr("font-size",9.5).attr("fill","#999").text("人/AI");
   PHASE.forEach((d,i)=>{
-    const x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12;
+    const x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12, cx=x0+w/2, st=phaseStats(d);
     svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
       .attr("rx",7).attr("fill",phaseColors[i]);
-    svg.append("text").attr("x",x0+w/2).attr("y",phBandY+phBandH/2)
-      .attr("text-anchor","middle").attr("dominant-baseline","central")
-      .attr("font-size",11).attr("font-weight",700).attr("fill","#555").text(d.n);
+    svg.append("text").attr("x",cx).attr("y",phBandY+14).attr("text-anchor","middle")
+      .attr("dominant-baseline","central").attr("font-size",11).attr("font-weight",700)
+      .attr("fill","#555").text(d.n);
+    drawRatioBar(svg, cx, phBandY+24, Math.min(w-16,118), st);
+    drawCount(svg, cx, phBandY+45, st);
+    drawAxisDots(svg, cx, phBandY+58, st);
   });
 
   /* 泳道标签 + 基线（标签与基线同一水平、垂直居中对齐） */
@@ -576,8 +672,8 @@ function renderH(){
     }
   }
 
-  /* 分支连线（向下到 branchY） */
-  BRANCH.forEach(br=>{
+  /* 分支连线（向下到 branchY）——仅问答档存在，自动化档人不再独立兜底 */
+  if(curLvl===0) BRANCH.forEach(br=>{
     const src=byId[br.from];
     const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
     svg.append("path")
@@ -608,35 +704,37 @@ function renderH(){
       }
     });
 
-  /* 分支节点 */
-  const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
-    .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
-    .style("cursor","pointer")
-    .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
-    .on("mouseleave",hideTip);
-  gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
-    .attr("stroke-width",2).attr("stroke-dasharray","4,3");
-  gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
-    .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
-  gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
-    .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  /* 分支节点（仅问答档） */
+  if(curLvl===0){
+    const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+      .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
+      .style("cursor","pointer")
+      .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+      .on("mouseleave",hideTip);
+    gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
+      .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+    gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+      .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+    gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
+      .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  }
 
-  /* 主导方色带（标签与色带垂直居中对齐） */
+  /* 主导方色带（按当前档位逐阶段推出、随拖动条 morph） */
   svg.append("text").attr("x",8).attr("y",ownerY+21).attr("dominant-baseline","central")
     .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("主导方");
-  OWNER.forEach(o=>{
-    svg.append("rect").attr("x",X(o.a)-dx/2+6).attr("y",ownerY+8)
-      .attr("width",(o.b-o.a)*dx+dx-12).attr("height",26).attr("rx",6)
-      .attr("fill",ownColors[o.k]);
-    svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+21)
+  PHASE.forEach(d=>{
+    const k=phaseOwner(d), x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12;
+    svg.append("rect").attr("x",x0).attr("y",ownerY+8)
+      .attr("width",w).attr("height",26).attr("rx",6).attr("fill",ownColors[k]);
+    svg.append("text").attr("x",x0+w/2).attr("y",ownerY+21)
       .attr("text-anchor","middle").attr("dominant-baseline","central")
-      .attr("font-size",11).attr("font-weight",700).attr("fill","#2b2b2b").text(ownName[o.k]);
+      .attr("font-size",11).attr("font-weight",700).attr("fill","#2b2b2b").text(ownName[k]);
   });
 }
 
 /* ===================== 竖向视图（时间自上而下 · 经典 sequence） ===================== */
 function renderV(){
-  const phX=4, phW=92, owX=100, owW=66;
+  const phX=4, phW=108, owX=120, owW=64;
   const colAi=320, colHu=560, branchMidX=440;
   const vTop=96, dyV=56, Wv=690;
   const Y = xi => vTop + xi*dyV;
@@ -646,28 +744,33 @@ function renderV(){
 
   svg.attr("width",Wv).attr("height",Hv).attr("viewBox",`0 0 ${Wv} ${Hv}`);
 
-  /* 阶段色带（竖直） */
+  /* 阶段卡（竖直）：名称 + 动作数条 + 计数 + 四轴点 */
+  svg.append("text").attr("x",phX+phW/2).attr("y",vTop-58).attr("text-anchor","middle")
+    .attr("font-size",10).attr("font-weight",800).attr("fill","#555").text("阶段 · 人/AI");
   PHASE.forEach((d,i)=>{
-    const y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10;
+    const y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10, cy=(Y(d.a)+Y(d.b))/2, cxp=phX+phW/2, st=phaseStats(d);
     svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
       .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.6);
     const lab=svg.append("text").attr("text-anchor","middle")
       .attr("font-size",10).attr("font-weight",700).attr("fill","#555");
-    wrapText(lab, d.n, 6, 12, phX+phW/2, true);
-    lab.attr("y",(Y(d.a)+Y(d.b))/2+3);
+    wrapText(lab, d.n, 6, 11, cxp, false);
+    lab.attr("y",cy-26);
+    drawRatioBar(svg, cxp, cy-8, Math.min(phW-16,92), st);
+    drawCount(svg, cxp, cy+9, st);
+    drawAxisDots(svg, cxp, cy+24, st);
   });
 
-  /* 主导方色带（竖直） */
+  /* 主导方色带（竖直、按当前档位逐阶段推出、随拖动条 morph） */
   svg.append("text").attr("x",owX+owW/2).attr("y",vTop-58).attr("text-anchor","middle")
     .attr("font-size",10).attr("font-weight",800).attr("fill","#555").text("主导方");
-  OWNER.forEach(o=>{
-    const y0=Y(o.a)-dyV/2+5, h=(o.b-o.a)*dyV + dyV-10;
+  PHASE.forEach(d=>{
+    const k=phaseOwner(d), y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10;
     svg.append("rect").attr("x",owX).attr("y",y0).attr("width",owW).attr("height",h)
-      .attr("rx",6).attr("fill",ownColors[o.k]);
+      .attr("rx",6).attr("fill",ownColors[k]);
     const lab=svg.append("text").attr("text-anchor","middle")
       .attr("font-size",10).attr("font-weight",700).attr("fill","#2b2b2b");
-    wrapText(lab, ownName[o.k], 4, 12, owX+owW/2, true);
-    lab.attr("y",(Y(o.a)+Y(o.b))/2+3);
+    wrapText(lab, ownName[k], 4, 12, owX+owW/2, true);
+    lab.attr("y",(Y(d.a)+Y(d.b))/2+3);
   });
 
   /* 参与者列头 + 生命线 */
@@ -693,8 +796,8 @@ function renderV(){
     }
   }
 
-  /* 分支连线（伸入中央通道、稍向下） */
-  BRANCH.forEach(br=>{
+  /* 分支连线（伸入中央通道、稍向下）——仅问答档 */
+  if(curLvl===0) BRANCH.forEach(br=>{
     const src=byId[br.from];
     const x1=cx(src), y1=Y(src.xi), y2=Y(src.xi)+28;
     svg.append("path")
@@ -719,27 +822,45 @@ function renderV(){
     })
     .attr("y",0);
 
-  /* 分支节点（中央通道偏下） */
-  const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
-    .attr("transform", d=>{ const s=byId[d.from]; return `translate(${branchMidX},${Y(s.xi)+28})`; })
-    .style("cursor","pointer")
-    .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
-    .on("mouseleave",hideTip);
-  gb.append("circle").attr("r",17).attr("fill","#fff").attr("stroke","#2f3d63")
-    .attr("stroke-width",2).attr("stroke-dasharray","4,3");
-  gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
-    .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
-  gb.append("text").attr("text-anchor","start").attr("x",24).attr("y",4).attr("font-size",10)
-    .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  /* 分支节点（中央通道偏下，仅问答档） */
+  if(curLvl===0){
+    const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+      .attr("transform", d=>{ const s=byId[d.from]; return `translate(${branchMidX},${Y(s.xi)+28})`; })
+      .style("cursor","pointer")
+      .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+      .on("mouseleave",hideTip);
+    gb.append("circle").attr("r",17).attr("fill","#fff").attr("stroke","#2f3d63")
+      .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+    gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+      .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+    gb.append("text").attr("text-anchor","start").attr("x",24).attr("y",4).attr("font-size",10)
+      .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  }
 }
 
-/* ===== 视图调度 + Tab 切换 ===== */
+/* ===== 视图调度 + 自主度拖动条 + 横竖 Tab ===== */
 let vMode = "h";
+function syncLvlUI(){
+  const L=LVL[curLvl];
+  const tag=document.getElementById("lvlTag");
+  tag.textContent=L.tag; tag.className="lvltag"+(L.infer?" infer":"");
+  document.getElementById("lvlDesc").innerHTML=
+    `<b style="color:${L.infer?'#993C1D':'#0F6E56'}">${L.name}</b>　`+(L.infer?'⚠ 推演（非实测，同一任务在该模式下_会_怎么分工）：':'')+L.desc;
+  document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
+}
 function draw(){
+  NODES.forEach(n=> n.lane=laneAt(n,curLvl));   // 按当前档位morph每个动作归谁
+  syncLvlUI();
   svg.selectAll("*").remove();
   addDefs();
   (vMode==="h") ? renderH() : renderV();
 }
+document.getElementById("lvl").addEventListener("input", e=>{
+  curLvl = +e.target.value; hideTip(); draw();
+});
+document.querySelectorAll(".lvlticks span").forEach(s=>{
+  s.addEventListener("click", ()=>{ curLvl=+s.dataset.lvl; document.getElementById("lvl").value=curLvl; hideTip(); draw(); });
+});
 document.querySelectorAll(".vtab").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     if(vMode===btn.dataset.mode) return;
