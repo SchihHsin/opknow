@@ -49,6 +49,11 @@ ul.tight li{margin-bottom:6px}
 .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
 .pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
 .pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
+/* 横/竖向切换 Tab */
+.vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
+.vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
+.vtab:hover{color:#2f3d63}
+.vtab.active{background:#2f3d63;color:#fff}
 /* 时序图容器 */
 .chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px 0}
 #journey{display:block}
@@ -131,8 +136,13 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <a id="s1"></a>
-<h2><span class="no">①</span>全链路时序图 · 左→右双泳道（悬浮看每步细节）</h2>
-<div class="sechint">上行 = <b style="color:var(--ai)">AI（Agent）</b>泳道，主线、每步细化；下行 = <b style="color:var(--hu)">人类用户</b>泳道，操作简洁、允许脱离 AI 的分支（自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。顶部色带 = 7 个开发阶段，底部色带 = 该段主导方。</div>
+<h2><span class="no">①</span>全链路时序图 · 双泳道（横向 / 竖向可切换，悬浮看每步细节）</h2>
+<div class="sechint">两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法）；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接）。</div>
+
+<div class="vtabs">
+  <button class="vtab active" data-mode="h">横向时间轴 · 左→右</button>
+  <button class="vtab" data-mode="v">竖向时序 · 时间向下（经典 sequence）</button>
+</div>
 
 <div class="chartwrap">
   <svg id="journey"></svg>
@@ -149,7 +159,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span class="lg"><i class="lgline dash"></i> 用户独立分支</span>
 </div>
 <div class="ownleg">
-  <b style="font-size:12px;color:#444">底部主导方：</b>
+  <b style="font-size:12px;color:#444">主导方色带：</b>
   <span><i class="i-hu"></i> 用户主导（最终决定权归人）</span>
   <span><i class="i-co"></i> 人机协同（AI 起草 / 用户执行判断）</span>
   <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
@@ -421,90 +431,31 @@ const PHASE = [
   {a:14,b:16, n:"P7 跑通·精度·交付"},
 ];
 
-/* ===== 布局 ===== */
-const padL=78, padT=64, dx=92, laneGap=150;
-const N = 17;
-const W = padL + (N-1)*dx + 70;
-const laneY = {ai: padT+82, hu: padT+82+laneGap};
-const branchY = laneY.hu + 92;
-const ownerY = branchY + 46;
-const H = ownerY + 56;
-const X = xi => padL + xi*dx;
-
-const svg = d3.select("#journey").attr("width", W).attr("height", H)
-  .attr("viewBox", `0 0 ${W} ${H}`);
-
-/* 箭头 marker */
-const defs = svg.append("defs");
-function arrow(id,color){
-  defs.append("marker").attr("id",id).attr("viewBox","0 0 10 10")
-    .attr("refX",8).attr("refY",5).attr("markerWidth",7).attr("markerHeight",7)
-    .attr("orient","auto-start-reverse")
-    .append("path").attr("d","M0,0 L10,5 L0,10 z").attr("fill",color);
-}
-arrow("ah","#8156c9"); arrow("at","#bbb"); arrow("ab","#2f3d63");
-
-/* 阶段色带 */
+/* ===== 共享常量 / 工具 ===== */
 const phaseColors=["#EEF1F7","#EFEAF7","#E9F4F0","#E9F4F0","#FBF0E0","#E9F4F0","#E6EDF8"];
-svg.selectAll(".phase").data(PHASE).enter().append("rect")
-  .attr("x", d=>X(d.a)-dx/2+6).attr("y", padT-6)
-  .attr("width", d=>(d.b-d.a)*dx + dx-12).attr("height", H-padT-46)
-  .attr("rx",8).attr("fill",(d,i)=>phaseColors[i]).attr("opacity",.55);
-svg.selectAll(".phaselab").data(PHASE).enter().append("text")
-  .attr("x", d=>(X(d.a)+X(d.b))/2).attr("y", padT+8)
-  .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
-  .attr("fill","#555").text(d=>d.n);
-
-/* 泳道标签 + 基线 */
-[["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
-  svg.append("line").attr("x1",padL-30).attr("x2",W-20)
-    .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#eee").attr("stroke-width",1);
-  svg.append("text").attr("x",8).attr("y",laneY[k]-26)
-    .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
-});
-
-const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
-function ny(n){ return laneY[n.lane]; }
-
-/* ===== 连线（主链顺序） ===== */
-for(let i=0;i<NODES.length-1;i++){
-  const a=NODES[i], b=NODES[i+1];
-  const cross = a.lane!==b.lane;
-  const x1=X(a.xi), y1=ny(a), x2=X(b.xi), y2=ny(b);
-  if(cross){
-    svg.append("path")
-      .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
-      .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
-      .attr("marker-end","url(#ah)").attr("opacity",.85);
-  } else {
-    svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
-      .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
-  }
-}
-
-/* ===== 分支连线（用户独立，虚线，向下到 branchY） ===== */
-BRANCH.forEach(br=>{
-  const src=byId[br.from];
-  const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
-  svg.append("path")
-    .attr("d", `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2-16}`)
-    .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
-    .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
-});
-
-/* ===== 节点绘制 ===== */
 const AIFILL="#ECE7F6", AISTROKE="#6B5BA8", HUFILL="#DCE8F7", HUSTROKE="#2f3d63";
+const ownColors={hu:"#9fb4dd",ai:"#b7a9e0",co:"#9bd3c8"};
+const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
 function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
 function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
+const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
 
-const g = svg.selectAll(".node").data(NODES).enter().append("g")
-  .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
-  .style("cursor","pointer")
-  .on("mousemove", (e,d)=>showTip(e,d))
-  .on("mouseleave", hideTip);
+const svg = d3.select("#journey");
 
-g.each(function(d){
-  const sel=d3.select(this);
+/* 箭头 marker（每次重绘后需重建） */
+function addDefs(){
+  const defs = svg.append("defs");
+  function arrow(id,color){
+    defs.append("marker").attr("id",id).attr("viewBox","0 0 10 10")
+      .attr("refX",8).attr("refY",5).attr("markerWidth",7).attr("markerHeight",7)
+      .attr("orient","auto-start-reverse")
+      .append("path").attr("d","M0,0 L10,5 L0,10 z").attr("fill",color);
+  }
+  arrow("ah","#8156c9"); arrow("at","#bbb"); arrow("ab","#2f3d63");
+}
+
+/* 节点造型（朝向无关，横竖共用）：形状 + 受阻红环 + id 角标 */
+function drawNodeShape(sel,d){
   if(d.kind==="decision"){
     sel.append("rect").attr("x",-17).attr("y",-17).attr("width",34).attr("height",34)
       .attr("transform","rotate(45)").attr("rx",4)
@@ -520,51 +471,229 @@ g.each(function(d){
     sel.append("text").attr("x",18).attr("y",-16).attr("font-size",14).attr("font-weight",900)
       .attr("fill","#C8102E").text("✕");
   }
-  /* 节点 id 角标 */
   sel.append("text").attr("text-anchor","middle").attr("dy",4)
     .attr("font-size",11).attr("font-weight",800)
     .attr("fill", d.kind==="decision"?"#8a6d1a":stroke(d)).text(d.id);
-});
+}
 
-/* 节点标题（在节点上/下方交错，避免重叠） */
-g.append("text")
-  .attr("text-anchor","middle")
-  .attr("y", d=> d.lane==="ai" ? -30 : 34)
-  .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
-  .each(function(d){
-    const txt=d.t, max=8;
-    const el=d3.select(this);
-    if(txt.length>max){
-      el.append("tspan").attr("x",0).attr("dy",0).text(txt.slice(0,max));
-      el.append("tspan").attr("x",0).attr("dy",12).text(txt.slice(max));
-    } else { el.append("tspan").attr("x",0).text(txt); }
+/* 多行换行（centerY: 让多行整体竖直居中） */
+function wrapText(el,txt,max,lh,anchorX,centerVert){
+  const lines=[];
+  for(let i=0;i<txt.length;i+=max) lines.push(txt.slice(i,i+max));
+  const startDy = centerVert ? -(lines.length-1)*lh/2 : 0;
+  lines.forEach((ln,i)=>{
+    el.append("tspan").attr("x",anchorX).attr("dy", i===0?startDy:lh).text(ln);
+  });
+}
+
+/* ===================== 横向视图（时间左→右） ===================== */
+function renderH(){
+  const padL=78, padT=64, dx=92, laneGap=150;
+  const N=17;
+  const W = padL + (N-1)*dx + 70;
+  const laneY = {ai: padT+82, hu: padT+82+laneGap};
+  const branchY = laneY.hu + 92;
+  const ownerY = branchY + 46;
+  const H = ownerY + 56;
+  const X = xi => padL + xi*dx;
+  const ny = n => laneY[n.lane];
+
+  svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
+
+  /* 阶段色带 */
+  svg.selectAll(".phase").data(PHASE).enter().append("rect")
+    .attr("x", d=>X(d.a)-dx/2+6).attr("y", padT-6)
+    .attr("width", d=>(d.b-d.a)*dx + dx-12).attr("height", H-padT-46)
+    .attr("rx",8).attr("fill",(d,i)=>phaseColors[i]).attr("opacity",.55);
+  svg.selectAll(".phaselab").data(PHASE).enter().append("text")
+    .attr("x", d=>(X(d.a)+X(d.b))/2).attr("y", padT+8)
+    .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
+    .attr("fill","#555").text(d=>d.n);
+
+  /* 泳道标签 + 基线 */
+  [["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
+    svg.append("line").attr("x1",padL-30).attr("x2",W-20)
+      .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#eee").attr("stroke-width",1);
+    svg.append("text").attr("x",8).attr("y",laneY[k]-26)
+      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
   });
 
-/* ===== 分支节点 ===== */
-const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
-  .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
-  .style("cursor","pointer")
-  .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
-  .on("mouseleave",hideTip);
-gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
-  .attr("stroke-width",2).attr("stroke-dasharray","4,3");
-gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
-  .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
-gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
-  .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  /* 主链连线 */
+  for(let i=0;i<NODES.length-1;i++){
+    const a=NODES[i], b=NODES[i+1];
+    const x1=X(a.xi), y1=ny(a), x2=X(b.xi), y2=ny(b);
+    if(a.lane!==b.lane){
+      svg.append("path")
+        .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
+        .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
+        .attr("marker-end","url(#ah)").attr("opacity",.85);
+    } else {
+      svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
+        .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
+    }
+  }
 
-/* ===== 主导方色带 ===== */
-const ownColors={hu:"#9fb4dd",ai:"#b7a9e0",co:"#9bd3c8"};
-const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
-svg.append("text").attr("x",8).attr("y",ownerY+2).attr("font-size",11)
-  .attr("font-weight",800).attr("fill","#555").text("主导方");
-OWNER.forEach(o=>{
-  svg.append("rect").attr("x",X(o.a)-dx/2+6).attr("y",ownerY+8)
-    .attr("width",(o.b-o.a)*dx+dx-12).attr("height",26).attr("rx",6)
-    .attr("fill",ownColors[o.k]);
-  svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+25)
-    .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
-    .attr("fill","#2b2b2b").text(ownName[o.k]);
+  /* 分支连线（向下到 branchY） */
+  BRANCH.forEach(br=>{
+    const src=byId[br.from];
+    const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
+    svg.append("path")
+      .attr("d", `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2-16}`)
+      .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
+      .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
+  });
+
+  /* 节点 */
+  const g = svg.selectAll(".node").data(NODES).enter().append("g")
+    .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
+    .style("cursor","pointer")
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
+  g.each(function(d){ drawNodeShape(d3.select(this),d); });
+  g.append("text").attr("text-anchor","middle")
+    .attr("y", d=> d.lane==="ai" ? -30 : 34)
+    .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
+    .each(function(d){ wrapText(d3.select(this), d.t, 8, 12, 0, false); });
+
+  /* 分支节点 */
+  const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+    .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
+    .style("cursor","pointer")
+    .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+    .on("mouseleave",hideTip);
+  gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
+    .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+  gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+    .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+  gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
+    .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+
+  /* 主导方色带 */
+  svg.append("text").attr("x",8).attr("y",ownerY+2).attr("font-size",11)
+    .attr("font-weight",800).attr("fill","#555").text("主导方");
+  OWNER.forEach(o=>{
+    svg.append("rect").attr("x",X(o.a)-dx/2+6).attr("y",ownerY+8)
+      .attr("width",(o.b-o.a)*dx+dx-12).attr("height",26).attr("rx",6)
+      .attr("fill",ownColors[o.k]);
+    svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+25)
+      .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
+      .attr("fill","#2b2b2b").text(ownName[o.k]);
+  });
+}
+
+/* ===================== 竖向视图（时间自上而下 · 经典 sequence） ===================== */
+function renderV(){
+  const phX=4, phW=92, owX=100, owW=66;
+  const colAi=320, colHu=560, branchMidX=440;
+  const vTop=96, dyV=56, Wv=740;
+  const Y = xi => vTop + xi*dyV;
+  const lastY = Y(16);
+  const Hv = lastY + 70;
+  const cx = n => n.lane==="ai" ? colAi : colHu;
+
+  svg.attr("width",Wv).attr("height",Hv).attr("viewBox",`0 0 ${Wv} ${Hv}`);
+
+  /* 阶段色带（竖直） */
+  PHASE.forEach((d,i)=>{
+    const y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10;
+    svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.6);
+    const lab=svg.append("text").attr("text-anchor","middle")
+      .attr("font-size",10).attr("font-weight",700).attr("fill","#555");
+    wrapText(lab, d.n, 6, 12, phX+phW/2, true);
+    lab.attr("y",(Y(d.a)+Y(d.b))/2+3);
+  });
+
+  /* 主导方色带（竖直） */
+  svg.append("text").attr("x",owX+owW/2).attr("y",vTop-58).attr("text-anchor","middle")
+    .attr("font-size",10).attr("font-weight",800).attr("fill","#555").text("主导方");
+  OWNER.forEach(o=>{
+    const y0=Y(o.a)-dyV/2+5, h=(o.b-o.a)*dyV + dyV-10;
+    svg.append("rect").attr("x",owX).attr("y",y0).attr("width",owW).attr("height",h)
+      .attr("rx",6).attr("fill",ownColors[o.k]);
+    const lab=svg.append("text").attr("text-anchor","middle")
+      .attr("font-size",10).attr("font-weight",700).attr("fill","#2b2b2b");
+    wrapText(lab, ownName[o.k], 4, 12, owX+owW/2, true);
+    lab.attr("y",(Y(o.a)+Y(o.b))/2+3);
+  });
+
+  /* 参与者列头 + 生命线 */
+  [["ai","AI（Agent）","#6B5BA8",colAi],["hu","人类用户","#2f3d63",colHu]].forEach(([k,lab,c,x])=>{
+    svg.append("line").attr("x1",x).attr("x2",x).attr("y1",vTop-34).attr("y2",Hv-30)
+      .attr("stroke","#e3e3e3").attr("stroke-width",1.5);
+    svg.append("text").attr("x",x).attr("y",vTop-48).attr("text-anchor","middle")
+      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
+  });
+
+  /* 主链连线（时间向下） */
+  for(let i=0;i<NODES.length-1;i++){
+    const a=NODES[i], b=NODES[i+1];
+    const x1=cx(a), y1=Y(a.xi), x2=cx(b), y2=Y(b.xi);
+    if(a.lane!==b.lane){
+      svg.append("path")
+        .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
+        .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
+        .attr("marker-end","url(#ah)").attr("opacity",.85);
+    } else {
+      svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
+        .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
+    }
+  }
+
+  /* 分支连线（伸入中央通道、稍向下） */
+  BRANCH.forEach(br=>{
+    const src=byId[br.from];
+    const x1=cx(src), y1=Y(src.xi), y2=Y(src.xi)+28;
+    svg.append("path")
+      .attr("d", `M${x1},${y1} C${(x1+branchMidX)/2},${y1} ${(x1+branchMidX)/2},${y2} ${branchMidX-16},${y2}`)
+      .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
+      .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
+  });
+
+  /* 节点 */
+  const g = svg.selectAll(".node").data(NODES).enter().append("g")
+    .attr("transform", d=>`translate(${cx(d)},${Y(d.xi)})`)
+    .style("cursor","pointer")
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
+  g.each(function(d){ drawNodeShape(d3.select(this),d); });
+  /* 标题置于节点外侧（AI 在左、用户在右） */
+  g.append("text")
+    .attr("text-anchor", d=> d.lane==="ai" ? "end" : "start")
+    .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
+    .each(function(d){
+      const ax = d.lane==="ai" ? -30 : 30;
+      wrapText(d3.select(this), d.t, 7, 12, ax, true);
+    })
+    .attr("y",0);
+
+  /* 分支节点（中央通道偏下） */
+  const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+    .attr("transform", d=>{ const s=byId[d.from]; return `translate(${branchMidX},${Y(s.xi)+28})`; })
+    .style("cursor","pointer")
+    .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+    .on("mouseleave",hideTip);
+  gb.append("circle").attr("r",17).attr("fill","#fff").attr("stroke","#2f3d63")
+    .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+  gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+    .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+  gb.append("text").attr("text-anchor","start").attr("x",24).attr("y",4).attr("font-size",10)
+    .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+}
+
+/* ===== 视图调度 + Tab 切换 ===== */
+let vMode = "h";
+function draw(){
+  svg.selectAll("*").remove();
+  addDefs();
+  (vMode==="h") ? renderH() : renderV();
+}
+document.querySelectorAll(".vtab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    if(vMode===btn.dataset.mode) return;
+    vMode = btn.dataset.mode;
+    document.querySelectorAll(".vtab").forEach(b=>b.classList.toggle("active", b.dataset.mode===vMode));
+    hideTip();
+    draw();
+  });
 });
 
 /* ===== tooltip ===== */
@@ -585,6 +714,8 @@ function showTip(e,d){
   tip.style.left=x+"px"; tip.style.top=y+"px";
 }
 function hideTip(){ tip.style.opacity="0"; }
+
+draw();
 </script>
 </body>
 </html>
