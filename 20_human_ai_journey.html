@@ -520,34 +520,45 @@ function drawBarV(sel,d){
 
 /* ===================== 横向视图（时间左→右） ===================== */
 function renderH(){
-  const padL=78, padT=64, dx=92, laneGap=150;
+  const padL=78, padT=64, dx=92;
   const N=17;
   const W = padL + (N-1)*dx + 70;
-  const laneY = {ai: padT+82, hu: padT+82+laneGap};
+  const phBandY=padT-6, phBandH=26;        // 顶部独立阶段标签带
+  const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在标签带之外）
+  const laneY = {ai:150, hu:300};
   const branchY = laneY.hu + 92;
   const ownerY = branchY + 46;
+  const phBgH = ownerY-8-phBgY;
   const H = ownerY + 56;
   const X = xi => padL + xi*dx;
   const ny = n => laneY[n.lane];
 
   svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
 
-  /* 阶段色带 */
-  svg.selectAll(".phase").data(PHASE).enter().append("rect")
-    .attr("x", d=>X(d.a)-dx/2+6).attr("y", padT-6)
-    .attr("width", d=>(d.b-d.a)*dx + dx-12).attr("height", H-padT-46)
-    .attr("rx",8).attr("fill",(d,i)=>phaseColors[i]).attr("opacity",.55);
-  svg.selectAll(".phaselab").data(PHASE).enter().append("text")
-    .attr("x", d=>(X(d.a)+X(d.b))/2).attr("y", padT+8)
-    .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
-    .attr("fill","#555").text(d=>d.n);
+  /* 节点区淡阶段背景列（仅作分组、名称不在其中） */
+  PHASE.forEach((d,i)=>{
+    svg.append("rect").attr("x",X(d.a)-dx/2+6).attr("y",phBgY)
+      .attr("width",(d.b-d.a)*dx+dx-12).attr("height",phBgH)
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3);
+  });
+  /* 顶部独立阶段标签带（名称在专属色块内、垂直居中，脱离节点底色块） */
+  svg.append("text").attr("x",8).attr("y",phBandY+phBandH/2).attr("dominant-baseline","central")
+    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("阶段");
+  PHASE.forEach((d,i)=>{
+    const x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12;
+    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
+      .attr("rx",7).attr("fill",phaseColors[i]);
+    svg.append("text").attr("x",x0+w/2).attr("y",phBandY+phBandH/2)
+      .attr("text-anchor","middle").attr("dominant-baseline","central")
+      .attr("font-size",11).attr("font-weight",700).attr("fill","#555").text(d.n);
+  });
 
-  /* 泳道标签 + 基线 */
+  /* 泳道标签 + 基线（标签与基线同一水平、垂直居中对齐） */
   [["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
-    svg.append("line").attr("x1",padL-30).attr("x2",W-20)
-      .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#eee").attr("stroke-width",1);
-    svg.append("text").attr("x",8).attr("y",laneY[k]-26)
-      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
+    svg.append("line").attr("x1",padL).attr("x2",W-20)
+      .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#e3e3e3").attr("stroke-width",1.2);
+    svg.append("text").attr("x",6).attr("y",laneY[k]).attr("dominant-baseline","central")
+      .attr("font-size",11.5).attr("font-weight",800).attr("fill",c).text(lab);
   });
 
   /* 主链连线 */
@@ -582,9 +593,20 @@ function renderH(){
     .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
   g.each(function(d){ drawNodeShape(d3.select(this),d); });
   g.append("text").attr("text-anchor","middle")
-    .attr("y", d=> d.lane==="ai" ? -30 : 34)
     .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
-    .each(function(d){ wrapText(d3.select(this), d.t, 8, 12, 0, false); });
+    .each(function(d){
+      const el=d3.select(this);
+      const lines=[]; for(let i=0;i<d.t.length;i+=8) lines.push(d.t.slice(i,i+8));
+      if(d.lane==="ai"){               // 标题在节点上方、向上堆，避免压住图形
+        el.attr("y",-28);
+        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
+          .attr("dy", i===0 ? -(lines.length-1)*12 : 12).text(ln));
+      } else {                          // 标题在节点下方、向下堆
+        el.attr("y",32);
+        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
+          .attr("dy", i===0?0:12).text(ln));
+      }
+    });
 
   /* 分支节点 */
   const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
@@ -599,16 +621,16 @@ function renderH(){
   gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
     .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
 
-  /* 主导方色带 */
-  svg.append("text").attr("x",8).attr("y",ownerY+2).attr("font-size",11)
-    .attr("font-weight",800).attr("fill","#555").text("主导方");
+  /* 主导方色带（标签与色带垂直居中对齐） */
+  svg.append("text").attr("x",8).attr("y",ownerY+21).attr("dominant-baseline","central")
+    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("主导方");
   OWNER.forEach(o=>{
     svg.append("rect").attr("x",X(o.a)-dx/2+6).attr("y",ownerY+8)
       .attr("width",(o.b-o.a)*dx+dx-12).attr("height",26).attr("rx",6)
       .attr("fill",ownColors[o.k]);
-    svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+25)
-      .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
-      .attr("fill","#2b2b2b").text(ownName[o.k]);
+    svg.append("text").attr("x",(X(o.a)+X(o.b))/2).attr("y",ownerY+21)
+      .attr("text-anchor","middle").attr("dominant-baseline","central")
+      .attr("font-size",11).attr("font-weight",700).attr("fill","#2b2b2b").text(ownName[o.k]);
   });
 }
 
