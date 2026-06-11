@@ -616,7 +616,7 @@ function renderH(){
   const W = padL + (N-1)*dx + 70;
   const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
   const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在阶段卡之外）
-  const laneY = {ai:phBgY+44, hu:phBgY+194};
+  const laneY = {ai:phBgY+76, hu:phBgY+226};  // ai 下移：留够 AI 标题(最多4行)往上堆的净空、不压阶段卡
   const branchY = laneY.hu + 92;
   const ownerY = branchY + 46;
   const phBgH = ownerY-8-phBgY;
