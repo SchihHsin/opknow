@@ -334,60 +334,71 @@
 # 第三批真跑（2026-06-11，sub-agent 并行检索 → 主会话清洗判分）：I–S 十一任务
 
 > 方法升级：本批由并行 sub-agent 各自真跑 web_search / web_fetch、回结构化原始观测（RAW），**主会话统一做「清洗」（把混进二手的官方源归回①渠道、避免与 OFF 重复加权）后代入 `score_metrics.py` 公式判分**。清洗 = 重新归类，不是删数据；拿不到的日期/版本一律留 None、绝不杜撰。每任务一对「本质相同、仅栈不同」问句同前两批。
+>
+> **问句溯源订正（2026-06-11）**：本批 sub-agent 当时只回传了结构化观测，问句原文一度只在 I/O 两个任务留了转述版。后从本会话 transcript（`637b50f9….jsonl`）里把每个 sub-agent 的 Agent prompt 捞回，其中含派给它的「一对问题」原文——故下方 I–S 各任务的「问句」行已全部订正为 transcript 还原的**真问句原文**（非事后补编，来源可复核）。
 
 ## 任务 I · 版本兼容排查（环境类，版本敏感 高）
-- 配对问句：CUDA「PyTorch / CUDA / 驱动版本怎么对齐、冲突怎么查」｜ CANN「driver↔HDK↔CANN↔torch↔torch_npu 五件套怎么配套」。
+- 问句（transcript 原文）：CUDA「我的 PyTorch 跟 CUDA/cuDNN 版本对不上，怎么查 PyTorch、CUDA toolkit、cuDNN、驱动之间的版本配套关系？」｜ CANN「我装了 torch_npu 报版本不匹配，怎么查 CANN、torch_npu、固件驱动、PyTorch 之间的版本配套关系？」
 - 官方：CANN 配套表（GitHub/PyPI/hiascend）ssr 可抓、`npu-smi info` 可执行；多轴碎（五件套）→ ④ 仍 4（有配套表兜）。CUDA 侧 PyTorch 安装矩阵 static。
 - 二手（已剔官方）：CANN = CSDN×2 / hwcomputing；CUDA = markaicode / devzery（discuss.pytorch.org 是官方论坛①，剔除）。
 - 分：I.cuda .85 高 / **I.cann .73 中高**（短板在 ⑦自带知识 2 + ⑧成本，配套五轴需多次核对）。
 
 ## 任务 J · 安装与环境变量（环境类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「Ubuntu 上从零安装 CUDA toolkit，装完要配哪些环境变量（PATH / LD_LIBRARY_PATH）？」｜ CANN「Ubuntu 上从零安装 CANN toolkit，装完要 source 哪个 set_env.sh、配哪些环境变量？」
 - 官方 `envref/set_env.sh` 页 ssr 可抓且详尽（各 source 命令 + 环境变量表）→ ②4③5；CANN 官方命中 rank1。
 - 二手：CSDN×2 / 华为云bbs / 知乎专栏。
 - 分：J.cuda .88 / **J.cann .80 高**——这是上手侧（环境）华为投入足、官方一手就够的典型，CANN 到「高」。
 
 ## 任务 K · 容器 / 镜像搭建（环境类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「怎么用 nvidia-docker / NGC 镜像跑一个带 GPU 的 PyTorch 容器？要装 nvidia-container-toolkit、加 `--gpus` 吗？」｜ CANN「怎么用昇腾官方镜像 / Ascend docker 跑一个带 NPU 的 PyTorch 容器？要挂哪些 `/dev` 设备、用 ascend-docker-runtime 吗？」
 - 官方 doc_center dlruntime 页 static 可抓且详尽（/dev 挂载表完整、6 硬件配置）→ ②5③5。
 - 二手仅 CSDN×2（gitee Ascend/pytorch 是官方仓①，剔除）→ ⑤2⑥2 偏薄；⑧成本因 1 次 fetch_fail 被压到 1。
 - 分：K.cuda .98 / **K.cann .86 高**——官方一手强到能独立兜住，二手薄但不致命（噪声-OR 里 OFF 高即可）。
 
 ## 任务 L · 算子精度排查（调试类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「我的自定义 CUDA 算子结果和 CPU/PyTorch 参考不一致，怎么定位数值精度问题（逐层/逐元素比对）？」｜ CANN「我的昇腾算子输出和标杆不一致，怎么用昇腾精度比对工具（msaccucmp / 精度比对 / dump）定位？」
 - 官方 `devaids/auxiliarydevtool` 精度比对页 ssr 可抓且详尽（msaccucmp 命令 + 参数表 + 示例）→ ②4③5。
 - 二手：知乎 / 华为云 ModelArts 最佳实践 / segmentfault。
 - 分：L.cuda .84 / **L.cann .69 中高**（①发现仅 2、需顺着工具名二搜；④版本散乱 2）。
 
 ## 任务 M · 动态 shape / Tiling（算子开发类，版本敏感 高）
+- 问句（transcript 原文）：CUDA「TensorRT/CUDA kernel 处理动态 shape 输入怎么做（optimization profile / 运行时 shape）？」｜ CANN「Ascend C 自定义算子做动态 shape，Tiling 怎么写、TilingData 怎么定义和传递？」
 - **关键**：opdevg Tiling 正文页（10_0047）实测 ssr 可抓且详尽（`BEGIN_TILING_DATA_DEF` 等），仅 quickstart 引导页（10_0046）是 spa——**opdevg 子树非全 SPA**，再缩「D 单点受阻」论断。
 - 因子修正：Tiling 页 exec=False（结构定义非可跑命令）但 ref_level=exhaustive，原 `score3` 把非 exec 一律跌到 1（误）；**本批已修公式**为「穷尽正文 exec 则 5、非 exec 仍 4」→ M.cann ③ 1→4、⑪ .56→.63。
 - 分：M.cuda .94 / **M.cann .63 中**（①发现 2、⑦自带 2，算子自研深水区）。
 
 ## 任务 N · 算子融合（算子开发/性能类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「TensorRT/CUDA 里算子融合（layer/kernel fusion）怎么发生、怎么观察和控制？」｜ CANN「昇腾 GE 图编译里算子融合规则怎么看、怎么自定义融合 pass（UB 融合/图融合）？」
 - 官方 `graphubfusionref` 子树 ssr 可抓且详尽（fusion_switch_file + JSON + 规则清单）→ ②4③5；CANN 命中 rank1。
 - 二手：CSDN / 知乎（403 未取正文）。
 - 分：N.cuda .83 / **N.cann .74 中高**（④版本散乱 2、⑦自带 2）。
 
 ## 任务 O · 注册与框架集成（算子开发/迁移类，版本敏感 中）
-- 配对问句：CUDA「自定义算子怎么注册进 `torch.ops`（TORCH_LIBRARY/dispatcher/autograd）」｜ CANN「Ascend C 算子怎么注册成 aclnn 并集成进 torch_npu」。
+- 问句（transcript 原文）：CUDA「我写了个自定义算子，怎么注册进 PyTorch 让 `torch.ops` 能调（TORCH_LIBRARY / dispatcher / autograd 注册）？」｜ CANN「我用 Ascend C 写了算子，怎么注册成 aclnn 接口并集成进 torch_npu / PyTorch 让框架能调？」
 - **可抓取关键**：头条 how-to `devguide/opdevg/...10_0065` = SPA（fetch_fail 计 1），但 `doc_center/...10_0045` **SSR 镜像可抓且正文穷尽**（npu_native_functions.yaml / EXEC_NPU_CMD / AddCustomKernelNpu.cpp / build.sh）→ **有兜底子树、不像 D 无镜像**，故 ②记 ssr、③5。
 - 二手（已剔官方）：aliyun / ctyun / monsoon-cs（gitee op-plugin + docs.pytorch 是官方①；知乎 403 未取得不计）。
 - 分：O.cuda .84 / **O.cann .72 中高**（①发现 2 需精化二搜、⑧成本 1 因 SPA 头条吃了 fetch_fail）。
 
 ## 任务 P · 混合精度训练（训练类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「PyTorch 训练怎么开混合精度（AMP）？`torch.cuda.amp.autocast` / GradScaler 怎么用？」｜ CANN「昇腾上 PyTorch 训练怎么开混合精度？用 torch_npu 的 amp / apex，loss scale 怎么配？」
 - **可抓取关键**：`Pytorch/60RC1/ptmoddevg/` 子树 ssr 可抓且含 **NPU 专属 `dynamic`/`init_scale` 参数表 + 完整 DDP 代码**；`modeldevpt/ptmigr/` 子树才是 SPA——「可抓取子树相关」再获印证。
 - 二手：CSDN / 华为云bbs（371074 通用 AMP）/ 知乎。
 - 分：P.cuda .98 / **P.cann .83 高**——训练上手侧官方投入足；短板在版本双轴（CANN商用版 × Ascend-Extension-for-PyTorch）pin 仅 mostly、二手一致性 mid。
 
 ## 任务 Q · 显存 / OOM 优化（训练/性能类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「PyTorch 训练报 CUDA out of memory，怎么排查和优化显存（max_split_size_mb / 梯度检查点 / empty_cache）？」｜ CANN「昇腾训练报 NPU out of memory，怎么排查和优化显存（PYTORCH_NPU_ALLOC_CONF / 梯度检查点 / 显存碎片）？」
 - 官方 `comref/Envvariables/Envir_012` 子树 ssr 全表可抓（5 选项参数表 + 3 条 export 示例）→ ②4③5，**非 SPA**。
 - 清洗：CUDA 侧 discuss.pytorch.org 是官方论坛①，从二手剔除；CANN 侧 53ai / aliyun / 华为云bbs(412890 偏算子融合) / 知乎(403)。
 - 分：Q.cuda .94 / **Q.cann .86 高**——官方环境变量页一手即够；短板在 ④版本四并存（双轴）pin range。
 
 ## 任务 R · 精度 / 收敛排查（调试/训练类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「我的模型在 GPU 上训练 loss 不收敛 / 出现 NaN，怎么系统排查（梯度爆炸/学习率/数据）？」｜ CANN「我的模型迁到昇腾 NPU 后 loss 不收敛 / 精度对不齐 GPU，怎么排查（loss scale / 溢出检测 / 算子精度）？」
 - 官方 mindstudio 实战页 `toolsample3_018` ssr 全文可抓（msprobe + dump JSON 配置 + `ASCEND_LAUNCH_BLOCKING` + 两则案例）→ ②4③5，CANN 罕见的官方强项格。CUDA 侧 `numerical_accuracy` 是精度参考页、非排查 how-to（无 detect_anomaly/梯度裁剪步骤）→ ③4，靠厚二手补。
 - 清洗：CUDA 侧 discuss.pytorch.org 剔除；CANN 侧 cnblogs(SAM) / support.huaweicloud(msprobe最佳实践) / segmentfault / 知乎。
 - 分：R.cuda .98 / **R.cann .75 中高**（①发现 3 官方非首条、④版本散乱 3、⑦自带 3）。
 
 ## 任务 S · 推理服务部署（推理部署类，版本敏感 中）
+- 问句（transcript 原文）：CUDA「怎么把模型部署成推理服务？用 Triton Inference Server / TensorRT，怎么配 model repository 和起服务？」｜ CANN「怎么把模型在昇腾上部署成推理服务？用 MindIE / 昇腾推理服务，怎么配和起服务？」
 - 官方 MindIE 启动页 `mindie_service0004` + LLM config 页全 SSR 可抓（daemon 启动命令 + config.json 的 ipAddress/port/npuDeviceIds）→ ②4③4，**非 SPA**。
 - 清洗：`mindspore.cn`（昇思社区官方文档）按官方①剔除 → CANN 二手仅剩 CSDN + 知乎 2 条、偏薄（⑤2）。CUDA 侧 aws / medium / softwaremill。
 - 分：S.cuda .94 / **S.cann .74 中高**（⑤二手薄 + ⑦自带 2 + 版本 1.0.0/1.0.RC3 并存）。
@@ -412,38 +423,38 @@
 > 跑完最后 7 个任务，26/26 全量到位。每任务一对「本质相同、仅技术栈不同」问句，真跑 web_search/web_fetch，按 `score_metrics.py` 公式打分；RAW 已入库（见 score_metrics.py `T`–`Z` 段）。清洗：官方文档/仓/论坛（hiascend、doc_center 镜像、mindspore.cn、docs.nvidia.com、forums.developer.nvidia.com、discuss.pytorch.org、github、gitee）归①渠道、**不计入⑤⑥二手**；bbs.huaweicloud=云厂商二手；拿不到的发表日记 None，绝不杜撰。
 
 ## 任务 T · 动态 batch / shape 推理（推理部署类，版本敏感 高）
-- 问句：CUDA「TensorRT 怎么用 optimization profile 支持动态 batch / 输入 shape？」｜ CANN「ATC / ACL 怎么配置动态 batch（dynamic_batch_size）并在运行时选档？」
+- 问句（transcript 原文）：CUDA「我用 TensorRT/Triton 部署模型，怎么配置动态 batch / 动态 shape 推理（optimization profile / dynamic batching / min-opt-max shape）？」｜ CANN「我用昇腾 MindIE/ACL/ATC 部署模型，怎么配置动态 batch / 动态 shape 推理（dynamic_dims / 分档 / 动态分辨率）？」
 - CUDA：官方 TensorRT developer guide 首轮 rank1；二搜是 404 后换页（已记 fetch_fail=1、**非发现失败**故 refine=False）。二手 stevengong.co / liwenju0.com（个人博客）。
 - CANN：官方 `atlasatcparam_16_0018`（ATC `--dynamic_batch_size`）+ `aclcppdevg_000043`（`aclmdlSetDynamicBatchSize`）**均 ssr 可抓**、正文穷尽 → ②4③5，**非 SPA**。二手阿里云 ais_bench / 华为云联盟 cnblogs / CSDN。
 - 分：T.cuda **.92 高** / T.cann **.72 中高**——官方一手即够；短板在 ④版本四并存（pin mostly）、⑦自带 3。
 
 ## 任务 U · 访存 / occupancy 优化（性能优化类，版本敏感 低）
-- 问句：CUDA「怎么用 Nsight Compute 看 occupancy / 访存效率并调优？」｜ CANN「Ascend 上怎么做访存优化 / double-buffer 提升 occupancy？」
+- 问句（transcript 原文）：CUDA「我的 kernel occupancy 低、访存受限，怎么用 Nsight Compute 分析并优化（memory coalescing / shared memory / occupancy calculator / bank conflict）？」｜ CANN「我的昇腾算子访存是瓶颈、AI Core 利用率低，怎么分析并优化（UB/L1 数据搬运、Cube/Vector 利用率、double buffer）？」
 - CANN 关键：官方走「技术干货 SSR + `ascendcbestP` 最佳实践子树 SSR」**双路**，**绕开 D 的 ascendcopdevg SPA** → ②可抓。独立二手仅 CSDN double-buffer 1 篇，华为云bbs/知乎为官方流水文转载**回声**（consist=high 含回声、但 platform 去重仍算独立域名）。
 - 分：U.cuda **1.00 高** / U.cann **.88 高**——CANN 第二批后又一到「高」格（官方最佳实践子树厚、版本无关 ver_irrelev）。
 
 ## 任务 V · 计算与传输重叠（性能优化类，版本敏感 低）
-- 问句：CUDA「怎么用 stream + `cudaMemcpyAsync` 做 H2D/计算/D2H 重叠？」｜ CANN「Ascend 上怎么用多 stream + `aclrtMemcpyAsync` 做计算与传输重叠？」
+- 问句（transcript 原文）：CUDA「我想用 CUDA streams + 异步内存拷贝（`cudaMemcpyAsync`）让 H2D/D2H 数据传输与 kernel 计算重叠，怎么做（stream / event / pinned memory）？」｜ CANN「我想在昇腾上让数据传输与计算重叠，怎么做（多 stream / 异步内存拷贝 `aclrtMemcpyAsync` / event 同步）？」
 - CANN：host 侧 `aclrtMemcpyAsync` 落 `apiref/appdevgapi` **SSR 子树**（完整签名+参数表）、**非 SPA** → ②4。二手 CSDN / ai6s / 华为云bbs / cnblogs。
 - 分：V.cuda **.98 高** / V.cann **.72 中高**——short：ref_level core_only（API 签名有、端到端重叠 demo 散落）、⑦自带 3、版本三并存。
 
 ## 任务 W · 多卡通信优化（性能优化类，版本敏感 中）
-- 问句：CUDA「NCCL allreduce 怎么选 ring vs tree、怎么调通信？」｜ CANN「HCCL 怎么选通信算法（Ring/Mesh/RHD/NHR）、怎么调优？」
+- 问句（transcript 原文）：CUDA「我的多卡 NCCL all-reduce 通信慢，怎么调优（NCCL_ALGO/NCCL_PROTO/拓扑感知/NVLink/NCCL_DEBUG 诊断）？」｜ CANN「我的多卡 HCCL all-reduce 通信慢，怎么调优（HCCL 拓扑/RoCE 网络/HCCL_ALGO/hccn_tool 诊断）？」
 - CANN：hccl 子树 ssr 可抓（Ring/Mesh/RHD/NHR 算法描述）**但无命令表** → core_only；**着陆页 spa、靠二搜定位正文页**（refine=True，two_axis 双轴版本）。二手华为云bbs / cnblogs / 知乎。
 - 分：W.cuda **.92 高** / W.cann **.70 中高**——②可抓但③只到算法概述、⑧二搜成本、④双轴版本。
 
 ## 任务 X · 内存越界定位（调试类，版本敏感 中）
-- 问句：CUDA「怎么用 compute-sanitizer / cuda-memcheck 定位越界、非法访存？」｜ CANN「Ascend 上怎么用 msSanitizer 定位算子内存越界？」
+- 问句（transcript 原文）：CUDA「我的 CUDA kernel 报 illegal memory access / 内存越界，怎么用 compute-sanitizer（旧 cuda-memcheck）定位是哪一行越界？」｜ CANN「我的昇腾算子内存越界 / 踩内存，怎么用昇腾工具（msSanitizer / mem check / 算子内存检测）定位？」
 - CANN：官方 msSanitizer 页落 `devaids/opdev/optool` **SSR 子树**（**非 D 的 opdevg SPA**）、正文 exhaustive → ②4③5。但**二手仅知乎 1 条**（⑤2、consist mid）、⑦自带 2 → 这是「官方强、生态薄」的典型格。
 - 分：X.cuda **.88 高** / X.cann **.74 中高**——靠官方一手兜住，二手/自带均薄。
 
 ## 任务 Y · 跨芯片迁移（迁移类，版本敏感 高）
-- 问句：CUDA「同一份代码怎么跨 SM 架构（compute capability）迁移 / 编译？」｜ CANN「怎么把 .om / 模型从一款昇腾芯片迁到另一款（soc_version 切换）？」
+- 问句（transcript 原文）：CUDA「我的模型/代码从一代 NVIDIA GPU 迁到另一代（如 Volta→Hopper、不同 compute capability），要注意什么（重编译 `-arch/sm_xx`、PTX 兼容、TensorRT engine 不跨架构复用）？」｜ CANN「我的模型从一款昇腾芯片迁到另一款（如 310→910 或不同昇腾型号），要注意什么（soc_version 重新 ATC 转 .om、算子支持差异、精度/性能重测）？」
 - CANN：`/document/detail` ATC 子树 **SPA**，但 `/doc_center` 镜像兜住 soc_version 正文 → **partial（非全受阻）**；知乎 **403 抓不到**（refine=True，fetch_fail=1）。二手 CSDN / 知乎(403) / medium。
 - 分：Y.cuda **.92 高** / Y.cann **.68 中高**——partial 可抓 + 双轴版本 + ⑦自带 3，是 26 格里少数 core_fetch=partial 的（介于 D 受阻与全可抓之间）。
 
 ## 任务 Z · 概念心智模型对照（迁移类，版本敏感 低）
-- 问句：CUDA「grid/block/thread/warp/SM 的心智模型怎么对应硬件？」｜ CANN「AI Core / Cube / Vector / SPMD / 存储层级的心智模型怎么对应？」
+- 问句（transcript 原文）：CUDA「请讲清 CUDA 编程模型的核心概念（grid / block / thread / warp / SM / global·shared·register memory），它们怎么映射到硬件？」｜ CANN「请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？」
 - CANN：SPMD 页（`opdevg/Ascendcopdevg`）此处 **ssr 可抓 → 又一例 opdevg 非全 SPA**；但存储层级散落多页（无单页穷尽，pin/repro=none/skeleton 概念题本身无版本）。二手阿里云 / cnblogs / ai6s。
 - 分：Z.cuda **.92 高** / Z.cann **.90 高**——26 格里 CANN 综合最高格（概念题官方+二手都厚、版本无关），印证「越靠上手/通识越厚」。
 
