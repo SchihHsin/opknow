@@ -64,6 +64,14 @@
   /* 官方网站三列表头淡蓝底（仅配色分组，不加描边） */
   th.oc{background:#EEF1F8;color:#2a3658;}
   td.catcol{background:#E7EAF1;color:var(--g1);font-weight:800;border-radius:5px;text-align:center;vertical-align:middle;width:64px;line-height:1.4;padding:4px 3px;font-size:10px;}
+  td.catcol.rolecol{background:#E3E7F2;color:#2f3d63;}
+  /* 矩阵分组切换 Tab */
+  .hmtabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:2px 0 11px;}
+  .hmtabs .lbl{font-size:11px;font-weight:700;color:var(--g3);}
+  .hmtab{font-size:11.5px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:7px;padding:5px 15px;cursor:pointer;transition:.15s;font-family:inherit;}
+  .hmtab:hover{border-color:#2f3d63;color:#2f3d63;}
+  .hmtab.active{background:#2f3d63;color:#fff;border-color:#2f3d63;}
+  .hmtabs .hint2{font-size:10px;color:var(--g4);line-height:1.5;flex:1;min-width:200px;}
   td.task{font-weight:700;color:var(--g1);background:#F1F3F7;border-radius:5px;text-align:left;padding:5px 9px;font-size:10.5px;width:152px;cursor:help;}
   td.task.pend{color:var(--g4);font-weight:400;background:#FAFBFC;cursor:default;}
   td.stk{font-size:9px;font-weight:800;border-radius:5px;width:42px;}
@@ -207,10 +215,16 @@
 <div class="rolesec" id="rolesec"></div>
 
 <a id="s2"></a>
+<div class="hmtabs">
+  <span class="lbl">矩阵分组方式：</span>
+  <button class="hmtab active" data-mode="cat">按工作流类型</button>
+  <button class="hmtab" data-mode="role">按使用者角色</button>
+  <span class="hint2">同一份 26 任务、两种分组视角。按角色时，被多个角色共享的任务（注册集成 / 算子融合 / 分布式）会在所属角色下各出现一次，组内大致按该角色「上手→深入」的旅程顺序排列。</span>
+</div>
 <table class="hm">
   <thead>
     <tr>
-      <th class="col" rowspan="3" style="width:64px">类别</th>
+      <th class="col" rowspan="3" style="width:64px" id="grpHdr">类别</th>
       <th class="col" rowspan="3" style="width:152px">任务</th>
       <th class="col" rowspan="3" style="width:42px">栈</th>
       <th class="super" colspan="4">官方网站　<span>NVIDIA docs ｜ 昇腾社区 hiascend</span></th>
@@ -1153,23 +1167,42 @@ function renderRoles(){
  }));
 }
 function cell(c,k,s,ci){return '<td class="cell '+c.c+'" data-k="'+k+'" data-s="'+s+'" data-c="'+ci+'">'+c.d+'</td>';}
+let hmMode='cat';
+function taskRows(k,name){
+ const r=ROWS[k];
+ let h='<td class="task" rowspan="2" data-task="'+k+'">'+name+'</td><td class="stk nv" data-task="'+k+'">CUDA</td>'+r.cuda.map((c,ci)=>cell(c,k,'cuda',ci)).join('')+'</tr>';
+ h+='<tr><td class="stk hw" data-task="'+k+'">CANN</td>'+r.cann.map((c,ci)=>cell(c,k,'cann',ci)).join('')+'</tr>';
+ return h;
+}
 function renderHM(){
  let h='';
- for(const cat of CATS){
-   const n=cat.tasks.reduce((a,tk)=>a+(tk.k?2:1),0);
-   let first=true;
-   for(const tk of cat.tasks){
-     const catTd=first?'<td class="catcol" rowspan="'+n+'">'+cat.name+'</td>':'';
-     if(tk.k){const r=ROWS[tk.k];
-       h+='<tr>'+catTd+'<td class="task" rowspan="2" data-task="'+tk.k+'">'+tk.t+'</td><td class="stk nv" data-task="'+tk.k+'">CUDA</td>'+r.cuda.map((c,ci)=>cell(c,tk.k,'cuda',ci)).join('')+'</tr>';
-       h+='<tr><td class="stk hw" data-task="'+tk.k+'">CANN</td>'+r.cann.map((c,ci)=>cell(c,tk.k,'cann',ci)).join('')+'</tr>';
-     } else {
-       h+='<tr>'+catTd+'<td class="task pend">'+tk.t+'</td><td class="pcell pendcell" colspan="12">待 跑</td></tr>';
+ if(hmMode==='role'){
+   for(const role of ROLES){
+     const n=role.tasks.length*2;
+     let first=true;
+     for(const tk of role.tasks){
+       const gTd=first?'<td class="catcol rolecol" rowspan="'+n+'">'+role.n+'</td>':'';
+       h+='<tr>'+gTd+taskRows(tk.run,tk.t);
+       first=false;
      }
-     first=false;
+   }
+ } else {
+   for(const cat of CATS){
+     const n=cat.tasks.reduce((a,tk)=>a+(tk.k?2:1),0);
+     let first=true;
+     for(const tk of cat.tasks){
+       const gTd=first?'<td class="catcol" rowspan="'+n+'">'+cat.name+'</td>':'';
+       if(tk.k){
+         h+='<tr>'+gTd+taskRows(tk.k,tk.t);
+       } else {
+         h+='<tr>'+gTd+'<td class="task pend">'+tk.t+'</td><td class="pcell pendcell" colspan="12">待 跑</td></tr>';
+       }
+       first=false;
+     }
    }
  }
  document.getElementById('hmbody').innerHTML=h;
+ const gh=document.getElementById('grpHdr'); if(gh) gh.textContent=(hmMode==='role'?'角色':'类别');
  bind();
 }
 const tip=document.getElementById('tip');
@@ -1305,6 +1338,14 @@ function bind(){
 }
 renderRoles();
 renderHM();
+document.querySelectorAll('.hmtab').forEach(b=>b.addEventListener('click',()=>{
+  if(b.classList.contains('active')) return;
+  document.querySelectorAll('.hmtab').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  hmMode=b.dataset.mode;
+  hideTip();
+  renderHM();
+}));
 </script>
 </body>
 </html>
