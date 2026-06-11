@@ -12,8 +12,8 @@
     --touch:#2f56b3;--qual:#7e3fb0;--cost:#B45309;--out:#0E7C66;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:52px 0 64px 188px;line-height:1.65;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 32px;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:56px 0 64px 188px;line-height:1.65;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
 
   .title{font-size:23px;font-weight:900;display:flex;align-items:center;gap:11px;}
   .title::before{content:'';width:4px;height:23px;background:var(--black);border-radius:2px;}
@@ -21,7 +21,7 @@
   .lead b{color:var(--g1);}
 
   /* 跨页导航：固定页面顶部一栏 */
-  .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:rgba(242,243,247,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05);}
   .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
   .pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px;}
   .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
@@ -195,7 +195,7 @@
     <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
     <span class="pnlink cur">方法论</span>
     <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
-    <a class="pnlink" href="19_findings_ux_synthesis.html">阶段梳理</a>
+    <a class="pnlink" href="19_findings_ux_synthesis.html">启发与方向</a>
   </div>
 
   <div class="title">方法论说明书 · 这套「AI 可用性」热力图是怎么做出来的</div>
@@ -234,10 +234,10 @@
     <thead><tr><th style="width:128px">大类（工作流阶段）</th><th>该阶段穷举出的开发任务</th><th style="width:42px">数量</th></tr></thead>
     <tbody>
       <tr><td><b>1 环境与安装</b></td><td>版本兼容排查 · 安装与环境变量 · 容器 / 镜像搭建</td><td style="text-align:center">3</td></tr>
-      <tr><td><b>2 算子开发</b></td><td><b style="color:var(--hw)">自定义算子开发 (D)</b> · 算子精度排查 · 动态 shape / Tiling · 算子融合 · 注册与框架集成 · <b style="color:var(--hw)">算子库选型 (C)</b></td><td style="text-align:center">6</td></tr>
+      <tr><td><b>2 算子开发</b></td><td>自定义算子开发 · 算子精度排查 · 动态 shape / Tiling · 算子融合 · 注册与框架集成 · 算子库选型</td><td style="text-align:center">6</td></tr>
       <tr><td><b>3 训练</b></td><td>分布式训练配置 · 混合精度训练 · 显存 / OOM 优化 · 精度 / 收敛排查</td><td style="text-align:center">4</td></tr>
-      <tr><td><b>4 推理与部署</b></td><td><b style="color:var(--hw)">模型转换 / 导出 (A)</b> · 推理服务部署 · 量化 · 动态 batch / shape 推理</td><td style="text-align:center">4</td></tr>
-      <tr><td><b>5 性能优化</b></td><td><b style="color:var(--hw)">Profiling 定位瓶颈 (B)</b> · 访存 / occupancy 优化 · 计算与传输重叠 · 多卡通信优化</td><td style="text-align:center">4</td></tr>
+      <tr><td><b>4 推理与部署</b></td><td>模型转换 / 导出 · 推理服务部署 · 量化 · 动态 batch / shape 推理</td><td style="text-align:center">4</td></tr>
+      <tr><td><b>5 性能优化</b></td><td>Profiling 定位瓶颈 · 访存 / occupancy 优化 · 计算与传输重叠 · 多卡通信优化</td><td style="text-align:center">4</td></tr>
       <tr><td><b>6 调试</b></td><td>内存越界定位 · 报错码 / 异常排查</td><td style="text-align:center">2</td></tr>
       <tr><td><b>7 迁移</b></td><td>CUDA → 昇腾 迁移 · 跨芯片迁移 · 概念心智模型对照</td><td style="text-align:center">3</td></tr>
     </tbody>

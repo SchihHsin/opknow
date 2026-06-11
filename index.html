@@ -8,9 +8,9 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
   :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;--nv:#76B900;--hw:#C8102E;--blue:#2563EB;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:58px 36px 56px 186px;min-width:1390px;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:56px 36px 56px 188px;min-width:1390px;}
   /* 跨页导航：固定页面顶部一栏 */
-  .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05);}
   .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
   .pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px;}
   .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
@@ -70,8 +70,8 @@
   td.stk.nv{background:#EDF4DF;color:#5d8a06;} td.stk.hw{background:#FBE6EA;color:#bb2236;}
   .cell{border-radius:5px;font-weight:800;font-size:10px;cursor:help;}
   .cell:hover{outline:2px solid var(--blue);}
-  /* 高分弱化（不抢眼）、低分（有问题）才用饱和色突出 */
-  .v5{background:#F2F5F2;color:#9aa6a0;font-weight:500;} .v4{background:#EEF4F0;color:#7e9189;font-weight:600;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FAD7BC;color:#9A4A12;} .v1{background:#F7C0C0;color:#A11414;}
+  /* 高分弱化：用较高饱和度的底色、靠低透明度压低存在感（v5 偏蓝、v4 偏绿）；低分（有问题）才上饱和暖色突出 */
+  .v5{background:rgba(37,99,235,.12);color:#3a63b0;font-weight:500;} .v4{background:rgba(76,175,80,.16);color:#3e8540;font-weight:600;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FAD7BC;color:#9A4A12;} .v1{background:#F7C0C0;color:#A11414;}
   /* 受阻·无法实测：中性态，明确区别于低分 */
   .cell.blk{background:#E7EAF1;color:#5b6070;font-weight:700;font-size:8.5px;letter-spacing:.3px;}
   /* 悬浮栈标签(CUDA/CANN)时高亮整行 */
@@ -184,7 +184,7 @@
   <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
   <a class="pnlink" href="18_metric_definition.html">方法论</a>
   <span class="pnlink cur">热力矩阵</span>
-  <a class="pnlink" href="19_findings_ux_synthesis.html">阶段梳理</a>
+  <a class="pnlink" href="19_findings_ux_synthesis.html">启发与方向</a>
 </div>
 
 <a id="s0"></a>

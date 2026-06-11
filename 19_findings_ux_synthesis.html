@@ -9,11 +9,11 @@
 :root{
   --nv:#76B900; --hw:#C8102E;
   --v5:#BBF0D4; --v4:#DCF5E5; --v3:#FCEFC7; --v2:#FBE0CE; --v1:#F9D2D2;
-  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#fafafa; --card:#fff;
+  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#F2F3F7; --card:#fff;
   --blocked:#E3E0EE;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:54px 24px 80px 192px}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:56px 24px 80px 188px}
 .wrap{max-width:1080px;margin:0 auto}
 h1{font-size:26px;font-weight:900;letter-spacing:.5px}
 .subtitle{color:var(--sub);font-size:13.5px;margin-top:6px}
@@ -71,7 +71,7 @@ ul.tight li{margin-bottom:6px}
 .toc a{font-size:11.5px;color:#333;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 11px;line-height:1.3}
 .toc a:hover{border-color:#2f3d63;color:#2f3d63}
 /* 跨页导航：固定页面顶部一栏 */
-.pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:rgba(250,250,250,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
 .pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px}
 .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
 .pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
@@ -155,10 +155,10 @@ a.hit:hover{text-decoration:underline;color:#444}
   <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
   <a class="pnlink" href="18_metric_definition.html">方法论</a>
   <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
-  <span class="pnlink cur">阶段梳理</span>
+  <span class="pnlink cur">启发与方向</span>
 </div>
 
-<h1>阶段性梳理：实测暴露的昇腾问题 → UX 发力点 → Agent 时代的体验设计</h1>
+<h1>启发与方向：实测暴露的昇腾问题 → UX 发力点 → Agent 时代的体验设计</h1>
 <div class="subtitle">
   编号 19 · 基于 <b>19 / 26</b> 个开发者任务的双栈真跑实测（A–H 八任务已完整落库；I–S 十一任务原始观测已录入 <code>score_metrics.py</code> 并由公式算分，过程记录落库待补）。
   评分全部由 <code>score_metrics.py</code> 的 score_N() 公式从实测原始观测算出，非主观打分。生成日期 2026-06-11。
