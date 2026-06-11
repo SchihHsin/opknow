@@ -404,3 +404,58 @@
 - **采纳漏斗在 19 样本下更稳**：上手/环境侧（J/K/Q/P）多到「高」，深处算子自研（D/M）塌到「中/低」。粗分组均值：上手环境 ≈ .77、训练 ≈ .74、算子自研 ≈ .67。
 - **CANN 短板从「抓不到」转移到「版本散乱 + 二手薄/自带知识弱」**：一旦官方页可抓（绝大多数任务），④版本（多并存/双轴）与 ⑤⑦（二手剔官方后变薄、深处自带知识 2–3）成为压低 ⑪ 的主因。
 - **公式修正（诚实留痕）**：`score3_detail` 补「正文穷尽但非可执行（如 Tiling 结构、参考手册）应记 4 而非跌到 1」，仅 M.cann 受影响（③1→4、⑪ 中→中高边界 .63）。
+
+---
+
+# 第四批真跑 T–Z（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）
+
+> 跑完最后 7 个任务，26/26 全量到位。每任务一对「本质相同、仅技术栈不同」问句，真跑 web_search/web_fetch，按 `score_metrics.py` 公式打分；RAW 已入库（见 score_metrics.py `T`–`Z` 段）。清洗：官方文档/仓/论坛（hiascend、doc_center 镜像、mindspore.cn、docs.nvidia.com、forums.developer.nvidia.com、discuss.pytorch.org、github、gitee）归①渠道、**不计入⑤⑥二手**；bbs.huaweicloud=云厂商二手；拿不到的发表日记 None，绝不杜撰。
+
+## 任务 T · 动态 batch / shape 推理（推理部署类，版本敏感 高）
+- 问句：CUDA「TensorRT 怎么用 optimization profile 支持动态 batch / 输入 shape？」｜ CANN「ATC / ACL 怎么配置动态 batch（dynamic_batch_size）并在运行时选档？」
+- CUDA：官方 TensorRT developer guide 首轮 rank1；二搜是 404 后换页（已记 fetch_fail=1、**非发现失败**故 refine=False）。二手 stevengong.co / liwenju0.com（个人博客）。
+- CANN：官方 `atlasatcparam_16_0018`（ATC `--dynamic_batch_size`）+ `aclcppdevg_000043`（`aclmdlSetDynamicBatchSize`）**均 ssr 可抓**、正文穷尽 → ②4③5，**非 SPA**。二手阿里云 ais_bench / 华为云联盟 cnblogs / CSDN。
+- 分：T.cuda **.92 高** / T.cann **.72 中高**——官方一手即够；短板在 ④版本四并存（pin mostly）、⑦自带 3。
+
+## 任务 U · 访存 / occupancy 优化（性能优化类，版本敏感 低）
+- 问句：CUDA「怎么用 Nsight Compute 看 occupancy / 访存效率并调优？」｜ CANN「Ascend 上怎么做访存优化 / double-buffer 提升 occupancy？」
+- CANN 关键：官方走「技术干货 SSR + `ascendcbestP` 最佳实践子树 SSR」**双路**，**绕开 D 的 ascendcopdevg SPA** → ②可抓。独立二手仅 CSDN double-buffer 1 篇，华为云bbs/知乎为官方流水文转载**回声**（consist=high 含回声、但 platform 去重仍算独立域名）。
+- 分：U.cuda **1.00 高** / U.cann **.88 高**——CANN 第二批后又一到「高」格（官方最佳实践子树厚、版本无关 ver_irrelev）。
+
+## 任务 V · 计算与传输重叠（性能优化类，版本敏感 低）
+- 问句：CUDA「怎么用 stream + `cudaMemcpyAsync` 做 H2D/计算/D2H 重叠？」｜ CANN「Ascend 上怎么用多 stream + `aclrtMemcpyAsync` 做计算与传输重叠？」
+- CANN：host 侧 `aclrtMemcpyAsync` 落 `apiref/appdevgapi` **SSR 子树**（完整签名+参数表）、**非 SPA** → ②4。二手 CSDN / ai6s / 华为云bbs / cnblogs。
+- 分：V.cuda **.98 高** / V.cann **.72 中高**——short：ref_level core_only（API 签名有、端到端重叠 demo 散落）、⑦自带 3、版本三并存。
+
+## 任务 W · 多卡通信优化（性能优化类，版本敏感 中）
+- 问句：CUDA「NCCL allreduce 怎么选 ring vs tree、怎么调通信？」｜ CANN「HCCL 怎么选通信算法（Ring/Mesh/RHD/NHR）、怎么调优？」
+- CANN：hccl 子树 ssr 可抓（Ring/Mesh/RHD/NHR 算法描述）**但无命令表** → core_only；**着陆页 spa、靠二搜定位正文页**（refine=True，two_axis 双轴版本）。二手华为云bbs / cnblogs / 知乎。
+- 分：W.cuda **.92 高** / W.cann **.70 中高**——②可抓但③只到算法概述、⑧二搜成本、④双轴版本。
+
+## 任务 X · 内存越界定位（调试类，版本敏感 中）
+- 问句：CUDA「怎么用 compute-sanitizer / cuda-memcheck 定位越界、非法访存？」｜ CANN「Ascend 上怎么用 msSanitizer 定位算子内存越界？」
+- CANN：官方 msSanitizer 页落 `devaids/opdev/optool` **SSR 子树**（**非 D 的 opdevg SPA**）、正文 exhaustive → ②4③5。但**二手仅知乎 1 条**（⑤2、consist mid）、⑦自带 2 → 这是「官方强、生态薄」的典型格。
+- 分：X.cuda **.88 高** / X.cann **.74 中高**——靠官方一手兜住，二手/自带均薄。
+
+## 任务 Y · 跨芯片迁移（迁移类，版本敏感 高）
+- 问句：CUDA「同一份代码怎么跨 SM 架构（compute capability）迁移 / 编译？」｜ CANN「怎么把 .om / 模型从一款昇腾芯片迁到另一款（soc_version 切换）？」
+- CANN：`/document/detail` ATC 子树 **SPA**，但 `/doc_center` 镜像兜住 soc_version 正文 → **partial（非全受阻）**；知乎 **403 抓不到**（refine=True，fetch_fail=1）。二手 CSDN / 知乎(403) / medium。
+- 分：Y.cuda **.92 高** / Y.cann **.68 中高**——partial 可抓 + 双轴版本 + ⑦自带 3，是 26 格里少数 core_fetch=partial 的（介于 D 受阻与全可抓之间）。
+
+## 任务 Z · 概念心智模型对照（迁移类，版本敏感 低）
+- 问句：CUDA「grid/block/thread/warp/SM 的心智模型怎么对应硬件？」｜ CANN「AI Core / Cube / Vector / SPMD / 存储层级的心智模型怎么对应？」
+- CANN：SPMD 页（`opdevg/Ascendcopdevg`）此处 **ssr 可抓 → 又一例 opdevg 非全 SPA**；但存储层级散落多页（无单页穷尽，pin/repro=none/skeleton 概念题本身无版本）。二手阿里云 / cnblogs / ai6s。
+- 分：Z.cuda **.92 高** / Z.cann **.90 高**——26 格里 CANN 综合最高格（概念题官方+二手都厚、版本无关），印证「越靠上手/通识越厚」。
+
+## 二十六任务总览（A–Z 全量，2026-06-11 第四批后）
+
+| 维度 | 结果 |
+|---|---|
+| 已实测 | **26 / 26** |
+| CUDA 档位 | **全 高**（.83–1.00） |
+| CANN 档位 | **7 高（G/J/K/P/Q/U/Z）｜ 16 中高 ｜ 2 中（E/M）｜ 1 低（D）** |
+
+**第四批跨任务规律（26 全样本下定稿）：**
+- **SPA 真受阻仍只有 D 单点**。T–Z 又添 6 个「非 SPA」实例：U（ascendcbestP 最佳实践子树 ssr）、V（apiref/appdevgapi ssr）、W（hccl 子树 ssr）、X（devaids/opdev/optool ssr）、Z（opdevg/Ascendcopdevg SPMD 页 ssr）全 SSR；Y 为 partial（doc_center 镜像兜底、介于受阻与可抓之间）。**只有 D 的 `devguide/opdevg/ascendcopdevg` 既无 SSR 正文、又无可抓镜像兜底**——「越深入前沿算子自研越掉进 SPA+二手碎片+版本散乱三重坑」在 26 样本下成立且收窄到单点。
+- **采纳漏斗 26 样本定稿**：CANN 唯三新「高」格里，U（访存最佳实践，官方子树厚）、Z（概念对照，通识厚）继续印证上手/通识侧厚；唯一「低」仍是 D。
+- **CANN 真短板已从「抓不到」彻底转移到「④版本散乱 + ⑤二手剔官方后变薄 + ⑦深处自带知识弱」**：X 是极端例（官方③5 满分、但二手仅 1 条+自带 2 → 仍只到中高）。即 Agent 视角下，官方可抓性已非主瓶颈（仅 D），生态厚度与版本治理才是。
