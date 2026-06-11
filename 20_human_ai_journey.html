@@ -53,13 +53,13 @@ ul.tight li{margin-bottom:6px}
 .ctrlrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:8px 0 2px}
 .lvlbox{flex:1;min-width:300px;max-width:440px}
 .lvlhead{font-size:12px;color:#444;font-weight:700;display:flex;gap:8px;align-items:center;margin-bottom:3px}
-.lvltag{font-size:10.5px;font-weight:600;padding:1px 8px;border-radius:8px;background:#E9F4F0;color:#0F6E56}
-.lvltag.infer{background:#FBE0CE;color:#993C1D}
 .lvlslider{width:100%;margin:2px 0 0;accent-color:#2f3d63}
 .lvlticks{display:flex;justify-content:space-between;font-size:10.5px;color:#aaa;margin-top:1px}
-.lvlticks span{cursor:pointer}
+.lvlticks span{cursor:pointer;border-bottom:1px dashed transparent}
+.lvlticks span:hover{color:#2f3d63;border-bottom-color:#bbb}
 .lvlticks span.on{color:#2f3d63;font-weight:700}
 .lvldesc{font-size:12px;color:var(--sub);margin:8px 2px 0;line-height:1.6}
+.scopenote{font-size:11.5px;color:#8a7a5a;background:#fbf6ec;border:1px solid #f0e6d2;border-radius:8px;padding:8px 12px;margin:8px 2px 0;line-height:1.6}
 /* 横/竖向切换 Tab */
 .vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
 .vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
@@ -153,13 +153,13 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条 = AI 自主度场景</b>：拖到 <b>人主导·问答</b>（实测）→ <b>Vibe Coding</b> → <b>全自动</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、用户独立分支消失）。右侧 = 横/竖显示切换。每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
+<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
-    <div class="lvlhead">AI 自主度 <span class="lvltag" id="lvlTag">实测</span></div>
+    <div class="lvlhead">AI 自主度 · 3 档协作模式 <span style="font-weight:400;color:#999;font-size:11px">（悬浮档位看说明）</span></div>
     <input type="range" min="0" max="2" step="1" value="0" id="lvl" class="lvlslider" aria-label="AI 自主度档位">
-    <div class="lvlticks"><span class="on" data-lvl="0">人主导·问答</span><span data-lvl="1">Vibe Coding</span><span data-lvl="2">全自动</span></div>
+    <div class="lvlticks"><span class="on" data-lvl="0">人主笔·AI 辅助</span><span data-lvl="1">AI 主写·人审</span><span data-lvl="2">人委派·AI 自管</span></div>
   </div>
   <div class="vtabs">
     <button class="vtab active" data-mode="h">横向时间轴</button>
@@ -167,6 +167,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   </div>
 </div>
 <div class="lvldesc" id="lvlDesc"></div>
+<div class="scopenote">⚠ 口径：全图是一次 D 开发的<b>协作示意</b>。其中只有 <b>AI 检索那几步 + 受阻点</b>（s3 撞 SPA、d2 版本散乱）是<b>实测</b>（取自 task_run_log，也正是本项目真正测的「知识可用性」）；开发步骤（msopgen / 编包 / aclnn）按官方文档<b>重建</b>、非真跑通；谁干哪步、3 档分工是<b>建模</b>。这些受阻事实在 3 档下都一样——变的只是「谁动手、人还查不查」。</div>
 
 <div class="chartwrap">
   <svg id="journey"></svg>
@@ -512,12 +513,15 @@ function drawCount(parent, cx, y, st){
 
 /* ===== AI 自主度光谱（拖动条）：档位决定每个动作归谁，时序图随之 morph ===== */
 const LVL=[
- {name:"人主导 · 问答", tag:"实测", infer:false,
-  desc:"用户是司机：AI 只在 P2 检索/起草，执行(run)与决策全归人。这是 task_run_log 的 D 任务<b>实测</b>。"},
- {name:"Vibe Coding · AI 主导执行", tag:"推演", infer:true,
-  desc:"AI 直接调工具跑命令、读报错自迭代——<b>执行(run) 从人翻给 AI</b>，决策仍归人审批。用户独立分支(自查 SPA / 外部求证)<b>消失</b>＝人这层安全网被撤掉。"},
- {name:"全自动 Agentic", tag:"推演", infer:true,
-  desc:"AI 端到端：连<b>决策也由 AI 提议执行</b>，人只保留立项与最终交付验收。深水区(D)知识有缺口时风险最高。"}
+ {name:"人主笔，AI 打下手", exec:"人", decide:"人",
+  covers:"问 ChatGPT/Claude、Copilot 全套(补全 / inline chat / 解释)、IDE AI 助手",
+  desc:"人写、人跑、人拍板；AI 在旁边递片段 / 补全 / 解释。检索靠人主动问。"},
+ {name:"AI 主写，人审着纠", exec:"AI", decide:"人",
+  covers:"Cursor / Claude Code 的 agent 对话式",
+  desc:"AI 整块写 + 自己调工具跑 + 读报错自迭代，人盯着结果随手纠。<b>执行翻给 AI</b>；人独立自查 SPA / 外部求证的<b>安全网开始消失</b>。"},
+ {name:"人委派，AI 自管到底", exec:"AI", decide:"AI",
+  covers:"Devin(异步)、spec 驱动、多智能体——内部实现不同，对人都是「交代→拿结果」",
+  desc:"人交代一整块(或先写好规格)，AI 自跑、开 PR，人只最后验收。<b>连决策也归 AI</b>；深水区(D)知识有缺口时风险最高、人却最抽离。"}
 ];
 let curLvl=0;
 /* 某动作在某档位归谁——只看 kind，与当前 lane 无关；lvl0 复现实测 */
@@ -843,11 +847,23 @@ function renderV(){
 let vMode = "h";
 function syncLvlUI(){
   const L=LVL[curLvl];
-  const tag=document.getElementById("lvlTag");
-  tag.textContent=L.tag; tag.className="lvltag"+(L.infer?" infer":"");
   document.getElementById("lvlDesc").innerHTML=
-    `<b style="color:${L.infer?'#993C1D':'#0F6E56'}">${L.name}</b>　`+(L.infer?'⚠ 推演（非实测，同一任务在该模式下_会_怎么分工）：':'')+L.desc;
+    `<b style="color:#2f3d63">${curLvl+1}. ${L.name}</b>　<span style="color:#888">执行 ${L.exec} · 决策 ${L.decide}</span>　${L.desc}`;
   document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
+}
+/* 悬浮档位/滑块 → 弹出该模式解释卡片（复用 #tip） */
+function showModeCard(e,i){
+  const L=LVL[i];
+  tip.innerHTML=`<div class="tt-h">${i+1}. ${L.name}</div>`
+    +`<div class="tt-meta">执行：${L.exec}　·　决策：${L.decide}</div>`
+    +`<div class="tt-b">${L.desc}</div>`
+    +`<div class="tt-b" style="color:#888;margin-top:5px">涵盖：${L.covers}</div>`;
+  tip.style.opacity="1";
+  const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
+  if(y+th>window.innerHeight-8) y=e.clientY-pad-th;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
 }
 function draw(){
   NODES.forEach(n=> n.lane=laneAt(n,curLvl));   // 按当前档位morph每个动作归谁
@@ -856,11 +872,15 @@ function draw(){
   addDefs();
   (vMode==="h") ? renderH() : renderV();
 }
-document.getElementById("lvl").addEventListener("input", e=>{
-  curLvl = +e.target.value; hideTip(); draw();
-});
+const slider=document.getElementById("lvl");
+slider.addEventListener("input", e=>{ curLvl=+e.target.value; hideTip(); draw(); });
+slider.addEventListener("mousemove", e=>showModeCard(e,curLvl));
+slider.addEventListener("mouseleave", hideTip);
 document.querySelectorAll(".lvlticks span").forEach(s=>{
-  s.addEventListener("click", ()=>{ curLvl=+s.dataset.lvl; document.getElementById("lvl").value=curLvl; hideTip(); draw(); });
+  const i=+s.dataset.lvl;
+  s.addEventListener("click", ()=>{ curLvl=i; slider.value=i; hideTip(); draw(); });
+  s.addEventListener("mousemove", e=>showModeCard(e,i));
+  s.addEventListener("mouseleave", hideTip);
 });
 document.querySelectorAll(".vtab").forEach(btn=>{
   btn.addEventListener("click", ()=>{
