@@ -9,6 +9,14 @@
   :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;--nv:#76B900;--hw:#C8102E;--blue:#2563EB;}
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:34px 36px 56px;min-width:1240px;}
+  .pagenav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-size:11.5px;}
+  .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
+  .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
+  .pagenav a.pnlink:hover{border-color:var(--nv);color:var(--nv);}
+  .pagenav span.pnlink.cur{background:var(--nv);color:#fff;border-color:var(--nv);}
+  .toc{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 16px;}
+  .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:20px;padding:4px 12px;text-decoration:none;transition:.15s;}
+  .toc a:hover{border-color:var(--nv);color:var(--nv);}
   .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
   .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
   .sub{font-size:12.5px;color:var(--g4);margin:7px 0 8px 14px;line-height:1.6;}
@@ -163,15 +171,32 @@
 </head>
 <body>
 
+<div class="pagenav">
+  <span class="pnlabel">opknow 系列：</span>
+  <span class="pnlink cur">17 矩阵</span>
+  <a class="pnlink" href="18_metric_definition.html">18 方法论</a>
+  <a class="pnlink" href="19_findings_ux_synthesis.html">19 阶段梳理</a>
+</div>
+
+<a id="s0"></a>
 <div class="title">官方网站为核心 · 全任务可用性热力图</div>
 <div class="sub">真正区分两栈、且属平台级结论的，是<b style="color:var(--g2)">官方网站</b>这一块——已提为左侧醒目大组，内部再分「<span style="color:#2563EB;font-weight:700">能否触达</span>（可发现·可抓取）」与「<span style="color:#9333EA;font-weight:700">内容质量</span>（正文详尽·版本清晰）」两面；二手 / 模型 / 检索 / 产出为支撑维度，视觉弱化。<span class="hint">悬浮任意格看该环节具体过程与来源。</span></div>
+
+<div class="toc">
+  <a href="#s0">0 头条概览</a>
+  <a href="#s1">1 使用者角色</a>
+  <a href="#s2">2 全任务热力矩阵</a>
+  <a href="#s3">3 图例与说明</a>
+</div>
 
 <div class="fix">
   <b>头条对比 = 官方网站：</b><span style="color:var(--nv);font-weight:700">NVIDIA docs</span> 静态可抓 + 单一版本主线 → 触达/质量双 5；<span style="color:var(--hw);font-weight:700">昇腾社区 hiascend</span> 的可抓取性<b>按子树而非全站</b>（本轮真跑实测修正旧「统一记 2」说）：入门 <code>quickstart/</code>(A)、<code>modeldevpt/</code>(B) 子树服务端渲染、正文可抓；<code>doc_center/</code>(C-ATB) 部分可抓；而 <code>devaids/</code> <code>devguide/opdevg/</code> <code>apiref/</code> 等<b>深层参考 / 前沿开发页为 SPA</b>、正文抽不出。结果：<b>SPA 短板只在二手稀薄、无可抓子树兜底的 D（自定义算子）真正咬到结果</b>——A/B 有可抓子树兜底、C 靠厚二手绕过。叠加多版本号散乱，前沿开发差距被拉满。悬浮各格看<b>抽到 vs 缺失</b>实测。
 </div>
 
+<a id="s1"></a>
 <div class="rolesec" id="rolesec"></div>
 
+<a id="s2"></a>
 <table class="hm">
   <thead>
     <tr>
@@ -206,6 +231,7 @@
   <tbody id="hmbody"></tbody>
 </table>
 
+<a id="s3"></a>
 <div class="legend">
   <span>分值：</span><span class="sw v5">5</span><span class="sw v4">4</span><span class="sw v3">3</span><span class="sw v2">2</span><span class="sw v1">1</span>
   <span class="sw" style="background:#E7EAF1;color:#5b6070;width:auto;padding:0 6px">受阻</span>

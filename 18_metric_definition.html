@@ -20,6 +20,13 @@
   .lead{font-size:13px;color:var(--g3);margin:9px 0 4px 15px;line-height:1.7;}
   .lead b{color:var(--g1);}
 
+  /* 跨页导航 */
+  .pagenav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px 0;font-size:11.5px;}
+  .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
+  .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
+  .pagenav a.pnlink:hover{border-color:var(--nv);color:var(--nv);}
+  .pagenav span.pnlink.cur{background:var(--nv);color:#fff;border-color:var(--nv);}
+
   /* 目录 */
   .toc{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 4px 15px;}
   .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:20px;padding:4px 12px;text-decoration:none;transition:.15s;}
@@ -181,6 +188,13 @@
 </head>
 <body>
 <div class="wrap">
+
+  <div class="pagenav">
+    <span class="pnlabel">opknow 系列：</span>
+    <a class="pnlink" href="17_official_site_focus.html">17 矩阵</a>
+    <span class="pnlink cur">18 方法论</span>
+    <a class="pnlink" href="19_findings_ux_synthesis.html">19 阶段梳理</a>
+  </div>
 
   <div class="title">方法论说明书 · 这套「AI 可用性」热力图是怎么做出来的</div>
   <div class="lead">一份讲全、<b>不分散在别处</b>的说明书：从<b>任务怎么选</b>、<b>问题怎么编</b>，到<b>指标体系怎么一步步长出来</b>、<b>每项指标到底是什么意思</b>、再到<b>1–5 分凭什么判定</b>。配套热力图见 <code>17_official_site_focus.html</code>，逐步真跑过程见 <code>task_run_log.md</code>。</div>
