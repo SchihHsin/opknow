@@ -1141,7 +1141,7 @@ function renderRoles(){
  const sub='按「谁在用昇腾」<b>独立切出</b>的 4 类使用者（以官方 API 分层为骨；<b>与已跑 / 待跑无关</b>）。每个角色会做下方<b>一束任务</b>（多对多：注册集成被 ②③ 共有、算子融合被 ③④ 共有、分布式被 ②④ 共有）。<b style="color:#2f3d63">带「✓ 已跑」的</b>是该角色任务束里碰巧已实测的、点它跳到矩阵对应行；其余为该角色工作面里的待跑任务。';
  let h='<div class="rh">谁在用昇腾？　<b>4 类使用者角色</b>　<span style="font-weight:400;color:var(--g4);font-size:10px">任务的上层透镜 · 与下方「7 工作流阶段」正交</span></div><div class="rsub">'+sub+'</div><div class="rolegrid">';
  for(const r of ROLES){
-   h+='<div class="rolecard"><div class="rhead"><img class="ravatar" src="https://api.dicebear.com/9.x/personas/svg?seed='+r.avatar+'&backgroundColor=f4f5f8" alt="" loading="lazy"><div><div class="rn">'+r.n+'</div><span class="rapi">对的 API 层：'+r.api+'</span></div></div><div class="rwho">'+r.who+'</div>'+(r.edge?'<div class="redge">▸ '+r.edge+'</div>':'')+'<div class="rtk">会做的任务束（'+r.tasks.length+'）</div><div class="chips">';
+   h+='<div class="rolecard"><div class="rhead"><img class="ravatar" src="https://api.dicebear.com/9.x/notionists/svg?seed='+r.avatar+'&backgroundColor=f4f5f8&beardProbability=0" alt="" loading="lazy"><div><div class="rn">'+r.n+'</div><span class="rapi">对的 API 层：'+r.api+'</span></div></div><div class="rwho">'+r.who+'</div>'+(r.edge?'<div class="redge">▸ '+r.edge+'</div>':'')+'<div class="rtk">会做的任务束（'+r.tasks.length+'）</div><div class="chips">';
    for(const tk of r.tasks){ h+= tk.run? '<span class="chip run" data-jump="'+tk.run+'">'+tk.t+'</span>' : '<span class="chip">'+tk.t+'</span>'; }
    h+='</div></div>';
  }
