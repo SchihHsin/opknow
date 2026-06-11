@@ -70,6 +70,8 @@
   .v5{background:#F2F5F2;color:#9aa6a0;font-weight:500;} .v4{background:#EEF4F0;color:#7e9189;font-weight:600;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FAD7BC;color:#9A4A12;} .v1{background:#F7C0C0;color:#A11414;}
   /* 受阻·无法实测：中性态，明确区别于低分 */
   .cell.blk{background:#E7EAF1;color:#5b6070;font-weight:700;font-size:8.5px;letter-spacing:.3px;}
+  /* 悬浮栈标签(CUDA/CANN)时高亮整行 */
+  tr.rowhl>td{box-shadow:inset 0 0 0 1.5px var(--blue);}
   #tip .ti .sc.blk{background:#E7EAF1;color:#5b6070;}
   .pcell{background:#F4F5F8;color:var(--g4);border-radius:5px;font-size:9.5px;font-weight:600;letter-spacing:1px;}
 
@@ -1289,6 +1291,11 @@ function bind(){
    el.addEventListener('mouseenter',()=>showTip(tipCol(ci),el));
    el.addEventListener('mouseleave',hideTip);
    el.addEventListener('click',e=>{ e.stopPropagation(); pinTip(tipCol(ci),el); });
+ });
+ document.querySelectorAll('td.stk').forEach(el=>{
+   const tr=el.closest('tr');
+   el.addEventListener('mouseenter',()=>tr.classList.add('rowhl'));
+   el.addEventListener('mouseleave',()=>tr.classList.remove('rowhl'));
  });
 }
 renderRoles();
