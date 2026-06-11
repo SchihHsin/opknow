@@ -66,6 +66,7 @@ diff -q 17_official_site_focus.html index.html  # 17==index
 ## 7. 批量与并行（回答「能不能一起跑」）
 - **单会话顺序**：稳到 4 个；要 6–8 个必须严格§3「边跑边写盘」，否则压缩丢证据。
 - **真·并行**：用 sub-agent，每任务一个 agent（独立上下文）。代价：冷启动耗 token、跨 agent 难盯「绝不编造」→ **并行产出后逐个抽检来源真实性**再合并打分。Skill 只省方法论复述的外围 token，**核心 web 检索成本不可压缩**。
+- **⚠ sub-agent 必须回传「问句原文」**（2026-06-11 踩坑补）：第三批 I–S 并行跑时 sub-agent 只回传了结构化观测，9 个任务的问句原文随会话丢失、无法复原（后只能补编、存 18 §2 HTML 注释）。并行模板里**问句原文是必传字段**，主会话落 task_run_log.md 时逐字记录。
 
 ## 8. house style（CLAUDE §8）
 Noto Sans SC；`--nv:#76B900`/`--hw:#C8102E`；色阶 v5→v1 `#BBF0D4/#DCF5E5/#FCEFC7/#FBE0CE/#F9D2D2`；不旋转/倒置文字；卡片 `align-items:start` 不强行拉伸；emoji 仅 ⚠/✓；**不用 localStorage/sessionStorage**；未核实的官方数字（如 260+ 算子）一律不写、要用先 web 核实。

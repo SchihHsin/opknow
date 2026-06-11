@@ -314,6 +314,40 @@
     </div>
   </div>
   
+  <!--
+  ◇ 九任务（J–N、P–S）问句补编存档（2026-06-11，应用户要求只记注释、不进前端呈现）
+  说明：第三批 sub-agent 并行真跑时问句原文未落盘；以下为事后按 §2 设计规则
+  （真实开发者口吻 / 索要可复现产出 / 难度对等）补编的问句对，"非真跑当时原文"。
+  若未来重跑这 9 个任务，应以此为准并逐字记入 task_run_log.md。
+
+  J 安装与环境变量：
+    CUDA：「怎么在 Ubuntu 上安装 CUDA Toolkit 和 cuDNN 并配置环境变量（PATH/LD_LIBRARY_PATH）？给出完整命令和验证方法。」
+    CANN：「怎么在 Ubuntu 上安装 CANN toolkit 并配置环境变量（set_env.sh）？给出完整命令和验证方法。」
+  K 容器 / 镜像搭建：
+    CUDA：「怎么搭建能用 GPU 的 Docker 容器（NVIDIA Container Toolkit）？给出安装、运行参数和验证命令。」
+    CANN：「怎么搭建能用昇腾 NPU 的 Docker 容器？给出 Ascend Docker Runtime 安装、设备挂载参数和验证命令。」
+  L 算子精度排查：
+    CUDA：「我的模型在 GPU 上算出的结果和 CPU 对不上，怎么定位是哪个算子的数值精度问题？给出排查工具和步骤。」
+    CANN：「我的模型迁到昇腾后精度和 GPU 对不上，怎么用 msaccucmp 做算子精度比对定位？给出命令和步骤。」
+  M 动态 shape / Tiling：
+    CUDA：「写 CUDA kernel 处理动态尺寸输入时 tiling 怎么设计？给出切分策略和示例代码。」
+    CANN：「Ascend C 算子怎么支持动态 shape、Tiling 函数怎么写？给出 TilingData 定义和示例。」
+  N 算子融合：
+    CUDA：「TensorRT 构建 engine 时层融合是怎么工作的、怎么查看和控制哪些层被融合？」
+    CANN：「昇腾图编译时算子融合怎么配置、怎么用 fusion_switch_file 开关特定融合规则？」
+  P 混合精度训练：
+    CUDA：「PyTorch 怎么用 torch.amp 做混合精度训练？给出 autocast/GradScaler 用法和注意事项。」
+    CANN：「昇腾上 torch_npu 怎么做混合精度训练？给出 AMP 用法（含 NPU 专属参数）和注意事项。」
+  Q 显存 / OOM 优化：
+    CUDA：「PyTorch 训练报 CUDA out of memory，有哪些显存优化手段？给出排查方法和配置项。」
+    CANN：「昇腾上训练报显存不足 / OOM，有哪些优化手段？给出排查方法和环境变量配置。」
+  R 精度 / 收敛排查：
+    CUDA：「训练 loss 不收敛 / 出 NaN，怎么系统排查？给出工具（detect_anomaly 等）和步骤。」
+    CANN：「迁到昇腾后训练 loss 不收敛 / 出 NaN，怎么用 msprobe 等工具排查？给出步骤。」
+  S 推理服务部署：
+    CUDA：「怎么用 Triton Inference Server 部署模型推理服务？给出启动命令和配置。」
+    CANN：「怎么用 MindIE 在昇腾上部署大模型推理服务？给出启动命令和 config.json 配置。」
+-->
   <p class="note" style="margin-top:18px"><b>其余 22 个任务的问句对（E–Z）一览。</b>设计原则同上四例；「」内为 <code>task_run_log.md</code> 中逐字留存的问句原文，标 ◇ 的 9 个任务（J–N、P–S，第三批 sub-agent 并行真跑）<b>问句原文未逐字留存</b>——表中只复述配对意图、不冒充原文加引号（守「绝不编造」）：</p>
   <table class="ttab">
     <thead><tr><th style="width:34px">代号</th><th style="width:130px">任务</th><th>CUDA 侧问句</th><th>昇腾侧问句</th></tr></thead>
