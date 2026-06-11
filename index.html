@@ -28,15 +28,15 @@
   .rolesec .rh b{color:var(--hw);}
   .rolesec .rsub{font-size:11px;color:var(--g4);margin:0 0 11px 6px;line-height:1.55;}
   .rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;align-items:start;}
-  .rolecard{background:#fff;border:1px solid var(--g6);border-top:3px solid var(--hw);border-radius:9px;padding:11px 12px 12px;}
+  .rolecard{background:#fff;border:1px solid var(--g6);border-radius:9px;padding:11px 12px 12px;}
   .rolecard .rn{font-size:12.5px;font-weight:800;color:var(--g1);line-height:1.3;}
-  .rolecard .rapi{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;color:var(--hw);background:#FCE9EC;border-radius:5px;padding:2px 7px;letter-spacing:.2px;}
+  .rolecard .rapi{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;color:var(--g3);background:#F4F5F8;border-radius:5px;padding:2px 7px;letter-spacing:.2px;}
   .rolecard .rwho{font-size:10.3px;color:var(--g3);line-height:1.55;margin-top:7px;}
   .rolecard .redge{font-size:9.5px;color:var(--g4);line-height:1.5;margin-top:4px;}
   .rolecard .rtk{font-size:9px;font-weight:800;color:var(--g4);letter-spacing:.3px;margin:9px 0 4px;}
   .rolecard .chips{display:flex;flex-wrap:wrap;gap:4px;}
   .rolecard .chip{font-size:9.3px;line-height:1.4;color:var(--g3);background:#F4F5F8;border-radius:5px;padding:2.5px 7px;}
-  .rolecard .chip.run{color:#fff;background:var(--hw);font-weight:700;cursor:pointer;}
+  .rolecard .chip.run{color:#fff;background:#2f3d63;font-weight:700;cursor:pointer;}
   .rolecard .chip.run::after{content:' ✓ 已跑';font-size:8px;font-weight:700;}
   @media(max-width:980px){.rolegrid{grid-template-columns:repeat(2,1fr);}}
   .fix b{color:#5a4406;}
@@ -64,9 +64,13 @@
   td.stk.nv{background:var(--nv);} td.stk.hw{background:var(--hw);}
   .cell{border-radius:5px;font-weight:800;font-size:10px;cursor:help;}
   .cell:hover{outline:2px solid var(--blue);}
-  .v5{background:#BBF0D4;color:#04603A;} .v4{background:#DCF5E5;color:#0A6B4E;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FBE0CE;color:#9A4A12;} .v1{background:#F9D2D2;color:#A11414;}
+  /* 高分弱化（不抢眼）、低分（有问题）才用饱和色突出 */
+  .v5{background:#F2F5F2;color:#9aa6a0;font-weight:500;} .v4{background:#EEF4F0;color:#7e9189;font-weight:600;} .v3{background:#FCEFC7;color:#92620A;} .v2{background:#FAD7BC;color:#9A4A12;} .v1{background:#F7C0C0;color:#A11414;}
   /* 受阻·无法实测：中性态，明确区别于低分 */
   .cell.blk{background:#E7EAF1;color:#5b6070;font-weight:700;font-size:8.5px;letter-spacing:.3px;}
+  /* 行=技术栈视觉对照：CUDA 行下沿绿、CANN 行下沿红，扫格子也能分辨 */
+  tr.rcu td.cell{box-shadow:inset 0 -2px 0 0 rgba(118,185,0,.45);}
+  tr.rca td.cell{box-shadow:inset 0 -2px 0 0 rgba(200,16,46,.45);}
   #tip .ti .sc.blk{background:#E7EAF1;color:#5b6070;}
   .pcell{background:#F4F5F8;color:var(--g4);border-radius:5px;font-size:9.5px;font-weight:600;letter-spacing:1px;}
 
@@ -1128,7 +1132,7 @@ const ROLES=[
   tasks:[{t:'Profiling 定位瓶颈',run:'B'},{t:'访存 / occupancy 优化',run:'U'},{t:'计算与传输重叠',run:'V'},{t:'多卡通信优化',run:'W'},{t:'算子融合',run:'N'},{t:'分布式训练配置',run:'F'}]}
 ];
 function renderRoles(){
- const sub='按「谁在用昇腾」<b>独立切出</b>的 4 类使用者（以官方 API 分层为骨；<b>与已跑 / 待跑无关</b>）。每个角色会做下方<b>一束任务</b>（多对多：注册集成被 ②③ 共有、算子融合被 ③④ 共有、分布式被 ②④ 共有）。<b style="color:var(--hw)">带「✓ 已跑」的</b>是该角色任务束里碰巧已实测的、点它跳到矩阵对应行；其余为该角色工作面里的待跑任务。';
+ const sub='按「谁在用昇腾」<b>独立切出</b>的 4 类使用者（以官方 API 分层为骨；<b>与已跑 / 待跑无关</b>）。每个角色会做下方<b>一束任务</b>（多对多：注册集成被 ②③ 共有、算子融合被 ③④ 共有、分布式被 ②④ 共有）。<b style="color:#2f3d63">带「✓ 已跑」的</b>是该角色任务束里碰巧已实测的、点它跳到矩阵对应行；其余为该角色工作面里的待跑任务。';
  let h='<div class="rh">谁在用昇腾？　<b>4 类使用者角色</b>　<span style="font-weight:400;color:var(--g4);font-size:10px">任务的上层透镜 · 与下方「7 工作流阶段」正交</span></div><div class="rsub">'+sub+'</div><div class="rolegrid">';
  for(const r of ROLES){
    h+='<div class="rolecard"><div class="rn">'+r.n+'</div><span class="rapi">对的 API 层：'+r.api+'</span><div class="rwho">'+r.who+'</div>'+(r.edge?'<div class="redge">▸ '+r.edge+'</div>':'')+'<div class="rtk">会做的任务束（'+r.tasks.length+'）</div><div class="chips">';
@@ -1151,8 +1155,8 @@ function renderHM(){
    for(const tk of cat.tasks){
      const catTd=first?'<td class="catcol" rowspan="'+n+'">'+cat.name+'</td>':'';
      if(tk.k){const r=ROWS[tk.k];
-       h+='<tr>'+catTd+'<td class="task" rowspan="2" data-task="'+tk.k+'">'+tk.k+' · '+tk.t+'</td><td class="stk nv" data-task="'+tk.k+'">CUDA</td>'+r.cuda.map((c,ci)=>cell(c,tk.k,'cuda',ci)).join('')+'</tr>';
-       h+='<tr><td class="stk hw" data-task="'+tk.k+'">CANN</td>'+r.cann.map((c,ci)=>cell(c,tk.k,'cann',ci)).join('')+'</tr>';
+       h+='<tr class="rcu">'+catTd+'<td class="task" rowspan="2" data-task="'+tk.k+'">'+tk.t+'</td><td class="stk nv" data-task="'+tk.k+'">CUDA</td>'+r.cuda.map((c,ci)=>cell(c,tk.k,'cuda',ci)).join('')+'</tr>';
+       h+='<tr class="rca"><td class="stk hw" data-task="'+tk.k+'">CANN</td>'+r.cann.map((c,ci)=>cell(c,tk.k,'cann',ci)).join('')+'</tr>';
      } else {
        h+='<tr>'+catTd+'<td class="task pend">'+tk.t+'</td><td class="pcell pendcell" colspan="12">待 跑</td></tr>';
      }
