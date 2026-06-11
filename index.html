@@ -8,14 +8,17 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap');
   :root{--bg:#F2F3F7;--white:#fff;--black:#0A0A0F;--g1:#1C1C28;--g2:#3D3D50;--g3:#6B6B80;--g4:#A0A0B0;--g6:#ECEEF3;--nv:#76B900;--hw:#C8102E;--blue:#2563EB;}
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:34px 36px 56px;min-width:1240px;}
-  .pagenav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-size:11.5px;}
+  body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:var(--bg);color:var(--black);padding:58px 36px 56px 186px;min-width:1390px;}
+  /* 跨页导航：固定页面顶部一栏 */
+  .pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--g6);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.04);}
   .pagenav .pnlabel{color:var(--g4);font-weight:700;margin-right:2px;}
   .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--g6);text-decoration:none;font-weight:700;color:var(--g2);background:#fff;}
   .pagenav a.pnlink:hover{border-color:var(--nv);color:var(--nv);}
   .pagenav span.pnlink.cur{background:var(--nv);color:#fff;border-color:var(--nv);}
-  .toc{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 16px;}
-  .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:20px;padding:4px 12px;text-decoration:none;transition:.15s;}
+  /* 页内目录：固定左侧 */
+  .toc{position:fixed;top:62px;left:16px;width:152px;display:flex;flex-direction:column;gap:6px;z-index:150;}
+  .toc .toclbl{font-size:9px;font-weight:800;color:var(--g4);letter-spacing:.5px;margin:0 0 1px 4px;}
+  .toc a{font-size:11px;font-weight:700;color:var(--g2);background:#fff;border:1px solid var(--g6);border-radius:8px;padding:6px 11px;text-decoration:none;transition:.15s;}
   .toc a:hover{border-color:var(--nv);color:var(--nv);}
   .title{font-size:21px;font-weight:800;display:flex;align-items:center;gap:10px;}
   .title::before{content:'';width:4px;height:21px;background:var(--black);border-radius:2px;}
@@ -62,8 +65,8 @@
   td.catcol{background:#E7EAF1;color:var(--g1);font-weight:800;border-radius:5px;text-align:center;vertical-align:middle;width:64px;line-height:1.4;padding:4px 3px;font-size:10px;}
   td.task{font-weight:700;color:var(--g1);background:#F1F3F7;border-radius:5px;text-align:left;padding:5px 9px;font-size:10.5px;width:152px;cursor:help;}
   td.task.pend{color:var(--g4);font-weight:400;background:#FAFBFC;cursor:default;}
-  td.stk{font-size:9px;font-weight:800;color:#fff;border-radius:5px;width:42px;}
-  td.stk.nv{background:var(--nv);} td.stk.hw{background:var(--hw);}
+  td.stk{font-size:9px;font-weight:800;border-radius:5px;width:42px;}
+  td.stk.nv{background:#EDF4DF;color:#5d8a06;} td.stk.hw{background:#FBE6EA;color:#bb2236;}
   .cell{border-radius:5px;font-weight:800;font-size:10px;cursor:help;}
   .cell:hover{outline:2px solid var(--blue);}
   /* 高分弱化（不抢眼）、低分（有问题）才用饱和色突出 */
@@ -188,6 +191,7 @@
 <div class="sub">真正区分两栈、且属平台级结论的，是<b style="color:var(--g2)">官方网站</b>这一块——已提为左侧醒目大组，内部再分「<span style="color:#2563EB;font-weight:700">能否触达</span>（可发现·可抓取）」与「<span style="color:#9333EA;font-weight:700">内容质量</span>（正文详尽·版本清晰）」两面；二手 / 模型 / 检索 / 产出为支撑维度，视觉弱化。<span class="hint">悬浮任意格看该环节具体过程与来源。</span></div>
 
 <div class="toc">
+  <div class="toclbl">本页目录</div>
   <a href="#s0">0 头条概览</a>
   <a href="#s1">1 使用者角色</a>
   <a href="#s2">2 全任务热力矩阵</a>
