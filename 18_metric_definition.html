@@ -227,7 +227,7 @@
   </table>
   <p class="note">7 个阶段把"装→开发→训练→部署→调优→调试→迁移"这条完整链路铺满，共 <b>26 个任务</b>。这才是"任务是怎么形成的"的主体——一张<b>有意求全</b>的工作面清单。</p>
 
-  <p class="note" style="margin-top:16px"><b>再从这张全清单里真跑（次要的一步）。</b>26 个分四批跑完——首批 <b>A–D</b>（沿"成熟→前沿"光谱）、二批 <b>E–H</b>、三批 <b>I–S</b>、四批 <b>T–Z</b>，<b>26/26 现已全量实测</b>（标 <span class="vs hi" style="background:var(--hw)">A–Z</span>）。抽样不是随机，最初 4 个<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>让"可用性是任务相关的"显形；下表展示其中代表性的 8 个（A–H）：</p>
+  <p class="note" style="margin-top:16px"><b>再从这张全清单里真跑（次要的一步）。</b>26 个分四批跑完——首批 <b>A–D</b>（沿"成熟→前沿"光谱）、二批 <b>E–H</b>、三批 <b>I–S</b>、四批 <b>T–Z</b>，<b>26/26 现已全量实测</b>（标 <span class="vs hi" style="background:var(--hw)">A–Z</span>）。抽样不是随机，最初 4 个<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>让"可用性是任务相关的"显形；下表列出<b>全部 26 个</b>（四批代号 A–D / E–H / I–S / T–Z，CANN 综合为 score_metrics.py 公式值）：</p>
   <table class="ttab">
     <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th><th style="width:96px">CANN 综合</th></tr></thead>
     <tbody>
@@ -239,6 +239,24 @@
       <tr><td class="cd">F</td><td><b>分布式训练 HCCL</b><br><small style="color:var(--g4)">PyTorch DDP+NCCL ｜ torch_npu DDP+HCCL</small></td><td>训练类：迁移友好场景。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .72</span></td></tr>
       <tr><td class="cd">G</td><td><b>CUDA → 昇腾 迁移</b><br><small style="color:var(--g4)">CUDA→ROCm/HIP ｜ GPU→NPU transfer_to_npu</small></td><td>迁移类：官方采纳漏斗、投入最重。</td><td><span class="vs hi">高</span></td><td><span class="vs lo">高 .84</span></td></tr>
       <tr><td class="cd">H</td><td><b>量化 / 推理部署</b><br><small style="color:var(--g4)">TensorRT INT8 PTQ ｜ msmodelslim W8A8</small></td><td>部署类：工具链较新。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .69</span></td></tr>
+      <tr><td class="cd">I</td><td><b>版本兼容排查</b><br><small style="color:var(--g4)">PyTorch·CUDA·驱动对齐 ｜ driver↔HDK↔CANN↔torch↔torch_npu 五件套</small></td><td>环境类：多轴配套。</td><td><span class="vs hi">高</span></td><td><span class="vs mid">中高 .73</span></td></tr>
+      <tr><td class="cd">J</td><td><b>安装与环境变量</b><br><small style="color:var(--g4)">CUDA Toolkit 安装 ｜ CANN + set_env.sh</small></td><td>环境类：上手第一步。</td><td><span class="vs mid">中</span></td><td><span class="vs lo">高 .80</span></td></tr>
+      <tr><td class="cd">K</td><td><b>容器 / 镜像搭建</b><br><small style="color:var(--g4)">NVIDIA Container Toolkit ｜ Ascend docker runtime</small></td><td>环境类：/dev 挂载配置。</td><td><span class="vs mid">中</span></td><td><span class="vs lo">高 .86</span></td></tr>
+      <tr><td class="cd">L</td><td><b>算子精度排查</b><br><small style="color:var(--g4)">PyTorch 数值精度 ｜ msaccucmp 精度比对</small></td><td>调试类：比对定位。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .69</span></td></tr>
+      <tr><td class="cd">M</td><td><b>动态 shape / Tiling</b><br><small style="color:var(--g4)">CUDA kernel tiling ｜ Ascend C Tiling 结构</small></td><td>算子开发：深水区。</td><td><span class="vs hi">高</span></td><td><span class="vs hi">中 .63</span></td></tr>
+      <tr><td class="cd">N</td><td><b>算子融合</b><br><small style="color:var(--g4)">TensorRT 层融合 ｜ fusion_switch_file 规则</small></td><td>算子开发 / 性能。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .74</span></td></tr>
+      <tr><td class="cd">O</td><td><b>注册与框架集成</b><br><small style="color:var(--g4)">TORCH_LIBRARY/dispatcher ｜ aclnn→torch_npu (op-plugin)</small></td><td>算子开发 / 迁移。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .72</span></td></tr>
+      <tr><td class="cd">P</td><td><b>混合精度训练</b><br><small style="color:var(--g4)">torch.amp ｜ torch_npu AMP (dynamic/init_scale)</small></td><td>训练类：上手侧。</td><td><span class="vs mid">中</span></td><td><span class="vs lo">高 .83</span></td></tr>
+      <tr><td class="cd">Q</td><td><b>显存 / OOM 优化</b><br><small style="color:var(--g4)">CUDA 显存管理 ｜ NPU 显存环境变量</small></td><td>训练 / 性能。</td><td><span class="vs mid">中</span></td><td><span class="vs lo">高 .86</span></td></tr>
+      <tr><td class="cd">R</td><td><b>精度 / 收敛排查</b><br><small style="color:var(--g4)">detect_anomaly 等 ｜ msprobe + dump</small></td><td>调试 / 训练。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .75</span></td></tr>
+      <tr><td class="cd">S</td><td><b>推理服务部署</b><br><small style="color:var(--g4)">Triton ｜ MindIE Service</small></td><td>推理部署类。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .74</span></td></tr>
+      <tr><td class="cd">T</td><td><b>动态 batch / shape 推理</b><br><small style="color:var(--g4)">TensorRT optimization profile ｜ ATC dynamic_batch_size</small></td><td>推理部署类。</td><td><span class="vs hi">高</span></td><td><span class="vs mid">中高 .72</span></td></tr>
+      <tr><td class="cd">U</td><td><b>访存 / occupancy 优化</b><br><small style="color:var(--g4)">Nsight Compute ｜ double-buffer 最佳实践</small></td><td>性能优化：官方子树厚。</td><td><span class="vs lo">低</span></td><td><span class="vs lo">高 .88</span></td></tr>
+      <tr><td class="cd">V</td><td><b>计算与传输重叠</b><br><small style="color:var(--g4)">stream + cudaMemcpyAsync ｜ 多 stream + aclrtMemcpyAsync</small></td><td>性能优化类。</td><td><span class="vs lo">低</span></td><td><span class="vs mid">中高 .72</span></td></tr>
+      <tr><td class="cd">W</td><td><b>多卡通信优化</b><br><small style="color:var(--g4)">NCCL ring/tree ｜ HCCL Ring/Mesh/RHD/NHR</small></td><td>性能优化类。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .70</span></td></tr>
+      <tr><td class="cd">X</td><td><b>内存越界定位</b><br><small style="color:var(--g4)">compute-sanitizer ｜ msSanitizer</small></td><td>调试类：官方强、生态薄。</td><td><span class="vs mid">中</span></td><td><span class="vs mid">中高 .74</span></td></tr>
+      <tr><td class="cd">Y</td><td><b>跨芯片迁移</b><br><small style="color:var(--g4)">SM / compute capability ｜ soc_version 切换</small></td><td>迁移类：partial 可抓。</td><td><span class="vs hi">高</span></td><td><span class="vs mid">中高 .68</span></td></tr>
+      <tr><td class="cd">Z</td><td><b>概念心智模型对照</b><br><small style="color:var(--g4)">grid/block/warp/SM ｜ AI Core/Cube/Vector/SPMD</small></td><td>迁移类：通识最厚、CANN 最高格。</td><td><span class="vs lo">低</span></td><td><span class="vs lo">高 .90</span></td></tr>
     </tbody>
   </table>
   <p class="note">第一批 A→D 沿"越来越深入、越来越前沿"铺开，印证 <b>A/B/C 两栈差距小、D 差距被拉满</b>。第二批 E–H 进一步发现：<b>可用性还随任务在"采纳漏斗"上的位置变化</b>——<b>迁移(G) 被官方刻意做厚、唯一达「高」</b>（transfer_to_npu 一行自动迁移 + 文档可抓详尽 + 华为云最佳实践）；<b>前沿算子(D) 最薄、唯一「低」</b>；<b>排障(E) 居中偏弱</b>（官方错误码页泛化兜底、依赖具体案例知识）。八格 CANN 综合（CUDA 侧均 .88–1.0 高）由 <code>score_metrics.py</code> 代入①–⑧ 算出，可复现。结论可信，正因为底层是<b>一张求全的清单 + 两批有意铺开的抽样</b>，不是凑巧挑了几个。<br><b>新洞见（②可抓取性）：</b>E/F/G/H 的官方页（错误码 / trainingmigrguide / devaids 自动迁移 / devaids·devtools AMCT）<b>实测全部 ssr 可抓</b>——连此前以为是 SPA 的 <code>devaids/devtools/amct</code> 也可抓；<b>至今唯一确证「SPA 咬到结果」的仍只有 D 的 <code>devguide/opdevg/</code></b>。但 E 暴露了新形态：<b>抓得到 ≠ 够用</b>——官方错误码页可抓但是泛化兜底（②4 但 ③2），与 D 的「受阻（抓不到）」是两种不同短板。</p>
@@ -248,13 +266,13 @@
   <table class="ttab">
     <thead><tr><th style="width:152px">使用者角色（对的 API 层）</th><th>会做的任务束（从 26 清单按职责挑，多对多）</th></tr></thead>
     <tbody>
-      <tr><td><b>① 应用开发者</b><br><small style="color:var(--g4)">AscendCL / 高层库 · 上层推理应用，不碰底层、不做框架迁移</small></td><td>推理服务部署 · 动态 batch / shape 推理 · <b style="color:var(--hw)">算子库选型 (C)</b> · 量化 · 报错码 / 异常排查 · 安装与环境变量 · 概念心智模型对照</td></tr>
-      <tr><td><b>② 模型 / 框架迁移工程师</b><br><small style="color:var(--g4)">torch_npu · ATC · GE 图 · 迁移与转换，一般不写 kernel</small></td><td><b style="color:var(--hw)">模型转换 / 导出 (A)</b> · CUDA→昇腾迁移 · 跨芯片迁移 · 注册与框架集成 · 分布式训练配置 · 混合精度训练 · 显存 / OOM 优化 · 精度 / 收敛排查 · 版本兼容排查 · 容器 / 镜像搭建</td></tr>
-      <tr><td><b>③ 算子开发者</b><br><small style="color:var(--g4)">Ascend C kernel · 现成算子不够用 / 性能不达标才介入，最深</small></td><td><b style="color:var(--hw)">自定义算子开发 (D)</b> · 算子精度排查 · 动态 shape / Tiling · 算子融合 · 注册与框架集成 · 内存越界定位</td></tr>
-      <tr><td><b>④ 系统调优 / 生态贡献者</b><br><small style="color:var(--g4)">最底层资源 · 通信 · 编译链 · 极致调优 + 往社区贡献</small></td><td><b style="color:var(--hw)">Profiling 定位瓶颈 (B)</b> · 访存 / occupancy 优化 · 计算与传输重叠 · 多卡通信优化 · 算子融合 · 分布式训练配置</td></tr>
+      <tr><td><b>① 应用开发者</b><br><small style="color:var(--g4)">AscendCL / 高层库 · 上层推理应用，不碰底层、不做框架迁移</small></td><td>推理服务部署 (S) · 动态 batch / shape 推理 (T) · 算子库选型 (C) · 量化 (H) · 报错码 / 异常排查 (E) · 安装与环境变量 (J) · 概念心智模型对照 (Z)</td></tr>
+      <tr><td><b>② 模型 / 框架迁移工程师</b><br><small style="color:var(--g4)">torch_npu · ATC · GE 图 · 迁移与转换，一般不写 kernel</small></td><td>模型转换 / 导出 (A) · CUDA→昇腾迁移 (G) · 跨芯片迁移 (Y) · 注册与框架集成 (O) · 分布式训练配置 (F) · 混合精度训练 (P) · 显存 / OOM 优化 (Q) · 精度 / 收敛排查 (R) · 版本兼容排查 (I) · 容器 / 镜像搭建 (K)</td></tr>
+      <tr><td><b>③ 算子开发者</b><br><small style="color:var(--g4)">Ascend C kernel · 现成算子不够用 / 性能不达标才介入，最深</small></td><td>自定义算子开发 (D) · 算子精度排查 (L) · 动态 shape / Tiling (M) · 算子融合 (N) · 注册与框架集成 (O) · 内存越界定位 (X)</td></tr>
+      <tr><td><b>④ 系统调优 / 生态贡献者</b><br><small style="color:var(--g4)">最底层资源 · 通信 · 编译链 · 极致调优 + 往社区贡献</small></td><td>Profiling 定位瓶颈 (B) · 访存 / occupancy 优化 (U) · 计算与传输重叠 (V) · 多卡通信优化 (W) · 算子融合 (N) · 分布式训练配置 (F)</td></tr>
     </tbody>
   </table>
-  <p class="note"><b>多对多、且独立于已跑：</b>注册与框架集成被 ②③ 共有、算子融合被 ③④ 共有、分布式训练被 ②④ 共有——一个任务可被多个角色做、一个角色做一束任务。表里标 <b style="color:var(--hw)">(A/B/C/D)</b> 的只是该任务身上<b>「已实测」的状态标</b>，<b>不是角色的定义</b>：先按「有几种人」把角色独立切出来，任务再按职责挂上去；某任务跑没跑，与它属于哪个角色无关。这正是把「笼统任务」按<b>真实使用者</b>细化的那一层。</p>
+  <p class="note"><b>多对多、且独立于已跑：</b>注册与框架集成被 ②③ 共有、算子融合被 ③④ 共有、分布式训练被 ②④ 共有——一个任务可被多个角色做、一个角色做一束任务。括号内为任务代号——<b>26/26 已全量实测</b>，原「已实测」红色状态标已无差别、全部改为代号标注。角色切法不变：先按「有几种人」独立切出（官方 API 分层为骨），任务再按职责挂上去，不从已跑任务倒推。这正是把「笼统任务」按<b>真实使用者</b>细化的那一层。</p>
 
   <!-- 2. 问题怎么形成 -->
   <h2 id="s2">2 · 问题是怎么形成的 <span class="en">how the question pairs were designed</span></h2>
@@ -295,7 +313,36 @@
       <div class="side ca"><span class="st">昇腾</span><div class="qq">怎么用 Ascend C 开发自定义算子并集成进 PyTorch（msOpGen / aclnn）？给出完整步骤。</div></div>
     </div>
   </div>
-  <p class="note">这 8 条问题<b>一字未改地</b>记录在 <code>task_run_log.md</code> 里，连同每条真跑时走的 web_search / web_fetch 步骤——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
+  
+  <p class="note" style="margin-top:18px"><b>其余 22 个任务的问句对（E–Z）一览。</b>设计原则同上四例；「」内为 <code>task_run_log.md</code> 中逐字留存的问句原文，标 ◇ 的 9 个任务（J–N、P–S，第三批 sub-agent 并行真跑）<b>问句原文未逐字留存</b>——表中只复述配对意图、不冒充原文加引号（守「绝不编造」）：</p>
+  <table class="ttab">
+    <thead><tr><th style="width:34px">代号</th><th style="width:130px">任务</th><th>CUDA 侧问句</th><th>昇腾侧问句</th></tr></thead>
+    <tbody>
+      <tr><td class="cd">E</td><td style="white-space:nowrap"><b>报错码 / 异常排查</b></td><td>「我的 PyTorch/CUDA 程序报 <code>RuntimeError: CUDA error: device-side assert triggered</code>，怎么定位是哪一行、哪个 kernel 出的问题？」</td><td>「我在昇腾上跑训练/推理，报 <code>EZ9999</code> 之类的错误码，怎么定位根因、怎么排查？」</td></tr>
+      <tr><td class="cd">F</td><td style="white-space:nowrap"><b>分布式训练配置</b></td><td>「怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。」</td><td>「怎么在昇腾上做多机多卡分布式训练（DDP + HCCL）？给出初始化和启动方式。」</td></tr>
+      <tr><td class="cd">G</td><td style="white-space:nowrap"><b>CUDA→昇腾迁移</b></td><td>「我有一份 CUDA 代码/PyTorch GPU 脚本，怎么移植到 AMD ROCm 平台？给出 hipify 工具用法。」<small>（本任务 CUDA 栏无关，用「跨平台移植」做对照）</small></td><td>「我有一份 GPU(PyTorch CUDA) 训练脚本，怎么迁移到昇腾 NPU？给出迁移方式和工具。」</td></tr>
+      <tr><td class="cd">H</td><td style="white-space:nowrap"><b>量化 / 推理部署</b></td><td>「怎么用 TensorRT 把模型量化成 INT8 做推理部署？给出校准（calibration）流程。」</td><td>「怎么在昇腾上把大模型量化（W8A8）做推理部署？给出量化工具和流程。」</td></tr>
+      <tr><td class="cd">I</td><td style="white-space:nowrap"><b>版本兼容排查</b></td><td>「PyTorch / CUDA / 驱动版本怎么对齐、冲突怎么查」</td><td>「driver↔HDK↔CANN↔torch↔torch_npu 五件套怎么配套」</td></tr>
+      <tr><td class="cd">J</td><td style="white-space:nowrap"><b>安装与环境变量</b></td><td>◇ 配对意图：CUDA Toolkit 安装与 PATH 配置</td><td>◇ 配对意图：CANN 安装与 set_env.sh 环境变量</td></tr>
+      <tr><td class="cd">K</td><td style="white-space:nowrap"><b>容器 / 镜像搭建</b></td><td>◇ 配对意图：NVIDIA Container Toolkit 容器搭建</td><td>◇ 配对意图：Ascend docker runtime + /dev 挂载配置</td></tr>
+      <tr><td class="cd">L</td><td style="white-space:nowrap"><b>算子精度排查</b></td><td>◇ 配对意图：CUDA/PyTorch 数值精度排查</td><td>◇ 配对意图：msaccucmp 算子精度比对定位</td></tr>
+      <tr><td class="cd">M</td><td style="white-space:nowrap"><b>动态 shape / Tiling</b></td><td>◇ 配对意图：CUDA kernel 的 tiling / 动态尺寸处理</td><td>◇ 配对意图：Ascend C 动态 shape 算子的 Tiling 写法</td></tr>
+      <tr><td class="cd">N</td><td style="white-space:nowrap"><b>算子融合</b></td><td>◇ 配对意图：TensorRT 等的层 / 图融合机制</td><td>◇ 配对意图：融合规则与 fusion_switch_file 开关</td></tr>
+      <tr><td class="cd">O</td><td style="white-space:nowrap"><b>注册与框架集成</b></td><td>「自定义算子怎么注册进 <code>torch.ops</code>（TORCH_LIBRARY/dispatcher/autograd）」</td><td>「Ascend C 算子怎么注册成 aclnn 并集成进 torch_npu」</td></tr>
+      <tr><td class="cd">P</td><td style="white-space:nowrap"><b>混合精度训练</b></td><td>◇ 配对意图：torch.amp 混合精度训练</td><td>◇ 配对意图：torch_npu AMP（dynamic/init_scale 参数）</td></tr>
+      <tr><td class="cd">Q</td><td style="white-space:nowrap"><b>显存 / OOM 优化</b></td><td>◇ 配对意图：CUDA 显存管理与 OOM 排查</td><td>◇ 配对意图：NPU 显存环境变量与 OOM 优化</td></tr>
+      <tr><td class="cd">R</td><td style="white-space:nowrap"><b>精度 / 收敛排查</b></td><td>◇ 配对意图：detect_anomaly 等收敛排查</td><td>◇ 配对意图：msprobe + dump 精度收敛排查</td></tr>
+      <tr><td class="cd">S</td><td style="white-space:nowrap"><b>推理服务部署</b></td><td>◇ 配对意图：Triton Inference Server 部署</td><td>◇ 配对意图：MindIE Service 启动与 config.json</td></tr>
+      <tr><td class="cd">T</td><td style="white-space:nowrap"><b>动态 batch / shape 推理</b></td><td>「TensorRT 怎么用 optimization profile 支持动态 batch / 输入 shape？」</td><td>「ATC / ACL 怎么配置动态 batch（dynamic_batch_size）并在运行时选档？」</td></tr>
+      <tr><td class="cd">U</td><td style="white-space:nowrap"><b>访存 / occupancy 优化</b></td><td>「怎么用 Nsight Compute 看 occupancy / 访存效率并调优？」</td><td>「Ascend 上怎么做访存优化 / double-buffer 提升 occupancy？」</td></tr>
+      <tr><td class="cd">V</td><td style="white-space:nowrap"><b>计算与传输重叠</b></td><td>「怎么用 stream + <code>cudaMemcpyAsync</code> 做 H2D/计算/D2H 重叠？」</td><td>「Ascend 上怎么用多 stream + <code>aclrtMemcpyAsync</code> 做计算与传输重叠？」</td></tr>
+      <tr><td class="cd">W</td><td style="white-space:nowrap"><b>多卡通信优化</b></td><td>「NCCL allreduce 怎么选 ring vs tree、怎么调通信？」</td><td>「HCCL 怎么选通信算法（Ring/Mesh/RHD/NHR）、怎么调优？」</td></tr>
+      <tr><td class="cd">X</td><td style="white-space:nowrap"><b>内存越界定位</b></td><td>「怎么用 compute-sanitizer / cuda-memcheck 定位越界、非法访存？」</td><td>「Ascend 上怎么用 msSanitizer 定位算子内存越界？」</td></tr>
+      <tr><td class="cd">Y</td><td style="white-space:nowrap"><b>跨芯片迁移</b></td><td>「同一份代码怎么跨 SM 架构（compute capability）迁移 / 编译？」</td><td>「怎么把 .om / 模型从一款昇腾芯片迁到另一款（soc_version 切换）？」</td></tr>
+      <tr><td class="cd">Z</td><td style="white-space:nowrap"><b>概念心智模型对照</b></td><td>「grid/block/thread/warp/SM 的心智模型怎么对应硬件？」</td><td>「AI Core / Cube / Vector / SPMD / 存储层级的心智模型怎么对应？」</td></tr>
+    </tbody>
+  </table>
+  <p class="note">上方 4 对详例 + 本表合计 <b>26 对问句</b>。除 ◇ 标注的 9 个外，问句均<b>一字未改地</b>记录在 <code>task_run_log.md</code>，连同每条真跑时走的 web_search / web_fetch 步骤——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
 
   <!-- 3. 指标怎么形成 -->
   <h2 id="s3">3 · 指标是怎么形成的 <span class="en">how the metric system was derived</span></h2>
