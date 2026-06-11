@@ -501,6 +501,131 @@ RAW = {
      dates=["2025-02", None],
      consist="high", own=2, churn="fast", pin="mostly", repro="params"),
  },
+
+ # ── 第四批·真跑（2026-06-11，sub-agent 并行检索 + 主会话清洗判分）：T–Z 七任务 ──
+ "T": {  # 动态 batch/shape 推理（推理部署类，版本敏感 高）
+  # refine 清洗：官方两侧均 rank1 首轮命中；CUDA 的二搜是 404 后换页(已记 fetch_fail=1)、非发现失败→refine=False
+  "cuda": dict(rounds=2, rank=1, refine=False, fetch=4, fetch_fail=1,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     sources=["tech_blog","tech_blog"],
+     platforms=["stevengong.co","liwenju0.com"],
+     dates=["2025-07", None],
+     consist="high", own=5, churn="moderate", pin="exact", repro="copyrun"),
+  # 官方 atlasatcparam_16_0018 + aclcppdevg_000043 均 ssr 可抓(dynamic_batch_size/aclmdlSetDynamicBatchSize)
+  "cann": dict(rounds=2, rank=1, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     # 阿里云 ais_bench / 华为云联盟 cnblogs / CSDN
+     sources=["cloud_vendor","cloud_vendor","tech_blog"],
+     platforms=["developer.aliyun.com","cnblogs.com","blog.csdn.net"],
+     dates=["2025-05", "2023-09", "2024-02"],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "U": {  # 访存/occupancy 优化（性能优化类，版本敏感 低）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=True, two_axis=False,
+     sources=["tech_blog","tech_blog","tech_blog","qa_reputation"],
+     platforms=["medium.com","dev.to","rimikawrites.com","moldstud.com"],
+     dates=["2025-01", "2026-01", None, None],
+     consist="high", own=5, churn="stable", pin="mostly", repro="params"),
+  # 官方走「技术干货 SSR + ascendcbestP 最佳实践子树 SSR」双路，绕开 D 的 ascendcopdevg SPA
+  # 独立二手仅 CSDN double-buffer 1 篇，华为云bbs/知乎为官方流水文转载回声(consist=high 含回声)
+  "cann": dict(rounds=1, rank=2, refine=False, fetch=3, fetch_fail=0,
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=2, ver_matrix=False, ver_irrelev=True, two_axis=False,
+     sources=["tech_blog","cloud_vendor","tech_blog"],
+     platforms=["ascendai.csdn.net","bbs.huaweicloud.com","zhihu.com"],
+     dates=["2025-12", None, None],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "V": {  # 计算与传输重叠（性能优化类，版本敏感 低）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=True, two_axis=False,
+     sources=["tech_blog","tech_blog","qa_reputation","aggregator"],
+     platforms=["leimao.github.io","cuda.live","github.com","microway.com"],
+     dates=["2022-06", None, None, None],
+     consist="high", own=5, churn="stable", pin="exact", repro="copyrun"),
+  # host 侧 aclrtMemcpyAsync 落 apiref/appdevgapi SSR 子树(完整签名+参数表)，非 SPA
+  "cann": dict(rounds=1, rank=2, refine=False, fetch=3, fetch_fail=0,
+     core_fetch="ssr", exec=True, ref_level="core_only",
+     n_versions=3, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     sources=["tech_blog","tech_blog","cloud_vendor","tech_blog"],
+     platforms=["blog.csdn.net","ai6s.net","bbs.huaweicloud.com","cnblogs.com"],
+     dates=["2022-06", "2025-12", None, None],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "W": {  # 多卡通信优化（性能优化类，版本敏感 中）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=False, ref_level="exhaustive",
+     n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
+     sources=["tech_blog","qa_reputation","cloud_vendor"],
+     platforms=["rajatpandit.com","uccl-project.github.io","ai-hpc.org"],
+     dates=["2026-01", "2025-06", None],
+     consist="high", own=4, churn="moderate", pin="exact", repro="copyrun"),
+  # hccl 子树 ssr 可抓(Ring/Mesh/RHD/NHR 算法描述)但无命令表→core_only；着陆页 spa、靠二搜定位正文页(refine)
+  "cann": dict(rounds=2, rank=1, refine=True, fetch=2, fetch_fail=0,
+     core_fetch="ssr", exec=False, ref_level="core_only",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=True,
+     sources=["cloud_vendor","tech_blog","qa_reputation"],
+     platforms=["bbs.huaweicloud.cn","cnblogs.com","zhihu.com"],
+     dates=["2024-09", "2025-04", None],
+     consist="high", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "X": {  # 内存越界定位（调试类，版本敏感 中）
+  # X.cuda 清洗：3 条二手=2 CSDN + 1 juejin，platforms/dates 补齐到 3
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=1, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     sources=["tech_blog","tech_blog","aggregator"],
+     platforms=["blog.csdn.net","blog.csdn.net","juejin.cn"],
+     dates=[None, None, None],
+     consist="high", own=4, churn="moderate", pin="mostly", repro="copyrun"),
+  # 官方 msSanitizer 页落 devaids/opdev/optool SSR 子树(非 D 的 opdevg SPA)，正文 exhaustive；二手仅知乎 1 条
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=False,
+     sources=["qa_reputation"],
+     platforms=["zhuanlan.zhihu.com"],
+     dates=[None],
+     consist="mid", own=2, churn="moderate", pin="mostly", repro="copyrun"),
+ },
+ "Y": {  # 跨芯片迁移（迁移类，版本敏感 高）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=2, fetch_fail=0,
+     core_fetch="static", exec=True, ref_level="exhaustive",
+     n_versions=2, ver_matrix=True, ver_irrelev=False, two_axis=False,
+     sources=["tech_blog","aggregator","qa_reputation"],
+     platforms=["arnon.dk","docs.hpc.shef.ac.uk","stackoverflow.com"],
+     dates=["2026-04", None, None],
+     consist="high", own=5, churn="moderate", pin="exact", repro="copyrun"),
+  # /document/detail ATC 子树 SPA，但 /doc_center 镜像兜住 soc_version 正文→partial(非全受阻)；知乎 403 抓不到
+  "cann": dict(rounds=2, rank=1, refine=True, fetch=4, fetch_fail=1,
+     core_fetch="partial", exec=True, ref_level="core_only",
+     n_versions=4, ver_matrix=False, ver_irrelev=False, two_axis=True,
+     sources=["tech_blog","cloud_vendor","qa_reputation"],
+     platforms=["blog.csdn.net","zhuanlan.zhihu.com","medium.com"],
+     dates=["2024-05", "2025-03", None],
+     consist="mid", own=3, churn="moderate", pin="mostly", repro="params"),
+ },
+ "Z": {  # 概念心智模型对照（迁移类，版本敏感 低）
+  "cuda": dict(rounds=1, rank=1, refine=False, fetch=4, fetch_fail=2,
+     core_fetch="static", exec=False, ref_level="exhaustive",
+     n_versions=1, ver_matrix=False, ver_irrelev=True, two_axis=False,
+     sources=["tech_blog","qa_reputation","tech_blog"],
+     platforms=["modal.com","blog.damavis.com","en.wikipedia.org"],
+     dates=[None, "2024-08", None],
+     consist="high", own=5, churn="stable", pin="none", repro="skeleton"),
+  # SPMD 页(opdevg/Ascendcopdevg)此处 ssr 可抓→又一例 opdevg 非全 SPA；但存储层级散落多页(无单页穷尽)
+  "cann": dict(rounds=1, rank=1, refine=False, fetch=3, fetch_fail=1,
+     core_fetch="ssr", exec=True, ref_level="exhaustive",
+     n_versions=3, ver_matrix=False, ver_irrelev=True, two_axis=False,
+     sources=["cloud_vendor","tech_blog","aggregator"],
+     platforms=["developer.aliyun.com","cnblogs.com","ai6s.net"],
+     dates=["2024-12", "2024-11", "2025-12"],
+     consist="high", own=4, churn="moderate", pin="none", repro="skeleton"),
+ },
 }
 
 # 旧手评矩阵（从 17_official_site_focus.html 的 ROWS 提取，用于对比 diff）
@@ -636,7 +761,8 @@ LABELS = ["①发现","②抓取","③详尽","④版本清","⑤二手量","⑥
           "⑦自带","⑧成本","⑨版本锁","⑩复现","⑪综合"]
 
 TASKS = ["A","B","C","D","E","F","G","H",
-         "I","J","K","L","M","N","O","P","Q","R","S"]
+         "I","J","K","L","M","N","O","P","Q","R","S",
+         "T","U","V","W","X","Y","Z"]
 
 def compute():
     out = {}
