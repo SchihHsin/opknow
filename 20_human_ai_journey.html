@@ -60,7 +60,6 @@ ul.tight li{margin-bottom:6px}
 .lvlticks span:hover{color:#2f3d63;border-bottom-color:#bbb}
 .lvlticks span.on{color:#2f3d63;font-weight:700}
 .lvldesc{font-size:12px;color:var(--sub);margin:8px 2px 0;line-height:1.6}
-.scopenote{font-size:11.5px;color:#8a7a5a;background:#fbf6ec;border:1px solid #f0e6d2;border-radius:8px;padding:8px 12px;margin:8px 2px 0;line-height:1.6}
 .modecontrast{margin:18px 0 4px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px}
 .mch3{font-size:14px;margin:0 0 4px;padding-left:9px;border-left:3px solid #2f3d63;color:#2f3d63}
 .mcgrid{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
@@ -174,7 +173,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
+<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径详见底部局限①）</span>每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -188,7 +187,6 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   </div>
 </div>
 <div class="lvldesc" id="lvlDesc"></div>
-<div class="scopenote">⚠ 口径：全图是一次 D 开发的<b>协作示意</b>。其中只有 <b>AI 检索那几步 + 受阻点</b>（s3 撞 SPA、d2 版本散乱）是<b>实测</b>（取自 task_run_log，也正是本项目真正测的「知识可用性」）；开发步骤（msopgen / 编包 / aclnn）按官方文档<b>重建</b>、非真跑通；谁干哪步、3 档分工是<b>建模</b>。这些受阻事实在 3 档下都一样——变的只是「谁动手、人还查不查」。</div>
 
 <div class="chartwrap">
   <svg id="journey"></svg>
@@ -435,7 +433,7 @@ TOOLS = [
 
 <div class="limit">
   <b>诚实声明与局限：</b>
-  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>，真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。
+  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>，也正是本项目真正测的「知识可用性」），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>（开发步骤 msopgen / 编包 / aclnn 按官方文档复述、非真跑通），真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。<b>滑块 3 档的分工差异为建模</b>（仅「① 人主笔」对应实测的这次检索，另两档非实测）；而<b>受阻事实在三档下不变</b>（同一 CANN 生态），变的只是「谁动手、人还查不查」。
   ② §4.3 代码是<b>公开 Messages API 的示范实现</b>，解释 agent 循环契约，<b>非 Claude 内部源码</b>；服务端 web_search 的检索 / 排序内部实现不可观测。
   ③ 工作量占比按<b>节点计数</b>而非真实工时；不同开发者熟练度会显著改变人侧耗时。
   ④ 本页只刻画 D 这一个「最难」任务的旅程；成熟任务（如 G 迁移、Z 概念对照）的人机协同形态会大不相同（AI 主导区段更长、卡点更少），详见 <a href="17_official_site_focus.html" style="color:#2f3d63">热力矩阵</a>与<a href="19_findings_ux_synthesis.html" style="color:#2f3d63">启发与方向</a>。
