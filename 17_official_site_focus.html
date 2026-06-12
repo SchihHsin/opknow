@@ -249,7 +249,7 @@
       <th class="col" data-col="6">自带知识<small>训练知识覆盖密度</small></th>
       <th class="col" data-col="7">检索成本<small>轮数+fetch·越少越好(反向)</small></th>
       <th class="col" data-col="8">版本可锁<small>能定到确切版本?</small></th>
-      <th class="col" data-col="9">可复现<small>命令能照抄跑通?</small></th>
+      <th class="col" data-col="9">可复现<small>命令可照抄运行?</small></th>
       <th class="col" data-col="10">综合<small>三源噪声-OR 汇总</small></th>
     </tr>
   </thead>
@@ -278,7 +278,7 @@ const RUBRIC=[
  [['5','多源、易找、覆盖该任务核心'],['4','知乎/阿里云/博客园/华为云较丰富'],['3','有但零散、比 CUDA 少'],['2','仅零星 CSDN/博客园/MindSpore'],['1','寥寥几篇、难覆盖']],
  [['5','权威、近期、多源互证'],['4','命令骨架一致、差异主要在版本号'],['3','基本一致但深度参差、需交叉核对'],['2','各源版本/写法不一、难交叉印证'],['1','陈旧/矛盾/来源存疑']],
  [['5','覆盖密集、可凭知识直接答且大体可靠'],['4','流程熟悉、可凭自带知识给骨架'],['3','有概念但细节/版本需检索补'],['2','自带知识弱、不敢凭记忆给命令'],['1','几乎只能现查、自带知识易过时']],
- [['5','1 轮内搞定'],['4','1 搜 + 偶尔一次抓取'],['3','数轮 + 少量抓取'],['2','多轮检索'],['1','多轮反复 + 抓取失败（SPA），成本最高']],
+ [['5','1 轮内完成'],['4','1 搜 + 偶尔一次抓取'],['3','数轮 + 少量抓取'],['2','多轮检索'],['1','多轮反复 + 抓取失败（SPA），成本最高']],
  [['5','能写出确切版本号 + opset'],['4','工具版本基本可定'],['3','能给范围/主版本、部分可锁'],['2','多版本 + 正文抽不出、无法定死'],['1','只能模糊带过']],
  [['5','命令照抄即跑'],['4','命令完整、替好参数即可照抄'],['3','大体能跑、需小修/部分依赖环境'],['2','仅骨架可述、细节无法确证'],['1','缺步骤/仅示意']],
  [['5','各关均强、产出可锁可复现（显示「高」）'],['4','主路径强、仅深层短板、可绕过（显示「中高」）'],['3','多重折扣叠加但仍可作答（显示「中」）'],['2','多关短板叠加、可用性差'],['1','基本不可用']]
@@ -634,7 +634,7 @@ const ROWS={
   cann:[
    N('v3','3','msmodelslim Gitee 蓝区仓搜得到，官方文档页非置顶、需第 2 搜定位 AMCT。',{srcs:[['msmodelslim 大模型量化','gitee.com/ascend/msit',' ',' '],['AMCT 量化 atlasamct_16_0385','hiascend.com/document/detail',' ','社区版 800alpha002']]}),
    N('v4','4','官方 AMCT 页 ssr 可抓（推翻「devaids/devtools 为 SPA」的此前假设）。',{got:'AMCT 页正文可抓。',miss:'但只讲算法原理（见③）。',warn:'实测可抓、非 SPA。'}),
-   N('v3','3','实测 fetch：抓到正文，但只讲量化算法原理、无落地命令。',{got:'对称量化 <code>q=round(r/scale)</code>、<code>scale=max(|r|)/127</code>、非对称 <code>q=round(r/scale)+offset</code> 抓到。',miss:'落地命令 / 参数表无；W8A8 可跑命令在 Gitee 蓝区仓(①) + CSDN。',srcs:[['AMCT 量化 atlasamct_16_0385（实测 fetch）','hiascend.com/document/detail',' ','社区版 800alpha002']]}),
+   N('v3','3','实测 fetch：抓到正文，但只讲量化算法原理、无落地命令。',{got:'对称量化 <code>q=round(r/scale)</code>、<code>scale=max(|r|)/127</code>、非对称 <code>q=round(r/scale)+offset</code> 抓到。',miss:'落地命令 / 参数表无；W8A8 可运行命令在 Gitee 蓝区仓(①) + CSDN。',srcs:[['AMCT 量化 atlasamct_16_0385（实测 fetch）','hiascend.com/document/detail',' ','社区版 800alpha002']]}),
    N('v2','2','msmodelslim / AMCT 两套并存、CANN 版本散。',{vers:'msmodelslim（新）/ AMCT（旧）两套量化工具并存。',warn:'两套工具版本散。'}),
    N('v4','4','CSDN×3 / 知乎 / 53ai，公式计数 5 → 档 4（Gitee msmodelslim、vLLM-Ascend 属官方①）。',{srcs:[['msmodelslim W8A8 量化实战','blog.csdn.net','2025-01',' '],['昇腾大模型量化部署','ascendai.csdn.net','2025-05',' ']]}),
    N('v3','3','一致性中、平台集中（CSDN×3）；均分≈3 + mid(0) − 独立性 ≈ 3。'),

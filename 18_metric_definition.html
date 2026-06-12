@@ -217,7 +217,7 @@
   <h2 id="s0">0 · 到底在测什么 <span class="en">the thing being measured</span></h2>
   <div class="core">
     <div class="q">当我（Claude）回答某技术栈的某个开发任务时，能不能把一份<em>正确、具体、可锁定版本、可照抄复现</em>的答案搬进回复——以及要花多大力气。</div>
-    <div class="sub">这就是「AI 可用性」。它<b>不是</b>"这个栈好不好用"，而是"<b>站在一个会检索的 AI 助手视角，这个栈的知识好不好被我拿到、拿到的够不够答好</b>"。同一套任务在 CUDA 生态和昇腾社区各真实跑一遍，对比的就是这件事。</div>
+    <div class="sub">这就是「AI 可用性」。它<b>不是</b>"这个栈好不好用"，而是"<b>站在一个会检索的 AI 助手视角，这个栈的知识好不好被我拿到、拿到的是否足够答好</b>"。同一套任务在 CUDA 生态和昇腾社区各真实跑一遍，对比的就是这件事。</div>
   </div>
   <p class="note">关键认识：可用性是<b>"任务相关"</b>的，不是对一个栈一刀切的高或低。成熟通识类任务两边差距小，前沿开发差距被拉满。所以指标必须能<b>定位到是哪一关卡住</b>，而不只给一个总分。下面四节就按"任务 → 问题 → 指标 → 评分"的顺序，交代每一步是怎么来的。</p>
 
@@ -511,7 +511,7 @@
     <div class="stage s-qual">
       <span class="k">第 2 关</span>
       <h4>内容质量</h4>
-      <p>进来的知识够不够好：正文详尽吗？版本说得清吗？各源对得上吗？</p>
+      <p>进来的知识是否足够好：正文详尽吗？版本说得清吗？各源对得上吗？</p>
     </div>
     <div class="arrow">→</div>
     <div class="stage s-cost">
@@ -523,7 +523,7 @@
     <div class="stage s-out">
       <span class="k">结果</span>
       <h4>产出可用性</h4>
-      <p>最终答案能不能锁到确切版本、命令能不能照抄跑通。</p>
+      <p>最终答案能不能锁到确切版本、命令能不能照抄运行通过。</p>
     </div>
   </div>
 
@@ -600,8 +600,8 @@
   <!-- 官方质量 -->
   <div class="mcard qual">
     <div class="mhead"><span class="nm">③ 官方正文详尽度</span><span class="en">Body depth</span><span class="tag qual">官方·质量</span></div>
-    <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息够不够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
-    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字够不够答好"——两者正交。</div></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">真正取回的官方正文里，<b>有用信息是否足够细</b>：完整参数表、分步命令、可用的配置 JSON、约束说明，而不只是一句话概述。</div></div>
+    <div class="mrow"><div class="lbl">为什么单独</div><div class="val">这是用户提的"内容质量只有一个指标太少"的补位项。抓得到（②）只说明"拿到了文字"，详尽度才说明"这段文字是否足够答好"——两者正交。</div></div>
     <div class="mfml"><a class="ftag" href="https://github.com/SchihHsin/opknow/blob/main/score_metrics.py#L240-L251" target="_blank" rel="noopener">量化公式 score3_detail(r) <span class="ar">↗GitHub</span></a>输入 = 是否含可执行核心 <code>exec</code>（命令/可跑代码）· 参考完整度 <code>ref_level</code>。<b>②为 spa/robots（抓不到正文）→ 受阻中性态（不打分，≠1）</b>；exec&穷尽 exhaustive→5 / exec&主路径 core_only→4 / 概述 overview→3 / 片段 fragment→2 / 余1。</div>
     <div class="rubric"><span class="lv">5</span> 正文含完整参数/分步命令/JSON，照抄即用 ｜ <span class="lv">4</span> 主路径正文详尽、仅穷尽参考表缺 ｜ <span class="lv">3</span> 有正文但偏概述、要东拼西凑 ｜ <span class="lv">2</span> 仅 meta / 片段 ｜ <span class="lv">1</span> 仅概述、缺关键细节。</div>
     <div class="blocked"><b>诚实标注（铁律 #1/#2）：</b>CANN 侧<b>按子树</b>评——入门子树可抓的 A/B，按抓回的正文如实评（③=4）；ATB 概述部分可抓的 C 偏概念、缺算子列表 → ③=3；唯独 <b>D</b>，核心 how-to（<code>add_custom.json</code> 完整字段、Tiling/Kernel 实现）整个压在 <code>devguide/opdevg/</code> SPA、<b>无可抓子树兜底</b> → 正文取不回来，记<b>「受阻·无法实测」</b>中性态，<b>不打推断分</b>（凭印象给分=把推断伪装成实测）。受阻本身就是 D 垫底最有力的证据。CUDA 侧静态可抓，按实际正文如实评。</div>
@@ -658,7 +658,7 @@
     <div class="mrow"><div class="lbl">定义</div><div class="val">答好这个任务实际花的<b>检索轮数 + 抓取次数</b>的摩擦。<b>反向计分：越少越好</b>，着色时高分=省力（绿）。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">它是过程代价，不是知识本身的属性。同样能答对，花 1 轮和花 6 轮的"可用性"体感差很多。</div></div>
     <div class="mfml"><a class="ftag" href="https://github.com/SchihHsin/opknow/blob/main/score_metrics.py#L289-L297" target="_blank" rel="noopener">量化公式 score8_cost(r) <span class="ar">↗GitHub</span></a>输入 = 检索轮数 <code>rounds</code> · web_fetch 次数 <code>fetch</code> · 抓取失败次数 <code>fetch_fail</code>。<br><b>cost = rounds + 0.5·fetch + 4.0·fetch_fail</b>（SPA 抓空重罚 4.0）；cost≤1.5→5 / ≤2.5→4 / ≤4→3 / ≤6→2 / 余1。这是 D.cann 成本垫底（一次 SPA 抓空）的来源。</div>
-    <div class="rubric"><span class="lv">5</span> 1 轮内搞定 ｜ <span class="lv">4</span> 1 搜 + 偶尔一次抓取 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">2</span> 多轮检索 ｜ <span class="lv">1</span> 多轮反复 + 抓取失败（SPA），成本最高。</div>
+    <div class="rubric"><span class="lv">5</span> 1 轮内完成 ｜ <span class="lv">4</span> 1 搜 + 偶尔一次抓取 ｜ <span class="lv">3</span> 数轮 + 少量抓取 ｜ <span class="lv">2</span> 多轮检索 ｜ <span class="lv">1</span> 多轮反复 + 抓取失败（SPA），成本最高。</div>
   </div>
 
   <!-- 产出 -->
@@ -672,7 +672,7 @@
 
   <div class="mcard out">
     <div class="mhead"><span class="nm">⑩ 步骤可复现性</span><span class="en">Reproducibility</span><span class="tag out">产出·因变量</span></div>
-    <div class="mrow"><div class="lbl">定义</div><div class="val">答案里的<b>命令/步骤能不能照抄跑通</b>：完整命令行、必要参数、前置条件齐全，而非伪代码或缺步骤。</div></div>
+    <div class="mrow"><div class="lbl">定义</div><div class="val">答案里的<b>命令/步骤能不能照抄运行通过</b>：完整命令行、必要参数、前置条件齐全，而非伪代码或缺步骤。</div></div>
     <div class="mrow"><div class="lbl">为什么单独</div><div class="val">同为产出侧因变量，但与"锁版本"正交：版本锁得住、命令却缺参数照样跑不通。直接对应正文详尽度③与二手质量⑥。</div></div>
     <div class="mfml"><a class="ftag" href="https://github.com/SchihHsin/opknow/blob/main/score_metrics.py#L303-L311" target="_blank" rel="noopener">量化公式 score10_repro(r) <span class="ar">↗GitHub</span></a>输入 = <code>repro</code> 档：<b>copyrun 照抄即跑→5 / params 替好参数即可照抄→4 / partial 大体能跑需小修→3 / skeleton 仅骨架可述→2</b>。同⑨为产出/因变量 → <b>不进⑪</b>。</div>
     <div class="rubric"><span class="lv">5</span> 命令照抄即跑 ｜ <span class="lv">4</span> 命令完整、替好参数即可照抄 ｜ <span class="lv">3</span> 大体能跑、需小修/部分依赖环境 ｜ <span class="lv">2</span> 仅骨架可述、细节无法确证 ｜ <span class="lv">1</span> 缺步骤/仅示意。</div>
@@ -721,7 +721,7 @@
   <p class="note">一句话原则：<b>每一分都锚在"跑这一遍时能指认的证据"上，不凭印象。</b>但不同指标的证据强度不一样——按强弱分三档，越往下越带主观成分，读分时要知道每格的可靠度不同。</p>
 
   <div class="tier t1"><div class="tk">硬实测<br>①②③⑧</div><div class="tv"><b>直接来自实测检索的过程记录。</b>第几轮命中（①）、web_fetch 成不成功（②）、抓回的正文里有没有参数表/命令（③）、总共几轮几次抓取（⑧）——这些都白纸黑字写在 <code>task_run_log.md</code> 里，可复核。</div></div>
-  <div class="tier t2"><div class="tk">半实测<br>④⑤⑥</div><div class="tv"><b>能观察，但"够不够清楚/可信"要判断。</b>数版本号（④）、数二手源（⑤）、看日期与一致性（⑥）都是可观察事实，但从事实到分数留有口径空间，不是纯客观读数。</div></div>
+  <div class="tier t2"><div class="tk">半实测<br>④⑤⑥</div><div class="tv"><b>能观察，但"是否足够清楚/可信"要判断。</b>数版本号（④）、数二手源（⑤）、看日期与一致性（⑥）都是可观察事实，但从事实到分数留有口径空间，不是纯客观读数。</div></div>
   <div class="tier t3"><div class="tk">自评 / 因变量<br>⑦⑨⑩⑪</div><div class="tv"><b>最主观，故不与输入项重复加权。</b>⑦是我对自己训练覆盖的主观估计（<b>2026-06 起加 churn 知识截止 gap 罚分，给了一个客观锚、半客观化</b>）；⑨⑩是前几关的<b>结果</b>（因变量）；⑪是收口总评。它们与③④⑥高度相关，列出来是为闭环校验，不当新证据。</div></div>
 
   <div class="pbox" style="margin-top:16px">
@@ -749,7 +749,7 @@
 
   <div class="dec">
     <div class="qd"><span class="n">6.1</span>为什么把"触达"和"质量"硬拆成两关？</div>
-    <div class="ad"><b>因为"找得到 ≠ 抓得到 ≠ 够用"是三件会各自独立失败的事。</b>打包成一个笼统的"官方源好不好"分，就看不出 CANN 到底卡在哪——实测里 A/B/C/D 官方都搜得到（①≈4），但<b>抓不抓得到要看落在哪个子树</b>（②），抓到了还要看正文够不够细（③）。拆开，才能把"哪一关、哪个子树"的问题精确定位，而不是一个混沌总分。</div>
+    <div class="ad"><b>因为"找得到 ≠ 抓得到 ≠ 够用"是三件会各自独立失败的事。</b>打包成一个笼统的"官方源好不好"分，就看不出 CANN 到底卡在哪——实测里 A/B/C/D 官方都搜得到（①≈4），但<b>抓不抓得到要看落在哪个子树</b>（②），抓到了还要看正文是否足够细（③）。拆开，才能把"哪一关、哪个子树"的问题精确定位，而不是一个混沌总分。</div>
   </div>
 
   <div class="dec">

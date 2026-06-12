@@ -179,13 +179,13 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
 <div class="subtitle">
   编号 20 · 锚定真实任务 <b>D 自定义算子开发（Ascend C + msOpGen + aclnn → 接入 PyTorch）</b>——这是 26 个任务里 CANN 综合分唯一「低」(.41)、也是唯一「官方 SPA 短板真正咬到结果」的格。
-  下图把<b>开发者从立项到交付跑通的一整段旅程</b>（不是问一个问题）拆成「AI(Agent) / 人类用户」两条泳道，每一步 AI 的动作、后端检索调用、人机交接全部显性展示；再下沉到 Agent 底层系统工程逐段解析。
+  下图把<b>开发者从立项到交付完成的一整段旅程</b>（不是问一个问题）拆成「AI(Agent) / 人类用户」两条泳道，每一步 AI 的动作、后端检索调用、人机交接全部显性展示；再下沉到 Agent 底层系统工程逐段解析。
   所有节点事实取自 <code>task_run_log.md</code> 的 D 任务实测检索记录，<b>受阻 / 卡点为实测、非演绎</b>。
 </div>
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人翻给 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径详见底部局限①）</span>每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
+<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人转交 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径详见底部局限①）</span>每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -231,9 +231,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
         <th class="m1">② AI 主写<br><span>人审</span></th>
         <th class="m2">③ 人委派<br><span>AI 自管</span></th></tr></thead>
       <tbody>
-        <tr><td>谁是司机</td><td>人</td><td>AI（人审校）</td><td>AI</td></tr>
-        <tr><td>执行 · 跑命令</td><td class="hu">人</td><td class="ai">AI</td><td class="ai">AI</td></tr>
-        <tr><td>决策 · 拍板</td><td class="hu">人</td><td>人审批</td><td class="ai">AI（人只终验）</td></tr>
+        <tr><td>主导方</td><td>人</td><td>AI（人审校）</td><td>AI</td></tr>
+        <tr><td>执行 · 运行命令</td><td class="hu">人</td><td class="ai">AI</td><td class="ai">AI</td></tr>
+        <tr><td>决策 · 裁定</td><td class="hu">人</td><td>人审批</td><td class="ai">AI（人仅终验）</td></tr>
         <tr><td>用户安全网<br><span class="sub">自查 SPA / 外部求证</span></td><td>有</td><td class="warn">消失</td><td class="warn">消失</td></tr>
         <tr><td>检索 + 产出</td><td colspan="3" class="const">恒为 AI（三档不变）</td></tr>
       </tbody>
@@ -241,7 +241,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <div class="mcown">
       <div class="mcownh">每档「主导方」逐阶段（＝上图底部色带，随滑块同步）</div>
       <div id="mcownrows"></div>
-      <div class="mcownleg">紫=AI 主导　蓝=人主导　青=人机协同　·　自主度↑，越来越多阶段翻成 AI（仅「立项」恒为人）</div>
+      <div class="mcownleg">紫=AI 主导　蓝=人主导　青=人机协同　·　自主度↑，越来越多阶段转为 AI（仅「立项」恒为人）</div>
     </div>
   </div>
 </div>
@@ -255,13 +255,13 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <div class="card">
     <h3>任务分工：谁干哪些活</h3>
     <p style="font-size:13px"><span class="tag ai">AI（7 步）</span>把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 <code>msopgen</code> 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。</p>
-    <p style="font-size:13px;margin-top:8px"><span class="tag hu">用户（10 步含分支）</span>立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 跑测试）、做 3 个关键决策、2 次脱离 AI 独立求证。</p>
+    <p style="font-size:13px;margin-top:8px"><span class="tag hu">用户（10 步含分支）</span>立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 运行测试）、做 3 个关键决策、2 次脱离 AI 独立求证。</p>
     <div style="font-size:12px;color:#555;margin:8px 0 4px">沿「把知识搬进答案」价值链拆四轴，各归谁（<span style="color:var(--ai)">紫=AI</span> / <span style="color:var(--hu)">蓝=人</span>）：</div>
-    <div class="axrow"><span class="axn">检索·找知识</span><div class="axbar"><i style="width:100%"></i></div><span class="axw">AI 100%</span></div>
-    <div class="axrow"><span class="axn">产出·写代码</span><div class="axbar"><i style="width:82%"></i></div><span class="axw">AI 为主</span></div>
-    <div class="axrow"><span class="axn">执行·动手跑</span><div class="axbar"><i id="axExec" style="width:0%"></i></div><span class="axw" id="axExecW">人 100%</span></div>
-    <div class="axrow"><span class="axn">决策·拍板验收</span><div class="axbar"><i id="axDec" style="width:0%"></i></div><span class="axw" id="axDecW">人 100%</span></div>
-    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是很弱的代理。换一个轴比例就翻——按<b>产出（写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看谁动手。所以拆四轴各看，比一个数诚实。<b id="axNote" style="color:#2f3d63"></b><br>检索 / 产出恒为 AI；<b>执行</b>在「AI 主写」档翻给 AI、<b>决策</b>在「人委派」档翻给 AI——本卡随左侧滑块实时变。</div>
+    <div class="axrow"><span class="axn">检索·获取知识</span><div class="axbar"><i style="width:100%"></i></div><span class="axw">AI 100%</span></div>
+    <div class="axrow"><span class="axn">产出·编写代码</span><div class="axbar"><i style="width:82%"></i></div><span class="axw">AI 为主</span></div>
+    <div class="axrow"><span class="axn">执行·本地运行</span><div class="axbar"><i id="axExec" style="width:0%"></i></div><span class="axw" id="axExecW">人 100%</span></div>
+    <div class="axrow"><span class="axn">决策·裁定验收</span><div class="axbar"><i id="axDec" style="width:0%"></i></div><span class="axw" id="axDecW">人 100%</span></div>
+    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是较弱的代理指标。换一个轴比例就反转——按<b>产出（编写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看归属。所以拆四轴各看，比单一数值更诚实。<b id="axNote" style="color:#2f3d63"></b><br>检索 / 产出恒为 AI；<b>执行</b>在「AI 主写」档转交 AI、<b>决策</b>在「人委派」档转交 AI——本卡随左侧滑块实时变。</div>
   </div>
 
   <div class="card">
@@ -270,7 +270,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <ul class="tight" style="margin-top:6px">
       <li><b>d1 选 soc_version</b>：需先 <code>npu-smi info</code> 查到实际芯片型号（如 Ascend910B1）——AI 给不了，必须线下核验。</li>
       <li><b>d2 版本对齐</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——因为 add_custom.json 字段与目录路径在版本间会变。</li>
-      <li><b>d3 精度是否达标</b>：需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「够不够准」。</li>
+      <li><b>d3 精度是否达标</b>：需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「精度是否足够」。</li>
     </ul>
   </div>
 
@@ -287,8 +287,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <h3>协同量化 · 交接次数</h3>
     <p style="font-size:13px">全旅程 <b><span id="hoCount">8</span> 次主导权易手</b>（图中紫色粗连线）。<span id="hoList">具体：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</span></p>
     <p id="hoNote" style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
-    <p style="font-size:13px;margin-top:8px"><b><span id="brCount">2</span> 条用户独立分支</b>（不经 AI）<span id="brNote">：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。</span></p>
-    <div class="note" style="margin-top:8px">随左侧滑块：自主度↑ → 交接变少（更多同侧推进）、用户独立分支归零（<b>人不再独立兜底</b>）。</div>
+    <p style="font-size:13px;margin-top:8px"><b><span id="brCount">2</span> 条用户独立分支</b>（不经 AI）<span id="brNote">：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</span></p>
+    <div class="note" style="margin-top:8px">随左侧滑块：自主度↑ → 交接变少（更多同侧推进）、用户独立分支归零（<b>人不再独立提供后备</b>）。</div>
   </div>
 </div>
 
@@ -316,21 +316,21 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <tr><td>P4 写核函数·Tiling</td><td>s7 / d2</td><td id="ph3"></td><td>AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。</td></tr>
     <tr><td>P5 编译·部署</td><td>s8–s10</td><td id="ph4"></td><td>用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。</td></tr>
     <tr><td>P6 接入 PyTorch</td><td>s11 / s12</td><td id="ph5"></td><td>AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。</td></tr>
-    <tr><td>P7 跑通·精度·交付</td><td>s13 / d3 / s14</td><td id="ph6"><span class="tag hu">用户主导</span></td><td>跑测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
+    <tr><td>P7 运行·精度·交付</td><td>s13 / d3 / s14</td><td id="ph6"><span class="tag hu">用户主导</span></td><td>运行测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
   </tbody>
 </table>
 <div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
 
 <a id="s4"></a>
 <h2><span class="no">④</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
-<div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部到底怎么跑」。</div>
+<div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部究竟如何运转」。</div>
 
 <h3>4.1 工具调用策略：为什么是有限次检索，而非更多 / 更少</h3>
 <div class="card">
   <p style="font-size:13.5px">上图 s2–s4 里 AI 没有把检索工具刷到上限，实测 D 任务只搜了 ~1–2 轮就转入拼装。背后是两层机制叠加：</p>
   <ul class="tight" style="margin-top:8px">
     <li><b>硬上限 = <code>max_uses</code></b>：<code>web_search</code> 是 Anthropic Messages API 的<b>服务端工具</b>，注册时带 <code>max_uses</code> 封顶（如 5）；超过会返回 <code>max_uses_exceeded</code>，模型不能无限刷。</li>
-    <li><b>软停止 = 模型自主判断「够了」</b>：服务端工具在<b>同一轮</b>内自带 loop——模型决定搜什么 → 平台执行并回灌结果 → 模型判断信息是否足够 → 不够再搜、够了就停并生成终答（<code>stop_reason: end_turn</code>；长耗时会先 <code>pause_turn</code> 再续）。所以「调用 N 次」不是写死的常量，而是 <b>min(max_uses, 模型判断收敛点)</b>。</li>
+    <li><b>软停止 = 模型自主判断「信息已足够」</b>：服务端工具在<b>同一轮</b>内自带 loop——模型决定检索内容 → 平台执行并回灌结果 → 模型判断信息是否足够 → 不足则续检索、足够则停止并生成终答（<code>stop_reason: end_turn</code>；耗时较长会先 <code>pause_turn</code> 再继续）。所以「调用 N 次」不是写死的常量，而是 <b>min(max_uses, 模型判断收敛点)</b>。</li>
     <li><b>为什么 D 任务收敛得早</b>：实测前 1–2 条结果（知乎 / ai6s.net / MindSpore 官方 / CSDN）已能拼出步骤骨架，边际信息递减；继续搜更多只会拿到同质 CSDN 互抄（D 的二手本就薄），模型据此判断「再搜性价比低」→ 提前停。<b>检索次数少 ≠ 偷懒，而是边际收益判断</b>。</li>
   </ul>
   <h3 style="margin-top:18px">输入优化：用户怎么写指令能显著抬升输出精准度</h3>
@@ -339,7 +339,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <tbody>
       <tr><td><b>补约束</b>：写明「要<b>可照抄的完整命令 + 锁定版本号</b>」</td><td>逼 AI 在 s5 给出带真实 soc_version 占位说明的 msopgen 命令，而非泛泛描述，减少 d1 的来回。</td></tr>
       <tr><td><b>限范围</b>：写明芯片型号 / CANN 版本（如 910B1 + 8.0.RC3）</td><td>直接消解 d2 版本对齐这个卡点——AI 不必在多版本间猜，输出一次到位。</td></tr>
-      <tr><td><b>限渠道</b>：写明「优先官方文档，拿不到说明受阻、不要编」</td><td>触发 AI 在 s3 受阻时<b>诚实标注 SPA 抓不到</b>并转二手，而不是用记忆补全一个看起来对、跑不通的步骤。</td></tr>
+      <tr><td><b>限渠道</b>：写明「优先官方文档，无法取得则说明受阻、不得编造」</td><td>触发 AI 在 s3 受阻时<b>诚实标注 SPA 无法抓取</b>并转二手，而不是用记忆补全一个看似正确、实则无法运行的步骤。</td></tr>
       <tr><td><b>给反馈</b>：把 s9 的编译报错<b>原文</b>贴回</td><td>AI 解读的准确度直接取决于报错原文，而非「我编译失败了」这类模糊描述。</td></tr>
     </tbody>
   </table>
@@ -359,7 +359,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
 
 <h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
-<div class="sechint">「我平常怎么跑」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④研判</b>（够? 受阻?）→ 够：<b>⑥收敛 → 终答</b>；不够 / 受阻：<b>⑤遇阻处理</b>(不编造·转二手) <b>回到 ③ 路由</b>（多轮回路）。否（end_turn）则<b>直接出终答</b>。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
+<div class="sechint">「我平常如何运行」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④研判</b>（够? 受阻?）→ 够：<b>⑥收敛 → 终答</b>；不够 / 受阻：<b>⑤遇阻处理</b>(不编造·转二手) <b>回到 ③ 路由</b>（多轮回路）。否（end_turn）则<b>直接出终答</b>。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
 <div class="avbox">
   <div class="avhead"><div class="avtabs"><button class="avtab active" data-v="arch">架构图</button><button class="avtab" data-v="code">代码</button></div></div>
   <div id="archView">
@@ -382,7 +382,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <g class="anode" data-k="gate"><polygon points="280,248 332,272 280,296 228,272" fill="#FCEFC7" stroke="#8a6d1a"/>
   <text x="280" y="270" text-anchor="middle" font-size="10" fill="#8a6d1a">需要工具?</text>
   <text x="280" y="281" text-anchor="middle" font-size="8.3" fill="#a98a4a">stop_reason</text></g>
-  <text x="224" y="242" text-anchor="end" font-size="9" fill="#aaa">pause_turn 长耗时续跑</text>
+  <text x="224" y="242" text-anchor="end" font-size="9" fill="#aaa">pause_turn 长耗时自动继续</text>
   <g class="anode" data-k="search"><rect x="95" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
   <text x="182" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_search</text>
   <text x="182" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">服务端·同轮闭环·max_uses</text></g>
@@ -492,7 +492,7 @@ TOOLS = [
   <h3><span class="dlab">d2</span>版本对齐（CANN / 路径 / json 字段）</h3>
   <div class="kv">
     <div class="k">介入原因</div><div>D 任务<b>版本散乱是实测短板</b>：80RC2alpha001 / 80RC3 / 82RC1alpha003 之间，add_custom.json 字段与文档目录路径都会变（连官方 URL 从 <code>devguide/opdevg/</code> 漂到 <code>opdevg/Ascendcopdevg/</code>）。AI 给的步骤未必匹配本机版本。</div>
-    <div class="k">前置条件</div><div>知道本机装的 CANN 确切版本；理解「同一份步骤换个版本可能跑不通」。</div>
+    <div class="k">前置条件</div><div>知道本机装的 CANN 确切版本；理解「同一份步骤换个版本可能无法运行通过」。</div>
     <div class="k">执行动作</div><div>核对本机版本 → 必要时脱离 AI、去 Gitee samples 仓（分支 b2）对齐对应版本的样例 → 修正后再用。</div>
   </div>
 </div>
@@ -500,7 +500,7 @@ TOOLS = [
 <div class="dnode">
   <h3><span class="dlab">d3</span>精度是否达标（验收）</h3>
   <div class="kv">
-    <div class="k">介入原因</div><div>「算子结果够不够准」是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型，AI 无法替用户拍板同意 / 驳回。</div>
+    <div class="k">介入原因</div><div>「算子结果精度是否足够」是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型，AI 无法替用户裁定通过 / 驳回。</div>
     <div class="k">前置条件</div><div>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>
     <div class="k">执行动作</div><div>逐元素比对 → 达标则交付（s14）；不达标则<b>驳回</b>，回到 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>
   </div>
@@ -516,7 +516,7 @@ TOOLS = [
 
 <div class="limit">
   <b>诚实声明与局限：</b>
-  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>，也正是本项目真正测的「知识可用性」），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>（开发步骤 msopgen / 编包 / aclnn 按官方文档复述、非真跑通），真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。<b>滑块 3 档的分工差异为建模</b>（仅「① 人主笔」对应实测的这次检索，另两档非实测）；而<b>受阻事实在三档下不变</b>（同一 CANN 生态），变的只是「谁动手、人还查不查」。
+  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>，也正是本项目真正测的「知识可用性」），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>（开发步骤 msopgen / 编包 / aclnn 按官方文档复述、未实际运行验证），真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。<b>滑块 3 档的分工差异为建模</b>（仅「① 人主笔」对应实测的这次检索，另两档非实测）；而<b>受阻事实在三档下不变</b>（同一 CANN 生态），变的只是「谁执行、人是否核查」。
   ② §4.3 代码是<b>公开 Messages API 的示范实现</b>，解释 agent 循环契约，<b>非 Claude 内部源码</b>；服务端 web_search 的检索 / 排序内部实现不可观测。
   ③ 工作量占比按<b>节点计数</b>而非真实工时；不同开发者熟练度会显著改变人侧耗时。
   ④ 本页只刻画 D 这一个「最难」任务的旅程；成熟任务（如 G 迁移、Z 概念对照）的人机协同形态会大不相同（AI 主导区段更长、卡点更少），详见 <a href="17_official_site_focus.html" style="color:#2f3d63">热力矩阵</a>与<a href="19_findings_ux_synthesis.html" style="color:#2f3d63">启发与方向</a>。
@@ -540,7 +540,7 @@ const NODES = [
     meta:"Agent 自主 · P2", b:"官方受阻后转 MindSpore 2.3.1 教程 + CSDN「AscendC 从入门到精通」+ 自带知识，合成步骤骨架。二手薄、且多扎堆 CSDN。"},
   {id:"s5",  xi:4,  lane:"ai", kind:"draft",   t:"给 msopgen 命令 + json",
     meta:"Agent 自主 · P2→交付", b:"输出步骤骨架：环境(CANN≥7.0.RC1)→ msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp 生成工程。标注 soc_version 需用户核验。end_turn。"},
-  {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地跑 msopgen 生成工程",
+  {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地运行 msopgen 生成工程",
     meta:"人机协同 · P3", b:"用户在本机执行 msopgen，生成算子工程骨架（host/kernel/Tiling 目录）。"},
   {id:"d1",  xi:6,  lane:"hu", kind:"decision",t:"决策：选 soc_version",
     meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
@@ -558,8 +558,8 @@ const NODES = [
     meta:"人机协同 · P6", b:"AI 给 cpp_extension 方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL / PYBIND11_MODULE 接 PyTorch，调 autogen 的 aclnn API。"},
   {id:"s12", xi:13, lane:"hu", kind:"run",     t:"集成进 PyTorch",
     meta:"人机协同 · P6", b:"用户落地集成代码，编译扩展，import 验证算子可被 torch 调用。"},
-  {id:"s13", xi:14, lane:"hu", kind:"run",     t:"跑测试",
-    meta:"用户主导 · P7", b:"构造输入，跑算子，得到输出。"},
+  {id:"s13", xi:14, lane:"hu", kind:"run",     t:"运行测试",
+    meta:"用户主导 · P7", b:"构造输入，运行算子，得到输出。"},
   {id:"d3",  xi:15, lane:"hu", kind:"decision",t:"决策：精度是否达标",
     meta:"用户决定 · P7 · 验收", b:"与 CPU/GPU 参考输出逐元素比对。达标→交付；不达标→驳回回 s7 重走 P4–P7。"},
   {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
@@ -570,7 +570,7 @@ const BRANCH = [
   {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
     b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。脱离 AI 的独立检索。"},
   {id:"b2", from:"d2", xi:8,  t:"Gitee samples 仓求证",
-    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本的可跑样例。外部求证、独立于 AI。"},
+    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本的可运行样例。外部求证、独立于 AI。"},
 ];
 /* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
 const OWNER = [
@@ -587,7 +587,7 @@ const PHASE = [
   {a:7, b:8,  n:"P4 核函数·Tiling"},
   {a:9, b:11, n:"P5 编译·部署"},
   {a:12,b:13, n:"P6 接入 PyTorch"},
-  {a:14,b:16, n:"P7 跑通·精度·交付"},
+  {a:14,b:16, n:"P7 运行·精度·交付"},
 ];
 
 /* ===== 共享常量 / 工具 ===== */
@@ -643,15 +643,15 @@ function drawCount(parent, cx, y, st){
 
 /* ===== AI 自主度光谱（拖动条）：档位决定每个动作归谁，时序图随之 morph ===== */
 const LVL=[
- {name:"人主笔，AI 打下手", exec:"人", decide:"人",
+ {name:"人主笔，AI 辅助", exec:"人", decide:"人",
   covers:"问 ChatGPT/Claude、Copilot 全套(补全 / inline chat / 解释)、IDE AI 助手",
-  desc:"人写、人跑、人拍板；AI 在旁边递片段 / 补全 / 解释。检索靠人主动问。"},
- {name:"AI 主写，人审着纠", exec:"AI", decide:"人",
+  desc:"代码由人编写、本地由人运行、决策由人裁定；AI 从旁提供片段 / 补全 / 解释。检索需人主动发起。"},
+ {name:"AI 主写，人审校", exec:"AI", decide:"人",
   covers:"Cursor / Claude Code 的 agent 对话式",
-  desc:"AI 整块写 + 自己调工具跑 + 读报错自迭代，人盯着结果随手纠。<b>执行翻给 AI</b>；人独立自查 SPA / 外部求证的<b>安全网开始消失</b>。"},
- {name:"人委派，AI 自管到底", exec:"AI", decide:"AI",
-  covers:"Devin(异步)、spec 驱动、多智能体——内部实现不同，对人都是「交代→拿结果」",
-  desc:"人交代一整块(或先写好规格)，AI 自跑、开 PR，人只最后验收。<b>连决策也归 AI</b>；深水区(D)知识有缺口时风险最高、人却最抽离。"}
+  desc:"AI 成段生成代码、自行调用工具运行、读取报错自迭代，人审查结果并修正。<b>执行转交 AI</b>；人独立自查 SPA / 外部求证的<b>安全网开始消失</b>。"},
+ {name:"人委派，AI 自主完成", exec:"AI", decide:"AI",
+  covers:"Devin(异步)、spec 驱动、多智能体——内部实现不同，对人均为「委派→获取结果」",
+  desc:"人委派整体任务(或预先编写规格)，AI 自主执行并提交 PR，人仅作最终验收。<b>决策亦归 AI</b>；深水区(D)知识有缺口时风险最高、而人介入最少。"}
 ];
 let curLvl=0;
 /* 某动作在某档位归谁——只看 kind，与当前 lane 无关；lvl0 复现实测 */
@@ -1004,8 +1004,8 @@ function updateFloors(lvl){
   if($("hoNote")) $("hoNote").style.display=lvl===0?"":"none";
   if($("brCount")) $("brCount").textContent=br;
   if($("brNote")) $("brNote").innerHTML=lvl===0
-    ? "：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。"
-    : "——自动化档<b>人不再独立兜底、安全网消失</b>（AI 撞同样的 SPA / 版本坑，但没人去自查）。";
+    ? "：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。"
+    : "——自动化档<b>人不再独立提供后备、安全网消失</b>（AI 遭遇同样的 SPA / 版本问题，但无人核查）。";
   const bn=$("d5banner");                                                                     // §5 banner
   if(bn){
     if(lvl<2){ bn.className="d5banner hu";
@@ -1076,18 +1076,18 @@ function hideTip(){ tip.style.opacity="0"; }
 
 /* §4.3 架构图节点悬浮详情 */
 const ANODE={
-  ask:{t:"用户原始问句",b:"开发者的原始自然语言需求，原样进 messages、不做模板化预处理 / 不抽关键词。对 D：要开发一个 Ascend C 自定义算子并接入 PyTorch。"},
-  msg:{t:"组装 messages",b:"把 <b>system 约束</b>（给可照抄命令·锁版本·官方抓不到就说受阻、绝不编造）+ 历史轮次 + 当前问句拼成模型输入；理解整个交给模型。"},
-  intent:{t:"① 意图解析",b:"从自然语言读出「<b>要做什么任务 + 目标产物 + 硬约束</b>」。对 D＝识别出「开发 Ascend C 自定义算子并接 PyTorch」，并捕捉隐含约束：要可照抄跑通、需锁版本、与本机芯片型号强相关。"},
+  ask:{t:"用户原始问句",b:"开发者的原始自然语言需求，原样进入 messages、不做模板化预处理 / 不抽取关键词。对 D：要开发一个 Ascend C 自定义算子并接入 PyTorch。"},
+  msg:{t:"组装 messages",b:"将 <b>system 约束</b>（给可照抄命令·锁定版本·官方无法抓取则标注受阻、绝不编造）+ 历史轮次 + 当前问句组装为模型输入；理解全部交给模型。"},
+  intent:{t:"① 意图解析",b:"从自然语言读出「<b>要完成什么任务 + 目标产物 + 硬约束</b>」。对 D＝识别出「开发 Ascend C 自定义算子并接 PyTorch」，并捕捉隐含约束：需可照抄且可运行、需锁定版本、与本机芯片型号强相关。"},
   subgoal:{t:"② 子目标拆解",b:"把任务切成<b>能分别检索的子问题</b>。对 D＝① 官方 how-to（msopgen→编包→部署 OPP）② 工程脚手架结构 ③ 接 PyTorch 的绑定方式（aclnn / TORCH_LIBRARY）。"},
-  route:{t:"③ 工具路由",b:"决定本轮<b>怎么取信息</b>：先 web_search 摸全貌 / 直接 web_fetch 某官方 URL / 信息已够就直接答。对 D＝先 search 找入口页，再 fetch 官方 how-to。"},
-  gate:{t:"需要工具?（stop_reason）",b:"模型这一轮是要调工具（<b>tool_use</b>）、还是信息已够直接出终答（<b>end_turn</b>）；长耗时则 <b>pause_turn</b> 自动续跑。"},
-  search:{t:"web_search · 服务端工具",b:"平台在<b>同一次 create 调用内自闭环</b>（出 query→搜→回灌→模型判断→再搜/停），<b>max_uses 封顶＝硬上限</b>。"},
-  fetch:{t:"web_fetch · 客户端工具",b:"模型返回 tool_use，由<b>我们的 fetch_url 执行</b>抓取，结果 append 回 messages；抓空就如实回「正文抽不到」。"},
-  relay:{t:"tool_result 回灌",b:"把工具结果写回 messages，进入下一轮 create——这就是<b>多轮循环的连接点</b>。"},
-  judge:{t:"④ 研判",b:"读回灌结果，判「<b>信息够不够支撑可照抄答案</b>」+「<b>有没有受阻</b>」。对 D＝第 2 轮就发现官方 SPA 抓空、二手薄 → 判「证据不足」，触发遇阻或再搜。"},
-  blocked:{t:"⑤ 遇阻处理",b:"官方抓空 / robots 拦时<b>不拿记忆硬编</b>，改走二手 + 自带知识，并在答案里<b>如实标「官方受阻」</b>——「绝不编造」铁律的落点。"},
-  converge:{t:"⑥ 收敛",b:"信息足够即<b>停止检索</b>，把碎片按「环境→msopgen→核函数→编包→部署→绑定」排成有序步骤，给占位 + <b>标注需用户核验项</b>（soc_version / 版本）。"},
+  route:{t:"③ 工具路由",b:"决定本轮<b>如何获取信息</b>：先 web_search 了解全貌 / 直接 web_fetch 某官方 URL / 信息已足够则直接作答。对 D＝先检索入口页，再抓取官方 how-to。"},
+  gate:{t:"需要工具?（stop_reason）",b:"模型这一轮是调用工具（<b>tool_use</b>）、还是信息已足够直接产出终答（<b>end_turn</b>）；耗时较长则 <b>pause_turn</b> 自动继续。"},
+  search:{t:"web_search · 服务端工具",b:"平台在<b>同一次 create 调用内自闭环</b>（生成 query→检索→回灌→模型判断→续检索 / 停止），<b>max_uses 封顶＝硬上限</b>。"},
+  fetch:{t:"web_fetch · 客户端工具",b:"模型返回 tool_use，由<b>我们的 fetch_url 执行</b>抓取，结果 append 回 messages；抓取为空则如实返回「正文抽不到」。"},
+  relay:{t:"tool_result 回灌",b:"将工具结果写回 messages，进入下一轮 create——即<b>多轮循环的连接点</b>。"},
+  judge:{t:"④ 研判",b:"读取回灌结果，判定「<b>信息是否足以支撑可照抄答案</b>」+「<b>是否受阻</b>」。对 D＝第 2 轮即发现官方 SPA 抓取为空、二手稀薄 → 判定「证据不足」，触发遇阻或续检索。"},
+  blocked:{t:"⑤ 遇阻处理",b:"官方抓取为空 / robots 拦截时<b>不凭记忆杜撰</b>，转用二手 + 自带知识，并在答案中<b>如实标注「官方受阻」</b>——「绝不编造」铁律的落点。"},
+  converge:{t:"⑥ 收敛",b:"信息足够即<b>停止检索</b>，将片段按「环境→msopgen→核函数→编包→部署→绑定」组织为有序步骤，给出占位 + <b>标注需用户核验项</b>（soc_version / 版本）。"},
   final:{t:"终答 · end_turn",b:"把碎片合成<b>可照抄命令 + 锁版本 + 标需用户核验项</b>；受阻处如实标注。"}
 };
 function archTip(e,k){
