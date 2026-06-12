@@ -23,6 +23,7 @@ h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-lef
 h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
 h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.floortag{display:inline-block;font-size:11px;color:#0C447C;background:#eef4fc;border:1px solid #d6e6f7;border-radius:7px;padding:2px 9px;margin:0 0 12px 16px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
 .cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 @media(max-width:860px){.cards2{grid-template-columns:1fr}}
@@ -60,6 +61,26 @@ ul.tight li{margin-bottom:6px}
 .lvlticks span.on{color:#2f3d63;font-weight:700}
 .lvldesc{font-size:12px;color:var(--sub);margin:8px 2px 0;line-height:1.6}
 .scopenote{font-size:11.5px;color:#8a7a5a;background:#fbf6ec;border:1px solid #f0e6d2;border-radius:8px;padding:8px 12px;margin:8px 2px 0;line-height:1.6}
+.modecontrast{margin:18px 0 4px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.mch3{font-size:14px;margin:0 0 4px;padding-left:9px;border-left:3px solid #2f3d63;color:#2f3d63}
+.mcgrid{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.mctab{border-collapse:collapse;font-size:12.5px;flex:1;min-width:340px}
+.mctab th,.mctab td{padding:6px 9px;border-bottom:1px solid #eee;text-align:center}
+.mctab thead th{border-bottom:1.5px solid #ddd;font-weight:500;font-size:12px;line-height:1.3}
+.mctab thead th span{font-size:10.5px;color:#999;font-weight:400}
+.mctab th.m0{color:#0C447C} .mctab th.m1,.mctab th.m2{color:#5b4fc0}
+.mctab td:first-child{text-align:left;color:#444}
+.mctab td .sub{font-size:10.5px;color:#aaa}
+.mctab td.hu{color:#0C447C;font-weight:600} .mctab td.ai{color:#5b4fc0;font-weight:600}
+.mctab td.warn{color:#993C1D;font-weight:600} .mctab td.const{color:#888}
+.mcown{flex:1;min-width:300px}
+.mcownh{font-size:12px;color:#555;font-weight:500;margin-bottom:8px}
+.mcownrow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.mcownrow .lab{width:74px;flex:none;font-size:11px;color:#666}
+.mcownrow .cells{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.mcownrow .cell{border-radius:5px;padding:4px 1px;text-align:center;font-size:10px}
+.mcownrow .cell .ph{font-size:9px;opacity:.6;display:block}
+.mcownleg{font-size:10.5px;color:#aaa;margin-top:6px;line-height:1.5}
 /* 横/竖向切换 Tab */
 .vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
 .vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
@@ -190,8 +211,34 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
 </div>
 
+<div class="modecontrast">
+  <h3 class="mch3">拖动条 3 档 · 一眼看全区别</h3>
+  <div class="sechint" style="margin-bottom:12px">问 ChatGPT/Claude、Copilot 全套都归①；Cursor / Claude Code 的 agent 归②；Devin / spec 驱动 / 多智能体归③。下面只讲<b>原则差异</b>（非实测细节）。</div>
+  <div class="mcgrid">
+    <table class="mctab">
+      <thead><tr><th></th>
+        <th class="m0">① 人主笔<br><span>AI 辅助</span></th>
+        <th class="m1">② AI 主写<br><span>人审</span></th>
+        <th class="m2">③ 人委派<br><span>AI 自管</span></th></tr></thead>
+      <tbody>
+        <tr><td>谁是司机</td><td>人</td><td>AI（人审校）</td><td>AI</td></tr>
+        <tr><td>执行 · 跑命令</td><td class="hu">人</td><td class="ai">AI</td><td class="ai">AI</td></tr>
+        <tr><td>决策 · 拍板</td><td class="hu">人</td><td>人审批</td><td class="ai">AI（人只终验）</td></tr>
+        <tr><td>用户安全网<br><span class="sub">自查 SPA / 外部求证</span></td><td>有</td><td class="warn">消失</td><td class="warn">消失</td></tr>
+        <tr><td>检索 + 产出</td><td colspan="3" class="const">恒为 AI（三档不变）</td></tr>
+      </tbody>
+    </table>
+    <div class="mcown">
+      <div class="mcownh">每档「主导方」逐阶段（＝上图底部色带，随滑块同步）</div>
+      <div id="mcownrows"></div>
+      <div class="mcownleg">紫=AI 主导　蓝=人主导　青=人机协同　·　自主度↑，越来越多阶段翻成 AI（仅「立项」恒为人）</div>
+    </div>
+  </div>
+</div>
+
 <a id="s2"></a>
 <h2><span class="no">②</span>业务分析 · 从这张图能直接读出什么</h2>
+<div class="floortag">本节为「① 人主笔」档的实测拆解 · 另两档差异见上方「三档差异对照」</div>
 <div class="sechint">下面五项均可在上图逐节点定位（节点编号 s1–s14 / d1–d3 / b1–b2 与图一致）。</div>
 
 <div class="cards2">
@@ -247,6 +294,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s3"></a>
 <h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
+<div class="floortag">本节为「① 人主笔」档的实测拆解 · 三档主导方差异见上方「三档差异对照」</div>
 <div class="sechint">同一条旅程，主导方随阶段切换；上图底部色带即此表的可视化。</div>
 <table>
   <thead><tr><th>阶段</th><th>节点</th><th>主导方</th><th>边界说明</th></tr></thead>
@@ -347,6 +395,7 @@ TOOLS = [
 
 <a id="s5"></a>
 <h2><span class="no">⑤</span>用户决策节点专项 · 为什么这三处非人不可</h2>
+<div class="floortag">本节为「① 人主笔」档的实测拆解 · 拖到「③ 人委派」时这三处决策才会翻给 AI</div>
 <div class="sechint">图中三个 ◆ 决策点，逐一拆「介入原因 / 前置条件 / 执行动作」。</div>
 
 <div class="dnode">
@@ -912,6 +961,23 @@ function showTip(e,d){
 function hideTip(){ tip.style.opacity="0"; }
 
 draw();
+
+/* ===== §三档差异对照：3 档主导方逐阶段网格（静态、并排展示三档） ===== */
+(function(){
+  function ownerAt(ph,lvl){
+    let ai=0,hu=0;
+    NODES.forEach(n=>{ if(n.xi>=ph.a&&n.xi<=ph.b){ laneAt(n,lvl)==="ai"?ai++:hu++; }});
+    return ai>hu?"ai":(hu>ai?"hu":"co");
+  }
+  const OWC={hu:{c:"#dfecfa",t:"#0C447C",n:"人"},ai:{c:"#e8e2fb",t:"#4a3f9e",n:"AI"},co:{c:"#d6efe8",t:"#0F6E56",n:"协同"}};
+  const rowLab=["① 人主笔","② AI 主写","③ 人委派"];
+  const host=document.getElementById("mcownrows");
+  host.innerHTML=[0,1,2].map(lvl=>`
+    <div class="mcownrow">
+      <div class="lab">${rowLab[lvl]}</div>
+      <div class="cells">${PHASE.map((ph,i)=>{const k=ownerAt(ph,lvl),o=OWC[k];return `<div class="cell" style="background:${o.c};color:${o.t}"><span class="ph">P${i+1}</span>${o.n}</div>`;}).join("")}</div>
+    </div>`).join("");
+})();
 </script>
 </body>
 </html>
