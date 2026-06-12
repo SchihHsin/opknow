@@ -352,7 +352,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
 <div class="sechint">先看「我平常怎么跑」的 agent 循环架构：接收自然语言 → 模型自主调度工具 → 工具结果多轮回灌 → 收敛产出终答。下方代码是这张图的最小实现，逐段 A–D 对应图中各环节。</div>
 <div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 14px;overflow-x:auto">
-<svg viewBox="0 0 700 452" style="width:100%;min-width:560px;height:auto" role="img" aria-label="Agent 循环架构图：用户输入→模型调度→工具回灌→终答的多轮循环">
+<svg viewBox="0 0 700 452" style="width:100%;max-width:620px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环架构图：用户输入→模型调度→工具回灌→终答的多轮循环">
   <defs>
     <marker id="aae" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8a"/></marker>
     <marker id="aaeg" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#2a7a68"/></marker>
