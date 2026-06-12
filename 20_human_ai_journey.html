@@ -24,6 +24,9 @@ h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
 h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
 .floortag{display:inline-block;font-size:11px;color:#0C447C;background:#eef4fc;border:1px solid #d6e6f7;border-radius:7px;padding:2px 9px;margin:0 0 12px 16px}
+.d5banner{font-size:12.5px;border-radius:9px;padding:9px 13px;margin:0 0 14px;line-height:1.6}
+.d5banner.hu{background:#eef4fc;border:1px solid #d6e6f7;color:#2f3d63}
+.d5banner.risk{background:#fbece5;border:1px solid #f3d3c4;color:#993C1D}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
 .cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
 @media(max-width:860px){.cards2{grid-template-columns:1fr}}
@@ -236,7 +239,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s2"></a>
 <h2><span class="no">②</span>业务分析 · 从这张图能直接读出什么</h2>
-<div class="floortag">本节为「① 人主笔」档的实测拆解 · 另两档差异见上方「三档差异对照」</div>
+<div class="floortag">「任务分工·四轴」「协同量化」随左侧滑块实时变；「决策依据 / 卡点」是三档不变的实测事实。</div>
 <div class="sechint">下面五项均可在上图逐节点定位（节点编号 s1–s14 / d1–d3 / b1–b2 与图一致）。</div>
 
 <div class="cards2">
@@ -247,9 +250,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <div style="font-size:12px;color:#555;margin:8px 0 4px">沿「把知识搬进答案」价值链拆四轴，各归谁（<span style="color:var(--ai)">紫=AI</span> / <span style="color:var(--hu)">蓝=人</span>）：</div>
     <div class="axrow"><span class="axn">检索·找知识</span><div class="axbar"><i style="width:100%"></i></div><span class="axw">AI 100%</span></div>
     <div class="axrow"><span class="axn">产出·写代码</span><div class="axbar"><i style="width:82%"></i></div><span class="axw">AI 为主</span></div>
-    <div class="axrow"><span class="axn">执行·动手跑</span><div class="axbar"><i style="width:0%"></i></div><span class="axw">人 100%（问答场景）</span></div>
-    <div class="axrow"><span class="axn">决策·拍板验收</span><div class="axbar"><i style="width:0%"></i></div><span class="axw">人 100%</span></div>
-    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是很弱的代理。换一个轴比例就翻——按<b>产出（写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看人 100%。所以拆四轴各看，比一个数诚实。每阶段的<b>动作数 + 四轴</b>见上方时序图的阶段卡。<br>⚠ 口径：此为<b>「人主导·问答」</b>这一档（实测）；沿自主度光谱往 Vibe Coding 走，「执行」这条会从蓝翻紫。</div>
+    <div class="axrow"><span class="axn">执行·动手跑</span><div class="axbar"><i id="axExec" style="width:0%"></i></div><span class="axw" id="axExecW">人 100%</span></div>
+    <div class="axrow"><span class="axn">决策·拍板验收</span><div class="axbar"><i id="axDec" style="width:0%"></i></div><span class="axw" id="axDecW">人 100%</span></div>
+    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是很弱的代理。换一个轴比例就翻——按<b>产出（写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看谁动手。所以拆四轴各看，比一个数诚实。<b id="axNote" style="color:#2f3d63"></b><br>检索 / 产出恒为 AI；<b>执行</b>在「AI 主写」档翻给 AI、<b>决策</b>在「人委派」档翻给 AI——本卡随左侧滑块实时变。</div>
   </div>
 
   <div class="card">
@@ -273,9 +276,10 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
   <div class="card">
     <h3>协同量化 · 交接次数</h3>
-    <p style="font-size:13px">全旅程 <b>8 次主导权易手</b>（图中紫色粗连线）：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</p>
-    <p style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
-    <p style="font-size:13px;margin-top:8px">2 条<b>用户独立分支</b>（不经 AI）：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。</p>
+    <p style="font-size:13px">全旅程 <b><span id="hoCount">8</span> 次主导权易手</b>（图中紫色粗连线）。<span id="hoList">具体：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</span></p>
+    <p id="hoNote" style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
+    <p style="font-size:13px;margin-top:8px"><b><span id="brCount">2</span> 条用户独立分支</b>（不经 AI）<span id="brNote">：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。</span></p>
+    <div class="note" style="margin-top:8px">随左侧滑块：自主度↑ → 交接变少（更多同侧推进）、用户独立分支归零（<b>人不再独立兜底</b>）。</div>
   </div>
 </div>
 
@@ -292,18 +296,18 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s3"></a>
 <h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
-<div class="floortag">本节为「① 人主笔」档的实测拆解 · 三档主导方差异见上方「三档差异对照」</div>
+<div class="floortag">「主导方」列随左侧滑块实时变（＝按每阶段多数节点归属，与图底色带同源）；右侧「边界说明」以①人主笔档为例。</div>
 <div class="sechint">同一条旅程，主导方随阶段切换；上图底部色带即此表的可视化。</div>
 <table>
   <thead><tr><th>阶段</th><th>节点</th><th>主导方</th><th>边界说明</th></tr></thead>
   <tbody>
-    <tr><td>P1 立项</td><td>s1</td><td><span class="tag hu">用户主导</span></td><td>定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。</td></tr>
-    <tr><td>P2 检索方案</td><td>s2–s5</td><td><span class="tag ai">Agent 自动化主导</span></td><td>AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。这是全程唯一「AI 自主多轮迭代、用户仅验收」的区段。</td></tr>
-    <tr><td>P3 环境·工程生成</td><td>s6 / d1</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。</td></tr>
-    <tr><td>P4 写核函数·Tiling</td><td>s7 / d2</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。</td></tr>
-    <tr><td>P5 编译·部署</td><td>s8–s10</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。</td></tr>
-    <tr><td>P6 接入 PyTorch</td><td>s11 / s12</td><td><span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span></td><td>AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。</td></tr>
-    <tr><td>P7 跑通·精度·交付</td><td>s13 / d3 / s14</td><td><span class="tag hu">用户主导</span></td><td>跑测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
+    <tr><td>P1 立项</td><td>s1</td><td id="ph0"><span class="tag hu">用户主导</span></td><td>定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。</td></tr>
+    <tr><td>P2 检索方案</td><td>s2–s5</td><td id="ph1"><span class="tag ai">Agent 自动化主导</span></td><td>AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。这是全程唯一「AI 自主多轮迭代、用户仅验收」的区段。</td></tr>
+    <tr><td>P3 环境·工程生成</td><td>s6 / d1</td><td id="ph2"></td><td>AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。</td></tr>
+    <tr><td>P4 写核函数·Tiling</td><td>s7 / d2</td><td id="ph3"></td><td>AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。</td></tr>
+    <tr><td>P5 编译·部署</td><td>s8–s10</td><td id="ph4"></td><td>用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。</td></tr>
+    <tr><td>P6 接入 PyTorch</td><td>s11 / s12</td><td id="ph5"></td><td>AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。</td></tr>
+    <tr><td>P7 跑通·精度·交付</td><td>s13 / d3 / s14</td><td id="ph6"><span class="tag hu">用户主导</span></td><td>跑测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
   </tbody>
 </table>
 <div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
@@ -435,7 +439,8 @@ TOOLS = [
 
 <a id="s5"></a>
 <h2><span class="no">⑤</span>用户决策节点专项 · 为什么这三处非人不可</h2>
-<div class="floortag">本节为「① 人主笔」档的实测拆解 · 拖到「③ 人委派」时这三处决策才会翻给 AI</div>
+<div class="floortag">下面三处的「归谁」随左侧滑块变；但<b>前置条件 / 介入原因是三档不变的事实</b>。</div>
+<div id="d5banner" class="d5banner"></div>
 <div class="sechint">图中三个 ◆ 决策点，逐一拆「介入原因 / 前置条件 / 执行动作」。</div>
 
 <div class="dnode">
@@ -939,6 +944,39 @@ function syncLvlUI(){
   document.getElementById("lvlDesc").innerHTML=
     `<b style="color:#2f3d63">${curLvl+1}. ${L.name}</b>　<span style="color:#888">执行 ${L.exec} · 决策 ${L.decide}</span>　${L.desc}`;
   document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
+  updateFloors(curLvl);
+}
+/* §2/§3/§5 里「谁干哪步」的机械结果随档位更新（事实不变、只重新归属） */
+const OWNTAG={
+  hu:'<span class="tag hu">用户主导</span>',
+  ai:'<span class="tag ai">Agent 自动化主导</span>',
+  co:'<span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span>'
+};
+function handoffs(lvl){ let h=0; for(let i=0;i<NODES.length-1;i++){ if(laneAt(NODES[i],lvl)!==laneAt(NODES[i+1],lvl)) h++; } return h; }
+function updateFloors(lvl){
+  const $=id=>document.getElementById(id);
+  PHASE.forEach((ph,i)=>{ const el=$("ph"+i); if(el) el.innerHTML=OWNTAG[phaseOwner(ph)]; }); // §3 主导方列
+  const execAi=lvl>=1, decAi=lvl>=2;                                                          // §2 四轴
+  if($("axExec")) $("axExec").style.width=execAi?"100%":"0%";
+  if($("axExecW")) $("axExecW").textContent=execAi?"AI 100%":"人 100%";
+  if($("axDec")) $("axDec").style.width=decAi?"100%":"0%";
+  if($("axDecW")) $("axDecW").textContent=decAi?"AI 100%（人只终验）":(lvl===1?"人 100%（审批）":"人 100%");
+  if($("axNote")) $("axNote").textContent=`当前「${LVL[lvl].name}」：执行 ${execAi?"AI":"人"} · 决策 ${decAi?"AI":"人"}。`;
+  const ho=handoffs(lvl), br=lvl===0?2:0;                                                     // §2 协同量化
+  if($("hoCount")) $("hoCount").textContent=ho;
+  if($("hoList")) $("hoList").style.display=lvl===0?"":"none";
+  if($("hoNote")) $("hoNote").style.display=lvl===0?"":"none";
+  if($("brCount")) $("brCount").textContent=br;
+  if($("brNote")) $("brNote").innerHTML=lvl===0
+    ? "：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的兜底动作。"
+    : "——自动化档<b>人不再独立兜底、安全网消失</b>（AI 撞同样的 SPA / 版本坑，但没人去自查）。";
+  const bn=$("d5banner");                                                                     // §5 banner
+  if(bn){
+    if(lvl<2){ bn.className="d5banner hu";
+      bn.innerHTML="「① 人主笔 / ② AI 主写」档：d1 / d2 / d3 三处仍归<b>人</b>——AI 拿不到本机芯片型号、本机 CANN 版本、业务精度阈值。"; }
+    else { bn.className="d5banner risk";
+      bn.innerHTML="⚠「③ 人委派」档：这三处决策 <b>AI 接管</b>——但 npu-smi 芯片、本机 CANN 版本、精度业务阈值仍是<b>本机 / 业务事实</b>，AI 接管＝把「本来拿不到的判断」也交出去，这正是深水区（D）委派的<b>最大风险点</b>。"; }
+  }
 }
 /* 悬浮档位/滑块 → 弹出该模式解释卡片（复用 #tip） */
 function showModeCard(e,i){
