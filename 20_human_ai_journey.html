@@ -358,63 +358,69 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
 
 <h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
-<div class="sechint">先看「我平常怎么跑」的 agent 循环架构，分四层：<b>① 输入理解</b>（原始问句不做预处理、连同 system 约束组装进 messages，理解交给模型）→ <b>② 模型单轮内部</b>（一次 messages.create 里连续做意图解析 / 子目标拆解 / 工具路由 / 研判 / 遇阻分支 / 收敛六个动作）→ <b>③ stop_reason 出口</b>（end_turn 收敛 / tool_use 调工具 / pause_turn 续跑）→ <b>④ 工具执行</b>（web_search 服务端同轮闭环、web_fetch 客户端执行）+ 结果回灌多轮循环。<b>右上角可切到「代码」</b>看这张图的最小实现（逐段 A–D 对应）。</div>
+<div class="sechint">「我平常怎么跑」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④研判</b>（够? 受阻?）→ 够：<b>⑥收敛 → 终答</b>；不够 / 受阻：<b>⑤遇阻处理</b>(不编造·转二手) <b>回到 ③ 路由</b>（多轮回路）。否（end_turn）则<b>直接出终答</b>。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
 <div class="avbox">
   <div class="avhead"><div class="avtabs"><button class="avtab active" data-v="arch">架构图</button><button class="avtab" data-v="code">代码</button></div></div>
   <div id="archView">
-<svg viewBox="0 0 700 548" style="width:100%;max-width:660px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环详细架构图：输入理解→模型单轮内部→stop_reason 出口→工具执行→回灌多轮循环">
+<svg viewBox="0 0 720 626" style="width:100%;max-width:680px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环流程图：输入→模型推理(意图/子目标/路由)→需要工具?→web_search/web_fetch→回灌→研判→收敛/遇阻回路→终答">
   <defs>
     <marker id="aae" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8a"/></marker>
     <marker id="aaeg" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#2a7a68"/></marker>
   </defs>
-  <text x="305" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#999">① 输入理解：用户问句怎么进到模型</text>
-  <rect x="180" y="30" width="250" height="34" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="305" y="52" text-anchor="middle" font-size="12.5" fill="#333">用户原始自然语言问句</text>
-  <text x="446" y="44" font-size="10.5" fill="#888">不做模板化预处理 / 不抽关键词</text>
-  <text x="446" y="58" font-size="10.5" fill="#888">—— 理解整个交给模型本身</text>
-  <line x1="305" y1="64" x2="305" y2="84" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <rect x="160" y="86" width="290" height="38" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="305" y="103" text-anchor="middle" font-size="11.5" fill="#333">组装 messages</text>
-  <text x="305" y="118" text-anchor="middle" font-size="10.5" fill="#777">= system 约束 + 历史轮次 + 当前问句</text>
-  <text x="460" y="98" font-size="10.5" fill="#888">system 约束：给可照抄命令 · 锁版本</text>
-  <text x="460" y="112" font-size="10.5" fill="#888">· 官方抓不到就说受阻、绝不编造</text>
-  <line x1="305" y1="124" x2="305" y2="144" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <text x="310" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#7d70c0">② 模型单轮内部：一次 messages.create 里发生什么</text>
-  <rect x="150" y="148" width="320" height="180" rx="10" fill="#ECE7F6" stroke="#6B5BA8" stroke-width="1.5"/>
-  <text x="310" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="#4a3f9e">模型自主推理（同一次调用内连续进行）</text>
-  <text x="166" y="194" font-size="11" fill="#46398f">① 意图解析：Ascend C 算子 + 接 PyTorch</text>
-  <text x="166" y="216" font-size="11" fill="#46398f">② 子目标拆解：官方 how-to → 脚手架 → 绑定</text>
-  <text x="166" y="238" font-size="11" fill="#46398f">③ 工具路由：本轮 search / fetch / 直接答</text>
-  <text x="166" y="260" font-size="11" fill="#46398f">④ 研判回灌：信息够不够 → 再搜 / 收敛</text>
-  <text x="166" y="282" font-size="11" fill="#46398f">⑤ 遇阻分支：抓空 → 不编造 → 转二手</text>
-  <text x="166" y="304" font-size="11" fill="#46398f">⑥ 收敛：信息足够 → 产出终答</text>
-  <text x="486" y="206" font-size="10.5" fill="#999">↔ §4.2 三轮：</text>
-  <text x="486" y="221" font-size="10.5" fill="#999">规划 → 遇阻转二手</text>
-  <text x="486" y="236" font-size="10.5" fill="#999">→ 收敛产出</text>
-  <line x1="310" y1="328" x2="310" y2="346" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <text x="250" y="349" text-anchor="end" font-size="9.5" fill="#aaa">pause_turn：长耗时自动续跑</text>
-  <text x="112" y="370" font-size="11" font-weight="700" fill="#999">③ 出口判断</text>
-  <text x="112" y="384" font-size="10" fill="#aaa">stop_reason</text>
-  <polygon points="310,346 360,372 310,398 260,372" fill="#FCEFC7" stroke="#8a6d1a"/>
-  <text x="310" y="369" text-anchor="middle" font-size="10.5" fill="#8a6d1a">stop_reason</text>
-  <text x="310" y="382" text-anchor="middle" font-size="10.5" fill="#8a6d1a">?</text>
-  <line x1="360" y1="372" x2="466" y2="372" stroke="#2a7a68" marker-end="url(#aaeg)"/>
-  <text x="413" y="365" text-anchor="middle" font-size="10" fill="#2a7a68">end_turn</text>
-  <rect x="468" y="349" width="222" height="46" rx="8" fill="#DDF3E7" stroke="#2a7a68"/>
-  <text x="579" y="367" text-anchor="middle" font-size="12" font-weight="700" fill="#1f6657">终答</text>
-  <text x="579" y="384" text-anchor="middle" font-size="9.3" fill="#2a7a68">可照抄命令+锁版本 · 标需核验项 · 受阻如实标注</text>
-  <line x1="310" y1="398" x2="310" y2="414" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <text x="322" y="410" font-size="10" fill="#555">tool_use</text>
-  <text x="120" y="430" text-anchor="middle" font-size="11" font-weight="700" fill="#999">④ 工具执行（两类位置不同）+ 回灌</text>
-  <rect x="110" y="436" width="500" height="60" rx="9" fill="#f7f8fa" stroke="#d8dae0"/>
-  <text x="126" y="458" font-size="10.6" fill="#444"><tspan font-weight="700">web_search</tspan> · 服务端：同轮内自闭环（query→搜→回灌→再搜/停）· max_uses 硬上限</text>
-  <text x="126" y="481" font-size="10.6" fill="#444"><tspan font-weight="700">web_fetch</tspan> · 客户端：返回 tool_use → 我们的 fetch_url 执行 → 结果 append</text>
-  <line x1="310" y1="496" x2="310" y2="514" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <rect x="200" y="516" width="300" height="30" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="350" y="536" text-anchor="middle" font-size="11.5" fill="#333">tool_result 回灌 → 进入下一轮</text>
-  <path d="M200,531 H68 V228 H148" fill="none" stroke="#8a8a8a" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#aae)"/>
-  <text x="38" y="378" text-anchor="middle" font-size="10" fill="#999">多轮</text>
-  <text x="38" y="392" text-anchor="middle" font-size="10" fill="#999">循环</text>
+  <rect x="180" y="18" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="270" y="39" text-anchor="middle" font-size="12" fill="#333">用户原始问句</text>
+  <rect x="160" y="62" width="220" height="38" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="270" y="79" text-anchor="middle" font-size="11.5" fill="#333">组装 messages</text>
+  <text x="270" y="93" text-anchor="middle" font-size="9.5" fill="#888">system 约束 + 历史 + 当前问句（不预处理）</text>
+  <rect x="205" y="116" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="135" text-anchor="middle" font-size="11" fill="#4a3f9e">① 意图解析</text>
+  <rect x="205" y="158" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="177" text-anchor="middle" font-size="11" fill="#4a3f9e">② 子目标拆解</text>
+  <rect x="200" y="200" width="160" height="34" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="221" text-anchor="middle" font-size="11" fill="#4a3f9e">③ 工具路由 搜/抓/答</text>
+  <polygon points="280,248 332,272 280,296 228,272" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="280" y="270" text-anchor="middle" font-size="10" fill="#8a6d1a">需要工具?</text>
+  <text x="280" y="281" text-anchor="middle" font-size="8.3" fill="#a98a4a">stop_reason</text>
+  <text x="224" y="242" text-anchor="end" font-size="9" fill="#aaa">pause_turn 长耗时续跑</text>
+  <rect x="95" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="182" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_search</text>
+  <text x="182" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">服务端·同轮闭环·max_uses</text>
+  <rect x="300" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="387" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_fetch</text>
+  <text x="387" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">客户端·fetch_url 执行</text>
+  <rect x="190" y="394" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="280" y="414" text-anchor="middle" font-size="11" fill="#333">tool_result 回灌</text>
+  <polygon points="280,440 340,466 280,492 220,466" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="280" y="463" text-anchor="middle" font-size="10" fill="#8a6d1a">④ 研判</text>
+  <text x="280" y="476" text-anchor="middle" font-size="8.5" fill="#a98a4a">够?/受阻?</text>
+  <rect x="5" y="418" width="140" height="40" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="75" y="435" text-anchor="middle" font-size="10.5" fill="#4a3f9e">⑤ 遇阻处理</text>
+  <text x="75" y="450" text-anchor="middle" font-size="9" fill="#5b4fc0">不编造·转二手</text>
+  <rect x="205" y="512" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="531" text-anchor="middle" font-size="11" fill="#4a3f9e">⑥ 收敛</text>
+  <rect x="178" y="560" width="232" height="48" rx="9" fill="#DDF3E7" stroke="#2a7a68"/>
+  <text x="294" y="581" text-anchor="middle" font-size="12" font-weight="700" fill="#1f6657">终答 · end_turn</text>
+  <text x="294" y="597" text-anchor="middle" font-size="9" fill="#2a7a68">可照抄命令+锁版本 · 标核验 · 受阻如实标注</text>
+  <line x1="270" y1="50" x2="270" y2="61" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="270" y1="100" x2="270" y2="115" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="146" x2="280" y2="157" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="188" x2="280" y2="199" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="234" x2="280" y2="247" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="270" y1="293" x2="190" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="290" y1="293" x2="380" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <text x="350" y="308" text-anchor="middle" font-size="9" fill="#555">tool_use</text>
+  <line x1="182" y1="368" x2="256" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="387" y1="368" x2="304" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="426" x2="280" y2="439" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="492" x2="280" y2="511" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <text x="291" y="506" font-size="9.5" fill="#2a7a68">够</text>
+  <line x1="280" y1="542" x2="280" y2="559" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <path d="M220,466 H75 V459" fill="none" stroke="#b07a4a" stroke-width="1.4" marker-end="url(#aae)"/>
+  <text x="150" y="461" font-size="9.3" fill="#993C1D">不够/受阻</text>
+  <path d="M75,418 V219 H198" fill="none" stroke="#b07a4a" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#aae)"/>
+  <text x="84" y="250" font-size="9" fill="#b07a4a">↺ 回③路由</text>
+  <path d="M332,272 H662 V584 H412" fill="none" stroke="#2a7a68" stroke-width="1.4" marker-end="url(#aaeg)"/>
+  <text x="508" y="264" text-anchor="middle" font-size="9.3" fill="#2a7a68">否 · 直接答 end_turn</text>
 </svg>
   </div>
   <div id="codeView" style="display:none">
