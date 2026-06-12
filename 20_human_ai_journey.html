@@ -88,6 +88,14 @@ ul.tight li{margin-bottom:6px}
 .vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
 .vtab:hover{color:#2f3d63}
 .vtab.active{background:#2f3d63;color:#fff}
+/* §4.3 架构图/代码 切换卡 */
+.avbox{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 14px}
+.avhead{display:flex;justify-content:flex-end;margin-bottom:6px}
+.avtabs{display:inline-flex;gap:4px;background:#eceef3;border:1px solid var(--line);border-radius:8px;padding:3px}
+.avtab{font:inherit;font-size:11.5px;color:#555;background:transparent;border:0;border-radius:6px;padding:4px 12px;cursor:pointer}
+.avtab:hover{color:#2f3d63}
+.avtab.active{background:#2f3d63;color:#fff}
+#archView,#codeView{overflow-x:auto}
 /* 时序图容器 */
 .chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px auto;width:fit-content;max-width:100%}
 #journey{display:block;margin:0 auto}
@@ -350,8 +358,10 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
 
 <h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
-<div class="sechint">先看「我平常怎么跑」的 agent 循环架构，分四层：<b>① 输入理解</b>（原始问句不做预处理、连同 system 约束组装进 messages，理解交给模型）→ <b>② 模型单轮内部</b>（一次 messages.create 里连续做意图解析 / 子目标拆解 / 工具路由 / 研判 / 遇阻分支 / 收敛六个动作）→ <b>③ stop_reason 出口</b>（end_turn 收敛 / tool_use 调工具 / pause_turn 续跑）→ <b>④ 工具执行</b>（web_search 服务端同轮闭环、web_fetch 客户端执行）+ 结果回灌多轮循环。下方代码是这张图的最小实现，逐段 A–D 对应。</div>
-<div style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 14px;overflow-x:auto">
+<div class="sechint">先看「我平常怎么跑」的 agent 循环架构，分四层：<b>① 输入理解</b>（原始问句不做预处理、连同 system 约束组装进 messages，理解交给模型）→ <b>② 模型单轮内部</b>（一次 messages.create 里连续做意图解析 / 子目标拆解 / 工具路由 / 研判 / 遇阻分支 / 收敛六个动作）→ <b>③ stop_reason 出口</b>（end_turn 收敛 / tool_use 调工具 / pause_turn 续跑）→ <b>④ 工具执行</b>（web_search 服务端同轮闭环、web_fetch 客户端执行）+ 结果回灌多轮循环。<b>右上角可切到「代码」</b>看这张图的最小实现（逐段 A–D 对应）。</div>
+<div class="avbox">
+  <div class="avhead"><div class="avtabs"><button class="avtab active" data-v="arch">架构图</button><button class="avtab" data-v="code">代码</button></div></div>
+  <div id="archView">
 <svg viewBox="0 0 700 548" style="width:100%;max-width:660px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环详细架构图：输入理解→模型单轮内部→stop_reason 出口→工具执行→回灌多轮循环">
   <defs>
     <marker id="aae" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8a"/></marker>
@@ -406,8 +416,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <text x="38" y="378" text-anchor="middle" font-size="10" fill="#999">多轮</text>
   <text x="38" y="392" text-anchor="middle" font-size="10" fill="#999">循环</text>
 </svg>
-</div>
-<div class="sechint" style="margin:0 0 6px">↓ 上图的最小实现代码（A–D 段对应图中各环节）：</div>
+  </div>
+  <div id="codeView" style="display:none">
+  <div class="sechint" style="margin:0 0 6px">最小实现代码（A–D 段对应架构图各环节）：</div>
 <pre class="code"><span class="k">import</span> anthropic
 client = anthropic.<span class="f">Anthropic</span>()
 
@@ -451,6 +462,8 @@ TOOLS = [
   <div class="k">D 段</div><div>多轮循环 + 受阻处理：客户端工具结果回灌；<b>抓不到正文时显式写「正文抽不到」而非留空或臆造</b>，这是「绝不编造」铁律在代码层的落点（图 s3 受阻）。</div>
 </div>
 <div class="note"><b>诚实边界：</b>上述为<b>公开 Messages API 的忠实示范</b>，用于解释 agent 循环骨架，<b>不是 Claude 产品的内部源码</b>；服务端 <code>web_search</code> 的内部检索 / 排序实现不可见，这里只能就「对外可观测的调用契约」作解。</div>
+  </div>
+</div>
 
 <a id="s5"></a>
 <h2><span class="no">⑤</span>用户决策节点专项 · 为什么这三处非人不可</h2>
@@ -1052,6 +1065,14 @@ function showTip(e,d){
   tip.style.left=x+"px"; tip.style.top=y+"px";
 }
 function hideTip(){ tip.style.opacity="0"; }
+
+/* §4.3 架构图/代码 切换 */
+document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
+  const v=b.dataset.v;
+  document.querySelectorAll(".avtab").forEach(x=>x.classList.toggle("active", x.dataset.v===v));
+  document.getElementById("archView").style.display = v==="arch"?"":"none";
+  document.getElementById("codeView").style.display = v==="code"?"":"none";
+}));
 
 draw();
 
