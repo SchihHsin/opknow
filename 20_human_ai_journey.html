@@ -135,6 +135,16 @@ ul.tight li{margin-bottom:6px}
 #tip .afnote{font-size:10.5px;color:#cfcfcf;line-height:1.45;padding-top:2px}
 #tip .afarrow{color:#6a6a72;font-size:11px;margin:1px 0 1px 50px;line-height:1.1}
 #tip .tt-mini{margin-top:6px;font-size:9.5px;color:#9a9aa2}
+#tip.dwide{max-width:580px}
+#tip .dchain{display:flex;gap:5px;margin:8px 0 2px;align-items:stretch}
+#tip .dcol{flex:1 1 0;min-width:0;background:#26262b;border:1px solid #3a3a42;border-radius:8px;padding:6px 7px}
+#tip .dcol .dst{font-size:10.5px;font-weight:800;color:#cdd6ff;margin-bottom:4px}
+#tip .dplat{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:7px;margin-bottom:4px;line-height:1.45}
+#tip .dplat.ai{background:#34284f;color:#c9b6f5;border:1px solid #5a4a7a}
+#tip .dplat.hu{background:#1f3147;color:#a9cdf0;border:1px solid #3f5f86}
+#tip .dplat.ext{background:#3a3320;color:#e0c486;border:1px solid #6a5a30}
+#tip .dcol .dd{font-size:10px;color:#d4d4d4;line-height:1.42}
+#tip .darrow{align-self:center;color:#6a6a72;font-size:13px;flex:none}
 #tipmask{position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:399;opacity:0;pointer-events:none;transition:opacity .12s}
 #tipmask.on{opacity:1;pointer-events:auto}
 .minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
@@ -406,7 +416,7 @@ TOOLS = [
 <a id="s5"></a>
 <h2><span class="no">⑤</span>用户决策节点 · 三处非人不可（随档位变化）</h2>
 <div id="d5banner" class="d5banner"></div>
-<div class="sechint">三个决策点（图中 ◆ <b>d1 选 soc_version / d2 版本对齐 / d3 精度验收</b>）各自的「介入原因 / 前置条件 / 执行动作 / 决策链」已折进上图——<b>悬浮（点击固定）图中对应 ◆ 节点</b>查看。上方横幅随滑块变：到「人委派」档这三处决策翻给 AI，正是深水区最大风险点。</div>
+<div class="sechint">三个决策点（图中 ◆ <b>d1 选 soc_version / d2 版本对齐 / d3 精度验收</b>）各自的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈，每段标用户所在平台）」已折进上图——<b>悬浮图中对应 ◆ 节点即横向全展开</b>（像用户旅程图、无需点击）。上方横幅随滑块变：到「人委派」档这三处决策翻给 AI，正是深水区最大风险点。</div>
 
 <a id="s6"></a>
 <h2><span class="no">⑥</span>交付物汇总</h2>
@@ -976,23 +986,30 @@ const NDETAIL={
     full:`<div class="tt-sec"><span class="lbl">卡点（编译报错）</span>build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。</div>`
         +`<div class="tt-sec"><span class="lbl">解决</span>把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</div>`},
   s11:{arch:"模型产出（aclnn / TORCH_LIBRARY 绑定代码）"},
-  d1:{full:`<div class="tt-sec"><span class="lbl">决策依据 · 判断前要先拿到</span>需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 给不了，必须线下核验。</div>`
-      +`<div class="tt-sec"><span class="lbl">介入原因</span>AI 不知道用户机器实际插的是哪颗 NPU——<b>本机环境事实</b>，不在文档 / 检索可得范围。</div>`
-      +`<div class="tt-sec"><span class="lbl">前置条件</span>能访问目标机器、会用 <b>npu-smi info</b>；soc_version 直接决定 msopgen 生成的工程能否在本机编译。</div>`
-      +`<div class="tt-sec"><span class="lbl">执行动作</span>本地查到型号 → 用 <b>ai_core_Ascend910B1</b> 替换占位 → 回填继续。</div>`
-      +`<div class="tt-sec"><span class="lbl">决策链（接收 → 研判 → 决策 → 反馈）</span>`
-        +`<div class="tt-step">① 接收：AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。</div>`
-        +`<div class="tt-step">② 研判：用户意识到 AI 无法知道本机 NPU，占位不能照抄。</div>`
-        +`<div class="tt-step">③ 决策：脱离 AI、本地 npu-smi info 查到 Ascend910B1。</div>`
-        +`<div class="tt-step">④ 反馈：回填 soc_version，AI 据此在 s7 继续起草核函数 / Tiling。</div></div>`},
-  d2:{full:`<div class="tt-sec"><span class="lbl">决策依据</span>需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——add_custom.json 字段与目录路径在版本间会变。</div>`
-      +`<div class="tt-sec"><span class="lbl">介入原因</span>D 任务<b>版本散乱是实测短板</b>：连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/。AI 给的步骤未必匹配本机版本。</div>`
-      +`<div class="tt-sec"><span class="lbl">前置条件</span>知道本机装的 CANN 确切版本；理解同一份步骤换版本可能无法运行通过。</div>`
-      +`<div class="tt-sec"><span class="lbl">执行动作</span>核对本机版本 → 必要时脱离 AI、去 Gitee samples 仓（分支 b2）对齐对应版本样例 → 修正后再用。</div>`},
-  d3:{full:`<div class="tt-sec"><span class="lbl">决策依据</span>需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「精度是否足够」。</div>`
-      +`<div class="tt-sec"><span class="lbl">介入原因</span>算子结果精度是否足够是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型。</div>`
-      +`<div class="tt-sec"><span class="lbl">前置条件</span>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>`
-      +`<div class="tt-sec"><span class="lbl">执行动作</span>逐元素比对 → 达标则交付（s14）；不达标则驳回、回 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>`}
+  d1:{intro:`<b>决策依据</b>：需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 不知道用户机器插的是哪颗 NPU（本机环境事实、不在检索可得范围），必须线下核验。`,
+      pre:`能访问目标机器、会用 <b>npu-smi info</b>；soc_version 直接决定 msopgen 生成的工程能否在本机编译。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。"},
+        {st:"② 研判", plat:"AI 对话界面", platK:"ai", d:"用户意识到 AI 无法知道本机 NPU，占位不能照抄。"},
+        {st:"③ 决策", plat:"本机终端（SSH / npu-smi）", platK:"hu", d:"脱离 AI、本地运行 npu-smi info 查到 Ascend910B1。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 soc_version（ai_core_Ascend910B1 替换占位），AI 据此在 s7 继续起草核函数 / Tiling。"}
+      ]},
+  d2:{intro:`<b>决策依据</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——D 任务<b>版本散乱是实测短板</b>，连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/，add_custom.json 字段与目录路径随版本变，AI 给的步骤未必匹配本机版本。`,
+      pre:`知道本机装的 CANN 确切版本；理解同一份步骤换版本可能无法运行通过。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出某版本线的 msopgen / json 步骤（三条版本线之一）。"},
+        {st:"② 研判", plat:"本机终端", platK:"hu", d:"核对本机装的 CANN 确切版本，发现 json 字段 / 目录路径在版本间会变。"},
+        {st:"③ 决策", plat:"Gitee samples 仓（浏览器）", platK:"ext", d:"必要时脱离 AI、去 Gitee samples 仓对齐对应版本样例（分支 b2）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按本机版本修正步骤后再用。"}
+      ]},
+  d3:{intro:`<b>决策依据</b>：需 CPU / GPU 参考输出做逐元素比对——算子结果精度是否足够是<b>带业务容忍度的价值判断</b>，多大误差可接受取决于下游模型，AI 无法替用户判定。`,
+      pre:`有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出算子实现与运行测试方法。"},
+        {st:"② 研判", plat:"本机（Python / 终端）", platK:"hu", d:"运行算子，与 CPU / GPU 参考输出逐元素比对。"},
+        {st:"③ 决策", plat:"本机（业务阈值判定）", platK:"hu", d:"按业务误差阈值判定精度是否达标。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标 → 交付（s14）；不达标 → 驳回回 s7 让 AI 改核函数 / Tiling，重走 P4–P7。"}
+      ]}
 };
 /* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
 const PHASE_DETAIL=[
@@ -1091,6 +1108,19 @@ function archFlowHtml(id){
   h+=`</div><div class="tt-mini"><b style="color:#ff9ba6">红＝出问题的环节</b> · <b style="color:#f0c486">橙＝架构的应对</b>；节点名对应 §4.3 架构图。</div>`;
   return h;
 }
+/* 决策节点的「横向阶段链」（像用户旅程图：接收→研判→决策→反馈 横向铺开，每段标用户所在平台），悬浮即全出 */
+function decisionChainHtml(det){
+  let h="";
+  if(det.intro) h+=`<div class="tt-b" style="margin-top:6px">${det.intro}</div>`;
+  if(det.pre)   h+=`<div class="tt-meta" style="margin-top:5px"><b style="color:#9fb8ff">前置条件：</b>${det.pre}</div>`;
+  h+=`<div class="dchain">`;
+  det.chain.forEach((c,i)=>{
+    h+=`<div class="dcol"><div class="dst">${c.st}</div><div class="dplat ${c.platK}">${c.plat}</div><div class="dd">${c.d}</div></div>`;
+    if(i<det.chain.length-1) h+=`<div class="darrow">→</div>`;
+  });
+  h+=`</div><div class="tt-mini">平台色：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机 / 终端</b> · <b style="color:#e0c486">外部（浏览器 / Gitee）</b>——决策每段用户实际所在处。</div>`;
+  return h;
+}
 function tipBodyHtml(d, withFull){
   const det=NDETAIL[d.id]||{};
   const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
@@ -1100,9 +1130,10 @@ function tipBodyHtml(d, withFull){
   html += `<div class="tt-b">${d.b||""}</div>`;
   if(d.blk) html += `<div class="tt-blk">⚠ ${d.blk}</div>`;
   if(ARCHFLOW[d.id]) html += archFlowHtml(d.id);          // 受阻/卡点：出链路图、标红出问题的环节
+  else if(det.chain) html += decisionChainHtml(det);      // 决策：横向阶段链 + 平台，悬浮即全出
   else if(det.arch) html += `<div class="tt-arch">对应架构：${det.arch}</div>`;
   if(withFull && det.full && !ARCHFLOW[d.id]) html += det.full;
-  else if(!ARCHFLOW[d.id] && det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
+  else if(!ARCHFLOW[d.id] && !det.chain && det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
   if(withFull) html += `<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
   return html;
 }
@@ -1115,13 +1146,15 @@ function positionTip(e){
 }
 function showTip(e,d){
   if(pinned) return;
-  tip.innerHTML=tipBodyHtml(d,false);
+  const dec = d.kind==="decision";   // 决策：悬浮即全出、用宽版横向布局
+  tip.className = dec ? "dwide" : "";
+  tip.innerHTML=tipBodyHtml(d,dec);
   tip.style.opacity="1";
   positionTip(e);
 }
 function pinTip(e,d){
   pinned=true;
-  tip.className="pinned";
+  tip.className = d.kind==="decision" ? "pinned dwide" : "pinned";
   tip.innerHTML=tipBodyHtml(d,true);
   tip.style.opacity="1";
   tipmask.classList.add("on");
