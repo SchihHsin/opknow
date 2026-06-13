@@ -117,6 +117,16 @@ ul.tight li{margin-bottom:6px}
 #tip .tt-b{color:#e2e2e2}
 #tip .tt-blk{color:#ffb3b3;margin-top:5px;font-size:11px}
 #tip b{color:#BBF0D4}
+#tip.pinned{pointer-events:auto;max-width:400px;max-height:80vh;overflow:auto}
+#tip .tt-arch{margin-top:6px;font-size:10.5px;color:#8fc4ff}
+#tip .tt-hint{margin-top:6px;font-size:10px;color:#8a8a8a}
+#tip .tt-close{position:sticky;top:-4px;float:right;cursor:pointer;color:#bbb;font-size:15px;line-height:1;margin:-4px -4px 0 6px}
+#tip .tt-sec{margin-top:8px;border-top:1px solid #3a3a3f;padding-top:7px}
+#tip .tt-sec .lbl{color:#9fb8ff;font-weight:700;font-size:10.5px;display:block;margin-bottom:2px}
+#tip .tt-step{margin:4px 0;padding-left:9px;border-left:2px solid #4a4a55}
+#tip .tt-foot{margin-top:8px;font-size:10px;color:#888}
+#tipmask{position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:399;opacity:0;pointer-events:none;transition:opacity .12s}
+#tipmask.on{opacity:1;pointer-events:auto}
 .minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
 .mb-ai{background:#5b4f93;color:#fff}.mb-hu{background:#2f3d63;color:#fff}
 /* 工作量条 */
@@ -186,7 +196,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条 = 3 档协作模式</b>（悬浮档位看说明）：<b>人主笔·AI 辅助</b> → <b>AI 主写·人审</b> → <b>人委派·AI 自管</b>，节点归谁、每阶段「人/AI 占比」、主导方色带都随之变（执行从人转交 AI、决策也渐归 AI、用户独立分支消失）。右侧 = 横/竖显示切换。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径详见底部局限①）</span>每个<b>阶段卡</b>含动作数条（<span style="color:var(--ai)">紫 AI</span>/<span style="color:var(--hu)">蓝 人</span>）+ 四轴点（检/产/执/决，色=该轴偏向谁）。<br>两条泳道 = <b style="color:var(--ai)">AI（Agent）</b>（主线、每步细化）与 <b style="color:var(--hu)">人类用户</b>（操作简洁、允许脱离 AI 的分支：自查 SPA 页 / 外部求证）。<b>紫色粗连线 = 人机交接（主导权易手）</b>，灰细线 = 同侧顺序推进，蓝虚线 = 用户独立分支。红环 ✕ = 实测受阻 / 卡点。色带标注 7 个开发阶段与该段主导方。<b>横向视图</b>时间左→右（旅程 / 路线图读法），节点用圆 / 方 / 菱形造型；<b>竖向视图</b>时间自上而下（经典 UML sequence 读法：参与者两列、消息横向交接），节点改用生命线上的<b>激活条</b>，三种填充区分类型——<b style="color:#6B5BA8">实色</b>＝AI 检索 / 起草、<b>描边浅底</b>＝用户本地执行、<b style="background:repeating-linear-gradient(45deg,#FCEFC7,#FCEFC7 2px,#E0C589 2px,#E0C589 4px);padding:0 6px;border-radius:3px;color:#8a6d1a">斜条纹</b>＝决策点。</div>
+<div class="sechint"><b>左侧拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）、<b>右侧</b>切横/竖显示；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -239,18 +249,14 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
         <tr><td>检索 + 产出</td><td colspan="3" class="const">恒为 AI（三档不变）</td></tr>
       </tbody>
     </table>
-    <div class="mcown">
-      <div class="mcownh">每档「主导方」逐阶段（＝上图底部色带，随滑块同步）</div>
-      <div id="mcownrows"></div>
-      <div class="mcownleg">紫=AI 主导　蓝=人主导　青=人机协同　·　自主度↑，越来越多阶段转为 AI（仅「立项」恒为人）</div>
-    </div>
   </div>
+  <div class="mcownleg" style="margin-top:8px">每档「主导方」逐阶段已在上图底部色带随滑块同步显示，此处不再重复。</div>
 </div>
 
 <a id="s2"></a>
-<h2><span class="no">②</span>业务分析 · 从这张图能直接读出什么</h2>
-<div class="floortag">「任务分工·四轴」「协同量化」随左侧滑块实时变；「决策依据 / 卡点」是三档不变的实测事实。</div>
-<div class="sechint">下面五项均可在上图逐节点定位（节点编号 s1–s14 / d1–d3 / b1–b2 与图一致）。</div>
+<h2><span class="no">②</span>业务分析 · 整段旅程的分工与协同</h2>
+<div class="floortag">「任务分工·四轴」「协同量化」随左侧滑块实时变。</div>
+<div class="sechint">这两项是<b>整段旅程的全局属性</b>，留在此处；<b>节点专属</b>的分析（决策依据 / 卡点 / 决策链）已折进上图——<b>悬浮（点击固定）对应节点</b>查看。</div>
 
 <div class="cards2">
   <div class="card">
@@ -266,42 +272,12 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   </div>
 
   <div class="card">
-    <h3>用户决策依据：判断前必须先拿到什么</h3>
-    <p style="font-size:13px">三个决策点（图中 ◆ d1/d2/d3）做判断前各自需要的关键信息：</p>
-    <ul class="tight" style="margin-top:6px">
-      <li><b>d1 选 soc_version</b>：需先 <code>npu-smi info</code> 查到实际芯片型号（如 Ascend910B1）——AI 给不了，必须线下核验。</li>
-      <li><b>d2 版本对齐</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——因为 add_custom.json 字段与目录路径在版本间会变。</li>
-      <li><b>d3 精度是否达标</b>：需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「精度是否足够」。</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>问题卡点 + 解决方案</h3>
-    <ul class="tight">
-      <li><b>卡点 s3（实测受阻）</b>：官方 how-to 整段压在 <code>devguide/opdevg/</code> SPA 子树，<code>web_fetch</code> 只回导航 + meta、<b>正文抓不到</b>。<br><span style="color:#3d6500">→ 解决：转走二手（s4）+ 让用户开浏览器人眼自查（分支 b1，人能看到 AI 抓不到的渲染后正文）。</span></li>
-      <li><b>卡点 s9（编译报错）</b>：build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。<br><span style="color:#3d6500">→ 解决：把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</span></li>
-      <li><b>卡点：版本散乱</b>贯穿全程（d2）。<br><span style="color:#3d6500">→ 解决：用户外部求证 Gitee samples 仓对齐版本（分支 b2）。</span></li>
-    </ul>
-  </div>
-
-  <div class="card">
     <h3>协同量化 · 交接次数</h3>
     <p style="font-size:13px">全旅程 <b><span id="hoCount">8</span> 次主导权易手</b>（图中紫色粗连线）。<span id="hoList">具体：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</span></p>
     <p id="hoNote" style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
     <p style="font-size:13px;margin-top:8px"><b><span id="brCount">2</span> 条用户独立分支</b>（不经 AI）<span id="brNote">：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</span></p>
     <div class="note" style="margin-top:8px">随左侧滑块：自主度↑ → 交接变少（更多同侧推进）、用户独立分支归零（<b>人不再独立提供后备</b>）。</div>
   </div>
-</div>
-
-<h3>用户决策链：接收信息 → 思考研判 → 做出决策 → 反馈 AI（以 d1 选 soc_version 为例）</h3>
-<div class="chain">
-  <div class="ck"><b>① 接收信息</b><br>AI 在 s5 给出含 <code>&lt;soc_version&gt;</code> 占位的 msopgen 命令，并提示「此处需填你机器的实际芯片型号」。</div>
-  <div class="arr">→</div>
-  <div class="ck"><b>② 思考研判</b><br>用户意识到 AI 无法知道自己机器装的是哪颗 NPU，占位不能照抄。</div>
-  <div class="arr">→</div>
-  <div class="ck"><b>③ 做出决策</b><br>脱离 AI，本地 <code>npu-smi info</code> 查到 Ascend910B1，决定用 <code>ai_core_Ascend910B1</code>。</div>
-  <div class="arr">→</div>
-  <div class="ck"><b>④ 反馈 AI</b><br>把确定的 soc_version 回填，AI 据此在 s7 继续起草对应的核函数 / Tiling。</div>
 </div>
 
 <a id="s3"></a>
@@ -475,44 +451,16 @@ TOOLS = [
 </div>
 
 <a id="s5"></a>
-<h2><span class="no">⑤</span>用户决策节点专项 · 为什么这三处非人不可</h2>
-<div class="floortag">下面三处的「归谁」随左侧滑块变；但<b>前置条件 / 介入原因是三档不变的事实</b>。</div>
+<h2><span class="no">⑤</span>用户决策节点 · 三处非人不可（随档位变化）</h2>
 <div id="d5banner" class="d5banner"></div>
-<div class="sechint">图中三个 ◆ 决策点，逐一拆「介入原因 / 前置条件 / 执行动作」。</div>
-
-<div class="dnode">
-  <h3><span class="dlab">d1</span>选 soc_version（芯片型号）</h3>
-  <div class="kv">
-    <div class="k">介入原因</div><div>AI 不知道用户机器实际插的是哪颗 NPU——这是<b>本机环境事实</b>，不在任何文档 / 检索可得范围内，无法自动判定。</div>
-    <div class="k">前置条件</div><div>能访问目标机器、会用 <code>npu-smi info</code> 读硬件信息；知道 soc_version 会直接决定 msopgen 生成的工程能否在本机编译。</div>
-    <div class="k">执行动作</div><div>本地查到型号（如 Ascend910B1）→ 用 <code>ai_core_Ascend910B1</code> 替换 AI 给的占位 → 回填继续。</div>
-  </div>
-</div>
-
-<div class="dnode">
-  <h3><span class="dlab">d2</span>版本对齐（CANN / 路径 / json 字段）</h3>
-  <div class="kv">
-    <div class="k">介入原因</div><div>D 任务<b>版本散乱是实测短板</b>：80RC2alpha001 / 80RC3 / 82RC1alpha003 之间，add_custom.json 字段与文档目录路径都会变（连官方 URL 从 <code>devguide/opdevg/</code> 漂到 <code>opdevg/Ascendcopdevg/</code>）。AI 给的步骤未必匹配本机版本。</div>
-    <div class="k">前置条件</div><div>知道本机装的 CANN 确切版本；理解「同一份步骤换个版本可能无法运行通过」。</div>
-    <div class="k">执行动作</div><div>核对本机版本 → 必要时脱离 AI、去 Gitee samples 仓（分支 b2）对齐对应版本的样例 → 修正后再用。</div>
-  </div>
-</div>
-
-<div class="dnode">
-  <h3><span class="dlab">d3</span>精度是否达标（验收）</h3>
-  <div class="kv">
-    <div class="k">介入原因</div><div>「算子结果精度是否足够」是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型，AI 无法替用户裁定通过 / 驳回。</div>
-    <div class="k">前置条件</div><div>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>
-    <div class="k">执行动作</div><div>逐元素比对 → 达标则交付（s14）；不达标则<b>驳回</b>，回到 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>
-  </div>
-</div>
+<div class="sechint">三个决策点（图中 ◆ <b>d1 选 soc_version / d2 版本对齐 / d3 精度验收</b>）各自的「介入原因 / 前置条件 / 执行动作 / 决策链」已折进上图——<b>悬浮（点击固定）图中对应 ◆ 节点</b>查看。上方横幅随滑块变：到「人委派」档这三处决策翻给 AI，正是深水区最大风险点。</div>
 
 <a id="s6"></a>
 <h2><span class="no">⑥</span>交付物汇总</h2>
 <div class="card">
   <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
-  <div class="deliv"><div class="dn">2</div><div><b>业务分析文档</b>（§2 / §3）：任务分工（四轴：检索/产出归 AI、执行/决策归人）+ 每阶段动作数占比、用户决策依据、问题卡点 + 解决方案、协同交接量化、完整用户决策链、人机主导权边界逐阶段划分。</div></div>
-  <div class="deliv"><div class="dn">3</div><div><b>技术拆解文档</b>（§4 / §5）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化方案、大模型逐轮内部动作、忠实 agent 循环代码逐段解析、三个用户决策节点的介入原因 / 前置条件 / 执行动作专项剖析。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）+ 协同交接量化（全局，留在 §2）；用户决策依据、问题卡点 + 解决方案、决策链已<b>折进上图对应节点悬浮</b>；人机主导权边界逐阶段（§3，随滑块变）。</div></div>
+  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；三个决策节点的介入原因 / 前置条件 / 执行动作 / 决策链<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
 
 <div class="limit">
@@ -525,6 +473,7 @@ TOOLS = [
 
 </div>
 
+<div id="tipmask"></div>
 <div id="tip"></div>
 
 <script>
@@ -822,7 +771,7 @@ function renderH(){
   const g = svg.selectAll(".node").data(NODES).enter().append("g")
     .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
     .style("cursor","pointer")
-    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip).on("click", (e,d)=>pinTip(e,d));
   g.each(function(d){ drawNodeShape(d3.select(this),d); });
   g.append("text").attr("text-anchor","middle")
     .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
@@ -946,7 +895,7 @@ function renderV(){
   const g = svg.selectAll(".node").data(NODES).enter().append("g")
     .attr("transform", d=>`translate(${cx(d)},${Y(d.xi)})`)
     .style("cursor","pointer")
-    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip);
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip).on("click", (e,d)=>pinTip(e,d));
   g.each(function(d){ drawBarV(d3.select(this),d); });
   /* 标题置于激活条外侧（AI 在左、用户在右） */
   g.append("text")
@@ -1058,22 +1007,80 @@ document.querySelectorAll(".vtab").forEach(btn=>{
 
 /* ===== tooltip ===== */
 const tip=document.getElementById("tip");
-function showTip(e,d){
+const tipmask=document.getElementById("tipmask");
+let pinned=false;
+/* 节点折叠详情：arch=对应架构环节（与 §4.3 流程图挂钩）；full=点击固定后看的全版 HTML */
+const NDETAIL={
+  s2:{arch:"① 意图解析 → ② 子目标拆解 → ③ 工具路由 → web_search"},
+  s3:{arch:"③ 工具路由 → web_fetch → ④ 研判（抓取为空）→ ⑤ 遇阻处理",
+    full:`<div class="tt-sec"><span class="lbl">卡点（实测受阻）</span>官方 how-to 整段压在 <b>devguide/opdevg/</b> SPA 子树，web_fetch 只回导航 + meta、<b>正文抓不到</b>。</div>`
+        +`<div class="tt-sec"><span class="lbl">解决</span>转走二手（s4）+ 让用户开浏览器人眼自查（分支 b1，人能看到 AI 抓不到的渲染后正文）。</div>`},
+  s4:{arch:"⑤ 遇阻处理（转二手 + 自带知识）→ 续检索 / 收敛"},
+  s5:{arch:"⑥ 收敛 → 终答（end_turn）"},
+  s7:{arch:"模型产出（内容合成，属终答前的起草）"},
+  s9:{arch:"报错回灌 messages → 模型重新研判 / 给改法",
+    full:`<div class="tt-sec"><span class="lbl">卡点（编译报错）</span>build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。</div>`
+        +`<div class="tt-sec"><span class="lbl">解决</span>把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</div>`},
+  s11:{arch:"模型产出（aclnn / TORCH_LIBRARY 绑定代码）"},
+  d1:{full:`<div class="tt-sec"><span class="lbl">决策依据 · 判断前要先拿到</span>需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 给不了，必须线下核验。</div>`
+      +`<div class="tt-sec"><span class="lbl">介入原因</span>AI 不知道用户机器实际插的是哪颗 NPU——<b>本机环境事实</b>，不在文档 / 检索可得范围。</div>`
+      +`<div class="tt-sec"><span class="lbl">前置条件</span>能访问目标机器、会用 <b>npu-smi info</b>；soc_version 直接决定 msopgen 生成的工程能否在本机编译。</div>`
+      +`<div class="tt-sec"><span class="lbl">执行动作</span>本地查到型号 → 用 <b>ai_core_Ascend910B1</b> 替换占位 → 回填继续。</div>`
+      +`<div class="tt-sec"><span class="lbl">决策链（接收 → 研判 → 决策 → 反馈）</span>`
+        +`<div class="tt-step">① 接收：AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。</div>`
+        +`<div class="tt-step">② 研判：用户意识到 AI 无法知道本机 NPU，占位不能照抄。</div>`
+        +`<div class="tt-step">③ 决策：脱离 AI、本地 npu-smi info 查到 Ascend910B1。</div>`
+        +`<div class="tt-step">④ 反馈：回填 soc_version，AI 据此在 s7 继续起草核函数 / Tiling。</div></div>`},
+  d2:{full:`<div class="tt-sec"><span class="lbl">决策依据</span>需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——add_custom.json 字段与目录路径在版本间会变。</div>`
+      +`<div class="tt-sec"><span class="lbl">介入原因</span>D 任务<b>版本散乱是实测短板</b>：连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/。AI 给的步骤未必匹配本机版本。</div>`
+      +`<div class="tt-sec"><span class="lbl">前置条件</span>知道本机装的 CANN 确切版本；理解同一份步骤换版本可能无法运行通过。</div>`
+      +`<div class="tt-sec"><span class="lbl">执行动作</span>核对本机版本 → 必要时脱离 AI、去 Gitee samples 仓（分支 b2）对齐对应版本样例 → 修正后再用。</div>`},
+  d3:{full:`<div class="tt-sec"><span class="lbl">决策依据</span>需 CPU / GPU 参考输出做逐元素比对，AI 无法替用户判定「精度是否足够」。</div>`
+      +`<div class="tt-sec"><span class="lbl">介入原因</span>算子结果精度是否足够是<b>带业务容忍度的价值判断</b>——多大误差可接受取决于下游模型。</div>`
+      +`<div class="tt-sec"><span class="lbl">前置条件</span>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>`
+      +`<div class="tt-sec"><span class="lbl">执行动作</span>逐元素比对 → 达标则交付（s14）；不达标则驳回、回 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>`}
+};
+function tipBodyHtml(d, withFull){
+  const det=NDETAIL[d.id]||{};
   const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
             : d.lane==="hu" ? '<span class="minibadge mb-hu">用户</span>' : '';
-  let html = `<div class="tt-h">${badge}${d.id} · ${d.t}</div>`;
+  let html = (withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">${badge}${d.id} · ${d.t}</div>`;
   if(d.meta) html += `<div class="tt-meta">${d.meta}</div>`;
   html += `<div class="tt-b">${d.b||""}</div>`;
   if(d.blk) html += `<div class="tt-blk">⚠ ${d.blk}</div>`;
-  tip.innerHTML=html;
-  tip.style.opacity="1";
+  if(det.arch) html += `<div class="tt-arch">对应架构：${det.arch}</div>`;
+  if(withFull && det.full) html += det.full;
+  else if(det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
+  if(withFull) html += `<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
+  return html;
+}
+function positionTip(e){
   const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
   let x=e.clientX+pad, y=e.clientY+pad;
   if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
-  if(y+th>window.innerHeight-8) y=e.clientY-pad-th;
+  if(y+th>window.innerHeight-8) y=Math.max(8, window.innerHeight-th-8);
   tip.style.left=x+"px"; tip.style.top=y+"px";
 }
-function hideTip(){ tip.style.opacity="0"; }
+function showTip(e,d){
+  if(pinned) return;
+  tip.innerHTML=tipBodyHtml(d,false);
+  tip.style.opacity="1";
+  positionTip(e);
+}
+function pinTip(e,d){
+  pinned=true;
+  tip.className="pinned";
+  tip.innerHTML=tipBodyHtml(d,true);
+  tip.style.opacity="1";
+  tipmask.classList.add("on");
+  positionTip(e);
+  const cl=document.getElementById("tipClose");
+  if(cl) cl.addEventListener("click", closePin);
+}
+function closePin(){ pinned=false; tip.className=""; tip.style.opacity="0"; tipmask.classList.remove("on"); }
+function hideTip(){ if(pinned) return; tip.style.opacity="0"; }
+tipmask.addEventListener("click", closePin);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closePin(); });
 
 /* §4.3 架构图节点悬浮详情 */
 const ANODE={
@@ -1115,23 +1122,6 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
 }));
 
 draw();
-
-/* ===== §三档差异对照：3 档主导方逐阶段网格（静态、并排展示三档） ===== */
-(function(){
-  function ownerAt(ph,lvl){
-    let ai=0,hu=0;
-    NODES.forEach(n=>{ if(n.xi>=ph.a&&n.xi<=ph.b){ laneAt(n,lvl)==="ai"?ai++:hu++; }});
-    return ai>hu?"ai":(hu>ai?"hu":"co");
-  }
-  const OWC={hu:{c:"#dfecfa",t:"#0C447C",n:"人"},ai:{c:"#e8e2fb",t:"#4a3f9e",n:"AI"},co:{c:"#d6efe8",t:"#0F6E56",n:"协同"}};
-  const rowLab=["① 人主笔","② AI 主写","③ 人委派"];
-  const host=document.getElementById("mcownrows");
-  host.innerHTML=[0,1,2].map(lvl=>`
-    <div class="mcownrow">
-      <div class="lab">${rowLab[lvl]}</div>
-      <div class="cells">${PHASE.map((ph,i)=>{const k=ownerAt(ph,lvl),o=OWC[k];return `<div class="cell" style="background:${o.c};color:${o.t}"><span class="ph">P${i+1}</span>${o.n}</div>`;}).join("")}</div>
-    </div>`).join("");
-})();
 </script>
 </body>
 </html>
