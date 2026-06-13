@@ -423,7 +423,7 @@ TOOLS = [
 <a id="s5"></a>
 <h2><span class="no">⑤</span>用户决策节点 · 9 处、分两层（随档位变化）</h2>
 <div id="d5banner" class="d5banner"></div>
-<div class="sechint">一次算子开发有 <b>9 个决策点</b>（图中 ◆），分两层：<b><span style="color:#6f520c">A 类·非人不可（深金 ◆）</span></b>＝ d1 soc_version / d2 版本对齐 / d3 精度验收，AI 拿不到本机芯片·版本·业务阈值，<b>只能人定</b>；<b><span style="color:#8a6d1a">B 类·技术路线（浅金 ◆）</span></b>＝ dR 开发路线 / dP 算子原型·dtype / dT Tiling 策略 / dF 报错修复方向 / dB 绑定方式 / dQ 精度修复方向，<b>AI 能建议、用户拍板</b>。每个 ◆ 的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈 + 每段平台）」已折进上图——<b>悬浮即横向全展开</b>（无需点击）。<b>链路随滑块切换</b>：档①②＝人做实况、档③人委派＝AI 接管版（⚠ 推演）。上方横幅随滑块变：到「人委派」档这 9 处决策翻给 AI——尤其 A 类，AI 接管了它<b>本来拿不到的本机·业务事实</b>，正是深水区最大风险点。</div>
+<div class="sechint">一次算子开发有 <b>9 个决策点</b>（图中 ◆），分两层：<b><span style="color:#6f520c">A 类·非人不可（深金 ◆）</span></b>＝ d1 soc_version / d2 版本对齐 / d3 精度验收，AI 拿不到本机芯片·版本·业务阈值，<b>只能人定</b>；<b><span style="color:#8a6d1a">B 类·技术路线（浅金 ◆）</span></b>＝ dR 开发路线 / dP 算子原型·dtype / dT Tiling 策略 / dF 报错修复方向 / dB 绑定方式 / dQ 精度修复方向，<b>AI 能建议、用户拍板</b>。每个 ◆ 的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈 + 每步<b>信息来源</b>：做这步靠哪个平台 / 工具的信息，如 npu-smi / hiascend 文档 / Gitee / PyTorch 文档）」已折进上图——<b>悬浮即横向全展开</b>（无需点击）。<b>链路随滑块切换</b>：档①②＝人做实况、档③人委派＝AI 接管版（⚠ 推演）。上方横幅随滑块变：到「人委派」档这 9 处决策翻给 AI——尤其 A 类，AI 接管了它<b>本来拿不到的本机·业务事实</b>，正是深水区最大风险点。</div>
 
 <a id="s6"></a>
 <h2><span class="no">⑥</span>交付物汇总</h2>
@@ -1015,8 +1015,8 @@ const NDETAIL={
       pre:`了解两条路线的取舍；清楚本算子是否需要自定义 Tiling / 核函数级控制。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出两条实测路线及各自取舍。"},
-        {st:"② 研判", plat:"用户判断", platK:"hu", d:"用户按算子复杂度、是否需核函数级控制权衡。"},
-        {st:"③ 决策", plat:"用户（项目层面）", platK:"hu", d:"选完整自定义算子工程（需 Tiling 级控制）。"},
+        {st:"② 研判", plat:"hiascend 官方文档（两条路线页）", platK:"ext", d:"读 aclnn 简易 / 完整工程两页文档，看各自能力边界。"},
+        {st:"③ 决策", plat:"项目需求（算子复杂度）", platK:"hu", d:"按本算子是否需核函数级控制，选完整自定义算子工程。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"告知 AI 走完整工程，AI 给 msopgen 完整命令。"}
       ],
       chainAI:[
@@ -1030,8 +1030,8 @@ const NDETAIL={
       pre:`知道上游模型喂进来的张量 dtype / format；清楚类型不符会导致精度损失或报错。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给 add_custom.json 模板（IO 个数 / dtype / format 占位）。"},
-        {st:"② 研判", plat:"用户（按模型张量）", platK:"hu", d:"用户按上游模型实际张量定 dtype（fp16 / fp32）、format（ND / NZ）。"},
-        {st:"③ 决策", plat:"用户", platK:"hu", d:"定 x/y/z 为 fp16 ND（实测 json）。"},
+        {st:"② 研判", plat:"PyTorch 模型（上游张量）", platK:"hu", d:"看上游模型实际张量 dtype（fp16 / fp32）、format（ND / NZ）。"},
+        {st:"③ 决策", plat:"add_custom.json（CANN）", platK:"hu", d:"在 json 里定 x/y/z 为 fp16 ND（实测）。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 json 字段，AI 据此继续。"}
       ],
       chainAI:[
@@ -1046,7 +1046,7 @@ const NDETAIL={
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。"},
         {st:"② 研判", plat:"AI 对话界面", platK:"ai", d:"用户意识到 AI 无法知道本机 NPU，占位不能照抄。"},
-        {st:"③ 决策", plat:"本机终端（SSH / npu-smi）", platK:"hu", d:"脱离 AI、本地运行 npu-smi info 查到 Ascend910B1。"},
+        {st:"③ 决策", plat:"npu-smi info（CANN 工具）", platK:"hu", d:"在本机终端运行 npu-smi info 查到 Ascend910B1。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 soc_version（ai_core_Ascend910B1 替换占位），AI 据此在 s7 继续起草核函数 / Tiling。"}
       ],
       chainAI:[
@@ -1060,8 +1060,8 @@ const NDETAIL={
       pre:`知道实际输入 shape / 数据量；理解 UB 空间上限与 double buffer 的收益与代价。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 起草三级 Tiling 框架（Copy-In/Compute/Copy-Out），留切分参数占位。"},
-        {st:"② 研判", plat:"本机（按 shape 估算）", platK:"hu", d:"用户按实际输入 shape / 数据量估算每核负载、UB 空间是否够。"},
-        {st:"③ 决策", plat:"用户（性能取舍）", platK:"hu", d:"定多核切分粒度 + 是否启用 double buffer。"},
+        {st:"② 研判", plat:"输入 shape（上游模型）", platK:"hu", d:"按实际输入 shape / 数据量估算每核负载、UB 空间是否够。"},
+        {st:"③ 决策", plat:"hiascend Ascend C Tiling 文档", platK:"ext", d:"对照 tiling API / UB 上限，定多核切分粒度 + 是否启用 double buffer。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填切分参数，AI 细化核函数。"}
       ],
       chainAI:[
@@ -1090,8 +1090,8 @@ const NDETAIL={
       pre:`能读懂报错日志、对照本机实际状态（装了什么、注册没注册）逐一排查。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 解读报错日志（s9），给出几个可能原因。"},
-        {st:"② 研判", plat:"本机终端", platK:"hu", d:"用户对照本机实际（版本、soc、注册）逐一排查。"},
-        {st:"③ 决策", plat:"用户", platK:"hu", d:"定位具体原因、选定改法（如改 json dtype / 重新注册）。"},
+        {st:"② 研判", plat:"本机终端（编译 / 部署报错日志）", platK:"hu", d:"对照本机实际（版本、soc、注册）逐一排查。"},
+        {st:"③ 决策", plat:"hiascend 文档 / Gitee（核对注册·版本）", platK:"ext", d:"定位具体原因、选定改法（如改 json dtype / 重新注册）。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按选定改法修正，重新编译（s10）。"}
       ],
       chainAI:[
@@ -1105,9 +1105,9 @@ const NDETAIL={
       pre:`知道本机 torch 版本与 ABI 约定；清楚是否要 python 侧直调。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出三种绑定方式及适用场景（s11）。"},
-        {st:"② 研判", plat:"本机（torch 版本）", platK:"hu", d:"用户按 torch 版本（ABI 稳定性）、是否要 python 直调判断。"},
-        {st:"③ 决策", plat:"用户（工程习惯）", platK:"hu", d:"选 TORCH_LIBRARY（torch 2.x ABI 稳定）注册。"},
-        {st:"④ 反馈", plat:"本机（编译扩展）", platK:"hu", d:"落地集成代码、编译扩展（s12）。"}
+        {st:"② 研判", plat:"PyTorch 文档（torch 版本 / ABI）", platK:"ext", d:"按 torch 版本（ABI 稳定性）、是否要 python 直调判断。"},
+        {st:"③ 决策", plat:"PyTorch 文档（TORCH_LIBRARY）", platK:"ext", d:"选 TORCH_LIBRARY（torch 2.x ABI 稳定）注册。"},
+        {st:"④ 反馈", plat:"本机终端（编译扩展）", platK:"hu", d:"落地集成代码、编译扩展（s12）。"}
       ],
       chainAI:[
         {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需选绑定方式。"},
@@ -1120,8 +1120,8 @@ const NDETAIL={
       pre:`有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出算子实现与运行测试方法。"},
-        {st:"② 研判", plat:"本机（Python / 终端）", platK:"hu", d:"运行算子，与 CPU / GPU 参考输出逐元素比对。"},
-        {st:"③ 决策", plat:"本机（业务阈值判定）", platK:"hu", d:"按业务误差阈值判定精度是否达标。"},
+        {st:"② 研判", plat:"本机终端（torch_npu 跑测试 + 比对）", platK:"hu", d:"运行算子，与 CPU / GPU 参考输出逐元素比对。"},
+        {st:"③ 决策", plat:"业务需求（误差阈值）", platK:"hu", d:"按下游业务的误差阈值判定精度是否达标。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标 → 交付（s14）；不达标 → 驳回（dQ 选修复方向）回 P4。"}
       ],
       chainAI:[
@@ -1135,8 +1135,8 @@ const NDETAIL={
       pre:`有逐元素比对结果可定位误差来源；理解改核函数 / Tiling / dtype 各自的代价。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"d3 判定不达标，AI 给候选修复方向（核函数 / Tiling / dtype）。"},
-        {st:"② 研判", plat:"本机（定位误差源）", platK:"hu", d:"用户结合比对结果判断误差来自哪：搬运精度、Tiling 边界、还是 dtype。"},
-        {st:"③ 决策", plat:"用户", platK:"hu", d:"选定改核函数（或 Tiling / dtype），驳回回 P4。"},
+        {st:"② 研判", plat:"本机比对结果（定位误差）", platK:"hu", d:"结合逐元素比对结果判断误差来自哪：搬运精度、Tiling 边界、还是 dtype。"},
+        {st:"③ 决策", plat:"hiascend Ascend C 文档", platK:"ext", d:"对照文档选定改核函数（或 Tiling / dtype），驳回回 P4。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"AI 据选定方向协助改，重走 P4–P7。"}
       ],
       chainAI:[
@@ -1261,8 +1261,8 @@ function decisionChainHtml(det){
     if(i<chain.length-1) h+=`<div class="darrow">→</div>`;
   });
   h+=`</div><div class="tt-mini">${aiTake
-      ? `平台色：<b style="color:#c9b6f5">Agent 运行时</b> · <b style="color:#ff9ba6">⚠ 拿不到 / 缺校准</b>——AI 接管版为推演，拖回前两档看人做实况。`
-      : `平台色：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机 / 终端</b> · <b style="color:#e0c486">外部（浏览器 / Gitee）</b>——决策每段用户实际所在处。`}</div>`;
+      ? `信息来源：<b style="color:#c9b6f5">Agent 运行时</b> · <b style="color:#ff9ba6">⚠ 拿不到 / 缺校准</b>——AI 接管版为推演，拖回前两档看人做实况。`
+      : `信息来源（每步靠哪个平台 / 工具的信息）：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机工具（npu-smi / 终端 / torch_npu / json）</b> · <b style="color:#e0c486">外部文档站点（hiascend / Gitee / PyTorch 文档）</b>。`}</div>`;
   return h;
 }
 function tipBodyHtml(d, withFull){
