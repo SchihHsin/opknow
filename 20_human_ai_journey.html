@@ -687,6 +687,10 @@ function renderH(){
     drawRatioBar(svg, cx, phBandY+24, Math.min(w-16,118), st);
     drawCount(svg, cx, phBandY+45, st);
     drawAxisDots(svg, cx, phBandY+58, st);
+    /* 透明命中层（盖住整张阶段卡，含标题/占比条/计数/四轴点，整卡可悬浮） */
+    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
+      .attr("rx",7).attr("fill","transparent").style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
   });
 
   /* 泳道标签 + 基线（标签与基线同一水平、垂直居中对齐） */
@@ -801,6 +805,10 @@ function renderV(){
     drawRatioBar(svg, cxp, cy-8, Math.min(phW-16,92), st);
     drawCount(svg, cxp, cy+9, st);
     drawAxisDots(svg, cxp, cy+24, st);
+    /* 透明命中层（盖住整格阶段条，含标题/占比条/计数/四轴点，整条可悬浮） */
+    svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
+      .attr("rx",8).attr("fill","transparent").style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
   });
 
   /* 主导方色带（竖直、按当前档位逐阶段推出、随拖动条 morph） */
