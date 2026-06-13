@@ -261,20 +261,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s3"></a>
 <h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
-<div class="floortag">「主导方」列随左侧滑块实时变（＝按每阶段多数节点归属，与图底色带同源）；右侧「边界说明」以①人主笔档为例。</div>
-<div class="sechint">同一条旅程，主导方随阶段切换；上图底部色带即此表的可视化。</div>
-<table>
-  <thead><tr><th>阶段</th><th>节点</th><th>主导方</th><th>边界说明</th></tr></thead>
-  <tbody>
-    <tr><td>P1 立项</td><td>s1</td><td id="ph0"><span class="tag hu">用户主导</span></td><td>定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。</td></tr>
-    <tr><td>P2 检索方案</td><td>s2–s5</td><td id="ph1"><span class="tag ai">Agent 自动化主导</span></td><td>AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。这是全程唯一「AI 自主多轮迭代、用户仅验收」的区段。</td></tr>
-    <tr><td>P3 环境·工程生成</td><td>s6 / d1</td><td id="ph2"></td><td>AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。</td></tr>
-    <tr><td>P4 写核函数·Tiling</td><td>s7 / d2</td><td id="ph3"></td><td>AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。</td></tr>
-    <tr><td>P5 编译·部署</td><td>s8–s10</td><td id="ph4"></td><td>用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。</td></tr>
-    <tr><td>P6 接入 PyTorch</td><td>s11 / s12</td><td id="ph5"></td><td>AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。</td></tr>
-    <tr><td>P7 运行·精度·交付</td><td>s13 / d3 / s14</td><td id="ph6"><span class="tag hu">用户主导</span></td><td>运行测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。</td></tr>
-  </tbody>
-</table>
+<div class="sechint">每阶段的<b>主导方</b>（随滑块变，＝图底主导方色带）+ <b>边界说明</b>已折进上图——<b>悬浮（点击固定）图中阶段区域</b>查看（横向＝节点区按阶段分块、竖向＝左侧阶段条）。</div>
 <div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
 
 <a id="s4"></a>
@@ -438,7 +425,7 @@ TOOLS = [
 <h2><span class="no">⑥</span>交付物汇总</h2>
 <div class="card">
   <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
-  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）+ 协同交接量化（全局，留在 §2）；用户决策依据、问题卡点 + 解决方案、决策链已<b>折进上图对应节点悬浮</b>；人机主导权边界逐阶段（§3，随滑块变）。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）+ 协同交接量化（全局，留在 §2）；用户决策依据、问题卡点 + 解决方案、决策链已<b>折进上图对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进上图阶段区域悬浮</b>。</div></div>
   <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；三个决策节点的介入原因 / 前置条件 / 执行动作 / 决策链<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
 
@@ -690,11 +677,12 @@ function renderH(){
 
   svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
 
-  /* 节点区淡阶段背景列（仅作分组） */
+  /* 节点区淡阶段背景列（分组 + 悬浮看主导方/边界说明） */
   PHASE.forEach((d,i)=>{
     svg.append("rect").attr("x",X(d.a)-dx/2+6).attr("y",phBgY)
       .attr("width",(d.b-d.a)*dx+dx-12).attr("height",phBgH)
-      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3);
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3).style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
   });
   /* 顶部阶段卡（脱离节点底色块）：名称 → 动作数条 → 计数 → 四轴点 */
   svg.append("text").attr("x",8).attr("y",phBandY+14).attr("dominant-baseline","central")
@@ -814,7 +802,8 @@ function renderV(){
   PHASE.forEach((d,i)=>{
     const y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10, cy=(Y(d.a)+Y(d.b))/2, cxp=phX+phW/2, st=phaseStats(d);
     svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
-      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.6);
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.6).style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
     const lab=svg.append("text").attr("text-anchor","middle")
       .attr("font-size",10).attr("font-weight",700).attr("fill","#555");
     wrapText(lab, d.n, 6, 11, cxp, false);
@@ -1019,6 +1008,27 @@ const NDETAIL={
       +`<div class="tt-sec"><span class="lbl">前置条件</span>有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。</div>`
       +`<div class="tt-sec"><span class="lbl">执行动作</span>逐元素比对 → 达标则交付（s14）；不达标则驳回、回 s7 让 AI 协助改核函数 / Tiling，重走 P4–P7。</div>`}
 };
+/* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
+const PHASE_DETAIL=[
+  {nodes:"s1", bound:"定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。"},
+  {nodes:"s2–s5", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。全程唯一「AI 自主多轮迭代、用户仅验收」的区段。"},
+  {nodes:"s6 / d1", bound:"AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。"},
+  {nodes:"s7 / d2", bound:"AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。"},
+  {nodes:"s8–s10", bound:"用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。"},
+  {nodes:"s11 / s12", bound:"AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。"},
+  {nodes:"s13 / d3 / s14", bound:"运行测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。"}
+];
+const OWN_NAME={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
+function phaseBodyHtml(i, withFull){
+  const ph=PHASE[i], det=PHASE_DETAIL[i]||{}, k=phaseOwner(ph);
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">${ph.n}</div>`;
+  html+=`<div class="tt-meta">节点 ${det.nodes||""} · 主导方：<b>${OWN_NAME[k]}</b>（随滑块变）</div>`;
+  if(withFull){ html+=`<div class="tt-sec"><span class="lbl">边界说明（① 人主笔档为例）</span>${det.bound||""}</div>`+`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`; }
+  else html+=`<div class="tt-hint">点击查看边界说明 ↗</div>`;
+  return html;
+}
+function showPhaseTip(e,i){ if(pinned) return; tip.className=""; tip.innerHTML=phaseBodyHtml(i,false); tip.style.opacity="1"; positionTip(e); }
+function pinPhaseTip(e,i){ pinned=true; tip.className="pinned"; tip.innerHTML=phaseBodyHtml(i,true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
 function tipBodyHtml(d, withFull){
   const det=NDETAIL[d.id]||{};
   const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
