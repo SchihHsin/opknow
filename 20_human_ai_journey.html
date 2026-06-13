@@ -54,8 +54,8 @@ ul.tight li{margin-bottom:6px}
 .pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
 .pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
 .pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
-/* 控制行：左=自主度拖动条，右=横/竖 Tab */
-.ctrlrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:8px 0 2px}
+/* 控制行：自主度拖动条 */
+.ctrlrow{display:flex;justify-content:flex-start;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:8px 0 2px}
 .lvlbox{flex:1;min-width:300px;max-width:440px}
 .lvlhead{font-size:12px;color:#444;font-weight:700;display:flex;gap:8px;align-items:center;margin-bottom:3px}
 .lvlslider{width:100%;margin:2px 0 0;accent-color:#2f3d63}
@@ -84,11 +84,6 @@ ul.tight li{margin-bottom:6px}
 .mcownrow .cell{border-radius:5px;padding:4px 1px;text-align:center;font-size:10px}
 .mcownrow .cell .ph{font-size:9px;opacity:.6;display:block}
 .mcownleg{font-size:10.5px;color:#aaa;margin-top:6px;line-height:1.5}
-/* 横/竖向切换 Tab */
-.vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
-.vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
-.vtab:hover{color:#2f3d63}
-.vtab.active{background:#2f3d63;color:#fff}
 /* §4.3 架构图/代码 切换卡 */
 .avbox{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 14px}
 .avhead{display:flex;justify-content:flex-end;margin-bottom:6px}
@@ -221,18 +216,14 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <a id="s1"></a>
-<h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）、<b>右侧</b>切横/竖显示；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明；<b>悬浮泳道标签看任务分工·四轴、悬浮图例「人机交接」看协同量化</b>。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
+<h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
+<div class="sechint"><b>拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明；<b>悬浮泳道标签看任务分工·四轴、悬浮图例「人机交接」看协同量化</b>。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
     <div class="lvlhead">AI 自主度 · 3 档协作模式 <span style="font-weight:400;color:#999;font-size:11px">（悬浮档位看说明）</span></div>
     <input type="range" min="0" max="2" step="1" value="0" id="lvl" class="lvlslider" aria-label="AI 自主度档位">
     <div class="lvlticks"><span class="on" data-lvl="0">人主笔·AI 辅助</span><span data-lvl="1">AI 主写·人审</span><span data-lvl="2">人委派·AI 自管</span></div>
-  </div>
-  <div class="vtabs">
-    <button class="vtab active" data-mode="h">横向时间轴</button>
-    <button class="vtab" data-mode="v">竖向时序</button>
   </div>
 </div>
 <div class="lvldesc" id="lvlDesc"></div>
@@ -265,7 +256,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s3"></a>
 <h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
-<div class="sechint">每阶段的<b>主导方</b>（随滑块变，＝图底主导方色带）+ <b>边界说明</b>已折进上图——<b>悬浮（点击固定）图中阶段区域</b>查看（横向＝节点区按阶段分块、竖向＝左侧阶段条）。</div>
+<div class="sechint">每阶段的<b>主导方</b>（随滑块变，＝图底主导方色带）+ <b>边界说明</b>已折进上图——<b>悬浮（点击固定）图中左侧阶段条</b>查看。</div>
 <div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
 
 <a id="s4"></a>
@@ -681,136 +672,6 @@ function drawBarV(sel,d){
     .attr("font-size",10.5).attr("font-weight",800).attr("fill",idcol).text(d.id);
 }
 
-/* ===================== 横向视图（时间左→右） ===================== */
-function renderH(){
-  const padL=78, padT=18, dx=92;  // padT 小=顶部少留白；只用于定阶段卡起点
-  const N=NODES.length;
-  const W = padL + (N-1)*dx + 70;
-  const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
-  const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在阶段卡之外）
-  const laneY = {ai:phBgY+76, hu:phBgY+226};  // ai 下移：留够 AI 标题(最多4行)往上堆的净空、不压阶段卡
-  const branchY = laneY.hu + 92;
-  const ownerY = branchY + 46;
-  const phBgH = ownerY-8-phBgY;
-  const H = ownerY + 56;
-  const X = xi => padL + xi*dx;
-  const ny = n => laneY[n.lane];
-
-  svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
-
-  /* 节点区淡阶段背景列（分组 + 悬浮看主导方/边界说明） */
-  PHASE.forEach((d,i)=>{
-    svg.append("rect").attr("x",X(d.a)-dx/2+6).attr("y",phBgY)
-      .attr("width",(d.b-d.a)*dx+dx-12).attr("height",phBgH)
-      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3).style("cursor","help")
-      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
-  });
-  /* 顶部阶段卡（脱离节点底色块）：名称 → 动作数条 → 计数 → 四轴点 */
-  svg.append("text").attr("x",8).attr("y",phBandY+14).attr("dominant-baseline","central")
-    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("阶段");
-  svg.append("text").attr("x",8).attr("y",phBandY+44).attr("dominant-baseline","central")
-    .attr("font-size",9.5).attr("fill","#999").text("人/AI");
-  PHASE.forEach((d,i)=>{
-    const x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12, cx=x0+w/2, st=phaseStats(d);
-    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
-      .attr("rx",7).attr("fill",phaseColors[i]);
-    svg.append("text").attr("x",cx).attr("y",phBandY+14).attr("text-anchor","middle")
-      .attr("dominant-baseline","central").attr("font-size",11).attr("font-weight",700)
-      .attr("fill","#555").text(d.n);
-    drawRatioBar(svg, cx, phBandY+24, Math.min(w-16,118), st);
-    drawCount(svg, cx, phBandY+45, st);
-    drawAxisDots(svg, cx, phBandY+58, st);
-    /* 透明命中层（盖住整张阶段卡，含标题/占比条/计数/四轴点，整卡可悬浮） */
-    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
-      .attr("rx",7).attr("fill","transparent").style("cursor","help")
-      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
-  });
-
-  /* 泳道标签 + 基线（标签与基线同一水平、垂直居中对齐） */
-  [["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
-    svg.append("line").attr("x1",padL).attr("x2",W-20)
-      .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#e3e3e3").attr("stroke-width",1.2);
-    svg.append("text").attr("x",6).attr("y",laneY[k]).attr("dominant-baseline","central")
-      .attr("font-size",11.5).attr("font-weight",800).attr("fill",c).text(lab)
-      .style("cursor","help")
-      .on("mousemove",ev=>showLaneTip(ev,k)).on("mouseleave",hideTip).on("click",ev=>pinLaneTip(ev,k));
-  });
-
-  /* 主链连线 */
-  for(let i=0;i<NODES.length-1;i++){
-    const a=NODES[i], b=NODES[i+1];
-    const x1=X(a.xi), y1=ny(a), x2=X(b.xi), y2=ny(b);
-    if(a.lane!==b.lane){
-      svg.append("path")
-        .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
-        .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
-        .attr("marker-end","url(#ah)").attr("opacity",.85);
-    } else {
-      svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
-        .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
-    }
-  }
-
-  /* 分支连线（向下到 branchY）——仅问答档存在，自动化档人不再独立兜底 */
-  if(curLvl===0) BRANCH.forEach(br=>{
-    const src=byId[br.from];
-    const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
-    svg.append("path")
-      .attr("d", `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2-16}`)
-      .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
-      .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
-  });
-
-  /* 节点 */
-  const g = svg.selectAll(".node").data(NODES).enter().append("g")
-    .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
-    .style("cursor","pointer")
-    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip).on("click", (e,d)=>pinTip(e,d));
-  g.each(function(d){ drawNodeShape(d3.select(this),d); });
-  g.append("text").attr("text-anchor","middle")
-    .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
-    .each(function(d){
-      const el=d3.select(this);
-      const lines=[]; for(let i=0;i<d.t.length;i+=8) lines.push(d.t.slice(i,i+8));
-      if(d.lane==="ai"){               // 标题在节点上方、向上堆，避免压住图形
-        el.attr("y",-28);
-        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
-          .attr("dy", i===0 ? -(lines.length-1)*12 : 12).text(ln));
-      } else {                          // 标题在节点下方、向下堆
-        el.attr("y",32);
-        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
-          .attr("dy", i===0?0:12).text(ln));
-      }
-    });
-
-  /* 分支节点（仅问答档） */
-  if(curLvl===0){
-    const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
-      .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
-      .style("cursor","pointer")
-      .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
-      .on("mouseleave",hideTip);
-    gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
-      .attr("stroke-width",2).attr("stroke-dasharray","4,3");
-    gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
-      .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
-    gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
-      .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
-  }
-
-  /* 主导方色带（按当前档位逐阶段推出、随拖动条 morph） */
-  svg.append("text").attr("x",8).attr("y",ownerY+21).attr("dominant-baseline","central")
-    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("主导方");
-  PHASE.forEach(d=>{
-    const k=phaseOwner(d), x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12;
-    svg.append("rect").attr("x",x0).attr("y",ownerY+8)
-      .attr("width",w).attr("height",26).attr("rx",6).attr("fill",ownColors[k]);
-    svg.append("text").attr("x",x0+w/2).attr("y",ownerY+21)
-      .attr("text-anchor","middle").attr("dominant-baseline","central")
-      .attr("font-size",11).attr("font-weight",700).attr("fill","#2b2b2b").text(ownName[k]);
-  });
-}
-
 /* ===================== 竖向视图（时间自上而下 · 经典 sequence） ===================== */
 function renderV(){
   const phX=4, phW=108, owX=120, owW=64;
@@ -925,7 +786,6 @@ function renderV(){
 }
 
 /* ===== 视图调度 + 自主度拖动条 + 横竖 Tab ===== */
-let vMode = "h";
 function syncLvlUI(){
   const L=LVL[curLvl];
   document.getElementById("lvlDesc").innerHTML=
@@ -971,7 +831,7 @@ function draw(){
   syncLvlUI();
   svg.selectAll("*").remove();
   addDefs();
-  (vMode==="h") ? renderH() : renderV();
+  renderV();
 }
 const slider=document.getElementById("lvl");
 slider.addEventListener("input", e=>{ curLvl=+e.target.value; hideTip(); draw(); });
@@ -982,15 +842,6 @@ document.querySelectorAll(".lvlticks span").forEach(s=>{
   s.addEventListener("click", ()=>{ curLvl=i; slider.value=i; hideTip(); draw(); });
   s.addEventListener("mousemove", e=>showModeCard(e,i));
   s.addEventListener("mouseleave", hideTip);
-});
-document.querySelectorAll(".vtab").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    if(vMode===btn.dataset.mode) return;
-    vMode = btn.dataset.mode;
-    document.querySelectorAll(".vtab").forEach(b=>b.classList.toggle("active", b.dataset.mode===vMode));
-    hideTip();
-    draw();
-  });
 });
 
 /* ===== tooltip ===== */
