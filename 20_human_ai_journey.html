@@ -126,6 +126,15 @@ ul.tight li{margin-bottom:6px}
 #tip .tt-sec .lbl{color:#9fb8ff;font-weight:700;font-size:10.5px;display:block;margin-bottom:2px}
 #tip .tt-step{margin:4px 0;padding-left:9px;border-left:2px solid #4a4a55}
 #tip .tt-foot{margin-top:8px;font-size:10px;color:#888}
+#tip .aflow{margin:7px 0 2px}
+#tip .afstep{display:flex;gap:8px;align-items:flex-start}
+#tip .afnode{flex:none;width:116px;font-size:10.5px;font-weight:700;padding:4px 7px;border-radius:7px;border:1.5px solid;line-height:1.3}
+#tip .afnode.ok{background:#2b2b30;border-color:#46464f;color:#c9c9d2}
+#tip .afnode.err{background:#3a1418;border-color:#e0586a;color:#ff9ba6}
+#tip .afnode.fix{background:#382712;border-color:#e0a24a;color:#f0c486}
+#tip .afnote{font-size:10.5px;color:#cfcfcf;line-height:1.45;padding-top:2px}
+#tip .afarrow{color:#6a6a72;font-size:11px;margin:1px 0 1px 50px;line-height:1.1}
+#tip .tt-mini{margin-top:6px;font-size:9.5px;color:#9a9aa2}
 #tipmask{position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:399;opacity:0;pointer-events:none;transition:opacity .12s}
 #tipmask.on{opacity:1;pointer-events:auto}
 .minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
@@ -1055,6 +1064,33 @@ function coopTipHtml(withFull){
 function showCoopTip(e){ if(pinned) return; tip.className=""; tip.innerHTML=coopTipHtml(false); tip.style.opacity="1"; positionTip(e); }
 function pinCoopTip(e){ pinned=true; tip.className="pinned"; tip.innerHTML=coopTipHtml(true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
 (function(){ const el=document.getElementById("lgHandoff"); if(el){ el.style.cursor="help"; el.addEventListener("mousemove",showCoopTip); el.addEventListener("mouseleave",hideTip); el.addEventListener("click",pinCoopTip); } })();
+/* 受阻 / 卡点节点的「链路图」——把 §4.3 agent 架构画成迷你流程，标红出问题的环节 */
+const ARCHFLOW={
+  s3:{ title:"链路图 · 官方 how-to 在哪一环受阻",
+    steps:[
+      {s:"ok",  t:"③ 工具路由",       note:"决定抓官方 how-to 页"},
+      {s:"err", t:"web_fetch 官方页",  note:"SPA 子树 devguide/opdevg/，只回导航 + meta，<b>正文抓取为空</b>——出问题就在这一步"},
+      {s:"fix", t:"④ 研判",            note:"判定证据不足 / 官方受阻，<b>不凭记忆杜撰</b>"},
+      {s:"fix", t:"⑤ 遇阻处理",        note:"转二手 + 自带知识（s4）+ 让用户开浏览器人眼自查（分支 b1）"}
+    ]},
+  s9:{ title:"链路图 · 编译报错在哪一环被接住",
+    steps:[
+      {s:"err", t:"本机编译 / 部署",   note:"build.sh / 部署 OPP 因版本·soc_version·算子注册不匹配报错——<b>本机事实，不在 AI 检索可得范围</b>"},
+      {s:"ok",  t:"报错回灌 messages", note:"用户把报错原文交回 AI（原文质量决定解读准确度）"},
+      {s:"fix", t:"④ 研判",            note:"重新解读报错日志、定位原因"},
+      {s:"fix", t:"⑥ 收敛 → 给改法",   note:"AI 给改法 → 用户改后重试（s10）通过"}
+    ]}
+};
+function archFlowHtml(id){
+  const f=ARCHFLOW[id]; if(!f) return "";
+  let h=`<div class="tt-sec"><span class="lbl">${f.title}</span></div><div class="aflow">`;
+  f.steps.forEach((st,i)=>{
+    h+=`<div class="afstep"><div class="afnode ${st.s}">${st.s==="err"?"⚠ ":""}${st.t}</div><div class="afnote">${st.note||""}</div></div>`;
+    if(i<f.steps.length-1) h+=`<div class="afarrow">↓</div>`;
+  });
+  h+=`</div><div class="tt-mini"><b style="color:#ff9ba6">红＝出问题的环节</b> · <b style="color:#f0c486">橙＝架构的应对</b>；节点名对应 §4.3 架构图。</div>`;
+  return h;
+}
 function tipBodyHtml(d, withFull){
   const det=NDETAIL[d.id]||{};
   const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
@@ -1063,9 +1099,10 @@ function tipBodyHtml(d, withFull){
   if(d.meta) html += `<div class="tt-meta">${d.meta}</div>`;
   html += `<div class="tt-b">${d.b||""}</div>`;
   if(d.blk) html += `<div class="tt-blk">⚠ ${d.blk}</div>`;
-  if(det.arch) html += `<div class="tt-arch">对应架构：${det.arch}</div>`;
-  if(withFull && det.full) html += det.full;
-  else if(det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
+  if(ARCHFLOW[d.id]) html += archFlowHtml(d.id);          // 受阻/卡点：出链路图、标红出问题的环节
+  else if(det.arch) html += `<div class="tt-arch">对应架构：${det.arch}</div>`;
+  if(withFull && det.full && !ARCHFLOW[d.id]) html += det.full;
+  else if(!ARCHFLOW[d.id] && det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
   if(withFull) html += `<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
   return html;
 }
