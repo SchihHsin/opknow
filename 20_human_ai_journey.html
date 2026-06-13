@@ -107,6 +107,8 @@ ul.tight li{margin-bottom:6px}
 .lgdot{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none}
 .lgsq{width:16px;height:14px;border-radius:3px;border:2px solid #999;flex:none}
 .lgdia{width:15px;height:15px;border:2px solid #8a6d1a;background:var(--v3);flex:none;transform:rotate(45deg)}
+.lgdiaA{width:15px;height:15px;border:2px solid #6f520c;background:#E6B73E;flex:none;transform:rotate(45deg)}
+.lgdiaB{width:15px;height:15px;border:2px solid #bfa24e;background:#FCEFC7;flex:none;transform:rotate(45deg)}
 .lgline{width:24px;height:0;border-top:3px solid #8156c9;flex:none}
 .lgline.thin{border-top:1.5px solid #bbb}
 .lgline.dash{border-top:2px dashed #2f3d63}
@@ -143,8 +145,12 @@ ul.tight li{margin-bottom:6px}
 #tip .dplat.ai{background:#34284f;color:#c9b6f5;border:1px solid #5a4a7a}
 #tip .dplat.hu{background:#1f3147;color:#a9cdf0;border:1px solid #3f5f86}
 #tip .dplat.ext{background:#3a3320;color:#e0c486;border:1px solid #6a5a30}
+#tip .dplat.warn{background:#3a1418;color:#ff9ba6;border:1px solid #C8102E}
 #tip .dcol .dd{font-size:10px;color:#d4d4d4;line-height:1.42}
 #tip .darrow{align-self:center;color:#6a6a72;font-size:13px;flex:none}
+#tip .dmode{font-size:10.5px;font-weight:700;border-radius:7px;padding:5px 8px;margin:6px 0 2px;line-height:1.45}
+#tip .dmode.ok{background:#1f3147;color:#bcd6f5;border:1px solid #3f5f86}
+#tip .dmode.warn{background:#3a1418;color:#ffb3bb;border:1px solid #C8102E}
 #tipmask{position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:399;opacity:0;pointer-events:none;transition:opacity .12s}
 #tipmask.on{opacity:1;pointer-events:auto}
 .minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
@@ -239,7 +245,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span class="lg"><i class="lgdot" style="background:var(--aifill);border-color:var(--ai)"></i> AI 节点</span>
   <span class="lg"><i class="lgdot" style="background:var(--hufill);border-color:var(--hu)"></i> 用户节点</span>
   <span class="lg"><i class="lgsq" style="background:var(--hufill);border-color:var(--hu)"></i> 本地执行 / 运行</span>
-  <span class="lg"><i class="lgdia"></i> 决策点</span>
+  <span class="lg"><i class="lgdiaA"></i> 决策·A 非人不可</span>
+  <span class="lg"><i class="lgdiaB"></i> 决策·B 技术路线</span>
   <span class="lg"><i class="lgring"></i> 受阻 / 卡点</span>
   <span class="lg" id="lgHandoff"><i class="lgline"></i> 人机交接</span>
   <span class="lg"><i class="lgline thin"></i> 同侧推进</span>
@@ -414,16 +421,16 @@ TOOLS = [
 </div>
 
 <a id="s5"></a>
-<h2><span class="no">⑤</span>用户决策节点 · 三处非人不可（随档位变化）</h2>
+<h2><span class="no">⑤</span>用户决策节点 · 9 处、分两层（随档位变化）</h2>
 <div id="d5banner" class="d5banner"></div>
-<div class="sechint">三个决策点（图中 ◆ <b>d1 选 soc_version / d2 版本对齐 / d3 精度验收</b>）各自的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈，每段标用户所在平台）」已折进上图——<b>悬浮图中对应 ◆ 节点即横向全展开</b>（像用户旅程图、无需点击）。上方横幅随滑块变：到「人委派」档这三处决策翻给 AI，正是深水区最大风险点。</div>
+<div class="sechint">一次算子开发有 <b>9 个决策点</b>（图中 ◆），分两层：<b><span style="color:#6f520c">A 类·非人不可（深金 ◆）</span></b>＝ d1 soc_version / d2 版本对齐 / d3 精度验收，AI 拿不到本机芯片·版本·业务阈值，<b>只能人定</b>；<b><span style="color:#8a6d1a">B 类·技术路线（浅金 ◆）</span></b>＝ dR 开发路线 / dP 算子原型·dtype / dT Tiling 策略 / dF 报错修复方向 / dB 绑定方式 / dQ 精度修复方向，<b>AI 能建议、用户拍板</b>。每个 ◆ 的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈 + 每段平台）」已折进上图——<b>悬浮即横向全展开</b>（无需点击）。<b>链路随滑块切换</b>：档①②＝人做实况、档③人委派＝AI 接管版（⚠ 推演）。上方横幅随滑块变：到「人委派」档这 9 处决策翻给 AI——尤其 A 类，AI 接管了它<b>本来拿不到的本机·业务事实</b>，正是深水区最大风险点。</div>
 
 <a id="s6"></a>
 <h2><span class="no">⑥</span>交付物汇总</h2>
 <div class="card">
-  <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
+  <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
   <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）<b>折进泳道标签悬浮</b>、协同交接量化<b>折进图例「人机交接」悬浮</b>；用户决策依据、问题卡点 + 解决方案、决策链<b>折进对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进阶段区域悬浮</b>——§2 / §3 仅留指引。</div></div>
-  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；三个决策节点的介入原因 / 前置条件 / 执行动作 / 决策链<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
+  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；9 个决策节点（A 类 3 非人不可 + B 类 6 技术路线）的决策依据 / 前置条件 / 决策链（含每段平台、且<b>随滑块在「人做」「AI 接管」两版切换</b>）<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
 
 <div class="limit">
@@ -451,33 +458,47 @@ const NODES = [
     meta:"Agent 自主 · P2 · 受阻", b:"抓 hiascend atlas_ascendc_10_0006（devguide/opdevg/ 子树）。", blk:"实测受阻：SPA 页，只回导航 + meta，参数表 / 完整命令正文抓不到。这是 26 任务里唯一「SPA 短板真正咬到结果」的格。"},
   {id:"s4",  xi:3,  lane:"ai", kind:"search",  t:"拼二手 + 自带知识",
     meta:"Agent 自主 · P2", b:"官方受阻后转 MindSpore 2.3.1 教程 + CSDN「AscendC 从入门到精通」+ 自带知识，合成步骤骨架。二手薄、且多扎堆 CSDN。"},
+  {id:"dR",  xi:0,  lane:"hu", kind:"decision",t:"决策：选开发路线",
+    meta:"用户决定 · P2 · 技术路线（AI 建议·用户拍板）", b:"AI 给出两条实测路线：aclnn 简易工程（-f aclnn，atlas_ascendc_10_0101）vs 完整自定义算子工程（msopgen + add_custom.json）。AI 两条都能讲，但选哪条取决于算子复杂度与需要的控制粒度。"},
   {id:"s5",  xi:4,  lane:"ai", kind:"draft",   t:"给 msopgen 命令 + json",
     meta:"Agent 自主 · P2→交付", b:"输出步骤骨架：环境(CANN≥7.0.RC1)→ msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp 生成工程。标注 soc_version 需用户核验。end_turn。"},
+  {id:"dP",  xi:0,  lane:"hu", kind:"decision",t:"决策：算子原型 / dtype·format",
+    meta:"用户决定 · P3 · 技术路线（AI 建议·用户拍板）", b:"定 add_custom.json 的算子原型：输入输出个数、dtype（fp16 / fp32）、format（ND / NZ）。AI 给模板，但实际类型取决于上游模型张量。实测 json 为 x/y/z fp16 ND。"},
   {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地运行 msopgen 生成工程",
     meta:"人机协同 · P3", b:"用户在本机执行 msopgen，生成算子工程骨架（host/kernel/Tiling 目录）。"},
   {id:"d1",  xi:6,  lane:"hu", kind:"decision",t:"决策：选 soc_version",
     meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
   {id:"s7",  xi:7,  lane:"ai", kind:"draft",   t:"起草核函数 + Tiling",
     meta:"人机协同 · P4", b:"AI 起草 Compute 核函数与三级 Tiling 框架（GM→Local→寄存器 的 Copy-In/Compute/Copy-Out 三段流水线）。"},
+  {id:"dT",  xi:0,  lane:"hu", kind:"decision",t:"决策：Tiling 策略",
+    meta:"用户决定 · P4 · 技术路线（AI 建议·用户拍板）", b:"核函数性能的核心决策：单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。"},
   {id:"d2",  xi:8,  lane:"hu", kind:"decision",t:"决策：版本对齐",
     meta:"用户决定 · P4", b:"确认本机 CANN 版本。实测版本散乱：80RC2alpha001 / 80RC3 / 82RC1alpha003，json 字段与目录路径随版本变。"},
   {id:"s8",  xi:9,  lane:"hu", kind:"run",     t:"build.sh 编包 → 部署 OPP",
     meta:"人机协同 · P5", b:"bash build.sh 生成 custom_opp_*.run，部署到 OPP vendors/customize。"},
   {id:"s9",  xi:10, lane:"ai", kind:"draft",   blocked:true, t:"编译报错 · AI 解读",
     meta:"人机协同 · P5 · 卡点", b:"编包 / 部署常因版本、soc_version、算子注册不匹配报错。", blk:"卡点：用户把报错原文回灌，AI 解读并给改法。报错原文质量直接决定解读准确度。"},
+  {id:"dF",  xi:0,  lane:"hu", kind:"decision",t:"决策：报错修复方向",
+    meta:"用户决定 · P5 · 技术路线（AI 建议·用户拍板）", b:"编译 / 部署报错后判断改哪里：add_custom.json 字段、算子注册信息、CANN 版本对齐、还是 Tiling。AI 解读报错给候选原因，用户对照本机实际定位。"},
   {id:"s10", xi:11, lane:"hu", kind:"run",     t:"改后重试 → 通过",
     meta:"人机协同 · P5", b:"按 AI 给的改法修正，重新编译部署，通过。"},
   {id:"s11", xi:12, lane:"ai", kind:"draft",   t:"给 TORCH_LIBRARY / aclnn 绑定",
     meta:"人机协同 · P6", b:"AI 给 cpp_extension 方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL / PYBIND11_MODULE 接 PyTorch，调 autogen 的 aclnn API。"},
+  {id:"dB",  xi:0,  lane:"hu", kind:"decision",t:"决策：PyTorch 绑定方式",
+    meta:"用户决定 · P6 · 技术路线（AI 建议·用户拍板）", b:"AI 给三种接 PyTorch 的方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。"},
   {id:"s12", xi:13, lane:"hu", kind:"run",     t:"集成进 PyTorch",
     meta:"人机协同 · P6", b:"用户落地集成代码，编译扩展，import 验证算子可被 torch 调用。"},
   {id:"s13", xi:14, lane:"hu", kind:"run",     t:"运行测试",
     meta:"用户主导 · P7", b:"构造输入，运行算子，得到输出。"},
   {id:"d3",  xi:15, lane:"hu", kind:"decision",t:"决策：精度是否达标",
     meta:"用户决定 · P7 · 验收", b:"与 CPU/GPU 参考输出逐元素比对。达标→交付；不达标→驳回回 s7 重走 P4–P7。"},
+  {id:"dQ",  xi:0,  lane:"hu", kind:"decision",t:"决策：精度不达标修复方向",
+    meta:"用户决定 · P7 · 技术路线（AI 建议·用户拍板）", b:"精度不达标时定修复方向：误差来自搬运精度、Tiling 边界、还是 dtype？改哪最划算。AI 给候选方向，用户结合比对结果定位、驳回回 P4。"},
   {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
     meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。AI 仅辅助结果汇总 / 格式整理。"},
 ];
+NODES.forEach((n,i)=>{ n.xi=i; if(n.kind==="decision") n.dtier=["d1","d2","d3"].includes(n.id)?"A":"B"; });
+// xi 取数组下标；决策分两层：A=非人不可(本机/业务事实)、B=技术路线(AI 建议·用户拍板)
 /* 分支（用户脱离 AI 的独立动作） */
 const BRANCH = [
   {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
@@ -496,11 +517,11 @@ const OWNER = [
 const PHASE = [
   {a:0, b:0,  n:"P1 立项"},
   {a:1, b:4,  n:"P2 检索方案"},
-  {a:5, b:6,  n:"P3 环境·生成"},
-  {a:7, b:8,  n:"P4 核函数·Tiling"},
-  {a:9, b:11, n:"P5 编译·部署"},
-  {a:12,b:13, n:"P6 接入 PyTorch"},
-  {a:14,b:16, n:"P7 运行·精度·交付"},
+  {a:5, b:8,  n:"P3 环境·生成"},
+  {a:9, b:11, n:"P4 核函数·Tiling"},
+  {a:12,b:15, n:"P5 编译·部署"},
+  {a:16,b:18, n:"P6 接入 PyTorch"},
+  {a:19,b:22, n:"P7 运行·精度·交付"},
 ];
 
 /* ===== 共享常量 / 工具 ===== */
@@ -511,6 +532,7 @@ const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
 function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
 function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
 const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
+BRANCH.forEach(br=>{ br.xi=byId[br.from].xi; });   // 分支 xi 跟随来源节点（增删主节点不必手改）
 
 /* 每阶段「人/AI 占比」——全部从真实节点的 kind/lane 现算（不手填）
    动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
@@ -603,9 +625,10 @@ function addDefs(){
 /* 节点造型（朝向无关，横竖共用）：形状 + 受阻红环 + id 角标 */
 function drawNodeShape(sel,d){
   if(d.kind==="decision"){
+    const A=d.dtier==="A";          // A=非人不可→实心深色；B=技术路线→浅色
     sel.append("rect").attr("x",-17).attr("y",-17).attr("width",34).attr("height",34)
       .attr("transform","rotate(45)").attr("rx",4)
-      .attr("fill","#FCEFC7").attr("stroke","#8a6d1a").attr("stroke-width",2);
+      .attr("fill",A?"#E6B73E":"#FCEFC7").attr("stroke",A?"#6f520c":"#bfa24e").attr("stroke-width",A?2.4:2);
   } else if(d.kind==="run"||d.kind==="deliver"||d.kind==="start"){
     sel.append("rect").attr("x",-23).attr("y",-18).attr("width",46).attr("height",36)
       .attr("rx",7).attr("fill",fill(d)).attr("stroke",stroke(d)).attr("stroke-width",2);
@@ -619,7 +642,7 @@ function drawNodeShape(sel,d){
   }
   sel.append("text").attr("text-anchor","middle").attr("dy",4)
     .attr("font-size",11).attr("font-weight",800)
-    .attr("fill", d.kind==="decision"?"#8a6d1a":stroke(d)).text(d.id);
+    .attr("fill", d.kind==="decision"?(d.dtier==="A"?"#4d3a06":"#8a6d1a"):stroke(d)).text(d.id);
 }
 
 /* 多行换行（centerY: 让多行整体竖直居中） */
@@ -637,8 +660,9 @@ function wrapText(el,txt,max,lh,anchorX,centerVert){
 const BARW=24, BARH=42;
 function drawBarV(sel,d){
   let fillv, strokev, idcol, sw;
-  if(d.kind==="decision"){            // 斜条纹底
-    fillv="url(#diag)"; strokev="#8a6d1a"; idcol="#8a6d1a"; sw=2;
+  if(d.kind==="decision"){            // A=非人不可→实心深金；B=技术路线→斜条纹浅底
+    if(d.dtier==="A"){ fillv="#E6B73E"; strokev="#6f520c"; idcol="#4d3a06"; sw=2.4; }
+    else { fillv="url(#diag)"; strokev="#bfa24e"; idcol="#8a6d1a"; sw=2; }
   } else if(d.kind==="run"||d.kind==="start"||d.kind==="deliver"){ // 描边浅底
     fillv = d.lane==="ai" ? "#fff" : "#F1F5FC"; strokev=stroke(d); idcol=stroke(d); sw=2.4;
   } else {                            // 实色（AI search/fetch/draft）
@@ -660,7 +684,7 @@ function drawBarV(sel,d){
 /* ===================== 横向视图（时间左→右） ===================== */
 function renderH(){
   const padL=78, padT=18, dx=92;  // padT 小=顶部少留白；只用于定阶段卡起点
-  const N=17;
+  const N=NODES.length;
   const W = padL + (N-1)*dx + 70;
   const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
   const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在阶段卡之外）
@@ -793,7 +817,7 @@ function renderV(){
   const colAi=320, colHu=560, branchMidX=440;
   const vTop=72, dyV=56, Wv=690;  // 顶部少留白（列头/阶段标签放在 vTop-58~-48）
   const Y = xi => vTop + xi*dyV;
-  const lastY = Y(16);
+  const lastY = Y(NODES.length-1);
   const Hv = lastY + 70;
   const cx = n => n.lane==="ai" ? colAi : colHu;
 
@@ -923,9 +947,9 @@ function updateFloors(lvl){
   const bn=$("d5banner");                                                                     // §5 banner
   if(bn){
     if(lvl<2){ bn.className="d5banner hu";
-      bn.innerHTML="「① 人主笔 / ② AI 主写」档：d1 / d2 / d3 三处仍归<b>人</b>——AI 拿不到本机芯片型号、本机 CANN 版本、业务精度阈值。"; }
+      bn.innerHTML="「① 人主笔 / ② AI 主写」档：9 处决策仍归<b>人</b>——B 类技术路线 AI 建议、用户拍板；A 类（soc_version / 版本 / 精度）AI 根本拿不到本机·业务事实，<b>非人不可</b>。"; }
     else { bn.className="d5banner risk";
-      bn.innerHTML="⚠「③ 人委派」档：这三处决策 <b>AI 接管</b>——但 npu-smi 芯片、本机 CANN 版本、精度业务阈值仍是<b>本机 / 业务事实</b>，AI 接管＝把「本来拿不到的判断」也交出去，这正是深水区（D）委派的<b>最大风险点</b>。"; }
+      bn.innerHTML="⚠「③ 人委派」档：9 处决策 <b>AI 接管</b>——B 类 AI 尚能按知识自主定（缺人校准），但 A 类的 npu-smi 芯片 / 本机 CANN 版本 / 精度业务阈值仍是<b>本机·业务事实</b>，AI 接管＝把「本来拿不到的判断」也交出去，这正是深水区（D）委派的<b>最大风险点</b>。"; }
   }
 }
 /* 悬浮档位/滑块 → 弹出该模式解释卡片（复用 #tip） */
@@ -986,40 +1010,151 @@ const NDETAIL={
     full:`<div class="tt-sec"><span class="lbl">卡点（编译报错）</span>build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。</div>`
         +`<div class="tt-sec"><span class="lbl">解决</span>把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</div>`},
   s11:{arch:"模型产出（aclnn / TORCH_LIBRARY 绑定代码）"},
-  d1:{intro:`<b>决策依据</b>：需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 不知道用户机器插的是哪颗 NPU（本机环境事实、不在检索可得范围），必须线下核验。`,
+  dR:{tier:"B",
+      intro:`<b>决策依据</b>：aclnn 简易工程（<code>-f aclnn</code>，atlas_ascendc_10_0101）快、但封装多；完整自定义算子工程（msopgen + add_custom.json）可控到核函数级。AI 两条都能讲，选哪条取决于算子复杂度与需要的控制粒度。`,
+      pre:`了解两条路线的取舍；清楚本算子是否需要自定义 Tiling / 核函数级控制。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出两条实测路线及各自取舍。"},
+        {st:"② 研判", plat:"用户判断", platK:"hu", d:"用户按算子复杂度、是否需核函数级控制权衡。"},
+        {st:"③ 决策", plat:"用户（项目层面）", platK:"hu", d:"选完整自定义算子工程（需 Tiling 级控制）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"告知 AI 走完整工程，AI 给 msopgen 完整命令。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程走到「选开发路线」。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按算子复杂度自行评估两条路线。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：AI 默认选一条（如完整工程）——技术上可行，但<b>缺人对项目实际需求的校准</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按所选路线继续生成命令。"}
+      ]},
+  dP:{tier:"B",
+      intro:`<b>决策依据</b>：定 add_custom.json 的算子原型——输入输出个数、dtype（fp16 / fp32）、format（ND / NZ）。AI 给模板，但实际类型取决于上游模型张量。实测 json 为 x/y/z fp16 ND。`,
+      pre:`知道上游模型喂进来的张量 dtype / format；清楚类型不符会导致精度损失或报错。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给 add_custom.json 模板（IO 个数 / dtype / format 占位）。"},
+        {st:"② 研判", plat:"用户（按模型张量）", platK:"hu", d:"用户按上游模型实际张量定 dtype（fp16 / fp32）、format（ND / NZ）。"},
+        {st:"③ 决策", plat:"用户", platK:"hu", d:"定 x/y/z 为 fp16 ND（实测 json）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 json 字段，AI 据此继续。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定算子原型。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按常见配置假设 dtype / format。"},
+        {st:"③ 决策", plat:"⚠ AI 默认假设", platK:"warn", d:"推演：AI 默认 fp16 ND——但<b>上游模型实际张量类型 AI 未必知道</b>，类型不符会精度损失 / 报错。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进 json 继续。"}
+      ]},
+  d1:{tier:"A",
+      intro:`<b>决策依据</b>：需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 不知道用户机器插的是哪颗 NPU（本机环境事实、不在检索可得范围），必须线下核验。`,
       pre:`能访问目标机器、会用 <b>npu-smi info</b>；soc_version 直接决定 msopgen 生成的工程能否在本机编译。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。"},
         {st:"② 研判", plat:"AI 对话界面", platK:"ai", d:"用户意识到 AI 无法知道本机 NPU，占位不能照抄。"},
         {st:"③ 决策", plat:"本机终端（SSH / npu-smi）", platK:"hu", d:"脱离 AI、本地运行 npu-smi info 查到 Ascend910B1。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 soc_version（ai_core_Ascend910B1 替换占位），AI 据此在 s7 继续起草核函数 / Tiling。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程走到 msopgen 命令，需要填 soc_version。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 尝试获取本机芯片型号——但<b>没有 npu-smi 访问权</b>、检索也查不到你机器插的是哪颗。"},
+        {st:"③ 决策", plat:"⚠ AI 只能猜", platK:"warn", d:"推演：AI 只能猜默认型号 / 留占位 → <b>决策不可靠</b>（本机事实拿不到）。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进工程；若猜错，要到编译期才暴露、无人兜底。"}
       ]},
-  d2:{intro:`<b>决策依据</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——D 任务<b>版本散乱是实测短板</b>，连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/，add_custom.json 字段与目录路径随版本变，AI 给的步骤未必匹配本机版本。`,
+  dT:{tier:"B",
+      intro:`<b>决策依据</b>：核函数性能的核心决策——单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。`,
+      pre:`知道实际输入 shape / 数据量；理解 UB 空间上限与 double buffer 的收益与代价。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 起草三级 Tiling 框架（Copy-In/Compute/Copy-Out），留切分参数占位。"},
+        {st:"② 研判", plat:"本机（按 shape 估算）", platK:"hu", d:"用户按实际输入 shape / 数据量估算每核负载、UB 空间是否够。"},
+        {st:"③ 决策", plat:"用户（性能取舍）", platK:"hu", d:"定多核切分粒度 + 是否启用 double buffer。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填切分参数，AI 细化核函数。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定 Tiling 策略。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按典型 shape 假设切分。"},
+        {st:"③ 决策", plat:"⚠ AI 自主定", platK:"warn", d:"推演：AI 自定切分 / double buffer——但<b>真实输入 shape 与性能目标 AI 未必掌握</b>，可能非最优甚至溢出 UB。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进核函数继续。"}
+      ]},
+  d2:{tier:"A",
+      intro:`<b>决策依据</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——D 任务<b>版本散乱是实测短板</b>，连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/，add_custom.json 字段与目录路径随版本变，AI 给的步骤未必匹配本机版本。`,
       pre:`知道本机装的 CANN 确切版本；理解同一份步骤换版本可能无法运行通过。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出某版本线的 msopgen / json 步骤（三条版本线之一）。"},
         {st:"② 研判", plat:"本机终端", platK:"hu", d:"核对本机装的 CANN 确切版本，发现 json 字段 / 目录路径在版本间会变。"},
         {st:"③ 决策", plat:"Gitee samples 仓（浏览器）", platK:"ext", d:"必要时脱离 AI、去 Gitee samples 仓对齐对应版本样例（分支 b2）。"},
         {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按本机版本修正步骤后再用。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需匹配本机 CANN 版本。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 不知道你本机装的确切版本（版本散乱、URL 都在漂）、<b>无本机访问</b>。"},
+        {st:"③ 决策", plat:"⚠ AI 按假设", platK:"warn", d:"推演：AI 按最新 / 最常见版本假设 → <b>可能与本机不符、步骤跑不通</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按假设版本生成步骤；不匹配则编译 / 部署期报错。"}
       ]},
-  d3:{intro:`<b>决策依据</b>：需 CPU / GPU 参考输出做逐元素比对——算子结果精度是否足够是<b>带业务容忍度的价值判断</b>，多大误差可接受取决于下游模型，AI 无法替用户判定。`,
+  dF:{tier:"B",
+      intro:`<b>决策依据</b>：编译 / 部署报错后判断改哪里——add_custom.json 字段、算子注册信息、CANN 版本对齐、还是 Tiling。AI 解读报错给候选原因，用户对照本机实际定位。`,
+      pre:`能读懂报错日志、对照本机实际状态（装了什么、注册没注册）逐一排查。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 解读报错日志（s9），给出几个可能原因。"},
+        {st:"② 研判", plat:"本机终端", platK:"hu", d:"用户对照本机实际（版本、soc、注册）逐一排查。"},
+        {st:"③ 决策", plat:"用户", platK:"hu", d:"定位具体原因、选定改法（如改 json dtype / 重新注册）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按选定改法修正，重新编译（s10）。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"AI 拿到报错日志（回灌）。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按报错文本推断原因。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选改法", platK:"warn", d:"推演：AI 自选改法重试——但<b>本机实际状态 AI 看不全</b>，可能反复试错或改错地方。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重编译。"}
+      ]},
+  dB:{tier:"B",
+      intro:`<b>决策依据</b>：AI 给三种接 PyTorch 的方式——TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。`,
+      pre:`知道本机 torch 版本与 ABI 约定；清楚是否要 python 侧直调。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出三种绑定方式及适用场景（s11）。"},
+        {st:"② 研判", plat:"本机（torch 版本）", platK:"hu", d:"用户按 torch 版本（ABI 稳定性）、是否要 python 直调判断。"},
+        {st:"③ 决策", plat:"用户（工程习惯）", platK:"hu", d:"选 TORCH_LIBRARY（torch 2.x ABI 稳定）注册。"},
+        {st:"④ 反馈", plat:"本机（编译扩展）", platK:"hu", d:"落地集成代码、编译扩展（s12）。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需选绑定方式。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按 torch 版本与通用最佳实践评估。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：AI 自选一种（如 TORCH_LIBRARY）——技术上合理，但<b>用户工程习惯 / 已有约定 AI 未必知道</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"生成集成代码（仍需在本机编译）。"}
+      ]},
+  d3:{tier:"A",
+      intro:`<b>决策依据</b>：需 CPU / GPU 参考输出做逐元素比对——算子结果精度是否足够是<b>带业务容忍度的价值判断</b>，多大误差可接受取决于下游模型，AI 无法替用户判定。`,
       pre:`有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出算子实现与运行测试方法。"},
         {st:"② 研判", plat:"本机（Python / 终端）", platK:"hu", d:"运行算子，与 CPU / GPU 参考输出逐元素比对。"},
         {st:"③ 决策", plat:"本机（业务阈值判定）", platK:"hu", d:"按业务误差阈值判定精度是否达标。"},
-        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标 → 交付（s14）；不达标 → 驳回回 s7 让 AI 改核函数 / Tiling，重走 P4–P7。"}
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标 → 交付（s14）；不达标 → 驳回（dQ 选修复方向）回 P4。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"算子运行出结果，需判定精度是否达标。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 没有<b>下游业务的误差容忍度</b>，也未必有 CPU / GPU 参考基准。"},
+        {st:"③ 决策", plat:"⚠ AI 按通用阈值", platK:"warn", d:"推演：AI 按通用阈值（如 1e-3）判定 → <b>未必符合你的业务要求</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按通用阈值放行 / 驳回；业务级误判无人复核。"}
+      ]},
+  dQ:{tier:"B",
+      intro:`<b>决策依据</b>：精度不达标时定修复方向——误差来自搬运精度、Tiling 边界、还是 dtype？改哪最划算。AI 给候选方向，用户结合比对结果定位、驳回回 P4。`,
+      pre:`有逐元素比对结果可定位误差来源；理解改核函数 / Tiling / dtype 各自的代价。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"d3 判定不达标，AI 给候选修复方向（核函数 / Tiling / dtype）。"},
+        {st:"② 研判", plat:"本机（定位误差源）", platK:"hu", d:"用户结合比对结果判断误差来自哪：搬运精度、Tiling 边界、还是 dtype。"},
+        {st:"③ 决策", plat:"用户", platK:"hu", d:"选定改核函数（或 Tiling / dtype），驳回回 P4。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"AI 据选定方向协助改，重走 P4–P7。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"AI 拿到不达标的比对结果。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按误差大小推断可能来源。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选方向", platK:"warn", d:"推演：AI 自选修复方向重走——但<b>误差是否在业务可接受范围、改哪最划算缺人校准</b>，可能空转。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重测。"}
       ]}
 };
 /* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
 const PHASE_DETAIL=[
   {nodes:"s1", bound:"定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。"},
-  {nodes:"s2–s5", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼出步骤骨架；<b>用户仅等结果</b>。全程唯一「AI 自主多轮迭代、用户仅验收」的区段。"},
-  {nodes:"s6 / d1", bound:"AI 给命令模板，<b>但 soc_version 等本机事实只有用户能填</b>（d1 线下核验）→ AI 辅助、决定权归人。"},
-  {nodes:"s7 / d2", bound:"AI 起草核函数与三级 Tiling 框架，用户决策版本对齐（d2）并据本机修正。"},
-  {nodes:"s8–s10", bound:"用户执行编包 / 部署，AI 解读报错；交接最密集，谁也无法独立完成。"},
-  {nodes:"s11 / s12", bound:"AI 给 TORCH_LIBRARY / aclnn 绑定代码，用户落地集成。"},
-  {nodes:"s13 / d3 / s14", bound:"运行测试、<b>精度是否达标由人判定</b>（d3 比对参考输出）、最终交付——AI 仅承担结果汇总、格式整理等辅助。"}
+  {nodes:"s2–s4 / dR", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼步骤骨架；用户在 <b>dR 选开发路线</b>（aclnn 简易 vs 完整工程）。AI 自主多轮迭代最密的区段。"},
+  {nodes:"s5 / dP / s6 / d1", bound:"AI 给命令 + json 模板，用户定 <b>dP 算子原型·dtype/format</b>、跑 msopgen；<b>d1 soc_version 等本机事实只有用户能填</b>（线下 npu-smi 核验）。"},
+  {nodes:"s7 / dT / d2", bound:"AI 起草核函数与三级 Tiling 框架；用户做 <b>dT Tiling 策略</b>（切分 / double buffer）与 <b>d2 版本对齐</b>并据本机修正。"},
+  {nodes:"s8 / s9 / dF / s10", bound:"用户执行编包 / 部署，AI 解读报错，用户做 <b>dF 报错修复方向</b>；交接最密集，谁也无法独立完成。"},
+  {nodes:"s11 / dB / s12", bound:"AI 给三种绑定方式，用户做 <b>dB 绑定方式</b>（TORCH_LIBRARY / pybind / aclnn）并落地集成。"},
+  {nodes:"s13 / d3 / dQ / s14", bound:"运行测试、<b>d3 精度由人判定</b>（比对参考输出）、不达标走 <b>dQ 修复方向</b>回 P4、最终交付——AI 仅辅助汇总。"}
 ];
 const OWN_NAME={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
 function phaseBodyHtml(i, withFull){
@@ -1108,17 +1243,26 @@ function archFlowHtml(id){
   h+=`</div><div class="tt-mini"><b style="color:#ff9ba6">红＝出问题的环节</b> · <b style="color:#f0c486">橙＝架构的应对</b>；节点名对应 §4.3 架构图。</div>`;
   return h;
 }
-/* 决策节点的「横向阶段链」（像用户旅程图：接收→研判→决策→反馈 横向铺开，每段标用户所在平台），悬浮即全出 */
+/* 决策节点的「横向阶段链」（像用户旅程图：接收→研判→决策→反馈 横向铺开，每段标所在平台），悬浮即全出。
+   链路随档位切换：档①②=人做版(det.chain)、档③人委派=AI 接管版(det.chainAI、推演标⚠) */
 function decisionChainHtml(det){
+  const aiTake = curLvl>=2 && det.chainAI;
+  const chain = aiTake ? det.chainAI : det.chain;
+  const tierA = det.tier==="A";
   let h="";
+  // 档位横幅：当前这个决策归谁
+  if(aiTake) h+=`<div class="dmode warn">⚠ 当前「人委派·AI 自管」档：此决策 <b>AI 接管</b>，下方为<b>推演</b>（无实测）${tierA?"——但芯片型号 / 本机版本 / 业务阈值是 AI 拿不到的本机·业务事实，这正是深水区最大风险":""}。</div>`;
+  else h+=`<div class="dmode ok">当前「${LVL[curLvl].name}」档：此决策 <b>归用户</b>（${tierA?"<b>非人不可</b>：AI 拿不到本机 / 业务事实":"AI 建议、用户拍板"}）。</div>`;
   if(det.intro) h+=`<div class="tt-b" style="margin-top:6px">${det.intro}</div>`;
   if(det.pre)   h+=`<div class="tt-meta" style="margin-top:5px"><b style="color:#9fb8ff">前置条件：</b>${det.pre}</div>`;
   h+=`<div class="dchain">`;
-  det.chain.forEach((c,i)=>{
+  chain.forEach((c,i)=>{
     h+=`<div class="dcol"><div class="dst">${c.st}</div><div class="dplat ${c.platK}">${c.plat}</div><div class="dd">${c.d}</div></div>`;
-    if(i<det.chain.length-1) h+=`<div class="darrow">→</div>`;
+    if(i<chain.length-1) h+=`<div class="darrow">→</div>`;
   });
-  h+=`</div><div class="tt-mini">平台色：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机 / 终端</b> · <b style="color:#e0c486">外部（浏览器 / Gitee）</b>——决策每段用户实际所在处。</div>`;
+  h+=`</div><div class="tt-mini">${aiTake
+      ? `平台色：<b style="color:#c9b6f5">Agent 运行时</b> · <b style="color:#ff9ba6">⚠ 拿不到 / 缺校准</b>——AI 接管版为推演，拖回前两档看人做实况。`
+      : `平台色：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机 / 终端</b> · <b style="color:#e0c486">外部（浏览器 / Gitee）</b>——决策每段用户实际所在处。`}</div>`;
   return h;
 }
 function tipBodyHtml(d, withFull){
