@@ -103,6 +103,7 @@ ul.tight li{margin-bottom:6px}
 #journey{display:block;margin:0 auto}
 .legendbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:12px;color:#444;margin:10px 2px 2px;padding:10px 14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px}
 .lg{display:inline-flex;align-items:center;gap:6px}
+#lgHandoff{cursor:help;text-decoration:underline dotted #b0b0c0;text-underline-offset:3px}
 .lgdot{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none}
 .lgsq{width:16px;height:14px;border-radius:3px;border:2px solid #999;flex:none}
 .lgdia{width:15px;height:15px;border:2px solid #8a6d1a;background:var(--v3);flex:none;transform:rotate(45deg)}
@@ -196,7 +197,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
-<div class="sechint"><b>左侧拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）、<b>右侧</b>切横/竖显示；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
+<div class="sechint"><b>左侧拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）、<b>右侧</b>切横/竖显示；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明；<b>悬浮泳道标签看任务分工·四轴、悬浮图例「人机交接」看协同量化</b>。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -221,7 +222,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span class="lg"><i class="lgsq" style="background:var(--hufill);border-color:var(--hu)"></i> 本地执行 / 运行</span>
   <span class="lg"><i class="lgdia"></i> 决策点</span>
   <span class="lg"><i class="lgring"></i> 受阻 / 卡点</span>
-  <span class="lg"><i class="lgline"></i> 人机交接</span>
+  <span class="lg" id="lgHandoff"><i class="lgline"></i> 人机交接</span>
   <span class="lg"><i class="lgline thin"></i> 同侧推进</span>
   <span class="lg"><i class="lgline dash"></i> 用户独立分支</span>
 </div>
@@ -234,28 +235,15 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s2"></a>
 <h2><span class="no">②</span>业务分析 · 整段旅程的分工与协同</h2>
-<div class="floortag">「任务分工·四轴」「协同量化」随左侧滑块实时变。</div>
-<div class="sechint">这两项是<b>整段旅程的全局属性</b>，留在此处；<b>节点专属</b>的分析（决策依据 / 卡点 / 决策链）已折进上图——<b>悬浮（点击固定）对应节点</b>查看。</div>
-
+<div class="sechint">业务分析已<b>全部折进上图交互</b>——悬浮（点击固定）即看，且随左侧滑块实时变：</div>
 <div class="cards2">
   <div class="card">
-    <h3>任务分工：谁干哪些活</h3>
-    <p style="font-size:13px"><span class="tag ai">AI（7 步）</span>把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 <code>msopgen</code> 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。</p>
-    <p style="font-size:13px;margin-top:8px"><span class="tag hu">用户（10 步含分支）</span>立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 运行测试）、做 3 个关键决策、2 次脱离 AI 独立求证。</p>
-    <div style="font-size:12px;color:#555;margin:8px 0 4px">沿「把知识搬进答案」价值链拆四轴，各归谁（<span style="color:var(--ai)">紫=AI</span> / <span style="color:var(--hu)">蓝=人</span>）：</div>
-    <div class="axrow"><span class="axn">检索·获取知识</span><div class="axbar"><i style="width:100%"></i></div><span class="axw">AI 100%</span></div>
-    <div class="axrow"><span class="axn">产出·编写代码</span><div class="axbar"><i style="width:82%"></i></div><span class="axw">AI 为主</span></div>
-    <div class="axrow"><span class="axn">执行·本地运行</span><div class="axbar"><i id="axExec" style="width:0%"></i></div><span class="axw" id="axExecW">人 100%</span></div>
-    <div class="axrow"><span class="axn">决策·裁定验收</span><div class="axbar"><i id="axDec" style="width:0%"></i></div><span class="axw" id="axDecW">人 100%</span></div>
-    <div class="note">为什么不写单一「AI 41%」：那只是数了几个动作节点、是较弱的代理指标。换一个轴比例就反转——按<b>产出（编写代码）</b>看 AI 为主，按<b>执行 / 决策</b>看归属。所以拆四轴各看，比单一数值更诚实。<b id="axNote" style="color:#2f3d63"></b><br>检索 / 产出恒为 AI；<b>执行</b>在「AI 主写」档转交 AI、<b>决策</b>在「人委派」档转交 AI——本卡随左侧滑块实时变。</div>
+    <h3>任务分工 · 四轴 → 悬浮泳道标签</h3>
+    <p style="font-size:13px">悬浮上图左侧 <span class="tag ai">AI（Agent）</span> 标签＝<b>检索 / 产出</b>两轴（恒由 AI 担）；悬浮 <span class="tag hu">人类用户</span> 标签＝<b>执行 / 决策</b>两轴（随自主度档位在人 / AI 间转手）。拆四轴各看，比单一「AI 41%」更诚实。</p>
   </div>
-
   <div class="card">
-    <h3>协同量化 · 交接次数</h3>
-    <p style="font-size:13px">全旅程 <b><span id="hoCount">8</span> 次主导权易手</b>（图中紫色粗连线）。<span id="hoList">具体：s1→s2、s5→s6、d1→s7、s7→d2、s8→s9、s9→s10、s10→s11、s11→s12。</span></p>
-    <p id="hoNote" style="font-size:13px;margin-top:8px">交接密度在<b>编译部署阶段（P5）最高</b>——报错→AI 解读→用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</p>
-    <p style="font-size:13px;margin-top:8px"><b><span id="brCount">2</span> 条用户独立分支</b>（不经 AI）<span id="brNote">：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</span></p>
-    <div class="note" style="margin-top:8px">随左侧滑块：自主度↑ → 交接变少（更多同侧推进）、用户独立分支归零（<b>人不再独立提供后备</b>）。</div>
+    <h3>协同量化 · 交接 → 悬浮图例</h3>
+    <p style="font-size:13px">悬浮上图图例的 <b>「人机交接」</b>项＝全旅程主导权易手次数 + 用户独立分支数（随滑块变）。① 人主笔档＝ 8 次交接、2 条独立分支，密度在编译部署阶段（P5）最高。</p>
   </div>
 </div>
 
@@ -425,7 +413,7 @@ TOOLS = [
 <h2><span class="no">⑥</span>交付物汇总</h2>
 <div class="card">
   <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、17 主节点 + 3 决策点 + 2 用户独立分支、8 处人机交接连线、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
-  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）+ 协同交接量化（全局，留在 §2）；用户决策依据、问题卡点 + 解决方案、决策链已<b>折进上图对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进上图阶段区域悬浮</b>。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）<b>折进泳道标签悬浮</b>、协同交接量化<b>折进图例「人机交接」悬浮</b>；用户决策依据、问题卡点 + 解决方案、决策链<b>折进对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进阶段区域悬浮</b>——§2 / §3 仅留指引。</div></div>
   <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；三个决策节点的介入原因 / 前置条件 / 执行动作 / 决策链<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
 
@@ -706,7 +694,9 @@ function renderH(){
     svg.append("line").attr("x1",padL).attr("x2",W-20)
       .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#e3e3e3").attr("stroke-width",1.2);
     svg.append("text").attr("x",6).attr("y",laneY[k]).attr("dominant-baseline","central")
-      .attr("font-size",11.5).attr("font-weight",800).attr("fill",c).text(lab);
+      .attr("font-size",11.5).attr("font-weight",800).attr("fill",c).text(lab)
+      .style("cursor","help")
+      .on("mousemove",ev=>showLaneTip(ev,k)).on("mouseleave",hideTip).on("click",ev=>pinLaneTip(ev,k));
   });
 
   /* 主链连线 */
@@ -831,7 +821,9 @@ function renderV(){
     svg.append("line").attr("x1",x).attr("x2",x).attr("y1",vTop-34).attr("y2",Hv-30)
       .attr("stroke","#e3e3e3").attr("stroke-width",1.5);
     svg.append("text").attr("x",x).attr("y",vTop-48).attr("text-anchor","middle")
-      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab);
+      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab)
+      .style("cursor","help")
+      .on("mousemove",ev=>showLaneTip(ev,k)).on("mouseleave",hideTip).on("click",ev=>pinLaneTip(ev,k));
   });
 
   /* 主链连线（时间向下） */
@@ -910,20 +902,7 @@ function handoffs(lvl){ let h=0; for(let i=0;i<NODES.length-1;i++){ if(laneAt(NO
 function updateFloors(lvl){
   const $=id=>document.getElementById(id);
   PHASE.forEach((ph,i)=>{ const el=$("ph"+i); if(el) el.innerHTML=OWNTAG[phaseOwner(ph)]; }); // §3 主导方列
-  const execAi=lvl>=1, decAi=lvl>=2;                                                          // §2 四轴
-  if($("axExec")) $("axExec").style.width=execAi?"100%":"0%";
-  if($("axExecW")) $("axExecW").textContent=execAi?"AI 100%":"人 100%";
-  if($("axDec")) $("axDec").style.width=decAi?"100%":"0%";
-  if($("axDecW")) $("axDecW").textContent=decAi?"AI 100%（人只终验）":(lvl===1?"人 100%（审批）":"人 100%");
-  if($("axNote")) $("axNote").textContent=`当前「${LVL[lvl].name}」：执行 ${execAi?"AI":"人"} · 决策 ${decAi?"AI":"人"}。`;
-  const ho=handoffs(lvl), br=lvl===0?2:0;                                                     // §2 协同量化
-  if($("hoCount")) $("hoCount").textContent=ho;
-  if($("hoList")) $("hoList").style.display=lvl===0?"":"none";
-  if($("hoNote")) $("hoNote").style.display=lvl===0?"":"none";
-  if($("brCount")) $("brCount").textContent=br;
-  if($("brNote")) $("brNote").innerHTML=lvl===0
-    ? "：b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。"
-    : "——自动化档<b>人不再独立提供后备、安全网消失</b>（AI 遭遇同样的 SPA / 版本问题，但无人核查）。";
+  // §2 任务分工·四轴 / 协同量化已折进图内悬浮（laneTipHtml / coopTipHtml 实时读 curLvl）
   const bn=$("d5banner");                                                                     // §5 banner
   if(bn){
     if(lvl<2){ bn.className="d5banner hu";
@@ -1029,6 +1008,55 @@ function phaseBodyHtml(i, withFull){
 }
 function showPhaseTip(e,i){ if(pinned) return; tip.className=""; tip.innerHTML=phaseBodyHtml(i,false); tip.style.opacity="1"; positionTip(e); }
 function pinPhaseTip(e,i){ pinned=true; tip.className="pinned"; tip.innerHTML=phaseBodyHtml(i,true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+
+/* 泳道标签悬浮：任务分工·四轴（检索/产出归 AI 侧、执行/决策归人侧，随滑块 morph） */
+function axisRow(name,who,pct,col){
+  return `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px">`
+    +`<span style="width:84px;color:#555;flex:none">${name}</span>`
+    +`<span style="flex:1;height:7px;border-radius:4px;background:#ececf2;overflow:hidden"><i style="display:block;height:100%;width:${pct}%;background:${col}"></i></span>`
+    +`<span style="width:84px;text-align:right;color:${col};font-weight:700;flex:none">${who}</span></div>`;
+}
+function laneTipHtml(side, withFull){
+  const aiCol="#6B5BA8", huCol="#2f3d63";
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'');
+  if(side==="ai"){
+    html+=`<div class="tt-h"><span class="minibadge mb-ai">AI</span>AI（Agent）· 检索 + 产出</div>`;
+    html+=`<div class="tt-meta">把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 msopgen 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。价值链<b>前两轴恒由 AI 担</b>：</div>`;
+    html+=axisRow("检索·获取知识","AI 100%",100,aiCol);
+    html+=axisRow("产出·编写代码","AI 为主",82,aiCol);
+    if(withFull) html+=`<div class="tt-sec"><span class="lbl">为何前两轴恒 AI</span>不论自主度档位，「搜什么 · 抓哪页 · 几轮够 · 怎么拼步骤骨架」始终由 AI 主导；用户在此区段仅等结果。</div>`;
+  } else {
+    const execAi=curLvl>=1, decAi=curLvl>=2;
+    html+=`<div class="tt-h"><span class="minibadge mb-hu">用户</span>人类用户 · 执行 + 决策</div>`;
+    html+=`<div class="tt-meta">立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 运行测试）、做关键决策、受阻时脱离 AI 独立求证。后两轴随<b>自主度档位转手</b>：</div>`;
+    html+=axisRow("执行·本地运行",execAi?"AI 100%":"人 100%",100,execAi?aiCol:huCol);
+    html+=axisRow("决策·裁定验收",decAi?"AI（人终验）":(curLvl===1?"人（审批）":"人 100%"),100,decAi?aiCol:huCol);
+    html+=`<div class="tt-meta" style="margin-top:6px">当前「${LVL[curLvl].name}」：执行 <b>${execAi?"AI":"人"}</b> · 决策 <b>${decAi?"AI":"人"}</b>。</div>`;
+    if(withFull) html+=`<div class="tt-sec"><span class="lbl">为何不写单一「AI 41%」</span>那只是数了几个动作节点、是较弱代理指标。换一轴比例就反转——按<b>产出</b>看 AI 为主、按<b>执行 / 决策</b>看归属。拆四轴各看更诚实：<b>执行</b>在「AI 主写」档转交 AI、<b>决策</b>在「人委派」档转交 AI。</div>`;
+  }
+  html+= withFull?`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`:`<div class="tt-hint">点击查看完整说明 ↗</div>`;
+  return html;
+}
+function showLaneTip(e,side){ if(pinned) return; tip.className=""; tip.innerHTML=laneTipHtml(side,false); tip.style.opacity="1"; positionTip(e); }
+function pinLaneTip(e,side){ pinned=true; tip.className="pinned"; tip.innerHTML=laneTipHtml(side,true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+
+/* 图例「人机交接」悬浮：协同量化（交接次数 + 用户独立分支，随滑块 morph） */
+function coopTipHtml(withFull){
+  const ho=handoffs(curLvl), br=curLvl===0?2:0;
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">协同量化 · 主导权交接</div>`;
+  html+=`<div class="tt-meta">全旅程 <b>${ho} 次主导权易手</b>（紫色粗连线）· <b>${br} 条用户独立分支</b>（虚线，不经 AI）。随左侧滑块实时变。</div>`;
+  if(curLvl===0) html+=`<div class="tt-b">交接密度在<b>编译部署阶段（P5）最高</b>——报错 → AI 解读 → 用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</div>`;
+  else html+=`<div class="tt-b">自主度↑ → 交接变少（更多同侧推进）、<b>用户独立分支归零</b>——人不再独立提供后备、安全网消失。</div>`;
+  if(withFull){
+    if(curLvl===0) html+=`<div class="tt-sec"><span class="lbl">2 条用户独立分支</span>b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</div>`;
+    else html+=`<div class="tt-sec"><span class="lbl">安全网消失</span>自动化档 AI 遭遇同样的 SPA / 版本问题，但无人核查。</div>`;
+    html+=`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
+  } else html+=`<div class="tt-hint">点击查看完整说明 ↗</div>`;
+  return html;
+}
+function showCoopTip(e){ if(pinned) return; tip.className=""; tip.innerHTML=coopTipHtml(false); tip.style.opacity="1"; positionTip(e); }
+function pinCoopTip(e){ pinned=true; tip.className="pinned"; tip.innerHTML=coopTipHtml(true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+(function(){ const el=document.getElementById("lgHandoff"); if(el){ el.style.cursor="help"; el.addEventListener("mousemove",showCoopTip); el.addEventListener("mouseleave",hideTip); el.addEventListener("click",pinCoopTip); } })();
 function tipBodyHtml(d, withFull){
   const det=NDETAIL[d.id]||{};
   const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
