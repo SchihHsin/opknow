@@ -662,7 +662,7 @@ function drawBarV(sel,d){
 
 /* ===================== 横向视图（时间左→右） ===================== */
 function renderH(){
-  const padL=78, padT=64, dx=92;
+  const padL=78, padT=18, dx=92;  // padT 小=顶部少留白；只用于定阶段卡起点
   const N=17;
   const W = padL + (N-1)*dx + 70;
   const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
@@ -788,7 +788,7 @@ function renderH(){
 function renderV(){
   const phX=4, phW=108, owX=120, owW=64;
   const colAi=320, colHu=560, branchMidX=440;
-  const vTop=96, dyV=56, Wv=690;
+  const vTop=72, dyV=56, Wv=690;  // 顶部少留白（列头/阶段标签放在 vTop-58~-48）
   const Y = xi => vTop + xi*dyV;
   const lastY = Y(16);
   const Hv = lastY + 70;
