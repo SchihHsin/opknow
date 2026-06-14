@@ -227,14 +227,14 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <a href="#s6">③ 交付物汇总</a>
 </div>
 
-<h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
+<h1>人机协同旅程：开发者完成一段任务的全链路</h1>
 <div class="subtitle">
-  锚定 <b>D 自定义算子开发</b>（Ascend C + msOpGen + aclnn → 接入 PyTorch）——26 任务里 CANN 综合分唯一「低」(.41)、也是唯一官方 SPA 真正咬到结果的格。下图把<b>开发者从立项到交付的整段旅程</b>画成时序图；事实取自 <code>task_run_log.md</code> 实测（受阻 / 卡点为实测、非演绎）。
+  把<b>开发者从立项到交付的整段旅程</b>画成 4 参与者时序图——<b>上方 Tab 切场景</b>：<b>D 算子开发</b>（深处自研、官方受阻、.41 塌）vs <b>G CUDA→昇腾迁移</b>（采纳漏斗、官方可抓、.84 顺），对照「可用性是任务相关的」。事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
 </div>
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
-<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
+<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现（以 D 为例）</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>——切到 G 场景这一步则<b>成功（绿）</b>。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
 
 <div class="sctabs" id="sctabs"></div>
 
@@ -273,7 +273,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="dscore" id="dscore"></div>
 
-<div class="note" style="background:#f3f5fb"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。9 个决策点中，<b>A 类（soc_version / 版本 / 精度）是 AI 拿不到本机·业务事实的「非人不可」</b>，拖到「人委派」档被 AI 接管时正是深水区最大风险点。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。<br><span style="color:#888;font-size:12px">（业务分析 / 主导权边界 / 决策点详情已全部折进上图——悬浮节点、生命线名、阶段条、图例查看。）</span></div>
+<div class="note" style="background:#f3f5fb"><b>结论：</b>这类开发旅程里<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——一旦进入与本机环境 / 版本 / 精度耦合的环节，主导权必然回到人（A 类决策 AI 拿不到本机·业务事实，<b>非人不可</b>）。<b>但可用性是任务相关的</b>：官方页能不能抓到、二手厚不厚、版本清不清，决定这段路顺还是塌——切<b>上方场景 Tab</b> 看 <b>D（深处自研、官方受阻、.41 塌）vs G（迁移、官方可抓、.84 顺）</b>的对照，每条的「分数面」见上方得分条。一句话：<b>AI 能搬来知识，但搬不动你的机器；而知识好不好搬，因任务而异</b>。<br><span style="color:#888;font-size:12px">（业务分析 / 主导权边界 / 决策点详情已全部折进上图——悬浮节点、生命线名、阶段条、图例查看。）</span></div>
 
 <a id="s4"></a>
 <h2><span class="no">②</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
@@ -1115,6 +1115,129 @@ SCENARIOS.D={
     CANN:[2,2,"受阻",2,3,2,2,1,2,3], CUDA:[5,5,5,3,4,4,5,5,5,5],
     comp:["⑪ .41 低","⑪ .88 高"],
     note:`这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。`
+  }
+};
+/* ===== 场景 G · CUDA→昇腾迁移（迁移工程师 / 顺畅对照）=====
+   实测：g2/g3 检索段；g3 官方自动迁移页 ssr 可抓且详尽——与 D 的 s3 受阻正好相反。 */
+const G_NODES=[
+  {id:"g1", xi:0, lane:"hu", kind:"start",   t:"立项·定目标", meta:"用户主导 · P1", b:"有一份 PyTorch CUDA 训练脚本，目标迁移到昇腾 NPU 跑起来。需求归人。"},
+  {id:"g2", xi:1, lane:"ai", kind:"search",  t:"web_search 找迁移方案", meta:"Agent 自主 · P2", b:"模型检索迁移方式。实测命中：hiascend 自动迁移页、ms_fmk_transplt 分析迁移工具、华为云 ModelArts 迁移最佳实践、知乎/CSDN/博客园。"},
+  {id:"g3", xi:2, lane:"ai", kind:"fetch",   t:"web_fetch 官方自动迁移页", meta:"Agent 自主 · P2 · 成功", b:"抓 hiascend atlasfmkt_16_0036（devaids/auxiliarydevtool）——<b>ssr 可抓且详尽</b>：transfer_to_npu 一行接管 + 步骤 + NCCL 自动转 HCCL + 明列支持 PyTorch 1.11/2.1/2.2。对比 D 的 s3 受阻，这里官方页直接拿到主路径全文。"},
+  {id:"g4", xi:3, lane:"ai", kind:"draft",   t:"给迁移方案：一行接管", meta:"Agent 自主 · P2→交付", b:"输出 import torch_npu + from torch_npu.contrib import transfer_to_npu（一行自动迁移），并标注一键只覆盖简单场景、自定义算子/jit/channel_last 需手工适配。end_turn。"},
+  {id:"dV", xi:4, lane:"hu", kind:"decision",t:"决策：选迁移方式", meta:"用户决定 · P2 · 技术路线（AI 建议·用户拍板）", b:"一键 transfer_to_npu（覆盖简单场景）vs 分析迁移工具 ms_fmk_transplt（出迁移报告、识别不支持 API）。按脚本复杂度选。"},
+  {id:"g5", xi:5, lane:"hu", kind:"run",     t:"改脚本（加 torch_npu 一行）", meta:"人机协同 · P3", b:"用户在脚本头部加 import torch_npu + transfer_to_npu 一行。"},
+  {id:"dN", xi:6, lane:"hu", kind:"decision",t:"决策：NCCL→HCCL backend", meta:"用户决定 · P3 · 技术路线（AI 建议·用户拍板）", b:"transfer_to_npu 自动转 backend，但脚本里<b>显式写死 nccl 的地方</b>需手改 hccl。"},
+  {id:"g6", xi:7, lane:"hu", kind:"run",     t:"本地跑迁移后脚本", meta:"人机协同 · P3", b:"在 NPU 上直接运行改后的脚本。"},
+  {id:"dU", xi:8, lane:"hu", kind:"decision",t:"决策：不支持算子怎么办", meta:"用户决定 · P4 · 技术路线（AI 建议·用户拍板）", b:"遇不支持 API/算子：用分析迁移工具识别 / 改 npu_native_functions.yaml 挪 CPU / 写自定义 Ascend C。"},
+  {id:"g7", xi:9, lane:"hu", kind:"run",     t:"改后重跑", meta:"人机协同 · P4", b:"按选定方案处理不支持算子后重跑。"},
+  {id:"g8", xi:10,lane:"hu", kind:"run",     t:"存权重·精度验证", meta:"人机协同 · P4", b:"跑通后存权重，与 GPU 侧参考输出比对精度。"},
+  {id:"dA", xi:11,lane:"hu", kind:"decision",t:"决策：精度是否对齐 GPU", meta:"用户决定 · P4 · 验收", b:"迁移后精度是否对齐 GPU 是带业务容忍度的判断，AI 替不了。"},
+  {id:"g9", xi:12,lane:"hu", kind:"deliver", t:"交付", meta:"用户主导 · P5", b:"脚本迁移到 NPU、精度对齐，交付。AI 仅辅助汇总。"}
+];
+const G_FLOW={
+  g1:{frm:"hu",to:"ai"}, g2:{frm:"ai",to:"comm"}, g3:{frm:"ai",to:"comm"},
+  g4:{frm:"ai",to:"exec"}, g5:{frm:"exec",to:"tool"}, g6:{frm:"exec",to:"tool"},
+  g7:{frm:"exec",to:"tool"}, g8:{frm:"exec",to:"tool"}, g9:{frm:"hu",to:"self"}
+};
+const G_BRANCH=[];
+const G_PHASE=[
+  {a:0,b:0,n:"P1 立项"}, {a:1,b:4,n:"P2 检索迁移方案"}, {a:5,b:7,n:"P3 改脚本·配置"},
+  {a:8,b:11,n:"P4 适配·验证"}, {a:12,b:12,n:"P5 交付"}
+];
+const G_PHASE_DETAIL=[
+  {nodes:"g1", bound:"定目标「把 CUDA 脚本迁到 NPU」——AI 不介入。"},
+  {nodes:"g2–g4 / dV", bound:"AI 自主检索 + 抓官方自动迁移页（ssr 可抓、主路径全）+ 给一行接管；用户选迁移方式。<b>G 顺畅的根源——官方页没受阻</b>。"},
+  {nodes:"g5 / dN / g6", bound:"用户加一行 + 改显式 backend，本地直接跑。"},
+  {nodes:"dU / g7 / g8", bound:"遇不支持算子按分析报告处理、重跑、存权重比对精度。"},
+  {nodes:"dA / g9", bound:"精度由人判定（对齐 GPU 参考），达标交付。"}
+];
+const G_ARCHFLOW={};
+const G_NDETAIL={
+  g2:{arch:"① 意图解析 → ② 子目标拆解 → ③ 工具路由 → web_search"},
+  g3:{arch:"③ 工具路由 → web_fetch 官方自动迁移页 → ④ 研判（ssr 可抓、正文详尽）→ ⑥ 收敛",
+    full:`<div class="tt-sec"><span class="lbl">对比 D 的 s3（关键）</span>同样是 web_fetch 官方 how-to，但<b>这里成功</b>：devaids/auxiliarydevtool 子树 ssr 可抓、transfer_to_npu 一行 + 步骤 + 版本矩阵全拿到。G 顺畅、D 受阻，差别就在这一抓。</div>`},
+  g4:{arch:"⑥ 收敛 → 终答（end_turn）"},
+  dV:{tier:"B",
+    intro:`<b>决策依据</b>：一键 transfer_to_npu 覆盖简单场景、快；分析迁移工具 ms_fmk_transplt 出迁移报告、识别不支持 API。选哪条取决于脚本是否含 jit / 自定义算子等复杂场景。`,
+    pre:`了解两种工具的覆盖范围；清楚本脚本复杂度。`,
+    chain:[
+      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列一键 vs 分析工具两种方式及取舍。"},
+      {st:"② 研判", plat:"hiascend 自动迁移文档", platK:"ext", d:"读官方页看一键覆盖范围与限制。"},
+      {st:"③ 决策", plat:"项目需求（脚本复杂度）", platK:"hu", d:"简单脚本选一键 transfer_to_npu。"},
+      {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"据此给一行接管代码。"}
+    ],
+    chainAI:[
+      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需选迁移方式。"},
+      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按脚本特征评估两条路线。"},
+      {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：默认选一键——但脚本是否含 jit / 自定义算子等复杂场景 AI 未必看全。"},
+      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按所选继续。"}
+    ]},
+  dN:{tier:"B",
+    intro:`<b>决策依据</b>：transfer_to_npu 自动把 NCCL backend 转 HCCL，但脚本里<b>显式写死 nccl 字符串处</b>需手改 hccl。`,
+    pre:`知道脚本里哪里显式写了 backend。`,
+    chain:[
+      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 提示 backend 自动转、但显式处需手改。"},
+      {st:"② 研判", plat:"本机脚本（grep backend）", platK:"hu", d:"查脚本里显式写死的 nccl 串。"},
+      {st:"③ 决策", plat:"本机脚本", platK:"hu", d:"把显式 nccl 改成 hccl。"},
+      {st:"④ 反馈", plat:"本机终端", platK:"hu", d:"改后继续运行。"}
+    ],
+    chainAI:[
+      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需处理 backend。"},
+      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 扫描脚本里的 backend 串。"},
+      {st:"③ 决策", plat:"⚠ AI 自动替换", platK:"warn", d:"推演：AI 自动替换——但显式 backend 散落处 / 条件分支 AI 未必扫全。"},
+      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后继续。"}
+    ]},
+  dU:{tier:"B",
+    intro:`<b>决策依据</b>：跑时遇不支持的 API/算子——用分析迁移工具识别 / 改 npu_native_functions.yaml 把算子挪 CPU / 写自定义 Ascend C。一键迁移只覆盖简单场景，复杂处需手工适配。`,
+    pre:`能定位是哪个算子/API 不支持。`,
+    chain:[
+      {st:"① 接收", plat:"本机终端（报错）", platK:"hu", d:"跑时报某算子 / API 不支持。"},
+      {st:"② 研判", plat:"ms_fmk_transplt 分析报告", platK:"ext", d:"用分析迁移工具识别不支持项。"},
+      {st:"③ 决策", plat:"hiascend 文档", platK:"ext", d:"选挪 CPU（改 yaml）还是写自定义算子。"},
+      {st:"④ 反馈", plat:"本机脚本", platK:"hu", d:"按选定方案改。"}
+    ],
+    chainAI:[
+      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"AI 拿到不支持算子报错。"},
+      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按报错推断处理方式。"},
+      {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：AI 默认挪 CPU——但挪 CPU 对精度 / 性能的影响缺人校准。"},
+      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重跑。"}
+    ]},
+  dA:{tier:"A",
+    intro:`<b>决策依据</b>：迁移后存权重、与 GPU 参考输出比对，精度是否对齐 GPU 是<b>带业务容忍度的价值判断</b>，AI 没有 GPU 参考基准与业务阈值。`,
+    pre:`有 GPU 侧参考权重 / 输出；定好误差阈值。`,
+    chain:[
+      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给精度验证方法。"},
+      {st:"② 研判", plat:"本机（跑 + 比对 GPU 参考）", platK:"hu", d:"跑迁移后脚本，与 GPU 输出逐项比对。"},
+      {st:"③ 决策", plat:"业务需求（精度阈值）", platK:"hu", d:"按业务阈值判定是否对齐。"},
+      {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标交付 / 不达标回查。"}
+    ],
+    chainAI:[
+      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"迁移后出结果，需判精度。"},
+      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 没有 GPU 参考基准 / 业务容忍度。"},
+      {st:"③ 决策", plat:"⚠ AI 按通用阈值", platK:"warn", d:"推演：AI 按通用阈值判 → 未必符合你的业务要求。"},
+      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按通用阈值放行 / 驳回。"}
+    ]}
+};
+SCENARIOS.G={
+  key:"G", label:"G CUDA→昇腾迁移", role:"迁移工程师", grade:".84 高",
+  NODES:G_NODES, BRANCH:G_BRANCH, PHASE:G_PHASE, PHASE_DETAIL:G_PHASE_DETAIL,
+  FLOW:G_FLOW, NDETAIL:G_NDETAIL, ARCHFLOW:G_ARCHFLOW, A:["dA"],
+  dscore:{
+    META:[
+      ["①","官方可发现","g2：web_search 一轮命中官方自动迁移页"],
+      ["②","官方可抓取","g3：web_fetch ssr 可抓（对比 D 的 s3 受阻）"],
+      ["③","官方正文详尽","g3：transfer_to_npu 一行 + 步骤 + 版本矩阵全"],
+      ["④","版本清晰","g3：明列支持 PyTorch 1.11 / 2.1 / 2.2"],
+      ["⑤","二手丰富","g2：华为云 / 知乎 / CSDN / 博客园，量中"],
+      ["⑥","二手可信","g2：华为云 + 多平台、独立性好"],
+      ["⑦","自带知识","g4：迁移属通识，模型有一定覆盖"],
+      ["⑧","检索成本","g2–g3：一轮命中 + fetch 成功，成本最低（满分）"],
+      ["⑨","可锁版","g3/dN：官方版本矩阵明确"],
+      ["⑩","可复现","g5/g6：改一行直接跑，可复现高"]
+    ],
+    CANN:[4,4,4,4,3,4,3,5,4,4], CUDA:[5,5,5,3,3,4,4,5,4,5],
+    comp:["⑪ .84 高","⑪ .88 高"],
+    note:`G 的<b>「分数面」</b>——对照 D：g3 web_fetch <b>成功（绿、非受阻）</b>＝②③④全 4 分（D 同位受阻）、一轮命中＝⑧满分、改一行可跑＝⑩高。<b>采纳漏斗被刻意做厚的场景</b>，CANN 唯一接近 CUDA。`
   }
 };
 function setScenario(k){
