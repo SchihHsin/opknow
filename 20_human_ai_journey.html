@@ -26,6 +26,18 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .moreinfo{margin-top:6px}
 .moreinfo>summary{cursor:pointer;color:#2f3d63;font-weight:600;font-size:12px;list-style:revert}
 .moreinfo>div{margin-top:5px}
+/* D 量化得分条（与热力矩阵同源） */
+.dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
+.dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
+.dscore .dsc-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:5px 0}
+.dscore .dsc-lab{width:48px;font-size:11px;font-weight:700;flex:none}
+.dscore .dsc-lab.cann{color:#bb2236}.dscore .dsc-lab.cuda{color:#5d8a06}
+.dscore .cell{min-width:34px;text-align:center;font-size:11px;font-weight:700;padding:5px 6px;border-radius:6px;cursor:help;color:#3a3a3a}
+.dscore .v5{background:#BBF0D4}.dscore .v4{background:#DCF5E5}.dscore .v3{background:#FCEFC7}.dscore .v2{background:#FBE0CE}.dscore .v1{background:#F9D2D2}.dscore .vna{background:#ececec;color:#888}
+.dscore .comp{margin-left:6px;font-size:12px;font-weight:800;padding:5px 10px;border-radius:7px}
+.dscore .comp.lo{background:#F9D2D2;color:#993C1D}.dscore .comp.hi{background:#BBF0D4;color:#1f6b45}
+.dscore .dsc-note{font-size:11.5px;color:#666;margin-top:9px;line-height:1.65}
+.dscore .dsc-note a{color:#2f3d63;font-weight:600}
 .floortag{display:inline-block;font-size:11px;color:#0C447C;background:#eef4fc;border:1px solid #d6e6f7;border-radius:7px;padding:2px 9px;margin:0 0 12px 16px}
 .d5banner{font-size:12.5px;border-radius:9px;padding:9px 13px;margin:0 0 14px;line-height:1.6}
 .d5banner.hu{background:#eef4fc;border:1px solid #d6e6f7;color:#2f3d63}
@@ -249,6 +261,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span><i class="i-co"></i> 人机协同（AI 起草 / 用户执行判断）</span>
   <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
 </div>
+
+<div class="dscore" id="dscore"></div>
 
 <div class="note" style="background:#f3f5fb"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。9 个决策点中，<b>A 类（soc_version / 版本 / 精度）是 AI 拿不到本机·业务事实的「非人不可」</b>，拖到「人委派」档被 AI 接管时正是深水区最大风险点。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。<br><span style="color:#888;font-size:12px">（业务分析 / 主导权边界 / 决策点详情已全部折进上图——悬浮节点、生命线名、阶段条、图例查看。）</span></div>
 
@@ -1187,6 +1201,33 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
   document.getElementById("codeView").style.display = v==="code"?"":"none";
 }));
 
+/* D 量化得分条：把这段旅程「打穿」到热力矩阵——分值与 page 17 / score_metrics.py 同源（D 实测）。
+   每格悬浮标它来自时序图哪一步，实现「时序图事件 ↔ 矩阵指标」的对应。 */
+(function(){
+  const el=document.getElementById("dscore"); if(!el) return;
+  const META=[
+    ["①","官方可发现","s2：web_search 命中二手，官方 hiascend 未置顶"],
+    ["②","官方可抓取","s3：web_fetch 官方 how-to 受阻（SPA 抓取为空）"],
+    ["③","官方正文详尽","s3：抓不到正文 → 受阻态（不打推断分）"],
+    ["④","版本清晰","d2：版本散乱，连 URL 都从 devguide/opdevg 漂到 opdevg/Ascendcopdevg"],
+    ["⑤","二手丰富","s4：转 MindSpore / CSDN 二手，量薄"],
+    ["⑥","二手可信","s4：二手多扎堆 CSDN、独立性低"],
+    ["⑦","自带知识","s4：官方受阻后靠模型自带知识兜底"],
+    ["⑧","检索成本","s2–s4：多轮检索 + fetch 失败，成本最尖刺（反向，越低越差）"],
+    ["⑨","可锁版","d1/d2：需本机 npu-smi / 版本核验才能锁定"],
+    ["⑩","可复现","s6/s8/s10：本地编包 / 部署常需按本机调"]
+  ];
+  const CANN=[2,2,"受阻",2,3,2,2,1,2,3], CUDA=[5,5,5,3,4,4,5,5,5,5];
+  const cell=(m,v,from)=>{
+    const cls = v==="受阻" ? "vna" : "v"+v;
+    return `<i class="cell ${cls}" title="${m[0]}${m[1]} = ${v}　← ${from}">${m[0]}${v}</i>`;
+  };
+  let h=`<div class="dsc-h">D 量化得分 · 与热力矩阵同源（<code>score_metrics.py</code> 由 task_run_log D 实测算出 · 悬浮看每格来自时序图哪一步）</div>`;
+  h+=`<div class="dsc-row"><span class="dsc-lab cann">CANN</span>`+META.map((m,i)=>cell(m,CANN[i],m[2])).join("")+`<b class="comp lo">⑪ .41 低</b></div>`;
+  h+=`<div class="dsc-row"><span class="dsc-lab cuda">CUDA</span>`+META.map((m,i)=>cell(m,CUDA[i],"对照基线（静态站可抓、二手厚、版本清）")).join("")+`<b class="comp hi">⑪ .88 高</b></div>`;
+  h+=`<div class="dsc-note">这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。⚠ 本条仅锚 D 一个任务（矩阵的 1 行）。<a href="17_official_site_focus.html">去热力矩阵看全 26 行 →</a></div>`;
+  el.innerHTML=h;
+})();
 draw();
 </script>
 </body>
