@@ -272,6 +272,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span class="lg"><i class="lgdiaA"></i> 决策·A 非人不可</span>
   <span class="lg"><i class="lgdiaB"></i> 决策·B 技术路线</span>
   <span class="lg"><i class="lgline dash"></i> 用户独立分支（人→社区）</span>
+  <span class="lg"><b style="color:#bb2236">①②③…</b> 节点旁红色小字＝该步对应的<b>矩阵指标分</b>（打穿到热力矩阵）</span>
 </div>
 <div class="ownleg">
   <b style="font-size:12px;color:#444">主导方色带：</b>
@@ -280,10 +281,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
 </div>
 
-<div class="dscore" id="dscore"></div>
-
 <div class="conclbox" id="conclbox">
-  <div class="cb-h">结论 · D 算子开发（.41 低）</div>
+  <div class="cb-h">结论 · D 算子开发（CANN .41 低 ｜ CUDA .88 高）</div>
   <div class="cb-row"><span class="cb-tag t-i">这条说明什么</span><div>26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。</div></div>
   <div class="cb-row"><span class="cb-tag t-n">下一步怎么做</span><div>① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。</div></div>
   <div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景对照。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>
@@ -772,7 +771,8 @@ function renderV(){
       .each(function(){ wrapText(d3.select(this), d.t, 9, 12, (toRight?1:-1)*22, true); }).attr("y",0);
   };
 
-  /* 每步＝一条消息（标题在箭头上方）；决策＝执行者线上的菱形 */
+  /* 每步＝一条消息（标题在箭头上方）；决策＝执行者线上的菱形。红色小字＝该步对应的矩阵指标分（打穿到 page 17） */
+  const NS=SCENARIOS[curScen].nodeScore||{};
   NODES.forEach(d=>{
     const y=Y(d.xi);
     if(d.kind==="decision"){
@@ -781,6 +781,8 @@ function renderV(){
         .on("mousemove",(e)=>showTip(e,d)).on("mouseleave",hideTip).on("click",(e)=>pinTip(e,d));
       drawBarV(gx,d);                       // 菱形按 dtier 深浅
       sideLabel(gx,d, d.lane==="ai");       // AI 在左→标题朝右(中央)；人在右→朝左(中央)
+      if(NS[d.id]) gx.append("text").attr("x",0).attr("y",20).attr("text-anchor","middle")
+        .attr("font-size",9).attr("font-weight",700).attr("fill","#bb2236").text(NS[d.id]);
       return;
     }
     const f=FLOW[d.id]; if(!f) return;
@@ -798,17 +800,19 @@ function renderV(){
     const mk=f.blocked?"url(#ahr)":(isAi?"url(#ah)":"url(#ahg)");
     svg.append("line").attr("x1",x1+dir*14).attr("y1",y).attr("x2",x2-dir*3).attr("y2",y)
       .attr("stroke",col).attr("stroke-width",2).attr("marker-end",mk).attr("opacity",.92);
-    svg.append("text").attr("x",(x1+x2)/2).attr("y",y-7).attr("text-anchor","middle")
-      .attr("font-size",10).attr("font-weight",600).attr("fill", f.blocked?"#C8102E":"#333").text(d.t);
+    const tt=svg.append("text").attr("x",(x1+x2)/2).attr("y",y-7).attr("text-anchor","middle")
+      .attr("font-size",10).attr("font-weight",600).attr("fill", f.blocked?"#C8102E":"#333");
+    tt.append("tspan").text(d.t);
+    if(NS[d.id] && !f.blocked) tt.append("tspan").attr("fill","#bb2236").attr("font-weight",700).text("　"+NS[d.id]);
     const gx=svg.append("g").attr("transform",`translate(${x1},${y})`).style("cursor","pointer")
       .on("mousemove",(e)=>showTip(e,d)).on("mouseleave",hideTip).on("click",(e)=>pinTip(e,d));
     drawMarker(gx,d,PCOL[frm],f.blocked);
-    if(f.blocked){                          // 红色空返回 + ✕（核心发现可视化）
+    if(f.blocked){                          // 红色空返回 + ✕（核心发现可视化）+ 对应矩阵分
       const ry=y+17;
       svg.append("line").attr("x1",x2-dir*3).attr("y1",ry).attr("x2",x1+dir*14).attr("y2",ry)
         .attr("stroke","#C8102E").attr("stroke-width",2).attr("stroke-dasharray","5,4").attr("marker-end","url(#ahr)").attr("opacity",.92);
       svg.append("text").attr("x",(x1+x2)/2).attr("y",ry-4).attr("text-anchor","middle")
-        .attr("font-size",9.5).attr("font-weight",700).attr("fill","#C8102E").text("✕ 抓取为空（SPA）");
+        .attr("font-size",9.5).attr("font-weight",700).attr("fill","#C8102E").text("✕ 抓取为空（SPA）"+(NS[d.id]?" → 矩阵 "+NS[d.id]:""));
     }
   });
 
@@ -1133,7 +1137,8 @@ SCENARIOS.D={
   concl:{
     insight:`26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。`,
     next:`① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。`
-  }
+  },
+  nodeScore:{ s2:"①2", s3:"②2 ③受阻", s4:"⑤3 ⑥2 ⑦2 ⑧1", d2:"④2 ⑨2", s8:"⑩3" }
 };
 /* ===== 场景 G · CUDA→昇腾迁移（迁移工程师 / 顺畅对照）=====
    实测：g2/g3 检索段；g3 官方自动迁移页 ssr 可抓且详尽——与 D 的 s3 受阻正好相反。 */
@@ -1281,7 +1286,8 @@ function renderDscore(){
 function renderConcl(){
   const el=document.getElementById("conclbox"); if(!el) return;
   const S=SCENARIOS[curScen], C=S.concl||{};
-  let h=`<div class="cb-h">结论 · ${S.label}（${S.grade}）</div>`;
+  const cuda=S.dscore&&S.dscore.comp?S.dscore.comp[1].replace("⑪ ",""):"";
+  let h=`<div class="cb-h">结论 · ${S.label}（CANN ${S.grade}${cuda?" ｜ CUDA "+cuda:""}）</div>`;
   if(C.insight) h+=`<div class="cb-row"><span class="cb-tag t-i">这条说明什么</span><div>${C.insight}</div></div>`;
   if(C.next)    h+=`<div class="cb-row"><span class="cb-tag t-n">下一步怎么做</span><div>${C.next}</div></div>`;
   h+=`<div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景对照。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>`;
