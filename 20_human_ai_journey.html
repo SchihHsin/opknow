@@ -26,6 +26,13 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .moreinfo{margin-top:6px}
 .moreinfo>summary{cursor:pointer;color:#2f3d63;font-weight:600;font-size:12px;list-style:revert}
 .moreinfo>div{margin-top:5px}
+/* 场景切换 Tab */
+.sctabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.sctab{font:inherit;font-size:12.5px;color:#444;background:#fff;border:1px solid var(--line);border-radius:9px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+.sctab .scg{font-size:11px;color:#999;margin-left:5px}
+.sctab:hover{border-color:#2f3d63;color:#2f3d63}
+.sctab.active{background:#2f3d63;color:#fff;border-color:#2f3d63}
+.sctab.active .scg{color:#cdd6ff}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -228,6 +235,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
 <div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
+
+<div class="sctabs" id="sctabs"></div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -440,9 +449,14 @@ TOOLS = [
 <div id="tip"></div>
 
 <script>
-/* ===== 旅程数据（锚定 D 任务实测，节点编号与正文一致） ===== */
-const LANE = {ai:0, hu:1};
-const NODES = [
+/* ===== 多场景框架：当前场景数据挂全局，setScenario(key) 切换 =====
+   每个场景 = {NODES,BRANCH,PHASE,PHASE_DETAIL,FLOW,NDETAIL,ARCHFLOW,A(本机/业务事实型决策),dscore}
+   诚实底：仅检索段(search/fetch/受阻)实测、开发段/决策/平台为重建。 */
+const SCENARIOS={};
+let NODES, BRANCH, PHASE, PHASE_DETAIL, FLOW, NDETAIL, ARCHFLOW, byId, curScen="D";
+
+/* ===== 场景 D · 自定义算子开发（Ascend C + msOpGen + aclnn → PyTorch）===== */
+const D_NODES = [
   {id:"s1",  xi:0,  lane:"hu", kind:"start",   t:"立项·定目标",
     meta:"用户主导 · P1", b:"明确要开发一个 Ascend C 自定义算子并接入 PyTorch（msOpGen/aclnn 路线）。需求归人，AI 不介入。"},
   {id:"s2",  xi:1,  lane:"ai", kind:"search",  t:"web_search 找方案",
@@ -490,10 +504,8 @@ const NODES = [
   {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
     meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。AI 仅辅助结果汇总 / 格式整理。"},
 ];
-NODES.forEach((n,i)=>{ n.xi=i; if(n.kind==="decision") n.dtier=["d1","d2","d3"].includes(n.id)?"A":"B"; });
-// xi 取数组下标；决策分两层：A=非人不可(本机/业务事实)、B=技术路线(AI 建议·用户拍板)
 /* 分支（用户脱离 AI 的独立动作） */
-const BRANCH = [
+const D_BRANCH = [
   {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
     b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。脱离 AI 的独立检索。"},
   {id:"b2", from:"d2", xi:8,  t:"Gitee samples 仓求证",
@@ -507,7 +519,7 @@ const OWNER = [
   {a:14, b:16, k:"hu"},
 ];
 /* 阶段色带 */
-const PHASE = [
+const D_PHASE = [
   {a:0, b:0,  n:"P1 立项"},
   {a:1, b:4,  n:"P2 检索方案"},
   {a:5, b:8,  n:"P3 环境·生成"},
@@ -524,8 +536,6 @@ const ownColors={hu:"#9fb4dd",ai:"#b7a9e0",co:"#9bd3c8"};
 const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
 function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
 function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
-const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
-BRANCH.forEach(br=>{ br.xi=byId[br.from].xi; });   // 分支 xi 跟随来源节点（增删主节点不必手改）
 
 /* 每阶段「人/AI 占比」——全部从真实节点的 kind/lane 现算（不手填）
    动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
@@ -679,7 +689,7 @@ function drawBarV(sel,d){
    每步＝参与者间一条消息（横向箭头，标题在箭头上方）；受阻＝红色空返回。
    生命线左→右：昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具。决策＝落在执行者生命线上的菱形。
    FLOW：frm/to 为参与者；"exec"＝执行方(Vibe 档起转 AI)，随滑块 morph（人靠边）。 */
-const FLOW={
+const D_FLOW={
   s1:{frm:"hu",  to:"ai"},                 s2:{frm:"ai",  to:"comm"},
   s3:{frm:"ai",  to:"comm", blocked:true}, s4:{frm:"ai",  to:"comm"},
   s5:{frm:"ai",  to:"exec"},               s6:{frm:"exec",to:"tool"},
@@ -849,7 +859,7 @@ const tip=document.getElementById("tip");
 const tipmask=document.getElementById("tipmask");
 let pinned=false;
 /* 节点折叠详情：arch=对应架构环节（与 §4.3 流程图挂钩）；full=点击固定后看的全版 HTML */
-const NDETAIL={
+const D_NDETAIL={
   s2:{arch:"① 意图解析 → ② 子目标拆解 → ③ 工具路由 → web_search"},
   s3:{arch:"③ 工具路由 → web_fetch → ④ 研判（抓取为空）→ ⑤ 遇阻处理",
     full:`<div class="tt-sec"><span class="lbl">卡点（实测受阻）</span>官方 how-to 整段压在 <b>devguide/opdevg/</b> SPA 子树，web_fetch 只回导航 + meta、<b>正文抓不到</b>。</div>`
@@ -998,7 +1008,7 @@ const NDETAIL={
       ]}
 };
 /* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
-const PHASE_DETAIL=[
+const D_PHASE_DETAIL=[
   {nodes:"s1", bound:"定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。"},
   {nodes:"s2–s4 / dR", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼步骤骨架；用户在 <b>dR 选开发路线</b>（aclnn 简易 vs 完整工程）。AI 自主多轮迭代最密的区段。"},
   {nodes:"s5 / dP / s6 / d1", bound:"AI 给命令 + json 模板，用户定 <b>dP 算子原型·dtype/format</b>、跑 msopgen；<b>d1 soc_version 等本机事实只有用户能填</b>（线下 npu-smi 核验）。"},
@@ -1068,7 +1078,7 @@ function showCoopTip(e){ if(pinned) return; tip.className=""; tip.innerHTML=coop
 function pinCoopTip(e){ pinned=true; tip.className="pinned"; tip.innerHTML=coopTipHtml(true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
 (function(){ const el=document.getElementById("lgHandoff"); if(el){ el.style.cursor="help"; el.addEventListener("mousemove",showCoopTip); el.addEventListener("mouseleave",hideTip); el.addEventListener("click",pinCoopTip); } })();
 /* 受阻 / 卡点节点的「链路图」——把 §4.3 agent 架构画成迷你流程，标红出问题的环节 */
-const ARCHFLOW={
+const D_ARCHFLOW={
   s3:{ title:"链路图 · 官方 how-to 在哪一环受阻",
     steps:[
       {s:"ok",  t:"③ 工具路由",       note:"决定抓官方 how-to 页"},
@@ -1084,6 +1094,48 @@ const ARCHFLOW={
       {s:"fix", t:"⑥ 收敛 → 给改法",   note:"AI 给改法 → 用户改后重试（s10）通过"}
     ]}
 };
+/* ===== 注册场景 D + 切换机制 ===== */
+SCENARIOS.D={
+  key:"D", label:"D 算子开发", role:"算子开发者", grade:".41 低",
+  NODES:D_NODES, BRANCH:D_BRANCH, PHASE:D_PHASE, PHASE_DETAIL:D_PHASE_DETAIL,
+  FLOW:D_FLOW, NDETAIL:D_NDETAIL, ARCHFLOW:D_ARCHFLOW, A:["d1","d2","d3"],
+  dscore:{
+    META:[
+      ["①","官方可发现","s2：web_search 命中二手，官方 hiascend 未置顶"],
+      ["②","官方可抓取","s3：web_fetch 官方 how-to 受阻（SPA 抓取为空）"],
+      ["③","官方正文详尽","s3：抓不到正文 → 受阻态（不打推断分）"],
+      ["④","版本清晰","d2：版本散乱，连 URL 都从 devguide/opdevg 漂到 opdevg/Ascendcopdevg"],
+      ["⑤","二手丰富","s4：转 MindSpore / CSDN 二手，量薄"],
+      ["⑥","二手可信","s4：二手多扎堆 CSDN、独立性低"],
+      ["⑦","自带知识","s4：官方受阻后靠模型自带知识兜底"],
+      ["⑧","检索成本","s2–s4：多轮检索 + fetch 失败，成本最尖刺（反向，越低越差）"],
+      ["⑨","可锁版","d1/d2：需本机 npu-smi / 版本核验才能锁定"],
+      ["⑩","可复现","s6/s8/s10：本地编包 / 部署常需按本机调"]
+    ],
+    CANN:[2,2,"受阻",2,3,2,2,1,2,3], CUDA:[5,5,5,3,4,4,5,5,5,5],
+    comp:["⑪ .41 低","⑪ .88 高"],
+    note:`这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。`
+  }
+};
+function setScenario(k){
+  const S=SCENARIOS[k]; if(!S) return;
+  curScen=k;
+  NODES=S.NODES; BRANCH=S.BRANCH; PHASE=S.PHASE; PHASE_DETAIL=S.PHASE_DETAIL;
+  FLOW=S.FLOW; NDETAIL=S.NDETAIL; ARCHFLOW=S.ARCHFLOW;
+  NODES.forEach((n,i)=>{ n.xi=i; if(n.kind==="decision") n.dtier=S.A.includes(n.id)?"A":"B"; });
+  byId=Object.fromEntries(NODES.map(n=>[n.id,n]));
+  BRANCH.forEach(br=>{ br.xi=byId[br.from].xi; });
+}
+function renderDscore(){
+  const el=document.getElementById("dscore"); if(!el) return;
+  const D=SCENARIOS[curScen].dscore;
+  const cell=(m,v,from)=>{ const cls=v==="受阻"?"vna":"v"+v; return `<i class="cell ${cls}" title="${m[0]}${m[1]} = ${v}　← ${from}">${m[0]}${v}</i>`; };
+  let h=`<div class="dsc-h">${SCENARIOS[curScen].label} 量化得分 · 与热力矩阵同源（<code>score_metrics.py</code> 实测算出 · 悬浮看每格来自时序图哪一步）</div>`;
+  h+=`<div class="dsc-row"><span class="dsc-lab cann">CANN</span>`+D.META.map((m,i)=>cell(m,D.CANN[i],m[2])).join("")+`<b class="comp lo">${D.comp[0]}</b></div>`;
+  h+=`<div class="dsc-row"><span class="dsc-lab cuda">CUDA</span>`+D.META.map((m,i)=>cell(m,D.CUDA[i],"对照基线（静态站可抓、二手厚、版本清）")).join("")+`<b class="comp hi">${D.comp[1]}</b></div>`;
+  h+=`<div class="dsc-note">${D.note}⚠ 本条仅锚 ${SCENARIOS[curScen].label} 一个任务（矩阵的 1 行）。<a href="17_official_site_focus.html">去热力矩阵看全 26 行 →</a></div>`;
+  el.innerHTML=h;
+}
 function archFlowHtml(id){
   const f=ARCHFLOW[id]; if(!f) return "";
   let h=`<div class="tt-sec"><span class="lbl">${f.title}</span></div><div class="aflow">`;
@@ -1201,34 +1253,25 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
   document.getElementById("codeView").style.display = v==="code"?"":"none";
 }));
 
-/* D 量化得分条：把这段旅程「打穿」到热力矩阵——分值与 page 17 / score_metrics.py 同源（D 实测）。
-   每格悬浮标它来自时序图哪一步，实现「时序图事件 ↔ 矩阵指标」的对应。 */
-(function(){
-  const el=document.getElementById("dscore"); if(!el) return;
-  const META=[
-    ["①","官方可发现","s2：web_search 命中二手，官方 hiascend 未置顶"],
-    ["②","官方可抓取","s3：web_fetch 官方 how-to 受阻（SPA 抓取为空）"],
-    ["③","官方正文详尽","s3：抓不到正文 → 受阻态（不打推断分）"],
-    ["④","版本清晰","d2：版本散乱，连 URL 都从 devguide/opdevg 漂到 opdevg/Ascendcopdevg"],
-    ["⑤","二手丰富","s4：转 MindSpore / CSDN 二手，量薄"],
-    ["⑥","二手可信","s4：二手多扎堆 CSDN、独立性低"],
-    ["⑦","自带知识","s4：官方受阻后靠模型自带知识兜底"],
-    ["⑧","检索成本","s2–s4：多轮检索 + fetch 失败，成本最尖刺（反向，越低越差）"],
-    ["⑨","可锁版","d1/d2：需本机 npu-smi / 版本核验才能锁定"],
-    ["⑩","可复现","s6/s8/s10：本地编包 / 部署常需按本机调"]
-  ];
-  const CANN=[2,2,"受阻",2,3,2,2,1,2,3], CUDA=[5,5,5,3,4,4,5,5,5,5];
-  const cell=(m,v,from)=>{
-    const cls = v==="受阻" ? "vna" : "v"+v;
-    return `<i class="cell ${cls}" title="${m[0]}${m[1]} = ${v}　← ${from}">${m[0]}${v}</i>`;
-  };
-  let h=`<div class="dsc-h">D 量化得分 · 与热力矩阵同源（<code>score_metrics.py</code> 由 task_run_log D 实测算出 · 悬浮看每格来自时序图哪一步）</div>`;
-  h+=`<div class="dsc-row"><span class="dsc-lab cann">CANN</span>`+META.map((m,i)=>cell(m,CANN[i],m[2])).join("")+`<b class="comp lo">⑪ .41 低</b></div>`;
-  h+=`<div class="dsc-row"><span class="dsc-lab cuda">CUDA</span>`+META.map((m,i)=>cell(m,CUDA[i],"对照基线（静态站可抓、二手厚、版本清）")).join("")+`<b class="comp hi">⑪ .88 高</b></div>`;
-  h+=`<div class="dsc-note">这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。⚠ 本条仅锚 D 一个任务（矩阵的 1 行）。<a href="17_official_site_focus.html">去热力矩阵看全 26 行 →</a></div>`;
-  el.innerHTML=h;
+/* 场景 Tab：从 SCENARIOS 动态生成（加新场景自动出 Tab） */
+(function buildScenTabs(){
+  const box=document.getElementById("sctabs"); if(!box) return;
+  box.innerHTML=Object.keys(SCENARIOS).map(k=>{
+    const S=SCENARIOS[k];
+    return `<button class="sctab${k===curScen?" active":""}" data-scen="${k}">${S.label}<span class="scg">${S.role} · ${S.grade}</span></button>`;
+  }).join("");
+  box.querySelectorAll(".sctab").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.scen; if(k===curScen) return;
+    box.querySelectorAll(".sctab").forEach(x=>x.classList.toggle("active", x.dataset.scen===k));
+    hideTip(); closePin();
+    setScenario(k); curLvl=0;
+    const sl=document.getElementById("lvl"); if(sl) sl.value=0;
+    draw(); renderDscore();
+  }));
 })();
+setScenario("D");
 draw();
+renderDscore();
 </script>
 </body>
 </html>
