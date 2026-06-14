@@ -204,11 +204,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <div class="toc">
   <div class="toclbl">本页目录</div>
   <a href="#s1">① 全链路时序图</a>
-  <a href="#s2">② 业务分析</a>
-  <a href="#s3">③ 主导权边界</a>
-  <a href="#s4">④ Agent 系统工程</a>
-  <a href="#s5">⑤ 用户决策节点</a>
-  <a href="#s6">⑥ 交付物汇总</a>
+  <a href="#s4">② Agent 系统工程</a>
+  <a href="#s6">③ 交付物汇总</a>
 </div>
 
 <h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
@@ -253,17 +250,10 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
 </div>
 
-<a id="s2"></a>
-<h2><span class="no">②</span>业务分析 · 整段旅程的分工与协同</h2>
-<div class="sechint">业务分析（分工 / 协同）已<b>全部折进上图交互</b>，随左侧滑块实时变：<b>悬浮泳道标签</b>＝任务分工·四轴（检索 / 产出恒由 AI 担、执行 / 决策随档位在人 / AI 间转手，拆四轴比单一「AI 41%」更诚实）；<b>悬浮图例「人机交接」</b>＝协同量化（主导权易手次数 + 用户独立分支数）。</div>
-
-<a id="s3"></a>
-<h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
-<div class="sechint">每阶段的<b>主导方</b>（随滑块变，＝图底主导方色带）+ <b>边界说明</b>已折进上图——<b>悬浮（点击固定）图中左侧阶段条</b>查看。</div>
-<div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
+<div class="note" style="background:#f3f5fb"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。9 个决策点中，<b>A 类（soc_version / 版本 / 精度）是 AI 拿不到本机·业务事实的「非人不可」</b>，拖到「人委派」档被 AI 接管时正是深水区最大风险点。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。<br><span style="color:#888;font-size:12px">（业务分析 / 主导权边界 / 决策点详情已全部折进上图——悬浮节点、生命线名、阶段条、图例查看。）</span></div>
 
 <a id="s4"></a>
-<h2><span class="no">④</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
+<h2><span class="no">②</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
 <div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部究竟如何运转」。</div>
 
 <h3>4.1 工具调用策略：为什么是有限次检索，而非更多 / 更少</h3>
@@ -414,17 +404,12 @@ TOOLS = [
   </div>
 </div>
 
-<a id="s5"></a>
-<h2><span class="no">⑤</span>用户决策节点 · 9 处、分两层（随档位变化）</h2>
-<div id="d5banner" class="d5banner"></div>
-<div class="sechint">一次算子开发有 <b>9 个决策点</b>（图中 ◆），分两层：<b><span style="color:#6f520c">A 类·非人不可（深金 ◆）</span></b>＝ d1 soc_version / d2 版本对齐 / d3 精度验收，AI 拿不到本机芯片·版本·业务阈值，<b>只能人定</b>；<b><span style="color:#8a6d1a">B 类·技术路线（浅金 ◆）</span></b>＝ dR 开发路线 / dP 算子原型·dtype / dT Tiling 策略 / dF 报错修复方向 / dB 绑定方式 / dQ 精度修复方向，<b>AI 能建议、用户拍板</b>。每个 ◆ 的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈 + 每步<b>信息来源</b>：做这步靠哪个平台 / 工具的信息，如 npu-smi / hiascend 文档 / Gitee / PyTorch 文档）」已折进上图——<b>悬浮即横向全展开</b>（无需点击）。<b>链路随滑块切换</b>：档①②＝人做实况、档③人委派＝AI 接管版（⚠ 推演）。上方横幅随滑块变：到「人委派」档这 9 处决策翻给 AI——尤其 A 类，AI 接管了它<b>本来拿不到的本机·业务事实</b>，正是深水区最大风险点。</div>
-
 <a id="s6"></a>
-<h2><span class="no">⑥</span>交付物汇总</h2>
+<h2><span class="no">③</span>交付物汇总</h2>
 <div class="card">
-  <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
-  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）<b>折进泳道标签悬浮</b>、协同交接量化<b>折进图例「人机交接」悬浮</b>；用户决策依据、问题卡点 + 解决方案、决策链<b>折进对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进阶段区域悬浮</b>——§2 / §3 仅留指引。</div></div>
-  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；9 个决策节点（A 类 3 非人不可 + B 类 6 技术路线）的决策依据 / 前置条件 / 决策链（含每段平台、且<b>随滑块在「人做」「AI 接管」两版切换</b>）<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
+  <div class="deliv"><div class="dn">1</div><div><b>全链路时序图</b>（本页 §1）：4 参与者（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析全部折进上图交互</b>：任务分工·四轴<b>折进生命线名悬浮</b>、协同交接量化<b>折进图例「消息·涉及 AI」悬浮</b>；用户决策依据 / 前置条件 / 决策链（含每步信息来源、随滑块在「人做」「AI 接管」两版切换）<b>折进 ◆ 节点悬浮</b>；人机主导权边界逐阶段<b>折进左侧阶段条悬浮</b>。结论见 §1 下方蓝色框。</div></div>
+  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§2 Agent 系统工程）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
 
 <div class="limit">
@@ -809,24 +794,9 @@ function syncLvlUI(){
   document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
   updateFloors(curLvl);
 }
-/* §2/§3/§5 里「谁干哪步」的机械结果随档位更新（事实不变、只重新归属） */
-const OWNTAG={
-  hu:'<span class="tag hu">用户主导</span>',
-  ai:'<span class="tag ai">Agent 自动化主导</span>',
-  co:'<span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span>'
-};
 function handoffs(lvl){ let h=0; for(let i=0;i<NODES.length-1;i++){ if(laneAt(NODES[i],lvl)!==laneAt(NODES[i+1],lvl)) h++; } return h; }
 function updateFloors(lvl){
-  const $=id=>document.getElementById(id);
-  PHASE.forEach((ph,i)=>{ const el=$("ph"+i); if(el) el.innerHTML=OWNTAG[phaseOwner(ph)]; }); // §3 主导方列
-  // §2 任务分工·四轴 / 协同量化已折进图内悬浮（laneTipHtml / coopTipHtml 实时读 curLvl）
-  const bn=$("d5banner");                                                                     // §5 banner
-  if(bn){
-    if(lvl<2){ bn.className="d5banner hu";
-      bn.innerHTML="「① 人主笔 / ② AI 主写」档：9 处决策仍归<b>人</b>——B 类技术路线 AI 建议、用户拍板；A 类（soc_version / 版本 / 精度）AI 根本拿不到本机·业务事实，<b>非人不可</b>。"; }
-    else { bn.className="d5banner risk";
-      bn.innerHTML="⚠「③ 人委派」档：9 处决策 <b>AI 接管</b>——B 类 AI 尚能按知识自主定（缺人校准），但 A 类的 npu-smi 芯片 / 本机 CANN 版本 / 精度业务阈值仍是<b>本机·业务事实</b>，AI 接管＝把「本来拿不到的判断」也交出去，这正是深水区（D）委派的<b>最大风险点</b>。"; }
-  }
+  // 业务分析 / 主导权 / 决策点等楼层已删，相关内容全部折进图内悬浮（laneTip / coopTip / 决策链 实时读 curLvl）
 }
 /* 悬浮档位/滑块 → 弹出该模式解释卡片（复用 #tip） */
 function showModeCard(e,i){
