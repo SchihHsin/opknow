@@ -42,6 +42,20 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .conclbox .cb-tag.t-n{background:#e3f3ec;color:#1f6b45}
 .conclbox .cb-overall{font-size:12px;color:#555;margin-top:11px;padding-top:9px;border-top:1px dashed #cdd6e6;line-height:1.7}
 .conclbox .cb-overall a{color:#2f3d63;font-weight:600}
+.conclbox .jline{font-size:12px;color:#666;margin-bottom:10px;line-height:1.6}
+.conclbox .jline a{color:#2f3d63;font-weight:600}
+.conclbox .judge{background:#fff;border:1px solid #d6e0f0;border-radius:10px;padding:11px 13px;margin:10px 0}
+.conclbox .judge>:first-child{margin-top:0}
+.conclbox .j-h{font-size:13.5px;font-weight:700;color:#2f3d63;margin-bottom:5px}
+.conclbox .j-one{font-size:12.5px;color:#bb2236;font-weight:600;margin-bottom:7px}
+.conclbox .judge p{font-size:12.5px;line-height:1.75;margin:6px 0;color:#333}
+.conclbox .j-fix{background:#e3f3ec;border-radius:7px;padding:7px 10px;margin-top:8px;color:#1f5b3f}
+.conclbox table.actions{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+.conclbox table.actions th{text-align:left;color:#555;font-weight:700;padding:6px 8px;border-bottom:1px solid #cdd6e6}
+.conclbox table.actions td{padding:7px 8px;border-bottom:1px solid #e6ecf5;vertical-align:top;line-height:1.6}
+.conclbox .pri{font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.conclbox .pri.p0{background:#f9d2d2;color:#993C1D}
+.conclbox .pri.p1{background:#fbe0ce;color:#9a5a2a}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -282,10 +296,44 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <div class="conclbox" id="conclbox">
-  <div class="cb-h">结论 · D 算子开发（CANN .41 低 ｜ CUDA .88 高）</div>
-  <div class="cb-row"><span class="cb-tag t-i">这条说明什么</span><div>26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。</div></div>
-  <div class="cb-row"><span class="cb-tag t-n">下一步怎么做</span><div>① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。</div></div>
-  <div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景对照。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>
+  <div class="cb-h">综述 · D 自定义算子开发旅程（CANN .41 低 ｜ CUDA .88 高）</div>
+  <div class="jline">把这条旅程的实测收敛成 <b>3 个判断 + 行动建议</b>。仅锚 D 一个任务；全 26 任务的规律与 ROI 排序见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
+
+  <div class="judge">
+    <div class="j-h">判断 1 · 官方 how-to 抓不到，是 D 塌到 .41 的「案发第一现场」</div>
+    <div class="j-one">核心一问：同样会检索的 AI，为什么偏偏在 D 上交不出可照抄的答案？</div>
+    <p>D 的核心 how-to（msopgen → 编包 → 部署 OPP）整段压在 hiascend 的 <b>SPA 子树 <code>devguide/opdevg/</code></b>，AI <code>web_fetch</code> 只拿到导航 + meta、<b>正文抓取为空</b>（图中 s3 红色空返回，对应矩阵 <b style="color:#bb2236">②2 ③受阻</b>）。这不是「找不到」，是<b>「找到了、抓不动」</b>——AI 站在门口、进不去。</p>
+    <p>而归档的 G 迁移场景同一步（web_fetch 官方页）是<b>绿色成功</b>：所以这不是 CANN 文档一律抓不到，而是<b>越深入前沿自研，越掉进 SPA 坑</b>——可抓取性是「子树相关」、不是平台常量。</p>
+    <p class="j-fix"><b>怎么改：</b>把 opdevg 这类前沿 how-to 页<b>静态化 / 给纯文本入口</b>，让 AI 抓得到正文——s3 一步就能从受阻变可用。这是全旅程<b>单点最高杠杆</b>。</p>
+  </div>
+
+  <div class="judge">
+    <div class="j-h">判断 2 · 抓得到 ≠ 够用 ≠ 版本对——三关层层漏，单修一关不够</div>
+    <div class="j-one">核心一问：就算官方页抓到了，AI 就能给对答案吗？</div>
+    <p>D 的旅程把三关正交地摊开：<b>能不能抓到</b>（②，s3 受阻）、<b>抓到够不够细</b>（③）、<b>版本对不对</b>（④，d2：连官方 URL 都从 <code>devguide/opdevg</code> 漂到 <code>opdevg/Ascendcopdevg</code>，对应 <b style="color:#bb2236">④2 ⑨2</b>）。一关过了，下一关照样能拦死。</p>
+    <p>二手本该兜底，但 D 的二手<b>又薄又扎堆 CSDN</b>（s4，<b style="color:#bb2236">⑤3 ⑥2</b>），AI 只能靠自带知识硬撑（<b style="color:#bb2236">⑦2</b>）——<b>官方 / 二手 / 自带三条腿同时塌</b>，才有 .41（噪声-OR 公式下，任一条腿扛住都不会这么低）。</p>
+    <p class="j-fix"><b>怎么改：</b>要<b>成套补</b>——静态化（救 ②③）+ 版本收口到一个 canonical + 配套查询器（救 ④⑨）+ 补带版本号的完整二手（救 ⑤⑥）。缺任一关都还会从那道缝漏掉。</p>
+  </div>
+
+  <div class="judge">
+    <div class="j-h">判断 3 · AI 搬得动知识、搬不动你的机器——A 类决策永远回到人</div>
+    <div class="j-one">核心一问：这条旅程里，哪些事是 AI 再强也替不了的？</div>
+    <p>D 有 9 个决策点，其中 3 个是 <b>A 类「非人不可」</b>：soc_version（本机芯片 d1）、版本对齐（本机 CANN d2）、精度验收（业务阈值 d3）——全是<b>本机 / 业务事实，不在任何文档或检索里</b>。连<b>算子调优（dT Tiling 策略）</b>也得人按本机实际 shape 拍板。</p>
+    <p>拖到「人委派·AI 自管」档，这 3 个翻给 AI 时，AI 拿不到本机芯片 / 版本 / 业务阈值，<b>只能猜</b>——这正是深水区委派的<b>最大风险点</b>。</p>
+    <p class="j-fix"><b>怎么改：</b>供给侧能修的是 ②③④⑤⑥（把知识做得可抓、可信、版本清）；<b>A 类决策注定留人</b>——产品侧该做的是把「这步需要人核验」<b>显式标出来</b>，而不是让 AI 默默替你猜。</p>
+  </div>
+
+  <div class="cb-h" style="margin-top:14px">行动建议 · 按杠杆排序</div>
+  <table class="actions">
+    <thead><tr><th style="width:58px">优先级</th><th>建议</th><th style="width:84px">对应节点</th><th style="width:150px">预期收益</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pri p0">P0</span></td><td>opdevg 等前沿 how-to 页<b>静态化 / 纯文本入口</b></td><td>s3 · ②③</td><td>直接救最致命单点</td></tr>
+      <tr><td><span class="pri p0">P0</span></td><td><b>版本收口</b>：一个 canonical + 配套查询器</td><td>d2 · ④⑨</td><td>翻多格、ROI 断层第一（见 19）</td></tr>
+      <tr><td><span class="pri p1">P1</span></td><td>补<b>带版本号的完整二手</b></td><td>s4 · ⑤⑥</td><td>给检索兜底</td></tr>
+      <tr><td><span class="pri p1">P1</span></td><td>A 类决策<b>显式标注「需人核验」</b></td><td>d1/d2/d3</td><td>降「人委派」档委派风险</td></tr>
+    </tbody>
+  </table>
+  <div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景综述。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>
 </div>
 
 <a id="s4"></a>
@@ -1425,13 +1473,13 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
     hideTip(); closePin();
     setScenario(k); curLvl=0;
     const sl=document.getElementById("lvl"); if(sl) sl.value=0;
-    draw(); renderDscore(); renderConcl();
+    draw(); renderDscore();   /* 结论框现为静态富文本(综述)，不再 JS 覆盖 */
   }));
 })();
 setScenario("D");
 draw();
 renderDscore();
-renderConcl();
+/* 结论框＝静态综述富文本，不 JS 覆盖；多场景时再改回 renderConcl 动态化 */
 </script>
 </body>
 </html>
