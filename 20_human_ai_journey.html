@@ -282,7 +282,12 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="dscore" id="dscore"></div>
 
-<div class="conclbox" id="conclbox"></div>
+<div class="conclbox" id="conclbox">
+  <div class="cb-h">结论 · D 算子开发（.41 低）</div>
+  <div class="cb-row"><span class="cb-tag t-i">这条说明什么</span><div>26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。</div></div>
+  <div class="cb-row"><span class="cb-tag t-n">下一步怎么做</span><div>① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。</div></div>
+  <div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景对照。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>
+</div>
 
 <a id="s4"></a>
 <h2><span class="no">②</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
