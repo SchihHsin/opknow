@@ -23,6 +23,9 @@ h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-lef
 h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
 h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.moreinfo{margin-top:6px}
+.moreinfo>summary{cursor:pointer;color:#2f3d63;font-weight:600;font-size:12px;list-style:revert}
+.moreinfo>div{margin-top:5px}
 .floortag{display:inline-block;font-size:11px;color:#0C447C;background:#eef4fc;border:1px solid #d6e6f7;border-radius:7px;padding:2px 9px;margin:0 0 12px 16px}
 .d5banner{font-size:12.5px;border-radius:9px;padding:9px 13px;margin:0 0 14px;line-height:1.6}
 .d5banner.hu{background:#eef4fc;border:1px solid #d6e6f7;color:#2f3d63}
@@ -210,14 +213,12 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
 <div class="subtitle">
-  编号 20 · 锚定真实任务 <b>D 自定义算子开发（Ascend C + msOpGen + aclnn → 接入 PyTorch）</b>——这是 26 个任务里 CANN 综合分唯一「低」(.41)、也是唯一「官方 SPA 短板真正咬到结果」的格。
-  下图把<b>开发者从立项到交付完成的一整段旅程</b>（不是问一个问题）拆成「AI(Agent) / 人类用户」两条泳道，每一步 AI 的动作、后端检索调用、人机交接全部显性展示；再下沉到 Agent 底层系统工程逐段解析。
-  所有节点事实取自 <code>task_run_log.md</code> 的 D 任务实测检索记录，<b>受阻 / 卡点为实测、非演绎</b>。
+  锚定 <b>D 自定义算子开发</b>（Ascend C + msOpGen + aclnn → 接入 PyTorch）——26 任务里 CANN 综合分唯一「低」(.41)、也是唯一官方 SPA 真正咬到结果的格。下图把<b>开发者从立项到交付的整段旅程</b>画成时序图；事实取自 <code>task_run_log.md</code> 实测（受阻 / 卡点为实测、非演绎）。
 </div>
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
-<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>，时间自上而下，每步是参与者间的一条消息（横向箭头、标题在箭头上方）。<b>核心发现可视化</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回是红色空箭头「✕ 抓取为空（SPA）」</b>。<b>拖动条</b>切 3 档协作模式；拖动时执行/决策的发起方随之 morph——越自动，<b>「人类用户」这条线越靠边、AI 直接对工具/社区</b>。<b>悬浮节点看细节、点击固定看完整详情</b>；悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
+<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
 
 <div class="ctrlrow">
   <div class="lvlbox">
@@ -804,7 +805,7 @@ function renderV(){
 function syncLvlUI(){
   const L=LVL[curLvl];
   document.getElementById("lvlDesc").innerHTML=
-    `<b style="color:#2f3d63">${curLvl+1}. ${L.name}</b>　<span style="color:#888">执行 ${L.exec} · 决策 ${L.decide}</span>　${L.desc}`;
+    `<b style="color:#2f3d63">${curLvl+1}. ${L.name}</b>　<span style="color:#888">执行 ${L.exec} · 决策 ${L.decide} · 悬浮档位看详情</span>`;
   document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
   updateFloors(curLvl);
 }
