@@ -33,6 +33,15 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .sctab:hover{border-color:#2f3d63;color:#2f3d63}
 .sctab.active{background:#2f3d63;color:#fff;border-color:#2f3d63}
 .sctab.active .scg{color:#cdd6ff}
+/* 结论框（启示 + 下一步，随场景变） */
+.conclbox{background:#f3f5fb;border:1px solid #d6e0f0;border-left:4px solid #2f3d63;border-radius:12px;padding:14px 16px;margin:14px 0}
+.conclbox .cb-h{font-size:14px;font-weight:800;color:#2f3d63;margin-bottom:9px}
+.conclbox .cb-row{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-size:13px;line-height:1.75}
+.conclbox .cb-tag{flex:none;font-size:11px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;margin-top:3px}
+.conclbox .cb-tag.t-i{background:#e7eefb;color:#2f3d63}
+.conclbox .cb-tag.t-n{background:#e3f3ec;color:#1f6b45}
+.conclbox .cb-overall{font-size:12px;color:#555;margin-top:11px;padding-top:9px;border-top:1px dashed #cdd6e6;line-height:1.7}
+.conclbox .cb-overall a{color:#2f3d63;font-weight:600}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -229,12 +238,12 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <h1>人机协同旅程：开发者完成一段任务的全链路</h1>
 <div class="subtitle">
-  把<b>开发者从立项到交付的整段旅程</b>画成 4 参与者时序图——<b>上方 Tab 切场景</b>：<b>D 算子开发</b>（深处自研、官方受阻、.41 塌）vs <b>G CUDA→昇腾迁移</b>（采纳漏斗、官方可抓、.84 顺），对照「可用性是任务相关的」。事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
+  把<b>开发者从立项到交付的整段旅程</b>画成 4 参与者时序图。当前场景：<b>D 自定义算子开发</b>——26 任务里 CANN 综合分唯一「低」(.41)、也是唯一官方 SPA 真正咬到结果的格。<span style="color:#888">（<b>训练 / 推理</b>两条场景制作中；迁移场景已归档备扩。）</span>事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
 </div>
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
-<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现（以 D 为例）</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>——切到 G 场景这一步则<b>成功（绿）</b>。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
+<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>——这是 D 综合分塌到 .41 的现场。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
 
 <div class="sctabs" id="sctabs"></div>
 
@@ -273,7 +282,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="dscore" id="dscore"></div>
 
-<div class="note" style="background:#f3f5fb"><b>结论：</b>这类开发旅程里<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——一旦进入与本机环境 / 版本 / 精度耦合的环节，主导权必然回到人（A 类决策 AI 拿不到本机·业务事实，<b>非人不可</b>）。<b>但可用性是任务相关的</b>：官方页能不能抓到、二手厚不厚、版本清不清，决定这段路顺还是塌——切<b>上方场景 Tab</b> 看 <b>D（深处自研、官方受阻、.41 塌）vs G（迁移、官方可抓、.84 顺）</b>的对照，每条的「分数面」见上方得分条。一句话：<b>AI 能搬来知识，但搬不动你的机器；而知识好不好搬，因任务而异</b>。<br><span style="color:#888;font-size:12px">（业务分析 / 主导权边界 / 决策点详情已全部折进上图——悬浮节点、生命线名、阶段条、图例查看。）</span></div>
+<div class="conclbox" id="conclbox"></div>
 
 <a id="s4"></a>
 <h2><span class="no">②</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
@@ -477,8 +486,8 @@ const D_NODES = [
     meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
   {id:"s7",  xi:7,  lane:"ai", kind:"draft",   t:"起草核函数 + Tiling",
     meta:"人机协同 · P4", b:"AI 起草 Compute 核函数与三级 Tiling 框架（GM→Local→寄存器 的 Copy-In/Compute/Copy-Out 三段流水线）。"},
-  {id:"dT",  xi:0,  lane:"hu", kind:"decision",t:"决策：Tiling 策略",
-    meta:"用户决定 · P4 · 技术路线（AI 建议·用户拍板）", b:"核函数性能的核心决策：单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。"},
+  {id:"dT",  xi:0,  lane:"hu", kind:"decision",t:"决策：Tiling 策略（算子调优）",
+    meta:"用户决定 · P4 · 技术路线 · 算子调优（AI 建议·用户拍板）", b:"<b>这一步＝算子级性能调优。</b>核函数性能的核心决策：单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。"},
   {id:"d2",  xi:8,  lane:"hu", kind:"decision",t:"决策：版本对齐",
     meta:"用户决定 · P4", b:"确认本机 CANN 版本。实测版本散乱：80RC2alpha001 / 80RC3 / 82RC1alpha003，json 字段与目录路径随版本变。"},
   {id:"s8",  xi:9,  lane:"hu", kind:"run",     t:"build.sh 编包 → 部署 OPP",
@@ -1115,6 +1124,10 @@ SCENARIOS.D={
     CANN:[2,2,"受阻",2,3,2,2,1,2,3], CUDA:[5,5,5,3,4,4,5,5,5,5],
     comp:["⑪ .41 低","⑪ .88 高"],
     note:`这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。`
+  },
+  concl:{
+    insight:`26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。`,
+    next:`① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。`
   }
 };
 /* ===== 场景 G · CUDA→昇腾迁移（迁移工程师 / 顺畅对照）=====
@@ -1218,7 +1231,8 @@ const G_NDETAIL={
       {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按通用阈值放行 / 驳回。"}
     ]}
 };
-SCENARIOS.G={
+/* ⏸ 归档：迁移场景暂不上 Tab（不是重点）。数据全保留——重新启用＝把下面 ARCHIVED_G 改回 SCENARIOS.G。 */
+const ARCHIVED_G={
   key:"G", label:"G CUDA→昇腾迁移", role:"迁移工程师", grade:".84 高",
   NODES:G_NODES, BRANCH:G_BRANCH, PHASE:G_PHASE, PHASE_DETAIL:G_PHASE_DETAIL,
   FLOW:G_FLOW, NDETAIL:G_NDETAIL, ARCHFLOW:G_ARCHFLOW, A:["dA"],
@@ -1257,6 +1271,15 @@ function renderDscore(){
   h+=`<div class="dsc-row"><span class="dsc-lab cann">CANN</span>`+D.META.map((m,i)=>cell(m,D.CANN[i],m[2])).join("")+`<b class="comp lo">${D.comp[0]}</b></div>`;
   h+=`<div class="dsc-row"><span class="dsc-lab cuda">CUDA</span>`+D.META.map((m,i)=>cell(m,D.CUDA[i],"对照基线（静态站可抓、二手厚、版本清）")).join("")+`<b class="comp hi">${D.comp[1]}</b></div>`;
   h+=`<div class="dsc-note">${D.note}⚠ 本条仅锚 ${SCENARIOS[curScen].label} 一个任务（矩阵的 1 行）。<a href="17_official_site_focus.html">去热力矩阵看全 26 行 →</a></div>`;
+  el.innerHTML=h;
+}
+function renderConcl(){
+  const el=document.getElementById("conclbox"); if(!el) return;
+  const S=SCENARIOS[curScen], C=S.concl||{};
+  let h=`<div class="cb-h">结论 · ${S.label}（${S.grade}）</div>`;
+  if(C.insight) h+=`<div class="cb-row"><span class="cb-tag t-i">这条说明什么</span><div>${C.insight}</div></div>`;
+  if(C.next)    h+=`<div class="cb-row"><span class="cb-tag t-n">下一步怎么做</span><div>${C.next}</div></div>`;
+  h+=`<div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景对照。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>`;
   el.innerHTML=h;
 }
 function archFlowHtml(id){
@@ -1376,10 +1399,12 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
   document.getElementById("codeView").style.display = v==="code"?"":"none";
 }));
 
-/* 场景 Tab：从 SCENARIOS 动态生成（加新场景自动出 Tab） */
+/* 场景 Tab：从 SCENARIOS 动态生成（加新场景自动出 Tab；只有 1 个场景时隐藏整条） */
 (function buildScenTabs(){
   const box=document.getElementById("sctabs"); if(!box) return;
-  box.innerHTML=Object.keys(SCENARIOS).map(k=>{
+  const keys=Object.keys(SCENARIOS);
+  if(keys.length<=1){ box.style.display="none"; return; }
+  box.innerHTML=keys.map(k=>{
     const S=SCENARIOS[k];
     return `<button class="sctab${k===curScen?" active":""}" data-scen="${k}">${S.label}<span class="scg">${S.role} · ${S.grade}</span></button>`;
   }).join("");
@@ -1389,12 +1414,13 @@ document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
     hideTip(); closePin();
     setScenario(k); curLvl=0;
     const sl=document.getElementById("lvl"); if(sl) sl.value=0;
-    draw(); renderDscore();
+    draw(); renderDscore(); renderConcl();
   }));
 })();
 setScenario("D");
 draw();
 renderDscore();
+renderConcl();
 </script>
 </body>
 </html>
