@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 · 人机协同旅程：一次「自定义算子开发」的全链路时序图 + Agent 系统工程拆解</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+:root{
+  --nv:#76B900; --hw:#C8102E;
+  --v5:#BBF0D4; --v4:#DCF5E5; --v3:#FCEFC7; --v2:#FBE0CE; --v1:#F9D2D2;
+  --ink:#1a1a1a; --sub:#666; --line:#e5e5e5; --bg:#F2F3F7; --card:#fff;
+  --blocked:#E3E0EE;
+  --ai:#6B5BA8; --aifill:#ECE7F6; --hu:#2f3d63; --hufill:#DCE8F7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:56px 24px 80px 188px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:26px;font-weight:900;letter-spacing:.5px}
+.subtitle{color:var(--sub);font-size:13.5px;margin-top:6px}
+h2{font-size:19px;font-weight:700;margin:54px 0 6px;padding-left:12px;border-left:4px solid var(--ink)}
+h2 .no{color:var(--sub);font-weight:400;margin-right:6px}
+h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
+.sechint{color:var(--sub);font-size:13px;margin-bottom:18px;padding-left:16px}
+.floortag{display:inline-block;font-size:11px;color:#0C447C;background:#eef4fc;border:1px solid #d6e6f7;border-radius:7px;padding:2px 9px;margin:0 0 12px 16px}
+.d5banner{font-size:12.5px;border-radius:9px;padding:9px 13px;margin:0 0 14px;line-height:1.6}
+.d5banner.hu{background:#eef4fc;border:1px solid #d6e6f7;color:#2f3d63}
+.d5banner.risk{background:#fbece5;border:1px solid #f3d3c4;color:#993C1D}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.card>:first-child,.dnode>:first-child{margin-top:0}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.cards2{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;vertical-align:1px}
+.tag.ev{background:#EEF6E0;color:#4a7a00;border:1px solid #cfe3a8}
+.tag.hw{background:#FBE9EC;color:var(--hw);border:1px solid #f0c4cc}
+.tag.gray{background:#f0f0f0;color:#555;border:1px solid #ddd}
+.tag.warn{background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8}
+.tag.ai{background:#EFEAF7;color:#5b4f93;border:1px solid #d6cdec}
+.tag.hu{background:#E6EDF8;color:#2f3d63;border:1px solid #c5d3ec}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f4f4f4;font-weight:700;white-space:nowrap}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3f3f3;border-radius:4px;padding:1px 5px}
+.note{font-size:12.5px;color:var(--sub);margin-top:10px}
+ul.tight{padding-left:20px;font-size:13.5px}
+ul.tight li{margin-bottom:6px}
+.toc{position:fixed;top:64px;left:16px;width:160px;display:flex;flex-direction:column;gap:6px;z-index:150}
+.toc .toclbl{font-size:9px;font-weight:800;color:var(--sub);letter-spacing:.5px;margin:0 0 1px 4px}
+.toc a{font-size:11.5px;color:#333;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 11px;line-height:1.3}
+.toc a:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav{position:fixed;top:0;left:0;right:0;height:44px;z-index:300;display:flex;gap:8px;align-items:center;padding:0 22px;background:#fff;border-bottom:1px solid var(--line);font-size:11.5px;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.pagenav .pntitle{font-weight:800;color:#2f3d63;margin-right:6px;letter-spacing:.2px}
+.pagenav a.pnlink,.pagenav span.pnlink{padding:4px 12px;border-radius:14px;border:1px solid var(--line);text-decoration:none;font-weight:700;color:#333;background:#fff}
+.pagenav a.pnlink:hover{border-color:#2f3d63;color:#2f3d63}
+.pagenav span.pnlink.cur{background:#2f3d63;color:#fff;border-color:#2f3d63}
+/* 控制行：左=自主度拖动条，右=横/竖 Tab */
+.ctrlrow{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:8px 0 2px}
+.lvlbox{flex:1;min-width:300px;max-width:440px}
+.lvlhead{font-size:12px;color:#444;font-weight:700;display:flex;gap:8px;align-items:center;margin-bottom:3px}
+.lvlslider{width:100%;margin:2px 0 0;accent-color:#2f3d63}
+.lvlticks{display:flex;justify-content:space-between;font-size:10.5px;color:#aaa;margin-top:1px}
+.lvlticks span{cursor:pointer;border-bottom:1px dashed transparent}
+.lvlticks span:hover{color:#2f3d63;border-bottom-color:#bbb}
+.lvlticks span.on{color:#2f3d63;font-weight:700}
+.lvldesc{font-size:12px;color:var(--sub);margin:8px 2px 0;line-height:1.6}
+.modecontrast{margin:18px 0 4px;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.mch3{font-size:14px;margin:0 0 4px;padding-left:9px;border-left:3px solid #2f3d63;color:#2f3d63}
+.mcgrid{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.mctab{border-collapse:collapse;font-size:12.5px;flex:1;min-width:340px}
+.mctab th,.mctab td{padding:6px 9px;border-bottom:1px solid #eee;text-align:center}
+.mctab thead th{border-bottom:1.5px solid #ddd;font-weight:500;font-size:12px;line-height:1.3}
+.mctab thead th span{font-size:10.5px;color:#999;font-weight:400}
+.mctab th.m0{color:#0C447C} .mctab th.m1,.mctab th.m2{color:#5b4fc0}
+.mctab td:first-child{text-align:left;color:#444}
+.mctab td .sub{font-size:10.5px;color:#aaa}
+.mctab td.hu{color:#0C447C;font-weight:600} .mctab td.ai{color:#5b4fc0;font-weight:600}
+.mctab td.warn{color:#993C1D;font-weight:600} .mctab td.const{color:#888}
+.mcown{flex:1;min-width:300px}
+.mcownh{font-size:12px;color:#555;font-weight:500;margin-bottom:8px}
+.mcownrow{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.mcownrow .lab{width:74px;flex:none;font-size:11px;color:#666}
+.mcownrow .cells{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.mcownrow .cell{border-radius:5px;padding:4px 1px;text-align:center;font-size:10px}
+.mcownrow .cell .ph{font-size:9px;opacity:.6;display:block}
+.mcownleg{font-size:10.5px;color:#aaa;margin-top:6px;line-height:1.5}
+/* 横/竖向切换 Tab */
+.vtabs{display:inline-flex;gap:6px;background:#eceef3;border:1px solid var(--line);border-radius:10px;padding:4px;margin:4px 0 0}
+.vtab{font:inherit;font-size:12.5px;color:#444;background:transparent;border:0;border-radius:7px;padding:6px 14px;cursor:pointer;white-space:nowrap}
+.vtab:hover{color:#2f3d63}
+.vtab.active{background:#2f3d63;color:#fff}
+/* §4.3 架构图/代码 切换卡 */
+.avbox{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 14px}
+.avhead{display:flex;justify-content:flex-end;margin-bottom:6px}
+.avtabs{display:inline-flex;gap:4px;background:#eceef3;border:1px solid var(--line);border-radius:8px;padding:3px}
+.avtab{font:inherit;font-size:11.5px;color:#555;background:transparent;border:0;border-radius:6px;padding:4px 12px;cursor:pointer}
+.avtab:hover{color:#2f3d63}
+.avtab.active{background:#2f3d63;color:#fff}
+#archView,#codeView{overflow-x:auto}
+.anode{cursor:help}
+/* 时序图容器 */
+.chartwrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;overflow-x:auto;margin:14px auto;width:fit-content;max-width:100%}
+#journey{display:block;margin:0 auto}
+.legendbar{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;font-size:12px;color:#444;margin:10px 2px 2px;padding:10px 14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px}
+.lg{display:inline-flex;align-items:center;gap:6px}
+#lgHandoff{cursor:help;text-decoration:underline dotted #b0b0c0;text-underline-offset:3px}
+.lgdot{width:16px;height:16px;border-radius:50%;border:2px solid #999;flex:none}
+.lgsq{width:16px;height:14px;border-radius:3px;border:2px solid #999;flex:none}
+.lgdia{width:15px;height:15px;border:2px solid #8a6d1a;background:var(--v3);flex:none;transform:rotate(45deg)}
+.lgdiaA{width:15px;height:15px;border:2px solid #6f520c;background:#E6B73E;flex:none;transform:rotate(45deg)}
+.lgdiaB{width:15px;height:15px;border:2px solid #bfa24e;background:#FCEFC7;flex:none;transform:rotate(45deg)}
+.lgline{width:24px;height:0;border-top:3px solid #8156c9;flex:none}
+.lgline.thin{border-top:1.5px solid #bbb}
+.lgline.dash{border-top:2px dashed #2f3d63}
+.lgring{width:16px;height:16px;border-radius:50%;border:2px solid var(--hw);box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--hw);flex:none}
+/* tooltip */
+#tip{position:fixed;z-index:400;max-width:330px;background:#1d1d1f;color:#f3f3f3;border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.65;box-shadow:0 6px 24px rgba(0,0,0,.28);pointer-events:none;opacity:0;transition:opacity .12s}
+#tip .tt-h{font-weight:800;font-size:12.5px;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+#tip .tt-meta{font-size:10.5px;color:#b9b4d6;margin-bottom:5px}
+#tip .tt-b{color:#e2e2e2}
+#tip .tt-blk{color:#ffb3b3;margin-top:5px;font-size:11px}
+#tip b{color:#BBF0D4}
+#tip.pinned{pointer-events:auto;max-width:400px;max-height:80vh;overflow:auto}
+#tip .tt-arch{margin-top:6px;font-size:10.5px;color:#8fc4ff}
+#tip .tt-hint{margin-top:6px;font-size:10px;color:#8a8a8a}
+#tip .tt-close{position:sticky;top:-4px;float:right;cursor:pointer;color:#bbb;font-size:15px;line-height:1;margin:-4px -4px 0 6px}
+#tip .tt-sec{margin-top:8px;border-top:1px solid #3a3a3f;padding-top:7px}
+#tip .tt-sec .lbl{color:#9fb8ff;font-weight:700;font-size:10.5px;display:block;margin-bottom:2px}
+#tip .tt-step{margin:4px 0;padding-left:9px;border-left:2px solid #4a4a55}
+#tip .tt-foot{margin-top:8px;font-size:10px;color:#888}
+#tip .aflow{margin:7px 0 2px}
+#tip .afstep{display:flex;gap:8px;align-items:flex-start}
+#tip .afnode{flex:none;width:116px;font-size:10.5px;font-weight:700;padding:4px 7px;border-radius:7px;border:1.5px solid;line-height:1.3}
+#tip .afnode.ok{background:#2b2b30;border-color:#46464f;color:#c9c9d2}
+#tip .afnode.err{background:#3a1418;border-color:#e0586a;color:#ff9ba6}
+#tip .afnode.fix{background:#382712;border-color:#e0a24a;color:#f0c486}
+#tip .afnote{font-size:10.5px;color:#cfcfcf;line-height:1.45;padding-top:2px}
+#tip .afarrow{color:#6a6a72;font-size:11px;margin:1px 0 1px 50px;line-height:1.1}
+#tip .tt-mini{margin-top:6px;font-size:9.5px;color:#9a9aa2}
+#tip.dwide{max-width:580px}
+#tip .dchain{display:flex;gap:5px;margin:8px 0 2px;align-items:stretch}
+#tip .dcol{flex:1 1 0;min-width:0;background:#26262b;border:1px solid #3a3a42;border-radius:8px;padding:6px 7px}
+#tip .dcol .dst{font-size:10.5px;font-weight:800;color:#cdd6ff;margin-bottom:4px}
+#tip .dplat{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:7px;margin-bottom:4px;line-height:1.45}
+#tip .dplat.ai{background:#34284f;color:#c9b6f5;border:1px solid #5a4a7a}
+#tip .dplat.hu{background:#1f3147;color:#a9cdf0;border:1px solid #3f5f86}
+#tip .dplat.ext{background:#3a3320;color:#e0c486;border:1px solid #6a5a30}
+#tip .dplat.warn{background:#3a1418;color:#ff9ba6;border:1px solid #C8102E}
+#tip .dcol .dd{font-size:10px;color:#d4d4d4;line-height:1.42}
+#tip .darrow{align-self:center;color:#6a6a72;font-size:13px;flex:none}
+#tip .dmode{font-size:10.5px;font-weight:700;border-radius:7px;padding:5px 8px;margin:6px 0 2px;line-height:1.45}
+#tip .dmode.ok{background:#1f3147;color:#bcd6f5;border:1px solid #3f5f86}
+#tip .dmode.warn{background:#3a1418;color:#ffb3bb;border:1px solid #C8102E}
+#tipmask{position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:399;opacity:0;pointer-events:none;transition:opacity .12s}
+#tipmask.on{opacity:1;pointer-events:auto}
+.minibadge{font-size:9.5px;font-weight:700;padding:0 6px;border-radius:8px}
+.mb-ai{background:#5b4f93;color:#fff}.mb-hu{background:#2f3d63;color:#fff}
+/* 工作量条 */
+.wl{display:flex;height:26px;border-radius:7px;overflow:hidden;font-size:12px;font-weight:700;color:#fff;margin:6px 0}
+.wl .ai{background:var(--ai);display:flex;align-items:center;justify-content:center}
+.wl .hu{background:var(--hu);display:flex;align-items:center;justify-content:center}
+.axrow{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
+.axn{width:92px;color:#333;flex:none}
+.axbar{flex:1;height:11px;border-radius:4px;overflow:hidden;border:1px solid #ececec;background:#54BFEC}
+.axbar>i{display:block;height:100%;background:#9B91F0}
+.axw{width:120px;text-align:right;color:#666;flex:none}
+/* 决策链流程 */
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:10px 0}
+.chain .ck{flex:1;min-width:120px;background:#F6F4FB;border:1px solid #ddd6ee;border-radius:9px;padding:9px 11px;font-size:12px;position:relative}
+.chain .arr{display:flex;align-items:center;color:#8156c9;font-weight:900;font-size:16px;padding:0 4px;flex:none}
+.chain .ck b{font-size:12.5px;color:#5b4f93}
+/* 主导方图例 */
+.ownleg{display:flex;gap:14px;font-size:12px;margin:6px 0 0}
+.ownleg span{display:inline-flex;align-items:center;gap:6px}
+.ownleg i{width:14px;height:14px;border-radius:3px;display:block}
+.i-hu{background:#9fb4dd}.i-ai{background:#b7a9e0}.i-co{background:#9bd3c8}
+/* 代码块 */
+pre.code{background:#1d1d1f;color:#e6e6e6;border-radius:10px;padding:16px 18px;font-size:12px;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;line-height:1.7;margin:8px 0}
+pre.code .c{color:#7fa86b}/* 注释 */
+pre.code .k{color:#c98fd6}/* 关键字 */
+pre.code .s{color:#d8a76a}/* 字符串 */
+pre.code .f{color:#6fb6e0}/* 函数/方法 */
+.disc{display:inline-block;font-size:11px;background:#FDF3E0;color:#9a6b00;border:1px solid #ecd9a8;border-radius:10px;padding:1px 9px;font-weight:400;vertical-align:1px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:4px 10px;font-size:13px;margin:6px 0}
+.kv .k{color:var(--sub);font-weight:700}
+.dnode{background:#fff;border:1px solid var(--line);border-left:4px solid #8a6d1a;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:14px}
+.dnode h3{margin-top:0;display:flex;align-items:center;gap:8px}
+.dnode .dlab{font-size:11px;background:var(--v3);color:#8a6d1a;border-radius:8px;padding:1px 9px;font-weight:700}
+.limit{background:#FFFDF4;border:1px solid #ecd9a8;border-radius:10px;padding:16px 20px;font-size:13px;color:#6b5510;margin-top:40px}
+.deliv{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.deliv:last-child{border-bottom:none}
+.deliv .dn{flex:none;width:30px;height:30px;line-height:30px;text-align:center;border-radius:8px;background:#2f3d63;color:#fff;font-weight:900;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="pagenav">
+  <span class="pntitle">昇腾 vs CUDA · AI 可用性</span>
+  <a class="pnlink" href="18_metric_definition.html">方法论</a>
+  <a class="pnlink" href="17_official_site_focus.html">热力矩阵</a>
+  <a class="pnlink" href="19_findings_ux_synthesis.html">启发与方向</a>
+  <span class="pnlink cur">人机协同旅程</span>
+</div>
+
+<div class="toc">
+  <div class="toclbl">本页目录</div>
+  <a href="#s1">① 全链路时序图</a>
+  <a href="#s2">② 业务分析</a>
+  <a href="#s3">③ 主导权边界</a>
+  <a href="#s4">④ Agent 系统工程</a>
+  <a href="#s5">⑤ 用户决策节点</a>
+  <a href="#s6">⑥ 交付物汇总</a>
+</div>
+
+<h1>人机协同旅程：一次「自定义算子开发」的全链路</h1>
+<div class="subtitle">
+  编号 20 · 锚定真实任务 <b>D 自定义算子开发（Ascend C + msOpGen + aclnn → 接入 PyTorch）</b>——这是 26 个任务里 CANN 综合分唯一「低」(.41)、也是唯一「官方 SPA 短板真正咬到结果」的格。
+  下图把<b>开发者从立项到交付完成的一整段旅程</b>（不是问一个问题）拆成「AI(Agent) / 人类用户」两条泳道，每一步 AI 的动作、后端检索调用、人机交接全部显性展示；再下沉到 Agent 底层系统工程逐段解析。
+  所有节点事实取自 <code>task_run_log.md</code> 的 D 任务实测检索记录，<b>受阻 / 卡点为实测、非演绎</b>。
+</div>
+
+<a id="s1"></a>
+<h2><span class="no">①</span>全链路时序图 · 双泳道（拖动「AI 自主度」看场景切换 · 横/竖可切换 · 悬浮看每步细节）</h2>
+<div class="sechint"><b>左侧拖动条</b>切 3 档协作模式（人主笔·AI 辅助 → AI 主写·人审 → 人委派·AI 自管）、<b>右侧</b>切横/竖显示；拖动时节点归属、每阶段「人/AI 占比」、主导方色带随之变。<b>悬浮节点看细节、点击固定看完整详情</b>（含决策依据 / 卡点 / 对应架构环节）；悬浮档位看模式说明；<b>悬浮泳道标签看任务分工·四轴、悬浮图例「人机交接」看协同量化</b>。其余图例见下方色块。<span style="color:#999">（3 档均为协作示意、仅 AI 检索步实测，口径见底部局限①）</span></div>
+
+<div class="ctrlrow">
+  <div class="lvlbox">
+    <div class="lvlhead">AI 自主度 · 3 档协作模式 <span style="font-weight:400;color:#999;font-size:11px">（悬浮档位看说明）</span></div>
+    <input type="range" min="0" max="2" step="1" value="0" id="lvl" class="lvlslider" aria-label="AI 自主度档位">
+    <div class="lvlticks"><span class="on" data-lvl="0">人主笔·AI 辅助</span><span data-lvl="1">AI 主写·人审</span><span data-lvl="2">人委派·AI 自管</span></div>
+  </div>
+  <div class="vtabs">
+    <button class="vtab active" data-mode="h">横向时间轴</button>
+    <button class="vtab" data-mode="v">竖向时序</button>
+  </div>
+</div>
+<div class="lvldesc" id="lvlDesc"></div>
+
+<div class="chartwrap">
+  <svg id="journey"></svg>
+</div>
+
+<div class="legendbar">
+  <span class="lg"><i class="lgdot" style="background:var(--aifill);border-color:var(--ai)"></i> AI 节点</span>
+  <span class="lg"><i class="lgdot" style="background:var(--hufill);border-color:var(--hu)"></i> 用户节点</span>
+  <span class="lg"><i class="lgsq" style="background:var(--hufill);border-color:var(--hu)"></i> 本地执行 / 运行</span>
+  <span class="lg"><i class="lgdiaA"></i> 决策·A 非人不可</span>
+  <span class="lg"><i class="lgdiaB"></i> 决策·B 技术路线</span>
+  <span class="lg"><i class="lgring"></i> 受阻 / 卡点</span>
+  <span class="lg" id="lgHandoff"><i class="lgline"></i> 人机交接</span>
+  <span class="lg"><i class="lgline thin"></i> 同侧推进</span>
+  <span class="lg"><i class="lgline dash"></i> 用户独立分支</span>
+</div>
+<div class="ownleg">
+  <b style="font-size:12px;color:#444">主导方色带：</b>
+  <span><i class="i-hu"></i> 用户主导（最终决定权归人）</span>
+  <span><i class="i-co"></i> 人机协同（AI 起草 / 用户执行判断）</span>
+  <span><i class="i-ai"></i> Agent 自动化主导（多轮检索自主）</span>
+</div>
+
+<a id="s2"></a>
+<h2><span class="no">②</span>业务分析 · 整段旅程的分工与协同</h2>
+<div class="sechint">业务分析（分工 / 协同）已<b>全部折进上图交互</b>，随左侧滑块实时变：<b>悬浮泳道标签</b>＝任务分工·四轴（检索 / 产出恒由 AI 担、执行 / 决策随档位在人 / AI 间转手，拆四轴比单一「AI 41%」更诚实）；<b>悬浮图例「人机交接」</b>＝协同量化（主导权易手次数 + 用户独立分支数）。</div>
+
+<a id="s3"></a>
+<h2><span class="no">③</span>人机主导权边界 · 每段归谁</h2>
+<div class="sechint">每阶段的<b>主导方</b>（随滑块变，＝图底主导方色带）+ <b>边界说明</b>已折进上图——<b>悬浮（点击固定）图中阶段区域</b>查看（横向＝节点区按阶段分块、竖向＝左侧阶段条）。</div>
+<div class="note"><b>结论：</b>这条旅程<b>没有一段是「AI 全自动、用户只验收」延伸到落地</b>——唯一的 Agent 自动化主导区只在 P2 检索；一旦进入与本机环境、版本、精度耦合的环节，主导权必然回到人。这正是 D 任务综合分低（.41）的体感来源：<b>AI 能搬来知识，但搬不动你的机器</b>。</div>
+
+<a id="s4"></a>
+<h2><span class="no">④</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
+<div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部究竟如何运转」。</div>
+
+<h3>4.1 工具调用策略：为什么是有限次检索，而非更多 / 更少</h3>
+<div class="card">
+  <p style="font-size:13.5px">上图 s2–s4 里 AI 没有把检索工具刷到上限，实测 D 任务只搜了 ~1–2 轮就转入拼装。背后是两层机制叠加：</p>
+  <ul class="tight" style="margin-top:8px">
+    <li><b>硬上限 = <code>max_uses</code></b>：<code>web_search</code> 是 Anthropic Messages API 的<b>服务端工具</b>，注册时带 <code>max_uses</code> 封顶（如 5）；超过会返回 <code>max_uses_exceeded</code>，模型不能无限刷。</li>
+    <li><b>软停止 = 模型自主判断「信息已足够」</b>：服务端工具在<b>同一轮</b>内自带 loop——模型决定检索内容 → 平台执行并回灌结果 → 模型判断信息是否足够 → 不足则续检索、足够则停止并生成终答（<code>stop_reason: end_turn</code>；耗时较长会先 <code>pause_turn</code> 再继续）。所以「调用 N 次」不是写死的常量，而是 <b>min(max_uses, 模型判断收敛点)</b>。</li>
+    <li><b>为什么 D 任务收敛得早</b>：实测前 1–2 条结果（知乎 / ai6s.net / MindSpore 官方 / CSDN）已能拼出步骤骨架，边际信息递减；继续搜更多只会拿到同质 CSDN 互抄（D 的二手本就薄），模型据此判断「再搜性价比低」→ 提前停。<b>检索次数少 ≠ 偷懒，而是边际收益判断</b>。</li>
+  </ul>
+  <h3 style="margin-top:18px">输入优化：用户怎么写指令能显著抬升输出精准度</h3>
+  <table>
+    <thead><tr><th>优化手段</th><th>对这条旅程的具体作用</th></tr></thead>
+    <tbody>
+      <tr><td><b>补约束</b>：写明「要<b>可照抄的完整命令 + 锁定版本号</b>」</td><td>逼 AI 在 s5 给出带真实 soc_version 占位说明的 msopgen 命令，而非泛泛描述，减少 d1 的来回。</td></tr>
+      <tr><td><b>限范围</b>：写明芯片型号 / CANN 版本（如 910B1 + 8.0.RC3）</td><td>直接消解 d2 版本对齐这个卡点——AI 不必在多版本间猜，输出一次到位。</td></tr>
+      <tr><td><b>限渠道</b>：写明「优先官方文档，无法取得则说明受阻、不得编造」</td><td>触发 AI 在 s3 受阻时<b>诚实标注 SPA 无法抓取</b>并转二手，而不是用记忆补全一个看似正确、实则无法运行的步骤。</td></tr>
+      <tr><td><b>给反馈</b>：把 s9 的编译报错<b>原文</b>贴回</td><td>AI 解读的准确度直接取决于报错原文，而非「我编译失败了」这类模糊描述。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>4.2 大模型每一轮内部在做什么</h3>
+<div class="sechint">把 P2 检索区段拆成模型的内部动作循环，逐轮对应到上图节点。</div>
+<table>
+  <thead><tr><th>轮次</th><th>内部动作</th><th>对应图节点</th></tr></thead>
+  <tbody>
+    <tr><td>第 1 轮</td><td><b>规划</b>：解析「Ascend C 自定义算子 + 接 PyTorch」→ 拆成「找官方 how-to → 找工程脚手架 → 找 PyTorch 绑定方式」三个子目标；<b>决定先发 web_search</b>。</td><td>s2</td></tr>
+    <tr><td>（服务端）</td><td><b>读结果 + 研判</b>：扫一遍搜索摘要，识别出官方页 + 知乎 + MindSpore + CSDN；判断官方页最权威 → <b>决定 web_fetch 官方 URL</b>。</td><td>s2→s3</td></tr>
+    <tr><td>第 2 轮</td><td><b>遇阻分支判断</b>：fetch 回来只有 meta、正文缺失 → 识别为 SPA 受阻 → <b>不编造</b>，改判「靠二手 + 自带知识拼」→ 决定再读 MindSpore / CSDN。</td><td>s3（受阻）→s4</td></tr>
+    <tr><td>第 3 轮</td><td><b>结果生成</b>：把二手碎片 + 自带知识合成步骤骨架，按「环境→msopgen→核函数→编包→部署→绑定」排序，<b>给占位 + 标注哪些需用户核验</b>（soc_version / 版本）→ 输出，<code>end_turn</code>。</td><td>s5</td></tr>
+  </tbody>
+</table>
+<div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
+
+<h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
+<div class="sechint">「我平常如何运行」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④研判</b>（够? 受阻?）→ 够：<b>⑥收敛 → 终答</b>；不够 / 受阻：<b>⑤遇阻处理</b>(不编造·转二手) <b>回到 ③ 路由</b>（多轮回路）。否（end_turn）则<b>直接出终答</b>。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
+<div class="avbox">
+  <div class="avhead"><div class="avtabs"><button class="avtab active" data-v="arch">架构图</button><button class="avtab" data-v="code">代码</button></div></div>
+  <div id="archView">
+<svg viewBox="0 0 720 626" style="width:100%;max-width:680px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环流程图：输入→模型推理(意图/子目标/路由)→需要工具?→web_search/web_fetch→回灌→研判→收敛/遇阻回路→终答">
+  <defs>
+    <marker id="aae" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8a"/></marker>
+    <marker id="aaeg" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#2a7a68"/></marker>
+  </defs>
+  <g class="anode" data-k="ask"><rect x="180" y="18" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="270" y="39" text-anchor="middle" font-size="12" fill="#333">用户原始问句</text></g>
+  <g class="anode" data-k="msg"><rect x="160" y="62" width="220" height="38" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="270" y="79" text-anchor="middle" font-size="11.5" fill="#333">组装 messages</text>
+  <text x="270" y="93" text-anchor="middle" font-size="9.5" fill="#888">system 约束 + 历史 + 当前问句（不预处理）</text></g>
+  <g class="anode" data-k="intent"><rect x="205" y="116" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="135" text-anchor="middle" font-size="11" fill="#4a3f9e">① 意图解析</text></g>
+  <g class="anode" data-k="subgoal"><rect x="205" y="158" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="177" text-anchor="middle" font-size="11" fill="#4a3f9e">② 子目标拆解</text></g>
+  <g class="anode" data-k="route"><rect x="200" y="200" width="160" height="34" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="221" text-anchor="middle" font-size="11" fill="#4a3f9e">③ 工具路由 搜/抓/答</text></g>
+  <g class="anode" data-k="gate"><polygon points="280,248 332,272 280,296 228,272" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="280" y="270" text-anchor="middle" font-size="10" fill="#8a6d1a">需要工具?</text>
+  <text x="280" y="281" text-anchor="middle" font-size="8.3" fill="#a98a4a">stop_reason</text></g>
+  <text x="224" y="242" text-anchor="end" font-size="9" fill="#aaa">pause_turn 长耗时自动继续</text>
+  <g class="anode" data-k="search"><rect x="95" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="182" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_search</text>
+  <text x="182" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">服务端·同轮闭环·max_uses</text></g>
+  <g class="anode" data-k="fetch"><rect x="300" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="387" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_fetch</text>
+  <text x="387" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">客户端·fetch_url 执行</text></g>
+  <g class="anode" data-k="relay"><rect x="190" y="394" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="280" y="414" text-anchor="middle" font-size="11" fill="#333">tool_result 回灌</text></g>
+  <g class="anode" data-k="judge"><polygon points="280,440 340,466 280,492 220,466" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="280" y="463" text-anchor="middle" font-size="10" fill="#8a6d1a">④ 研判</text>
+  <text x="280" y="476" text-anchor="middle" font-size="8.5" fill="#a98a4a">够?/受阻?</text></g>
+  <g class="anode" data-k="blocked"><rect x="5" y="418" width="140" height="40" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="75" y="435" text-anchor="middle" font-size="10.5" fill="#4a3f9e">⑤ 遇阻处理</text>
+  <text x="75" y="450" text-anchor="middle" font-size="9" fill="#5b4fc0">不编造·转二手</text></g>
+  <g class="anode" data-k="converge"><rect x="205" y="512" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="531" text-anchor="middle" font-size="11" fill="#4a3f9e">⑥ 收敛</text></g>
+  <g class="anode" data-k="final"><rect x="178" y="560" width="232" height="48" rx="9" fill="#DDF3E7" stroke="#2a7a68"/>
+  <text x="294" y="581" text-anchor="middle" font-size="12" font-weight="700" fill="#1f6657">终答 · end_turn</text>
+  <text x="294" y="597" text-anchor="middle" font-size="9" fill="#2a7a68">可照抄命令+锁版本 · 标核验 · 受阻如实标注</text></g>
+  <line x1="270" y1="50" x2="270" y2="61" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="270" y1="100" x2="270" y2="115" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="146" x2="280" y2="157" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="188" x2="280" y2="199" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="234" x2="280" y2="247" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="270" y1="293" x2="190" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="290" y1="293" x2="380" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <text x="350" y="308" text-anchor="middle" font-size="9" fill="#555">tool_use</text>
+  <line x1="182" y1="368" x2="256" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="387" y1="368" x2="304" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="426" x2="280" y2="439" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="492" x2="280" y2="511" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <text x="291" y="506" font-size="9.5" fill="#2a7a68">够</text>
+  <line x1="280" y1="542" x2="280" y2="559" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <path d="M220,466 H75 V459" fill="none" stroke="#b07a4a" stroke-width="1.4" marker-end="url(#aae)"/>
+  <text x="150" y="461" font-size="9.3" fill="#993C1D">不够/受阻</text>
+  <path d="M75,418 V219 H198" fill="none" stroke="#b07a4a" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#aae)"/>
+  <text x="84" y="250" font-size="9" fill="#b07a4a">↺ 回③路由</text>
+  <path d="M332,272 H662 V584 H412" fill="none" stroke="#2a7a68" stroke-width="1.4" marker-end="url(#aaeg)"/>
+  <text x="508" y="264" text-anchor="middle" font-size="9.3" fill="#2a7a68">否 · 直接答 end_turn</text>
+</svg>
+<div class="sechint" style="margin:8px 0 0;font-size:12px">悬浮图中任意节点 → 看它具体在做什么（锚 D 任务）。</div>
+  </div>
+  <div id="codeView" style="display:none">
+  <div class="sechint" style="margin:0 0 6px">最小实现代码（A–D 段对应架构图各环节）：</div>
+<pre class="code"><span class="k">import</span> anthropic
+client = anthropic.<span class="f">Anthropic</span>()
+
+<span class="c"># ① 工具注册：web_search 是服务端工具，max_uses 即 §4.1 的硬上限</span>
+TOOLS = [
+    {<span class="s">"type"</span>: <span class="s">"web_search_20250305"</span>, <span class="s">"name"</span>: <span class="s">"web_search"</span>, <span class="s">"max_uses"</span>: 5},
+    {<span class="s">"name"</span>: <span class="s">"web_fetch"</span>, <span class="s">"description"</span>: <span class="s">"抓取一个 URL 的正文"</span>,   <span class="c"># 客户端工具：演示通用 agent 循环</span>
+     <span class="s">"input_schema"</span>: {<span class="s">"type"</span>: <span class="s">"object"</span>,
+         <span class="s">"properties"</span>: {<span class="s">"url"</span>: {<span class="s">"type"</span>: <span class="s">"string"</span>}}, <span class="s">"required"</span>: [<span class="s">"url"</span>]}},
+]
+
+<span class="k">def</span> <span class="f">run_agent</span>(user_question):
+    <span class="c"># A. 接收并解析用户原始自然语言输入 —— 直接进 messages，模型负责理解</span>
+    messages = [{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: user_question}]
+
+    <span class="k">while</span> True:
+        <span class="c"># B. 调度：模型自己决定这一轮是搜 / 抓 / 还是直接答（§4.2 的「规划」）</span>
+        resp = client.messages.<span class="f">create</span>(
+            model=<span class="s">"claude-opus-4-8"</span>, max_tokens=4096,
+            system=<span class="s">"优先给可照抄命令、锁定版本号；官方抓不到就说明受阻，绝不编造。"</span>,
+            tools=TOOLS, messages=messages)
+        messages.<span class="f">append</span>({<span class="s">"role"</span>: <span class="s">"assistant"</span>, <span class="s">"content"</span>: resp.content})
+
+        <span class="c"># C. 终止条件：模型不再要工具 → 收敛、返回终答（对应图 s5 的 end_turn）</span>
+        <span class="k">if</span> resp.stop_reason != <span class="s">"tool_use"</span>:
+            <span class="k">return</span> <span class="s">""</span>.<span class="f">join</span>(b.text <span class="k">for</span> b <span class="k">in</span> resp.content <span class="k">if</span> b.type == <span class="s">"text"</span>)
+
+        <span class="c"># D. 多轮循环：执行客户端工具并把结果回灌（受阻时如实标注，不编造 → 图 s3）</span>
+        results = []
+        <span class="k">for</span> b <span class="k">in</span> resp.content:
+            <span class="k">if</span> b.type == <span class="s">"tool_use"</span> <span class="k">and</span> b.name == <span class="s">"web_fetch"</span>:
+                body = <span class="f">fetch_url</span>(b.input[<span class="s">"url"</span>])
+                results.<span class="f">append</span>({<span class="s">"type"</span>: <span class="s">"tool_result"</span>, <span class="s">"tool_use_id"</span>: b.id,
+                    <span class="s">"content"</span>: body <span class="k">or</span> <span class="s">"（SPA / robots：正文抽不到）"</span>})
+        messages.<span class="f">append</span>({<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: results})
+</pre>
+<div class="kv">
+  <div class="k">A 段</div><div>接收解析用户自然语言：原始问句直接进 <code>messages</code>，不做模板化预处理——理解交给模型本身。</div>
+  <div class="k">B 段</div><div>调度逻辑：每轮 <code>messages.create</code> 让模型自主决定搜 / 抓 / 答。<code>web_search</code> 的多轮在服务端同一次调用内闭环（§4.1 软停止）。</div>
+  <div class="k">C 段</div><div>终止逻辑：<code>stop_reason != "tool_use"</code> 即模型判断信息足够、收敛产出终答——对应图中 s5。</div>
+  <div class="k">D 段</div><div>多轮循环 + 受阻处理：客户端工具结果回灌；<b>抓不到正文时显式写「正文抽不到」而非留空或臆造</b>，这是「绝不编造」铁律在代码层的落点（图 s3 受阻）。</div>
+</div>
+<div class="note"><b>诚实边界：</b>上述为<b>公开 Messages API 的忠实示范</b>，用于解释 agent 循环骨架，<b>不是 Claude 产品的内部源码</b>；服务端 <code>web_search</code> 的内部检索 / 排序实现不可见，这里只能就「对外可观测的调用契约」作解。</div>
+  </div>
+</div>
+
+<a id="s5"></a>
+<h2><span class="no">⑤</span>用户决策节点 · 9 处、分两层（随档位变化）</h2>
+<div id="d5banner" class="d5banner"></div>
+<div class="sechint">一次算子开发有 <b>9 个决策点</b>（图中 ◆），分两层：<b><span style="color:#6f520c">A 类·非人不可（深金 ◆）</span></b>＝ d1 soc_version / d2 版本对齐 / d3 精度验收，AI 拿不到本机芯片·版本·业务阈值，<b>只能人定</b>；<b><span style="color:#8a6d1a">B 类·技术路线（浅金 ◆）</span></b>＝ dR 开发路线 / dP 算子原型·dtype / dT Tiling 策略 / dF 报错修复方向 / dB 绑定方式 / dQ 精度修复方向，<b>AI 能建议、用户拍板</b>。每个 ◆ 的「决策依据 / 前置条件 / 决策链（接收→研判→决策→反馈 + 每步<b>信息来源</b>：做这步靠哪个平台 / 工具的信息，如 npu-smi / hiascend 文档 / Gitee / PyTorch 文档）」已折进上图——<b>悬浮即横向全展开</b>（无需点击）。<b>链路随滑块切换</b>：档①②＝人做实况、档③人委派＝AI 接管版（⚠ 推演）。上方横幅随滑块变：到「人委派」档这 9 处决策翻给 AI——尤其 A 类，AI 接管了它<b>本来拿不到的本机·业务事实</b>，正是深水区最大风险点。</div>
+
+<a id="s6"></a>
+<h2><span class="no">⑥</span>交付物汇总</h2>
+<div class="card">
+  <div class="deliv"><div class="dn">1</div><div><b>左→右时序式人机用户旅程可视化图</b>（本页 §1）：双泳道、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、底部主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
+  <div class="deliv"><div class="dn">2</div><div><b>业务分析</b>（§2 / §3 + 图内悬浮）：任务分工（四轴）<b>折进泳道标签悬浮</b>、协同交接量化<b>折进图例「人机交接」悬浮</b>；用户决策依据、问题卡点 + 解决方案、决策链<b>折进对应节点悬浮</b>；人机主导权边界逐阶段（主导方随滑块变 + 边界说明）<b>折进阶段区域悬浮</b>——§2 / §3 仅留指引。</div></div>
+  <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§4 / §5 + 图内悬浮）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；9 个决策节点（A 类 3 非人不可 + B 类 6 技术路线）的决策依据 / 前置条件 / 决策链（含每段平台、且<b>随滑块在「人做」「AI 接管」两版切换</b>）<b>折进图中 ◆ 节点悬浮</b>；每个时序节点悬浮还标出「对应架构环节」。</div></div>
+</div>
+
+<div class="limit">
+  <b>诚实声明与局限：</b>
+  ① 旅程节点的<b>受阻 / 卡点 / 版本号 / 二手来源均为 D 任务实测检索所得</b>（见 <code>task_run_log.md</code>，也正是本项目真正测的「知识可用性」），但「一次完整开发」的<b>线性步骤顺序是基于实测骨架的合理重构</b>（开发步骤 msopgen / 编包 / aclnn 按官方文档复述、未实际运行验证），真实开发中 P4–P7 可能多次回退迭代（d3 驳回即触发），图为主路径示意。<b>滑块 3 档的分工差异为建模</b>（仅「① 人主笔」对应实测的这次检索，另两档非实测）；而<b>受阻事实在三档下不变</b>（同一 CANN 生态），变的只是「谁执行、人是否核查」。
+  ② §4.3 代码是<b>公开 Messages API 的示范实现</b>，解释 agent 循环契约，<b>非 Claude 内部源码</b>；服务端 web_search 的检索 / 排序内部实现不可观测。
+  ③ 工作量占比按<b>节点计数</b>而非真实工时；不同开发者熟练度会显著改变人侧耗时。
+  ④ 本页只刻画 D 这一个「最难」任务的旅程；成熟任务（如 G 迁移、Z 概念对照）的人机协同形态会大不相同（AI 主导区段更长、卡点更少），详见 <a href="17_official_site_focus.html" style="color:#2f3d63">热力矩阵</a>与<a href="19_findings_ux_synthesis.html" style="color:#2f3d63">启发与方向</a>。
+</div>
+
+</div>
+
+<div id="tipmask"></div>
+<div id="tip"></div>
+
+<script>
+/* ===== 旅程数据（锚定 D 任务实测，节点编号与正文一致） ===== */
+const LANE = {ai:0, hu:1};
+const NODES = [
+  {id:"s1",  xi:0,  lane:"hu", kind:"start",   t:"立项·定目标",
+    meta:"用户主导 · P1", b:"明确要开发一个 Ascend C 自定义算子并接入 PyTorch（msOpGen/aclnn 路线）。需求归人，AI 不介入。"},
+  {id:"s2",  xi:1,  lane:"ai", kind:"search",  t:"web_search 找方案",
+    meta:"Agent 自主 · P2", b:"模型自主拆子目标（官方 how-to / 脚手架 / PyTorch 绑定）并发起检索。实测命中：知乎、ai6s.net、MindSpore 官方、CSDN×3、华为云 bbs。官方 hiascend 未置顶。"},
+  {id:"s3",  xi:2,  lane:"ai", kind:"fetch",   blocked:true, t:"web_fetch 官方 how-to",
+    meta:"Agent 自主 · P2 · 受阻", b:"抓 hiascend atlas_ascendc_10_0006（devguide/opdevg/ 子树）。", blk:"实测受阻：SPA 页，只回导航 + meta，参数表 / 完整命令正文抓不到。这是 26 任务里唯一「SPA 短板真正咬到结果」的格。"},
+  {id:"s4",  xi:3,  lane:"ai", kind:"search",  t:"拼二手 + 自带知识",
+    meta:"Agent 自主 · P2", b:"官方受阻后转 MindSpore 2.3.1 教程 + CSDN「AscendC 从入门到精通」+ 自带知识，合成步骤骨架。二手薄、且多扎堆 CSDN。"},
+  {id:"dR",  xi:0,  lane:"hu", kind:"decision",t:"决策：选开发路线",
+    meta:"用户决定 · P2 · 技术路线（AI 建议·用户拍板）", b:"AI 给出两条实测路线：aclnn 简易工程（-f aclnn，atlas_ascendc_10_0101）vs 完整自定义算子工程（msopgen + add_custom.json）。AI 两条都能讲，但选哪条取决于算子复杂度与需要的控制粒度。"},
+  {id:"s5",  xi:4,  lane:"ai", kind:"draft",   t:"给 msopgen 命令 + json",
+    meta:"Agent 自主 · P2→交付", b:"输出步骤骨架：环境(CANN≥7.0.RC1)→ msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp 生成工程。标注 soc_version 需用户核验。end_turn。"},
+  {id:"dP",  xi:0,  lane:"hu", kind:"decision",t:"决策：算子原型 / dtype·format",
+    meta:"用户决定 · P3 · 技术路线（AI 建议·用户拍板）", b:"定 add_custom.json 的算子原型：输入输出个数、dtype（fp16 / fp32）、format（ND / NZ）。AI 给模板，但实际类型取决于上游模型张量。实测 json 为 x/y/z fp16 ND。"},
+  {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地运行 msopgen 生成工程",
+    meta:"人机协同 · P3", b:"用户在本机执行 msopgen，生成算子工程骨架（host/kernel/Tiling 目录）。"},
+  {id:"d1",  xi:6,  lane:"hu", kind:"decision",t:"决策：选 soc_version",
+    meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
+  {id:"s7",  xi:7,  lane:"ai", kind:"draft",   t:"起草核函数 + Tiling",
+    meta:"人机协同 · P4", b:"AI 起草 Compute 核函数与三级 Tiling 框架（GM→Local→寄存器 的 Copy-In/Compute/Copy-Out 三段流水线）。"},
+  {id:"dT",  xi:0,  lane:"hu", kind:"decision",t:"决策：Tiling 策略",
+    meta:"用户决定 · P4 · 技术路线（AI 建议·用户拍板）", b:"核函数性能的核心决策：单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。"},
+  {id:"d2",  xi:8,  lane:"hu", kind:"decision",t:"决策：版本对齐",
+    meta:"用户决定 · P4", b:"确认本机 CANN 版本。实测版本散乱：80RC2alpha001 / 80RC3 / 82RC1alpha003，json 字段与目录路径随版本变。"},
+  {id:"s8",  xi:9,  lane:"hu", kind:"run",     t:"build.sh 编包 → 部署 OPP",
+    meta:"人机协同 · P5", b:"bash build.sh 生成 custom_opp_*.run，部署到 OPP vendors/customize。"},
+  {id:"s9",  xi:10, lane:"ai", kind:"draft",   blocked:true, t:"编译报错 · AI 解读",
+    meta:"人机协同 · P5 · 卡点", b:"编包 / 部署常因版本、soc_version、算子注册不匹配报错。", blk:"卡点：用户把报错原文回灌，AI 解读并给改法。报错原文质量直接决定解读准确度。"},
+  {id:"dF",  xi:0,  lane:"hu", kind:"decision",t:"决策：报错修复方向",
+    meta:"用户决定 · P5 · 技术路线（AI 建议·用户拍板）", b:"编译 / 部署报错后判断改哪里：add_custom.json 字段、算子注册信息、CANN 版本对齐、还是 Tiling。AI 解读报错给候选原因，用户对照本机实际定位。"},
+  {id:"s10", xi:11, lane:"hu", kind:"run",     t:"改后重试 → 通过",
+    meta:"人机协同 · P5", b:"按 AI 给的改法修正，重新编译部署，通过。"},
+  {id:"s11", xi:12, lane:"ai", kind:"draft",   t:"给 TORCH_LIBRARY / aclnn 绑定",
+    meta:"人机协同 · P6", b:"AI 给 cpp_extension 方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL / PYBIND11_MODULE 接 PyTorch，调 autogen 的 aclnn API。"},
+  {id:"dB",  xi:0,  lane:"hu", kind:"decision",t:"决策：PyTorch 绑定方式",
+    meta:"用户决定 · P6 · 技术路线（AI 建议·用户拍板）", b:"AI 给三种接 PyTorch 的方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。"},
+  {id:"s12", xi:13, lane:"hu", kind:"run",     t:"集成进 PyTorch",
+    meta:"人机协同 · P6", b:"用户落地集成代码，编译扩展，import 验证算子可被 torch 调用。"},
+  {id:"s13", xi:14, lane:"hu", kind:"run",     t:"运行测试",
+    meta:"用户主导 · P7", b:"构造输入，运行算子，得到输出。"},
+  {id:"d3",  xi:15, lane:"hu", kind:"decision",t:"决策：精度是否达标",
+    meta:"用户决定 · P7 · 验收", b:"与 CPU/GPU 参考输出逐元素比对。达标→交付；不达标→驳回回 s7 重走 P4–P7。"},
+  {id:"dQ",  xi:0,  lane:"hu", kind:"decision",t:"决策：精度不达标修复方向",
+    meta:"用户决定 · P7 · 技术路线（AI 建议·用户拍板）", b:"精度不达标时定修复方向：误差来自搬运精度、Tiling 边界、还是 dtype？改哪最划算。AI 给候选方向，用户结合比对结果定位、驳回回 P4。"},
+  {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
+    meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。AI 仅辅助结果汇总 / 格式整理。"},
+];
+NODES.forEach((n,i)=>{ n.xi=i; if(n.kind==="decision") n.dtier=["d1","d2","d3"].includes(n.id)?"A":"B"; });
+// xi 取数组下标；决策分两层：A=非人不可(本机/业务事实)、B=技术路线(AI 建议·用户拍板)
+/* 分支（用户脱离 AI 的独立动作） */
+const BRANCH = [
+  {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
+    b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。脱离 AI 的独立检索。"},
+  {id:"b2", from:"d2", xi:8,  t:"Gitee samples 仓求证",
+    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本的可运行样例。外部求证、独立于 AI。"},
+];
+/* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
+const OWNER = [
+  {a:0,  b:0,  k:"hu"},
+  {a:1,  b:4,  k:"ai"},
+  {a:5,  b:13, k:"co"},
+  {a:14, b:16, k:"hu"},
+];
+/* 阶段色带 */
+const PHASE = [
+  {a:0, b:0,  n:"P1 立项"},
+  {a:1, b:4,  n:"P2 检索方案"},
+  {a:5, b:8,  n:"P3 环境·生成"},
+  {a:9, b:11, n:"P4 核函数·Tiling"},
+  {a:12,b:15, n:"P5 编译·部署"},
+  {a:16,b:18, n:"P6 接入 PyTorch"},
+  {a:19,b:22, n:"P7 运行·精度·交付"},
+];
+
+/* ===== 共享常量 / 工具 ===== */
+const phaseColors=["#EEF1F7","#EFEAF7","#E9F4F0","#E9F4F0","#FBF0E0","#E9F4F0","#E6EDF8"];
+const AIFILL="#ECE7F6", AISTROKE="#6B5BA8", HUFILL="#DCE8F7", HUSTROKE="#2f3d63";
+const ownColors={hu:"#9fb4dd",ai:"#b7a9e0",co:"#9bd3c8"};
+const ownName={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
+function fill(n){ return n.lane==="ai"?AIFILL:HUFILL; }
+function stroke(n){ return n.lane==="ai"?AISTROKE:HUSTROKE; }
+const byId = Object.fromEntries(NODES.map(n=>[n.id,n]));
+BRANCH.forEach(br=>{ br.xi=byId[br.from].xi; });   // 分支 xi 跟随来源节点（增删主节点不必手改）
+
+/* 每阶段「人/AI 占比」——全部从真实节点的 kind/lane 现算（不手填）
+   动作数 = 该阶段 AI / 用户 节点计数；四轴 = 按 kind 归类(检索/产出/执行/决策)、lean=该节点泳道 */
+const KIND_AXIS={search:0, fetch:0, draft:1, run:2, deliver:2, decision:3, start:3}; // 0检 1产 2执 3决
+const AXNAME=["检","产","执","决"];
+const DOT_AI="#9B91F0", DOT_HU="#54BFEC", DOT_NA="#d4d4cf";
+function dotTextColor(l){ return l==="ai"?"#3C3489" : l==="hu"?"#0C447C" : "#8a8a85"; }
+function phaseStats(ph){
+  let ai=0,hu=0; const axLane=[null,null,null,null];
+  NODES.forEach(n=>{
+    if(n.xi>=ph.a && n.xi<=ph.b){
+      if(n.lane==="ai") ai++; else hu++;
+      const a=KIND_AXIS[n.kind];
+      if(a!==undefined && axLane[a]===null) axLane[a]=n.lane;
+    }
+  });
+  return {ai,hu,axLane};
+}
+function dotColor(l){ return l==="ai"?DOT_AI : l==="hu"?DOT_HU : DOT_NA; }
+/* 动作数条（紫 AI 段从左、蓝 人 段铺底）；横竖共用 */
+function drawRatioBar(parent, cx, y, width, st){
+  const tot=st.ai+st.hu; if(tot===0) return;
+  const x0=cx-width/2, aw=width*st.ai/tot;
+  parent.append("rect").attr("x",x0).attr("y",y).attr("width",width).attr("height",9).attr("rx",3).attr("fill",DOT_HU);
+  if(aw>0.5) parent.append("rect").attr("x",x0).attr("y",y).attr("width",aw).attr("height",9).attr("rx",3).attr("fill",DOT_AI);
+}
+/* 四轴点（检/产/执/决，色=该轴偏向谁）；横竖共用 */
+function drawAxisDots(parent, cx, y, st){
+  const r=7.5, gap=18, total=3*gap;
+  st.axLane.forEach((l,i)=>{
+    const g=parent.append("g").attr("transform",`translate(${cx-total/2+i*gap},${y})`);
+    g.append("circle").attr("r",r).attr("fill",dotColor(l));
+    g.append("text").attr("text-anchor","middle").attr("dy",3.2).attr("font-size",9).attr("font-weight",700).attr("fill",dotTextColor(l)).text(AXNAME[i]);
+  });
+}
+/* 计数文字 AI n / 人 m（双色 tspan）；横竖共用 */
+function drawCount(parent, cx, y, st){
+  const t=parent.append("text").attr("x",cx).attr("y",y).attr("text-anchor","middle").attr("font-size",10);
+  t.append("tspan").attr("fill","#3C3489").text("AI "+st.ai);
+  t.append("tspan").attr("fill","#999").text("  /  ");
+  t.append("tspan").attr("fill","#0C447C").text("人 "+st.hu);
+}
+
+/* ===== AI 自主度光谱（拖动条）：档位决定每个动作归谁，时序图随之 morph ===== */
+const LVL=[
+ {name:"人主笔，AI 辅助", exec:"人", decide:"人",
+  covers:"问 ChatGPT/Claude、Copilot 全套(补全 / inline chat / 解释)、IDE AI 助手",
+  desc:"代码由人编写、本地由人运行、决策由人裁定；AI 从旁提供片段 / 补全 / 解释。检索需人主动发起。"},
+ {name:"AI 主写，人审校", exec:"AI", decide:"人",
+  covers:"<b>Vibe Coding</b>——Cursor / Claude Code 的 <b>agent 模式</b>：AI 自己改文件 / 跑命令 / 读报错自迭代",
+  desc:"AI 成段生成代码、自行调用工具运行、读取报错自迭代，人审查结果并修正。<b>执行转交 AI</b>；人独立自查 SPA / 外部求证的<b>安全网开始消失</b>。"},
+ {name:"人委派，AI 自主完成", exec:"AI", decide:"AI",
+  covers:"Devin(异步)、spec 驱动、多智能体——内部实现不同，对人均为「委派→获取结果」",
+  desc:"人委派整体任务(或预先编写规格)，AI 自主执行并提交 PR，人仅作最终验收。<b>决策亦归 AI</b>；深水区(D)知识有缺口时风险最高、而人介入最少。"}
+];
+let curLvl=0;
+/* 某动作在某档位归谁——只看 kind，与当前 lane 无关；lvl0 复现实测 */
+function laneAt(n,lvl){
+  if(n.kind==="start"||n.kind==="deliver") return "hu";   // 立项 / 终交付恒人
+  const ax=KIND_AXIS[n.kind];
+  if(ax===0||ax===1) return "ai";        // 检索 / 产出 恒 AI
+  if(ax===2) return lvl>=1 ? "ai":"hu";  // 执行(run)：Vibe 档起转 AI
+  if(ax===3) return lvl>=2 ? "ai":"hu";  // 决策：全自动档起转 AI
+  return "hu";
+}
+/* 阶段主导方由当前档位下的多数 lane 推出（随拖动条 morph） */
+function phaseOwner(ph){ const s=phaseStats(ph); return s.ai>s.hu?"ai":(s.hu>s.ai?"hu":"co"); }
+
+const svg = d3.select("#journey");
+
+/* 箭头 marker（每次重绘后需重建） */
+function addDefs(){
+  const defs = svg.append("defs");
+  function arrow(id,color){
+    defs.append("marker").attr("id",id).attr("viewBox","0 0 10 10")
+      .attr("refX",8).attr("refY",5).attr("markerWidth",7).attr("markerHeight",7)
+      .attr("orient","auto-start-reverse")
+      .append("path").attr("d","M0,0 L10,5 L0,10 z").attr("fill",color);
+  }
+  arrow("ah","#8156c9"); arrow("at","#bbb"); arrow("ab","#2f3d63");
+  /* 决策条斜纹底（竖向激活条用） */
+  const pat=defs.append("pattern").attr("id","diag")
+    .attr("patternUnits","userSpaceOnUse").attr("width",6).attr("height",6)
+    .attr("patternTransform","rotate(45)");
+  pat.append("rect").attr("width",6).attr("height",6).attr("fill","#FCEFC7");
+  pat.append("line").attr("x1",0).attr("y1",0).attr("x2",0).attr("y2",6)
+    .attr("stroke","#E0C589").attr("stroke-width",2);
+}
+
+/* 节点造型（朝向无关，横竖共用）：形状 + 受阻红环 + id 角标 */
+function drawNodeShape(sel,d){
+  if(d.kind==="decision"){
+    const A=d.dtier==="A";          // A=非人不可→实心深色；B=技术路线→浅色
+    sel.append("rect").attr("x",-17).attr("y",-17).attr("width",34).attr("height",34)
+      .attr("transform","rotate(45)").attr("rx",4)
+      .attr("fill",A?"#E6B73E":"#FCEFC7").attr("stroke",A?"#6f520c":"#bfa24e").attr("stroke-width",A?2.4:2);
+  } else if(d.kind==="run"||d.kind==="deliver"||d.kind==="start"){
+    sel.append("rect").attr("x",-23).attr("y",-18).attr("width",46).attr("height",36)
+      .attr("rx",7).attr("fill",fill(d)).attr("stroke",stroke(d)).attr("stroke-width",2);
+  } else { /* search / fetch / draft → 圆 */
+    sel.append("circle").attr("r",20).attr("fill",fill(d)).attr("stroke",stroke(d)).attr("stroke-width",2);
+  }
+  if(d.blocked){
+    sel.append("circle").attr("r",24).attr("fill","none").attr("stroke","#C8102E").attr("stroke-width",2.5);
+    sel.append("text").attr("x",18).attr("y",-16).attr("font-size",14).attr("font-weight",900)
+      .attr("fill","#C8102E").text("✕");
+  }
+  sel.append("text").attr("text-anchor","middle").attr("dy",4)
+    .attr("font-size",11).attr("font-weight",800)
+    .attr("fill", d.kind==="decision"?(d.dtier==="A"?"#4d3a06":"#8a6d1a"):stroke(d)).text(d.id);
+}
+
+/* 多行换行（centerY: 让多行整体竖直居中） */
+function wrapText(el,txt,max,lh,anchorX,centerVert){
+  const lines=[];
+  for(let i=0;i<txt.length;i+=max) lines.push(txt.slice(i,i+max));
+  const startDy = centerVert ? -(lines.length-1)*lh/2 : 0;
+  lines.forEach((ln,i)=>{
+    el.append("tspan").attr("x",anchorX).attr("dy", i===0?startDy:lh).text(ln);
+  });
+}
+
+/* 竖向激活条（经典 sequence）：三类 kind 用三种填充样式区分
+   实色=AI 检索/起草 · 描边浅底=用户本地执行 · 斜条纹底=决策点；lane 仍用紫/蓝；受阻套红框✕ */
+const BARW=24, BARH=42;
+function drawBarV(sel,d){
+  let fillv, strokev, idcol, sw;
+  if(d.kind==="decision"){            // A=非人不可→实心深金；B=技术路线→斜条纹浅底
+    if(d.dtier==="A"){ fillv="#E6B73E"; strokev="#6f520c"; idcol="#4d3a06"; sw=2.4; }
+    else { fillv="url(#diag)"; strokev="#bfa24e"; idcol="#8a6d1a"; sw=2; }
+  } else if(d.kind==="run"||d.kind==="start"||d.kind==="deliver"){ // 描边浅底
+    fillv = d.lane==="ai" ? "#fff" : "#F1F5FC"; strokev=stroke(d); idcol=stroke(d); sw=2.4;
+  } else {                            // 实色（AI search/fetch/draft）
+    fillv = d.lane==="ai" ? "#C9BBE8" : "#BFD2F0"; strokev=stroke(d); idcol=stroke(d); sw=1.5;
+  }
+  sel.append("rect").attr("x",-BARW/2).attr("y",-BARH/2).attr("width",BARW).attr("height",BARH)
+    .attr("rx",5).attr("fill",fillv).attr("stroke",strokev).attr("stroke-width",sw);
+  if(d.blocked){
+    sel.append("rect").attr("x",-BARW/2-4).attr("y",-BARH/2-4)
+      .attr("width",BARW+8).attr("height",BARH+8).attr("rx",7)
+      .attr("fill","none").attr("stroke","#C8102E").attr("stroke-width",2.5);
+    sel.append("text").attr("x",BARW/2+8).attr("y",-BARH/2+3).attr("font-size",14)
+      .attr("font-weight",900).attr("fill","#C8102E").text("✕");
+  }
+  sel.append("text").attr("text-anchor","middle").attr("dy",4)
+    .attr("font-size",10.5).attr("font-weight",800).attr("fill",idcol).text(d.id);
+}
+
+/* ===================== 横向视图（时间左→右） ===================== */
+function renderH(){
+  const padL=78, padT=18, dx=92;  // padT 小=顶部少留白；只用于定阶段卡起点
+  const N=NODES.length;
+  const W = padL + (N-1)*dx + 70;
+  const phBandY=padT-6, phBandH=70;        // 顶部阶段卡：名称+动作数条+计数+四轴点
+  const phBgY=phBandY+phBandH+8;           // 节点区淡背景列起点（在阶段卡之外）
+  const laneY = {ai:phBgY+76, hu:phBgY+226};  // ai 下移：留够 AI 标题(最多4行)往上堆的净空、不压阶段卡
+  const branchY = laneY.hu + 92;
+  const ownerY = branchY + 46;
+  const phBgH = ownerY-8-phBgY;
+  const H = ownerY + 56;
+  const X = xi => padL + xi*dx;
+  const ny = n => laneY[n.lane];
+
+  svg.attr("width",W).attr("height",H).attr("viewBox",`0 0 ${W} ${H}`);
+
+  /* 节点区淡阶段背景列（分组 + 悬浮看主导方/边界说明） */
+  PHASE.forEach((d,i)=>{
+    svg.append("rect").attr("x",X(d.a)-dx/2+6).attr("y",phBgY)
+      .attr("width",(d.b-d.a)*dx+dx-12).attr("height",phBgH)
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.3).style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
+  });
+  /* 顶部阶段卡（脱离节点底色块）：名称 → 动作数条 → 计数 → 四轴点 */
+  svg.append("text").attr("x",8).attr("y",phBandY+14).attr("dominant-baseline","central")
+    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("阶段");
+  svg.append("text").attr("x",8).attr("y",phBandY+44).attr("dominant-baseline","central")
+    .attr("font-size",9.5).attr("fill","#999").text("人/AI");
+  PHASE.forEach((d,i)=>{
+    const x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12, cx=x0+w/2, st=phaseStats(d);
+    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
+      .attr("rx",7).attr("fill",phaseColors[i]);
+    svg.append("text").attr("x",cx).attr("y",phBandY+14).attr("text-anchor","middle")
+      .attr("dominant-baseline","central").attr("font-size",11).attr("font-weight",700)
+      .attr("fill","#555").text(d.n);
+    drawRatioBar(svg, cx, phBandY+24, Math.min(w-16,118), st);
+    drawCount(svg, cx, phBandY+45, st);
+    drawAxisDots(svg, cx, phBandY+58, st);
+    /* 透明命中层（盖住整张阶段卡，含标题/占比条/计数/四轴点，整卡可悬浮） */
+    svg.append("rect").attr("x",x0).attr("y",phBandY).attr("width",w).attr("height",phBandH)
+      .attr("rx",7).attr("fill","transparent").style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
+  });
+
+  /* 泳道标签 + 基线（标签与基线同一水平、垂直居中对齐） */
+  [["ai","AI（Agent）","#6B5BA8"],["hu","人类用户","#2f3d63"]].forEach(([k,lab,c])=>{
+    svg.append("line").attr("x1",padL).attr("x2",W-20)
+      .attr("y1",laneY[k]).attr("y2",laneY[k]).attr("stroke","#e3e3e3").attr("stroke-width",1.2);
+    svg.append("text").attr("x",6).attr("y",laneY[k]).attr("dominant-baseline","central")
+      .attr("font-size",11.5).attr("font-weight",800).attr("fill",c).text(lab)
+      .style("cursor","help")
+      .on("mousemove",ev=>showLaneTip(ev,k)).on("mouseleave",hideTip).on("click",ev=>pinLaneTip(ev,k));
+  });
+
+  /* 主链连线 */
+  for(let i=0;i<NODES.length-1;i++){
+    const a=NODES[i], b=NODES[i+1];
+    const x1=X(a.xi), y1=ny(a), x2=X(b.xi), y2=ny(b);
+    if(a.lane!==b.lane){
+      svg.append("path")
+        .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
+        .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
+        .attr("marker-end","url(#ah)").attr("opacity",.85);
+    } else {
+      svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
+        .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
+    }
+  }
+
+  /* 分支连线（向下到 branchY）——仅问答档存在，自动化档人不再独立兜底 */
+  if(curLvl===0) BRANCH.forEach(br=>{
+    const src=byId[br.from];
+    const x1=X(src.xi), y1=ny(src), x2=X(br.xi), y2=branchY;
+    svg.append("path")
+      .attr("d", `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2-16}`)
+      .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
+      .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
+  });
+
+  /* 节点 */
+  const g = svg.selectAll(".node").data(NODES).enter().append("g")
+    .attr("transform", d=>`translate(${X(d.xi)},${ny(d)})`)
+    .style("cursor","pointer")
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip).on("click", (e,d)=>pinTip(e,d));
+  g.each(function(d){ drawNodeShape(d3.select(this),d); });
+  g.append("text").attr("text-anchor","middle")
+    .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
+    .each(function(d){
+      const el=d3.select(this);
+      const lines=[]; for(let i=0;i<d.t.length;i+=8) lines.push(d.t.slice(i,i+8));
+      if(d.lane==="ai"){               // 标题在节点上方、向上堆，避免压住图形
+        el.attr("y",-28);
+        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
+          .attr("dy", i===0 ? -(lines.length-1)*12 : 12).text(ln));
+      } else {                          // 标题在节点下方、向下堆
+        el.attr("y",32);
+        lines.forEach((ln,i)=> el.append("tspan").attr("x",0)
+          .attr("dy", i===0?0:12).text(ln));
+      }
+    });
+
+  /* 分支节点（仅问答档） */
+  if(curLvl===0){
+    const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+      .attr("transform", d=>`translate(${X(d.xi)},${branchY})`)
+      .style("cursor","pointer")
+      .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+      .on("mouseleave",hideTip);
+    gb.append("circle").attr("r",18).attr("fill","#fff").attr("stroke","#2f3d63")
+      .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+    gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+      .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+    gb.append("text").attr("text-anchor","middle").attr("y",33).attr("font-size",10)
+      .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  }
+
+  /* 主导方色带（按当前档位逐阶段推出、随拖动条 morph） */
+  svg.append("text").attr("x",8).attr("y",ownerY+21).attr("dominant-baseline","central")
+    .attr("font-size",11).attr("font-weight",800).attr("fill","#555").text("主导方");
+  PHASE.forEach(d=>{
+    const k=phaseOwner(d), x0=X(d.a)-dx/2+6, w=(d.b-d.a)*dx+dx-12;
+    svg.append("rect").attr("x",x0).attr("y",ownerY+8)
+      .attr("width",w).attr("height",26).attr("rx",6).attr("fill",ownColors[k]);
+    svg.append("text").attr("x",x0+w/2).attr("y",ownerY+21)
+      .attr("text-anchor","middle").attr("dominant-baseline","central")
+      .attr("font-size",11).attr("font-weight",700).attr("fill","#2b2b2b").text(ownName[k]);
+  });
+}
+
+/* ===================== 竖向视图（时间自上而下 · 经典 sequence） ===================== */
+function renderV(){
+  const phX=4, phW=108, owX=120, owW=64;
+  const colAi=320, colHu=560, branchMidX=440;
+  const vTop=72, dyV=56, Wv=690;  // 顶部少留白（列头/阶段标签放在 vTop-58~-48）
+  const Y = xi => vTop + xi*dyV;
+  const lastY = Y(NODES.length-1);
+  const Hv = lastY + 70;
+  const cx = n => n.lane==="ai" ? colAi : colHu;
+
+  svg.attr("width",Wv).attr("height",Hv).attr("viewBox",`0 0 ${Wv} ${Hv}`);
+
+  /* 阶段卡（竖直）：名称 + 动作数条 + 计数 + 四轴点 */
+  svg.append("text").attr("x",phX+phW/2).attr("y",vTop-58).attr("text-anchor","middle")
+    .attr("font-size",10).attr("font-weight",800).attr("fill","#555").text("阶段 · 人/AI");
+  PHASE.forEach((d,i)=>{
+    const y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10, cy=(Y(d.a)+Y(d.b))/2, cxp=phX+phW/2, st=phaseStats(d);
+    svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
+      .attr("rx",8).attr("fill",phaseColors[i]).attr("opacity",.6).style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
+    const lab=svg.append("text").attr("text-anchor","middle")
+      .attr("font-size",10).attr("font-weight",700).attr("fill","#555");
+    wrapText(lab, d.n, 6, 11, cxp, false);
+    lab.attr("y",cy-26);
+    drawRatioBar(svg, cxp, cy-8, Math.min(phW-16,92), st);
+    drawCount(svg, cxp, cy+9, st);
+    drawAxisDots(svg, cxp, cy+24, st);
+    /* 透明命中层（盖住整格阶段条，含标题/占比条/计数/四轴点，整条可悬浮） */
+    svg.append("rect").attr("x",phX).attr("y",y0).attr("width",phW).attr("height",h)
+      .attr("rx",8).attr("fill","transparent").style("cursor","help")
+      .on("mousemove",e=>showPhaseTip(e,i)).on("mouseleave",hideTip).on("click",e=>pinPhaseTip(e,i));
+  });
+
+  /* 主导方色带（竖直、按当前档位逐阶段推出、随拖动条 morph） */
+  svg.append("text").attr("x",owX+owW/2).attr("y",vTop-58).attr("text-anchor","middle")
+    .attr("font-size",10).attr("font-weight",800).attr("fill","#555").text("主导方");
+  PHASE.forEach(d=>{
+    const k=phaseOwner(d), y0=Y(d.a)-dyV/2+5, h=(d.b-d.a)*dyV + dyV-10;
+    svg.append("rect").attr("x",owX).attr("y",y0).attr("width",owW).attr("height",h)
+      .attr("rx",6).attr("fill",ownColors[k]);
+    const lab=svg.append("text").attr("text-anchor","middle")
+      .attr("font-size",10).attr("font-weight",700).attr("fill","#2b2b2b");
+    wrapText(lab, ownName[k], 4, 12, owX+owW/2, true);
+    lab.attr("y",(Y(d.a)+Y(d.b))/2+3);
+  });
+
+  /* 参与者列头 + 生命线 */
+  [["ai","AI（Agent）","#6B5BA8",colAi],["hu","人类用户","#2f3d63",colHu]].forEach(([k,lab,c,x])=>{
+    svg.append("line").attr("x1",x).attr("x2",x).attr("y1",vTop-34).attr("y2",Hv-30)
+      .attr("stroke","#e3e3e3").attr("stroke-width",1.5);
+    svg.append("text").attr("x",x).attr("y",vTop-48).attr("text-anchor","middle")
+      .attr("font-size",12).attr("font-weight",800).attr("fill",c).text(lab)
+      .style("cursor","help")
+      .on("mousemove",ev=>showLaneTip(ev,k)).on("mouseleave",hideTip).on("click",ev=>pinLaneTip(ev,k));
+  });
+
+  /* 主链连线（时间向下） */
+  for(let i=0;i<NODES.length-1;i++){
+    const a=NODES[i], b=NODES[i+1];
+    const x1=cx(a), y1=Y(a.xi), x2=cx(b), y2=Y(b.xi);
+    if(a.lane!==b.lane){
+      svg.append("path")
+        .attr("d", `M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`)
+        .attr("fill","none").attr("stroke","#8156c9").attr("stroke-width",3)
+        .attr("marker-end","url(#ah)").attr("opacity",.85);
+    } else {
+      svg.append("line").attr("x1",x1).attr("y1",y1).attr("x2",x2).attr("y2",y2)
+        .attr("stroke","#bbb").attr("stroke-width",1.5).attr("marker-end","url(#at)");
+    }
+  }
+
+  /* 分支连线（伸入中央通道、稍向下）——仅问答档 */
+  if(curLvl===0) BRANCH.forEach(br=>{
+    const src=byId[br.from];
+    const x1=cx(src), y1=Y(src.xi), y2=Y(src.xi)+28;
+    svg.append("path")
+      .attr("d", `M${x1},${y1} C${(x1+branchMidX)/2},${y1} ${(x1+branchMidX)/2},${y2} ${branchMidX-16},${y2}`)
+      .attr("fill","none").attr("stroke","#2f3d63").attr("stroke-width",2)
+      .attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.8);
+  });
+
+  /* 节点 */
+  const g = svg.selectAll(".node").data(NODES).enter().append("g")
+    .attr("transform", d=>`translate(${cx(d)},${Y(d.xi)})`)
+    .style("cursor","pointer")
+    .on("mousemove", (e,d)=>showTip(e,d)).on("mouseleave", hideTip).on("click", (e,d)=>pinTip(e,d));
+  g.each(function(d){ drawBarV(d3.select(this),d); });
+  /* 标题置于激活条外侧（AI 在左、用户在右） */
+  g.append("text")
+    .attr("text-anchor", d=> d.lane==="ai" ? "end" : "start")
+    .attr("font-size",10.5).attr("font-weight",600).attr("fill","#333")
+    .each(function(d){
+      const ax = d.lane==="ai" ? -(BARW/2+10) : (BARW/2+10);
+      wrapText(d3.select(this), d.t, 7, 12, ax, true);
+    })
+    .attr("y",0);
+
+  /* 分支节点（中央通道偏下，仅问答档） */
+  if(curLvl===0){
+    const gb = svg.selectAll(".bnode").data(BRANCH).enter().append("g")
+      .attr("transform", d=>{ const s=byId[d.from]; return `translate(${branchMidX},${Y(s.xi)+28})`; })
+      .style("cursor","pointer")
+      .on("mousemove",(e,d)=>showTip(e,{id:d.id,t:d.t,meta:"用户独立分支 · 脱离 AI",b:d.b}))
+      .on("mouseleave",hideTip);
+    gb.append("circle").attr("r",17).attr("fill","#fff").attr("stroke","#2f3d63")
+      .attr("stroke-width",2).attr("stroke-dasharray","4,3");
+    gb.append("text").attr("text-anchor","middle").attr("dy",4).attr("font-size",10.5)
+      .attr("font-weight",800).attr("fill","#2f3d63").text(d=>d.id);
+    gb.append("text").attr("text-anchor","start").attr("x",24).attr("y",4).attr("font-size",10)
+      .attr("fill","#444").attr("font-weight",600).text(d=>d.t);
+  }
+}
+
+/* ===== 视图调度 + 自主度拖动条 + 横竖 Tab ===== */
+let vMode = "h";
+function syncLvlUI(){
+  const L=LVL[curLvl];
+  document.getElementById("lvlDesc").innerHTML=
+    `<b style="color:#2f3d63">${curLvl+1}. ${L.name}</b>　<span style="color:#888">执行 ${L.exec} · 决策 ${L.decide}</span>　${L.desc}`;
+  document.querySelectorAll(".lvlticks span").forEach(s=>s.classList.toggle("on", +s.dataset.lvl===curLvl));
+  updateFloors(curLvl);
+}
+/* §2/§3/§5 里「谁干哪步」的机械结果随档位更新（事实不变、只重新归属） */
+const OWNTAG={
+  hu:'<span class="tag hu">用户主导</span>',
+  ai:'<span class="tag ai">Agent 自动化主导</span>',
+  co:'<span class="tag warn" style="background:#E8F4F0;color:#2a7a68;border-color:#a8e0d2">人机协同</span>'
+};
+function handoffs(lvl){ let h=0; for(let i=0;i<NODES.length-1;i++){ if(laneAt(NODES[i],lvl)!==laneAt(NODES[i+1],lvl)) h++; } return h; }
+function updateFloors(lvl){
+  const $=id=>document.getElementById(id);
+  PHASE.forEach((ph,i)=>{ const el=$("ph"+i); if(el) el.innerHTML=OWNTAG[phaseOwner(ph)]; }); // §3 主导方列
+  // §2 任务分工·四轴 / 协同量化已折进图内悬浮（laneTipHtml / coopTipHtml 实时读 curLvl）
+  const bn=$("d5banner");                                                                     // §5 banner
+  if(bn){
+    if(lvl<2){ bn.className="d5banner hu";
+      bn.innerHTML="「① 人主笔 / ② AI 主写」档：9 处决策仍归<b>人</b>——B 类技术路线 AI 建议、用户拍板；A 类（soc_version / 版本 / 精度）AI 根本拿不到本机·业务事实，<b>非人不可</b>。"; }
+    else { bn.className="d5banner risk";
+      bn.innerHTML="⚠「③ 人委派」档：9 处决策 <b>AI 接管</b>——B 类 AI 尚能按知识自主定（缺人校准），但 A 类的 npu-smi 芯片 / 本机 CANN 版本 / 精度业务阈值仍是<b>本机·业务事实</b>，AI 接管＝把「本来拿不到的判断」也交出去，这正是深水区（D）委派的<b>最大风险点</b>。"; }
+  }
+}
+/* 悬浮档位/滑块 → 弹出该模式解释卡片（复用 #tip） */
+function showModeCard(e,i){
+  const L=LVL[i];
+  tip.innerHTML=`<div class="tt-h">${i+1}. ${L.name}</div>`
+    +`<div class="tt-meta">执行：${L.exec}　·　决策：${L.decide}</div>`
+    +`<div class="tt-b">${L.desc}</div>`
+    +`<div class="tt-b" style="color:#888;margin-top:5px">涵盖：${L.covers}</div>`;
+  tip.style.opacity="1";
+  const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
+  if(y+th>window.innerHeight-8) y=e.clientY-pad-th;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+}
+function draw(){
+  NODES.forEach(n=> n.lane=laneAt(n,curLvl));   // 按当前档位morph每个动作归谁
+  syncLvlUI();
+  svg.selectAll("*").remove();
+  addDefs();
+  (vMode==="h") ? renderH() : renderV();
+}
+const slider=document.getElementById("lvl");
+slider.addEventListener("input", e=>{ curLvl=+e.target.value; hideTip(); draw(); });
+slider.addEventListener("mousemove", e=>showModeCard(e,curLvl));
+slider.addEventListener("mouseleave", hideTip);
+document.querySelectorAll(".lvlticks span").forEach(s=>{
+  const i=+s.dataset.lvl;
+  s.addEventListener("click", ()=>{ curLvl=i; slider.value=i; hideTip(); draw(); });
+  s.addEventListener("mousemove", e=>showModeCard(e,i));
+  s.addEventListener("mouseleave", hideTip);
+});
+document.querySelectorAll(".vtab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    if(vMode===btn.dataset.mode) return;
+    vMode = btn.dataset.mode;
+    document.querySelectorAll(".vtab").forEach(b=>b.classList.toggle("active", b.dataset.mode===vMode));
+    hideTip();
+    draw();
+  });
+});
+
+/* ===== tooltip ===== */
+const tip=document.getElementById("tip");
+const tipmask=document.getElementById("tipmask");
+let pinned=false;
+/* 节点折叠详情：arch=对应架构环节（与 §4.3 流程图挂钩）；full=点击固定后看的全版 HTML */
+const NDETAIL={
+  s2:{arch:"① 意图解析 → ② 子目标拆解 → ③ 工具路由 → web_search"},
+  s3:{arch:"③ 工具路由 → web_fetch → ④ 研判（抓取为空）→ ⑤ 遇阻处理",
+    full:`<div class="tt-sec"><span class="lbl">卡点（实测受阻）</span>官方 how-to 整段压在 <b>devguide/opdevg/</b> SPA 子树，web_fetch 只回导航 + meta、<b>正文抓不到</b>。</div>`
+        +`<div class="tt-sec"><span class="lbl">解决</span>转走二手（s4）+ 让用户开浏览器人眼自查（分支 b1，人能看到 AI 抓不到的渲染后正文）。</div>`},
+  s4:{arch:"⑤ 遇阻处理（转二手 + 自带知识）→ 续检索 / 收敛"},
+  s5:{arch:"⑥ 收敛 → 终答（end_turn）"},
+  s7:{arch:"模型产出（内容合成，属终答前的起草）"},
+  s9:{arch:"报错回灌 messages → 模型重新研判 / 给改法",
+    full:`<div class="tt-sec"><span class="lbl">卡点（编译报错）</span>build.sh 编包 / 部署 OPP 阶段常因版本、soc_version、算子注册不匹配报错。</div>`
+        +`<div class="tt-sec"><span class="lbl">解决</span>把报错日志回灌给 AI 解读（s9），AI 给出改法，用户改后重试（s10）。</div>`},
+  s11:{arch:"模型产出（aclnn / TORCH_LIBRARY 绑定代码）"},
+  dR:{tier:"B",
+      intro:`<b>决策依据</b>：aclnn 简易工程（<code>-f aclnn</code>，atlas_ascendc_10_0101）快、但封装多；完整自定义算子工程（msopgen + add_custom.json）可控到核函数级。AI 两条都能讲，选哪条取决于算子复杂度与需要的控制粒度。`,
+      pre:`了解两条路线的取舍；清楚本算子是否需要自定义 Tiling / 核函数级控制。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出两条实测路线及各自取舍。"},
+        {st:"② 研判", plat:"hiascend 官方文档（两条路线页）", platK:"ext", d:"读 aclnn 简易 / 完整工程两页文档，看各自能力边界。"},
+        {st:"③ 决策", plat:"项目需求（算子复杂度）", platK:"hu", d:"按本算子是否需核函数级控制，选完整自定义算子工程。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"告知 AI 走完整工程，AI 给 msopgen 完整命令。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程走到「选开发路线」。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按算子复杂度自行评估两条路线。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：AI 默认选一条（如完整工程）——技术上可行，但<b>缺人对项目实际需求的校准</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按所选路线继续生成命令。"}
+      ]},
+  dP:{tier:"B",
+      intro:`<b>决策依据</b>：定 add_custom.json 的算子原型——输入输出个数、dtype（fp16 / fp32）、format（ND / NZ）。AI 给模板，但实际类型取决于上游模型张量。实测 json 为 x/y/z fp16 ND。`,
+      pre:`知道上游模型喂进来的张量 dtype / format；清楚类型不符会导致精度损失或报错。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给 add_custom.json 模板（IO 个数 / dtype / format 占位）。"},
+        {st:"② 研判", plat:"PyTorch 模型（上游张量）", platK:"hu", d:"看上游模型实际张量 dtype（fp16 / fp32）、format（ND / NZ）。"},
+        {st:"③ 决策", plat:"add_custom.json（CANN）", platK:"hu", d:"在 json 里定 x/y/z 为 fp16 ND（实测）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 json 字段，AI 据此继续。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定算子原型。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按常见配置假设 dtype / format。"},
+        {st:"③ 决策", plat:"⚠ AI 默认假设", platK:"warn", d:"推演：AI 默认 fp16 ND——但<b>上游模型实际张量类型 AI 未必知道</b>，类型不符会精度损失 / 报错。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进 json 继续。"}
+      ]},
+  d1:{tier:"A",
+      intro:`<b>决策依据</b>：需先 <b>npu-smi info</b> 查到实际芯片型号（如 Ascend910B1）——AI 不知道用户机器插的是哪颗 NPU（本机环境事实、不在检索可得范围），必须线下核验。`,
+      pre:`能访问目标机器、会用 <b>npu-smi info</b>；soc_version 直接决定 msopgen 生成的工程能否在本机编译。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 在 s5 给含 &lt;soc_version&gt; 占位的 msopgen 命令、提示需填实际型号。"},
+        {st:"② 研判", plat:"AI 对话界面", platK:"ai", d:"用户意识到 AI 无法知道本机 NPU，占位不能照抄。"},
+        {st:"③ 决策", plat:"npu-smi info（CANN 工具）", platK:"hu", d:"在本机终端运行 npu-smi info 查到 Ascend910B1。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填 soc_version（ai_core_Ascend910B1 替换占位），AI 据此在 s7 继续起草核函数 / Tiling。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程走到 msopgen 命令，需要填 soc_version。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 尝试获取本机芯片型号——但<b>没有 npu-smi 访问权</b>、检索也查不到你机器插的是哪颗。"},
+        {st:"③ 决策", plat:"⚠ AI 只能猜", platK:"warn", d:"推演：AI 只能猜默认型号 / 留占位 → <b>决策不可靠</b>（本机事实拿不到）。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进工程；若猜错，要到编译期才暴露、无人兜底。"}
+      ]},
+  dT:{tier:"B",
+      intro:`<b>决策依据</b>：核函数性能的核心决策——单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。`,
+      pre:`知道实际输入 shape / 数据量；理解 UB 空间上限与 double buffer 的收益与代价。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 起草三级 Tiling 框架（Copy-In/Compute/Copy-Out），留切分参数占位。"},
+        {st:"② 研判", plat:"输入 shape（上游模型）", platK:"hu", d:"按实际输入 shape / 数据量估算每核负载、UB 空间是否够。"},
+        {st:"③ 决策", plat:"hiascend Ascend C Tiling 文档", platK:"ext", d:"对照 tiling API / UB 上限，定多核切分粒度 + 是否启用 double buffer。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"回填切分参数，AI 细化核函数。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定 Tiling 策略。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按典型 shape 假设切分。"},
+        {st:"③ 决策", plat:"⚠ AI 自主定", platK:"warn", d:"推演：AI 自定切分 / double buffer——但<b>真实输入 shape 与性能目标 AI 未必掌握</b>，可能非最优甚至溢出 UB。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"写进核函数继续。"}
+      ]},
+  d2:{tier:"A",
+      intro:`<b>决策依据</b>：需确认本机 CANN 版本落在 80RC2alpha001 / 80RC3 / 82RC1alpha003 哪条线——D 任务<b>版本散乱是实测短板</b>，连官方 URL 都从 devguide/opdevg/ 漂到 opdevg/Ascendcopdevg/，add_custom.json 字段与目录路径随版本变，AI 给的步骤未必匹配本机版本。`,
+      pre:`知道本机装的 CANN 确切版本；理解同一份步骤换版本可能无法运行通过。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出某版本线的 msopgen / json 步骤（三条版本线之一）。"},
+        {st:"② 研判", plat:"本机终端", platK:"hu", d:"核对本机装的 CANN 确切版本，发现 json 字段 / 目录路径在版本间会变。"},
+        {st:"③ 决策", plat:"Gitee samples 仓（浏览器）", platK:"ext", d:"必要时脱离 AI、去 Gitee samples 仓对齐对应版本样例（分支 b2）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按本机版本修正步骤后再用。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需匹配本机 CANN 版本。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 不知道你本机装的确切版本（版本散乱、URL 都在漂）、<b>无本机访问</b>。"},
+        {st:"③ 决策", plat:"⚠ AI 按假设", platK:"warn", d:"推演：AI 按最新 / 最常见版本假设 → <b>可能与本机不符、步骤跑不通</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按假设版本生成步骤；不匹配则编译 / 部署期报错。"}
+      ]},
+  dF:{tier:"B",
+      intro:`<b>决策依据</b>：编译 / 部署报错后判断改哪里——add_custom.json 字段、算子注册信息、CANN 版本对齐、还是 Tiling。AI 解读报错给候选原因，用户对照本机实际定位。`,
+      pre:`能读懂报错日志、对照本机实际状态（装了什么、注册没注册）逐一排查。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 解读报错日志（s9），给出几个可能原因。"},
+        {st:"② 研判", plat:"本机终端（编译 / 部署报错日志）", platK:"hu", d:"对照本机实际（版本、soc、注册）逐一排查。"},
+        {st:"③ 决策", plat:"hiascend 文档 / Gitee（核对注册·版本）", platK:"ext", d:"定位具体原因、选定改法（如改 json dtype / 重新注册）。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"按选定改法修正，重新编译（s10）。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"AI 拿到报错日志（回灌）。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按报错文本推断原因。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选改法", platK:"warn", d:"推演：AI 自选改法重试——但<b>本机实际状态 AI 看不全</b>，可能反复试错或改错地方。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重编译。"}
+      ]},
+  dB:{tier:"B",
+      intro:`<b>决策依据</b>：AI 给三种接 PyTorch 的方式——TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。`,
+      pre:`知道本机 torch 版本与 ABI 约定；清楚是否要 python 侧直调。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出三种绑定方式及适用场景（s11）。"},
+        {st:"② 研判", plat:"PyTorch 文档（torch 版本 / ABI）", platK:"ext", d:"按 torch 版本（ABI 稳定性）、是否要 python 直调判断。"},
+        {st:"③ 决策", plat:"PyTorch 文档（TORCH_LIBRARY）", platK:"ext", d:"选 TORCH_LIBRARY（torch 2.x ABI 稳定）注册。"},
+        {st:"④ 反馈", plat:"本机终端（编译扩展）", platK:"hu", d:"落地集成代码、编译扩展（s12）。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需选绑定方式。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按 torch 版本与通用最佳实践评估。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选", platK:"warn", d:"推演：AI 自选一种（如 TORCH_LIBRARY）——技术上合理，但<b>用户工程习惯 / 已有约定 AI 未必知道</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"生成集成代码（仍需在本机编译）。"}
+      ]},
+  d3:{tier:"A",
+      intro:`<b>决策依据</b>：需 CPU / GPU 参考输出做逐元素比对——算子结果精度是否足够是<b>带业务容忍度的价值判断</b>，多大误差可接受取决于下游模型，AI 无法替用户判定。`,
+      pre:`有 CPU / GPU 参考实现的输出做基准；定好误差阈值（如相对误差 &lt; 1e-3）。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给出算子实现与运行测试方法。"},
+        {st:"② 研判", plat:"本机终端（torch_npu 跑测试 + 比对）", platK:"hu", d:"运行算子，与 CPU / GPU 参考输出逐元素比对。"},
+        {st:"③ 决策", plat:"业务需求（误差阈值）", platK:"hu", d:"按下游业务的误差阈值判定精度是否达标。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标 → 交付（s14）；不达标 → 驳回（dQ 选修复方向）回 P4。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"算子运行出结果，需判定精度是否达标。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 没有<b>下游业务的误差容忍度</b>，也未必有 CPU / GPU 参考基准。"},
+        {st:"③ 决策", plat:"⚠ AI 按通用阈值", platK:"warn", d:"推演：AI 按通用阈值（如 1e-3）判定 → <b>未必符合你的业务要求</b>。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按通用阈值放行 / 驳回；业务级误判无人复核。"}
+      ]},
+  dQ:{tier:"B",
+      intro:`<b>决策依据</b>：精度不达标时定修复方向——误差来自搬运精度、Tiling 边界、还是 dtype？改哪最划算。AI 给候选方向，用户结合比对结果定位、驳回回 P4。`,
+      pre:`有逐元素比对结果可定位误差来源；理解改核函数 / Tiling / dtype 各自的代价。`,
+      chain:[
+        {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"d3 判定不达标，AI 给候选修复方向（核函数 / Tiling / dtype）。"},
+        {st:"② 研判", plat:"本机比对结果（定位误差）", platK:"hu", d:"结合逐元素比对结果判断误差来自哪：搬运精度、Tiling 边界、还是 dtype。"},
+        {st:"③ 决策", plat:"hiascend Ascend C 文档", platK:"ext", d:"对照文档选定改核函数（或 Tiling / dtype），驳回回 P4。"},
+        {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"AI 据选定方向协助改，重走 P4–P7。"}
+      ],
+      chainAI:[
+        {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"AI 拿到不达标的比对结果。"},
+        {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按误差大小推断可能来源。"},
+        {st:"③ 决策", plat:"⚠ AI 自主选方向", platK:"warn", d:"推演：AI 自选修复方向重走——但<b>误差是否在业务可接受范围、改哪最划算缺人校准</b>，可能空转。"},
+        {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重测。"}
+      ]}
+};
+/* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
+const PHASE_DETAIL=[
+  {nodes:"s1", bound:"定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。"},
+  {nodes:"s2–s4 / dR", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼步骤骨架；用户在 <b>dR 选开发路线</b>（aclnn 简易 vs 完整工程）。AI 自主多轮迭代最密的区段。"},
+  {nodes:"s5 / dP / s6 / d1", bound:"AI 给命令 + json 模板，用户定 <b>dP 算子原型·dtype/format</b>、跑 msopgen；<b>d1 soc_version 等本机事实只有用户能填</b>（线下 npu-smi 核验）。"},
+  {nodes:"s7 / dT / d2", bound:"AI 起草核函数与三级 Tiling 框架；用户做 <b>dT Tiling 策略</b>（切分 / double buffer）与 <b>d2 版本对齐</b>并据本机修正。"},
+  {nodes:"s8 / s9 / dF / s10", bound:"用户执行编包 / 部署，AI 解读报错，用户做 <b>dF 报错修复方向</b>；交接最密集，谁也无法独立完成。"},
+  {nodes:"s11 / dB / s12", bound:"AI 给三种绑定方式，用户做 <b>dB 绑定方式</b>（TORCH_LIBRARY / pybind / aclnn）并落地集成。"},
+  {nodes:"s13 / d3 / dQ / s14", bound:"运行测试、<b>d3 精度由人判定</b>（比对参考输出）、不达标走 <b>dQ 修复方向</b>回 P4、最终交付——AI 仅辅助汇总。"}
+];
+const OWN_NAME={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
+function phaseBodyHtml(i, withFull){
+  const ph=PHASE[i], det=PHASE_DETAIL[i]||{}, k=phaseOwner(ph);
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">${ph.n}</div>`;
+  html+=`<div class="tt-meta">节点 ${det.nodes||""} · 主导方：<b>${OWN_NAME[k]}</b>（随滑块变）</div>`;
+  if(withFull){ html+=`<div class="tt-sec"><span class="lbl">边界说明（① 人主笔档为例）</span>${det.bound||""}</div>`+`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`; }
+  else html+=`<div class="tt-hint">点击查看边界说明 ↗</div>`;
+  return html;
+}
+function showPhaseTip(e,i){ if(pinned) return; tip.className=""; tip.innerHTML=phaseBodyHtml(i,false); tip.style.opacity="1"; positionTip(e); }
+function pinPhaseTip(e,i){ pinned=true; tip.className="pinned"; tip.innerHTML=phaseBodyHtml(i,true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+
+/* 泳道标签悬浮：任务分工·四轴（检索/产出归 AI 侧、执行/决策归人侧，随滑块 morph） */
+function axisRow(name,who,pct,col){
+  return `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px">`
+    +`<span style="width:84px;color:#555;flex:none">${name}</span>`
+    +`<span style="flex:1;height:7px;border-radius:4px;background:#ececf2;overflow:hidden"><i style="display:block;height:100%;width:${pct}%;background:${col}"></i></span>`
+    +`<span style="width:84px;text-align:right;color:${col};font-weight:700;flex:none">${who}</span></div>`;
+}
+function laneTipHtml(side, withFull){
+  const aiCol="#6B5BA8", huCol="#2f3d63";
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'');
+  if(side==="ai"){
+    html+=`<div class="tt-h"><span class="minibadge mb-ai">AI</span>AI（Agent）· 检索 + 产出</div>`;
+    html+=`<div class="tt-meta">把「知识搬进答案」——多轮 <code>web_search</code> 找方案、<code>web_fetch</code> 取官方正文、拼二手、起草 msopgen 命令 / 核函数 / Tiling / aclnn 绑定、解读编译报错。价值链<b>前两轴恒由 AI 担</b>：</div>`;
+    html+=axisRow("检索·获取知识","AI 100%",100,aiCol);
+    html+=axisRow("产出·编写代码","AI 为主",82,aiCol);
+    if(withFull) html+=`<div class="tt-sec"><span class="lbl">为何前两轴恒 AI</span>不论自主度档位，「搜什么 · 抓哪页 · 几轮够 · 怎么拼步骤骨架」始终由 AI 主导；用户在此区段仅等结果。</div>`;
+  } else {
+    const execAi=curLvl>=1, decAi=curLvl>=2;
+    html+=`<div class="tt-h"><span class="minibadge mb-hu">用户</span>人类用户 · 执行 + 决策</div>`;
+    html+=`<div class="tt-meta">立项定目标、本地执行（msopgen 生成工程 / build.sh 编包 / 部署 OPP / 集成 / 运行测试）、做关键决策、受阻时脱离 AI 独立求证。后两轴随<b>自主度档位转手</b>：</div>`;
+    html+=axisRow("执行·本地运行",execAi?"AI 100%":"人 100%",100,execAi?aiCol:huCol);
+    html+=axisRow("决策·裁定验收",decAi?"AI（人终验）":(curLvl===1?"人（审批）":"人 100%"),100,decAi?aiCol:huCol);
+    html+=`<div class="tt-meta" style="margin-top:6px">当前「${LVL[curLvl].name}」：执行 <b>${execAi?"AI":"人"}</b> · 决策 <b>${decAi?"AI":"人"}</b>。</div>`;
+    if(withFull) html+=`<div class="tt-sec"><span class="lbl">为何不写单一「AI 41%」</span>那只是数了几个动作节点、是较弱代理指标。换一轴比例就反转——按<b>产出</b>看 AI 为主、按<b>执行 / 决策</b>看归属。拆四轴各看更诚实：<b>执行</b>在「AI 主写」档转交 AI、<b>决策</b>在「人委派」档转交 AI。</div>`;
+  }
+  html+= withFull?`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`:`<div class="tt-hint">点击查看完整说明 ↗</div>`;
+  return html;
+}
+function showLaneTip(e,side){ if(pinned) return; tip.className=""; tip.innerHTML=laneTipHtml(side,false); tip.style.opacity="1"; positionTip(e); }
+function pinLaneTip(e,side){ pinned=true; tip.className="pinned"; tip.innerHTML=laneTipHtml(side,true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+
+/* 图例「人机交接」悬浮：协同量化（交接次数 + 用户独立分支，随滑块 morph） */
+function coopTipHtml(withFull){
+  const ho=handoffs(curLvl), br=curLvl===0?2:0;
+  let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">协同量化 · 主导权交接</div>`;
+  html+=`<div class="tt-meta">全旅程 <b>${ho} 次主导权易手</b>（紫色粗连线）· <b>${br} 条用户独立分支</b>（虚线，不经 AI）。随左侧滑块实时变。</div>`;
+  if(curLvl===0) html+=`<div class="tt-b">交接密度在<b>编译部署阶段（P5）最高</b>——报错 → AI 解读 → 用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</div>`;
+  else html+=`<div class="tt-b">自主度↑ → 交接变少（更多同侧推进）、<b>用户独立分支归零</b>——人不再独立提供后备、安全网消失。</div>`;
+  if(withFull){
+    if(curLvl===0) html+=`<div class="tt-sec"><span class="lbl">2 条用户独立分支</span>b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</div>`;
+    else html+=`<div class="tt-sec"><span class="lbl">安全网消失</span>自动化档 AI 遭遇同样的 SPA / 版本问题，但无人核查。</div>`;
+    html+=`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
+  } else html+=`<div class="tt-hint">点击查看完整说明 ↗</div>`;
+  return html;
+}
+function showCoopTip(e){ if(pinned) return; tip.className=""; tip.innerHTML=coopTipHtml(false); tip.style.opacity="1"; positionTip(e); }
+function pinCoopTip(e){ pinned=true; tip.className="pinned"; tip.innerHTML=coopTipHtml(true); tip.style.opacity="1"; tipmask.classList.add("on"); positionTip(e); const cl=document.getElementById("tipClose"); if(cl) cl.addEventListener("click", closePin); }
+(function(){ const el=document.getElementById("lgHandoff"); if(el){ el.style.cursor="help"; el.addEventListener("mousemove",showCoopTip); el.addEventListener("mouseleave",hideTip); el.addEventListener("click",pinCoopTip); } })();
+/* 受阻 / 卡点节点的「链路图」——把 §4.3 agent 架构画成迷你流程，标红出问题的环节 */
+const ARCHFLOW={
+  s3:{ title:"链路图 · 官方 how-to 在哪一环受阻",
+    steps:[
+      {s:"ok",  t:"③ 工具路由",       note:"决定抓官方 how-to 页"},
+      {s:"err", t:"web_fetch 官方页",  note:"SPA 子树 devguide/opdevg/，只回导航 + meta，<b>正文抓取为空</b>——出问题就在这一步"},
+      {s:"fix", t:"④ 研判",            note:"判定证据不足 / 官方受阻，<b>不凭记忆杜撰</b>"},
+      {s:"fix", t:"⑤ 遇阻处理",        note:"转二手 + 自带知识（s4）+ 让用户开浏览器人眼自查（分支 b1）"}
+    ]},
+  s9:{ title:"链路图 · 编译报错在哪一环被接住",
+    steps:[
+      {s:"err", t:"本机编译 / 部署",   note:"build.sh / 部署 OPP 因版本·soc_version·算子注册不匹配报错——<b>本机事实，不在 AI 检索可得范围</b>"},
+      {s:"ok",  t:"报错回灌 messages", note:"用户把报错原文交回 AI（原文质量决定解读准确度）"},
+      {s:"fix", t:"④ 研判",            note:"重新解读报错日志、定位原因"},
+      {s:"fix", t:"⑥ 收敛 → 给改法",   note:"AI 给改法 → 用户改后重试（s10）通过"}
+    ]}
+};
+function archFlowHtml(id){
+  const f=ARCHFLOW[id]; if(!f) return "";
+  let h=`<div class="tt-sec"><span class="lbl">${f.title}</span></div><div class="aflow">`;
+  f.steps.forEach((st,i)=>{
+    h+=`<div class="afstep"><div class="afnode ${st.s}">${st.s==="err"?"⚠ ":""}${st.t}</div><div class="afnote">${st.note||""}</div></div>`;
+    if(i<f.steps.length-1) h+=`<div class="afarrow">↓</div>`;
+  });
+  h+=`</div><div class="tt-mini"><b style="color:#ff9ba6">红＝出问题的环节</b> · <b style="color:#f0c486">橙＝架构的应对</b>；节点名对应 §4.3 架构图。</div>`;
+  return h;
+}
+/* 决策节点的「横向阶段链」（像用户旅程图：接收→研判→决策→反馈 横向铺开，每段标所在平台），悬浮即全出。
+   链路随档位切换：档①②=人做版(det.chain)、档③人委派=AI 接管版(det.chainAI、推演标⚠) */
+function decisionChainHtml(det){
+  const aiTake = curLvl>=2 && det.chainAI;
+  const chain = aiTake ? det.chainAI : det.chain;
+  const tierA = det.tier==="A";
+  let h="";
+  // 档位横幅：当前这个决策归谁
+  if(aiTake) h+=`<div class="dmode warn">⚠ 当前「人委派·AI 自管」档：此决策 <b>AI 接管</b>，下方为<b>推演</b>（无实测）${tierA?"——但芯片型号 / 本机版本 / 业务阈值是 AI 拿不到的本机·业务事实，这正是深水区最大风险":""}。</div>`;
+  else h+=`<div class="dmode ok">当前「${LVL[curLvl].name}」档：此决策 <b>归用户</b>（${tierA?"<b>非人不可</b>：AI 拿不到本机 / 业务事实":"AI 建议、用户拍板"}）。</div>`;
+  if(det.intro) h+=`<div class="tt-b" style="margin-top:6px">${det.intro}</div>`;
+  if(det.pre)   h+=`<div class="tt-meta" style="margin-top:5px"><b style="color:#9fb8ff">前置条件：</b>${det.pre}</div>`;
+  h+=`<div class="dchain">`;
+  chain.forEach((c,i)=>{
+    h+=`<div class="dcol"><div class="dst">${c.st}</div><div class="dplat ${c.platK}">${c.plat}</div><div class="dd">${c.d}</div></div>`;
+    if(i<chain.length-1) h+=`<div class="darrow">→</div>`;
+  });
+  h+=`</div><div class="tt-mini">${aiTake
+      ? `信息来源：<b style="color:#c9b6f5">Agent 运行时</b> · <b style="color:#ff9ba6">⚠ 拿不到 / 缺校准</b>——AI 接管版为推演，拖回前两档看人做实况。`
+      : `信息来源（每步靠哪个平台 / 工具的信息）：<b style="color:#c9b6f5">AI 对话界面</b> · <b style="color:#a9cdf0">本机工具（npu-smi / 终端 / torch_npu / json）</b> · <b style="color:#e0c486">外部文档站点（hiascend / Gitee / PyTorch 文档）</b>。`}</div>`;
+  return h;
+}
+function tipBodyHtml(d, withFull){
+  const det=NDETAIL[d.id]||{};
+  const badge = d.lane==="ai" ? '<span class="minibadge mb-ai">AI</span>'
+            : d.lane==="hu" ? '<span class="minibadge mb-hu">用户</span>' : '';
+  let html = (withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">${badge}${d.id} · ${d.t}</div>`;
+  if(d.meta) html += `<div class="tt-meta">${d.meta}</div>`;
+  html += `<div class="tt-b">${d.b||""}</div>`;
+  if(d.blk) html += `<div class="tt-blk">⚠ ${d.blk}</div>`;
+  if(ARCHFLOW[d.id]) html += archFlowHtml(d.id);          // 受阻/卡点：出链路图、标红出问题的环节
+  else if(det.chain) html += decisionChainHtml(det);      // 决策：横向阶段链 + 平台，悬浮即全出
+  else if(det.arch) html += `<div class="tt-arch">对应架构：${det.arch}</div>`;
+  if(withFull && det.full && !ARCHFLOW[d.id]) html += det.full;
+  else if(!ARCHFLOW[d.id] && !det.chain && det.full) html += `<div class="tt-hint">点击节点查看完整详情 ↗</div>`;
+  if(withFull) html += `<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
+  return html;
+}
+function positionTip(e){
+  const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
+  if(y+th>window.innerHeight-8) y=Math.max(8, window.innerHeight-th-8);
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+}
+function showTip(e,d){
+  if(pinned) return;
+  const dec = d.kind==="decision";   // 决策：悬浮即全出、用宽版横向布局
+  tip.className = dec ? "dwide" : "";
+  tip.innerHTML=tipBodyHtml(d,dec);
+  tip.style.opacity="1";
+  positionTip(e);
+}
+function pinTip(e,d){
+  pinned=true;
+  tip.className = d.kind==="decision" ? "pinned dwide" : "pinned";
+  tip.innerHTML=tipBodyHtml(d,true);
+  tip.style.opacity="1";
+  tipmask.classList.add("on");
+  positionTip(e);
+  const cl=document.getElementById("tipClose");
+  if(cl) cl.addEventListener("click", closePin);
+}
+function closePin(){ pinned=false; tip.className=""; tip.style.opacity="0"; tipmask.classList.remove("on"); }
+function hideTip(){ if(pinned) return; tip.style.opacity="0"; }
+tipmask.addEventListener("click", closePin);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closePin(); });
+
+/* §4.3 架构图节点悬浮详情 */
+const ANODE={
+  ask:{t:"用户原始问句",b:"开发者的原始自然语言需求，原样进入 messages、不做模板化预处理 / 不抽取关键词。对 D：要开发一个 Ascend C 自定义算子并接入 PyTorch。"},
+  msg:{t:"组装 messages",b:"将 <b>system 约束</b>（给可照抄命令·锁定版本·官方无法抓取则标注受阻、绝不编造）+ 历史轮次 + 当前问句组装为模型输入；理解全部交给模型。"},
+  intent:{t:"① 意图解析",b:"从自然语言读出「<b>要完成什么任务 + 目标产物 + 硬约束</b>」。对 D＝识别出「开发 Ascend C 自定义算子并接 PyTorch」，并捕捉隐含约束：需可照抄且可运行、需锁定版本、与本机芯片型号强相关。"},
+  subgoal:{t:"② 子目标拆解",b:"把任务切成<b>能分别检索的子问题</b>。对 D＝① 官方 how-to（msopgen→编包→部署 OPP）② 工程脚手架结构 ③ 接 PyTorch 的绑定方式（aclnn / TORCH_LIBRARY）。"},
+  route:{t:"③ 工具路由",b:"决定本轮<b>如何获取信息</b>：先 web_search 了解全貌 / 直接 web_fetch 某官方 URL / 信息已足够则直接作答。对 D＝先检索入口页，再抓取官方 how-to。"},
+  gate:{t:"需要工具?（stop_reason）",b:"模型这一轮是调用工具（<b>tool_use</b>）、还是信息已足够直接产出终答（<b>end_turn</b>）；耗时较长则 <b>pause_turn</b> 自动继续。"},
+  search:{t:"web_search · 服务端工具",b:"平台在<b>同一次 create 调用内自闭环</b>（生成 query→检索→回灌→模型判断→续检索 / 停止），<b>max_uses 封顶＝硬上限</b>。"},
+  fetch:{t:"web_fetch · 客户端工具",b:"模型返回 tool_use，由<b>我们的 fetch_url 执行</b>抓取，结果 append 回 messages；抓取为空则如实返回「正文抽不到」。"},
+  relay:{t:"tool_result 回灌",b:"将工具结果写回 messages，进入下一轮 create——即<b>多轮循环的连接点</b>。"},
+  judge:{t:"④ 研判",b:"读取回灌结果，判定「<b>信息是否足以支撑可照抄答案</b>」+「<b>是否受阻</b>」。对 D＝第 2 轮即发现官方 SPA 抓取为空、二手稀薄 → 判定「证据不足」，触发遇阻或续检索。"},
+  blocked:{t:"⑤ 遇阻处理",b:"官方抓取为空 / robots 拦截时<b>不凭记忆杜撰</b>，转用二手 + 自带知识，并在答案中<b>如实标注「官方受阻」</b>——「绝不编造」铁律的落点。"},
+  converge:{t:"⑥ 收敛",b:"信息足够即<b>停止检索</b>，将片段按「环境→msopgen→核函数→编包→部署→绑定」组织为有序步骤，给出占位 + <b>标注需用户核验项</b>（soc_version / 版本）。"},
+  final:{t:"终答 · end_turn",b:"把碎片合成<b>可照抄命令 + 锁版本 + 标需用户核验项</b>；受阻处如实标注。"}
+};
+function archTip(e,k){
+  const d=ANODE[k]; if(!d) return;
+  tip.innerHTML=`<div class="tt-h">${d.t}</div><div class="tt-b">${d.b}</div>`;
+  tip.style.opacity="1";
+  const pad=14, tw=tip.offsetWidth, th=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+tw>window.innerWidth-8) x=e.clientX-pad-tw;
+  if(y+th>window.innerHeight-8) y=e.clientY-pad-th;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+}
+document.querySelectorAll(".anode").forEach(g=>{
+  g.addEventListener("mousemove", e=>archTip(e, g.dataset.k));
+  g.addEventListener("mouseleave", hideTip);
+});
+
+/* §4.3 架构图/代码 切换 */
+document.querySelectorAll(".avtab").forEach(b=>b.addEventListener("click",()=>{
+  const v=b.dataset.v;
+  document.querySelectorAll(".avtab").forEach(x=>x.classList.toggle("active", x.dataset.v===v));
+  document.getElementById("archView").style.display = v==="arch"?"":"none";
+  document.getElementById("codeView").style.display = v==="code"?"":"none";
+}));
+
+draw();
+</script>
+</body>
+</html>
