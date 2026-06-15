@@ -122,6 +122,14 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .rm .rm-step.need{background:#fbeaea;color:#a32d2d;border:1px solid #f0c0c0}
 .rm .rm-arr{color:#bbb}
 .rm-cap{font-size:9.5px;color:#a32d2d;margin-top:6px;font-weight:600;line-height:1.45}
+.seg5{margin:2px 0}
+.seg5 .s5row{display:flex;align-items:center;gap:6px;margin:3px 0}
+.seg5 .s5n{flex:0 0 50px;font-size:9.5px;color:#666;text-align:right}
+.seg5 .s5bar{font-size:9px;font-weight:700;padding:3px 6px;border-radius:4px;white-space:nowrap;color:#fff}
+.seg5 .s5bar.v1{background:#e24b4a}
+.seg5 .s5bar.v3{background:#e0a32e}
+.seg5 .s5bar.v4{background:#7fae4e}
+.s5cap{font-size:9.5px;color:#a32d2d;font-weight:600;margin-top:6px;line-height:1.5}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -318,7 +326,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <h1>人机协同旅程：开发者完成一段任务的全链路</h1>
 <div class="subtitle">
-  把<b>开发者从立项到交付的整段旅程</b>画成 4 参与者时序图。当前场景：<b>D 自定义算子开发</b>——26 任务里 CANN 综合分唯一「低」(.41)、也是唯一官方 SPA 真正咬到结果的格。<span style="color:#888">（<b>训练 / 推理</b>两条场景制作中；迁移场景已归档备扩。）</span>事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
+  把<b>开发者从立项到交付的整段旅程</b>画成 5 参与者时序图。当前场景：<b>算子开发</b>——开发一个算子<b>沿时间串过 5 次搜索（D 写 kernel → M Tiling → X 内存 → O 集成 → L 精度）</b>，每次对应 26 任务里不同的一个、各打穿矩阵不同行；唯一官方真受阻的是写 kernel 的 D（.41）。<span style="color:#888">（<b>训练 / 推理</b>两条场景制作中；迁移场景已归档备扩。）</span>事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
 </div>
 
 <a id="s1"></a>
@@ -363,22 +371,28 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <div class="conclbox" id="conclbox">
-  <div class="cb-h">综述 · D 自定义算子开发旅程（CANN .41 低 ｜ CUDA .88 高）</div>
-  <div class="jline">用<b>时序图独有的「时间 + 协同」视角</b>（横截面 19 看不出的）收敛成 <b>3 个判断 + 行动建议</b>——失败的<b>先后因果</b>、人机<b>交接质量</b>、体感<b>前松后紧</b>。仅锚 D 一个任务；全 26 任务的指标统计与 ROI 排序（过程态、支撑材料）见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
+  <div class="cb-h">综述 · 算子开发场景旅程（串 5 次搜索 · 最弱 D .41）</div>
+  <div class="jline">用<b>时序图独有的「时间 + 协同」视角</b>（横截面 19 看不出的）收敛成 <b>3 个判断 + 行动建议</b>——可用性<b>逐段在变·被最弱环节拖着</b>、人机<b>交接质量</b>、体感<b>前松后紧</b>。锚算子开发场景的 5 次搜索（D/M/X/O/L）；全 26 任务的指标统计与 ROI 排序（过程态、支撑材料）见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
 
   <div class="judge">
-    <div class="j-h">判断 1 · 失败有先后：s3 一旦静默抓取为空，后面每一步都建在错误地基上</div>
-    <div class="j-one">核心一问：D 为什么不是「某个指标低」，而是「一步错、步步错」？</div>
+    <div class="j-h">判断 1 · 一个算子开发是 5 次搜索的串联，被最弱、又最靠前的「写 kernel」拖着</div>
+    <div class="j-one">核心一问：开发一个算子，AI 的可用性是一个数，还是一路在变？</div>
     <div class="jbody">
       <div class="jtext">
-        <p>时序图能看到横截面（page 19）看不到的<b>先后因果</b>：旅程第 3 步 AI <code>web_fetch</code> 官方 how-to <b>静默抓取为空、转二手</b>——这不是孤立的一个低分，是<b>地基塌了</b>。</p>
-        <p>之后 AI 起草的命令、核函数、Tiling 全建在「二手拼凑 + 凭印象」的地基上，到<b>编译 / 部署才报错</b>，开发者回头都不知道是哪一步歪的。所以 .41 不是「11 个分平均低」，是<b>早期一次静默失败，沿时间被放大成全链路不可靠</b>。</p>
-        <p class="j-fix"><b>怎么改：</b>让早期失败<b>「响亮」而非「静默」</b>——AI 抓取为空时必须显式报「官方页没拿到、以下为二手，请核对」，<b>截断错误地基往下传</b>。（站方把 opdevg 静态化是治本，见 <a href="19_findings_ux_synthesis.html">19</a>。）</p>
+        <p>开发一个算子<b>不是搜一次</b>，是沿时间撞上 <b>5 次搜索</b>：写 kernel(D) → Tiling(M) → 内存越界(X) → 注册集成(O) → 精度排查(L)。可用性<b>一路在变</b>，不是一个数。</p>
+        <p>5 次里 <b>4 次官方都抓得到</b>（M.63 / X.74 / O.72 / L.69，各有版本/二手的小坑），<b>只有写 kernel 的 D 官方真受阻（.41）</b>。但整条路的体感被 D 拖着——因为它<b>又最弱、又最靠前</b>：kernel 写不出，后面 Tiling/编译/精度全建在二手地基上，到编译才报错。<b>场景可用性 ≈ 最弱且最靠前的那一搜。</b></p>
+        <p class="j-fix"><b>怎么改：</b>优先修<b>最靠前的瓶颈</b>——把写 kernel 那页（opdevg）静态化（治本，见 <a href="19_findings_ux_synthesis.html">19</a>）；在此之前，AI 抓取为空时<b>显式报「官方未取得、以下二手」</b>，别让错误地基静默往下传。</p>
       </div>
       <div class="jdemo">
-        <div class="demo-cap">时间因果 · 早期塌 → 全链路放大</div>
-        <div class="caus"><span class="cstep bad">s3 静默抓取为空</span><span class="carr">→</span><span class="cstep tint">s5 命令</span><span class="carr">→</span><span class="cstep tint">s7 核函数</span><span class="carr">→</span><span class="cstep boom">s8 编译报错</span></div>
-        <div class="caus-cap">一次静默失败，沿时间放大成全链路不可靠——这是 19 的横截面看不出的</div>
+        <div class="demo-cap">5 次搜索的可用性 · 整体被最弱的 D 拖着</div>
+        <div class="seg5">
+          <div class="s5row"><span class="s5n">写 kernel</span><span class="s5bar v1" style="width:46%">D .41 受阻</span></div>
+          <div class="s5row"><span class="s5n">Tiling</span><span class="s5bar v3" style="width:66%">M .63</span></div>
+          <div class="s5row"><span class="s5n">内存越界</span><span class="s5bar v4" style="width:77%">X .74</span></div>
+          <div class="s5row"><span class="s5n">注册集成</span><span class="s5bar v4" style="width:75%">O .72</span></div>
+          <div class="s5row"><span class="s5n">精度排查</span><span class="s5bar v4" style="width:72%">L .69</span></div>
+        </div>
+        <div class="s5cap">4 次官方都抓得到，唯独写 kernel 的 D 受阻、且最靠前——整条路被它拖着（横截面 19 给不出这条「逐段」曲线）</div>
         <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：抓不到就「响亮」标出来</div>
         <div class="lofi">
           <div class="lofi-bar">AI 助手 · 回答</div>
@@ -460,8 +474,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <table class="actions">
     <thead><tr><th style="width:58px">优先级</th><th>建议</th><th style="width:84px">对应节点</th><th style="width:150px">预期收益</th></tr></thead>
     <tbody>
-      <tr><td><span class="pri p0">P0</span></td><td>早期失败<b>「响亮化」</b>：AI 抓取为空显式报「官方没拿到、以下二手」</td><td>判断1 · s3</td><td>截断「一步错步步错」</td></tr>
-      <tr><td><span class="pri p0">P0</span></td><td>人机<b>交接做成一等公民</b>：AI 标需填项 + 报错一键完整回灌</td><td>判断2 · P5</td><td>降交接处信息丢失</td></tr>
+      <tr><td><span class="pri p0">P0</span></td><td>先修<b>最靠前的瓶颈</b>：写 kernel 页 opdevg 静态化 + 抓不到「响亮」标注</td><td>判断1 · sD</td><td>把最弱且最靠前的环节抬起来</td></tr>
+      <tr><td><span class="pri p0">P0</span></td><td>人机<b>交接做成一等公民</b>：AI 标需填项 + 报错一键完整回灌</td><td>判断2 · 编译段</td><td>降交接处信息丢失</td></tr>
       <tr><td><span class="pri p1">P1</span></td><td><b>「前松后紧」前置告知</b>：旅程开头标后段需人核验的点</td><td>判断3 · A类</td><td>管理预期、不在深水区才报错</td></tr>
       <tr><td><span class="pri p1">P1</span></td><td>供给侧治本（opdevg 静态化 / 版本收口 / 补二手）</td><td>→ 见 19</td><td>把原料做好，所有 AI 工具受益</td></tr>
     </tbody>
