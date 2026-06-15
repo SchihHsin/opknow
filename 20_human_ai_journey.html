@@ -81,6 +81,14 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .own3 .ownc .dot.hu{background:#e7eefb;color:#2f3d63}
 .own3 .ownc .dot.ai{background:#efe0fa;color:#6b3aa0}
 .own3 .ownc .dot.bad{background:#fbeaea;color:#a32d2d;font-weight:700}
+.vsel{border:1px solid #cdd6e6;border-radius:7px;overflow:hidden;font-size:10.5px;margin-top:9px}
+.vsel .vsel-row{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:#eef1f6}
+.vsel .vsel-dd{background:#fff;border:1px solid #c5cde0;border-radius:5px;padding:2px 8px;font-weight:700;color:#2f3d63}
+.vsel .vsel-out{padding:7px 8px;line-height:1.5;color:#1f6b45}
+.vsel .vsel-out code{font-size:9.5px;background:#eef4ef;padding:1px 4px;border-radius:3px;color:#1f5b3f}
+.ansui{border:1px solid #cdd6e6;border-radius:7px;padding:7px 8px;font-size:10.5px;line-height:1.6;background:#fbfcfe;margin-top:9px}
+.ansui code{font-size:9.5px;background:#f3f5f9;padding:1px 4px;border-radius:3px}
+.ansui .needverify{display:block;margin-top:5px;background:#fbeaea;border:1px solid #f0c0c0;border-radius:5px;padding:5px 7px;color:#a32d2d;font-weight:600}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -354,6 +362,11 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
         <div class="pipe-cap">D：5 节漏（红 / 橙）</div>
         <div class="pipe"><span class="seg ok">搜到</span><span class="seg ok">抓到</span><span class="seg ok">够细</span><span class="seg ok">版本</span><span class="seg ok">锁版</span><span class="seg ok">复现</span></div>
         <div class="pipe-cap g">G 迁移：基本通畅</div>
+        <div class="demo-cap" style="margin-top:9px">「怎么改」界面示意 · 版本查询器</div>
+        <div class="vsel">
+          <div class="vsel-row"><span>你的 CANN 版本</span><span class="vsel-dd">8.0.RC3 ▾</span></div>
+          <div class="vsel-out">✓ 给出该版本的 canonical 命令：<br><code>msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp</code><br><span style="color:#888">一个权威页随版本给确切命令，不再多版本号散乱（救 ④⑨）</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -373,6 +386,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
           <div class="ownc"><b>② AI 主写</b><div class="dot hu">决策仍归人</div></div>
           <div class="ownc"><b>③ 人委派</b><div class="dot ai">决策交 AI</div><div class="dot bad">⚠ A 类 3 个：AI 够不着本机 / 业务事实</div></div>
         </div>
+        <div class="demo-cap" style="margin-top:9px">「怎么改」界面示意 · A 类决策显式标注</div>
+        <div class="ansui">AI 答案里把需人定的位显式标出来：<br><code>msopgen ... -c ai_core_<b>&lt;soc_version&gt;</b></code><span class="needverify">⚠ 需你核验：本机芯片型号 — 运行 <code>npu-smi info</code> 填入，AI 拿不到、别照抄占位</span></div>
       </div>
     </div>
   </div>
