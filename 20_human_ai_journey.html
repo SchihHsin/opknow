@@ -89,6 +89,19 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .ansui{border:1px solid #cdd6e6;border-radius:7px;padding:7px 8px;font-size:10.5px;line-height:1.6;background:#fbfcfe;margin-top:9px}
 .ansui code{font-size:9.5px;background:#f3f5f9;padding:1px 4px;border-radius:3px}
 .ansui .needverify{display:block;margin-top:5px;background:#fbeaea;border:1px solid #f0c0c0;border-radius:5px;padding:5px 7px;color:#a32d2d;font-weight:600}
+.caus{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.caus .cstep{font-size:9.5px;font-weight:700;padding:6px 7px;border-radius:5px}
+.caus .cstep.bad{background:#f9d2d2;color:#993C1D}
+.caus .cstep.tint{background:#fbe6e6;color:#a64b4b}
+.caus .cstep.boom{background:#e24b4a;color:#fff}
+.caus .carr{color:#c0a0a0;font-size:11px}
+.caus-cap{font-size:10px;color:#a32d2d;font-weight:700;margin-top:7px;line-height:1.45}
+.hoflow .hobar{display:flex;gap:3px;margin-bottom:6px}
+.hoflow .hophase{flex:1;text-align:center;font-size:9px;font-weight:700;padding:7px 2px;border-radius:4px;background:#eef1f6;color:#555}
+.hoflow .hophase.hot{background:#f9d2d2;color:#993C1D;flex:1.5}
+.hoflow .hodots{font-size:10.5px;color:#555;line-height:1.6}
+.hoflow .hodots b{color:#a32d2d}
+.arc-cap{font-size:10px;color:#888;line-height:1.45;margin-top:5px}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -330,79 +343,78 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="conclbox" id="conclbox">
   <div class="cb-h">综述 · D 自定义算子开发旅程（CANN .41 低 ｜ CUDA .88 高）</div>
-  <div class="jline">把这条旅程的实测收敛成 <b>3 个判断 + 行动建议</b>。仅锚 D 一个任务；全 26 任务的规律与 ROI 排序见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
+  <div class="jline">用<b>时序图独有的「时间 + 协同」视角</b>（横截面 19 看不出的）收敛成 <b>3 个判断 + 行动建议</b>——失败的<b>先后因果</b>、人机<b>交接质量</b>、体感<b>前松后紧</b>。仅锚 D 一个任务；全 26 任务的指标统计与 ROI 排序（过程态、支撑材料）见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
 
   <div class="judge">
-    <div class="j-h">判断 1 · 「门开着，AI 却进不去」——旅程里最隐蔽的静默降级</div>
-    <div class="j-one">核心一问：开发者全程没看见一个报错，为什么 AI 给的答案还是跑不通？</div>
+    <div class="j-h">判断 1 · 失败有先后：s3 一旦静默抓空，后面每一步都建在错误地基上</div>
+    <div class="j-one">核心一问：D 为什么不是「某个指标低」，而是「一步错、步步错」？</div>
     <div class="jbody">
       <div class="jtext">
-        <p>站在开发者体感看：他让 AI 帮忙开发算子，AI 一路很顺地在搜、在抓——直到最关键的官方 how-to 那一步，AI 其实只摸到门、<b>进不去</b>（SPA 页抓取为空）。但它<b>不会报错</b>，而是<b>静默降级</b>：答案来源从「官方原文」悄悄换成「二手拼凑 + 凭印象」。</p>
-        <p>这比明面的报错更坑——开发者<b>以为拿到的是官方做法</b>，照着做却跑不通，回头还不知道是哪一步出的岔。这一步也是全旅程<b>性价比最高的修复点</b>：它一通，后面整条链都松动。</p>
+        <p>时序图能看到横截面（page 19）看不到的<b>先后因果</b>：旅程第 3 步 AI <code>web_fetch</code> 官方 how-to <b>静默抓空、转二手</b>——这不是孤立的一个低分，是<b>地基塌了</b>。</p>
+        <p>之后 AI 起草的命令、核函数、Tiling 全建在「二手拼凑 + 凭印象」的地基上，到<b>编译 / 部署才暴雷</b>，开发者回头都不知道是哪一步歪的。所以 .41 不是「11 个分平均低」，是<b>早期一次静默失败，沿时间被放大成全链路不可靠</b>。</p>
+        <p class="j-fix"><b>怎么改：</b>让早期失败<b>「响亮」而非「静默」</b>——AI 抓空时必须显式报「官方页没拿到、以下为二手，请核对」，<b>截断错误地基往下传</b>。（站方把 opdevg 静态化是治本，见 <a href="19_findings_ux_synthesis.html">19</a>。）</p>
       </div>
       <div class="jdemo">
-        <div class="demo-cap">同一个官方页 · 人能进、AI 进不去</div>
-        <div class="dwin"><div class="dwin-bar">人 · 浏览器打开</div><div class="dwin-body ok">✓ 看到正文：atc 命令 + 参数表 + npu-smi 步骤</div></div>
-        <div class="dwin"><div class="dwin-bar">AI · web_fetch 同一页</div><div class="dwin-body bad">✕ 正文 0 字（SPA 只回导航 + meta）→ 静默转二手</div></div>
+        <div class="demo-cap">时间因果 · 早期塌 → 全链路放大</div>
+        <div class="caus"><span class="cstep bad">s3 静默抓空</span><span class="carr">→</span><span class="cstep tint">s5 命令</span><span class="carr">→</span><span class="cstep tint">s7 核函数</span><span class="carr">→</span><span class="cstep boom">s8 编译暴雷</span></div>
+        <div class="caus-cap">一次静默失败，沿时间放大成全链路不可靠——这是 19 的横截面看不出的</div>
       </div>
     </div>
   </div>
 
   <div class="judge">
-    <div class="j-h">判断 2 · 「能不能用」不是一道是非题，是一条处处会漏的管道</div>
-    <div class="j-one">核心一问：明明官方有文档，为什么 AI 还是给不出能跑的答案？</div>
+    <div class="j-h">判断 2 · 真正卡住 D 的不是「技术难」，是人机「交接」的质量</div>
+    <div class="j-one">核心一问：一次 D 开发，AI 和人交接了多少次？哪里最容易掉链子？</div>
     <div class="jbody">
       <div class="jtext">
-        <p>开发者常把「昇腾文档好不好」当是非题，其实它是一条管道：<b>搜到 → 抓到 → 够细 → 版本对 → 锁得住 → 跑得通</b>，任何一节漏，水都到不了地。</p>
-        <p>D 这条管道<b>好几节同时漏</b>——这就是「官方明明有、AI 还是给不出」的真相：不是没有水，是管子<b>处处在渗</b>。所以修复必须<b>顺着管道成套补</b>，单堵一个洞，水还是从下一道缝漏掉。</p>
+        <p>时序图数得出来：全旅程<b>人机交接约 8–10 次</b>（AI 给 → 人执行 → 报错回灌 → AI 解读 → 人重试…），且<b>编译 / 部署段（P5）交接最密</b>。这是横截面给不出的「协同密度」。</p>
+        <p>每一次交接都是一道<b>信息可能丢失的关口</b>：AI 给的命令带占位、人填错；人回灌的报错不全、AI 解读偏。<b>卡的不是「算子难写」，是这条人机流水线的接口质量</b>——交接越密的地方（P5），翻车越多。</p>
+        <p class="j-fix"><b>怎么改：</b>把<b>交接做成产品的一等公民</b>——AI 主动标「这里要你填什么」、报错能<b>一键完整回灌</b>、每个交接点留 checkpoint。把摩擦从「人自己扛」变成「产品接住」。</p>
       </div>
       <div class="jdemo">
-        <div class="demo-cap">价值链管道 · D 多节漏 vs G 通畅</div>
-        <div class="pipe"><span class="seg mid">搜到</span><span class="seg bad">抓到</span><span class="seg bad">够细</span><span class="seg bad">版本</span><span class="seg bad">锁版</span><span class="seg warn">复现</span></div>
-        <div class="pipe-cap">D：5 节漏（红 / 橙）</div>
-        <div class="pipe"><span class="seg ok">搜到</span><span class="seg ok">抓到</span><span class="seg ok">够细</span><span class="seg ok">版本</span><span class="seg ok">锁版</span><span class="seg ok">复现</span></div>
-        <div class="pipe-cap g">G 迁移：基本通畅</div>
-        <div class="demo-cap" style="margin-top:9px">「怎么改」界面示意 · 版本查询器</div>
-        <div class="vsel">
-          <div class="vsel-row"><span>你的 CANN 版本</span><span class="vsel-dd">8.0.RC3 ▾</span></div>
-          <div class="vsel-out">✓ 给出该版本的 canonical 命令：<br><code>msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp</code><br><span style="color:#888">一个权威页随版本给确切命令，不再多版本号散乱（救 ④⑨）</span></div>
+        <div class="demo-cap">交接热度 · P5 编译部署段最密</div>
+        <div class="hoflow">
+          <div class="hobar"><span class="hophase">P2 检索</span><span class="hophase">P3 生成</span><span class="hophase">P4 核函数</span><span class="hophase hot">P5 编译部署</span><span class="hophase">P6 接入</span></div>
+          <div class="hodots">交接点：● — ● — ● <b>● ● ● ●</b> — ● <br><b>P5 段最密</b>：报错 → AI 解读 → 人重试，来回穿插</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="judge">
-    <div class="j-h">判断 3 · 越到深水区，AI 越是副驾——方向盘始终在人手里</div>
-    <div class="j-one">核心一问：把 AI 自主度拉满，这种深水区的开发能整个交给它吗？</div>
+    <div class="j-h">判断 3 · 体感「前松后紧」：AI 在检索段给虚假信心，落地段把人独自留下</div>
+    <div class="j-one">核心一问：开发者走完这条路，「爽 / 累」曲线长什么样？</div>
     <div class="jbody">
       <div class="jtext">
-        <p>开发者期待「AI 自动搞定」，但深水区的现实相反：越关键的决策（用哪颗芯片、对哪个版本、精度够不够），越是 <b>AI 够不着的本机 / 业务事实</b>——不在任何文档里，只在你的机器和业务里。</p>
-        <p>把自主度滑块拉满、让 AI 接管这些决策，它<b>只能猜</b>：风险不是 AI 不够聪明，是它<b>够不着方向盘</b>。这条线划清了分工：知识可以做得更可抓，但「<b>这步需要人核验</b>」得显式标出来，而不是让 AI 替你默默猜。</p>
+        <p>把旅程当一条体感曲线：<b>前段（检索 / 起草）AI 很能干、很顺</b>，给人「这事 AI 能搞定」的<b>虚假信心</b>；<b>后段（编译 / 部署 / 精度）越来越是人独扛</b>，AI 退成旁边解读报错的副驾。</p>
+        <p>曲线最低点是 <b>A 类决策</b>（soc_version / 版本 / 精度）——AI 够不着本机 / 业务事实、只能猜，恰好都落在后半段：<b>前面越顺，这里落差越大</b>。最坑的不是「AI 不行」，是<b>「先让你以为行、到深水区才发现得自己来」</b>。</p>
+        <p class="j-fix"><b>怎么改：</b>把这条<b>落差曲线显式化</b>——旅程一开始就告诉用户「这条路后段有 3 处只能你来（要本机芯片 / 版本 / 业务阈值）」，<b>别让落差在深水区才砸下来</b>。</p>
       </div>
       <div class="jdemo">
-        <div class="demo-cap">主导权随自主度 · A 类始终够不着</div>
-        <div class="own3">
-          <div class="ownc"><b>① 人主笔</b><div class="dot hu">9 决策全归人</div></div>
-          <div class="ownc"><b>② AI 主写</b><div class="dot hu">决策仍归人</div></div>
-          <div class="ownc"><b>③ 人委派</b><div class="dot ai">决策交 AI</div><div class="dot bad">⚠ A 类 3 个：AI 够不着本机 / 业务事实</div></div>
-        </div>
-        <div class="demo-cap" style="margin-top:9px">「怎么改」界面示意 · A 类决策显式标注</div>
-        <div class="ansui">AI 答案里把需人定的位显式标出来：<br><code>msopgen ... -c ai_core_<b>&lt;soc_version&gt;</b></code><span class="needverify">⚠ 需你核验：本机芯片型号 — 运行 <code>npu-smi info</code> 填入，AI 拿不到、别照抄占位</span></div>
+        <div class="demo-cap">体感弧线 · 前松（AI 能干）→ 后紧（人独扛）</div>
+        <svg viewBox="0 0 240 100" style="width:100%;height:auto">
+          <text x="6" y="16" font-size="9" fill="#1f6b45" font-weight="700">前段 · AI 很顺</text>
+          <text x="120" y="96" font-size="9" fill="#a32d2d" font-weight="700">后段 · 人独扛</text>
+          <path d="M8,30 C70,26 96,44 136,62 S206,86 232,88" fill="none" stroke="#cf6a2e" stroke-width="2.5"/>
+          <circle cx="198" cy="82" r="4.5" fill="#C8102E"/>
+          <text x="118" y="74" font-size="8.5" fill="#a32d2d" font-weight="700">A 类决策（最低点）</text>
+        </svg>
+        <div class="arc-cap">检索段的「顺」是虚假信心：真正的难全压在后段、且是人独扛——只有按时间走一遍才看得出这条落差。</div>
       </div>
     </div>
   </div>
 
-  <div class="cb-h" style="margin-top:14px">行动建议 · 按杠杆排序</div>
+  <div class="cb-h" style="margin-top:14px">行动建议 · Agent / 产品体验侧（供给侧文档站的 ROI 排序见 19）</div>
   <table class="actions">
     <thead><tr><th style="width:58px">优先级</th><th>建议</th><th style="width:84px">对应节点</th><th style="width:150px">预期收益</th></tr></thead>
     <tbody>
-      <tr><td><span class="pri p0">P0</span></td><td>opdevg 等前沿 how-to 页<b>静态化 / 纯文本入口</b></td><td>s3 · ②③</td><td>直接救最致命单点</td></tr>
-      <tr><td><span class="pri p0">P0</span></td><td><b>版本收口</b>：一个 canonical + 配套查询器</td><td>d2 · ④⑨</td><td>翻多格、ROI 断层第一（见 19）</td></tr>
-      <tr><td><span class="pri p1">P1</span></td><td>补<b>带版本号的完整二手</b></td><td>s4 · ⑤⑥</td><td>给检索兜底</td></tr>
-      <tr><td><span class="pri p1">P1</span></td><td>A 类决策<b>显式标注「需人核验」</b></td><td>d1/d2/d3</td><td>降「人委派」档委派风险</td></tr>
+      <tr><td><span class="pri p0">P0</span></td><td>早期失败<b>「响亮化」</b>：AI 抓空显式报「官方没拿到、以下二手」</td><td>判断1 · s3</td><td>截断「一步错步步错」</td></tr>
+      <tr><td><span class="pri p0">P0</span></td><td>人机<b>交接做成一等公民</b>：AI 标需填项 + 报错一键完整回灌</td><td>判断2 · P5</td><td>降交接处信息丢失</td></tr>
+      <tr><td><span class="pri p1">P1</span></td><td><b>「前松后紧」前置告知</b>：旅程开头标后段需人核验的点</td><td>判断3 · A类</td><td>管理预期、不在深水区才暴雷</td></tr>
+      <tr><td><span class="pri p1">P1</span></td><td>供给侧治本（opdevg 静态化 / 版本收口 / 补二手）</td><td>→ 见 19</td><td>把原料做好，所有 AI 工具受益</td></tr>
     </tbody>
   </table>
-  <div class="cb-overall"><b>总论：可用性是任务相关的</b>——越靠采纳漏斗上手侧做得越厚、越深入自研越塌；改进杠杆＝<b>官方页可抓性 + 版本治理 + 二手厚度</b>。（训练 / 推理场景制作中，补齐后再做跨场景综述。）<a href="19_findings_ux_synthesis.html">全 26 任务的规律 + ROI 优先级 →</a></div>
+  <div class="cb-overall"><b>总论：AI 能搬来知识，搬不动你的机器</b>——而且这条路是<b>「前松后紧」</b>的：最坑的不是某个分数低，是<b>早期一次静默失败沿时间放大 + 后段人独自扛</b>。这是只有走一遍旅程才看得出的体感结论。（供给侧文档站怎么治本、全 26 任务 ROI 排序见 <a href="19_findings_ux_synthesis.html">19</a>；训练 / 推理场景制作中。）</div>
 </div>
 
 <a id="s4"></a>
