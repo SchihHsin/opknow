@@ -323,7 +323,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <a id="s1"></a>
 <h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
-<div class="sechint">竖向时序图、<b>4 条生命线（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>；拖滑块看 3 档自主度、<b>悬浮节点看细节、点击固定看完整详情</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：s3 AI 向昇腾社区 <code>web_fetch</code> 官方 how-to，<b>返回红色空箭头「✕ 抓取为空（SPA）」</b>——这是 D 综合分塌到 .41 的现场。拖动时执行/决策的发起方 morph——越自动「人类用户」线越靠边、AI 直接对工具/社区。悬浮 AI/人 生命线名看任务分工·四轴、悬浮图例「消息·涉及 AI」看协同量化。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
+<div class="sechint">竖向时序图、<b>5 条生命线（昇腾官方 ｜ 二手社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>。这是<b>「算子开发场景」全流程</b>：开发一个算子沿时间撞上 <b>5 次搜索（D→M→X→O→L）</b>，每次对应 26 任务里不同的一个、各打穿矩阵不同行。拖滑块看 3 档自主度、<b>悬浮节点看细节</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：5 次搜索里<b>只有写 kernel 的 D（sD）官方真受阻</b>——AI 向昇腾官方 <code>web_fetch</code>，返回红色空箭头「✕ 抓取为空（SPA）」、再转二手社区兜底；后面 M/X/O/L 官方都抓得到、但各有版本/二手/自带的坑。拖动时执行/决策发起方 morph——越自动「人类用户」线越靠边。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
 
 <div class="sctabs" id="sctabs"></div>
 
@@ -342,7 +342,8 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="legendbar">
   <span class="lg" style="font-weight:700;color:#555">生命线：</span>
-  <span class="lg"><i class="lgdot" style="background:#fff;border-color:#C8102E"></i> 昇腾社区</span>
+  <span class="lg"><i class="lgdot" style="background:#fff;border-color:#C8102E"></i> 昇腾官方</span>
+  <span class="lg"><i class="lgdot" style="background:#fff;border-color:#BA7517"></i> 二手社区</span>
   <span class="lg"><i class="lgdot" style="background:#fff;border-color:#6B5BA8"></i> AI</span>
   <span class="lg"><i class="lgdot" style="background:#fff;border-color:#2f3d63"></i> 人类用户</span>
   <span class="lg"><i class="lgdot" style="background:#fff;border-color:#3f7d72"></i> 本机工具</span>
@@ -649,60 +650,60 @@ const SCENARIOS={};
 let NODES, BRANCH, PHASE, PHASE_DETAIL, FLOW, NDETAIL, ARCHFLOW, byId, curScen="D";
 
 /* ===== 场景 D · 自定义算子开发（Ascend C + msOpGen + aclnn → PyTorch）===== */
+/* 场景级旅程：开发一个算子，沿途撞上 5 次搜索（D→M→X→O→L），各打穿矩阵不同行。
+   生命线 5 条：昇腾官方(off) / 二手社区(sec) / AI / 人 / 工具。唯一官方受阻＝写 kernel 的 D。 */
 const D_NODES = [
-  {id:"s1",  xi:0,  lane:"hu", kind:"start",   t:"立项·定目标",
-    meta:"用户主导 · P1", b:"明确要开发一个 Ascend C 自定义算子并接入 PyTorch（msOpGen/aclnn 路线）。需求归人，AI 不介入。"},
-  {id:"s2",  xi:1,  lane:"ai", kind:"search",  t:"web_search 找方案",
-    meta:"Agent 自主 · P2", b:"模型自主拆子目标（官方 how-to / 脚手架 / PyTorch 绑定）并发起检索。实测命中：知乎、ai6s.net、MindSpore 官方、CSDN×3、华为云 bbs。官方 hiascend 未置顶。"},
-  {id:"s3",  xi:2,  lane:"ai", kind:"fetch",   blocked:true, t:"web_fetch 官方 how-to",
-    meta:"Agent 自主 · P2 · 受阻", b:"抓 hiascend atlas_ascendc_10_0006（devguide/opdevg/ 子树）。", blk:"实测受阻：SPA 页，只回导航 + meta，参数表 / 完整命令正文抓不到。这是 26 任务里唯一「SPA 短板真正咬到结果」的格。"},
-  {id:"s4",  xi:3,  lane:"ai", kind:"search",  t:"拼二手 + 自带知识",
-    meta:"Agent 自主 · P2", b:"官方受阻后转 MindSpore 2.3.1 教程 + CSDN「AscendC 从入门到精通」+ 自带知识，合成步骤骨架。二手薄、且多扎堆 CSDN。"},
-  {id:"dR",  xi:0,  lane:"hu", kind:"decision",t:"决策：选开发路线",
-    meta:"用户决定 · P2 · 技术路线（AI 建议·用户拍板）", b:"AI 给出两条实测路线：aclnn 简易工程（-f aclnn，atlas_ascendc_10_0101）vs 完整自定义算子工程（msopgen + add_custom.json）。AI 两条都能讲，但选哪条取决于算子复杂度与需要的控制粒度。"},
-  {id:"s5",  xi:4,  lane:"ai", kind:"draft",   t:"给 msopgen 命令 + json",
-    meta:"Agent 自主 · P2→交付", b:"输出步骤骨架：环境(CANN≥7.0.RC1)→ msopgen gen -i add_custom.json -c ai_core_&lt;soc&gt; -lan cpp 生成工程。标注 soc_version 需用户核验。end_turn。"},
-  {id:"dP",  xi:0,  lane:"hu", kind:"decision",t:"决策：算子原型 / dtype·format",
-    meta:"用户决定 · P3 · 技术路线（AI 建议·用户拍板）", b:"定 add_custom.json 的算子原型：输入输出个数、dtype（fp16 / fp32）、format（ND / NZ）。AI 给模板，但实际类型取决于上游模型张量。实测 json 为 x/y/z fp16 ND。"},
-  {id:"s6",  xi:5,  lane:"hu", kind:"run",     t:"本地运行 msopgen 生成工程",
-    meta:"人机协同 · P3", b:"用户在本机执行 msopgen，生成算子工程骨架（host/kernel/Tiling 目录）。"},
-  {id:"d1",  xi:6,  lane:"hu", kind:"decision",t:"决策：选 soc_version",
-    meta:"用户决定 · P3 · 线下核验", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1，决定 ai_core_Ascend910B1。"},
-  {id:"s7",  xi:7,  lane:"ai", kind:"draft",   t:"起草核函数 + Tiling",
-    meta:"人机协同 · P4", b:"AI 起草 Compute 核函数与三级 Tiling 框架（GM→Local→寄存器 的 Copy-In/Compute/Copy-Out 三段流水线）。"},
-  {id:"dT",  xi:0,  lane:"hu", kind:"decision",t:"决策：Tiling 策略（算子调优）",
-    meta:"用户决定 · P4 · 技术路线 · 算子调优（AI 建议·用户拍板）", b:"<b>这一步＝算子级性能调优。</b>核函数性能的核心决策：单核 vs 多核切分、每核 block 数、是否 double buffer 重叠搬运与计算。AI 给三级 Tiling 框架，但切分粒度取决于实际输入 shape 与数据量。"},
-  {id:"d2",  xi:8,  lane:"hu", kind:"decision",t:"决策：版本对齐",
-    meta:"用户决定 · P4", b:"确认本机 CANN 版本。实测版本散乱：80RC2alpha001 / 80RC3 / 82RC1alpha003，json 字段与目录路径随版本变。"},
-  {id:"s8",  xi:9,  lane:"hu", kind:"run",     t:"build.sh 编包 → 部署 OPP",
-    meta:"人机协同 · P5", b:"bash build.sh 生成 custom_opp_*.run，部署到 OPP vendors/customize。"},
-  {id:"s9",  xi:10, lane:"ai", kind:"draft",   blocked:true, t:"编译报错 · AI 解读",
-    meta:"人机协同 · P5 · 卡点", b:"编包 / 部署常因版本、soc_version、算子注册不匹配报错。", blk:"卡点：用户把报错原文回灌，AI 解读并给改法。报错原文质量直接决定解读准确度。"},
-  {id:"dF",  xi:0,  lane:"hu", kind:"decision",t:"决策：报错修复方向",
-    meta:"用户决定 · P5 · 技术路线（AI 建议·用户拍板）", b:"编译 / 部署报错后判断改哪里：add_custom.json 字段、算子注册信息、CANN 版本对齐、还是 Tiling。AI 解读报错给候选原因，用户对照本机实际定位。"},
-  {id:"s10", xi:11, lane:"hu", kind:"run",     t:"改后重试 → 通过",
-    meta:"人机协同 · P5", b:"按 AI 给的改法修正，重新编译部署，通过。"},
-  {id:"s11", xi:12, lane:"ai", kind:"draft",   t:"给 TORCH_LIBRARY / aclnn 绑定",
-    meta:"人机协同 · P6", b:"AI 给 cpp_extension 方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL / PYBIND11_MODULE 接 PyTorch，调 autogen 的 aclnn API。"},
-  {id:"dB",  xi:0,  lane:"hu", kind:"decision",t:"决策：PyTorch 绑定方式",
-    meta:"用户决定 · P6 · 技术路线（AI 建议·用户拍板）", b:"AI 给三种接 PyTorch 的方式：TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。"},
-  {id:"s12", xi:13, lane:"hu", kind:"run",     t:"集成进 PyTorch",
-    meta:"人机协同 · P6", b:"用户落地集成代码，编译扩展，import 验证算子可被 torch 调用。"},
-  {id:"s13", xi:14, lane:"hu", kind:"run",     t:"运行测试",
-    meta:"用户主导 · P7", b:"构造输入，运行算子，得到输出。"},
-  {id:"d3",  xi:15, lane:"hu", kind:"decision",t:"决策：精度是否达标",
-    meta:"用户决定 · P7 · 验收", b:"与 CPU/GPU 参考输出逐元素比对。达标→交付；不达标→驳回回 s7 重走 P4–P7。"},
-  {id:"dQ",  xi:0,  lane:"hu", kind:"decision",t:"决策：精度不达标修复方向",
-    meta:"用户决定 · P7 · 技术路线（AI 建议·用户拍板）", b:"精度不达标时定修复方向：误差来自搬运精度、Tiling 边界、还是 dtype？改哪最划算。AI 给候选方向，用户结合比对结果定位、驳回回 P4。"},
-  {id:"s14", xi:16, lane:"hu", kind:"deliver", t:"交付",
-    meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。AI 仅辅助结果汇总 / 格式整理。"},
+  {id:"n1",   lane:"hu", kind:"start",   t:"立项·开发算子接 PyTorch",
+    meta:"用户主导 · P1", b:"目标：开发一个 Ascend C 自定义算子并接入 PyTorch。一次开发会沿时间撞上多次搜索，每次对应 26 任务里不同的一个。"},
+  {id:"sD",   lane:"ai", kind:"fetch",   blocked:true, t:"🔍 检索 D·自定义算子 how-to",
+    meta:"Agent 自主 · P2 · 官方受阻", b:"写核函数前搜「怎么写自定义算子」。web_fetch 官方 how-to（devguide/opdevg SPA）正文抓取为空——<b>这是整条旅程唯一官方真受阻的一搜</b>。", blk:"实测受阻：SPA 页只回导航 + meta；26 任务里唯一「SPA 短板真正咬到结果」的格。"},
+  {id:"sD2",  lane:"ai", kind:"search",  t:"官方受阻 → 转二手拼答案",
+    meta:"Agent 自主 · P2", b:"官方抓不到，转 MindSpore 2.3.1 教程 + CSDN「AscendC 入门」+ 自带知识合成骨架。二手薄、扎堆 CSDN。"},
+  {id:"gD",   lane:"ai", kind:"draft",   t:"给 msopgen / 编包骨架",
+    meta:"Agent 自主 · P2→交付", b:"输出 msopgen gen ... 生成工程的步骤骨架，标注 soc_version 需核验。"},
+  {id:"eD",   lane:"hu", kind:"run",     t:"本地 msopgen + 写核函数",
+    meta:"人机协同 · P2", b:"用户在本机生成工程、写 Compute 核函数。"},
+  {id:"dSoc", lane:"hu", kind:"decision",t:"决策：选 soc_version",
+    meta:"用户决定 · P2 · 非人不可", b:"AI 给不了本机芯片型号。用户 npu-smi info 查到 Ascend910B1。"},
+  {id:"sM",   lane:"ai", kind:"fetch",   t:"🔍 检索 M·动态 shape / Tiling",
+    meta:"Agent 自主 · P3 · 官方可抓", b:"写 Tiling 时搜「动态 shape 怎么切」。opdevg Tiling 正文页 10_0047 ssr 可抓——和 D 同子树却抓得到。版本仍散、自带弱。"},
+  {id:"gM",   lane:"ai", kind:"draft",   t:"给三级 Tiling 框架",
+    meta:"Agent 自主 · P3", b:"给 Copy-In/Compute/Copy-Out 三段流水线框架，留切分占位。"},
+  {id:"dTil", lane:"hu", kind:"decision",t:"决策：Tiling 策略（算子调优）",
+    meta:"用户决定 · P3 · 技术路线 · 算子调优", b:"<b>这一步＝算子级性能调优。</b>单核/多核切分、block 数、是否 double buffer，按本机实际 shape 定。"},
+  {id:"eC",   lane:"hu", kind:"run",     t:"编包·部署 → 遇内存越界报错",
+    meta:"人机协同 · P4 · 报错", b:"bash build.sh 编包、部署 OPP，运行时遇内存越界报错。"},
+  {id:"sX",   lane:"ai", kind:"fetch",   t:"🔍 检索 X·内存越界 / msSanitizer",
+    meta:"Agent 自主 · P4 · 官方可抓", b:"搜「内存越界怎么定位」。官方 msSanitizer 文档 ③5 满分可抓——但二手仅 1 条、自带弱。"},
+  {id:"gX",   lane:"ai", kind:"draft",   t:"给 msSanitizer 用法",
+    meta:"Agent 自主 · P4", b:"给 msSanitizer 命令与读法。"},
+  {id:"eX",   lane:"hu", kind:"run",     t:"定位 + 修内存越界",
+    meta:"人机协同 · P4", b:"用 msSanitizer 定位越界、修核函数。"},
+  {id:"sO",   lane:"ai", kind:"fetch",   t:"🔍 检索 O·注册与框架集成",
+    meta:"Agent 自主 · P5 · 官方可抓", b:"接 PyTorch 时搜「算子怎么注册集成」。doc_center SSR 镜像可抓。"},
+  {id:"gO",   lane:"ai", kind:"draft",   t:"给 TORCH_LIBRARY 绑定",
+    meta:"Agent 自主 · P5", b:"给 cpp_extension：TORCH_LIBRARY 注册、调 aclnn。"},
+  {id:"eO",   lane:"hu", kind:"run",     t:"集成 + 编译扩展",
+    meta:"人机协同 · P5", b:"落地集成代码、编译扩展、import 验证。"},
+  {id:"dVer", lane:"hu", kind:"decision",t:"决策：版本对齐",
+    meta:"用户决定 · P5 · 非人不可", b:"确认本机 CANN 版本。实测版本散乱、目录 URL 会漂。"},
+  {id:"eT",   lane:"hu", kind:"run",     t:"跑测试，精度不对",
+    meta:"人机协同 · P6", b:"构造输入跑算子，与 CPU/GPU 参考比对，精度不达标。"},
+  {id:"sL",   lane:"ai", kind:"fetch",   t:"🔍 检索 L·算子精度排查",
+    meta:"Agent 自主 · P6 · 官方可抓", b:"搜「算子精度怎么排查」。官方精度比对文档可抓，版本仍是短板。"},
+  {id:"gL",   lane:"ai", kind:"draft",   t:"给精度排查方法",
+    meta:"Agent 自主 · P6", b:"给逐元素比对、定位误差来源的方法。"},
+  {id:"dAcc", lane:"hu", kind:"decision",t:"决策：精度是否达标",
+    meta:"用户决定 · P6 · 非人不可 · 验收", b:"按业务误差阈值判定。达标交付、不达标回改。"},
+  {id:"nEnd", lane:"hu", kind:"deliver", t:"交付",
+    meta:"用户主导 · P7", b:"算子开发完成、接入 PyTorch、精度达标，交付。"},
 ];
-/* 分支（用户脱离 AI 的独立动作） */
+/* 分支（用户脱离 AI 的独立动作）——目标都是昇腾官方 */
 const D_BRANCH = [
-  {id:"b1", from:"s3", xi:2,  t:"浏览器自查 SPA 页",
-    b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。脱离 AI 的独立检索。"},
-  {id:"b2", from:"d2", xi:8,  t:"Gitee samples 仓求证",
-    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本的可运行样例。外部求证、独立于 AI。"},
+  {id:"b1", from:"sD",   t:"浏览器自查官方 SPA 页",
+    b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。"},
+  {id:"b2", from:"dVer", t:"Gitee samples 仓求证",
+    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本样例。"},
 ];
 /* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
 const OWNER = [
@@ -714,12 +715,12 @@ const OWNER = [
 /* 阶段色带 */
 const D_PHASE = [
   {a:0, b:0,  n:"P1 立项"},
-  {a:1, b:4,  n:"P2 检索方案"},
-  {a:5, b:8,  n:"P3 环境·生成"},
-  {a:9, b:11, n:"P4 核函数·Tiling"},
-  {a:12,b:15, n:"P5 编译·部署"},
-  {a:16,b:18, n:"P6 接入 PyTorch"},
-  {a:19,b:22, n:"P7 运行·精度·交付"},
+  {a:1, b:5,  n:"P2 写核函数·检索 D"},
+  {a:6, b:8,  n:"P3 写 Tiling·检索 M"},
+  {a:9, b:12, n:"P4 编译内存·检索 X"},
+  {a:13,b:16, n:"P5 接框架·检索 O"},
+  {a:17,b:20, n:"P6 精度·检索 L"},
+  {a:21,b:21, n:"P7 交付"},
 ];
 
 /* ===== 共享常量 / 工具 ===== */
@@ -880,23 +881,23 @@ function drawBarV(sel,d){
 
 /* ===================== 竖向视图 · 4 参与者真·时序图（时间自上而下） =====================
    每步＝参与者间一条消息（横向箭头，标题在箭头上方）；受阻＝红色空返回。
-   生命线左→右：昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具。决策＝落在执行者生命线上的菱形。
-   FLOW：frm/to 为参与者；"exec"＝执行方(Vibe 档起转 AI)，随滑块 morph（人靠边）。 */
+   生命线左→右：昇腾官方(off) ｜ 二手社区(sec) ｜ AI ｜ 人类用户 ｜ 本机工具。决策＝落在执行者生命线上的菱形。
+   FLOW：frm/to 为参与者；"exec"＝执行方(Vibe 档起转 AI)，随滑块 morph（人靠边）。检索 = AI→官方(受阻则→二手)。 */
 const D_FLOW={
-  s1:{frm:"hu",  to:"ai"},                 s2:{frm:"ai",  to:"comm"},
-  s3:{frm:"ai",  to:"comm", blocked:true}, s4:{frm:"ai",  to:"comm"},
-  s5:{frm:"ai",  to:"exec"},               s6:{frm:"exec",to:"tool"},
-  s7:{frm:"ai",  to:"exec"},               s8:{frm:"exec",to:"tool"},
-  s9:{frm:"exec",to:"ai"},                 s10:{frm:"exec",to:"tool"},
-  s11:{frm:"ai", to:"exec"},               s12:{frm:"exec",to:"tool"},
-  s13:{frm:"exec",to:"tool"},              s14:{frm:"hu", to:"self"}
+  n1:{frm:"hu",to:"ai"},
+  sD:{frm:"ai",to:"off", blocked:true}, sD2:{frm:"ai",to:"sec"}, gD:{frm:"ai",to:"exec"}, eD:{frm:"exec",to:"tool"},
+  sM:{frm:"ai",to:"off"}, gM:{frm:"ai",to:"exec"},
+  eC:{frm:"exec",to:"tool"}, sX:{frm:"ai",to:"off"}, gX:{frm:"ai",to:"exec"}, eX:{frm:"exec",to:"tool"},
+  sO:{frm:"ai",to:"off"}, gO:{frm:"ai",to:"exec"}, eO:{frm:"exec",to:"tool"},
+  eT:{frm:"exec",to:"tool"}, sL:{frm:"ai",to:"off"}, gL:{frm:"ai",to:"exec"},
+  nEnd:{frm:"hu",to:"self"}
 };
 function renderV(){
   const phX=4, phW=70, owX=78, owW=44;
-  const LX={comm:188, ai:372, hu:556, tool:744};
-  const PCOL={comm:"#C8102E", ai:"#6B5BA8", hu:"#2f3d63", tool:"#3f7d72"};
-  const PNAME={comm:"昇腾社区", ai:"AI（Agent）", hu:"人类用户", tool:"本机工具"};
-  const vTop=86, dyV=54, Wv=820;
+  const LX={sec:185, off:350, ai:515, hu:680, tool:845};
+  const PCOL={off:"#C8102E", sec:"#BA7517", ai:"#6B5BA8", hu:"#2f3d63", tool:"#3f7d72"};
+  const PNAME={off:"昇腾官方", sec:"二手社区", ai:"AI（Agent）", hu:"人类用户", tool:"本机工具"};
+  const vTop=86, dyV=54, Wv=920;
   const Y = xi => vTop + xi*dyV;
   const Hv = Y(NODES.length-1) + 70;
   const exec = ()=> curLvl>=1 ? "ai" : "hu";        // 执行方：Vibe 档起转 AI
@@ -930,7 +931,7 @@ function renderV(){
   });
 
   /* 4 条参与者生命线 + 列头 */
-  ["comm","ai","hu","tool"].forEach(k=>{
+  ["sec","off","ai","hu","tool"].forEach(k=>{
     const x=LX[k];
     svg.append("line").attr("x1",x).attr("x2",x).attr("y1",vTop-34).attr("y2",Hv-26)
       .attr("stroke","#e3e3e3").attr("stroke-width",1.5);
@@ -999,9 +1000,9 @@ function renderV(){
   /* 用户独立分支 b1/b2 ＝ 人 → 昇腾社区 的独立消息（仅档①） */
   if(curLvl===0) BRANCH.forEach(br=>{
     const src=byId[br.from], y=Y(src.xi)+26;
-    svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",LX.comm+3).attr("y2",y)
+    svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",LX.off+3).attr("y2",y)
       .attr("stroke","#2f3d63").attr("stroke-width",2).attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.85);
-    svg.append("text").attr("x",(LX.hu+LX.comm)/2).attr("y",y-5).attr("text-anchor","middle")
+    svg.append("text").attr("x",(LX.hu+LX.off)/2).attr("y",y-5).attr("text-anchor","middle")
       .attr("font-size",9.5).attr("fill","#2f3d63").attr("font-weight",600).text(br.id+" "+br.t)
       .style("cursor","pointer")
       .on("mousemove",(e)=>showTip(e,{id:br.id,t:br.t,meta:"用户独立分支 · 脱离 AI",b:br.b})).on("mouseleave",hideTip);
@@ -1207,13 +1208,13 @@ const D_NDETAIL={
 };
 /* 阶段折叠详情（§3 主导权边界表）：主导方随滑块 phaseOwner 实时算、bound=边界说明（人主笔档为例） */
 const D_PHASE_DETAIL=[
-  {nodes:"s1", bound:"定目标「开发一个自定义算子并接入 PyTorch」——AI 不介入，需求归人。"},
-  {nodes:"s2–s4 / dR", bound:"AI 自主决定搜什么、抓哪个 URL、几轮够、何时转二手、如何拼步骤骨架；用户在 <b>dR 选开发路线</b>（aclnn 简易 vs 完整工程）。AI 自主多轮迭代最密的区段。"},
-  {nodes:"s5 / dP / s6 / d1", bound:"AI 给命令 + json 模板，用户定 <b>dP 算子原型·dtype/format</b>、跑 msopgen；<b>d1 soc_version 等本机事实只有用户能填</b>（线下 npu-smi 核验）。"},
-  {nodes:"s7 / dT / d2", bound:"AI 起草核函数与三级 Tiling 框架；用户做 <b>dT Tiling 策略</b>（切分 / double buffer）与 <b>d2 版本对齐</b>并据本机修正。"},
-  {nodes:"s8 / s9 / dF / s10", bound:"用户执行编包 / 部署，AI 解读报错，用户做 <b>dF 报错修复方向</b>；交接最密集，谁也无法独立完成。"},
-  {nodes:"s11 / dB / s12", bound:"AI 给三种绑定方式，用户做 <b>dB 绑定方式</b>（TORCH_LIBRARY / pybind / aclnn）并落地集成。"},
-  {nodes:"s13 / d3 / dQ / s14", bound:"运行测试、<b>d3 精度由人判定</b>（比对参考输出）、不达标走 <b>dQ 修复方向</b>回 P4、最终交付——AI 仅辅助汇总。"}
+  {nodes:"n1", bound:"定目标「开发算子接 PyTorch」——一次开发沿时间撞上多次搜索。"},
+  {nodes:"sD–dSoc", bound:"写核函数：<b>检索 D·自定义算子 how-to——整条旅程唯一官方真受阻的一搜（.41）</b>，转二手兜底；soc_version 非人不可。"},
+  {nodes:"sM / dTil", bound:"写 Tiling：<b>检索 M</b>（官方可抓 .63，和 D 同子树却抓得到）；Tiling 策略＝算子调优。"},
+  {nodes:"eC–eX", bound:"编译遇内存越界：<b>检索 X</b>（msSanitizer 官方满分可抓 .74，但二手薄）。"},
+  {nodes:"sO–dVer", bound:"接框架：<b>检索 O</b>（注册集成 .72）；版本对齐非人不可。"},
+  {nodes:"eT–dAcc", bound:"精度排查：<b>检索 L</b>（.69）；精度达标由人按业务阈值判定。"},
+  {nodes:"nEnd", bound:"交付。"}
 ];
 const OWN_NAME={hu:"用户主导",ai:"Agent 自动化主导",co:"人机协同"};
 function phaseBodyHtml(i, withFull){
@@ -1277,26 +1278,19 @@ function pinCoopTip(e){ pinned=true; tip.className="pinned"; tip.innerHTML=coopT
 (function(){ const el=document.getElementById("lgHandoff"); if(el){ el.style.cursor="help"; el.addEventListener("mousemove",showCoopTip); el.addEventListener("mouseleave",hideTip); el.addEventListener("click",pinCoopTip); } })();
 /* 受阻 / 卡点节点的「链路图」——把 §4.3 agent 架构画成迷你流程，标红出问题的环节 */
 const D_ARCHFLOW={
-  s3:{ title:"链路图 · 官方 how-to 在哪一环受阻",
+  sD:{ title:"链路图 · 写 kernel 的官方 how-to 在哪一环受阻",
     steps:[
-      {s:"ok",  t:"③ 工具路由",       note:"决定抓官方 how-to 页"},
-      {s:"err", t:"web_fetch 官方页",  note:"SPA 子树 devguide/opdevg/，只回导航 + meta，<b>正文抓取为空</b>——出问题就在这一步"},
+      {s:"ok",  t:"③ 工具路由",       note:"决定抓官方 how-to 页（devguide/opdevg）"},
+      {s:"err", t:"web_fetch 官方页",  note:"SPA 子树只回导航 + meta，<b>正文抓取为空</b>——出问题就在这一步（5 搜索里唯一）"},
       {s:"fix", t:"④ 研判",            note:"判定证据不足 / 官方受阻，<b>不凭记忆杜撰</b>"},
-      {s:"fix", t:"⑤ 遇阻处理",        note:"转二手 + 自带知识（s4）+ 让用户开浏览器人眼自查（分支 b1）"}
-    ]},
-  s9:{ title:"链路图 · 编译报错在哪一环被接住",
-    steps:[
-      {s:"err", t:"本机编译 / 部署",   note:"build.sh / 部署 OPP 因版本·soc_version·算子注册不匹配报错——<b>本机事实，不在 AI 检索可得范围</b>"},
-      {s:"ok",  t:"报错回灌 messages", note:"用户把报错原文交回 AI（原文质量决定解读准确度）"},
-      {s:"fix", t:"④ 研判",            note:"重新解读报错日志、定位原因"},
-      {s:"fix", t:"⑥ 收敛 → 给改法",   note:"AI 给改法 → 用户改后重试（s10）通过"}
+      {s:"fix", t:"⑤ 遇阻处理",        note:"转二手社区（sD2）+ 自带知识 + 让用户开浏览器人眼自查（分支 b1）"}
     ]}
 };
 /* ===== 注册场景 D + 切换机制 ===== */
 SCENARIOS.D={
-  key:"D", label:"D 算子开发", role:"算子开发者", grade:".41 低",
+  key:"D", label:"算子开发场景", role:"算子开发者", grade:"串 5 搜索 · 最弱 .41",
   NODES:D_NODES, BRANCH:D_BRANCH, PHASE:D_PHASE, PHASE_DETAIL:D_PHASE_DETAIL,
-  FLOW:D_FLOW, NDETAIL:D_NDETAIL, ARCHFLOW:D_ARCHFLOW, A:["d1","d2","d3"],
+  FLOW:D_FLOW, NDETAIL:D_NDETAIL, ARCHFLOW:D_ARCHFLOW, A:["dSoc","dVer","dAcc"],
   dscore:{
     META:[
       ["①","官方可发现","s2：web_search 命中二手，官方 hiascend 未置顶"],
@@ -1318,7 +1312,7 @@ SCENARIOS.D={
     insight:`26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。`,
     next:`① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。`
   },
-  nodeScore:{ s2:"①2", s3:"②2 ③受阻", s4:"⑤3 ⑥2 ⑦2 ⑧1", d2:"④2 ⑨2", s8:"⑩3" }
+  nodeScore:{ sD:"→矩阵 D .41", sD2:"⑤3⑥2", sM:"→矩阵 M .63", sX:"→矩阵 X .74", sO:"→矩阵 O .72", sL:"→矩阵 L .69", dSoc:"④⑨ 本机", dVer:"④2⑨2" }
 };
 /* ===== 场景 G · CUDA→昇腾迁移（迁移工程师 / 顺畅对照）=====
    实测：g2/g3 检索段；g3 官方自动迁移页 ssr 可抓且详尽——与 D 的 s3 受阻正好相反。 */
