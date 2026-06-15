@@ -102,6 +102,26 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .hoflow .hodots{font-size:10.5px;color:#555;line-height:1.6}
 .hoflow .hodots b{color:#a32d2d}
 .arc-cap{font-size:10px;color:#888;line-height:1.45;margin-top:5px}
+.lofi{border:1.5px dashed #b8bdc8;border-radius:8px;overflow:hidden;margin-top:7px;background:#fafbfc}
+.lofi-bar{font-size:10px;font-weight:700;color:#777;padding:5px 8px;background:#eef0f4;border-bottom:1px dashed #ccd2dd}
+.lofi-body{padding:8px 9px;font-size:10.5px;line-height:1.65;color:#333}
+.lofi-body p{margin:4px 0}
+.lofi-warn{background:#fbeaea;border:1px solid #f0c0c0;border-radius:5px;padding:5px 7px;color:#a32d2d;font-weight:600;margin-bottom:6px;font-size:10px}
+.lofi .src{font-size:8.5px;font-weight:700;padding:1px 5px;border-radius:8px;margin-left:4px;white-space:nowrap}
+.lofi .src.s-off{background:#fbeaea;color:#a32d2d}
+.lofi .src.s-2{background:#fcefc7;color:#7a5d0a}
+.lofi .src.s-own{background:#fbe0ce;color:#9a5a2a}
+.lofi .fillchip{background:#e7eefb;border:1px dashed #9bb3e0;border-radius:5px;padding:1px 6px;font-size:9px;color:#2f3d63;font-weight:700}
+.lofi-input{margin-top:7px;border:1px dashed #b8bdc8;border-radius:6px;padding:6px 8px;font-size:9.5px;color:#999;display:flex;justify-content:space-between;align-items:center;gap:6px}
+.lofi-btn{background:#2f3d63;color:#fff;border-radius:5px;padding:3px 8px;font-size:9px;font-weight:700;white-space:nowrap}
+.rm{display:flex;align-items:center;gap:3px;flex-wrap:wrap;font-size:8.5px}
+.rm .rm-step{padding:5px 5px;border-radius:5px;text-align:center;line-height:1.25;font-weight:700}
+.rm .rm-step small{font-weight:400;opacity:.85;font-size:8px}
+.rm .rm-step.ai{background:#efe0fa;color:#6b3aa0}
+.rm .rm-step.mix{background:#eef1f6;color:#555}
+.rm .rm-step.need{background:#fbeaea;color:#a32d2d;border:1px solid #f0c0c0}
+.rm .rm-arr{color:#bbb}
+.rm-cap{font-size:9.5px;color:#a32d2d;margin-top:6px;font-weight:600;line-height:1.45}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -358,6 +378,15 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
         <div class="demo-cap">时间因果 · 早期塌 → 全链路放大</div>
         <div class="caus"><span class="cstep bad">s3 静默抓取为空</span><span class="carr">→</span><span class="cstep tint">s5 命令</span><span class="carr">→</span><span class="cstep tint">s7 核函数</span><span class="carr">→</span><span class="cstep boom">s8 编译报错</span></div>
         <div class="caus-cap">一次静默失败，沿时间放大成全链路不可靠——这是 19 的横截面看不出的</div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：抓不到就「响亮」标出来</div>
+        <div class="lofi">
+          <div class="lofi-bar">AI 助手 · 回答</div>
+          <div class="lofi-body">
+            <div class="lofi-warn">⚠ 官方 how-to 页未取得（SPA 抓取为空）；以下据二手 + 自带知识，请核对官方</div>
+            <p>步骤一：msopgen gen …<span class="src s-2">二手</span></p>
+            <p>步骤二：build.sh 编包 …<span class="src s-own">自带知识</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -376,6 +405,14 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
         <div class="hoflow">
           <div class="hobar"><span class="hophase">P2 检索</span><span class="hophase">P3 生成</span><span class="hophase">P4 核函数</span><span class="hophase hot">P5 编译部署</span><span class="hophase">P6 接入</span></div>
           <div class="hodots">交接点：● — ● — ● <b>● ● ● ●</b> — ● <br><b>P5 段最密</b>：报错 → AI 解读 → 人重试，来回穿插</div>
+        </div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：交接点做成产品能力</div>
+        <div class="lofi">
+          <div class="lofi-bar">AI 助手 · 交接点</div>
+          <div class="lofi-body">
+            <p>运行：<code>msopgen … -c ai_core_</code><span class="fillchip">▢ 需你填 soc_version</span></p>
+            <div class="lofi-input"><span>遇到报错？粘到这里，自动回灌给我解读</span><span class="lofi-btn">一键回灌 ⟳</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -400,6 +437,20 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
           <text x="118" y="74" font-size="8.5" fill="#a32d2d" font-weight="700">A 类决策（最低点）</text>
         </svg>
         <div class="arc-cap">检索段的「顺」是虚假信心：真正的难全压在后段、且是人独自承担——只有按时间走一遍才看得出这条落差。</div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：开始前先给路线图</div>
+        <div class="lofi">
+          <div class="lofi-bar">开始前 · 本任务路线预览</div>
+          <div class="lofi-body">
+            <div class="rm">
+              <span class="rm-step ai">检索·起草<br><small>AI 主导</small></span><span class="rm-arr">→</span>
+              <span class="rm-step ai">生成工程<br><small>AI</small></span><span class="rm-arr">→</span>
+              <span class="rm-step need">⚠ 选芯片<br><small>需你来</small></span><span class="rm-arr">→</span>
+              <span class="rm-step mix">编译·部署<br><small>协同</small></span><span class="rm-arr">→</span>
+              <span class="rm-step need">⚠ 版本·精度<br><small>需你来</small></span>
+            </div>
+            <div class="rm-cap">前段 AI 顺，后段有 3 处只能你亲自来——开始就告知，不到深水区才暴露</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
