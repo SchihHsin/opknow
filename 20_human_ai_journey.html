@@ -376,7 +376,7 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
   <span class="lg"><i class="lgline" style="border-top:2px dashed #C8102E"></i> 受阻·空返回 ✕</span>
   <span class="lg"><i class="lgdiaA"></i> 决策·A 非人不可</span>
   <span class="lg"><i class="lgdiaB"></i> 决策·B 技术路线</span>
-  <span class="lg"><i class="lgline dash"></i> 用户独立分支（人→社区）</span>
+  <span class="lg"><i class="lgline dash"></i> 用户独立分支（人→社区，悬浮看人用社区撞到的真实摩擦）</span>
   <span class="lg"><b style="color:#bb2236">①②③…</b> 节点旁红色小字＝该步对应的<b>矩阵指标分</b>（打穿到热力矩阵）</span>
 </div>
 <div class="ownleg">
@@ -874,9 +874,9 @@ const D_NODES = [
 /* 分支（用户脱离 AI 的独立动作）——目标都是昇腾官方 */
 const D_BRANCH = [
   {id:"b1", from:"sD",   t:"浏览器自查官方 SPA 页",
-    b:"AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容。"},
+    b:`AI fetch 受阻时，用户开浏览器人眼看渲染后正文，或转去社区自助——人能看到 AI 抓不到的内容。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带字符上限（约 100 字），贴一整段报错会被<b>截断</b>；<br>· 想去论坛提问，<b>发帖需登录华为账号</b>（门槛）；<br>· 好在论坛按产品线分版（综合 / Ascend C / CANN…）、另有集中的 <b>AscendFAQ</b>，自助定位还算准。</div>`},
   {id:"b2", from:"dVer", t:"Gitee samples 仓求证",
-    b:"版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本样例。"},
+    b:`版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本样例。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究）</span>· 想搜博客 / 帖子佐证版本，昇腾内容<b>SEO 偏弱、海外搜不到</b>、博客入口还埋在开发者中心二级；<br>· Gitee 官方 samples 仓 + 按产品线分版的论坛，定位倒是准。</div>`},
 ];
 /* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
 const OWNER = [
@@ -1664,11 +1664,11 @@ const TR_NODES=[
 ];
 const TR_BRANCH=[
   {id:"b1", from:"dVerT", to:"off", t:"查官方版本配套表对齐",
-    b:"版本不确定时，用户去 hiascend 官方版本配套表 / Gitee 仓对齐 torch_npu 与 CANN 版本。"},
+    b:`版本不确定时，用户去 hiascend 官方版本配套表 / Gitee 仓对齐 torch_npu 与 CANN 版本。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带<b>字符上限（约 100 字）</b>，长查询 / 报错会被截断；<br>· 好在配套问题多能在<b>集中的 AscendFAQ</b> 自助查到。</div>`},
   {id:"b2", from:"dTopo", to:"off", t:"Gitee 找多卡训练样例",
-    b:"多卡拓扑 / ranktable 不确定时，用户去 Gitee 昇腾官方 samples 仓找多卡训练样例对齐。"},
+    b:`多卡拓扑 / ranktable 不确定时，用户去 Gitee 昇腾官方 samples 仓找多卡训练样例对齐。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究）</span>· 想去论坛问拓扑，<b>发帖需登录华为账号</b>；<br>· 论坛按产品线分版（MindSpeed / CANN…）定位准、Gitee 样例可直接照抄。</div>`},
   {id:"b3", from:"eP", to:"sec", t:"CSDN / 华为云找 OOM 实战贴",
-    b:"撞显存 OOM 时，用户也会自己去 CSDN / 华为云开发者社区翻实战经验贴——训练里人和二手社区也有直接交互。"},
+    b:`撞显存 OOM 时，用户也会自己去 CSDN / 华为云开发者社区翻实战经验贴——训练里人和二手社区也有直接交互。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究）</span>· 官方搜不到就转二手，但昇腾二手<b>SEO 一般、内容偏同质</b>（扎堆 CSDN）；<br>· 华为云开发者社区 bbs 的实战贴能整页读到，是有用补充。</div>`},
 ];
 const TR_PHASE=[
   {a:0, b:0,  n:"P1 立项"},
