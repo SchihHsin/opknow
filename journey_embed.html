@@ -321,6 +321,16 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 .deliv:last-child{border-bottom:none}
 .deliv .dn{flex:none;width:30px;height:30px;line-height:30px;text-align:center;border-radius:8px;background:#2f3d63;color:#fff;font-weight:900;font-size:14px}
 </style>
+<style id="embed-only">
+/* 仅作为 deck 第 8 页 iframe 嵌入：只显示「滑块 + 时序图 + 图例」，其余全部隐藏（元素留在 DOM，避免 JS 取 null） */
+.pagenav,.toc{display:none!important}
+body{padding:12px 16px!important}
+.wrap{max-width:980px}
+.wrap>h1,.subtitle,.sechint,.sctabs{display:none!important}
+.wrap>h2{display:none!important}
+.ownleg ~ *{display:none!important}
+.chartwrap{margin:6px auto 0}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -545,7 +555,6 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
     <div class="jbody">
       <div class="jtext">
         <p>训练也是 <b>5 次搜索的串联</b>，但和算子开发是<b>两种地形</b>：5 搜里<b>官方全部抓得到（②全 4）</b>，最弱的 F 分布式也有 .72（中高）、只是版本散；没有 D 写 kernel 那种 .41 受阻、又最靠前、把全程拖下水的深谷。</p>
-        <p>连<b>二手社区</b>这条线在两个场景里的角色都不同：D 是「官方塌了被迫转二手、二手还薄」（受阻兜底）；训练是「<b>官方够用、二手再添 ranktable 实例 / 收敛经验</b>」（健康补充）。而且训练里<b>人也直接和昇腾社区交互</b>——去官方配套表 / Gitee 样例对齐版本拓扑、撞 OOM 时自己翻 CSDN 实战贴。同一条线，地形不同、角色就不同。</p>
         <p>这正印证<b>「可用性是任务相关的」</b>：越靠<b>采纳漏斗的上手 / 训练侧</b>（迁移、分布式、显存），华为投入越足、官方做得越厚；越往深处自研（写 kernel）越塌。<b>同一个 AI、同样按时间走，体感差一个量级</b>——这是横截面 19 的均值掩盖、只有逐段旅程才显出来的。</p>
         <p class="j-fix"><b>怎么改：</b>训练这条路官方都抓得到，<b>治本重点不在「抓不到」而在「版本散」</b>——收口 F/I 的版本（一个 canonical + 配套查询器）最能把 .72 抬起来。</p>
       </div>
@@ -1170,15 +1179,15 @@ function renderV(){
     }
   });
 
-  /* 用户独立分支 ＝ 人 → 昇腾社区（官方 or 二手）的独立消息（仅档①）；br.to 指定目标线，缺省 off */
+  /* 用户独立分支 b1/b2 ＝ 人 → 昇腾社区 的独立消息（仅档①） */
   if(curLvl===0) BRANCH.forEach(br=>{
-    const src=byId[br.from], y=Y(src.xi)+26, tgt=br.to||"off", x2=LX[tgt];
-    svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",x2+3).attr("y2",y)
+    const src=byId[br.from], y=Y(src.xi)+26;
+    svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",LX.off+3).attr("y2",y)
       .attr("stroke","#2f3d63").attr("stroke-width",2).attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.85);
-    svg.append("text").attr("x",(LX.hu+x2)/2).attr("y",y-5).attr("text-anchor","middle")
+    svg.append("text").attr("x",(LX.hu+LX.off)/2).attr("y",y-5).attr("text-anchor","middle")
       .attr("font-size",9.5).attr("fill","#2f3d63").attr("font-weight",600).text(br.id+" "+br.t)
       .style("cursor","pointer")
-      .on("mousemove",(e)=>showTip(e,{id:br.id,t:br.t,meta:"用户独立分支 · 脱离 AI · 目标："+(tgt==="sec"?"二手社区":"昇腾官方"),b:br.b})).on("mouseleave",hideTip);
+      .on("mousemove",(e)=>showTip(e,{id:br.id,t:br.t,meta:"用户独立分支 · 脱离 AI",b:br.b})).on("mouseleave",hideTip);
   });
 }
 
@@ -1434,13 +1443,13 @@ function pinLaneTip(e,side){ pinned=true; tip.className="pinned"; tip.innerHTML=
 
 /* 图例「人机交接」悬浮：协同量化（交接次数 + 用户独立分支，随滑块 morph） */
 function coopTipHtml(withFull){
-  const ho=handoffs(curLvl), br=curLvl===0?BRANCH.length:0;
+  const ho=handoffs(curLvl), br=curLvl===0?2:0;
   let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">协同量化 · 主导权交接</div>`;
   html+=`<div class="tt-meta">全旅程 <b>${ho} 次主导权易手</b>（紫色粗连线）· <b>${br} 条用户独立分支</b>（虚线，不经 AI）。随左侧滑块实时变。</div>`;
   if(curLvl===0) html+=`<div class="tt-b">交接密度在<b>编译部署阶段（P5）最高</b>——报错 → AI 解读 → 用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</div>`;
   else html+=`<div class="tt-b">自主度↑ → 交接变少（更多同侧推进）、<b>用户独立分支归零</b>——人不再独立提供后备、安全网消失。</div>`;
   if(withFull){
-    if(curLvl===0) html+=`<div class="tt-sec"><span class="lbl">${BRANCH.length} 条用户独立分支</span>${BRANCH.map(b=>b.id+" "+b.t+"（→"+((b.to||"off")==="sec"?"二手社区":"昇腾官方")+"）").join("、")}——都是人直接和昇腾社区交互的后备动作。</div>`;
+    if(curLvl===0) html+=`<div class="tt-sec"><span class="lbl">2 条用户独立分支</span>b1 浏览器自查 SPA 页、b2 Gitee 仓外部求证——都是 AI 受阻 / 版本不确定时人的后备动作。</div>`;
     else html+=`<div class="tt-sec"><span class="lbl">安全网消失</span>自动化档 AI 遭遇同样的 SPA / 版本问题，但无人核查。</div>`;
     html+=`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
   } else html+=`<div class="tt-hint">点击查看完整说明 ↗</div>`;
@@ -1627,8 +1636,6 @@ const TR_NODES=[
     meta:"人机协同 · P2", b:"按锁定版本装 torch_npu，import 验证环境通。"},
   {id:"sF", lane:"ai", kind:"fetch", t:"🔍 检索 F·分布式 HCCL 配置",
     meta:"Agent 自主 · P3 · 官方可抓 · 本场景最弱", b:"搜「多卡怎么起、HCCL 怎么配」。官方 HCCL 页 ssr 可抓，但<b>版本散乱（④2）、二手同质</b>——本场景最弱的一搜（.72）。"},
-  {id:"sF2", lane:"ai", kind:"search", t:"查二手补 ranktable 实例",
-    meta:"Agent 自主 · P3 · 二手补充", b:"官方给机制、但完整 ranktable / 启动脚本实例多在 CSDN / 华为云开发者社区。<b>这里二手是「健康补充」——官方够用、二手添实例，区别于 D 的「官方塌了被迫转薄二手」。</b>"},
   {id:"gF", lane:"ai", kind:"draft", t:"给分布式启动方案",
     meta:"Agent 自主 · P3", b:"给 init_process_group(backend='hccl') + ranktable / 环境变量 + 启动脚本骨架，留组网占位。"},
   {id:"dTopo", lane:"hu", kind:"decision", t:"决策：多卡拓扑 / 通信后端",
@@ -1651,8 +1658,6 @@ const TR_NODES=[
     meta:"人机协同 · P5 · 报错", b:"调整后训练起来，但 loss 不收敛 / 精度对不上参考。"},
   {id:"sR", lane:"ai", kind:"fetch", t:"🔍 检索 R·收敛 / 精度排查",
     meta:"Agent 自主 · P6 · 官方可抓", b:"搜「精度 / 收敛怎么排查」。官方精度比对 + 二手可抓（③5），版本仍是短板。"},
-  {id:"sR2", lane:"ai", kind:"search", t:"查二手收敛经验贴",
-    meta:"Agent 自主 · P6 · 二手补充", b:"loss 不收敛 / 精度对不齐的实战经验多在 CSDN / 知乎 / 华为云 bbs。二手在收敛排查上是有用补充，非被迫兜底。"},
   {id:"gR", lane:"ai", kind:"draft", t:"给排查清单",
     meta:"Agent 自主 · P6", b:"给 loss scaling / 数据管线 / lr / 算子精度逐项排查清单。"},
   {id:"dAccT", lane:"hu", kind:"decision", t:"决策：精度 / 收敛是否达标",
@@ -1663,38 +1668,34 @@ const TR_NODES=[
     meta:"用户主导 · P7", b:"多卡训练运行通过、精度收敛达标，交付。全程官方都抓得到，无 D 那种受阻点。"},
 ];
 const TR_BRANCH=[
-  {id:"b1", from:"dVerT", to:"off", t:"查官方版本配套表对齐",
+  {id:"b1", from:"dVerT", t:"查官方版本配套表对齐",
     b:"版本不确定时，用户去 hiascend 官方版本配套表 / Gitee 仓对齐 torch_npu 与 CANN 版本。"},
-  {id:"b2", from:"dTopo", to:"off", t:"Gitee 找多卡训练样例",
-    b:"多卡拓扑 / ranktable 不确定时，用户去 Gitee 昇腾官方 samples 仓找多卡训练样例对齐。"},
-  {id:"b3", from:"eP", to:"sec", t:"CSDN / 华为云找 OOM 实战贴",
-    b:"撞显存 OOM 时，用户也会自己去 CSDN / 华为云开发者社区翻实战经验贴——训练里人和二手社区也有直接交互。"},
 ];
 const TR_PHASE=[
   {a:0, b:0,  n:"P1 立项"},
   {a:1, b:4,  n:"P2 版本对齐·检索 I"},
-  {a:5, b:9,  n:"P3 分布式·检索 F"},
-  {a:10,b:12, n:"P4 混合精度·检索 P"},
-  {a:13,b:16, n:"P5 显存 OOM·检索 Q"},
-  {a:17,b:21, n:"P6 收敛排查·检索 R"},
-  {a:22,b:22, n:"P7 交付"},
+  {a:5, b:8,  n:"P3 分布式·检索 F"},
+  {a:9, b:11, n:"P4 混合精度·检索 P"},
+  {a:12,b:15, n:"P5 显存 OOM·检索 Q"},
+  {a:16,b:19, n:"P6 收敛排查·检索 R"},
+  {a:20,b:20, n:"P7 交付"},
 ];
 const TR_PHASE_DETAIL=[
   {nodes:"t1", bound:"定目标「单卡脚本扩多卡昇腾训练」——AI 不介入。"},
-  {nodes:"sI–eI / dVerT", bound:"AI 检索版本配套 + 给对齐方案；用户按本机已装版本锁 torch_npu，并去官方配套表对齐（b1）。<b>官方抓得到，但版本号并存是训练第一坑。</b>"},
-  {nodes:"sF–eF / dTopo", bound:"AI 抓官方 HCCL 机制 + <b>补二手 ranktable 实例（sF2）</b>；用户按本机卡数定拓扑、去 Gitee 找训练样例（b2）、起多卡。<b>本场景最弱的一搜（F .72，④版本散）。</b>"},
-  {nodes:"sP–eP", bound:"AI 给 AMP 接入；用户开混合精度提速，撞显存 OOM，自己也翻 CSDN 实战贴（b3）。"},
+  {nodes:"sI–eI / dVerT", bound:"AI 检索版本配套 + 给对齐方案；用户按本机已装版本锁 torch_npu。<b>官方抓得到，但版本号并存是训练第一坑。</b>"},
+  {nodes:"sF–eF / dTopo", bound:"AI 给 HCCL 分布式启动骨架；用户按本机卡数定拓扑、起多卡。<b>本场景最弱的一搜（F .72，④版本散）。</b>"},
+  {nodes:"sP–eP", bound:"AI 给 AMP 接入；用户开混合精度提速，撞显存 OOM。"},
   {nodes:"sQ–eQ / dBatch", bound:"AI 给显存优化（梯度累积 / 重计算）；用户按本机显存定 batch、重训。<b>最顺的一搜（Q .86）。</b>"},
-  {nodes:"sR–eR / dAccT", bound:"AI 给收敛 / 精度排查清单 + <b>补二手经验贴（sR2）</b>；用户按业务阈值判定达标。"},
+  {nodes:"sR–eR / dAccT", bound:"AI 给收敛 / 精度排查清单；用户按业务阈值判定达标。"},
   {nodes:"tEnd", bound:"多卡训练运行通过、精度收敛达标，交付。全程无受阻点。"},
 ];
 const TR_FLOW={
   t1:{frm:"hu",to:"ai"},
   sI:{frm:"ai",to:"off"}, gI:{frm:"ai",to:"exec"}, eI:{frm:"exec",to:"tool"},
-  sF:{frm:"ai",to:"off"}, sF2:{frm:"ai",to:"sec"}, gF:{frm:"ai",to:"exec"}, eF:{frm:"exec",to:"tool"},
+  sF:{frm:"ai",to:"off"}, gF:{frm:"ai",to:"exec"}, eF:{frm:"exec",to:"tool"},
   sP:{frm:"ai",to:"off"}, gP:{frm:"ai",to:"exec"}, eP:{frm:"exec",to:"tool"},
   sQ:{frm:"ai",to:"off"}, gQ:{frm:"ai",to:"exec"}, eQ:{frm:"exec",to:"tool"},
-  sR:{frm:"ai",to:"off"}, sR2:{frm:"ai",to:"sec"}, gR:{frm:"ai",to:"exec"}, eR:{frm:"exec",to:"tool"},
+  sR:{frm:"ai",to:"off"}, gR:{frm:"ai",to:"exec"}, eR:{frm:"exec",to:"tool"},
   tEnd:{frm:"hu",to:"self"}
 };
 const TR_ARCHFLOW={};
@@ -1702,8 +1703,6 @@ const TR_NDETAIL={
   sI:{arch:"① 意图解析 → ③ 工具路由 → web_fetch 官方版本配套表 → ④ 研判（可抓）"},
   sF:{arch:"③ 工具路由 → web_fetch 官方 HCCL 页 → ④ 研判（ssr 可抓、但版本散）",
     full:`<div class="tt-sec"><span class="lbl">本场景最弱的一搜</span>官方 HCCL 页可抓（②4、非受阻），但<b>版本号并存（④2）、二手扎堆同质</b>——F .72，是训练这条路的低点，但仍中高、远好过 D 的 .41 受阻。</div>`},
-  sF2:{arch:"③ 工具路由 → web_search 二手（CSDN / 华为云）→ ⑥ 收敛（官方机制 + 二手实例合成）"},
-  sR2:{arch:"③ 工具路由 → web_search 二手收敛经验 → ⑥ 收敛"},
   sP:{arch:"③ 工具路由 → web_search + web_fetch AMP 文档 → ⑥ 收敛（自带知识也够）"},
   sQ:{arch:"③ 工具路由 → web_search 显存优化 → ④ 研判（官方 + 二手都全）"},
   sR:{arch:"③ 工具路由 → web_fetch 精度比对文档 → ④ 研判（可抓）"},
@@ -1787,9 +1786,9 @@ SCENARIOS.TR={
     ],
     CANN:[4,4,4,2,3,3,3,5,3,3], CUDA:[5,5,5,3,3,4,4,5,4,5],
     comp:["⑪ .72 中高","⑪ .88 高"],
-    note:`这里锚<b>本场景最弱的一搜 F 分布式（.72）</b>——对照 D：F 的 <b>②官方可抓（4、非受阻）</b>，坑只在 <b>④版本散乱（2）</b>。<b>二手在训练里是「健康补充」</b>（⑤⑥各 3，官方够用、二手再添 ranktable 实例 / 收敛经验），不是 D 那种「官方塌了被迫转薄二手」。训练这条路 5 搜全在中高/高带、<b>无受阻深谷</b>。`
+    note:`这里锚<b>本场景最弱的一搜 F 分布式（.72）</b>——对照 D：F 的 <b>②官方可抓（4、非受阻）</b>，坑只在 <b>④版本散乱（2）</b> + 二手同质。训练这条路 5 搜全在中高/高带、<b>无 D 那种受阻深谷</b>。`
   },
-  nodeScore:{ sI:"→矩阵 I .73", sF:"→矩阵 F .72", sF2:"⑤3⑥3 二手健康补充", sP:"→矩阵 P .83", sQ:"→矩阵 Q .86", sR:"→矩阵 R .75", sR2:"⑤3 经验贴", dVerT:"④2⑨3 本机", dTopo:"本机拓扑" }
+  nodeScore:{ sI:"→矩阵 I .73", sF:"→矩阵 F .72", sP:"→矩阵 P .83", sQ:"→矩阵 Q .86", sR:"→矩阵 R .75", dVerT:"④2⑨3 本机", dTopo:"本机拓扑" }
 };
 function setScenario(k){
   const S=SCENARIOS[k]; if(!S) return;
