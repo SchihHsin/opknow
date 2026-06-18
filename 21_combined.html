@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>20 · 人机协同旅程：一次「自定义算子开发」的全链路时序图 + Agent 系统工程拆解</title>
+<title>一次算子开发：AI 怎么用昇腾，人又怎么用，差在哪 · 人 × AI 两视角合一</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <style>
@@ -56,6 +56,30 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .conclbox .pri{font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;white-space:nowrap}
 .conclbox .pri.p0{background:#f9d2d2;color:#993C1D}
 .conclbox .pri.p1{background:#fbe0ce;color:#9a5a2a}
+/* §2 另一只眼 · 互证×分叉 · 合并行动 */
+.lens2{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:13px 0}
+@media(max-width:820px){.lens2{grid-template-columns:1fr}}
+.l2h{font-size:13.5px;font-weight:800;margin-bottom:7px}
+table.cmp{width:100%;border-collapse:collapse;font-size:12.5px}
+table.cmp td{border:1px solid var(--line);padding:7px 9px;vertical-align:top;line-height:1.65}
+table.cmp td:first-child{width:96px;font-weight:700;background:#f7f7f9;white-space:nowrap}
+.l2note{font-size:11.5px;color:#777;margin-top:9px;line-height:1.6}
+.keyline2{background:#111827;color:#fff;border-radius:12px;padding:14px 20px;margin:6px 0 13px;font-size:16px;font-weight:800;text-align:center;letter-spacing:.3px}
+.mact{font-size:12.5px;line-height:1.7;margin:7px 0;padding-left:2px}
+.mtag{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:9px;margin-right:7px;vertical-align:1px}
+.mtag.both{background:#EAF0FF;color:#2f3d63;border:1px solid #c8d4f0}
+.mtag.hu{background:#FBE9EC;color:#bb2236;border:1px solid #f0c4cc}
+.mtag.ai{background:#EEF6E0;color:#4a7a00;border:1px solid #cfe3a8}
+/* 取证链（怎么一步步形成） */
+.derivwrap{background:#fbfcfe;border:1px solid #dde4f0}
+.dvflow{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:6px 0 4px}
+@media(max-width:900px){.dvflow{grid-template-columns:repeat(2,1fr)}}
+.dvstep{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 9px;display:flex;flex-direction:column;gap:2px}
+.dvstep b{font-size:12px;line-height:1.3}
+.dvstep small{font-size:10px;color:#7a7f8a;line-height:1.42}
+.dvn{width:18px;height:18px;border-radius:50%;background:#2f3d63;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:2px}
+.dvstep.last{background:#eef3ff;border-color:#c2d0ee}
+.dvstep.last .dvn{background:#bb2236}
 .judge .jbody{display:flex;gap:14px;align-items:flex-start;margin-top:6px}
 .judge .jtext{flex:1 1 0;min-width:0}
 .judge .jdemo{flex:0 0 248px}
@@ -130,22 +154,6 @@ h3{font-size:15.5px;font-weight:700;margin:26px 0 8px}
 .seg5 .s5bar.v3{background:#e0a32e}
 .seg5 .s5bar.v4{background:#7fae4e}
 .s5cap{font-size:9.5px;color:#a32d2d;font-weight:600;margin-top:6px;line-height:1.5}
-.s5bar.v3b{background:#cf6a2e}
-/* 供给侧(昇腾社区) vs 使用侧(AI) 两类 demo 的 lofi-bar 配色 */
-.lofi-bar.s-comm{background:#fbeaea;color:#a32d2d}
-.lofi-bar.s-ai{background:#e7eefb;color:#2f3d63}
-/* 供给侧 before→after 紧凑双栏 */
-.ba2{display:flex;gap:6px;align-items:stretch;margin-top:5px}
-.ba2 .ba-col{flex:1 1 0;min-width:0;border-radius:6px;padding:6px 7px;font-size:9.5px;line-height:1.5}
-.ba2 .ba-b{background:#fbeaea;border:1px solid #f0c9c9;color:#9a3b3b}
-.ba2 .ba-a{background:#e3f3ec;border:1px solid #bfe3d0;color:#1f5b3f}
-.ba2 .ba-arr{align-self:center;color:#999;font-weight:700;font-size:12px;flex:none}
-.ba2 .ba-t{font-weight:700;display:block;margin-bottom:2px}
-.demo-side{font-size:9.5px;font-weight:700;color:#888;margin:9px 0 2px;padding-left:7px;border-left:3px solid #d6d6d6}
-.demo-side.ds-comm{color:#a32d2d;border-left-color:#C8102E}
-.demo-side.ds-ai{color:#2f3d63;border-left-color:#2f3d63}
-/* 场景切换：结论框按当前场景显隐 */
-.scen-concl[hidden]{display:none}
 /* D 量化得分条（与热力矩阵同源） */
 .dscore{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0}
 .dscore .dsc-h{font-size:12.5px;font-weight:700;color:#444;margin-bottom:8px}
@@ -335,18 +343,34 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 
 <div class="toc">
   <div class="toclbl">本页目录</div>
-  <a href="#s1">① 全链路时序图</a>
-  <a href="#s4">② Agent 系统工程</a>
-  <a href="#s6">③ 交付物汇总</a>
+  <a href="#s1">① 时序图：AI 走一遍</a>
+  <a href="#s2">② 放大时序图（融入人视角）</a>
+  <a href="#s4">③ Agent 系统工程</a>
+  <a href="#s6">④ 交付物汇总</a>
 </div>
 
-<h1>人机协同旅程：开发者完成一段任务的全链路</h1>
+<h1>一次算子开发：AI 怎么用昇腾，人又怎么用，差在哪</h1>
 <div class="subtitle">
-  把<b>开发者从立项到交付的整段旅程</b>画成 5 参与者时序图。当前场景：<b>算子开发</b>——开发一个算子<b>沿时间串过 5 次搜索（D 写 kernel → M Tiling → X 内存 → O 集成 → L 精度）</b>，每次对应 26 任务里不同的一个、各打穿矩阵不同行；唯一官方真受阻的是写 kernel 的 D（.41）。<span style="color:#888">（上方 Tab 可切<b>训练场景</b>看另一条路对照——5 搜全在中高/高带、无受阻深谷；<b>推理</b>场景制作中、迁移场景已归档备扩。）</span>事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）。
+  同一个昇腾生态，两类使用者各走一遍——<b>会检索的 AI Agent</b> 和 <b>真人开发者</b>。本页<b>以一张时序图为核心</b>：把 AI 完成一次<b>算子开发</b>的全链路画成 5 参与者时序图（开发一个算子<b>沿时间串过 5 次搜索：D 写 kernel → M Tiling → X 内存 → O 集成 → L 精度</b>，每次打穿 26 任务矩阵不同行，唯一官方真受阻的是写 kernel 的 D．41）。看完这条 AI 旅程，<b>第 ② 节把「真人走同一个生态」的另一套独立取证摆进来对照</b>——两套结论既互证、又在「最大痛点是什么」上分叉。<span style="color:#888">AI 侧事实取自 <code>task_run_log.md</code> 实测（仅检索段实测、开发段重建）；人侧取自昇腾 vs 英伟达开发者体验竞品分析（7 步 24 触点、真实截图）。</span>
+</div>
+
+<div class="card derivwrap">
+  <div class="l2h">在看时序图之前 · 这套结论是怎么一步步得出来的</div>
+  <div class="sechint" style="padding-left:0;margin-bottom:6px">下面这张时序图不是凭空画的，是一条<b>取证链</b>的末端。先把链条走一遍，再看图才知道每个分数从哪来。</div>
+  <div class="dvflow">
+    <div class="dvstep"><span class="dvn">1</span><b>一个问题</b><small>会检索的 AI 回答昇腾开发问题，知识可用性如何、与 CUDA 差在哪</small></div>
+    <div class="dvstep"><span class="dvn">2</span><b>选 26 个任务</b><small>沿「成熟工具 → 前沿自研」光谱铺开，覆盖完整开发面</small></div>
+    <div class="dvstep"><span class="dvn">3</span><b>每任务编一对问句</b><small>本质相同、仅换技术栈（CANN ｜ CUDA），可对位比较</small></div>
+    <div class="dvstep"><span class="dvn">4</span><b>实测检索</b><small>真跑 web_search / web_fetch，记下命中、抓取形态、受阻</small></div>
+    <div class="dvstep"><span class="dvn">5</span><b>11 项指标打分</b><small>发现/抓取/详尽/版本/二手/自带… noisy-OR 综合（1–5）</small></div>
+    <div class="dvstep"><span class="dvn">6</span><b>得到热力矩阵</b><small>26 任务 × 2 栈：CANN 7 高 / 16 中高 / 2 中 / 1 低</small></div>
+    <div class="dvstep last"><span class="dvn">7</span><b>抽一个场景画成时序图</b><small>把「算子开发」这条线沿时间展开 ↓ 就是本页核心</small></div>
+  </div>
+  <div class="l2note">前 6 步是横截面的「打分」（<a href="17_official_site_focus.html" style="color:#2f3d63;font-weight:600">矩阵</a> / <a href="18_metric_definition.html" style="color:#2f3d63;font-weight:600">方法论</a>）；第 7 步把其中<b>算子开发</b>场景沿时间展开成时序图——横截面看不出的「逐段在变、被最弱环节拖着、前松后紧」，要走一遍时间线才显形。</div>
 </div>
 
 <a id="s1"></a>
-<h2><span class="no">①</span>全链路时序图 · 4 参与者（拖动「AI 自主度」看场景切换 · 悬浮看每步细节）</h2>
+<h2><span class="no">①</span>时序图 · 先整体走一遍（AI 完成一次算子开发的全链路）</h2>
 <div class="sechint">竖向时序图、<b>5 条生命线（昇腾官方 ｜ 二手社区 ｜ AI ｜ 人类用户 ｜ 本机工具）</b>。这是<b>「算子开发场景」全流程</b>：开发一个算子沿时间撞上 <b>5 次搜索（D→M→X→O→L）</b>，每次对应 26 任务里不同的一个、各打穿矩阵不同行。拖滑块看 3 档自主度、<b>悬浮节点看细节</b>。<details class="moreinfo"><summary>展开：交互与核心发现</summary><div>每步是参与者间一条消息（横向箭头、标题在上）。<b>核心发现</b>：5 次搜索里<b>只有写 kernel 的 D（sD）官方真受阻</b>——AI 向昇腾官方 <code>web_fetch</code>，返回红色空箭头「✕ 抓取为空（SPA）」、再转二手社区兜底；后面 M/X/O/L 官方都抓得到、但各有版本/二手/自带的坑。拖动时执行/决策发起方 morph——越自动「人类用户」线越靠边。（3 档为协作示意、仅 AI 检索步实测，口径见底部局限①）</div></details></div>
 
 <div class="sctabs" id="sctabs"></div>
@@ -387,7 +411,6 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 </div>
 
 <div class="conclbox" id="conclbox">
- <div class="scen-concl" data-scen="D">
   <div class="cb-h">综述 · 算子开发场景旅程（串 5 次搜索 · 最弱 D .41）</div>
   <div class="jline">用<b>时序图独有的「时间 + 协同」视角</b>（横截面 19 看不出的）收敛成 <b>3 个判断 + 行动建议</b>——可用性<b>逐段在变·被最弱环节拖着</b>、人机<b>交接质量</b>、体感<b>前松后紧</b>。锚算子开发场景的 5 次搜索（D/M/X/O/L）；全 26 任务的指标统计与 ROI 排序（过程态、支撑材料）见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
 
@@ -410,20 +433,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
           <div class="s5row"><span class="s5n">精度排查</span><span class="s5bar v4" style="width:72%">L .69</span></div>
         </div>
         <div class="s5cap">4 次官方都抓得到，唯独写 kernel 的 D 受阻、且最靠前——整条路被它拖着（横截面 19 给不出这条「逐段」曲线）</div>
-        <div class="demo-side ds-comm">昇腾社区侧 · 供给侧治本（治根：让 AI 抓得到）</div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：抓不到就「响亮」标出来</div>
         <div class="lofi">
-          <div class="lofi-bar s-comm">昇腾官方文档站 · opdevg 写 kernel 页</div>
-          <div class="lofi-body">
-            <div class="ba2">
-              <div class="ba-col ba-b"><span class="ba-t">现状（SPA）</span>web_fetch 只回导航 + meta、<b>正文 0 字</b>——AI 抓取为空，错误地基由此而起</div>
-              <span class="ba-arr">→</span>
-              <div class="ba-col ba-a"><span class="ba-t">改后（静态化）</span>正文 HTML 内含 msopgen 命令 + 参数表，<b>AI 一次抓全</b>、不必转二手</div>
-            </div>
-          </div>
-        </div>
-        <div class="demo-side ds-ai">AI 使用侧 · 治标（在治根之前先别让失败静默传下去）</div>
-        <div class="lofi">
-          <div class="lofi-bar s-ai">AI 助手 · 回答</div>
+          <div class="lofi-bar">AI 助手 · 回答</div>
           <div class="lofi-body">
             <div class="lofi-warn">⚠ 官方 how-to 页未取得（SPA 抓取为空）；以下据二手 + 自带知识，请核对官方</div>
             <p>步骤一：msopgen gen …<span class="src s-2">二手</span></p>
@@ -449,21 +461,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
           <div class="hobar"><span class="hophase">P2 检索</span><span class="hophase">P3 生成</span><span class="hophase">P4 核函数</span><span class="hophase hot">P5 编译部署</span><span class="hophase">P6 接入</span></div>
           <div class="hodots">交接点：● — ● — ● <b>● ● ● ●</b> — ● <br><b>P5 段最密</b>：报错 → AI 解读 → 人重试，来回穿插</div>
         </div>
-        <div class="demo-side ds-comm">昇腾社区侧 · 供给侧：官方命令写成「可照抄完整块」</div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：交接点做成产品能力</div>
         <div class="lofi">
-          <div class="lofi-bar s-comm">昇腾官方文档站 · 命令示例</div>
-          <div class="lofi-body">
-            <div class="ba2">
-              <div class="ba-col ba-b"><span class="ba-t">现状</span>命令散在正文、soc_version 不说怎么取 → AI 只能现编占位、人填错</div>
-              <span class="ba-arr">→</span>
-              <div class="ba-col ba-a"><span class="ba-t">改后</span>一个可照抄块 + 内联「npu-smi info 查芯片」步骤 → 少一次人机来回</div>
-            </div>
-            <p style="color:#999;margin-top:5px;font-size:9.5px">交接占位的根源一半在官方命令不完整——供给侧把命令做全，使用侧的交接负担自然轻。</p>
-          </div>
-        </div>
-        <div class="demo-side ds-ai">AI 使用侧 · 把交接做成产品能力</div>
-        <div class="lofi">
-          <div class="lofi-bar s-ai">AI 助手 · 交接点</div>
+          <div class="lofi-bar">AI 助手 · 交接点</div>
           <div class="lofi-body">
             <p>运行：<code>msopgen … -c ai_core_</code><span class="fillchip">▢ 需你填 soc_version</span></p>
             <div class="lofi-input"><span>遇到报错？粘到这里，自动回灌给我解读</span><span class="lofi-btn">一键回灌 ⟳</span></div>
@@ -492,21 +492,9 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
           <text x="118" y="74" font-size="8.5" fill="#a32d2d" font-weight="700">A 类决策（最低点）</text>
         </svg>
         <div class="arc-cap">检索段的「顺」是虚假信心：真正的难全压在后段、且是人独自承担——只有按时间走一遍才看得出这条落差。</div>
-        <div class="demo-side ds-comm">昇腾社区侧 · 供给侧：只能治「版本」这一处 A 类</div>
+        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：开始前先给路线图</div>
         <div class="lofi">
-          <div class="lofi-bar s-comm">昇腾官方文档站 · 版本</div>
-          <div class="lofi-body">
-            <div class="ba2">
-              <div class="ba-col ba-b"><span class="ba-t">现状</span>多版本号并存、URL 还会漂——AI 锁不准版本</div>
-              <span class="ba-arr">→</span>
-              <div class="ba-col ba-a"><span class="ba-t">改后</span>一个 canonical + 配套查询器（选机型 → 唯一命令）</div>
-            </div>
-            <p style="color:#999;margin-top:5px;font-size:9.5px">但 soc_version / 精度阈值这两处 A 类<b>本质是本机 / 业务事实，供给侧治不了</b>——只能靠使用侧前置告知（下）。</p>
-          </div>
-        </div>
-        <div class="demo-side ds-ai">AI 使用侧 · 开始前先给路线图</div>
-        <div class="lofi">
-          <div class="lofi-bar s-ai">开始前 · 本任务路线预览</div>
+          <div class="lofi-bar">开始前 · 本任务路线预览</div>
           <div class="lofi-body">
             <div class="rm">
               <span class="rm-step ai">检索·起草<br><small>AI 主导</small></span><span class="rm-arr">→</span>
@@ -532,117 +520,62 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
       <tr><td><span class="pri p1">P1</span></td><td>供给侧治本（opdevg 静态化 / 版本收口 / 补二手）</td><td>→ 见 19</td><td>把原料做好，所有 AI 工具受益</td></tr>
     </tbody>
   </table>
-  <div class="cb-overall"><b>总论：AI 能搬来知识，搬不动你的机器</b>——而且这条路是<b>「前松后紧」</b>的：真正的问题不是某个分数低，是<b>早期一次静默失败沿时间放大 + 后段人独自承担</b>。这是只有走一遍旅程才看得出的体感结论。（切上方 <b>训练场景</b> Tab 看同一视角下另一条路；供给侧文档站怎么治本、全 26 任务 ROI 排序见 <a href="19_findings_ux_synthesis.html">19</a>；推理场景制作中。）</div>
- </div>
+  <div class="cb-overall"><b>总论：AI 能搬来知识，搬不动你的机器</b>——而且这条路是<b>「前松后紧」</b>的：真正的问题不是某个分数低，是<b>早期一次静默失败沿时间放大 + 后段人独自承担</b>。这是只有走一遍旅程才看得出的体感结论。（供给侧文档站怎么治本、全 26 任务 ROI 排序见 <a href="19_findings_ux_synthesis.html">19</a>；训练 / 推理场景制作中。）</div>
+</div>
 
- <div class="scen-concl" data-scen="TR" hidden>
-  <div class="cb-h">综述 · 训练场景旅程（串 5 次搜索 · 最弱 .72，无受阻深谷）</div>
-  <div class="jline">同样用<b>时序图独有的「时间 + 协同」视角</b>看<b>训练</b>这条路：单卡脚本扩到多卡昇腾训练，沿时间串过 <b>5 次搜索</b>——版本兼容(I) → 分布式 HCCL(F) → 混合精度(P) → 显存 OOM(Q) → 收敛排查(R)。与算子开发对照：<b>5 搜全在中高/高带、官方都抓得到，没有 D 那种「最弱且最靠前」的受阻深谷</b>。全 26 任务统计见 <a href="19_findings_ux_synthesis.html">启发与方向 →</a></div>
+<a id="s2"></a>
+<h2><span class="no">②</span>放大时序图 · AI 和人撞的，不是同一个坑</h2>
+<div class="sechint">上面整张图是 <b>AI</b> 走的一遍。这一节把图上<b>两个关键步</b>放大，每放大一步就追问：<b>同一步，换成真人开发者走，又如何？</b>——这样「另一只眼」是<b>融进时序图的步骤里</b>，不是另起一段平行旅程。人侧证据来自另一套<b>独立取证</b>（7 步 24 触点、真实截图、0–100 同维度打分）。两步看完会发现：两只眼<b>撞的根本不是同一个坑</b>。</div>
 
-  <div class="judge">
-    <div class="j-h">判断 1 · 换个场景，「逐段曲线」就从深谷变成平稳波动——可用性是任务相关的</div>
-    <div class="j-one">核心一问：同一套 AI，换到训练场景，这条逐段可用性曲线长什么样？</div>
-    <div class="jbody">
-      <div class="jtext">
-        <p>训练也是 <b>5 次搜索的串联</b>，但和算子开发是<b>两种地形</b>：5 搜里<b>官方全部抓得到（②全 4）</b>，最弱的 F 分布式也有 .72（中高）、只是版本散；没有 D 写 kernel 那种 .41 受阻、又最靠前、把全程拖下水的深谷。</p>
-        <p>这正印证<b>「可用性是任务相关的」</b>：越靠<b>采纳漏斗的上手 / 训练侧</b>（迁移、分布式、显存），华为投入越足、官方做得越厚；越往深处自研（写 kernel）越塌。<b>同一个 AI、同样按时间走，体感差一个量级</b>——这是横截面 19 的均值掩盖、只有逐段旅程才显出来的。</p>
-        <p class="j-fix"><b>怎么改：</b>训练这条路官方都抓得到，<b>治本重点不在「抓不到」而在「版本散」</b>——收口 F/I 的版本（一个 canonical + 配套查询器）最能把 .72 抬起来。</p>
-      </div>
-      <div class="jdemo">
-        <div class="demo-cap">训练 5 次搜索的可用性 · 全在中高/高带，无受阻深谷</div>
-        <div class="seg5">
-          <div class="s5row"><span class="s5n">版本兼容</span><span class="s5bar v4" style="width:73%">I .73</span></div>
-          <div class="s5row"><span class="s5n">分布式 HCCL</span><span class="s5bar v3b" style="width:72%">F .72 最弱</span></div>
-          <div class="s5row"><span class="s5n">混合精度</span><span class="s5bar v4" style="width:83%">P .83</span></div>
-          <div class="s5row"><span class="s5n">显存 OOM</span><span class="s5bar v4" style="width:86%">Q .86</span></div>
-          <div class="s5row"><span class="s5n">收敛排查</span><span class="s5bar v4" style="width:75%">R .75</span></div>
-        </div>
-        <div class="s5cap" style="color:#1f6b45">对照算子开发的 D .41 受阻：训练 5 搜全是平稳小波动，最弱 .72 也远在受阻线之上——同一 AI、不同场景，曲线形状完全不同。</div>
-      </div>
-    </div>
+<div class="lens2">
+  <div class="card" style="margin-bottom:0;border-top:3px solid #6B5BA8">
+    <div class="l2h" style="color:#6B5BA8">放大「写 kernel」步（图上 <b>sD</b>）· 这里 AI 撞墙</div>
+    <p style="font-size:12.5px;line-height:1.7;margin:2px 0">AI 向昇腾官方 <code>web_fetch</code> how-to 页，返回<b>红色空箭头「✕ 抓取为空（SPA）」</b>，只能转二手社区——叠上版本散、二手薄，矩阵 D 综合 <b>.41（全 26 任务最低）</b>，整条算子开发被它从最前面拖着。</p>
+    <div class="l2note"><b style="color:#2f3d63">同一步，真人？</b> 在浏览器里这页 SPA <b>照常渲染</b>，参数表、命令都看得到——真人几乎<b>无感</b>。<b>AI 撞的这个坑，人看不见。</b></div>
   </div>
-
-  <div class="judge">
-    <div class="j-h">判断 2 · 训练顺，那摩擦在哪？不在「抓不到」，在「版本对齐 + 本机拓扑」</div>
-    <div class="j-one">核心一问：既然官方都抓得到，训练落地真正卡人的是什么？</div>
-    <div class="jbody">
-      <div class="jtext">
-        <p>训练的真实摩擦不是文档受阻，是<b>两类 AI 够不着的事实</b>：① <b>版本对齐</b>——torch_npu 必须与本机已装的 CANN / PyTorch 严格配套，版本号又并存（④散乱），AI 给得了配套表、给不了本机装的是哪个；② <b>本机拓扑</b>——多卡几张卡、怎么组网，AI 只能给 HCCL 模板。</p>
-        <p>这跟算子开发的 A 类决策同源（都是本机 / 业务事实回到人），但训练里它们<b>每一处都有官方文档兜着</b>、不叠加受阻——所以是「摩擦」而非「深谷」。<b>真正能被供给侧改善的，正是其中的「版本散」</b>。</p>
-        <p class="j-fix"><b>怎么改：</b>供给侧收口版本（治根）；使用侧把版本声明<b>前置</b>——开训前先核对本机 CANN / torch_npu 版本，别等 import 失败才发现配错。</p>
-      </div>
-      <div class="jdemo">
-        <div class="demo-side ds-comm">昇腾社区侧 · 供给侧：版本收口（训练第一坑）</div>
-        <div class="lofi">
-          <div class="lofi-bar s-comm">昇腾官方文档站 · 版本配套表</div>
-          <div class="lofi-body">
-            <div class="ba2">
-              <div class="ba-col ba-b"><span class="ba-t">现状</span>CANN / torch_npu / PyTorch 版本号并存、配套关系散 → AI 锁不准、人对不齐</div>
-              <span class="ba-arr">→</span>
-              <div class="ba-col ba-a"><span class="ba-t">改后</span>canonical 配套表 + 查询器（选 CANN 版本 → 唯一 torch_npu）</div>
-            </div>
-          </div>
-        </div>
-        <div class="demo-side ds-ai">AI 使用侧 · 版本声明前置（开训前先核对本机）</div>
-        <div class="lofi">
-          <div class="lofi-bar s-ai">AI 助手 · 环境卡</div>
-          <div class="lofi-body">
-            <p>本机 CANN：<code>8.0.RC3</code> → 建议 torch_npu <code>2.1.0.post*</code> <span class="src s-off">需核对</span></p>
-            <div class="lofi-input"><span>跑 npu-smi info / pip show 把本机版本贴来，我帮你对配套表</span><span class="lofi-btn">核对版本 ✓</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="card" style="margin-bottom:0;border-top:3px solid #2f3d63">
+    <div class="l2h" style="color:#2f3d63">放大「配环境 / 拿 SDK」步 · 这里换人撞墙</div>
+    <p style="font-size:12.5px;line-height:1.7;margin:2px 0">真人开发者在这步撞上<b>登录闸门 + 协议</b>，下载要先注册、第一次成功的路径被拖长——人侧 24 触点里<b>唯一真谷底（−11）</b>。</p>
+    <div class="l2note"><b style="color:#6B5BA8">同一步，AI？</b> Agent <b>不登录、不点协议</b>，这道闸门对它<b>根本不存在</b>。<b>人撞的这个坑，AI 看不见。</b></div>
   </div>
+</div>
+<div class="keyline2">同一个文档站 · <b style="color:#ffd25e">为人优化 ≠ 为 AI 优化</b> —— 两类使用者撞的不是同一个坑</div>
 
-  <div class="judge">
-    <div class="j-h">判断 3 · 体感是「平稳协同」，不是算子那条「前松后紧」</div>
-    <div class="j-one">核心一问：两个场景的体感曲线，差在哪？</div>
-    <div class="jbody">
-      <div class="jtext">
-        <p>把训练当一条体感曲线：<b>全程都是「AI 给方案 → 人按本机调 → 验证」的均匀协同</b>，每段都有官方文档兜着，A 类决策（版本 / 拓扑 / 精度）<b>分散在各段、各自独立</b>，不像算子那样在后半段集中爆发。</p>
-        <p>所以训练<b>没有「检索段虚假信心 + 落地段独自承担」的落差</b>——它的难是<b>均匀分布的、可预期的</b>。对开发者体感而言：算子开发要管理的是「别被前段的顺骗了」，训练要管理的是「每段都得备好本机事实」。<b>同一个 AI，副驾的称职程度取决于这条路有没有官方兜底。</b></p>
-        <p class="j-fix"><b>怎么改：</b>训练侧顺，重点是把<b>每段需要的本机事实清单前置</b>（版本 / 卡数 / 显存 / 精度阈值），让协同更省来回；供给侧继续收口版本即可。</p>
-      </div>
-      <div class="jdemo">
-        <div class="demo-cap">体感弧线对照 · 训练平稳 vs 算子前松后紧</div>
-        <svg viewBox="0 0 240 110" style="width:100%;height:auto">
-          <text x="6" y="14" font-size="9" fill="#1f6b45" font-weight="700">训练 · 全程平稳协同</text>
-          <path d="M8,40 C60,38 100,44 140,42 S206,46 232,44" fill="none" stroke="#3e8540" stroke-width="2.5"/>
-          <text x="6" y="104" font-size="9" fill="#a32d2d" font-weight="700">算子 · 前松后紧（对照）</text>
-          <path d="M8,58 C70,54 96,70 136,84 S206,104 232,104" fill="none" stroke="#cf6a2e" stroke-width="2" stroke-dasharray="4,3" opacity=".75"/>
-        </svg>
-        <div class="arc-cap">训练（绿实线）全程在中高带平稳；算子（橙虚线）前段高、后段塌进受阻——只有按时间走一遍才看得出两种地形的体感差。</div>
-        <div class="demo-cap" style="margin-top:9px">界面 lo-fi · 改法：开训前先列本机事实清单</div>
-        <div class="lofi">
-          <div class="lofi-bar s-ai">开始前 · 本机事实清单</div>
-          <div class="lofi-body">
-            <p>① CANN / torch_npu 版本 <span class="fillchip">▢ 需你核对</span></p>
-            <p>② 卡数 / 组网拓扑 <span class="fillchip">▢ 需你填</span></p>
-            <p>③ 单卡显存上限 / 业务精度阈值 <span class="fillchip">▢ 需你填</span></p>
-            <div class="rm-cap" style="color:#1f6b45">训练的难是均匀、可预期的——开训前一次性备齐本机事实，每段协同都更省来回。</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="card">
+  <div class="l2h" style="color:#1f6b45">但放大别的步，两只眼又撞到<b>同一堵墙</b>（互证）</div>
+  <table class="cmp"><tbody>
+    <tr><td>版本治理乱</td><td>人侧：缺版本选择器、配环境踩多版本　·　AI 侧：④版本清晰度 12 格只拿 2 分（图上 dVer 决策）</td></tr>
+    <tr><td>可发现性弱</td><td>人侧：内容不差、差在「被全球搜到」（缺英文+SEO）　·　AI 侧：⑤⑥二手薄 + ⑦自带知识弱（图上转二手那几步）</td></tr>
+  </tbody></table>
+  <div class="l2note">两套<b>独立方法、独立取证</b>落到同一处 → 结论置信度互相抬高。这是单看任何一侧都得不到的。</div>
+</div>
+
+<div class="card">
+  <div class="l2h">人侧全貌 · 7 步 24 触点（支撑上面两步的对照）</div>
+  <div class="seg5" style="margin-top:8px">
+    <div class="s5row"><span class="s5n" style="width:84px">①落地选型</span><span class="s5bar" style="width:88%;background:#e9eef6;color:#456">同维度接近</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">②上手引导</span><span class="s5bar" style="width:90%;background:var(--v5)">反转长板 +0.5（算子 hub 比 CUDA 更有结构）</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">③配环境</span><span class="s5bar" style="width:46%;background:var(--v1)">唯一谷底 −11（登录闸门＋协议）</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">④写·查文档</span><span class="s5bar" style="width:80%;background:#e9eef6;color:#456">接近</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">⑤编译运行</span><span class="s5bar" style="width:80%;background:#e9eef6;color:#456">接近</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">⑥调试求助</span><span class="s5bar" style="width:74%;background:#e9eef6;color:#456">略低 · 内容不差，差在被全球搜到</span></div>
+    <div class="s5row"><span class="s5n" style="width:84px">⑦进阶生态</span><span class="s5bar" style="width:76%;background:#e9eef6;color:#456">略低 · 同上</span></div>
   </div>
+  <div class="s5cap">触点均分 <b>昇腾 75.0 / 英伟达 77.7</b>（gap 仅 −2.7）：整体差距不大，坑集中在<b>配环境</b>一处；<b>算子上手引导反而领先</b>。这条人侧曲线里，谷底（配环境）正是 AI 无感、长板（上手）AI 也跟着受益——和上面两步对照吻合。</div>
+</div>
 
-  <div class="cb-h" style="margin-top:14px">行动建议 · 训练场景（Agent / 产品体验侧）</div>
-  <table class="actions">
-    <thead><tr><th style="width:58px">优先级</th><th>建议</th><th style="width:84px">对应节点</th><th style="width:150px">预期收益</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pri p0">P0</span></td><td>供给侧<b>收口版本</b>：CANN / torch_npu canonical 配套表 + 查询器（治训练第一坑）</td><td>判断2 · sF/sI</td><td>把最弱的 F .72 抬起来</td></tr>
-      <tr><td><span class="pri p0">P0</span></td><td>使用侧<b>本机事实清单前置</b>：开训前核对版本 / 拓扑 / 显存 / 精度阈值</td><td>判断3 · A 类</td><td>减少每段协同来回</td></tr>
-      <tr><td><span class="pri p1">P1</span></td><td><b>版本声明前置</b>：环境卡先对配套表，别等 import 失败</td><td>判断2 · dVerT</td><td>避免「看着对、装不上」</td></tr>
-      <tr><td><span class="pri p1">P1</span></td><td>补<b>带版本号的分布式 / HCCL 二手</b>（救 F 的 ⑤⑥ 同质）</td><td>→ 见 19</td><td>降二手回声、抬可信度</td></tr>
-    </tbody>
-  </table>
-  <div class="cb-overall"><b>总论：训练这条路 AI 是「称职的副驾」</b>——5 搜全在中高/高带、官方都抓得到，没有算子那种受阻深谷。它的难<b>均匀、可预期</b>：每段都要人备好本机事实（版本 / 拓扑 / 显存 / 精度）。<b>对照算子开发，最能说明「可用性是任务相关的」</b>——同一个 AI，地形决定体感。（切上方 <b>算子开发</b> Tab 看深谷那条路；全 26 任务 ROI 排序见 <a href="19_findings_ux_synthesis.html">19</a>；推理场景制作中。）</div>
- </div>
+<div class="card">
+  <div class="l2h">合并行动 · 很多改进两侧通吃（完整 ROI 排序见 <a href="19_findings_ux_synthesis.html" style="color:#2f3d63;font-weight:600">19</a>）</div>
+  <div class="mact"><span class="mtag both">两者</span><b>版本一站收口</b>（canonical + 归档 + 配套查询器）—— 人侧补 API 版本选择器、AI 侧 ④⑨ 翻档，反事实测算<b>抬分断层第一</b>（+.104 / 16 格）。</div>
+  <div class="mact"><span class="mtag both">两者</span><b>错误码一码一页</b>（语义 + 案例）—— 人侧调试求助、AI 侧报错码 .55→约 .64；调试类两栈差距最大（−.287）。</div>
+  <div class="mact"><span class="mtag both">两者</span><b>二手扶持</b>（补英文 + SEO + 选可抓取平台）—— 人侧「被全球搜到」、AI 侧 ⑤⑥ 抬分。</div>
+  <div class="mact"><span class="mtag ai">AI</span><b>opdevg 静态化</b>（正文进首屏 HTML）—— 修最深的谷（写 kernel D．41 脱离「低」档）；人侧浏览器无感、纯 AI 收益。</div>
+  <div class="mact"><span class="mtag hu">人</span><b>下载游客可下、登录后置</b> + <b>上手长板前置</b>（在线实验 / ModelZoo）—— 人侧最高杠杆；AI 不登录、无此痛点。</div>
+  <div class="l2note">同色：<span class="mtag hu">人</span> 主要利好真人　<span class="mtag ai">AI</span> 主要利好 Agent　<span class="mtag both">两者</span> 一处改进两侧同时受益（占多数——这正是两套材料合在一起的价值）。</div>
 </div>
 
 <a id="s4"></a>
-<h2><span class="no">②</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
+<h2><span class="no">③</span>Agent 底层系统工程 · 跳出业务表层看技术实现</h2>
 <div class="sechint">前三节是「业务层看到的旅程」；本节下沉到「P2 检索区段里，Agent 内部究竟如何运转」。</div>
 
 <h3>4.1 工具调用策略：为什么是有限次检索，而非更多 / 更少</h3>
@@ -794,7 +727,7 @@ TOOLS = [
 </div>
 
 <a id="s6"></a>
-<h2><span class="no">③</span>交付物汇总</h2>
+<h2><span class="no">④</span>交付物汇总</h2>
 <div class="card">
   <div class="deliv"><div class="dn">1</div><div><b>全链路时序图</b>（本页 §1）：4 参与者（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
   <div class="deliv"><div class="dn">2</div><div><b>业务分析全部折进上图交互</b>：任务分工·四轴<b>折进生命线名悬浮</b>、协同交接量化<b>折进图例「消息·涉及 AI」悬浮</b>；用户决策依据 / 前置条件 / 决策链（含每步信息来源、随滑块在「人做」「AI 接管」两版切换）<b>折进 ◆ 节点悬浮</b>；人机主导权边界逐阶段<b>折进左侧阶段条悬浮</b>。结论见 §1 下方蓝色框。</div></div>
@@ -1333,7 +1266,7 @@ const D_NDETAIL={
         {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"自动改后重编译。"}
       ]},
   dB:{tier:"B",
-      intro:`<b>决策依据</b>：AI 给三种接 PyTorch 的方式——TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯定夺。`,
+      intro:`<b>决策依据</b>：AI 给三种接 PyTorch 的方式——TORCH_LIBRARY / TORCH_LIBRARY_IMPL 注册、PYBIND11_MODULE、或直调 autogen aclnn API。用户按 torch 版本（ABI 稳定性）与工程习惯拍板。`,
       pre:`知道本机 torch 版本与 ABI 约定；清楚是否要 python 侧直调。`,
       chain:[
         {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 列出三种绑定方式及适用场景（s11）。"},
@@ -1481,7 +1414,7 @@ SCENARIOS.D={
     note:`这就是上图那段旅程的<b>「分数面」</b>——同一份 D 实测，时序图讲成旅程、这里量化成分：<b>s3 红空返回＝②③</b>、<b>d2 版本散乱＝④⑨</b>、二手薄＝⑤⑥、自带兜底＝⑦、检索尖刺＝⑧。`
   },
   concl:{
-    insight:`26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 定夺。`,
+    insight:`26 任务里<b>最塌的一条（综合 .41）</b>。坑在哪：官方 how-to 整段压在 SPA 页、AI <b>抓取为空（s3 红）</b>，二手又薄、版本又散——三重坑叠加。AI 能给步骤骨架，但本机芯片 / 版本 / 精度这些 <b>A 类决策永远回到人</b>；连<b>算子调优（dT Tiling 策略）</b>也得人按本机 shape 拍板。`,
     next:`① 把官方 opdevg 页<b>静态化</b>（让 AI 抓得到正文，直接救 s3）② 补<b>带版本号的完整二手</b>（救 ⑤⑥）③ <b>收口版本</b>（一个 canonical + 配套查询器，救 ④⑨）。这三条最能把 .41 往上抬。`
   },
   nodeScore:{ sD:"→矩阵 D .41", sD2:"⑤3⑥2", sM:"→矩阵 M .63", sX:"→矩阵 X .74", sO:"→矩阵 O .72", sL:"→矩阵 L .69", dSoc:"④⑨ 本机", dVer:"④2⑨2" }
@@ -1493,11 +1426,11 @@ const G_NODES=[
   {id:"g2", xi:1, lane:"ai", kind:"search",  t:"web_search 找迁移方案", meta:"Agent 自主 · P2", b:"模型检索迁移方式。实测命中：hiascend 自动迁移页、ms_fmk_transplt 分析迁移工具、华为云 ModelArts 迁移最佳实践、知乎/CSDN/博客园。"},
   {id:"g3", xi:2, lane:"ai", kind:"fetch",   t:"web_fetch 官方自动迁移页", meta:"Agent 自主 · P2 · 成功", b:"抓 hiascend atlasfmkt_16_0036（devaids/auxiliarydevtool）——<b>ssr 可抓且详尽</b>：transfer_to_npu 一行接管 + 步骤 + NCCL 自动转 HCCL + 明列支持 PyTorch 1.11/2.1/2.2。对比 D 的 s3 受阻，这里官方页直接拿到主路径全文。"},
   {id:"g4", xi:3, lane:"ai", kind:"draft",   t:"给迁移方案：一行接管", meta:"Agent 自主 · P2→交付", b:"输出 import torch_npu + from torch_npu.contrib import transfer_to_npu（一行自动迁移），并标注一键只覆盖简单场景、自定义算子/jit/channel_last 需手工适配。end_turn。"},
-  {id:"dV", xi:4, lane:"hu", kind:"decision",t:"决策：选迁移方式", meta:"用户决定 · P2 · 技术路线（AI 建议·用户定夺）", b:"一键 transfer_to_npu（覆盖简单场景）vs 分析迁移工具 ms_fmk_transplt（出迁移报告、识别不支持 API）。按脚本复杂度选。"},
+  {id:"dV", xi:4, lane:"hu", kind:"decision",t:"决策：选迁移方式", meta:"用户决定 · P2 · 技术路线（AI 建议·用户拍板）", b:"一键 transfer_to_npu（覆盖简单场景）vs 分析迁移工具 ms_fmk_transplt（出迁移报告、识别不支持 API）。按脚本复杂度选。"},
   {id:"g5", xi:5, lane:"hu", kind:"run",     t:"改脚本（加 torch_npu 一行）", meta:"人机协同 · P3", b:"用户在脚本头部加 import torch_npu + transfer_to_npu 一行。"},
-  {id:"dN", xi:6, lane:"hu", kind:"decision",t:"决策：NCCL→HCCL backend", meta:"用户决定 · P3 · 技术路线（AI 建议·用户定夺）", b:"transfer_to_npu 自动转 backend，但脚本里<b>显式写死 nccl 的地方</b>需手改 hccl。"},
+  {id:"dN", xi:6, lane:"hu", kind:"decision",t:"决策：NCCL→HCCL backend", meta:"用户决定 · P3 · 技术路线（AI 建议·用户拍板）", b:"transfer_to_npu 自动转 backend，但脚本里<b>显式写死 nccl 的地方</b>需手改 hccl。"},
   {id:"g6", xi:7, lane:"hu", kind:"run",     t:"本地跑迁移后脚本", meta:"人机协同 · P3", b:"在 NPU 上直接运行改后的脚本。"},
-  {id:"dU", xi:8, lane:"hu", kind:"decision",t:"决策：不支持算子怎么办", meta:"用户决定 · P4 · 技术路线（AI 建议·用户定夺）", b:"遇不支持 API/算子：用分析迁移工具识别 / 改 npu_native_functions.yaml 挪 CPU / 写自定义 Ascend C。"},
+  {id:"dU", xi:8, lane:"hu", kind:"decision",t:"决策：不支持算子怎么办", meta:"用户决定 · P4 · 技术路线（AI 建议·用户拍板）", b:"遇不支持 API/算子：用分析迁移工具识别 / 改 npu_native_functions.yaml 挪 CPU / 写自定义 Ascend C。"},
   {id:"g7", xi:9, lane:"hu", kind:"run",     t:"改后重跑", meta:"人机协同 · P4", b:"按选定方案处理不支持算子后重跑。"},
   {id:"g8", xi:10,lane:"hu", kind:"run",     t:"存权重·精度验证", meta:"人机协同 · P4", b:"运行通过后存权重，与 GPU 侧参考输出比对精度。"},
   {id:"dA", xi:11,lane:"hu", kind:"decision",t:"决策：精度是否对齐 GPU", meta:"用户决定 · P4 · 验收", b:"迁移后精度是否对齐 GPU 是带业务容忍度的判断，AI 替不了。"},
@@ -1610,180 +1543,9 @@ const ARCHIVED_G={
     note:`G 的<b>「分数面」</b>——对照 D：g3 web_fetch <b>成功（绿、非受阻）</b>＝②③④全 4 分（D 同位受阻）、一轮命中＝⑧满分、改一行可跑＝⑩高。<b>采纳漏斗被刻意做厚的场景</b>，CANN 唯一接近 CUDA。`
   }
 };
-/* ===== 场景 训练 · 多卡昇腾训练（迁移/训练工程师 / 平稳协同·对照 D）=====
-   场景级旅程：把单卡脚本扩到多卡昇腾训练，沿时间撞上 5 次搜索（I→F→P→Q→R），各打穿矩阵不同行。
-   与 D 对照：5 搜官方全部可抓、无受阻深谷；最弱 F 分布式 .72（中高），坑在版本散 + 本机拓扑。 */
-const TR_NODES=[
-  {id:"t1", lane:"hu", kind:"start", t:"立项·多卡训练一个模型",
-    meta:"用户主导 · P1", b:"已有单卡能运行的 PyTorch 训练脚本，目标扩到多卡昇腾 NPU 训练。一次训练落地会沿时间撞上多次搜索，每次对应 26 任务里不同的一个。"},
-  {id:"sI", lane:"ai", kind:"fetch", t:"🔍 检索 I·版本兼容",
-    meta:"Agent 自主 · P2 · 官方可抓", b:"开训前搜「torch_npu 与 CANN / PyTorch 版本怎么对」。官方版本配套表 + 二手命中——官方抓得到（②4），但版本号并存、需对本机已装版本。"},
-  {id:"gI", lane:"ai", kind:"draft", t:"给版本对齐方案",
-    meta:"Agent 自主 · P2", b:"给 CANN ↔ torch_npu ↔ PyTorch 的版本对应，标注需核对本机已装 CANN 版本。"},
-  {id:"dVerT", lane:"hu", kind:"decision", t:"决策：选版本组合",
-    meta:"用户决定 · P2 · 非人不可", b:"AI 给不了本机已装的 CANN 版本。用户 npu-smi / pip 查本机版本，按配套表锁定 torch_npu。"},
-  {id:"eI", lane:"hu", kind:"run", t:"装 torch_npu·验证 import",
-    meta:"人机协同 · P2", b:"按锁定版本装 torch_npu，import 验证环境通。"},
-  {id:"sF", lane:"ai", kind:"fetch", t:"🔍 检索 F·分布式 HCCL 配置",
-    meta:"Agent 自主 · P3 · 官方可抓 · 本场景最弱", b:"搜「多卡怎么起、HCCL 怎么配」。官方 HCCL 页 ssr 可抓，但<b>版本散乱（④2）、二手同质</b>——本场景最弱的一搜（.72）。"},
-  {id:"gF", lane:"ai", kind:"draft", t:"给分布式启动方案",
-    meta:"Agent 自主 · P3", b:"给 init_process_group(backend='hccl') + ranktable / 环境变量 + 启动脚本骨架，留组网占位。"},
-  {id:"dTopo", lane:"hu", kind:"decision", t:"决策：多卡拓扑 / 通信后端",
-    meta:"用户决定 · P3 · 非人不可", b:"AI 给不了本机几张卡 / 怎么组网。用户按本机卡数、单机多卡 vs 多机定拓扑。"},
-  {id:"eF", lane:"hu", kind:"run", t:"改脚本起多卡训练",
-    meta:"人机协同 · P3", b:"按方案改脚本、配 ranktable，启动多卡训练。"},
-  {id:"sP", lane:"ai", kind:"fetch", t:"🔍 检索 P·混合精度",
-    meta:"Agent 自主 · P4 · 官方可抓", b:"搜「混合精度怎么开」。官方 AMP / apex 文档可抓、自带知识也够（⑦4）——本场景较顺的一搜（.83）。"},
-  {id:"gP", lane:"ai", kind:"draft", t:"给 AMP 接入",
-    meta:"Agent 自主 · P4", b:"给 torch_npu.npu.amp autocast + GradScaler 接入。"},
-  {id:"eP", lane:"hu", kind:"run", t:"开混合精度 → 撞显存 OOM",
-    meta:"人机协同 · P4 · 报错", b:"开 AMP 提 batch 加速，运行时撞显存 OOM 报错。"},
-  {id:"sQ", lane:"ai", kind:"fetch", t:"🔍 检索 Q·显存 OOM 优化",
-    meta:"Agent 自主 · P5 · 官方可抓", b:"搜「OOM 怎么降显存」。官方显存优化 + 二手都全（①5、③5）——本场景最顺的一搜（.86）。"},
-  {id:"gQ", lane:"ai", kind:"draft", t:"给显存优化方案",
-    meta:"Agent 自主 · P5", b:"给梯度累积 / 重计算 / batch 调整 / 释放策略。"},
-  {id:"dBatch", lane:"hu", kind:"decision", t:"决策：batch / 显存策略（训练调优）",
-    meta:"用户决定 · P5 · 技术路线（AI 建议·用户定夺）", b:"<b>这一步＝训练级调优。</b>按本机显存上限选 batch + 是否开重计算，权衡吞吐与显存。"},
-  {id:"eQ", lane:"hu", kind:"run", t:"调 batch 重训 → 精度不收敛",
-    meta:"人机协同 · P5 · 报错", b:"调整后训练起来，但 loss 不收敛 / 精度对不上参考。"},
-  {id:"sR", lane:"ai", kind:"fetch", t:"🔍 检索 R·收敛 / 精度排查",
-    meta:"Agent 自主 · P6 · 官方可抓", b:"搜「精度 / 收敛怎么排查」。官方精度比对 + 二手可抓（③5），版本仍是短板。"},
-  {id:"gR", lane:"ai", kind:"draft", t:"给排查清单",
-    meta:"Agent 自主 · P6", b:"给 loss scaling / 数据管线 / lr / 算子精度逐项排查清单。"},
-  {id:"dAccT", lane:"hu", kind:"decision", t:"决策：精度 / 收敛是否达标",
-    meta:"用户决定 · P6 · 非人不可 · 验收", b:"按业务精度阈值 + 收敛曲线判定。达标交付、不达标回调。"},
-  {id:"eR", lane:"hu", kind:"run", t:"调参重训·验证",
-    meta:"人机协同 · P6", b:"按清单调参、重训，验证收敛与精度。"},
-  {id:"tEnd", lane:"hu", kind:"deliver", t:"交付·多卡训练落地",
-    meta:"用户主导 · P7", b:"多卡训练运行通过、精度收敛达标，交付。全程官方都抓得到，无 D 那种受阻点。"},
-];
-const TR_BRANCH=[
-  {id:"b1", from:"dVerT", t:"查官方版本配套表对齐",
-    b:"版本不确定时，用户去 hiascend 官方版本配套表 / Gitee 仓对齐 torch_npu 与 CANN 版本。"},
-];
-const TR_PHASE=[
-  {a:0, b:0,  n:"P1 立项"},
-  {a:1, b:4,  n:"P2 版本对齐·检索 I"},
-  {a:5, b:8,  n:"P3 分布式·检索 F"},
-  {a:9, b:11, n:"P4 混合精度·检索 P"},
-  {a:12,b:15, n:"P5 显存 OOM·检索 Q"},
-  {a:16,b:19, n:"P6 收敛排查·检索 R"},
-  {a:20,b:20, n:"P7 交付"},
-];
-const TR_PHASE_DETAIL=[
-  {nodes:"t1", bound:"定目标「单卡脚本扩多卡昇腾训练」——AI 不介入。"},
-  {nodes:"sI–eI / dVerT", bound:"AI 检索版本配套 + 给对齐方案；用户按本机已装版本锁 torch_npu。<b>官方抓得到，但版本号并存是训练第一坑。</b>"},
-  {nodes:"sF–eF / dTopo", bound:"AI 给 HCCL 分布式启动骨架；用户按本机卡数定拓扑、起多卡。<b>本场景最弱的一搜（F .72，④版本散）。</b>"},
-  {nodes:"sP–eP", bound:"AI 给 AMP 接入；用户开混合精度提速，撞显存 OOM。"},
-  {nodes:"sQ–eQ / dBatch", bound:"AI 给显存优化（梯度累积 / 重计算）；用户按本机显存定 batch、重训。<b>最顺的一搜（Q .86）。</b>"},
-  {nodes:"sR–eR / dAccT", bound:"AI 给收敛 / 精度排查清单；用户按业务阈值判定达标。"},
-  {nodes:"tEnd", bound:"多卡训练运行通过、精度收敛达标，交付。全程无受阻点。"},
-];
-const TR_FLOW={
-  t1:{frm:"hu",to:"ai"},
-  sI:{frm:"ai",to:"off"}, gI:{frm:"ai",to:"exec"}, eI:{frm:"exec",to:"tool"},
-  sF:{frm:"ai",to:"off"}, gF:{frm:"ai",to:"exec"}, eF:{frm:"exec",to:"tool"},
-  sP:{frm:"ai",to:"off"}, gP:{frm:"ai",to:"exec"}, eP:{frm:"exec",to:"tool"},
-  sQ:{frm:"ai",to:"off"}, gQ:{frm:"ai",to:"exec"}, eQ:{frm:"exec",to:"tool"},
-  sR:{frm:"ai",to:"off"}, gR:{frm:"ai",to:"exec"}, eR:{frm:"exec",to:"tool"},
-  tEnd:{frm:"hu",to:"self"}
-};
-const TR_ARCHFLOW={};
-const TR_NDETAIL={
-  sI:{arch:"① 意图解析 → ③ 工具路由 → web_fetch 官方版本配套表 → ④ 研判（可抓）"},
-  sF:{arch:"③ 工具路由 → web_fetch 官方 HCCL 页 → ④ 研判（ssr 可抓、但版本散）",
-    full:`<div class="tt-sec"><span class="lbl">本场景最弱的一搜</span>官方 HCCL 页可抓（②4、非受阻），但<b>版本号并存（④2）、二手扎堆同质</b>——F .72，是训练这条路的低点，但仍中高、远好过 D 的 .41 受阻。</div>`},
-  sP:{arch:"③ 工具路由 → web_search + web_fetch AMP 文档 → ⑥ 收敛（自带知识也够）"},
-  sQ:{arch:"③ 工具路由 → web_search 显存优化 → ④ 研判（官方 + 二手都全）"},
-  sR:{arch:"③ 工具路由 → web_fetch 精度比对文档 → ④ 研判（可抓）"},
-  dVerT:{tier:"A",
-    intro:`<b>决策依据</b>：torch_npu 必须与本机已装的 CANN / PyTorch 版本严格配套，错配则 import 失败 / 算子缺失。AI 给得了配套表，<b>但给不了本机实际装的是哪个版本</b>。`,
-    pre:`能在本机查到已装 CANN / PyTorch 版本。`,
-    chain:[
-      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给 CANN↔torch_npu↔PyTorch 配套表。"},
-      {st:"② 研判", plat:"npu-smi info（CANN）", platK:"hu", d:"在本机查已装 CANN 版本。"},
-      {st:"③ 决策", plat:"hiascend 版本配套表", platK:"ext", d:"按本机版本从配套表锁 torch_npu。"},
-      {st:"④ 反馈", plat:"本机终端", platK:"hu", d:"装锁定版本、import 验证。"}
-    ],
-    chainAI:[
-      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定版本组合。"},
-      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 拿到配套表但缺本机已装版本。"},
-      {st:"③ 决策", plat:"⚠ AI 按最新版", platK:"warn", d:"推演：AI 默认按最新版——与本机实际已装版本未必对得上，import 可能直接失败。"},
-      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按所选继续。"}
-    ]},
-  dTopo:{tier:"A",
-    intro:`<b>决策依据</b>：多卡拓扑（几张卡 / 单机多卡 / 多机）、ranktable 与本机组网强相关。AI 给得了 HCCL 模板，<b>给不了本机硬件拓扑</b>。`,
-    pre:`知道本机卡数与组网方式。`,
-    chain:[
-      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给 HCCL 启动 + ranktable 模板。"},
-      {st:"② 研判", plat:"npu-smi info（CANN）", platK:"hu", d:"在本机看几张卡、组网。"},
-      {st:"③ 决策", plat:"本机硬件拓扑", platK:"hu", d:"按本机卡数定单机多卡 / 多机方案。"},
-      {st:"④ 反馈", plat:"本机终端", platK:"hu", d:"配 ranktable、启动多卡。"}
-    ],
-    chainAI:[
-      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定拓扑。"},
-      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 缺本机卡数 / 组网事实。"},
-      {st:"③ 决策", plat:"⚠ AI 按默认单机", platK:"warn", d:"推演：AI 假设单机 8 卡——与实际组网不符则启动失败。"},
-      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按假设继续。"}
-    ]},
-  dBatch:{tier:"B",
-    intro:`<b>决策依据</b>：batch 大小、是否开重计算是<b>吞吐 vs 显存的权衡</b>——AI 能给策略，最终值要按本机显存上限定。这一步属训练级调优。`,
-    pre:`知道本机单卡显存上限与当前占用。`,
-    chain:[
-      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给梯度累积 / 重计算 / batch 调整选项。"},
-      {st:"② 研判", plat:"本机终端（显存占用）", platK:"hu", d:"看当前显存占用与 OOM 余量。"},
-      {st:"③ 决策", plat:"本机显存上限", platK:"hu", d:"按显存定 batch + 是否开重计算。"},
-      {st:"④ 反馈", plat:"本机终端", platK:"hu", d:"调整后重训。"}
-    ],
-    chainAI:[
-      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"自动流程需定 batch。"},
-      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 按通用经验估 batch。"},
-      {st:"③ 决策", plat:"⚠ AI 估 batch", platK:"warn", d:"推演：AI 按通用值设 batch——本机显存不同则可能仍 OOM 或浪费算力。"},
-      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按估值继续。"}
-    ]},
-  dAccT:{tier:"A",
-    intro:`<b>决策依据</b>：收敛 / 精度是否达标是<b>带业务容忍度的价值判断</b>——AI 没有业务精度阈值与收敛基准。`,
-    pre:`定好业务精度阈值 / 收敛判据。`,
-    chain:[
-      {st:"① 接收", plat:"AI 对话界面", platK:"ai", d:"AI 给收敛 / 精度排查方法。"},
-      {st:"② 研判", plat:"本机（loss 曲线 + 比对）", platK:"hu", d:"看收敛曲线、与参考精度比对。"},
-      {st:"③ 决策", plat:"业务需求（精度阈值）", platK:"hu", d:"按业务阈值判定达标。"},
-      {st:"④ 反馈", plat:"AI 对话界面", platK:"ai", d:"达标交付 / 不达标回调。"}
-    ],
-    chainAI:[
-      {st:"① 接收", plat:"Agent 运行时", platK:"ai", d:"训练出结果需判精度。"},
-      {st:"② 研判", plat:"Agent 运行时", platK:"ai", d:"AI 无业务阈值 / 收敛基准。"},
-      {st:"③ 决策", plat:"⚠ AI 按通用阈值", platK:"warn", d:"推演：AI 按通用阈值判 → 未必符合业务要求。"},
-      {st:"④ 反馈", plat:"Agent 运行时", platK:"ai", d:"按通用阈值放行 / 驳回。"}
-    ]}
-};
-SCENARIOS.TR={
-  key:"TR", label:"训练场景", role:"训练/迁移工程师", grade:"串 5 搜索 · 最弱 .72",
-  NODES:TR_NODES, BRANCH:TR_BRANCH, PHASE:TR_PHASE, PHASE_DETAIL:TR_PHASE_DETAIL,
-  FLOW:TR_FLOW, NDETAIL:TR_NDETAIL, ARCHFLOW:TR_ARCHFLOW, A:["dVerT","dTopo","dAccT"],
-  dscore:{
-    META:[
-      ["①","官方可发现","sF：web_search 命中官方 HCCL 页 + 二手"],
-      ["②","官方可抓取","sF：web_fetch HCCL 页 ssr 可抓（非受阻）"],
-      ["③","官方正文详尽","sF：HCCL 配置正文可抓、够细"],
-      ["④","版本清晰","sF：CANN / torch_npu 版本号并存，散乱（训练第一坑）"],
-      ["⑤","二手丰富","sF：CSDN / 华为云有，量中、同质"],
-      ["⑥","二手可信","sF：多平台但部分扎堆"],
-      ["⑦","自带知识","gF：分布式属较通识，模型有一定覆盖"],
-      ["⑧","检索成本","sF：一两轮命中、fetch 成功，成本低（满分）"],
-      ["⑨","可锁版","dVerT：需本机已装版本核对"],
-      ["⑩","可复现","eF：配 ranktable、按本机组网，可复现中"]
-    ],
-    CANN:[4,4,4,2,3,3,3,5,3,3], CUDA:[5,5,5,3,3,4,4,5,4,5],
-    comp:["⑪ .72 中高","⑪ .88 高"],
-    note:`这里锚<b>本场景最弱的一搜 F 分布式（.72）</b>——对照 D：F 的 <b>②官方可抓（4、非受阻）</b>，坑只在 <b>④版本散乱（2）</b> + 二手同质。训练这条路 5 搜全在中高/高带、<b>无 D 那种受阻深谷</b>。`
-  },
-  nodeScore:{ sI:"→矩阵 I .73", sF:"→矩阵 F .72", sP:"→矩阵 P .83", sQ:"→矩阵 Q .86", sR:"→矩阵 R .75", dVerT:"④2⑨3 本机", dTopo:"本机拓扑" }
-};
 function setScenario(k){
   const S=SCENARIOS[k]; if(!S) return;
   curScen=k;
-  document.querySelectorAll("#conclbox .scen-concl").forEach(el=>{ el.hidden = el.dataset.scen!==k; });
   NODES=S.NODES; BRANCH=S.BRANCH; PHASE=S.PHASE; PHASE_DETAIL=S.PHASE_DETAIL;
   FLOW=S.FLOW; NDETAIL=S.NDETAIL; ARCHFLOW=S.ARCHFLOW;
   NODES.forEach((n,i)=>{ n.xi=i; if(n.kind==="decision") n.dtier=S.A.includes(n.id)?"A":"B"; });
@@ -1829,7 +1591,7 @@ function decisionChainHtml(det){
   let h="";
   // 档位横幅：当前这个决策归谁
   if(aiTake) h+=`<div class="dmode warn">⚠ 当前「人委派·AI 自管」档：此决策 <b>AI 接管</b>，下方为<b>推演</b>（无实测）${tierA?"——但芯片型号 / 本机版本 / 业务阈值是 AI 拿不到的本机·业务事实，这正是深水区最大风险":""}。</div>`;
-  else h+=`<div class="dmode ok">当前「${LVL[curLvl].name}」档：此决策 <b>归用户</b>（${tierA?"<b>非人不可</b>：AI 拿不到本机 / 业务事实":"AI 建议、用户定夺"}）。</div>`;
+  else h+=`<div class="dmode ok">当前「${LVL[curLvl].name}」档：此决策 <b>归用户</b>（${tierA?"<b>非人不可</b>：AI 拿不到本机 / 业务事实":"AI 建议、用户拍板"}）。</div>`;
   if(det.intro) h+=`<div class="tt-b" style="margin-top:6px">${det.intro}</div>`;
   if(det.pre)   h+=`<div class="tt-meta" style="margin-top:5px"><b style="color:#9fb8ff">前置条件：</b>${det.pre}</div>`;
   h+=`<div class="dchain">`;
