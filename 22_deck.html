@@ -537,29 +537,6 @@ body.overview #panel,body.overview #toggle{display:none!important}
     </div>
   </section>
 
-  <!-- 9 怎么读这张图 -->
-  <section class="slide s-gray">
-    <div class="head">
-      <div class="head-l"><div class="brand"><span class="ttl">怎么读这张图：5 条生命线 + 5 次搜索</span></div>
-      <div class="subttl">核心 · 时序图的语言</div></div>
-      <div class="head-r">核心 · 解释<br/>2026</div>
-    </div>
-    <div class="body-area">
-      <div class="legcards">
-        <div class="legc" style="--lc:#C8102E"><div class="lh">昇腾官方</div><div class="ld">AI 检索的第一去处；抓得到才算原料到手</div></div>
-        <div class="legc" style="--lc:#BA7517"><div class="lh">二手社区</div><div class="ld">官方受阻时退到这里；条数薄、版本散</div></div>
-        <div class="legc" style="--lc:#6B5BA8"><div class="lh">AI</div><div class="ld">主轴：检索、研判、起草、交付</div></div>
-        <div class="legc" style="--lc:#2f3d63"><div class="lh">人类用户</div><div class="ld">立项、执行、核验；落地环节回到人</div></div>
-        <div class="legc" style="--lc:#3f7d72"><div class="lh">本机工具</div><div class="ld">编译、运行、报错——只有人能碰</div></div>
-      </div>
-      <div class="readrow">
-        <div class="rr"><b>横轴＝时间。</b>开发一个算子不是搜一次，是沿时间撞上 <b>5 次搜索</b>：写 kernel(D) → Tiling(M) → 内存(X) → 集成(O) → 精度(L)，每次打穿矩阵不同行。</div>
-        <div class="rr"><b>箭头＝一条消息。</b>AI 向官方 <code>web_fetch</code>、退二手、向人交付、工具报错回灌——<b>红色虚线空箭头</b>＝官方抓取为空。</div>
-        <div class="rr"><b>分数＝矩阵打穿。</b>每站下方的小分就是热力矩阵对应那一行的综合分（D .41 / M .63 / X .74 / O .72 / L .69）。</div>
-      </div>
-    </div>
-  </section>
-
   <!-- 10 核心发现 -->
   <section class="slide s-gray">
     <div class="head">
@@ -847,10 +824,10 @@ updateCurrent(0);
 </script>
 
 <script>
-/* ===== 三档横版时序图：一份布局，按自主度档位渲三页 ===== */
+/* ===== 三档横版时序图：一份布局，按自主度档位渲三页（v2 · 行带 + 弱化 OK 搜索） ===== */
 (function(){
   const C={off:'#C8102E',sec:'#BA7517',ai:'#6B5BA8',hu:'#2f3d63',tool:'#3f7d72'};
-  const LY={off:62,sec:118,ai:204,hu:300,tool:374};
+  const LY={off:86,sec:136,ai:220,hu:316,tool:380};
   const NM={off:'昇腾官方',sec:'二手社区',ai:'AI',hu:'人类用户',tool:'本机工具'};
   const SR=[
     {id:'D',n:'写 kernel · D',x:300,s:'.41',sc:'#F9D2D2',st:'#a32d2d',blk:true},
@@ -859,59 +836,48 @@ updateCurrent(0);
     {id:'O',n:'集成 · O',   x:732,s:'.72',sc:'#DCF5E5',st:'#3e7d45'},
     {id:'L',n:'精度 · L',   x:872,s:'.69',sc:'#DCF5E5',st:'#3e7d45'}];
   const lc=l=>l==='ai'?C.ai:C.hu;
-  const node=(x,y,c,r)=>`<circle cx="${x}" cy="${y}" r="${r||9}" fill="${c}"/>`;
+  const node=(x,y,c,r)=>{r=r||8;return `<circle cx="${x}" cy="${y}" r="${r+3}" fill="#fff"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;};
   const txt=(x,y,t,c,sz,w,anc)=>`<text x="${x}" y="${y}" font-size="${sz||11.5}" font-weight="${w||400}" fill="${c}" text-anchor="${anc||'start'}" font-family="HarmonyOS Sans SC,Inter">${t}</text>`;
   function drawSeq(lvl){
     const ex=lvl>=1?'ai':'hu', dec=lvl>=2?'ai':'hu';
     let s='<defs>';
-    [['ah',C.ai],['ahr',C.off],['aha',C.sec],['ahg',C.tool],['ahb',C.hu],['ahn','#23a06b']].forEach(([id,col])=>{
+    [['ah',C.ai],['ahr',C.off],['aha',C.sec],['ahg',C.tool],['ahb',C.hu]].forEach(function(m){var id=m[0],col=m[1];
       s+=`<marker id="${id}-${lvl}" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="${col}"/></marker>`;});
     s+='</defs>';
     const M=id=>`url(#${id}-${lvl})`;
-    for(const k in LY){const y=LY[k];s+=`<line x1="158" y1="${y}" x2="1176" y2="${y}" stroke="#c4cad4" stroke-width="1.3" stroke-dasharray="2,5"/>`;
-      s+=txt(8,y+5,NM[k],C[k],14,700);}
-    // 立项
-    s+=node(180,LY.hu,C.hu)+`<line x1="192" y1="294" x2="288" y2="210" stroke="${C.hu}" stroke-width="2" marker-end="${M('ahb')}"/>`+txt(150,330,'立项·提需求',C.hu);
-    // 5 次搜索
-    SR.forEach(r=>{
-      s+=txt(r.x,36,r.n,r.blk?C.off:'#5e646e',12.5,700,'middle');
-      s+=node(r.x,LY.ai,C.ai);
+    for(const k in LY){s+=`<rect x="150" y="${LY[k]-21}" width="1035" height="42" rx="11" fill="${C[k]}" opacity="0.06"/>`;}
+    for(const k in LY){const y=LY[k];s+=`<line x1="206" y1="${y}" x2="1176" y2="${y}" stroke="${C[k]}" stroke-width="1" stroke-dasharray="1,7" opacity="0.45"/>`+txt(20,y+5,NM[k],C[k],13.5,700);}
+    s+=node(182,LY.hu,C.hu)+`<line x1="194" y1="310" x2="288" y2="226" stroke="${C.hu}" stroke-width="2" stroke-linecap="round" marker-end="${M('ahb')}"/>`+txt(150,344,'立项·提需求',C.hu);
+    SR.forEach(function(r){
+      s+=txt(r.x,40,r.n,r.blk?C.off:'#5e646e',12.5,700,'middle');
       if(r.blk){
-        s+=`<line x1="${r.x}" y1="193" x2="${r.x}" y2="70" stroke="${C.off}" stroke-width="2.2" stroke-dasharray="6,5" marker-end="${M('ahr')}"/>`;
-        s+=txt(r.x+9,94,'✕ 抓取为空',C.off,12.5,700);
-        s+=`<line x1="${r.x+11}" y1="199" x2="${r.x+52}" y2="126" stroke="${C.sec}" stroke-width="2" marker-end="${M('aha')}"/>`;
-        s+=txt(r.x+56,120,'退二手',C.sec,11.5);
+        s+=`<line x1="${r.x}" y1="${LY.ai-12}" x2="${r.x}" y2="${LY.off+12}" stroke="${C.off}" stroke-width="2.2" stroke-dasharray="6,5" stroke-linecap="round" marker-end="${M('ahr')}"/>`;
+        s+=txt(r.x+10,LY.off+24,'✕ 抓取为空',C.off,12,700);
+        s+=`<line x1="${r.x+11}" y1="${LY.ai-10}" x2="${r.x+48}" y2="${LY.sec+8}" stroke="${C.sec}" stroke-width="2" stroke-linecap="round" marker-end="${M('aha')}"/>`;
+        s+=txt(r.x+52,LY.sec+3,'退二手',C.sec,11);
       }else{
-        s+=`<line x1="${r.x}" y1="193" x2="${r.x}" y2="126" stroke="#23a06b" stroke-width="1.8" marker-end="${M('ahn')}"/>`;
-        s+=txt(r.x+7,150,'✓',  '#1f6b45',12,700);
+        s+=`<rect x="${r.x-33}" y="${LY.ai-47}" width="66" height="19" rx="9.5" fill="#E7F5E9" stroke="#bfe3c5"/>`+txt(r.x,LY.ai-34,'官方可抓 ✓','#2f7d45',10.5,700,'middle');
       }
-      s+=`<rect x="${r.x-26}" y="216" width="52" height="22" rx="6" fill="${r.sc}"/>`+txt(r.x,231,r.s,r.st,13,800,'middle');
+      s+=node(r.x,LY.ai,C.ai);
+      s+=`<rect x="${r.x-26}" y="${LY.ai+12}" width="52" height="22" rx="6" fill="${r.sc}"/>`+txt(r.x,LY.ai+27,r.s,r.st,13,800,'middle');
     });
-    s+=`<line x1="300" y1="204" x2="872" y2="204" stroke="${C.ai}" stroke-width="2.5" opacity="0.3"/>`;
-    // 安全网（仅档①）
-    if(lvl===0){
-      s+=`<line x1="350" y1="294" x2="350" y2="128" stroke="${C.hu}" stroke-width="1.6" stroke-dasharray="3,4" marker-end="${M('ahb')}"/>`;
-      s+=txt(356,272,'人独立自查·安全网',C.hu,11.5,700);
-    }
-    // 执行·编译（owner 随档）
-    const exx=408, oy=LY[ex];
-    s+=node(exx,LY.tool,C.tool)+`<line x1="${exx}" y1="${oy+12}" x2="${exx}" y2="364" stroke="${lc(ex)}" stroke-width="2" marker-end="${M('ahg')}"/>`;
-    s+=txt(exx+8,LY.tool+4,'编译·运行（'+(ex==='ai'?'AI':'人')+'）',C.tool,11.5,700);
-    s+=`<line x1="${exx+14}" y1="364" x2="${exx+58}" y2="212" stroke="${C.tool}" stroke-width="1.6" stroke-dasharray="3,4" marker-end="${M('ah')}"/>`+txt(exx+30,332,'报错回灌',C.tool,11);
-    // A 类决策（owner 随档）
-    const dx=940, dy=LY[dec];
-    s+=txt(dx,36,'A 类决策',  '#9a7b1a',12,700,'middle');
+    s+=`<line x1="300" y1="${LY.ai}" x2="872" y2="${LY.ai}" stroke="${C.ai}" stroke-width="2.5" opacity="0.26"/>`;
+    if(lvl===0){s+=`<line x1="360" y1="${LY.hu-10}" x2="360" y2="${LY.sec+10}" stroke="${C.hu}" stroke-width="1.6" stroke-dasharray="3,4" stroke-linecap="round" marker-end="${M('ahb')}"/>`+txt(366,LY.ai+56,'人独立自查·安全网',C.hu,11,700);}
+    const exx=408;
+    s+=node(exx,LY.tool,C.tool)+`<line x1="${exx}" y1="${LY[ex]+12}" x2="${exx}" y2="${LY.tool-11}" stroke="${lc(ex)}" stroke-width="2" stroke-linecap="round" marker-end="${M('ahg')}"/>`;
+    s+=txt(exx+11,LY.tool+4,'编译·运行（'+(ex==='ai'?'AI':'人')+'）',C.tool,11.5,700);
+    s+=`<line x1="${exx+13}" y1="${LY.tool-11}" x2="${exx+54}" y2="${LY.ai+13}" stroke="${C.tool}" stroke-width="1.5" stroke-dasharray="3,4" stroke-linecap="round" marker-end="${M('ah')}"/>`+txt(exx+30,LY.hu+22,'报错回灌',C.tool,11);
+    const dx=980, dy=LY[dec];
+    s+=txt(dx,40,'A 类决策','#9a7b1a',12,700,'middle');
     s+=`<rect x="${dx-11}" y="${dy-11}" width="22" height="22" rx="3" transform="rotate(45 ${dx} ${dy})" fill="#E6B73E" stroke="#9a7b1a" stroke-width="1.5"/>`;
-    s+=txt(dx-50,dy+(dec==='ai'?-20:36),'soc/版本/精度（'+(dec==='ai'?'AI 猜':'人定')+'）','#9a7b1a',11,700);
-    // 交付
-    s+=node(1096,LY.hu,C.hu)+`<line x1="${dx+12}" y1="${dy+(dec==='ai'?8:-8)}" x2="1084" y2="300" stroke="${lc(dec)}" stroke-width="1.8" marker-end="${M('ahb')}"/>`+txt(1066,330,'交付·验收',C.hu);
-    // 主导方色带
+    s+=txt(dx-52,dy+(dec==='ai'?-20:36),'soc/版本/精度（'+(dec==='ai'?'AI 猜':'人定')+'）','#9a7b1a',11,700);
+    s+=node(1100,LY.hu,C.hu)+`<line x1="${dx+12}" y1="${dy+(dec==='ai'?8:-8)}" x2="1088" y2="${LY.hu}" stroke="${lc(dec)}" stroke-width="1.8" stroke-linecap="round" marker-end="${M('ahb')}"/>`+txt(1070,LY.hu+34,'交付·验收',C.hu);
     const band=[['立项','hu',158,250],['检索·产出','ai',250,430],['执行',ex,430,660],['决策',dec,660,960],['交付','hu',960,1176]];
-    band.forEach(([nm,l,a,b])=>{s+=`<rect x="${a}" y="438" width="${b-a}" height="20" fill="${lc(l)}" opacity="0.88"/>`+txt((a+b)/2,452,nm,'#fff',11,700,'middle');});
-    s+=txt(158,474,'主导方色带（蓝=人 / 紫=AI）· 随档位变化',  '#929aa6',10.5);
+    band.forEach(function(g){var nm=g[0],l=g[1],a=g[2],b=g[3];s+=`<rect x="${a}" y="436" width="${b-a}" height="20" rx="3" fill="${lc(l)}" opacity="0.9"/>`+txt((a+b)/2,450,nm,'#fff',11,700,'middle');});
+    s+=txt(158,472,'主导方色带（蓝=人 / 紫=AI）· 随档位变化','#929aa6',10.5);
     return s;
   }
-  [0,1,2].forEach(l=>{const el=document.getElementById('seq'+l);if(el)el.innerHTML=drawSeq(l);});
+  [0,1,2].forEach(function(l){var el=document.getElementById('seq'+l);if(el)el.innerHTML=drawSeq(l);});
 })();
 </script>
 </body>
