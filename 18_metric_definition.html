@@ -39,6 +39,14 @@
   h2 .en{font-size:10.5px;font-weight:500;color:var(--g4);letter-spacing:.4px;}
 
   p.note{font-size:12.5px;color:var(--g2);margin:8px 2px;line-height:1.75;}
+  details.fold{background:#f6f7fb;border:1px dashed #c3cbdc;border-radius:11px;margin:11px 0;}
+  details.fold>summary{cursor:pointer;list-style:none;padding:11px 15px;font-size:12px;font-weight:700;color:#2f3d63;user-select:none;display:flex;align-items:center;gap:8px;}
+  details.fold>summary::-webkit-details-marker{display:none;}
+  details.fold>summary::before{content:'▸';color:#2f3d63;font-size:11px;transition:transform .15s;}
+  details.fold[open]>summary::before{transform:rotate(90deg);}
+  details.fold>summary:hover{color:#1f2b4d;}
+  details.fold>summary .cnt{color:var(--g4);font-weight:500;font-size:11px;}
+  details.fold .foldbody{padding:2px 15px 13px;}
   p.note b{color:var(--g1);}
   .hl-nv{color:var(--nv);font-weight:700;}
   .hl-hw{color:var(--hw);font-weight:700;}
@@ -246,6 +254,7 @@
   <p class="note">7 个阶段把"装→开发→训练→部署→调优→调试→迁移"这条完整链路铺满，共 <b>26 个任务</b>。这才是"任务是怎么形成的"的主体——一张<b>有意求全</b>的工作面清单。</p>
 
   <p class="note" style="margin-top:16px"><b>再从这张全清单里实测检索（次要的一步）。</b>26 个分四批跑完——首批 <b>A–D</b>（沿"成熟→前沿"光谱）、二批 <b>E–H</b>、三批 <b>I–S</b>、四批 <b>T–Z</b>，<b>26/26 现已全量实测</b>（标 <span class="vs hi" style="background:var(--hw)">A–Z</span>）。抽样不是随机，最初 4 个<b>有意沿"成熟通识 → 前沿开发"光谱铺开</b>让"可用性是任务相关的"显形；下表列出<b>全部 26 个</b>（四批代号 A–D / E–H / I–S / T–Z，CANN 综合为 score_metrics.py 公式值）：</p>
+  <details class="fold"><summary>展开 · 全 26 任务清单 <span class="cnt">代号 / 光谱位置 / 版本敏感 / CANN 综合分 + 四批实测发现</span></summary><div class="foldbody">
   <table class="ttab">
     <thead><tr><th style="width:34px">代号</th><th>抽样的开发任务（CUDA ｜ 昇腾）</th><th>在光谱上的位置</th><th style="width:74px">版本敏感</th><th style="width:96px">CANN 综合</th></tr></thead>
     <tbody>
@@ -279,6 +288,7 @@
   </table>
   <p class="note">第一批 A→D 沿"越来越深入、越来越前沿"铺开，印证 <b>A/B/C 两栈差距小、D 差距被拉满</b>。第二批 E–H 进一步发现：<b>可用性还随任务在"采纳漏斗"上的位置变化</b>——<b>迁移(G) 被官方刻意做厚、唯一达「高」</b>（transfer_to_npu 一行自动迁移 + 文档可抓详尽 + 华为云最佳实践）；<b>前沿算子(D) 最薄、唯一「低」</b>；<b>排障(E) 居中偏弱</b>（官方错误码页泛化兜底、依赖具体案例知识）。八格 CANN 综合（CUDA 侧均 .88–1.0 高）由 <code>score_metrics.py</code> 代入①–⑧ 算出，可复现。结论可信，正因为底层是<b>一张求全的清单 + 两批有意铺开的抽样</b>，不是凑巧挑了几个。<br><b>新洞见（②可抓取性）：</b>E/F/G/H 的官方页（错误码 / trainingmigrguide / devaids 自动迁移 / devaids·devtools AMCT）<b>实测全部 ssr 可抓</b>——连此前以为是 SPA 的 <code>devaids/devtools/amct</code> 也可抓；<b>至今唯一确证「SPA 咬到结果」的仍只有 D 的 <code>devguide/opdevg/</code></b>。但 E 暴露了新形态：<b>抓得到 ≠ 够用</b>——官方错误码页可抓但是泛化兜底（②4 但 ③2），与 D 的「受阻（抓不到）」是两种不同短板。</p>
   <p class="note"><b>第三、四批补齐 I–Z（2026-06-11，26/26 全量定稿）。</b>CANN 全量档位分布：<b>7 高（G/J/K/P/Q/U/Z）｜ 16 中高 ｜ 2 中（E/M）｜ 1 低（D）</b>；CUDA 侧 26 格全「高」（.83–1.0）。两条结论在全样本下定稿、且较 8 格更稳：<br><b>① SPA 真受阻收窄到 D 单点。</b>T–Z 又添 6 个「非 SPA」实例——U（ascendcbestP 最佳实践子树 ssr）、V（apiref/appdevgapi ssr）、W（hccl 子树 ssr）、X（devaids/opdev/optool ssr）、Z（opdevg/Ascendcopdevg SPMD 页 ssr）全 SSR 可抓，Y 为 partial（doc_center 镜像兜底）。<b>26 格里头条 how-to 既无 SSR 正文、又无可抓镜像兜底的，仍只有 D 的 <code>devguide/opdevg/ascendcopdevg</code></b>。<br><b>② CANN 真短板已从「抓不到」彻底转移到「④版本散乱 + ⑤二手剔官方后变薄 + ⑦深处自带知识弱」。</b>X（内存越界）是极端例：官方 msSanitizer 页③5 满分，但二手仅 1 条、自带⑦2 → 仍只到中高。即 Agent 视角下官方可抓性已非主瓶颈（仅 D），<b>生态厚度与版本治理</b>才是。</p>
+  </div></details>
 
   <p class="note" style="margin-top:18px"><b>另一种正交的切法：按「谁在用昇腾」分 4 类使用者角色。</b>上面 7 大类是<b>工作流阶段</b>（纵向生命周期）；这里换一条轴——<b>按使用者人群</b>（横向角色）。两者是<b>同一张 26 任务清单</b>的两个透镜：一个任务属于某个生命周期阶段，同时被一个或多个角色做。<b>角色的切法独立于「跑了哪几个任务」</b>——以官方 API 分层为骨（AscendCL ｜ 框架插件 torch_npu / ATC / GE 图 ｜ Ascend C ｜ 最底层资源），从「现实里到底有几种人在用昇腾」推出，而不是从已跑任务倒推：</p>
   <table class="ttab">
@@ -339,7 +349,8 @@
   其中含派给它的「一对问题」原文——故下表 I–Z 现已全部填回 transcript 还原的真问句
   （非事后补编）。task_run_log.md 同步订正。来源 = 会话 transcript，可复核。
 -->
-  <p class="note" style="margin-top:18px"><b>其余 22 个任务的问句对（E–Z）。</b>格式同上四例——每张卡片头注「<b>同一意图</b>：两栏共同的开发诉求」，卡内左 CUDA、右 CANN 两条<b>实测检索当时的问句原文</b>。E–H（单会话顺序实测检索）一字未改地留在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行实测检索）的原文从<b>本会话 transcript 里每个 sub-agent 的 Agent prompt</b>（派给它的「一对问题」原文，2026-06-11 捞回订正，非事后补编）还原，并已同步回 <code>task_run_log.md</code>：</p>
+  <details class="fold"><summary>展开 · 其余 22 个任务（E–Z）的问句对原文 <span class="cnt">22 张卡片 · 左 CUDA / 右 CANN，均为实测检索当时原文</span></summary><div class="foldbody">
+  <p class="note" style="margin-top:4px">格式同上四例。E–H（单会话顺序实测）一字未改留在 <code>task_run_log.md</code>；I–Z（第三、四批 sub-agent 并行实测）原文从本会话 transcript 的 Agent prompt 捞回订正（非事后补编、可复核）。</p>
   <div class="qp">
     <div class="qph"><span class="cd">E</span>报错码 / 异常排查 <span class="vsen">— 同一意图：遇到运行时报错码，怎么定位是哪一行、哪个根因</span></div>
     <div class="qpb">
@@ -494,7 +505,8 @@
       <div class="side ca"><span class="st">CANN</span><div class="qq">请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？</div></div>
     </div>
   </div>
-  <p class="note">上方 4 对详例 + 这 22 张卡片合计 <b>26 对问句</b>，<b>全部为实测检索当时的原文</b>：A–H（单会话顺序实测检索）一字未改地记录在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行实测检索）的原文从本会话 transcript（<code>637b50f9….jsonl</code>）里每个 sub-agent 的 Agent prompt 捞回订正（2026-06-11），<b>非事后补编、来源可复核</b>，并已同步回 <code>task_run_log.md</code>。每对问句都连同实测检索时走的 web_search / web_fetch 步骤一并记录——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
+  </div></details>
+  <p class="note">上方 4 对详例 + 折叠里的 22 张卡片合计 <b>26 对问句</b>，<b>全部为实测检索当时的原文</b>：A–H（单会话顺序实测检索）一字未改地记录在 <code>task_run_log.md</code>；I–Z（第三、四批由 sub-agent 并行实测检索）的原文从本会话 transcript（<code>637b50f9….jsonl</code>）里每个 sub-agent 的 Agent prompt 捞回订正（2026-06-11），<b>非事后补编、来源可复核</b>，并已同步回 <code>task_run_log.md</code>。每对问句都连同实测检索时走的 web_search / web_fetch 步骤一并记录——评分不是凭印象，而是从这份过程记录里读出来的（见 §5）。</p>
 
   <!-- 3. 指标怎么形成 -->
   <h2 id="s3">3 · 指标是怎么形成的 <span class="en">how the metric system was derived</span></h2>
