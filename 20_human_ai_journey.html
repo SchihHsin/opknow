@@ -797,7 +797,7 @@ TOOLS = [
 <a id="s6"></a>
 <h2><span class="no">③</span>交付物汇总</h2>
 <div class="card">
-  <div class="deliv"><div class="dn">1</div><div><b>全链路时序图</b>（本页 §1）：4 参与者（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 2 用户独立分支、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
+  <div class="deliv"><div class="dn">1</div><div><b>全链路时序图</b>（本页 §1）：4 参与者（昇腾社区 ｜ AI ｜ 人类用户 ｜ 本机工具）、14 主节点 + 9 决策点（A 类 3 非人不可 + B 类 6 技术路线）+ 6 用户独立分支（人→昇腾官方，多数从决策块指出 + sD 安全网，对应 ascend step1/3/4/6）、人机交接连线（① 档 10 处、随档位变少）、7 阶段色带、主导方色带、逐节点悬浮详情——均锚定 D 任务实测事实。</div></div>
   <div class="deliv"><div class="dn">2</div><div><b>业务分析全部折进上图交互</b>：任务分工·四轴<b>折进生命线名悬浮</b>、协同交接量化<b>折进图例「消息·涉及 AI」悬浮</b>；用户决策依据 / 前置条件 / 决策链（含每步信息来源、随滑块在「人做」「AI 接管」两版切换）<b>折进 ◆ 节点悬浮</b>；人机主导权边界逐阶段<b>折进左侧阶段条悬浮</b>。结论见 §1 下方蓝色框。</div></div>
   <div class="deliv"><div class="dn">3</div><div><b>技术拆解</b>（§2 Agent 系统工程）：工具调用策略（max_uses 硬上限 + 模型自主软停止）、输入优化、大模型逐轮内部动作、agent 循环架构图 + 代码；每个时序节点悬浮还标出「对应架构环节」。</div></div>
 </div>
@@ -826,8 +826,8 @@ let NODES, BRANCH, PHASE, PHASE_DETAIL, FLOW, NDETAIL, ARCHFLOW, byId, curScen="
 /* 场景级旅程：开发一个算子，沿途撞上 5 次搜索（D→M→X→O→L），各打穿矩阵不同行。
    生命线 5 条：昇腾官方(off) / 二手社区(sec) / AI / 人 / 工具。唯一官方受阻＝写 kernel 的 D。 */
 const D_NODES = [
-  {id:"n1",   lane:"hu", kind:"start",   t:"立项·开发算子接 PyTorch",
-    meta:"用户主导 · P1", b:"目标：开发一个 Ascend C 自定义算子并接入 PyTorch。一次开发会沿时间撞上多次搜索，每次对应 26 任务里不同的一个。"},
+  {id:"n1",   lane:"hu", kind:"start",   t:"立项·选型·开发算子接 PyTorch",
+    meta:"用户主导 · P1 · 含 step1 落地·选型", b:`<b>用户给 AI 的原始输入：</b>「我要在昇腾 NPU 上写一个自定义算子（例如逐元素 AddCustom），用 Ascend C 实现，并注册进 PyTorch、能在 torch_npu 里调用——完整流程怎么走？」<br><br>目标：开发一个 Ascend C 自定义算子并接入 PyTorch。立项即含<b>选型（step1 落地·找入口·选型）</b>——先去社区找入口、判断走 aclnn 简易工程还是完整自定义算子工程。之后这次开发会沿时间撞上多次搜索，每次对应 26 任务里不同的一个。`},
   {id:"sD",   lane:"ai", kind:"fetch",   blocked:true, t:"🔍 检索 D·自定义算子 how-to",
     meta:"Agent 自主 · P2 · 官方受阻", b:"写核函数前搜「怎么写自定义算子」。web_fetch 官方 how-to（devguide/opdevg SPA）正文抓取为空——<b>这是整条旅程唯一官方真受阻的一搜</b>。", blk:"实测受阻：SPA 页只回导航 + meta；26 任务里唯一「SPA 短板真正咬到结果」的格。"},
   {id:"sD2",  lane:"ai", kind:"search",  t:"官方受阻 → 转二手拼答案",
@@ -873,10 +873,18 @@ const D_NODES = [
 ];
 /* 分支（用户脱离 AI 的独立动作）——目标都是昇腾官方 */
 const D_BRANCH = [
-  {id:"b1", from:"sD",   t:"浏览器自查官方 SPA 页",
-    b:`AI fetch 受阻时，用户开浏览器人眼看渲染后正文，或转去社区自助——人能看到 AI 抓不到的内容。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带字符上限（约 100 字），贴一整段报错会被<b>截断</b>；<br>· 想去论坛提问，<b>发帖需登录华为账号</b>（门槛）；<br>· 好在论坛按产品线分版（综合 / Ascend C / CANN…）、另有集中的 <b>AscendFAQ</b>，自助定位还算准。</div>`},
-  {id:"b2", from:"dVer", t:"Gitee samples 仓求证",
-    b:`版本不确定时，用户去 Gitee 官方 samples 仓对齐对应版本样例。<div class="tt-sec"><span class="lbl">人自己用社区会撞到什么（据姊妹 UX 研究）</span>· 想搜博客 / 帖子佐证版本，昇腾内容<b>SEO 偏弱、海外搜不到</b>、博客入口还埋在开发者中心二级；<br>· Gitee 官方 samples 仓 + 按产品线分版的论坛，定位倒是准。</div>`},
+  {id:"b0", from:"n1", to:"off", step:"step1", t:"找入口·选型",
+    b:`立项时人去昇腾社区找开发入口、判断走 aclnn 简易工程还是完整自定义算子工程。<div class="tt-sec"><span class="lbl">对应 ascend step1 落地·找入口·选型（据姊妹 UX 研究）</span>· 单站全包、官网首页即露开发入口（不弱）；<br>· 但<b>开发者中心埋在二级</b>，缺一个「先点这里」的最强单一 CTA。</div>`},
+  {id:"b1", from:"sD", to:"off", step:"step4·安全网", t:"AI 受阻 → 人自查官方 SPA",
+    b:`AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容（这条是安全网，非决策）。<div class="tt-sec"><span class="lbl">对应 ascend step4 写·查文档（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带字符上限（约 100 字），贴一整段报错会被<b>截断</b>；<br>· 想去论坛提问，<b>发帖需登录华为账号</b>（门槛）；<br>· 好在论坛按产品线分版（综合 / Ascend C / CANN…）、另有集中的 <b>AscendFAQ</b>，自助定位还算准。</div>`},
+  {id:"bSoc", from:"dSoc", to:"off", step:"step3", t:"查官方版本配套表",
+    b:`选 soc_version 时，人去查官方版本配套表、npu-smi 对应关系。<div class="tt-sec"><span class="lbl">对应 ascend step3 配环境·拿 SDK（据姊妹 UX 研究）</span>· 多版本号并存，<b>选对版本本身就费劲</b>；<br>· 想搜博客佐证，昇腾内容<b>SEO 偏弱、海外搜不到</b>。</div>`},
+  {id:"bTil", from:"dTil", to:"off", step:"step4", t:"查 Ascend C Tiling 文档",
+    b:`定 Tiling 策略时，人去查 Ascend C Tiling 文档 / 样例。<div class="tt-sec"><span class="lbl">对应 ascend step4 写·查文档（据姊妹 UX 研究）</span>· 文档中心搜索框<b>字符上限约 100 字</b>，长查询被截断；<br>· 好在文档按 Ascend C 专版组织、定位还算准。</div>`},
+  {id:"b2", from:"dVer", to:"off", step:"step3", t:"Gitee samples 仓求证",
+    b:`版本对齐不确定时，人去 Gitee 官方 samples 仓对齐对应版本样例。<div class="tt-sec"><span class="lbl">对应 ascend step3 配环境·拿 SDK（据姊妹 UX 研究）</span>· 想搜博客 / 帖子佐证版本，昇腾内容<b>SEO 偏弱、海外搜不到</b>、博客入口还埋在开发者中心二级；<br>· Gitee 官方 samples 仓 + 按产品线分版的论坛，定位倒是准。</div>`},
+  {id:"bAcc", from:"dAcc", to:"off", step:"step6", t:"查精度比对方法 / 经验帖",
+    b:`判断精度是否达标时，人去查精度比对方法、求助论坛 / 经验帖。<div class="tt-sec"><span class="lbl">对应 ascend step6 调试·求助（据姊妹 UX 研究）</span>· <b>发帖需登录华为账号</b>（门槛）；<br>· 但论坛<b>按产品线分版</b>、另有集中的 <b>AscendFAQ</b>，自助定位还算准（长板）。</div>`},
 ];
 /* 主导方色带：[起xi, 止xi, 类型] co=协同 hu=用户 ai=agent */
 const OWNER = [
@@ -1176,7 +1184,7 @@ function renderV(){
     svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",x2+3).attr("y2",y)
       .attr("stroke","#2f3d63").attr("stroke-width",2).attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.85);
     svg.append("text").attr("x",(LX.hu+x2)/2).attr("y",y-5).attr("text-anchor","middle")
-      .attr("font-size",9.5).attr("fill","#2f3d63").attr("font-weight",600).text(br.id+" "+br.t)
+      .attr("font-size",9.5).attr("fill","#2f3d63").attr("font-weight",600).text(br.step ? (br.t+" · ascend "+br.step) : (br.id+" "+br.t))
       .style("cursor","pointer")
       .on("mousemove",(e)=>showTip(e,{id:br.id,t:br.t,meta:"用户独立分支 · 脱离 AI · 目标："+(tgt==="sec"?"二手社区":"昇腾官方"),b:br.b})).on("mouseleave",hideTip);
   });
