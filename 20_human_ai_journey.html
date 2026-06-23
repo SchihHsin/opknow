@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231C1C28'/><polyline points='4,12 11,17 18,11 27,19' fill='none' stroke='%23C8102E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/><polyline points='4,22 12,15 19,17 28,6' fill='none' stroke='%2376B900' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/><circle cx='28' cy='6' r='2.3' fill='%2376B900'/></svg>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>20 · 人机协同旅程：一次「自定义算子开发」的全链路时序图 + Agent 系统工程拆解</title>
@@ -876,7 +877,7 @@ const D_BRANCH = [
   {id:"b0", from:"n1", to:"off", step:"step1", above:true, t:"找入口·选型",
     b:`立项时人去昇腾社区找开发入口、判断走 aclnn 简易工程还是完整自定义算子工程。<div class="tt-sec"><span class="lbl">对应 ascend step1 落地·找入口·选型（据姊妹 UX 研究）</span>· 单站全包、官网首页即露开发入口（不弱）；<br>· 但<b>开发者中心埋在二级</b>，缺一个「先点这里」的最强单一 CTA。</div>`},
   {id:"b1", from:"sD", to:"off", step:"step4·安全网", t:"AI 受阻 → 人自查官方 SPA",
-    b:`AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容（这条是安全网，非决策）。<div class="tt-sec"><span class="lbl">对应 ascend step4 写·查文档（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带字符上限（约 100 字），贴一整段报错会被<b>截断</b>；<br>· 想去论坛提问，<b>发帖需登录华为账号</b>（门槛）；<br>· 好在论坛按产品线分版（综合 / Ascend C / CANN…）、另有集中的 <b>AscendFAQ</b>，自助定位还算准。</div>`},
+    b:`AI fetch 受阻时，用户开浏览器人眼看渲染后正文——人能看到 AI 抓不到的内容（这条是安全网，非决策）。<b>档①②都在</b>：受阻时人仍会去看；<b>但前提是 AI 把受阻暴露给人</b>——若 AI 静默退二手不告知，人就看不到、安全网形同失效（越自主越不透明的风险）。<div class="tt-sec"><span class="lbl">对应 ascend step4 写·查文档（据姊妹 UX 研究 · 真实截图 2026-06-13）</span>· 文档中心搜索框带字符上限（约 100 字），贴一整段报错会被<b>截断</b>；<br>· 想去论坛提问，<b>发帖需登录华为账号</b>（门槛）；<br>· 好在论坛按产品线分版（综合 / Ascend C / CANN…）、另有集中的 <b>AscendFAQ</b>，自助定位还算准。</div>`},
   {id:"bSoc", from:"dSoc", to:"off", step:"step3", t:"查官方版本配套表",
     b:`选 soc_version 时，人去查官方版本配套表、npu-smi 对应关系。<div class="tt-sec"><span class="lbl">对应 ascend step3 配环境·拿 SDK（据姊妹 UX 研究）</span>· 多版本号并存，<b>选对版本本身就费劲</b>；<br>· 想搜博客佐证，昇腾内容<b>SEO 偏弱、海外搜不到</b>。</div>`},
   {id:"bTil", from:"dTil", to:"off", step:"step4", t:"查 Ascend C Tiling 文档",
@@ -961,7 +962,7 @@ const LVL=[
   desc:"代码由人编写、本地由人运行、决策由人裁定；AI 从旁提供片段 / 补全 / 解释。检索需人主动发起。"},
  {name:"AI 主写，人审校", exec:"AI", decide:"人",
   covers:"<b>Vibe Coding</b>——Cursor / Claude Code 的 <b>agent 模式</b>：AI 自己改文件 / 跑命令 / 读报错自迭代",
-  desc:"AI 成段生成代码、自行调用工具运行、读取报错自迭代，人审查结果并修正。<b>执行转交 AI</b>；人独立自查 SPA / 外部求证的<b>安全网开始消失</b>。"},
+  desc:"AI 成段生成代码、自行调用工具运行、读取报错自迭代，人审查结果并修正。<b>执行转交 AI</b>；但<b>决策仍归人</b>、受阻时人仍会去社区核查（<b>安全网保留</b>，前提是 AI 暴露受阻、不静默退二手）。"},
  {name:"人委派，AI 自主完成", exec:"AI", decide:"AI",
   covers:"Devin(异步)、spec 驱动、多智能体——内部实现不同，对人均为「委派→获取结果」",
   desc:"人委派整体任务(或预先编写规格)，AI 自主执行并提交 PR，人仅作最终验收。<b>决策亦归 AI</b>；深水区(D)知识有缺口时风险最高、而人介入最少。"}
@@ -1179,7 +1180,7 @@ function renderV(){
   });
 
   /* 用户独立分支 ＝ 人 → 昇腾社区（官方 or 二手）的独立消息（仅档①）；br.to 指定目标线，缺省 off */
-  if(curLvl===0) BRANCH.forEach(br=>{
+  if(curLvl<=1) BRANCH.forEach(br=>{
     const src=byId[br.from], y=Y(src.xi)+(br.above?-22:(src.kind==="decision"?0:26)), tgt=br.to||"off", x2=LX[tgt];
     svg.append("line").attr("x1",LX.hu-14).attr("y1",y).attr("x2",x2+3).attr("y2",y)
       .attr("stroke","#2f3d63").attr("stroke-width",2).attr("stroke-dasharray","5,4").attr("marker-end","url(#ab)").attr("opacity",.85);
@@ -1442,13 +1443,14 @@ function pinLaneTip(e,side){ pinned=true; tip.className="pinned"; tip.innerHTML=
 
 /* 图例「人机交接」悬浮：协同量化（交接次数 + 用户独立分支，随滑块 morph） */
 function coopTipHtml(withFull){
-  const ho=handoffs(curLvl), br=curLvl===0?BRANCH.length:0;
+  const ho=handoffs(curLvl), br=curLvl<=1?BRANCH.length:0;
   let html=(withFull?'<span class="tt-close" id="tipClose">✕</span>':'')+`<div class="tt-h">协同量化 · 主导权交接</div>`;
   html+=`<div class="tt-meta">全旅程 <b>${ho} 次主导权易手</b>（紫色粗连线）· <b>${br} 条用户独立分支</b>（虚线，不经 AI）。随左侧滑块实时变。</div>`;
   if(curLvl===0) html+=`<div class="tt-b">交接密度在<b>编译部署阶段（P5）最高</b>——报错 → AI 解读 → 用户重试，来回穿插，是整段旅程摩擦最大处（对应 D 任务 ⑧ 检索成本尖刺）。</div>`;
-  else html+=`<div class="tt-b">自主度↑ → 交接变少（更多同侧推进）、<b>用户独立分支归零</b>——人不再独立提供后备、安全网消失。</div>`;
+  else if(curLvl===1) html+=`<div class="tt-b">执行转交 AI、交接变少；但<b>决策仍归人</b>、受阻时人仍会去昇腾社区核查——<b>独立分支保留（${BRANCH.length} 条）</b>，不是归零。</div>`;
+  else html+=`<div class="tt-b">自主度拉满 → <b>用户独立分支归零</b>：决策也交给 AI、人不再独立核查，安全网消失。</div>`;
   if(withFull){
-    if(curLvl===0) html+=`<div class="tt-sec"><span class="lbl">${BRANCH.length} 条用户独立分支</span>${BRANCH.map(b=>b.id+" "+b.t+"（→"+((b.to||"off")==="sec"?"二手社区":"昇腾官方")+"）").join("、")}——都是人直接和昇腾社区交互的后备动作。</div>`;
+    if(curLvl<=1) html+=`<div class="tt-sec"><span class="lbl">${BRANCH.length} 条用户独立分支</span>${BRANCH.map(b=>b.id+" "+b.t+"（→"+((b.to||"off")==="sec"?"二手社区":"昇腾官方")+"）").join("、")}——都是人直接和昇腾社区交互的后备动作（档①②都在，决策与受阻自查仍归人）。</div>`;
     else html+=`<div class="tt-sec"><span class="lbl">安全网消失</span>自动化档 AI 遭遇同样的 SPA / 版本问题，但无人核查。</div>`;
     html+=`<div class="tt-foot">点击空白处或 ✕ 关闭</div>`;
   } else html+=`<div class="tt-hint">点击查看完整说明 ↗</div>`;
