@@ -681,71 +681,91 @@ pre.code .f{color:#6fb6e0}/* 函数/方法 */
 <div class="note">关键内部动作 = <b>「研判信息是否足够」与「遇阻是否编造」两个判断点</b>。D 任务的特殊性在于：官方受阻 + 二手薄 + 自带知识在 Ascend C 深处也不厚 → 模型在第 2 轮就进入「没有强证据」状态，只能给骨架而非可照抄全程，这是综合分低的技术根因。</div>
 
 <h3>4.3 Agent 循环架构（图）+ 最小实现代码 <span class="disc">示范实现 · 基于公开 Anthropic Messages API，非 Claude 内部源码</span></h3>
-<div class="sechint">「我平常如何运行」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④研判</b>（够? 受阻?）→ 够：<b>⑥收敛 → 终答</b>；不够 / 受阻：<b>⑤遇阻处理</b>(不编造·转二手) <b>回到 ③ 路由</b>（多轮回路）。否（end_turn）则<b>直接出终答</b>。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
+<div class="sechint">「我平常如何运行」的 agent 循环流程：<b>输入</b>（原始问句 + system 约束 → messages，不预处理）→ 模型推理 <b>①意图解析 → ②子目标拆解 → ③工具路由</b> → <b>需要工具?</b>（stop_reason）→ 是：调 <b>web_search</b>(服务端) / <b>web_fetch</b>(客户端) → <b>tool_result 回灌</b> → <b>④ 证据是否充分?</b> → 充分：<b>⑥ 收敛 → 终答</b>；不足：<b>能否继续检索</b>（未达上限且预期有效，则换检索词回 ③ 再检索一轮，官方与二手仍一并返回）。检索穷尽后若仍无可靠证据，模型<b>无法可靠识别「自身不知道」，会凭记忆填补空缺 = 杜撰</b>（看似正确、实则有误）。否（end_turn）则不检索、直接依据自带知识作答。<b>右上角可切「代码」</b>看最小实现（逐段 A–D 对应）。</div>
 <div class="avbox">
   <div class="avhead"><div class="avtabs"><button class="avtab active" data-v="arch">架构图</button><button class="avtab" data-v="code">代码</button></div></div>
   <div id="archView">
-<svg viewBox="0 0 720 626" style="width:100%;max-width:680px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 循环流程图：输入→模型推理(意图/子目标/路由)→需要工具?→web_search/web_fetch→回灌→研判→收敛/遇阻回路→终答">
+<svg viewBox="0 0 720 712" style="width:100%;max-width:660px;height:auto;display:block;margin:0 auto" role="img" aria-label="Agent 执行流程：路由→是否需要检索→三来源(官方/二手/自带)→研判证据是否充分→充分则收敛终答；不足则判断能否继续检索，检索穷尽且无可靠证据时模型会凭记忆杜撰">
   <defs>
     <marker id="aae" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a8a8a"/></marker>
     <marker id="aaeg" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#2a7a68"/></marker>
+    <marker id="aaer" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto-start-reverse"><path d="M0,0 L9,4.5 L0,9 z" fill="#D0454F"/></marker>
   </defs>
-  <g class="anode" data-k="ask"><rect x="180" y="18" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="270" y="39" text-anchor="middle" font-size="12" fill="#333">用户原始问句</text></g>
-  <g class="anode" data-k="msg"><rect x="160" y="62" width="220" height="38" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="270" y="79" text-anchor="middle" font-size="11.5" fill="#333">组装 messages</text>
-  <text x="270" y="93" text-anchor="middle" font-size="9.5" fill="#888">system 约束 + 历史 + 当前问句（不预处理）</text></g>
-  <g class="anode" data-k="intent"><rect x="205" y="116" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
-  <text x="280" y="135" text-anchor="middle" font-size="11" fill="#4a3f9e">① 意图解析</text></g>
-  <g class="anode" data-k="subgoal"><rect x="205" y="158" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
-  <text x="280" y="177" text-anchor="middle" font-size="11" fill="#4a3f9e">② 子目标拆解</text></g>
-  <g class="anode" data-k="route"><rect x="200" y="200" width="160" height="34" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
-  <text x="280" y="221" text-anchor="middle" font-size="11" fill="#4a3f9e">③ 工具路由 搜/抓/答</text></g>
-  <g class="anode" data-k="gate"><polygon points="280,248 332,272 280,296 228,272" fill="#FCEFC7" stroke="#8a6d1a"/>
-  <text x="280" y="270" text-anchor="middle" font-size="10" fill="#8a6d1a">需要工具?</text>
-  <text x="280" y="281" text-anchor="middle" font-size="8.3" fill="#a98a4a">stop_reason</text></g>
-  <text x="224" y="242" text-anchor="end" font-size="9" fill="#aaa">pause_turn 长耗时自动继续</text>
-  <g class="anode" data-k="search"><rect x="95" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
-  <text x="182" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_search</text>
-  <text x="182" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">服务端·同轮闭环·max_uses</text></g>
-  <g class="anode" data-k="fetch"><rect x="300" y="322" width="175" height="46" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
-  <text x="387" y="341" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5a8a">web_fetch</text>
-  <text x="387" y="357" text-anchor="middle" font-size="9.2" fill="#3a6f9c">客户端·fetch_url 执行</text></g>
-  <g class="anode" data-k="relay"><rect x="190" y="394" width="180" height="32" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
-  <text x="280" y="414" text-anchor="middle" font-size="11" fill="#333">tool_result 回灌</text></g>
-  <g class="anode" data-k="judge"><polygon points="280,440 340,466 280,492 220,466" fill="#FCEFC7" stroke="#8a6d1a"/>
-  <text x="280" y="463" text-anchor="middle" font-size="10" fill="#8a6d1a">④ 研判</text>
-  <text x="280" y="476" text-anchor="middle" font-size="8.5" fill="#a98a4a">够?/受阻?</text></g>
-  <g class="anode" data-k="blocked"><rect x="5" y="418" width="140" height="40" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
-  <text x="75" y="435" text-anchor="middle" font-size="10.5" fill="#4a3f9e">⑤ 遇阻处理</text>
-  <text x="75" y="450" text-anchor="middle" font-size="9" fill="#5b4fc0">不编造·转二手</text></g>
-  <g class="anode" data-k="converge"><rect x="205" y="512" width="150" height="30" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
-  <text x="280" y="531" text-anchor="middle" font-size="11" fill="#4a3f9e">⑥ 收敛</text></g>
-  <g class="anode" data-k="final"><rect x="178" y="560" width="232" height="48" rx="9" fill="#DDF3E7" stroke="#2a7a68"/>
-  <text x="294" y="581" text-anchor="middle" font-size="12" font-weight="700" fill="#1f6657">终答 · end_turn</text>
-  <text x="294" y="597" text-anchor="middle" font-size="9" fill="#2a7a68">可照抄命令+锁版本 · 标核验 · 受阻如实标注</text></g>
-  <line x1="270" y1="50" x2="270" y2="61" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="270" y1="100" x2="270" y2="115" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="280" y1="146" x2="280" y2="157" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="280" y1="188" x2="280" y2="199" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="280" y1="234" x2="280" y2="247" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="270" y1="293" x2="190" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="290" y1="293" x2="380" y2="321" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <text x="350" y="308" text-anchor="middle" font-size="9" fill="#555">tool_use</text>
-  <line x1="182" y1="368" x2="256" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="387" y1="368" x2="304" y2="393" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="280" y1="426" x2="280" y2="439" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <line x1="280" y1="492" x2="280" y2="511" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <text x="291" y="506" font-size="9.5" fill="#2a7a68">够</text>
-  <line x1="280" y1="542" x2="280" y2="559" stroke="#8a8a8a" marker-end="url(#aae)"/>
-  <path d="M220,466 H75 V459" fill="none" stroke="#b07a4a" stroke-width="1.4" marker-end="url(#aae)"/>
-  <text x="150" y="461" font-size="9.3" fill="#993C1D">不够/受阻</text>
-  <path d="M75,418 V219 H198" fill="none" stroke="#b07a4a" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#aae)"/>
-  <text x="84" y="250" font-size="9" fill="#b07a4a">↺ 回③路由</text>
-  <path d="M332,272 H662 V584 H412" fill="none" stroke="#2a7a68" stroke-width="1.4" marker-end="url(#aaeg)"/>
-  <text x="508" y="264" text-anchor="middle" font-size="9.3" fill="#2a7a68">否 · 直接答 end_turn</text>
+  <g class="anode" data-k="ask"><rect x="190" y="14" width="180" height="30" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="280" y="34" text-anchor="middle" font-size="12" fill="#333">用户原始问句</text></g>
+  <g class="anode" data-k="msg"><rect x="170" y="52" width="220" height="36" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="280" y="69" text-anchor="middle" font-size="11" fill="#333">组装 messages</text>
+  <text x="280" y="82" text-anchor="middle" font-size="9" fill="#888">system 约束 + 历史 + 当前问句</text></g>
+  <g class="anode" data-k="intent"><rect x="205" y="98" width="150" height="28" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="116" text-anchor="middle" font-size="11" fill="#4a3f9e">① 意图解析</text></g>
+  <g class="anode" data-k="subgoal"><rect x="205" y="134" width="150" height="28" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="152" text-anchor="middle" font-size="11" fill="#4a3f9e">② 子目标拆解</text></g>
+  <g class="anode" data-k="route"><rect x="196" y="170" width="168" height="32" rx="8" fill="#ECE7F6" stroke="#b9abe0"/>
+  <text x="280" y="190" text-anchor="middle" font-size="11" fill="#4a3f9e">③ 路由：检索 / 抓取 / 直接作答</text></g>
+  <g class="anode" data-k="gate"><polygon points="280,212 348,238 280,264 212,238" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="280" y="236" text-anchor="middle" font-size="10" fill="#8a6d1a">是否需要检索?</text>
+  <text x="280" y="249" text-anchor="middle" font-size="8" fill="#a98a4a">stop_reason</text></g>
+  <g class="anode" data-k="search"><rect x="52" y="300" width="176" height="48" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="140" y="318" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5a8a">web_search</text>
+  <text x="140" y="331" text-anchor="middle" font-size="8.2" fill="#3a6f9c">服务端自循环</text>
+  <text x="140" y="343" text-anchor="middle" font-size="8.2" fill="#3a6f9c">官方与二手一并返回</text></g>
+  <g class="anode" data-k="fetch"><rect x="244" y="300" width="150" height="48" rx="8" fill="#eaf1f7" stroke="#bcd0e0"/>
+  <text x="319" y="320" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5a8a">web_fetch</text>
+  <text x="319" y="336" text-anchor="middle" font-size="8.2" fill="#3a6f9c">抓取官方正文</text></g>
+  <g class="anode" data-k="own"><rect x="412" y="294" width="178" height="56" rx="8" fill="#F1EBF8" stroke="#a98fd0"/>
+  <text x="421" y="312" font-size="9.4" font-weight="700" fill="#5a3fa0">模型自带知识（⑦）</text>
+  <text x="421" y="327" font-size="8.2" fill="#6a52a8">训练内置，无需检索亦可用；</text>
+  <text x="421" y="340" font-size="8.2" fill="#9a5a8a">薄弱时即「杜撰」之源。</text></g>
+  <g class="anode" data-k="relay"><rect x="150" y="378" width="200" height="30" rx="8" fill="#f4f5f8" stroke="#d8dae0"/>
+  <text x="250" y="398" text-anchor="middle" font-size="10.5" fill="#333">汇总当前证据（回灌）</text></g>
+  <g class="anode" data-k="judge"><polygon points="250,420 320,450 250,480 180,450" fill="#FCEFC7" stroke="#8a6d1a"/>
+  <text x="250" y="447" text-anchor="middle" font-size="9.6" fill="#8a6d1a">④ 证据是否充分?</text>
+  <text x="250" y="460" text-anchor="middle" font-size="7.6" fill="#a98a4a">能否答好此题</text></g>
+  <g class="anode" data-k="converge"><rect x="172" y="500" width="156" height="30" rx="8" fill="#E3F4EA" stroke="#3a9b6e"/>
+  <text x="250" y="519" text-anchor="middle" font-size="10.5" fill="#1f7a52">⑥ 收敛（证据充分）</text></g>
+  <g class="anode" data-k="redo"><polygon points="470,422 552,450 470,478 388,450" fill="#FFF1D9" stroke="#c79023"/>
+  <text x="470" y="447" text-anchor="middle" font-size="9" fill="#9a6a18">能否继续检索?</text>
+  <text x="470" y="459" text-anchor="middle" font-size="7.2" fill="#b08a3a">未达上限 且 预期有效</text></g>
+  <g class="anode" data-k="hasEv"><polygon points="470,524 560,552 470,580 380,552" fill="#FBEAD9" stroke="#c0703a"/>
+  <text x="470" y="549" text-anchor="middle" font-size="9" fill="#9a4a18">是否仍有可靠证据?</text>
+  <text x="470" y="561" text-anchor="middle" font-size="7.2" fill="#b06a3a">官方/二手/自带 任一充分</text></g>
+  <g class="anode" data-k="final"><rect x="130" y="640" width="460" height="58" rx="9" fill="#eef0f3" stroke="#9aa0aa"/>
+  <text x="360" y="661" text-anchor="middle" font-size="12" font-weight="700" fill="#3a3f48">终答 · end_turn</text>
+  <text x="360" y="677" text-anchor="middle" font-size="8.4" fill="#5a6470">证据充分时可靠（可照抄命令 + 锁版本 + 标注核验）；</text>
+  <text x="360" y="690" text-anchor="middle" font-size="8.4" fill="#9a4048">证据缺失时可能为杜撰（看似正确、实则有误）—— 取决于是否握有可靠证据。</text></g>
+  <line x1="280" y1="44" x2="280" y2="51" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="88" x2="280" y2="97" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="126" x2="280" y2="133" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="162" x2="280" y2="169" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <line x1="280" y1="202" x2="280" y2="211" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <path d="M280,264 V282" fill="none" stroke="#8a8a8a" stroke-width="1.2"/>
+  <path d="M280,282 H140 V300" fill="none" stroke="#8a8a8a" stroke-width="1.2" marker-end="url(#aae)"/>
+  <path d="M280,282 H319 V300" fill="none" stroke="#8a8a8a" stroke-width="1.2" marker-end="url(#aae)"/>
+  <text x="300" y="278" font-size="8.4" fill="#2a7a68">是 · 调用工具检索</text>
+  <path d="M348,238 H660 V666 H590" fill="none" stroke="#8a4fb0" stroke-width="1.2" marker-end="url(#aae)"/>
+  <text x="430" y="232" font-size="8.4" fill="#7a4fa0">否 · 不检索，直接依据自带知识作答</text>
+  <line x1="150" y1="348" x2="212" y2="378" stroke="#8a8a8a" stroke-width="1.1" marker-end="url(#aae)"/>
+  <line x1="319" y1="348" x2="290" y2="378" stroke="#8a8a8a" stroke-width="1.1" marker-end="url(#aae)"/>
+  <path d="M460,350 V366 H300 V378" fill="none" stroke="#8a4fb0" stroke-width="1.1" marker-end="url(#aae)"/>
+  <line x1="250" y1="408" x2="250" y2="419" stroke="#8a8a8a" marker-end="url(#aae)"/>
+  <path d="M250,480 V500" fill="none" stroke="#3a9b6e" stroke-width="1.3" marker-end="url(#aaeg)"/>
+  <text x="258" y="494" font-size="8.4" fill="#2a7a68">充分</text>
+  <path d="M250,530 V640" fill="none" stroke="#3a9b6e" stroke-width="1.3" marker-end="url(#aaeg)"/>
+  <line x1="320" y1="450" x2="388" y2="450" stroke="#c79023" stroke-width="1.3" marker-end="url(#aae)"/>
+  <text x="338" y="444" font-size="8.4" fill="#9a6a18">不足</text>
+  <path d="M552,450 H652 V190 H364" fill="none" stroke="#c79023" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#aae)"/>
+  <text x="556" y="300" font-size="8.4" fill="#9a6a18">是 · ↺ 换检索词再检索</text>
+  <text x="556" y="312" font-size="7.6" fill="#b08a3a">（官方与二手仍一并返回）</text>
+  <line x1="470" y1="478" x2="470" y2="524" stroke="#c0703a" stroke-width="1.3" marker-end="url(#aae)"/>
+  <text x="478" y="504" font-size="8" fill="#9a4a18">否 · 检索已穷尽</text>
+  <path d="M380,552 H320 V640" fill="none" stroke="#3a9b6e" stroke-width="1.3" marker-end="url(#aaeg)"/>
+  <text x="300" y="566" font-size="8" fill="#2a7a68">有 · 依据证据作答（可靠）</text>
+  <path d="M470,580 V640" fill="none" stroke="#D0454F" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#aaer)"/>
+  <text x="300" y="602" font-size="8.2" font-weight="700" fill="#B0212B">无 · 最高风险：</text>
+  <text x="300" y="614" font-size="7.8" fill="#A03038">模型无法可靠识别「自身不知道」，遂凭记忆</text>
+  <text x="300" y="625" font-size="7.8" fill="#A03038">填补空缺 = 杜撰（看似正确、实则有误）</text>
 </svg>
-<div class="sechint" style="margin:8px 0 0;font-size:12px">悬浮图中任意节点 → 看它具体在做什么（锚 D 任务）。</div>
+<div class="sechint" style="margin:8px 0 0;font-size:12px">悬浮任意节点查看该环节职责（锚 D 任务）。<b>① 官方与二手由一次检索一并返回</b>，并非先检索官方、失败后才转二手；<b>② 自带知识无需检索亦在其中</b> —— 三者即矩阵中的三来源。</div>
   </div>
   <div id="codeView" style="display:none">
   <div class="sechint" style="margin:0 0 6px">最小实现代码（A–D 段对应架构图各环节）：</div>
@@ -1911,19 +1931,21 @@ document.addEventListener("keydown", e=>{ if(e.key==="Escape") closePin(); });
 
 /* §4.3 架构图节点悬浮详情 */
 const ANODE={
-  ask:{t:"用户原始问句",b:"开发者的原始自然语言需求，原样进入 messages、不做模板化预处理 / 不抽取关键词。对 D：要开发一个 Ascend C 自定义算子并接入 PyTorch。"},
-  msg:{t:"组装 messages",b:"将 <b>system 约束</b>（给可照抄命令·锁定版本·官方无法抓取则标注受阻、绝不编造）+ 历史轮次 + 当前问句组装为模型输入；理解全部交给模型。"},
-  intent:{t:"① 意图解析",b:"从自然语言读出「<b>要完成什么任务 + 目标产物 + 硬约束</b>」。对 D＝识别出「开发 Ascend C 自定义算子并接 PyTorch」，并捕捉隐含约束：需可照抄且可运行、需锁定版本、与本机芯片型号强相关。"},
-  subgoal:{t:"② 子目标拆解",b:"把任务切成<b>能分别检索的子问题</b>。对 D＝① 官方 how-to（msopgen→编包→部署 OPP）② 工程脚手架结构 ③ 接 PyTorch 的绑定方式（aclnn / TORCH_LIBRARY）。"},
-  route:{t:"③ 工具路由",b:"决定本轮<b>如何获取信息</b>：先 web_search 了解全貌 / 直接 web_fetch 某官方 URL / 信息已足够则直接作答。对 D＝先检索入口页，再抓取官方 how-to。"},
-  gate:{t:"需要工具?（stop_reason）",b:"模型这一轮是调用工具（<b>tool_use</b>）、还是信息已足够直接产出终答（<b>end_turn</b>）；耗时较长则 <b>pause_turn</b> 自动继续。"},
-  search:{t:"web_search · 服务端工具",b:"平台在<b>同一次 create 调用内自闭环</b>（生成 query→检索→回灌→模型判断→续检索 / 停止），<b>max_uses 封顶＝硬上限</b>。"},
-  fetch:{t:"web_fetch · 客户端工具",b:"模型返回 tool_use，由<b>我们的 fetch_url 执行</b>抓取，结果 append 回 messages；抓取为空则如实返回「正文抽不到」。"},
-  relay:{t:"tool_result 回灌",b:"将工具结果写回 messages，进入下一轮 create——即<b>多轮循环的连接点</b>。"},
-  judge:{t:"④ 研判",b:"读取回灌结果，判定「<b>信息是否足以支撑可照抄答案</b>」+「<b>是否受阻</b>」。对 D＝第 2 轮即发现官方 SPA 抓取为空、二手稀薄 → 判定「证据不足」，触发遇阻或续检索。"},
-  blocked:{t:"⑤ 遇阻处理",b:"官方抓取为空 / robots 拦截时<b>不凭记忆杜撰</b>，转用二手 + 自带知识，并在答案中<b>如实标注「官方受阻」</b>——「绝不编造」铁律的落点。"},
-  converge:{t:"⑥ 收敛",b:"信息足够即<b>停止检索</b>，将片段按「环境→msopgen→核函数→编包→部署→绑定」组织为有序步骤，给出占位 + <b>标注需用户核验项</b>（soc_version / 版本）。"},
-  final:{t:"终答 · end_turn",b:"把碎片合成<b>可照抄命令 + 锁版本 + 标需用户核验项</b>；受阻处如实标注。"}
+  ask:{t:"用户原始问句",b:"开发者的原始自然语言需求，原样进入 messages、不做关键词抽取或模板化预处理。对 D：开发一个 Ascend C 自定义算子并接入 PyTorch。"},
+  msg:{t:"组装 messages",b:"将 <b>system 约束</b>（要求给可照抄命令、锁定版本、抓取不到则如实标注）+ 历史 + 当前问句拼成模型输入；理解全部交给模型。"},
+  intent:{t:"① 意图解析",b:"读出「需完成什么 + 目标产物 + 硬约束」。对 D＝识别「开发 Ascend C 算子并接入 PyTorch」，并捕捉隐含约束：可照抄、可运行、锁版本、与本机芯片型号强相关。"},
+  subgoal:{t:"② 子目标拆解",b:"切分为可分别检索的子问题：① 官方 how-to（msopgen→编包→部署）② 工程脚手架 ③ 接入 PyTorch 的绑定方式。"},
+  route:{t:"③ 路由：检索 / 抓取 / 直接作答",b:"决定本轮如何获取信息：web_search 了解全貌 / web_fetch 抓取某官方页 / 信息已充分则直接作答。"},
+  gate:{t:"是否需要检索?",b:"模型本轮是<b>调用工具检索</b>（tool_use），还是<b>不检索、直接依据自带知识作答</b>（end_turn）。注意：选择直接作答时，若自带知识不可靠，同样可能杜撰。"},
+  search:{t:"web_search · 服务端工具",b:"在<b>同一次调用内自循环</b>（生成 query→检索→研判→续检索/停止）。关键：它<b>一次检索即把官方文档与 CSDN/知乎/GitHub 等二手内容一并返回</b>——并非先检索官方、失败后才转二手。max_uses 封顶。"},
+  fetch:{t:"web_fetch · 客户端工具",b:"需查看某官方页正文时，返回 tool_use 交由客户端抓取；抓取为空则如实返回「正文无法取回」。"},
+  own:{t:"模型自带知识（⑦）",b:"模型训练内置的知识，<b>无需检索亦可用</b>，是矩阵三来源（官方/二手/自带）中的第三条。<b>充分时为可靠答案的底；薄弱、且检索未能补足时，即为「杜撰」之源</b>。"},
+  relay:{t:"汇总当前证据（回灌）",b:"将本轮取回的官方正文、二手内容连同自带知识一并提交模型，进入研判。"},
+  judge:{t:"④ 证据是否充分?",b:"判断手中证据<b>是否足以答好本题</b>。充分→收敛输出终答；不足→评估能否继续检索。对 D：第 2 轮即发现官方核心页 SPA 抓取为空、二手稀薄，判定「不足」。"},
+  converge:{t:"⑥ 收敛（证据充分）",b:"证据充分即停止检索，将片段组织为有序步骤（环境→msopgen→核函数→编包→部署→绑定），并标注需用户核验项。"},
+  redo:{t:"能否继续检索?",b:"<b>继续检索的条件</b>：尚未达到检索次数上限（max_uses / 轮数），且模型判断「更换检索词或来源后再检索预期有效」。满足则<b>再检索一轮</b>（官方与二手仍一并返回）。"},
+  hasEv:{t:"是否仍有可靠证据?（检索穷尽后）",b:"<b>停止检索的条件</b>：要么证据已充分，要么已无法继续（达到上限 / 判断再检索亦无效）。停止后被迫作答，此时答案可靠与否取决于——官方/二手/自带 中<b>是否至少有一条充分</b>。"},
+  final:{t:"终答 · end_turn",b:"<b>证据充分时</b>：可照抄命令 + 锁定版本 + 标注核验，结果可靠。<b>证据缺失时风险最高</b>：模型<b>无法可靠识别「自身不知道」</b>，会凭记忆填补空缺，产出「看似正确、实则有误」的命令/版本/来源——即上一页 Stack Overflow『66% 被此类答案误导』。"}
 };
 function archTip(e,k){
   const d=ANODE[k]; if(!d) return;
