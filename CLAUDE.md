@@ -380,3 +380,15 @@ _最后更新：2026-06-10（**全 ①–⑪ 指标量化化**：用户指不止
 
 - **所有顶层 `*.html`(index 及 03–22、journey_embed 等)** 头部均内联了同一个 SVG data-URI favicon(`<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,…">`,无外部文件、GitHub Pages 直接生效),跨页导航点哪页标签都有图标。
 - 图样 = **时序双折线**(深色圆角底 `#1C1C28` + 华为红 `#C8102E` 与英伟达绿 `#76B900` 两条折线交叉、绿线上扬带端点),呼应本项目「时序图 / 红绿对比基准」核心。注入脚本幂等(已含 `rel="icon"` 则跳过)。
+
+## 10. 独立 AI 可用性论文初稿（2026-09）
+
+用户决定先完成“AI 可用性”论文，**不等待、也不混入**后续 DACT 的开发者访谈、协同任务研究或算卡验证。论文是已有 26 项任务级审计的独立案例研究，不应写成 DACT 用户研究的阶段性结果。
+
+- 工作区：`paper/ai-usability/`。
+- 可编辑中文源：`paper/ai-usability/manuscript-cn-v0.1.md`；阅读版：同名 `.html`；PDF 预览：`output/pdf/ai-usability-technical-knowledge-ecosystem-cn-v0.1.pdf`。
+- 题目：**《当技术文档的读者变成 Agent：面向开发任务的技术知识生态 AI 可用性审计》**。
+- 核心证据：`17_official_site_focus.html`（矩阵）、`18_metric_definition.html`（11 指标与公式）、`19_findings_ux_synthesis.html`（发现/反事实 ROI/局限）、`task_run_log.md`（过程）和 `score_metrics.py`（RAW + 复算）。
+- 研究边界必须保留：单一具备网页检索与读取能力的 Agent；26 组结果目标匹配的 CANN/CUDA 任务；不测硬件性能、真实算卡运行、人类开发者体验、完成率或全部模型能力；CANN/CUDA 分数不是永久总体排名。
+- 初稿的关键结论：AI 可用性是**任务条件**，不是站点常数；CUDA 26 格均高（均值 .920），CANN 均值 .736、7 高/16 中高/2 中/1 低；SPA 核心正文真正受阻只发生在 D 自定义算子任务，广泛限制是版本治理、有效第三方冗余和专有任务上的模型先验；调试两栈差距最大（.287）。
+- 版式验证：PDF 已以渲染页检查首段、指标表、主要发现和附录，中文字体、表格、分页均正常；PDF 为内容校阅件，不是 CHI/期刊匿名模板。正式投稿前要决定会刊，再补齐并核验相关研究文献、以矢量形式制作正式图、按模板裁剪篇幅。
