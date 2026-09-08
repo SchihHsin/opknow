@@ -150,7 +150,7 @@ def main() -> None:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         '<style>text{font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",Arial,sans-serif}.thin{stroke:#D8DEE9;stroke-width:.6}.sep{stroke:#C6CEDD;stroke-width:1.1}</style>',
         '<rect width="100%" height="100%" fill="#FFFFFF"/>',
-        svg_text(left, 26, "图 2　26 个结果目标匹配任务的 AI 可用性矩阵", 16, weight=700),
+        svg_text(left, 26, "图 2　26 个结果目标匹配任务的面向 AI 的知识可得性矩阵", 16, weight=700),
         svg_text(left, 47, "每项任务各有 CUDA 与 CANN 两个审计单元；①–⑦、⑨–⑩为 1–5 分，⑧为实际检索成本，⑪为三源噪声-OR 综合置信度。", 9.5, fill="#526174"),
     ]
 

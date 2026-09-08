@@ -1,54 +1,145 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>技术知识生态的 AI 可用性审计</title><style>:root{--ink:#1e2630;--muted:#67737f;--line:#dfe5e9;--paper:#fff;--bg:#f2f5f6;--accent:#0e6b61}*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);font-family:"Noto Serif CJK SC","Songti SC",STSong,serif;font-size:17px;line-height:1.88}.mast{background:#173e3a;color:white;padding:38px 24px 32px;border-bottom:5px solid #c3a250}.mast-inner,article{max-width:920px;margin:0 auto}.mast .kicker{font:600 12px/1.3 -apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif;letter-spacing:.15em;color:#cce9e4}.mast h1{margin:12px 0 0;font-size:30px;line-height:1.35;font-weight:700}.mast p{margin:8px 0 0;color:#d8e9e6;font:14px/1.7 -apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}article{background:var(--paper);padding:50px 72px 80px;box-shadow:0 8px 34px rgba(26,54,51,.1);min-height:100vh}h1{font-size:30px;line-height:1.35;margin:0 0 14px}h2{font-size:24px;line-height:1.45;margin:58px 0 20px;padding-top:8px;border-top:1px solid var(--line)}h3{font-size:19px;line-height:1.55;margin:34px 0 12px;color:#1d5952}p{margin:0 0 16px}strong{font-weight:700;color:#102e2b}blockquote{margin:18px 0 24px;padding:13px 18px;border-left:4px solid #c3a250;background:#fbf9f3;color:#46534f;font-family:"Noto Sans SC",sans-serif;font-size:15px}ul,ol{padding-left:1.45em;margin:5px 0 18px}li{margin:4px 0}code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.82em;color:#9b3e27;background:#f6f2ef;padding:1px 4px;border-radius:3px;word-break:break-word}pre{padding:18px;background:#152725;color:#e3f2ee;border-radius:8px;overflow:auto;font:13px/1.65 "SFMono-Regular",Consolas,monospace}pre code{background:transparent;color:inherit;padding:0}.tablewrap{overflow-x:auto;margin:20px 0 25px;border:1px solid var(--line);border-radius:7px}table{width:100%;border-collapse:collapse;font-family:"Noto Sans SC",-apple-system,sans-serif;font-size:13px;line-height:1.65}th{background:#eaf2f0;color:#1e4b45;text-align:left;font-weight:700}th,td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fbfcfc}hr{border:0;border-top:1px solid var(--line);margin:38px 0}a{color:#08776b;text-decoration-color:#9bc9c1;text-underline-offset:3px}@media print{html,body{background:#fff}body{font-size:11pt}.mast{background:#fff;color:#111;border-bottom:1px solid #111;padding:0 0 12px}.mast .kicker,.mast p{color:#555}.mast h1{color:#111}article{box-shadow:none;padding:24px 0}h2{page-break-after:avoid}table{font-size:8.5pt}.tablewrap{break-inside:avoid}}@media(max-width:700px){body{font-size:16px}.mast{padding:26px 20px}.mast h1{font-size:24px}article{padding:34px 22px 60px}h1{font-size:26px}h2{font-size:22px}}</style></head><body><header class="mast"><div class="mast-inner"><div class="kicker">CHINESE MANUSCRIPT · V0.1 · 2026-09-04</div><h1>当技术文档的读者变成 Agent</h1><p>面向开发任务的技术知识生态 AI 可用性审计</p></div></header><article>
-<blockquote>中文论文初稿 v0.1  </blockquote>
-<blockquote>证据截止：2026-06-11；写作日期：2026-09-04  </blockquote>
-<blockquote>研究类型：基于可追溯检索记录的任务级案例审计  </blockquote>
-<blockquote>证据范围：CANN 与 CUDA 的 26 组结果目标匹配开发任务；单一具备网页检索与网页读取能力的 Agent；不包含、也不声称包含开发者用户研究、真实算卡运行或硬件性能比较。</blockquote>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Can AI Find What Developers Need?</title><style>
+:root{--ink:#1e2630;--muted:#67737f;--line:#dfe5e9;--paper:#fff;--bg:#f2f5f6;--accent:#0e6b61}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);font-family:"Noto Serif CJK SC","Songti SC",STSong,serif;font-size:17px;line-height:1.88}.mast{background:#173e3a;color:#fff;padding:38px 24px 32px;border-bottom:5px solid #c3a250}.mast-inner,article{max-width:920px;margin:0 auto}.mast .kicker{font:600 12px/1.3 -apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif;letter-spacing:.15em;color:#cce9e4}.mast h1{margin:12px 0 0;font-size:30px;line-height:1.35;font-weight:700}.mast p{margin:8px 0 0;color:#d8e9e6;font:14px/1.7 -apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}article{background:var(--paper);padding:50px 72px 80px;box-shadow:0 8px 34px rgba(26,54,51,.1);min-height:100vh}h1{font-size:30px;line-height:1.35;margin:0 0 14px}h2{font-size:24px;line-height:1.45;margin:58px 0 20px;padding-top:8px;border-top:1px solid var(--line)}h3{font-size:19px;line-height:1.55;margin:34px 0 12px;color:#1d5952}p{margin:0 0 16px}strong{font-weight:700;color:#102e2b}blockquote{margin:18px 0 24px;padding:13px 18px;border-left:4px solid #c3a250;background:#fbf9f3;color:#46534f;font-family:"Noto Sans SC",sans-serif;font-size:15px}ul,ol{padding-left:1.45em;margin:5px 0 18px}li{margin:4px 0}code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.82em;color:#9b3e27;background:#f6f2ef;padding:1px 4px;border-radius:3px;word-break:break-word}pre{padding:18px;background:#152725;color:#e3f2ee;border-radius:8px;overflow:auto;font:13px/1.65 "SFMono-Regular",Consolas,monospace}pre code{background:transparent;color:inherit;padding:0}.tablewrap{overflow-x:auto;margin:20px 0 25px;border:1px solid var(--line);border-radius:7px}table{width:100%;border-collapse:collapse;font-family:"Noto Sans SC",-apple-system,sans-serif;font-size:13px;line-height:1.65}th{background:#eaf2f0;color:#1e4b45;text-align:left;font-weight:700}th,td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fbfcfc}hr{border:0;border-top:1px solid var(--line);margin:38px 0}a{color:#08776b;text-decoration-color:#9bc9c1;text-underline-offset:3px}p:has(>img[src$=".svg"]){margin:26px -38px 8px}p:has(>img[src$=".svg"]) img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:7px}p:has(>img[src$=".svg"])+p{margin:9px -34px 26px;color:#526174;font:13px/1.65 -apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif}@media print{html,body{background:#fff}body{font-size:11pt}.mast{background:#fff;color:#111;border-bottom:1px solid #111;padding:0 0 12px}.mast .kicker,.mast p{color:#555}.mast h1{color:#111}article{box-shadow:none;padding:24px 0}h2{page-break-after:avoid}table{font-size:8.5pt}.tablewrap{break-inside:avoid}p:has(>img[src$=".svg"]){break-before:page;margin:0}p:has(>img[src$=".svg"])+p{margin:9px 0 26px}}@media(max-width:700px){body{font-size:16px}.mast{padding:26px 20px}.mast h1{font-size:24px}article{padding:34px 22px 60px}h1{font-size:26px}h2{font-size:22px}p:has(>img[src$=".svg"]),p:has(>img[src$=".svg"])+p{margin-left:0;margin-right:0}}</style></head><body><header class="mast"><div class="mast-inner"><div class="kicker">CHINESE MANUSCRIPT · V0.1 · 2026-09-08</div><h1>AI 能找到开发者所需的吗？</h1><p><em>Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems</em></p></div></header><article><blockquote>
+<p>中文论文初稿 v0.1
+证据截止：2026-06-11；写作日期：2026-09-04
+研究类型：基于可追溯检索记录的任务级案例审计
+证据范围：CANN 与 CUDA 的 26 组结果目标匹配开发任务；单一具备网页检索与网页读取能力的 Agent；不包含、也不声称包含开发者用户研究、真实算卡运行或硬件性能比较。</p>
+</blockquote>
 <h2>摘要</h2>
 <p>生成式 AI 正在成为开发者获取技术知识、解释报错和组织实施步骤的入口。对于版本敏感、生态特有的开发任务，AI 回答的可用性不只取决于模型本身，还取决于技术知识能否被发现、读取、解释、交叉核验并转化为带前置条件的行动。然而，现有评估常将最终答案正确性、网页面向人类的可用性或单一检索命中率作为主要对象，因而难以区分失败究竟源于检索路径、页面工程、版本治理、社区供给还是模型先验不足。</p>
-<p>本文提出<strong>技术知识生态的 AI 可用性</strong>（AI usability of technical knowledge ecosystems）：一个具备检索能力的 Agent 面对具体开发目标时，能否以可追溯、版本可判定、可执行的证据形成答案，以及为此付出的检索成本。我们以 CANN 与 CUDA 为案例，对 26 个结果目标相近的开发任务进行成对审计，覆盖环境与安装、算子开发、训练、推理与部署、性能优化、调试和迁移。对于每一对问题，研究按统一协议记录官方与第三方来源、网页读取结果、版本线索、模型自带知识、检索过程和答案产出；并以 11 项指标衡量官方可发现性、可抓取性、正文详尽度、版本清晰度、第三方支撑、模型自带知识、检索成本、版本可锁定性、步骤可复现性与综合置信度。综合置信度采用三源噪声-OR 公式，避免把“任一可靠渠道已足以支撑回答”的情形误判为平均分不足。</p>
-<p>结果显示，AI 可用性是<strong>任务条件的属性，而不是一个站点的常数</strong>。CUDA 的 26 个任务均处于高置信度区间（均值 .920）；CANN 的均值为 .736，呈现 7 个高、16 个中高、2 个中和 1 个低的任务分布。CANN 的主要问题并非“全站无法读取”：26 个任务中仅自定义算子开发的核心 how-to 缺少可抓取正文或镜像兜底。更广泛的结构性限制是版本树分散、第三方知识的有效冗余不足，以及在专有、快速演进任务上的模型先验薄弱。进一步分析表明，最弱任务并不只由“技术深度”决定，而更受对生态专有知识和专有案例的依赖程度影响；调试类别的两栈差距最大（.287），自定义算子开发是 CANN 中唯一低置信度任务（.410）。</p>
-<p>本文贡献包括：（1）给出面向可检索 Agent 的技术知识生态 AI 可用性定义和 11 指标测量框架；（2）提供 26 组任务级、来源可追溯的 CANN/CUDA 审计案例和可复算的评分管线；（3）识别“可见不等于可读”“可读不等于够用”“单一官方渠道不等于可用知识生态”等任务级失败模式；（4）提出面向 Agent 的文档、版本和社区知识基础设施设计建议。本文不将单一 Agent 的审计外推为所有模型能力，也不将分数解释为硬件、产品或人类开发者体验的总体排名。</p>
-<p><strong>关键词：</strong> AI 可用性；技术知识生态；检索增强 Agent；开发者文档；版本治理；开发者社区；CANN；CUDA</p>
+<p>本文定义<strong>面向 AI 的知识可得性</strong>（Knowledge Availability for AI）：一个具备检索能力的 Agent 面对具体开发目标时，能否以可追溯、版本可判定、可执行的证据形成答案，以及为此付出的检索成本。我们以 CANN 与 CUDA 为案例，对 26 个结果目标相近的开发任务进行成对审计，覆盖环境与安装、算子开发、训练、推理与部署、性能优化、调试和迁移。对于每一对问题，研究按统一协议记录官方与第三方来源、网页读取结果、版本线索、模型自带知识、检索过程和答案产出；并以 11 项指标衡量官方可发现性、可抓取性、正文详尽度、版本清晰度、第三方支撑、模型自带知识、检索成本、版本可锁定性、步骤可复现性与综合置信度。综合置信度采用三源噪声-OR 公式，避免把“任一可靠渠道已足以支撑回答”的情形误判为平均分不足。</p>
+<p>结果显示，<strong>面向 AI 的知识可得性是任务条件的属性，而不是一个站点的常数</strong>。CUDA 的 26 个任务均处于高置信度区间（均值 .920）；CANN 的均值为 .736，呈现 7 个高、16 个中高、2 个中和 1 个低的任务分布。CANN 的主要问题并非“全站无法读取”：26 个任务中仅自定义算子开发的核心 how-to 缺少可抓取正文或镜像兜底。更广泛的结构性限制是版本树分散、第三方知识的有效冗余不足，以及在专有、快速演进任务上的模型先验薄弱。进一步分析表明，最弱任务并不只由“技术深度”决定，而更受对生态专有知识和专有案例的依赖程度影响；调试类别的两栈差距最大（.287），自定义算子开发是 CANN 中唯一低置信度任务（.410）。</p>
+<p>本文贡献包括：（1）给出面向可检索 Agent 的知识可得性定义和 11 指标测量框架；（2）提供 26 组任务级、来源可追溯的 CANN/CUDA 审计案例和可复算的评分管线；（3）识别“可见不等于可读”“可读不等于够用”“单一官方渠道不等于可用知识生态”等任务级失败模式；（4）提出面向 Agent 的文档、版本和社区知识基础设施设计建议。本文不将单一 Agent 的审计外推为所有模型能力，也不将分数解释为硬件、产品或人类开发者体验的总体排名。</p>
+<p><strong>关键词：</strong> 面向 AI 的知识可得性；技术知识生态；检索增强 Agent；开发者文档；版本治理；开发者社区；CANN；CUDA</p>
 <hr>
 <h2>1. 引言</h2>
-<p>开发者面对陌生 API、工具链版本冲突、编译错误或性能问题时，长期依赖搜索、官方文档、代码仓、问答社区与本机试验来推进工作。AI Coding 工具改变了这条路径：开发者可以将目标或报错交给能够检索网页、读取仓库、综合资料并起草命令或代码的 Agent。由此，技术文档不再只由人类读者直接消费；它还是 Agent 形成建议时必须取得和判断的证据。</p>
-<p>这种变化引出一个常被混用、但需要单独测量的问题：<strong>当一个会检索的 AI Agent 回答特定技术生态中的开发任务时，知识从哪里来，哪些环节决定它是否能给出可信、可执行的答案？</strong> 这不是模型基准问题。一个回答失败，可能是模型缺少先验知识，也可能是官方页面只能在浏览器渲染、关键正文未被读取、版本信息相互冲突、社区资料无法互证，或检索成本迫使 Agent 在错误的来源上过早停止。反之，一份高质量回答也可能主要由稳定的第三方教程或模型先验支撑，而不是官方入口本身。</p>
-<p>现有对代码生成工具的可用性研究主要考察开发者如何理解、采纳和校验生成结果 [1,2]；Agent 研究则讨论推理、工具使用与迭代的工作循环 [3,4]。这些工作十分重要，但若不拆开 Agent 所依赖的外部知识条件，便难以为文档站、社区和工具链治理提出可操作的改进。传统网站可用性评价同样不足：一个页面对人类浏览器可见，不能证明 Agent 能取得它的正文；一段抓到的正文，也不证明其中有能锁定版本、照着执行的内容。</p>
-<p>本文将这类供给侧条件称为<strong>技术知识生态的 AI 可用性</strong>。它指：面对一个明确的开发目标，一个具备实时检索与网页读取能力的 Agent 能否从官方资料、第三方社区和模型自带知识中取得足够可靠的证据，形成版本可判定、步骤可执行的回答，并以多低的检索成本完成这一过程。该定义强调“技术知识生态”而非单个网页，也强调“任务”而非抽象站点评分。</p>
+<p>开发工作长期是一个持续的信息寻径过程：开发者在代码、官方文档、示例、问答社区与搜索结果之间往返，以形成下一步可执行的判断 [1–4]。这类活动并不只是“找到一个链接”。开发者需要判断资料是否适用于手头版本、能否和现有代码拼接，以及何时还必须通过本机运行验证。尤其在 API、工具链和部署环境快速迭代时，技术文档与社区共同构成了开发者完成任务的知识生态。</p>
+<p>AI Coding 正在重新组织这条路径。开发者可以把目标、报错或局部代码交给代码生成工具与 Agent，让它们检索网页、读取仓库、综合资料并起草命令或代码。已有研究显示，开发者会把生成结果用于探索与加速工作，同时通过阅读、比较、运行与外部查证来校验建议 [5,6]。因此，技术文档不再只由人类直接消费；它也成为 Agent 形成建议时必须取得、解释和引用的证据。</p>
+<p>这一变化带来一个尚未被充分拆解的体验问题：<strong>当开发者把知识寻径委托给 Agent 时，Agent 能否取得开发者真正需要、且足以支持下一步行动的知识？</strong> 具备检索和工具调用能力的 Agent 通常以“理解目标—搜索—读取—推理—行动—根据反馈修订”的循环工作 [7–10]。现有 Agent 基准多以网页任务完成、代码 issue 修复或最终回答质量评价系统表现 [9–11]；这些评测对于比较 Agent 很重要，却较少说明失败究竟来自模型推理、工具调用，还是 Agent 所面对的外部知识供给不足。</p>
+<p>这一区分对 HCI 与开发者生态设计具有直接意义。一个页面能被人类浏览器看到，并不表示 Agent 能取得其核心正文；一段正文可读取，也不表示它足以锁定版本、交叉核验或组织成可执行步骤。反过来，稳定的第三方教程、公开仓库与模型先验有时能够弥补官方入口的不足。若不在任务层面拆开这些条件，文档团队难以知道应优先改善机器可读性、版本关系、示例颗粒度还是社区知识冗余，Agent 产品也难以向开发者暴露证据边界与不确定性。</p>
+<p>本文将这类供给侧条件定义为<strong>面向 AI 的知识可得性</strong>（Knowledge Availability for AI）：面对一个明确的开发目标，一个具备实时检索与网页读取能力的 Agent 能否从官方资料、第三方社区和模型自带知识中取得可追溯、版本可判定、可行动的证据，以及为此付出的检索成本。这里的“可得”不等于信息在网上存在；它要求知识能够被发现、读取、判断适用范围、与其他来源核验，并被转化为带前置条件的行动建议。该定义强调“技术知识生态”而非单一网页，也强调“任务”而非抽象站点评分。</p>
 <p>我们以 CANN 与 CUDA 为案例开展 26 组任务级审计。两者服务于可比较的计算开发目标，但文档结构、版本体系、术语和社区规模不同。比较的单位不是 API 是否相同，更不是硬件性能；而是开发者要实现的结果目标是否相近，例如安装工具链、将模型转换为部署产物、定位内存越界、集成自定义算子或配置分布式训练。每个结果目标被编写成一对使用各自真实术语的问题，并按同一检索、取证和打分协议执行。</p>
 <p>本文回答四个研究问题：</p>
-<ul><li><strong>RQ1：</strong> 如何将技术知识生态的 AI 可用性分解为可独立观察、可量化并能定位失败点的指标？</li><li><strong>RQ2：</strong> 在 26 个结果目标匹配的开发任务中，CANN 与 CUDA 的 AI 可用性呈现怎样的任务级分布？</li><li><strong>RQ3：</strong> 哪些知识供给条件最常导致 Agent 的证据链断裂、版本不确定或步骤不可执行？</li><li><strong>RQ4：</strong> 如何根据任务影响范围和反事实收益，为面向 Agent 的文档、版本和社区建设排序？</li></ul>
+<ul>
+<li><strong>RQ1：</strong> 如何将开发者生态中面向 AI 的知识可得性分解为可独立观察、可量化并能定位失败点的指标？</li>
+<li><strong>RQ2：</strong> 在 26 个结果目标匹配的开发任务中，CANN 与 CUDA 的知识可得性呈现怎样的任务级分布？</li>
+<li><strong>RQ3：</strong> 哪些知识供给条件最常导致 Agent 的证据链断裂、版本不确定或步骤不可执行？</li>
+<li><strong>RQ4：</strong> 如何根据任务影响范围和反事实收益，为面向 Agent 的文档、版本和社区建设排序？</li>
+</ul>
 <p>本文的贡献是：</p>
-<ol><li>提出以“可追溯证据如何被搬进答案”为核心的 AI 可用性定义，并将其操作化为 11 项指标与可复算综合公式；</li><li>提供 26 个跨栈任务对、52 次审计单元及其检索日志、原始观测和评分程序；</li><li>给出任务级而非站点级的实证发现，收窄了“SPA 全站不可用”等过度概括，并识别了版本治理、有效二手冗余和专有知识依赖的结构性作用；</li><li>提出将技术文档建设为“人类读者与 Agent 都可行动”的知识基础设施的设计建议。</li></ol>
+<ol>
+<li>提出以“可追溯证据如何被搬进答案”为核心的面向 AI 的知识可得性定义，并将其操作化为 11 项指标与可复算综合公式；</li>
+<li>提供 26 个跨栈任务对、52 次审计单元及其检索日志、原始观测和评分程序；</li>
+<li>给出任务级而非站点级的实证发现，收窄了“SPA 全站不可用”等过度概括，并识别了版本治理、有效二手冗余和专有知识依赖的结构性作用；</li>
+<li>提出将技术文档建设为“人类读者与 Agent 都可行动”的知识基础设施的设计建议。</li>
+</ol>
 <h2>2. 相关研究与概念定位</h2>
 <h3>2.1 生成式 AI 的开发者使用与校验</h3>
-<p>代码生成工具并非简单替代开发者。已有研究表明，开发者会把生成结果作为草稿、对话伙伴、搜索捷径或快速试验的起点，同时通过阅读 diff、运行测试、查阅外部资料和限制权限来管理风险 [1,2]。本文不对开发者行为作新的经验性主张；它关注这些行为发生之前的一个供给侧前提：Agent 究竟能否获得支撑建议的外部技术证据。</p>
+<p>代码生成工具并非简单替代开发者。已有研究表明，开发者会把生成结果作为草稿、对话伙伴、搜索捷径或快速试验的起点，同时通过阅读 diff、运行测试、查阅外部资料和限制权限来管理风险 [5,6]。本文不对开发者行为作新的经验性主张；它关注这些行为发生之前的一个供给侧前提：Agent 究竟能否获得支撑建议的外部技术证据。</p>
 <h3>2.2 Agent 的检索—行动循环</h3>
-<p>与一次性补全不同，Agent 可以交织任务理解、检索、网页或文件读取、候选行动、工具调用和反馈修订 [3,4]。在本文中，这一循环不是对模型内部认知过程的解释，而是一个可观察的工作结构：每个答案都可能由官方材料、第三方材料、模型先验或这些来源的组合支撑。研究因此不把“回答是否流畅”视为充分结果，而检查证据是否实际到达、是否足够具体、是否与版本和步骤相容。</p>
+<p>与一次性补全不同，Agent 可以交织任务理解、检索、网页或文件读取、候选行动、工具调用和反馈修订 [7–10]。在本文中，这一循环不是对模型内部认知过程的解释，而是一个可观察的工作结构：每个答案都可能由官方材料、第三方材料、模型先验或这些来源的组合支撑。研究因此不把“回答是否流畅”视为充分结果，而检查证据是否实际到达、是否足够具体、是否与版本和步骤相容。</p>
 <h3>2.3 从门户可用性到知识生态可用性</h3>
-<p>开发者门户、文档、样例、版本矩阵、仓库、论坛和第三方文章共同构成技术知识生态。传统门户评价主要关心人类用户的导航、理解和任务效率；本研究的对象不同：一个具备网页检索和读取能力的 Agent 是否能发现、抓取、解释和行动化这些资源。二者相关但不能互相替代。页面视觉清晰不等于正文可被读取；SEO 命中不等于参数、版本和错误处理信息足以支持执行。</p>
+<p>开发者门户、文档、样例、版本矩阵、仓库、论坛和第三方文章共同构成技术知识生态 [1–4]。传统门户评价主要关心人类用户的导航、理解和任务效率；本研究的对象不同：一个具备网页检索和读取能力的 Agent 是否能发现、抓取、解释和行动化这些资源。二者相关但不能互相替代。页面视觉清晰不等于正文可被读取；SEO 命中不等于参数、版本和错误处理信息足以支持执行。</p>
 <h2>3. 研究设计</h2>
 <h3>3.1 审计对象与比较边界</h3>
 <p>研究以一个具备网页搜索与网页读取能力的 Agent 为测量视角。每个审计单元由“任务 × 技术生态”构成，共 26 个任务、52 个单元。任务覆盖七类工作流：环境与安装、算子开发、训练、推理与部署、性能优化、调试和迁移；并服务于四类开发者角色：应用开发者、模型/框架迁移工程师、算子开发者和系统调优/生态贡献者。</p>
 <p>每个任务在 CUDA 和 CANN 中均采用目标相近、但术语与实施路径符合各自生态的问题。例如：</p>
-<ul><li>模型转换：PyTorch → ONNX → TensorRT 与 ONNX → ATC → <code>.om</code>；</li><li>性能定位：Nsight Systems 与 <code>msprof</code> / Ascend PyTorch Profiler；</li><li>自定义算子：CUDA kernel + extension 与 Ascend C + <code>msOpGen</code> + <code>aclnn</code>；</li><li>分布式训练：NCCL 与 HCCL；</li><li>内存越界定位：Compute Sanitizer 与 <code>msSanitizer</code>。</li></ul>
+<ul>
+<li>模型转换：PyTorch → ONNX → TensorRT 与 ONNX → ATC → <code>.om</code>；</li>
+<li>性能定位：Nsight Systems 与 <code>msprof</code> / Ascend PyTorch Profiler；</li>
+<li>自定义算子：CUDA kernel + extension 与 Ascend C + <code>msOpGen</code> + <code>aclnn</code>；</li>
+<li>分布式训练：NCCL 与 HCCL；</li>
+<li>内存越界定位：Compute Sanitizer 与 <code>msSanitizer</code>。</li>
+</ul>
 <p>研究不要求两边 API 形式完全相同，也不比较性能、运行时长、硬件成本或真实项目完成率。它比较的是：面向相近结果目标时，Agent 获得可执行技术知识的条件。</p>
 <h3>3.2 统一检索与取证协议</h3>
 <p>每个任务按同一流程执行：</p>
-<ol><li>明确开发者结果目标，并以两栈真实术语写成问题对；</li><li>用目标、技术栈和关键工具词进行网页检索，记录命中顺序、检索轮次和是否必须改写查询；</li><li>优先读取官方资料，并记录正文是否完整取得、部分取得、仅有导航/摘要，或被 robots/渲染方式阻断；</li><li>在官方证据不足时检索第三方来源，区分官方仓/官方论坛与真正独立的社区来源；</li><li>记录可识别的版本、前置条件、命令、代码、参数表、错误说明和验证步骤；</li><li>按预定义函数将原始观测映射到 1–5 分，生成综合置信度，并保留日志、来源和原始字段供复核。</li></ol>
+<ol>
+<li>明确开发者结果目标，并以两栈真实术语写成问题对；</li>
+<li>用目标、技术栈和关键工具词进行网页检索，记录命中顺序、检索轮次和是否必须改写查询；</li>
+<li>优先读取官方资料，并记录正文是否完整取得、部分取得、仅有导航/摘要，或被 robots/渲染方式阻断；</li>
+<li>在官方证据不足时检索第三方来源，区分官方仓/官方论坛与真正独立的社区来源；</li>
+<li>记录可识别的版本、前置条件、命令、代码、参数表、错误说明和验证步骤；</li>
+<li>按预定义函数将原始观测映射到 1–5 分，生成综合置信度，并保留日志、来源和原始字段供复核。</li>
+</ol>
 <p>26 个任务分四批完成。原始过程在 <code>task_run_log.md</code>，字段与量化函数在 <code>score_metrics.py</code>，可视化矩阵、方法说明与发现汇总分别位于 <code>17_official_site_focus.html</code>、<code>18_metric_definition.html</code>、<code>19_findings_ux_synthesis.html</code>。所有结论均应能回指任务、来源、原始观测或公式；无法读取的正文标记为“受阻”，而不以推断补成低分。</p>
 <h3>3.3 指标体系：三源、两关、四类结果</h3>
 <p>指标体系从“把知识搬进答案”的链路推导，而不是从网页功能清单拼接。知识有三个渠道：官方一手、第三方社区、模型自带知识。对前两类渠道分别考察触达和质量；再加入跨渠道成本、答案产出与综合汇总，形成 11 项指标（表 1）。</p>
-<div class="tablewrap"><table><thead><tr><th>层面</th><th>指标</th><th>所问问题</th></tr></thead><tbody><tr><td>官方触达</td><td>① 官方可发现性</td><td>官方资料能否在合理轮次内被找到？</td></tr><tr><td>官方触达</td><td>② 官方可抓取性</td><td>Agent 能否取得核心正文，而不是只看到导航或摘要？</td></tr><tr><td>官方质量</td><td>③ 官方正文详尽度</td><td>是否含关键命令、代码、参数表、步骤或完整参考？</td></tr><tr><td>官方质量</td><td>④ 版本清晰度</td><td>是否存在 canonical 版本、明确适用范围与配套关系？</td></tr><tr><td>二手触达</td><td>⑤ 二手丰富度</td><td>是否存在足量、可发现的真正独立来源？</td></tr><tr><td>二手质量</td><td>⑥ 二手可信度/一致性</td><td>来源是否权威、够新、彼此独立并能相互验证？</td></tr><tr><td>模型先验</td><td>⑦ 模型自带知识</td><td>在不检索或检索受阻时，模型是否有足够稳定的基础覆盖？</td></tr><tr><td>过程</td><td>⑧ 检索成本</td><td>搜索、抓取、失败重试与改写查询带来的摩擦有多高？</td></tr><tr><td>产出</td><td>⑨ 版本可锁定性</td><td>最终回答能否确定到具体版本或兼容组合？</td></tr><tr><td>产出</td><td>⑩ 步骤可复现性</td><td>回答是否给出可照做或只需少量替换的步骤？</td></tr><tr><td>汇总</td><td>⑪ 综合置信度</td><td>在已取得证据下，答案可被可靠行动化的程度如何？</td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>层面</th>
+<th>指标</th>
+<th>所问问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>官方触达</td>
+<td>① 官方可发现性</td>
+<td>官方资料能否在合理轮次内被找到？</td>
+</tr>
+<tr>
+<td>官方触达</td>
+<td>② 官方可抓取性</td>
+<td>Agent 能否取得核心正文，而不是只看到导航或摘要？</td>
+</tr>
+<tr>
+<td>官方质量</td>
+<td>③ 官方正文详尽度</td>
+<td>是否含关键命令、代码、参数表、步骤或完整参考？</td>
+</tr>
+<tr>
+<td>官方质量</td>
+<td>④ 版本清晰度</td>
+<td>是否存在 canonical 版本、明确适用范围与配套关系？</td>
+</tr>
+<tr>
+<td>二手触达</td>
+<td>⑤ 二手丰富度</td>
+<td>是否存在足量、可发现的真正独立来源？</td>
+</tr>
+<tr>
+<td>二手质量</td>
+<td>⑥ 二手可信度/一致性</td>
+<td>来源是否权威、够新、彼此独立并能相互验证？</td>
+</tr>
+<tr>
+<td>模型先验</td>
+<td>⑦ 模型自带知识</td>
+<td>在不检索或检索受阻时，模型是否有足够稳定的基础覆盖？</td>
+</tr>
+<tr>
+<td>过程</td>
+<td>⑧ 检索成本</td>
+<td>搜索、抓取、失败重试与改写查询带来的摩擦有多高？</td>
+</tr>
+<tr>
+<td>产出</td>
+<td>⑨ 版本可锁定性</td>
+<td>最终回答能否确定到具体版本或兼容组合？</td>
+</tr>
+<tr>
+<td>产出</td>
+<td>⑩ 步骤可复现性</td>
+<td>回答是否给出可照做或只需少量替换的步骤？</td>
+</tr>
+<tr>
+<td>汇总</td>
+<td>⑪ 综合置信度</td>
+<td>在已取得证据下，答案可被可靠行动化的程度如何？</td>
+</tr>
+</tbody></table>
 <p>指标 ①–⑥和⑧由可追溯原始观测经函数计算；⑦包含训练覆盖密度的半主观判断，同时以技术迭代节奏加入知识截止风险惩罚；⑨和⑩为产出侧因变量，不重复进入综合公式。特别地，“找得到”“抓得到”和“抓到的内容够不够用”被拆为三个指标，以避免把三种不同失败混为一类。</p>
 <h3>3.4 综合置信度与评分规则</h3>
 <p>综合置信度不使用简单平均。对技术问答而言，一条可靠渠道可能已经足以支撑回答；相反，多个薄弱渠道也不能因均值而被误判为可用。因而我们以归一化后的指标计算三源噪声-OR：</p>
-<pre><code>OFF = nm(①) × nm(②) × nm(③)
+<pre><code class="language-text">OFF = nm(①) × nm(②) × nm(③)
 SEC = nm(⑤) × nm(⑥)
 OWN = nm(⑦)
 K   = 1 − (1 − OFF)(1 − SEC)(1 − OWN)
 
-综合置信度 = K × [0.7 + 0.3 × nm(④)] × [0.9 + 0.1 × nm(⑧)]</code></pre>
+综合置信度 = K × [0.7 + 0.3 × nm(④)] × [0.9 + 0.1 × nm(⑧)]
+</code></pre>
 <p>其中 <code>nm(v)=v/5</code>。官方、第三方和模型先验任一渠道能稳定支撑答案时，<code>K</code> 会提高；版本不清和高检索成本则作为跨渠道折扣。若某渠道的核心正文受阻，渠道贡献按 0 计算，但“正文详尽度”仍保留为“受阻/无法实测”的中性状态，而不是伪造为 1 分。综合分的档位为：高（≥ .80）、中高（≥ .63）、中（≥ .45）、低（≥ .24）和很低（&lt; .24）。</p>
 <p>该公式的目的不是制造一个“生态总分”，而是让每个任务都能追问：哪一个渠道没有送达？版本和成本各造成了多少折扣？为什么同样的页面读取失败在另一个任务中未必导致回答失败？</p>
 <h3>3.5 可复算性与质量控制</h3>
@@ -56,15 +147,80 @@ K   = 1 − (1 − OFF)(1 − SEC)(1 − OWN)
 <h2>4. 结果</h2>
 <h3>4.1 总体分布：差异存在于任务中，而不是抽象站点上</h3>
 <p>CUDA 侧 26 个任务的综合置信度均为高，范围为 .835–1.000，均值 .920。CANN 侧范围为 .410–.901，均值 .736：7 个高、16 个中高、2 个中、1 个低。这个分布首先否定了两个简单叙事：它既不支持“CANN 文档整体不可用”，也不支持“只要能搜到官方页，AI 就能稳定回答”。</p>
-<figure style="margin:26px -38px 30px"><img src="figures/figure-2-task-matrix.svg" alt="26 个开发任务的 CUDA 与 CANN AI 可用性矩阵；每个任务有两行，颜色表示 11 个审计指标的档位，最后一列为综合置信度。" style="display:block;width:100%;height:auto;border:1px solid #dfe5e9;border-radius:7px"><figcaption style="margin:9px 4px 0;color:#526174;font:13px/1.65 -apple-system,BlinkMacSystemFont,&quot;Noto Sans SC&quot;,sans-serif"><strong>图 2　26 个结果目标匹配任务的 AI 可用性矩阵。</strong> 矩阵将结果回溯至每个“任务 × 技术生态”单元，而非呈现单一生态总分。单元格“受阻”表示关键正文未能被读取，需与低档分值区分；完整的来源、原始观察与逐单元说明保留在可复现补充材料中。</figcaption></figure>
+<p><img src="figures/figure-2-task-matrix.svg" alt="图 2　26 个结果目标匹配任务的面向 AI 的知识可得性矩阵。每个任务各有 CUDA 与 CANN 两个审计单元；①–⑦、⑨–⑩为 1–5 分，⑧记录实际检索成本，⑪为三源噪声-OR 综合置信度。"></p>
+<p><strong>图 2　26 个结果目标匹配任务的面向 AI 的知识可得性矩阵。</strong> 矩阵使结果可回溯至每个“任务 × 技术生态”单元，而非只呈现一个生态总分。单元格“受阻”表示关键正文未能被读取，需与低档分值区分；完整的来源、原始观察与逐单元说明保留在可复现补充材料中。</p>
 <p>表 2 列出各类工作流的均值。迁移、环境与安装、训练属于 CANN 的较强区域；算子开发和调试较弱，其中调试既是 CANN 绝对值最低的一类，也是两栈差距最大的一类。</p>
-<div class="tablewrap"><table><thead><tr><th>工作流</th><th>CANN 均值</th><th>CUDA 均值</th><th>差距</th><th>任务数</th></tr></thead><tbody><tr><td>迁移</td><td>.810</td><td>.907</td><td>.097</td><td>3</td></tr><tr><td>环境与安装</td><td>.799</td><td>.904</td><td>.105</td><td>3</td></tr><tr><td>训练</td><td>.791</td><td>.945</td><td>.154</td><td>4</td></tr><tr><td>性能优化</td><td>.752</td><td>.957</td><td>.204</td><td>4</td></tr><tr><td>推理与部署</td><td>.723</td><td>.920</td><td>.197</td><td>4</td></tr><tr><td>算子开发</td><td>.660</td><td>.891</td><td>.230</td><td>6</td></tr><tr><td>调试</td><td>.646</td><td>.933</td><td>.287</td><td>2</td></tr></tbody></table></div>
-<p>因此，AI 可用性不是“某生态是否更适合 AI”的单一常数。一个生态可能在迁移入口把资料、工具与第三方实践组织得很厚，同时在报错、算子或版本专有任务上缺少足够的证据链。对于 Agent 产品而言，这意味着不能按域名简单决定信任策略；对于文档负责人而言，也意味着平均分不能替代对任务深谷的治理。</p>
+<table>
+<thead>
+<tr>
+<th>工作流</th>
+<th align="right">CANN 均值</th>
+<th align="right">CUDA 均值</th>
+<th align="right">差距</th>
+<th align="right">任务数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>迁移</td>
+<td align="right">.810</td>
+<td align="right">.907</td>
+<td align="right">.097</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>环境与安装</td>
+<td align="right">.799</td>
+<td align="right">.904</td>
+<td align="right">.105</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>训练</td>
+<td align="right">.791</td>
+<td align="right">.945</td>
+<td align="right">.154</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>性能优化</td>
+<td align="right">.752</td>
+<td align="right">.957</td>
+<td align="right">.204</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>推理与部署</td>
+<td align="right">.723</td>
+<td align="right">.920</td>
+<td align="right">.197</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>算子开发</td>
+<td align="right">.660</td>
+<td align="right">.891</td>
+<td align="right">.230</td>
+<td align="right">6</td>
+</tr>
+<tr>
+<td>调试</td>
+<td align="right">.646</td>
+<td align="right">.933</td>
+<td align="right">.287</td>
+<td align="right">2</td>
+</tr>
+</tbody></table>
+<p>因此，面向 AI 的知识可得性不是“某生态是否更适合 AI”的单一常数。一个生态可能在迁移入口把资料、工具与第三方实践组织得很厚，同时在报错、算子或版本专有任务上缺少足够的证据链。对于 Agent 产品而言，这意味着不能按域名简单决定信任策略；对于文档负责人而言，也意味着平均分不能替代对任务深谷的治理。</p>
 <h3>4.2 可抓取性并非平台常量：四种证据到达状态</h3>
 <p>早期观察曾把部分 CANN 文档的 SPA 视为系统性短板。26 个任务全量审计后，这一结论需要收窄。绝大多数主路径页面可通过 SSR、静态子树或镜像得到正文：<code>quickstart</code> 中的模型转换、面向 PyTorch 的 profiler、Tiling 正文、通信和最佳实践子树均提供了可用内容。唯一没有可抓取核心 how-to 或可靠镜像兜底的任务是 D（Ascend C 自定义算子开发），其核心 <code>opdevg</code> 引导链路的正文未能被 Agent 取得。</p>
 <p>这不是“SPA 无关紧要”。D 恰好同时具有较弱第三方支撑和薄弱模型先验，因而三条知识渠道都未能兜底，综合分降至 .410，是唯一低档任务。相反，A（模型转换）和 B（性能定位）虽有深层参考页受限，但主路径 how-to 位于可抓取子树，仍能支撑中高置信度回答。</p>
 <p>基于这一对照，证据到达不宜二分为“能抓/不能抓”，而应区分四态：</p>
-<ol><li><strong>完整可抓</strong>：正文、命令和参数可直接得到；CUDA 侧所有任务和 CANN 多数主路径属于此类；</li><li><strong>部分可抓且有镜像兜底</strong>：关键内容在替代入口可得，但链路并不直接，例如跨芯片迁移任务；</li><li><strong>可抓但内容泛化</strong>：页面存在且可读，却不能解释关键场景，例如 EZ9999 等错误码的通用兜底说明；</li><li><strong>核心正文受阻且无兜底</strong>：关键 how-to 不能取得，第三方和模型先验也不足以稳定补偿，例如自定义算子开发。</li></ol>
+<ol>
+<li><strong>完整可抓</strong>：正文、命令和参数可直接得到；CUDA 侧所有任务和 CANN 多数主路径属于此类；</li>
+<li><strong>部分可抓且有镜像兜底</strong>：关键内容在替代入口可得，但链路并不直接，例如跨芯片迁移任务；</li>
+<li><strong>可抓但内容泛化</strong>：页面存在且可读，却不能解释关键场景，例如 EZ9999 等错误码的通用兜底说明；</li>
+<li><strong>核心正文受阻且无兜底</strong>：关键 how-to 不能取得，第三方和模型先验也不足以稳定补偿，例如自定义算子开发。</li>
+</ol>
 <p>这一结果回答 RQ3 的一部分：可抓取性应按“任务所需的具体子树与正文”测量，不能根据站点技术栈或首页渲染方式整体赋值。</p>
 <h3>4.3 版本治理是覆盖面最广的折扣</h3>
 <p>CANN 的版本清晰度是最广泛的限制：26 个任务中有 12 个在指标④上为 2 分；取得 5 分的两个任务主要是版本无关的通识任务。问题并不只是“版本很多”，而是同一内容散布在 <code>8.0.RC2</code>、<code>80RC3alpha</code>、<code>82RC1alpha</code>、商业版与社区版等并存树中，缺乏清晰的 canonical 指向；同时 CANN、驱动、PyTorch、<code>torch_npu</code> 等往往需要跨多个页面拼接配套关系。</p>
@@ -78,7 +234,66 @@ K   = 1 − (1 − OFF)(1 − SEC)(1 − OWN)
 <p>因此，更接近的解释不是“任务越深，文档越差”，而是<strong>任务对生态专有知识、专有版本关系和专有案例的依赖越高，Agent 越缺少可替代的知识通道</strong>。这一机制为文档投入提供了更精确的优先级：通识性原理可以由已有模型知识和跨栈经验部分兜底；错误码、版本组合、算子实现和设备特性等专有知识则不能依赖类比外推。</p>
 <h3>4.6 反事实改进排序：抬均值与修深谷是两本账</h3>
 <p>研究以当前原始分为基线，将不同供给侧改进的假设变化代回综合公式，得到表 3。它不是实际 A/B 测试，而是用于透明比较“若某一指标确实改善，哪些任务会受益”的反事实分析。</p>
-<div class="tablewrap"><table><thead><tr><th>改进假设</th><th>平均综合提升</th><th>跨档任务</th><th>最大单任务提升</th><th>主要影响</th></tr></thead><tbody><tr><td>canonical 版本与配套查询器</td><td>+.104</td><td>16/26</td><td>+.18</td><td>全局版本清晰度</td></tr><tr><td>扶持独立二手生态</td><td>+.056</td><td>7/26</td><td>+.11</td><td>社区丰富度与互证</td></tr><tr><td>提供可被长期吸收的权威语料</td><td>+.048</td><td>4/26</td><td>+.11</td><td>模型先验（长期）</td></tr><tr><td>机器可读出口（如 Markdown/文本导出）</td><td>+.027</td><td>4/26</td><td>+.11</td><td>正文可读取性</td></tr><tr><td>页面组织与可抓取规范</td><td>+.013</td><td>1/26</td><td>+.06</td><td>已可读页面的正文深度</td></tr><tr><td>自定义算子 how-to 静态化</td><td>+.004</td><td>1/26</td><td>+.11</td><td>D：.41 → .52</td></tr><tr><td>错误码“一码一页”</td><td>+.003</td><td>1/26</td><td>+.09</td><td>E：.55 → .64</td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>改进假设</th>
+<th align="right">平均综合提升</th>
+<th align="right">跨档任务</th>
+<th align="right">最大单任务提升</th>
+<th>主要影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>canonical 版本与配套查询器</td>
+<td align="right">+.104</td>
+<td align="right">16/26</td>
+<td align="right">+.18</td>
+<td>全局版本清晰度</td>
+</tr>
+<tr>
+<td>扶持独立二手生态</td>
+<td align="right">+.056</td>
+<td align="right">7/26</td>
+<td align="right">+.11</td>
+<td>社区丰富度与互证</td>
+</tr>
+<tr>
+<td>提供可被长期吸收的权威语料</td>
+<td align="right">+.048</td>
+<td align="right">4/26</td>
+<td align="right">+.11</td>
+<td>模型先验（长期）</td>
+</tr>
+<tr>
+<td>机器可读出口（如 Markdown/文本导出）</td>
+<td align="right">+.027</td>
+<td align="right">4/26</td>
+<td align="right">+.11</td>
+<td>正文可读取性</td>
+</tr>
+<tr>
+<td>页面组织与可抓取规范</td>
+<td align="right">+.013</td>
+<td align="right">1/26</td>
+<td align="right">+.06</td>
+<td>已可读页面的正文深度</td>
+</tr>
+<tr>
+<td>自定义算子 how-to 静态化</td>
+<td align="right">+.004</td>
+<td align="right">1/26</td>
+<td align="right">+.11</td>
+<td>D：.41 → .52</td>
+</tr>
+<tr>
+<td>错误码“一码一页”</td>
+<td align="right">+.003</td>
+<td align="right">1/26</td>
+<td align="right">+.09</td>
+<td>E：.55 → .64</td>
+</tr>
+</tbody></table>
 <p>“版本收口”在平均提升上断层领先，因为它影响广泛；但这不意味着只应做广覆盖项目。自定义算子 how-to 静态化和错误码细化只改变单个任务，均摊收益小，却分别修复了矩阵中唯一的低档任务和调试深谷。前者是普惠型投资，后者是最低体验救济；二者应使用不同的资源决策口径。</p>
 <h2>5. 讨论：面向 Agent 的知识基础设施</h2>
 <h3>5.1 从“页面可见”转向“证据可行动”</h3>
@@ -88,18 +303,175 @@ K   = 1 − (1 − OFF)(1 − SEC)(1 − OWN)
 <h3>5.3 将社区视作冗余网络，而非流量附属品</h3>
 <p>第三方内容的价值不只在于数量。对于 Agent，它承担官方证据不可达、过于概括或版本不匹配时的绕行与互证功能。因此，社区治理需要关注可访问性、独立性和可归因性：高质量样例、公开 issue、带版本的复盘、可索引的错误码讨论和不同平台的独立解释，比同平台内大量重复转载更能提高知识生态的韧性。</p>
 <h3>5.4 Agent 产品应暴露证据和未知，而非隐藏不确定性</h3>
-<p>当任务依赖专有版本、硬件拓扑或私有工程事实时，理想的 Agent 行为不是生成看似完整的答案，而是明确说明：哪些步骤已有来源支撑，哪些内容来自类比或旧知识，尚需用户提供什么事实，以及下一步最小验证是什么。本文的指标可以转化为 Agent 界面中的状态：来源已取得/部分取得/受阻，版本已锁定/待确认，步骤可直接执行/需要本机事实。这样，AI 可用性评估不只诊断内容生态，也能反向塑造更可控的 Agent 交互。</p>
+<p>当任务依赖专有版本、硬件拓扑或私有工程事实时，理想的 Agent 行为不是生成看似完整的答案，而是明确说明：哪些步骤已有来源支撑，哪些内容来自类比或旧知识，尚需用户提供什么事实，以及下一步最小验证是什么。本文的指标可以转化为 Agent 界面中的状态：来源已取得/部分取得/受阻，版本已锁定/待确认，步骤可直接执行/需要本机事实。这样，知识可得性评估不只诊断内容生态，也能反向塑造更可控的 Agent 交互。</p>
 <h2>6. 局限与有效性边界</h2>
 <p>本研究有以下限制。</p>
 <p>第一，研究使用单一 Agent 与特定检索、网页读取配置，不能代表所有模型、搜索引擎、企业知识库或未来版本的能力；其结论应理解为一个明确测量条件下的案例审计。第二，单任务单元主要来自一次完整检索运行，虽保留了过程和可重算字段，但无法给出跨时间、跨模型的方差估计。第三，指标⑦“模型自带知识”仍含半主观判断；研究以技术迭代节奏加入知识截止风险，却不能直接观测训练语料覆盖。第四，第三、四批有部分问题文本在事后补编，尽管原始观测和过程记录仍可回溯，措辞差异仍可能影响检索。第五，反事实 ROI 只说明在既定公式与假设下的潜在收益，不是站方真实用户行为、流量转化或改版效果的因果估计。</p>
 <p>更重要的是，本文不测量人类开发者的主观体验、实际完成率、协作方式或硬件性能。它也不声称 CUDA 与 CANN 的任何永久总体排名。人类开发者体验、真实项目协同和环境运行结果需要用不同的研究设计独立测量，而不能从本审计分数直接推出。</p>
 <h2>7. 结论</h2>
-<p>当 AI Agent 成为技术知识的重要使用者时，文档与社区不再只是供人浏览的内容集合，而是影响答案能否被可靠行动化的知识基础设施。通过 26 组 CANN/CUDA 开发任务的可追溯审计，本文表明：AI 可用性需要在任务层面理解；“可见、可读、够用、可锁版本、可复现”是相互独立的条件；最广泛的限制来自版本治理与有效知识冗余，而非笼统的页面可抓取性；最危险的深谷出现在高专有知识依赖的算子和调试任务。</p>
+<p>当 AI Agent 成为技术知识的重要使用者时，文档与社区不再只是供人浏览的内容集合，而是影响答案能否被可靠行动化的知识基础设施。通过 26 组 CANN/CUDA 开发任务的可追溯审计，本文表明：面向 AI 的知识可得性需要在任务层面理解；“可见、可读、够用、可锁版本、可复现”是相互独立的条件；最广泛的限制来自版本治理与有效知识冗余，而非笼统的页面可抓取性；最危险的深谷出现在高专有知识依赖的算子和调试任务。</p>
 <p>这一视角为技术社区提出了一个可操作的目标：不仅让页面被人类读到，更要让 Agent 能取得可引用、可验证、可执行的证据，并在证据不足时清楚地暴露未知。对文档、工具链和 Agent 产品而言，面向人和 AI 的知识基础设施将成为同一项设计任务的两个侧面。</p>
 <hr>
-<h2>参考文献（首轮书目；正式投稿前按目标期刊格式核验并补充）</h2>
-<ol><li>Barke, S., James, M. B., &amp; Polikarpova, N. (2023). *Grounded Copilot: How Programmers Interact with Code-Generating Models*. Proceedings of the ACM on Human-Computer Interaction, 7(CSCW1).</li><li>Vaithilingam, P., Zhang, T., &amp; Glassman, E. L. (2022). *Expectation vs. Experience: Evaluating the Usability of Code Generation Tools Powered by Large Language Models*. Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems.</li><li>Yao, S., Zhao, J., Yu, D., et al. (2023). *ReAct: Synergizing Reasoning and Acting in Language Models*. International Conference on Learning Representations.</li><li>Yang, J., Jimenez, C. E., Wettig, A., et al. (2024). *SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering*. Advances in Neural Information Processing Systems.</li></ol>
+<h2>参考文献（引言文献地图首版；正式投稿前统一转 ACM 引用格式并逐条核验）</h2>
+<ol>
+<li>Brandt, J., Guo, P. J., Lewenstein, J., Dontcheva, M., &amp; Klemmer, S. R. (2009). <em>Two Studies of Opportunistic Programming: Interleaving Web Foraging, Learning, and Writing Code</em>. Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. <a href="https://doi.org/10.1145/1518701.1518944">https://doi.org/10.1145/1518701.1518944</a></li>
+<li>Ko, A. J., DeLine, R., &amp; Venolia, G. (2007). <em>Information Needs in Collocated Software Development Teams</em>. Proceedings of the 29th International Conference on Software Engineering. <a href="https://doi.org/10.1109/ICSE.2007.45">https://doi.org/10.1109/ICSE.2007.45</a></li>
+<li>Sillito, J., Murphy, G. C., &amp; De Volder, K. (2008). <em>Asking and Answering Questions During a Programming Change Task</em>. IEEE Transactions on Software Engineering, 34(4), 434–451.</li>
+<li>Robillard, M. P. (2009). <em>What Makes APIs Hard to Learn? The Answers of Developers</em>. IEEE Software, 26(6), 27–34. <a href="https://doi.org/10.1109/MS.2009.116">https://doi.org/10.1109/MS.2009.116</a></li>
+<li>Vaithilingam, P., Zhang, T., &amp; Glassman, E. L. (2022). <em>Expectation vs. Experience: Evaluating the Usability of Code Generation Tools Powered by Large Language Models</em>. CHI Conference on Human Factors in Computing Systems Extended Abstracts. <a href="https://doi.org/10.1145/3491101.3519665">https://doi.org/10.1145/3491101.3519665</a></li>
+<li>Barke, S., James, M. B., &amp; Polikarpova, N. (2023). <em>Grounded Copilot: How Programmers Interact with Code-Generating Models</em>. Proceedings of the ACM on Programming Languages, 7(OOPSLA1). <a href="https://doi.org/10.1145/3586030">https://doi.org/10.1145/3586030</a></li>
+<li>Lewis, P., Perez, E., Piktus, A., et al. (2020). <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em>. Advances in Neural Information Processing Systems, 33.</li>
+<li>Yao, S., Zhao, J., Yu, D., et al. (2023). <em>ReAct: Synergizing Reasoning and Acting in Language Models</em>. International Conference on Learning Representations.</li>
+<li>Zhou, S., Xu, F. F., Zhu, H., et al. (2024). <em>WebArena: A Realistic Web Environment for Building Autonomous Agents</em>. International Conference on Learning Representations.</li>
+<li>Yang, J., Jimenez, C. E., Wettig, A., et al. (2024). <em>SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering</em>. Advances in Neural Information Processing Systems.</li>
+<li>Jimenez, C. E., Yang, J., Wettig, A., et al. (2024). <em>SWE-bench: Can Language Models Resolve Real-World GitHub Issues?</em> International Conference on Learning Representations.</li>
+</ol>
 <h2>附录 A：26 个任务与 CANN 综合置信度</h2>
-<div class="tablewrap"><table><thead><tr><th>代号</th><th>任务</th><th>CANN 综合置信度</th></tr></thead><tbody><tr><td>A</td><td>模型转换/导出</td><td>.75</td></tr><tr><td>B</td><td>Profiling 定位瓶颈</td><td>.70</td></tr><tr><td>C</td><td>算子库选型</td><td>.77</td></tr><tr><td>D</td><td>自定义算子开发</td><td>.41</td></tr><tr><td>E</td><td>报错码/异常排查</td><td>.55</td></tr><tr><td>F</td><td>分布式训练配置</td><td>.72</td></tr><tr><td>G</td><td>CUDA→昇腾迁移</td><td>.84</td></tr><tr><td>H</td><td>量化</td><td>.69</td></tr><tr><td>I</td><td>版本兼容排查</td><td>.73</td></tr><tr><td>J</td><td>安装与环境变量</td><td>.80</td></tr><tr><td>K</td><td>容器/镜像搭建</td><td>.86</td></tr><tr><td>L</td><td>算子精度排查</td><td>.69</td></tr><tr><td>M</td><td>动态 shape/Tiling</td><td>.63</td></tr><tr><td>N</td><td>算子融合</td><td>.74</td></tr><tr><td>O</td><td>注册与框架集成</td><td>.72</td></tr><tr><td>P</td><td>混合精度训练</td><td>.83</td></tr><tr><td>Q</td><td>显存/OOM 优化</td><td>.86</td></tr><tr><td>R</td><td>精度/收敛排查</td><td>.75</td></tr><tr><td>S</td><td>推理服务部署</td><td>.74</td></tr><tr><td>T</td><td>动态 batch/shape 推理</td><td>.72</td></tr><tr><td>U</td><td>访存/occupancy 优化</td><td>.88</td></tr><tr><td>V</td><td>计算与传输重叠</td><td>.72</td></tr><tr><td>W</td><td>多卡通信优化</td><td>.70</td></tr><tr><td>X</td><td>内存越界定位</td><td>.74</td></tr><tr><td>Y</td><td>跨芯片迁移</td><td>.68</td></tr><tr><td>Z</td><td>概念心智模型对照</td><td>.90</td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>代号</th>
+<th>任务</th>
+<th align="right">CANN 综合置信度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>模型转换/导出</td>
+<td align="right">.75</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Profiling 定位瓶颈</td>
+<td align="right">.70</td>
+</tr>
+<tr>
+<td>C</td>
+<td>算子库选型</td>
+<td align="right">.77</td>
+</tr>
+<tr>
+<td>D</td>
+<td>自定义算子开发</td>
+<td align="right">.41</td>
+</tr>
+<tr>
+<td>E</td>
+<td>报错码/异常排查</td>
+<td align="right">.55</td>
+</tr>
+<tr>
+<td>F</td>
+<td>分布式训练配置</td>
+<td align="right">.72</td>
+</tr>
+<tr>
+<td>G</td>
+<td>CUDA→昇腾迁移</td>
+<td align="right">.84</td>
+</tr>
+<tr>
+<td>H</td>
+<td>量化</td>
+<td align="right">.69</td>
+</tr>
+<tr>
+<td>I</td>
+<td>版本兼容排查</td>
+<td align="right">.73</td>
+</tr>
+<tr>
+<td>J</td>
+<td>安装与环境变量</td>
+<td align="right">.80</td>
+</tr>
+<tr>
+<td>K</td>
+<td>容器/镜像搭建</td>
+<td align="right">.86</td>
+</tr>
+<tr>
+<td>L</td>
+<td>算子精度排查</td>
+<td align="right">.69</td>
+</tr>
+<tr>
+<td>M</td>
+<td>动态 shape/Tiling</td>
+<td align="right">.63</td>
+</tr>
+<tr>
+<td>N</td>
+<td>算子融合</td>
+<td align="right">.74</td>
+</tr>
+<tr>
+<td>O</td>
+<td>注册与框架集成</td>
+<td align="right">.72</td>
+</tr>
+<tr>
+<td>P</td>
+<td>混合精度训练</td>
+<td align="right">.83</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>显存/OOM 优化</td>
+<td align="right">.86</td>
+</tr>
+<tr>
+<td>R</td>
+<td>精度/收敛排查</td>
+<td align="right">.75</td>
+</tr>
+<tr>
+<td>S</td>
+<td>推理服务部署</td>
+<td align="right">.74</td>
+</tr>
+<tr>
+<td>T</td>
+<td>动态 batch/shape 推理</td>
+<td align="right">.72</td>
+</tr>
+<tr>
+<td>U</td>
+<td>访存/occupancy 优化</td>
+<td align="right">.88</td>
+</tr>
+<tr>
+<td>V</td>
+<td>计算与传输重叠</td>
+<td align="right">.72</td>
+</tr>
+<tr>
+<td>W</td>
+<td>多卡通信优化</td>
+<td align="right">.70</td>
+</tr>
+<tr>
+<td>X</td>
+<td>内存越界定位</td>
+<td align="right">.74</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>跨芯片迁移</td>
+<td align="right">.68</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>概念心智模型对照</td>
+<td align="right">.90</td>
+</tr>
+</tbody></table>
 <h2>附录 B：可追溯材料</h2>
-<ul><li>任务级可视化矩阵：<a href="../../17_official_site_focus.html" target="_blank" rel="noopener"><code>17_official_site_focus.html</code></a></li><li>指标定义、评分锚点和公式：<a href="../../18_metric_definition.html" target="_blank" rel="noopener"><code>18_metric_definition.html</code></a></li><li>发现、反事实 ROI 和局限：<a href="../../19_findings_ux_synthesis.html" target="_blank" rel="noopener"><code>19_findings_ux_synthesis.html</code></a></li><li>原始检索过程：<a href="../../task_run_log.md" target="_blank" rel="noopener"><code>task_run_log.md</code></a></li><li>原始观测和重算脚本：<a href="../../score_metrics.py" target="_blank" rel="noopener"><code>score_metrics.py</code></a></li></ul></article></body></html>
+<ul>
+<li>任务级可视化矩阵：<a href="../../17_official_site_focus.html"><code>17_official_site_focus.html</code></a></li>
+<li>指标定义、评分锚点和公式：<a href="../../18_metric_definition.html"><code>18_metric_definition.html</code></a></li>
+<li>发现、反事实 ROI 和局限：<a href="../../19_findings_ux_synthesis.html"><code>19_findings_ux_synthesis.html</code></a></li>
+<li>原始检索过程：<a href="../../task_run_log.md"><code>task_run_log.md</code></a></li>
+<li>原始观测和重算脚本：<a href="../../score_metrics.py"><code>score_metrics.py</code></a></li>
+</ul>
+</article></body></html>
