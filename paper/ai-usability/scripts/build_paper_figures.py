@@ -367,7 +367,7 @@ def framework(lang):
         with tempfile.TemporaryDirectory() as tmp:
             html = Path(tmp) / 'figure.html'
             html.write_text(
-                '<!doctype html><style>@page{size:520pt 514pt;margin:0}html,body{margin:0;width:520pt;height:514pt;overflow:hidden}img{width:520pt;height:514pt;object-fit:contain;display:block}</style>'
+                '<!doctype html><style>@page{size:520pt 556pt;margin:0}html,body{margin:0;width:520pt;height:556pt;overflow:hidden}img{width:520pt;height:556pt;object-fit:contain;display:block}</style>'
                 f'<img src="{destination.as_uri()}">', encoding='utf-8'
             )
             subprocess.run([
