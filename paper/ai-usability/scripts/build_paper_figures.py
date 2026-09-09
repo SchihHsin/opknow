@@ -7,6 +7,8 @@ Run with a Python environment containing reportlab.
 from pathlib import Path
 import json
 import math
+import subprocess
+import tempfile
 from html import escape
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
@@ -288,6 +290,91 @@ def access_profile(lang):
     d.text(18,872,'Content status: C = core obtained; P = partial content obtained; N = not obtained. Access route is recorded separately in the protocol.' if en else '内容状态：C＝核心正文已取得；P＝部分内容已取得；N＝未取得。访问路径在协议中单独记录。',12,fill='#566474')
     d.text(18,892,'‡ For G, CUDA‡ = ROCm/HIP; it is a migration analogy and is excluded from CANN/CUDA summaries.' if en else '‡ G 的 CUDA‡ 实为 ROCm/HIP；它是迁移类比，不计入 CANN/CUDA 汇总。',12,fill='#566474')
     d.save()
+
+
+def framework(lang):
+    """Export the paper figure from the full, editable Agent-cycle source.
+
+    The canonical Chinese SVG is deliberately retained as a close adaptation
+    of ``reports/synthesis/arch-d3.html``: its decision diamonds, direct-fetch
+    route, retry loop, and evidence-exhaustion branch are method content, not
+    decorative detail.  The manuscript variants only translate its labels.
+    """
+    source = OUT / 'figure-1-agent-evidence-cycle.svg'
+    svg = source.read_text(encoding='utf-8')
+    if lang == 'en':
+        replacements = {
+            'Agent 面向技术知识生态形成答案的证据循环': 'Agent evidence cycle for technical knowledge ecosystems',
+            '开发任务 / 用户问句': 'Development task / user question',
+            '组装任务上下文': 'Assemble task context',
+            '约束、历史与当前问句': 'Constraints, history, and current question',
+            '① 意图解析': '1. Interpret intent',
+            '② 子目标拆解': '2. Decompose subgoals',
+            '③ 路由：检索 / 抓取 / 直接作答': '3. Route: search / fetch / answer',
+            '是否需要检索？': 'Need retrieval?',
+            '工具调用决策': 'Tool-use decision',
+            '发现官方与第三方候选页面': 'Discover official / third-party candidates',
+            'M1 官方可发现性 · M5 替代来源覆盖': 'M1 Discoverability · M5 Alternative coverage',
+            '读取选中页面的正文': 'Retrieve selected page content',
+            'M2 内容取得程度 · M3 官方内容充分性': 'M2 Content acquisition · M3 Content adequacy',
+            '模型自带知识': 'Model prior knowledge',
+            '无需检索的补充证据；': 'Supplementary evidence without retrieval;',
+            '薄弱时也可能填补空缺。': 'when weak, it may fill gaps.',
+            'M7 模型先验评估': 'M7 Model-prior assessment',
+            '汇总当前证据（回灌）': 'Integrate current evidence (feedback)',
+            'M6 替代来源可信度 · M8 获取成本': 'M6 Source credibility · M8 Acquisition effort',
+            '④ 证据是否充分？': '4. Is evidence adequate?',
+            'M4 版本清晰度': 'M4 Version clarity',
+            'M9 操作说明版本明确性': 'M9 Instruction version specificity',
+            'M10 操作说明完整性': 'M10 Instruction completeness',
+            '⑥ 收敛（证据充分）': '6. Converge (evidence adequate)',
+            '能否继续检索？': 'Can retrieval continue?',
+            '未达上限且预期有效': 'Below limit and expected to help',
+            '是否仍有可靠证据？': 'Any reliable evidence left?',
+            '官方 / 第三方 / 先验任一充分': 'Official / third-party / prior: any adequate',
+            '终答': 'Final answer',
+            'M11 启发式汇总': 'M11 Heuristic summary',
+            '证据不足时，回答应显式暴露边界，而非把缺口伪装成确定性。': 'When evidence is insufficient, state the boundary rather than disguise gaps as certainty.',
+            '否：依据模型先验': 'No: use model prior',
+            '是：调用工具检索': 'Yes: call retrieval tools',
+            '选中 URL': 'Select URL',
+            '充分': 'Adequate',
+            '不足': 'Insufficient',
+            '是：换检索词再搜索': 'Yes: refine and search again',
+            '否：检索已穷尽': 'No: retrieval exhausted',
+            '有：依据证据作答': 'Yes: answer from evidence',
+            '无：最高风险': 'No: highest risk',
+            '模型无法可靠识别知识缺口，': 'The model may not reliably detect a knowledge gap,',
+            '可能凭记忆填补空缺。': 'and may fill it from memory.',
+            '已知 URL 可直接抓取': 'Known URL: fetch directly',
+        }
+        for original, translated in replacements.items():
+            svg = svg.replace(original, translated)
+        svg = svg.replace(
+            'Agent 解析开发任务后，可通过搜索与抓取获取官方和第三方资料，或使用模型自带知识；随后判断证据是否充分，继续检索或基于证据收敛为终答。证据耗尽而仍不充分时存在凭记忆填补空缺的风险。',
+            'After interpreting a development task, an agent can search and fetch official and third-party material or draw on model prior knowledge. It then assesses evidence, retries retrieval, or converges to a final answer. Evidence exhaustion can leave a risk of filling gaps from memory.'
+        )
+    destination = OUT / f'figure-1-framework-{lang}.svg'
+    destination.write_text(svg, encoding='utf-8')
+
+    # The anonymous ACM build accepts PDF figures.  Chrome retains the SVG as
+    # vector artwork in the adjacent English PDF; the editable SVG remains the
+    # canonical source and is used by the Chinese reading manuscript.
+    if lang == 'en':
+        chrome = Path('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')
+        if not chrome.exists():
+            raise FileNotFoundError('Google Chrome is required to export the SVG figure PDF.')
+        with tempfile.TemporaryDirectory() as tmp:
+            html = Path(tmp) / 'figure.html'
+            html.write_text(
+                '<!doctype html><style>@page{size:520pt 514pt;margin:0}html,body{margin:0;width:520pt;height:514pt;overflow:hidden}img{width:520pt;height:514pt;object-fit:contain;display:block}</style>'
+                f'<img src="{destination.as_uri()}">', encoding='utf-8'
+            )
+            subprocess.run([
+                str(chrome), '--headless=new', '--disable-gpu', '--no-sandbox',
+                '--allow-file-access-from-files', '--no-pdf-header-footer',
+                f'--print-to-pdf={destination.with_suffix(".pdf")}', html.as_uri(),
+            ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 if __name__=='__main__':

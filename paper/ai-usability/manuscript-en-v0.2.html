@@ -260,12 +260,14 @@ source; it is therefore not automatically treated as traceable
 evidence.</p>
 <figure id="fig:framework">
 <img src="figures/figure-1-framework-en.svg"
-data-description="A conceptual process diagram starts with a task and recorded context, then shows need and subgoal interpretation, a decision about external evidence, web search for official and community candidates, URL selection, web fetch for content, an integrated evidence ledger, and adequacy and version-applicability assessment. Dashed branches show model prior and query refinement with retry. The end state is either a next action supported by evidence or an explicit evidence gap. Nodes identify locations of indicators M1 through M11."
-alt="An agent starts from a task and context, then searches, selects URLs, fetches content, integrates evidence, and assesses adequacy and versions; it refines and retries when needed, while model prior remains a separate branch." />
+data-description="A conceptual process diagram starts with a development task and context, retaining intent interpretation, subgoal decomposition, routing, and a Need retrieval? decision. The retrieval branch shows web search for official and third-party candidates, URL selection, web fetch for content, and a direct-fetch route for a known URL; the other branch is model prior. Sources feed back to a current-evidence record, then pass through Is evidence adequate?, Can retrieval continue?, and Any reliable evidence left? decisions to converge, retry, or a risk-marked final answer. All M1 through M11 labels use the same style and name their measurement location."
+alt="An agent starts from a task and context, interprets intent, decomposes subgoals, and routes to retrieval or model prior; a retrieval branch searches, selects URLs, fetches content or fetches a known URL directly, then integrates evidence and assesses adequacy. Insufficient evidence can trigger retry; exhausted retrieval distinguishes whether reliable evidence remains." />
 <figcaption aria-hidden="true">An agent starts from a task and context,
-then searches, selects URLs, fetches content, integrates evidence, and
-assesses adequacy and versions; it refines and retries when needed,
-while model prior remains a separate branch.</figcaption>
+interprets intent, decomposes subgoals, and routes to retrieval or model
+prior; a retrieval branch searches, selects URLs, fetches content or
+fetches a known URL directly, then integrates evidence and assesses
+adequacy. Insufficient evidence can trigger retry; exhausted retrieval
+distinguishes whether reliable evidence remains.</figcaption>
 </figure>
 <h3 id="sources-acquisition-and-action-conditions">Sources, acquisition,
 and action conditions</h3>
@@ -294,9 +296,9 @@ summarize a chosen operationalization, but it cannot replace this
 profile. In particular, internal model knowledge cannot make an
 inaccessible external source accessible, even if it enables an
 answer.</p>
-<h3 id="an-evidence-ledger">An evidence ledger</h3>
-<p>The ledger connects each judgment to its basis. Its minimum fields
-are the task question and starting conditions; agent and tool
+<h3 id="an-evidence-record">An evidence record</h3>
+<p>The evidence record connects each judgment to its basis. Its minimum
+fields are the task question and starting conditions; agent and tool
 configuration when known; collection time; queries and selected URLs;
 publisher and source role; returned content or a retained excerpt;
 access outcome; applicable versions; task requirements supported by that
@@ -463,11 +465,11 @@ saved evidence, and code explicit, including raw calls alongside the M8
 effort code. This final distinction is essential for retrospective use
 of incomplete archives.</p>
 <p>The method’s novelty lies in this connected specification of the
-unit, ledger, indicator roles, and diagnostic interpretation. Search
-rank, reading success, and version labels are familiar observations.
-Their value here comes from relating them to the requirements of one
-development task and preserving how an observation becomes a
-diagnosis.</p>
+unit, evidence record, indicator roles, and diagnostic interpretation.
+Search rank, reading success, and version labels are familiar
+observations. Their value here comes from relating them to the
+requirements of one development task and preserving how an observation
+becomes a diagnosis.</p>
 <h3 id="ordinal-anchors-and-the-historical-aggregate">Ordinal anchors
 and the historical aggregate</h3>
 <p>The archived implementation maps most fields to five ordered levels.
@@ -673,15 +675,16 @@ not supply its body. A page-level failure count alone would not indicate
 whether the conversion’s main path remained supported. Conversely, a
 successful quickstart read would not justify marking the complete
 reference as acquired.</p>
-<p>This case motivates requirement-level recording. The ledger can link
-the acquired quickstart to the conversion requirements it supports and
-leave advanced configuration requirements unresolved. It also exposes a
-bookkeeping issue: the structured record lists three reads and zero
-failed reads, whereas the process account describes a missing reference
-body. The archival materials do not resolve whether the counter excluded
-ancillary references or whether the entry is inconsistent. We preserve
-the discrepancy rather than silently choosing a new failure count. A
-reproducible formula cannot repair an ambiguous counting boundary.</p>
+<p>This case motivates requirement-level recording. The evidence record
+can link the acquired quickstart to the conversion requirements it
+supports and leave advanced configuration requirements unresolved. It
+also exposes a counting issue: the structured record lists three reads
+and zero failed reads, whereas the process account describes a missing
+reference body. The archival materials do not resolve whether the
+counter excluded ancillary references or whether the entry is
+inconsistent. We preserve the discrepancy rather than silently choosing
+a new failure count. A reproducible formula cannot repair an ambiguous
+counting boundary.</p>
 <h3
 id="version-specificity-and-alternative-evidence-remain-separate-from-access">Version
 specificity and alternative evidence remain separate from access</h3>
@@ -829,7 +832,7 @@ configurations and independent coding conditions.</p>
 <p>Knowledge availability for AI concerns whether task-relevant
 technical knowledge can reach an agent under specified conditions and be
 assessed for applicability. We define this construct, operationalize it
-through eleven indicators and an evidence ledger, and examine it through
+through eleven indicators and an evidence record, and examine it through
 an accelerator-development case archive. The cases show why discovery,
 access, adequacy, version specificity, and alternative-source coverage
 need separate treatment. They also expose the consequences of counting
