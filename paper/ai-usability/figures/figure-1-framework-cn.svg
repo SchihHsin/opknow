@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img"><title>可观察的 Agent 知识获取循环与测量位置</title><desc>可观察的 Agent 知识获取循环与测量位置</desc>
+<rect width="100%" height="100%" fill="white"/>
+<rect x="330" y="12" width="340" height="48" rx="6" fill="#edf2f8" stroke="#b6c5d5"/>
+<text x="500" y="34" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#243447">任务与记录上下文</text>
+<text x="500" y="51" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#243447">目标、初始材料、Agent／工具、时间</text>
+<rect x="350" y="88" width="300" height="42" rx="6" fill="#f1ebf8" stroke="#cbbce5"/>
+<text x="500" y="114" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#243447">① 解析需求并拆解子目标</text>
+<rect x="350" y="155" width="300" height="42" rx="6" fill="#fff6df" stroke="#e0bd67"/>
+<text x="500" y="181" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#243447">② 是否需要外部证据？</text>
+<rect x="70" y="240" width="270" height="64" rx="6" fill="#eaf1f8" stroke="#b4cadd"/>
+<text x="205" y="268" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#243447">web_search</text>
+<text x="205" y="290" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#243447">发现官方／社区候选来源</text>
+<text x="205" y="307" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#426d8e">M1 发现性 · M5 替代覆盖</text>
+<rect x="70" y="328" width="270" height="50" rx="6" fill="#eaf1f8" stroke="#b4cadd"/>
+<text x="205" y="351" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#243447">③ 选择 URL</text>
+<text x="205" y="369" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#243447">记录发布者、来源角色与查询</text>
+<rect x="70" y="402" width="270" height="64" rx="6" fill="#eaf1f8" stroke="#b4cadd"/>
+<text x="205" y="430" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="20" font-weight="700" text-anchor="middle" fill="#243447">web_fetch</text>
+<text x="205" y="451" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#243447">取得正文、片段或失败状态</text>
+<text x="205" y="468" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#426d8e">M2 访问 · M3 充分性</text>
+<rect x="665" y="278" width="270" height="72" rx="6" fill="#f3edf9" stroke="#cbbce5"/>
+<text x="800" y="306" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#243447">模型先验（M7）</text>
+<text x="800" y="327" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#243447">单独登记为估计或测试；</text>
+<text x="800" y="344" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#243447">不等同于已取得来源</text>
+<rect x="365" y="493" width="270" height="50" rx="6" fill="#f5f6f7" stroke="#ccd3da"/>
+<text x="500" y="519" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#243447">④ 汇总证据台账</text>
+<text x="500" y="536" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#243447">查询、URL、返回内容、成本与缺口（M8）</text>
+<rect x="365" y="568" width="270" height="52" rx="6" fill="#fff6df" stroke="#e0bd67"/>
+<text x="500" y="594" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#243447">⑤ 评估充分性与版本适用性</text>
+<text x="500" y="612" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#243447">M4、M9、M10</text>
+<rect x="675" y="565" width="245" height="56" rx="6" fill="#fff4e8" stroke="#dfaa6e"/>
+<text x="797" y="589" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#243447">调整查询并重试</text>
+<text x="797" y="608" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#243447">仍有可检索的证据空间</text>
+<rect x="300" y="680" width="400" height="58" rx="6" fill="#e9f3ee" stroke="#8fb9a3"/>
+<text x="500" y="706" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#243447">⑥ 作答：下一步行动或明确证据缺口</text>
+<text x="500" y="725" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#243447">M11 为可选启发式汇总，不替代剖面</text>
+<polyline points="500,60 500,88" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="496.0853101929989,79.89597607882591 500,88 503.9146898070011,79.89597607882591" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="500,130 500,155" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="496.0853101929989,146.8959760788259 500,155 503.9146898070011,146.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="430,197 205,197 205,240" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="201.08531019299892,231.8959760788259 205,240 208.91468980700108,231.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<text x="296" y="218" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#26735f">是</text>
+<polyline points="205,304 205,328" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="201.08531019299892,319.8959760788259 205,328 208.91468980700108,319.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="205,378 205,402" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="201.08531019299892,393.8959760788259 205,402 208.91468980700108,393.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="340,434 365,493" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="358.2337655184453,487.065518477523 365,493 365.4426802698522,484.0108935828591" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="650,176 800,176 800,278" fill="none" stroke="#6c7b89" stroke-width="1.6" stroke-dasharray="6 4"/>
+<polyline points="796.0853101929989,269.8959760788259 800,278 803.9146898070011,269.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<text x="804" y="200" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#7252a1">否：先验分支</text>
+<polyline points="800,350 800,470 635,470 635,518" fill="none" stroke="#6c7b89" stroke-width="1.6" stroke-dasharray="6 4"/>
+<polyline points="631.0853101929989,509.8959760788259 635,518 638.9146898070011,509.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="500,543 500,568" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="496.0853101929989,559.8959760788259 500,568 503.9146898070011,559.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="500,620 500,680" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="496.0853101929989,671.8959760788259 500,680 503.9146898070011,671.8959760788259" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<text x="520" y="653" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#26735f">证据充分或边界已说明</text>
+<polyline points="635,594 675,594" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<polyline points="666.8959760788259,597.9146898070011 675,594 666.8959760788259,590.0853101929989" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+<text x="654" y="582" font-family="Arial, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="12" font-weight="400" text-anchor="middle" fill="#aa6d18">不足</text>
+<polyline points="797,565 797,218 340,218" fill="none" stroke="#6c7b89" stroke-width="1.6" stroke-dasharray="6 4"/>
+<polyline points="348.1040239211741,214.08531019299892 340,218 348.1040239211741,221.91468980700108" fill="none" stroke="#6c7b89" stroke-width="1.6"/>
+</svg>

@@ -1,5 +1,44 @@
 # AI 可用性论文工作区
 
+## 当前版本：CHI 修订稿 v0.2 / Current CHI revision
+
+保留原标题 **Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems**。沿用原稿的方法论主线与三来源、11项指标，以既有审计作为应用案例；本次没有重新采集网页实验。
+
+The original title and methodological focus are retained. The three-source, eleven-indicator framework is developed through its existing case application. This revision does not add a new website-acquisition experiment.
+
+| 交付物 / Deliverable | 文件 / File |
+| --- | --- |
+| 中文可编辑稿 / Chinese manuscript | [manuscript-cn-v0.2.md](manuscript-cn-v0.2.md) |
+| 中文阅读版 / Chinese reading page | [manuscript-cn-v0.2.html](manuscript-cn-v0.2.html) |
+| 英文可编辑稿 / English manuscript | [manuscript-en-v0.2.md](manuscript-en-v0.2.md) |
+| 英文阅读版 / English reading page | [manuscript-en-v0.2.html](manuscript-en-v0.2.html) |
+| ACM 单栏匿名英文 PDF / ACM anonymous English PDF | [English review PDF](../../output/pdf/knowledge-availability-ai-chi2027-en-v0.2.pdf) |
+| 中文阅读 PDF / Chinese reading PDF | [Chinese PDF](../../output/pdf/knowledge-availability-ai-cn-v0.2.pdf) |
+| LaTeX 源码包 / Portable LaTeX source | [ACM source ZIP](submission/knowledge-availability-ai-acm-source-v0.2.zip) |
+| 匿名数据与方法补充材料 / Anonymous data and protocol supplement | [Supplement ZIP](submission/knowledge-availability-ai-supplement-v0.2.zip) |
+| 可复用协议与空白表 / Protocol and recording form | [Protocol, CN/EN](protocol-cn-en.md) · [JSON form](record-template.json) |
+| 核验后的文献 / Verified bibliography | [BibTeX](references.bib) · [Verification notes](bibliography-audit.md) |
+| 数据与未决项 / Data and unresolved entries | [Data README](data/README.md) · [Corrections](data/generated/corrections.md) |
+| 完成检查 / Completed checks | [Validation report](validation-v0.2.md) |
+
+### 本次修订 / Revision focus
+
+- 加强定义、指标角色、取证协议和观察到诊断的连接；案例仍用于论证方法的可操作性和诊断范围。 / Strengthened construct boundaries, indicator roles, recording procedures, and observation-to-diagnosis links.
+- G 的 ROCm/HIP 迁移类比单列；主比较为25对，全部26任务52单元保留。 / G is a separate migration analogy; 25 pairs form the comparison and all 52 archival records remain available.
+- 静态与SSR页面按取得内容同等描述；原评分单独冻结供追溯。M7标明先验估计，M9/M10不再暗示实际执行成功，M11明确为启发式指数。 / Access profiles describe acquired content regardless of rendering technology. Historical scores are preserved; prior estimates, instruction checks, and heuristic aggregation are explicitly distinguished.
+- 对照已保留日志修正批次、子Agent及问句恢复的描述，保留未能确定的配置与计数边界。 / Method reporting follows the retained log and explicitly identifies unavailable configuration and unresolved counting boundaries.
+- 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要141词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 141-word English abstract.
+
+图1与图2均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。`scripts/build_paper_figures.py`从冻结数据生成图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
+
+Both figures have editable English/Chinese SVGs; English vector PDFs are included for LaTeX. The build scripts preserve the connection to the frozen records and bibliography.
+
+v0.2是按CHI Papers要求准备的匿名稿件文件，不代表已经提交或已经获得方法有效性的外部验证。作者信息、PCS条目及最终作者审阅需在正式提交时完成。原稿v0.1与原研究页面继续保留如下，作为版本来源。
+
+Version 0.2 provides anonymous manuscript files prepared for CHI Papers. It has not been submitted and does not claim external validation that was not performed. Author details, PCS entries, and final author review remain part of submission. Version 0.1 and the original research artifacts are retained below.
+
+## 原稿 v0.1 与研究来源 / Original manuscript and research sources
+
 本目录是独立于 DACT 用户研究的论文工作区。论文只基于 `opknow` 中已经完成的 26 项任务级 AI 可用性审计，不等待、不混入开发者访谈或协同任务研究。
 
 - [中文论文初稿（可编辑源）](manuscript-cn-v0.1.md)
@@ -15,6 +54,6 @@
 - [检索记录](../../task_run_log.md)
 - [评分脚本](../../score_metrics.py)
 
-当前稿件是内容定稿前的可编辑中文源文件。PDF 为阅读与版式校对预览，不等同于已选定投稿会刊的匿名模板。待选定投稿场所后，再从该源稿裁剪篇幅、补齐并核验参考文献、制作正式矢量图，并转换为该刊/会的匿名模板。
+以上 v0.1 为早期中文源稿，配套 PDF 仅供阅读与版式校对。当前 CHI 匿名英文稿、双语修订稿、核验文献和新版图稿见本页顶部 v0.2 交付物索引。
 
 两张正文图均为可编辑 SVG。`figure-1-agent-evidence-cycle.svg` 将 Agent 的检索、读取、先验、证据判断与收敛过程映射到测量框架；`figure-2-task-matrix.svg` 来自交互版任务矩阵的 52 个已渲染审计单元，文字和单元格均可编辑。若原始矩阵更新，在仓库根目录运行 `python3 paper/ai-usability/scripts/export_task_matrix_svg.py` 后再检查图和论文引用。

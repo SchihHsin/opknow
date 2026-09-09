@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Knowledge Availability for AI</title>
+<style>
+:root{color-scheme:light;--ink:#24313d;--muted:#536574;--line:#dce3e7;--accent:#176253}
+*{box-sizing:border-box}html{background:#f0f3f5}body{max-width:1060px;margin:36px auto 80px;padding:48px 76px 64px;background:white;color:var(--ink);font:17px/1.8 Georgia,"Noto Serif CJK SC","Songti SC",serif;box-shadow:0 10px 40px #152b3b0d}
+.edition{font:13px/1.5 system-ui,sans-serif;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:30px}h1{font-size:30px;line-height:1.35;letter-spacing:-.015em;margin:0 0 30px}h2{font-size:24px;line-height:1.5;margin:46px 0 18px;padding-top:12px;border-top:1px solid var(--line)}h3{font-size:19px;line-height:1.6;margin:28px 0 12px;color:var(--accent)}p{margin:0 0 17px}a{color:#176d70;text-decoration-thickness:1px;text-underline-offset:3px}strong{color:#173c36}figure{margin:28px 0}figure img{display:block;width:100%;height:auto}figcaption{font:13px/1.6 system-ui,sans-serif;color:var(--muted);margin-top:12px}table{width:100%;border-collapse:collapse;margin:24px 0;font:14px/1.65 system-ui,sans-serif;table-layout:fixed}th,td{padding:10px 12px;border:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}th{background:#eef4f2;text-align:left}tbody tr:nth-child(even){background:#fafcfc}code{font:85%/1.6 ui-monospace,monospace;background:#f2f4f6;padding:1px 3px}pre{white-space:pre-wrap;background:#f3f5f7;padding:18px}math[display="block"]{font-size:100%;margin:22px 0;overflow-x:auto}.references{font:14px/1.65 system-ui,sans-serif}.csl-entry{margin-bottom:14px}.csl-left-margin{float:left;min-width:28px}.csl-right-inline{margin-left:32px}nav{font:14px/1.65 system-ui,sans-serif;background:#f6f9f8;padding:18px 24px;border-radius:6px}nav ul{margin:0}nav>ul{padding-left:18px}nav li{margin:4px 0}nav ul ul{display:none}
+body{counter-reset:fig}figure{counter-increment:fig}figcaption::before{content:"Figure " counter(fig) ". ";font-weight:bold}:lang(zh-CN) figcaption::before{content:"图 " counter(fig) "　"}caption{caption-side:top;text-align:left;color:var(--muted);font-size:13px;margin-bottom:8px}
+@page{size:A4;margin:18mm 17mm 18mm;@bottom-center{content:counter(page);font:8pt Arial;color:#536574}} @media print{html{background:white}body{margin:0;padding:0;box-shadow:none;max-width:none;font-size:10.5pt;line-height:1.7}h1{font-size:21pt}h2{font-size:15pt;margin-top:25pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}p{orphans:3;widows:3}table{font-size:8.3pt;line-height:1.55}th,td{padding:6pt}tr{break-inside:avoid}thead{display:table-header-group}figure{break-inside:avoid}figure img{max-height:220mm;object-fit:contain}figcaption{font-size:8.5pt}.edition{font-size:8pt}nav{display:none}a{text-decoration:none;color:inherit}.references{font-size:8.5pt}.csl-entry{break-inside:avoid}math[display="block"]{font-size:9pt}}
+@media(max-width:700px){body{margin:0;padding:26px 20px;box-shadow:none}h1{font-size:25px}table{font-size:12px}th,td{padding:7px}}
+</style></head>
+<body><div class="edition">ENGLISH MANUSCRIPT · V0.2 · 9 SEPTEMBER 2026</div>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#can-ai-find-what-developers-need-defining-and-measuring-knowledge-availability-for-ai-in-developer-ecosystems"
+id="toc-can-ai-find-what-developers-need-defining-and-measuring-knowledge-availability-for-ai-in-developer-ecosystems">Can
+AI Find What Developers Need? Defining and Measuring Knowledge
+Availability for AI in Developer Ecosystems</a></li>
+</ul>
+</nav>
+<h1
+id="can-ai-find-what-developers-need-defining-and-measuring-knowledge-availability-for-ai-in-developer-ecosystems">Can
+AI Find What Developers Need? Defining and Measuring Knowledge
+Availability for AI in Developer Ecosystems</h1>
+<h2 id="abstract">Abstract</h2>
+<p>AI agents increasingly mediate developers’ access to technical
+knowledge. Retrieving relevant pages, however, does not establish that
+an agent can obtain the version-specific evidence a development task
+requires. We define knowledge availability for AI and operationalize it
+through a task-level protocol with eleven indicators spanning source
+access, content adequacy, applicability, acquisition effort, and output
+checks. A retrospective application uses records covering 26
+accelerator-development tasks, comprising 25 CANN/CUDA task pairs and a
+separately identified migration analogy. Worked cases distinguish
+inaccessible guidance, accessible but insufficient explanations,
+alternative access paths, and unresolved version dependencies. The
+application also exposes measurement choices that require explicit
+treatment, including source attribution, inferred model knowledge, and
+composite-score saturation. We contribute a framework, an inspectable
+operationalization, and a case-based examination of their diagnostic
+scope. The method characterizes evidence conditions; its heuristic
+scores do not estimate answer correctness or execution success.</p>
+<h2 id="keywords">Keywords</h2>
+<p>knowledge availability for AI; developer ecosystems; technical
+documentation; information foraging; AI agents; measurement methods</p>
+<h2 id="introduction">Introduction</h2>
+<p>Developers routinely move between documentation, code examples,
+search results, and community explanations while deciding what to do
+next. Research on opportunistic programming and developers’ information
+needs shows that finding and interpreting information is part of
+programming itself <span class="citation"
+data-cites="brand2009 ko2007 sillito2008">[2, 6, 12]</span>. A useful
+result must fit the current task: a command needs the right options, an
+API example needs the right version, and an explanation of an error
+needs enough context to guide investigation. The existence of
+documentation is therefore only one condition for its usefulness.</p>
+<p>AI assistants introduce another route through this knowledge
+environment. A developer can delegate a question to an agent that
+searches, reads, combines sources, and drafts a response. Studies of
+code-generation tools and conversational programming assistance describe
+opportunities for this support alongside difficulties in understanding
+and checking generated suggestions <span class="citation"
+data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
+13]</span>. Delegating information seeking does not remove the need for
+applicable evidence. It changes who encounters the documentation,
+through which interface, and what information reaches the developer.</p>
+<p>Consider an agent asked how to implement and integrate a custom
+accelerator operator. A search may return an official development guide,
+yet the reading tool may obtain only navigation and metadata. For an
+error-diagnosis task, the same tool may obtain the full official page,
+but the page may contain only a generic instruction to inspect logs. A
+retrieval-success measure can mark both questions as having relevant
+results. An access measure distinguishes the first failure but not the
+second. Even adequate instructions can remain ambiguous when they refer
+to incompatible toolkit and framework versions. These distinctions
+matter to documentation teams deciding what to repair and to agent
+designers deciding what uncertainty to expose.</p>
+<p>Existing evaluation approaches already distinguish retrieval quality,
+context relevance, answer faithfulness, and related properties. RAGAS
+and ARES provide component-level evaluation of retrieval-augmented
+generation, while ALCE examines generated answers and their citations
+<span class="citation" data-cites="ragas2024 ares2024 gao2023alce">[3,
+4, 11]</span>. Our contribution addresses a complementary measurement
+problem: how to inspect the technical knowledge conditions encountered
+by an agent while addressing a concrete development task, including
+access failures, version relations, alternative sources, and the
+provenance of an auditor’s judgments. This requires connecting the
+developer’s information requirement to the resources actually obtained,
+rather than inferring availability from a fluent answer.</p>
+<p>We define <strong>knowledge availability for AI</strong> as the
+extent to which task-relevant technical knowledge can be discovered,
+obtained, and assessed for applicability by a specified agent and tool
+configuration under stated retrieval conditions. The construct is
+relational: it concerns a task, a knowledge environment, and a means of
+accessing that environment at a particular time. We operationalize it
+through an evidence-recording protocol and eleven indicators. The
+indicators distinguish source conditions, acquisition effort, output
+checks, and an optional heuristic aggregate; they do not constitute
+eleven independent measurements of a single latent ability.</p>
+<p>We ask two research questions. <strong>RQ1:</strong> How can
+knowledge availability for AI be defined and operationalized so that
+task-specific access conditions and evidence gaps can be systematically
+recorded and reviewed? <strong>RQ2:</strong> What diagnoses does the
+method support in development-task cases, and how do recording, coding,
+and aggregation choices delimit those diagnoses?</p>
+<p>We address these questions through a methodological framework and a
+retrospective application to an existing accelerator-development audit.
+The archive contains 26 task categories and 52 task-side records.
+Twenty-five categories compare CANN and CUDA development contexts; one
+migration category uses ROCm/HIP as the comparison destination and is
+treated separately. The contribution is the method and its inspectable
+application, not an enduring ranking of accelerator ecosystems. We
+contribute (1) a construct that distinguishes knowledge conditions from
+retrieval success and answer correctness; (2) a task-level protocol,
+indicator definitions, and portable analysis materials; and (3) worked
+cases and an examination of measurement assumptions that show what the
+method can diagnose and where further validation is needed.</p>
+<h2 id="related-work-and-construct-boundaries">Related Work and
+Construct Boundaries</h2>
+<h3 id="developer-information-seeking-and-documentation">Developer
+information seeking and documentation</h3>
+<p>Information foraging theory relates information-seeking behavior to
+the structure and expected value of available information <span
+class="citation" data-cites="pirolli1999">[8]</span>. Programming
+studies show how developers interleave searching, learning, and
+implementation, and how their questions depend on the work they are
+performing <span class="citation"
+data-cites="brand2009 ko2007 sillito2008">[2, 6, 12]</span>.
+API-learning difficulties further motivate attention to the explanatory
+resources surrounding a technical interface <span class="citation"
+data-cites="robillard2009">[9]</span>. These studies motivate our
+task-level unit and the distinction between encountering a resource and
+obtaining what a task requires.</p>
+<p>Our method does not infer human usability from machine access. A page
+readable by a browser can be inaccessible to a particular extraction
+tool; conversely, text readily extracted by an agent can still be
+difficult for a person to navigate. We examine the conditions of the
+delegated knowledge route. Claims about developers’ time, trust,
+satisfaction, or task completion require separate evidence.</p>
+<h3 id="ai-support-for-programming">AI support for programming</h3>
+<p>Research on code-generation and conversational tools examines how
+developers use and evaluate AI assistance <span class="citation"
+data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
+13]</span>. This work provides the interaction context for our study:
+technical suggestions enter development activities where their
+applicability must be assessed. We focus on the availability of
+supporting knowledge before drawing conclusions about how people use
+those suggestions.</p>
+<p>Agents can interleave reasoning and tool use, and retrieval-augmented
+generation provides a way to incorporate external information into
+generation <span class="citation" data-cites="lewis2020 yao2023">[7,
+15]</span>. WebArena, SWE-bench, and SWE-agent evaluate or develop
+agents in realistic web and software-engineering settings <span
+class="citation"
+data-cites="zhou2024webarena jimenez2024swebench yang2024sweagent">[5,
+14, 16]</span>. Their task outcomes are valuable evidence of system
+performance. Our framework offers a complementary description of the
+knowledge conditions under which such systems operate. A failure can
+involve unavailable evidence, inadequate interpretation of available
+evidence, or unsuccessful execution; the present method directly
+addresses the first of these and records information relevant to
+separating them.</p>
+<h3 id="retrieval-attribution-and-the-availability-construct">Retrieval,
+attribution, and the availability construct</h3>
+<p>RAGAS and ARES assess properties of retrieved context and generated
+answers; ALCE evaluates citation-supported generation <span
+class="citation" data-cites="ragas2024 ares2024 gao2023alce">[3, 4,
+11]</span>. Accordingly, we do not claim that previous evaluation treats
+retrieval or answer quality as indivisible. Our methodological focus is
+the connection between technical-task requirements, the acquisition
+process, and the structure of the surrounding knowledge ecosystem.
+Version compatibility, partial access to a how-to guide, and dependence
+on a community workaround are particularly consequential in this
+setting.</p>
+<p>The distinctions in Table 1 position the construct. Availability can
+be necessary for an evidence-grounded answer without being sufficient
+for correctness. An agent can misinterpret an available source. It can
+also produce a correct answer from prior knowledge without obtaining any
+external evidence. These outcomes should remain distinguishable.</p>
+<table>
+<caption>Construct boundaries and neighboring objects of
+assessment.</caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Object of assessment</th>
+<th>Central question</th>
+<th>Relationship to this method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retrieval success</td>
+<td>Was a relevant result returned?</td>
+<td>One acquisition condition; not proof that required content was
+obtained.</td>
+</tr>
+<tr>
+<td>Documentation usability</td>
+<td>Can intended readers navigate and understand the material?</td>
+<td>A related human-facing property requiring its own evaluation.</td>
+</tr>
+<tr>
+<td>Knowledge availability for AI</td>
+<td>What task-relevant knowledge was obtainable under the recorded
+conditions?</td>
+<td>The construct operationalized here.</td>
+</tr>
+<tr>
+<td>Answer correctness and attribution</td>
+<td>Is the response correct, and do its sources support its claims?</td>
+<td>A downstream evaluation that may use the acquired evidence.</td>
+</tr>
+<tr>
+<td>Execution success</td>
+<td>Do the proposed actions work in the target environment?</td>
+<td>Requires execution or other independent outcome evidence.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="methodological-framework">Methodological Framework</h2>
+<h3 id="unit-of-analysis-and-task-requirements">Unit of analysis and
+task requirements</h3>
+<p>The unit is a <strong>task-side acquisition episode</strong>: a
+development objective pursued in a particular technical ecosystem using
+a stated agent and retrieval configuration. A task specification records
+the desired outcome, starting artifacts, constraints, version
+dependencies, and evidence required to support a next action. For
+example, model conversion may require a conversion command, an
+input-shape specification, a target-device setting, and a way to check
+the generated artifact. These requirements guide inspection; a long page
+is not automatically adequate.</p>
+<p>Task selection must follow the purpose of the application. An
+ecosystem assessment may seek coverage across workflows; a
+documentation-team audit may focus on recurring support questions.
+Neither establishes the population frequency of those tasks without
+additional sampling evidence. For cross-ecosystem use, analysts record
+differences in starting conditions and task scope rather than assuming
+that similar names make tasks equivalent. The framework can also be
+applied within one ecosystem, across versions, or across retrieval
+configurations, provided the comparison conditions are made
+explicit.</p>
+<p>Figure 1 locates the measurements in an observable tool-use loop. It
+is an analytic model, not a reconstruction of hidden model reasoning:
+the agent searches for candidate sources, selects URLs, fetches content
+or records a failure, then integrates evidence and assesses task
+adequacy and version applicability. When evidence is insufficient but
+remains searchable, the loop returns to query refinement. Model prior is
+registered as a separate branch that need not produce an observable
+source; it is therefore not automatically treated as traceable
+evidence.</p>
+<figure id="fig:framework">
+<img src="figures/figure-1-framework-en.svg"
+data-description="A conceptual process diagram starts with a task and recorded context, then shows need and subgoal interpretation, a decision about external evidence, web search for official and community candidates, URL selection, web fetch for content, an integrated evidence ledger, and adequacy and version-applicability assessment. Dashed branches show model prior and query refinement with retry. The end state is either a next action supported by evidence or an explicit evidence gap. Nodes identify locations of indicators M1 through M11."
+alt="An agent starts from a task and context, then searches, selects URLs, fetches content, integrates evidence, and assesses adequacy and versions; it refines and retries when needed, while model prior remains a separate branch." />
+<figcaption aria-hidden="true">An agent starts from a task and context,
+then searches, selects URLs, fetches content, integrates evidence, and
+assesses adequacy and versions; it refines and retries when needed,
+while model prior remains a separate branch.</figcaption>
+</figure>
+<h3 id="sources-acquisition-and-action-conditions">Sources, acquisition,
+and action conditions</h3>
+<p>The framework retains three channels from the original audit:
+official materials, community or third-party materials, and model prior
+knowledge. For external channels, it separates <strong>access</strong>
+from <strong>adequacy</strong>. Discovery concerns whether a candidate
+source is found; acquisition concerns what the reading tool actually
+returns. Adequacy concerns whether that return supplies the
+task-required commands, explanations, parameters, or diagnostic cases.
+Version applicability is examined across channels because sources can be
+individually informative while describing different environments.</p>
+<p>Official status is determined by the publisher’s relationship to the
+material, not by its hosting platform. A vendor’s repository or blog
+belongs to that vendor’s official channel. An independently authored
+tutorial hosted on the same platform can have a different status.
+Cross-posting also makes domain diversity an imperfect proxy for
+independent evidence. The protocol therefore preserves source identity,
+publisher, date when available, and any observed derivation or
+duplication. Lack of these details is recorded as uncertainty.</p>
+<p>The output of the method is an <strong>availability profile</strong>
+with an evidence trail. It identifies what was found, what was obtained,
+what appears adequate, what applicability conditions remain unresolved,
+and what acquisition effort was recorded. An optional aggregate can help
+summarize a chosen operationalization, but it cannot replace this
+profile. In particular, internal model knowledge cannot make an
+inaccessible external source accessible, even if it enables an
+answer.</p>
+<h3 id="an-evidence-ledger">An evidence ledger</h3>
+<p>The ledger connects each judgment to its basis. Its minimum fields
+are the task question and starting conditions; agent and tool
+configuration when known; collection time; queries and selected URLs;
+publisher and source role; returned content or a retained excerpt;
+access outcome; applicable versions; task requirements supported by that
+content; acquisition counts; and the coding decision with a rationale. A
+field also identifies whether an entry is directly recorded,
+subsequently coded, estimated, or unavailable.</p>
+<p>This distinction prevents a common reporting error: transforming an
+interpretation into an observation merely because a script assigns it a
+number. A logged extraction failure is an observation of the tool-source
+interaction. Labeling an explanation as sufficient is a judgment against
+task requirements. Estimating a model’s familiarity with a toolkit is an
+inference unless a separate test supports it. Numerical coding does not
+erase these differences.</p>
+<h2 id="operationalization-and-measurement-protocol">Operationalization
+and Measurement Protocol</h2>
+<h3 id="eleven-indicators-in-four-roles">Eleven indicators in four
+roles</h3>
+<p>Table 2 specifies the indicators retained from the audit and
+clarifies their evidential roles. The numbering preserves the connection
+to the archived data. The proposed operationalization uses content
+outcomes for access, distinguishes inferred prior knowledge from
+acquired sources, and interprets output checks as properties of recorded
+instructions rather than successful execution.</p>
+<table>
+<caption>The eleven indicators and the evidence each can
+support.</caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>ID</th>
+<th>Indicator</th>
+<th>Evidence and interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>Official discoverability</td>
+<td>Recorded query rounds and official-result position; identifies
+discovery effort under the selected search conditions.</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>Official content access</td>
+<td>Core content obtained, obtained through an alternative or partial
+route, not obtained, or unknown; concerns returned content, not the
+site’s implementation technology.</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>Official content adequacy</td>
+<td>Task-required commands, parameters, explanations, and reference
+detail in the acquired content; unobserved when the content was not
+obtained.</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>Version clarity</td>
+<td>Explicit scope, compatibility relations, and unresolved version
+branches; several maintained versions do not by themselves imply
+ambiguity.</td>
+</tr>
+<tr>
+<td>M5</td>
+<td>Alternative-source coverage</td>
+<td>Observed usable sources beyond the official channel, with source
+identities and any attribution uncertainty retained.</td>
+</tr>
+<tr>
+<td>M6</td>
+<td>Alternative-source credibility</td>
+<td>Authorship, currency, consistency, and evidence of derivation;
+domain diversity alone does not establish independence.</td>
+</tr>
+<tr>
+<td>M7</td>
+<td>Model-prior assessment</td>
+<td>Explicitly identified estimate or separate no-retrieval measurement;
+the archive contains estimates, not measured training coverage.</td>
+</tr>
+<tr>
+<td>M8</td>
+<td>Acquisition effort</td>
+<td>Search, read, retry, and refinement counts; a cost model is
+disclosed separately from the counts.</td>
+</tr>
+<tr>
+<td>M9</td>
+<td>Version specificity of instructions</td>
+<td>Whether the recorded guidance identifies an exact combination, a
+constrained range, or unresolved dependencies.</td>
+</tr>
+<tr>
+<td>M10</td>
+<td>Instruction completeness</td>
+<td>Whether the recorded guidance includes the necessary steps and
+parameter substitutions; not proof that code was executed.</td>
+</tr>
+<tr>
+<td>M11</td>
+<td>Heuristic summary</td>
+<td>A declared aggregation of selected indicators; interpreted only
+within its assumptions and accompanied by the profile.</td>
+</tr>
+</tbody>
+</table>
+<p>M1-M6 describe source conditions; M7 registers a different basis for
+possible answer formation; M8 describes process effort; M9-M10 check the
+specificity and completeness of instructions; M11 summarizes an
+operationalization. These components can covary, but they are not
+interchangeable. They also need not apply to every task: a
+concept-explanation task may have no meaningful version-pinning
+requirement. Such cases require an explicit not-applicable state rather
+than a fabricated successful observation.</p>
+<h3 id="applying-the-protocol">Applying the protocol</h3>
+<p><strong>First, define the task and the recording boundary.</strong>
+State the development outcome, starting artifacts, and requirements
+against which adequacy will be assessed. Record the agent, tools,
+language, date, and context policy. Specify whether the unit includes a
+fresh acquisition, reused observations, or both. Set a retrieval budget
+or another observable stopping criterion appropriate to the application;
+an analyst must not infer an agent’s internal reasons for stopping from
+the number of queries alone.</p>
+<p><strong>Second, record discovery and acquisition.</strong> Preserve
+queries, candidate sources, selected URLs, and read outcomes. Inspect
+official materials and record the community alternatives actually
+encountered, whether from mixed search results or subsequent searches.
+Keep a failed read separate from a failed search. When a mirror or
+another version supplies the required content, link it to the original
+attempt so that the workaround remains visible.</p>
+<p><strong>Third, assess task support and applicability.</strong> Map
+acquired material to the task requirements. Distinguish a returned
+document with missing essential content from a document that was never
+returned. Record stated versions and compatibility dependencies,
+including unresolved local facts. A version number in a URL is a clue,
+not by itself a verified compatibility relation.</p>
+<p><strong>Fourth, code with provenance.</strong> Apply published
+anchors, retain the observation-to-code mapping, and mark estimates and
+missing fields. A practical access code has four states: core content
+obtained; partial or alternative-route content obtained; required
+content not obtained; and unknown. Adequacy can use ordered anchors
+ranging from a generic fragment, through an overview and a usable main
+path, to detailed task-relevant reference material. The coding rationale
+identifies the specific requirements covered; it should not rely only on
+page length.</p>
+<p><strong>Fifth, inspect the instructions and report the
+profile.</strong> Where the final response is retained, map its material
+steps and version claims to acquired evidence. Where only notes about
+possible instructions remain, identify M9-M10 as judgments about those
+notes. Report contradictions, source dependencies, and unsupported
+steps. If an aggregate is included, report its formula, missing-data
+treatment, and dependence on assumptions. This final distinction is
+essential for retrospective use of incomplete archives.</p>
+<p>The method’s novelty lies in this connected specification of the
+unit, ledger, indicator roles, and diagnostic interpretation. Search
+rank, reading success, and version labels are familiar observations.
+Their value here comes from relating them to the requirements of one
+development task and preserving how an observation becomes a
+diagnosis.</p>
+<h3 id="ordinal-anchors-and-the-historical-aggregate">Ordinal anchors
+and the historical aggregate</h3>
+<p>The archived implementation maps most fields to five ordered levels.
+For example, official discoverability combines the approximate position
+of the first official result with whether another search was needed;
+content adequacy distinguishes fragments, overviews, main-path material,
+and extensive reference material. Version clarity uses the observed
+number of versions and presence of a compatibility matrix. These are
+operational choices, not natural measurement intervals. The version rule
+in particular is a proxy: a larger version count can reflect good
+archival coverage as well as unresolved applicability.</p>
+<p>The archive also defines a heuristic aggregate. For historical scores
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>,
+it uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>s</mi><mi>i</mi></msub><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">n(s_i)=s_i/5</annotation></semantics></math>,
+with unavailable official adequacy contributing zero to the official
+branch:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>C</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>5</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>6</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>7</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+O=n(s_1)n(s_2)n(s_3),\quad C=n(s_5)n(s_6),\quad P=n(s_7).
+</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>O</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.7</mn><mo>+</mo><mn>0.3</mn><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.9</mn><mo>+</mo><mn>0.1</mn><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>8</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+I=\left[1-(1-O)(1-C)(1-P)\right]\left[0.7+0.3n(s_4)\right]\left[0.9+0.1n(s_8)\right].
+</annotation></semantics></math></p>
+<p>The noisy-OR-shaped expression represents a design intuition:
+different channels may compensate for one another. Its factors are
+ordinal transformations, however, not calibrated probabilities, and
+source independence is not established. We therefore call
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+a <strong>heuristic availability index</strong>, replacing the archive’s
+label of overall confidence. M9-M10 do not enter this formula and cannot
+validate it merely by being coded alongside it. Unknown content quality
+remains unknown even when its unavailable branch contributes zero to a
+historical calculation.</p>
+<p>The archive’s M2 rule awards static pages a higher value than
+server-rendered pages. We retain that rule only to reproduce the
+archived index; the protocol above evaluates returned content regardless
+of rendering technology. This separation preserves the historical record
+without prescribing an unjustified implementation-based penalty. The
+index is presented as one auditable aggregation choice, while the
+profile and worked evidence chains carry the methodological
+argument.</p>
+<h2 id="case-application-accelerator-development-ecosystems">Case
+Application: Accelerator Development Ecosystems</h2>
+<h3 id="task-coverage-and-comparison-scope">Task coverage and comparison
+scope</h3>
+<p>The application draws on a development-task audit recorded on June
+10-11, 2026. It covers environment setup, operator development,
+training, inference and deployment, performance analysis, debugging, and
+migration. Examples include model conversion, custom-operator
+integration, distributed initialization, version compatibility, and
+memory-error investigation. The task set sought workflow coverage; it
+was not sampled to estimate how often developers encounter these needs.
+Developer-role groupings in the archive are organizing categories, not
+empirically recruited participant groups.</p>
+<p>CANN and CUDA provide a useful setting because the tasks involve
+specialized APIs, toolchains, framework integration, and version
+dependencies. The task wording uses each ecosystem’s terminology. This
+yields contextual comparisons, not controlled substitutions of
+equivalent APIs. In task A, for example, the CUDA question begins with a
+PyTorch model and asks for a TensorRT deployment path, whereas the CANN
+question starts with an ONNX model and asks for an ATC conversion. These
+scope differences must remain visible when interpreting effort and
+completeness.</p>
+<p>Task G is a distinct migration analogy. Its comparison question
+concerns moving CUDA code to AMD ROCm/HIP and its official material
+comes from AMD. It remains in the 26-task archive as a worked migration
+case, but is excluded from CANN/CUDA aggregate comparisons, leaving 25
+pairs and 50 task-side records for those summaries. Its separate
+treatment demonstrates why source and comparison identity belong in the
+measurement protocol.</p>
+<h3 id="records-and-the-development-of-the-method">Records and the
+development of the method</h3>
+<p>The evidence consists of the process log, structured observation
+fields and scoring functions, an interactive task matrix, indicator
+definitions, and analytic visualizations. The process log retains
+questions, query strings, source descriptions, read outcomes, and coding
+explanations at different levels of detail. The initial tasks include
+longer stepwise accounts; later tasks often contain more compact
+summaries. Some early read assessments refer to observations already
+available in the original session. The archive should therefore be
+understood as an evolving audit record, not 52 uniformly isolated
+experimental trials.</p>
+<p>The first two batches covered A-D and E-H. Later batches covered I-S
+and T-Z through parallel subagents whose structured observations were
+consolidated in the main session. The log describes source
+reclassification during that consolidation. It also states that the
+later question wording was recovered from the original task-assignment
+transcript. We retain those questions with that provenance; we do not
+describe them as invented after the audit. The full transcript
+referenced by the log is not included in the materials analyzed
+here.</p>
+<p>The recorded system is identified as Claude using web search and a
+web-reading tool that summarized HTML. The archive does not establish
+the exact deployed model identifier, extraction-model version,
+search-provider configuration, or a uniform stopping budget across
+episodes. Code in the original explanatory visualization is explicitly
+illustrative and is not used to fill these gaps. These limitations
+constrain claims about rerunning the acquisition, but do not prevent
+inspection of the retained observations and computation.</p>
+<p>The framework developed through the audit rather than preceding it as
+a preregistered instrument. A consequential revision was the rejection
+of a site-wide access assumption when a main-path quickstart returned
+useful content. This paper consolidates the protocol and separates
+observations from estimates and aggregation choices. Applying the method
+retrospectively does not make the earlier protocol uniform; the
+differences between its specification and the available case records are
+part of the methodological evaluation.</p>
+<h3 id="recorded-profiles">Recorded profiles</h3>
+<p>Among the 25 CANN task-side records in the main comparison, 24 are
+coded as obtaining core material directly or through a partial or
+alternative route, while D records unavailable core guidance. The
+corresponding CUDA records are all coded as acquired. Figures 2–4
+restore all eleven archival indicators and group tasks by environment
+and installation, operator development, training, inference and
+deployment, performance and optimization, debugging, and migration. G
+remains a separately marked CANN/ROCm-HIP migration analogy and is
+excluded from CANN/CUDA summaries.</p>
+<figure id="fig:fullmatrixa">
+<img src="figures/figure-2-full-matrix-a-en.svg"
+data-description="A workflow-grouped task matrix. Each row is a development task and each metric has CANN and CUDA columns. This facet shows M1 official discoverability, M2 historical extraction score, M3 official content adequacy, and M4 version clarity. G is a separately marked CANN and ROCm/HIP migration analogy and is excluded from CANN/CUDA summaries."
+alt="Full indicator matrix (1/3): archival M1–M4 codes for official discoverability, acquisition, adequacy, and version clarity, organized by workflow with CANN and CUDA columns for each task. G uses ROCm/HIP in the second column." />
+<figcaption aria-hidden="true">Full indicator matrix (1/3): archival
+M1–M4 codes for official discoverability, acquisition, adequacy, and
+version clarity, organized by workflow with CANN and CUDA columns for
+each task. G uses ROCm/HIP in the second column.</figcaption>
+</figure>
+<figure id="fig:fullmatrixb">
+<img src="figures/figure-2-full-matrix-b-en.svg"
+data-description="The second facet of a workflow-grouped task matrix. Rows correspond to the first facet and each metric has CANN and CUDA columns. This facet shows M5 alternative-source coverage, M6 alternative-source credibility, M7 estimated model prior, and M8 acquisition effort. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Full indicator matrix (2/3): archival M5–M8 codes for alternative-source coverage, alternative-source credibility, estimated model prior, and acquisition effort, in the same workflow and task order." />
+<figcaption aria-hidden="true">Full indicator matrix (2/3): archival
+M5–M8 codes for alternative-source coverage, alternative-source
+credibility, estimated model prior, and acquisition effort, in the same
+workflow and task order.</figcaption>
+</figure>
+<figure id="fig:fullmatrixc">
+<img src="figures/figure-2-full-matrix-c-en.svg"
+data-description="The third facet of a workflow-grouped task matrix. Rows correspond to the first two facets and each metric has CANN and CUDA columns. This facet shows M9 instruction version pinning, M10 instruction completeness, and M11 historical heuristic availability index. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Full indicator matrix (3/3): archival M9–M11 values for instruction version pinning, instruction completeness, and the historical heuristic availability index, in the same workflow and task order." />
+<figcaption aria-hidden="true">Full indicator matrix (3/3): archival
+M9–M11 values for instruction version pinning, instruction completeness,
+and the historical heuristic availability index, in the same workflow
+and task order.</figcaption>
+</figure>
+<p>In Figures 2–4, M1–M10 are frozen archival ordinal codes from 1 to 5,
+while M11 is the historical heuristic index computed from those codes.
+M2 is a historical extraction score rather than the actual state of
+content acquisition. To make D and similar cases interpretable, Figure 5
+retains the acquisition state separately so that “content not obtained”
+is not collapsed into a score.</p>
+<figure id="fig:accessprofile">
+<img src="figures/figure-3-access-profile-en.svg"
+data-description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in actual content acquisition, archival content adequacy, and version clarity. Acquisition uses C, P, and N for core content obtained, obtained through a partial or alternative route, and not obtained. It distinguishes actual acquisition from the historical M2 extraction score shown in Figures 2 through 4. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Access-profile detail that places actual content-acquisition states beside the archival adequacy and version codes. It follows the same workflow groups and task order as Figures 2–4, but is retained only to explain access cases." />
+<figcaption aria-hidden="true">Access-profile detail that places actual
+content-acquisition states beside the archival adequacy and version
+codes. It follows the same workflow groups and task order as Figures
+2–4, but is retained only to explain access cases.</figcaption>
+</figure>
+<p>The archive includes 12 CANN tasks with the lowest commonly observed
+version-clarity level, each present in the main comparison. The two
+highest version-clarity codes concern tasks treated as
+version-insensitive. This pattern directs attention to applicability
+evidence and illustrates why version relations must be recorded
+separately from content acquisition.</p>
+<h2 id="method-evaluation-through-worked-cases">Method Evaluation
+Through Worked Cases</h2>
+<h3
+id="discovery-access-and-adequacy-produce-different-diagnoses">Discovery,
+access, and adequacy produce different diagnoses</h3>
+<p>Task D asks about creating an Ascend C operator and integrating it
+with a framework. The record describes search results containing
+community examples and related framework documentation, while the
+selected official how-to return lacks the required body. The diagnosis
+is specific: this acquisition route did not supply the core
+implementation guidance. It locates an intervention: make the required
+content accessible through a stable route and retain evidence of which
+route succeeds.</p>
+<p>Task E concerns an accelerator error code. Here the log records an
+acquired official page containing a generic internal-error explanation,
+an unspecified cause, and broad instructions to check the installation
+or inspect logs. This is an adequacy limitation. The content was
+obtained, but did not narrow the task to a concrete trigger or
+diagnostic sequence. Repairing extraction alone would leave that
+requirement unmet. The comparison material includes more explicit error
+semantics and community explanations, although the two questions should
+not be assumed to require equal diagnostic effort.</p>
+<p>Taken together, D and E demonstrate the diagnostic purpose of
+separating M1, M2, and M3. A retrieval-hit-only description cannot
+identify the missing official body in D; an access-only description
+would conceal E’s lack of task-specific guidance.</p>
+<h3
+id="partial-routes-can-support-a-task-without-making-all-references-available">Partial
+routes can support a task without making all references available</h3>
+<p>In A, the CANN quickstart return includes an ATC command, input and
+target-device parameters, and a device-information step. The log also
+describes an attempted read of a more extensive reference page that did
+not supply its body. A page-level failure count alone would not indicate
+whether the conversion’s main path remained supported. Conversely, a
+successful quickstart read would not justify marking the complete
+reference as acquired.</p>
+<p>This case motivates requirement-level recording. The ledger can link
+the acquired quickstart to the conversion requirements it supports and
+leave advanced configuration requirements unresolved. It also exposes a
+bookkeeping issue: the structured record lists three reads and zero
+failed reads, whereas the process account describes a missing reference
+body. The archival materials do not resolve whether the counter excluded
+ancillary references or whether the entry is inconsistent. We preserve
+the discrepancy rather than silently choosing a new failure count. A
+reproducible formula cannot repair an ambiguous counting boundary.</p>
+<h3
+id="version-specificity-and-alternative-evidence-remain-separate-from-access">Version
+specificity and alternative evidence remain separate from access</h3>
+<p>Task I concerns compatibility among a toolkit, a framework
+integration package, drivers, and related components. Its notes describe
+available compatibility information distributed across repositories,
+package information, and documentation. The relevant diagnosis is the
+work required to connect those relations for the intended combination,
+not simply that several version numbers appear online. The framework
+makes the required environment facts explicit so that a version mismatch
+need not be attributed to unavailable text.</p>
+<p>Task X concerns memory-error investigation. The archived CANN record
+assigns the acquired sanitizer documentation the highest adequacy level,
+while recording limited alternative material and a low estimate of model
+prior knowledge. Those observations describe different properties. A
+thin alternative channel can matter if the official guide does not cover
+a subsequent error, but it does not prove that the acquired guide was
+insufficient for the original question. Accordingly, the case supports
+reporting alternative coverage alongside adequacy; it does not establish
+that community breadth is always necessary for an actionable answer.</p>
+<p>These examples also temper a simple account based on task depth. A
+conceptually demanding optimization question can have accessible,
+detailed guidance, while an apparently straightforward error lookup can
+lack a useful explanation. Dependence on ecosystem-specific examples is
+a plausible interpretation to investigate, not a causal mechanism
+established by this archive.</p>
+<h3
+id="traceability-attribution-and-the-limits-of-recomputation">Traceability,
+attribution, and the limits of recomputation</h3>
+<p>The portable analysis reproduces the historical scores from the
+retained fields and preserves all 52 task-side records. It also
+separates the 25-pair comparison from G and records known coding issues.
+One such issue occurs in H: a NVIDIA developer blog was included among
+alternative sources in the historical fields. The method’s
+publisher-based rule places that material in the official channel. The
+supplement flags this discrepancy and does not silently rewrite the
+historical matrix into a purportedly recoded dataset.</p>
+<p>These checks establish computational traceability for the frozen
+implementation and provide fields, mappings, and discrepancy annotations
+that can be reused in later independent coding and cross-ecosystem
+applications.</p>
+<h3 id="interpretation-of-the-heuristic-index">Interpretation of the
+heuristic index</h3>
+<p>For the 25 pairs, the historical heuristic means are .732 for CANN
+and .922 for CUDA. These values retain the original coding and
+aggregation assumptions; they are provided for traceability rather than
+as corrected estimates of ecosystem quality. The excluded migration
+analogy and the flagged source and counting issues remain visible in the
+supplement. No significance test or population-level ranking is inferred
+from these task categories.</p>
+<p>The formula itself illustrates why profiles must accompany
+aggregates. If the model-prior assessment is five, then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">P=1</annotation></semantics></math>
+and the channel-combination term equals one regardless of official and
+alternative-source values. Fourteen of the archive’s 26 records labeled
+CUDA have this property. Thus, an apparently high index can be
+insensitive to missing external evidence. This is a mathematical
+property of the implementation, not an observed ability to answer
+without that evidence.</p>
+<p>An archival sensitivity calculation that sets the prior contribution
+to zero, keeping other values fixed, changes the 26-row means from .736
+to .606 for CANN and from .920 to .848 for the historical comparison
+column. This 26-row calculation includes G solely to reproduce the
+original implementation’s scope. It is not a no-retrieval experiment and
+does not measure model knowledge. The calculation shows that absolute
+scores depend on the treatment of estimated priors; it does not by
+itself refute the usefulness of the source profiles.</p>
+<p>The same caution applies to counterfactual improvement estimates.
+Raising the version code in a formula can reveal which recorded tasks
+the chosen aggregation rewards, but it is not an estimate of the return
+from a deployed documentation change. We therefore use the case to
+examine the index’s assumptions rather than to prescribe an investment
+ranking from simulated score increases. Methodological usefulness rests
+on identifying an interpretable evidence gap and an appropriate
+response, not on maximizing the aggregate.</p>
+<h2
+id="implications-for-hci-and-developer-ecosystem-design">Implications
+for HCI and Developer Ecosystem Design</h2>
+<h3 id="making-delegated-information-seeking-inspectable">Making
+delegated information seeking inspectable</h3>
+<p>The framework identifies information that can be exposed when a
+developer delegates a question to an agent: whether the main source was
+obtained, which version conditions are unresolved, which steps have
+acquired support, and which local facts are still needed. These are
+candidates for interface design, not interface features evaluated in
+this study. A status such as “compatibility relation not yet
+established” expresses a more actionable limitation than an unexplained
+confidence number.</p>
+<p>This connection is the HCI motivation for the method. The developer
+is affected by the evidence that reaches the interaction, even when they
+do not visit the source themselves. Documentation owners and agent
+designers can use a shared task-level account to distinguish a source
+that needs a readable export, a guide that needs a diagnostic example,
+and an interaction that needs to request an environment fact. These
+responses act at different points in the knowledge route.</p>
+<h3 id="documentation-as-evidence-for-a-next-action">Documentation as
+evidence for a next action</h3>
+<p>A useful task-oriented documentation unit can state its intended
+outcome, applicable versions, prerequisites, minimal commands or code,
+expected output, and recovery information. These elements give an
+auditor concrete adequacy criteria and give an agent material it can
+cite. Access should be assessed at this unit rather than inferred from a
+site’s framework or homepage. Static HTML, server rendering, or a
+textual export are implementation options; the relevant outcome is that
+the necessary content reaches the specified reader.</p>
+<p>Version relationships deserve similar treatment. A supported
+combination of driver, toolkit, framework, and plugin is a relation to
+be checked, not merely a set of recognizable version strings. Explicit
+compatibility tables and task-linked environment requirements can reduce
+the need to assemble this relation from disconnected pages. Their effect
+on task success, however, must be evaluated through actual use or
+execution.</p>
+<h3 id="reusing-and-evaluating-the-method">Reusing and evaluating the
+method</h3>
+<p>To transfer the framework, an analyst replaces the domain-specific
+tasks and adequacy requirements while retaining the
+observation-to-diagnosis structure. A database SDK audit might inspect
+migration guides and client-server compatibility; a web-framework audit
+might inspect dependency versions and deployment prerequisites. These
+are proposed applications, not additional empirical cases. The framework
+supplies a way to record them consistently but does not establish
+transfer validity in advance.</p>
+<p>Further evaluation should address whether independent analysts reach
+comparable codes, whether diagnosed gaps correspond to expert judgments
+of missing evidence, and whether the profiles support better remediation
+decisions than simpler summaries. Such evaluation is different from
+merely repeating the scoring script. The present case establishes an
+inspectable operationalization and demonstrates distinctions it can
+express; it leaves broader reliability, criterion validity, and
+practical benefit open to testing.</p>
+<h2 id="limitations-and-research-transparency">Limitations and Research
+Transparency</h2>
+<p>The case demonstrates how the method distinguishes breakdowns in
+discovery, content acquisition, and task adequacy. The retained records
+support inspection of coding decisions and reproduction of score
+calculations. Some model and tool settings could not be recovered from
+the available materials, leaving stability across configurations
+unassessed. Independent coding agreement and applicability across
+ecosystems require further evaluation. The supplement provides frozen
+observation fields, the original scoring implementation, task and
+provenance tables, discrepancy notes, and scripts for the archival
+summaries so that subsequent work can evaluate the method under stated
+configurations and independent coding conditions.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Knowledge availability for AI concerns whether task-relevant
+technical knowledge can reach an agent under specified conditions and be
+assessed for applicability. We define this construct, operationalize it
+through eleven indicators and an evidence ledger, and examine it through
+an accelerator-development case archive. The cases show why discovery,
+access, adequacy, version specificity, and alternative-source coverage
+need separate treatment. They also expose the consequences of counting
+boundaries, attribution choices, inferred priors, and aggregation
+rules.</p>
+<p>The methodological contribution is a way to connect a development
+requirement to an inspectable evidence profile. It enables documentation
+and agent researchers to ask which knowledge condition requires
+attention while retaining the distinction between available evidence,
+generated answers, and successful action. That distinction is a
+necessary basis for evaluating how technical knowledge infrastructure
+supports AI-assisted development.</p>
+<h2 id="ai-assistance-disclosure">AI Assistance Disclosure</h2>
+<p>AI tools assisted with manuscript organization, translation, language
+revision, analysis scripting, and figure preparation. The case archive
+itself was produced through AI-assisted retrieval, as described in the
+method. AI-generated suggestions and archival model-prior estimates are
+not presented as independent human validation.</p>
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
+<div id="ref-barke2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">Shraddha Barke, Michael B. James, and Nadia
+Polikarpova. 2023. Grounded copilot: How programmers interact with
+code-generating models. <em>Proceedings of the ACM on Programming
+Languages</em> 7, OOPSLA1 (2023), 85–111. <a
+href="https://doi.org/10.1145/3586030">https://doi.org/10.1145/3586030</a></div>
+</div>
+<div id="ref-brand2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline">Joel Brandt, Philip J. Guo, Joel Lewenstein,
+Mira Dontcheva, and Scott R. Klemmer. 2009. Two studies of opportunistic
+programming: Interleaving web foraging, learning, and writing code. In
+<em>Proceedings of the SIGCHI conference on human factors in computing
+systems</em>, 2009. Association for Computing Machinery, 1589–1598. <a
+href="https://doi.org/10.1145/1518701.1518944">https://doi.org/10.1145/1518701.1518944</a></div>
+</div>
+<div id="ref-ragas2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">Shahul Es, Jithin James, Luis Espinosa Anke,
+and Steven Schockaert. 2024. <span>RAGAs</span>: Automated evaluation of
+retrieval augmented generation. In <em>Proceedings of the 18th
+conference of the european chapter of the association for computational
+linguistics: System demonstrations</em>, 2024. Association for
+Computational Linguistics, 150–158. <a
+href="https://doi.org/10.18653/v1/2024.eacl-demo.16">https://doi.org/10.18653/v1/2024.eacl-demo.16</a></div>
+</div>
+<div id="ref-gao2023alce" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">Tianyu Gao, Howard Yen, Jiatong Yu, and Danqi
+Chen. 2023. Enabling large language models to generate text with
+citations. In <em>Proceedings of the 2023 conference on empirical
+methods in natural language processing</em>, 2023. Association for
+Computational Linguistics, 6465–6488. <a
+href="https://doi.org/10.18653/v1/2023.emnlp-main.398">https://doi.org/10.18653/v1/2023.emnlp-main.398</a></div>
+</div>
+<div id="ref-jimenez2024swebench" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline">Carlos E. Jimenez, John Yang, Alexander Wettig,
+Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan. 2024. <span
+class="nocase">SWE-bench</span>: Can language models resolve real-world
+<span>GitHub</span> issues? In <em>The twelfth international conference
+on learning representations</em>, 2024. 54107–54157. Retrieved from <a
+href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/edac78c3e300629acfe6cbe9ca88fb84-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2024/hash/edac78c3e300629acfe6cbe9ca88fb84-Abstract-Conference.html</a></div>
+</div>
+<div id="ref-ko2007" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">Amy
+J. Ko, Robert DeLine, and Gina Venolia. 2007. Information needs in
+collocated software development teams. In <em>29th international
+conference on software engineering (ICSE’07)</em>, 2007. IEEE, 344–353.
+<a
+href="https://doi.org/10.1109/ICSE.2007.45">https://doi.org/10.1109/ICSE.2007.45</a></div>
+</div>
+<div id="ref-lewis2020" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div
+class="csl-right-inline">Patrick Lewis, Ethan Perez, Aleksandra Piktus,
+Fabio Petroni, Vladimir Karpukhin, Naman Goyal, Heinrich Küttler, Mike
+Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, and Douwe Kiela.
+2020. Retrieval-augmented generation for knowledge-intensive
+<span>NLP</span> tasks. In <em>Advances in neural information processing
+systems</em>, 2020. 9459–9474. Retrieved from <a
+href="https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html">https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html</a></div>
+</div>
+<div id="ref-pirolli1999" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div
+class="csl-right-inline">Peter Pirolli and Stuart Card. 1999.
+Information foraging. <em>Psychological Review</em> 106, 4 (1999),
+643–675. <a
+href="https://doi.org/10.1037/0033-295X.106.4.643">https://doi.org/10.1037/0033-295X.106.4.643</a></div>
+</div>
+<div id="ref-robillard2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline">Martin P. Robillard. 2009. What makes
+<span>APIs</span> hard to learn? Answers from developers. <em>IEEE
+Software</em> 26, 6 (2009), 27–34. <a
+href="https://doi.org/10.1109/MS.2009.193">https://doi.org/10.1109/MS.2009.193</a></div>
+</div>
+<div id="ref-programmerAssistant2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div
+class="csl-right-inline">Steven I. Ross, Fernando Martinez, Stephanie
+Houde, Michael Muller, and Justin D. Weisz. 2023. The programmer’s
+assistant: Conversational interaction with a large language model for
+software development. In <em>Proceedings of the 28th international
+conference on intelligent user interfaces</em>, 2023. Association for
+Computing Machinery, 491–514. <a
+href="https://doi.org/10.1145/3581641.3584037">https://doi.org/10.1145/3581641.3584037</a></div>
+</div>
+<div id="ref-ares2024" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div
+class="csl-right-inline">Jon Saad-Falcon, Omar Khattab, Christopher
+Potts, and Matei Zaharia. 2024. <span>ARES</span>: An automated
+evaluation framework for retrieval-augmented generation systems. In
+<em>Proceedings of the 2024 conference of the north american chapter of
+the association for computational linguistics: Human language
+technologies (volume 1: Long papers)</em>, 2024. Association for
+Computational Linguistics, 338–354. <a
+href="https://doi.org/10.18653/v1/2024.naacl-long.20">https://doi.org/10.18653/v1/2024.naacl-long.20</a></div>
+</div>
+<div id="ref-sillito2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J.
+Sillito, G. C. Murphy, and K. De Volder. 2008. Asking and answering
+questions during a programming change task. <em>IEEE Transactions on
+Software Engineering</em> 34, 4 (2008), 434–451. <a
+href="https://doi.org/10.1109/TSE.2008.26">https://doi.org/10.1109/TSE.2008.26</a></div>
+</div>
+<div id="ref-vaithilingam2022" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div
+class="csl-right-inline">Priyan Vaithilingam, Tianyi Zhang, and Elena L.
+Glassman. 2022. Expectation vs. Experience: Evaluating the usability of
+code generation tools powered by large language models. In <em>CHI
+conference on human factors in computing systems extended
+abstracts</em>, 2022. Association for Computing Machinery, 1–7. <a
+href="https://doi.org/10.1145/3491101.3519665">https://doi.org/10.1145/3491101.3519665</a></div>
+</div>
+<div id="ref-yang2024sweagent" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div
+class="csl-right-inline">John Yang, Carlos E. Jimenez, Alexander Wettig,
+Kilian Lieret, Shunyu Yao, Karthik Narasimhan, and Ofir Press. 2024.
+<span class="nocase">SWE-agent</span>: Agent-computer interfaces enable
+automated software engineering. In <em>Advances in neural information
+processing systems</em>, 2024. 50528–50652. <a
+href="https://doi.org/10.52202/079017-1601">https://doi.org/10.52202/079017-1601</a></div>
+</div>
+<div id="ref-yao2023" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div
+class="csl-right-inline">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du,
+Izhak Shafran, Karthik Narasimhan, and Yuan Cao. 2023.
+<span>ReAct</span>: Synergizing reasoning and acting in language models.
+In <em>The eleventh international conference on learning
+representations</em>, 2023. Retrieved from <a
+href="https://arxiv.org/abs/2210.03629v3">https://arxiv.org/abs/2210.03629v3</a></div>
+</div>
+<div id="ref-zhou2024webarena" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div
+class="csl-right-inline">Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou,
+Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue Ou, Yonatan Bisk,
+Daniel Fried, Uri Alon, and Graham Neubig. 2024. <span>WebArena</span>:
+A realistic web environment for building autonomous agents. In <em>The
+twelfth international conference on learning representations</em>, 2024.
+15585–15606. Retrieved from <a
+href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html</a></div>
+</div>
+</div>
+</body>
+</html>

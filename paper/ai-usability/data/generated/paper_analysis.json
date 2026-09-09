@@ -1,0 +1,1078 @@
+{
+  "schema_version": 1,
+  "analysis_type": "Descriptive archival re-analysis and arithmetic sensitivity; no new empirical run.",
+  "frozen_manifest": "../manifest.json",
+  "scope": {
+    "retained_pairs": 26,
+    "retained_units": 52,
+    "primary_pairs": 25,
+    "primary_units": 50,
+    "excluded_from_primary": [
+      "G"
+    ],
+    "exclusion_reason": "G's CUDA-labelled side uses AMD ROCm / HIP migration material."
+  },
+  "primary_25_pairs": {
+    "cann": {
+      "n": 25,
+      "recorded_access_status_counts": {
+        "core_text_not_retrieved": 1,
+        "core_text_retrieved": 22,
+        "partial_text_retrieved": 2
+      },
+      "original_core_fetch_code_counts": {
+        "partial": 2,
+        "spa": 1,
+        "ssr": 21,
+        "static": 1
+      },
+      "recorded_reference_completeness_counts": {
+        "core_only": 10,
+        "exhaustive": 11,
+        "fragment": 1,
+        "none": 1,
+        "overview": 2
+      },
+      "recorded_search_rounds_counts": {
+        "1": 13,
+        "2": 12
+      },
+      "recorded_fetches_total": 59,
+      "recorded_fetch_failures_total_unresolved_counts_preserved": 5,
+      "legacy_version_clarity_score_counts": {
+        "2": 12,
+        "3": 6,
+        "4": 5,
+        "5": 2
+      },
+      "candidate_secondary_count_original_mean": 3.16,
+      "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.16,
+      "legacy_prior_self_rating_mean": 2.84,
+      "legacy_prior_self_rating_equal_to_5_count": 0,
+      "legacy_index": {
+        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.731902,
+        "mean_of_archived_3_decimal_values": 0.73192,
+        "min_exact": 0.410394,
+        "max_exact": 0.900864,
+        "band_counts_using_exact_formula": {
+          "high": 6,
+          "low": 1,
+          "medium": 2,
+          "medium_high": 16
+        }
+      },
+      "sensitivity_remove_prior": {
+        "mean": 0.602049,
+        "mean_change_from_exact_legacy": -0.129852,
+        "band_counts": {
+          "high": 3,
+          "low": 2,
+          "medium": 13,
+          "medium_high": 6,
+          "very_low": 1
+        },
+        "tasks_at_low_or_very_low": [
+          {
+            "task_id": "D",
+            "index": 0.181056,
+            "band": "very_low"
+          },
+          {
+            "task_id": "E",
+            "index": 0.388042,
+            "band": "low"
+          },
+          {
+            "task_id": "M",
+            "index": 0.445858,
+            "band": "low"
+          }
+        ]
+      }
+    },
+    "cuda": {
+      "n": 25,
+      "recorded_access_status_counts": {
+        "core_text_retrieved": 25
+      },
+      "original_core_fetch_code_counts": {
+        "static": 25
+      },
+      "recorded_reference_completeness_counts": {
+        "core_only": 3,
+        "exhaustive": 22
+      },
+      "recorded_search_rounds_counts": {
+        "1": 20,
+        "2": 5
+      },
+      "recorded_fetches_total": 44,
+      "recorded_fetch_failures_total_unresolved_counts_preserved": 6,
+      "legacy_version_clarity_score_counts": {
+        "3": 6,
+        "4": 7,
+        "5": 12
+      },
+      "candidate_secondary_count_original_mean": 3.48,
+      "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.44,
+      "legacy_prior_self_rating_mean": 4.56,
+      "legacy_prior_self_rating_equal_to_5_count": 14,
+      "legacy_index": {
+        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.922067,
+        "mean_of_archived_3_decimal_values": 0.92204,
+        "min_exact": 0.834918,
+        "max_exact": 1.0,
+        "band_counts_using_exact_formula": {
+          "high": 25
+        }
+      },
+      "sensitivity_remove_prior": {
+        "mean": 0.846369,
+        "mean_change_from_exact_legacy": -0.075697,
+        "band_counts": {
+          "high": 19,
+          "medium": 2,
+          "medium_high": 4
+        },
+        "tasks_at_low_or_very_low": []
+      }
+    }
+  },
+  "historical_26_pairs_including_migration_analogy": {
+    "cann": {
+      "n": 26,
+      "recorded_access_status_counts": {
+        "core_text_not_retrieved": 1,
+        "core_text_retrieved": 23,
+        "partial_text_retrieved": 2
+      },
+      "original_core_fetch_code_counts": {
+        "partial": 2,
+        "spa": 1,
+        "ssr": 22,
+        "static": 1
+      },
+      "recorded_reference_completeness_counts": {
+        "core_only": 11,
+        "exhaustive": 11,
+        "fragment": 1,
+        "none": 1,
+        "overview": 2
+      },
+      "recorded_search_rounds_counts": {
+        "1": 14,
+        "2": 12
+      },
+      "recorded_fetches_total": 60,
+      "recorded_fetch_failures_total_unresolved_counts_preserved": 5,
+      "legacy_version_clarity_score_counts": {
+        "2": 12,
+        "3": 6,
+        "4": 6,
+        "5": 2
+      },
+      "candidate_secondary_count_original_mean": 3.192308,
+      "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.192308,
+      "legacy_prior_self_rating_mean": 2.846154,
+      "legacy_prior_self_rating_equal_to_5_count": 0,
+      "legacy_index": {
+        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.736236,
+        "mean_of_archived_3_decimal_values": 0.736269,
+        "min_exact": 0.410394,
+        "max_exact": 0.900864,
+        "band_counts_using_exact_formula": {
+          "high": 7,
+          "low": 1,
+          "medium": 2,
+          "medium_high": 16
+        }
+      },
+      "sensitivity_remove_prior": {
+        "mean": 0.605873,
+        "mean_change_from_exact_legacy": -0.130363,
+        "band_counts": {
+          "high": 3,
+          "low": 2,
+          "medium": 13,
+          "medium_high": 7,
+          "very_low": 1
+        },
+        "tasks_at_low_or_very_low": [
+          {
+            "task_id": "D",
+            "index": 0.181056,
+            "band": "very_low"
+          },
+          {
+            "task_id": "E",
+            "index": 0.388042,
+            "band": "low"
+          },
+          {
+            "task_id": "M",
+            "index": 0.445858,
+            "band": "low"
+          }
+        ]
+      }
+    },
+    "cuda": {
+      "n": 26,
+      "recorded_access_status_counts": {
+        "core_text_retrieved": 26
+      },
+      "original_core_fetch_code_counts": {
+        "static": 26
+      },
+      "recorded_reference_completeness_counts": {
+        "core_only": 3,
+        "exhaustive": 23
+      },
+      "recorded_search_rounds_counts": {
+        "1": 21,
+        "2": 5
+      },
+      "recorded_fetches_total": 45,
+      "recorded_fetch_failures_total_unresolved_counts_preserved": 6,
+      "legacy_version_clarity_score_counts": {
+        "3": 7,
+        "4": 7,
+        "5": 12
+      },
+      "candidate_secondary_count_original_mean": 3.5,
+      "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.461538,
+      "legacy_prior_self_rating_mean": 4.538462,
+      "legacy_prior_self_rating_equal_to_5_count": 14,
+      "legacy_index": {
+        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.920449,
+        "mean_of_archived_3_decimal_values": 0.920423,
+        "min_exact": 0.834918,
+        "max_exact": 1.0,
+        "band_counts_using_exact_formula": {
+          "high": 26
+        }
+      },
+      "sensitivity_remove_prior": {
+        "mean": 0.847663,
+        "mean_change_from_exact_legacy": -0.072786,
+        "band_counts": {
+          "high": 20,
+          "medium": 2,
+          "medium_high": 4
+        },
+        "tasks_at_low_or_very_low": []
+      }
+    }
+  },
+  "workflow_groups_25_pairs": {
+    "environment_installation": {
+      "cann": {
+        "n": 3,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 3
+        },
+        "original_core_fetch_code_counts": {
+          "ssr": 2,
+          "static": 1
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 1,
+          "exhaustive": 2
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2,
+          "2": 1
+        },
+        "recorded_fetches_total": 7,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 1,
+        "legacy_version_clarity_score_counts": {
+          "2": 1,
+          "4": 2
+        },
+        "candidate_secondary_count_original_mean": 3,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
+        "legacy_prior_self_rating_mean": 3,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.798903,
+          "mean_of_archived_3_decimal_values": 0.799,
+          "min_exact": 0.728966,
+          "max_exact": 0.8648,
+          "band_counts_using_exact_formula": {
+            "high": 2,
+            "medium_high": 1
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.737621,
+          "mean_change_from_exact_legacy": -0.061282,
+          "band_counts": {
+            "high": 1,
+            "medium": 1,
+            "medium_high": 1
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      },
+      "cuda": {
+        "n": 3,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 3
+        },
+        "original_core_fetch_code_counts": {
+          "static": 3
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 1,
+          "exhaustive": 2
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2,
+          "2": 1
+        },
+        "recorded_fetches_total": 5,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "3": 1,
+          "4": 1,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 3.333333,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.333333,
+        "legacy_prior_self_rating_mean": 4.666667,
+        "legacy_prior_self_rating_equal_to_5_count": 2,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.904436,
+          "mean_of_archived_3_decimal_values": 0.904333,
+          "min_exact": 0.853309,
+          "max_exact": 0.98,
+          "band_counts_using_exact_formula": {
+            "high": 3
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.774502,
+          "mean_change_from_exact_legacy": -0.129934,
+          "band_counts": {
+            "high": 1,
+            "medium_high": 2
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "operator_development": {
+      "cann": {
+        "n": 6,
+        "recorded_access_status_counts": {
+          "core_text_not_retrieved": 1,
+          "core_text_retrieved": 4,
+          "partial_text_retrieved": 1
+        },
+        "original_core_fetch_code_counts": {
+          "partial": 1,
+          "spa": 1,
+          "ssr": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 4,
+          "none": 1,
+          "overview": 1
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2,
+          "2": 4
+        },
+        "recorded_fetches_total": 10,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 2,
+        "legacy_version_clarity_score_counts": {
+          "2": 3,
+          "3": 2,
+          "4": 1
+        },
+        "candidate_secondary_count_original_mean": 2.666667,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 2.666667,
+        "legacy_prior_self_rating_mean": 2.5,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.660464,
+          "mean_of_archived_3_decimal_values": 0.660333,
+          "min_exact": 0.410394,
+          "max_exact": 0.767247,
+          "band_counts_using_exact_formula": {
+            "low": 1,
+            "medium": 1,
+            "medium_high": 4
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.504871,
+          "mean_change_from_exact_legacy": -0.155593,
+          "band_counts": {
+            "low": 1,
+            "medium": 3,
+            "medium_high": 1,
+            "very_low": 1
+          },
+          "tasks_at_low_or_very_low": [
+            {
+              "task_id": "D",
+              "index": 0.181056,
+              "band": "very_low"
+            },
+            {
+              "task_id": "M",
+              "index": 0.445858,
+              "band": "low"
+            }
+          ]
+        }
+      },
+      "cuda": {
+        "n": 6,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 6
+        },
+        "original_core_fetch_code_counts": {
+          "static": 6
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 1,
+          "exhaustive": 5
+        },
+        "recorded_search_rounds_counts": {
+          "1": 4,
+          "2": 2
+        },
+        "recorded_fetches_total": 12,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 2,
+        "legacy_version_clarity_score_counts": {
+          "3": 2,
+          "4": 1,
+          "5": 3
+        },
+        "candidate_secondary_count_original_mean": 3.166667,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.166667,
+        "legacy_prior_self_rating_mean": 4.666667,
+        "legacy_prior_self_rating_equal_to_5_count": 4,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.890774,
+          "mean_of_archived_3_decimal_values": 0.890833,
+          "min_exact": 0.834918,
+          "max_exact": 1.0,
+          "band_counts_using_exact_formula": {
+            "high": 6
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.784005,
+          "mean_change_from_exact_legacy": -0.106769,
+          "band_counts": {
+            "high": 4,
+            "medium": 2
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "training": {
+      "cann": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "ssr": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 2,
+          "exhaustive": 2
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2,
+          "2": 2
+        },
+        "recorded_fetches_total": 13,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "2": 1,
+          "3": 1,
+          "4": 2
+        },
+        "candidate_secondary_count_original_mean": 3.75,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.75,
+        "legacy_prior_self_rating_mean": 3.25,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.79071,
+          "mean_of_archived_3_decimal_values": 0.79075,
+          "min_exact": 0.717559,
+          "max_exact": 0.86486,
+          "band_counts_using_exact_formula": {
+            "high": 2,
+            "medium_high": 2
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.647345,
+          "mean_change_from_exact_legacy": -0.143365,
+          "band_counts": {
+            "high": 1,
+            "medium": 3
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      },
+      "cuda": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "static": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 1,
+          "exhaustive": 3
+        },
+        "recorded_search_rounds_counts": {
+          "1": 3,
+          "2": 1
+        },
+        "recorded_fetches_total": 7,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 1,
+        "legacy_version_clarity_score_counts": {
+          "3": 1,
+          "5": 3
+        },
+        "candidate_secondary_count_original_mean": 3.5,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.5,
+        "legacy_prior_self_rating_mean": 4.75,
+        "legacy_prior_self_rating_equal_to_5_count": 3,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.945,
+          "mean_of_archived_3_decimal_values": 0.945,
+          "min_exact": 0.88,
+          "max_exact": 0.98,
+          "band_counts_using_exact_formula": {
+            "high": 4
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.863464,
+          "mean_change_from_exact_legacy": -0.081536,
+          "band_counts": {
+            "high": 3,
+            "medium_high": 1
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "inference_deployment": {
+      "cann": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "ssr": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 2,
+          "exhaustive": 1,
+          "overview": 1
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2,
+          "2": 2
+        },
+        "recorded_fetches_total": 9,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "2": 3,
+          "3": 1
+        },
+        "candidate_secondary_count_original_mean": 3.75,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.75,
+        "legacy_prior_self_rating_mean": 2.75,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.722289,
+          "mean_of_archived_3_decimal_values": 0.7225,
+          "min_exact": 0.68459,
+          "max_exact": 0.747129,
+          "band_counts_using_exact_formula": {
+            "medium_high": 4
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.610811,
+          "mean_change_from_exact_legacy": -0.111477,
+          "band_counts": {
+            "medium": 2,
+            "medium_high": 2
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      },
+      "cuda": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "static": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 4
+        },
+        "recorded_search_rounds_counts": {
+          "1": 3,
+          "2": 1
+        },
+        "recorded_fetches_total": 7,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 1,
+        "legacy_version_clarity_score_counts": {
+          "3": 1,
+          "4": 2,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 3.5,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.25,
+        "legacy_prior_self_rating_mean": 4.25,
+        "legacy_prior_self_rating_equal_to_5_count": 1,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.92,
+          "mean_of_archived_3_decimal_values": 0.92,
+          "min_exact": 0.88,
+          "max_exact": 0.94,
+          "band_counts_using_exact_formula": {
+            "high": 4
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.85744,
+          "mean_change_from_exact_legacy": -0.06256,
+          "band_counts": {
+            "high": 3,
+            "medium_high": 1
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "performance_optimization": {
+      "cann": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "ssr": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 4
+        },
+        "recorded_search_rounds_counts": {
+          "1": 3,
+          "2": 1
+        },
+        "recorded_fetches_total": 10,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "2": 2,
+          "3": 1,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 3.5,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.5,
+        "legacy_prior_self_rating_mean": 3,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.752146,
+          "mean_of_archived_3_decimal_values": 0.75225,
+          "min_exact": 0.70282,
+          "max_exact": 0.880526,
+          "band_counts_using_exact_formula": {
+            "high": 1,
+            "medium_high": 3
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.593366,
+          "mean_change_from_exact_legacy": -0.158781,
+          "band_counts": {
+            "medium": 3,
+            "medium_high": 1
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      },
+      "cuda": {
+        "n": 4,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 4
+        },
+        "original_core_fetch_code_counts": {
+          "static": 4
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 4
+        },
+        "recorded_search_rounds_counts": {
+          "1": 4
+        },
+        "recorded_fetches_total": 5,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "4": 2,
+          "5": 2
+        },
+        "candidate_secondary_count_original_mean": 4,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 4,
+        "legacy_prior_self_rating_mean": 4.5,
+        "legacy_prior_self_rating_equal_to_5_count": 2,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.956728,
+          "mean_of_archived_3_decimal_values": 0.9565,
+          "min_exact": 0.920448,
+          "max_exact": 1.0,
+          "band_counts_using_exact_formula": {
+            "high": 4
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.92364,
+          "mean_change_from_exact_legacy": -0.033088,
+          "band_counts": {
+            "high": 4
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "debugging": {
+      "cann": {
+        "n": 2,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 2
+        },
+        "original_core_fetch_code_counts": {
+          "ssr": 2
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 1,
+          "fragment": 1
+        },
+        "recorded_search_rounds_counts": {
+          "1": 1,
+          "2": 1
+        },
+        "recorded_fetches_total": 3,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "2": 2
+        },
+        "candidate_secondary_count_original_mean": 2,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 2,
+        "legacy_prior_self_rating_mean": 2,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.646146,
+          "mean_of_archived_3_decimal_values": 0.646,
+          "min_exact": 0.554265,
+          "max_exact": 0.738026,
+          "band_counts_using_exact_formula": {
+            "medium": 1,
+            "medium_high": 1
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.541176,
+          "mean_change_from_exact_legacy": -0.104969,
+          "band_counts": {
+            "low": 1,
+            "medium_high": 1
+          },
+          "tasks_at_low_or_very_low": [
+            {
+              "task_id": "E",
+              "index": 0.388042,
+              "band": "low"
+            }
+          ]
+        }
+      },
+      "cuda": {
+        "n": 2,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 2
+        },
+        "original_core_fetch_code_counts": {
+          "static": 2
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 2
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2
+        },
+        "recorded_fetches_total": 2,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 0,
+        "legacy_version_clarity_score_counts": {
+          "3": 1,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 4,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 4,
+        "legacy_prior_self_rating_mean": 4,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.9328,
+          "mean_of_archived_3_decimal_values": 0.933,
+          "min_exact": 0.88,
+          "max_exact": 0.9856,
+          "band_counts_using_exact_formula": {
+            "high": 2
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.904,
+          "mean_change_from_exact_legacy": -0.0288,
+          "band_counts": {
+            "high": 2
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    },
+    "migration": {
+      "cann": {
+        "n": 2,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 1,
+          "partial_text_retrieved": 1
+        },
+        "original_core_fetch_code_counts": {
+          "partial": 1,
+          "ssr": 1
+        },
+        "recorded_reference_completeness_counts": {
+          "core_only": 1,
+          "exhaustive": 1
+        },
+        "recorded_search_rounds_counts": {
+          "1": 1,
+          "2": 1
+        },
+        "recorded_fetches_total": 7,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 2,
+        "legacy_version_clarity_score_counts": {
+          "3": 1,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 3,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
+        "legacy_prior_self_rating_mean": 3.5,
+        "legacy_prior_self_rating_equal_to_5_count": 0,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.792588,
+          "mean_of_archived_3_decimal_values": 0.7925,
+          "min_exact": 0.684313,
+          "max_exact": 0.900864,
+          "band_counts_using_exact_formula": {
+            "high": 1,
+            "medium_high": 1
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.660351,
+          "mean_change_from_exact_legacy": -0.132237,
+          "band_counts": {
+            "high": 1,
+            "medium": 1
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      },
+      "cuda": {
+        "n": 2,
+        "recorded_access_status_counts": {
+          "core_text_retrieved": 2
+        },
+        "original_core_fetch_code_counts": {
+          "static": 2
+        },
+        "recorded_reference_completeness_counts": {
+          "exhaustive": 2
+        },
+        "recorded_search_rounds_counts": {
+          "1": 2
+        },
+        "recorded_fetches_total": 6,
+        "recorded_fetch_failures_total_unresolved_counts_preserved": 2,
+        "legacy_version_clarity_score_counts": {
+          "4": 1,
+          "5": 1
+        },
+        "candidate_secondary_count_original_mean": 3,
+        "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
+        "legacy_prior_self_rating_mean": 5,
+        "legacy_prior_self_rating_equal_to_5_count": 2,
+        "legacy_index": {
+          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.9206,
+          "mean_of_archived_3_decimal_values": 0.9205,
+          "min_exact": 0.92,
+          "max_exact": 0.9212,
+          "band_counts_using_exact_formula": {
+            "high": 2
+          }
+        },
+        "sensitivity_remove_prior": {
+          "mean": 0.87276,
+          "mean_change_from_exact_legacy": -0.04784,
+          "band_counts": {
+            "high": 2
+          },
+          "tasks_at_low_or_very_low": []
+        }
+      }
+    }
+  },
+  "audit_decisions": [
+    {
+      "id": "C01",
+      "unit": "G.both",
+      "kind": "comparison_scope",
+      "status": "resolved_for_paper_scope",
+      "original": "G was included in 26 CANN/CUDA task pairs.",
+      "paper_treatment": "Preserve both original records; label G migration_analogy and exclude it from the 25-pair descriptive summary.",
+      "numeric_raw_changed": false,
+      "evidence": [
+        {
+          "file": "legacy_task_run_log.md",
+          "lines": [
+            253,
+            266
+          ]
+        },
+        {
+          "file": "legacy_score_metrics.py",
+          "lines": [
+            246,
+            267
+          ]
+        }
+      ],
+      "limit": "No replacement migration task was collected."
+    },
+    {
+      "id": "C02",
+      "unit": "H.cuda",
+      "kind": "source_ownership",
+      "status": "resolved_ownership_only",
+      "original": "sources[0]=cloud_vendor; platforms[0]=nvidia-blog is counted in the secondary channel.",
+      "paper_treatment": "Classify this recorded source as vendor-owned official material in the audit view. Exclude it from candidate independent-source counts. Keep original RAW and legacy scores unchanged.",
+      "numeric_raw_changed": false,
+      "audit_view_change": {
+        "source_index": 0,
+        "from_channel": "secondary",
+        "to_channel": "official_vendor",
+        "candidate_secondary_source_count_original": 4,
+        "candidate_secondary_source_count_after_ownership_check": 3
+      },
+      "evidence": [
+        {
+          "file": "legacy_score_metrics.py",
+          "lines": [
+            124,
+            125
+          ]
+        },
+        {
+          "file": "legacy_score_metrics.py",
+          "lines": [
+            269,
+            277
+          ]
+        }
+      ],
+      "limit": "The exact article URL is not identified in this RAW entry. Remaining sources have not been independently verified for ownership, originality, or answer support. No revised overall score is asserted."
+    },
+    {
+      "id": "C03",
+      "unit": "A.cann",
+      "kind": "fetch_failure_count",
+      "status": "unresolved_retained_record_discrepancy",
+      "original": "RAW records fetch=3 and fetch_fail=0, while the compiled log reports a missing SPA body on the third fetch.",
+      "paper_treatment": "Preserve fetch_fail=0 and flag the discrepancy. Do not replace it with an inferred count or recompute a corrected cost.",
+      "numeric_raw_changed": false,
+      "evidence": [
+        {
+          "file": "legacy_score_metrics.py",
+          "lines": [
+            137,
+            145
+          ]
+        },
+        {
+          "file": "legacy_task_run_log.md",
+          "lines": [
+            55,
+            58
+          ]
+        }
+      ],
+      "limit": "Original tool payloads and the precise failure-counting rule are unavailable in this package."
+    },
+    {
+      "id": "C04",
+      "unit": "all",
+      "kind": "access_construct",
+      "status": "descriptive_reframing_only",
+      "original": "Legacy score2 gives static=5 and ssr/partial=4.",
+      "paper_treatment": "Keep legacy codes and scores only for historical reproduction. In the descriptive audit view, map static and ssr to core_text_retrieved, partial to partial_text_retrieved, and spa/robots to core_text_not_retrieved. The mapped status is a recoding of retained observations, not a new test of content sufficiency.",
+      "numeric_raw_changed": false,
+      "evidence": [
+        {
+          "file": "legacy_score_metrics.py",
+          "lines": [
+            658,
+            660
+          ]
+        }
+      ],
+      "limit": "Static and SSR architecture alone does not justify different availability quality. Retrieved text does not imply correctness, sufficiency, or executability."
+    }
+  ],
+  "limitations": [
+    "Frozen records include judgments and compiled retrieval summaries, not original tool transcripts.",
+    "No new retrieval, independent human review, response validation, or hardware execution was performed.",
+    "Exact agent and retrieval-tool configuration cannot be established from this appendix.",
+    "Legacy indices are unvalidated heuristics, not calibrated confidence or task-success probabilities.",
+    "Legacy static-versus-SSR scoring is retained only for historical reproduction and is not recommended as an access criterion.",
+    "Known source-ownership exclusions are applied to an audit count only; original RAW and scores remain untouched.",
+    "Source counts are candidate counts; platform diversity does not establish informational independence.",
+    "A.cann failure-count discrepancy is unresolved; original cost coding remains in legacy arithmetic.",
+    "The OWN=0 calculation changes a formula assumption, not observed model behavior."
+  ]
+}
