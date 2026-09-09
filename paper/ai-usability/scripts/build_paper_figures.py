@@ -354,6 +354,14 @@ def framework(lang):
             'Agent 解析开发任务后，可通过搜索与抓取获取官方和第三方资料，或使用模型自带知识；随后判断证据是否充分，继续检索或基于证据收敛为终答。证据耗尽而仍不充分时存在凭记忆填补空缺的风险。',
             'After interpreting a development task, an agent can search and fetch official and third-party material or draw on model prior knowledge. It then assesses evidence, retries retrieval, or converges to a final answer. Evidence exhaustion can leave a risk of filling gaps from memory.'
         )
+        # The English labels are materially wider than their Chinese
+        # counterparts. Widen only these nodes while retaining their centres
+        # and connection anchors, so the shared process geometry stays intact.
+        svg = svg.replace('<rect x="190" y="14" width="180"', '<rect x="140" y="14" width="280"')
+        svg = svg.replace('points="250,490 335,532 250,574 165,532"', 'points="250,490 360,532 250,574 140,532"')
+        svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H370"')
+        svg = svg.replace('<text x="351" y="526"', '<text x="365" y="526"')
+        svg = svg.replace('<rect x="172" y="592" width="156"', '<rect x="140" y="592" width="220"')
     destination = OUT / f'figure-1-framework-{lang}.svg'
     destination.write_text(svg, encoding='utf-8')
 

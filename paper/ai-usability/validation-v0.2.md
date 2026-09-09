@@ -40,7 +40,7 @@ This record summarizes completed content, calculation, and artifact checks. It v
 最终PDF的SHA-256 / Final PDF SHA-256:
 
 ```text
-English: c93596f39fd74c3ec16461a6f27da971ebdb9b05d290bdb62d42d6efa5fb279b
+English: 8cff17da444a9fe1f1d6dc8c158cc9118a9363b3da83f077c9583bf128217a33
 Chinese: 1cf4edb0ccc160a514a6ab1ffe2b26c49959b906abfe58a5bdd4813c450405fa
 ```
 
