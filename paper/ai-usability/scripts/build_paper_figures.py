@@ -362,8 +362,20 @@ def framework(lang):
         svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H370"')
         svg = svg.replace('<text x="351" y="526"', '<text x="365" y="526"')
         svg = svg.replace('<rect x="172" y="592" width="156"', '<rect x="140" y="592" width="220"')
-        svg = svg.replace('<path d="M365,625 H360 V700"', '<path d="M420,643 V700"')
+        # Shift the last decision rightward to create a clear routing gutter:
+        # the positive branch leaves left, then turns downward without crossing
+        # the widened convergence node.
+        svg = svg.replace('points="470,590 575,625 470,660 365,625"', 'points="520,590 625,625 520,660 415,625"')
+        svg = svg.replace('<text x="470" y="622"', '<text x="520" y="622"')
+        svg = svg.replace('<text x="470" y="636"', '<text x="520" y="636"')
+        svg = svg.replace('<path d="M470,574 V590"', '<path d="M470,574 V582 H520 V590"')
+        svg = svg.replace('<text x="478" y="585"', '<text x="526" y="585"')
+        svg = svg.replace('<path d="M365,625 H360 V700"', '<path d="M415,625 H385 V700"')
         svg = svg.replace('<text x="346" y="670"', '<text x="280" y="680"')
+        svg = svg.replace('<path d="M470,660 V700"', '<path d="M520,660 V700"')
+        svg = svg.replace('<text x="486" y="674"', '<text x="536" y="674"')
+        svg = svg.replace('<text x="486" y="686"', '<text x="536" y="686"')
+        svg = svg.replace('<text x="486" y="697"', '<text x="536" y="697"')
     destination = OUT / f'figure-1-framework-{lang}.svg'
     destination.write_text(svg, encoding='utf-8')
 
