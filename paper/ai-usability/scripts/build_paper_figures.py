@@ -359,16 +359,20 @@ def framework(lang):
         # and connection anchors, so the shared process geometry stays intact.
         svg = svg.replace('<rect x="190" y="14" width="180"', '<rect x="140" y="14" width="280"')
         svg = svg.replace('points="250,490 335,532 250,574 165,532"', 'points="250,490 360,532 250,574 140,532"')
-        svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H370"')
-        svg = svg.replace('<text x="351" y="526"', '<text x="365" y="526"')
+        svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H420"')
+        svg = svg.replace('<text x="351" y="526"', '<text x="370" y="520"')
         svg = svg.replace('<rect x="172" y="592" width="156"', '<rect x="140" y="592" width="220"')
         # Shift the last decision rightward to create a clear routing gutter:
         # the positive branch leaves left, then turns downward without crossing
         # the widened convergence node.
         svg = svg.replace('points="470,590 575,625 470,660 365,625"', 'points="520,590 625,625 520,660 415,625"')
+        svg = svg.replace('points="470,490 570,532 470,574 370,532"', 'points="520,490 620,532 520,574 420,532"')
+        svg = svg.replace('<text x="470" y="527"', '<text x="520" y="527"')
+        svg = svg.replace('<text x="470" y="541"', '<text x="520" y="541"')
         svg = svg.replace('<text x="470" y="622"', '<text x="520" y="622"')
         svg = svg.replace('<text x="470" y="636"', '<text x="520" y="636"')
-        svg = svg.replace('<path d="M470,574 V590"', '<path d="M470,574 V582 H520 V590"')
+        svg = svg.replace('<path d="M570,532 H652"', '<path d="M620,532 H652"')
+        svg = svg.replace('<path d="M470,574 V590"', '<path d="M520,574 V590"')
         svg = svg.replace('<text x="478" y="585"', '<text x="526" y="585"')
         svg = svg.replace('<path d="M365,625 H360 V700"', '<path d="M415,625 H385 V700"')
         svg = svg.replace('<text x="346" y="670"', '<text x="280" y="680"')
