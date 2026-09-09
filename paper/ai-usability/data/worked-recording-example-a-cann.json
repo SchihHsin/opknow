@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.1",
+  "record_status": "worked_example_derived_from_retained_archive_not_new_observation",
+  "purpose": "Shows the task requirement -> source/event -> retained evidence -> coding chain using A.cann. It does not reconstruct absent URLs, payloads, final answers, or execution outcomes.",
+  "task_id": "A",
+  "unit_id": "A.cann",
+  "ecosystem": "CANN",
+  "question_verbatim": "我有一个 ONNX 模型，怎么在昇腾（Ascend）上转换成 .om 离线模型做推理部署？给出 ONNX → ATC → .om 的完整步骤和命令。",
+  "goal": "Obtain evidence sufficient to carry out the main ONNX -> ATC -> .om conversion path and identify what remains unsupported.",
+  "starting_artifacts": [
+    "ONNX model"
+  ],
+  "evidence_requirements": [
+    {
+      "requirement_id": "R1",
+      "required_for_next_action": "ATC conversion command with the model, framework, and output arguments.",
+      "priority": "required",
+      "status": "supported"
+    },
+    {
+      "requirement_id": "R2",
+      "required_for_next_action": "Input-shape and target-device / soc_version parameters.",
+      "priority": "required",
+      "status": "supported"
+    },
+    {
+      "requirement_id": "R3",
+      "required_for_next_action": "A way to identify the device setting for soc_version.",
+      "priority": "required",
+      "status": "supported"
+    },
+    {
+      "requirement_id": "R4",
+      "required_for_next_action": "Comprehensive ATC / AIPP reference settings for advanced configuration.",
+      "priority": "optional",
+      "status": "unsupported"
+    }
+  ],
+  "configuration": {
+    "model_identifier": "Claude (exact deployed identifier not retained)",
+    "tools_and_versions": [
+      "web search",
+      "HTML web-reading tool (exact extractor version not retained)"
+    ],
+    "collection_time": "2026-06-10",
+    "language": "Chinese query",
+    "search_environment": "Retained compiled run summary; exact provider configuration not retained",
+    "context_policy": null,
+    "retrieval_budget_or_stopping_rule": null,
+    "unknown_fields_explanation": "The example only restates retained archival observations. It does not infer a uniform stopping rule, full URLs, original tool payloads, or verified execution."
+  },
+  "acquisition_events": [
+    {
+      "event_id": "E1",
+      "sequence": 1,
+      "action": "web_search",
+      "query_or_target": "昇腾 Ascend ONNX 转 om 模型 ATC 工具 推理部署 步骤 命令",
+      "source_record_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "outcome": "The retained summary reports official quickstarts among mixed results, with the official result not at the top.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:52-54"
+    },
+    {
+      "event_id": "E2",
+      "sequence": 2,
+      "action": "web_fetch",
+      "query_or_target": "S1",
+      "source_record_ids": [
+        "S1"
+      ],
+      "outcome": "The retained summary reports a returned body with an ATC command, parameter table, and npu-smi step.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:55-56"
+    },
+    {
+      "event_id": "E3",
+      "sequence": 3,
+      "action": "web_fetch",
+      "query_or_target": "S2",
+      "source_record_ids": [
+        "S2"
+      ],
+      "outcome": "A second quickstart version is reported to return the same main-path content.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:57"
+    },
+    {
+      "event_id": "E4",
+      "sequence": 4,
+      "action": "web_fetch",
+      "query_or_target": "S3",
+      "source_record_ids": [
+        "S3"
+      ],
+      "outcome": "The retained summary reports navigation and metadata rather than the reference body.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:58"
+    }
+  ],
+  "source_records": [
+    {
+      "source_id": "S1",
+      "publisher_or_author": "HiAscend official documentation",
+      "source_role": "official",
+      "identifier_or_url": "quickstart_18_0012 (full URL not retained)",
+      "content_acquisition_status": "core_obtained",
+      "access_route": "original_entry",
+      "returned_content_or_gap": "ATC command; model, framework, output, input_shape, and soc_version parameter descriptions; npu-smi step.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:53-56",
+      "linked_original_source_id": null
+    },
+    {
+      "source_id": "S2",
+      "publisher_or_author": "HiAscend official documentation",
+      "source_role": "official",
+      "identifier_or_url": "quickstart_18_0010 (full URL not retained)",
+      "content_acquisition_status": "core_obtained",
+      "access_route": "alternative_entry",
+      "returned_content_or_gap": "A different archived version is reported to return the same main-path content; it confirms that a complete core body can be acquired through an alternative entry without changing content status to partial.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:53,57",
+      "linked_original_source_id": "S1"
+    },
+    {
+      "source_id": "S3",
+      "publisher_or_author": "HiAscend official documentation",
+      "source_role": "official",
+      "identifier_or_url": "atlasatc_16_0001 reference (full URL not retained)",
+      "content_acquisition_status": "not_obtained",
+      "access_route": "original_entry",
+      "returned_content_or_gap": "The reference body for AIPP and the comprehensive parameter table was not returned.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:58-60",
+      "linked_original_source_id": null
+    }
+  ],
+  "requirement_evidence_links": [
+    {
+      "requirement_id": "R1",
+      "source_id_or_event_id": "S1",
+      "support": "supported",
+      "rationale": "The returned quickstart is reported to contain the ATC command and required main arguments.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:54-56"
+    },
+    {
+      "requirement_id": "R2",
+      "source_id_or_event_id": "S1",
+      "support": "supported",
+      "rationale": "The retained summary identifies input_shape and soc_version parameter descriptions.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:54-56"
+    },
+    {
+      "requirement_id": "R3",
+      "source_id_or_event_id": "S1",
+      "support": "supported",
+      "rationale": "The retained summary identifies npu-smi info as the device-information step.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:54-56"
+    },
+    {
+      "requirement_id": "R4",
+      "source_id_or_event_id": "S3",
+      "support": "unsupported",
+      "rationale": "The retained reference fetch did not return the AIPP and comprehensive-parameter content.",
+      "saved_evidence_location": "data/legacy_task_run_log.md:58-60"
+    }
+  ],
+  "counting_boundary": "The frozen RAW record reports fetch=3 and fetch_fail=0, while E4 reports a missing reference body. The archive does not establish whether that count excludes the ancillary reference or is inconsistent; no replacement count is inferred.",
+  "reused_observation_references": [
+    "data/legacy_task_run_log.md:31-65",
+    "data/source_evidence.json: task_run_log.md lines 50-58",
+    "data/raw_original.json: A.cann",
+    "data/legacy_scores_original.json: A.cann"
+  ],
+  "indicator_codes": [
+    {
+      "indicator": "M1",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The archived score records official discovery after a first search with the official result among mixed results.",
+      "evidence_links": [
+        "E1"
+      ]
+    },
+    {
+      "indicator": "M2",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The historical extraction score is retained as 4. Separately, the content acquisition status is core_obtained for S1 and S2; the access routes are original_entry and alternative_entry rather than a single conflated state.",
+      "evidence_links": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "indicator": "M3",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The archived assessment treats the quickstart as supporting the main path while not providing exhaustive AIPP reference detail.",
+      "evidence_links": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ]
+    },
+    {
+      "indicator": "M4",
+      "value": 2,
+      "basis_type": "archival_assessment",
+      "rationale": "The archival record notes several coexisting versions and no retained compatibility matrix.",
+      "evidence_links": [
+        "data/raw_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M5",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The historical record lists five candidate secondary sources; ownership and independence are not newly verified here.",
+      "evidence_links": [
+        "data/raw_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M6",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The historical source-consistency assessment is retained without recoding the listed sources.",
+      "evidence_links": [
+        "data/raw_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M7",
+      "value": 3,
+      "basis_type": "estimate",
+      "rationale": "This is the archived model-prior estimate, not a measurement of training coverage.",
+      "evidence_links": [
+        "data/legacy_scores_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M8",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The example preserves raw counts of one search and three recorded fetches alongside the historical inverse-effort code 4; the failed-fetch boundary is unresolved.",
+      "evidence_links": [
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    },
+    {
+      "indicator": "M9",
+      "value": 3,
+      "basis_type": "archival_assessment",
+      "rationale": "The archived version-pinning judgment is retained; a complete final response is not retained for reinspection.",
+      "evidence_links": [
+        "data/legacy_scores_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M10",
+      "value": 4,
+      "basis_type": "archival_assessment",
+      "rationale": "The archived completeness judgment concerns available guidance; it is not proof that the task was executed.",
+      "evidence_links": [
+        "data/legacy_scores_original.json: A.cann"
+      ]
+    },
+    {
+      "indicator": "M11",
+      "value": 0.747,
+      "basis_type": "aggregation",
+      "rationale": "Historical heuristic index retained for traceability; not calibrated answer correctness or task-success probability.",
+      "evidence_links": [
+        "data/legacy_scores_original.json: A.cann"
+      ]
+    }
+  ],
+  "unresolved_version_relations": [
+    "The retained summary names multiple CANN versions but does not establish a complete compatibility relation for the task."
+  ],
+  "prior_assessment_basis": "Archived self-rating only; no separate no-retrieval run is retained.",
+  "final_response_record": null,
+  "output_check_basis": "M9-M10 preserve archival assessments of available guidance because complete returns and final responses are not consistently retained.",
+  "execution_performed": null,
+  "aggregation_specification": "Historical M11 is retained as an archival heuristic index and is not recalibrated by this example.",
+  "independent_review_performed": null,
+  "disagreements": [],
+  "limitations": [
+    "This worked example is a structured restatement of retained records, not an independent coding exercise.",
+    "Full URLs, original tool payloads, a complete final answer, and verified execution evidence are not retained."
+  ]
+}

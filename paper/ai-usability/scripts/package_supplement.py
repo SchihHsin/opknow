@@ -12,7 +12,9 @@ archival case application, not new website measurements or execution trials.
 - `data/`: 26 tasks / 52 frozen task-side records, source-provenance notes,
   historical scoring code, known corrections, and descriptive outputs.
 - `protocol-cn-en.md`: the reusable protocol, in English and Chinese.
-- `record-template.json`: a blank future recording form, not observed data.
+- `record-template.json`: a blank future recording form with item schemas.
+- `data/worked-recording-example-a-cann.json`: a filled archival example that
+  links requirements, events, sources, saved evidence, and indicator codes.
 - `scripts/build_paper_analysis.py`: portable offline arithmetic reproduction.
 
 Run with Python 3, without external dependencies:
@@ -33,7 +35,7 @@ human coding or hardware-execution validation is claimed.
 ## 中文说明
 
 本补充材料保留26任务52单元，主比较排除G的ROCm/HIP迁移类比后为25对。
-包含冻结数据、历史评分、来源说明、归类修订和未决计数、可复用协议及空白记录表。
+包含冻结数据、历史评分、来源说明、归类修订和未决计数、可复用协议、带单条字段结构的空白记录表及一份填写示例。
 脚本只做已有记录的离线计算，不重新联网检索。历史指数不是答案正确概率。
 问题的英文摘要是编辑性翻译；过程日志保留原中文。材料不声称包含完整工具会话、
 已核实部署配置、独立人工编码或硬件执行验证。

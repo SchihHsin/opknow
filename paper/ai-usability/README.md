@@ -16,7 +16,7 @@ The original title and methodological focus are retained. The three-source, elev
 | 中文阅读 PDF / Chinese reading PDF | [Chinese PDF](../../output/pdf/knowledge-availability-ai-cn-v0.2.pdf) |
 | LaTeX 源码包 / Portable LaTeX source | [ACM source ZIP](submission/knowledge-availability-ai-acm-source-v0.2.zip) |
 | 匿名数据与方法补充材料 / Anonymous data and protocol supplement | [Supplement ZIP](submission/knowledge-availability-ai-supplement-v0.2.zip) |
-| 可复用协议与空白表 / Protocol and recording form | [Protocol, CN/EN](protocol-cn-en.md) · [JSON form](record-template.json) |
+| 可复用协议、空白表与填写示例 / Protocol, blank form, and worked example | [Protocol, CN/EN](protocol-cn-en.md) · [JSON form](record-template.json) · [A.cann worked example](data/worked-recording-example-a-cann.json) |
 | 核验后的文献 / Verified bibliography | [BibTeX](references.bib) · [Verification notes](bibliography-audit.md) |
 | 数据与未决项 / Data and unresolved entries | [Data README](data/README.md) · [Corrections](data/generated/corrections.md) |
 | 完成检查 / Completed checks | [Validation report](validation-v0.2.md) |
@@ -29,9 +29,9 @@ The original title and methodological focus are retained. The three-source, elev
 - 对照已保留日志修正批次、子Agent及问句恢复的描述，保留未能确定的配置与计数边界。 / Method reporting follows the retained log and explicitly identifies unavailable configuration and unresolved counting boundaries.
 - 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要141词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 141-word English abstract.
 
-图1与图2均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。`scripts/build_paper_figures.py`从冻结数据生成图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
+正文五张图（流程图、三张完整指标矩阵分面及读取状态辅助图）均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。`scripts/build_paper_figures.py`从冻结数据生成图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
 
-Both figures have editable English/Chinese SVGs; English vector PDFs are included for LaTeX. The build scripts preserve the connection to the frozen records and bibliography.
+All five main-text figures (the workflow, three full-matrix facets, and the access-profile detail) have editable English/Chinese SVGs; English vector PDFs are included for LaTeX. The build scripts preserve the connection to the frozen records and bibliography.
 
 v0.2是按CHI Papers要求准备的匿名稿件文件，不代表已经提交或已经获得方法有效性的外部验证。作者信息、PCS条目及最终作者审阅需在正式提交时完成。原稿v0.1与原研究页面继续保留如下，作为版本来源。
 

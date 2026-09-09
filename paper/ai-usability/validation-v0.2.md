@@ -14,7 +14,7 @@ This record summarizes completed content, calculation, and artifact checks. It v
 | 英文摘要 / English abstract | 141词，低于150词上限。 / 141 words, within the 150-word limit. |
 | 双语对应 / Bilingual alignment | 段落块数量、标题层级序列和引文序列一致。 / Matching paragraph-block counts, heading-level sequences, and citation sequences. |
 | 文献 / References | 16个引用键均有书目记录；两份HTML均渲染16项参考文献。元数据核验范围见书目审计。 / All 16 citation keys resolve and appear in both HTML bibliographies; verification scope is documented in the bibliography audit. |
-| 图稿 / Figures | 两图均提供中英文SVG；英文另提供LaTeX所用矢量PDF，图稿路径有效。 / Both figures have Chinese/English SVGs and English vector PDFs for LaTeX; figure paths resolve. |
+| 图稿 / Figures | 正文五张图（流程图、三张完整矩阵分面与读取状态辅助图）均提供中英文SVG；英文另提供LaTeX所用矢量PDF，图稿路径有效。 / All five main-text figures (workflow, three full-matrix facets, and access-profile detail) have Chinese/English SVGs and English vector PDFs for LaTeX; figure paths resolve. |
 | 原件保留 / Original records | v0.1和原研究页面保留；冻结数据保留历史评分与来源哈希。 / Version 0.1 and source research pages remain available; frozen data preserve historical scores and source hashes. |
 
 ## 已有数据的本地核验 / Local checks of retained data
@@ -23,24 +23,25 @@ This record summarizes completed content, calculation, and artifact checks. It v
 - 25对原公式的精确均值为CANN .731902、CUDA .922067；移除模型先验项后为 .602049、.846369。这是对固定记录的计算，不是无检索条件下的新模型实验。 / Exact legacy-formula means for 25 pairs are .731902/.922067; removing the prior term gives .602049/.846369. These are calculations over fixed records, not new no-retrieval model trials.
 - 正文另标明26行历史复算的范围，避免与25对主比较混用。 / The manuscript explicitly labels the separate 26-row historical reproduction.
 - 可移植分析脚本从其他工作目录运行并产生确定性输出；补充包在独立临时目录解压后离线运行成功。 / The portable analysis runs deterministically from another working directory; the extracted supplement ran successfully offline in a separate temporary directory.
-- 原始评分与描述性获取状态分开；A.cann计数边界仍标为未决，没有猜测补齐。 / Historical scores and descriptive access states remain distinct; the unresolved A.cann counting boundary is not filled by guesswork.
+- 原始评分与描述性内容取得状态分开；访问路径不由历史 `core_fetch` 字段追溯推断。A.cann计数边界仍标为未决，没有猜测补齐。 / Historical scores and descriptive content-acquisition states remain distinct; access route is not inferred retrospectively from the historical `core_fetch` field. The unresolved A.cann counting boundary is not filled by guesswork.
+- 已新增 A.cann 填写示例，逐项连接任务需求、事件、来源、留存证据、内容状态／访问路径及指标编码；它只重述既有档案，不创建新观测。 / A new A.cann worked record connects requirements, events, sources, saved evidence, content status/access route, and indicator codes; it only restates retained archival material and creates no new observation.
 
 ## 排版与打包 / Rendering and packaging
 
 | 检查 / Check | 结果 / Result |
 | --- | --- |
-| 英文PDF / English PDF | ACM单栏匿名审稿格式，14页。 / ACM single-column anonymous review format, 14 pages. |
-| 中文PDF / Chinese PDF | 中文阅读与校对版，14页。 / Chinese reading and proofreading edition, 14 pages. |
-| 逐页视觉检查 / Page-by-page visual inspection | 最终两份PDF全部28页均已渲染检查；未发现裁切、文字重叠或不可读图表。 / All 28 final pages were rendered and inspected; no clipping, text overlap, or unreadable figures were identified. |
+| 英文PDF / English PDF | ACM单栏匿名审稿格式，16页。 / ACM single-column anonymous review format, 16 pages. |
+| 中文PDF / Chinese PDF | 中文阅读与校对版，17页。 / Chinese reading and proofreading edition, 17 pages. |
+| 逐页视觉检查 / Page-by-page visual inspection | 最终两份PDF全部33页均已渲染检查；未发现裁切、文字重叠或不可读图表。 / All 33 final pages were rendered and inspected; no clipping, text overlap, or unreadable figures were identified. |
 | 引用与溢出 / References and overflow | 最终TeX日志无未解析引用或Overfull hbox。 / No unresolved references or Overfull hbox in the final TeX log. |
 | 文本与身份路径 / Text and identity paths | 两份PDF可提取文字，无替换字符，正文无本机用户路径或用户名。 / Text extraction succeeds without replacement characters or local user paths/names in the PDF text. |
-| ZIP完整性 / ZIP integrity | 源码包4项、补充包18项；完整性检查通过，无绝对或越界成员路径。 / Four source-package entries and 18 supplement entries; integrity checks pass without absolute or traversal member paths. |
+| ZIP完整性 / ZIP integrity | 源码包7项、补充包19项；完整性检查通过，无绝对或越界成员路径。 / Seven source-package entries and 19 supplement entries; integrity checks pass without absolute or traversal member paths. |
 
 最终PDF的SHA-256 / Final PDF SHA-256:
 
 ```text
-English: b5c05ad11a83b3f403eca0981ae8e93064acdb694dd9d75058e4e0679985fd76
-Chinese: 526f0c1d69736d732c68131ec02c804168ec3f1f3fdaabbc6f08aff79bd58af4
+English: 369f350c990708cc730ecb3b8a52da1fb4974868c7c586e68b7162ab7fe72e57
+Chinese: 6244607471569131bcda7240e804d5105d9928e90f15d75d06208777178d6ba1
 ```
 
 英文构建使用缓存中的真实ACM `acmart` v1.83（2022-02-19）及Tectonic 0.17.0。此记录没有把缓存类的版本表述为最新版本。源码包可交给作者在自己的ACM/Overleaf环境继续维护。

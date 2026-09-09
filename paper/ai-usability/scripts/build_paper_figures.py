@@ -64,58 +64,65 @@ class Drawing:
 
 def framework(lang):
     en=lang=='en'
-    d=Drawing('figure-1-framework',1000,760,lang,'Observable Agent acquisition loop and measurement locations' if en else '可观察的 Agent 知识获取循环与测量位置')
+    d=Drawing('figure-1-framework',1040,790,lang,'Observable Agent acquisition loop and measurement locations' if en else '可观察的 Agent 知识获取循环与测量位置')
     text=lambda zh,en_text: en_text if en else zh
     d.rect(330,12,340,48,'#edf2f8','#b6c5d5')
     d.text(500,34,text('任务与记录上下文','Task and recorded context'),22,bold=True,anchor='middle')
     d.text(500,51,text('目标、初始材料、Agent／工具、时间','Goal, artifacts, agent/tools, time'),14,anchor='middle')
-    d.rect(350,88,300,42,'#f1ebf8','#cbbce5')
-    d.text(500,114,text('① 解析需求并拆解子目标','1. Interpret needs and decompose subgoals'),18,bold=True,anchor='middle')
-    d.rect(350,155,300,42,'#fff6df','#e0bd67')
-    d.text(500,181,text('② 是否需要外部证据？','2. Need external evidence?'),18,bold=True,anchor='middle')
-    d.rect(70,240,270,64,'#eaf1f8','#b4cadd')
+    d.rect(350,88,300,54,'#f1ebf8','#cbbce5')
+    d.text(500,111,text('① 解析需求','1. Interpret needs'),18,bold=True,anchor='middle')
+    d.text(500,130,text('并拆解子目标','and decompose subgoals'),16,anchor='middle')
+    d.rect(350,165,300,54,'#fff6df','#e0bd67')
+    d.text(500,188,text('② 是否需要','2. Need external'),18,bold=True,anchor='middle')
+    d.text(500,207,text('外部证据？','evidence?'),16,anchor='middle')
+    d.rect(70,255,270,64,'#eaf1f8','#b4cadd')
     d.text(205,268,'web_search',20,bold=True,anchor='middle')
     d.text(205,290,text('发现官方／社区候选来源','Discover official / community candidates'),14,anchor='middle')
     d.text(205,307,text('M1 发现性 · M5 替代覆盖','M1 discovery · M5 alternative coverage'),12,fill='#426d8e',anchor='middle')
-    d.rect(70,328,270,50,'#eaf1f8','#b4cadd')
-    d.text(205,351,text('③ 选择 URL','3. Select URLs'),17,bold=True,anchor='middle')
-    d.text(205,369,text('记录发布者、来源角色与查询','Record publisher, source role, and query'),12,anchor='middle')
-    d.rect(70,402,270,64,'#eaf1f8','#b4cadd')
-    d.text(205,430,'web_fetch',20,bold=True,anchor='middle')
-    d.text(205,451,text('取得正文、片段或失败状态','Obtain body, fragment, or failure state'),14,anchor='middle')
-    d.text(205,468,text('M2 访问 · M3 充分性','M2 access · M3 adequacy'),12,fill='#426d8e',anchor='middle')
-    d.rect(665,278,270,72,'#f3edf9','#cbbce5')
-    d.text(800,306,text('模型先验（M7）','Model prior (M7)'),18,bold=True,anchor='middle')
-    d.text(800,327,text('单独登记为估计或测试；','Register separately as estimate or test;'),13,anchor='middle')
-    d.text(800,344,text('不等同于已取得来源','not retrieved evidence'),13,anchor='middle')
-    d.rect(365,493,270,50,'#f5f6f7','#ccd3da')
-    d.text(500,519,text('④ 汇总证据台账','4. Integrate the evidence ledger'),17,bold=True,anchor='middle')
-    d.text(500,536,text('查询、URL、返回内容、成本与缺口（M8）','Queries, URLs, returns, effort, gaps (M8)'),12,anchor='middle')
-    d.rect(365,568,270,52,'#fff6df','#e0bd67')
-    d.text(500,594,text('⑤ 评估充分性与版本适用性','5. Assess adequacy and version applicability'),17,bold=True,anchor='middle')
-    d.text(500,612,text('M4、M9、M10','M4, M9, M10'),12,anchor='middle')
-    d.rect(675,565,245,56,'#fff4e8','#dfaa6e')
-    d.text(797,589,text('调整查询并重试','Refine query and retry'),17,bold=True,anchor='middle')
-    d.text(797,608,text('仍有可检索的证据空间','When evidence remains searchable'),12,anchor='middle')
-    d.rect(300,680,400,58,'#e9f3ee','#8fb9a3')
-    d.text(500,706,text('⑥ 作答：下一步行动或明确证据缺口','6. Answer: next action or explicit evidence gap'),18,bold=True,anchor='middle')
-    d.text(500,725,text('M11 为可选启发式汇总，不替代剖面','M11 is optional heuristic summary, not a substitute for the profile'),12,anchor='middle')
+    d.rect(70,343,270,66,'#eaf1f8','#b4cadd')
+    d.text(205,366,text('③ 选择 URL','3. Select URLs'),17,bold=True,anchor='middle')
+    d.text(205,384,text('记录发布者、来源角色与查询','Record publisher, source role, and query'),12,anchor='middle')
+    d.text(205,401,text('M6 来源可信度','M6 source credibility'),12,fill='#426d8e',anchor='middle')
+    d.rect(70,433,270,64,'#eaf1f8','#b4cadd')
+    d.text(205,461,'web_fetch',20,bold=True,anchor='middle')
+    d.text(205,482,text('取得正文、片段或失败状态','Obtain body, fragment, or failure state'),14,anchor='middle')
+    d.text(205,499,text('M2 内容状态 · M3 充分性','M2 content status · M3 adequacy'),12,fill='#426d8e',anchor='middle')
+    d.rect(690,288,270,72,'#f3edf9','#cbbce5')
+    d.text(825,316,text('模型先验（M7）','Model prior (M7)'),18,bold=True,anchor='middle')
+    d.text(825,337,text('单独登记为估计或测试；','Register separately as estimate or test;'),13,anchor='middle')
+    d.text(825,354,text('不等同于已取得来源','not retrieved evidence'),13,anchor='middle')
+    d.rect(365,512,270,50,'#f5f6f7','#ccd3da')
+    d.text(500,538,text('④ 汇总证据台账','4. Integrate the evidence ledger'),17,bold=True,anchor='middle')
+    d.text(500,555,text('查询、URL、返回内容、成本与缺口（M8）','Queries, URLs, returns, effort, gaps (M8)'),12,anchor='middle')
+    d.rect(365,587,270,58,'#fff6df','#e0bd67')
+    d.text(500,611,text('⑤ 评估充分性与','5. Assess adequacy and'),17,bold=True,anchor='middle')
+    d.text(500,630,text('版本适用性','version applicability'),16,anchor='middle')
+    d.text(500,641,text('M4、M9、M10','M4, M9, M10'),11,anchor='middle')
+    d.rect(700,589,250,58,'#fff4e8','#dfaa6e')
+    d.text(825,613,text('调整查询并重试','Refine query and retry'),17,bold=True,anchor='middle')
+    d.text(825,632,text('仍有可检索的证据空间','When evidence remains searchable'),12,anchor='middle')
+    d.rect(300,700,400,60,'#e9f3ee','#8fb9a3')
+    d.text(500,724,text('⑥ 作答：下一步行动','6. Answer: next action'),18,bold=True,anchor='middle')
+    d.text(500,743,text('或明确证据缺口','or explicit evidence gap'),16,anchor='middle')
+    d.text(500,756,text('M11 为可选启发式汇总，不替代剖面','M11 is optional heuristic summary, not a substitute for the profile'),11,anchor='middle')
     d.line([(500,60),(500,88)],arrow=True)
-    d.line([(500,130),(500,155)],arrow=True)
-    d.line([(430,197),(205,197),(205,240)],arrow=True)
-    d.text(296,218,text('是','yes'),13,fill='#26735f',anchor='middle')
-    d.line([(205,304),(205,328)],arrow=True)
-    d.line([(205,378),(205,402)],arrow=True)
-    d.line([(340,434),(365,493)],arrow=True)
-    d.line([(650,176),(800,176),(800,278)],arrow=True,dash=True)
-    d.text(804,200,text('否：先验分支','no: prior branch'),12,fill='#7252a1')
-    d.line([(800,350),(800,470),(635,470),(635,518)],arrow=True,dash=True)
-    d.line([(500,543),(500,568)],arrow=True)
-    d.line([(500,620),(500,680)],arrow=True)
-    d.text(520,653,text('证据充分或边界已说明','sufficient evidence or explicit boundary'),12,fill='#26735f')
-    d.line([(635,594),(675,594)],arrow=True)
-    d.text(654,582,text('不足','insufficient'),12,fill='#aa6d18',anchor='middle')
-    d.line([(797,565),(797,218),(340,218)],arrow=True,dash=True)
+    d.line([(500,142),(500,165)],arrow=True)
+    d.line([(430,219),(205,219),(205,255)],arrow=True)
+    d.text(296,241,text('是','yes'),13,fill='#26735f',anchor='middle')
+    d.line([(205,319),(205,343)],arrow=True)
+    d.line([(205,409),(205,433)],arrow=True)
+    d.line([(340,465),(365,512)],arrow=True)
+    d.line([(650,192),(825,192),(825,288)],arrow=True,dash=True)
+    d.text(829,215,text('否：先验分支','no: prior branch'),12,fill='#7252a1')
+    d.line([(825,360),(825,488),(635,488),(635,537)],arrow=True,dash=True)
+    d.line([(500,562),(500,587)],arrow=True)
+    d.line([(500,645),(500,700)],arrow=True)
+    d.text(520,675,text('证据充分或边界已说明','sufficient evidence or explicit boundary'),12,fill='#26735f')
+    d.line([(635,616),(700,616)],arrow=True)
+    d.text(668,604,text('不足','insufficient'),12,fill='#aa6d18',anchor='middle')
+    # The retry loop visibly returns to web_search while routing around the
+    # separate model-prior branch rather than through it.
+    d.line([(825,589),(985,589),(985,235),(205,235),(205,255)],arrow=True,dash=True)
     d.save()
 
 
@@ -193,14 +200,16 @@ def full_matrix_panel(lang,panel,metrics):
     title={'a':('A. Official-source conditions','A．官方来源条件'),'b':('B. Alternative, prior, and acquisition conditions','B．替代来源、先验与获取条件'),'c':('C. Instruction checks and heuristic index','C．指导材料检查与启发式指数')}[panel]
     d.text(18,28,title[0] if en else title[1],22,bold=True)
     d.text(18,49,'Archived codes by workflow. Each task row has CANN and CUDA columns; G uses ROCm/HIP in the second column.' if en else '按工作流组织的历史编码。每项任务均列 CANN 与 CUDA；G 的第二列为 ROCm/HIP。',13,fill='#566474')
-    left=250;cell=105;header_y=66
-    d.text(17,92,'Task' if en else '任务',17,bold=True)
+    # Reserve a readable task-label column: the prior 250-unit column let the
+    # migration label run beneath the first score cell in the rendered PDF.
+    left=310;cell=96;header_y=66
+    d.text(18,92,'Task' if en else '任务',18,bold=True)
     for i,metric in enumerate(metrics):
         x=left+i*cell*2
         d.rect(x,header_y,cell*2-6,25,'#edf1f5',r=3)
-        d.text(x+cell-3,84,metric_label(metric,lang),14,bold=True,anchor='middle')
-        d.text(x+cell/2,108,'CANN',13,bold=True,anchor='middle')
-        d.text(x+cell*1.5,108,'CUDA‡',13,bold=True,anchor='middle')
+        d.text(x+cell-3,84,metric_label(metric,lang),15,bold=True,anchor='middle')
+        d.text(x+cell/2,108,'CANN',14,bold=True,anchor='middle')
+        d.text(x+cell*1.5,108,'CUDA‡',14,bold=True,anchor='middle')
     y=120
     stripe=False
     for row in ordered_tasks(tasks):
@@ -213,19 +222,20 @@ def full_matrix_panel(lang,panel,metrics):
         if stripe:d.rect(12,y,1074,h,'#f8fafb',r=0)
         stripe=not stripe
         name=(SHORT if en else SHORT_CN)[ord(t)-65]
-        suffix=('  [CANN / ROCm-HIP]' if en else '［CANN／ROCm-HIP］') if t=='G' else ''
-        d.text(18,y+16,t,14,bold=True)
-        d.text(42,y+16,name+suffix,13.5)
+        # The footer establishes G's ROCm/HIP comparison. Keeping the row
+        # label short makes the full matrix readable at normal PDF size.
+        d.text(20,y+16,t,15,bold=True)
+        d.text(50,y+16,name,16)
         for i,metric in enumerate(metrics):
             x=left+i*cell*2
             for side,stack in enumerate(['cann','cuda']):
                 value=score_value(scores[t][stack],metric)
                 d.rect(x+side*cell+2,y+2,cell-7,h-4,metric_color(value,metric),r=3)
                 shown='—' if value in (None,'受阻') else (f'{value:.2f}' if metric==11 else str(value))
-                d.text(x+side*cell+(cell-5)/2,y+16,shown,14,bold=True,anchor='middle')
+                d.text(x+side*cell+(cell-5)/2,y+16,shown,15,bold=True,anchor='middle')
         y+=h
-    d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 denotes lower effort). “—” = unobserved core adequacy.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 高值表示更低成本）。“—”表示核心充分性未观测。',12,fill='#566474')
-    d.text(18,892,'* M7 is an archived estimate. † M11 is the historical heuristic availability index. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为历史启发式可得性指数。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',12,fill='#566474')
+    d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved core adequacy.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 为逆向成本评分）。“—”表示核心充分性未观测。',13,fill='#566474')
+    d.text(18,892,'* M7 is an archived estimate. † M11 is the historical heuristic availability index. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为历史启发式可得性指数。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
     d.save()
 
 
@@ -269,7 +279,7 @@ def access_profile(lang):
                 shown='—' if value=='受阻' else value
                 d.text(x+(cell-5)/2,y+16,shown,14,bold=True,anchor='middle')
         y+=h
-    d.text(18,872,'Access: C = core obtained; P = partial / alternative route; N = not obtained. Adequacy and version retain archival 1–5 codes.' if en else '读取：C＝核心正文已取得；P＝部分／替代路径取得；N＝未取得。充分性和版本保留历史 1–5 编码。',12,fill='#566474')
+    d.text(18,872,'Content status: C = core obtained; P = partial content obtained; N = not obtained. Access route is recorded separately in the protocol.' if en else '内容状态：C＝核心正文已取得；P＝部分内容已取得；N＝未取得。访问路径在协议中单独记录。',12,fill='#566474')
     d.text(18,892,'‡ For G, CUDA‡ = ROCm/HIP; it is a migration analogy and is excluded from CANN/CUDA summaries.' if en else '‡ G 的 CUDA‡ 实为 ROCm/HIP；它是迁移类比，不计入 CANN/CUDA 汇总。',12,fill='#566474')
     d.save()
 

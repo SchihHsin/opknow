@@ -113,6 +113,8 @@ def build_units(legacy, raw, archived_scores, tasks):
                 "legacy_intermediates_recomputed_exact": intermediates,
                 "recorded_access_status": ACCESS[r["core_fetch"]],
                 "access_status_provenance": "Descriptive mapping of retained core_fetch code; no new page retrieval or content verification.",
+                "recorded_access_route": "unknown_not_consistently_retained",
+                "access_route_provenance": "The legacy core_fetch field does not distinguish an original entry from an alternative route; route is therefore not inferred retrospectively.",
                 "retrieval_does_not_establish": ["content sufficiency", "answer correctness", "actual execution success"],
                 "candidate_secondary_count_original": len(r["sources"]),
                 "known_official_source_indices_in_legacy_secondary_list": ownership_exclusions,

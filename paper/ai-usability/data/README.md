@@ -27,14 +27,14 @@ Run the command from the paper directory, or invoke the script by its location f
 
 `generated/paper_analysis.json` contains 25-pair descriptive statistics, separately labelled 26-pair historical statistics, workflow summaries, and an arithmetic removal of the model-prior channel. It records both means of exact formula results and means of the historical three-decimal archived results, avoiding silent rounding differences.
 
-`generated/units.json` retains all 52 units with their original RAW and original scores, descriptive access status, known source-ownership exclusion, unresolved issues, and arithmetic sensitivity result. `generated/task_table.md`, `generated/corrections.md`, and `generated/english_findings.md` are readable paper appendices.
+`generated/units.json` retains all 52 units with their original RAW and original scores, descriptive content-acquisition status, an explicitly unknown historical access route when the archive does not preserve one, known source-ownership exclusion, unresolved issues, and arithmetic sensitivity result. `generated/task_table.md`, `generated/corrections.md`, and `generated/english_findings.md` are readable paper appendices. `worked-recording-example-a-cann.json` shows how a future record links requirements, events, sources, saved evidence, and codes without altering frozen data.
 
 ## What changes and what stays archived
 
 - G is a migration analogy whose CUDA-labelled side examines AMD ROCm/HIP. It remains in the archive but is excluded from the 25-pair primary description.
 - H.cuda's `nvidia-blog` entry is treated as vendor-owned official material in the audit view. It is removed from the count of candidate secondary sources in that view. Original RAW and historical scores are not overwritten or presented as corrected scores.
 - A.cann's zero failed-fetch count conflicts with a missing-body report in the retained log. It remains unresolved; no replacement value is invented.
-- `static` and `ssr` map to the same descriptive access status. `partial` and `spa`/`robots` remain distinct. This mapping does not infer sufficiency or execution success. The old unequal numeric scores are retained only to reproduce the historical formula.
+- `static` and `ssr` map to the same descriptive content-acquisition status. `partial` and `spa`/`robots` remain distinct. The archived `core_fetch` field does not consistently preserve whether an entry was original or alternative, so no access route is inferred from it. This mapping does not infer sufficiency or execution success. The old unequal numeric scores are retained only to reproduce the historical formula.
 - Removing the prior channel sets `OWN=0` inside the historical formula while leaving all other inputs unchanged. It is an assumption-sensitivity calculation, not a run of a different model or a no-retrieval condition.
 
 ## Data interpretation

@@ -24,9 +24,9 @@ Retain queries, URLs, returns or locatable excerpts, publisher identity, source 
 
 ## 4. 编码与缺失 / Code observations and missingness
 
-M1记录官方发现路径；M2区分核心正文取得、部分/替代入口取得、未取得、未知，static与SSR按实际返回同等处理。M3对照任务要求判断正文充分性，未读取时记unobserved，不推断成低质量。M4记录适用版本与未解决的配套关系，多版本存在不自动等于模糊。M5/M6保留替代来源数量、归属、可信度及独立性的不确定。M7标明自评/推断或另行实测，不能将自评当训练覆盖事实。M8保留原始次数及成本公式。M9/M10区分最终答案检查、过程笔记判断与真正执行结果。M11必须附公式和解释边界，不称为已校准正确概率。
+M1记录官方发现路径。M2只记录**内容取得程度**：核心正文已取得、部分内容已取得、未取得或未知；static与SSR按实际返回同等处理。**访问路径**另列为原入口、替代入口或未知。完整正文即使经镜像取得，仍记为“核心正文已取得＋替代入口”，而不能因为入口替代就降为部分内容。M3对照任务要求判断正文充分性，未读取时记unobserved，不推断成低质量。M4记录适用版本与未解决的配套关系，多版本存在不自动等于模糊。M5/M6保留替代来源数量、归属、可信度及独立性的不确定。M7标明自评/推断或另行实测，不能将自评当训练覆盖事实。M8保留原始次数及成本公式。M9/M10区分最终答案检查、过程笔记判断与真正执行结果。M11必须附公式和解释边界，不称为已校准正确概率。
 
-M1 records discovery. M2 distinguishes core acquisition, partial/alternative acquisition, non-acquisition, and unknown outcomes, treating static and server-rendered pages according to returned content. M3 assesses adequacy against task requirements; inaccessible content is unobserved, not presumed poor. M4 records applicability and unresolved compatibility relations. M5/M6 retain alternative-source attribution and uncertainty. M7 distinguishes estimates from separate empirical tests. M8 retains raw counts and cost assumptions. M9/M10 distinguish response inspection, judgments about notes, and actual execution. M11 requires a disclosed formula and must not be interpreted as calibrated correctness probability.
+M1 records discovery. M2 records **content acquisition status** only: core content obtained, partial content obtained, not obtained, or unknown; static and server-rendered pages are treated according to returned content. **Access route** is a separate field: original entry, alternative entry, or unknown. A complete body obtained through a mirror is therefore coded as “core content obtained + alternative entry,” not downgraded to partial content merely because the route differed. M3 assesses adequacy against task requirements; inaccessible content is unobserved, not presumed poor. M4 records applicability and unresolved compatibility relations. M5/M6 retain alternative-source attribution and uncertainty. M7 distinguishes estimates from separate empirical tests. M8 retains raw counts and cost assumptions. M9/M10 distinguish response inspection, judgments about notes, and actual execution. M11 requires a disclosed formula and must not be interpreted as calibrated correctness probability.
 
 ## 5. 输出可复核证据链 / Report an inspectable evidence chain
 
@@ -42,6 +42,6 @@ The archived conversion task requires an ATC command, input/device parameters, a
 
 ## 记录模板 / Recording template
 
-见 `record-template.json`。空值表示待记录，不是已完成的观测。原数据、归类修订和未决项见 `data/`；回溯重算脚本见 `scripts/build_paper_analysis.py`。
+见 `record-template.json` 中每类数组的单条字段形状，以及 `data/worked-recording-example-a-cann.json` 中基于既有 A.cann 档案填写的示例。空值表示待记录，不是已完成的观测；示例不补造 URL、完整返回或执行结果。原数据、归类修订和未决项见 `data/`；回溯重算脚本见 `scripts/build_paper_analysis.py`。
 
-See `record-template.json`. Empty fields are recording slots, not completed observations. Frozen data, classification revisions, and unresolved issues are in `data/`; retrospective computation uses `scripts/build_paper_analysis.py`.
+See the item schemas in `record-template.json` and the worked example derived from the retained A.cann archive in `data/worked-recording-example-a-cann.json`. Empty fields are recording slots, not completed observations; the example does not invent URLs, complete returns, or execution outcomes. Frozen data, classification revisions, and unresolved issues are in `data/`; retrospective computation uses `scripts/build_paper_analysis.py`.

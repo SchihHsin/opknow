@@ -312,8 +312,8 @@ inference unless a separate test supports it. Numerical coding does not
 erase these differences.</p>
 <h2 id="operationalization-and-measurement-protocol">Operationalization
 and Measurement Protocol</h2>
-<h3 id="eleven-indicators-in-four-roles">Eleven indicators in four
-roles</h3>
+<h3 id="eleven-indicators-and-their-evidential-roles">Eleven indicators
+and their evidential roles</h3>
 <p>Table 2 specifies the indicators retained from the audit and
 clarifies their evidential roles. The numbering preserves the connection
 to the archived data. The proposed operationalization uses content
@@ -344,10 +344,11 @@ discovery effort under the selected search conditions.</td>
 </tr>
 <tr>
 <td>M2</td>
-<td>Official content access</td>
-<td>Core content obtained, obtained through an alternative or partial
-route, not obtained, or unknown; concerns returned content, not the
-site’s implementation technology.</td>
+<td>Content acquisition status</td>
+<td>Core content obtained, partial content obtained, not obtained, or
+unknown; concerns returned content, not the site’s implementation
+technology. Access route is recorded separately as original entry,
+alternative entry, or unknown.</td>
 </tr>
 <tr>
 <td>M3</td>
@@ -384,8 +385,10 @@ the archive contains estimates, not measured training coverage.</td>
 <tr>
 <td>M8</td>
 <td>Acquisition effort</td>
-<td>Search, read, retry, and refinement counts; a cost model is
-disclosed separately from the counts.</td>
+<td>Raw search, read, retry, and refinement counts; a cost model is
+disclosed separately from those counts. The historical matrix displays
+an inverse effort score, while the worked record retains the underlying
+calls alongside its code.</td>
 </tr>
 <tr>
 <td>M9</td>
@@ -439,21 +442,26 @@ including unresolved local facts. A version number in a URL is a clue,
 not by itself a verified compatibility relation.</p>
 <p><strong>Fourth, code with provenance.</strong> Apply published
 anchors, retain the observation-to-code mapping, and mark estimates and
-missing fields. A practical access code has four states: core content
-obtained; partial or alternative-route content obtained; required
-content not obtained; and unknown. Adequacy can use ordered anchors
-ranging from a generic fragment, through an overview and a usable main
-path, to detailed task-relevant reference material. The coding rationale
-identifies the specific requirements covered; it should not rely only on
-page length.</p>
+missing fields. Content acquisition status has four states: core content
+obtained; partial content obtained; required content not obtained; and
+unknown. Record access route separately as original entry, alternative
+entry, or unknown. Thus a complete mirrored body remains core content
+obtained even when it arrived through an alternative entry. Adequacy can
+use ordered anchors ranging from a generic fragment, through an overview
+and a usable main path, to detailed task-relevant reference material.
+The coding rationale identifies the specific requirements covered; it
+should not rely only on page length.</p>
 <p><strong>Fifth, inspect the instructions and report the
 profile.</strong> Where the final response is retained, map its material
 steps and version claims to acquired evidence. Where only notes about
 possible instructions remain, identify M9-M10 as judgments about those
 notes. Report contradictions, source dependencies, and unsupported
 steps. If an aggregate is included, report its formula, missing-data
-treatment, and dependence on assumptions. This final distinction is
-essential for retrospective use of incomplete archives.</p>
+treatment, and dependence on assumptions. The accompanying worked
+recording example makes the chain from requirement to event, source,
+saved evidence, and code explicit, including raw calls alongside the M8
+effort code. This final distinction is essential for retrospective use
+of incomplete archives.</p>
 <p>The method’s novelty lies in this connected specification of the
 unit, ledger, indicator roles, and diagnostic interpretation. Search
 rank, reading success, and version labels are familiar observations.
@@ -555,8 +563,10 @@ here.</p>
 web-reading tool that summarized HTML. The archive does not establish
 the exact deployed model identifier, extraction-model version,
 search-provider configuration, or a uniform stopping budget across
-episodes. Code in the original explanatory visualization is explicitly
-illustrative and is not used to fill these gaps. These limitations
+episodes. Complete returns and final responses are not consistently
+retained; M9-M10 therefore preserve archival assessments of the
+available guidance. Code in the original explanatory visualization is
+explicitly illustrative and is not used to fill these gaps. These limits
 constrain claims about rerunning the acquisition, but do not prevent
 inspection of the retained observations and computation.</p>
 <p>The framework developed through the audit rather than preceding it as
@@ -568,15 +578,17 @@ retrospectively does not make the earlier protocol uniform; the
 differences between its specification and the available case records are
 part of the methodological evaluation.</p>
 <h3 id="recorded-profiles">Recorded profiles</h3>
-<p>Among the 25 CANN task-side records in the main comparison, 24 are
-coded as obtaining core material directly or through a partial or
-alternative route, while D records unavailable core guidance. The
-corresponding CUDA records are all coded as acquired. Figures 2–4
-restore all eleven archival indicators and group tasks by environment
-and installation, operator development, training, inference and
-deployment, performance and optimization, debugging, and migration. G
-remains a separately marked CANN/ROCm-HIP migration analogy and is
-excluded from CANN/CUDA summaries.</p>
+<p>Among the 25 CANN task-side records in the main comparison, 22 are
+coded as core content obtained, two as partial content obtained, and one
+as core content not obtained. The corresponding CUDA records are all
+coded as core content obtained. The frozen archive does not consistently
+retain whether an entry was original or alternative, so route is not
+inferred retrospectively. Figures 2–4 present all eleven archival
+indicators and group tasks by environment and installation, operator
+development, training, inference and deployment, performance and
+optimization, debugging, and migration. G remains a separately marked
+CANN/ROCm-HIP migration analogy and is excluded from CANN/CUDA
+summaries.</p>
 <figure id="fig:fullmatrixa">
 <img src="figures/figure-2-full-matrix-a-en.svg"
 data-description="A workflow-grouped task matrix. Each row is a development task and each metric has CANN and CUDA columns. This facet shows M1 official discoverability, M2 historical extraction score, M3 official content adequacy, and M4 version clarity. G is a separately marked CANN and ROCm/HIP migration analogy and is excluded from CANN/CUDA summaries."
@@ -612,7 +624,7 @@ retains the acquisition state separately so that “content not obtained”
 is not collapsed into a score.</p>
 <figure id="fig:accessprofile">
 <img src="figures/figure-3-access-profile-en.svg"
-data-description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in actual content acquisition, archival content adequacy, and version clarity. Acquisition uses C, P, and N for core content obtained, obtained through a partial or alternative route, and not obtained. It distinguishes actual acquisition from the historical M2 extraction score shown in Figures 2 through 4. G is a separately marked CANN and ROCm/HIP migration analogy."
+data-description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in actual content acquisition, archival content adequacy, and version clarity. Acquisition uses C, P, and N for core content obtained, partial content obtained, and not obtained. Access route is a separate protocol field and is not inferred from the archival status. It distinguishes actual acquisition from the historical M2 extraction score shown in Figures 2 through 4. G is a separately marked CANN and ROCm/HIP migration analogy."
 alt="Access-profile detail that places actual content-acquisition states beside the archival adequacy and version codes. It follows the same workflow groups and task order as Figures 2–4, but is retained only to explain access cases." />
 <figcaption aria-hidden="true">Access-profile detail that places actual
 content-acquisition states beside the archival adequacy and version
