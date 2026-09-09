@@ -362,6 +362,8 @@ def framework(lang):
         svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H370"')
         svg = svg.replace('<text x="351" y="526"', '<text x="365" y="526"')
         svg = svg.replace('<rect x="172" y="592" width="156"', '<rect x="140" y="592" width="220"')
+        svg = svg.replace('<path d="M365,625 H360 V700"', '<path d="M420,643 V700"')
+        svg = svg.replace('<text x="346" y="670"', '<text x="280" y="680"')
     destination = OUT / f'figure-1-framework-{lang}.svg'
     destination.write_text(svg, encoding='utf-8')
 
