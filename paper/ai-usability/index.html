@@ -8,7 +8,7 @@
     :root{color-scheme:light;--ink:#24313d;--muted:#536574;--line:#dce3e7;--accent:#176253;--paper:#f0f3f5}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;overflow:hidden}
     .bar{position:fixed;top:0;left:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:64px;width:100%;padding:12px clamp(20px,5vw,72px);background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);transition:transform .22s ease,opacity .16s ease}
-    .brand{min-width:0}.title{font:600 15px/1.35 Georgia,"Noto Serif CJK SC",serif}.authors{margin-top:3px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand{min-width:0}.title{font:600 15px/1.35 Georgia,"Noto Serif CJK SC",serif}.authors,.affiliation{margin-top:3px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.authors sup{font:700 10px/1 system-ui;vertical-align:super}
     [role="tablist"]{display:flex;gap:6px;flex:none}.tab{border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted);padding:7px 13px;font:600 13px/1 system-ui;cursor:pointer}.tab[aria-selected="true"]{border-color:#b7d1ca;background:#eaf3ef;color:#134c42}.tab:focus-visible{outline:3px solid #9bc7bb;outline-offset:2px}
     main{padding-top:64px;transition:padding-top .22s ease}.panel{display:none;min-height:calc(100vh - 64px)}.panel.active{display:block}.reader{display:block;border:0;width:100%;height:calc(100vh - 64px);background:var(--paper)}
     body.reader-scrolled .bar{transform:translateY(-100%);opacity:0;pointer-events:none}body.reader-scrolled main{padding-top:0}body.reader-scrolled .panel{min-height:100vh}body.reader-scrolled .reader{height:100vh}
@@ -19,7 +19,8 @@
   <header class="bar">
     <div class="brand">
       <div class="title" id="reader-title">AI 能找到开发者所需的知识吗？开发者生态中面向 AI 的知识可得性的定义与度量</div>
-      <div class="authors">时昕昱　·　闫浩（通讯作者）　·　张敬文　·　郦旻硕　·　Huawei Technologies (China)</div>
+      <div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div>
+      <div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>
     </div>
     <div role="tablist" aria-label="论文语言">
       <button class="tab" id="tab-cn" role="tab" aria-selected="true" aria-controls="panel-cn">中文</button>
