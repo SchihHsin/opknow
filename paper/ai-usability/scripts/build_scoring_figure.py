@@ -1,5 +1,26 @@
-"""Compact bilingual rubric figure; run with Matplotlib. Does not compute task scores."""
+"""Compact bilingual rubric figure; run with Matplotlib. Uses the existing scoring function for the M6 worked example."""
 from pathlib import Path
+import argparse
+import importlib.util
+from statistics import median
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--only', choices=['official', 'support', 'answers', 'confidence'])
+args = parser.parse_args()
+score_path = Path(__file__).resolve().parents[3] / 'score_metrics.py'
+spec = importlib.util.spec_from_file_location('scoring', score_path)
+scoring = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(scoring)
+example = scoring.RAW['A']['cann']
+baselines = [scoring.SOURCE_CRED[k] for k in example['sources']]
+mean = sum(baselines) / len(baselines)
+adjustments = [scoring.CONSIST[example['consist']],
+               scoring.recency_factor(example['dates']),
+               scoring.independence_factor(example['platforms'])]
+median_age = median(scoring._age_months(d) for d in example['dates'] if d)
+platform_count = len(set(example['platforms']))
+final_score = scoring.score6_sec_cred(example)
+
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -36,6 +57,9 @@ def rows(ax,lang,items,offset=0):
    text(ax,x+cw/2-5,y+7,label,8 if lang=='cn' else 7.6,ha='center')
 
 def save(fig,name,lang):
+ if args.only and name != args.only:
+  plt.close(fig)
+  return
  for ext in ('svg','pdf','png'):fig.savefig(OUT/f'figure-scoring-{name}-{lang}.{ext}',dpi=180)
  plt.close(fig)
 
@@ -58,24 +82,29 @@ for lang in ('cn','en'):
   for sp in ['left','bottom']:a.spines[sp].set_color('#d3dce5')
   a.set_xlabel(xlab,fontsize=7.5,labelpad=2)
   text(ax,pos[0]*650-34,180,name,8.5,color)
- # M6 separates source baselines, adjustments, and final integer grades.
+ # M6: apply the unchanged scoring method to task A's recorded inputs.
  text(ax,8,4,'M6',8.5,M6_COLOR)
- text(ax,63,2,'来源赋值' if cn else 'Source baselines',8.5,M6_COLOR)
- text(ax,301,2,'均值与修正' if cn else 'Mean + adjustments',8.5,M6_COLOR)
+ text(ax,63,2,'任务A · ATC转换' if cn else 'Task A · ATC conversion',8.5,M6_COLOR)
+ text(ax,301,2,f'均值 {mean:.1f} ＋ 修正' if cn else f'Mean {mean:.1f} + adjustments',8.5,M6_COLOR)
  text(ax,517,2,'最终评分' if cn else 'Final score',8.5,M6_COLOR)
- labels=['聚合／转载','个人技术博客','声誉问答／专栏','云厂商文章／论文'] if cn else ['Aggregators / reposts','Personal tech blogs','Established Q&A / columns','Cloud-vendor articles / papers']
- for y,val,label in zip([23,40,57,74],[2.5,3,3.5,4],labels):
+ labels=['知乎 · 专栏','阿里云 · 技术文章','博客园 · 博客 ×2','CSDN · 博客'] if cn else ['Zhihu · column','Aliyun · technical article','Cnblogs · blogs ×2','CSDN · blog']
+ values=[f'{baselines[0]:.1f}',f'{baselines[1]:.1f}',f'{baselines[2]:.1f} ×2',f'{baselines[4]:.1f}']
+ for y,val,label in zip([23,40,57,74],values,labels):
   ax.add_patch(plt.Rectangle((63,y-2),201,15,facecolor='#f0f3fa',edgecolor='none'))
   text(ax,68,y,label,7.3 if not cn else 8)
-  text(ax,257,y,f'{val:.1f}',7.5,M6_COLOR,'right')
+  text(ax,257,y,val,7.5,M6_COLOR,'right')
  for x1,x2 in [(270,293),(481,509)]:
   ax.annotate('',xy=(x2,52),xytext=(x1,52),arrowprops={'arrowstyle':'->','color':M6_COLOR,'lw':1})
- text(ax,301,27,'来源基准均值' if cn else 'Mean of source baselines',8)
- text(ax,301,46,'＋一致性、时效、' if cn else '+ Consistency, recency,',7.6,M6_COLOR)
- text(ax,301,63,'  平台独立度修正' if cn else '  platform independence',7.6,M6_COLOR)
- text(ax,577,25,'取整并限制范围' if cn else 'Round + clamp',7.5,ha='center')
- text(ax,577,46,'1–5',18,M6_COLOR,'center')
- text(ax,577,76,'整数得分' if cn else 'Integer score',7.5,M6_COLOR,'center')
+ consist_label={'high':('一致性高','High consistency'),'mid':('一致性中','Medium consistency'),'low':('一致性低','Low consistency')}[example['consist']][0 if cn else 1]
+ reasons=[consist_label,
+          f'中位月龄 {median_age:g} 个月' if cn else f'Median age: {median_age:g} months',
+          f'{platform_count} 平台 / {len(baselines)} 条来源' if cn else f'{platform_count} platforms / {len(baselines)} sources']
+ for y,label,value in zip([27,48,69],reasons,adjustments):
+  text(ax,301,y,label,7.5)
+  text(ax,475,y,f'{value:+g}' if value else '0',8,M6_COLOR,'right')
+ text(ax,577,25,f'{mean:.1f} + {adjustments[0]:g} + {adjustments[1]:g} + {adjustments[2]:g} = {mean+sum(adjustments):.1f}',7.5,ha='center')
+ text(ax,577,43,str(final_score),21,M6_COLOR,'center')
+ text(ax,577,76,'取整 · 1–5分' if cn else 'Rounded · 1–5 scale',7.5,M6_COLOR,'center')
  save(fig,'support',lang)
  fig,ax=canvas(lang,42);text(ax,8,7,'M11',8.5,SLATE)
  bounds=[0,.24,.45,.63,.8,1];labs=['很低','低','中','中高','高'] if cn else ['Very low','Low','Medium','Medium–high','High']

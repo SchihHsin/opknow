@@ -493,10 +493,12 @@ alt="Scoring anchors for official material (M1–M4); M2 uses four categories." 
 </figure>
 <p><strong>Third-party material, model knowledge, and effort
 (M5–M8).</strong> M5 scores the number of distinct third-party sources.
-M6 starts from the mean source-type baseline, adjusted for consistency,
-publication age, and platform distribution. M7 starts from the model
-self-rating and adjusts for technical change; Figure 3 shows the anchors
-before adjustment. M8 uses weighted effort
+M6 starts from the mean of the source-type baselines specified by the
+method, adjusted for consistency, publication age, and platform
+distribution; the top of Figure 3 works through task A’s ATC model
+conversion from source values to the final integer score. M7 starts from
+the model self-rating and adjusts for technical change; Figure 3 shows
+the anchors before adjustment. M8 uses weighted effort
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>r</mi><mo>+</mo><mn>0.5</mn><mi>f</mi><mo>+</mo><mn>4</mn><mi>e</mi></mrow><annotation encoding="application/x-tex">c=r+0.5f+4e</annotation></semantics></math>,
 where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,
@@ -506,11 +508,12 @@ and
 denote search rounds, fetch calls, and failed fetches.</p>
 <figure id="fig:scoring-support">
 <img src="figures/figure-scoring-support-en.svg"
-data-description="The middle row shows M7 self-ratings. Two step plots below show M5 rising with distinct third-party source counts and M8 falling with weighted effort. Filled M8 endpoints are included; open endpoints are excluded. At the top, an M6 calculation flow separates source baselines, mean and adjustments, and the final integer score. Source baselines of 2.5, 3, 3.5, and 4 are averaged, adjusted for consistency, recency, and platform independence, then rounded and clamped to 1–5."
-alt="Scoring components for M5–M8: M7 self-ratings, M5 and M8 mappings, and M6 source-type baselines with adjustments. Appendix A specifies adjustment values." />
-<figcaption aria-hidden="true">Scoring components for M5–M8: M7
-self-ratings, M5 and M8 mappings, and M6 source-type baselines with
-adjustments. Appendix A specifies adjustment values.</figcaption>
+data-description="The middle row shows M7 self-ratings. Two step plots below show M5 rising with distinct third-party source counts and M8 falling with weighted effort. Filled M8 endpoints are included; open endpoints are excluded. At the top, M6 uses task A on CANN: a Zhihu column scores 3.5, an Aliyun technical article 4, and two Cnblogs posts plus one CSDN post 3 each, giving a mean of 3.3. High consistency adds 1. The two recorded dates have a median age of 13 months, giving a recency adjustment of 0; four platforms across five sources give a platform-independence adjustment of 0. The total of 4.3 rounds to an M6 score of 4."
+alt="Scoring components for M5–M8: an M6 worked example for ATC model conversion at the top, M7 self-ratings in the middle, and M5 and M8 mappings below. Appendix A specifies the full rules." />
+<figcaption aria-hidden="true">Scoring components for M5–M8: an M6
+worked example for ATC model conversion at the top, M7 self-ratings in
+the middle, and M5 and M8 mappings below. Appendix A specifies the full
+rules.</figcaption>
 </figure>
 <p><strong>Response properties (M9–M10).</strong> M9 examines whether a
 response specifies versions and component combinations applicable to the
@@ -1200,6 +1203,17 @@ add 0, −0.25, and −0.5. Missing dates are excluded from the median; an
 entirely missing date or platform field yields zero for that adjustment.
 Round the result to the nearest integer, resolving half-integer ties to
 the even integer, then clamp to 1–5.</p>
+<p><strong>M6 worked example.</strong> Task A on CANN (ATC model
+conversion) includes one Zhihu column, one Aliyun technical article, two
+Cnblogs posts, and one CSDN post. Their source-type baselines are 3.5,
+4.0, 3.0, 3.0, and 3.0, averaging 3.3. Content consistency is rated high
+for this task, adding 1. Both recorded publication dates are May 2025,
+giving a median age of 13 months relative to the reference month and a
+recency adjustment of 0. The five sources span four platforms, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>4</mn><mi>/</mi><mn>5</mn><mo>=</mo><mn>0.8</mn></mrow><annotation encoding="application/x-tex">p=4/5=0.8</annotation></semantics></math>
+and the platform-independence adjustment is 0. Thus,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3.3</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>4.3</mn></mrow><annotation encoding="application/x-tex">3.3+1+0+0=4.3</annotation></semantics></math>,
+which rounds to an M6 score of 4.</p>
 <p><strong>Model knowledge and acquisition effort (M7–M8).</strong> M7
 starts from the self-rating anchors in Figure 3. Stable, moderate, and
 fast technical change add 0, −0.25, and −0.5, respectively; rounding and
