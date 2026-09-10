@@ -6,7 +6,7 @@ The discussion retains findings and implications beyond the six illustrated exam
 
 | Figure / 图 | Archived basis / 档案依据 | Proposed interaction / 拟议交互 |
 | --- | --- | --- |
-| 6 | A/I: multiple version trees and distributed compatibility information; M4. / A/I：多个版本树及分散配套信息；M4。 | Query constraints, supported combinations, provenance, and unresolved conditions. Version fields are placeholders. / 按条件查询受支持组合，保留依据与未决条件，版本字段为占位。 |
+| 6 | A: scoped version trees; I: explicit pairing and driver-requirement material; M4. / A：带版本范围的来源；I：明确配套表及驱动要求材料；M4。 | Connect existing relations to a specified task environment, retaining provenance and unresolved conditions. Version fields are placeholders. / 将已有关系连接到指定任务环境，保留依据与未决条件，版本字段为占位。 |
 | 7 | E: accessible error page with generic advice; M3/M4. / E：错误页可读但建议泛化；M3/M4。 | Organize local facts, diagnostic checks, attributed cases, and unresolved branches. Case fields are placeholders. / 组织现场信息、诊断检查、案例依据与未决分支；案例为待填字段。 |
 | 8 | A: retained conversion guidance; D: missing core body; M2-M4. / A：留存转换指导；D：核心正文缺失；M2-M4。 | Preserve task, version, parameters, and related steps in a proposed export. / 在拟议导出中保留任务、版本、参数及步骤关系。 |
 | 9 | D: core how-to body not obtained; E: readable official error page with generic advice; M1-M3. / D：核心操作指南正文未取得；E：错误页可读但建议泛化；M1-M3。 | Different feedback and next actions: supply a missing guide body or provide diagnostic context and logs. / 区分反馈与后续行动：补入缺失正文，或提供诊断情境与日志。 |
@@ -21,6 +21,6 @@ The source material's design examples included illustrative dialogue, compatibil
 
 原材料的设计示例包含示意对话、配套值、耗时与来源组成比例。本次保留其交互概念，不把示意值呈现为测量结果。本次增图不改变原标题、任务观测、评分规则与此前保留的图稿。
 
-Editable bilingual SVGs are included under `figures/` in this supplement. The English LaTeX source package includes the corresponding vector PDFs. No external service is required to view the SVGs.
+Editable bilingual SVGs are included under `figures/v0.3/` in this supplement. The English LaTeX source package includes the corresponding vector PDFs. No external service is required to view the SVGs.
 
-本补充包的 `figures/` 下提供可编辑的双语SVG；英文LaTeX源码包包含对应矢量PDF。查看SVG无需外部服务。
+本补充包的 `figures/v0.3/` 下提供可编辑的双语SVG；英文LaTeX源码包包含对应矢量PDF。查看SVG无需外部服务。

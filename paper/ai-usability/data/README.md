@@ -1,3 +1,9 @@
+# v0.3 evidence extension / 原始记录扩展
+
+[trace-v0.3/README.md](trace-v0.3/README.md) describes the added call/return records and current application. Frozen files and the older worked example below remain the v0.2 numerical layer; transcript-scope statements below refer to that earlier package.
+
+新增350条工具调用—返回对及52单元关联。下文旧材料的范围说明不代表本次全部留存证据；冻结文件保持原样。
+
 # Frozen audit appendix
 
 This directory packages existing project records for an archival illustration of the paper's method. It contains no new web retrieval, agent experiment, independent human review, or hardware execution. The original project files are unchanged.

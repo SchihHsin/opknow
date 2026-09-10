@@ -73,8 +73,8 @@ def compatibility(lang):
                          tr('缺少受支持组合时，说明尚未确定的条件。',
                             'If no supported match is documented, identify the unresolved conditions.')],
           size=18,step=25,fill=TEAL)
-    d.text(14,548,tr('案例依据：A / I 的版本资料分散；对应 M4。',
-                     'Motivation: fragmented version information in A / I; linked indicator: M4.'),16,fill=MUTED)
+    d.text(14,548,tr('案例依据：A / I 的来源范围与配套关系；对应 M4。',
+                     'Motivation: source scope and compatibility relations in A / I; linked indicator: M4.'),16,fill=MUTED)
     d.save()
 
 

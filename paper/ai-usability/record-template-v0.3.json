@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.3",
+  "record_status": "blank_template_not_observed_data",
+  "template_note": "Populate arrays with objects following item_schemas. Null means unknown or not retained, never a successful observation. See data/worked-recording-example-a-cann.json for a completed archival example.",
+  "task_id": null,
+  "ecosystem": null,
+  "question_verbatim": null,
+  "goal": null,
+  "starting_artifacts": [],
+  "evidence_requirements": [],
+  "configuration": {
+    "model_identifier": null,
+    "tools_and_versions": [],
+    "collection_time": null,
+    "language": null,
+    "search_environment": null,
+    "context_policy": null,
+    "retrieval_budget_or_stopping_rule": null,
+    "unknown_fields_explanation": null
+  },
+  "item_schemas": {
+    "evidence_requirement": {
+      "requirement_id": "R1",
+      "required_for_next_action": "The command, condition, or check needed for the task.",
+      "priority": "required | optional",
+      "status": "supported | partially_supported | unsupported | unknown"
+    },
+    "acquisition_event": {
+      "event_id": "E1",
+      "sequence": 1,
+      "action": "web_search | select_url | web_fetch | refine_query | other",
+      "query_or_target": null,
+      "source_record_ids": [],
+      "outcome": null,
+      "saved_evidence_location": null
+    },
+    "source_record": {
+      "source_id": "S1",
+      "publisher_or_author": null,
+      "source_role": "official | community | mirror | model_prior | other",
+      "identifier_or_url": null,
+      "content_acquisition_status": "substantive_text | navigation_only | tool_or_access_error | unobserved",
+      "access_route": "original_entry | alternative_entry | unknown",
+      "returned_content_or_gap": null,
+      "saved_evidence_location": null,
+      "linked_original_source_id": null,
+      "requirement_coverage": "Record separately through requirement_evidence_link; substantive text does not establish full task support."
+    },
+    "requirement_evidence_link": {
+      "requirement_id": "R1",
+      "source_id_or_event_id": "S1",
+      "support": "supported | partially_supported | unsupported | unknown",
+      "rationale": null,
+      "saved_evidence_location": null
+    },
+    "indicator_code": {
+      "indicator": "M2",
+      "value": null,
+      "basis_type": "observation | archival_assessment | estimate | aggregation",
+      "rationale": null,
+      "evidence_links": []
+    }
+  },
+  "acquisition_events": [],
+  "source_records": [],
+  "requirement_evidence_links": [],
+  "content_acquisition_status_allowed_values": [
+    "core_obtained",
+    "partial_obtained",
+    "not_obtained",
+    "unknown"
+  ],
+  "access_route_allowed_values": [
+    "original_entry",
+    "alternative_entry",
+    "unknown"
+  ],
+  "counting_boundary": null,
+  "reused_observation_references": [],
+  "indicator_codes": [],
+  "unresolved_version_relations": [],
+  "prior_assessment_basis": null,
+  "final_response_record": null,
+  "output_check_basis": null,
+  "execution_performed": null,
+  "aggregation_specification": null,
+  "independent_review_performed": null,
+  "disagreements": [],
+  "limitations": [],
+  "assessed_guidance": {
+    "artifact_type": "tool_return | audit_report_guidance | final_answer",
+    "artifact_id": null,
+    "scope_evidence": [],
+    "procedural_elements": [],
+    "execution_result": null
+  }
+}
