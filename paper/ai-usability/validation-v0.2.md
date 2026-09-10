@@ -40,8 +40,8 @@ This record summarizes completed content, calculation, and artifact checks. It v
 最终PDF的SHA-256 / Final PDF SHA-256:
 
 ```text
-English: 9fe0c72eb97ead0fe1a6659399ffe94a16f00b9bdcb1faf4030643b6a81db44f
-Chinese: 1cf4edb0ccc160a514a6ab1ffe2b26c49959b906abfe58a5bdd4813c450405fa
+English: 05a75427298411d5d774d466142cd621f432006f0cb6997344b84e15049bdea8
+Chinese: 20558079ee5b0dd35f84dfa7ea78224ebd72e701e6961fc497a08516d7de2dca
 ```
 
 英文构建使用缓存中的真实ACM `acmart` v1.83（2022-02-19）及Tectonic 0.17.0。此记录没有把缓存类的版本表述为最新版本。源码包可交给作者在自己的ACM/Overleaf环境继续维护。
