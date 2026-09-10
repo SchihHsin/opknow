@@ -68,8 +68,3 @@
 - Lewis 2020、ReAct、WebArena、SWE-bench 未填写未经确认的会议版 DOI。ReAct 使用已核验的 arXiv v3 稳定 URL，并在 venue/year 保留其页面声明的 ICLR 2023 camera-ready 信息。
 - 16 个固定 keys：`brand2009`、`ko2007`、`sillito2008`、`robillard2009`、`vaithilingam2022`、`barke2023`、`lewis2020`、`yao2023`、`zhou2024webarena`、`yang2024sweagent`、`jimenez2024swebench`、`pirolli1999`、`ragas2024`、`ares2024`、`gao2023alce`、`programmerAssistant2023`。
 - 本轮没有引用不存在的已完成用户研究，也没有把别人的实验人数、执行成功率或验证结果写成本文结果。
-
-## v0.3 additions (2026-09-10)
-
-- Wang and Strong (1996), Beyond Accuracy: Crossref DOI metadata verified for authors, title, journal, volume, issue and pages. Used for the established consumer/context framing of information quality; no new empirical findings attributed to it. https://doi.org/10.1080/07421222.1996.11518099
-- W3C PROV-Overview, Working Group Note, 30 April 2013: dated official document checked for provenance entities, activities and agents. https://www.w3.org/TR/2013/NOTE-prov-overview-20130430/

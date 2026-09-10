@@ -1,7 +1,3 @@
-# Current revision: v0.3
-
-The current bilingual manuscript, PDFs and ZIPs are linked from [the paper index](../README.md). Default builders now target v0.3. Older v0.2 artifacts remain preserved; instructions referring to v0.2 below document that earlier release.
-
 # ACM CHI 英文匿名稿构建
 
 本目录只提供排版和构建基础设施；论文内容来自上级目录的 `manuscript-en-v0.2.md`，文献来自 `references.bib`。没有复制 DACT 论文内容，也没有加入默认作者、机构、实验结果或 AI 使用声明。

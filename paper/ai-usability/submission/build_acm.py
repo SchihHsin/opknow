@@ -168,9 +168,9 @@ def prepare(document: dict, source: Path, stage: Path, bibliography: Path) -> di
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", type=Path, default=PAPER / "manuscript-en-v0.3.md")
+    parser.add_argument("--source", type=Path, default=PAPER / "manuscript-en-v0.2.md")
     parser.add_argument("--bibliography", type=Path, default=PAPER / "references.bib")
-    parser.add_argument("--output", type=Path, default=PROJECT / "output/pdf/knowledge-availability-ai-chi2027-en-v0.3.pdf")
+    parser.add_argument("--output", type=Path, default=PROJECT / "output/pdf/knowledge-availability-ai-chi2027-en-v0.2.pdf")
     parser.add_argument("--no-pdf", action="store_true", help="Generate and validate LaTeX inputs without compiling a PDF.")
     parser.add_argument("--only-cached", action="store_true", help="Tell Tectonic to use cached TeX packages only.")
     parser.add_argument("--package", action="store_true", help="Also create a portable LaTeX source ZIP inside submission/.")
@@ -226,7 +226,7 @@ def main() -> None:
     (stage / "build-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
     if args.package:
-        archive_path = ROOT / "knowledge-availability-ai-acm-source-v0.3.zip"
+        archive_path = ROOT / "knowledge-availability-ai-acm-source-v0.2.zip"
         with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
             for name in ["main.tex", "references.bib"] + manifest["figure_files"]:
                 archive.write(stage / name, arcname=name)

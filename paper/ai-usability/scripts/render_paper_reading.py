@@ -19,7 +19,7 @@ body{counter-reset:fig}figure{counter-increment:fig}figcaption::before{content:"
 
 def main():
     for lang in ['en','cn']:
-        source=ROOT/f'manuscript-{lang}-v0.3.md'
+        source=ROOT/f'manuscript-{lang}-v0.2.md'
         text=source.read_text()
         cmd=[PANDOC,str(source),'--from=markdown+tex_math_dollars+implicit_figures','--to=html5','--citeproc','--bibliography',str(ROOT/'references.bib'),'--mathml','--standalone','--metadata',f'lang={"en-US" if lang=="en" else "zh-CN"}','--metadata','pagetitle=Knowledge Availability for AI']
         csl=ROOT/'submission/acm-sig-proceedings.csl'
@@ -30,7 +30,7 @@ def main():
         # then inject the shared reading-page stylesheet below.
         page=re.sub(r'\s*<style>.*?</style>','',page,flags=re.S)
         page=page.replace('</head>',f'<style>{CSS}</style></head>')
-        label='ENGLISH MANUSCRIPT · V0.3 · 10 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.3 · 2026-09-10'
+        label='ENGLISH MANUSCRIPT · V0.2 · 10 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-10'
         page=page.replace('<body>',f'<body><div class="edition">{label}</div>')
         authors='<div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>'
         page=re.sub(r'(<h1\b[^>]*>.*?</h1>)',r'\1'+authors,page,count=1,flags=re.S)

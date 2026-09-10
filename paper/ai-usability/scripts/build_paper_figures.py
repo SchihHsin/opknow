@@ -14,7 +14,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "figures" / "v0.3"
+OUT = ROOT / "figures"
 
 
 class Drawing:
@@ -173,8 +173,7 @@ PALETTE={1:'#f4c7c3',2:'#f9dec3',3:'#fbebc9',4:'#e4efe9',5:'#d0e4df'}
 
 def score_value(scores, metric):
     if metric==11:
-        s = [0 if not isinstance(v, (int,float)) else v/5 for v in scores['scores']]
-        return (1-(1-s[0]*s[1]*s[2])*(1-s[4]*s[5])*(1-s[6]))*(.7+.3*s[3])*(.9+.1*s[7])
+        return scores['overall']
     return scores['scores'][metric-1]
 
 
@@ -203,7 +202,6 @@ def metric_label(metric,lang):
 
 def full_matrix_panel(lang,panel,metrics):
     en=lang=='en'
-    applications={r['unit_id']:r for r in json.loads((ROOT/'data/trace-v0.3/applications.json').read_text())}
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
     d=Drawing(f'figure-2-full-matrix-{panel}',1100,920,lang,'Full eleven-indicator archival matrix' if en else '完整十一项指标档案矩阵')
@@ -251,14 +249,13 @@ def full_matrix_panel(lang,panel,metrics):
 
 def access_profile(lang):
     en=lang=='en'
-    applications={r['unit_id']:r for r in json.loads((ROOT/'data/trace-v0.3/applications.json').read_text())}
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     raw=json.loads((ROOT/'data/raw_original.json').read_text())
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
     d=Drawing('figure-3-access-profile',1100,920,lang,'Access-profile detail for archived task pairs' if en else '任务对的读取状态辅助剖面')
     d.text(18,28,'Access-profile detail' if en else '读取状态辅助剖面',22,bold=True)
-    d.text(18,49,'Selected-return states are separate from the historical scores in Figures 2–4.' if en else '选取返回的状态与图2–4历史评分分别呈现；右侧 M3/M4 仍为原编码。',13,fill='#566474')
-    labels=['Selected return','Archived M3 detail','Archived M4 version'] if en else ['选取返回状态','历史 M3 详尽度','历史 M4 版本']
+    d.text(18,49,'Actual acquisition states are distinct from the historical M2 accessibility scores in Figures 2–4.' if en else '该辅助图将实际获取状态与图2–4中的历史 M2 官方正文可获取性评分区分。',13,fill='#566474')
+    labels=['Content access','Official content detail','Source version clarity'] if en else ['正文读取状态','官方正文详尽度','资料版本清晰度']
     left=400;cell=114
     d.text(17,92,'Task' if en else '任务',17,bold=True)
     for g,title in enumerate(labels):
@@ -282,7 +279,7 @@ def access_profile(lang):
         suffix=('  [CANN / ROCm-HIP]' if en else '［CANN／ROCm-HIP］') if t=='G' else ''
         d.text(18,y+16,t,14,bold=True);d.text(42,y+16,name+suffix,13.5)
         for side,stack in enumerate(['cann','cuda']):
-            s=scores[t][stack]['scores'];access,col={'substantive_text_obtained':('S','#e0eee8'),'navigation_only':('N','#f3c9c6'),'not_reassessed_from_a_selected_read':('R','#e4e7ec')}[applications[t+'.'+stack]['M2']['code']]
+            s=scores[t][stack]['scores'];access,col=status[raw[t][stack]['core_fetch']]
             values=[(access,col),(s[2],PALETTE.get(s[2],'#e4e7ec')),(s[3],PALETTE.get(s[3],'#e4e7ec'))]
             for g,(value,color) in enumerate(values):
                 x=left+g*cell*2+side*cell
@@ -290,7 +287,7 @@ def access_profile(lang):
                 shown='—' if value=='受阻' else value
                 d.text(x+(cell-5)/2,y+16,shown,14,bold=True,anchor='middle')
         y+=h
-    d.text(18,872,'S = substantive text; N = navigation only; R = no selected-read reassessment. S does not imply all task requirements are met.' if en else 'S＝取得实质文本；N＝仅有导航；R＝未选取读取重新检查。S 不表示任务全部需求均已满足。',12,fill='#566474')
+    d.text(18,872,'Content status: C = core obtained; P = partial content obtained; N = not obtained. Access route is recorded separately in the protocol.' if en else '内容状态：C＝核心正文已取得；P＝部分内容已取得；N＝未取得。访问路径在协议中单独记录。',12,fill='#566474')
     d.text(18,892,'‡ For G, CUDA‡ = ROCm/HIP; it is a migration analogy and is excluded from CANN/CUDA summaries.' if en else '‡ G 的 CUDA‡ 实为 ROCm/HIP；它是迁移类比，不计入 CANN/CUDA 汇总。',12,fill='#566474')
     d.save()
 
@@ -303,12 +300,9 @@ def framework(lang):
     route, retry loop, and evidence-exhaustion branch are method content, not
     decorative detail.  The manuscript variants only translate its labels.
     """
-    source = ROOT / 'figures/figure-1-agent-evidence-cycle.svg'
+    source = OUT / 'figure-1-agent-evidence-cycle.svg'
     svg = source.read_text(encoding='utf-8')
-    svg = svg.replace('能否继续检索？', '⑤ 能否继续检索？')
     if lang == 'en':
-        import re
-        svg = re.sub(r'<desc>.*?</desc>', '<desc>An agent searches and fetches official and third-party material, assesses evidence and applicability, and continues retrieval or forms a final answer. Unresolved gaps may lead to unsupported completion.</desc>', svg, flags=re.S)
         replacements = {
             'Agent 面向技术知识生态形成答案的证据循环': 'Agent evidence cycle for technical knowledge ecosystems',
             '开发任务 / 用户问句': 'Development task / user question',
@@ -335,7 +329,7 @@ def framework(lang):
             'M9 回答版本明确性': 'M9 Response version specificity',
             'M10 回答步骤可操作性': 'M10 Procedural actionability of responses',
             '⑥ 收敛（证据充分）': '6. Converge (evidence adequate)',
-            '⑤ 能否继续检索？': '5. Can retrieval continue?',
+            '能否继续检索？': 'Can retrieval continue?',
             '未达上限且预期有效': 'Below limit and expected to help',
             '是否仍有可靠证据？': 'Any reliable evidence left?',
             '官方 / 第三方 / 先验任一充分': 'Official / third-party / prior: any adequate',
@@ -355,7 +349,7 @@ def framework(lang):
             '可能凭记忆填补空缺。': 'and may fill it from memory.',
             '已知 URL 可直接抓取': 'Known URL: fetch directly',
         }
-        for original, translated in sorted(replacements.items(), key=lambda item: -len(item[0])):
+        for original, translated in replacements.items():
             svg = svg.replace(original, translated)
         svg = svg.replace(
             'Agent 解析开发任务后，可通过搜索与抓取获取官方和第三方资料，或使用模型自带知识；随后判断证据是否充分，继续检索或基于证据收敛为终答。证据耗尽而仍不充分时存在凭记忆填补空缺的风险。',
