@@ -40,7 +40,7 @@ The title identifies the motivating question, the central construct, and the met
 
 **中文：** 通过加速计算开发任务案例，展示该方法对知识取得障碍、版本不确定和跨来源补偿路径的诊断能力，并检查编码和聚合假设对诊断的影响，明确适用边界。
 
-**English:** Through accelerator-development cases, we demonstrate how the method diagnoses barriers to knowledge access, version uncertainty, and cross-source compensating pathways. We examine how coding and aggregation assumptions affect these diagnoses and identify the method's scope.
+**English:** Through cases of software development tasks for AI-accelerated computing, we demonstrate how the method diagnoses barriers to knowledge access, version uncertainty, and cross-source compensating pathways. We examine how coding and aggregation assumptions affect these diagnoses and identify the method's scope.
 
 案例中的 G 是 CUDA→ROCm/HIP 与 CUDA→CANN 的迁移类比，应明确分类；可保留用于方法覆盖范围的展示，但不能混入 CUDA/CANN 生态均值。其他任务对仍需逐项核对起点和目标范围。
 
@@ -89,7 +89,7 @@ The existing log supports traceable retrospective analysis. The availability of 
 | 2 相关研究与概念边界 | 2 Related Work and Construct Boundaries |
 | 3 方法框架：任务、知识来源与证据取得条件 | 3 Framework: Tasks, Knowledge Sources, and Conditions of Access |
 | 4 操作化：指标、取证协议、编码与分析 | 4 Operationalization: Indicators, Evidence Collection, Coding, and Analysis |
-| 5 案例应用：加速计算开发生态 | 5 Case Application: Accelerator Development Ecosystems |
+| 5 CANN 与 CUDA 开发生态的案例分析 | 5 Case Study of the CANN and CUDA Developer Ecosystems |
 | 6 方法评价：诊断价值、可复核性与敏感性 | 6 Method Evaluation: Diagnostic Value, Reviewability, and Sensitivity |
 | 7 讨论：对开发者生态和Agent产品设计的意义 | 7 Discussion: Implications for Developer Ecosystems and Agent Design |
 | 8 局限与结论 | 8 Limitations and Conclusion |

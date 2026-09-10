@@ -2,7 +2,7 @@
 
 ## Abstract
 
-AI agents increasingly mediate developers' access to technical knowledge. Assessing this access requires examining whether relevant sources can be discovered, their content acquired, and the resulting guidance applied to a development task. We define knowledge availability for AI through a task-level protocol with eleven indicators covering knowledge sources, acquisition effort, and response properties. A retrospective application examines 26 accelerator-development tasks: 25 CANN/CUDA pairs and one separate migration analogy. The analysis identifies task-specific acquisition failures, recurring version ambiguities, and variation in support from official materials, third-party sources, and estimated model knowledge. Contrasting cases suggest that dependence on ecosystem-specific knowledge helps interpret differences that task depth alone does not explain. These findings distinguish broad documentation improvements from repairs to localized breakdowns and inform agent interfaces that expose evidence and applicability. We contribute a framework, an inspectable protocol, and a case-based account of how multidimensional assessment informs diagnosis and design.
+AI agents increasingly mediate developers' access to technical knowledge. Assessing this access requires examining whether relevant sources can be discovered, their content acquired, and the resulting guidance applied to a development task. We define knowledge availability for AI through a task-level protocol with eleven indicators covering knowledge sources, acquisition effort, and response properties. A retrospective application examines 26 software development tasks for AI-accelerated computing: 25 CANN/CUDA pairs and one separate migration analogy. The analysis identifies task-specific acquisition failures, recurring version ambiguities, and variation in support from official materials, third-party sources, and estimated model knowledge. Contrasting cases suggest that dependence on ecosystem-specific knowledge helps interpret differences that task depth alone does not explain. These findings distinguish broad documentation improvements from repairs to localized breakdowns and inform agent interfaces that expose evidence and applicability. We contribute a framework, an inspectable protocol, and a case-based account of how multidimensional assessment informs diagnosis and design.
 
 ## Keywords
 
@@ -22,7 +22,7 @@ We define **knowledge availability for AI** as the extent to which task-relevant
 
 We ask two research questions. **RQ1:** How can knowledge availability for AI be defined and operationalized so that task-specific access conditions and evidence gaps can be systematically recorded and reviewed? **RQ2:** What patterns of knowledge availability does the method reveal across development tasks, and how can those patterns inform documentation and agent design?
 
-We address these questions through a methodological framework and a retrospective application to an existing accelerator-development audit. The archive contains 26 task categories and 52 task-side records. Twenty-five categories compare CANN and CUDA development contexts; one migration category uses ROCm/HIP as the comparison destination and is treated separately. The case application connects task-level measurement to cross-task patterns and design implications. We contribute (1) a construct that distinguishes knowledge conditions from retrieval success and answer correctness; (2) a task-level protocol, indicator definitions, and portable analysis materials; and (3) worked cases and a cross-task synthesis that distinguish different breakdowns and connect them to documentation and agent design.
+We address these questions through a methodological framework and a retrospective application to an existing audit of software development tasks for AI-accelerated computing. The archive contains 26 task categories and 52 task-side records. Twenty-five categories compare CANN and CUDA development contexts; one migration category uses ROCm/HIP as the comparison destination and is treated separately. The case application connects task-level measurement to cross-task patterns and design implications. We contribute (1) a construct that distinguishes knowledge conditions from retrieval success and answer correctness; (2) a task-level protocol, indicator definitions, and portable analysis materials; and (3) worked cases and a cross-task synthesis that distinguish different breakdowns and connect them to documentation and agent design.
 
 ## Related Work and Construct Boundaries
 
@@ -136,7 +136,7 @@ The noisy-OR-shaped expression represents a design intuition: different channels
 
 The archive's M2 rule awards static pages a higher value than server-rendered pages. We retain that rule only to reproduce the archived index; the protocol above evaluates returned content regardless of rendering technology. This separation preserves the historical record without prescribing an unjustified implementation-based penalty. The index is presented as one auditable aggregation choice, while the profile and worked evidence chains carry the methodological argument.
 
-## Case Application: Accelerator Development Ecosystems
+## Case Study of the CANN and CUDA Developer Ecosystems
 
 ### Task coverage and comparison scope
 
@@ -292,6 +292,6 @@ The case demonstrates how the method distinguishes breakdowns in discovery, cont
 
 ## Conclusion
 
-We define knowledge availability for AI and operationalize it through eleven indicators connecting knowledge sources, acquisition processes, and response properties. The accelerator-development application shows how this multidimensional view identifies distinct acquisition and content failures, recurring version issues, and task-dependent configurations of knowledge support. Contrasting tasks motivate attention to ecosystem-specific knowledge requirements alongside workflow coverage.
+We define knowledge availability for AI and operationalize it through eleven indicators connecting knowledge sources, acquisition processes, and response properties. The case study of the CANN and CUDA developer ecosystems shows how this multidimensional view identifies distinct acquisition and content failures, recurring version issues, and task-dependent configurations of knowledge support. Contrasting tasks motivate attention to ecosystem-specific knowledge requirements alongside workflow coverage.
 
 These diagnoses connect measurement to design. Shared version and compatibility capabilities address recurring conditions, while readable task guides and concrete diagnostic content address localized breakdowns. Agent interfaces can expose the corresponding support, request missing environment facts, and organize the next verification step. The contribution is a reusable way to move from recorded task evidence to a specific diagnosis and an appropriate design response, supported by an inspectable protocol and case materials.
