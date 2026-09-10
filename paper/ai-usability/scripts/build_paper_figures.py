@@ -358,6 +358,9 @@ def framework(lang):
         # counterparts. Widen only these nodes while retaining their centres
         # and connection anchors, so the shared process geometry stays intact.
         svg = svg.replace('<rect x="190" y="14" width="180"', '<rect x="140" y="14" width="280"')
+        svg = svg.replace('width="178" height="64"', 'width="178" height="76"')
+        svg = svg.replace('y="351" font-size="6.2" fill="#426d8e">M7 Model-prior assessment', 'y="361" font-size="6.2" fill="#426d8e">M7 Model-prior assessment')
+        svg = svg.replace('M501,358 V427 H300 V438', 'M501,370 V427 H300 V438')
         svg = svg.replace('points="250,490 335,532 250,574 165,532"', 'points="250,490 360,532 250,574 140,532"')
         svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H420"')
         svg = svg.replace('<text x="351" y="526"', '<text x="370" y="520"')
@@ -371,7 +374,7 @@ def framework(lang):
         svg = svg.replace('<text x="470" y="541"', '<text x="520" y="541"')
         svg = svg.replace('<text x="470" y="622"', '<text x="520" y="622"')
         svg = svg.replace('<text x="470" y="636"', '<text x="520" y="636"')
-        svg = svg.replace('<path d="M570,532 H652"', '<path d="M620,532 H652"')
+        svg = svg.replace('M570,532 H652 V190 H364', 'M620,532 H652 V190 H364')
         svg = svg.replace('<path d="M470,574 V590"', '<path d="M520,574 V590"')
         svg = svg.replace('<text x="478" y="585"', '<text x="526" y="585"')
         svg = svg.replace('<path d="M365,625 H360 V700"', '<path d="M415,625 H385 V700"')

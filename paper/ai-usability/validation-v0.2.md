@@ -1,6 +1,6 @@
 # v0.2 交付验证 / Delivery validation
 
-完成日期 / Completed: 2026-09-09
+完成日期 / Completed: 2026-09-10
 
 本记录汇总本次修订中已经完成的内容、计算和文件检查。验证范围是交付物一致性与已有材料的可追溯性，不是对测量方法有效性的独立验证，也不是新的网页实验。
 
@@ -30,9 +30,9 @@ This record summarizes completed content, calculation, and artifact checks. It v
 
 | 检查 / Check | 结果 / Result |
 | --- | --- |
-| 英文PDF / English PDF | ACM单栏匿名审稿格式，16页。 / ACM single-column anonymous review format, 16 pages. |
-| 中文PDF / Chinese PDF | 中文阅读与校对版，17页。 / Chinese reading and proofreading edition, 17 pages. |
-| 逐页视觉检查 / Page-by-page visual inspection | 最终两份PDF全部33页均已渲染检查；未发现裁切、文字重叠或不可读图表。 / All 33 final pages were rendered and inspected; no clipping, text overlap, or unreadable figures were identified. |
+| 英文PDF / English PDF | ACM单栏匿名审稿格式，17页。 / ACM single-column anonymous review format, 17 pages. |
+| 中文PDF / Chinese PDF | 中文阅读与校对版，18页。 / Chinese reading and proofreading edition, 18 pages. |
+| 渲染与视觉检查 / Rendering and visual inspection | 两份PDF全部35页均已重新渲染；本轮改动的英文流程图页已逐项视觉检查，未发现裁切、文字重叠或不可读图表。 / All 35 pages across both PDFs were re-rendered; the changed English workflow-figure page was visually inspected with no clipping, overlap, or unreadable chart text. |
 | 引用与溢出 / References and overflow | 最终TeX日志无未解析引用或Overfull hbox。 / No unresolved references or Overfull hbox in the final TeX log. |
 | 文本与身份路径 / Text and identity paths | 两份PDF可提取文字，无替换字符，正文无本机用户路径或用户名。 / Text extraction succeeds without replacement characters or local user paths/names in the PDF text. |
 | ZIP完整性 / ZIP integrity | 源码包7项、补充包19项；完整性检查通过，无绝对或越界成员路径。 / Seven source-package entries and 19 supplement entries; integrity checks pass without absolute or traversal member paths. |
@@ -40,7 +40,7 @@ This record summarizes completed content, calculation, and artifact checks. It v
 最终PDF的SHA-256 / Final PDF SHA-256:
 
 ```text
-English: 5bb64ce9444e0f03630bc3f5d857d3ec2f37325c097d636f06825213cc2ab497
+English: 9fe0c72eb97ead0fe1a6659399ffe94a16f00b9bdcb1faf4030643b6a81db44f
 Chinese: 1cf4edb0ccc160a514a6ab1ffe2b26c49959b906abfe58a5bdd4813c450405fa
 ```
 
