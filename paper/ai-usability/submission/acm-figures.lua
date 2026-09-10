@@ -43,5 +43,11 @@ function Figure(figure)
   end
   if not inserted then error("Figure requires an image paragraph.") end
   figure.attributes.description = nil
+  -- Keep the short rubric illustrations next to their explanatory paragraphs.
+  if figure.identifier:match("^fig:scoring%-") then
+    local rendered = pandoc.write(pandoc.Pandoc({figure}), "latex")
+    rendered = rendered:gsub("\\begin{figure}", "\\begin{figure}[H]", 1)
+    return pandoc.RawBlock("latex", rendered)
+  end
   return figure
 end

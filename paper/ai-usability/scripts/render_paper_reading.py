@@ -30,7 +30,7 @@ def main():
         # then inject the shared reading-page stylesheet below.
         page=re.sub(r'\s*<style>.*?</style>','',page,flags=re.S)
         page=page.replace('</head>',f'<style>{CSS}</style></head>')
-        label='ENGLISH MANUSCRIPT · V0.2 · 10 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-10'
+        label='ENGLISH MANUSCRIPT · V0.2 · 11 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-11'
         page=page.replace('<body>',f'<body><div class="edition">{label}</div>')
         authors='<div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>'
         page=re.sub(r'(<h1\b[^>]*>.*?</h1>)',r'\1'+authors,page,count=1,flags=re.S)

@@ -31,9 +31,9 @@ The original title and methodological focus are retained. The three-source, elev
 - 对照已保留日志修正批次、子Agent及问句恢复的描述，保留未能确定的配置与计数边界。 / Method reporting follows the retained log and explicitly identifies unavailable configuration and unresolved counting boundaries.
 - 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要147词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 147-word English abstract.
 
-正文十一张图均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。图1-5为流程图、三张完整指标矩阵分面及读取状态辅助图；图6-8为供给侧的版本配套、诊断内容和机器可读出口；图9-11为Agent侧的缺口反馈、环境核对和来源纠错。六个示例随相关讨论出现，完整保留其他发现、第三方知识供给、优先级及方法复用论述。设计依据见[双语说明](data/design-illustrations-cn-en.md)。`scripts/build_paper_figures.py`生成原有图稿，`scripts/build_design_figures.py`生成设计插图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
+正文十五张图均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。图1为流程图，图2-5按解释段落穿插呈现评分规则，图6-9为完整指标矩阵分面及读取状态辅助图；图10-12为供给侧设计，图13-15为Agent侧设计。附录A补齐十一项指标的计算细则。六个示例随相关讨论出现，完整保留其他发现、第三方知识供给、优先级及方法复用论述。设计依据见[双语说明](data/design-illustrations-cn-en.md)。`scripts/build_paper_figures.py`生成原有图稿，`scripts/build_design_figures.py`生成设计插图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
 
-All eleven main-text figures have editable English/Chinese SVGs and English vector PDFs for LaTeX. Figures 1-5 retain the workflow, full matrix, and access profile. Figures 6-8 illustrate knowledge provision: compatibility, diagnostic content, and readable exports. Figures 9-11 illustrate agent interaction: gap feedback, environment checks, and source inspection with corrections. These selected examples accompany the broader discussion of findings, third-party knowledge, prioritization, and method reuse. The supplement includes provenance notes and twelve editable design SVGs.
+All fifteen main-text figures have editable English/Chinese SVGs and English vector PDFs for LaTeX. Figure 1 shows the workflow; Figures 2-5 interleave scoring rules with explanatory paragraphs; Figures 6-9 retain the full matrix and access profile. Figures 10-12 illustrate knowledge provision and Figures 13-15 illustrate agent interaction. Appendix A specifies all eleven scoring calculations. These selected examples accompany the broader discussion of findings, third-party knowledge, prioritization, and method reuse. The supplement includes provenance notes and twelve editable design SVGs.
 
 v0.2是按CHI Papers要求准备的匿名稿件文件，不代表已经提交或已经获得方法有效性的外部验证。作者信息、PCS条目及最终作者审阅需在正式提交时完成。原稿v0.1与原研究页面继续保留如下，作为版本来源。
 
@@ -59,3 +59,5 @@ Version 0.2 provides anonymous manuscript files prepared for CHI Papers. It has 
 以上 v0.1 为早期中文源稿，配套 PDF 仅供阅读与版式校对。当前 CHI 匿名英文稿、双语修订稿、核验文献和新版图稿见本页顶部 v0.2 交付物索引。
 
 两张正文图均为可编辑 SVG。`figure-1-agent-evidence-cycle.svg` 将 Agent 的检索、读取、先验、证据判断与收敛过程映射到测量框架；`figure-2-task-matrix.svg` 来自交互版任务矩阵的 52 个已渲染审计单元，文字和单元格均可编辑。若原始矩阵更新，在仓库根目录运行 `python3 paper/ai-usability/scripts/export_task_matrix_svg.py` 后再检查图和论文引用。
+
+分段评分图由 `scripts/build_scoring_figure.py` 生成（Matplotlib，中英文 SVG/PDF）。各图紧随对应解释段落，分档共用刻度；M6等计算细则在附录A。 / The rubric figures accompany their explanatory paragraphs and use shared grade labels; detailed calculations appear in Appendix A.

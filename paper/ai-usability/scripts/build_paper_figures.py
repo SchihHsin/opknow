@@ -204,10 +204,10 @@ def full_matrix_panel(lang,panel,metrics):
     en=lang=='en'
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
-    d=Drawing(f'figure-2-full-matrix-{panel}',1100,920,lang,'Full eleven-indicator archival matrix' if en else '完整十一项指标档案矩阵')
+    d=Drawing(f'figure-2-full-matrix-{panel}',1100,920,lang,'Full eleven-indicator task matrix' if en else '完整十一项指标任务矩阵')
     title={'a':('A. Official-source conditions','A．官方来源条件'),'b':('B. Third-party, prior, and acquisition conditions','B．第三方、先验与获取条件'),'c':('C. Response checks and composite confidence','C．回答检查与综合置信度')}[panel]
     d.text(18,28,title[0] if en else title[1],22,bold=True)
-    d.text(18,49,'Archived codes by workflow. Each task row has CANN and CUDA columns; G uses ROCm/HIP in the second column.' if en else '按工作流组织的历史编码。每项任务均列 CANN 与 CUDA；G 的第二列为 ROCm/HIP。',13,fill='#566474')
+    d.text(18,49,'Indicator scores by workflow. Each task row has CANN and CUDA columns; G uses ROCm/HIP in the second column.' if en else '按工作流组织的指标评分。每项任务均列 CANN 与 CUDA；G 的第二列为 ROCm/HIP。',13,fill='#566474')
     # Reserve a readable task-label column: the prior 250-unit column let the
     # migration label run beneath the first score cell in the rendered PDF.
     left=310;cell=96;header_y=66
@@ -242,8 +242,8 @@ def full_matrix_panel(lang,panel,metrics):
                 shown='—' if value in (None,'受阻') else (f'{value:.2f}' if metric==11 else str(value))
                 d.text(x+side*cell+(cell-5)/2,y+16,shown,15,bold=True,anchor='middle')
         y+=h
-    d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved official content detail.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 为逆向成本评分）。“—”表示官方正文详尽度未观测。',13,fill='#566474')
-    d.text(18,892,'* M7 is an archived estimate. † M11 is the historical composite confidence score from M1–M8. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为由 M1–M8 汇总的历史综合置信度。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
+    d.text(18,872,'M1–M10 are ordinal scores (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved official content detail.' if en else 'M1–M10 为有序评分（1–5；高值更有利；M8 为逆向成本评分）。“—”表示官方正文详尽度未观测。',13,fill='#566474')
+    d.text(18,892,'* M7 estimates model prior knowledge. † M11 is composite confidence from M1–M8. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为模型自带知识估计。† M11 为由 M1–M8 汇总的综合置信度。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
     d.save()
 
 
@@ -252,9 +252,9 @@ def access_profile(lang):
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     raw=json.loads((ROOT/'data/raw_original.json').read_text())
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
-    d=Drawing('figure-3-access-profile',1100,920,lang,'Access-profile detail for archived task pairs' if en else '任务对的读取状态辅助剖面')
+    d=Drawing('figure-3-access-profile',1100,920,lang,'Access-profile detail for task pairs' if en else '任务对的读取状态辅助剖面')
     d.text(18,28,'Access-profile detail' if en else '读取状态辅助剖面',22,bold=True)
-    d.text(18,49,'Actual acquisition states are distinct from the historical M2 accessibility scores in Figures 2–4.' if en else '该辅助图将实际获取状态与图2–4中的历史 M2 官方正文可获取性评分区分。',13,fill='#566474')
+    d.text(18,49,'Content-acquisition states complement the M2 accessibility scores in Figures 2–4.' if en else '该辅助图展示正文获取状态，补充图2–4中的 M2 官方正文可获取性评分。',13,fill='#566474')
     labels=['Content access','Official content detail','Source version clarity'] if en else ['正文读取状态','官方正文详尽度','资料版本清晰度']
     left=400;cell=114
     d.text(17,92,'Task' if en else '任务',17,bold=True)
@@ -301,13 +301,13 @@ def framework(lang):
     decorative detail.  The manuscript variants only translate its labels.
     """
     source = OUT / 'figure-1-agent-evidence-cycle.svg'
-    svg = source.read_text(encoding='utf-8')
+    svg = source.read_text(encoding='utf-8').replace('约束、历史与当前问句', '约束、会话上下文与当前问句')
     if lang == 'en':
         replacements = {
             'Agent 面向技术知识生态形成答案的证据循环': 'Agent evidence cycle for technical knowledge ecosystems',
             '开发任务 / 用户问句': 'Development task / user question',
             '组装任务上下文': 'Assemble task context',
-            '约束、历史与当前问句': 'Constraints, history, and current question',
+            '约束、会话上下文与当前问句': 'Constraints, conversation context, and current question',
             '① 意图解析': '1. Interpret intent',
             '② 子目标拆解': '2. Decompose subgoals',
             '③ 路由：检索 / 抓取 / 直接作答': '3. Route: search / fetch / answer',
@@ -349,12 +349,17 @@ def framework(lang):
             '可能凭记忆填补空缺。': 'and may fill it from memory.',
             '已知 URL 可直接抓取': 'Known URL: fetch directly',
         }
-        for original, translated in replacements.items():
-            svg = svg.replace(original, translated)
+        # Translate the complete accessibility description before short labels.
         svg = svg.replace(
             'Agent 解析开发任务后，可通过搜索与抓取获取官方和第三方资料，或使用模型自带知识；随后判断证据是否充分，继续检索或基于证据收敛为终答。证据耗尽而仍不充分时存在凭记忆填补空缺的风险。',
             'After interpreting a development task, an agent can search and fetch official and third-party material or draw on model prior knowledge. It then assesses evidence, retries retrieval, or converges to a final answer. Evidence exhaustion can leave a risk of filling gaps from memory.'
         )
+        for original, translated in replacements.items():
+            svg = svg.replace(original, translated)
+        # The shorter source label is translated before the full M7 label.
+        svg = svg.replace('M7 Model prior knowledge估计', 'M7 Estimated model prior knowledge')
+        # Keep the longer context label inside its existing node.
+        svg = svg.replace('font-size="9" fill="#888">Constraints, conversation context, and current question', 'font-size="8.2" fill="#888">Constraints, conversation context, and current question')
         # The English labels are materially wider than their Chinese
         # counterparts. Widen only these nodes while retaining their centres
         # and connection anchors, so the shared process geometry stays intact.

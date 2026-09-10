@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw bilingual paper illustrations adapted from the archived design demos.
+"""Draw bilingual paper illustrations adapted from the existing design demos.
 
 These are proposed interfaces, not screenshots or new experimental records.
 Uses the paper's SVG/ReportLab drawing surface for editable, vector outputs.
@@ -88,7 +88,7 @@ def acquisition(lang):
         d.rect(x+1,54,468,48,PALE,r=6)
     d.text(31,85,tr('(a) 正文未取得 · 基于任务 D', '(a) Body unavailable · based on task D'),20,bold=True)
     d.text(531,85,tr('(b) 诊断内容不足 · 基于任务 E', '(b) Content insufficient · based on task E'),20,bold=True)
-    # The interface wording below is proposed, while the task conditions are archival.
+    # The interface wording below is proposed; task conditions come from observations.
     content = [
         (15, [tr('找到相关官方指南', 'Relevant official guide found'),
               tr('返回了导航与元数据', 'Navigation and metadata returned'),
@@ -119,8 +119,8 @@ def acquisition(lang):
         lines(d,x+20,319,explanation,18,27)
         lines(d,x+20,389,action,18,27)
         button(d,x+20,447,430,label)
-    d.text(15,539,tr('档案条件：D / E。界面消息为设计示意；对应 M1-M3，重试过程关联 M8。',
-                     'Archived conditions: D / E. Proposed interface messages; M1-M3, with retry effort linked to M8.'),16,fill=MUTED)
+    d.text(15,539,tr('基于任务 D / E 的观察。界面消息为设计示意；对应 M1-M3，重试过程关联 M8。',
+                     'Based on observations in D / E. Proposed messages; M1-M3, with retry effort linked to M8.'),16,fill=MUTED)
     d.save()
 
 
@@ -153,8 +153,8 @@ def verification(lang):
     d.text(35,570,tr('下一轮检查将同时使用原建议与新增反馈。',
                     'The next check uses both the original suggestion and the new feedback.'),18)
     button(d,35,582,300,tr('添加报错或修正', 'Add error or correction'))
-    d.text(14,650,tr('命令节选来自 A 的留存材料；界面交互为示意。对应 M4、M9、M10。',
-                     'Command excerpt retained from A; interface interaction is proposed. Linked to M4, M9, M10.'),16,fill=MUTED)
+    d.text(14,650,tr('命令节选来自任务 A 中取得的快速入门；界面交互为示意。对应 M4、M9、M10。',
+                     'Command from the quickstart acquired in A; proposed interaction. Linked to M4, M9, M10.'),16,fill=MUTED)
     d.save()
 
 
@@ -163,8 +163,8 @@ def diagnostic(lang):
     d=Drawing('figure-7-diagnostic-content-design',1000,590,lang,
               'Proposed task-oriented diagnostic content based on the generic error page in E')
     window(d,tr('EZ9999：诊断资料的组织方式','EZ9999: organizing diagnostic guidance'),lang,590)
-    d.text(35,98,tr('档案条件：已有专属错误页，原因与处理建议泛化。',
-                    'Archived condition: a dedicated error page with generic diagnostic advice.'),18,fill=MUTED)
+    d.text(35,98,tr('任务 E 中观察到：已有专属错误页，原因与处理建议泛化。',
+                    'Observed in task E: a dedicated error page with generic diagnostic advice.'),18,fill=MUTED)
     d.rect(35,116,927,64,AMBER,r=5)
     lines(d,50,141,[tr('诊断起点：错误码本身不足以确定具体原因。',
                       'Starting point: the error code alone does not identify a specific cause.'),
