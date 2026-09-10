@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Knowledge Availability for AI</title>
+  <style>
+    :root{color-scheme:light;--ink:#24313d;--muted:#536574;--line:#dce3e7;--accent:#176253;--paper:#f0f3f5}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+    .bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:64px;padding:12px clamp(20px,5vw,72px);background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .brand{min-width:0}.title{font:600 15px/1.25 Georgia,"Noto Serif CJK SC",serif}.authors{margin-top:3px;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    [role="tablist"]{display:flex;gap:6px;flex:none}.tab{border:1px solid transparent;border-radius:999px;background:transparent;color:var(--muted);padding:7px 13px;font:600 13px/1 system-ui;cursor:pointer}.tab[aria-selected="true"]{border-color:#b7d1ca;background:#eaf3ef;color:#134c42}.tab:focus-visible{outline:3px solid #9bc7bb;outline-offset:2px}
+    .panel{display:none;min-height:calc(100vh - 65px)}.panel.active{display:block}.reader{display:block;border:0;width:100%;height:calc(100vh - 65px);background:var(--paper)}
+    @media(max-width:620px){.bar{align-items:flex-start;gap:12px;flex-direction:column}.reader{height:calc(100vh - 105px)}.panel{min-height:calc(100vh - 105px)}}
+  </style>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <div class="title">AI 能找到开发者所需的知识吗？</div>
+      <div class="authors">闫浩　·　时昕昱　·　张敬文　·　俪旻硕　·　Huawei Technologies (China)</div>
+    </div>
+    <div role="tablist" aria-label="论文语言">
+      <button class="tab" id="tab-cn" role="tab" aria-selected="true" aria-controls="panel-cn">中文</button>
+      <button class="tab" id="tab-en" role="tab" aria-selected="false" aria-controls="panel-en">English</button>
+    </div>
+  </header>
+  <main>
+    <section class="panel active" id="panel-cn" role="tabpanel" aria-labelledby="tab-cn"><iframe class="reader" title="中文论文" src="manuscript-cn-v0.2.html"></iframe></section>
+    <section class="panel" id="panel-en" role="tabpanel" aria-labelledby="tab-en"><iframe class="reader" title="English manuscript" data-src="manuscript-en-v0.2.html"></iframe></section>
+  </main>
+  <script>
+    const tabs=[...document.querySelectorAll('[role="tab"]')];
+    function select(lang){
+      tabs.forEach(tab=>{const active=tab.id===`tab-${lang}`;tab.setAttribute('aria-selected',active);document.getElementById(`panel-${tab.id.slice(-2)}`).classList.toggle('active',active)});
+      const frame=document.querySelector(`#panel-${lang} iframe`);if(!frame.src)frame.src=frame.dataset.src;
+      history.replaceState(null,'',`#${lang}`);
+    }
+    tabs.forEach(tab=>tab.addEventListener('click',()=>select(tab.id.slice(-2))));
+    select(location.hash==='#en'?'en':'cn');
+  </script>
+</body>
+</html>
