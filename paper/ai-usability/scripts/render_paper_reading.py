@@ -30,7 +30,7 @@ def main():
         # then inject the shared reading-page stylesheet below.
         page=re.sub(r'\s*<style>.*?</style>','',page,flags=re.S)
         page=page.replace('</head>',f'<style>{CSS}</style></head>')
-        label='ENGLISH MANUSCRIPT · V0.2 · 9 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-09'
+        label='ENGLISH MANUSCRIPT · V0.2 · 10 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-10'
         page=page.replace('<body>',f'<body><div class="edition">{label}</div>')
         page=page.replace('<div id="refs"',f'<h2>{"References" if lang=="en" else "参考文献"}</h2>\n<div id="refs"')
         # Long citation URLs are wrapped by CSS; sources remain local and offline.

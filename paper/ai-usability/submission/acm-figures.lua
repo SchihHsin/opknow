@@ -5,6 +5,9 @@ function Table(tbl)
     local header = pandoc.utils.stringify(tbl.head)
     local widths = header:match("^ID") and {0.07, 0.27, 0.66} or {0.25, 0.31, 0.44}
     for i=1,3 do tbl.colspecs[i][2] = widths[i] end
+  elseif #tbl.colspecs == 5 then
+    local widths = {0.40, 0.10, 0.16, 0.16, 0.18}
+    for i=1,5 do tbl.colspecs[i][2] = widths[i] end
   end
   return tbl
 end

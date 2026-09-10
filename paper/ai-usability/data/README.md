@@ -29,7 +29,11 @@ Run the command from the paper directory, or invoke the script by its location f
 
 `generated/units.json` retains all 52 units with their original RAW and original scores, descriptive content-acquisition status, an explicitly unknown historical access route when the archive does not preserve one, known source-ownership exclusion, unresolved issues, and arithmetic sensitivity result. `generated/task_table.md`, `generated/corrections.md`, and `generated/english_findings.md` are readable paper appendices. `worked-recording-example-a-cann.json` shows how a future record links requirements, events, sources, saved evidence, and codes without altering frozen data.
 
+`supplementary-analysis-notes-cn-en.md` explains the 25-pair and 26-row composite summaries, formula sensitivity, historical coding, documented discrepancies, and interpretation of proposed improvements in English and Chinese.
+
 ## What changes and what stays archived
+
+`design-illustrations-cn-en.md` identifies the archived task conditions and proposed interactions in Figures 6-11. The supplement includes the twelve editable bilingual SVGs in `figures/`; these illustrations do not add task observations or change the frozen data.
 
 - G is a migration analogy whose CUDA-labelled side examines AMD ROCm/HIP. It remains in the archive but is excluded from the 25-pair primary description.
 - H.cuda's `nvidia-blog` entry is treated as vendor-owned official material in the audit view. It is removed from the count of candidate secondary sources in that view. Original RAW and historical scores are not overwritten or presented as corrected scores.

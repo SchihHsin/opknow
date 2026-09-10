@@ -242,7 +242,7 @@ def full_matrix_panel(lang,panel,metrics):
                 shown='—' if value in (None,'受阻') else (f'{value:.2f}' if metric==11 else str(value))
                 d.text(x+side*cell+(cell-5)/2,y+16,shown,15,bold=True,anchor='middle')
         y+=h
-    d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved core adequacy.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 为逆向成本评分）。“—”表示核心充分性未观测。',13,fill='#566474')
+    d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved official content detail.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 为逆向成本评分）。“—”表示官方正文详尽度未观测。',13,fill='#566474')
     d.text(18,892,'* M7 is an archived estimate. † M11 is the historical composite confidence score from M1–M8. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为由 M1–M8 汇总的历史综合置信度。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
     d.save()
 
@@ -254,8 +254,8 @@ def access_profile(lang):
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
     d=Drawing('figure-3-access-profile',1100,920,lang,'Access-profile detail for archived task pairs' if en else '任务对的读取状态辅助剖面')
     d.text(18,28,'Access-profile detail' if en else '读取状态辅助剖面',22,bold=True)
-    d.text(18,49,'This detail keeps actual acquisition states distinct from the legacy M2 extraction score in Figure 2.' if en else '该辅助图将实际获取状态与图2中的历史 M2 抽取评分明确区分。',13,fill='#566474')
-    labels=['Content access','Content adequacy','Version clarity'] if en else ['正文读取状态','正文充分性','版本清晰度']
+    d.text(18,49,'Actual acquisition states are distinct from the historical M2 accessibility scores in Figures 2–4.' if en else '该辅助图将实际获取状态与图2–4中的历史 M2 官方正文可获取性评分区分。',13,fill='#566474')
+    labels=['Content access','Official content detail','Source version clarity'] if en else ['正文读取状态','官方正文详尽度','资料版本清晰度']
     left=400;cell=114
     d.text(17,92,'Task' if en else '任务',17,bold=True)
     for g,title in enumerate(labels):

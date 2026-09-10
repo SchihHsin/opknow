@@ -23,15 +23,17 @@ The original title and methodological focus are retained. The three-source, elev
 
 ### 本次修订 / Revision focus
 
+- 恢复原材料的分析主线：矩阵模式 → 获取与版本问题 → 任务知识支撑差异 → 供给侧与Agent侧设计 → 广覆盖改进与局部断点修复。正文保留综合置信度的定义和必要汇总，敏感性及计算口径集中于[双语补充分析说明](data/supplementary-analysis-notes-cn-en.md)。 / Restored the source analysis from matrix patterns through task-specific knowledge support to supply-side and agent-side design, distinguishing widespread improvements from localized repairs. Sensitivity and calculation details are consolidated in the bilingual supplementary analysis notes.
+
 - 加强定义、指标角色、取证协议和观察到诊断的连接；案例仍用于论证方法的可操作性和诊断范围。 / Strengthened construct boundaries, indicator roles, recording procedures, and observation-to-diagnosis links.
 - G 的 ROCm/HIP 迁移类比单列；主比较为25对，全部26任务52单元保留。 / G is a separate migration analogy; 25 pairs form the comparison and all 52 archival records remain available.
-- 静态与SSR页面按取得内容同等描述；原评分单独冻结供追溯。M7标明先验估计，M9/M10不再暗示实际执行成功，M11明确为启发式指数。 / Access profiles describe acquired content regardless of rendering technology. Historical scores are preserved; prior estimates, instruction checks, and heuristic aggregation are explicitly distinguished.
+- 静态与SSR页面按取得内容同等描述；原评分单独冻结供追溯。M7标明先验估计，M9/M10不再暗示实际执行成功，M11明确为由M1–M8汇总的综合置信度。 / Access profiles describe acquired content regardless of rendering technology. Historical scores are preserved; prior estimates, response checks, and the Composite Confidence Score computed from M1–M8 are explicitly distinguished.
 - 对照已保留日志修正批次、子Agent及问句恢复的描述，保留未能确定的配置与计数边界。 / Method reporting follows the retained log and explicitly identifies unavailable configuration and unresolved counting boundaries.
-- 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要141词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 141-word English abstract.
+- 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要147词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 147-word English abstract.
 
-正文五张图（流程图、三张完整指标矩阵分面及读取状态辅助图）均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。`scripts/build_paper_figures.py`从冻结数据生成图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
+正文十一张图均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。图1-5为流程图、三张完整指标矩阵分面及读取状态辅助图；图6-8为供给侧的版本配套、诊断内容和机器可读出口；图9-11为Agent侧的缺口反馈、环境核对和来源纠错。六个示例随相关讨论出现，完整保留其他发现、第三方知识供给、优先级及方法复用论述。设计依据见[双语说明](data/design-illustrations-cn-en.md)。`scripts/build_paper_figures.py`生成原有图稿，`scripts/build_design_figures.py`生成设计插图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
 
-All five main-text figures (the workflow, three full-matrix facets, and the access-profile detail) have editable English/Chinese SVGs; English vector PDFs are included for LaTeX. The build scripts preserve the connection to the frozen records and bibliography.
+All eleven main-text figures have editable English/Chinese SVGs and English vector PDFs for LaTeX. Figures 1-5 retain the workflow, full matrix, and access profile. Figures 6-8 illustrate knowledge provision: compatibility, diagnostic content, and readable exports. Figures 9-11 illustrate agent interaction: gap feedback, environment checks, and source inspection with corrections. These selected examples accompany the broader discussion of findings, third-party knowledge, prioritization, and method reuse. The supplement includes provenance notes and twelve editable design SVGs.
 
 v0.2是按CHI Papers要求准备的匿名稿件文件，不代表已经提交或已经获得方法有效性的外部验证。作者信息、PCS条目及最终作者审阅需在正式提交时完成。原稿v0.1与原研究页面继续保留如下，作为版本来源。
 

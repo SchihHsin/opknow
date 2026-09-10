@@ -36,7 +36,9 @@ python3 submission/build_acm.py --package
 
 SVG 路径会自动改用相邻同名 PDF；SVG→PDF 的图稿导出由图表脚本完成。构建不会把 SVG 栅格化。图片必须具有 `description`，将转换为 ACM `\Description{}`。构建包内图片使用相对路径，元数据不写入用户路径。
 
-CCS 分类未由模板猜测，当前不显示 CCS。需要加入时应在确认具体 ACM 分类后扩展模板。匿名稿不添加会议、DOI、版权和作者机构占位信息；这些属于接受后的正式制作流程。
+当前模板包含 HCI theory, concepts and models 与 Documentation 两项 CCS 分类。匿名稿不填写真实作者机构、会议或 DOI 信息。
+
+图6-11的设计示意由 `scripts/build_design_figures.py` 输出，与其他图稿一样使用中英文SVG和英文矢量PDF；源码包包含正文所引用的全部十一张图。
 
 ## 工具来源
 
