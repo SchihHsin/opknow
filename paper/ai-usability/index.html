@@ -33,7 +33,7 @@
     const tabs=[...document.querySelectorAll('[role="tab"]')];
     function select(lang){
       tabs.forEach(tab=>{const active=tab.id===`tab-${lang}`;tab.setAttribute('aria-selected',active);document.getElementById(`panel-${tab.id.slice(-2)}`).classList.toggle('active',active)});
-      const frame=document.querySelector(`#panel-${lang} iframe`);if(!frame.src)frame.src=frame.dataset.src;
+      const frame=document.querySelector(`#panel-${lang} iframe`);if(!frame.getAttribute('src'))frame.src=frame.dataset.src;
       history.replaceState(null,'',`#${lang}`);
     }
     tabs.forEach(tab=>tab.addEventListener('click',()=>select(tab.id.slice(-2))));
