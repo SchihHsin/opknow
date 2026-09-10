@@ -1,5 +1,6 @@
 """Compact bilingual rubric figure; run with Matplotlib. Does not compute task scores."""
 from pathlib import Path
+from textwrap import wrap
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -20,6 +21,16 @@ for language in ('cn', 'en'):
 def metric_label(name, lang):
  return f'{name}  {NAMES[lang][name]}'
 
+def label_column(ax, name, lang, y, color):
+ text(ax,8,y,name,8.5,color)
+ label=NAMES[lang][name]
+ lines=[label] if lang=='cn' else wrap(label,17,break_long_words=False,break_on_hyphens=False)
+ text(ax,39,y,'\n'.join(lines),7.5 if lang=='cn' else 7,color)
+
+def anchor_label(label,lang):
+ if lang=='cn': return label
+ return label.replace('Versions listed (\u22653),', '\u22653 versions listed').replace('Version irrelevant /\nat most one', 'Version irrelevant\n/ at most one')
+
 ROWS=[
 ('M1',BLUE,['多轮仍难找到','换词定位／\n一轮排名>10','多轮命中／\n排名7–10','一轮排名2–6','一轮排名第1'],['Still not found','Refine query /\nrank >10','Multiple rounds /\nrank 7–10','First round: 2–6','First round: 1']),
 ('M2',BLUE,['robots限制','SPA受阻','—','服务端渲染／\n部分返回','静态正文'],['robots restriction','SPA blocked','—','SSR /\npartial return','Static body']),
@@ -38,14 +49,14 @@ def text(ax,x,y,s,sz=8,c='#252b39',ha='left'):
  ax.text(x,y,s,fontsize=sz,color=c,va='top',ha=ha,linespacing=1.2)
 
 def rows(ax,lang,items,offset=0):
- start=63;cw=115;text(ax,8,7+offset,'得分' if lang=='cn' else 'Score')
- for j in range(5):text(ax,start+j*cw+cw/2-3,5+offset,str(j+1),11,items[0][1],'center')
+ start=150;cw=98;text(ax,8,7+offset,'得分' if lang=='cn' else 'Score')
+ for j in range(5):text(ax,start+j*cw+cw/2-5,5+offset,str(j+1),11,items[0][1],'center')
  for i,(name,color,zh,en) in enumerate(items):
-  y=31+i*58+offset;text(ax,8,y-2,metric_label(name,lang),8.5,color);y+=17
+  y=31+i*42+offset;label_column(ax,name,lang,y+5,color)
   for j,label in enumerate(zh if lang=='cn' else en):
    x=start+j*cw;mix=np.array(colors.to_rgb(color));strength=.2+.8*j/4
    ax.plot([x,x+cw-10],[y,y],lw=2,color='#e5eaf0' if name=='M2' and j==2 else mix*strength+(1-strength))
-   text(ax,x+cw/2-5,y+7,label,8 if lang=='cn' else 7.6,ha='center')
+   text(ax,x+cw/2-5,y+7,anchor_label(label,lang),7.7 if lang=='cn' else 7.1,ha='center')
 
 def save(fig,name,lang):
  for ext in ('svg','pdf','png'):fig.savefig(OUT/f'figure-scoring-{name}-{lang}.{ext}',dpi=180)
@@ -53,10 +64,10 @@ def save(fig,name,lang):
 
 for lang in ('cn','en'):
  cn=lang=='cn'
- fig,ax=canvas(lang,266);rows(ax,lang,ROWS[:4]);save(fig,'official',lang)
- fig,ax=canvas(lang,150);rows(ax,lang,ROWS[5:]);save(fig,'answers',lang)
- fig,ax=canvas(lang,355);rows(ax,lang,ROWS[4:5],offset=120)
- for pos,name,x,y,color,xlab in [([.085,40/355,.385,80/355],'M5',[0,1,2,3,4,5,6,7],[1,2,2,3,3,4,5,5],M5_COLOR,'去重来源数 n' if cn else 'Distinct third-party sources n'),([.59,40/355,.385,80/355],'M8',[0,1.5,2.5,4,6,8],[5,4,3,2,1,1],M8_COLOR,'加权成本 c' if cn else 'Weighted effort c')]:
+ fig,ax=canvas(lang,200);rows(ax,lang,ROWS[:4]);save(fig,'official',lang)
+ fig,ax=canvas(lang,116);rows(ax,lang,ROWS[5:]);save(fig,'answers',lang)
+ fig,ax=canvas(lang,310);rows(ax,lang,ROWS[4:5],offset=100)
+ for pos,name,x,y,color,xlab in [([.085,38/310,.385,72/310],'M5',[0,1,2,3,4,5,6,7],[1,2,2,3,3,4,5,5],M5_COLOR,'去重来源数 n' if cn else 'Distinct third-party sources n'),([.59,38/310,.385,72/310],'M8',[0,1.5,2.5,4,6,8],[5,4,3,2,1,1],M8_COLOR,'加权成本 c' if cn else 'Weighted effort c')]:
   a=fig.add_axes(pos);a.step(x,y,where='post',color=color,lw=1.3)
   dense=np.linspace(0,x[-1],1601); heights=np.array(y)[np.clip(np.searchsorted(x,dense,side='right')-1,0,len(y)-1)]
   for lo,hi in zip(np.linspace(1,5,45)[:-1],np.linspace(1,5,45)[1:]):a.fill_between(dense,lo,np.minimum(heights,hi),where=heights>lo,step='post',color=(*colors.to_rgb(color),.025+.34*(hi-1)/4),linewidth=0)
@@ -69,30 +80,29 @@ for lang in ('cn','en'):
   a.spines[['top','right']].set_visible(False)
   for sp in ['left','bottom']:a.spines[sp].set_color('#d3dce5')
   a.set_xlabel(xlab,fontsize=7.5,labelpad=2)
-  text(ax,pos[0]*650-12,216,metric_label(name,lang),8.5,color)
+  text(ax,pos[0]*650,179,metric_label(name,lang),8,color)
  # M6 separates source baselines, adjustments, and final integer grades.
- text(ax,8,0,metric_label('M6',lang),8.5,M6_COLOR)
- bax=fig.add_axes([0,1-115/355,1,95/355]);bax.set(xlim=(0,650),ylim=(95,0));bax.axis('off')
- text(bax,63,2,'来源赋值' if cn else 'Source baselines',8.5,M6_COLOR)
- text(bax,301,2,'均值与修正' if cn else 'Mean + adjustments',8.5,M6_COLOR)
- text(bax,517,2,'最终评分' if cn else 'Final score',8.5,M6_COLOR)
+ label_column(ax,'M6',lang,4,M6_COLOR)
+ text(ax,150,2,'来源赋值' if cn else 'Source baselines',8.5,M6_COLOR)
+ text(ax,353,2,'均值与修正' if cn else 'Mean + adjustments',8.5,M6_COLOR)
+ text(ax,583,2,'最终评分' if cn else 'Final score',8.5,M6_COLOR,'center')
  labels=['聚合／转载','个人技术博客','声誉问答／专栏','云厂商文章／论文'] if cn else ['Aggregators / reposts','Personal tech blogs','Established Q&A / columns','Cloud-vendor articles / papers']
  for y,val,label in zip([23,40,57,74],[2.5,3,3.5,4],labels):
-  bax.add_patch(plt.Rectangle((63,y-2),201,15,facecolor='#f0f3fa',edgecolor='none'))
-  text(bax,68,y,label,7.3 if not cn else 8)
-  text(bax,257,y,f'{val:.1f}',7.5,M6_COLOR,'right')
- for x1,x2 in [(270,293),(481,509)]:
-  bax.annotate('',xy=(x2,52),xytext=(x1,52),arrowprops={'arrowstyle':'->','color':M6_COLOR,'lw':1})
- text(bax,301,27,'来源基准均值' if cn else 'Mean of source baselines',8)
- text(bax,301,46,'＋一致性、时效、' if cn else '+ Consistency, recency,',7.6,M6_COLOR)
- text(bax,301,63,'  平台独立度修正' if cn else '  platform independence',7.6,M6_COLOR)
- text(bax,577,25,'取整并限制范围' if cn else 'Round + clamp',7.5,ha='center')
- text(bax,577,46,'1–5',18,M6_COLOR,'center')
- text(bax,577,76,'整数得分' if cn else 'Integer score',7.5,M6_COLOR,'center')
+  ax.add_patch(plt.Rectangle((150,y-2),177,15,facecolor='#f0f3fa',edgecolor='none'))
+  text(ax,154,y,label,6.8 if not cn else 7.5)
+  text(ax,322,y,f'{val:.1f}',7.5,M6_COLOR,'right')
+ for x1,x2 in [(331,346),(509,535)]:
+  ax.annotate('',xy=(x2,52),xytext=(x1,52),arrowprops={'arrowstyle':'->','color':M6_COLOR,'lw':1})
+ text(ax,353,27,'来源基准均值' if cn else 'Mean of baselines',7.5)
+ text(ax,353,46,'＋一致性、时效、' if cn else '+ Consistency, recency,',7.0,M6_COLOR)
+ text(ax,353,63,'  平台独立度修正' if cn else '  platform independence',7.0,M6_COLOR)
+ text(ax,583,25,'取整并限制范围' if cn else 'Round + clamp',7.5,ha='center')
+ text(ax,583,46,'1–5',18,M6_COLOR,'center')
+ text(ax,583,76,'整数得分' if cn else 'Integer score',7.5,M6_COLOR,'center')
  save(fig,'support',lang)
- fig,ax=canvas(lang,66);text(ax,8,0,metric_label('M11',lang),8.5,SLATE)
+ fig,ax=canvas(lang,42);label_column(ax,'M11',lang,7,SLATE)
  bounds=[0,.24,.45,.63,.8,1];labs=['很低','低','中','中高','高'] if cn else ['Very low','Low','Medium','Medium–high','High']
  for j,(lo,hi) in enumerate(zip(bounds,bounds[1:])):
-  ax.add_patch(plt.Rectangle((63+lo*575,25),(hi-lo)*575,19,facecolor=['#f0f3f6','#d6e0e8','#b2c4d2','#8ba3b7','#61788d'][j],edgecolor='white',lw=.7));text(ax,63+(lo+hi)/2*575,29,labs[j],7.5,'white' if j==4 else '#252b39','center')
- for b in bounds:text(ax,63+b*575,48,f'{b:.2f}',7,SLATE,'center')
+  ax.add_patch(plt.Rectangle((150+lo*488,3),(hi-lo)*488,19,facecolor=['#f0f3f6','#d6e0e8','#b2c4d2','#8ba3b7','#61788d'][j],edgecolor='white',lw=.7));text(ax,150+(lo+hi)/2*488,7,labs[j],7.5,'white' if j==4 else '#252b39','center')
+ for b in bounds:text(ax,150+b*488,26,f'{b:.2f}',7,SLATE,'center')
  save(fig,'confidence',lang)
