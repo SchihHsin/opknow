@@ -32,7 +32,7 @@ def main():
         page=page.replace('</head>',f'<style>{CSS}</style></head>')
         label='ENGLISH MANUSCRIPT · V0.2 · 10 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-10'
         page=page.replace('<body>',f'<body><div class="edition">{label}</div>')
-        authors='<div class="authors">闫浩　·　时昕昱　·　张敬文　·　俪旻硕</div><div class="affiliation">Huawei Technologies (China)</div>'
+        authors='<div class="authors">时昕昱（第一作者）　·　闫浩（通讯作者）　·　张敬文　·　俪旻硕</div><div class="affiliation">Huawei Technologies (China)</div>'
         page=re.sub(r'(<h1\b[^>]*>.*?</h1>)',r'\1'+authors,page,count=1,flags=re.S)
         page=page.replace('<div id="refs"',f'<h2>{"References" if lang=="en" else "参考文献"}</h2>\n<div id="refs"')
         # Long citation URLs are wrapped by CSS; sources remain local and offline.
