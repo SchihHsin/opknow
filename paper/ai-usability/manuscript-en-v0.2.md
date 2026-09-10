@@ -224,7 +224,7 @@ The broader distribution resembles an onboarding-to-specialization gradient, but
 
 Dependence on ecosystem-specific knowledge provides an interpretive lens for these cases. General concepts of memory management can draw on cross-platform explanations; a vendor-specific error, operator interface, or compatibility combination requires information tied to that ecosystem. This lens directs the audit toward the knowledge that must be supplied explicitly for a task, rather than assigning a uniform expectation to all advanced work. It also gives developer-role groupings a practical use: grouping the tasks associated with a role can identify which specific knowledge requirements need attention. The present cases motivate this interpretation; testing its predictive value would require an explicit dependency coding scheme and a broader task sample.
 
-## Discussion: From Diagnosis to Knowledge and Agent Design
+## Discussion: Design Implications for Knowledge Provision and Agent Interaction
 
 The findings connect the framework to two sites of design: the technical knowledge supplied by documentation and communities, and the agent interface through which a developer encounters that knowledge. The following implications are design proposals derived from the observed profiles. The discussion emphasizes the organization, delivery, and maintenance of knowledge provision, then extends to how agents present support and receive local facts. Figures 6-11 illustrate six selected design opportunities within these implications.
 
