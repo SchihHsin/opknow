@@ -241,7 +241,3 @@ The case demonstrates how the method distinguishes breakdowns in discovery, cont
 Knowledge availability for AI concerns whether task-relevant technical knowledge can reach an agent under specified conditions and be assessed for applicability. We define this construct, operationalize it through eleven indicators and an evidence record, and examine it through an accelerator-development case archive. The cases show why discovery, official content accessibility, official content detail, source version clarity, and third-party source count need separate treatment. They also expose the consequences of counting boundaries, attribution choices, inferred priors, and aggregation rules.
 
 The methodological contribution is a way to connect a development requirement to an inspectable evidence profile. It enables documentation and agent researchers to ask which knowledge condition requires attention while retaining the distinction between available evidence, generated answers, and successful action. That distinction is a necessary basis for evaluating how technical knowledge infrastructure supports AI-assisted development.
-
-## AI Assistance Disclosure
-
-AI tools assisted with manuscript organization, translation, language revision, analysis scripting, and figure preparation. The case archive itself was produced through AI-assisted retrieval, as described in the method. AI-generated suggestions and archival model-prior estimates are not presented as independent human validation.
