@@ -18,7 +18,7 @@ archival case application, not new website measurements or execution trials.
 - `data/worked-recording-example-a-cann.json`: a filled archival example that
   links requirements, events, sources, saved evidence, and indicator codes.
 - `scripts/build_paper_analysis.py`: portable offline arithmetic reproduction.
-- `data/design-illustrations-cn-en.md` and the Figure 6-11 SVGs in `figures/`:
+- `data/design-illustrations-cn-en.md` and the Figure 10-15 SVGs in `figures/`:
   design provenance notes and editable bilingual illustrations from the paper.
 
 Run with Python 3, without external dependencies:

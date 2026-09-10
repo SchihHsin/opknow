@@ -19,24 +19,22 @@ id="can-ai-find-what-developers-need-defining-and-measuring-knowledge-availabili
 AI Find What Developers Need? Defining and Measuring Knowledge
 Availability for AI in Developer Ecosystems</h1><div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>
 <h2 id="abstract">Abstract</h2>
-<p>AI agents increasingly mediate developers’ access to technical
-knowledge. Assessing this access requires examining whether relevant
-sources can be discovered, their content acquired, and the resulting
-guidance applied to a development task. We define knowledge availability
-for AI through a task-level protocol with eleven indicators covering
-knowledge sources, acquisition effort, and response properties. We apply
-the method to 26 software development tasks for AI-accelerated
-computing: 25 CANN/CUDA pairs and one separate migration analogy. The
-analysis identifies task-specific acquisition failures, recurring
-version ambiguities, and variation in support from official materials,
-third-party sources, and estimated model knowledge. Contrasting cases
-suggest that dependence on ecosystem-specific knowledge helps interpret
-differences that task depth alone does not explain. These findings
-distinguish broad documentation improvements from repairs to localized
-breakdowns and inform agent interfaces that expose evidence and
-applicability. We contribute a framework, an inspectable protocol, and a
-case-based account of how multidimensional assessment informs diagnosis
-and design.</p>
+<p>Developers who delegate technical searches to AI agents still need to
+judge whether suggestions have supporting evidence, fit their local
+environment, and leave important information unresolved. These judgments
+depend in part on the knowledge agents can obtain. We define knowledge
+availability for AI and operationalize it through a task-level protocol
+with eleven indicators covering sources, acquisition effort, and
+response properties. We apply the method to 26 development tasks: 25
+CANN/CUDA pairs and one separate migration analogy. The analysis
+distinguishes missing operational content from accessible but
+insufficient guidance, identifies recurring version issues, and reveals
+different combinations of knowledge support. These distinctions specify
+information needed to assess a proposed technical action and locate
+potential improvements in knowledge provision and agent feedback. We
+contribute a framework, an inspectable protocol, and a case analysis of
+the knowledge conditions underlying developers’ access to technical
+guidance through AI.</p>
 <h2 id="keywords">Keywords</h2>
 <p>knowledge availability for AI; developer ecosystems; technical
 documentation; information foraging; AI agents; measurement methods</p>
@@ -64,9 +62,13 @@ programming assistance, and agent support describe opportunities for
 this support alongside difficulties in understanding and checking
 generated suggestions <span class="citation"
 data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
-13]</span>. Delegating information seeking does not remove the need for
-applicable evidence. It changes who encounters the documentation,
-through which interface, and what information reaches the developer.</p>
+13]</span>. Delegating the search changes how supporting material
+reaches the developer, while leaving a need to judge whether a
+suggestion has an identifiable basis, fits the local environment, and
+requires further information. The agent’s access to technical material
+is one condition for making that basis available for inspection.
+Measuring this access can therefore identify gaps in the knowledge on
+which AI-mediated guidance depends.</p>
 <p>Consider an agent asked how to implement and integrate a custom
 accelerator operator. A search may return an official development guide,
 yet the reading tool may obtain only navigation and metadata. For an
@@ -98,7 +100,13 @@ relational: it concerns a task, a knowledge environment, and a means of
 accessing that environment at a particular time. We operationalize it
 through an evidence-recording protocol and eleven indicators. The
 indicators distinguish source conditions, acquisition effort, response
-checks, and a composite confidence score calculated from M1-M8.</p>
+checks, and a composite confidence score calculated from M1-M8. The
+intended users of the method are documentation maintainers and agent
+product and interface teams. It is designed to help them locate missing
+source material, unresolved applicability conditions, and gaps that an
+interface may need to communicate. The case application demonstrates
+diagnostic distinctions for these uses; their value in teams’ work
+requires evaluation.</p>
 <p>We ask two research questions. <strong>RQ1:</strong> How can
 knowledge availability for AI be defined and operationalized so that
 task-specific access conditions and evidence gaps can be systematically
@@ -130,9 +138,13 @@ performing <span class="citation"
 data-cites="brand2009 ko2007 sillito2008">[2, 6, 12]</span>.
 API-learning difficulties further motivate attention to the explanatory
 resources surrounding a technical interface <span class="citation"
-data-cites="robillard2009">[9]</span>. These studies motivate our
-task-level unit and the distinction between encountering a resource and
-obtaining what a task requires.</p>
+data-cites="robillard2009">[9]</span>. Taken together, these studies
+motivate an assessment organized around the information needed for a
+programming action. We use task requirements to examine whether material
+obtained through an agent supplies an explanation, parameter, or
+procedure needed for that action. This connects the unit of measurement
+to developers’ information needs rather than treating a returned page as
+the endpoint of the search.</p>
 <p>Our method does not infer human usability from machine access. A page
 readable by a browser can be inaccessible to a particular extraction
 tool; conversely, text readily extracted by an agent can still be
@@ -140,14 +152,21 @@ difficult for a person to navigate. We examine the conditions of the
 delegated knowledge route. Claims about developers’ time, trust,
 satisfaction, or task completion require separate evidence.</p>
 <h3 id="ai-support-for-programming">AI support for programming</h3>
-<p>Research on code-generation and conversational tools examines how
-developers use and evaluate AI assistance <span class="citation"
-data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
-13]</span>. This work provides the interaction context for our study:
-technical suggestions enter development activities where their
-applicability must be assessed. We focus on the availability of
-supporting knowledge before drawing conclusions about how people use
-those suggestions.</p>
+<p>Studies of AI programming assistance distinguish obtaining a
+suggestion from understanding, adapting, and checking it. Vaithilingam
+et al. describe difficulties in understanding, editing, and debugging
+generated code <span class="citation"
+data-cites="vaithilingam2022">[13]</span>; Barke et al. distinguish
+acceleration and exploration in programmers’ use of code-generating
+models <span class="citation" data-cites="barke2023">[1]</span>. Ross et
+al. examine conversational assistance around code context <span
+class="citation" data-cites="programmerAssistant2023">[10]</span>. These
+findings motivate attention to the supporting information available when
+a suggestion is considered. Our protocol examines whether relevant
+source passages, version conditions, and procedural details can be
+obtained and connected to that suggestion. It supplies an account of
+those knowledge conditions alongside studies of how developers engage
+with AI assistance.</p>
 <p>Agents can interleave reasoning and tool use, and retrieval-augmented
 generation provides a way to incorporate external information into
 generation <span class="citation" data-cites="lewis2020 yao2023">[7,
@@ -707,7 +726,10 @@ outcome, and M3 is marked as blocked. This assessment locates an
 improvement target in the path from the selected entry to the
 implementation body: the entry should expose a body link that the
 reading tool can follow, or directly present the implementation,
-compilation, and deployment instructions.</p>
+compilation, and deployment instructions. For assessing an
+implementation suggestion, the missing information is the procedure that
+would support its steps; a link to the guide alone does not supply that
+basis.</p>
 <p>Task E exposes a different problem. The official EZ9999 page was
 found and read, but its explanation supplied an unspecified cause and
 generic instructions to check the installation or inspect logs. Its low
@@ -717,7 +739,10 @@ about possible triggers and a sequence for narrowing the cause.
 Improving extraction would leave this content problem in place.
 Together, D and E connect similar concerns about obtaining useful
 guidance to distinct interventions: delivery of the missing how-to body
-and enrichment of an accessible error explanation.</p>
+and enrichment of an accessible error explanation. The corresponding
+need is evidence for choosing a diagnostic check. Local logs may help
+distinguish possible causes, while documentation or attributed cases
+must explain how those observations relate to the proposed checks.</p>
 <p>Task A shows how useful main-path material and unavailable references
 can coexist. The acquired conversion quickstart supplied an ATC command,
 input-shape and target-device parameters, and a device-information step.
@@ -727,8 +752,11 @@ conversion requirements and the missing reference to unresolved advanced
 settings. In task Y, accessing chip-migration information through the
 document center likewise yielded only partial content. These cases
 motivate recording both the content obtained and its relation to a task
-requirement, with the access route recorded separately where
-available.</p>
+requirement, with the access route recorded separately where available.
+For a developer assessing the conversion guidance, this distinction
+identifies a supported main procedure and advanced settings that still
+require reference material. It bounds which parts of a proposed action
+the acquired sources can substantiate.</p>
 <h3 id="version-applicability-is-a-recurring-cross-task-issue">Version
 applicability is a recurring cross-task issue</h3>
 <p>Version clarity is a recurrent limitation even where the official
@@ -756,7 +784,12 @@ Reading them together helps locate whether the next improvement belongs
 in the documentation’s compatibility information or in how the agent
 formulates the response. This recurring issue has a wider task footprint
 than the missing official body in D, although the local acquisition
-failure remains consequential for that task.</p>
+failure remains consequential for that task. For delegated retrieval, a
+further judgment concerns whether the source’s stated conditions match
+the developer’s device and software combination. Source applicability
+and local environment facts supply different parts of that comparison: a
+missing compatibility relation calls for source investigation, whereas
+an unspecified installed version calls for a local check.</p>
 <h3
 id="knowledge-support-profiles-differ-across-tasks">Knowledge-support
 profiles differ across tasks</h3>
@@ -894,14 +927,16 @@ an explicit dependency coding scheme and a broader task sample.</p>
 <h2
 id="discussion-design-implications-for-knowledge-provision-and-agent-interaction">Discussion:
 Design Implications for Knowledge Provision and Agent Interaction</h2>
-<p>The findings connect the framework to two sites of design: the
-technical knowledge supplied by documentation and communities, and the
-agent interface through which a developer encounters that knowledge. The
-following implications are design proposals derived from the observed
-profiles. The discussion emphasizes the organization, delivery, and
-maintenance of knowledge provision, then extends to how agents present
-support and receive local facts. Figures 10–15 illustrate six selected
-design opportunities within these implications.</p>
+<p>The findings identify knowledge conditions on which developers’
+assessment of AI-provided guidance can depend. We discuss two sites of
+potential improvement: technical knowledge supplied by documentation and
+communities, and the agent interfaces through which that knowledge is
+presented. The proposals below follow from the observed task profiles.
+Figures 10–15 illustrate three supply-side and three agent-side
+implications: compatibility relations, diagnostic content, readable
+exports, acquisition feedback, environment checking, and source
+inspection. They illustrate possible applications of the diagnosis
+rather than evaluated interventions.</p>
 <h3
 id="supply-side-design-version-relations-task-guidance-and-alternative-sources">Supply-side
 design: version relations, task guidance, and alternative sources</h3>
@@ -1014,16 +1049,17 @@ and request the logs or trigger context needed for further diagnosis.
 For A, it could retain the usable conversion path while marking advanced
 reference settings as unresolved. These statuses connect a retrieval
 event to its consequence for the developer’s current task.</p>
-<p>Figure 13 contrasts interaction responses to these two gaps. When the
-body is unavailable, the interface retains the original guide entry so
-the developer can supply missing content. When acquired content lacks
-diagnostic detail, it requests trigger context and logs to support
-further investigation. The M1-M3 distinctions thus lead to different
-next actions; subsequent attempts and their acquisition effort can be
-recorded through M8.</p>
+<p>Figure 13 contrasts proposed responses to D and E. For D, the agent
+first seeks a linked body page or another readable source, while
+retaining the original entry for optional inspection. For E, it explains
+how trigger context and relevant log excerpts would guide a search for
+diagnostic cases. Developer-supplied content is a fallback for
+acquisition failures; accessible core guidance remains a responsibility
+of the knowledge provider. M1-M3 locate the gap, while M8 records the
+effort of subsequent attempts.</p>
 <figure id="fig:acquisitiondesign">
 <img src="figures/figure-9-acquisition-design-en.svg"
-data-description="Two side-by-side subfigures show proposed feedback for distinct knowledge gaps. The left, based on D, shows a found guide returning only navigation and metadata, then offers its original entry so the developer can supply the body. The right, based on E, shows the official EZ9999 body obtained but containing only generic advice, then requests trigger context and logs. Both are design illustrations, not original dialogue screenshots."
+data-description="Two side-by-side subfigures show proposed feedback for distinct knowledge gaps. The left, based on D, shows a found guide returning only navigation and metadata, then proposes looking for body links or readable sources and retains optional access to the original entry. The right, based on E, shows the official EZ9999 body obtained but containing only generic advice, then requests trigger context and logs. Both are design illustrations, not original dialogue screenshots."
 alt="Proposed agent feedback for two knowledge gaps: (a) a missing core body, based on D; (b) readable but diagnostically insufficient content, based on E. Task observations supply the problem conditions; interface messages and next actions are design proposals." />
 <figcaption aria-hidden="true">Proposed agent feedback for two knowledge
 gaps: (a) a missing core body, based on D; (b) readable but
@@ -1031,15 +1067,13 @@ diagnostically insufficient content, based on E. Task observations
 supply the problem conditions; interface messages and next actions are
 design proposals.</figcaption>
 </figure>
-<p>Version-dependent guidance can similarly surface the environment
-facts on which a recommendation relies. Before proposing a specific
-toolkit/framework combination, the agent can request the current driver,
-package versions, or target device and associate the resulting
-recommendation with the relevant compatibility source. The
-response-level indicators supply two checks for this interaction:
-whether the answer identifies its applicable version conditions and
-whether its steps are concrete enough to adopt with the stated
-substitutions or modifications.</p>
+<p>Version-dependent guidance should connect a source’s applicability to
+the available task environment. Before proposing a toolkit/framework
+combination, an agent can use device and software facts already supplied
+in the task, requesting only information that remains necessary to
+establish the match. The response indicators then ask whether the
+recommendation states its applicable version conditions and provides
+actionable steps with explicit substitutions or modifications.</p>
 <p>Figure 14 illustrates version checking through a separate environment
 record. It distinguishes developer-supplied local facts from the
 applicability declared by a source, then records the comparison as
@@ -1082,17 +1116,26 @@ acquired in task A; source expansion, an original-page entry, and error
 feedback linked to the suggestion are proposed
 interactions.</figcaption>
 </figure>
-<p>Task requirements can also guide retrieval routing and progress
-reporting. Questions about ecosystem-specific interfaces, errors, or
-compatibility combinations call for checks against sources tied to those
-requirements. Explanations based on general principles can identify
-which assumptions still need confirmation for the target environment.
-During a longer search, the interface can report the requirement being
-investigated, an encountered acquisition failure, and the reason for
-trying an alternative source. The same record can support a short action
-sequence for an experienced developer or additional prerequisites and
-explanations for a newcomer. These are design opportunities for
-evaluation through the tasks that motivated them.</p>
+<p>These proposals treat checking suggestions as part of programming
+work, consistent with the information-seeking and AI-assistance studies
+discussed earlier <span class="citation"
+data-cites="brand2009 vaithilingam2022 barke2023">[1, 2, 13]</span>.
+Exposing every retrieval event or source passage could add reading
+effort without clarifying the next action. An interface could first show
+the supported step, relevant version scope, and unresolved condition,
+with source passages available on demand. This prioritizes the
+information needed for the current judgment while retaining a route to
+detailed inspection.</p>
+<p>Requests for environment facts can likewise interrupt a task,
+especially when they repeat information already provided. A request
+should explain which recommendation depends on the missing fact and
+reuse task context where available, with confirmation when it may be
+stale. For diagnostic logs, it should request relevant excerpts and
+allow sensitive details to be removed. Missing compatibility relations
+and generic error explanations require work by documentation and system
+teams; collecting more local facts cannot supply those missing
+explanations. The balance between inspection, interruption, and useful
+guidance remains a question for evaluating these proposals.</p>
 <h3
 id="prioritizing-widespread-improvements-and-localized-repairs">Prioritizing
 widespread improvements and localized repairs</h3>
@@ -1116,15 +1159,15 @@ sensitivity and calculation notes are supplied in the supplement to
 support inspection of those summaries.</p>
 <h3 id="reusing-the-diagnostic-method">Reusing the diagnostic
 method</h3>
-<p>The reusable contribution is the connection from a task requirement
-to a source or acquisition event, an indicator code, a diagnostic
-pattern, and a proposed response. Analysts can reuse this structure
-while replacing the domain-specific requirements. A database SDK
-assessment might inspect client-server compatibility and migration
-steps; a web-framework assessment might inspect dependency combinations
-and deployment prerequisites. In each case, the evidence record
-specifies what supports a proposed action and which source or
-interaction condition needs attention.</p>
+<p>The method connects a task requirement to a source or acquisition
+event, an indicator code, and a diagnosis of the information needed to
+assess a proposed action. Documentation maintainers could use the
+profile to locate missing guidance or applicability relations; agent
+product and interface teams could use it to distinguish further source
+retrieval from a request for a local fact. Analysts can reuse the record
+structure with domain-specific requirements, such as client-server
+compatibility in a database SDK or deployment prerequisites in a web
+framework. These are intended applications of the method.</p>
 <p>Subsequent evaluation can examine whether independent analysts
 produce comparable profiles, whether the diagnoses correspond to expert
 assessments of missing information, and whether documentation teams find
@@ -1144,6 +1187,12 @@ ecosystems, requires further evaluation. The supplement provides
 observation fields, the scoring implementation, task-to-source mappings,
 calculation discrepancy notes, and summary scripts to support inspection
 and subsequent applications.</p>
+<p>The study assesses knowledge conditions and recorded guidance. How
+developers use these distinctions to evaluate evidence, check local
+applicability, and decide when further information is needed requires
+observation of their interaction with that guidance. Evaluation should
+also examine whether the proposed feedback supports those judgments and
+what reading effort or interruptions it introduces.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>We define knowledge availability for AI and operationalize it through
 eleven indicators connecting knowledge sources, acquisition processes,
@@ -1153,15 +1202,14 @@ acquisition and content failures, recurring version issues, and
 task-dependent configurations of knowledge support. Contrasting tasks
 motivate attention to ecosystem-specific knowledge requirements
 alongside workflow coverage.</p>
-<p>These diagnoses connect measurement to design. Shared version and
-compatibility capabilities address recurring conditions, while readable
-task guides and concrete diagnostic content address localized
-breakdowns. Agent interfaces can expose the corresponding support,
-request missing environment facts, and organize the next verification
-step. The contribution is a reusable way to move from task requirements
-and acquisition outcomes to a specific diagnosis and an appropriate
-design response, supported by an inspectable protocol and case
-materials.</p>
+<p>The method makes the basis for AI-mediated technical guidance an
+object of inspection: which source supports a proposed step, which
+applicability relation remains unresolved, and what additional
+information is needed. The framework, protocol, and case analysis
+provide a way to locate these conditions and relate them to knowledge
+provision and agent feedback. Documentation repairs, source retrieval,
+and requests for local facts follow from different diagnoses, offering
+concrete directions for subsequent evaluation.</p>
 <h2 class="unnumbered" id="appendix-a-scoring-calculations">Appendix A:
 Scoring calculations</h2>
 <p><strong>Official material (M1–M4).</strong> M1 first considers the
