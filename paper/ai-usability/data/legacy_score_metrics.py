@@ -119,8 +119,8 @@ def cutoff_gap_factor(churn):
 #  consist       二手一致性档：high/mid/low
 #  own           ⑦自带知识自评档 1–5（唯一显式自评项，注明）
 #  churn         相关工具/API 迭代节奏：stable/moderate/fast（因子 A 算知识截止 gap）
-#  pin           版本可锁定性：exact / range / none
-#  repro         步骤可复现性：copyrun / minor_fix / skeleton / sketch
+#  pin           回答版本明确性：exact / range / none
+#  repro         回答步骤可操作性：copyrun / minor_fix / skeleton / sketch
 # ⚠ sources 只列**真正的二手**（非一手）：官方文档/官方代码仓(github.com/pytorch、
 #   gitee.com/ascend 蓝区仓)/官方论坛属①官方渠道，**不计入二手**，避免与①重复加权。
 RAW = {
@@ -720,25 +720,25 @@ def score8_cost(r):
     return 1
 
 def score9_pin(r):
-    """⑨ 版本可锁定性（产出/因变量，不进⑪）。
+    """⑨ 回答版本明确性（回答层检查，不进⑪）。
        exact=能写出确切版本号+opset；mostly=工具版本基本可定；range=给范围/部分可锁；none=抽不出无法定死。"""
     return {"exact":5, "mostly":4, "range":3, "none":2}[r["pin"]]
 
 def score10_repro(r):
-    """⑩ 步骤可复现性（产出/因变量，不进⑪）。
+    """⑩ 回答步骤可操作性（回答层检查，不进⑪）。
        copyrun=照抄即跑；params=替好参数即可照抄；partial=大体能跑需小修/部分依赖环境；skeleton=仅骨架可述。"""
     return {"copyrun":5, "params":4, "partial":3, "skeleton":2}[r["repro"]]
 
 
 # ============================================================
-# 3. ⑪ 综合置信度 = 三源噪声-OR（与 17/18 的 confCompute 同源）
+# 3. ⑪ 综合置信度 = M1–M8 的三源噪声-OR 汇总（与 17/18 的 confCompute 同源）
 # ============================================================
 def nm(v):
     """归一：1–5 → 0.2–1.0；受阻 → 0。"""
     return 0.0 if v == BLK else v / 5.0
 
 def score11_overall(s):
-    """s = 已算出的 ①–⑩ 分列表。返回 (综合分, 档位, 中间量)。"""
+    """s = 已算出的 ①–⑩ 分列表。仅汇总 M1–M8，返回 (综合分, 档位, 中间量)。"""
     OFF = nm(s[0]) * nm(s[1]) * nm(s[2])     # 官方：发现×抓取×详尽
     SEC = nm(s[4]) * nm(s[5])                # 二手：数量×可信
     OWN = nm(s[6])                           # 自带知识

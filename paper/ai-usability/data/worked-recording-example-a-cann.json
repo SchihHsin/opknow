@@ -272,7 +272,7 @@
       "indicator": "M11",
       "value": 0.747,
       "basis_type": "aggregation",
-      "rationale": "Historical heuristic index retained for traceability; not calibrated answer correctness or task-success probability.",
+      "rationale": "Historical composite confidence score from M1–M8 retained for traceability; not a calibrated answer-correctness or task-success probability.",
       "evidence_links": [
         "data/legacy_scores_original.json: A.cann"
       ]
@@ -285,7 +285,7 @@
   "final_response_record": null,
   "output_check_basis": "M9-M10 preserve archival assessments of available guidance because complete returns and final responses are not consistently retained.",
   "execution_performed": null,
-  "aggregation_specification": "Historical M11 is retained as an archival heuristic index and is not recalibrated by this example.",
+  "aggregation_specification": "Historical M11 is retained as the composite confidence score computed from M1–M8 and is not recalibrated by this example; M9–M10 remain separate response-level checks.",
   "independent_review_performed": null,
   "disagreements": [],
   "limitations": [

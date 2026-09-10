@@ -349,84 +349,91 @@ support.</caption>
 <tbody>
 <tr>
 <td>M1</td>
-<td>Official discoverability</td>
+<td>Official source discoverability</td>
 <td>Recorded query rounds and official-result position; identifies
 discovery effort under the selected search conditions.</td>
 </tr>
 <tr>
 <td>M2</td>
-<td>Content acquisition status</td>
-<td>Core content obtained, partial content obtained, not obtained, or
-unknown; concerns returned content, not the site’s implementation
-technology. Access route is recorded separately as original entry,
-alternative entry, or unknown.</td>
+<td>Official content accessibility</td>
+<td>Whether official core content was obtained, partially obtained, not
+obtained, or unknown; concerns returned content, not the site’s
+implementation technology. Access route is recorded separately as
+original entry, alternative entry, or unknown.</td>
 </tr>
 <tr>
 <td>M3</td>
-<td>Official content adequacy</td>
-<td>Task-required commands, parameters, explanations, and reference
-detail in the acquired content; unobserved when the content was not
-obtained.</td>
+<td>Official content detail</td>
+<td>The level of task-required commands, parameters, explanations, and
+reference detail in acquired official content; it records content detail
+and does not by itself establish that a task is adequately resolved;
+unobserved when the content was not obtained.</td>
 </tr>
 <tr>
 <td>M4</td>
-<td>Version clarity</td>
+<td>Source version clarity</td>
 <td>Explicit scope, compatibility relations, and unresolved version
-branches; several maintained versions do not by themselves imply
-ambiguity.</td>
+branches in source materials; several maintained versions do not by
+themselves imply ambiguity.</td>
 </tr>
 <tr>
 <td>M5</td>
-<td>Alternative-source coverage</td>
-<td>Observed usable sources beyond the official channel, with source
-identities and any attribution uncertainty retained.</td>
+<td>Third-party source count</td>
+<td>The number of recorded third-party sources beyond the official
+channel; it is not a coverage rate with task requirements as its
+denominator.</td>
 </tr>
 <tr>
 <td>M6</td>
-<td>Alternative-source credibility</td>
-<td>Authorship, currency, consistency, and evidence of derivation;
-domain diversity alone does not establish independence.</td>
+<td>Third-party source credibility</td>
+<td>Authorship, currency, consistency, and evidence of derivation for
+third-party sources; domain diversity alone establishes neither
+independence nor the correctness of every item.</td>
 </tr>
 <tr>
 <td>M7</td>
-<td>Model-prior assessment</td>
+<td>Estimated model prior knowledge</td>
 <td>Explicitly identified estimate or separate no-retrieval measurement;
 the archive contains estimates, not measured training coverage.</td>
 </tr>
 <tr>
 <td>M8</td>
-<td>Acquisition effort</td>
+<td>Search and acquisition effort</td>
 <td>Raw search, read, retry, and refinement counts; a cost model is
-disclosed separately from those counts. The historical matrix displays
-an inverse effort score, while the worked record retains the underlying
+disclosed separately from those counts and does not represent actual
+time, tokens, or monetary cost. The historical matrix displays an
+inverse effort score, while the worked record retains the underlying
 calls alongside its code.</td>
 </tr>
 <tr>
 <td>M9</td>
-<td>Version specificity of instructions</td>
-<td>Whether the recorded guidance identifies an exact combination, a
-constrained range, or unresolved dependencies.</td>
+<td>Response version specificity</td>
+<td>Whether the recorded response or guidance identifies an exact
+combination, a constrained range, or unresolved dependencies; it does
+not mean the combination was execution-verified.</td>
 </tr>
 <tr>
 <td>M10</td>
-<td>Instruction completeness</td>
-<td>Whether the recorded guidance includes the necessary steps and
-parameter substitutions; not proof that code was executed.</td>
+<td>Procedural actionability of responses</td>
+<td>Whether the recorded response or guidance can be followed directly,
+with parameter substitution, or after minor adaptation; not proof that
+code was executed.</td>
 </tr>
 <tr>
 <td>M11</td>
-<td>Heuristic summary</td>
-<td>A declared aggregation of selected indicators; interpreted only
-within its assumptions and accompanied by the profile.</td>
+<td>Composite confidence score</td>
+<td>Historical aggregate computed from M1-M8; M9-M10 are reported
+separately. It reflects disclosed aggregation assumptions, not a
+calibrated probability of correctness or task success.</td>
 </tr>
 </tbody>
 </table>
 <p>M1-M6 describe source conditions; M7 registers a different basis for
-possible answer formation; M8 describes process effort; M9-M10 check the
-specificity and completeness of instructions; M11 summarizes an
-operationalization. These components can covary, but they are not
-interchangeable. They also need not apply to every task: a
-concept-explanation task may have no meaningful version-pinning
+possible answer formation; M8 describes search and acquisition effort;
+M9-M10 check response version specificity and procedural actionability;
+M11 aggregates the historical M1-M8 codes. These components can covary,
+but they are not interchangeable. They also need not apply to every
+task: a concept-explanation task may have no meaningful version-pinning
 requirement. Such cases require an explicit not-applicable state rather
 than a fabricated successful observation.</p>
 <h3 id="applying-the-protocol">Applying the protocol</h3>
@@ -484,18 +491,19 @@ and the historical aggregate</h3>
 <p>The archived implementation maps most fields to five ordered levels.
 For example, official discoverability combines the approximate position
 of the first official result with whether another search was needed;
-content adequacy distinguishes fragments, overviews, main-path material,
-and extensive reference material. Version clarity uses the observed
-number of versions and presence of a compatibility matrix. These are
-operational choices, not natural measurement intervals. The version rule
-in particular is a proxy: a larger version count can reflect good
-archival coverage as well as unresolved applicability.</p>
-<p>The archive also defines a heuristic aggregate. For historical scores
+official content detail distinguishes fragments, overviews, main-path
+material, and extensive reference material. Source version clarity uses
+the observed number of versions and presence of a compatibility matrix.
+These are operational choices, not natural measurement intervals. The
+version rule in particular is a proxy: a larger version count can
+reflect good archival coverage as well as unresolved applicability.</p>
+<p>The archive also defines a composite confidence score. For historical
+scores
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>s</mi><mi>i</mi></msub><annotation encoding="application/x-tex">s_i</annotation></semantics></math>,
 it uses
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>s</mi><mi>i</mi></msub><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">n(s_i)=s_i/5</annotation></semantics></math>,
-with unavailable official adequacy contributing zero to the official
-branch:</p>
+with unavailable official content detail contributing zero to the
+official branch:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>3</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>C</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>5</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>6</mn></msub><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>P</mi><mo>=</mo><mi>n</mi><mo stretchy="false" form="prefix">(</mo><msub><mi>s</mi><mn>7</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
 O=n(s_1)n(s_2)n(s_3),\quad C=n(s_5)n(s_6),\quad P=n(s_7).
 </annotation></semantics></math></p>
@@ -505,13 +513,12 @@ I=\left[1-(1-O)(1-C)(1-P)\right]\left[0.7+0.3n(s_4)\right]\left[0.9+0.1n(s_8)\ri
 <p>The noisy-OR-shaped expression represents a design intuition:
 different channels may compensate for one another. Its factors are
 ordinal transformations, however, not calibrated probabilities, and
-source independence is not established. We therefore call
+source independence is not established. We therefore retain
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
-a <strong>heuristic availability index</strong>, replacing the archive’s
-label of overall confidence. M9-M10 do not enter this formula and cannot
-validate it merely by being coded alongside it. Unknown content quality
-remains unknown even when its unavailable branch contributes zero to a
-historical calculation.</p>
+as a <strong>composite confidence score</strong>: it aggregates the
+historical M1-M8 codes, while M9-M10 are reported separately as
+response-level checks. Unknown content quality remains unknown even when
+its unavailable branch contributes zero to a historical calculation.</p>
 <p>The archive’s M2 rule awards static pages a higher value than
 server-rendered pages. We retain that rule only to reproduce the
 archived index; the protocol above evaluates returned content regardless
@@ -602,45 +609,47 @@ CANN/ROCm-HIP migration analogy and is excluded from CANN/CUDA
 summaries.</p>
 <figure id="fig:fullmatrixa">
 <img src="figures/figure-2-full-matrix-a-en.svg"
-data-description="A workflow-grouped task matrix. Each row is a development task and each metric has CANN and CUDA columns. This facet shows M1 official discoverability, M2 historical extraction score, M3 official content adequacy, and M4 version clarity. G is a separately marked CANN and ROCm/HIP migration analogy and is excluded from CANN/CUDA summaries."
-alt="Full indicator matrix (1/3): archival M1–M4 codes for official discoverability, acquisition, adequacy, and version clarity, organized by workflow with CANN and CUDA columns for each task. G uses ROCm/HIP in the second column." />
+data-description="A workflow-grouped task matrix. Each row is a development task and each metric has CANN and CUDA columns. This facet shows M1 official source discoverability, M2 official content accessibility, M3 official content detail, and M4 source version clarity. G is a separately marked CANN and ROCm/HIP migration analogy and is excluded from CANN/CUDA summaries."
+alt="Full indicator matrix (1/3): archival M1–M4 codes for official discoverability, official content accessibility, official content detail, and source version clarity, organized by workflow with CANN and CUDA columns for each task. G uses ROCm/HIP in the second column." />
 <figcaption aria-hidden="true">Full indicator matrix (1/3): archival
-M1–M4 codes for official discoverability, acquisition, adequacy, and
-version clarity, organized by workflow with CANN and CUDA columns for
-each task. G uses ROCm/HIP in the second column.</figcaption>
+M1–M4 codes for official discoverability, official content
+accessibility, official content detail, and source version clarity,
+organized by workflow with CANN and CUDA columns for each task. G uses
+ROCm/HIP in the second column.</figcaption>
 </figure>
 <figure id="fig:fullmatrixb">
 <img src="figures/figure-2-full-matrix-b-en.svg"
-data-description="The second facet of a workflow-grouped task matrix. Rows correspond to the first facet and each metric has CANN and CUDA columns. This facet shows M5 alternative-source coverage, M6 alternative-source credibility, M7 estimated model prior, and M8 acquisition effort. G is a separately marked CANN and ROCm/HIP migration analogy."
-alt="Full indicator matrix (2/3): archival M5–M8 codes for alternative-source coverage, alternative-source credibility, estimated model prior, and acquisition effort, in the same workflow and task order." />
+data-description="The second facet of a workflow-grouped task matrix. Rows correspond to the first facet and each metric has CANN and CUDA columns. This facet shows M5 third-party source count, M6 third-party source credibility, M7 estimated model prior knowledge, and M8 search and acquisition effort. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Full indicator matrix (2/3): archival M5–M8 codes for third-party source count, third-party source credibility, estimated model prior knowledge, and search and acquisition effort, in the same workflow and task order." />
 <figcaption aria-hidden="true">Full indicator matrix (2/3): archival
-M5–M8 codes for alternative-source coverage, alternative-source
-credibility, estimated model prior, and acquisition effort, in the same
-workflow and task order.</figcaption>
+M5–M8 codes for third-party source count, third-party source
+credibility, estimated model prior knowledge, and search and acquisition
+effort, in the same workflow and task order.</figcaption>
 </figure>
 <figure id="fig:fullmatrixc">
 <img src="figures/figure-2-full-matrix-c-en.svg"
-data-description="The third facet of a workflow-grouped task matrix. Rows correspond to the first two facets and each metric has CANN and CUDA columns. This facet shows M9 instruction version pinning, M10 instruction completeness, and M11 historical heuristic availability index. G is a separately marked CANN and ROCm/HIP migration analogy."
-alt="Full indicator matrix (3/3): archival M9–M11 values for instruction version pinning, instruction completeness, and the historical heuristic availability index, in the same workflow and task order." />
+data-description="The third facet of a workflow-grouped task matrix. Rows correspond to the first two facets and each metric has CANN and CUDA columns. This facet shows M9 response version specificity, M10 procedural actionability of responses, and the historical composite confidence score from M1–M8. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Full indicator matrix (3/3): archival M9–M11 values for response version specificity, procedural actionability of responses, and the historical composite confidence score from M1–M8, in the same workflow and task order." />
 <figcaption aria-hidden="true">Full indicator matrix (3/3): archival
-M9–M11 values for instruction version pinning, instruction completeness,
-and the historical heuristic availability index, in the same workflow
-and task order.</figcaption>
+M9–M11 values for response version specificity, procedural actionability
+of responses, and the historical composite confidence score from M1–M8,
+in the same workflow and task order.</figcaption>
 </figure>
 <p>In Figures 2–4, M1–M10 are frozen archival ordinal codes from 1 to 5,
-while M11 is the historical heuristic index computed from those codes.
-M2 is a historical extraction score rather than the actual state of
-content acquisition. To make D and similar cases interpretable, Figure 5
-retains the acquisition state separately so that “content not obtained”
-is not collapsed into a score.</p>
+while M11 is the historical composite confidence score computed from
+M1–M8. M2 is a historical official-content-accessibility score rather
+than the actual state of content acquisition. To make D and similar
+cases interpretable, Figure 5 retains the acquisition state separately
+so that “content not obtained” is not collapsed into a score.</p>
 <figure id="fig:accessprofile">
 <img src="figures/figure-3-access-profile-en.svg"
-data-description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in actual content acquisition, archival content adequacy, and version clarity. Acquisition uses C, P, and N for core content obtained, partial content obtained, and not obtained. Access route is a separate protocol field and is not inferred from the archival status. It distinguishes actual acquisition from the historical M2 extraction score shown in Figures 2 through 4. G is a separately marked CANN and ROCm/HIP migration analogy."
-alt="Access-profile detail that places actual content-acquisition states beside the archival adequacy and version codes. It follows the same workflow groups and task order as Figures 2–4, but is retained only to explain access cases." />
+data-description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in actual content acquisition, archival official content detail, and source version clarity. Acquisition uses C, P, and N for core content obtained, partial content obtained, and not obtained. Access route is a separate protocol field and is not inferred from the archival status. It distinguishes actual acquisition from the historical M2 official-content-accessibility score shown in Figures 2 through 4. G is a separately marked CANN and ROCm/HIP migration analogy."
+alt="Access-profile detail that places actual content-acquisition states beside the archival official-content-detail and source-version-clarity codes. It follows the same workflow groups and task order as Figures 2–4, but is retained only to explain access cases." />
 <figcaption aria-hidden="true">Access-profile detail that places actual
-content-acquisition states beside the archival adequacy and version
-codes. It follows the same workflow groups and task order as Figures
-2–4, but is retained only to explain access cases.</figcaption>
+content-acquisition states beside the archival official-content-detail
+and source-version-clarity codes. It follows the same workflow groups
+and task order as Figures 2–4, but is retained only to explain access
+cases.</figcaption>
 </figure>
 <p>The archive includes 12 CANN tasks with the lowest commonly observed
 version-clarity level, each present in the main comparison. The two
@@ -706,14 +715,15 @@ not simply that several version numbers appear online. The framework
 makes the required environment facts explicit so that a version mismatch
 need not be attributed to unavailable text.</p>
 <p>Task X concerns memory-error investigation. The archived CANN record
-assigns the acquired sanitizer documentation the highest adequacy level,
-while recording limited alternative material and a low estimate of model
-prior knowledge. Those observations describe different properties. A
-thin alternative channel can matter if the official guide does not cover
-a subsequent error, but it does not prove that the acquired guide was
-insufficient for the original question. Accordingly, the case supports
-reporting alternative coverage alongside adequacy; it does not establish
-that community breadth is always necessary for an actionable answer.</p>
+assigns the acquired sanitizer documentation the highest content-detail
+level, while recording a limited count of third-party material and a low
+estimate of model prior knowledge. Those observations describe different
+properties. A thin third-party channel can matter if the official guide
+does not cover a subsequent error, but it does not prove that the
+acquired guide was insufficient for the original question. Accordingly,
+the case supports reporting third-party source count alongside content
+detail; it does not establish that community breadth is always necessary
+for an actionable answer.</p>
 <p>These examples also temper a simple account based on task depth. A
 conceptually demanding optimization question can have accessible,
 detailed guidance, while an apparently straightforward error lookup can
@@ -735,12 +745,12 @@ historical matrix into a purportedly recoded dataset.</p>
 implementation and provide fields, mappings, and discrepancy annotations
 that can be reused in later independent coding and cross-ecosystem
 applications.</p>
-<h3 id="interpretation-of-the-heuristic-index">Interpretation of the
-heuristic index</h3>
-<p>For the 25 pairs, the historical heuristic means are .732 for CANN
-and .922 for CUDA. These values retain the original coding and
+<h3 id="interpretation-of-the-composite-confidence-score">Interpretation
+of the composite confidence score</h3>
+<p>For the 25 pairs, the historical composite-confidence means are .732
+for CANN and .922 for CUDA. These values retain the original coding and
 aggregation assumptions; they are provided for traceability rather than
-as corrected estimates of ecosystem quality. The excluded migration
+as calibrated estimates of ecosystem quality. The excluded migration
 analogy and the flagged source and counting issues remain visible in the
 supplement. No significance test or population-level ranking is inferred
 from these task categories.</p>
@@ -843,10 +853,10 @@ technical knowledge can reach an agent under specified conditions and be
 assessed for applicability. We define this construct, operationalize it
 through eleven indicators and an evidence record, and examine it through
 an accelerator-development case archive. The cases show why discovery,
-access, adequacy, version specificity, and alternative-source coverage
-need separate treatment. They also expose the consequences of counting
-boundaries, attribution choices, inferred priors, and aggregation
-rules.</p>
+official content accessibility, official content detail, source version
+clarity, and third-party source count need separate treatment. They also
+expose the consequences of counting boundaries, attribution choices,
+inferred priors, and aggregation rules.</p>
 <p>The methodological contribution is a way to connect a development
 requirement to an inspectable evidence profile. It enables documentation
 and agent researchers to ask which knowledge condition requires

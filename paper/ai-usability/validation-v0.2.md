@@ -40,8 +40,8 @@ This record summarizes completed content, calculation, and artifact checks. It v
 最终PDF的SHA-256 / Final PDF SHA-256:
 
 ```text
-English: 21886cff6efc70cf513444ccd9630b909ae909a673e789887d08cd006055a96d
-Chinese: 4557a0e4f04fc51a5ffffacbbb5ededc37d24b56a6167ce490fc3c222e5d5124
+English: df9a04d74f16d5ade03cbeb2350d9cad6496884e869915ac3b1738cd021ad211
+Chinese: 6170146d957b7bb9dc4819f4b0042ae4281e51e4828834a25f9b088017b828f3
 ```
 
 英文构建使用缓存中的真实ACM `acmart` v1.83（2022-02-19）及Tectonic 0.17.0。此记录没有把缓存类的版本表述为最新版本。源码包可交给作者在自己的ACM/Overleaf环境继续维护。
@@ -50,9 +50,9 @@ The English build uses the authentic cached ACM `acmart` v1.83 (2022-02-19) and 
 
 ## 仍然存在的研究边界 / Remaining research limits
 
-精确模型版本、完整工具配置、逐次完整返回和最终答案未在全部归档单元中统一保留。现有材料不能据此宣称独立人工核验、评分者一致性、真实硬件运行、用户研究或部署干预效果。M7是先验估计，M9/M10是记录中指令的检查，M11是启发式指数；三者均按此边界陈述。
+精确模型版本、完整工具配置、逐次完整返回和最终答案未在全部归档单元中统一保留。现有材料不能据此宣称独立人工核验、评分者一致性、真实硬件运行、用户研究或部署干预效果。M7是模型自带知识估计，M9/M10检查记录中的回答或指导，M11是由M1–M8计算的综合置信度；三者均按此边界陈述。
 
-Exact model versions, full tool configurations, complete returns, and final answers are not uniformly retained across the archive. The materials do not establish independent human verification, inter-rater reliability, hardware execution, a user study, or intervention effects. M7 is a prior estimate, M9/M10 inspect recorded instructions, and M11 is a heuristic index.
+Exact model versions, full tool configurations, complete returns, and final answers are not uniformly retained across the archive. The materials do not establish independent human verification, inter-rater reliability, hardware execution, a user study, or intervention effects. M7 is a prior estimate, M9/M10 inspect recorded responses or guidance, and M11 is the composite confidence score computed from M1-M8.
 
 文件已经生成并检查，尚未向CHI提交。正式提交仍需作者完成最终全文审阅、作者与PCS条目以及适用声明。本记录不表示已经获得外部方法验证或录用保证。
 

@@ -190,12 +190,12 @@ def metric_color(value, metric):
 
 def metric_label(metric,lang):
     labels={
-        1:('M1 Find','M1 发现'), 2:('M2 Fetch','M2 获取'),
-        3:('M3 Adequacy','M3 充分性'), 4:('M4 Version','M4 版本'),
-        5:('M5 Alternatives','M5 替代来源'), 6:('M6 Credibility','M6 可信度'),
-        7:('M7 Prior*','M7 先验*'), 8:('M8 Effort','M8 成本'),
-        9:('M9 Pinning','M9 版本锁定'), 10:('M10 Steps','M10 步骤完整'),
-        11:('M11 Index†','M11 指数†'),
+        1:('M1 Official find','M1 官方发现'), 2:('M2 Official access','M2 官方可获取'),
+        3:('M3 Official detail','M3 官方详尽'), 4:('M4 Source version','M4 资料版本'),
+        5:('M5 3P count','M5 第三方数量'), 6:('M6 3P credibility','M6 第三方可信'),
+        7:('M7 Prior estimate*','M7 自带知识估计*'), 8:('M8 Search / access effort','M8 检索与获取成本'),
+        9:('M9 Response version','M9 回答版本'), 10:('M10 Actionability','M10 步骤可操作'),
+        11:('M11 Confidence†','M11 综合置信度†'),
     }
     return labels[metric][0 if lang=='en' else 1]
 
@@ -205,7 +205,7 @@ def full_matrix_panel(lang,panel,metrics):
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
     d=Drawing(f'figure-2-full-matrix-{panel}',1100,920,lang,'Full eleven-indicator archival matrix' if en else '完整十一项指标档案矩阵')
-    title={'a':('A. Official-source conditions','A．官方来源条件'),'b':('B. Alternative, prior, and acquisition conditions','B．替代来源、先验与获取条件'),'c':('C. Instruction checks and heuristic index','C．指导材料检查与启发式指数')}[panel]
+    title={'a':('A. Official-source conditions','A．官方来源条件'),'b':('B. Third-party, prior, and acquisition conditions','B．第三方、先验与获取条件'),'c':('C. Response checks and composite confidence','C．回答检查与综合置信度')}[panel]
     d.text(18,28,title[0] if en else title[1],22,bold=True)
     d.text(18,49,'Archived codes by workflow. Each task row has CANN and CUDA columns; G uses ROCm/HIP in the second column.' if en else '按工作流组织的历史编码。每项任务均列 CANN 与 CUDA；G 的第二列为 ROCm/HIP。',13,fill='#566474')
     # Reserve a readable task-label column: the prior 250-unit column let the
@@ -243,7 +243,7 @@ def full_matrix_panel(lang,panel,metrics):
                 d.text(x+side*cell+(cell-5)/2,y+16,shown,15,bold=True,anchor='middle')
         y+=h
     d.text(18,872,'M1–M10 are archived ordinal codes (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved core adequacy.' if en else 'M1–M10 为历史有序编码（1–5；高值更有利；M8 为逆向成本评分）。“—”表示核心充分性未观测。',13,fill='#566474')
-    d.text(18,892,'* M7 is an archived estimate. † M11 is the historical heuristic availability index. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为历史启发式可得性指数。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
+    d.text(18,892,'* M7 is an archived estimate. † M11 is the historical composite confidence score from M1–M8. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为历史估计。† M11 为由 M1–M8 汇总的历史综合置信度。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
     d.save()
 
 
@@ -314,26 +314,27 @@ def framework(lang):
             '是否需要检索？': 'Need retrieval?',
             '工具调用决策': 'Tool-use decision',
             '发现官方与第三方候选页面': 'Discover official / third-party candidates',
-            'M1 官方可发现性 · M5 替代来源覆盖': 'M1 Discoverability · M5 Alternative coverage',
+            'M1 官方可发现性 · M5 第三方来源数量': 'M1 Official source discoverability · M5 Third-party source count',
             '读取选中页面的正文': 'Retrieve selected page content',
-            'M2 内容取得程度 · M3 官方内容充分性': 'M2 Content acquisition · M3 Content adequacy',
+            'M2 官方正文可获取性 · M3 官方正文详尽度': 'M2 Official content accessibility · M3 Official content detail',
             '模型自带知识': 'Model prior knowledge',
             '无需检索的补充证据；': 'Supplementary evidence without retrieval;',
             '薄弱时也可能填补空缺。': 'when weak, it may fill gaps.',
-            'M7 模型先验评估': 'M7 Model-prior assessment',
+            'M7 模型自带知识估计': 'M7 Estimated model prior knowledge',
             '汇总当前证据（回灌）': 'Integrate current evidence (feedback)',
-            'M6 替代来源可信度 · M8 获取成本': 'M6 Source credibility · M8 Acquisition effort',
+            'M6 第三方来源可信度': 'M6 Third-party source credibility',
+            'M8 检索与获取成本': 'M8 Search and acquisition effort',
             '④ 证据是否充分？': '4. Is evidence adequate?',
-            'M4 版本清晰度': 'M4 Version clarity',
-            'M9 操作说明版本明确性': 'M9 Instruction version specificity',
-            'M10 操作说明完整性': 'M10 Instruction completeness',
+            'M4 资料版本清晰度': 'M4 Source version clarity',
+            'M9 回答版本明确性': 'M9 Response version specificity',
+            'M10 回答步骤可操作性': 'M10 Procedural actionability of responses',
             '⑥ 收敛（证据充分）': '6. Converge (evidence adequate)',
             '能否继续检索？': 'Can retrieval continue?',
             '未达上限且预期有效': 'Below limit and expected to help',
             '是否仍有可靠证据？': 'Any reliable evidence left?',
             '官方 / 第三方 / 先验任一充分': 'Official / third-party / prior: any adequate',
             '终答': 'Final answer',
-            'M11 启发式汇总': 'M11 Heuristic summary',
+            'M11 综合置信度（M1–M8）': 'M11 Composite confidence score (M1–M8)',
             '证据不足时，回答应显式暴露边界，而非把缺口伪装成确定性。': 'When evidence is insufficient, state the boundary rather than disguise gaps as certainty.',
             '否：依据模型先验': 'No: use model prior',
             '是：调用工具检索': 'Yes: call retrieval tools',
@@ -359,7 +360,7 @@ def framework(lang):
         # and connection anchors, so the shared process geometry stays intact.
         svg = svg.replace('<rect x="190" y="14" width="180"', '<rect x="140" y="14" width="280"')
         svg = svg.replace('width="178" height="64"', 'width="178" height="76"')
-        svg = svg.replace('y="351" font-size="6.2" fill="#426d8e">M7 Model-prior assessment', 'y="361" font-size="6.2" fill="#426d8e">M7 Model-prior assessment')
+        svg = svg.replace('y="351" font-size="6.2" fill="#426d8e">M7 Estimated model prior knowledge', 'y="361" font-size="6.2" fill="#426d8e">M7 Estimated model prior knowledge')
         svg = svg.replace('M501,358 V427 H300 V438', 'M501,370 V427 H300 V438')
         svg = svg.replace('points="250,490 335,532 250,574 165,532"', 'points="250,490 360,532 250,574 140,532"')
         svg = svg.replace('<path d="M335,532 H370"', '<path d="M360,532 H420"')
