@@ -211,6 +211,7 @@ def full_matrix_panel(lang,panel,metrics):
     # Reserve a readable task-label column: the prior 250-unit column let the
     # migration label run beneath the first score cell in the rendered PDF.
     left=310;cell=96;header_y=66
+    row_width=left+len(metrics)*cell*2-6-12
     d.text(18,92,'Task' if en else '任务',18,bold=True)
     for i,metric in enumerate(metrics):
         x=left+i*cell*2
@@ -222,12 +223,12 @@ def full_matrix_panel(lang,panel,metrics):
     stripe=False
     for row in ordered_tasks(tasks):
         if row[0]=='group':
-            d.rect(12,y,1074,17,'#edf4f2',r=0)
+            d.rect(12,y,row_width,17,'#edf4f2',r=0)
             d.text(18,y+13,row[1] if en else row[2],13,bold=True,fill='#285f55')
             y+=19
             continue
         task=row[1];t=task['task_id'];h=22
-        if stripe:d.rect(12,y,1074,h,'#f8fafb',r=0)
+        if stripe:d.rect(12,y,row_width,h,'#f8fafb',r=0)
         stripe=not stripe
         name=(SHORT if en else SHORT_CN)[ord(t)-65]
         # The footer establishes G's ROCm/HIP comparison. Keeping the row

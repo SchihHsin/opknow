@@ -18,6 +18,10 @@ if historical:
  def clean_historical_image(match):
   svg=base64.b64decode(match[1]).decode()
   svg=svg.replace('CUDA‡','CUDA').replace('‡ For G','For G').replace('‡ G 的','G 的')
+  headers=re.findall(r'<rect x="([0-9]+)" y="66" width="186"',svg)
+  if headers:
+   row_width=max(map(int,headers))+186-12
+   svg=re.sub(r'(<rect x="12" y="[0-9]+" width=")1074(" height=)',lambda m:m[1]+str(row_width)+m[2],svg)
   return 'src="data:image/svg+xml;base64,'+base64.b64encode(svg.encode()).decode()+'"'
  b=re.sub(r'src="data:image/svg\+xml;base64,([^"]+)"',clean_historical_image,b)
 pattern=re.compile(r'<(p|h[1-6]|figcaption)\b[^>]*>.*?</\1>',re.S)
