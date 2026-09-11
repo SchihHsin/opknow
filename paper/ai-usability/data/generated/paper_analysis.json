@@ -2,6 +2,7 @@
   "schema_version": 1,
   "analysis_type": "Descriptive archival re-analysis and arithmetic sensitivity; no new empirical run.",
   "frozen_manifest": "../manifest.json",
+  "scoring_specification": "../m2_scoring.json",
   "scope": {
     "retained_pairs": 26,
     "retained_units": 52,
@@ -49,10 +50,10 @@
       "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.16,
       "legacy_prior_self_rating_mean": 2.84,
       "legacy_prior_self_rating_equal_to_5_count": 0,
-      "legacy_index": {
-        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
-        "mean_from_exact_recomputation": 0.731902,
-        "mean_of_archived_3_decimal_values": 0.73192,
+      "composite": {
+        "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.730768,
+        "mean_of_rounded_3_decimal_values": 0.73084,
         "min_exact": 0.410394,
         "max_exact": 0.900864,
         "band_counts_using_exact_formula": {
@@ -63,8 +64,8 @@
         }
       },
       "sensitivity_remove_prior": {
-        "mean": 0.602049,
-        "mean_change_from_exact_legacy": -0.129852,
+        "mean": 0.599214,
+        "mean_change_from_exact_composite": -0.131553,
         "band_counts": {
           "high": 3,
           "low": 2,
@@ -118,10 +119,10 @@
       "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.44,
       "legacy_prior_self_rating_mean": 4.56,
       "legacy_prior_self_rating_equal_to_5_count": 14,
-      "legacy_index": {
-        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+      "composite": {
+        "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
         "mean_from_exact_recomputation": 0.922067,
-        "mean_of_archived_3_decimal_values": 0.92204,
+        "mean_of_rounded_3_decimal_values": 0.92204,
         "min_exact": 0.834918,
         "max_exact": 1.0,
         "band_counts_using_exact_formula": {
@@ -130,7 +131,7 @@
       },
       "sensitivity_remove_prior": {
         "mean": 0.846369,
-        "mean_change_from_exact_legacy": -0.075697,
+        "mean_change_from_exact_composite": -0.075697,
         "band_counts": {
           "high": 19,
           "medium": 2,
@@ -177,10 +178,10 @@
       "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.192308,
       "legacy_prior_self_rating_mean": 2.846154,
       "legacy_prior_self_rating_equal_to_5_count": 0,
-      "legacy_index": {
-        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
-        "mean_from_exact_recomputation": 0.736236,
-        "mean_of_archived_3_decimal_values": 0.736269,
+      "composite": {
+        "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "mean_from_exact_recomputation": 0.735145,
+        "mean_of_rounded_3_decimal_values": 0.735231,
         "min_exact": 0.410394,
         "max_exact": 0.900864,
         "band_counts_using_exact_formula": {
@@ -191,8 +192,8 @@
         }
       },
       "sensitivity_remove_prior": {
-        "mean": 0.605873,
-        "mean_change_from_exact_legacy": -0.130363,
+        "mean": 0.603147,
+        "mean_change_from_exact_composite": -0.131998,
         "band_counts": {
           "high": 3,
           "low": 2,
@@ -246,10 +247,10 @@
       "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.461538,
       "legacy_prior_self_rating_mean": 4.538462,
       "legacy_prior_self_rating_equal_to_5_count": 14,
-      "legacy_index": {
-        "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+      "composite": {
+        "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
         "mean_from_exact_recomputation": 0.920449,
-        "mean_of_archived_3_decimal_values": 0.920423,
+        "mean_of_rounded_3_decimal_values": 0.920423,
         "min_exact": 0.834918,
         "max_exact": 1.0,
         "band_counts_using_exact_formula": {
@@ -258,7 +259,7 @@
       },
       "sensitivity_remove_prior": {
         "mean": 0.847663,
-        "mean_change_from_exact_legacy": -0.072786,
+        "mean_change_from_exact_composite": -0.072786,
         "band_counts": {
           "high": 20,
           "medium": 2,
@@ -297,10 +298,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
         "legacy_prior_self_rating_mean": 3,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.798903,
-          "mean_of_archived_3_decimal_values": 0.799,
+          "mean_of_rounded_3_decimal_values": 0.799,
           "min_exact": 0.728966,
           "max_exact": 0.8648,
           "band_counts_using_exact_formula": {
@@ -310,7 +311,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.737621,
-          "mean_change_from_exact_legacy": -0.061282,
+          "mean_change_from_exact_composite": -0.061282,
           "band_counts": {
             "high": 1,
             "medium": 1,
@@ -346,10 +347,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.333333,
         "legacy_prior_self_rating_mean": 4.666667,
         "legacy_prior_self_rating_equal_to_5_count": 2,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.904436,
-          "mean_of_archived_3_decimal_values": 0.904333,
+          "mean_of_rounded_3_decimal_values": 0.904333,
           "min_exact": 0.853309,
           "max_exact": 0.98,
           "band_counts_using_exact_formula": {
@@ -358,7 +359,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.774502,
-          "mean_change_from_exact_legacy": -0.129934,
+          "mean_change_from_exact_composite": -0.129934,
           "band_counts": {
             "high": 1,
             "medium_high": 2
@@ -400,12 +401,12 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 2.666667,
         "legacy_prior_self_rating_mean": 2.5,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
-          "mean_from_exact_recomputation": 0.660464,
-          "mean_of_archived_3_decimal_values": 0.660333,
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.657536,
+          "mean_of_rounded_3_decimal_values": 0.6575,
           "min_exact": 0.410394,
-          "max_exact": 0.767247,
+          "max_exact": 0.749676,
           "band_counts_using_exact_formula": {
             "low": 1,
             "medium": 1,
@@ -413,8 +414,8 @@
           }
         },
         "sensitivity_remove_prior": {
-          "mean": 0.504871,
-          "mean_change_from_exact_legacy": -0.155593,
+          "mean": 0.49755,
+          "mean_change_from_exact_composite": -0.159986,
           "band_counts": {
             "low": 1,
             "medium": 3,
@@ -462,10 +463,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.166667,
         "legacy_prior_self_rating_mean": 4.666667,
         "legacy_prior_self_rating_equal_to_5_count": 4,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.890774,
-          "mean_of_archived_3_decimal_values": 0.890833,
+          "mean_of_rounded_3_decimal_values": 0.890833,
           "min_exact": 0.834918,
           "max_exact": 1.0,
           "band_counts_using_exact_formula": {
@@ -474,7 +475,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.784005,
-          "mean_change_from_exact_legacy": -0.106769,
+          "mean_change_from_exact_composite": -0.106769,
           "band_counts": {
             "high": 4,
             "medium": 2
@@ -511,10 +512,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.75,
         "legacy_prior_self_rating_mean": 3.25,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.79071,
-          "mean_of_archived_3_decimal_values": 0.79075,
+          "mean_of_rounded_3_decimal_values": 0.79075,
           "min_exact": 0.717559,
           "max_exact": 0.86486,
           "band_counts_using_exact_formula": {
@@ -524,7 +525,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.647345,
-          "mean_change_from_exact_legacy": -0.143365,
+          "mean_change_from_exact_composite": -0.143365,
           "band_counts": {
             "high": 1,
             "medium": 3
@@ -558,10 +559,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.5,
         "legacy_prior_self_rating_mean": 4.75,
         "legacy_prior_self_rating_equal_to_5_count": 3,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.945,
-          "mean_of_archived_3_decimal_values": 0.945,
+          "mean_of_rounded_3_decimal_values": 0.945,
           "min_exact": 0.88,
           "max_exact": 0.98,
           "band_counts_using_exact_formula": {
@@ -570,7 +571,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.863464,
-          "mean_change_from_exact_legacy": -0.081536,
+          "mean_change_from_exact_composite": -0.081536,
           "band_counts": {
             "high": 3,
             "medium_high": 1
@@ -607,10 +608,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.75,
         "legacy_prior_self_rating_mean": 2.75,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.722289,
-          "mean_of_archived_3_decimal_values": 0.7225,
+          "mean_of_rounded_3_decimal_values": 0.7225,
           "min_exact": 0.68459,
           "max_exact": 0.747129,
           "band_counts_using_exact_formula": {
@@ -619,7 +620,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.610811,
-          "mean_change_from_exact_legacy": -0.111477,
+          "mean_change_from_exact_composite": -0.111477,
           "band_counts": {
             "medium": 2,
             "medium_high": 2
@@ -653,10 +654,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.25,
         "legacy_prior_self_rating_mean": 4.25,
         "legacy_prior_self_rating_equal_to_5_count": 1,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.92,
-          "mean_of_archived_3_decimal_values": 0.92,
+          "mean_of_rounded_3_decimal_values": 0.92,
           "min_exact": 0.88,
           "max_exact": 0.94,
           "band_counts_using_exact_formula": {
@@ -665,7 +666,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.85744,
-          "mean_change_from_exact_legacy": -0.06256,
+          "mean_change_from_exact_composite": -0.06256,
           "band_counts": {
             "high": 3,
             "medium_high": 1
@@ -701,10 +702,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3.5,
         "legacy_prior_self_rating_mean": 3,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.752146,
-          "mean_of_archived_3_decimal_values": 0.75225,
+          "mean_of_rounded_3_decimal_values": 0.75225,
           "min_exact": 0.70282,
           "max_exact": 0.880526,
           "band_counts_using_exact_formula": {
@@ -714,7 +715,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.593366,
-          "mean_change_from_exact_legacy": -0.158781,
+          "mean_change_from_exact_composite": -0.158781,
           "band_counts": {
             "medium": 3,
             "medium_high": 1
@@ -746,10 +747,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 4,
         "legacy_prior_self_rating_mean": 4.5,
         "legacy_prior_self_rating_equal_to_5_count": 2,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.956728,
-          "mean_of_archived_3_decimal_values": 0.9565,
+          "mean_of_rounded_3_decimal_values": 0.9565,
           "min_exact": 0.920448,
           "max_exact": 1.0,
           "band_counts_using_exact_formula": {
@@ -758,7 +759,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.92364,
-          "mean_change_from_exact_legacy": -0.033088,
+          "mean_change_from_exact_composite": -0.033088,
           "band_counts": {
             "high": 4
           },
@@ -792,10 +793,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 2,
         "legacy_prior_self_rating_mean": 2,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.646146,
-          "mean_of_archived_3_decimal_values": 0.646,
+          "mean_of_rounded_3_decimal_values": 0.646,
           "min_exact": 0.554265,
           "max_exact": 0.738026,
           "band_counts_using_exact_formula": {
@@ -805,7 +806,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.541176,
-          "mean_change_from_exact_legacy": -0.104969,
+          "mean_change_from_exact_composite": -0.104969,
           "band_counts": {
             "low": 1,
             "medium_high": 1
@@ -843,10 +844,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 4,
         "legacy_prior_self_rating_mean": 4,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.9328,
-          "mean_of_archived_3_decimal_values": 0.933,
+          "mean_of_rounded_3_decimal_values": 0.933,
           "min_exact": 0.88,
           "max_exact": 0.9856,
           "band_counts_using_exact_formula": {
@@ -855,7 +856,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.904,
-          "mean_change_from_exact_legacy": -0.0288,
+          "mean_change_from_exact_composite": -0.0288,
           "band_counts": {
             "high": 2
           },
@@ -892,11 +893,11 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
         "legacy_prior_self_rating_mean": 3.5,
         "legacy_prior_self_rating_equal_to_5_count": 0,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
-          "mean_from_exact_recomputation": 0.792588,
-          "mean_of_archived_3_decimal_values": 0.7925,
-          "min_exact": 0.684313,
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
+          "mean_from_exact_recomputation": 0.7872,
+          "mean_of_rounded_3_decimal_values": 0.7875,
+          "min_exact": 0.673535,
           "max_exact": 0.900864,
           "band_counts_using_exact_formula": {
             "high": 1,
@@ -904,8 +905,8 @@
           }
         },
         "sensitivity_remove_prior": {
-          "mean": 0.660351,
-          "mean_change_from_exact_legacy": -0.132237,
+          "mean": 0.646879,
+          "mean_change_from_exact_composite": -0.14032,
           "band_counts": {
             "high": 1,
             "medium": 1
@@ -937,10 +938,10 @@
         "candidate_secondary_count_after_known_ownership_exclusion_mean": 3,
         "legacy_prior_self_rating_mean": 5,
         "legacy_prior_self_rating_equal_to_5_count": 2,
-        "legacy_index": {
-          "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+          "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
           "mean_from_exact_recomputation": 0.9206,
-          "mean_of_archived_3_decimal_values": 0.9205,
+          "mean_of_rounded_3_decimal_values": 0.9205,
           "min_exact": 0.92,
           "max_exact": 0.9212,
           "band_counts_using_exact_formula": {
@@ -949,7 +950,7 @@
         },
         "sensitivity_remove_prior": {
           "mean": 0.87276,
-          "mean_change_from_exact_legacy": -0.04784,
+          "mean_change_from_exact_composite": -0.04784,
           "band_counts": {
             "high": 2
           },
@@ -1069,7 +1070,7 @@
     "No new retrieval, independent human review, response validation, or hardware execution was performed.",
     "Exact agent and retrieval-tool configuration cannot be established from this appendix.",
     "Legacy indices are unvalidated heuristics, not calibrated confidence or task-success probabilities.",
-    "Legacy static-versus-SSR scoring is retained only for historical reproduction and is not recommended as an access criterion.",
+    "M2 uses the published acquisition categories: robots=1, spa=2, partial=3, ssr=4, static=5; these are not claims about content detail.",
     "Known source-ownership exclusions are applied to an audit count only; original RAW and scores remain untouched.",
     "Source counts are candidate counts; platform diversity does not establish informational independence.",
     "A.cann failure-count discrepancy is unresolved; original cost coding remains in legacy arithmetic.",

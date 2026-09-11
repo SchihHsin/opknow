@@ -498,20 +498,23 @@ specifies decision priorities and adjustments; task records provide the
 corresponding observations.</p>
 <p><strong>Official material (M1–M4).</strong> Discoverability combines
 result position, search rounds, and query refinement; body accessibility
-uses the observed fetch category. Body detail combines task coverage
-with the actionability of commands and code, while source version
-clarity considers version identifiers and compatibility conditions.
-Figure 2 shows the four sets of anchors: the lowest M3 grades
-distinguish whether task-specific details are present, while M4
+considers robots restrictions followed by page delivery and observed
+body returns. Grade 3 denotes partial retrieval of task-relevant body
+content, with detailed conditions in Appendix A. Body detail combines
+task coverage with the actionability of commands and code, while source
+version clarity considers version identifiers and compatibility
+conditions. Figure 2 shows the four sets of anchors: the lowest M3
+grades distinguish whether task-specific details are present, while M4
 distinguishes missing identifiers from listed versions with unclear
 compatibility. M3 is marked blocked when its body cannot be
 acquired.</p>
 <figure id="fig:scoring-official">
 <img src="figures/figure-scoring-official-en.svg"
-data-description="Four rows share a 1–5 scale for official discovery, body accessibility, body detail, and source version clarity. M3 progresses from no task details to a few task fragments; M4 progresses from missing version identifiers to listed versions with unclear compatibility. M2 has no grade-3 category."
-alt="Scoring anchors for official material (M1–M4); M2 uses four categories." />
+data-description="Four rows share a 1–5 scale for official discovery, body accessibility, body detail, and source version clarity. M3 progresses from no task details to a few task fragments; M4 progresses from missing version identifiers to listed versions with unclear compatibility. M2 distinguishes robots restrictions, SPA body barriers, partial body retrieval, and retrievable SSR and static bodies."
+alt="Scoring anchors for official material (M1–M4); M2 grade 3 denotes partial retrieval of task-relevant body content." />
 <figcaption aria-hidden="true">Scoring anchors for official material
-(M1–M4); M2 uses four categories.</figcaption>
+(M1–M4); M2 grade 3 denotes partial retrieval of task-relevant body
+content.</figcaption>
 </figure>
 <p><strong>Third-party material, model knowledge, and effort
 (M5–M8).</strong> M5 scores the number of distinct third-party sources.
@@ -688,7 +691,7 @@ source-version-clarity scores. It follows the workflow groups and task
 order of Figures 6–8 to support interpretation of acquisition
 outcomes.</figcaption>
 </figure>
-<p>For the 25 task pairs, the composite confidence means are .732 for
+<p>For the 25 task pairs, the composite confidence means are .731 for
 CANN and .922 for CUDA. The findings below examine task-level variation
 in composite confidence alongside the individual indicators. The
 supplementary analysis notes document source-ownership corrections,
@@ -864,9 +867,9 @@ pairs. Difference = CUDA minus CANN; G is excluded.</caption>
 <tr>
 <td>Operator development</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">0.660</td>
+<td style="text-align: right;">0.658</td>
 <td style="text-align: right;">0.891</td>
-<td style="text-align: right;">0.230</td>
+<td style="text-align: right;">0.233</td>
 </tr>
 <tr>
 <td>Training</td>
@@ -899,9 +902,9 @@ pairs. Difference = CUDA minus CANN; G is excluded.</caption>
 <tr>
 <td>Migration</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0.793</td>
+<td style="text-align: right;">0.787</td>
 <td style="text-align: right;">0.921</td>
-<td style="text-align: right;">0.128</td>
+<td style="text-align: right;">0.133</td>
 </tr>
 </tbody>
 </table>
@@ -1222,8 +1225,15 @@ search process: at least two rounds with query refinement scores 2; at
 least two rounds without refinement scores 3. For a single round, the
 first official result at rank 1, 2–6, 7–10, or beyond 10 scores 5, 4, 3,
 or 2, respectively. Grade 1 describes difficulty finding a relevant
-official source after repeated searches. M2 uses the four acquisition
-categories in Figure 2. M3 is blocked when SPA or robots barriers
+official source after repeated searches. Under the study’s tool
+configuration, M2 first considers robots restrictions, then page
+delivery and observed returns: robots restriction, 1; SPA preventing
+body retrieval, 2; partial retrieval of task-relevant bodies, 3;
+retrievable server-rendered body, 4; retrievable static body, 5. Grade 3
+means that some targeted body content was obtained while other targeted
+body content remained technically inaccessible; it does not denote
+insufficient detail in obtained material or follow automatically from
+using an alternative entry. M3 is blocked when SPA or robots barriers
 prevent body acquisition. For acquired content, grade 1 provides no
 task-specific details, grade 2 only a few task-specific fragments, and
 grade 3 an overview or a main path without commands/code. A main path

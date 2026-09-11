@@ -1,0 +1,11 @@
+{
+  "metric": "M2",
+  "scores": {"robots": 1, "spa": 2, "partial": 3, "ssr": 4, "static": 5},
+  "partial_definition": "Some task-relevant official body content was obtained while other targeted body content remained technically inaccessible. A lack of detail in obtained content is assessed by M3; an alternative entry alone does not imply partial retrieval.",
+  "revision": "2026-09-11: partial retrieval assigned grade 3; all other metric rules and observations retained.",
+  "affected_records": ["C.cann", "Y.cann"],
+  "record_checks": {
+    "C.cann": "ATB overview and interface mechanisms obtained; AOL operator-reference body remained blocked by a SPA. See legacy_task_run_log.md, Task C, CANN retrieval and interpretation.",
+    "Y.cann": "Some ATC entries returned navigation without the requested body, while another returned soc_version values and a chip-query command. See legacy_task_run_log.md, Task Y; checked against the retained WebFetch returns. The grade concerns the task's combined acquisition outcome, not the use of an alternative entry."
+  }
+}

@@ -18,6 +18,8 @@ archival case application, not new website measurements or execution trials.
 - `data/worked-recording-example-a-cann.json`: a filled archival example that
   links requirements, events, sources, saved evidence, and indicator codes.
 - `scripts/build_paper_analysis.py`: portable offline arithmetic reproduction.
+- `data/m2_scoring.json`: published M2 anchors and affected-record checks.
+- `data/generated/current_scores.json`: scores used in the current paper.
 - `data/design-illustrations-cn-en.md` and the Figure 10-15 SVGs in `figures/`:
   design provenance notes and editable bilingual illustrations from the paper.
 
@@ -29,7 +31,8 @@ The primary comparison excludes task G's ROCm/HIP migration analogy and contains
 25 pairs. The original records are retained. H.cuda's vendor-blog ownership is
 flagged in the audit view; A.cann's failure-count boundary remains unresolved.
 Descriptive access profiles treat static and server-rendered returns alike.
-Historical scores are provided for traceability, not as calibrated probabilities.
+The matrix and composite use robots=1, spa=2, partial=3, ssr=4, static=5.
+Original scores are retained for provenance. Scores are not calibrated probabilities.
 
 The English task summaries translate the retained Chinese questions. The process
 log is preserved in its original language. A full original tool transcript and

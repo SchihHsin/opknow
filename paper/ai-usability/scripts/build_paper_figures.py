@@ -203,7 +203,7 @@ def metric_label(metric,lang):
 def full_matrix_panel(lang,panel,metrics):
     en=lang=='en'
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
-    scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
+    scores=json.loads((ROOT/'data/generated/current_scores.json').read_text())
     d=Drawing(f'figure-2-full-matrix-{panel}',1100,920,lang,'Full eleven-indicator task matrix' if en else '完整十一项指标任务矩阵')
     title={'a':('A. Official-source conditions','A．官方来源条件'),'b':('B. Third-party, prior, and acquisition conditions','B．第三方、先验与获取条件'),'c':('C. Response checks and composite confidence','C．回答检查与综合置信度')}[panel]
     d.text(18,28,title[0] if en else title[1],22,bold=True)
@@ -252,7 +252,7 @@ def access_profile(lang):
     en=lang=='en'
     tasks=json.loads((ROOT/'data/tasks.json').read_text())
     raw=json.loads((ROOT/'data/raw_original.json').read_text())
-    scores=json.loads((ROOT/'data/legacy_scores_original.json').read_text())
+    scores=json.loads((ROOT/'data/generated/current_scores.json').read_text())
     d=Drawing('figure-3-access-profile',1100,920,lang,'Access-profile detail for task pairs' if en else '任务对的读取状态辅助剖面')
     d.text(18,28,'Access-profile detail' if en else '读取状态辅助剖面',22,bold=True)
     d.text(18,49,'Content-acquisition states complement the M2 accessibility scores in Figures 2–4.' if en else '该辅助图展示正文获取状态，补充图2–4中的 M2 官方正文可获取性评分。',13,fill='#566474')

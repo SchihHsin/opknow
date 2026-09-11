@@ -48,3 +48,7 @@ Run the command from the paper directory, or invoke the script by its location f
 The field `candidate_secondary_count_after_known_ownership_exclusion` applies only the explicitly documented H.cuda ownership correction. It must not be read as a verified count of independent, accessible, or answer-supporting sources. `independent_source_count_verified` remains `null` for every unit. Original questions for later batches are labelled according to what the compiled log reports about their recovery; original transcripts have not been reconstructed or added.
 
 No retained aggregate should be interpreted as a current website measurement, ecosystem ranking, causal effect, developer success rate, or validated model capability estimate.
+
+## Current M2 anchors
+
+`m2_scoring.json` specifies robots=1, spa=2, partial=3, ssr=4, static=5 and the C.cann/Y.cann record checks. `scripts/build_paper_analysis.py` applies these anchors to the retained observations, recalculates M11 and sensitivity summaries, and writes `generated/current_scores.json`, which the paper figure builder reads. Original inputs and their hashes remain intact for provenance.

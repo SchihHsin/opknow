@@ -8,20 +8,24 @@ The paper's main comparison uses 25 CANN/CUDA task pairs. Task G concerns migrat
 
 | Scope / 范围 | Calculation / 计算 | CANN | Comparison / 对照 |
 | --- | --- | ---: | ---: |
-| 25 pairs / 25对 | Historical composite confidence / 历史综合置信度 | 0.731902 | 0.922067 |
-| 25 pairs / 25对 | Model-prior contribution set to zero / 模型自带知识贡献置零 | 0.602049 | 0.846369 |
-| 26 archive rows / 26行档案 | Historical composite confidence / 历史综合置信度 | 0.736236 | 0.920449 |
-| 26 archive rows / 26行档案 | Model-prior contribution set to zero / 模型自带知识贡献置零 | 0.605873 | 0.847663 |
+| 25 pairs / 25对 | Composite confidence / 综合置信度 | 0.730768 | 0.922067 |
+| 25 pairs / 25对 | Model-prior contribution set to zero / 模型自带知识贡献置零 | 0.599214 | 0.846369 |
+| 26 archive rows / 26行档案 | Composite confidence / 综合置信度 | 0.735145 | 0.920449 |
+| 26 archive rows / 26行档案 | Model-prior contribution set to zero / 模型自带知识贡献置零 | 0.603147 | 0.847663 |
 
-The comparison column is CUDA throughout the 25-pair summary; the 26-row summary additionally includes G's ROCm/HIP analogy. Means of the already rounded historical scores differ slightly: 0.731920/0.922040 for 25 pairs and 0.736269/0.920423 for 26 rows. The paper uses exact recomputation before final rounding. Workflow means in Table 3 use the same 25-pair scope and the original workflow groups; differences are calculated before rounding the displayed means.
+The comparison column is CUDA throughout the 25-pair summary; the 26-row summary additionally includes G's ROCm/HIP analogy. Means of the already rounded scores differ slightly: 0.730840/0.922040 for 25 pairs and 0.735231/0.920423 for 26 rows. The paper uses exact recomputation before final rounding. Workflow means in Table 3 use the same 25-pair scope and the original workflow groups; differences are calculated before rounding the displayed means.
 
-25对汇总的对照列均为 CUDA；26行汇总则额外包含 G 的 ROCm/HIP 类比。若对已舍入的历史评分再求均值，结果略有不同：25对为0.731920/0.922040，26行为0.736269/0.920423。正文使用精确复算后再舍入的结果。表3沿用25对范围及原工作流分组；差值在展示值舍入前计算。
+25对汇总的对照列均为 CUDA；26行汇总则额外包含 G 的 ROCm/HIP 类比。若对已舍入的评分再求均值，结果略有不同：25对为0.730840/0.922040，26行为0.735231/0.920423。正文使用精确复算后再舍入的结果。表3沿用25对范围及原工作流分组；差值在展示值舍入前计算。
+
+M2 assigns partial acquisition to grade 3. This changes C.cann and Y.cann from 4 to 3; their composite scores become 0.750 and 0.674, respectively. Other M1–M10 values and the composite formula are unchanged. The mapping and record checks are provided in `m2_scoring.json`; `generated/current_scores.json` contains the scores used in the paper. Frozen source files preserve the original observations and prior calculation for provenance, rather than defining an alternative protocol.
+
+M2将部分获取列为3分档。C.cann和Y.cann由4分调整为3分，对应综合置信度为0.750和0.674。其余M1–M10评分及综合公式不变。映射与记录核对说明见`m2_scoring.json`，论文使用的评分见`generated/current_scores.json`。冻结源文件保留原观测及此前计算以供追溯，不构成另一套协议。
 
 ## Formula sensitivity / 公式敏感性
 
-M11, the Composite Confidence Score, aggregates the historical M1-M8 codes. M9 (response version specificity) and M10 (procedural actionability of responses) are reported separately. The formula combines official support O, third-party support C, and estimated model prior P through 1-(1-O)(1-C)(1-P), then applies source-version and inverse-effort factors.
+M11, the Composite Confidence Score, aggregates the M1-M8 scores. M9 (response version specificity) and M10 (procedural actionability of responses) are reported separately. The formula combines official support O, third-party support C, and estimated model prior P through 1-(1-O)(1-C)(1-P), then applies source-version and inverse-effort factors.
 
-M11 综合置信度汇总历史 M1-M8 编码；M9（回答版本明确性）与 M10（回答步骤可操作性）单列。公式以1-(1-O)(1-C)(1-P)合并官方支撑 O、第三方支撑 C 与模型自带知识估计 P，再乘以资料版本与逆向成本因子。
+M11 综合置信度汇总 M1-M8 评分；M9（回答版本明确性）与 M10（回答步骤可操作性）单列。公式以1-(1-O)(1-C)(1-P)合并官方支撑 O、第三方支撑 C 与模型自带知识估计 P，再乘以资料版本与逆向成本因子。
 
 Setting P to zero examines the aggregate's sensitivity to its estimated model-prior channel while preserving all other inputs. It is an arithmetic change of assumption, rather than a new retrieval run or a measurement of a model without prior knowledge. When P=1, the channel-combination term is exactly 1 regardless of O and C. The final score can still vary through the version and effort factors, but differences in external support disappear from the channel-combination term. This saturation property is one reason to read the source indicators alongside the composite.
 
@@ -35,11 +39,11 @@ The factors are transformed ordinal codes. The formula expresses a compensatory 
 
 - **H.cuda source ownership:** the `nvidia-blog` entry is vendor-owned material. Excluding this known entry changes the mean third-party candidate count from 3.48 to 3.44 in the 25-pair CUDA records; CANN remains 3.16. The remaining entries are recorded candidates, with their independence, accessibility, and support for individual claims requiring inspection. Historical scores are retained unchanged.
 - **A.cann acquisition count:** the structured record has `fetch=3` and `fetch_fail=0`, while the compiled log reports a missing body on the third read. The exact historical counting boundary cannot be recovered; both records and the discrepancy are preserved.
-- **Content acquisition:** the descriptive profile groups `static` and `ssr` returns as core text obtained; `partial` remains partial, and `spa`/`robots` indicate core text not obtained. The unequal historical M2 scores remain in the full matrix and composite calculation for traceability. Access route is recorded independently and remains unknown where the archive does not identify it.
+- **Content acquisition:** the descriptive profile groups `static` and `ssr` returns as core text obtained; `partial` remains partial, and `spa`/`robots` indicate core text not obtained. The full matrix and composite calculation use M2 anchors robots=1, spa=2, partial=3, ssr=4, and static=5. The broad acquisition-status grouping does not replace these anchors. Access route is recorded independently and remains unknown where the archive does not identify it.
 
 - **H.cuda 来源归属：** `nvidia-blog` 属于厂商官方材料。排除这一已知条目后，25对 CUDA 记录中的第三方候选来源均值从3.48变为3.44，CANN仍为3.16。其余条目为已记录候选来源，是否独立、可访问及支撑具体主张需要结合记录检查。历史评分保持不变。
 - **A.cann 获取计数：** 结构化记录为 `fetch=3`、`fetch_fail=0`，汇编日志却记载第三次阅读未取得正文。无法恢复当时精确的计数边界，因此同时保留记录与差异说明。
-- **正文获取：** 描述性剖面将 `static` 和 `ssr` 都归为核心正文已取得；`partial` 为部分取得，`spa`/`robots` 为核心正文未取得。完整矩阵及综合计算保留不等值的历史 M2 编码，以便追溯。访问路径独立记录，档案未标明时保持未知。
+- **正文获取：** 描述性剖面将 `static` 和 `ssr` 都归为核心正文已取得；`partial` 为部分取得，`spa`/`robots` 为核心正文未取得。完整矩阵与综合计算统一使用M2档位：robots=1、spa=2、partial=3、ssr=4、static=5。上述获取状态归类不替代评分档位。访问路径独立记录，档案未标明时保持未知。
 
 ## Interpreting proposed improvements / 如何解释拟议改进
 

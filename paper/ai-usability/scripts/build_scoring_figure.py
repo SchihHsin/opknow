@@ -1,5 +1,6 @@
 """Compact bilingual rubric figure; run with Matplotlib. Does not compute task scores."""
 from pathlib import Path
+import sys
 from textwrap import wrap
 import matplotlib
 matplotlib.use('Agg')
@@ -33,7 +34,7 @@ def anchor_label(label,lang):
 
 ROWS=[
 ('M1',BLUE,['多轮仍难找到','换词定位／\n一轮排名>10','多轮命中／\n排名7–10','一轮排名2–6','一轮排名第1'],['Still not found','Refine query /\nrank >10','Multiple rounds /\nrank 7–10','First round: 2–6','First round: 1']),
-('M2',BLUE,['robots限制','SPA受阻','—','服务端渲染／\n部分返回','静态正文'],['robots restriction','SPA blocked','—','SSR /\npartial return','Static body']),
+('M2',BLUE,['robots限制','SPA正文\n获取受阻','任务相关正文\n部分可获取','服务端渲染\n正文可获取','静态正文\n可获取'],['robots restriction','SPA body\nblocked','Partial body\nretrieval','SSR body\nretrievable','Static body\nretrievable']),
 ('M3',BLUE,['无任务细节','少量任务片段','概述／主路径\n无命令代码','主路径＋代码／\n完整参考无代码','完整参考＋\n命令代码'],['No task details','A few task\nfragments','Overview / main\npath, no code','Main path + code /\nfull ref., no code','Full reference\n+ commands/code']),
 ('M4',BLUE,['版本标识缺失','版本已列（≥3）\n配套未明','芯片与框架可锁／\n其他情况','官方支持矩阵','版本无关／\n至多1个版本'],['Version IDs\nmissing','Versions listed (≥3),\npairing unclear','Chip–framework\npairing / other','Support matrix','Version irrelevant /\nat most one']),
 ('M7',M7_COLOR,['几乎依赖现查','知识有限，\n命令需查','概念熟悉，\n细节需查','流程熟悉，\n可给骨架','可凭已有知识\n作答（自评）'],['Relies on lookup','Limited knowledge;\nlook up commands','Concepts familiar;\nlook up details','Workflow familiar;\ncan outline steps','Can answer from\nprior (self-rating)']),
@@ -55,10 +56,12 @@ def rows(ax,lang,items,offset=0):
   y=31+i*42+offset;label_column(ax,name,lang,y+5,color)
   for j,label in enumerate(zh if lang=='cn' else en):
    x=start+j*cw;mix=np.array(colors.to_rgb(color));strength=.2+.8*j/4
-   ax.plot([x,x+cw-10],[y,y],lw=2,color='#e5eaf0' if name=='M2' and j==2 else mix*strength+(1-strength))
+   ax.plot([x,x+cw-10],[y,y],lw=2,color=mix*strength+(1-strength))
    text(ax,x+cw/2-5,y+7,anchor_label(label,lang),7.7 if lang=='cn' else 7.1,ha='center')
 
 def save(fig,name,lang):
+ if '--official-only' in sys.argv and name!='official':
+  plt.close(fig);return
  for ext in ('svg','pdf','png'):fig.savefig(OUT/f'figure-scoring-{name}-{lang}.{ext}',dpi=180)
  plt.close(fig)
 

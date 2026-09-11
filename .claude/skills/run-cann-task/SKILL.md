@@ -33,6 +33,8 @@ description: 跑一个或多个「CANN vs CUDA AI 可用性」开发者任务的
 > **边跑边写 `task_run_log.md`**（防压缩丢证据）：每任务一段，含版本敏感度、使用的问题(CUDA/CANN 对)、CUDA侧过程(编号步骤)、CANN侧过程、评分行、小结。格式照搬已有 A–H 段。
 
 ## 4. 打分（用 score_metrics.py 公式，非主观）
+
+- M2映射统一为robots=1、spa=2、partial=3、ssr=4、static=5。partial指部分目标正文取得、另有目标正文技术受阻；资料不够详尽归M3，替代入口本身不降分。
 - 把 §3 观测填进 `score_metrics.py` 的 `RAW` 字典新键（照搬已有任务的字段结构：`rounds,rank,refine,fetch,fetch_fail,core_fetch,exec,ref_level,n_versions,ver_matrix,ver_irrelev,two_axis,sources,platforms,dates,consist,own,churn,pin,repro`）。在字段上方写 `#` 注释标来源。
 - 把新代号加进 `TASKS = [...]`。
 - 跑 `python3 score_metrics.py --diff` → 得①–⑪ 各分（⑪=三源噪声-OR：综合=K×版本因子×成本因子，见 CLAUDE §3a）。**这是权威分，UI 必须与它逐值一致**。

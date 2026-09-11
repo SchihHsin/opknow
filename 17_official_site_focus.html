@@ -294,7 +294,7 @@ const FORMULA=[
   note:'纯由实测命中名次/轮数映射，无主观成分。'},
  {t:'② 官方可抓取性 — score2_fetch(r)',
   inp:'核心 how-to 页的抓取形态 core_fetch（实测 web_fetch 结果分类）',
-  rule:['static 静态站、正文全抓 → 5','ssr 服务端渲染子树可抓 / partial 部分可抓 → 4','spa 单页应用、仅回导航+meta → 2','robots 全拦 → 1'],
+  rule:['static 静态站、正文全抓 → 5','ssr 服务端渲染子树可抓 → 4','partial 任务相关正文部分可抓 → 3','spa 单页应用、仅回导航+meta → 2','robots 全拦 → 1'],
   note:'形态由真去 fetch 的结果判定（子树相关，非平台常量）。'},
  {t:'③ 官方正文详尽度 — score3_detail(r)',
   inp:'正文是否含可执行核心 exec（命令/可跑代码）、参考完整度 ref_level',
@@ -386,7 +386,7 @@ const SRC_MIX={
  X:{cuda:{m:[44,21,35,0,0],n:'公式派生估计：官方渠道 OFF=1.00、二手 SEC=0.48、自带 OWN=0.80 → 有把握来源≈K=100%；剩余按正文可抓形态分入类比外推与留白。'},
     cann:{m:[48,19,25,7,1],n:'公式派生估计：官方渠道 OFF=0.80、二手 SEC=0.32、自带 OWN=0.40 → 有把握来源≈K=92%；剩余按正文可抓形态分入类比外推与留白。'}},
  Y:{cuda:{m:[40,19,41,0,0],n:'公式派生估计：官方渠道 OFF=1.00、二手 SEC=0.48、自带 OWN=1.00 → 有把握来源≈K=100%；剩余按正文可抓形态分入类比外推与留白。'},
-    cann:{m:[16,30,38,10,6],n:'公式派生估计：官方渠道 OFF=0.26、二手 SEC=0.48、自带 OWN=0.60 → 有把握来源≈K=84%；剩余按受阻/SPA形态分入类比外推与留白。'}},
+    cann:{m:[16,30,38,10,6],n:'公式派生估计：修订后官方渠道 OFF=0.192、二手 SEC=0.48、自带 OWN=0.60，K≈83.2%；图中比例保留为原来源构成估计，不是指标评分。'}},
  Z:{cuda:{m:[35,21,44,0,0],n:'公式派生估计：官方渠道 OFF=0.80、二手 SEC=0.48、自带 OWN=1.00 → 有把握来源≈K=100%；剩余按正文可抓形态分入类比外推与留白。'},
     cann:{m:[38,23,37,2,0],n:'公式派生估计：官方渠道 OFF=0.80、二手 SEC=0.48、自带 OWN=0.80 → 有把握来源≈K=98%；剩余按正文可抓形态分入类比外推与留白。'}}
 };
@@ -509,7 +509,7 @@ const ROWS={
    N('v5','高','完全通识。')],
   cann:[
    N('v4','4','1 搜命中 hiascend AOL / ATB 官方。',{srcs:[['算子加速库接口 简介 operatorlist_0001','hiascend.com/document/detail/.../apiref/aolapi',' ','社区版 8.0.RC3.alpha003'],['CANN 算子库 AOL','hiascend.com/cann/aol',' ',' '],['aclnn / AOL / acldvpp 算子列表','hiascend.com (CannCommunityOplist)',' ',' ']]}),
-   N('v4','4','子树相关：ATB 概述页（<code>doc_center/source/</code>）<b>部分可抓</b>（非 robots 全拦，实测命中）；仅 AOL 穷尽算子表（<code>apiref/aolapi/</code>）为 SPA。',{got:'ascendtb_0001 抓到 ATB 能力概述 + 三大接口机制（基础算子 Operation / 插件 Plugin / 图算子 Graph）+ 框架支持。',miss:'具体算子列表、调用示例代码抽不到（落在 Gitee 蓝区仓 + CSDN）；AOL 穷尽算子表 operatorlist_0001 为 SPA。',warn:'选型层概述可抓；只有穷尽算子签名表 SPA。'}),
+   N('v3','3','子树相关：ATB 概述页（<code>doc_center/source/</code>）<b>部分可抓</b>（非 robots 全拦，实测命中）；仅 AOL 穷尽算子表（<code>apiref/aolapi/</code>）为 SPA。',{got:'ascendtb_0001 抓到 ATB 能力概述 + 三大接口机制（基础算子 Operation / 插件 Plugin / 图算子 Graph）+ 框架支持。',miss:'具体算子列表、调用示例代码抽不到（落在 Gitee 蓝区仓 + CSDN）；AOL 穷尽算子表 operatorlist_0001 为 SPA。',warn:'选型层概述可抓；只有穷尽算子签名表 SPA。'}),
    N('v3','3','本轮真去 fetch 实测：ATB 概述可抓但偏概念，缺算子列表 / 调用码。',{got:'ATB 能力概述 + 接口机制（Operation / Plugin / Graph）+ 多框架支持（PyTorch / MindSpore / Paddle）正文抓到。',miss:'具体算子列表、调用示例代码未内联（需到 Gitee ascend-transformer-boost 蓝区仓 + CSDN 代码级文章）。',srcs:[['ATB 加速库 ascendtb_0001（实测 fetch）','hiascend.com/doc_center/source',' ','canncommercial 80RC2']]}),
    N('v3','3','AOL / ATB 命名较新、仍在规整，但选型逻辑本身与版本无关。',{vers:'AOL / ATB 命名随 8.0.RC3 等仍在演进，TBE 为较老一代。'}),
    N('v3','3','知乎 / 博客园 / 华为云 / arXiv，中等。',{srcs:[['华为 CANN 介绍及与英伟达 CUDA 区别','53ai.com/news/...62930','2024-07-18',' '],['Serving LLMs on Huawei CloudMatrix384','arxiv.org/pdf/2506.12708','2025-06',' '],['ZOMI CANN 算子','cnblogs.com',' ',' '],['昇腾算子库讨论','bbs.huaweicloud.com',' ',' ']]}),
@@ -518,7 +518,7 @@ const ROWS={
    N('v5','1搜','1 次确认库名。'),
    N('v4','4','选型与版本基本无关。'),
    N('v4','4','映射清晰：cuBLAS↔AOL-BLAS、cuDNN↔AOL-NN、transformer↔ATB，结论可用。'),
-   N('v4','中高','量化公式复算 = K .87 × 版本因子 .88 × 成本 1.0 = .77 → 中高（旧「高」系整体研判、偏乐观；新分由①–⑧ 代入：自带⑦仅 3（AOL/ATB 命名需查）、官方③仅 3（ATB 概述偏概念），撑不到「高」）。')]},
+   N('v4','中高','量化公式复算 = K .852 × 版本因子 .88 × 成本 1.0 ≈ .750 → 中高（旧「高」系整体研判、偏乐观；新分由①–⑧ 代入：自带⑦仅 3（AOL/ATB 命名需查）、官方③仅 3（ATB 概述偏概念），撑不到「高」）。')]},
  D:{name:'自定义算子开发',
   cuda:[
    N('v5','5','docs.pytorch.org 官方教程置顶。',{srcs:[['Custom C++ and CUDA Operators','docs.pytorch.org/tutorials/advanced/cpp_custom_ops',' ','PyTorch 2.12'],['Custom C++ and CUDA Extensions','docs.pytorch.org/tutorials/advanced/cpp_extension',' ',' ']]}),
@@ -1059,7 +1059,7 @@ const ROWS={
    N('v5','高','综合置信度公式复算 = 0.92 → 高（由①–⑧ 实时代入，见下方推导）。')],
   cann:[
    N('v2','2','2 轮检索、官方命中名次 rank=1；官方排不到首屏、靠二搜关键词定位（refine）。'),
-   N('v4','4','<code>/document/detail</code> 子树 SPA，但 <code>/doc_center</code> 镜像兜住正文 → 部分可抓。'),
+   N('v3','3','部分ATC入口未返回目标正文，另一路取得soc_version参数正文 → 任务相关正文部分可抓；并非因使用替代入口降分。'),
    N('v4','4','抓到核心机制，但非端到端穷尽走查。可执行验证。'),
    N('v3','3','检索中并存版本号 4 个，且跨双轴（CANN 版 × 插件/芯片）。'),
    N('v3','3','二手 3 条（官方一手已剔除、不计二手）。',{srcs:[['blog.csdn.net','','2024-05',''],['zhuanlan.zhihu.com','','2025-03',''],['medium.com','',' ','']]}),
@@ -1068,7 +1068,7 @@ const ROWS={
    N('v1','2搜·4抓✗','成本 = 轮数2 + 0.5×抓取4 + 4×抓取失败1 = 8。'),
    N('v4','4','大体可锁、个别取值依芯片/版本。'),
    N('v4','4','主命令可抄、部分参数依环境。'),
-   N('v4','中高','综合置信度公式复算 = 0.68 → 中高（由①–⑧ 实时代入，见下方推导）。')]},
+   N('v4','中高','综合置信度公式复算 = 0.67 → 中高（由①–⑧ 实时代入，见下方推导）。')]},
  Z:{name:'概念心智模型对照',
   cuda:[
    N('v5','5','1 轮检索、官方命中名次 rank=1。'),
@@ -1098,7 +1098,7 @@ const ROWS={
 const TASKOVER={
  A:{q:'PyTorch→ONNX→TensorRT ｜ ONNX→ATC→.om',cu:'高',ca:'中高',v:'差距小，两边都好查；官方 quickstart 子树实测可抓、命令统一，仅深层 AIPP 参考 SPA。'},
  B:{q:'Nsight ｜ msprof / Ascend PyTorch Profiler',cu:'高',ca:'中高',v:'中等偏小差距；官方 PyTorch Profiler 子树实测可抓、对标 GPU，仅 msprof 原生参考 SPA。'},
- C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'中高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。CANN 侧公式复算 .77→中高（自带⑦/官方③ 各仅 3，撑不到「高」）。'},
+ C:{q:'cuBLAS/cuDNN/… ｜ AOL/ATB/TBE',cu:'高',ca:'中高',v:'差距小，属通识；ATB 概述官方可抓、二手厚，仅 AOL 穷尽算子表 SPA。CANN 侧公式复算 .75→中高（自带⑦/官方③ 各仅 3，撑不到「高」）。'},
  D:{q:'CUDA kernel+ext ｜ Ascend C+msOpGen+aclnn',cu:'高',ca:'低',v:'4 任务里差距最大；核心 how-to 整个压在 SPA 深层页、无可抓子树兜底、二手又稀，差距拉满。CANN 侧公式复算 .41→低（三渠道同时塌、K 仅 .54）。'},
  E:{q:'CUDA 报错码定位 ｜ EZ9999 排查',cu:'高',ca:'中',v:'第二批 CANN 最弱格。官方错误码页 ssr 可抓但是泛化兜底（Inner Error/cause N/A，③2），加自带知识弱（⑦2）、二手碎散——「②可抓但③无用」的典型，公式复算 .55→中。'},
  F:{q:'PyTorch DDP+NCCL ｜ torch_npu DDP+HCCL',cu:'高',ca:'中高',v:'官方 trainingmigrguide 子树可抓且详尽，HCCL 几乎逐项对标 PyTorch DDP（backend 改 hccl、device 改 npu）；短板在版本散与二手平台集中，公式复算 .72→中高。'},
@@ -1120,7 +1120,7 @@ const TASKOVER={
  V:{q:'CUDA streams 计算传输重叠 ｜ aclrtMemcpyAsync 计算传输重叠',cu:'高',ca:'中高',v:'公式复算 0.72→中高。官方页 ssr 可抓；版本散乱(3)。'},
  W:{q:'NCCL 多卡通信调优 ｜ HCCL 多卡通信调优',cu:'高',ca:'中高',v:'公式复算 0.70→中高。官方页 ssr 可抓；版本散乱(4)。'},
  X:{q:'compute-sanitizer 内存越界定位 ｜ msSanitizer 内存越界定位',cu:'高',ca:'中高',v:'公式复算 0.74→中高。官方页 ssr 可抓；版本散乱(4)；二手薄；自带知识弱。'},
- Y:{q:'跨 GPU 架构迁移(-arch/PTX) ｜ 跨昇腾芯片迁移(soc_version)',cu:'高',ca:'中高',v:'公式复算 0.68→中高。官方 detail 子树 SPA、镜像兜底；版本散乱(4)。'},
+ Y:{q:'跨 GPU 架构迁移(-arch/PTX) ｜ 跨昇腾芯片迁移(soc_version)',cu:'高',ca:'中高',v:'公式复算 0.67→中高。官方 detail 子树 SPA、镜像兜底；版本散乱(4)。'},
  Z:{q:'CUDA 线程/内存层级心智模型 ｜ Ascend C SPMD/UB/GM 心智模型',cu:'高',ca:'高',v:'公式复算 0.90→高。官方页 ssr 可抓；版本散乱(3)。'}
 };
 const CATS=[

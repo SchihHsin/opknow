@@ -657,7 +657,7 @@ def score1_discover(r):
 
 def score2_fetch(r):
     """② 官方可抓取性 = 核心 how-to 页抓取形态映射。"""
-    return {"static":5, "ssr":4, "partial":4, "spa":2, "robots":1}[r["core_fetch"]]
+    return {"static":5, "ssr":4, "partial":3, "spa":2, "robots":1}[r["core_fetch"]]
 
 def score3_detail(r):
     """③ 官方正文详尽度。② 为 SPA/robots（抓不到正文）→ 受阻中性态。"""

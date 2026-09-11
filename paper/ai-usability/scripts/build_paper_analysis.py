@@ -3,7 +3,8 @@
 
 Run from any directory: python3 path/to/scripts/build_paper_analysis.py
 No web access, new agent runs, response validation, or hardware execution occurs.
-The historical source files remain unchanged. Outputs go to data/generated/.
+The source observations remain unchanged. Published M2 anchors are applied from
+data/m2_scoring.json; outputs go to data/generated/.
 """
 
 from __future__ import annotations
@@ -89,11 +90,13 @@ def verify_frozen_inputs():
 
 def build_units(legacy, raw, archived_scores, tasks):
     units = []
+    m2_scores = read_json("m2_scoring.json")["scores"]
     for task in tasks:
         tid = task["task_id"]
         for side in SIDES:
             r = raw[tid][side]
-            original_scores = archived_scores[tid][side]["scores"]
+            original_scores = list(archived_scores[tid][side]["scores"])
+            original_scores[1] = m2_scores[r["core_fetch"]]
             exact, band, intermediates = legacy.score11_overall(original_scores)
             no_prior_scores = list(original_scores)
             no_prior_scores[6] = legacy.BLK  # Mathematical removal of OWN; not an observed score.
@@ -108,9 +111,11 @@ def build_units(legacy, raw, archived_scores, tasks):
                 "workflow_group": task["workflow_group"],
                 "raw_original": r,
                 "legacy_scores_original": archived_scores[tid][side],
-                "legacy_index_recomputed_exact": exact,
-                "legacy_band": BANDS[band[0]],
-                "legacy_intermediates_recomputed_exact": intermediates,
+                "scores": original_scores,
+                "current_result": {"scores": original_scores, "overall": round(exact, 3), "band": band[0], "band_n": band[1], "mid": {k: round(v, 3) for k, v in intermediates.items()}},
+                "composite_recomputed_exact": exact,
+                "composite_band": BANDS[band[0]],
+                "intermediates_recomputed_exact": intermediates,
                 "recorded_access_status": ACCESS[r["core_fetch"]],
                 "access_status_provenance": "Descriptive mapping of retained core_fetch code; no new page retrieval or content verification.",
                 "recorded_access_route": "unknown_not_consistently_retained",
@@ -133,8 +138,8 @@ def build_units(legacy, raw, archived_scores, tasks):
 
 
 def summarize_side(units):
-    original = [u["legacy_index_recomputed_exact"] for u in units]
-    archived = [u["legacy_scores_original"]["overall"] for u in units]
+    original = [u["composite_recomputed_exact"] for u in units]
+    archived = [u["current_result"]["overall"] for u in units]
     without = [u["sensitivity_remove_prior"]["index"] for u in units]
     return {
         "n": len(units),
@@ -149,17 +154,17 @@ def summarize_side(units):
         "candidate_secondary_count_after_known_ownership_exclusion_mean": mean(u["candidate_secondary_count_after_known_ownership_exclusion"] for u in units),
         "legacy_prior_self_rating_mean": mean(u["legacy_scores_original"]["scores"][6] for u in units),
         "legacy_prior_self_rating_equal_to_5_count": sum(u["legacy_scores_original"]["scores"][6] == 5 for u in units),
-        "legacy_index": {
-            "status": "Historical heuristic, unvalidated and uncalibrated; not answer correctness or task success probability.",
+        "composite": {
+            "status": "Heuristic composite, unvalidated and uncalibrated; not answer correctness or task success probability.",
             "mean_from_exact_recomputation": mean(original),
-            "mean_of_archived_3_decimal_values": mean(archived),
+            "mean_of_rounded_3_decimal_values": mean(archived),
             "min_exact": round(min(original), 6),
             "max_exact": round(max(original), 6),
-            "band_counts_using_exact_formula": counts(u["legacy_band"] for u in units),
+            "band_counts_using_exact_formula": counts(u["composite_band"] for u in units),
         },
         "sensitivity_remove_prior": {
             "mean": mean(without),
-            "mean_change_from_exact_legacy": mean(b - a for a, b in zip(original, without)),
+            "mean_change_from_exact_composite": mean(b - a for a, b in zip(original, without)),
             "band_counts": counts(u["sensitivity_remove_prior"]["band"] for u in units),
             "tasks_at_low_or_very_low": [{"task_id": u["task_id"], "index": round(u["sensitivity_remove_prior"]["index"], 6), "band": u["sensitivity_remove_prior"]["band"]} for u in units if u["sensitivity_remove_prior"]["band"] in {"low", "very_low"}],
         },
@@ -194,9 +199,9 @@ The appendix preserves 26 historical task formulations and 52 ecosystem-labelled
 
 In the retained records for the 25-pair subset, the CANN side contains {c_access.get('core_text_retrieved', 0)} cases coded as retrieved core text, {c_access.get('partial_text_retrieved', 0)} as partial retrieval, and {c_access.get('core_text_not_retrieved', 0)} as core text not retrieved. All {n_access.get('core_text_retrieved', 0)} CUDA-labelled cases were coded as retrieved core text. This descriptive mapping treats static and server-rendered pages alike. It reports the archived access observation, without treating page architecture as a quality hierarchy or inferring content sufficiency, answer correctness, or successful execution.
 
-The ownership audit identifies an NVIDIA developer blog counted in the historical secondary-source list for H.cuda. The audit view classifies that entry as vendor-owned official material and reduces the candidate secondary-source count for that record from four to three. The original data and historical index are preserved unchanged. The remaining candidates are not asserted to be verified independent sources. A separate discrepancy remains unresolved: A.cann records three fetches and zero failures, whereas its compiled log reports a missing SPA body on the third fetch. No inferred replacement count is inserted.
+The ownership audit identifies an NVIDIA developer blog counted in the historical secondary-source list for H.cuda. The audit view classifies that entry as vendor-owned official material and reduces the candidate secondary-source count for that record from four to three. The original data are preserved; current M2 scores and composites are recalculated using m2_scoring.json. The remaining candidates are not asserted to be verified independent sources. A separate discrepancy remains unresolved: A.cann records three fetches and zero failures, whereas its compiled log reports a missing SPA body on the third fetch. No inferred replacement count is inserted.
 
-For historical reproducibility only, the 25-pair subset has mean legacy heuristic indices of {ca['legacy_index']['mean_from_exact_recomputation']:.6f} for CANN and {cu['legacy_index']['mean_from_exact_recomputation']:.6f} for the CUDA-labelled side, using the original formula inputs. Means computed from the archived three-decimal values are {ca['legacy_index']['mean_of_archived_3_decimal_values']:.6f} and {cu['legacy_index']['mean_of_archived_3_decimal_values']:.6f}, respectively. These indices are neither calibrated confidence estimates nor observed performance measures.
+Using the published M2 anchors, the 25-pair subset has mean composite confidence scores of {ca['composite']['mean_from_exact_recomputation']:.6f} for CANN and {cu['composite']['mean_from_exact_recomputation']:.6f} for the CUDA-labelled side, with partial retrieval assigned M2=3. Means computed from the rounded three-decimal values are {ca['composite']['mean_of_rounded_3_decimal_values']:.6f} and {cu['composite']['mean_of_rounded_3_decimal_values']:.6f}, respectively. These indices are neither calibrated confidence estimates nor observed performance measures.
 
 An arithmetic sensitivity analysis sets the model-prior channel to zero while retaining all other historical inputs. The 25-pair means become {ca['sensitivity_remove_prior']['mean']:.6f} and {cu['sensitivity_remove_prior']['mean']:.6f}. The direction of the between-case difference persists, but absolute values and bands depend on the treatment of the prior channel. This is a re-analysis of a formula, not an additional agent experiment. In {cu['legacy_prior_self_rating_equal_to_5_count']} of the {cu['n']} CUDA-labelled records, the historical prior self-rating equals five. Because normalization makes OWN equal to one, K is then algebraically fixed at one regardless of the external-source factors; version and cost factors still affect the final legacy index.
 
@@ -216,6 +221,7 @@ def main():
         "schema_version": 1,
         "analysis_type": "Descriptive archival re-analysis and arithmetic sensitivity; no new empirical run.",
         "frozen_manifest": "../manifest.json",
+        "scoring_specification": "../m2_scoring.json",
         "scope": {"retained_pairs": 26, "retained_units": 52, "primary_pairs": 25, "primary_units": 50, "excluded_from_primary": ["G"], "exclusion_reason": "G's CUDA-labelled side uses AMD ROCm / HIP migration material."},
         "primary_25_pairs": summarize_scope(primary),
         "historical_26_pairs_including_migration_analogy": summarize_scope(units),
@@ -226,7 +232,7 @@ def main():
             "No new retrieval, independent human review, response validation, or hardware execution was performed.",
             "Exact agent and retrieval-tool configuration cannot be established from this appendix.",
             "Legacy indices are unvalidated heuristics, not calibrated confidence or task-success probabilities.",
-            "Legacy static-versus-SSR scoring is retained only for historical reproduction and is not recommended as an access criterion.",
+            "M2 uses the published acquisition categories: robots=1, spa=2, partial=3, ssr=4, static=5; these are not claims about content detail.",
             "Known source-ownership exclusions are applied to an audit count only; original RAW and scores remain untouched.",
             "Source counts are candidate counts; platform diversity does not establish informational independence.",
             "A.cann failure-count discrepancy is unresolved; original cost coding remains in legacy arithmetic.",
@@ -235,6 +241,7 @@ def main():
     }
     OUT.mkdir(exist_ok=True)
     write_json("units.json", units)
+    write_json("current_scores.json", {t["task_id"]: {u["legacy_side_label"]: u["current_result"] for u in units if u["task_id"] == t["task_id"]} for t in tasks})
     write_json("paper_analysis.json", analysis)
     write_tables(tasks, units, corrections)
     write_english_findings(analysis)
