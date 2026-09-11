@@ -1,10 +1,11 @@
 """Compare the pre-HCI snapshot with the latest manuscript; retain all manuscript content."""
 from pathlib import Path
-import re,html,json,difflib,subprocess,base64
+import re,html,json,difflib,subprocess,base64,sys
 root=Path(__file__).resolve().parents[3]; base=root/'paper/ai-usability'
 a=(base/'manuscript-cn-before-29c87cc.html').read_text()
 # Regenerate from the current reading edition; never use the annotated output as input.
-b=(base/'manuscript-cn-v0.2.html').read_text()
+historical='--historical' in sys.argv
+b=subprocess.check_output(['git','show','a7beaea:paper/ai-usability/manuscript-cn-after-f5e6f83.html'],text=True,cwd=root) if historical else (base/'manuscript-cn-v0.2.html').read_text()
 def embed(match):
  path=base/html.unescape(match[1])
  assert path.suffix=='.svg',path
@@ -25,9 +26,32 @@ for op,i,j,k,l in sm.get_opcodes():
  for n in range(k,l):
   items.append({'kind':'新增段落' if i==j else '修改段落','old':old or '此处为新增内容，改前没有对应段落。'})
   changes[n]=len(items)-1
+def underline_changes(fragment, old):
+ # Map visible non-whitespace characters back to their original HTML tokens.
+ tokens=re.findall(r'<[^>]*>|&(?:#[xX][0-9a-fA-F]+|#[0-9]+|[a-zA-Z][a-zA-Z0-9]+);|.',fragment,re.S)
+ visible=''.join(html.unescape(t) for t in tokens if not t.startswith('<'))
+ new=re.sub(r'\s+','',visible)
+ marked=set()
+ for op,_,__,start,end in difflib.SequenceMatcher(None,re.sub(r'\s+','',old),new,autojunk=False).get_opcodes():
+  if op in ('insert','replace'):marked.update(range(start,end))
+ out=[];buffer=[];state=False;pos=0
+ def flush():
+  if buffer:
+   text=''.join(buffer);out.append('<u class="review-word">'+text+'</u>' if state else text);buffer.clear()
+ for token in tokens:
+  if token.startswith('<'):
+   flush();out.append(token);continue
+  value=html.unescape(token);length=len(re.sub(r'\s+','',value))
+  highlight=any(i in marked for i in range(pos,pos+length)) if length else state
+  if highlight!=state:flush();state=highlight
+  buffer.append(token);pos+=length
+ flush()
+ assert pos==len(new)
+ return ''.join(out)
 for n in reversed(range(len(bb))):
  if n not in changes:continue
  m=bb[n];s=m[0];idx=changes[n]
+ s=underline_changes(s, "" if items[idx]["kind"]=="新增段落" else items[idx]["old"])
  s=re.sub(r'^(<\w+)',r'\1 class="review-change" tabindex="0" data-review="'+str(idx)+'"',s,count=1)
  b=b[:m.start()]+s+b[m.end():]
 # Embedded figure changes are compared independently of captions.
@@ -42,9 +66,9 @@ for i in reversed(range(15)):
   m=newfig[i];s=m[0];s=s.replace('>',f'><button type="button" class="review-figure" data-review="{idx}">图 {i+1} 有修改 · 悬浮查看改前图</button>',1)
   b=b[:m.start()]+s+b[m.end():]
 css='''<style id="review-styles">
-.review-change{background:#eef2ff;border-left:3px solid #8b94d9;padding-left:12px;margin-left:-15px;cursor:help;transition:background .15s}.review-change:hover,.review-change:focus{background:#e1e7fc;outline:none}.review-figure{border:1px solid #abb6e1;border-radius:6px;background:#eef2ff;color:#394d85;padding:7px 12px;cursor:help;font:13px system-ui;margin-bottom:12px}.review-toolbar{background:#f5f7ff;border:1px solid #d9e0f2;border-radius:8px;padding:13px 16px;margin:0 0 24px;font:14px/1.6 system-ui;color:#48536d}.review-toolbar p{margin:0}.review-toolbar button{font:inherit;color:#344a87;background:white;border:1px solid #c4cde5;border-radius:5px;padding:3px 9px;margin:9px 8px 0 0;cursor:pointer}#review-tip{position:fixed;z-index:9999;width:min(540px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #c5cde0;border-radius:10px;padding:18px 20px;box-shadow:0 12px 48px #1b294433;font:15px/1.8 system-ui;color:#293346}#review-tip[hidden]{display:none}#review-tip strong{color:#4659a0;display:block;margin-bottom:8px}#review-tip .old-text{white-space:pre-wrap}#review-tip img{width:100%;height:auto}#review-tip button{float:right;border:0;background:#f0f3f8;border-radius:4px;cursor:pointer;padding:3px 8px}.review-muted .review-change{background:transparent;border-color:transparent}.review-current{outline:2px solid #8894d2!important;outline-offset:4px}@media print{.review-toolbar,#review-tip,.review-figure{display:none}.review-change{background:transparent;border:0;padding:0;margin-left:0}}
+.review-change{background:#f5ff76;border:0;cursor:help;transition:background .15s}.review-change:hover,.review-change:focus{background:#efff4d;outline:none}.review-word{text-decoration:underline;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:3px}.review-figure{border:1px solid #abb6e1;border-radius:6px;background:#eef2ff;color:#394d85;padding:7px 12px;cursor:help;font:13px system-ui;margin-bottom:12px}.review-toolbar{background:#f5f7ff;border:1px solid #d9e0f2;border-radius:8px;padding:13px 16px;margin:0 0 24px;font:14px/1.6 system-ui;color:#48536d}.review-toolbar p{margin:0}.review-toolbar button{font:inherit;color:#344a87;background:white;border:1px solid #c4cde5;border-radius:5px;padding:3px 9px;margin:9px 8px 0 0;cursor:pointer}#review-tip{position:fixed;z-index:9999;width:min(540px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #c5cde0;border-radius:10px;padding:18px 20px;box-shadow:0 12px 48px #1b294433;font:15px/1.8 system-ui;color:#293346}#review-tip[hidden]{display:none}#review-tip strong{color:#4659a0;display:block;margin-bottom:8px}#review-tip .old-text{white-space:pre-wrap}#review-tip img{width:100%;height:auto}#review-tip button{float:right;border:0;background:#f0f3f8;border-radius:4px;cursor:pointer;padding:3px 8px}.review-muted .review-change{background:transparent;border-color:transparent}.review-current{background:#eaff28!important;outline:none!important}.review-muted .review-word{text-decoration:none}@media print{.review-toolbar,#review-tip,.review-figure{display:none}.review-change{background:transparent;border:0;padding:0;margin-left:0}}
 </style>'''
-bar=f'''<aside class="review-toolbar"><p><strong>人机交互叙述调整 · 前后对照</strong>　大改之前 → 当前最新版</p><p>浅紫色标出修改或新增段落。悬浮、点击或按 Tab 聚焦可查看改前内容；按 Esc 关闭。共 {len(changes)} 处段落变动及 {len(items)-len(changes)} 处图示变动。正文采用当前最新版，包含之后已确认的摘要、相关工作及岗位措辞等修订；悬浮内容来自大改之前的版本。</p><button id="review-prev">上一处</button><button id="review-next">下一处</button><button id="review-toggle">隐藏高亮</button><span id="review-position"></span></aside>'''
+bar=f'''<aside class="review-toolbar"><p><strong>人机交互叙述调整 · 前后对照</strong>　大改之前 → 当前最新版</p><p>荧光黄色标出修改或新增段落，下划线标出具体新增或替换的文字。悬浮、点击或按 Tab 聚焦可查看改前内容；按 Esc 关闭。共 {len(changes)} 处段落变动及 {len(items)-len(changes)} 处图示变动。正文采用当前最新版，包含之后已确认的摘要、相关工作及岗位措辞等修订；悬浮内容来自大改之前的版本。</p><button id="review-prev">上一处</button><button id="review-next">下一处</button><button id="review-toggle">隐藏高亮</button><span id="review-position"></span></aside>'''
 b=b.replace('</head>',css+'</head>')
 b=b.replace('<h1',bar+'<h1',1)
 b=b.replace('</body>','''<div id="review-tip" role="dialog" aria-label="改前内容" hidden><button aria-label="关闭">×</button><strong></strong><div class="old-text"></div><div class="old-image"></div></div>
@@ -59,7 +83,12 @@ function go(delta){index=(index+delta+nodes.length)%nodes.length;nodes.forEach(n
 document.getElementById('review-next').onclick=()=>go(1);document.getElementById('review-prev').onclick=()=>go(-1);document.getElementById('review-toggle').onclick=e=>{document.body.classList.toggle('review-muted');e.target.textContent=document.body.classList.contains('review-muted')?'显示高亮':'隐藏高亮'};
 })();
 </script></body>''')
-(base/'manuscript-cn-review-changes.html').write_text(b)
+if historical:
+ b=b.replace('大改之前 → 当前最新版','29c87cc → f5e6f83 · 历史对照')
+ b=b.replace('正文采用当前最新版，包含之后已确认的摘要、相关工作及岗位措辞等修订；悬浮内容来自大改之前的版本。','本页是历史快照；<a href="manuscript-cn-review-changes.html">查看包含后续修订的最新高亮审阅版</a>。')
+ b=b.replace('<title>最新中文审阅版 · 修改高亮与改前对照</title>','<title>历史中文审阅版 · f5e6f83 · 高亮对照</title>')
+ b=b.replace('最新中文全文 · 修改高亮','历史中文全文 · f5e6f83 · 修改高亮')
+(base/('manuscript-cn-after-f5e6f83.html' if historical else 'manuscript-cn-review-changes.html')).write_text(b)
 print('Annotated',len(changes),'text blocks and',len(items)-len(changes),'figures')
 # All original paragraph content and all embedded current images are unchanged.
-assert [key(m[0]) for m in pattern.finditer(b.split('<div id="review-tip"')[0]) if '人机交互叙述调整' not in m[0] and '浅紫色标出' not in m[0]]==[key(m[0]) for m in bb]
+assert [key(m[0]) for m in pattern.finditer(b.split('<div id="review-tip"')[0]) if '人机交互叙述调整' not in m[0] and '荧光黄色标出' not in m[0]]==[key(m[0]) for m in bb]
