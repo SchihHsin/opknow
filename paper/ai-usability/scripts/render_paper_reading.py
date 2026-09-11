@@ -32,11 +32,18 @@ def main():
         page=page.replace('</head>',f'<style>{CSS}</style></head>')
         label='ENGLISH MANUSCRIPT · V0.2 · 11 SEPTEMBER 2026' if lang=='en' else '中文对照阅读版 · V0.2 · 2026-09-11'
         page=page.replace('<body>',f'<body><div class="edition">{label}</div>')
-        authors='<div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>'
+        authors='<div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>'
         page=re.sub(r'(<h1\b[^>]*>.*?</h1>)',r'\1'+authors,page,count=1,flags=re.S)
         page=page.replace('<div id="refs"',f'<h2>{"References" if lang=="en" else "参考文献"}</h2>\n<div id="refs"')
         # Long citation URLs are wrapped by CSS; sources remain local and offline.
         output=source.with_suffix('.html');output.write_text(page)
         print(output)
+        if lang=='cn':
+            # This is an explicitly non-anonymous approval copy. The standard
+            # Chinese reading PDF and the CHI submission package remain anonymous.
+            approval=page.replace('.authors,.affiliation{display:none}', '.authors,.affiliation{display:block}')
+            approval_output=ROOT/'manuscript-cn-approval.html'
+            approval_output.write_text(approval)
+            print(approval_output)
 
 if __name__=='__main__':main()

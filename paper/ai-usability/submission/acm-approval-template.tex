@@ -1,0 +1,54 @@
+% Non-anonymous internal approval copy. It retains the same ACM manuscript
+% review geometry as the submission template, but is never part of the CHI
+% source package or anonymous submission.
+\documentclass[manuscript,review]{acmart}
+\setcopyright{none}
+\settopmatter{printacmref=false,printfolios=true}
+
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xurl}
+\newcounter{none}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{%
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi%
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox\pandoc@box\fi%
+}
+\def\fps@figure{tbp}
+\makeatother
+
+\bibliographystyle{ACM-Reference-Format}
+\hypersetup{pdfauthor={},pdfcreator={LaTeX with acmart}}
+
+\begin{document}
+\title[Knowledge Availability for AI in Developer Ecosystems]{$title$}
+\author{Xinyu Shi}
+\affiliation{\institution{Huawei Technologies (China)}\country{China}}
+\author{Hao Yan}
+\authornote{Corresponding author.}
+\affiliation{\institution{Huawei Technologies (China)}\country{China}}
+\author{Jingwen Zhang}
+\affiliation{\institution{Huawei Technologies (China)}\country{China}}
+
+\begin{abstract}
+$abstract$
+\end{abstract}
+\ccsdesc[500]{Human-centered computing~HCI theory, concepts and models}
+\ccsdesc[300]{Software and its engineering~Documentation}
+$if(keywords)$
+\keywords{$keywords$}
+$endif$
+\maketitle
+
+$body$
+
+\bibliography{references}
+\end{document}

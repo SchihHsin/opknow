@@ -171,14 +171,16 @@ def main() -> None:
     parser.add_argument("--source", type=Path, default=PAPER / "manuscript-en-v0.2.md")
     parser.add_argument("--bibliography", type=Path, default=PAPER / "references.bib")
     parser.add_argument("--output", type=Path, default=PROJECT / "output/pdf/knowledge-availability-ai-chi2027-en-v0.2.pdf")
+    parser.add_argument("--template", type=Path, default=ROOT / "acm-review-template.tex", help="ACM Pandoc template; the default remains the anonymous submission template.")
     parser.add_argument("--no-pdf", action="store_true", help="Generate and validate LaTeX inputs without compiling a PDF.")
     parser.add_argument("--only-cached", action="store_true", help="Tell Tectonic to use cached TeX packages only.")
     parser.add_argument("--package", action="store_true", help="Also create a portable LaTeX source ZIP inside submission/.")
     args = parser.parse_args()
     source = args.source.resolve()
     bibliography = args.bibliography.resolve()
-    if not source.is_file() or not bibliography.is_file():
-        raise ValueError("The English manuscript and bibliography must both exist before building.")
+    template = args.template.resolve()
+    if not source.is_file() or not bibliography.is_file() or not template.is_file():
+        raise ValueError("The English manuscript, bibliography, and ACM template must all exist before building.")
     pandoc = find_binary("pandoc")
     stage = ROOT / "_build"
     stage.mkdir(exist_ok=True)
@@ -188,7 +190,7 @@ def main() -> None:
     manifest = prepare(document, source, stage, bibliography)
     latex = run([
         pandoc, "--from=json", "--to=latex", "--standalone", "--natbib", "--number-sections",
-        "--syntax-highlighting=none", "--wrap=none", "--template", str(ROOT / "acm-review-template.tex"),
+        "--syntax-highlighting=none", "--wrap=none", "--template", str(template),
         "--lua-filter", str(ROOT / "acm-figures.lua"),
     ], data=json.dumps(document, ensure_ascii=False))
     if "/Users/" in latex or "file://" in latex:

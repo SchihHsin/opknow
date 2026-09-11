@@ -47,3 +47,13 @@ SVG 路径会自动改用相邻同名 PDF；SVG→PDF 的图稿导出由图表�
 - 如使用其他平台，可设置环境变量 `PANDOC` 和 `TECTONIC` 指向本机工具。
 
 源码 ZIP 可直接在 Overleaf 中以 `main.tex` 为主文档编译，保留相同 ACM 单栏匿名审稿格式。
+
+## 内部审批版（不提交 CHI）
+
+`acm-approval-template.tex` 复用同一 ACM 单栏审稿版式，显示已确认的作者名单，供部门审批使用。它不进入匿名源码包，也不得上传至 CHI：
+
+```bash
+python3 submission/build_acm.py \
+  --template submission/acm-approval-template.tex \
+  --output ../../output/pdf/knowledge-availability-ai-chi2027-en-approval.pdf
+```
