@@ -29,7 +29,7 @@ The original title and methodological focus are retained. The three-source, elev
 - G 的 ROCm/HIP 迁移类比单列；主比较为25对，全部26任务52单元保留。 / G is a separate migration analogy; 25 pairs form the comparison and all 52 archival records remain available.
 - 静态与SSR页面按取得内容同等描述；原评分单独冻结供追溯。M7标明先验估计，M9/M10不再暗示实际执行成功，M11明确为由M1–M8汇总的综合置信度。 / Access profiles describe acquired content regardless of rendering technology. Historical scores are preserved; prior estimates, response checks, and the Composite Confidence Score computed from M1–M8 are explicitly distinguished.
 - 对照已保留日志修正批次、子Agent及问句恢复的描述，保留未能确定的配置与计数边界。 / Method reporting follows the retained log and explicitly identifies unavailable configuration and unresolved counting boundaries.
-- 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要171词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 171-word English abstract.
+- 中英文段落、引文和公式对应；16项参考文献经过元数据核验；英文摘要149词。 / Aligned bilingual manuscripts, 16 bibliographically checked references, and a 149-word English abstract.
 
 正文十五张图均提供中英文可编辑SVG；英文另有嵌入LaTeX的矢量PDF。图1为流程图，图2-5按解释段落穿插呈现评分规则，图6-9为完整指标矩阵分面及读取状态辅助图；图10-12为供给侧设计，图13-15为Agent侧设计。附录A补齐十一项指标的计算细则。六个示例随相关讨论出现，完整保留其他发现、第三方知识供给、优先级及方法复用论述。设计依据见[双语说明](data/design-illustrations-cn-en.md)。`scripts/build_paper_figures.py`生成原有图稿，`scripts/build_design_figures.py`生成设计插图，`scripts/render_paper_reading.py`生成阅读HTML，`submission/build_acm.py --package`生成ACM稿与源码包。
 
