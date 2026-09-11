@@ -92,9 +92,11 @@ basis for selecting a version remained unclear. A usable answer may also
 rely on alternative sources, masking gaps in official resources. Final
 answers or task outcomes alone offer limited grounds for distinguishing
 these conditions. Taking developers’ task-specific knowledge needs as a
-reference, we connect sources, acquisition events, and content support
-so that assessment can identify concrete targets for improving knowledge
-provision and agent interaction.</p>
+reference, we compare how ecosystems support different development
+activities and examine sources, acquisition events, and acquired content
+to identify problems in resource provision, information organization,
+and complementary sources, informing ecosystem development and agent
+interaction.</p>
 <p>We define <strong>knowledge availability for AI</strong> as the
 extent to which task-relevant technical knowledge can be discovered,
 obtained, and assessed for applicability by a specified agent and tool
@@ -664,6 +666,16 @@ within a workflow. M3 means and standard deviations include only records
 for which content detail can be assessed; blocked-content records are
 reported separately. These statistics describe the selected task set and
 do not support population-level inference about the ecosystems.</p>
+<p>Beyond workflow comparisons, we group the 25 task pairs by
+development activity into getting started and environment setup,
+training and routine use, and operators and in-depth development. Both
+ecosystems use the same task assignments to compare knowledge-support
+distributions across these scenarios; Table 5 reports the assignments
+and descriptive statistics. G, whose comparison side is ROCm/HIP,
+remains a separate case and is excluded from CANN/CUDA aggregates.
+Scenario grouping organizes the task comparison, while individual
+indicator scores and corresponding materials explain the specific
+knowledge conditions.</p>
 <h3 id="task-level-assessment-results">Task-level assessment
 results</h3>
 <p>The main comparison includes 25 CANN tasks: core content was obtained
@@ -779,156 +791,34 @@ score distributions.</caption>
 <h2
 id="findings-knowledge-conditions-across-development-tasks">Findings:
 Knowledge Conditions Across Development Tasks</h2>
-<p>Reading the matrix across tasks and across indicators reveals four
-connected patterns. Access failures are concentrated in particular
-acquisition routes, while unclear version-selection guidance recurs
-across otherwise different tasks. Official, third-party, and model-prior
-assessments form different support profiles, with variation also present
-within a workflow. We develop each finding through specific tasks and
-use the combination of indicators to locate its implications.</p>
+<p>Task-level comparisons reveal three connected findings. First, the
+ecosystems show different distributions of knowledge support across
+development scenarios. Second, differences in specific tasks involve
+official-content delivery, detail, and version organization. Finally,
+third-party material and estimates of model prior knowledge also vary by
+task and require examination alongside official resources. We present
+scenario comparisons, specific knowledge gaps, and complementarity among
+sources in that order.</p>
 <h3
-id="content-acquisition-and-content-detail-show-distinct-differences">Content
-acquisition and content detail show distinct differences</h3>
-<p>The agent obtained useful official content in CANN installation,
-conversion, training, and optimization tasks, with partial or
-unsuccessful acquisition along a small number of routes. This
-distribution supports inspection at the level of a task and its selected
-resources. A single site label, such as static or dynamically rendered,
-cannot describe the content obtained along every route through that
-site. Core official content was obtained in all 25 CUDA tasks, providing
-a contrast for these acquisition routes. Search rounds also differed: 13
-of 25 CANN tasks and 20 of 25 CUDA tasks used one search round; the
-remainder used two. These counts distinguish search effort from whether
-the selected content was subsequently obtained.</p>
-<p>Task D requires creating an Ascend C operator and integrating it with
-a framework, with implementation code, configuration-field explanations,
-and compilation and deployment steps. The WebFetch return for the
-selected official entry contained navigation, metadata, and
-documentation links, explicitly reporting “No code blocks, no
-implementation details, no step-by-step commands.” This read therefore
-did not supply the implementation content required by the task. M1
-records official-source discovery conditions, M2 records the acquisition
-outcome, and M3 is marked as blocked. This assessment locates an
-improvement target in the path from the selected entry to the
-implementation body: the entry should expose a body link that the
-reading tool can follow, or directly present the implementation,
-compilation, and deployment instructions. For assessing an
-implementation suggestion, the missing information is the procedure that
-would support its steps; a link to the guide alone does not supply that
-basis.</p>
-<p>Obtaining content does not mean that it supplies equally adequate
-task information. Among the 24 assessable CANN records, ten each receive
-content-detail scores of 5 and 4, while four receive scores of 2 or 3;
-all 25 CUDA records score 4 or 5. Two CANN debugging tasks illustrate
-this distinction: E and X both have M2 = 4 for content accessibility,
-but their content-detail scores are M3 = 2 and M3 = 5, respectively. The
-acquired EZ9999 explanation in E leaves the cause unspecified and offers
-only generic checks; the acquired sanitizer documentation in X provides
-detailed procedural guidance. The distinction concerns the detail
-supplied by the acquired content. For E, improving acquisition alone
-cannot supply the missing diagnostic guidance; possible triggers,
-checks, and their supporting evidence are also needed. For developers,
-this information provides a basis for selecting the next diagnostic
-action.</p>
-<p>Task A shows how useful main-path material and unavailable references
-can coexist. The acquired conversion quickstart supplied an ATC command,
-input-shape and target-device parameters, and a device-information step.
-A more extensive ATC/AIPP reference returned navigation and metadata.
-The worked recording example links the quickstart to supported
-conversion requirements and the missing reference to unresolved advanced
-settings. In task Y, accessing chip-migration information through the
-document center likewise yielded only partial content. These cases
-motivate recording both the content obtained and its relation to a task
-requirement, with the access route recorded separately where available.
-For a developer assessing the conversion guidance, this distinction
-identifies a supported main procedure and advanced settings that still
-require reference material. It bounds which parts of a proposed action
-the acquired sources can substantiate.</p>
-<h3
-id="multiple-versions-require-clear-selection-and-compatibility-guidance">Multiple
-versions require clear selection and compatibility guidance</h3>
-<p>Version clarity is a recurrent limitation even where the official
-content is accessible. Twelve of the 25 CANN tasks have M4 = 2, spanning
-conversion, installation, training, operator development, inference,
-optimization, and debugging. Only U and Z receive M4 = 5, and both are
-coded as version-insensitive. M4 scores for CUDA tasks range from 3 to
-5. Because the scoring rule uses version counts and compatibility-matrix
-availability, the observed distribution directs attention to the
-underlying version evidence rather than establishing ambiguity from
-version counts alone.</p>
-<p>When multiple versions coexist, an agent needs recommended entry
-points, applicability statements, or compatibility relations to
-determine which documentation to use. In A, similar quickstart material
-appears in different version trees, and obtaining the content does not
-establish which version to choose. In I, selecting a toolkit, driver,
-framework, and integration package requires combining information from
-different sources; the acquired compatibility matrix provides evidence
-for some of these relations. Version assessment therefore concerns both
-the presence of version labels and whether the available information
-supports selection. Explicit recommendations and compatibility guidance
-can provide a checkable basis for an agent to organize technical
-guidance.</p>
-<p>M4 and M9 make two stages of this problem visible. M4 describes
-version clarity in the source environment; M9 records how specifically
-the resulting guidance identifies an applicable version or combination.
-Reading them together helps locate whether the next improvement belongs
-in the documentation’s compatibility information or in how the agent
-formulates the response. This recurring issue has a wider task footprint
-than the missing official body in D, although the local acquisition
-failure remains consequential for that task. For delegated retrieval, a
-further judgment concerns whether the source’s stated conditions match
-the developer’s device and software combination. Source applicability
-and local environment facts supply different parts of that comparison: a
-missing compatibility relation calls for source investigation, whereas
-an unspecified installed version calls for a local check.</p>
-<h3
-id="knowledge-support-profiles-differ-across-tasks">Knowledge-support
-profiles differ across tasks</h3>
-<p>An accessible official guide can coexist with limited alternative
-material. In X, memory-error investigation, the acquired sanitizer
-documentation receives M3 = 5, while only one third-party source was
-found and M7 = 2. D also has a low model-prior estimate and weak
-third-party credibility, but lacks the core official body. The
-distinction is the available support configuration: X has detailed
-official guidance, whereas D combines a missing core guide with limited
-support in the other channels. A single label such as a thin community
-would obscure this difference.</p>
-<p>Across the main comparison, retrieved third-party candidates average
-3.16 per CANN task and 3.44 per CUDA task after the known vendor-blog
-exclusion in H. Counts alone provide a modest contrast and do not
-establish informational independence. Closer inspection of the search
-results revealed that some candidates came from the same platform, while
-some third-party pages could not be read beyond their search snippets.
-The method preserves source identity, acquisition outcome, and
-credibility assessment so that multiple entries are not automatically
-interpreted as multiple usable explanations.</p>
-<p>The model-prior column adds a separate estimate of support. The CUDA
-scores are all 4 or 5; CANN estimates are frequently lower, including 2
-for D, E, I, M, N, S, and X. These tasks combine lower prior estimates
-with needs for ecosystem-specific commands, compatibility relations, or
-diagnostic examples. They motivate examining where retrieved sources
-must carry more of the task’s support. The estimates describe the
-audit’s assessment of available model knowledge; the source observations
-identify the external material actually obtained.</p>
-<p>M9 and M10 complete the profile by assessing the version specificity
-and actionability of guidance produced during the tasks. For example, X
-combines detailed official material with a higher
-procedural-actionability code than D. This association gives an analyst
-a concrete question to inspect: which steps can be supported by the
-acquired guide, and which still need information from another source or
-the local environment? The composite confidence score summarizes M1-M8,
-while the response scores are reported separately to examine the
-resulting guidance.</p>
-<h3 id="task-scores-also-vary-within-a-workflow">Task scores also vary
-within a workflow</h3>
-<p>Workflow grouping helps locate concentrations of lower-scored tasks.
-Table 4 summarizes the 25-pair comparison. Operator development and
-debugging have lower CANN means than environment and installation, and
-debugging has the largest difference between the two columns. The
-debugging group consists of E and X, whose distinct profiles illustrate
-why a workflow mean needs to be read alongside its constituent tasks.
-The table describes the selected task set under the scoring rules used
-in this study.</p>
+id="knowledge-support-distributions-differ-between-ecosystems-across-development-scenarios">Knowledge-support
+distributions differ between ecosystems across development
+scenarios</h3>
+<p>Across workflows, CANN’s mean composite confidence is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.799</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.799</annotation></semantics></math>
+for environment and installation,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.658</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.658</annotation></semantics></math>
+for operator development, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.646</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.646</annotation></semantics></math>
+for debugging; the corresponding CUDA means are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.904</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.904</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.891</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.891</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.933</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.933</annotation></semantics></math>
+(Table 4). Debugging has the largest between-ecosystem difference, at
+0.287. The comparison directs attention to specific development
+activities: in this task set, CANN provides stronger knowledge support
+for environment configuration than for operator development and
+debugging.</p>
 <table>
 <caption>Workflow means of the composite confidence score for 25 task
 pairs. Difference = CUDA minus CANN; G is excluded.</caption>
@@ -936,8 +826,10 @@ pairs. Difference = CUDA minus CANN; G is excluded.</caption>
 <tr>
 <th>Workflow</th>
 <th style="text-align: right;">Tasks</th>
-<th style="text-align: right;">CANN</th>
-<th style="text-align: right;">CUDA</th>
+<th style="text-align: right;">CANN
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></th>
+<th style="text-align: right;">CUDA
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math></th>
 <th style="text-align: right;">Difference</th>
 </tr>
 </thead>
@@ -993,36 +885,249 @@ pairs. Difference = CUDA minus CANN; G is excluded.</caption>
 </tr>
 </tbody>
 </table>
-<p>Workflow means summarize a task group, but knowledge support can
-still differ within it. The CANN debugging group has mean composite
-confidence
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.646</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.646</annotation></semantics></math>,
-with E scoring 0.554 and X scoring 0.738. Both tasks obtained official
-content, but their content-detail scores are 2 and 5, respectively. They
-also differ in source discovery, third-party material, and response
-properties. Within-group score differences therefore require
-interpretation through the individual indicators and specific resources.
-For documentation and platform maintenance, workflow means can help
-identify task areas for closer inspection; concrete improvement targets
-require examining whether content was obtained, whether it was
-sufficiently detailed, and whether the basis for version selection was
-clear.</p>
+<table>
+<caption>Mean composite confidence and sample standard deviation for 25
+task pairs grouped by development scenario. Getting started and
+environment setup comprises A, H, I, J, K, S, T, Y, Z; training and
+routine use comprises E, F, P, Q, R; operators and in-depth development
+comprises B, C, D, L, M, N, O, U, V, W, X. Both ecosystems use identical
+assignments, excluding G.</caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr>
+<th>Development scenario</th>
+<th style="text-align: right;">Task pairs</th>
+<th style="text-align: right;">CANN
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>)</th>
+<th style="text-align: right;">CUDA
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Getting started and environment setup</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0.762 (0.078)</td>
+<td style="text-align: right;">0.915 (0.038)</td>
+</tr>
+<tr>
+<td>Training and routine use</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.743 (0.121)</td>
+<td style="text-align: right;">0.953 (0.045)</td>
+</tr>
+<tr>
+<td>Operators and in-depth development</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0.699 (0.113)</td>
+<td style="text-align: right;">0.914 (0.062)</td>
+</tr>
+</tbody>
+</table>
+<p>Scenario grouping further shows CANN’s mean composite confidence
+decreasing from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.762</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.762</annotation></semantics></math>
+for getting started and environment setup to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.743</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.743</annotation></semantics></math>
+for training and routine use and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.699</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.699</annotation></semantics></math>
+for operators and in-depth development. CUDA’s corresponding means are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.915</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.915</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.953</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.953</annotation></semantics></math>,
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.914</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.914</annotation></semantics></math>,
+without the same descending pattern. This comparison identifies weaker
+knowledge support for in-depth development in CANN, allowing the
+assessment to produce specific insights into how an ecosystem supports
+different development activities.</p>
+<p>Cases within the groups clarify the knowledge these scenarios
+require. CANN’s tiling task M and custom-operator task D score 0.628 and
+0.410, respectively. Memory-access and utilization task U, also in the
+in-depth development group, scores 0.881 and obtained official
+best-practice material. Error-code task E in the training and
+routine-use group scores 0.554; its acquired official explanation lacked
+diagnostic detail. We next examine acquisition and content records to
+identify the knowledge-provision issues involved in these scenario
+differences.</p>
+<h3
+id="official-content-delivery-detail-and-version-organization-create-distinct-knowledge-gaps">Official-content
+delivery, detail, and version organization create distinct knowledge
+gaps</h3>
+<p>In the main comparison, 22 of the 25 CANN tasks obtained core
+content, two obtained partial content, and one did not obtain core
+content; all 25 CUDA tasks obtained core content. Most tasks acquired
+official material, while acquisition obstacles were concentrated in a
+few paths. Those paths require examination against task requirements to
+identify the missing procedural material.</p>
+<p>Task D requires creating an Ascend C operator and integrating it with
+a framework, with implementation code, configuration-field explanations,
+and compilation and deployment steps. The WebFetch return for the
+selected official entry contained navigation, metadata, and
+documentation links, explicitly reporting “No code blocks, no
+implementation details, no step-by-step commands.” This read therefore
+did not supply the implementation content required by the task. The
+corresponding CUDA task obtained detailed official content, with M3 = 5.
+The comparison locates the difference in delivery of material needed for
+implementation, beyond whether an official guide appears in search
+results. M1 records official-source discovery conditions, M2 records the
+acquisition outcome, and M3 is marked as blocked. This assessment
+locates an improvement target in the path from the selected entry to the
+implementation body: the entry should expose a body link that the
+reading tool can follow, or directly present the implementation,
+compilation, and deployment instructions. For assessing an
+implementation suggestion, the missing information is the procedure that
+would support its steps; a link to the guide alone does not supply that
+basis.</p>
+<p>Once content is obtained, its task support still differs. Among
+CANN’s 24 assessable records, ten each have M3 = 4 and M3 = 5, and four
+have M3 = 2 or 3; all 25 CUDA records have M3 = 4 or 5. CANN task E
+obtained an EZ9999 explanation that left the cause unspecified and
+provided only generic checks, with M3 = 2. The corresponding CUDA task
+obtained a checking-tool guide with specific commands, tool options, and
+report formats, with M3 = 5. This difference concerns whether the
+acquired material supplies the steps and explanations needed for
+diagnosis.</p>
+<p>Task X, also a debugging task, obtained detailed official guidance in
+both ecosystems, with M3 = 5 on each side. Comparing E and X locates the
+issue in specific task content: CANN’s memory-checking task already has
+substantial official guidance, while its error-code diagnosis task lacks
+information needed to select the next check. The improvement target is
+the content of error explanations and diagnostic guidance.</p>
+<p>Task A shows how useful main-path material and unavailable references
+can coexist. The acquired conversion quickstart supplied an ATC command,
+input-shape and target-device parameters, and a device-information step.
+A more extensive ATC/AIPP reference returned navigation and metadata.
+The worked recording example links the quickstart to supported
+conversion requirements and the missing reference to unresolved advanced
+settings. In task Y, accessing chip-migration information through the
+document center likewise yielded only partial content. These cases
+motivate recording both the content obtained and its relation to a task
+requirement, with the access route recorded separately where available.
+For a developer assessing the conversion guidance, this distinction
+identifies a supported main procedure and advanced settings that still
+require reference material. It bounds which parts of a proposed action
+the acquired sources can substantiate.</p>
+<p>Acquisition processes also differ. Thirteen CANN tasks and 20 CUDA
+tasks found candidate sources in one search round; the remainder used
+two rounds. Both sides of K obtained official core content, but CANN
+recorded four fetches and one fetch failure, whereas CUDA recorded two
+fetches without failure, yielding M8 = 1 and M8 = 4, respectively. These
+records include additional attempts along resource-entry and acquisition
+paths in the analysis of knowledge-provision conditions.</p>
+<p>Version organization affects a broader range of tasks. Mean M4 is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>2.88</mn></mrow><annotation encoding="application/x-tex">\bar{x}=2.88</annotation></semantics></math>
+for CANN and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>4.24</mn></mrow><annotation encoding="application/x-tex">\bar{x}=4.24</annotation></semantics></math>
+for CUDA. Twelve CANN tasks score 2, spanning conversion, installation,
+training, operator development, inference, optimization, and debugging.
+In A, similar quickstarts appear in different version trees, leaving a
+version choice after content acquisition; its M4 is 2, compared with 4
+for the corresponding CUDA task. These differences direct attention to
+the organization of recommended versions, applicability scopes, and
+compatibility evidence.</p>
+<p>Both sides of I obtained compatibility information, with M4 = 4 and
+response-version explicitness M9 = 5. The CANN task combined sources
+about the toolkit, driver, framework, and integration package; the
+acquired compatibility matrix supplied a basis for connecting these
+relations. Version assessment can thus identify insufficient selection
+guidance and record how existing compatibility information supports a
+task. For ecosystem development, the relevant object is the set of
+queryable and verifiable relations among resources.</p>
+<p>After retrieval is delegated to an agent, the applicability declared
+by a source still needs comparison with the developer’s device and
+software combination. Source applicability and local environment facts
+supply different information for this comparison: missing compatibility
+relations require source investigation, while unspecified installed
+versions require a local environment check.</p>
+<h3
+id="complementary-support-and-limitations-across-knowledge-sources">Complementary
+support and limitations across knowledge sources</h3>
+<p>Across the 25 task pairs, the mean number of third-party candidate
+sources per task is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>3.16</mn></mrow><annotation encoding="application/x-tex">\bar{x}=3.16</annotation></semantics></math>
+for CANN and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>3.44</mn></mrow><annotation encoding="application/x-tex">\bar{x}=3.44</annotation></semantics></math>
+for CUDA; five and six tasks, respectively, have only one or two
+candidates. Complementary support requires task-specific examination. In
+X, both ecosystems obtained detailed official guidance, with one and
+three third-party candidates, respectively; I has three and two.
+Differences in counts do not run in the same direction for every
+task.</p>
+<p>Source records further show that platform distribution and
+acquisition conditions affect candidate entries. For K, both CANN
+candidates come from CSDN, while CUDA’s four candidates span different
+platforms. CANN records for N, O, and Q include blocked acquisition of
+Zhihu content. Platform distribution helps identify source relationships
+to inspect, while returned content determines whether entries can supply
+usable explanations. Whether different articles on the same platform are
+independent still requires content examination.</p>
+<p>Source combinations make complementarity between official and
+community knowledge concrete. CANN task X has few third-party candidates
+but detailed official guidance; D lacks core official content and also
+has a low third-party credibility score. E records continued searching
+for cases after the official error explanation proved insufficient.
+These cases point, respectively, to experience supplementing official
+guidance, jointly limited core guidance and alternative support, and a
+need for diagnostic information from other sources. Ecosystem knowledge
+development therefore needs to examine which task requirements official
+resources support and which still depend on discoverable, obtainable
+practical cases and independent explanations.</p>
+<p>Model prior-knowledge estimates provide another support indicator. In
+the main comparison, mean M7 is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>2.84</mn></mrow><annotation encoding="application/x-tex">\bar{x}=2.84</annotation></semantics></math>
+for CANN and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>4.56</mn></mrow><annotation encoding="application/x-tex">\bar{x}=4.56</annotation></semantics></math>
+for CUDA. CANN tasks D, E, I, M, N, S, and X score 2, while all CUDA
+tasks score 4 or 5. Reading this estimate alongside source records
+identifies tasks whose external knowledge support warrants closer
+inspection. We did not separately test performance without retrieval;
+the estimate describes the configuration of knowledge support and does
+not validate independent task completion by the model.</p>
+<p>M9 and M10 further record the guidance formed during tasks. For
+example, X has M10 = 5 in both ecosystems, whereas E has M10 = 3 and M10
+= 5, respectively. These response properties and the acquired materials
+provide joint grounds for inspection, extending analysis from knowledge
+sources to the version statements and procedural conditions in the
+resulting guidance.</p>
 <h2
 id="discussion-design-implications-for-knowledge-provision-and-agent-interaction">Discussion:
 Design Implications for Knowledge Provision and Agent Interaction</h2>
-<p>The findings identify knowledge conditions on which developers’
-assessment of AI-provided guidance can depend. We discuss two sites of
-potential improvement: technical knowledge supplied by documentation and
-communities, and the agent interfaces through which that knowledge is
-presented. The proposals below follow from the observed task profiles.
-Figures 10–15 illustrate three supply-side and three agent-side
-implications: compatibility relations, diagnostic content, readable
-exports, acquisition feedback, environment checking, and source
-inspection. They illustrate possible applications of the diagnosis
-rather than evaluated interventions.</p>
+<p>The comparisons develop an account of ecosystem knowledge support
+through development scenarios, specific knowledge gaps, and
+complementary sources. We use these results to discuss development
+priorities, improvements to official resources and agent feedback, and
+community knowledge and source inspection. The design illustrations make
+potential applications concrete; their effects have not been
+evaluated.</p>
 <h3
-id="supply-side-design-version-relations-task-guidance-and-alternative-sources">Supply-side
-design: version relations, task guidance, and alternative sources</h3>
+id="setting-development-priorities-through-scenarios-and-knowledge-requirements">Setting
+development priorities through scenarios and knowledge requirements</h3>
+<p>The scenario comparison identifies limited knowledge support for
+in-depth development in CANN as an area requiring attention. Examining
+D, M, and related tasks locates specific needs for implementation
+guides, procedural detail, and supplementary cases; E also identifies
+diagnostic knowledge as task content requiring development. This
+demonstrates the diagnostic value of task-level research: comparing
+development activities and their knowledge requirements produces
+specific insights into ecosystem development priorities.</p>
+<p>These insights imply different scopes of improvement. Version issues
+recurring across workflows motivate shared recommended entries and
+organized compatibility relations; D’s missing core content and E’s
+limited diagnostic detail call for repairs to the corresponding tasks.
+Tasks with limited third-party support also require examination of
+practical-case and independent-explanation coverage. Improvements can be
+checked by returning to the original tasks and examining whether their
+knowledge requirements receive stronger support.</p>
+<h3
+id="improving-official-knowledge-provision-and-agent-feedback">Improving
+official knowledge provision and agent feedback</h3>
 <p>Recurring version issues suggest treating applicability as a property
 of a documentation system. A stable recommended-version entry can
 coexist with clearly indexed documentation for earlier versions, while
@@ -1049,6 +1154,29 @@ constraints, result fields, and source inspection illustrate the
 proposed information structure; compatibility values are
 placeholders.</figcaption>
 </figure>
+<p>Version-dependent guidance should connect a source’s applicability to
+the available task environment. Before proposing a toolkit/framework
+combination, an agent can use device and software facts already supplied
+in the task, requesting only information that remains necessary to
+establish the match. The response indicators then ask whether the
+recommendation states its applicable version conditions and provides
+actionable steps with explicit substitutions or modifications.</p>
+<p>Figure 11 illustrates version checking through a separate environment
+record. It distinguishes developer-supplied local facts from the
+applicability declared by a source, then records the comparison as
+matched, mismatched, or insufficient information. The record is reused
+within the task and updated with additional user input to support
+applicability checks before specific commands are recommended.</p>
+<figure id="fig:environmentdesign">
+<img src="figures/figure-10-environment-design-en.svg"
+data-description="An environment record contains placeholder fields for device model, toolkit, framework, and integration versions. A separate area presents the cited material&#39;s version and compatibility conditions and identifies the missing information needed to establish a match. Checks can be matched, mismatched, or insufficient information, and the developer can update the task&#39;s environment record."
+alt="Proposed environment declaration and version checking, motivated by A and I. Device, toolkit, and framework fields represent developer-supplied local facts, separate from source applicability. The illustrated state has insufficient information to establish a match." />
+<figcaption aria-hidden="true">Proposed environment declaration and
+version checking, motivated by A and I. Device, toolkit, and framework
+fields represent developer-supplied local facts, separate from source
+applicability. The illustrated state has insufficient information to
+establish a match.</figcaption>
+</figure>
 <p>Localized acquisition and content gaps call for task-specific
 repairs. D motivates a readable route to the core operator-development
 guide, through server-rendered content, a text export, or another stable
@@ -1059,7 +1187,7 @@ versions. For a catch-all error, a guide can state what the code alone
 leaves unresolved and specify which logs or local observations are
 needed next. Such a page supports diagnosis by organizing available
 evidence around the user’s problem.</p>
-<p>Figure 11 illustrates task-oriented content through E’s error page.
+<p>Figure 12 illustrates task-oriented content through E’s error page.
 It starts with what the code can establish, identifies local information
 to collect, links observable symptoms to checks and attributed cases,
 and retains a support route for unresolved situations. Domain
@@ -1084,7 +1212,7 @@ exports and indexes should preserve those relationships and their
 version scope. Their success can be checked against the relevant
 content-acquisition and detail fields for the task that motivated the
 change.</p>
-<p>Figure 12 illustrates delivery of the same task material through a
+<p>Figure 13 illustrates delivery of the same task material through a
 document body and a machine-readable export. Using the command and
 parameter relations in the conversion quickstart acquired in task A, the
 export preserves the task, applicable version, source, parameter
@@ -1103,27 +1231,6 @@ come from the conversion quickstart acquired in task A; the structured
 text is a proposed export. Both views preserve the task’s version,
 source, and step relationships.</figcaption>
 </figure>
-<p>Third-party sources offer additional examples, explanations, and
-records of encountered failures. Their value depends on what an agent
-can actually obtain and attribute. Supporting accessible, versioned
-examples and accounts of issue resolution can extend the available
-knowledge beyond an official main path. M5 and M6 allow an audit to
-distinguish the number of encountered sources from their credibility and
-derivation. This is particularly useful when several posts repeat the
-same material or when a detailed explanation is visible in search but
-unavailable to the reading tool.</p>
-<p>Knowledge provision also involves entry points and maintenance.
-Stable, searchable official entries affect whether candidate materials
-are discovered; explicit ownership, revision dates, and compatibility
-relations support subsequent assessment. Teams can use representative
-tasks as recurring inspection units, tracking whether queries reach the
-intended material, its body is delivered, version relations have
-changed, and community cases remain applicable. Such maintenance also
-addresses source governance and third-party knowledge provision beyond
-the illustrated interfaces.</p>
-<h3
-id="agent-side-design-expose-support-and-request-missing-task-facts">Agent-side
-design: expose support and request missing task facts</h3>
 <p>An agent interface can preserve the difference between finding a
 relevant source, obtaining its body, and supporting a proposed step. For
 D, an informative status would identify the missing implementation
@@ -1132,7 +1239,7 @@ and request the logs or trigger context needed for further diagnosis.
 For A, it could retain the usable conversion path while marking advanced
 reference settings as unresolved. These statuses connect a retrieval
 event to its consequence for the developer’s current task.</p>
-<p>Figure 13 contrasts proposed responses to D and E. For D, the agent
+<p>Figure 14 contrasts proposed responses to D and E. For D, the agent
 first seeks a linked body page or another readable source, while
 retaining the original entry for optional inspection. For E, it explains
 how trigger context and relevant log excerpts would guide a search for
@@ -1150,38 +1257,33 @@ diagnostically insufficient content, based on E. Task observations
 supply the problem conditions; interface messages and next actions are
 design proposals.</figcaption>
 </figure>
-<p>Version-dependent guidance should connect a source’s applicability to
-the available task environment. Before proposing a toolkit/framework
-combination, an agent can use device and software facts already supplied
-in the task, requesting only information that remains necessary to
-establish the match. The response indicators then ask whether the
-recommendation states its applicable version conditions and provides
-actionable steps with explicit substitutions or modifications.</p>
-<p>Figure 14 illustrates version checking through a separate environment
-record. It distinguishes developer-supplied local facts from the
-applicability declared by a source, then records the comparison as
-matched, mismatched, or insufficient information. The record is reused
-within the task and updated with additional user input to support
-applicability checks before specific commands are recommended.</p>
-<figure id="fig:environmentdesign">
-<img src="figures/figure-10-environment-design-en.svg"
-data-description="An environment record contains placeholder fields for device model, toolkit, framework, and integration versions. A separate area presents the cited material&#39;s version and compatibility conditions and identifies the missing information needed to establish a match. Checks can be matched, mismatched, or insufficient information, and the developer can update the task&#39;s environment record."
-alt="Proposed environment declaration and version checking, motivated by A and I. Device, toolkit, and framework fields represent developer-supplied local facts, separate from source applicability. The illustrated state has insufficient information to establish a match." />
-<figcaption aria-hidden="true">Proposed environment declaration and
-version checking, motivated by A and I. Device, toolkit, and framework
-fields represent developer-supplied local facts, separate from source
-applicability. The illustrated state has insufficient information to
-establish a match.</figcaption>
-</figure>
-<p>The three knowledge channels also suggest useful distinctions in how
-an agent presents support. A cited official procedure, a community
-workaround, and an explanation based on model prior knowledge have
-different provenance. Showing those differences can help a developer
-identify which part of a response warrants a local check. The retrieval
-loop can direct further searches toward a missing requirement and report
-remaining uncertainty when its budget is reached. This connects source
-inspection to collaboration through observable information needs and
-verification points.</p>
+<p>Knowledge provision also involves entry points and maintenance.
+Stable, searchable official entries affect whether candidate materials
+are discovered; explicit ownership, revision dates, and compatibility
+relations support subsequent assessment. Teams can use representative
+tasks as recurring inspection units, tracking whether queries reach the
+intended material, its body is delivered, version relations have
+changed, and community cases remain applicable. Such maintenance also
+addresses source governance and third-party knowledge provision beyond
+the illustrated interfaces.</p>
+<h3
+id="expanding-community-knowledge-and-supporting-source-inspection">Expanding
+community knowledge and supporting source inspection</h3>
+<p>Community knowledge development can address task situations that lack
+adequate support, including specific failures, operating experience
+under different configurations, and alternative implementations. Tasks
+with few candidate sources require checking which supplementary
+explanations are missing; concentrated or inaccessible sources require
+checking independent practical evidence and content-delivery conditions.
+The aim is for task-relevant experience to be discoverable, obtainable,
+and attributable, beyond simply increasing the number of entries.</p>
+<p>Agents can retain source passages, applicability conditions, and
+their relationships to suggestions to help developers inspect available
+support. Where content remains missing, they should identify unsupported
+parts of the task and direct further searches or requests for necessary
+local information accordingly. The source-inspection and
+corrective-feedback illustration makes these information relationships
+concrete.</p>
 <p>Figure 15 further illustrates source inspection and corrective
 feedback. A developer can expand the cited passage for a command,
 inspect its applicable version, and attach an encountered error or
@@ -1219,27 +1321,6 @@ and generic error explanations require work by documentation and system
 teams; collecting more local facts cannot supply those missing
 explanations. The balance between inspection, interruption, and useful
 guidance remains a question for evaluating these proposals.</p>
-<h3
-id="prioritizing-widespread-improvements-and-localized-repairs">Prioritizing
-widespread improvements and localized repairs</h3>
-<p>The audit supports two complementary ways to organize improvement
-work. One considers how widely a condition recurs: version ambiguity
-across several workflows motivates a shared compatibility capability.
-The other considers the severity and specificity of a breakdown: a
-missing operator guide or uninformative error page motivates repair of a
-particular task path. These scopes imply different units of progress.
-Broad improvements can be tracked by the number of affected tasks whose
-applicability information becomes clearer; local repairs can be tracked
-by whether the previously missing body or diagnostic content becomes
-available.</p>
-<p>A mean score alone favors changes that touch many tasks and can make
-a repair to one severe gap appear small. Conversely, focusing only on
-the lowest-scored task would leave recurring issues elsewhere
-unaddressed. The full profile allows both concerns to remain visible.
-Composite confidence can provide a summary within the declared rules,
-while task-level observations identify the intervention target. Formula
-sensitivity and calculation notes are supplied in the supplement to
-support inspection of those summaries.</p>
 <h3 id="reusing-the-diagnostic-method">Reusing the diagnostic
 method</h3>
 <p>The method connects a task requirement to a source or acquisition
@@ -1279,15 +1360,16 @@ observation of their interaction with that guidance. Evaluation should
 also examine whether the proposed feedback supports those judgments and
 what reading effort or interruptions it introduces.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>We define knowledge availability for AI and operationalize it through
-eleven indicators connecting knowledge sources, acquisition processes,
-and response properties. The case study of the CANN and CUDA developer
-ecosystems shows how this multidimensional view identifies distinct
-acquisition and content failures, recurring version issues, and
-task-dependent configurations of knowledge support. Comparisons within a
-workflow further show the need to interpret differences in knowledge
-support through acquisition outcomes, content detail, and the basis for
-version selection.</p>
+<p>We define knowledge availability for AI through eleven indicators
+connecting knowledge sources, acquisition processes, and response
+properties. Task-level comparisons of CANN and CUDA identify differences
+in knowledge support across development scenarios, including weaker
+support for in-depth development in CANN, and reveal specific conditions
+involving content delivery, diagnostic detail, version organization, and
+supplementary sources. Connecting scores with task requirements and
+acquired material produces concrete insights into how ecosystems support
+development activities and which knowledge resources require
+improvement.</p>
 <p>The method makes the basis for AI-mediated technical guidance an
 object of inspection: which source supports a proposed step, which
 applicability relation remains unresolved, and what additional

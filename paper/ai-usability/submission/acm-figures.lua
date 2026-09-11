@@ -9,6 +9,10 @@ function Table(tbl)
     if header:match("^Indicator") then
       return {pandoc.RawBlock("latex", "\\ifdefined\\Needspace\\Needspace{14\\baselineskip}\\fi"), tbl}
     end
+  elseif #tbl.colspecs == 4 then
+    local widths = {0.40, 0.12, 0.24, 0.24}
+    for i=1,4 do tbl.colspecs[i][2] = widths[i] end
+    return {pandoc.RawBlock("latex", "\\ifdefined\\Needspace\\Needspace{16\\baselineskip}\\fi"), tbl}
   elseif #tbl.colspecs == 5 then
     local widths = {0.40, 0.10, 0.16, 0.16, 0.18}
     for i=1,5 do tbl.colspecs[i][2] = widths[i] end
