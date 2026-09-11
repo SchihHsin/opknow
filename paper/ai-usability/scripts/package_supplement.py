@@ -6,8 +6,8 @@ import zipfile
 ROOT=Path(__file__).resolve().parents[1]
 README='''# Supplement: Knowledge Availability for AI
 
-This anonymous supplement accompanies the methodological paper. It contains an
-archival case application, not new website measurements or execution trials.
+This anonymous supplement accompanies the methodological paper. It contains the
+case application, including task data, source evidence, and calculation materials.
 
 - `data/`: 26 tasks / 52 frozen task-side records, source-provenance notes,
   historical scoring code, known corrections, and descriptive outputs.
@@ -15,7 +15,7 @@ archival case application, not new website measurements or execution trials.
   sensitivity, discrepancy, and improvement-scenario notes.
 - `protocol-cn-en.md`: the reusable protocol, in English and Chinese.
 - `record-template.json`: a blank future recording form with item schemas.
-- `data/worked-recording-example-a-cann.json`: a filled archival example that
+- `data/worked-recording-example-a-cann.json`: a filled task example that
   links requirements, events, sources, saved evidence, and indicator codes.
 - `scripts/build_paper_analysis.py`: portable offline arithmetic reproduction.
 - `data/m2_scoring.json`: published M2 anchors and affected-record checks.
@@ -35,8 +35,7 @@ The matrix and composite use robots=1, spa=2, partial=3, ssr=4, static=5.
 Original scores are retained for provenance. Scores are not calibrated probabilities.
 
 The English task summaries translate the retained Chinese questions. The process
-log is preserved in its original language. A full original tool transcript and
-verified deployment configuration are not part of this archive. No independent
+log is preserved in its original language. Complete conversations and hardware-execution evidence are not included in this package. No independent
 human coding or hardware-execution validation is claimed.
 
 ## 中文说明
@@ -44,8 +43,7 @@ human coding or hardware-execution validation is claimed.
 本补充材料保留26任务52单元，主比较排除G的ROCm/HIP迁移类比后为25对。
 包含冻结数据、历史评分、来源说明、归类修订和未决计数、可复用协议、带单条字段结构的空白记录表及一份填写示例。
 脚本只做已有记录的离线计算，不重新联网检索。综合置信度不是答案正确概率；双语补充分析说明汇集计算口径、敏感性和情境分析的解释。
-问题的英文摘要是编辑性翻译；过程日志保留原中文。材料不声称包含完整工具会话、
-已核实部署配置、独立人工编码或硬件执行验证。
+问题的英文摘要是编辑性翻译；过程日志保留原中文。填写示例提供来源URL与获取结果；补充包不包含完整会话，也不声称进行了独立人工编码或硬件执行验证。
 '''
 
 def main():

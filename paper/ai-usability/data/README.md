@@ -1,6 +1,6 @@
-# Frozen audit appendix
+# Task data and calculation appendix
 
-This directory packages existing project records for an archival illustration of the paper's method. It contains no new web retrieval, agent experiment, independent human review, or hardware execution. The original project files are unchanged.
+This directory provides the task data, source evidence, assessment protocol, and calculations for the paper. Packaging these materials does not add retrieval runs or hardware-execution trials.
 
 Run with Python 3.9 or later, without third-party dependencies:
 
@@ -33,12 +33,12 @@ Run the command from the paper directory, or invoke the script by its location f
 
 ## What changes and what stays archived
 
-`design-illustrations-cn-en.md` identifies the archived task conditions and proposed interactions in Figures 6-11. The supplement includes the twelve editable bilingual SVGs in `figures/`; these illustrations do not add task observations or change the frozen data.
+`design-illustrations-cn-en.md` identifies the archived task conditions and proposed interactions in Figures 10-15. The supplement includes the twelve editable bilingual SVGs in `figures/`; these illustrations do not add task observations or change the frozen data.
 
 - G is a migration analogy whose CUDA-labelled side examines AMD ROCm/HIP. It remains in the archive but is excluded from the 25-pair primary description.
 - H.cuda's `nvidia-blog` entry is treated as vendor-owned official material in the audit view. It is removed from the count of candidate secondary sources in that view. Original RAW and historical scores are not overwritten or presented as corrected scores.
 - A.cann's zero failed-fetch count conflicts with a missing-body report in the retained log. It remains unresolved; no replacement value is invented.
-- `static` and `ssr` map to the same descriptive content-acquisition status. `partial` and `spa`/`robots` remain distinct. The archived `core_fetch` field does not consistently preserve whether an entry was original or alternative, so no access route is inferred from it. This mapping does not infer sufficiency or execution success. The old unequal numeric scores are retained only to reproduce the historical formula.
+- `static` and `ssr` map to the same descriptive content-acquisition status. `partial` and `spa`/`robots` remain distinct. The archived `core_fetch` field does not consistently preserve whether an entry was original or alternative, so no access route is inferred from it. This mapping does not infer sufficiency or execution success. The matrix and composite use the published M2 scores: robots=1, spa=2, partial=3, ssr=4, static=5. This descriptive grouping does not replace the numeric scoring rules.
 - Removing the prior channel sets `OWN=0` inside the historical formula while leaving all other inputs unchanged. It is an assumption-sensitivity calculation, not a run of a different model or a no-retrieval condition.
 
 ## Data interpretation

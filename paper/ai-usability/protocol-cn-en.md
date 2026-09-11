@@ -36,12 +36,12 @@ Connect each diagnosis to task requirements, obtained content, unsupported requi
 
 ## 算例：A的读取边界 / Worked example: access boundaries in A
 
-档案中的转换任务需要ATC命令、输入/设备参数及设备信息步骤。日志记录quickstart提供这些内容，同时另一次参考页读取未取得正文。因此核心转换路径有支持，而完整参考并未取得。此判断不需要运行硬件。RAW中的fetch=3、fetch_fail=0与参考页缺失描述之间仍存在计数边界问题；保留差异，不能猜改成已确定的失败次数。
+转换任务需要ATC命令、输入/设备参数及设备信息步骤。日志记录quickstart提供这些内容，同时另一次参考页读取未取得正文。因此核心转换路径有支持，而完整参考并未取得。此判断不需要运行硬件。RAW中的fetch=3、fetch_fail=0与参考页缺失描述之间仍存在计数边界问题；保留差异，不能猜改成已确定的失败次数。
 
-The archived conversion task requires an ATC command, input/device parameters, and a device-information step. The log records these in the quickstart while an additional reference read did not return its body. The main path thus has documentary support, but the full reference was not obtained. This observation requires no hardware-execution claim. The RAW values fetch=3 and fetch_fail=0 remain inconsistent or underspecified relative to the missing reference body; preserve the discrepancy instead of guessing a replacement count.
+The conversion task requires an ATC command, input/device parameters, and a device-information step. The log records these in the quickstart while an additional reference read did not return its body. The main path thus has documentary support, but the full reference was not obtained. This observation requires no hardware-execution claim. The RAW values fetch=3 and fetch_fail=0 remain inconsistent or underspecified relative to the missing reference body; preserve the discrepancy instead of guessing a replacement count.
 
 ## 记录模板 / Recording template
 
-见 `record-template.json` 中每类数组的单条字段形状，以及 `data/worked-recording-example-a-cann.json` 中基于既有 A.cann 档案填写的示例。空值表示待记录，不是已完成的观测；示例不补造 URL、完整返回或执行结果。原数据、归类修订和未决项见 `data/`；回溯重算脚本见 `scripts/build_paper_analysis.py`。
+见 `record-template.json` 中每类数组的单条字段形状，以及 `data/worked-recording-example-a-cann.json` 中A.cann任务的填写示例。空值表示待记录，不是已完成的观测；示例提供实际访问的URL与获取结果，不声称已完成硬件执行。原数据、归类修订和未决项见 `data/`；回溯重算脚本见 `scripts/build_paper_analysis.py`。
 
-See the item schemas in `record-template.json` and the worked example derived from the retained A.cann archive in `data/worked-recording-example-a-cann.json`. Empty fields are recording slots, not completed observations; the example does not invent URLs, complete returns, or execution outcomes. Frozen data, classification revisions, and unresolved issues are in `data/`; retrospective computation uses `scripts/build_paper_analysis.py`.
+See the item schemas in `record-template.json` and the worked example for task A.cann in `data/worked-recording-example-a-cann.json`. Empty fields are recording slots, not completed observations; the example provides the accessed URLs and acquisition outcomes without claiming hardware execution. Frozen data, classification revisions, and unresolved issues are in `data/`; retrospective computation uses `scripts/build_paper_analysis.py`.

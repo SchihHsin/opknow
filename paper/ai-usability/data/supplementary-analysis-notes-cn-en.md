@@ -13,9 +13,9 @@ The paper's main comparison uses 25 CANN/CUDA task pairs. Task G concerns migrat
 | 26 archive rows / 26行档案 | Composite confidence / 综合置信度 | 0.735145 | 0.920449 |
 | 26 archive rows / 26行档案 | Model-prior contribution set to zero / 模型自带知识贡献置零 | 0.603147 | 0.847663 |
 
-The comparison column is CUDA throughout the 25-pair summary; the 26-row summary additionally includes G's ROCm/HIP analogy. Means of the already rounded scores differ slightly: 0.730840/0.922040 for 25 pairs and 0.735231/0.920423 for 26 rows. The paper uses exact recomputation before final rounding. Workflow means in Table 3 use the same 25-pair scope and the original workflow groups; differences are calculated before rounding the displayed means.
+The comparison column is CUDA throughout the 25-pair summary; the 26-row summary additionally includes G's ROCm/HIP analogy. Means of the already rounded scores differ slightly: 0.730840/0.922040 for 25 pairs and 0.735231/0.920423 for 26 rows. The paper uses exact recomputation before final rounding. Workflow means in Table 4 use the same 25-pair scope and the original workflow groups; differences are calculated before rounding the displayed means.
 
-25对汇总的对照列均为 CUDA；26行汇总则额外包含 G 的 ROCm/HIP 类比。若对已舍入的评分再求均值，结果略有不同：25对为0.730840/0.922040，26行为0.735231/0.920423。正文使用精确复算后再舍入的结果。表3沿用25对范围及原工作流分组；差值在展示值舍入前计算。
+25对汇总的对照列均为 CUDA；26行汇总则额外包含 G 的 ROCm/HIP 类比。若对已舍入的评分再求均值，结果略有不同：25对为0.730840/0.922040，26行为0.735231/0.920423。正文使用精确复算后再舍入的结果。表4沿用25对范围及原工作流分组；差值在展示值舍入前计算。
 
 M2 assigns partial acquisition to grade 3. This changes C.cann and Y.cann from 4 to 3; their composite scores become 0.750 and 0.674, respectively. Other M1–M10 values and the composite formula are unchanged. The mapping and record checks are provided in `m2_scoring.json`; `generated/current_scores.json` contains the scores used in the paper. Frozen source files preserve the original observations and prior calculation for provenance, rather than defining an alternative protocol.
 
