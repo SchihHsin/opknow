@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc 3.11" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>论文修改后 · f5e6f83 · 中文阅读版</title>
+  <title>最新中文审阅版 · 修改高亮与改前对照</title>
 <style>
 :root{color-scheme:light;--ink:#24313d;--muted:#536574;--line:#dce3e7;--accent:#176253}
 *{box-sizing:border-box}html{background:#f0f3f5}body{max-width:1060px;margin:36px auto 80px;padding:48px 76px 64px;background:white;color:var(--ink);font:17px/1.8 Georgia,"Noto Serif CJK SC","Songti SC",serif;box-shadow:0 10px 40px #152b3b0d}
@@ -15,14 +15,14 @@ body{counter-reset:fig}figure{counter-increment:fig}figcaption::before{content:"
 </style><style id="review-styles">
 .review-change{background:#eef2ff;border-left:3px solid #8b94d9;padding-left:12px;margin-left:-15px;cursor:help;transition:background .15s}.review-change:hover,.review-change:focus{background:#e1e7fc;outline:none}.review-figure{border:1px solid #abb6e1;border-radius:6px;background:#eef2ff;color:#394d85;padding:7px 12px;cursor:help;font:13px system-ui;margin-bottom:12px}.review-toolbar{background:#f5f7ff;border:1px solid #d9e0f2;border-radius:8px;padding:13px 16px;margin:0 0 24px;font:14px/1.6 system-ui;color:#48536d}.review-toolbar p{margin:0}.review-toolbar button{font:inherit;color:#344a87;background:white;border:1px solid #c4cde5;border-radius:5px;padding:3px 9px;margin:9px 8px 0 0;cursor:pointer}#review-tip{position:fixed;z-index:9999;width:min(540px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #c5cde0;border-radius:10px;padding:18px 20px;box-shadow:0 12px 48px #1b294433;font:15px/1.8 system-ui;color:#293346}#review-tip[hidden]{display:none}#review-tip strong{color:#4659a0;display:block;margin-bottom:8px}#review-tip .old-text{white-space:pre-wrap}#review-tip img{width:100%;height:auto}#review-tip button{float:right;border:0;background:#f0f3f8;border-radius:4px;cursor:pointer;padding:3px 8px}.review-muted .review-change{background:transparent;border-color:transparent}.review-current{outline:2px solid #8894d2!important;outline-offset:4px}@media print{.review-toolbar,#review-tip,.review-figure{display:none}.review-change{background:transparent;border:0;padding:0;margin-left:0}}
 </style></head>
-<body><div class="edition">中文全文 · 修改后 · 提交 f5e6f83　|　<a href="manuscript-cn-before-29c87cc.html">查看另一版本</a>　|　<a href="manuscript-cn-review-changes.html"><strong>查看当前最新版的高亮对照</strong></a></div>
-<aside class="review-toolbar"><p><strong>人机交互叙述调整 · 前后对照</strong>　29c87cc → f5e6f83</p><p>浅紫色标出修改或新增段落。悬浮、点击或按 Tab 聚焦可查看改前内容；按 Esc 关闭。共 22 处段落变动及 1 处图示变动。本页保留那次修改后的内容，不包含之后的修订。</p><button id="review-prev">上一处</button><button id="review-next">下一处</button><button id="review-toggle">隐藏高亮</button><span id="review-position"></span></aside><h1
+<body><div class="edition">最新中文全文 · 修改高亮　|　<a href="manuscript-cn-before-29c87cc.html">查看改前全文</a>　|　<a href="manuscript-cn-v0.2.html">无标记阅读版</a></div>
+<aside class="review-toolbar"><p><strong>人机交互叙述调整 · 前后对照</strong>　大改之前 → 当前最新版</p><p>浅紫色标出修改或新增段落。悬浮、点击或按 Tab 聚焦可查看改前内容；按 Esc 关闭。共 22 处段落变动及 1 处图示变动。正文采用当前最新版，包含之后已确认的摘要、相关工作及岗位措辞等修订；悬浮内容来自大改之前的版本。</p><button id="review-prev">上一处</button><button id="review-next">下一处</button><button id="review-toggle">隐藏高亮</button><span id="review-position"></span></aside><h1
 id="ai-能找到开发者所需的知识吗开发者生态中面向-ai-的知识可得性的定义与度量">AI
 能找到开发者所需的知识吗？开发者生态中面向 AI
 的知识可得性的定义与度量</h1><div class="authors">时昕昱　·　闫浩<sup>*</sup>　·　张敬文　·　郦旻硕</div><div class="affiliation">Huawei Technologies (China)　·　* Corresponding author</div>
 <h2 id="摘要">摘要</h2>
-<p class="review-change" tabindex="0" data-review="0">开发者将技术资料检索委托给AI
-Agent后，仍需判断建议是否有依据、是否适用于本地环境，以及是否还有重要信息尚未明确。这些判断部分依赖于Agent能够取得的知识。本文定义面向AI的知识可得性，并通过任务级协议及十一项指标，考察知识来源、获取成本和回答属性。我们将方法应用于26项开发任务，包括25组CANN/CUDA任务对及一项单列的迁移类比。分析区分了操作正文未取得与正文可读但指导不足的情形，识别出反复出现的版本问题及不同的知识支撑组合。这些区别明确了判断技术建议所需的信息，并定位知识供给与Agent反馈的潜在改进对象。本文贡献包括一个框架、一套可检查的协议，以及对开发者通过AI取得技术指导所依赖的知识条件的案例分析。</p>
+<p class="review-change" tabindex="0" data-review="0">AI
+Agent正在改变开发者查找技术资料和获得任务指导的方式。评价这条知识获取路径，需要考察Agent能否发现相关来源、取得所需内容，并形成具有明确依据和适用条件的建议。本文将这些条件概念化为面向AI的知识可得性，提出任务级记录协议及十一项指标，涵盖知识来源、获取成本和回答属性。我们将该方法应用于26类面向AI加速计算的软件开发任务，比较不同生态中的知识可得性。案例分析区分了核心操作正文未取得、正文可读但指导不足，以及主流程有据可依但部分参考资料仍不可得等情形，并识别出跨任务反复出现的版本问题。这些发现将开发者判断技术建议时所需的依据与具体知识缺口联系起来，为资料交付、内容完善、版本关系说明及Agent反馈等方面的改进提供方向。本文贡献一个概念框架、一套可检查的协议及其案例应用，用于诊断开发者通过AI获取技术知识时所面对的知识条件。</p>
 <h2 id="关键词">关键词</h2>
 <p>面向 AI 的知识可得性；开发者生态；技术文档；信息寻径；AI
 Agent；测量方法</p>
@@ -52,7 +52,8 @@ Agent 设计者应向用户暴露哪些不确定性。</p>
 的知识可得性</strong>定义为：在明确的检索条件下，一个指定的 Agent
 及工具配置能够发现、取得任务相关技术知识，并评估其适用性的程度。这是一个关系性构念：它涉及特定时点上的任务、知识环境，以及访问该环境的方式。我们通过证据记录协议和十一项指标将其操作化。这些指标区分来源条件、获取成本、回答检查，以及由
 M1–M8 计算的综合置信度。</p>
-<p class="review-change" tabindex="0" data-review="2">该方法面向文档维护者以及Agent产品与界面团队，旨在帮助他们定位缺失的来源材料、尚未明确的适用条件，以及界面可能需要传达的知识缺口。案例应用展示了可服务于这些用途的诊断区别；其在团队工作中的实际价值仍需评价。</p>
+<p class="review-change" tabindex="0" data-review="2">该方法的预期使用者包括产品经理、设计师、技术写作者和开发工程师等，他们参与开发者平台、技术知识资源或AI
+Agent的建设与维护。该方法旨在帮助他们定位技术资料在发现、获取和任务支撑方面的缺口，并明确知识供给与Agent反馈需要改进的环节。案例应用展示了可服务于这些用途的诊断区别；其在团队工作中的实际价值仍需评价。</p>
 <p>本文提出两个研究问题。<strong>RQ1：</strong> 如何定义并操作化面向 AI
 的知识可得性，使任务特定的访问条件与证据缺口能够被系统记录和复核？<strong>RQ2：</strong>
 该方法在不同开发任务中揭示了哪些知识可得性模式，这些模式如何为文档与
@@ -71,7 +72,7 @@ data-cites="pirolli1999">[8]</span>。编程研究展示了开发者如何交织
 <span class="citation" data-cites="brand2009 ko2007 sillito2008">[2, 6,
 12]</span>。API 学习中的困难也促使研究者关注技术接口周围的解释性资源
 <span class="citation"
-data-cites="robillard2009">[9]</span>。这些研究共同支持围绕编程行动所需的信息组织评价。本文据此使用任务需求，检查Agent取得的材料是否提供了行动所需的解释、参数或操作过程，将测量单位与开发者的信息需求连接起来，而不以返回一个页面作为查找的终点。</p>
+data-cites="robillard2009">[9]</span>。这些研究表明，开发者需要什么信息，与正在完成的任务密切相关。因此，本文以具体开发任务为单位，考察Agent能否找到并取得所需资料，以及资料是否提供了完成任务所需的解释、参数说明和操作步骤。</p>
 <p>本文方法不从机器访问情况推断人类可用性。浏览器能够读取的页面可能对某个特定抽取工具不可访问；反过来，Agent
 容易抽取的文本也可能让人难以导航。我们考察的是受委托的知识获取路径所面对的条件。关于开发者时间、信任、满意度或任务完成情况的主张，需要另外的证据。</p>
 <h3 id="面向编程的-ai-支持">面向编程的 AI 支持</h3>
@@ -596,7 +597,8 @@ id="同时考虑广覆盖改进与局部断点修复">同时考虑广覆盖改�
 <p>审计支持两种互补的改进组织方式。一种关注条件出现的广度：多个工作流中的版本歧义，提示建立共享的兼容性查询能力。另一种关注断点的严重程度与具体位置：缺失的算子指南或信息不足的错误页，提示修复特定任务路径。两种范围对应不同的进展单位。广覆盖改进可以跟踪多少受影响任务获得了更清楚的适用性信息；局部修复可以跟踪此前缺失的正文或诊断内容是否已经可得。</p>
 <p>仅看均值容易偏向影响较多任务的改动，使针对一个严重缺口的修复显得很小；只关注最低分任务，则会遗漏其他地方反复出现的问题。完整剖面使两类关切能够同时保持可见。综合置信度在已说明规则下提供汇总，任务级观测则定位干预对象。补充材料提供公式敏感性与计算说明，以支持对这些汇总的检查。</p>
 <h3 id="诊断方法的复用">诊断方法的复用</h3>
-<p class="review-change" tabindex="0" data-review="19">该方法将任务需求、来源或获取事件、指标编码，与判断技术建议所需信息的诊断连接起来。文档维护者可据此定位缺失的指导或适用关系，Agent产品与界面团队可据此区分需要继续查找来源的情形与需要补充本地事实的情形。分析者可以沿用记录结构，并替换领域特定需求，例如数据库SDK中的客户端与服务端兼容性，或Web框架的部署前置条件。这些构成方法的预期应用方向。</p>
+<p class="review-change" tabindex="0" data-review="19">该方法将任务需求、来源或获取事件、指标编码，与判断技术建议所需信息的诊断连接起来。参与开发者平台、技术知识资源或AI
+Agent建设与维护的产品经理、设计师、技术写作者和开发工程师等，可据此定位缺失的指导或适用关系，并区分需要继续查找来源的情形与需要补充本地事实的情形。分析者可以沿用记录结构，并替换领域特定需求，例如数据库SDK中的客户端与服务端兼容性，或Web框架的部署前置条件。这些构成方法的预期应用方向。</p>
 <p>后续评估可以考察独立分析者是否形成相近剖面、诊断是否与专家对缺失信息的判断一致，以及文档团队是否认为它们有助于规划修复。这些问题直接来自方法的预期用途。本次应用提供任务级区别、填写示例与跨任务综合分析，为开展此类评估奠定基础。</p>
 <h2 id="局限与研究透明度">局限与研究透明度</h2>
 <p>本案例展示了该方法如何区分知识发现、正文获取与任务充分性方面的断点。任务记录支持检查评分依据和复算结果。这些结果反映本次任务集及检索条件；不同模型、工具配置与检索预算下的稳定性，以及独立评分的一致性和跨生态适用性，仍需进一步评估。补充材料提供观测字段、评分实现、任务与来源对应表、计算差异说明及汇总脚本，支持复核与后续应用。</p>
