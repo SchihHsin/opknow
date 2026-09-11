@@ -24,7 +24,7 @@ if historical:
    svg=re.sub(r'(<rect x="12" y="[0-9]+" width=")1074(" height=)',lambda m:m[1]+str(row_width)+m[2],svg)
   return 'src="data:image/svg+xml;base64,'+base64.b64encode(svg.encode()).decode()+'"'
  b=re.sub(r'src="data:image/svg\+xml;base64,([^"]+)"',clean_historical_image,b)
-pattern=re.compile(r'<(p|h[1-6]|figcaption)\b[^>]*>.*?</\1>',re.S)
+pattern=re.compile(r'<(p|h[1-6]|figcaption|table)\b[^>]*>.*?</\1>',re.S)
 def plain(s):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]+>','',s))).strip()
 def key(s):return re.sub(r'\s+','',plain(s))
 aa=list(pattern.finditer(a));bb=list(pattern.finditer(b));changes={};items=[]
@@ -58,7 +58,13 @@ def underline_changes(fragment, old):
   buffer.append(token);pos+=length
  flush()
  assert pos==len(new)
- return ''.join(out)
+ # Keep MathML intact: underline a changed expression as one unit, outside it.
+ def math_unit(match):
+  value=match[0]
+  if '<u class="review-word">' not in value:return value
+  value=value.replace('<u class="review-word">','').replace('</u>','')
+  return '<u class="review-word">'+value+'</u>'
+ return re.sub(r'<math\b[^>]*>.*?</math>',math_unit,''.join(out),flags=re.S)
 for n in reversed(range(len(bb))):
  if n not in changes:continue
  m=bb[n];s=m[0];idx=changes[n]
@@ -77,6 +83,7 @@ for i in reversed(range(15)):
   m=newfig[i];s=m[0];s=s.replace('>',f'><button type="button" class="review-figure" data-review="{idx}">图 {i+1} 有修改 · 悬浮查看改前图</button>',1)
   b=b[:m.start()]+s+b[m.end():]
 css='''<style id="review-styles">
+table.review-change th,table.review-change td,table.review-change tr{background:transparent}table.review-change>caption{background:rgba(240,255,70,.28)}
 .review-change{background:rgba(240,255,70,.28);border:0;cursor:help;transition:background .15s}.review-change:hover,.review-change:focus{background:rgba(240,255,70,.36);outline:none}.review-word{text-decoration:underline;text-decoration-style:dashed;text-decoration-color:currentColor;text-decoration-thickness:1px;text-underline-offset:3px}.review-figure{border:1px solid #abb6e1;border-radius:6px;background:#eef2ff;color:#394d85;padding:7px 12px;cursor:help;font:13px system-ui;margin-bottom:12px}.review-toolbar{background:#f5f7ff;border:1px solid #d9e0f2;border-radius:8px;padding:13px 16px;margin:0 0 24px;font:14px/1.6 system-ui;color:#48536d}.review-toolbar p{margin:0}.review-toolbar button{font:inherit;color:#344a87;background:white;border:1px solid #c4cde5;border-radius:5px;padding:3px 9px;margin:9px 8px 0 0;cursor:pointer}#review-tip{position:fixed;z-index:9999;width:min(540px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid #c5cde0;border-radius:10px;padding:18px 20px;box-shadow:0 12px 48px #1b294433;font:15px/1.8 system-ui;color:#293346}#review-tip[hidden]{display:none}#review-tip strong{color:#4659a0;display:block;margin-bottom:8px}#review-tip .old-text{white-space:pre-wrap}#review-tip img{width:100%;height:auto}#review-tip button{float:right;border:0;background:#f0f3f8;border-radius:4px;cursor:pointer;padding:3px 8px}.review-muted .review-change{background:transparent;border-color:transparent}.review-current{background:rgba(240,255,70,.40)!important;outline:none!important}.review-muted .review-word{text-decoration:none}@media print{.review-toolbar,#review-tip,.review-figure{display:none}.review-change{background:transparent;border:0;padding:0;margin-left:0}}
 /* Reserve a separate comparison column so the source paragraph stays visible. */
 @media screen and (min-width:1100px){body{width:calc(100% - 420px);max-width:1060px;margin-left:max(20px,calc((100vw - 1480px)/2));margin-right:400px;padding-left:44px;padding-right:44px}#review-tip{position:fixed;right:20px;top:24px;width:360px;max-height:calc(100vh - 48px)}}

@@ -4,7 +4,11 @@ function Table(tbl)
   if #tbl.colspecs == 3 then
     local header = pandoc.utils.stringify(tbl.head)
     local widths = header:match("^ID") and {0.07, 0.27, 0.66} or {0.25, 0.31, 0.44}
+    if header:match("^Indicator") then widths = {0.54, 0.23, 0.23} end
     for i=1,3 do tbl.colspecs[i][2] = widths[i] end
+    if header:match("^Indicator") then
+      return {pandoc.RawBlock("latex", "\\ifdefined\\Needspace\\Needspace{14\\baselineskip}\\fi"), tbl}
+    end
   elseif #tbl.colspecs == 5 then
     local widths = {0.40, 0.10, 0.16, 0.16, 0.18}
     for i=1,5 do tbl.colspecs[i][2] = widths[i] end

@@ -46,7 +46,7 @@ search results, and community explanations while deciding what to do
 next. Research on opportunistic programming and developers’ information
 needs shows that finding and interpreting information is part of
 programming itself <span class="citation"
-data-cites="brand2009 ko2007 sillito2008">[2, 6, 12]</span>. A useful
+data-cites="brand2009 ko2007 sillito2008">[2, 6, 13]</span>. A useful
 result must fit the current task: a command needs the right options, an
 API example needs the right version, and an explanation of an error
 needs enough context to guide investigation. The existence of
@@ -63,8 +63,8 @@ code change. Studies of code-generation tools, conversational
 programming assistance, and agent support describe opportunities for
 this support alongside difficulties in understanding and checking
 generated suggestions <span class="citation"
-data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
-13]</span>. Delegating the search changes how supporting material
+data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 11,
+14]</span>. Delegating the search changes how supporting material
 reaches the developer, while leaving a need to judge whether a
 suggestion has an identifiable basis, fits the local environment, and
 requires further information. The agent’s access to technical material
@@ -82,18 +82,19 @@ second. Even adequate instructions can remain ambiguous when they refer
 to incompatible toolkit and framework versions. These distinctions
 matter to documentation teams deciding what to repair and to agent
 designers deciding what uncertainty to expose.</p>
-<p>Existing evaluation approaches already distinguish retrieval quality,
-context relevance, answer faithfulness, and related properties. RAGAS
-and ARES provide component-level evaluation of retrieval-augmented
-generation, while ALCE examines generated answers and their citations
-<span class="citation" data-cites="ragas2024 ares2024 gao2023alce">[3,
-4, 11]</span>. Our contribution addresses a complementary measurement
-problem: how to inspect the technical knowledge conditions encountered
-by an agent while addressing a concrete development task, including
-access failures, version relations, alternative sources, and the
-provenance of an auditor’s judgments. This requires connecting the
-developer’s information requirement to the resources actually obtained,
-rather than inferring availability from a fluent answer.</p>
+<p>Those building developer ecosystems need to understand not only
+whether an agent can provide usable technical guidance, but also which
+knowledge conditions constrain that guidance and where improvements are
+needed. Similar shortcomings in answers may arise from different
+conditions: official resources were not discovered, procedural content
+was not obtained, acquired content lacked task-specific detail, or the
+basis for selecting a version remained unclear. A usable answer may also
+rely on alternative sources, masking gaps in official resources. Final
+answers or task outcomes alone offer limited grounds for distinguishing
+these conditions. Taking developers’ task-specific knowledge needs as a
+reference, we connect sources, acquisition events, and content support
+so that assessment can identify concrete targets for improving knowledge
+provision and agent interaction.</p>
 <p>We define <strong>knowledge availability for AI</strong> as the
 extent to which task-relevant technical knowledge can be discovered,
 obtained, and assessed for applicability by a specified agent and tool
@@ -135,14 +136,14 @@ Construct Boundaries</h2>
 information seeking and documentation</h3>
 <p>Information foraging theory relates information-seeking behavior to
 the structure and expected value of available information <span
-class="citation" data-cites="pirolli1999">[8]</span>. Programming
+class="citation" data-cites="pirolli1999">[9]</span>. Programming
 studies show how developers interleave searching, learning, and
 implementation, and how their questions depend on the work they are
 performing <span class="citation"
-data-cites="brand2009 ko2007 sillito2008">[2, 6, 12]</span>.
+data-cites="brand2009 ko2007 sillito2008">[2, 6, 13]</span>.
 API-learning difficulties further motivate attention to the explanatory
 resources surrounding a technical interface <span class="citation"
-data-cites="robillard2009">[9]</span>. These studies show that
+data-cites="robillard2009">[10]</span>. These studies show that
 developers’ information needs are closely tied to their current tasks.
 We therefore organize the assessment around specific development tasks,
 examining whether agents can find and obtain the required resources and
@@ -159,11 +160,11 @@ satisfaction, or task completion require separate evidence.</p>
 suggestion from understanding, adapting, and checking it. Vaithilingam
 et al. describe difficulties in understanding, editing, and debugging
 generated code <span class="citation"
-data-cites="vaithilingam2022">[13]</span>; Barke et al. distinguish
+data-cites="vaithilingam2022">[14]</span>; Barke et al. distinguish
 acceleration and exploration in programmers’ use of code-generating
 models <span class="citation" data-cites="barke2023">[1]</span>. Ross et
 al. examine conversational assistance around code context <span
-class="citation" data-cites="programmerAssistant2023">[10]</span>. These
+class="citation" data-cites="programmerAssistant2023">[11]</span>. These
 findings motivate attention to the supporting information available when
 a suggestion is considered. Our protocol examines whether relevant
 source passages, version conditions, and procedural details can be
@@ -173,11 +174,11 @@ with AI assistance.</p>
 <p>Agents can interleave reasoning and tool use, and retrieval-augmented
 generation provides a way to incorporate external information into
 generation <span class="citation" data-cites="lewis2020 yao2023">[7,
-15]</span>. WebArena, SWE-bench, and SWE-agent evaluate or develop
+16]</span>. WebArena, SWE-bench, and SWE-agent evaluate or develop
 agents in realistic web and software-engineering settings <span
 class="citation"
 data-cites="zhou2024webarena jimenez2024swebench yang2024sweagent">[5,
-14, 16]</span>. Their task outcomes are valuable evidence of system
+15, 17]</span>. Their task outcomes are valuable evidence of system
 performance. Our framework offers a complementary description of the
 knowledge conditions under which such systems operate. A failure can
 involve unavailable evidence, inadequate interpretation of available
@@ -186,16 +187,23 @@ addresses the first of these and records information relevant to
 separating them.</p>
 <h3 id="retrieval-attribution-and-the-availability-construct">Retrieval,
 attribution, and the availability construct</h3>
-<p>RAGAS and ARES assess properties of retrieved context and generated
-answers; ALCE evaluates citation-supported generation <span
-class="citation" data-cites="ragas2024 ares2024 gao2023alce">[3, 4,
-11]</span>. Accordingly, we do not claim that previous evaluation treats
-retrieval or answer quality as indivisible. Our methodological focus is
-the connection between technical-task requirements, the acquisition
-process, and the structure of the surrounding knowledge ecosystem.
-Version compatibility, partial access to a how-to guide, and dependence
-on a community workaround are particularly consequential in this
-setting.</p>
+<p>Existing research evaluates AI systems at several levels. ALCE
+examines the fluency, correctness, and citation quality of generated
+answers; RAGAs and ARES additionally assess the relevance of retrieved
+context and the faithfulness of answers to that context <span
+class="citation" data-cites="gao2023alce ragas2024 ares2024">[3, 4,
+12]</span>. AgentBoard analyzes agents’ action processes through
+measures such as fine-grained task progress, demonstrating the value of
+process information beyond final success rates <span class="citation"
+data-cites="ma2024agentboard">[8]</span>. These approaches provide a
+foundation for understanding system performance. Developing and
+maintaining a developer ecosystem also requires connecting performance
+to specific knowledge conditions: whether technical resources are
+readily discoverable, whether the required content is actually obtained,
+whether it supplies procedural detail, and whether versions have clear
+selection and compatibility guidance. We organize task-level measurement
+around these relationships to distinguish conditions calling for better
+acquisition paths, fuller content, or clearer version relations.</p>
 <p>The distinctions in Table 1 position the construct. Availability can
 be necessary for an evidence-grounded answer without being sufficient
 for correctness. An agent can misinterpret an available source. It can
@@ -640,6 +648,22 @@ assumption when a main-path quickstart returned useful content. This
 paper consolidates the protocol and separates observations from
 estimates and aggregation choices. The supplementary protocol and worked
 record make the resulting recording structure explicit.</p>
+<p>The analysis proceeds at three levels. First, we compare indicator
+scores within corresponding task categories to locate differences in
+resource discovery, content acquisition, content detail, version
+clarity, and guidance properties. Second, we describe indicator
+distributions using means
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>),
+standard deviations
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>),
+and counts at each score level, and summarize composite confidence by
+workflow. Third, we interpret score differences using the corresponding
+acquisition records and returned content, comparing content support
+under the same acquisition state and knowledge conditions across tasks
+within a workflow. M3 means and standard deviations include only records
+for which content detail can be assessed; blocked-content records are
+reported separately. These statistics describe the selected task set and
+do not support population-level inference about the ecosystems.</p>
 <h3 id="task-level-assessment-results">Task-level assessment
 results</h3>
 <p>The main comparison includes 25 CANN tasks: core content was obtained
@@ -691,24 +715,80 @@ source-version-clarity scores. It follows the workflow groups and task
 order of Figures 6–8 to support interpretation of acquisition
 outcomes.</figcaption>
 </figure>
-<p>For the 25 task pairs, the composite confidence means are .731 for
-CANN and .922 for CUDA. The findings below examine task-level variation
-in composite confidence alongside the individual indicators. The
-supplementary analysis notes document source-ownership corrections,
-unresolved counting boundaries, and sensitivity to the model-prior
-term.</p>
+<p>Across the 25 task pairs, mean composite confidence is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.731</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.731</annotation></semantics></math>
+for CANN and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.922</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.922</annotation></semantics></math>
+for CUDA. Indicator-level summaries show differences of varying sizes in
+content detail, source version clarity, search and acquisition effort,
+and procedural actionability of responses. Table 3 reports the means and
+standard deviations of these four indicators. The findings below
+interpret the corresponding knowledge conditions using score
+distributions and specific resources.</p>
+<table>
+<caption>Descriptive statistics for four indicators, scored from 1 to 5.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>
+denotes the sample standard deviation. For M3, CANN has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">n=24</annotation></semantics></math>,
+excluding the blocked-content record D, and CUDA has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n=25</annotation></semantics></math>.
+Both sides have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n=25</annotation></semantics></math>
+for the other indicators. Higher M8 scores indicate lower search and
+acquisition effort. Means and standard deviations describe the ordinal
+score distributions.</caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 36%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>Indicator</th>
+<th style="text-align: right;">CANN
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>)</th>
+<th style="text-align: right;">CUDA
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3 Official content detail</td>
+<td style="text-align: right;">4.21 (0.83)</td>
+<td style="text-align: right;">4.80 (0.41)</td>
+</tr>
+<tr>
+<td>M4 Source version clarity</td>
+<td style="text-align: right;">2.88 (1.01)</td>
+<td style="text-align: right;">4.24 (0.83)</td>
+</tr>
+<tr>
+<td>M8 Search and acquisition effort</td>
+<td style="text-align: right;">3.24 (1.36)</td>
+<td style="text-align: right;">3.88 (1.51)</td>
+</tr>
+<tr>
+<td>M10 Procedural actionability of responses</td>
+<td style="text-align: right;">4.00 (0.76)</td>
+<td style="text-align: right;">4.72 (0.68)</td>
+</tr>
+</tbody>
+</table>
 <h2
 id="findings-knowledge-conditions-across-development-tasks">Findings:
 Knowledge Conditions Across Development Tasks</h2>
 <p>Reading the matrix across tasks and across indicators reveals four
 connected patterns. Access failures are concentrated in particular
-acquisition routes, while version ambiguity recurs across otherwise
-different tasks. Official, third-party, and model-prior assessments form
-different support profiles, and workflow position alone does not explain
-those profiles. We develop each finding through specific tasks and use
-the combination of indicators to locate its implications.</p>
-<h3 id="acquisition-breakdowns-vary-by-task-and-access-path">Acquisition
-breakdowns vary by task and access path</h3>
+acquisition routes, while unclear version-selection guidance recurs
+across otherwise different tasks. Official, third-party, and model-prior
+assessments form different support profiles, with variation also present
+within a workflow. We develop each finding through specific tasks and
+use the combination of indicators to locate its implications.</p>
+<h3
+id="content-acquisition-and-content-detail-show-distinct-differences">Content
+acquisition and content detail show distinct differences</h3>
 <p>The agent obtained useful official content in CANN installation,
 conversion, training, and optimization tasks, with partial or
 unsuccessful acquisition along a small number of routes. This
@@ -736,19 +816,20 @@ compilation, and deployment instructions. For assessing an
 implementation suggestion, the missing information is the procedure that
 would support its steps; a link to the guide alone does not supply that
 basis.</p>
-<p>Task E exposes a different problem. The official EZ9999 page was
-found and read, but its explanation supplied an unspecified cause and
-generic instructions to check the installation or inspect logs. Its low
-content-detail code reflects the lack of concrete diagnostic guidance in
-the returned material. The developer’s question requires information
-about possible triggers and a sequence for narrowing the cause.
-Improving extraction would leave this content problem in place.
-Together, D and E connect similar concerns about obtaining useful
-guidance to distinct interventions: delivery of the missing how-to body
-and enrichment of an accessible error explanation. The corresponding
-need is evidence for choosing a diagnostic check. Local logs may help
-distinguish possible causes, while documentation or attributed cases
-must explain how those observations relate to the proposed checks.</p>
+<p>Obtaining content does not mean that it supplies equally adequate
+task information. Among the 24 assessable CANN records, ten each receive
+content-detail scores of 5 and 4, while four receive scores of 2 or 3;
+all 25 CUDA records score 4 or 5. Two CANN debugging tasks illustrate
+this distinction: E and X both have M2 = 4 for content accessibility,
+but their content-detail scores are M3 = 2 and M3 = 5, respectively. The
+acquired EZ9999 explanation in E leaves the cause unspecified and offers
+only generic checks; the acquired sanitizer documentation in X provides
+detailed procedural guidance. The distinction concerns the detail
+supplied by the acquired content. For E, improving acquisition alone
+cannot supply the missing diagnostic guidance; possible triggers,
+checks, and their supporting evidence are also needed. For developers,
+this information provides a basis for selecting the next diagnostic
+action.</p>
 <p>Task A shows how useful main-path material and unavailable references
 can coexist. The acquired conversion quickstart supplied an ATC command,
 input-shape and target-device parameters, and a device-information step.
@@ -763,8 +844,9 @@ For a developer assessing the conversion guidance, this distinction
 identifies a supported main procedure and advanced settings that still
 require reference material. It bounds which parts of a proposed action
 the acquired sources can substantiate.</p>
-<h3 id="version-applicability-is-a-recurring-cross-task-issue">Version
-applicability is a recurring cross-task issue</h3>
+<h3
+id="multiple-versions-require-clear-selection-and-compatibility-guidance">Multiple
+versions require clear selection and compatibility guidance</h3>
 <p>Version clarity is a recurrent limitation even where the official
 content is accessible. Twelve of the 25 CANN tasks have M4 = 2, spanning
 conversion, installation, training, operator development, inference,
@@ -774,15 +856,18 @@ coded as version-insensitive. M4 scores for CUDA tasks range from 3 to
 availability, the observed distribution directs attention to the
 underlying version evidence rather than establishing ambiguity from
 version counts alone.</p>
-<p>The tasks illustrate how this version information affects knowledge
-applicability. In A, similar quickstart material appears in more than
-one version tree. In I, answering a compatibility question requires
-connecting toolkit, driver, framework, and integration-package
-information across documentation, repositories, and package records. A
-page may be detailed and readable while still leaving the reader to
-determine which combination its instructions support. Version
-information therefore needs to accompany the content and connect to the
-environment of the task.</p>
+<p>When multiple versions coexist, an agent needs recommended entry
+points, applicability statements, or compatibility relations to
+determine which documentation to use. In A, similar quickstart material
+appears in different version trees, and obtaining the content does not
+establish which version to choose. In I, selecting a toolkit, driver,
+framework, and integration package requires combining information from
+different sources; the acquired compatibility matrix provides evidence
+for some of these relations. Version assessment therefore concerns both
+the presence of version labels and whether the available information
+supports selection. Explicit recommendations and compatibility guidance
+can provide a checkable basis for an agent to organize technical
+guidance.</p>
 <p>M4 and M9 make two stages of this problem visible. M4 describes
 version clarity in the source environment; M9 records how specifically
 the resulting guidance identifies an applicable version or combination.
@@ -834,10 +919,10 @@ acquired guide, and which still need information from another source or
 the local environment? The composite confidence score summarizes M1-M8,
 while the response scores are reported separately to examine the
 resulting guidance.</p>
-<h3 id="task-depth-alone-does-not-explain-the-observed-differences">Task
-depth alone does not explain the observed differences</h3>
+<h3 id="task-scores-also-vary-within-a-workflow">Task scores also vary
+within a workflow</h3>
 <p>Workflow grouping helps locate concentrations of lower-scored tasks.
-Table 3 summarizes the 25-pair comparison. Operator development and
+Table 4 summarizes the 25-pair comparison. Operator development and
 debugging have lower CANN means than environment and installation, and
 debugging has the largest difference between the two columns. The
 debugging group consists of E and X, whose distinct profiles illustrate
@@ -908,28 +993,20 @@ pairs. Difference = CUDA minus CANN; G is excluded.</caption>
 </tr>
 </tbody>
 </table>
-<p>The broader distribution resembles an onboarding-to-specialization
-gradient, but contrasting cases qualify that interpretation.
-Installation and container setup have relatively high CANN composite
-scores, while custom-operator development and dynamic-shape/tiling tasks
-score lower. Yet U, a technically demanding memory/occupancy task,
-scores .881, and Z, programming-concept comparison, scores .901. Both
-involve principles that can be expressed across architectures and have
-acquired official material. E is comparatively straightforward as a
-question but depends on a specific error’s diagnostic content and scores
-.554. Complexity or workflow position alone therefore misses important
-differences in knowledge requirements.</p>
-<p>Dependence on ecosystem-specific knowledge provides an interpretive
-lens for these cases. General concepts of memory management can draw on
-cross-platform explanations; a vendor-specific error, operator
-interface, or compatibility combination requires information tied to
-that ecosystem. This lens directs the audit toward the knowledge that
-must be supplied explicitly for a task, rather than assigning a uniform
-expectation to all advanced work. It also gives developer-role groupings
-a practical use: grouping the tasks associated with a role can identify
-which specific knowledge requirements need attention. The present cases
-motivate this interpretation; testing its predictive value would require
-an explicit dependency coding scheme and a broader task sample.</p>
+<p>Workflow means summarize a task group, but knowledge support can
+still differ within it. The CANN debugging group has mean composite
+confidence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.646</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.646</annotation></semantics></math>,
+with E scoring 0.554 and X scoring 0.738. Both tasks obtained official
+content, but their content-detail scores are 2 and 5, respectively. They
+also differ in source discovery, third-party material, and response
+properties. Within-group score differences therefore require
+interpretation through the individual indicators and specific resources.
+For documentation and platform maintenance, workflow means can help
+identify task areas for closer inspection; concrete improvement targets
+require examining whether content was obtained, whether it was
+sufficiently detailed, and whether the basis for version selection was
+clear.</p>
 <h2
 id="discussion-design-implications-for-knowledge-provision-and-agent-interaction">Discussion:
 Design Implications for Knowledge Provision and Agent Interaction</h2>
@@ -1125,7 +1202,7 @@ interactions.</figcaption>
 <p>These proposals treat checking suggestions as part of programming
 work, consistent with the information-seeking and AI-assistance studies
 discussed earlier <span class="citation"
-data-cites="brand2009 vaithilingam2022 barke2023">[1, 2, 13]</span>.
+data-cites="brand2009 vaithilingam2022 barke2023">[1, 2, 14]</span>.
 Exposing every retrieval event or source passage could add reading
 effort without clarifying the next action. An interface could first show
 the supported step, relevant version scope, and unresolved condition,
@@ -1207,9 +1284,10 @@ eleven indicators connecting knowledge sources, acquisition processes,
 and response properties. The case study of the CANN and CUDA developer
 ecosystems shows how this multidimensional view identifies distinct
 acquisition and content failures, recurring version issues, and
-task-dependent configurations of knowledge support. Contrasting tasks
-motivate attention to ecosystem-specific knowledge requirements
-alongside workflow coverage.</p>
+task-dependent configurations of knowledge support. Comparisons within a
+workflow further show the need to interpret differences in knowledge
+support through acquisition outcomes, content detail, and the basis for
+version selection.</p>
 <p>The method makes the basis for AI-mediated technical guidance an
 object of inspection: which source supports a proposed step, which
 applicability relation remains unresolved, and what additional
@@ -1367,22 +1445,30 @@ Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, and Douwe Kiela.
 systems</em>, 2020. 9459–9474. Retrieved from <a
 href="https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html">https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html</a></div>
 </div>
-<div id="ref-pirolli1999" class="csl-entry" role="listitem">
+<div id="ref-ma2024agentboard" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[8] </div><div
+class="csl-right-inline">Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang,
+Yujiu Yang, Yaohui Jin, Zhenzhong Lan, Lingpeng Kong, and Junxian He.
+2024. <span>AgentBoard</span>: An analytical evaluation board of
+multi-turn <span>LLM</span> agents. <a
+href="https://doi.org/10.48550/arXiv.2401.13178">https://doi.org/10.48550/arXiv.2401.13178</a></div>
+</div>
+<div id="ref-pirolli1999" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div
 class="csl-right-inline">Peter Pirolli and Stuart Card. 1999.
 Information foraging. <em>Psychological Review</em> 106, 4 (1999),
 643–675. <a
 href="https://doi.org/10.1037/0033-295X.106.4.643">https://doi.org/10.1037/0033-295X.106.4.643</a></div>
 </div>
 <div id="ref-robillard2009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div
+<div class="csl-left-margin">[10] </div><div
 class="csl-right-inline">Martin P. Robillard. 2009. What makes
 <span>APIs</span> hard to learn? Answers from developers. <em>IEEE
 Software</em> 26, 6 (2009), 27–34. <a
 href="https://doi.org/10.1109/MS.2009.193">https://doi.org/10.1109/MS.2009.193</a></div>
 </div>
 <div id="ref-programmerAssistant2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div
+<div class="csl-left-margin">[11] </div><div
 class="csl-right-inline">Steven I. Ross, Fernando Martinez, Stephanie
 Houde, Michael Muller, and Justin D. Weisz. 2023. The programmer’s
 assistant: Conversational interaction with a large language model for
@@ -1392,7 +1478,7 @@ Computing Machinery, 491–514. <a
 href="https://doi.org/10.1145/3581641.3584037">https://doi.org/10.1145/3581641.3584037</a></div>
 </div>
 <div id="ref-ares2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div
+<div class="csl-left-margin">[12] </div><div
 class="csl-right-inline">Jon Saad-Falcon, Omar Khattab, Christopher
 Potts, and Matei Zaharia. 2024. <span>ARES</span>: An automated
 evaluation framework for retrieval-augmented generation systems. In
@@ -1403,14 +1489,14 @@ Computational Linguistics, 338–354. <a
 href="https://doi.org/10.18653/v1/2024.naacl-long.20">https://doi.org/10.18653/v1/2024.naacl-long.20</a></div>
 </div>
 <div id="ref-sillito2008" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J.
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J.
 Sillito, G. C. Murphy, and K. De Volder. 2008. Asking and answering
 questions during a programming change task. <em>IEEE Transactions on
 Software Engineering</em> 34, 4 (2008), 434–451. <a
 href="https://doi.org/10.1109/TSE.2008.26">https://doi.org/10.1109/TSE.2008.26</a></div>
 </div>
 <div id="ref-vaithilingam2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div
+<div class="csl-left-margin">[14] </div><div
 class="csl-right-inline">Priyan Vaithilingam, Tianyi Zhang, and Elena L.
 Glassman. 2022. Expectation vs. Experience: Evaluating the usability of
 code generation tools powered by large language models. In <em>CHI
@@ -1419,7 +1505,7 @@ abstracts</em>, 2022. Association for Computing Machinery, 1–7. <a
 href="https://doi.org/10.1145/3491101.3519665">https://doi.org/10.1145/3491101.3519665</a></div>
 </div>
 <div id="ref-yang2024sweagent" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div
+<div class="csl-left-margin">[15] </div><div
 class="csl-right-inline">John Yang, Carlos E. Jimenez, Alexander Wettig,
 Kilian Lieret, Shunyu Yao, Karthik Narasimhan, and Ofir Press. 2024.
 <span class="nocase">SWE-agent</span>: Agent-computer interfaces enable
@@ -1428,7 +1514,7 @@ processing systems</em>, 2024. 50528–50652. <a
 href="https://doi.org/10.52202/079017-1601">https://doi.org/10.52202/079017-1601</a></div>
 </div>
 <div id="ref-yao2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div
+<div class="csl-left-margin">[16] </div><div
 class="csl-right-inline">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du,
 Izhak Shafran, Karthik Narasimhan, and Yuan Cao. 2023.
 <span>ReAct</span>: Synergizing reasoning and acting in language models.
@@ -1437,7 +1523,7 @@ representations</em>, 2023. Retrieved from <a
 href="https://arxiv.org/abs/2210.03629v3">https://arxiv.org/abs/2210.03629v3</a></div>
 </div>
 <div id="ref-zhou2024webarena" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div
+<div class="csl-left-margin">[17] </div><div
 class="csl-right-inline">Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou,
 Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue Ou, Yonatan Bisk,
 Daniel Fried, Uri Alon, and Graham Neubig. 2024. <span>WebArena</span>:

@@ -27,7 +27,7 @@ Agent；测量方法</p>
 <h2 id="引言">引言</h2>
 <p>开发者在决定下一步行动时，常常往返于文档、代码示例、搜索结果和社区解释之间。关于机会式编程和开发者信息需求的研究表明，寻找与解释信息本身就是编程活动的一部分
 <span class="citation" data-cites="brand2009 ko2007 sillito2008">[2, 6,
-12]</span>。有用的信息必须契合当前任务：命令需要正确的选项，API
+13]</span>。有用的信息必须契合当前任务：命令需要正确的选项，API
 示例需要对应的版本，错误解释需要提供足够的上下文来指导排查。因此，文档的存在只是其有用性的一个条件。</p>
 <p>具备检索与工具调用能力的开发 Agent
 为这一知识环境增加了一条协作路径。开发者既可以围绕报错或局部代码提出问题，也可以描述待完成的变更或结果目标，将资料查找、文档阅读、实现步骤组织以及部分代码修改委派给
@@ -36,16 +36,12 @@ Agent。为推进任务，Agent
 Agent
 支持的研究既描述了这种支持带来的机会，也揭示了理解和核验生成建议的困难
 <span class="citation"
-data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 10,
-13]</span>。委托检索改变了支撑材料到达开发者的方式，但开发者仍需判断建议是否有可辨认的依据、是否符合本地环境，以及是否需要更多信息。Agent能否取得技术材料，是这些依据能否被呈现和检查的条件之一。测量这一获取过程，因而可以识别经由AI形成的指导所依赖的知识缺口。</p>
+data-cites="vaithilingam2022 barke2023 programmerAssistant2023">[1, 11,
+14]</span>。委托检索改变了支撑材料到达开发者的方式，但开发者仍需判断建议是否有可辨认的依据、是否符合本地环境，以及是否需要更多信息。Agent能否取得技术材料，是这些依据能否被呈现和检查的条件之一。测量这一获取过程，因而可以识别经由AI形成的指导所依赖的知识缺口。</p>
 <p>设想 Agent
 被问到如何实现并集成一个自定义加速器算子。搜索可能返回官方开发指南，但阅读工具只取得导航和元数据。在错误诊断任务中，同一工具可能取得完整的官方页面，页面却只有一条笼统的查看日志指令。检索成功指标可能将这两个问题都记为已有相关结果。访问指标能够区分第一种失败，却无法区分第二种。即便操作说明足够充分，若其引用了彼此不兼容的工具包与框架版本，也仍可能存在歧义。这些区别关系到文档团队应修复什么，以及
 Agent 设计者应向用户暴露哪些不确定性。</p>
-<p>现有评估方法已经区分了检索质量、上下文相关性、答案忠实度及其他相关属性。RAGAS
-和 ARES 提供了对检索增强生成各组件的评估，ALCE 则考察生成答案及其引用
-<span class="citation" data-cites="ragas2024 ares2024 gao2023alce">[3,
-4, 11]</span>。本文处理的是一个互补的测量问题：如何检查 Agent
-在处理具体开发任务时遇到的技术知识条件，包括访问失败、版本关系、替代来源，以及审计者判断的依据。这要求把开发者的信息需求与实际取得的资源联系起来，而不是从流畅的回答推断知识可得性。</p>
+<p>开发者生态的建设者不仅需要知道Agent能否给出可用的技术指导，还需要判断哪些知识条件限制了这种指导，以及应当在哪里改进。相似的回答不足可能来自不同原因：官方资料未被发现、操作正文未能取得、已取得内容缺少任务细节，或版本选择依据不明确；可用的回答也可能依赖替代来源，从而掩盖官方资料的缺口。仅观察最终回答或任务结果，难以区分这些情况。本文以开发者任务的知识需求为参照，将来源、获取事件和内容支撑联系起来，使评价结果能够指向具体的知识供给与Agent交互改进对象。</p>
 <p>我们将<strong>面向 AI
 的知识可得性</strong>定义为：在明确的检索条件下，一个指定的 Agent
 及工具配置能够发现、取得任务相关技术知识，并评估其适用性的程度。这是一个关系性构念：它涉及特定时点上的任务、知识环境，以及访问该环境的方式。我们通过证据记录协议和十一项指标将其操作化。这些指标区分来源条件、获取成本、回答检查，以及由
@@ -66,34 +62,36 @@ Agent 设计。</p>
 <h3 id="开发者信息寻找与文档">开发者信息寻找与文档</h3>
 <p>信息寻径理论将信息寻找行为与可用信息的结构和预期价值联系起来 <span
 class="citation"
-data-cites="pirolli1999">[8]</span>。编程研究展示了开发者如何交织进行搜索、学习和实现，以及他们的问题如何依赖于正在开展的工作
+data-cites="pirolli1999">[9]</span>。编程研究展示了开发者如何交织进行搜索、学习和实现，以及他们的问题如何依赖于正在开展的工作
 <span class="citation" data-cites="brand2009 ko2007 sillito2008">[2, 6,
-12]</span>。API 学习中的困难也促使研究者关注技术接口周围的解释性资源
+13]</span>。API 学习中的困难也促使研究者关注技术接口周围的解释性资源
 <span class="citation"
-data-cites="robillard2009">[9]</span>。这些研究表明，开发者需要什么信息，与正在完成的任务密切相关。因此，本文以具体开发任务为单位，考察Agent能否找到并取得所需资料，以及资料是否提供了完成任务所需的解释、参数说明和操作步骤。</p>
+data-cites="robillard2009">[10]</span>。这些研究表明，开发者需要什么信息，与正在完成的任务密切相关。因此，本文以具体开发任务为单位，考察Agent能否找到并取得所需资料，以及资料是否提供了完成任务所需的解释、参数说明和操作步骤。</p>
 <p>本文方法不从机器访问情况推断人类可用性。浏览器能够读取的页面可能对某个特定抽取工具不可访问；反过来，Agent
 容易抽取的文本也可能让人难以导航。我们考察的是受委托的知识获取路径所面对的条件。关于开发者时间、信任、满意度或任务完成情况的主张，需要另外的证据。</p>
 <h3 id="面向编程的-ai-支持">面向编程的 AI 支持</h3>
 <p>AI编程辅助研究区分了获得建议与理解、调整和检查建议。Vaithilingam等描述了理解、修改和调试生成代码时的困难
 <span class="citation"
-data-cites="vaithilingam2022">[13]</span>；Barke等区分了开发者使用代码生成模型时的加速与探索模式
+data-cites="vaithilingam2022">[14]</span>；Barke等区分了开发者使用代码生成模型时的加速与探索模式
 <span class="citation"
 data-cites="barke2023">[1]</span>；Ross等考察了围绕代码上下文开展的对话式辅助
 <span class="citation"
-data-cites="programmerAssistant2023">[10]</span>。这些发现促使我们关注开发者考虑一项建议时能够获得哪些支撑信息。本文协议检查相关来源段落、版本条件和操作细节能否被取得并与建议关联，为研究开发者如何使用AI辅助提供知识条件层面的描述。</p>
+data-cites="programmerAssistant2023">[11]</span>。这些发现促使我们关注开发者考虑一项建议时能够获得哪些支撑信息。本文协议检查相关来源段落、版本条件和操作细节能否被取得并与建议关联，为研究开发者如何使用AI辅助提供知识条件层面的描述。</p>
 <p>Agent
 能够交织推理与工具使用，而检索增强生成提供了将外部信息纳入生成过程的方式
 <span class="citation" data-cites="lewis2020 yao2023">[7,
-15]</span>。WebArena、SWE-bench 和 SWE-agent
+16]</span>。WebArena、SWE-bench 和 SWE-agent
 在贴近真实的网页与软件工程情境中评估或开发 Agent <span class="citation"
 data-cites="zhou2024webarena jimenez2024swebench yang2024sweagent">[5,
-14,
-16]</span>。其任务结果是系统表现的重要证据。本文框架则对这些系统运行时面对的知识条件提供互补描述。失败可能涉及证据不可得、对可得证据的解释不充分，或执行不成功；本文方法直接处理其中第一类问题，并记录有助于区分这些情形的信息。</p>
+15,
+17]</span>。其任务结果是系统表现的重要证据。本文框架则对这些系统运行时面对的知识条件提供互补描述。失败可能涉及证据不可得、对可得证据的解释不充分，或执行不成功；本文方法直接处理其中第一类问题，并记录有助于区分这些情形的信息。</p>
 <h3 id="检索归因与可得性构念">检索、归因与可得性构念</h3>
-<p>RAGAS 和 ARES 评估检索上下文与生成答案的属性；ALCE
-评估有引用支持的生成 <span class="citation"
-data-cites="ragas2024 ares2024 gao2023alce">[3, 4,
-11]</span>。因此，我们并不声称既有评估将检索或答案质量视为不可拆分的整体。本文方法关注的是技术任务需求、获取过程与周围知识生态结构之间的联系。在这一情境中，版本兼容性、对操作指南的部分访问，以及对社区变通方案的依赖尤为重要。</p>
+<p>现有研究从多个层面评价AI系统。ALCE关注生成答案的流畅性、正确性和引用质量；RAGAs与ARES进一步评价检索上下文的相关性，以及答案对上下文的忠实程度
+<span class="citation" data-cites="gao2023alce ragas2024 ares2024">[3,
+4,
+12]</span>。AgentBoard通过细粒度任务进展率等指标分析Agent的行动过程，说明最终成功率之外的过程信息也具有评价价值
+<span class="citation"
+data-cites="ma2024agentboard">[8]</span>。这些方法为理解系统表现提供了基础。对于开发者生态的建设与维护，还需要将表现与具体知识条件联系起来：相关技术资料是否容易发现，所需正文是否实际取得，内容是否提供操作所需的细节，以及版本之间是否存在明确的选择与配套依据。本文围绕这些关系组织任务级测量，以区分需要改善获取路径、完善资料内容或明确版本关系的情形。</p>
 <p>表 1
 中的区分界定了这一构念的位置。知识可得性可以是基于证据作答的必要条件，却不足以保证正确性。Agent
 可能误解一个可得来源，也可能在未取得任何外部证据的情况下，凭先验知识给出正确答案。这些结果应保持可区分。</p>
@@ -328,6 +326,7 @@ CANN/CUDA 汇总比较，因此这些汇总使用 25 对任务和 50
 <p>任务分四批开展：前两批覆盖A–D和E–H，后两批通过并行子Agent覆盖I–S和T–Z。各批次的结构化观测在主会话中汇总，并核对官方与第三方来源的归属。任务问句与原始分派记录对应，后续批次的问句措辞按分派记录补入过程日志。</p>
 <p>任务使用Claude及网页搜索、网页阅读工具开展；搜索返回候选来源，阅读工具对选定URL的HTML内容进行摘要。分析结合任务记录中的查询、工具返回内容及摘要、结构化观测字段和评分说明。M9与M10依据任务中形成的指导及相应记录，分别评估版本明确性与步骤可操作性。补充材料提供任务、来源与评分依据的对应关系。</p>
 <p>该框架通过审计过程迭代形成。一次重要修订发生在主路径快速入门返回有用内容之后：此前关于全站访问情况的假设被否定。本文将协议整理成型，并区分观测、估计与汇总选择。补充协议与填写示例明确了由此形成的记录结构。</p>
+<p>数据分析从三个层面展开。首先，在相同任务类别下比较两侧的分项得分，定位资料发现、正文获取、内容详尽度、版本清晰度及指导属性的差异。其次，通过均值（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>）、标准差（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>）和各档数量描述指标分布，并按工作流汇总综合置信度。最后，结合对应的获取记录与返回内容解释评分差异，比较相同获取状态下的内容支撑，以及同一工作流中不同任务的知识条件。M3的均值和标准差仅纳入能够评价正文详尽度的记录，正文受阻项另行报告。上述统计描述所选任务集，不用于推断生态总体差异。</p>
 <h3 id="任务级评价结果">任务级评价结果</h3>
 <p>主比较包含25项CANN任务：22项取得核心正文，2项取得部分内容，1项未取得核心正文。对应的25项CUDA任务均取得核心正文。图6–8呈现全部十一项指标评分，并按环境与安装、算子开发、训练、推理与部署、性能与优化、调试和迁移等工作流分组；G
 作为单独标注的 CANN／ROCm-HIP 迁移类比呈现，不计入 CANN/CUDA 汇总。</p>
@@ -366,34 +365,66 @@ alt="读取状态辅助剖面：将正文获取状态与官方正文详尽度、
 <figcaption
 aria-hidden="true">读取状态辅助剖面：将正文获取状态与官方正文详尽度、资料版本清晰度评分并置，沿用图6–8的工作流分组和任务顺序，辅助解释获取结果。</figcaption>
 </figure>
-<p>对于 25 对任务，综合置信度均值为 CANN .731、CUDA
-.922。下文结合各项指标，分析综合置信度在任务之间的差异。补充分析说明记录了来源归属修订、未决计数边界，以及结果对模型自带知识项的敏感性。</p>
+<p>在25对任务中，综合置信度均值为CANN
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.731</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.731</annotation></semantics></math>、CUDA
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.922</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.922</annotation></semantics></math>。分项统计进一步显示，两侧在正文详尽度、版本清晰度、检索与获取成本，以及回答步骤可操作性方面呈现不同程度的得分差异。表3汇总这四项指标的均值和标准差；下文结合评分分布与具体材料，解释这些差异所对应的知识条件。</p>
+<table>
+<caption>表3　四项指标的描述性统计。评分范围为1–5分，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>为样本标准差。M3的CANN侧<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>24</mn></mrow><annotation encoding="application/x-tex">n=24</annotation></semantics></math>，不含正文受阻的D；CUDA侧<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n=25</annotation></semantics></math>。其余指标两侧均为<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n=25</annotation></semantics></math>。M8分数越高，表示检索与获取成本越低。均值与标准差用于描述有序评分的分布。</caption>
+<thead>
+<tr>
+<th>指标</th>
+<th style="text-align: right;">CANN
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>）</th>
+<th style="text-align: right;">CUDA
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M3 官方正文详尽度</td>
+<td style="text-align: right;">4.21（0.83）</td>
+<td style="text-align: right;">4.80（0.41）</td>
+</tr>
+<tr>
+<td>M4 资料版本清晰度</td>
+<td style="text-align: right;">2.88（1.01）</td>
+<td style="text-align: right;">4.24（0.83）</td>
+</tr>
+<tr>
+<td>M8 检索与获取成本</td>
+<td style="text-align: right;">3.24（1.36）</td>
+<td style="text-align: right;">3.88（1.51）</td>
+</tr>
+<tr>
+<td>M10 回答步骤可操作性</td>
+<td style="text-align: right;">4.00（0.76）</td>
+<td style="text-align: right;">4.72（0.68）</td>
+</tr>
+</tbody>
+</table>
 <h2 id="发现跨开发任务的知识条件">发现：跨开发任务的知识条件</h2>
-<p>沿任务与指标两个方向阅读矩阵，可以识别出四组相互关联的模式。获取失败集中于特定路径，而版本歧义在不同任务中反复出现；官方材料、第三方来源和模型自带知识估计构成不同的支撑组合，工作流位置本身也不足以解释这些组合。下面结合具体任务展开各项发现，并通过指标之间的联系定位其含义。</p>
+<p>沿任务与指标两个方向阅读矩阵，可以识别出四组相互关联的模式。获取失败集中于特定路径，而版本选择依据不明确的问题在不同任务中反复出现；官方材料、第三方来源和模型自带知识估计构成不同的支撑组合，同一工作流内的任务也存在差异。下面结合具体任务展开各项发现，并通过指标之间的联系定位其含义。</p>
 <h3
-id="知识获取断点具有任务与路径差异">知识获取断点具有任务与路径差异</h3>
+id="正文获取与内容详尽程度存在不同差异">正文获取与内容详尽程度存在不同差异</h3>
 <p>在安装、转换、训练和优化等CANN任务中，Agent取得了可用的官方内容，同时在少数路径中仅取得部分内容或未能取得内容。这一分布支持以任务及其选定资源为单位检查可得性。静态页面或动态渲染等站点标签，无法描述沿站内每条路径实际取得的内容。25项CUDA任务均取得官方核心正文，为这些获取路径提供了对照。搜索轮数也存在差异：25项CANN任务中，13项使用一轮搜索；CUDA为20项，其余均为两轮。这些计数将搜索成本与随后是否取得选定内容区分开来。</p>
 <p>任务D要求创建Ascend
 C算子并将其与框架集成，需要实现代码、配置字段说明及编译部署步骤。对选定官方入口的WebFetch返回仅包含导航、元描述和文档链接，并明确报告“No
 code blocks, no implementation details, no step-by-step
 commands”（没有代码块、实现细节或分步命令）。该次读取因此未提供任务所需的实现内容。M1记录官方来源的发现条件，M2记录获取结果，M3标记为“受阻”。这一判断将改进对象定位到从所选入口取得实现正文的路径：入口应提供可继续读取的正文链接，或直接呈现实现与编译部署说明。对于实现建议的核验，此处缺少的是支撑其操作步骤的过程依据；仅有指南链接尚不能提供这一依据。</p>
-<p>任务 E 暴露了另一类问题。官方 EZ9999
-页面能够被找到和读取，但解释中的原因未明确，处理建议仅笼统要求检查安装或查看日志。较低的正文详尽度编码反映了返回材料缺少具体诊断指导。开发者的问题需要有关可能触发条件的信息，以及逐步缩小原因范围的过程。改善抽取后，这一内容问题仍然存在。D
-与 E
-因而将获取有用指导这一共同需求，连接到两种不同的干预：送达缺失的操作指南正文，以及充实已经可访问的错误解释。相应的信息需求是选择诊断检查项的依据。本地日志可以帮助区分可能的原因，文档或有来源的案例则需要解释这些观测与拟议检查之间的关系。</p>
+<p>正文能够取得，并不意味着其提供了同样充分的任务信息。CANN的24条可评价记录中，正文详尽度为5分和4分的各有10条，另有4条为2至3分；CUDA的25条记录均为4至5分。两项CANN调试任务进一步体现了这种差别：E与X的正文获取评分均为M2
+= 4，但正文详尽度分别为M3 = 2和M3 =
+5。E取得的EZ9999错误说明未明确原因，只给出笼统的检查建议；X取得的内存检测工具文档则提供了较详尽的操作指导。这一区别指向已取得内容的完善程度：对于E，仅改善正文获取并不能补足诊断指导，还需要提供可能触发条件、检查步骤及其依据。对于开发者，后者是选择下一步诊断操作所需的信息。</p>
 <p>任务 A
 展示了可用主路径与不可得参考资料并存的情况。已取得的转换快速入门提供 ATC
 命令、输入形状与目标设备参数，以及设备信息查询步骤；更完整的 ATC/AIPP
 参考页则仅返回导航和元数据。填写示例将快速入门关联到获得支持的转换需求，将缺失参考关联到尚未解决的高级设置。任务Y通过文档中心获取跨芯片迁移信息时，同样仅取得部分内容。这些案例说明，记录应同时保留取得了什么内容、它与哪项任务需求相关，并在有记录依据时单独说明访问路径。对于正在判断转换指导的开发者，这一区分标出了已有材料支持的主流程与仍需参考资料的高级设置，也限定了所取得来源能够为建议中的哪些操作提供依据。</p>
 <h3
-id="版本适用信息是跨任务反复出现的问题">版本适用信息是跨任务反复出现的问题</h3>
+id="多个版本之间需要明确的选择与配套依据">多个版本之间需要明确的选择与配套依据</h3>
 <p>即使官方内容可访问，版本清晰度仍是反复出现的限制。25项CANN任务中有12项M4
 = 2，涉及转换、安装、训练、算子开发、推理、优化与调试。只有 U 和 Z 的 M4
 =
 5，二者均被编码为版本不敏感；CUDA任务的M4评分则分布于3至5分。由于本文评分规则使用版本数量与兼容矩阵是否存在作为依据，这一分布引导分析者检查具体的版本证据，而不能仅凭版本数量认定存在歧义。</p>
-<p>具体任务说明了这些版本信息如何影响知识的适用性。在 A
-中，相似的快速入门材料出现在不同版本树中；在 I
-中，回答兼容性问题需要跨文档、代码仓库和软件包记录，连接工具包、驱动、框架及集成包的信息。一页资料可以详尽且可读，同时仍需读者判断其中的操作说明支持哪种组合。因此，版本信息需要与内容共同呈现，并与任务环境建立联系。</p>
+<p>多个版本并存时，Agent需要依据推荐入口、适用范围或兼容关系，判断应采用哪一版资料。在A中，相似的快速入门材料出现在不同版本树中，取得正文仍不足以说明应选择哪个版本；在I中，工具包、驱动、框架及集成包的选择需要结合不同来源的信息，而取得的配套矩阵为其中的关系提供了依据。因此，版本评价不仅关注资料是否标注版本，还关注这些信息是否足以支持选择。明确的推荐及配套说明，可以为Agent组织技术指导提供可检查的依据。</p>
 <p>M4 与 M9 使这一问题的两个环节分别可见。M4
 描述来源环境中的版本清晰度，M9
 记录所形成指导对适用版本或组合的明确程度。联合阅读两者，有助于判断下一步应改善文档中的配套信息，还是改善
@@ -417,14 +448,15 @@ id="不同任务具有不同的知识支撑组合">不同任务具有不同的�
 同时具有详尽官方材料和高于 D
 的步骤可操作性编码。这一对应关系为分析者提出具体检查问题：哪些步骤能够由已取得指南支持，哪些仍需从其他来源或本地环境补充信息？综合置信度汇总
 M1–M8，回答产出评分则单独呈现，用于检查所形成的指导。</p>
-<h3 id="任务深度不足以解释全部差异">任务深度不足以解释全部差异</h3>
-<p>按工作流分组可以定位较低评分任务的集中位置。表 3 汇总 25
+<h3
+id="同一工作流中的任务得分也存在差异">同一工作流中的任务得分也存在差异</h3>
+<p>按工作流分组可以定位较低评分任务的集中位置。表 4 汇总 25
 对任务的比较：CANN
 的算子开发与调试均值低于环境与安装，调试也是两列差异最大的类别。调试组由
 E 与 X
 两项任务组成，它们不同的知识支撑剖面说明，为何阅读工作流均值时还需要查看构成该组的具体任务。该表描述的是所选任务集在本文评分规则下的分布。</p>
 <table>
-<caption>表3　25对任务的各工作流的综合置信度均值。差值为 CUDA 减
+<caption>表4　25对任务的各工作流的综合置信度均值。差值为 CUDA 减
 CANN；不含 G。</caption>
 <thead>
 <tr>
@@ -487,14 +519,7 @@ CANN；不含 G。</caption>
 </tr>
 </tbody>
 </table>
-<p>整体分布近似呈现从上手到专门开发的梯度，但对照案例使这一解释更加具体。安装与容器环境的
-CANN 综合分较高，自定义算子与动态形状／Tiling
-任务则较低。然而，技术要求较高的访存与利用率任务 U 得分
-.881，编程概念对照 Z 得分
-.901；二者涉及能够跨架构表达的原理，且取得了官方材料。E
-的问句相对直接，却依赖特定错误的诊断内容，得分
-.554。因此，复杂程度或工作流位置本身会遗漏重要的知识需求差异。</p>
-<p>对生态专有知识的依赖，为这些案例提供了一种解释视角。通用内存管理概念可以借助跨平台说明，特定厂商的错误、算子接口或配套组合则需要与该生态直接相关的信息。这个视角引导审计识别任务必须得到明确供给的知识，而非对所有进阶工作设定同一种预期。它也为开发者角色分组提供了实际用途：将某个角色关联的任务放在一起，可以定位需要关注的具体知识需求。本案例支持提出这一解释；其预测价值仍需通过明确的依赖度编码方案和更广泛的任务样本检验。</p>
+<p>工作流均值概括了任务组的整体情况，但同一组内的知识支撑仍可能不同。调试组的CANN综合置信度均值为<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mn>0.646</mn></mrow><annotation encoding="application/x-tex">\bar{x}=0.646</annotation></semantics></math>，其中E为0.554，X为0.738。两项任务均取得了官方正文，但内容详尽度分别为2分和5分；同时，两者在来源发现、第三方资料和回答属性上也存在差异。因此，组内分数差异需要结合分项指标和具体材料解释。对文档与平台维护而言，工作流均值可以帮助确定进一步检查的任务范围，具体改进对象则需要落实到正文是否取得、内容是否充分及版本选择依据是否明确。</p>
 <h2 id="讨论知识供给与-agent-交互的设计启示">讨论：知识供给与 Agent
 交互的设计启示</h2>
 <p>上述发现识别了开发者判断AI所提供指导时可能依赖的知识条件。下面讨论两类潜在改进对象：文档与社区提供的技术知识，以及呈现这些知识的Agent界面。各项建议从已观察的任务剖面推导而来。图10–15分别以供给侧与Agent侧各三张示意，说明兼容关系、诊断内容、可读出口、获取反馈、环境核对和来源检查。它们用于具体说明诊断的潜在应用，尚未开展干预效果评价。</p>
@@ -588,7 +613,7 @@ aria-hidden="true">来源核验与纠错反馈的设计示意。转换命令节�
 <p>这些建议将核验建议视为编程工作的一部分，与前文讨论的信息寻找及AI辅助研究相衔接
 <span class="citation"
 data-cites="brand2009 vaithilingam2022 barke2023">[1, 2,
-13]</span>。展示每次检索事件和全部来源段落，可能增加阅读负担，却未必使下一步行动更清楚。界面可以先呈现获得支持的步骤、相关版本范围与未决条件，再按需展开来源段落。这样既优先呈现当前判断所需的信息，也保留深入检查的入口。</p>
+14]</span>。展示每次检索事件和全部来源段落，可能增加阅读负担，却未必使下一步行动更清楚。界面可以先呈现获得支持的步骤、相关版本范围与未决条件，再按需展开来源段落。这样既优先呈现当前判断所需的信息，也保留深入检查的入口。</p>
 <p>请求环境事实也可能打断任务，尤其是在重复询问已经提供的信息时。每次请求应说明哪项建议依赖这一事实，并复用已有任务上下文；信息可能过时时再请开发者确认。对于诊断日志，应请求相关片段，并允许移除敏感内容。缺失的配套关系和笼统的错误解释需要文档与系统团队完善，收集更多本地事实本身不能补足这些解释。如何平衡核验、打断与有效指导，仍需在这些建议的后续评价中考察。</p>
 <h3
 id="同时考虑广覆盖改进与局部断点修复">同时考虑广覆盖改进与局部断点修复</h3>
@@ -605,7 +630,7 @@ Agent建设与维护的产品经理、设计师、技术写作者和开发工程
 <p>本文定义面向 AI
 的知识可得性，并通过十一项指标连接知识来源、获取过程与回答属性。CANN 与
 CUDA
-开发生态的案例分析展示了这一多维视角如何识别不同的获取与内容失败、反复出现的版本问题，以及随任务变化的知识支撑组合。对照任务进一步提示，在考察工作流覆盖的同时，应关注任务对生态专有知识的需求。</p>
+开发生态的案例分析展示了这一多维视角如何识别不同的获取与内容失败、反复出现的版本问题，以及随任务变化的知识支撑组合。同一工作流内的任务比较进一步表明，需要结合具体资料的获取结果、内容详尽度和版本选择依据，解释知识支撑的差异。</p>
 <p>该方法使经由AI形成的技术指导的依据成为可检查的对象：哪项来源支撑拟议步骤，哪项适用关系尚未明确，以及还需要什么信息。框架、协议与案例分析提供了定位这些条件，并将其关联到知识供给和Agent反馈的方法。文档修复、继续检索和请求本地事实分别对应不同的诊断，为后续评价提供具体方向。</p>
 <h2 class="unnumbered" id="附录a评分计算细则">附录A：评分计算细则</h2>
 <p><strong>官方资料（M1–M4）。</strong>
@@ -685,21 +710,29 @@ Lewis, Wen-tau Yih, Tim Rocktäschel, Sebastian Riedel, 和 Douwe Kiela.
 Processing Systems</em>, 2020. 9459～9474. 取读于 从 <a
 href="https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html">https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html</a></div>
 </div>
-<div id="ref-pirolli1999" class="csl-entry" role="listitem">
+<div id="ref-ma2024agentboard" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[8] </div><div
+class="csl-right-inline">Chang Ma, Junlei Zhang, Zhihao Zhu, Cheng Yang,
+Yujiu Yang, Yaohui Jin, Zhenzhong Lan, Lingpeng Kong, 和 Junxian He.
+2024. <span>AgentBoard</span>: An Analytical Evaluation Board of
+Multi-turn <span>LLM</span> Agents. <a
+href="https://doi.org/10.48550/arXiv.2401.13178">https://doi.org/10.48550/arXiv.2401.13178</a></div>
+</div>
+<div id="ref-pirolli1999" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div
 class="csl-right-inline">Peter Pirolli 和 Stuart Card. 1999. Information
 Foraging. <em>Psychological Review</em> 106, 4 (1999年), 643～675. <a
 href="https://doi.org/10.1037/0033-295X.106.4.643">https://doi.org/10.1037/0033-295X.106.4.643</a></div>
 </div>
 <div id="ref-robillard2009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div
+<div class="csl-left-margin">[10] </div><div
 class="csl-right-inline">Martin P. Robillard. 2009. What Makes
 <span>APIs</span> Hard to Learn? Answers from Developers. <em>IEEE
 Software</em> 26, 6 (2009年), 27～34. <a
 href="https://doi.org/10.1109/MS.2009.193">https://doi.org/10.1109/MS.2009.193</a></div>
 </div>
 <div id="ref-programmerAssistant2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div
+<div class="csl-left-margin">[11] </div><div
 class="csl-right-inline">Steven I. Ross, Fernando Martinez, Stephanie
 Houde, Michael Muller, 和 Justin D. Weisz. 2023. The Programmer’s
 Assistant: Conversational Interaction with a Large Language Model for
@@ -709,7 +742,7 @@ Computing Machinery, 491～514. <a
 href="https://doi.org/10.1145/3581641.3584037">https://doi.org/10.1145/3581641.3584037</a></div>
 </div>
 <div id="ref-ares2024" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div
+<div class="csl-left-margin">[12] </div><div
 class="csl-right-inline">Jon Saad-Falcon, Omar Khattab, Christopher
 Potts, 和 Matei Zaharia. 2024. <span>ARES</span>: An Automated
 Evaluation Framework for Retrieval-Augmented Generation Systems. 收入
@@ -720,14 +753,14 @@ Computational Linguistics, 338～354. <a
 href="https://doi.org/10.18653/v1/2024.naacl-long.20">https://doi.org/10.18653/v1/2024.naacl-long.20</a></div>
 </div>
 <div id="ref-sillito2008" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J.
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J.
 Sillito, G. C. Murphy, 和 K. De Volder. 2008. Asking and Answering
 Questions during a Programming Change Task. <em>IEEE Transactions on
 Software Engineering</em> 34, 4 (2008年), 434～451. <a
 href="https://doi.org/10.1109/TSE.2008.26">https://doi.org/10.1109/TSE.2008.26</a></div>
 </div>
 <div id="ref-vaithilingam2022" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div
+<div class="csl-left-margin">[14] </div><div
 class="csl-right-inline">Priyan Vaithilingam, Tianyi Zhang, 和 Elena L.
 Glassman. 2022. Expectation vs. Experience: Evaluating the Usability of
 Code Generation Tools Powered by Large Language Models. 收入 <em>CHI
@@ -736,7 +769,7 @@ Abstracts</em>, 2022. Association for Computing Machinery, 1～7. <a
 href="https://doi.org/10.1145/3491101.3519665">https://doi.org/10.1145/3491101.3519665</a></div>
 </div>
 <div id="ref-yang2024sweagent" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div
+<div class="csl-left-margin">[15] </div><div
 class="csl-right-inline">John Yang, Carlos E. Jimenez, Alexander Wettig,
 Kilian Lieret, Shunyu Yao, Karthik Narasimhan, 和 Ofir Press. 2024.
 <span>SWE-agent</span>: Agent-Computer Interfaces Enable Automated
@@ -745,7 +778,7 @@ Systems</em>, 2024. 50528～50652. <a
 href="https://doi.org/10.52202/079017-1601">https://doi.org/10.52202/079017-1601</a></div>
 </div>
 <div id="ref-yao2023" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div
+<div class="csl-left-margin">[16] </div><div
 class="csl-right-inline">Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du,
 Izhak Shafran, Karthik Narasimhan, 和 Yuan Cao. 2023.
 <span>ReAct</span>: Synergizing Reasoning and Acting in Language Models.
@@ -754,7 +787,7 @@ Representations</em>, 2023. 取读于 从 <a
 href="https://arxiv.org/abs/2210.03629v3">https://arxiv.org/abs/2210.03629v3</a></div>
 </div>
 <div id="ref-zhou2024webarena" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div
+<div class="csl-left-margin">[17] </div><div
 class="csl-right-inline">Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou,
 Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue Ou, Yonatan Bisk,
 Daniel Fried, Uri Alon, 和 Graham Neubig. 2024. <span>WebArena</span>: A
