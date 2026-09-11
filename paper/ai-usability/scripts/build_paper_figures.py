@@ -217,7 +217,7 @@ def full_matrix_panel(lang,panel,metrics):
         d.rect(x,header_y,cell*2-6,25,'#edf1f5',r=3)
         d.text(x+cell-3,84,metric_label(metric,lang),15,bold=True,anchor='middle')
         d.text(x+cell/2,108,'CANN',14,bold=True,anchor='middle')
-        d.text(x+cell*1.5,108,'CUDA‡',14,bold=True,anchor='middle')
+        d.text(x+cell*1.5,108,'CUDA',14,bold=True,anchor='middle')
     y=120
     stripe=False
     for row in ordered_tasks(tasks):
@@ -243,7 +243,7 @@ def full_matrix_panel(lang,panel,metrics):
                 d.text(x+side*cell+(cell-5)/2,y+16,shown,15,bold=True,anchor='middle')
         y+=h
     d.text(18,872,'M1–M10 are ordinal scores (1–5; higher is more favorable; M8 is an inverse effort score). “—” = unobserved official content detail.' if en else 'M1–M10 为有序评分（1–5；高值更有利；M8 为逆向成本评分）。“—”表示官方正文详尽度未观测。',13,fill='#566474')
-    d.text(18,892,'* M7 estimates model prior knowledge. † M11 is composite confidence from M1–M8. ‡ For G, CUDA‡ = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为模型自带知识估计。† M11 为由 M1–M8 汇总的综合置信度。‡ G 的 CUDA‡ 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
+    d.text(18,892,'* M7 estimates model prior knowledge. † M11 is composite confidence from M1–M8. For G, CUDA = ROCm/HIP; it is excluded from CANN/CUDA summaries.' if en else '* M7 为模型自带知识估计。† M11 为由 M1–M8 汇总的综合置信度。G 的 CUDA 实为 ROCm/HIP，且不计入 CANN/CUDA 汇总。',13,fill='#566474')
     d.save()
 
 
@@ -263,7 +263,7 @@ def access_profile(lang):
         d.rect(x,66,cell*2-6,25,'#edf1f5',r=3)
         d.text(x+cell-3,84,title,14,bold=True,anchor='middle')
         d.text(x+cell/2,108,'CANN',13,bold=True,anchor='middle')
-        d.text(x+cell*1.5,108,'CUDA‡',13,bold=True,anchor='middle')
+        d.text(x+cell*1.5,108,'CUDA',13,bold=True,anchor='middle')
     status={'static':('C','#e0eee8'),'ssr':('C','#e0eee8'),'partial':('P','#faeac2'),'spa':('N','#f3c9c6'),'robots':('N','#f3c9c6')}
     y=120;stripe=False
     for row in ordered_tasks(tasks):
@@ -288,7 +288,7 @@ def access_profile(lang):
                 d.text(x+(cell-5)/2,y+16,shown,14,bold=True,anchor='middle')
         y+=h
     d.text(18,872,'Content status: C = core obtained; P = partial content obtained; N = not obtained. Access route is recorded separately in the protocol.' if en else '内容状态：C＝核心正文已取得；P＝部分内容已取得；N＝未取得。访问路径在协议中单独记录。',12,fill='#566474')
-    d.text(18,892,'‡ For G, CUDA‡ = ROCm/HIP; it is a migration analogy and is excluded from CANN/CUDA summaries.' if en else '‡ G 的 CUDA‡ 实为 ROCm/HIP；它是迁移类比，不计入 CANN/CUDA 汇总。',12,fill='#566474')
+    d.text(18,892,'For G, CUDA = ROCm/HIP; it is a migration analogy and is excluded from CANN/CUDA summaries.' if en else 'G 的 CUDA 实为 ROCm/HIP；它是迁移类比，不计入 CANN/CUDA 汇总。',12,fill='#566474')
     d.save()
 
 

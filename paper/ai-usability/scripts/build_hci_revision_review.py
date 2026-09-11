@@ -13,6 +13,13 @@ def embed(match):
 b=re.sub(r'src="(figures/[^\"]+)"',embed,b)
 b=re.sub(r'<title>.*?</title>','<title>最新中文审阅版 · 修改高亮与改前对照</title>',b,flags=re.S)
 b=re.sub(r'<div class="edition">.*?</div>','<div class="edition">最新中文全文 · 修改高亮　|　<a href="manuscript-cn-before-29c87cc.html">查看改前全文</a>　|　<a href="manuscript-cn-v0.2.html">无标记阅读版</a></div>',b,count=1,flags=re.S)
+# Apply the approved label cleanup to embedded historical artwork as well.
+if historical:
+ def clean_historical_image(match):
+  svg=base64.b64decode(match[1]).decode()
+  svg=svg.replace('CUDA‡','CUDA').replace('‡ For G','For G').replace('‡ G 的','G 的')
+  return 'src="data:image/svg+xml;base64,'+base64.b64encode(svg.encode()).decode()+'"'
+ b=re.sub(r'src="data:image/svg\+xml;base64,([^"]+)"',clean_historical_image,b)
 pattern=re.compile(r'<(p|h[1-6]|figcaption)\b[^>]*>.*?</\1>',re.S)
 def plain(s):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]+>','',s))).strip()
 def key(s):return re.sub(r'\s+','',plain(s))
