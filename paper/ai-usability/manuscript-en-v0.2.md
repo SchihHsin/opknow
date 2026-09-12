@@ -168,15 +168,15 @@ CANN and CUDA provide a useful setting because the tasks involve specialized API
 
 Task G is a distinct migration analogy. Its comparison question concerns moving CUDA code to AMD ROCm/HIP and its official material comes from AMD. It is included in the 26-task set as a worked migration case, but is excluded from CANN/CUDA aggregate comparisons, leaving 25 pairs and 50 task-side records for those summaries. Its separate treatment demonstrates why source and comparison identity belong in the measurement protocol.
 
-### Task execution and development of the method
+### Task execution and data analysis
 
-We used a process log to record task questions, query strings, source descriptions, read outcomes, and scoring rationales. Scoring functions converted the observation fields into an interactive task matrix and analytic visualizations. Initial tasks used stepwise records; later batches used structured summaries. Some early read assessments reused observations already obtained in the same session.
+We used a process log to record task questions, query strings, source descriptions, read outcomes, and scoring rationales. Scoring functions converted the observation fields into an interactive task matrix and analytic visualizations. Some early read assessments reused observations already obtained in the same session.
 
 Tasks were conducted in four batches. The first two covered A–D and E–H; the later two covered I–S and T–Z through parallel subagents. Structured observations were consolidated in the main session, where official and third-party source ownership was checked. Task questions were linked to their original assignments, and wording for the later batches was added to the process log from those assignments.
 
 Tasks used Claude (model identifier `claude-opus-4-8`) with web-search and web-reading tools. Search returned candidate sources, and the reading tool summarized HTML from selected URLs. The analysis combined recorded queries, tool-returned content and summaries, structured observations, and scoring rationales. M9 and M10 assessed version specificity and procedural actionability using the guidance produced during the tasks and its corresponding records. The supplement links tasks, sources, and scoring rationales.
 
-The framework developed iteratively through the audit. A consequential revision was the rejection of a site-wide access assumption when a main-path quickstart returned useful content. This paper consolidates the protocol and separates observations from estimates and aggregation choices. The supplementary protocol and worked record make the resulting recording structure explicit.
+We used a consistent evaluation framework, eleven indicators, and scoring rules to acquire and assess knowledge for each development task.
 
 The analysis proceeds at three levels. First, we compare indicator scores within corresponding task categories to locate differences in resource discovery, content acquisition, content detail, version clarity, and guidance properties. Second, we describe indicator distributions using means ($\bar{x}$), standard deviations ($SD$), and counts at each score level, and summarize composite confidence by workflow. Third, we interpret score differences using the corresponding acquisition records and returned content, comparing content support under the same acquisition state and knowledge conditions across tasks within a workflow. M3 means and standard deviations include only records for which content detail can be assessed; blocked-content records are reported separately. These statistics describe the selected task set and do not support population-level inference about the ecosystems.
 
