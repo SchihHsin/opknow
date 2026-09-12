@@ -1,0 +1,29 @@
+# opknow 研究资料包
+
+> 一次实测研究：在昇腾（CANN）与 NVIDIA（CUDA）两个技术栈上各跑 26 个真实开发任务，逐任务从官网取信息，给「AI 能不能靠官网把这段工作做完」打分。
+> 被测对象是**官方网站**，不是模型能力。打分全部由脚本公式从实测观测算出。
+> 结论只关于**官网信息可用性**，不评价模型能力、也不评价产品实际运行性能。
+
+本文件就是资料包目录。下面每一条都是一个可直接抓取的地址。
+
+## 正文
+
+- [17 任务评分对照矩阵](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/17_%E4%BB%BB%E5%8A%A1%E8%AF%84%E5%88%86%E5%AF%B9%E7%85%A7%E7%9F%A9%E9%98%B5.md): 26 任务 × 11 指标 × 2 栈的实测评分矩阵，每格都能落到「抽到了什么、缺了什么、来源是哪些」。79k 字符。
+- [18 指标定义与计算方法](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/18_%E6%8C%87%E6%A0%87%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95.md): 方法论。任务怎么选 → 问题怎么编 → 指标怎么长出来 → 1–5 分凭什么判定，每项配可复现公式。27k 字符。
+- [19 发现与体验综合分析](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/19_%E5%8F%91%E7%8E%B0%E4%B8%8E%E4%BD%93%E9%AA%8C%E7%BB%BC%E5%90%88%E5%88%86%E6%9E%90.md): 结论页。把实测暴露的问题收成「供给侧怎么改网站」+「使用侧怎么改 Agent 产品」两组发力点，含漏斗视图与五项收口。30k 字符。
+- [20 开发者与Agent协作分析](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/20_%E5%BC%80%E5%8F%91%E8%80%85%E4%B8%8EAgent%E5%8D%8F%E4%BD%9C%E5%88%86%E6%9E%90.md): 单任务深描。开发者 × AI 完成一个算子的全链路时序图：5 次搜索、4 个决策点、三档 AI 自主度。56k 字符。
+
+阅读依赖：19 的结论建立在 17 的分数与 18 的口径之上；20 独立成篇，可单独读。
+
+## 一次读全部
+
+- [全集](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/00_%E5%85%A8%E9%9B%86.md): 上面四份按序拼接，19.3 万字符 ≈ 14 万 token，注意上下文上限。
+
+## 图怎么读
+
+20 里有 6 处 `![](figs/*.svg)`。**SVG 对 AI 只是坐标碎片**，读不出「谁在什么时候对谁做了什么」。图的意思在同节的 **Mermaid 代码块（7 个）+ 明细表（55 张）**，随正文一起走，不用额外取图。
+
+## Optional
+
+- [20 附录A · 绘图代码](https://raw.githubusercontent.com/SchihHsin/opknow/main/md/20_%E9%99%84%E5%BD%95A-%E7%BB%98%E5%9B%BE%E4%BB%A3%E7%A0%81.md): d3 绘制源码。讲的是「图怎么画线」而不是「画了什么」，**不必读**。
+- `md/figs/*.svg`、`md/tools/*`: 20 的 5 张原图与抽取/出图脚本，同上，不必读。
