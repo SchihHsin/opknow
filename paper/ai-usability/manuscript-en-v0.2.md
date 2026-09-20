@@ -2,7 +2,7 @@
 
 ## Abstract
 
-AI agents increasingly participate in software development, from retrieving technical resources and generating or modifying code to executing tasks through tools. Assisting developers with these tasks requires access to usable technical knowledge. We conceptualize these conditions as knowledge availability for AI and introduce a task-level protocol with eleven indicators covering knowledge sources, acquisition effort, and response properties. We apply the method to 26 categories of software development tasks for AI-accelerated computing, comparing knowledge availability across ecosystems. The analysis distinguishes unclear version information, failures to obtain core instructions, readable but insufficient guidance, and supported main procedures with unavailable references. These findings connect developers’ information needs when assessing technical suggestions with knowledge gaps, informing improvements in technical knowledge provision and agents’ acquisition and use of knowledge. We contribute a conceptual framework, an inspectable protocol, and a case application for diagnosing the knowledge conditions underlying agents’ assistance with development tasks.
+Developers increasingly use AI agents across software development activities, from retrieving technical resources and generating or modifying code to executing tasks through tools. Assisting developers with these tasks requires access to usable technical knowledge. We conceptualize these conditions as knowledge availability for AI and introduce a task-level protocol with eleven indicators covering knowledge sources, acquisition effort, and response properties. We apply the method to 26 categories of software development tasks for AI-accelerated computing, comparing knowledge availability across ecosystems. The analysis distinguishes unclear version information, failures to obtain core instructions, readable but insufficient guidance, and supported main procedures with unavailable references. These findings connect developers’ information needs when assessing technical suggestions with knowledge gaps, informing improvements in technical knowledge provision and agents’ acquisition and use of knowledge. We contribute a conceptual framework, an inspectable protocol, and a case application for diagnosing the knowledge conditions underlying agents’ assistance with development tasks.
 
 ## Keywords
 
@@ -10,11 +10,11 @@ knowledge availability for AI; developer ecosystems; technical documentation; in
 
 ## Introduction
 
-Developers routinely move between documentation, code examples, search results, and community explanations while deciding what to do next. Research on opportunistic programming and developers' information needs shows that finding and interpreting information is part of programming itself [@brand2009; @ko2007; @sillito2008]. A useful result must fit the current task: a command needs the right options, an API example needs the right version, and an explanation of an error needs enough context to guide investigation. The existence of documentation is therefore only one condition for its usefulness.
+In traditional software development workflows, developers often need to consult documentation, code examples, search results, and community explanations themselves to decide what to do next. Research on opportunistic programming and developers' information needs shows that finding and interpreting information is part of programming itself [@brand2009; @ko2007; @sillito2008]. A useful result must fit the current task: a command needs the right options, an API example needs the right version, and an explanation of an error needs enough context to guide investigation. The existence of documentation is therefore only one condition for its usefulness.
 
-Development agents with retrieval and tool-use capabilities introduce another collaborative route through this knowledge environment. A developer may ask about an error or a code fragment, or state a desired change or outcome and delegate information seeking, documentation reading, implementation planning, and portions of code modification to an agent. To advance such a task, the agent may search, read, and combine material across official sites, documentation, repositories, and communities before drafting a response, an implementation approach, or a code change. Studies of code-generation tools, conversational programming assistance, and agent support describe opportunities for this support alongside difficulties in understanding and checking generated suggestions [@vaithilingam2022; @barke2023; @programmerAssistant2023]. Delegating the search changes how supporting material reaches the developer, while leaving a need to judge whether a suggestion has an identifiable basis, fits the local environment, and requires further information. The agent's access to technical material is one condition for making that basis available for inspection. Measuring this access can therefore identify gaps in the knowledge on which AI-mediated guidance depends.
+Development agents with retrieval and tool-use capabilities introduce another collaborative route through this knowledge environment. A recent study of GitHub projects found adoption of coding agents across projects with different maturity levels and technical characteristics [@robbes2026]. A developer may ask about an error or a code fragment, or state a desired change or outcome and delegate information seeking, documentation reading, implementation planning, and portions of code modification to an agent. To advance such a task, the agent may search, read, and combine material across official sites, documentation, repositories, and communities before drafting a response, an implementation approach, or a code change. Studies of code-generation tools, conversational programming assistance, and agent support describe opportunities for this support alongside difficulties in understanding and checking generated suggestions [@vaithilingam2022; @barke2023; @programmerAssistant2023]. Delegating the search changes how supporting material reaches the developer, while leaving a need to judge whether a suggestion has an identifiable basis, fits the local environment, and requires further information. The agent's access to technical material is one condition for making that basis available for inspection. Measuring this access can therefore identify gaps in the knowledge on which AI-mediated guidance depends.
 
-Consider an agent asked how to implement and integrate a custom accelerator operator. A search may return an official development guide, yet the reading tool may obtain only navigation and metadata. For an error-diagnosis task, the same tool may obtain the full official page, but the page may contain only a generic instruction to inspect logs. A retrieval-success measure can mark both questions as having relevant results. An access measure distinguishes the first failure but not the second. Even adequate instructions can remain ambiguous when they refer to incompatible toolkit and framework versions. These distinctions matter to documentation teams deciding what to repair and to agent designers deciding what uncertainty to expose.
+Agents can usually produce answers to development questions, but the accuracy and applicability of those answers depend in part on the knowledge they acquire. For example, when implementing a custom operator, an agent may find an official guide without obtaining its procedural content. When investigating an error, it may retrieve a complete page that offers only generic advice to inspect logs. In either case, the agent may continue to answer using prior knowledge or inference while lacking external evidence for specific steps. Even detailed instructions may yield inapplicable suggestions if the toolkit and framework versions they reference are incompatible. Assessment therefore needs to examine not only the answers agents produce but also gaps in their supporting knowledge, identifying concrete opportunities to improve technical resources and the feedback agents provide.
 
 Those building developer ecosystems need to understand not only whether an agent can provide usable technical guidance, but also which knowledge conditions constrain that guidance and where improvements are needed. Similar shortcomings in answers may arise from different conditions: official resources were not discovered, procedural content was not obtained, acquired content lacked task-specific detail, or the basis for selecting a version remained unclear. A usable answer may also rely on alternative sources, masking gaps in official resources. Final answers or task outcomes alone offer limited grounds for distinguishing these conditions. Taking developers’ task-specific knowledge needs as a reference, we compare how ecosystems support different development activities and examine sources, acquisition events, and acquired content to identify problems in resource provision, information organization, and complementary sources, informing ecosystem development and agent interaction.
 
@@ -28,19 +28,19 @@ We address these questions through a methodological framework and its applicatio
 
 ### Developer information seeking and documentation
 
-Information foraging theory relates information-seeking behavior to the structure and expected value of available information [@pirolli1999]. Programming studies show how developers interleave searching, learning, and implementation, and how their questions depend on the work they are performing [@brand2009; @ko2007; @sillito2008]. API-learning difficulties further motivate attention to the explanatory resources surrounding a technical interface [@robillard2009]. These studies show that developers’ information needs are closely tied to their current tasks. We therefore organize the assessment around specific development tasks, examining whether agents can find and obtain the required resources and whether those resources provide the explanations, parameter descriptions, and procedures needed for the task.
+Information foraging theory relates information-seeking behavior to the structure and expected value of available information [@pirolli1999]. Programming studies show how developers interleave searching, learning, and implementation, and how their questions depend on the work they are performing [@brand2009; @ko2007; @sillito2008]. API-learning difficulties further motivate attention to the explanatory resources surrounding a technical interface [@robillard2009]. Uddin and Robillard identify ambiguity, incompleteness, and incorrectness as severe API-documentation problems [@uddin2015]. Aghajani et al. develop a taxonomy of documentation issues from mailing lists, Stack Overflow discussions, issue repositories, and pull requests [@aghajani2019]. Treude and Robillard demonstrate the potential to supplement formal API documentation with useful information extracted from Stack Overflow that the documentation does not contain [@treude2016]. Maalej and Robillard further classify knowledge types in API reference documentation [@maalej2013]. These studies show that developers’ information needs are closely tied to their current tasks. We therefore organize the assessment around specific development tasks, examining whether agents can find and obtain the required resources and whether those resources provide the explanations, parameter descriptions, and procedures needed for the task.
 
-Our method does not infer human usability from machine access. A page readable by a browser can be inaccessible to a particular extraction tool; conversely, text readily extracted by an agent can still be difficult for a person to navigate. We examine the conditions of the delegated knowledge route. Claims about developers' time, trust, satisfaction, or task completion require separate evidence.
+Our method does not infer human usability from machine access. Research with developers who are visually impaired likewise finds benefits from AI coding assistance alongside accessibility challenges involving excessive suggestions and context switching, underscoring the need to examine experience in specific usage contexts [@flores2025]. A page readable by a browser can be inaccessible to a particular extraction tool; conversely, text readily extracted by an agent can still be difficult for a person to navigate. We examine the conditions of the delegated knowledge route. Claims about developers' time, trust, satisfaction, or task completion require separate evidence.
 
 ### AI support for programming
 
-Studies of AI programming assistance distinguish obtaining a suggestion from understanding, adapting, and checking it. Vaithilingam et al. describe difficulties in understanding, editing, and debugging generated code [@vaithilingam2022]; Barke et al. distinguish acceleration and exploration in programmers' use of code-generating models [@barke2023]. Ross et al. examine conversational assistance around code context [@programmerAssistant2023]. These findings motivate attention to the supporting information available when a suggestion is considered. Our protocol examines whether relevant source passages, version conditions, and procedural details can be obtained and connected to that suggestion. It supplies an account of those knowledge conditions alongside studies of how developers engage with AI assistance.
+Studies of AI programming assistance distinguish obtaining a suggestion from understanding, adapting, and checking it. Vaithilingam et al. describe difficulties in understanding, editing, and debugging generated code [@vaithilingam2022]; Barke et al. distinguish acceleration and exploration in programmers' use of code-generating models [@barke2023]. Ross et al. examine conversational assistance around code context [@programmerAssistant2023]. In a survey of 410 developers, Liang et al. identify unmet functional or non-functional requirements and difficulty controlling generated output as important barriers to use [@liang2024]. Mozannar et al. use a taxonomy of programmer activities to analyze interaction behavior and time costs around code suggestions, motivating assessment of the usage process beyond suggestion generation [@mozannar2024]. In security-related programming tasks, Perry et al. find that participants using an AI assistant produced less secure code while being more likely to believe that their code was secure, indicating a need to distinguish subjective confidence from actual quality [@perry2023]. These findings motivate attention to the supporting information available when a suggestion is considered. Our protocol examines whether relevant source passages, version conditions, and procedural details can be obtained and connected to that suggestion. It supplies an account of those knowledge conditions alongside studies of how developers engage with AI assistance.
 
 Agents can interleave reasoning and tool use, and retrieval-augmented generation provides a way to incorporate external information into generation [@lewis2020; @yao2023]. WebArena, SWE-bench, and SWE-agent evaluate or develop agents in realistic web and software-engineering settings [@zhou2024webarena; @jimenez2024swebench; @yang2024sweagent]. Their task outcomes are valuable evidence of system performance. Our framework offers a complementary description of the knowledge conditions under which such systems operate. A failure can involve unavailable evidence, inadequate interpretation of available evidence, or unsuccessful execution; the present method directly addresses the first of these and records information relevant to separating them.
 
 ### Retrieval, attribution, and the availability construct
 
-Existing research evaluates AI systems at several levels. ALCE examines the fluency, correctness, and citation quality of generated answers; RAGAs and ARES additionally assess the relevance of retrieved context and the faithfulness of answers to that context [@gao2023alce; @ragas2024; @ares2024]. AgentBoard analyzes agents’ action processes through measures such as fine-grained task progress, demonstrating the value of process information beyond final success rates [@ma2024agentboard]. These approaches provide a foundation for understanding system performance. Developing and maintaining a developer ecosystem also requires connecting performance to specific knowledge conditions: whether technical resources are readily discoverable, whether the required content is actually obtained, whether it supplies procedural detail, and whether versions have clear selection and compatibility guidance. We organize task-level measurement around these relationships to distinguish conditions calling for better acquisition paths, fuller content, or clearer version relations.
+Existing research evaluates AI systems at several levels. ALCE examines the fluency, correctness, and citation quality of generated answers; RAGAs and ARES additionally assess the relevance of retrieved context and the faithfulness of answers to that context [@gao2023alce; @ragas2024; @ares2024]. AgentBoard analyzes agents’ action processes through measures such as fine-grained task progress, demonstrating the value of process information beyond final success rates [@ma2024agentboard]. In programming, RepoBench separately evaluates cross-file code retrieval, code completion, and their combined pipeline, distinguishing context acquisition from generation performance [@liu2024repobench]. Its focus is completion within code repositories; our method examines whether the official and third-party technical resources needed for development tasks can be discovered, obtained, and provide adequate support. These approaches provide a foundation for understanding system performance. Developing and maintaining a developer ecosystem also requires connecting performance to specific knowledge conditions: whether technical resources are readily discoverable, whether the required content is actually obtained, whether it supplies procedural detail, and whether versions have clear selection and compatibility guidance. We organize task-level measurement around these relationships to distinguish conditions calling for better acquisition paths, fuller content, or clearer version relations.
 
 The distinctions in Table 1 position the construct. Availability can be necessary for an evidence-grounded answer without being sufficient for correctness. An agent can misinterpret an available source. It can also produce a correct answer from prior knowledge without obtaining any external evidence. These outcomes should remain distinguishable.
 
@@ -60,19 +60,19 @@ The distinctions in Table 1 position the construct. Availability can be necessar
 
 The unit is a **task-side acquisition episode**: a development objective pursued in a particular technical ecosystem using a stated agent and retrieval configuration. A task specification records the desired outcome, starting artifacts, constraints, version dependencies, and evidence required to support a next action. For example, model conversion may require a conversion command, an input-shape specification, a target-device setting, and a way to check the generated artifact. These requirements guide inspection; a long page is not automatically adequate.
 
-Task selection must follow the purpose of the application. An ecosystem assessment may seek coverage across workflows; a documentation-team audit may focus on recurring support questions. Neither establishes the population frequency of those tasks without additional sampling evidence. For cross-ecosystem use, analysts record differences in starting conditions and task scope rather than assuming that similar names make tasks equivalent. The framework can also be applied within one ecosystem, across versions, or across retrieval configurations, provided the comparison conditions are made explicit.
+Task selection and sampling should be explicit and follow the purpose of the evaluation [@kelly2009]. An ecosystem assessment may seek coverage across workflows; a documentation-team audit may focus on recurring support questions. Neither establishes the population frequency of those tasks without additional sampling evidence. For cross-ecosystem use, analysts record differences in starting conditions and task scope rather than assuming that similar names make tasks equivalent. The framework can also be applied within one ecosystem, across versions, or across retrieval configurations, provided the comparison conditions are made explicit.
 
 Figure 1 locates the measurements in an observable tool-use loop. It is an analytic model, not a reconstruction of hidden model reasoning: the agent searches for candidate sources, selects URLs, fetches content or records a failure, then integrates evidence and assesses task adequacy and version applicability. When evidence is insufficient but remains searchable, the loop returns to query refinement. Model prior is registered as a separate branch that need not produce an observable source; it is therefore not automatically treated as traceable evidence.
 
 ![An agent starts from a task and context, interprets intent, decomposes subgoals, and routes to retrieval or model prior; a retrieval branch searches, selects URLs, fetches content or fetches a known URL directly, then integrates evidence and assesses adequacy. Insufficient evidence can trigger retry; exhausted retrieval distinguishes whether reliable evidence remains.](figures/figure-1-framework-en.svg){#fig:framework description="A conceptual process diagram starts with a development task and context, showing intent interpretation, subgoal decomposition, routing, and a Need retrieval? decision. The retrieval branch shows web search for official and third-party candidates, URL selection, web fetch for content, and a direct-fetch route for a known URL; the other branch is model prior. Sources feed back to a current-evidence record, then pass through Is evidence adequate?, Can retrieval continue?, and Any reliable evidence left? decisions to converge, retry, or a risk-marked final answer. All M1 through M11 labels use the same style and name their measurement location."}
 
-### Sources, acquisition, and action conditions
+### Knowledge sources and task support
 
-The framework examines three knowledge channels: official materials, community or third-party materials, and model prior knowledge. For external channels, it separates **access** from **adequacy**. Discovery concerns whether a candidate source is found; acquisition concerns what the reading tool actually returns. Adequacy concerns whether that return supplies the task-required commands, explanations, parameters, or diagnostic cases. Version applicability is examined across channels because sources can be individually informative while describing different environments.
+The framework examines three knowledge sources: official material, third-party material, and model prior knowledge. Official and third-party material are distinguished by publisher identity. For example, documentation, repositories, and blogs published by a vendor belong to the official channel, while tutorials and practical accounts from independent authors belong to the third-party channel. The hosting platform alone does not determine source ownership.
 
-Official status is determined by the publisher's relationship to the material, not by its hosting platform. A vendor's repository or blog belongs to that vendor's official channel. An independently authored tutorial hosted on the same platform can have a different status. Cross-posting also makes domain diversity an imperfect proxy for independent evidence. The protocol therefore preserves source identity, publisher, date when available, and any observed derivation or duplication. Lack of these details is recorded as uncertainty.
+For official and third-party material, the framework examines whether the agent can find relevant sources, obtain their content, and use that content to support the current task. Specific checks concern whether the material includes the required procedures, parameter explanations, or diagnostic information, and whether applicable versions and component compatibility are clear. For model prior knowledge, support for the current task is estimated and presented separately from the external material actually acquired.
 
-The output of the method is an **availability profile** with an evidence trail. It identifies what was found, what was obtained, what appears adequate, what applicability conditions remain unresolved, and the effort required to acquire that knowledge. An optional aggregate can help summarize a chosen operationalization, but it cannot replace this profile. In particular, internal model knowledge cannot make an inaccessible external source accessible, even if it enables an answer.
+Considering the three sources together makes it possible to examine which sources supply the knowledge required for a task, which requirements remain unsupported, and whether sources complement one another. For example, when official content is not obtained, does third-party material provide usable instructions? When several sources contain relevant information, are their versions and compatibility statements consistent? Acquisition counts and failed attempts describe the effort required to obtain this knowledge.
 
 ### An evidence record
 
@@ -86,13 +86,15 @@ This distinction prevents a common reporting error: transforming an interpretati
 
 The method examines three knowledge sources: official material, third-party material, and model prior knowledge. It assesses discovery, acquisition, and source quality, and connects knowledge acquisition to response generation through measures of retrieval effort and response properties. Table 2 presents the eleven indicators and their scoring criteria.
 
+Table 2 retains historical case labels and operational descriptions; the current names and rules appear under “Revised scoring protocol” below. Historical values are not automatically changed by this revision.
+
 | ID | Indicator | Evidence and interpretation |
 | --- | --- | --- |
 | M1 | Official source discoverability | Measures the ease of finding task-relevant official material using result position, search rounds, and the need for query refinement. |
 | M2 | Official content accessibility | Assesses the retrieval of task-relevant official content using the selected page’s fetch category, returned body content, and access barriers. |
 | M3 | Official content detail | Measures the detail of task-relevant official material using its coverage level and the actionability of commands and code. Content that cannot be retrieved is marked as blocked. |
 | M4 | Source version clarity | Measures how clearly official material enables selection of an applicable version, considering coexisting versions, compatibility matrices, and device–framework compatibility conditions. |
-| M5 | Third-party source count | Measures the amount of third-party material obtained during retrieval, with scores assigned according to the recorded source count. |
+| M5 | Third-party source count | Measures the number of third-party sources found during retrieval, with scores assigned according to the recorded source count. |
 | M6 | Third-party source credibility | Assesses third-party credibility from source type, with adjustments for publication age, content consistency, and distribution across source platforms. |
 | M7 | Estimated model prior knowledge | Estimates the support that existing model knowledge provides for a task, using model self-assessment adjusted for the pace of relevant technical change. |
 | M8 | Search and acquisition effort | Measures retrieval effort from search rounds, fetch attempts, and failed fetches. Lower acquisition cost receives a higher score. |
@@ -108,6 +110,8 @@ M1–M7 describe support from the three knowledge sources, while M8 captures the
 
 **First, define the task and the recording boundary.** State the development outcome, starting artifacts, and requirements against which adequacy will be assessed. Record the agent, tools, language, date, and context policy. Specify whether the unit includes a fresh acquisition, reused observations, or both. Set a retrieval budget or another observable stopping criterion appropriate to the application; an analyst must not infer an agent's internal reasons for stopping from the number of queries alone.
 
+For cross-ecosystem comparisons, each task comprises a pair of questions organized around a shared development intent, with wording adapted to the tools, APIs, and development workflows of the two ecosystems. Pairing aims for comparable development goals, task scope, and levels of requested guidance, so that both questions address the same type of development need. For example, both may ask how to install a toolchain, establish version compatibility, or locate a memory error, while using the terminology and implementation paths of their respective ecosystems. Differences in starting conditions or task scope should be stated explicitly and considered when interpreting the results.
+
 **Second, record discovery and acquisition.** Preserve queries, candidate sources, selected URLs, and read outcomes. Inspect official materials and record the community alternatives actually encountered, whether from mixed search results or subsequent searches. Keep a failed read separate from a failed search. When a mirror or another version supplies the required content, link it to the original attempt so that the workaround remains visible.
 
 **Third, assess task support and applicability.** Map acquired material to the task requirements. Distinguish a returned document with missing essential content from a document that was never returned. Record stated versions and compatibility dependencies, including unresolved local facts. A version number in a URL is a clue, not by itself a verified compatibility relation.
@@ -122,15 +126,159 @@ The method's novelty lies in this connected specification of the unit, evidence 
 \raggedbottom
 ```
 
-### Scoring rules and composite confidence
+### Revised scoring protocol (21 September 2026)
 
-Each indicator is mapped to an ordinal score from 1 to 5 using its scoring rule. We describe the anchors by knowledge source, acquisition effort, response properties, and composite confidence. Appendix A specifies decision priorities and adjustments; task records provide the corresponding observations.
+This section specifies the current revision. The historical scoring description below, Appendix A, and the 52 archival case units retain their original scoring protocol and have not been rescored. The new pilot is reported separately and must not be pooled with historical scores. The revision preserves the objects of evaluation while changing observations and scoring anchors. M1–M10 use five ordinal grades; M2 retains the equal-weight document mean; M11 is a continuous 0–100 index.
+
+**M1 Official source discoverability**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No relevant official source found within the predefined common search budget |
+| 2 | First relevant official source found on the third or a later query |
+| 3 | First relevant official source found on the second query |
+| 4 | First query finds a relevant official source at rank 2–5 |
+| 5 | First query finds a relevant official source at rank 1 |
+
+Observe the first five results per query under the pilot protocol. Later searches after the first hit do not lower the score; reformulation incurs no separate penalty. Incomplete budgets, missing lists, or preceding timeouts can make the score indeterminate. Retain all returned URLs and ranks.
+
+**M2 Official body accessibility**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No identifiable target-page content: failure, denial, error page, or no return |
+| 2 | Target title, navigation, or metadata only; no identifiable body |
+| 3 | Only an explicitly identified summary or excerpt representation, without a direct body return |
+| 4 | Direct body with explicit truncation, missing pages, or verifiable missing boundaries |
+| 5 | Direct body with verifiable complete article or target-section boundaries and no truncation evidence |
+
+Score the final acquisition state of each independent official document. Direct body of unknown completeness remains bounded at 4–5, rather than receiving a forced score. A tool assertion of completeness alone is insufficient. Define the target before fetching. Count retries once, average documents equally, retain the unrounded mean, and propagate unknown intervals rather than excluding them. Content detail belongs to M3 and version clarity to M4.
+
+**M3 Official body detail**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | Overview only, without relevant explanations or operational details |
+| 2 | Relevant but isolated details that do not form a complete explanation or procedure |
+| 3 | A complete explanation or procedure is present, but required key steps, parameters, or constraints are missing |
+| 4 | Required main workflow, parameters, and prerequisites are explained, but task-specified branches, constraints, or reference details remain incomplete |
+| 5 | All explanations, steps, parameters, and constraints required by the question are explained without needing other material to fill gaps |
+
+List requirements from the original question; do not add exhaustive requirements unrelated to it. Award the highest satisfied grade and locate each gap in the acquired content. Unavailable body is blocked, not grade 1. Version selection belongs to M4.
+
+**M4 Version clarity**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No version information |
+| 2 | Versions are present but selection has no basis, or official statements conflict without resolution |
+| 3 | Some applicability relations are explicit, but relations needed to complete version selection are still missing |
+| 4 | Applicable versions can be determined by combining official constraints |
+| 5 | Official applicability relations are explicit; a table or stated rule directly determines applicable versions |
+
+Assess acquired official material. Missing body is blocked; absence of a version-selection requirement is not applicable. A supported version range is acceptable. Neither page count nor version count alone lowers the score. Combining constraints requires official evidence, without invented assumptions. Retain bounds when grades cannot be distinguished. M8 measures effort; M9 measures final-answer version locking.
+
+**M5 Third-party source richness**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | 0 relevant independent sources |
+| 2 | 1–2 relevant independent sources |
+| 3 | 3–4 relevant independent sources |
+| 4 | 5 relevant independent sources |
+| 5 | At least 6 relevant independent sources |
+
+Deduplicate related sources within the common search budget; mirrors count once and acquisition of the body is not required for this count. Exclude official repositories and forums under the frozen channel classification. Unknown relevance yields count bounds. Report discovery position and query count separately.
+
+**M6 Third-party credibility and consistency**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | An unresolved key claim contradicts reliable checking evidence |
+| 2 | No established key contradiction, but key claims lack traceable checking evidence |
+| 3 | Traceable evidence supports some key claims; others remain unchecked |
+| 4 | All key claims have traceable support with no unresolved contradiction, but lack independent corroboration |
+| 5 | All key claims have traceable support and independent corroboration, with no unresolved contradiction |
+
+Key claims are verifiable statements affecting an operation, explanation, or version decision. Record support, contradiction, or unknown for each. Platform names alone do not establish authority; reposts are not independent. Older material is counterevidence only when its content is no longer applicable. No third-party material is N/A.
+
+**M7 Model prior knowledge**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No verifiable correct task knowledge in the pre-search answer, or a key claim is refuted |
+| 2 | Correct concepts only, without a specific method or explanation |
+| 3 | Correct method or explanation fragments, with key details requiring external material |
+| 4 | A correct complete workflow or explanation, with task-required parameters or constraints still missing |
+| 5 | Accurate coverage of the required workflow, explanation, parameters, and constraints |
+
+Freeze a same-task answer before tool use and independently check its correctness and coverage. Self-reported confidence is not scored. Missing pre-search answers are missing data; unknown correctness remains indeterminate. This measures performance without retrieval, not training-data density.
+
+**M8 Retrieval effort**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | C ≥ 9 |
+| 2 | C = 7–8 |
+| 3 | C = 5–6 |
+| 4 | C = 3–4 |
+| 5 | C = 1–2 |
+
+C = S + F, where S counts searches and F dispatched fetches. A failed dispatched request counts once, without an additional failure penalty. Enforce common budgets programmatically and retain elapsed time and available token counts. C = 0 or abnormal termination does not automatically receive a high score. Calls do not measure all computational cost.
+
+**M9 Answer version locking**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No version information required by the task |
+| 2 | Versions mentioned without evidence-supported applicability, or key choices contradict evidence |
+| 3 | Some required components have supported versions; others remain unresolved |
+| 4 | All required components have supported ranges, but at least one lacks a specific version |
+| 5 | All required components have supported specific versions without unresolved compatibility conflict |
+
+Assess only the final answer and predefine the components actually requiring versions. No version requirement is N/A. Supported ranges are not errors, but represent less precise locking. Do not invent a version to obtain a higher score.
+
+**M10 Operational executability**
+
+| Grade | Criterion |
+| --- | --- |
+| 1 | No executable plan; goals or illustrations only |
+| 2 | An operational skeleton whose key actions cannot be determined |
+| 3 | A concrete plan requiring error correction or missing content before execution |
+| 4 | Complete instructions needing only clearly marked and explained user-environment substitutions |
+| 5 | Explicit instructions and applicability conditions directly executable without additions or corrections |
+
+Locate each gap in the final answer. Grade 4 permits environment substitutions, not correction of errors. Record actual execution success, failure, content-only checking, or no verification separately; execution is not the grade 4/5 boundary. Content checking does not demonstrate successful reproduction. Purely conceptual tasks are N/A.
+
+**M11 Composite confidence.** Let $x_i=M_i/5$, $O=x_1x_2x_3$, $C=x_5x_6$, and $P=x_7$:
+
+$$
+M11=100[1-(1-O)(1-C)(1-P)](0.7+0.3x_4)(0.9+0.1x_8).
+$$
+
+The original coefficients 0.30 and 0.10 are retained. Preserve calculation precision and display one decimal place, without five confidence bands. M9 and M10 remain separate. Under the revision, calculate M11 only when all M1–M8 inputs have usable point scores; do not substitute zero for unknown, blocked, or inapplicable inputs. This differs from the historical convention that set a blocked official channel to zero. M11 is a composite index, not a probability of correctness. Exploratory coefficient fitting did not establish a stable improvement over the original coefficients; the fitted values are not adopted and the original coefficients are not claimed to be optimal.
+
+**Rationale and limits.** The OECD/JRC handbook supports explicit normalization, weighting, aggregation, and sensitivity assumptions; it does not validate these five-grade cutoffs or the coefficients 0.30/0.10. These anchors remain a research rubric requiring validation. Multiplication of ordinal scores and averaging M2 are explicit operational choices, not evidence that grade intervals are equal. Reference: [Handbook on Constructing Composite Indicators (2008)](https://doi.org/10.1787/9789264043466-en). Frozen rules, pilot protocol, and literature-use boundaries accompany this revision in `data/scoring-revision-20260921/`.
+
+### Historical case scoring rules and composite confidence
+
+M1–M10 are mapped to ordinal scores from 1 to 5 using their scoring rules, with M3 marked as blocked when its body content is not obtained. M11 combines M1–M8 into a composite score on a 0–1 scale. We describe the anchors by knowledge source, acquisition effort, response properties, and composite confidence. Appendix A specifies decision priorities and adjustments; task records provide the corresponding observations.
 
 **Official material (M1–M4).** Discoverability combines result position, search rounds, and query refinement; body accessibility considers robots restrictions followed by page delivery and observed body returns. Grade 3 denotes partial retrieval of task-relevant body content, with detailed conditions in Appendix A. Body detail combines task coverage with the actionability of commands and code, while source version clarity considers version identifiers and compatibility conditions. Figure 2 shows the four sets of anchors: the lowest M3 grades distinguish whether task-specific details are present, while M4 distinguishes missing identifiers from listed versions with unclear compatibility. M3 is marked blocked when its body cannot be acquired.
 
 ![Scoring anchors for official material (M1–M4); M2 grade 3 denotes partial retrieval of task-relevant body content.](figures/figure-scoring-official-en.svg){#fig:scoring-official description="Four rows share a 1–5 scale for official discovery, body accessibility, body detail, and source version clarity. M3 progresses from no task details to a few task fragments; M4 progresses from missing version identifiers to listed versions with unclear compatibility. M2 distinguishes robots restrictions, SPA body barriers, partial body retrieval, and retrievable SSR and static bodies."}
 
-**Third-party material, model knowledge, and effort (M5–M8).** M5 scores the number of distinct third-party sources. M6 starts from the mean source-type baseline, adjusted for consistency, publication age, and platform distribution. M7 starts from the model self-rating and adjusts for technical change; Figure 3 shows the anchors before adjustment. M8 uses weighted effort $c=r+0.5f+4e$, where $r$, $f$, and $e$ denote search rounds, fetch calls, and failed fetches.
+**Third-party material (M5–M6).** M5 scores the number of distinct third-party sources. M6 starts from the mean source-type baseline, adjusted for consistency, publication age, and platform distribution.
+
+**Model prior knowledge (M7).** M7 starts with a model self-rating from 1 to 5 of how well its existing knowledge supports the current task, then accounts for the risk of outdated knowledge as the relevant technology changes. Stable, moderate, and rapid change incur deductions of 0, 0.25, and 0.5, respectively. The adjusted value is rounded using the rule in Appendix A and bounded between 1 and 5. Figure 3 shows the anchors before adjustment.
+
+**Retrieval and acquisition effort (M8).** M8 calculates weighted effort from search rounds, fetch calls, and failed fetches:
+
+$$
+c=r+0.5f+4e
+$$
+
+Here, $r$ denotes search rounds, $f$ denotes all fetch calls, including failed attempts, and $e$ denotes failed fetches. One search round is the basic effort unit. Fetching an already located page primarily acquires and checks evidence and has a more defined scope than searching again; each fetch is therefore assigned half a search-round unit, with a coefficient of 0.5. A failed fetch may entail identifying an empty body, revising a query or seeking a mirror, fetching again, and assessing the returned content. Each failure therefore incurs an additional penalty of four effort units to emphasize the burden of acquisition barriers. The coefficients 0.5 and 4 are relative effort weights specified by the protocol, rather than measured time ratios; subsequent searches and fetches are still counted in $r$ and $f$, respectively. Weighted effort is mapped to a score from 1 to 5 using the thresholds in Figure 3, with lower effort receiving a higher score. Appendix A gives the complete mapping.
 
 ![Scoring components for M5–M8: M7 self-ratings, M5 and M8 mappings, and M6 source-type baselines with adjustments. Appendix A specifies adjustment values.](figures/figure-scoring-support-en.svg){#fig:scoring-support description="The middle row shows M7 self-ratings. Two step plots below show M5 rising with distinct third-party source counts and M8 falling with weighted effort. Filled M8 endpoints are included; open endpoints are excluded. At the top, an M6 calculation flow separates source baselines, mean and adjustments, and the final integer score. Source baselines of 2.5, 3, 3.5, and 4 are averaged, adjusted for consistency, recency, and platform independence, then rounded and clamped to 1–5."}
 
@@ -138,17 +286,31 @@ Each indicator is mapped to an ordinal score from 1 to 5 using its scoring rule.
 
 ![Scoring anchors for answer version specificity (M9) and step actionability (M10).](figures/figure-scoring-answers-en.svg){#fig:scoring-answers description="Two rows show five grades. M9 progresses from no specific version through version clues, range or partial specification, largely specified, and exact versions. M10 progresses from isolated fragments through a main workflow outline, minor edits, parameter substitution, and direct usability."}
 
-**Composite confidence (M11).** Composite confidence is calculated from M1–M8. Each indicator score $s_i$ is normalized using $n(s_i)=s_i/5$. When M3 is marked as blocked, its contribution to the official-source branch is set to zero:
+**Composite confidence (M11).** M11 is calculated from M1–M8 in three steps. Each indicator score $s_i$ is first normalized as $n(s_i)=s_i/5$.
+
+**Step 1: Calculate support from each knowledge channel.** Official material must be discoverable, retrievable, and sufficiently detailed for the task. The normalized scores for M1, M2, and M3 are therefore multiplied to obtain official-channel support $O$. Third-party support $C$ combines source quantity M5 and credibility M6; model prior-knowledge support $P$ uses M7:
 
 $$
 O=n(s_1)n(s_2)n(s_3),\quad C=n(s_5)n(s_6),\quad P=n(s_7).
 $$
 
+Multiplication within a channel makes shortcomings in any component reduce its support score. When M3 is marked as blocked, official-channel support is set to $O=0$.
+
+**Step 2: Combine support across channels.**
+
 $$
-I=\left[1-(1-O)(1-C)(1-P)\right]\left[0.7+0.3n(s_4)\right]\left[0.9+0.1n(s_8)\right].
+K=1-(1-O)(1-C)(1-P).
 $$
 
-The formula first combines support from official material, third-party material, and model prior knowledge, then applies version-clarity and retrieval-effort factors. It represents the potential for different knowledge channels to complement one another. Composite confidence is calculated from normalized ordinal scores and displayed using the bands in Figure 5; M9 and M10 are reported separately as response properties.
+This combination represents the potential for knowledge channels to complement one another: third-party material or model prior knowledge may still provide support when official material is insufficient. $K$ is a knowledge-support score constructed from ordinal ratings, rather than a calibrated probability of answer correctness.
+
+**Step 3: Adjust for version clarity and acquisition effort.**
+
+$$
+I=K\left[0.7+0.3n(s_4)\right]\left[0.9+0.1n(s_8)\right].
+$$
+
+As source version clarity M4 and retrieval-and-acquisition-effort score M8 increase, the two adjustment factors approach 1, reducing the discount applied to the knowledge-support score. The coefficients 0.3 and 0.1 control the adjustment magnitudes for version clarity and effort, respectively, assigning a larger discount to unclear versions than to high acquisition effort at equivalent normalized ratings. The final score is displayed using the bands in Figure 5. M9 and M10 are reported separately as response properties and do not enter M11.
 
 ![Composite-confidence bands. Lower bounds are inclusive; the highest band includes 1.](figures/figure-scoring-confidence-en.svg){#fig:scoring-confidence description="A horizontal scale uses boundaries 0, 0.24, 0.45, 0.63, 0.80, and 1 to separate very low, low, medium, medium–high, and high composite confidence."}
 
@@ -164,7 +326,17 @@ The task matrix presents the indicator scores, while the access-profile figure s
 
 We conducted the development-task audit on June 10-11, 2026, covering environment setup, operator development, training, inference and deployment, performance analysis, debugging, and migration. Examples include model conversion, custom-operator integration, distributed initialization, version compatibility, and memory-error investigation. The task set sought workflow coverage; it was not sampled to estimate how often developers encounter these needs. Developer-role groupings organize task scenarios around the typical knowledge needs of different roles.
 
-CANN and CUDA provide a useful setting because the tasks involve specialized APIs, toolchains, framework integration, and version dependencies. The task wording uses each ecosystem's terminology. This yields contextual comparisons, not controlled substitutions of equivalent APIs. In task A, for example, the CUDA question begins with a PyTorch model and asks for a TensorRT deployment path, whereas the CANN question starts with an ONNX model and asks for an ATC conversion. These scope differences must remain visible when interpreting effort and completeness.
+The CANN/CUDA comparison organized task-question pairs according to these principles. Table 3 presents three representative pairs and their shared development intents; the question-pair table in the supplement provides the complete questions.
+
+| Task and shared development intent | CUDA question summary | CANN question summary |
+| --- | --- | --- |
+| J: Install a toolchain and configure the environment | After installing the CUDA toolkit on Ubuntu, which environment variables need to be configured? | After installing the CANN toolkit on Ubuntu, which environment script and variables are required? |
+| I: Establish component version compatibility | How can compatibility among PyTorch, the CUDA toolkit, cuDNN, and the driver be checked? | How can compatibility among CANN, torch_npu, firmware and drivers, and PyTorch be checked? |
+| X: Locate an operator memory-access violation | How can compute-sanitizer locate an out-of-bounds access in a CUDA kernel? | How can tools such as msSanitizer locate an out-of-bounds access in an Ascend operator? |
+
+: Examples of question pairs organized around shared development intents. Questions are translated and condensed for presentation; the complete Chinese questions are provided in the supplement.
+
+Implementation steps and some starting conditions may differ between the two sides. For example, task A's CUDA question begins with a PyTorch model and asks for a TensorRT deployment path, whereas its CANN question starts with an ONNX model and asks for an ATC conversion. These scope differences are considered when interpreting acquisition effort and content completeness.
 
 Task G is a distinct migration analogy. Its comparison question concerns moving CUDA code to AMD ROCm/HIP and its official material comes from AMD. It is included in the 26-task set as a worked migration case, but is excluded from CANN/CUDA aggregate comparisons, leaving 25 pairs and 50 task-side records for those summaries. Its separate treatment demonstrates why source and comparison identity belong in the measurement protocol.
 
@@ -174,13 +346,13 @@ We used a process log to record task questions, query strings, source descriptio
 
 Tasks were conducted in four batches. The first two covered A–D and E–H; the later two covered I–S and T–Z through parallel subagents. Structured observations were consolidated in the main session, where official and third-party source ownership was checked. Task questions were linked to their original assignments, and wording for the later batches was added to the process log from those assignments.
 
-Tasks used Claude (model identifier `claude-opus-4-8`) with web-search and web-reading tools. Search returned candidate sources, and the reading tool summarized HTML from selected URLs. The analysis combined recorded queries, tool-returned content and summaries, structured observations, and scoring rationales. M9 and M10 assessed version specificity and procedural actionability using the guidance produced during the tasks and its corresponding records. The supplement links tasks, sources, and scoring rationales.
+Historical tasks used the archived agent configuration, whose provenance remains in the original study records, with web-search and web-reading tools. Search returned candidate sources, and the reading tool summarized HTML from selected URLs. The analysis combined recorded queries, tool-returned content and summaries, structured observations, and scoring rationales. M9 and M10 assessed version specificity and procedural actionability using the guidance produced during the tasks and its corresponding records. The supplement links tasks, sources, and scoring rationales.
 
 We used a consistent evaluation framework, eleven indicators, and scoring rules to acquire and assess knowledge for each development task.
 
 The analysis proceeds at three levels. First, we compare indicator scores within corresponding task categories to locate differences in resource discovery, content acquisition, content detail, version clarity, and guidance properties. Second, we describe indicator distributions using means ($\bar{x}$), standard deviations ($SD$), and counts at each score level, and summarize composite confidence by workflow. Third, we interpret score differences using the corresponding acquisition records and returned content, comparing content support under the same acquisition state and knowledge conditions across tasks within a workflow. M3 means and standard deviations include only records for which content detail can be assessed; blocked-content records are reported separately. These statistics describe the selected task set and do not support population-level inference about the ecosystems.
 
-Beyond workflow comparisons, we group the 25 task pairs by development activity into getting started and environment setup, training and routine use, and operators and in-depth development. Both ecosystems use the same task assignments to compare knowledge-support distributions across these scenarios; Table 5 reports the assignments and descriptive statistics. G, whose comparison side is ROCm/HIP, remains a separate case and is excluded from CANN/CUDA aggregates. Scenario grouping organizes the task comparison, while individual indicator scores and corresponding materials explain the specific knowledge conditions.
+Beyond workflow comparisons, we group the 25 task pairs by development activity into getting started and environment setup, training and routine use, and operators and in-depth development. Both ecosystems use the same task assignments to compare knowledge-support distributions across these scenarios; Table 6 reports the assignments and descriptive statistics. G, whose comparison side is ROCm/HIP, remains a separate case and is excluded from CANN/CUDA aggregates. Scenario grouping organizes the task comparison, while individual indicator scores and corresponding materials explain the specific knowledge conditions.
 
 ### Task-level assessment results
 
@@ -196,7 +368,7 @@ Figures 6–8 present the ordinal scores for M1–M10 and composite confidence c
 
 ![Access-profile detail placing content-acquisition states beside official-content-detail and source-version-clarity scores. It follows the workflow groups and task order of Figures 6–8 to support interpretation of acquisition outcomes.](figures/figure-3-access-profile-en.svg){#fig:accessprofile description="A workflow-grouped auxiliary matrix. Each row compares CANN and CUDA in content acquisition, official content detail, and source version clarity. C, P, and N indicate core content obtained, partial content obtained, and not obtained. The figure complements the indicator scores in Figures 6–8; specific entry paths are described in the corresponding task records. G is a separately marked CANN and ROCm/HIP migration analogy."}
 
-Across the 25 task pairs, mean composite confidence is $\bar{x}=0.731$ for CANN and $\bar{x}=0.922$ for CUDA. Indicator-level summaries show differences of varying sizes in content detail, source version clarity, search and acquisition effort, and procedural actionability of responses. Table 3 reports the means and standard deviations of these four indicators. The findings below interpret the corresponding knowledge conditions using score distributions and specific resources.
+Across the 25 task pairs, mean composite confidence is $\bar{x}=0.731$ for CANN and $\bar{x}=0.922$ for CUDA. Indicator-level summaries show differences of varying sizes in content detail, source version clarity, search and acquisition effort, and procedural actionability of responses. Table 4 reports the means and standard deviations of these four indicators. The findings below interpret the corresponding knowledge conditions using score distributions and specific resources.
 
 | Indicator | CANN $\bar{x}$ ($SD$) | CUDA $\bar{x}$ ($SD$) |
 | --- | ---: | ---: |
@@ -209,11 +381,11 @@ Across the 25 task pairs, mean composite confidence is $\bar{x}=0.731$ for CANN 
 
 ## Findings: Knowledge Conditions Across Development Tasks
 
-Task-level comparisons reveal three connected findings. First, the ecosystems show different distributions of knowledge support across development scenarios. Second, differences in specific tasks involve official-content delivery, detail, and version organization. Finally, third-party material and estimates of model prior knowledge also vary by task and require examination alongside official resources. We present scenario comparisons, specific knowledge gaps, and complementarity among sources in that order.
+Task-level comparisons reveal three connected findings. First, the ecosystems show different distributions of knowledge support across development scenarios. Second, differences in specific tasks involve official-source discovery, content delivery, detail, and version organization. Finally, third-party material and estimates of model prior knowledge also vary by task and require examination alongside official resources. We present scenario comparisons, specific knowledge gaps, and complementarity among sources in that order.
 
 ### Knowledge-support distributions differ between ecosystems across development scenarios
 
-Across workflows, CANN's mean composite confidence is $\bar{x}=0.799$ for environment and installation, $\bar{x}=0.658$ for operator development, and $\bar{x}=0.646$ for debugging; the corresponding CUDA means are $\bar{x}=0.904$, $\bar{x}=0.891$, and $\bar{x}=0.933$ (Table 4). Debugging has the largest between-ecosystem difference, at 0.287. The comparison directs attention to specific development activities: in this task set, CANN provides stronger knowledge support for environment configuration than for operator development and debugging.
+Across workflows, CANN's mean composite confidence is $\bar{x}=0.799$ for environment and installation, $\bar{x}=0.658$ for operator development, and $\bar{x}=0.646$ for debugging; the corresponding CUDA means are $\bar{x}=0.904$, $\bar{x}=0.891$, and $\bar{x}=0.933$ (Table 5). Debugging has the largest between-ecosystem difference, at 0.287. The comparison directs attention to specific development activities: in this task set, CANN provides stronger knowledge support for environment configuration than for operator development and debugging.
 
 | Workflow | Tasks | CANN $\bar{x}$ | CUDA $\bar{x}$ | Difference |
 | --- | ---: | ---: | ---: | ---: |
@@ -225,7 +397,7 @@ Across workflows, CANN's mean composite confidence is $\bar{x}=0.799$ for enviro
 | Debugging | 2 | 0.646 | 0.933 | 0.287 |
 | Migration | 2 | 0.787 | 0.921 | 0.133 |
 
-: Workflow means of the composite confidence score for 25 task pairs. Difference = CUDA minus CANN; G is excluded.
+: Workflow means of the composite confidence score for 25 task pairs. Differences are calculated as CUDA minus CANN using unrounded means, then rounded to three decimal places; G is excluded.
 
 | Development scenario | Task pairs | CANN $\bar{x}$ ($SD$) | CUDA $\bar{x}$ ($SD$) |
 | --- | ---: | ---: | ---: |
@@ -239,19 +411,23 @@ Scenario grouping further shows CANN's mean composite confidence decreasing from
 
 Cases within the groups clarify the knowledge these scenarios require. CANN's tiling task M and custom-operator task D score 0.628 and 0.410, respectively. Memory-access and utilization task U, also in the in-depth development group, scores 0.881 and obtained official best-practice material. Error-code task E in the training and routine-use group scores 0.554; its acquired official explanation lacked diagnostic detail. We next examine acquisition and content records to identify the knowledge-provision issues involved in these scenario differences.
 
-### Official-content delivery, detail, and version organization create distinct knowledge gaps
+### Official-source discovery, acquisition, content, and version organization reveal distinct gaps
 
-In the main comparison, 22 of the 25 CANN tasks obtained core content, two obtained partial content, and one did not obtain core content; all 25 CUDA tasks obtained core content. Most tasks acquired official material, while acquisition obstacles were concentrated in a few paths. Those paths require examination against task requirements to identify the missing procedural material.
+Official-source discoverability also differs. Across the 25 task pairs, mean M1 is $\bar{x}=3.56$ for CANN and $\bar{x}=4.40$ for CUDA, with 12 and five tasks, respectively, using two search rounds. In task A, the first official CANN result appeared at rank 4, compared with rank 1 for the corresponding CUDA task. These differences concern the position of official material in task-related search results and the number of rounds used in the retrieval process.
 
-Task D requires creating an Ascend C operator and integrating it with a framework, with implementation code, configuration-field explanations, and compilation and deployment steps. The WebFetch return for the selected official entry contained navigation, metadata, and documentation links, explicitly reporting “No code blocks, no implementation details, no step-by-step commands.” This read therefore did not supply the implementation content required by the task. The corresponding CUDA task obtained detailed official content, with M3 = 5. The comparison locates the difference in delivery of material needed for implementation, beyond whether an official guide appears in search results. M1 records official-source discovery conditions, M2 records the acquisition outcome, and M3 is marked as blocked. This assessment locates an improvement target in the path from the selected entry to the implementation body: the entry should expose a body link that the reading tool can follow, or directly present the implementation, compilation, and deployment instructions. For assessing an implementation suggestion, the missing information is the procedure that would support its steps; a link to the guide alone does not supply that basis.
+After official material is found, the next question is whether the required body content is actually obtained. In the main comparison, 22 of the 25 CANN tasks obtained core content, two obtained partial content, and one did not obtain core content; all 25 CUDA tasks obtained core content. Most tasks acquired official material, while acquisition obstacles were concentrated in a few paths. Those paths require examination against task requirements to identify the missing procedural material.
 
-Once content is obtained, its task support still differs. Among CANN's 24 assessable records, ten each have M3 = 4 and M3 = 5, and four have M3 = 2 or 3; all 25 CUDA records have M3 = 4 or 5. CANN task E obtained an EZ9999 explanation that left the cause unspecified and provided only generic checks, with M3 = 2. The corresponding CUDA task obtained a checking-tool guide with specific commands, tool options, and report formats, with M3 = 5. This difference concerns whether the acquired material supplies the steps and explanations needed for diagnosis.
+Task D requires creating an Ascend C operator and integrating it with a framework, with implementation code, configuration-field explanations, and compilation and deployment steps. In task D, when the agent read the official Ascend C development page through web_fetch, it obtained only page scaffolding, including navigation, a brief description, and documentation links, without the implementation steps, configuration explanations, or compilation and deployment instructions. web_fetch explicitly reported “No code blocks, no implementation details, no step-by-step commands.” The corresponding CUDA task obtained detailed official content, with M3 = 5. M1 records official-source discovery conditions, M2 records the acquisition outcome, and M3 for the CANN side of D is marked as blocked. This difference highlights the need for official webpages to deliver procedural content in a form that agents can actually read, so that the available technical material can provide a basis for their answers.
+
+Once content is obtained, its task support still differs. Among CANN's 24 assessable records, ten each have M3 = 4 and M3 = 5, and four have M3 = 2 or 3; all 25 CUDA records have M3 = 4 or 5. In CANN task E, the content the agent obtained through web_fetch from the official EZ9999 explanation listed the cause as “N/A” and suggested “Check whether the CANN package is correct” and “Check whether the environment variable is correct.” It did not provide specific environment-variable names, checking commands, or criteria for interpreting the results. The content acquired by the agent contained only generic checking suggestions and lacked diagnostic information specific to this error, making it difficult to determine the next action, with M3 = 2. The corresponding CUDA task obtained a checking-tool guide with specific commands, tool options, and report formats, with M3 = 5. This difference concerns whether the acquired material supplies the steps and explanations needed for diagnosis.
 
 Task X, also a debugging task, obtained detailed official guidance in both ecosystems, with M3 = 5 on each side. Comparing E and X locates the issue in specific task content: CANN's memory-checking task already has substantial official guidance, while its error-code diagnosis task lacks information needed to select the next check. The improvement target is the content of error explanations and diagnostic guidance.
 
-Task A shows how useful main-path material and unavailable references can coexist. The acquired conversion quickstart supplied an ATC command, input-shape and target-device parameters, and a device-information step. A more extensive ATC/AIPP reference returned navigation and metadata. The worked recording example links the quickstart to supported conversion requirements and the missing reference to unresolved advanced settings. In task Y, accessing chip-migration information through the document center likewise yielded only partial content. These cases motivate recording both the content obtained and its relation to a task requirement, with the access route recorded separately where available. For a developer assessing the conversion guidance, this distinction identifies a supported main procedure and advanced settings that still require reference material. It bounds which parts of a proposed action the acquired sources can substantiate.
+Task A shows how useful main-path material and unavailable references can coexist. When the agent read the official conversion quickstart through web_fetch, it obtained an ATC conversion command and parameter explanations, including `--input_shape` for the input shape, `--soc_version` for the target processor, and guidance on querying processor information with `npu-smi info`. This content supplied a basis for the conversion command and its parameter settings. A more extensive ATC/AIPP reference returned navigation and metadata. The worked recording example links the quickstart to supported conversion requirements and the missing reference to unresolved advanced settings. In task Y, accessing chip-migration information through the document center likewise yielded only partial content. These cases motivate recording both the content obtained and its relation to a task requirement, with the access route recorded separately where available. For a developer assessing the conversion guidance, this distinction identifies a supported main procedure and advanced settings that still require reference material. It bounds which parts of a proposed action the acquired sources can substantiate.
 
-Acquisition processes also differ. Thirteen CANN tasks and 20 CUDA tasks found candidate sources in one search round; the remainder used two rounds. Both sides of K obtained official core content, but CANN recorded four fetches and one fetch failure, whereas CUDA recorded two fetches without failure, yielding M8 = 1 and M8 = 4, respectively. These records include additional attempts along resource-entry and acquisition paths in the analysis of knowledge-provision conditions.
+The supplement’s “Selected web_fetch evidence” provides the URLs, timestamps, requests, and relevant return excerpts for A’s quickstart, D’s development entry, and E’s error entry. These excerpts show the web_fetch content actually received by the agent in each read, providing concrete evidence for the case analysis above.
+
+Acquisition effort can differ even when core content is obtained. Both sides of K obtained official core content, but CANN recorded four fetches and one fetch failure, whereas CUDA recorded two fetches without failure, yielding M8 = 1 and M8 = 4, respectively. These records include additional attempts along resource-entry and acquisition paths in the analysis of knowledge-provision conditions.
 
 Version organization affects a broader range of tasks. Mean M4 is $\bar{x}=2.88$ for CANN and $\bar{x}=4.24$ for CUDA. Twelve CANN tasks score 2, spanning conversion, installation, training, operator development, inference, optimization, and debugging. In A, similar quickstarts appear in different version trees, leaving a version choice after content acquisition; its M4 is 2, compared with 4 for the corresponding CUDA task. These differences direct attention to the organization of recommended versions, applicability scopes, and compatibility evidence.
 
@@ -279,7 +455,7 @@ The comparisons develop an account of ecosystem knowledge support through develo
 
 The scenario comparison identifies limited knowledge support for in-depth development in CANN as an area requiring attention. Examining D, M, and related tasks locates specific needs for implementation guides, procedural detail, and supplementary cases; E also identifies diagnostic knowledge as task content requiring development. This demonstrates the diagnostic value of task-level research: comparing development activities and their knowledge requirements produces specific insights into ecosystem development priorities.
 
-These insights imply different scopes of improvement. Version issues recurring across workflows motivate shared recommended entries and organized compatibility relations; D's missing core content and E's limited diagnostic detail call for repairs to the corresponding tasks. Tasks with limited third-party support also require examination of practical-case and independent-explanation coverage. Improvements can be checked by returning to the original tasks and examining whether their knowledge requirements receive stronger support.
+These insights imply different scopes of improvement. Version issues recurring across workflows motivate shared recommended entries and organized compatibility relations; the core content not obtained in D and the limited diagnostic detail in E call for improved content delivery and more complete task guidance, respectively. Tasks with limited third-party support also require examination of practical-case and independent-explanation coverage. Improvements can be checked by returning to the original tasks and examining whether their knowledge requirements receive stronger support.
 
 ### Improving official knowledge provision and agent feedback
 
@@ -295,7 +471,7 @@ Figure 11 illustrates version checking through a separate environment record. It
 
 ![Proposed environment declaration and version checking, motivated by A and I. Device, toolkit, and framework fields represent developer-supplied local facts, separate from source applicability. The illustrated state has insufficient information to establish a match.](figures/figure-10-environment-design-en.svg){#fig:environmentdesign description="An environment record contains placeholder fields for device model, toolkit, framework, and integration versions. A separate area presents the cited material's version and compatibility conditions and identifies the missing information needed to establish a match. Checks can be matched, mismatched, or insufficient information, and the developer can update the task's environment record."}
 
-Localized acquisition and content gaps call for task-specific repairs. D motivates a readable route to the core operator-development guide, through server-rendered content, a text export, or another stable entry. E already has a dedicated error page; its improvement requires more informative content within that entry: error semantics, possible triggers, diagnostic steps, links to issue cases, and applicable versions. For a catch-all error, a guide can state what the code alone leaves unresolved and specify which logs or local observations are needed next. Such a page supports diagnosis by organizing available evidence around the user's problem.
+Localized acquisition and content gaps call for task-specific repairs. For the content-acquisition gap illustrated by D, documentation systems should ensure that agents reading official development pages can obtain the complete procedural content. Options include ensuring that HTML pages directly return the full content or providing Markdown or plain-text versions updated alongside the webpages. Whichever approach is used, it should preserve the steps, parameter explanations, and applicable versions needed for the task, with corresponding tasks used to check whether the agent can actually obtain this content. E already has a dedicated error page; its improvement requires more informative content within that entry: error semantics, possible triggers, diagnostic steps, links to issue cases, and applicable versions. For a catch-all error, a guide can state what the code alone leaves unresolved and specify which logs or local observations are needed next. Such a page supports diagnosis by organizing available evidence around the user's problem.
 
 Figure 12 illustrates task-oriented content through E's error page. It starts with what the code can establish, identifies local information to collect, links observable symptoms to checks and attributed cases, and retains a support route for unresolved situations. Domain maintainers would need to establish the actual causes, checks, and cases; the structure helps locate the knowledge that needs to be supplied.
 
@@ -315,11 +491,15 @@ Figure 14 contrasts proposed responses to D and E. For D, the agent first seeks 
 
 Knowledge provision also involves entry points and maintenance. Stable, searchable official entries affect whether candidate materials are discovered; explicit ownership, revision dates, and compatibility relations support subsequent assessment. Teams can use representative tasks as recurring inspection units, tracking whether queries reach the intended material, its body is delivered, version relations have changed, and community cases remain applicable. Such maintenance also addresses source governance and third-party knowledge provision beyond the illustrated interfaces.
 
+To address differences in search visibility, documentation teams can inspect search-engine indexing and the alignment of page titles and summaries with development-task terminology, assessing search engine optimization (SEO) improvements through official-result positions and the rounds needed to discover material for task queries.
+
 ### Expanding community knowledge and supporting source inspection
 
-Community knowledge development can address task situations that lack adequate support, including specific failures, operating experience under different configurations, and alternative implementations. Tasks with few candidate sources require checking which supplementary explanations are missing; concentrated or inaccessible sources require checking independent practical evidence and content-delivery conditions. The aim is for task-relevant experience to be discoverable, obtainable, and attributable, beyond simply increasing the number of entries.
+Community knowledge development can address task situations that lack adequate support, including specific failures, operating experience under different configurations, and alternative implementations. This direction connects to research on augmenting API documentation with Stack Overflow insights [@treude2016]; the present study additionally examines whether agents can discover and acquire such material and whether it supports specific task requirements. Tasks with few candidate sources require checking which supplementary explanations are missing; concentrated or inaccessible sources require checking independent practical evidence and content-delivery conditions. The aim is for task-relevant experience to be discoverable, obtainable, and attributable, beyond simply increasing the number of entries.
 
-Agents can retain source passages, applicability conditions, and their relationships to suggestions to help developers inspect available support. Where content remains missing, they should identify unsupported parts of the task and direct further searches or requests for necessary local information accordingly. The source-inspection and corrective-feedback illustration makes these information relationships concrete.
+Consistent with human–AI interaction guidelines on explaining behavior and supporting correction [@amershi2019], agents can retain source passages, applicability conditions, and their relationships to suggestions to help developers inspect available support. Where content remains missing, they should identify unsupported parts of the task and direct further searches or requests for necessary local information accordingly. The source-inspection and corrective-feedback illustration makes these information relationships concrete.
+
+Because explanations can increase acceptance without improving team performance [@bansal2021], source presentation should be evaluated by developers’ ability to identify unsupported or inapplicable suggestions.
 
 Figure 15 further illustrates source inspection and corrective feedback. A developer can expand the cited passage for a command, inspect its applicable version, and attach an encountered error or correction to the suggestion. The original source, task environment, and new feedback remain connected so the next check can address the specific discrepancy. This provides inspectable support for the response properties described by M9 and M10 and for subsequent revision.
 
@@ -335,6 +515,18 @@ The method connects a task requirement to a source or acquisition event, an indi
 
 Subsequent evaluation can examine whether independent analysts produce comparable profiles, whether the diagnoses correspond to expert assessments of missing information, and whether documentation teams find them useful for planning repairs. These questions follow directly from the intended use of the method. The present application supplies the task-level distinctions, worked records, and cross-task synthesis on which such evaluation can build.
 
+## Exploratory Three-Model Pilot of the Revised Protocol
+
+Using a frozen copy of the revised Skill, GLM‑5.3, DeepSeek V4.1 Flash, and Kimi (requested and returned alias `kimi-k3-2`) each performed conversion task A, compatibility task I, and diagnostic task E in CANN and CUDA: 18 runs in total. Model aliases are not immutable backend snapshots. WorkBuddy CLI provided the same WebSearch/WebFetch environment, with a fresh directory and session per run and memory disabled; this is not operating-system isolation. Programmatically enforced budgets allowed four queries and eight fetches. These are experimental comparability settings, not literature-established optimal search counts.
+
+The runs dispatched 54 searches and 102 fetches, retaining 270 ordered result entries, including duplicates and unopened URLs. One excess fetch was blocked before dispatch. Each run retains its process, final answer, and evaluation in two files; shared protocols, raw assessments, and audits are retained separately. All 18 process logs passed budget, input, and hash checks, without rerunning tasks based on scores. GLM‑5.3 assessed source/prior evidence and final answers in separate contexts, producing 36 valid assessments; failed attempts were retained. This does not establish independent expert agreement.
+
+**Acquisition states.** An audit grouped same-URL retries within each run and examined 95 official-document observations: 14 scored 5, 14 scored 2, 10 scored 3, five scored 1, and 52 retained uncertain bounds. These are not 95 distinct websites. Post-run references from 82 distinct public URLs were acquired solely for checking, not included in the model-visible evidence or its call cost. Fourteen grade-5 observations had same-URL body-match support, although remote version stability cannot be guaranteed. Unknown direct-body completeness was not forced to grade 4 or 5; bounds were propagated through equal-weight document aggregation.
+
+**Versions and composite scores.** Automated assessments sometimes described missing compatibility relations as combinable constraints or penalized version multiplicity alone. Audits preserve original judgments while replacing unsupported point estimates with indeterminate states. Task E lacked a predefined version-selection evaluation scope, producing conflicting N/A and numeric M4 judgments. Its M4 comparison is therefore uniformly withheld pending scope definition and reassessment of the existing evidence. This is a protocol omission, not a model difference. With the original M11 formula, only one of 18 records currently has usable point values for all inputs. Other records identify missing or bounded inputs; no composite ranking of the three models is reported.
+
+**Shared obstacles and scope.** In A-CANN, all three models encountered official returns containing only titles or interface labels, but not necessarily at the same URL. Initial obstacles and later alternative body acquisition are recorded separately; the latter does not establish task completion. This pilot tests recording and scoring implementation, not overall measurement validity. Tasks were not randomly sampled, paired tasks need not be equally difficult, no hardware execution occurred, and a common automated assessor may introduce model-related bias. The historical 52-unit case is not converted into a revised-protocol, multi-model benchmark by this pilot.
+
 ## Limitations and Research Transparency
 
 The case demonstrates how the method distinguishes breakdowns in discovery, content acquisition, and task adequacy. Task records support inspection of scoring rationales and reproduction of the calculations. The results reflect this task set and its retrieval conditions. Stability across models, tool configurations, and retrieval budgets, as well as independent scoring agreement and applicability across ecosystems, requires further evaluation. The supplement provides observation fields, the scoring implementation, task-to-source mappings, calculation discrepancy notes, and summary scripts to support inspection and subsequent applications.
@@ -348,7 +540,7 @@ We define knowledge availability for AI through eleven indicators connecting kno
 The method makes the basis for AI-mediated technical guidance an object of inspection: which source supports a proposed step, which applicability relation remains unresolved, and what additional information is needed. The framework, protocol, and case analysis provide a way to locate these conditions and relate them to knowledge provision and agent feedback. Documentation repairs, source retrieval, and requests for local facts follow from different diagnoses, offering concrete directions for subsequent evaluation.
 
 
-## Appendix A: Scoring calculations {.unnumbered}
+## Appendix A: Historical case scoring calculations {.unnumbered}
 
 **Official material (M1–M4).** M1 first considers the search process: at least two rounds with query refinement scores 2; at least two rounds without refinement scores 3. For a single round, the first official result at rank 1, 2–6, 7–10, or beyond 10 scores 5, 4, 3, or 2, respectively. Grade 1 describes difficulty finding a relevant official source after repeated searches. Under the study’s tool configuration, M2 first considers robots restrictions, then page delivery and observed returns: robots restriction, 1; SPA preventing body retrieval, 2; partial retrieval of task-relevant bodies, 3; retrievable server-rendered body, 4; retrievable static body, 5. Grade 3 means that some targeted body content was obtained while other targeted body content remained technically inaccessible; it does not denote insufficient detail in obtained material or follow automatically from using an alternative entry. M3 is blocked when SPA or robots barriers prevent body acquisition. For acquired content, grade 1 provides no task-specific details, grade 2 only a few task-specific fragments, and grade 3 an overview or a main path without commands/code. A main path with commands/code or a complete reference without them scores 4; a complete reference with them scores 5. Commands/code denotes operational content in the material. For M4, grade 1 lacks version identifiers; grade 2 lists at least three versions but leaves their compatibility unclear. Where version information is assessable, apply these conditions in order: version-irrelevant task or at most one version, 5; official support matrix, 4; identifiable device–framework pairing, 3; at least three versions with unclear compatibility, 2; remaining cases, 3.
 

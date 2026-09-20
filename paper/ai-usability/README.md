@@ -1,10 +1,12 @@
+> 2026-09-21：本次更新中英文Markdown及阅读/审阅HTML。现有PDF、LaTeX和投稿ZIP尚未同步本次新增内容。 / This update covers Markdown and reading/review HTML; existing PDF, LaTeX, and submission ZIP files do not yet contain this revision.
+
 # AI 可用性论文工作区
 
 ## 当前版本：CHI 修订稿 v0.2 / Current CHI revision
 
-保留原标题 **Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems**。沿用原稿的方法论主线与三来源、11项指标，以既有审计作为应用案例；本次没有重新采集网页实验。
+保留原标题 **Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems**。沿用原稿的方法论主线与三来源、11项指标，以既有审计作为应用案例；历史案例数据保持原口径；2026-09-21另增新版评分规则及18次三模型探索性试跑，二者分开报告。
 
-The original title and methodological focus are retained. The three-source, eleven-indicator framework is developed through its existing case application. This revision does not add a new website-acquisition experiment.
+The original title and methodological focus are retained. The three-source, eleven-indicator framework is developed through its existing case application. The 21 September revision adds revised scoring rules and a separate 18-run exploratory three-model pilot; historical case scores remain unchanged.
 
 | 交付物 / Deliverable | 文件 / File |
 | --- | --- |
