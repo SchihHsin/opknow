@@ -13,9 +13,14 @@ body{counter-reset:fig}figure{counter-increment:fig}figcaption::before{content:"
 @page{size:A4;margin:18mm 17mm 18mm;@bottom-center{content:counter(page);font:8pt Arial;color:#536574}} @media print{html{background:white}body{margin:0;padding:0;box-shadow:none;max-width:none;font-size:10.5pt;line-height:1.7}h1{font-size:21pt}h2{font-size:15pt;margin-top:25pt;break-after:avoid}h3{font-size:12pt;break-after:avoid}p{orphans:3;widows:3}table{font-size:8.3pt;line-height:1.55}th,td{padding:6pt}tr{break-inside:avoid}thead{display:table-header-group}figure{break-inside:avoid}figure img{max-height:220mm;object-fit:contain}figcaption{font-size:8.5pt}.edition{font-size:8pt}.authors,.affiliation{display:none}nav{display:none}a{text-decoration:none;color:inherit}.references{font-size:8.5pt}.csl-entry{break-inside:avoid}math[display="block"]{font-size:9pt}}
 @media(max-width:700px){body{margin:0;padding:26px 20px;box-shadow:none}h1{font-size:25px}table{font-size:12px}th,td{padding:7px}}
 </style><style id="review-styles">
-@media screen{body{width:calc(100% - 300px);max-width:1060px;margin-left:280px;margin-right:20px;padding-left:36px;padding-right:36px}}
+@media screen{body{width:calc(100% - 40px);max-width:1060px;margin-left:auto;margin-right:auto;padding-left:36px;padding-right:36px}}
 #review-toc{position:fixed;left:16px;top:24px;bottom:24px;width:244px;z-index:1000;display:flex;flex-direction:column;background:#fff;border:1px solid #d9e0f2;border-radius:12px;box-shadow:0 4px 20px #1b29440d;font:14px/1.6 system-ui,sans-serif;color:#293346}
-#review-toc nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:8px 10px 16px;scrollbar-width:thin}
+#review-toc nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:8px 10px 16px;scrollbar-width:none}
+#review-toc nav::-webkit-scrollbar{width:0;height:0}
+#review-toc nav:hover,#review-toc nav.is-scrolling{scrollbar-width:thin}
+#review-toc nav:hover::-webkit-scrollbar,#review-toc nav.is-scrolling::-webkit-scrollbar{width:8px;height:8px}
+#review-toc nav::-webkit-scrollbar-track{background:transparent}
+#review-toc nav::-webkit-scrollbar-thumb{background:#b8c1d2;border:2px solid transparent;border-radius:999px;background-clip:padding-box}
 .review-toc-title{padding:16px 20px 12px;border-bottom:1px solid #edf0f5;font-weight:700;color:#344a87}
 .review-language-switch{display:flex;gap:6px;padding:10px 14px 0;font:13px/1.5 system-ui,sans-serif}
 #review-toc .review-language-switch a{flex:1;margin:0;padding:5px 8px;text-align:center;font-size:13px;font-weight:500;border:1px solid transparent}
@@ -27,8 +32,8 @@ body{counter-reset:fig}figure{counter-increment:fig}figcaption::before{content:"
 #review-toc a:hover,#review-toc a:focus-visible{background:#f1f4fb;outline:2px solid #a9b9e2;outline-offset:-2px}
 #review-toc a[aria-current="location"]{background:#e9efff;color:#294b98}
 h2,h3{scroll-margin-top:24px}
-@media screen and (max-width:900px){#review-toc{width:196px;left:12px;top:12px;bottom:12px}body{width:calc(100% - 232px);margin-left:220px;margin-right:12px;padding-left:24px;padding-right:24px}}
-@media screen and (max-width:600px){#review-toc{width:132px;left:8px;font-size:12px}.review-toc-title{padding:12px 10px}#review-toc nav{padding:6px}#review-toc a{padding:6px}#review-toc .toc-sub a{padding-left:12px;font-size:11px}body{width:calc(100% - 156px);margin-left:148px;margin-right:8px;padding:20px 12px;font-size:14px}h1{font-size:22px}h2{font-size:20px}h3{font-size:17px}}
+@media screen and (max-width:900px){#review-toc{width:196px;left:12px;top:12px;bottom:12px}body{width:calc(100% - 24px);margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}}
+@media screen and (max-width:600px){#review-toc{width:132px;left:8px;font-size:12px}.review-toc-title{padding:12px 10px}#review-toc nav{padding:6px}#review-toc a{padding:6px}#review-toc .toc-sub a{padding-left:12px;font-size:11px}body{width:calc(100% - 16px);margin-left:auto;margin-right:auto;padding:20px 12px;font-size:14px}h1{font-size:22px}h2{font-size:20px}h3{font-size:17px}}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 @media print{#review-toc{display:none!important}body{width:auto;margin:0;padding:0}}</style></head>
 <body><div class="edition">中文审阅稿 · 当前版本</div>
@@ -206,7 +211,6 @@ URL、发布者与来源角色、返回内容或相关片段、访问结果、�
 <h2 id="操作化与测量协议">操作化与测量协议</h2>
 <h3 id="十一项指标及其证据角色">十一项指标及其证据角色</h3>
 <p>本方法以官方资料、第三方资料和模型自带知识为三类知识来源，分别考察资料的发现、获取与质量，并通过检索成本和回答产出指标连接知识获取过程与回答形成。十一项指标的定义及评分依据见表2。</p>
-<p>表2保留历史案例的指标标签及操作说明；当前修订规则和名称见下文“修订后的评分规则”，历史数值不随新规则自动变更。</p>
 <table>
 <caption>表2　十一项指标及各自能够支持的证据解释。</caption>
 <colgroup>
@@ -296,360 +300,7 @@ Agent 停止的内部原因。</p>
 <p><strong>第五，检查操作说明并报告剖面。</strong>
 明确用于M9与M10评价的回答或指导内容，将其中的关键步骤与版本主张映射到已取得证据，并记录矛盾、来源依赖与缺乏支持的步骤。报告综合置信度的公式、缺失数据处理方式及计算假设。配套的填写示例呈现从需求到事件、来源、取得的证据及评分的链条，并将原始调用次数与M8成本评分并置。</p>
 <p>该方法的新意在于将分析单位、证据记录、指标角色与诊断解释连接为一套明确规定。搜索排名、阅读成功与版本标签都是熟悉的观测。它们在这里的价值来自与一个开发任务需求的联系，以及说明观测如何转化为诊断。</p>
-<h3
-id="修订后的评分规则2026年9月21日">修订后的评分规则（2026年9月21日）</h3>
-<p>本节给出当前修订协议；后面的历史评分说明、附录A及52个案例单元保留原始口径，未按新版重评分。新版试跑单独报告，不能与历史分数合并。修订保留指标的评价对象，调整观测和分档方式；M1–M10采用五档，M2逐文档评分后保留等权均值，M11采用连续百分制。</p>
-<p><strong>M1 官方可发现性</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>在预先规定的统一搜索预算内，未发现相关官方来源</td>
-</tr>
-<tr>
-<td>2</td>
-<td>第三次或之后的查询才首次发现相关官方来源</td>
-</tr>
-<tr>
-<td>3</td>
-<td>第二次查询才首次发现相关官方来源</td>
-</tr>
-<tr>
-<td>4</td>
-<td>首次查询第2—5条出现相关官方来源</td>
-</tr>
-<tr>
-<td>5</td>
-<td>首次查询第1条即为相关官方来源</td>
-</tr>
-</tbody>
-</table>
-<p>试用协议每次观察前5条，最多4次查询；预算是实验条件，不是通用评分定义。查询而非调用计数，批量与并行须统一协议。首次命中后继续检索不降分，改写本身不另扣分。前序超时、列表缺失或未完成预算且未命中记待定。保存每轮全部网址与精确排名。此五档是研究约定，不是已验证量表。</p>
-<p><strong>M2 官方可抓取性</strong></p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>未取得可识别的目标页面内容：请求失败、拒绝访问、错误页或无返回</td>
-</tr>
-<tr>
-<td>2</td>
-<td>取得目标页面标题、导航或元数据，但没有可识别正文</td>
-</tr>
-<tr>
-<td>3</td>
-<td>只取得明确标注为摘要或摘录的正文表示，未取得直接正文返回</td>
-</tr>
-<tr>
-<td>4</td>
-<td>取得直接正文，但工具明确标注截断、缺页，或可核对的正文边界存在缺失</td>
-</tr>
-<tr>
-<td>5</td>
-<td>取得直接正文，且有可核对的全文/完整目标章节起止依据，无截断或缺页证据</td>
-</tr>
-</tbody>
-</table>
-<p>按每个独立官方文档的最终获取状态判定。先区分无内容、框架、摘要/摘录、直接正文，再核对直接正文是否完整。摘要中含代码不自动升级；工具自称完整提取不能独自证明完整。只有直接正文但完整性未知时保留4—5候选范围与待定，不强打4分。获取目标须在读取前明确，不能事后缩小成恰好返回的段落。复合返回如完整正文加摘要按正文证据判定；整份返回为摘要且含原文片段仍属3分。M3评内容是否详尽，M4评版本；不借答案质量判断获取状态。不同独立文档等权平均，保留原始均值；重试不重复计入，未知项不能删除后平均。</p>
-<p><strong>M3 官方正文详尽度</strong></p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>取得的正文只有概述，没有相关解释或操作细节</td>
-</tr>
-<tr>
-<td>2</td>
-<td>有相关细节，但只有零散参数、片段或说明，不能组成完整解释或操作段落</td>
-</tr>
-<tr>
-<td>3</td>
-<td>有完整解释或操作段落，但完成原题所需的关键步骤、参数或约束仍缺失</td>
-</tr>
-<tr>
-<td>4</td>
-<td>原题所需主流程及其参数、前提已说明，但原题明确涉及的分支、约束或参考细节未说明完整</td>
-</tr>
-<tr>
-<td>5</td>
-<td>原题要求的解释、步骤、参数和约束均说明完整，无需另查才能补齐这些内容</td>
-</tr>
-</tbody>
-</table>
-<p>先从原题列出需要说明的内容，禁止添加题外的穷尽要求；每项缺口附正文位置。按最高满足档判定。取不到正文记受阻，不给1分；仅导航或元数据归M2。版本选择归M4。文档内容错误另记，不能只因长而判详尽。</p>
-<p><strong>M4 版本清晰度</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>无版本信息</td>
-</tr>
-<tr>
-<td>2</td>
-<td>有版本，但无选择依据，或官方说明冲突且无法消解</td>
-</tr>
-<tr>
-<td>3</td>
-<td>已明确部分适用关系，但仍缺少完成版本选择所需的对应关系</td>
-</tr>
-<tr>
-<td>4</td>
-<td>需自行合并官方约束，才能确定适用版本</td>
-</tr>
-<tr>
-<td>5</td>
-<td>官方已明确适用关系，直接查表或套用规则即可确定</td>
-</tr>
-</tbody>
-</table>
-<p>评价对象是已取得的官方资料；无正文可评记blocked，任务无需版本选择记not_applicable。只核对原题需要的版本条件，不增加题外要求。可选版本是一个或一个范围均可，不按页面数量或版本数量扣分。合并约束必须有官方依据，不得补入未说明的假设。记录版本条件、缺失关系与冲突的原文位置。检索成本归M8，最终答案定版归M9。无法区分档位时保留区间及原因，不强行猜分。</p>
-<p><strong>M5 二手丰富度</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>相关独立第三方来源0条</td>
-</tr>
-<tr>
-<td>2</td>
-<td>相关独立第三方来源1—2条</td>
-</tr>
-<tr>
-<td>3</td>
-<td>相关独立第三方来源3—4条</td>
-</tr>
-<tr>
-<td>4</td>
-<td>相关独立第三方来源5条</td>
-</tr>
-<tr>
-<td>5</td>
-<td>相关独立第三方来源至少6条</td>
-</tr>
-</tbody>
-</table>
-<p>恢复原数量阈值，统一搜索预算内对相关来源去重计数，正文取得不是计数前提。官方仓库、官方论坛按已冻结的渠道分类排除；同一内容的转载或镜像只计一次。相关性无法确定则计数区间，区间跨档则待定。另报首次发现位置和查询数，避免声称数量单独涵盖全部可发现度。</p>
-<p><strong>M6 二手可信度 / 一致性</strong></p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>存在与可靠核对依据直接矛盾的关键说法，尚未解决</td>
-</tr>
-<tr>
-<td>2</td>
-<td>未发现已确证的关键矛盾，但关键说法没有可追溯的核对依据</td>
-</tr>
-<tr>
-<td>3</td>
-<td>有可追溯依据支持部分关键说法，其他关键说法尚未核验</td>
-</tr>
-<tr>
-<td>4</td>
-<td>全部关键说法均有可追溯依据支持，未见未解决矛盾，但缺少独立来源的交叉印证</td>
-</tr>
-<tr>
-<td>5</td>
-<td>全部关键说法均有可追溯依据支持，并获独立来源交叉印证，未见未解决矛盾</td>
-</tr>
-</tbody>
-</table>
-<p>关键说法限于会改变操作、解释或版本判断的可核验陈述，逐条记录支持/反驳/未知。权威性依据作者身份、第一手材料或可复核实验证据，不按平台名直接给分。转载不构成独立互证；旧文只有在内容已失效时才作为反证。没有第三方材料记N/A。此五档是证据可信程度量规，尚未校准。</p>
-<p><strong>M7 模型自带知识</strong></p>
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>检索前回答没有可核验的正确任务知识，或关键主张被核对证据否定</td>
-</tr>
-<tr>
-<td>2</td>
-<td>检索前仅能给出正确概念，无法给出具体方法或解释</td>
-</tr>
-<tr>
-<td>3</td>
-<td>检索前能给出正确方法或解释片段，但关键细节需要外部资料补充</td>
-</tr>
-<tr>
-<td>4</td>
-<td>检索前能够给出正确的完整流程或解释，原题涉及的具体参数、约束仍需补充</td>
-</tr>
-<tr>
-<td>5</td>
-<td>检索前回答已准确覆盖原题所需的流程、解释、参数与约束</td>
-</tr>
-</tbody>
-</table>
-<p>执行同题无工具回答并冻结，再独立核对其中知识正确性和完整性。回答前不能接触本轮检索内容；自评信心仅存记录，不用于计分。没有检索前回答的旧运行记缺测。该测量只能反映无检索知识表现，不能推断训练数据覆盖密度；未知正确性则待定。</p>
-<p><strong>M8 检索成本</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>C≥9</td>
-</tr>
-<tr>
-<td>2</td>
-<td>C=7—8</td>
-</tr>
-<tr>
-<td>3</td>
-<td>C=5—6</td>
-</tr>
-<tr>
-<td>4</td>
-<td>C=3—4</td>
-</tr>
-<tr>
-<td>5</td>
-<td>C=1—2</td>
-</tr>
-</tbody>
-</table>
-<p>保留此前C=S+F及五档，失败请求只按一次实际调用计数，不另罚。程序记录并强制相同预算；保存耗时及可得的token。C=0或异常中断不自动给高分。调用数不是完整计算成本。</p>
-<p><strong>M9 版本可锁定性</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>最终答案未提供原题需要的版本信息</td>
-</tr>
-<tr>
-<td>2</td>
-<td>提到版本，但没有给出有依据的适用版本或范围，或关键定版与证据矛盾</td>
-</tr>
-<tr>
-<td>3</td>
-<td>部分所需组件有明确版本依据，其余仍未确定</td>
-</tr>
-<tr>
-<td>4</td>
-<td>所有所需组件均给出有依据的适用范围，但至少一项尚未定到具体版本</td>
-</tr>
-<tr>
-<td>5</td>
-<td>所有所需组件均给出有依据的具体版本，配套关系无未解决冲突</td>
-</tr>
-</tbody>
-</table>
-<p>评价对象仅为最终答案。先固定原题实际需要定版的组件；不强制无关opset。符合证据的范围不等于答案错误，但锁定粒度低于具体版本。无版本需要记N/A；不能为提高分数随意指定版本。
-与M4区别：本项只看最终答案，官方资料清楚不代表答案已定版。</p>
-<p><strong>M10 操作可执行性</strong></p>
-<table>
-<thead>
-<tr>
-<th>分值</th>
-<th>判定标准</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>没有可执行方案，只有目标描述或示意</td>
-</tr>
-<tr>
-<td>2</td>
-<td>仅有操作骨架，关键操作无法根据答案确定</td>
-</tr>
-<tr>
-<td>3</td>
-<td>有具体操作方案，但需修正错误或补充缺失内容才能执行</td>
-</tr>
-<tr>
-<td>4</td>
-<td>操作指导完整，仅需替换明确标识且有说明的用户环境参数</td>
-</tr>
-<tr>
-<td>5</td>
-<td>操作指导及适用前提明确，无需补写或修正内容即可直接执行</td>
-</tr>
-</tbody>
-</table>
-<p>按最终答案中命令、代码、参数与前置条件判断需要补充或修改的程度。4分仅替换路径、设备号等环境值，不能包括修正内容错误。3分须指出具体缺口，2分须说明哪项关键操作无法确定。每档附答案原文引用；实际运行通过、失败、仅内容核查或未验证另行记录，不把是否运行作为4/5分界。仅内容核查不能宣称实际复现成功；证据不足记待定，纯概念任务记N/A。</p>
-<p><strong>M11 综合置信度。</strong> 令
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>M</mi><mi>i</mi></msub><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">x_i=M_i/5</annotation></semantics></math>，<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>x</mi><mn>2</mn></msub><msub><mi>x</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">O=x_1x_2x_3</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><msub><mi>x</mi><mn>5</mn></msub><msub><mi>x</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">C=x_5x_6</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msub><mi>x</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">P=x_7</annotation></semantics></math>，则</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mn>11</mn><mo>=</mo><mn>100</mn><mo stretchy="false" form="prefix">[</mo><mn>1</mn><mo>−</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>O</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>C</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">]</mo><mo stretchy="false" form="prefix">(</mo><mn>0.7</mn><mo>+</mo><mn>0.3</mn><msub><mi>x</mi><mn>4</mn></msub><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">(</mo><mn>0.9</mn><mo>+</mo><mn>0.1</mn><msub><mi>x</mi><mn>8</mn></msub><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
-M11=100[1-(1-O)(1-C)(1-P)](0.7+0.3x_4)(0.9+0.1x_8).
-</annotation></semantics></math></p>
-<p>保留原系数0.30和0.10，保留计算精度并显示一位小数，不再划分五档。M9与M10独立报告。新版仅在M1–M8均有可用点值时计算；未知、受阻或不适用不补零，缺失输入明确列出。该规则与历史案例将受阻官方渠道置零的处理不同。M11是综合指数，不是答对概率。此前探索性系数拟合未提供稳定优于原系数的依据，因此不采用上一轮拟合值，也不声称原系数最优。</p>
-<p><strong>依据及解释边界。</strong>
-OECD/JRC的综合指标手册支持公开归一化、权重、聚合及敏感性分析假设，但不提供本研究的五档阈值或0.30/0.10系数的权威验证。具体分档是待验证的研究量规；有序等级的乘积及M2均值属于明确的操作化选择，不等同于已经证明等级间距相等。手册：<a
-href="https://doi.org/10.1787/9789264043466-en">Handbook on Constructing
-Composite
-Indicators（2008）</a>。冻结规则、试跑协议和文献使用边界随本次修订留存于补充目录
-<code>data/scoring-revision-20260921/</code>。</p>
-<h3
-id="历史案例采用的评分规则与综合置信度">历史案例采用的评分规则与综合置信度</h3>
+<h3 id="评分规则与综合置信度">评分规则与综合置信度</h3>
 <p>M1–M10通过相应规则转换为1–5分的有序等级；M3在正文未取得时标记为“受阻”。M11由M1–M8计算为0–1区间的综合分数。以下按知识来源、获取成本、回答产出与综合置信度说明评分；附录A给出完整的优先判断条件和修正项，任务记录提供相应的观测字段。</p>
 <p><strong>官方资料（M1–M4）。</strong>
 官方可发现性综合结果位置、检索轮次及查询调整情况；正文可获取性按实际抓取状态分档，先判断robots限制，再判断页面交付及正文返回情况；3分表示任务相关正文部分可获取，具体条件见附录A。正文详尽度结合任务内容覆盖与命令、代码的可操作程度；资料版本清晰度考察具体版本标识及其配套关系。图2呈现四项指标的分档：M3的低分区别在于是否已有任务相关细节，M4则区分版本标识缺失与版本已列但配套未明。M3在正文获取受阻时标记为“受阻”。</p>
@@ -759,7 +410,7 @@ CANN/CUDA 汇总比较，因此这些汇总使用 25 对任务和 50
 <h3 id="任务实施与数据分析">任务实施与数据分析</h3>
 <p>我们使用过程日志记录任务问句、查询字符串、来源描述、阅读结果和评分依据，并将观测字段交由评分函数计算，形成交互式任务矩阵和分析可视化。部分早期阅读评估复用了同一会话中已经取得的观测。</p>
 <p>任务分四批开展：前两批覆盖A–D和E–H，后两批通过并行子Agent覆盖I–S和T–Z。各批次的结构化观测在主会话中汇总，并核对官方与第三方来源的归属。任务问句与原始分派记录对应，后续批次的问句措辞按分派记录补入过程日志。</p>
-<p>历史任务使用原归档Agent配置（配置溯源保留在原始研究记录中）及网页搜索、网页阅读工具开展；搜索返回候选来源，阅读工具对选定URL的HTML内容进行摘要。分析结合任务记录中的查询、工具返回内容及摘要、结构化观测字段和评分说明。M9与M10依据任务中形成的指导及相应记录，分别评估版本明确性与步骤可操作性。补充材料提供任务、来源与评分依据的对应关系。</p>
+<p>任务使用Claude（模型标识为<code>claude-opus-4-8</code>）及网页搜索、网页阅读工具开展；搜索返回候选来源，阅读工具对选定URL的HTML内容进行摘要。分析结合任务记录中的查询、工具返回内容及摘要、结构化观测字段和评分说明。M9与M10依据任务中形成的指导及相应记录，分别评估版本明确性与步骤可操作性。补充材料提供任务、来源与评分依据的对应关系。</p>
 <p>本研究采用统一的评价框架、十一项指标及评分规则，对各项开发任务开展知识获取与评价。</p>
 <p>数据分析从三个层面展开。首先，在相同任务类别下比较两侧的分项得分，定位资料发现、正文获取、内容详尽度、版本清晰度及指导属性的差异。其次，通过均值（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math>）、标准差（<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">SD</annotation></semantics></math>）和各档数量描述指标分布，并按工作流汇总综合置信度。最后，结合对应的获取记录与返回内容解释评分差异，比较相同获取状态下的内容支撑，以及同一工作流中不同任务的知识条件。M3的均值和标准差仅纳入能够评价正文详尽度的记录，正文受阻项另行报告。上述统计描述所选任务集，不用于推断生态总体差异。</p>
 <p>在工作流比较之外，我们进一步按任务涉及的开发活动，将25对任务归为上手与环境、训练与日常使用、算子与深入自研三组。两侧采用相同的任务归组，以比较不同生态在这些场景中的知识支撑分布；任务归属与描述性统计见表6。G的对照侧为ROCm/HIP，继续作为单独案例，不进入CANN/CUDA汇总。场景分组用于组织任务比较，分项评分及对应材料则用于解释具体的知识条件。</p>
@@ -1080,25 +731,13 @@ data-cites="brand2009 vaithilingam2022 barke2023">[4, 5,
 <p>该方法将任务需求、来源或获取事件、指标编码，与判断技术建议所需信息的诊断连接起来。参与开发者平台、技术知识资源或AI
 Agent建设与维护的产品经理、设计师、技术写作者和开发工程师等，可据此定位缺失的指导或适用关系，并区分需要继续查找来源的情形与需要补充本地事实的情形。分析者可以沿用记录结构，并替换领域特定需求，例如数据库SDK中的客户端与服务端兼容性，或Web框架的部署前置条件。这些构成方法的预期应用方向。</p>
 <p>后续评估可以考察独立分析者是否形成相近剖面、诊断是否与专家对缺失信息的判断一致，以及文档团队是否认为它们有助于规划修复。这些问题直接来自方法的预期用途。本次应用提供任务级区别、填写示例与跨任务综合分析，为开展此类评估奠定基础。</p>
-<h2 id="修订协议的三模型探索性试跑">修订协议的三模型探索性试跑</h2>
-<p>冻结新版Skill副本后，GLM‑5.3、DeepSeek V4.1
-Flash和Kimi（请求与返回别名均为<code>kimi-k3-2</code>）分别执行模型转换A、版本配套I、错误诊断E在CANN与CUDA中的任务，共18次运行。模型别名并非不可变后端快照。通过WorkBuddy
-CLI使用相同WebSearch/WebFetch工具环境，每次建立独立工作目录与会话并关闭记忆；这不等于操作系统级隔离。程序统一限制最多4次查询和8次获取。该预算是可比较的实验设置，不是文献证明的最优搜索次数。</p>
-<p>共执行54次搜索与102次获取，保留270条有序搜索结果（包括重复及未打开条目），一次超预算获取在分派前被阻止。每次运行保存完整过程与最终回答、评价两个文件，批次另存共享协议、原始后评及复核证据。18份过程日志均通过预算、输入和哈希检查；不因得分高低重新运行任务。统一由GLM‑5.3分别在来源/先验与最终回答上下文后评，取得36份有效评价，失败尝试另存。这不是独立专家一致性评价。</p>
-<p><strong>获取状态。</strong>
-对95个运行内官方文档观测合并同URL重试后逐项审计：14项为5分、14项为2分、10项为3分、5项为1分，其余52项保留不确定区间。95项不是95个独立网站。另取82个不同公开URL作为事后参照，仅用于核验，不计入模型当时的证据或调用成本；14项5分有同URL正文匹配依据，但不能保证远端页面版本未变。其余直接正文的完整性未知时不强打4或5分，按区间参与文档等权聚合。</p>
-<p><strong>版本与综合分。</strong>
-自动后评仍会将“配套关系未取得”误写为“可以合并确定”，或仅因版本多而扣分，复核保留原评分并将缺乏依据的点值改为待定。错误诊断E未预先固定版本选择评价范围，产生N/A与数值评价分歧，因此统一暂缓其M4比较；这是协议遗漏，不是模型差异。须先固定评价范围，再利用现有材料重评。M11保持原公式，目前仅1/18份记录满足全部输入为可用点值，其余列明缺失或区间输入，不提供三模型综合排名。</p>
-<p><strong>共同障碍及解释范围。</strong>
-A的CANN侧三模型均遇到仅标题或界面标签的官方返回，但并非访问同一URL。遇阻和后来取得替代正文分别记录；后者不自动证明任务完成。试跑检验了记录与评分执行流程，并未验证全套量表的效度。三个任务不是随机样本，两侧不保证等难；没有硬件执行，且统一自动评分器可能存在模型偏差。历史52单元案例不因本试跑而成为新版、多模型的正式结果。</p>
 <h2 id="局限与研究透明度">局限与研究透明度</h2>
 <p>本案例展示了该方法如何区分知识发现、正文获取与任务充分性方面的断点。任务记录支持检查评分依据和复算结果。这些结果反映本次任务集及检索条件；不同模型、工具配置与检索预算下的稳定性，以及独立评分的一致性和跨生态适用性，仍需进一步评估。补充材料提供观测字段、评分实现、任务与来源对应表、计算差异说明及汇总脚本，支持复核与后续应用。</p>
 <p>本研究评估知识条件与任务中形成的指导。开发者如何利用这些区别判断依据、核对本地适用性及决定何时需要更多信息，需要通过观察其与指导内容的交互进一步研究。评价还应考察拟议反馈能否支持这些判断，以及它所带来的阅读负担或任务打断。</p>
 <h2 id="结论">结论</h2>
 <p>本文定义面向AI的知识可得性，并通过十一项指标连接知识来源、获取过程与回答属性。CANN与CUDA的任务级比较识别了不同开发场景中的知识支撑差异，包括CANN在深入自研场景中的较弱支撑，并进一步揭示了正文交付、诊断内容、版本组织及补充来源方面的具体条件。将评分与任务需求、实际取得的材料联系起来，使研究能够形成关于生态如何支持开发活动，以及哪些知识需要完善的具体认识。</p>
 <p>该方法使经由AI形成的技术指导的依据成为可检查的对象：哪项来源支撑拟议步骤，哪项适用关系尚未明确，以及还需要什么信息。框架、协议与案例分析提供了定位这些条件，并将其关联到知识供给和Agent反馈的方法。文档修复、继续检索和请求本地事实分别对应不同的诊断，为后续评价提供具体方向。</p>
-<h2 class="unnumbered"
-id="附录a历史案例评分计算细则">附录A：历史案例评分计算细则</h2>
+<h2 class="unnumbered" id="附录a评分计算细则">附录A：评分计算细则</h2>
 <p><strong>官方资料（M1–M4）。</strong>
 M1先判断检索过程：至少两轮且调整查询为2分，至少两轮且未调整查询为3分；一轮检索时，首条官方结果排名1、2–6、7–10及10名以后分别为5、4、3、2分。1分描述多轮仍难找到相关官方来源的情形。M2在本研究的工具配置下，首先判断robots访问限制，再依据页面交付方式与实际返回结果评分：robots限制为1分，SPA导致正文未取得为2分，任务相关正文部分可获取为3分，服务端渲染正文可获取为4分，静态正文可获取为5分。3分表示部分目标正文已取得、另有目标正文因技术障碍未取得；它不表示已取得资料不够详尽，也不因使用替代入口而自动赋予。M3在SPA或robots导致正文未取得时记“受阻”。正文已取得时，M3的1分表示无任务相关具体细节，2分表示仅有少量任务相关片段，3分表示概述或缺少命令代码的主路径材料；主路径含命令代码或完整参考不含命令代码为4分，两者兼具为5分。这里的命令代码指资料提供的操作内容。M4的1分表示版本标识缺失；2分已有至少三个具体版本，但配套关系未明。在版本信息可判定的情形下，依次判断：任务与版本无关或至多一个版本为5分，有官方支持矩阵为4分，芯片与框架双轴可锁为3分，至少三个版本且配套未明为2分，其余为3分。</p>
 <p><strong>第三方资料（M5–M6）。</strong>
@@ -1109,7 +748,7 @@ M7以图3所示模型自评档为起点，技术更新节奏稳定、中等、�
 M9的1分未提供具体版本，2分提供版本线索但尚未确定其对当前任务的适用性，3分明确范围或部分组件，4分基本确定，5分给出确切版本。M10的1分只有零散片段，2分已有主要流程骨架但缺关键落实细节，3分需小幅修改，4分仅需替换参数，5分可直接采用。</p>
 <p><strong>综合置信度（M11）。</strong>
 正文公式将官方、第三方和模型自带知识分支组合，再由M4与M8调整。M3受阻时官方分支<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">O=0</annotation></semantics></math>。M9与M10单列。区间<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>0.24</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[0,0.24)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0.24</mn><mo>,</mo><mn>0.45</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[0.24,0.45)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0.45</mn><mo>,</mo><mn>0.63</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[0.45,0.63)</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0.63</mn><mo>,</mo><mn>0.80</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">[0.63,0.80)</annotation></semantics></math>和<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">[</mo><mn>0.80</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[0.80,1]</annotation></semantics></math>依次标为很低、低、中、中高、高。</p>
-<h2 id="review-section-34">参考文献</h2>
+<h2 id="review-section-32">参考文献</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0"
 role="list">
 <div id="ref-aghajani2019" class="csl-entry" role="listitem">
@@ -1378,12 +1017,19 @@ Twelfth International Conference on Learning Representations</em>, 2024.
 href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html</a></div>
 </div>
 </div>
-<aside id="review-toc"><div class="review-toc-title">论文目录</div><div class="review-language-switch" role="group" aria-label="Language"><a href="manuscript-cn-review-changes.html" data-language="cn" aria-current="page">中文</a><a href="manuscript-en-review-changes.html" data-language="en">English</a></div><nav aria-label="论文目录"><ol><li class="toc-main"><a href="#摘要">摘要</a></li><li class="toc-main"><a href="#关键词">关键词</a></li><li class="toc-main"><a href="#引言">引言</a></li><li class="toc-main"><a href="#相关研究与构念边界">相关研究与构念边界</a></li><li class="toc-sub"><a href="#开发者信息寻找与文档">开发者信息寻找与文档</a></li><li class="toc-sub"><a href="#面向编程的-ai-支持">面向编程的 AI 支持</a></li><li class="toc-sub"><a href="#检索归因与可得性构念">检索、归因与可得性构念</a></li><li class="toc-main"><a href="#方法框架">方法框架</a></li><li class="toc-sub"><a href="#分析单位与任务需求">分析单位与任务需求</a></li><li class="toc-sub"><a href="#知识来源与任务支撑">知识来源与任务支撑</a></li><li class="toc-sub"><a href="#证据记录">证据记录</a></li><li class="toc-main"><a href="#操作化与测量协议">操作化与测量协议</a></li><li class="toc-sub"><a href="#十一项指标及其证据角色">十一项指标及其证据角色</a></li><li class="toc-sub"><a href="#协议的应用">协议的应用</a></li><li class="toc-sub"><a href="#修订后的评分规则2026年9月21日">修订后的评分规则（2026年9月21日）</a></li><li class="toc-sub"><a href="#历史案例采用的评分规则与综合置信度">历史案例采用的评分规则与综合置信度</a></li><li class="toc-main"><a href="#案例应用cann-与-cuda-开发生态的案例分析">案例应用：CANN 与 CUDA 开发生态的案例分析</a></li><li class="toc-sub"><a href="#任务覆盖与比较范围">任务覆盖与比较范围</a></li><li class="toc-sub"><a href="#任务实施与数据分析">任务实施与数据分析</a></li><li class="toc-sub"><a href="#任务级评价结果">任务级评价结果</a></li><li class="toc-main"><a href="#发现跨开发任务的知识条件">发现：跨开发任务的知识条件</a></li><li class="toc-sub"><a href="#不同生态在开发场景中的知识支撑分布存在差异">不同生态在开发场景中的知识支撑分布存在差异</a></li><li class="toc-sub"><a href="#官方资料的发现获取内容与版本组织呈现不同缺口">官方资料的发现、获取、内容与版本组织呈现不同缺口</a></li><li class="toc-sub"><a href="#不同来源对任务的补充作用与局限">不同来源对任务的补充作用与局限</a></li><li class="toc-main"><a href="#讨论知识供给与-agent-交互的设计启示">讨论：知识供给与 Agent 交互的设计启示</a></li><li class="toc-sub"><a href="#根据开发场景与知识需求确定建设重点">根据开发场景与知识需求确定建设重点</a></li><li class="toc-sub"><a href="#改善官方知识供给与agent反馈">改善官方知识供给与Agent反馈</a></li><li class="toc-sub"><a href="#扩充社区知识并支持来源核验">扩充社区知识并支持来源核验</a></li><li class="toc-sub"><a href="#诊断方法的复用">诊断方法的复用</a></li><li class="toc-main"><a href="#修订协议的三模型探索性试跑">修订协议的三模型探索性试跑</a></li><li class="toc-main"><a href="#局限与研究透明度">局限与研究透明度</a></li><li class="toc-main"><a href="#结论">结论</a></li><li class="toc-main"><a href="#附录a历史案例评分计算细则">附录A：历史案例评分计算细则</a></li><li class="toc-main"><a href="#review-section-34">参考文献</a></li></ol></nav></aside><script>
+<aside id="review-toc"><div class="review-toc-title">论文目录</div><div class="review-language-switch" role="group" aria-label="Language"><a href="manuscript-cn-review-changes.html" data-language="cn" aria-current="page">中文</a><a href="manuscript-en-review-changes.html" data-language="en">English</a></div><nav aria-label="论文目录"><ol><li class="toc-main"><a href="#摘要">摘要</a></li><li class="toc-main"><a href="#关键词">关键词</a></li><li class="toc-main"><a href="#引言">引言</a></li><li class="toc-main"><a href="#相关研究与构念边界">相关研究与构念边界</a></li><li class="toc-sub"><a href="#开发者信息寻找与文档">开发者信息寻找与文档</a></li><li class="toc-sub"><a href="#面向编程的-ai-支持">面向编程的 AI 支持</a></li><li class="toc-sub"><a href="#检索归因与可得性构念">检索、归因与可得性构念</a></li><li class="toc-main"><a href="#方法框架">方法框架</a></li><li class="toc-sub"><a href="#分析单位与任务需求">分析单位与任务需求</a></li><li class="toc-sub"><a href="#知识来源与任务支撑">知识来源与任务支撑</a></li><li class="toc-sub"><a href="#证据记录">证据记录</a></li><li class="toc-main"><a href="#操作化与测量协议">操作化与测量协议</a></li><li class="toc-sub"><a href="#十一项指标及其证据角色">十一项指标及其证据角色</a></li><li class="toc-sub"><a href="#协议的应用">协议的应用</a></li><li class="toc-sub"><a href="#评分规则与综合置信度">评分规则与综合置信度</a></li><li class="toc-main"><a href="#案例应用cann-与-cuda-开发生态的案例分析">案例应用：CANN 与 CUDA 开发生态的案例分析</a></li><li class="toc-sub"><a href="#任务覆盖与比较范围">任务覆盖与比较范围</a></li><li class="toc-sub"><a href="#任务实施与数据分析">任务实施与数据分析</a></li><li class="toc-sub"><a href="#任务级评价结果">任务级评价结果</a></li><li class="toc-main"><a href="#发现跨开发任务的知识条件">发现：跨开发任务的知识条件</a></li><li class="toc-sub"><a href="#不同生态在开发场景中的知识支撑分布存在差异">不同生态在开发场景中的知识支撑分布存在差异</a></li><li class="toc-sub"><a href="#官方资料的发现获取内容与版本组织呈现不同缺口">官方资料的发现、获取、内容与版本组织呈现不同缺口</a></li><li class="toc-sub"><a href="#不同来源对任务的补充作用与局限">不同来源对任务的补充作用与局限</a></li><li class="toc-main"><a href="#讨论知识供给与-agent-交互的设计启示">讨论：知识供给与 Agent 交互的设计启示</a></li><li class="toc-sub"><a href="#根据开发场景与知识需求确定建设重点">根据开发场景与知识需求确定建设重点</a></li><li class="toc-sub"><a href="#改善官方知识供给与agent反馈">改善官方知识供给与Agent反馈</a></li><li class="toc-sub"><a href="#扩充社区知识并支持来源核验">扩充社区知识并支持来源核验</a></li><li class="toc-sub"><a href="#诊断方法的复用">诊断方法的复用</a></li><li class="toc-main"><a href="#局限与研究透明度">局限与研究透明度</a></li><li class="toc-main"><a href="#结论">结论</a></li><li class="toc-main"><a href="#附录a评分计算细则">附录A：评分计算细则</a></li><li class="toc-main"><a href="#review-section-32">参考文献</a></li></ol></nav></aside><script>
 (()=>{
-const tocLinks=[...document.querySelectorAll('#review-toc nav a')];
+const tocNav=document.querySelector('#review-toc nav');
+const tocLinks=[...tocNav.querySelectorAll('a')];
 const sections=tocLinks.map(a=>document.getElementById(decodeURIComponent(a.hash.slice(1))));
 const params=new URLSearchParams(location.search);
 let pending=false;
+let tocScrollTimer;
+tocNav.addEventListener('scroll',()=>{
+ tocNav.classList.add('is-scrolling');
+ clearTimeout(tocScrollTimer);
+ tocScrollTimer=setTimeout(()=>tocNav.classList.remove('is-scrolling'),700);
+},{passive:true});
 function updateToc(){
  let current=0;
  for(let i=0;i<sections.length;i++){if(sections[i].getBoundingClientRect().top<=110)current=i;else break;}

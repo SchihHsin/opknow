@@ -86,8 +86,6 @@ This distinction prevents a common reporting error: transforming an interpretati
 
 The method examines three knowledge sources: official material, third-party material, and model prior knowledge. It assesses discovery, acquisition, and source quality, and connects knowledge acquisition to response generation through measures of retrieval effort and response properties. Table 2 presents the eleven indicators and their scoring criteria.
 
-Table 2 retains historical case labels and operational descriptions; the current names and rules appear under “Revised scoring protocol” below. Historical values are not automatically changed by this revision.
-
 | ID | Indicator | Evidence and interpretation |
 | --- | --- | --- |
 | M1 | Official source discoverability | Measures the ease of finding task-relevant official material using result position, search rounds, and the need for query refinement. |
@@ -126,141 +124,7 @@ The method's novelty lies in this connected specification of the unit, evidence 
 \raggedbottom
 ```
 
-### Revised scoring protocol (21 September 2026)
-
-This section specifies the current revision. The historical scoring description below, Appendix A, and the 52 archival case units retain their original scoring protocol and have not been rescored. The new pilot is reported separately and must not be pooled with historical scores. The revision preserves the objects of evaluation while changing observations and scoring anchors. M1–M10 use five ordinal grades; M2 retains the equal-weight document mean; M11 is a continuous 0–100 index.
-
-**M1 Official source discoverability**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No relevant official source found within the predefined common search budget |
-| 2 | First relevant official source found on the third or a later query |
-| 3 | First relevant official source found on the second query |
-| 4 | First query finds a relevant official source at rank 2–5 |
-| 5 | First query finds a relevant official source at rank 1 |
-
-Observe the first five results per query under the pilot protocol. Later searches after the first hit do not lower the score; reformulation incurs no separate penalty. Incomplete budgets, missing lists, or preceding timeouts can make the score indeterminate. Retain all returned URLs and ranks.
-
-**M2 Official body accessibility**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No identifiable target-page content: failure, denial, error page, or no return |
-| 2 | Target title, navigation, or metadata only; no identifiable body |
-| 3 | Only an explicitly identified summary or excerpt representation, without a direct body return |
-| 4 | Direct body with explicit truncation, missing pages, or verifiable missing boundaries |
-| 5 | Direct body with verifiable complete article or target-section boundaries and no truncation evidence |
-
-Score the final acquisition state of each independent official document. Direct body of unknown completeness remains bounded at 4–5, rather than receiving a forced score. A tool assertion of completeness alone is insufficient. Define the target before fetching. Count retries once, average documents equally, retain the unrounded mean, and propagate unknown intervals rather than excluding them. Content detail belongs to M3 and version clarity to M4.
-
-**M3 Official body detail**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | Overview only, without relevant explanations or operational details |
-| 2 | Relevant but isolated details that do not form a complete explanation or procedure |
-| 3 | A complete explanation or procedure is present, but required key steps, parameters, or constraints are missing |
-| 4 | Required main workflow, parameters, and prerequisites are explained, but task-specified branches, constraints, or reference details remain incomplete |
-| 5 | All explanations, steps, parameters, and constraints required by the question are explained without needing other material to fill gaps |
-
-List requirements from the original question; do not add exhaustive requirements unrelated to it. Award the highest satisfied grade and locate each gap in the acquired content. Unavailable body is blocked, not grade 1. Version selection belongs to M4.
-
-**M4 Version clarity**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No version information |
-| 2 | Versions are present but selection has no basis, or official statements conflict without resolution |
-| 3 | Some applicability relations are explicit, but relations needed to complete version selection are still missing |
-| 4 | Applicable versions can be determined by combining official constraints |
-| 5 | Official applicability relations are explicit; a table or stated rule directly determines applicable versions |
-
-Assess acquired official material. Missing body is blocked; absence of a version-selection requirement is not applicable. A supported version range is acceptable. Neither page count nor version count alone lowers the score. Combining constraints requires official evidence, without invented assumptions. Retain bounds when grades cannot be distinguished. M8 measures effort; M9 measures final-answer version locking.
-
-**M5 Third-party source richness**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | 0 relevant independent sources |
-| 2 | 1–2 relevant independent sources |
-| 3 | 3–4 relevant independent sources |
-| 4 | 5 relevant independent sources |
-| 5 | At least 6 relevant independent sources |
-
-Deduplicate related sources within the common search budget; mirrors count once and acquisition of the body is not required for this count. Exclude official repositories and forums under the frozen channel classification. Unknown relevance yields count bounds. Report discovery position and query count separately.
-
-**M6 Third-party credibility and consistency**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | An unresolved key claim contradicts reliable checking evidence |
-| 2 | No established key contradiction, but key claims lack traceable checking evidence |
-| 3 | Traceable evidence supports some key claims; others remain unchecked |
-| 4 | All key claims have traceable support with no unresolved contradiction, but lack independent corroboration |
-| 5 | All key claims have traceable support and independent corroboration, with no unresolved contradiction |
-
-Key claims are verifiable statements affecting an operation, explanation, or version decision. Record support, contradiction, or unknown for each. Platform names alone do not establish authority; reposts are not independent. Older material is counterevidence only when its content is no longer applicable. No third-party material is N/A.
-
-**M7 Model prior knowledge**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No verifiable correct task knowledge in the pre-search answer, or a key claim is refuted |
-| 2 | Correct concepts only, without a specific method or explanation |
-| 3 | Correct method or explanation fragments, with key details requiring external material |
-| 4 | A correct complete workflow or explanation, with task-required parameters or constraints still missing |
-| 5 | Accurate coverage of the required workflow, explanation, parameters, and constraints |
-
-Freeze a same-task answer before tool use and independently check its correctness and coverage. Self-reported confidence is not scored. Missing pre-search answers are missing data; unknown correctness remains indeterminate. This measures performance without retrieval, not training-data density.
-
-**M8 Retrieval effort**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | C ≥ 9 |
-| 2 | C = 7–8 |
-| 3 | C = 5–6 |
-| 4 | C = 3–4 |
-| 5 | C = 1–2 |
-
-C = S + F, where S counts searches and F dispatched fetches. A failed dispatched request counts once, without an additional failure penalty. Enforce common budgets programmatically and retain elapsed time and available token counts. C = 0 or abnormal termination does not automatically receive a high score. Calls do not measure all computational cost.
-
-**M9 Answer version locking**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No version information required by the task |
-| 2 | Versions mentioned without evidence-supported applicability, or key choices contradict evidence |
-| 3 | Some required components have supported versions; others remain unresolved |
-| 4 | All required components have supported ranges, but at least one lacks a specific version |
-| 5 | All required components have supported specific versions without unresolved compatibility conflict |
-
-Assess only the final answer and predefine the components actually requiring versions. No version requirement is N/A. Supported ranges are not errors, but represent less precise locking. Do not invent a version to obtain a higher score.
-
-**M10 Operational executability**
-
-| Grade | Criterion |
-| --- | --- |
-| 1 | No executable plan; goals or illustrations only |
-| 2 | An operational skeleton whose key actions cannot be determined |
-| 3 | A concrete plan requiring error correction or missing content before execution |
-| 4 | Complete instructions needing only clearly marked and explained user-environment substitutions |
-| 5 | Explicit instructions and applicability conditions directly executable without additions or corrections |
-
-Locate each gap in the final answer. Grade 4 permits environment substitutions, not correction of errors. Record actual execution success, failure, content-only checking, or no verification separately; execution is not the grade 4/5 boundary. Content checking does not demonstrate successful reproduction. Purely conceptual tasks are N/A.
-
-**M11 Composite confidence.** Let $x_i=M_i/5$, $O=x_1x_2x_3$, $C=x_5x_6$, and $P=x_7$:
-
-$$
-M11=100[1-(1-O)(1-C)(1-P)](0.7+0.3x_4)(0.9+0.1x_8).
-$$
-
-The original coefficients 0.30 and 0.10 are retained. Preserve calculation precision and display one decimal place, without five confidence bands. M9 and M10 remain separate. Under the revision, calculate M11 only when all M1–M8 inputs have usable point scores; do not substitute zero for unknown, blocked, or inapplicable inputs. This differs from the historical convention that set a blocked official channel to zero. M11 is a composite index, not a probability of correctness. Exploratory coefficient fitting did not establish a stable improvement over the original coefficients; the fitted values are not adopted and the original coefficients are not claimed to be optimal.
-
-**Rationale and limits.** The OECD/JRC handbook supports explicit normalization, weighting, aggregation, and sensitivity assumptions; it does not validate these five-grade cutoffs or the coefficients 0.30/0.10. These anchors remain a research rubric requiring validation. Multiplication of ordinal scores and averaging M2 are explicit operational choices, not evidence that grade intervals are equal. Reference: [Handbook on Constructing Composite Indicators (2008)](https://doi.org/10.1787/9789264043466-en). Frozen rules, pilot protocol, and literature-use boundaries accompany this revision in `data/scoring-revision-20260921/`.
-
-### Historical case scoring rules and composite confidence
+### Scoring rules and composite confidence
 
 M1–M10 are mapped to ordinal scores from 1 to 5 using their scoring rules, with M3 marked as blocked when its body content is not obtained. M11 combines M1–M8 into a composite score on a 0–1 scale. We describe the anchors by knowledge source, acquisition effort, response properties, and composite confidence. Appendix A specifies decision priorities and adjustments; task records provide the corresponding observations.
 
@@ -346,7 +210,7 @@ We used a process log to record task questions, query strings, source descriptio
 
 Tasks were conducted in four batches. The first two covered A–D and E–H; the later two covered I–S and T–Z through parallel subagents. Structured observations were consolidated in the main session, where official and third-party source ownership was checked. Task questions were linked to their original assignments, and wording for the later batches was added to the process log from those assignments.
 
-Historical tasks used the archived agent configuration, whose provenance remains in the original study records, with web-search and web-reading tools. Search returned candidate sources, and the reading tool summarized HTML from selected URLs. The analysis combined recorded queries, tool-returned content and summaries, structured observations, and scoring rationales. M9 and M10 assessed version specificity and procedural actionability using the guidance produced during the tasks and its corresponding records. The supplement links tasks, sources, and scoring rationales.
+Tasks used Claude (model identifier `claude-opus-4-8`) with web-search and web-reading tools. Search returned candidate sources, and the reading tool summarized HTML from selected URLs. The analysis combined recorded queries, tool-returned content and summaries, structured observations, and scoring rationales. M9 and M10 assessed version specificity and procedural actionability using the guidance produced during the tasks and its corresponding records. The supplement links tasks, sources, and scoring rationales.
 
 We used a consistent evaluation framework, eleven indicators, and scoring rules to acquire and assess knowledge for each development task.
 
@@ -515,18 +379,6 @@ The method connects a task requirement to a source or acquisition event, an indi
 
 Subsequent evaluation can examine whether independent analysts produce comparable profiles, whether the diagnoses correspond to expert assessments of missing information, and whether documentation teams find them useful for planning repairs. These questions follow directly from the intended use of the method. The present application supplies the task-level distinctions, worked records, and cross-task synthesis on which such evaluation can build.
 
-## Exploratory Three-Model Pilot of the Revised Protocol
-
-Using a frozen copy of the revised Skill, GLM‑5.3, DeepSeek V4.1 Flash, and Kimi (requested and returned alias `kimi-k3-2`) each performed conversion task A, compatibility task I, and diagnostic task E in CANN and CUDA: 18 runs in total. Model aliases are not immutable backend snapshots. WorkBuddy CLI provided the same WebSearch/WebFetch environment, with a fresh directory and session per run and memory disabled; this is not operating-system isolation. Programmatically enforced budgets allowed four queries and eight fetches. These are experimental comparability settings, not literature-established optimal search counts.
-
-The runs dispatched 54 searches and 102 fetches, retaining 270 ordered result entries, including duplicates and unopened URLs. One excess fetch was blocked before dispatch. Each run retains its process, final answer, and evaluation in two files; shared protocols, raw assessments, and audits are retained separately. All 18 process logs passed budget, input, and hash checks, without rerunning tasks based on scores. GLM‑5.3 assessed source/prior evidence and final answers in separate contexts, producing 36 valid assessments; failed attempts were retained. This does not establish independent expert agreement.
-
-**Acquisition states.** An audit grouped same-URL retries within each run and examined 95 official-document observations: 14 scored 5, 14 scored 2, 10 scored 3, five scored 1, and 52 retained uncertain bounds. These are not 95 distinct websites. Post-run references from 82 distinct public URLs were acquired solely for checking, not included in the model-visible evidence or its call cost. Fourteen grade-5 observations had same-URL body-match support, although remote version stability cannot be guaranteed. Unknown direct-body completeness was not forced to grade 4 or 5; bounds were propagated through equal-weight document aggregation.
-
-**Versions and composite scores.** Automated assessments sometimes described missing compatibility relations as combinable constraints or penalized version multiplicity alone. Audits preserve original judgments while replacing unsupported point estimates with indeterminate states. Task E lacked a predefined version-selection evaluation scope, producing conflicting N/A and numeric M4 judgments. Its M4 comparison is therefore uniformly withheld pending scope definition and reassessment of the existing evidence. This is a protocol omission, not a model difference. With the original M11 formula, only one of 18 records currently has usable point values for all inputs. Other records identify missing or bounded inputs; no composite ranking of the three models is reported.
-
-**Shared obstacles and scope.** In A-CANN, all three models encountered official returns containing only titles or interface labels, but not necessarily at the same URL. Initial obstacles and later alternative body acquisition are recorded separately; the latter does not establish task completion. This pilot tests recording and scoring implementation, not overall measurement validity. Tasks were not randomly sampled, paired tasks need not be equally difficult, no hardware execution occurred, and a common automated assessor may introduce model-related bias. The historical 52-unit case is not converted into a revised-protocol, multi-model benchmark by this pilot.
-
 ## Limitations and Research Transparency
 
 The case demonstrates how the method distinguishes breakdowns in discovery, content acquisition, and task adequacy. Task records support inspection of scoring rationales and reproduction of the calculations. The results reflect this task set and its retrieval conditions. Stability across models, tool configurations, and retrieval budgets, as well as independent scoring agreement and applicability across ecosystems, requires further evaluation. The supplement provides observation fields, the scoring implementation, task-to-source mappings, calculation discrepancy notes, and summary scripts to support inspection and subsequent applications.
@@ -540,7 +392,7 @@ We define knowledge availability for AI through eleven indicators connecting kno
 The method makes the basis for AI-mediated technical guidance an object of inspection: which source supports a proposed step, which applicability relation remains unresolved, and what additional information is needed. The framework, protocol, and case analysis provide a way to locate these conditions and relate them to knowledge provision and agent feedback. Documentation repairs, source retrieval, and requests for local facts follow from different diagnoses, offering concrete directions for subsequent evaluation.
 
 
-## Appendix A: Historical case scoring calculations {.unnumbered}
+## Appendix A: Scoring calculations {.unnumbered}
 
 **Official material (M1–M4).** M1 first considers the search process: at least two rounds with query refinement scores 2; at least two rounds without refinement scores 3. For a single round, the first official result at rank 1, 2–6, 7–10, or beyond 10 scores 5, 4, 3, or 2, respectively. Grade 1 describes difficulty finding a relevant official source after repeated searches. Under the study’s tool configuration, M2 first considers robots restrictions, then page delivery and observed returns: robots restriction, 1; SPA preventing body retrieval, 2; partial retrieval of task-relevant bodies, 3; retrievable server-rendered body, 4; retrievable static body, 5. Grade 3 means that some targeted body content was obtained while other targeted body content remained technically inaccessible; it does not denote insufficient detail in obtained material or follow automatically from using an alternative entry. M3 is blocked when SPA or robots barriers prevent body acquisition. For acquired content, grade 1 provides no task-specific details, grade 2 only a few task-specific fragments, and grade 3 an overview or a main path without commands/code. A main path with commands/code or a complete reference without them scores 4; a complete reference with them scores 5. Commands/code denotes operational content in the material. For M4, grade 1 lacks version identifiers; grade 2 lists at least three versions but leaves their compatibility unclear. Where version information is assessable, apply these conditions in order: version-irrelevant task or at most one version, 5; official support matrix, 4; identifiable device–framework pairing, 3; at least three versions with unclear compatibility, 2; remaining cases, 3.
 
