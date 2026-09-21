@@ -1,0 +1,260 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cann-deepseek-v4_1-flash-standard-20260921T101651",
+  "process_sha256": "57a2d59bd048bf5c102fa40f39c2ce3b3c9d72e786559a75b3d5a5f09cce50c3",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The first query rank-1 result is a relevant official TorchNPU multi-card training document.",
+      "evidence": [
+        {
+          "event_id": "call_00_qqw6YnnwcsOR4ootB3mq7640.result",
+          "quote": "## 1. [多卡分布式训练-TorchNPU6.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.2,
+      "reason": "The five final official fetches score [2,5,2,5,2]: 6.0.RC1 and both launch-demo URLs returned title/navigation only, while 26.0 multi-GPU and 7.2 multi-node pages returned direct bodies. The ForceInjection and Gitee fetches are third-party and excluded from the official-fetch mean.",
+      "evidence": [
+        {
+          "event_id": "call_00_GdJNp67RpRsG7zs0D2v14982.result",
+          "quote": "**标题**: 多卡分布式训练-启动脚本配置-模型训练适配-迁移适配-PyTorch 训练模型迁移调优指南-TorchNPU6.0.RC1开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_KRCaLL3yNL62SkixdBkS1679.result",
+          "quote": "**标题**: 单机多卡场景-执行训练-模型训练-PyTorch训练模型迁移调优-模型开发-TorchNPU26.0.0开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_01bPdGKSALEIRaCgJZIc3284.result",
+          "quote": "**标题**: 拉起多卡训练脚本示例-附录-PyTorch训练模型迁移调优-模型开发-TorchNPU26.0.0开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_grPkUCwgpENDaZKIkrBm1537.result",
+          "quote": "**标题**: 多机多卡场景-模型脚本与启动脚本配置-环境变量和脚本配置-模型迁移-PyTorch训练模型迁移调优-模型开发-TorchNPU7.2.0开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_0r0ko8XcJhPjXLNHOfkX5457.result",
+          "quote": "**标题**: 拉起多卡训练脚本示例-附录-PyTorch训练模型迁移调优-模型开发-TorchNPU7.2.0开发文档-昇腾社区"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/trainingmigrguide/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/multi_gpu.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/trainingmigrguide/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/launch_multi_gpu_train_demo.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/720/ptmoddevg/trainingmigrguide/PT_LMTMOG_0022.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/720/ptmoddevg/trainingmigrguide/PT_LMTMOG_0074.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The direct official 26.0 and 7.2 bodies cover device binding, HCCL process-group initialization, DDP/sampler integration, HCCL port reservation and network setup, and concrete two-node torchrun commands. The missing title-only 6.0/launch pages do not remove this complete main route.",
+      "evidence": [
+        {
+          "event_id": "call_00_KRCaLL3yNL62SkixdBkS1679.result",
+          "quote": "torch.distributed.init_process_group(backend=\"hccl\",rank=(args.node_rank)*(args.nproc_per_node) + local_rank)"
+        },
+        {
+          "event_id": "call_00_grPkUCwgpENDaZKIkrBm1537.result",
+          "quote": "torchrun --nnodes 2 --node_rank 0 --nproc_per_node 8 --master_addr xxxx --master_port 12345 train_16p_torchrun.py"
+        },
+        {
+          "event_id": "call_00_grPkUCwgpENDaZKIkrBm1537.result",
+          "quote": "HCCL建议使用60000-60015端口，也可以通过环境变量HCCL_IF_BASE_PORT指定Host网卡起始端口"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official pages identify TorchNPU branches and link CANN9 installation, but do not establish complete PyTorch/torch_npu/CANN selection relations. Missing optional torch_npu_run syntax is not the version deduction.",
+      "evidence": [
+        {
+          "event_id": "call_00_KRCaLL3yNL62SkixdBkS1679.result",
+          "quote": "TorchNPU26.0.0开发文档"
+        },
+        {
+          "event_id": "call_00_grPkUCwgpENDaZKIkrBm1537.result",
+          "quote": "TorchNPU7.2.0开发文档"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "After merging blob/raw and same-URL discoveries and excluding identified official-example reproduction, remaining independent content groups stay above the >=6 threshold. Possible official reproduction retained as ownership uncertainty without changing the score.",
+      "evidence": [
+        {
+          "event_id": "call_00_ZannTBg4t4qM3fK0jvf99372.result",
+          "quote": "## 4. [【昇腾】多卡分布式训练-官方例程_分布式_verse_armour ...](https://devpress.csdn.net/v1/article/detail/143303815)\n\n2024年10月29日 · 【昇腾】多卡分布式训练-官方例程 world_size (进程总数)：在分布式训练或并行计算任务中，world_size表示总共 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/143303815\n\n---\n\n## 5. [torch_npu 训练单机多卡示例-CSDN博客](https://blog.csdn.net/weixin_44247104/article/details/144019427)\n\n2024年11月25日 · 设置地址和端口号 在模型脚本中设置地址与端口号，用于拉起分布式训练。 由于昇腾AI处理器初始化进程组 …\n\n**URL:** https://bl"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 1,
+      "reason": "A saved community executable shell example has an unmatched done and NNONES typo; static syntax check fails. This unresolved operational contradiction takes priority1. Other qualified assertions are separately supported or checked unsupported; unsupported does not mean false.",
+      "evidence": [
+        {
+          "event_id": "call_00_dt6dihzouaHAUJkuhu4t6964.result",
+          "quote": "````\n#dist_train_cpu.sh 双机16卡邦核\n```\nCONFIG=$1\nGPUS=$2\n\nNNODES=${NNODES:-2} #NNODES默认为1，几台服务器\nNODE_RANK=${NODE_RANK:-0}  #本机node,第二台为1\nexport ASCEND_SLOG_PRINT_TO_STDOUT=0\nexport HCCL_EXEC_TIMEOUT=0\nexport HCCL_WHITELIST_DISABLE=1\nexport HCCL_IF_IP=10.64.50.51  #本机IP,第二台为10.64.50.52\n\nPORT=${PORT:-29500}\nMASTER_ADDR=${MASTER_ADDR:-\"10.64.60.51\"}\n\nexport PYTHONPATH=\"$(dirname $0)/..\":$PYTHONPATH\n\n# launch core setting\nKERNEL_NUM=$(($(nproc)/GPUS))\n\n# dist env setting\nexport WORLD_SIZE=$((NNODES*GPUS))\nexport MASTER_ADDR=$MASTER_ADDR\nexport MASTER_PORT=$PORT\nLOCAL_RANK_START=$((NODE_RANK*GPUS))\nLOCAL_RANK_END=$((LOCAL_RANK_START+GPUS))\n\nfor((RANK_ID=LOCAL_RANK_START;RANK_ID<LOCAL_RANK_END;RANK_ID++))\ndo\n\texport RANK=$RANK_ID\n\tPID_START=$((KERNEL_NUM*(RANK_ID%GPUS)))\n\tPID_END=$((PID_START+KERNEL_NUM-1))\n        #PID_END=23  #单机单卡邦核\n        echo \"PID_START: $PID_START\"\n        echo \"PID_END: $PID_END\"\n\tnohup taskset -c $PID_START-$PID_END \\\n\tpython3 $(dirname \"$0\")/train.py \\\n\t--config $CONFIG \\\n        --no-validate \\\n        --work-dir work_dist_cpu_8_light \\\n        --seed 0 \\\n\t--launcher pytorch ${@:3} \\  > train_dist_cpu_8_light.log 2>&1 &\ndone\n```\n\n#dist_train_cpu.sh 单机多卡\n```\nCONFIG=$1\nGPUS=$2\n\nNNODES=${NNODES:-2} #NNODES默认为1，几台服务器\nNODE_RANK=${NODE_RANK:-0}\n\nexport ASCEND_SLOG_PRINT_TO_STDOUT=0\nexport HCCL_EXEC_TIMEOUT=0\nexport HCCL_WHITELIST_DISABLE=1\nexport HCCL_IF_IP=10.64.50.51  \n\nPORT=${PORT:-29500}\nMASTER_ADDR=${MASTER_ADDR:-\"10.64.60.51\"}\n\nexport PYTHONPATH=\"$(dirname $0)/..\":$PYTHONPATH\n\nnohup python3 -m torch.distributed.launch \\\n        --nnodes=$NNONES \\\n        --node_rank=$NODE_RANK \\\n        --master_addr=$MASTER_ADDR \\\n        --nproc_per_node=$GPUS \\\n        --master_port=$PORT \\\n        $(dirname \"$0\")/train.py \\\n\t--config $CONFIG \\\n        --no-validate \\\n        --work-dir work_dist_8_light \\\n        --seed 0 \\\n\t--launcher pytorch ${@:3} \\  > train_dist_8_light.log 2>&1 &\ndone\n```\n````"
+        }
+      ]
+    },
+    "M7": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Prior gives supported HCCL initialization, device binding and node0 torchrun methods, but lacks the other-node invocation, DDP/data integration and cluster network setup needed for a full route. Score3 rests on correct fragments and actual omitted steps, not on self-reported uncertainty about optional variables.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "dist.init_process_group(backend=\"hccl\")"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "torchrun --nnodes=2 --node_rank=0 --nproc_per_node=8"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "多机是否必须提供 rank table、具体变量名和取值，我**不确定**"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Four WebSearch and eight WebFetch dispatches were recorded (C=12).",
+      "event_refs": [
+        "call_00_qqw6YnnwcsOR4ootB3mq7640.dispatch",
+        "call_00_GdJNp67RpRsG7zs0D2v14982.dispatch",
+        "call_00_suxkUMp5vkBHwEthOBYB0176.dispatch",
+        "call_00_bLHnFNmo6qrxGGNCcuyp4592.dispatch",
+        "call_00_TRAWb7Wfo2wsLw5LKp7Y3140.dispatch",
+        "call_00_dt6dihzouaHAUJkuhu4t6964.dispatch",
+        "call_00_fHyGFc0X0KnNEy9at6iL0030.dispatch",
+        "call_00_KRCaLL3yNL62SkixdBkS1679.dispatch",
+        "call_00_01bPdGKSALEIRaCgJZIc3284.dispatch",
+        "call_00_ZannTBg4t4qM3fK0jvf99372.dispatch",
+        "call_00_grPkUCwgpENDaZKIkrBm1537.dispatch",
+        "call_00_0r0ko8XcJhPjXLNHOfkX5457.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final identifies selected official branches and a third-party environment, but does not establish the required PyTorch/torch_npu/CANN compatibility relationship for its main torchrun route.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "官方文档版本：多机多卡页为 **TorchNPU 7.2.0**；单机多卡页为 **TorchNPU 26.0.0**；另一入口为 **6.0.RC1**；安装链接指向 **CANN 9.0.0**（商用版/社区版）"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "版本配套矩阵**（CANN / torch_npu / PyTorch 精确对应）：仅见文档版本号与第三方实测组合，未取得官方配套表。"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final provides concrete initialization, DDP/sampler and torchrun commands, but needs content fixes in the final itself: its multi-node sampler uses local devices_per_node/local_rank instead of global WORLD_SIZE/RANK, and the core snippet leaves required training objects implicit. The displayed shell block’s corrected syntax is not downgraded from raw Gitee defects; the official init/set_device ordering is not counted as an error.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "train_sampler = DistributedSampler(train_dataset, num_replicas=devices_per_node, rank=local_rank_idx)\n    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, sampler=train_sampler)\n\n    model = DDP(model)          # 封装为 DDP，backward 自动做梯度 AllReduce\n\n    for epoch in range(args.epochs):\n        train_sampler.set_epoch(epoch)\n        model.train()\n        for inputs, labels in train_dataloader:\n            inputs, labels = inputs.to(device_id), labels.to(device_id)\n            outputs = model(inputs); loss = criterion(outputs, labels)\n            optimizer.zero_grad(); loss.backward(); optimizer.step()\n    cleanup()\n```\n要点：\n- 多机时 `init_process_group` 的 `rank` **必须用全局 `os.environ[\"RANK\"]`**（官方单机页示例用 `rank=local_rank_idx`，多机不可照搬）。\n- 绑定用 `torch_npu.npu.set_device(local_rank)`（或 `torch.npu.set_device`）。\n- `DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank)` 为官方另一写法。\n\n## 4. 启动方式\n官方给出 **5 种**拉起方式：shell 脚本、`mp.spawn`、`torch.distributed.launch`"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "world_size = int(os.environ[\"WORLD_SIZE\"])\n    global_rank_idx = int(os.environ[\"RANK\"])\n    local_rank_idx = int(os.environ[\"LOCAL_RANK\"])\n\n    devices_per_node = torch.npu.device_count()\n\n    # 初始化进程组，通信方式设为 hccl\n    dist.init_process_group(\"hccl\", rank=global_rank_idx,\n                            world_size=world_size,\n                            timeout=timedelta(minutes=30))\n\n    # 绑定当前进程所在 NPU\n    torch_npu.npu.set_device(local_rank_idx)\n    device_id = f\"npu:{local_rank_idx}\"\n    model = ToyModel().to(device_id)\n\n    train_sampler = DistributedSampler(train_dataset, num_replicas=devices_per_node, rank=local_rank_idx)\n    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, sampler=train_sampler)\n\n    model = DDP(model)          # 封装为 DDP，backward 自动做梯度 AllReduce\n\n    for epoch in range(args.epochs):\n        train_sampler.set_epoch(epoch)\n        model.train()\n "
+        },
+        {
+          "event_id": "run-end",
+          "quote": "# 注意：该原文有 NNONES 拼写错误与多余反斜杠，不能直接照抄\n```\n（用 `mp.spawn` 方式时，由 `mp.spawn(fn, args=(world_size,), nprocs=world_size, join=True)` 拉起，`fn` 内读 local_rank 并 `set_device`。）\n\n## 5. 涉及的环境变量\n- 官方明确：`HCCL_IF_BASE_PORT`（Host 网卡起始端口）、`RANK` / `WORLD_SIZE` / `LOCAL_RANK`（torchrun 自动注入）、`ASCEND_RT_VISIBLE_DEVICES`（可见卡）。\n- 社区脚本补充（**非官方正文，未核实**）：`HCCL_IF_IP`、`HCCL_WHITELIST_DISABLE`、`HCCL_EXEC_TIMEOUT`、`ASCEND_SLOG_PRINT_TO_STDOUT`。\n- 官方 7.2.0 多机页 **未提及 `RANK_TABLE_FILE`**：torchrun 路线靠 `--master_addr/--master_port` + device IP（hccn_tool）组网，不需要 rank table（`RANK_TABLE_FILE` 属于更旧/其他启动路线，本轮未在官方正文中确认）。\n\n## 6. 版本信息\n- 官方文档版本：多机多卡页为 **TorchNPU 7.2.0**；单机多卡页为 **TorchNPU 26.0.0**；另一入口为 **6.0.RC1**；安装链接指向 **CANN 9.0.0**（商"
+        }
+      ]
+    },
+    "M11": {
+      "status": "scored",
+      "score": 71.633408,
+      "reason": "Calculated from adjudicated M1–M8 points; composite index, not probability.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "observations": {
+    "evidence_boundary": "Fixed packet only.",
+    "m2_official_document_scores": [
+      2,
+      5,
+      2,
+      5,
+      2
+    ],
+    "m5_possible_counts": [
+      12
+    ],
+    "m3_coverage": [
+      "Direct official 26.0 single/multi-GPU and 7.2 multi-node bodies cover initialization, HCCL port/network prerequisites and torchrun startup."
+    ],
+    "channel_states": {
+      "third_party": "Twelve relevant independent URLs/groups, with the Gitee blob and raw endpoints merged as the same saved script content; official Ascend repository excluded.",
+      "execution": "No local training run; content checks only."
+    }
+  }
+}

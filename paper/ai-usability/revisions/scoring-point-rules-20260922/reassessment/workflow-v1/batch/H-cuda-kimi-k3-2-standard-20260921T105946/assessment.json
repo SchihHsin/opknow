@@ -1,0 +1,219 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "H-cuda-kimi-k3-2-standard-20260921T105946",
+  "process_sha256": "a98f535d375b79b324de42fc176d2bee20f99b6be413f9c51d5393fc5c02e9e1",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Fixed-packet semantic adjudication with task-specific migration/quantization/compatibility scope.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_58e6050b.result",
+          "quote": "# Search Results for \"TensorRT INT8 calibration official documentation IInt8EntropyCalibrator2\""
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.75,
+      "reason": "Four official targets: API navigation/index only2, EntropyCalibrator2 body5, Polygraphy README5, explicitly reorganized chapter analysis3. Mean15/4; the tool calling its analysis complete does not make it direct body.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_4a8ef62c.result",
+          "quote": "# Int8[¶](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/pyInt8.html#int8 \"Permalink to this heading\")\n\n- [IInt8Calibrator](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/Calibrator.html)\n  \n  - [`CalibrationAlgoT"
+        },
+        {
+          "event_id": "WebFetch_6_ab34d6d5.result",
+          "quote": "# TensorRT《Working with Quantized Types》章节分析\n\n**内容概览**：所提供的内容覆盖该章节的完整结构，从量化入门、显式/隐式量化、量化粒度、动态量化、量化方案（INT8/FP8/MXFP8/INT4/NVFP4）到 INT8 校准与量化噪声抑制。以下按您的 4 个需求点整理，文末附**截断与缺失说明**（特别注意：第 3 点\"compute capability 硬件要求\"在所给内容中**不存在**，见下"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/pyInt8.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/EntropyCalibrator2.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/NVIDIA/TensorRT/blob/main/tools/Polygraphy/examples/api/04_int8_calibration_in_tensorrt/README.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-quantized-types.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Calibration data/callback/cache and builder configuration are explained, but saved official material does not give full ONNX parsing/network builder setup plus inference buffer/execution path. Polygraphy README points to unfetched example.py. Main deployment steps remain outside captured content.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_12c33042.result",
+          "quote": "2. Run the example:\n\n    ```bash\n    python3 example.py\n    ```\n\n3. The first time you run the example, it will create a calibration cache\n    called `identity-calib.cache`. If you run the example again, you should see that\n    it now uses the cache instead of running calibration again:\n\n    ```bash\n    python3 exampl"
+        },
+        {
+          "event_id": "WebFetch_6_ab34d6d5.result",
+          "quote": "### 1.7 INT8 Calibration — Python 实现步骤\n\n```python\n# 1. 导入 TensorRT\nimport tensorrt as trt\n\n# 2. 构建校准数据集（应代表整体推理数据），创建 batchstream 对象\nNUM_IMAGES_PER_BATCH = 5\nbatchstream = ImageBatchStream(NUM_IMAGES_PER_BATCH, calibration_files)\n\n# 3. 以输入节点名和 batchstream 创建 Int8_calibrator 对象\nInt8_calibrator = EntropyCalibrator([\"input_node_name\"], batchstream)\n\n# 4. 设置 INT8 模式和 INT8 校准器\nconfig.set_flag(trt.BuilderFlag.INT8)\nconfig.int8_calibrator = Int8_calibrator\n```\n\n### 1.8 量化噪声抑制（Quantization Noise Reduction，仅隐式量化）\n\nTensorRT 会强制靠近网络输出的部分层以 FP32 运行（即使有更快的 INT8 实现），"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "TensorRT10.16.1 API and10.1 deprecation/strong-type transition are documented; applicable CUDA/GPU support relation is missing from captured bodies.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_25df1648.result",
+          "quote": "[DEPRECATED] Deprecated in TensorRT 10.1."
+        },
+        {
+          "event_id": "WebFetch_6_ab34d6d5.result",
+          "quote": "无任何 compute capability / SM 版本要求"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Six or seven independent groups after same-URL dedup and allowing issue/forum cross-post uncertainty. Distinct zmurder pages and distinct Zhihu authors are not merged merely by domain/topic; official guide translation excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_7_a6ea8c6d.result",
+          "quote": "## 1. [tensorrt官方int8量化方法汇总 - 知乎](https://zhuanlan.zhihu.com/p/648877516)\n\n2023年8月9日 · 精度损失很大，不建议直接采用； trtexec 有提供 --calib=接口进行校正，但需要对中间特征进行cache文件保存，比较 …\n\n**URL:** https://zhuanlan.zhihu.com/p/648877516\n\n---\n\n## 2. [【TensoRRT】如何使用trtexec.exe进行INT8量化 - CSDN博客](https://blog.csdn.net/a8039974/article/details/148191616)\n\n2025年6月19日 · 以下是使用 trtexec.exe 进行 INT8 量化的详细步骤及注意事项，结合多个实践场景和技术文档整理而成： 一、INT8  …\n\n**URL:** https://blog.csdn.net/a8039974/article/details/148191616\n\n---\n\n## 3. [Calibration file - 奔跑的IC](https://zmurder.github.io/TensorRT/Calibration%20file/)\n\n2024年12月1日 · 1 简介我们在使用Tensorrt的隐形量化时，需要生成一个cache文件，用于onnx生成engine文件使用。 如果我们使 …\n\n**URL:** https://zmurder.github.io/TensorRT/Calibration%20file/\n\n---\n\n## 4. [TensorRT INT8量化代码 | 奔跑的IC](https://zmurder.github.io/TensorRT/TensorRT%20INT8%E9%87%8F%E5%8C%96%E4%BB%A3%E7%A0%81/)\n\n2024年12月1日 · 上面指定的 --calib=calibratorfile_test.txt 是需要我们自己生成的，使用我们自己的数据集，在build engine阶 …\n\n**URL:** https://zmurder.github.io/TensorRT/TensorRT%20INT8%E9%87%8F%E5%8C%96%E4%BB%A3%E7%A0%81/\n\n---\n\n## 5. [基于tensorRT的int8量化及校准-quick start - 知乎](https://zhuanlan.zhihu.com/p/657031581)\n\n2023年9月24日 · 记录个人在做trt模型量化时的一些学习记录，这里不深究理论，仅提供一些方法或思路： 传统方法：trtexec 命令行 …\n\n**URL:** https://zhuanlan.zhihu.com/p/657031581\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        },
+        {
+          "event_id": "WebSearch_5_495b222b.result",
+          "quote": "## 1. [INT8EntropyCalibrator2 implicit quantization superseded by explicit ...](https://github.com/NVIDIA/TensorRT/issues/4095)\n\n2024年8月23日 · The warning I’ve been getting starting with TensorRT 10.1 is that the INT8 Entropy Calibrator 2 implicit quantization …\n\n**URL:** https://github.com/NVIDIA/TensorRT/issues/4095\n\n---\n\n## 2. [Migrating from Weak Typing to Strong Typing — NVIDIA TensorRT](https://docs.nvidia.com/deeplear"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "TensorRT10.1 warning is supported by official deprecation. Specific trtexec --calib interface and mandatory ONNX-cache workflow are not fully supported by generic optional cache reuse documentation; retain qualified assertions as checked unsupported, not false.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_5_495b222b.result",
+          "quote": "The warning I’ve been getting starting with TensorRT 10.1 is that the INT8 Entropy Calibrator 2 implicit quantization"
+        },
+        {
+          "event_id": "WebSearch_7_a6ea8c6d.result",
+          "quote": "trtexec 有提供 --calib=接口进行校正，但需要对中间特征进行cache文件保存"
+        },
+        {
+          "event_id": "WebSearch_7_a6ea8c6d.result",
+          "quote": "我们在使用Tensorrt的隐形量化时，需要生成一个cache文件，用于onnx生成engine文件使用"
+        },
+        {
+          "event_id": "WebSearch_7_a6ea8c6d.result",
+          "quote": "上面指定的 --calib=calibratorfile_test.txt 是需要我们自己生成的，使用我们自己的数据集"
+        }
+      ]
+    },
+    "M7": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Prior prescribes Python read_calibration_cache(length), contradicted by the captured self-only method and callback example. This is a key method-signature error in the requested calibration procedure, not merely an unverified version detail. Its general per-tensor weight statement also omits documented convolution/FC per-channel behavior.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "read_calibration_cache(length)"
+        },
+        {
+          "event_id": "WebFetch_2_25df1648.result",
+          "quote": "def read_calibration_cache(self):\n    # If there is a cache, use it instead of calibrating again. Otherwise, implicitly return None.\n    if os.path.exists(self.cache_file):\n        with open(self.cache_file, \"rb\") as f:\n            return f"
+        },
+        {
+          "event_id": "WebFetch_6_ab34d6d5.result",
+          "quote": "卷积/反卷积/全连接为 per-channel"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Actual recorded dispatches are4 searches+4 fetches=8; final self-reported3 fetches is not used.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_4a8ef62c.result",
+          "quote": "**标题**: Int8 - NVIDIA TensorRT"
+        }
+      ],
+      "event_refs": []
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final selects10.16.1 API and10.1 deprecation boundary but leaves CUDA/GPU applicable version relationship unverified; broad <=10.x route is not a full stack lock.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "Python API 文档版本 **10.16.1**；弃用时间点 **TensorRT 10.1**；迁移目标 **TensorRT 11.x**（官方另有 \"Migrating from Weak Typing to Strong Typing\" 迁移指南）。硬件要求（compute capability 数值）本"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Specific calibration class exists, but batch_stream is an undefined custom object requiring iterator/batch_size/nbytes/preprocessing implementation; builder/network/config creation and ONNX parsing are absent. Deployment stops at context creation with buffer/execution calls only in comments. These need code/step additions, not just environment substitution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "self.device_input = cuda.mem_alloc(batch_stream.nbytes)"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "engine_bytes = builder.build_serialized_network(network, config)"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "# 分配 host/device buffer，enqueueV3/execute_async_v2 推理"
+        }
+      ]
+    },
+    "M11": {
+      "status": "scored",
+      "score": 68.16127999999999,
+      "reason": "Computed from adjudicated point inputs, full arithmetic precision retained.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  }
+}
