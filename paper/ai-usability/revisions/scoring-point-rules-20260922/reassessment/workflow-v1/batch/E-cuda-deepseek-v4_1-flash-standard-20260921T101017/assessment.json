@@ -1,0 +1,270 @@
+{
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_00_RMUfhzPMu5rRLwNm07Gx8689.result",
+          "quote": "## 4. [Compute Sanitizer - NVIDIA Documentation Hub](https://docs.nvidia.com/compute-sanitizer/index.html)"
+        }
+      ],
+      "reason": "首次相关官方结果在第3次查询第4位。",
+      "score": 2,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "PYTORCH_USE_CUDA_DSA=1 PYTORCH_CUDA_DSA_STACKTRACING=1 CUDA_LAUNCH_BLOCKING=1 python train.py\n```\n\n（版本注意见第"
+        },
+        {
+          "event_id": "call_00_k8cpNJs1fenFYCVr6b0g6817.result",
+          "quote": "if (launch_registry.gather_launch_stacktrace) {\n          oss << \"Launch stacktracing disabled.\" << std::endl;\n        } else {\n          oss << '\\n' << launch_info.launch_stacktrace << std::endl;\n        }\n      } else {\n        oss << \"  CPU launch site info"
+        }
+      ],
+      "reason": "Concrete commands supplied, but saved code prints Launch stacktracing disabled when gather_launch_stacktrace is true, conflicting with the final promise that enabling PYTORCH_CUDA_DSA_STACKTRACING shows the CPU launch stack. Resolve or qualify this behavior. TORCH_DSA_KERNEL_LAUNCH limitation is already stated. Lack of execution is separately recorded, not a deduction.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Calculated from corrected adjudicated M1–M8 point inputs; not a probability.",
+      "score": 62.565888,
+      "status": "scored"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/compute-sanitizer/index.html",
+          "observations": {
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+          "observations": {
+            "representation": "excerpt",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://pytorch.org/docs/stable/notes/cuda.html",
+          "observations": {
+            "representation": "excerpt",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.cpp",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.h",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.cpp",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.h",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/v1.13.0/c10/cuda/CUDADeviceAssertionHost.cpp",
+          "observations": {
+            "representation": "error",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 1,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_00_FHZRUBOtUIe7IMYOKnct2762.result",
+          "quote": "# Compute Sanitizer"
+        },
+        {
+          "event_id": "call_00_J2pb5EIrEIhYC2Pvvlfb7243.result",
+          "quote": "# Compute Sanitizer — Extracted Content"
+        },
+        {
+          "event_id": "call_00_JwGrEwT35h3UtXrzqCGU8024.result",
+          "quote": "404: Not Found"
+        }
+      ],
+      "reason": "按八个官方fetch最终表示计分：[2,3,3,5,5,5,5,1]：入口页仅标题/导航，两个提取返回是excerpt（第二页明确为组织化Extracted Content），PyTorch CUDA页也是分析性摘录，四个源码返回正文，1.13.0路径为404。",
+      "score": 3.625,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_00_DZSQHjIKyaFSAwggTEiv6360.result",
+          "quote": "You can force synchronous computation by setting environment variable `CUDA_LAUNCH_BLOCKING=1`. This can be handy when an error occurs on the GPU. (With asynchronous execution, such an error isn't reported until after the operation is actually executed, so the stack trace does no"
+        },
+        {
+          "event_id": "call_00_J2pb5EIrEIhYC2Pvvlfb7243.result",
+          "quote": "## 8. Locating Which Kernel Failed / Error Attribution\n\n### Identifying the failing kernel\n\n- **`dump-kernel-launches`** (default disabled): \"Dumps information for all kernel launches including name, launch number, dimensions, stream, and host backtrace. Both filtered and unfiltered launches are reported with indication of filter status.\"\n- Every kernel report includes the **kernel name and instruction offset** (and file/line if compiled with line info). Example from memcheck:\n  ```\n  ========= Invalid __global__ write of size 4 bytes\n  =========     at unaligned_kernel():0x160 in memcheck_demo.cu:6\n  =========     by thread (0,0,0) in block (0,0,0)\n  =========     Address 0x7f6510c00001 is misaligned\n  ```\n  The second line contains \"the CUDA kernel name, offset of the instruction, the source file and line number (if available).\"\n- **Thread/block attribution:** the third line contains the thread indices and block indices where the error was hit.\n\n### `launch-skip` / `launch-count`\n\n- `--launch-skip {number}` (default 0): \"Set the number of kernel launches to skip before starting to check. The count is only incremented for launches that match the kernel filters.\"\n- `--launch-count {number}` (default 0): \"Limit the number of kernel launches to check. The count is only incremented for launches that ma"
+        },
+        {
+          "event_id": "call_00_k8cpNJs1fenFYCVr6b0g6817.result",
+          "quote": "GPU assertion failure message = \" << self.assertion_msg\n          << std::endl;\n      oss << \"  File containing assertion = \" << self.filename << ':'\n          << self.line_number << std::endl;\n      oss << \"  Device function containing assertion = \" << self.function_name\n          << std::endl;\n      oss << \"  Thread ID that failed assertion = [\" << self.thread_id[0] << ','\n          << self.thread_id[1] << ',' << self.thread_id[2] << ']' << std::endl;\n      oss << \"  Block ID that failed assertion = [\" << self.block_id[0] << ','\n          << self.block_id[1] << ',' << self.block_id[2] << ']' << std::endl;\n      if (launch_info.generation_number == self.caller) {\n        oss << \"  File containing kernel launch = \"\n            << launch_info.launch_filename << ':' << launch_info.launch_lin"
+        }
+      ],
+      "reason": "Official extracts and source bodies together cover blocking to localize the caller, memcheck invocation/filtering/line info, DSA file/line/kernel launch reporting and instrumentation/hardware limitations. Coverage is based on content, not a claim that the fetched extracts were full pages.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_00_J2pb5EIrEIhYC2Pvvlfb7243.result",
+          "quote": "The PTX compiler and compute-sanitizer must be from the same CUDA toolkit version"
+        },
+        {
+          "event_id": "call_00_k8cpNJs1fenFYCVr6b0g6817.result",
+          "quote": "return env_flag_set(\"PYTORCH_USE_CUDA_DSA\");"
+        }
+      ],
+      "reason": "已取得CUDA toolkit匹配、PyTorch运行时变量与当前源码条件，但DSA变量改名/引入版本和完整软件组合未锁定。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_00_HtJkwNYqaKBD592sQMj99454.result",
+          "quote": "## 1. [解决PyTorch中的RuntimeError: CUDA error: device-side ..."
+        },
+        {
+          "event_id": "call_00_HtJkwNYqaKBD592sQMj99454.result",
+          "quote": "## 2. [解决PyTorch中的RuntimeError: CUDA error: device-side ..."
+        },
+        {
+          "event_id": "call_00_RMUfhzPMu5rRLwNm07Gx8689.result",
+          "quote": "## 1. [CUDA error: device-side assert triggered的其中一个解决方法 ..."
+        }
+      ],
+      "reason": "Distinct articles kept separate regardless of shared domain/topic. Only qq420/Tencent2469157 identical-title reproduction candidate enumerated; repeat URLs merge. All counts>=6.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_00_HtJkwNYqaKBD592sQMj99454.result",
+          "quote": "通过设置环境变量CUDA_LAUNCH_BLOCKING=1，可以使CUDA操作同步执行"
+        },
+        {
+          "event_id": "call_00_RMUfhzPMu5rRLwNm07Gx8689.result",
+          "quote": "摘要：CUDA内核运行时触发assert失败但未立即暴露，可能在后续NCCL通信中才显现。"
+        },
+        {
+          "event_id": "call_00_DZSQHjIKyaFSAwggTEiv6360.result",
+          "quote": "You can force synchronous computation by setting environment variable `CUDA_LAUNCH_BLOCKING=1`. This can be handy when an error occurs on the GPU."
+        }
+      ],
+      "reason": "Complete synchronization, GPU assertion and CPU/GPU async-stack claims checked against official semantics and DSA code. NCCL-specific later manifestation lacks packet support. Midword continuations and tutorial promises excluded without completing them; all identifiable technical clauses covered.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "TORCH_USE_CUDA_DSA=1 CUDA_LAUNCH_BLOCKING=1 python train.py"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "据我记忆，PyTorch 若以 `USE_CUDA_DSA=1` 编译，开启该环境变量后，device-side assert 会打印出错设备代码的 `file:line`"
+        },
+        {
+          "event_id": "call_00_k8cpNJs1fenFYCVr6b0g6817.result",
+          "quote": "return env_flag_set(\"PYTORCH_USE_CUDA_DSA\");"
+        }
+      ],
+      "reason": "先验给出CUDA_LAUNCH_BLOCKING和sanitizer等正确片段，但把TORCH_USE_CUDA_DSA=1说成运行时开关；固定包当前源码直接读取PYTORCH_USE_CUDA_DSA，因此该关键定位方法错误，按关键主张被可靠证据否定计1。",
+      "score": 1,
+      "status": "scored"
+    },
+    "M8": {
+      "event_refs": [
+        "call_00_HtJkwNYqaKBD592sQMj99454.dispatch",
+        "call_00_yqdOb3iLyxjIsavK7ztK4011.dispatch",
+        "call_00_RMUfhzPMu5rRLwNm07Gx8689.dispatch",
+        "call_00_FHZRUBOtUIe7IMYOKnct2762.dispatch",
+        "call_00_J2pb5EIrEIhYC2Pvvlfb7243.dispatch",
+        "call_00_Lrnv45WMrikbnZCMZFKN9114.dispatch",
+        "call_00_DZSQHjIKyaFSAwggTEiv6360.dispatch",
+        "call_00_qmvYCsw4RMry6HKzw4w75360.dispatch",
+        "call_00_Xe5AWgpm59mqSfOggaxv4659.dispatch",
+        "call_00_k8cpNJs1fenFYCVr6b0g6817.dispatch",
+        "call_00_nkZS2eaKx4GUU5z9WH5e1914.dispatch",
+        "call_00_JwGrEwT35h3UtXrzqCGU8024.dispatch"
+      ],
+      "reason": "4搜索+8抓取=12。",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "**DSA 运行时环境变量重命名/自动编译标志的确切引入版本未核实**"
+        }
+      ],
+      "reason": "最终答案给出CUDA toolkit匹配与DSA当前main条件，但变量重命名引入版本和wheel构建配置未核实。",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {
+    "evidence_boundary": "Fixed packet only.",
+    "m5_possible_counts": [
+      15,
+      16
+    ],
+    "m7_critical_error": "Prior TORCH_USE_CUDA_DSA runtime claim is directly contradicted by the saved current-source PYTORCH_USE_CUDA_DSA read."
+  },
+  "process_sha256": "8537ac79504cef182957dce3dfd24e828456154b31e7cc5caafcef9a6578a484",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "E-cuda-deepseek-v4_1-flash-standard-20260921T101017"
+}

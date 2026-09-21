@@ -1,0 +1,325 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "E-cann-deepseek-v4_1-flash-standard-20260921T100749",
+  "process_sha256": "a06943a08bf0c7cf07b684618eb08b0146781c750063101f183c8a39056b6e21",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The first query returned a relevant official hiascend troubleshooting result at rank 1.",
+      "evidence": [
+        {
+          "event_id": "call_00_nJf4wT4hiqUpDRxhFipo3066.result",
+          "quote": "## 1. [Locating Process Interruption Faults](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/900/maintenref/troubleshooting/troubleshooting_0062.html)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.0,
+      "reason": "The eight final official fetch representations score [2,5,5,1,2,2,2,5]; the 0060 request returned a 0061 phenomenon page and therefore scores 1 as a wrong target.",
+      "evidence": [
+        {
+          "event_id": "call_00_aV03lrJ3cmtzcKe5zn5Y4447.result",
+          "quote": "**标题**: Locating Process Interruption Faults-Process Interruption Fault Locating-Typical Faults-Troubleshooting-References-CANN9.0.X开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_El06dthQm9SAzxX9v6BG3013.result",
+          "quote": "**标题**: 收集AI Core Error问题信息-AI Core Error问题定位专题-典型故障专题-故障处理-参考-CANN商用版8.5.0开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_lVhb7tpqCFwDkC1GARW72057.result",
+          "quote": "**标题**: 进程中断问题现象描述-进程中断问题定位专题-典型故障专题-故障处理-维护参考-CANN商用版8.0.RC3开发文档-昇腾社区"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/en/CANNCommunityEdition/900/maintenref/troubleshooting/troubleshooting_0062.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/850/maintenref/troubleshooting/troubleshooting_0006.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta1/maintenref/troubleshooting/troubleshooting_0007.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/developmentguide/maintenref/troubleshooting/troubleshooting_0060.html",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "body",
+            "target_match": "mismatched",
+            "returned_title": "troubleshooting_0061 phenomenon description",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/troubleshooting/troubleshooting_0062.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/maintenref/troubleshooting/troubleshooting_0062.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/850/maintenref/troubleshooting/troubleshooting_0062.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/850/maintenref/troubleshooting/troubleshooting_0005.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Direct official bodies provide a detailed AI Core collection/diagnostic route, msnpureport export, RAS/NPU/software branches and msaicerr constraints. The generic process-interruption first-error/API/task route is available only as a search excerpt, while several linked environment/tool prerequisite pages were not directly fetched; a complete main route still needs those pieces.",
+      "evidence": [
+        {
+          "event_id": "call_00_El06dthQm9SAzxX9v6BG3013.result",
+          "quote": "在Host侧以root用户运行msnpureport工具"
+        },
+        {
+          "event_id": "call_00_1QbTBhWNSxsZ50945lYL6779.result",
+          "quote": "从收集的日志中，在slog/dev-os-*id*/run/event/event_*.log中找到发生AI Core Error问题附近时间、对应Device的系统日志，检查日志中是否存在“event_id”关键字"
+        },
+        {
+          "event_id": "call_00_pRGzidMPoWLw4aogCYJF9229.result",
+          "quote": "python3 msaicerr.py -p ${HOME}/aic_err_info_timestamp -out $HOME/result"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The packet identifies versioned CANN branches and some tool relationships, but no single official rule resolves the selected branch or locks msnpureport/msaicerr/asys/ascend-dmi pairings for the user environment.",
+      "evidence": [
+        {
+          "event_id": "call_00_El06dthQm9SAzxX9v6BG3013.result",
+          "quote": "**标题**: 收集AI Core Error问题信息-AI Core Error问题定位专题-典型故障专题-故障处理-参考-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www"
+        },
+        {
+          "event_id": "call_00_pRGzidMPoWLw4aogCYJF9229.result",
+          "quote": "**标题**: 使用msaicerr工具分析AI Core Error问题-AI Core Error问题定位专题-典型故障专题-故障处理-参考-CANN9.2.0-beta.1开发文档-昇腾社区\n\n[](https:/"
+        },
+        {
+          "event_id": "call_00_1QbTBhWNSxsZ50945lYL6779.result",
+          "quote": "ascend-dmi工具在MindCluster ToolBox软件包中，该软件与CANN的配套关系请单击[Link](https://www.hiascend.com/developer/download/community/result?module=dl%2Bcann)查询，ascend-dmi工具的安装及详细使用指导请参见[Link](https://hiascend.com/document/redirect/mindxdl-ascenddmiug)。\n3. [](https://ww"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Four relevant independent third-party groups remain after deduplication: gitblog msaicerr, xiaoqi oam-tools, devpress CANN debugging, and mhpn Runtime guide. The pillumina pages reproduce official troubleshooting entries and are classified as official reproductions.",
+      "evidence": [
+        {
+          "event_id": "call_00_vbR7jCL3Q22aJuOEV3xa7288.result",
+          "quote": "## 3. [msaicerr 环境检查指南：使用内置算子样例验证 CANN 软 ...](https://blog.csdn.net/gitblog_00923/article/details/165888827)"
+        },
+        {
+          "event_id": "call_00_vbR7jCL3Q22aJuOEV3xa7288.result",
+          "quote": "## 5. [CANN oam-tools昇腾集群智能运维工具从零到一入门实战 ...](https://blog.csdn.net/xiaoqi922/article/details/162077287)"
+        },
+        {
+          "event_id": "call_00_yMmCIvi9CIB2gnzsU9Wr3988.result",
+          "quote": "## 4. [CANN调试与性能分析实战：从日志诊断到瓶颈定位的全链路 ...](https://devpress.csdn.net/v1/article/detail/157814859)"
+        },
+        {
+          "event_id": "call_00_yMmCIvi9CIB2gnzsU9Wr3988.result",
+          "quote": "## 5. [CANN Runtime错误排查完全指南：错误码解读、异步错误 ...](http://www.mhpn.cn/news/1982662)"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Complete visible built-in-sample/environment check statement is supported by official msaicerr output. The exact src placement/asys role statement was checked but lacks sufficient support for the full assertion. The undefined two-class framing and generic article introductions are excluded as incomplete or nontechnical.",
+      "evidence": [
+        {
+          "event_id": "call_00_vbR7jCL3Q22aJuOEV3xa7288.result",
+          "quote": "3 天之前 · msaicerr 环境检查指南：使用内置算子样例验证 CANN 软硬件环境 【免费下载链接】oam-tools本项目为开发者提供故障定 …\n\n**URL:** https://blog"
+        },
+        {
+          "event_id": "call_00_pRGzidMPoWLw4aogCYJF9229.result",
+          "quote": "Failed to execute the built-in sample operator. Check the environment.\n   \n   环境异常。\n   \n   [系统环境/硬件问"
+        },
+        {
+          "event_id": "call_00_vbR7jCL3Q22aJuOEV3xa7288.result",
+          "quote": "整个工具链的核心模块分布在src目录下，包括负责故障信息收集与诊断的asys、专注AI Core错误深度解析 …\n\n**URL:** htt"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Correct log-export and first-error method fragments are supported, but the prior also prescribes msnpureport -g error -d 0 as an export method and gives a general 9999 suffix interpretation. Their exact parameter/meaning correctness is not established in this fixed packet. These are key diagnostic assertions that could change the result from correct fragments to a key-error grade; self-reported uncertainty is neither a deduction nor verification.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "1. 昇腾（Ascend）/CANN 的错误码通常不是根因，而是\"症状码\"。`EZ9999` 这类 `E?9999` 形式的码多为某一模块的通用/兜底错误（末位 9999 表示该模块的通用错误），真正的根因一般出现在同一次运行的更早日志或某个下位错误码里。\n2. 定位根因的一般思路：\n   - 打开宿主侧与 Device 侧日志：宿主侧一般在 `~/"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "用 `msnpureport` 导出并解析：例如 `msnpureport -g error -d 0`、`msnpureport -f`（full）等，产出可读的 `plog`/`slog`。\n   - 调整日志级别："
+        },
+        {
+          "event_id": "call_00_El06dthQm9SAzxX9v6BG3013.result",
+          "quote": "msnpureport -f\n     \n     # 移动日志"
+        }
+      ],
+      "observations": {
+        "missing_facts": [
+          "Applicable msnpureport -g/-d semantics for the prior prescription",
+          "Reliable scope of the asserted 9999 suffix rule"
+        ]
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Four WebSearch and eight WebFetch dispatches were recorded (C=12).",
+      "event_refs": [
+        "call_00_nJf4wT4hiqUpDRxhFipo3066.dispatch",
+        "call_00_aV03lrJ3cmtzcKe5zn5Y4447.dispatch",
+        "call_00_El06dthQm9SAzxX9v6BG3013.dispatch",
+        "call_00_vbR7jCL3Q22aJuOEV3xa7288.dispatch",
+        "call_00_pRGzidMPoWLw4aogCYJF9229.dispatch",
+        "call_00_lVhb7tpqCFwDkC1GARW72057.dispatch",
+        "call_00_yMmCIvi9CIB2gnzsU9Wr3988.dispatch",
+        "call_00_j6Vl0PpzhLF6Ckwv7QtC2018.dispatch",
+        "call_00_PWIVbzI7yHqrFuB0uhsc6791.dispatch",
+        "call_00_7MLjiGXT0S7oMbTV4Oei7988.dispatch",
+        "call_00_YfGx4jfFxPpD1zt3wMLK3027.dispatch",
+        "call_00_1QbTBhWNSxsZ50945lYL6779.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final answer lists versioned CANN document branches and tells the user to select the matching branch, but does not lock a concrete applicable version/range for msnpureport, msaicerr, asys or ascend-dmi pairings.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "本主题的文档是**按 CANN 版本分册**的，各页路径含版本号，例如："
+        },
+        {
+          "event_id": "run-end",
+          "quote": "操作前先确认现场的 `CANN` 版本（如 `cat /usr/local/Ascend/ascend-toolkit/latest/version.cfg` 或 `ascend-toolkit/latest` 软链指向），再选对应分册；`msaicerr` 位于 `${Toolkit包安装路径}/tools/msaicerr`，`asys`/`ascend-dmi` 属 MindCluster ToolBox，与 CANN 有**独立配套关系**，需要另行确认。"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Concrete diagnostic route needs content correction: [run|debug] in executable glob does not select the run/debug directories; grep|head does not order errors across files by time; the manual collection route omits moving/checking all required plog/dump/operator files into msaicerr input. The final already discloses that the Error Code Reference absence claim was not verified; that disclosure is not itself an additional proven error.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "grep -rn \"ERROR\" ${HOME}/ascend/log/[run|debug]/plog/plog-*.log | head"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "python3 msaicerr.py -p ${HOME}/aic_err_info -out $HOME/result"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "`EZ9999` 在《错误码参考》里**没有**专门条目"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 remains unscorable after fixed-packet review; no interval or imputation.",
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "observations": {
+    "evidence_boundary": "Fixed packet only.",
+    "m2_document_scores": [
+      2,
+      5,
+      5,
+      1,
+      2,
+      2,
+      2,
+      5
+    ],
+    "m5_possible_counts": [
+      4
+    ],
+    "m3_coverage": {
+      "covered": [
+        "AI Core Error collection categories and paths; msnpureport -f; no-rerun/rerun decision; RAS/NPU/software branches; ascend-dmi and msaicerr command/constraints"
+      ],
+      "missing": [
+        "direct official body for the generic 9.0 process-interruption grep/first-error route (only search excerpt); direct environment-preparation/compatibility pages linked by msaicerr/asys docs"
+      ]
+    }
+  },
+  "channel_states": {
+    "official_fetches": "Eight official URLs classified by final returned representation; one request returned a different document (0061) and is scored as target mismatch.",
+    "third_party": "Four relevant independent third-party source groups after excluding two pillumina official-document reproductions; M6 claims limited to identifiable technical snippets.",
+    "execution": "No local command or hardware rerun in packet; content score reflects answer instructions and explicit repair needs."
+  }
+}

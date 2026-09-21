@@ -1,0 +1,232 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "score": 5,
+      "status": "scored",
+      "reason": "First query rank1 is the relevant official multi-device training guide.",
+      "evidence": [
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "## 1. [多卡分布式训练-TorchNPU6.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html)\n\n多机多卡训练，先参考 单卡脚本修改为多卡脚本 章节，再参考 准备多机多卡训练环境 进行必要的配置，最后参考 拉起多卡分布式训 …\n\n**URL:** "
+        }
+      ]
+    },
+    "M10": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Concrete DDP and network instructions exist, but global rank/world_size are undefined, the shell route sets onlyLOCAL_RANK, and the torchrun command remains standalone single-node. DataLoader import is also absent. These require code/launch additions beyond environment values.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "dist.init_process_group(backend=\"hccl\", rank=rank, world_size=world_size)\n# 官方主文档简写形式：torch.distributed.init_proces"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "train_dataloader = DataLoader(dataset=train_data, batch_size=batch_size, sampler=train_sampler)\n\n# 5"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "torchrun --standalone --nnodes=1 --nproc_per_node=8 ddp_test_shell.py\n# 多机：标准 torchrun 多机用法，各节点分别执行并指定 --node_"
+        }
+      ]
+    },
+    "M11": {
+      "score": null,
+      "status": "unscorable",
+      "reason": "M7 unresolved correctness blocks full point input.",
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0086.html",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC2/ptmoddevg/trainingmigrguide/PT_LMTMOG_0022.html",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC2/ptmoddevg/trainingmigrguide/PT_LMTMOG_0080.html",
+          "score": 2,
+          "status": "scored",
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_6e047f42d5ee4dde98582e05.result",
+          "quote": "**标题**: 多卡分布式训练-启动脚本配置-模型训练适配-迁移适配-PyTorch 训练模型迁移调优指南-TorchNPU6.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html)\n\n# 多卡分布式训练\n\n#### 多卡训练配置流程\n\n多卡训练分为单机多卡训练与多机多卡训练，二者均需要将单机训练脚本修改为多机训练脚本，配置流程如下。\n\n- 单机多卡训练，先参考[单卡脚本修改为多卡脚本](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html#ZH-CN_TOPIC_0000001843487786__section2070418405407)章节，再参考[拉起多卡分布式训练](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html#ZH-CN_TOPIC_0000"
+        },
+        {
+          "event_id": "call_21a9e67918ed42a4a4835935.result",
+          "quote": "**标题**: 拉起多卡训练脚本示例-附录-PyTorch 训练模型迁移调优指南-TorchNPU6.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0086.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0086.html)\n\n# 拉起多卡训练脚本示例\n\n#### 构建模型脚本\n\n```\n# 导入依赖和库 \nimport torch \nfrom torch import nn \nimport torch_npu \nimport torch.distributed as dist \nfrom torch.utils.data import DataLoader \nfrom torchvision import datasets \nfrom torchvision.transforms import ToTensor \nimport time \nimport torch.multiprocessing as mp \nimport os \n \ntorch.manual_seed(0) \n# 下载训练数据 \ntraining_data = datasets.FashionMNIST( \n    root=\"./data\", \n    train="
+        },
+        {
+          "event_id": "call_c33527c8dcc449369fcf2311.result",
+          "quote": "**标题**: 多机多卡场景-模型脚本与启动脚本配置-环境变量和脚本配置-迁移适配-PyTorch 训练模型迁移调优指南-TorchNPU6.0.RC2开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC2/ptmoddevg/trainingmigrguide/PT_LMTMOG_0022.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC2/ptmoddevg/trainingmigrguide/PT_LMTMOG_0022.html)\n\n# 多机多卡场景\n\n#### 环境准备\n\n准备集群环境时，集群中的各个单机需要按照[环境准备](https://www.hiascend.com/document/detail/zh/Pytorch/60RC2/ptmoddevg/trainingmigrguide/PT_LMTMOG_0020.html#ZH-CN_TOPIC_0000001952787112__section3206822713)部署好环境，确保单机可以正常运行。\n\n此外还需要进行按照如下操作进行集群配置。\n\n- 分布式训练场景下，HCCL会使用Host服务器的部分端口进行集群信息收集，需要操作系统预留该部分端口。HCCL建议使用60000-60015端口，若通过环境变量HCCL_IF_BASE_PORT指定了Host网卡起始端口，则需要预留以该端口起始的16个端口。\n  \n  - 若操作系统端口号预留仅"
+        },
+        {
+          "event_id": "call_7e003373be5044e883e1480e.result",
+          "quote": "**标题**: 拉起多卡训练脚本示例-附录-PyTorch 训练模型迁移调优指南-TorchNPU6.0.RC2开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        }
+      ],
+      "reason": "Three direct-body returns without observable fetch omission (5 each) and one title/rating-only return (2):17/4=4.25. Reused-code ellipses in0086 are explained examples, not missing page content.",
+      "score": 4.25,
+      "status": "scored"
+    },
+    "M3": {
+      "score": 3,
+      "status": "scored",
+      "reason": "NPU/HCCL initialization, samplers, network setup and launcher alternatives are explained in full sections. The main multi-node route still lacks explicit global-rank/world-size construction and complete matching per-node startup; the RC2 linked two-node appendix returned only its title. These are main workflow gaps rather than optional detail.",
+      "evidence": [
+        {
+          "event_id": "call_21a9e67918ed42a4a4835935.result",
+          "quote": "def ddp_setup(rank, world_size):\n      \"\"\"\n      Args:\n          rank: Unique identifier of each process\n          world_size: Total number of processes\n      \"\"\"\n      os.environ[\"MASTER_ADDR\"] = \"localhost\"    # 用户根据实际情况设置为rank0节点通信ip，单机时可设置为localhost\n      os.environ[\"MASTER_PORT\"] = \"***\"    # 用户根据实际情况设置为rank0节点的端口号\n      dist.init_process_group(backend=\"hccl\", rank=rank, world_size=world_size)\n  ```\n- torch_npu_run方式，使用时需切换通信方式，修改init_process_gro"
+        },
+        {
+          "event_id": "call_c33527c8dcc449369fcf2311.result",
+          "quote": "配置相应的rank与world_size。"
+        },
+        {
+          "event_id": "call_21a9e67918ed42a4a4835935.result",
+          "quote": "world_size = torch.npu.device_count()\n      args.world_size = world_size\n      main(args.w"
+        },
+        {
+          "event_id": "call_21a9e67918ed42a4a4835935.result",
+          "quote": "torchrun --standalone --nnodes=1 --nproc_per_node=8 ddp_test_shell.py\n  ```\n\n<!-"
+        }
+      ]
+    },
+    "M4": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Official RC1/RC2 bodies state torchrun needs PyTorch>=1.11.0 and torch_npu_run only1.11.0; full TorchNPU/PyTorch/CANN pairing is absent, so launcher applicability is partial.",
+      "evidence": [
+        {
+          "event_id": "call_6e047f42d5ee4dde98582e05.result",
+          "quote": "- torchrun方式：仅在PyTorch 1.11.0及以上版本支持使用。\n- torch_npu_run方式**（集群场景推荐）**：此方式是torchrun在大集群场景的改进版，提升集群建链性能，仅在PyTorch 1.11.0版本支持使用。\n\n附录[拉起多卡训练脚本示例](https://www.hiascend.com/document/detail/zh/Pyto"
+        }
+      ]
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "## 2. [hccl 分布式训练踩坑：从单机到多机的那些事_分布式_心中 ...](https://devpress.csdn.net/v1/article/detail/161275400)\n\n2026年5月21日 · 本文分享了在昇腾NPU集群上使用hccl分布式训练的经验。 hccl是华为的集合通信库，对标NVIDIA的NCCL，但在拓 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161275400\n\n---\n\n"
+        },
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "## 4. [多机多卡训练，提升模型训练效率_2501_93412755-鲲鹏昇腾 ...](https://hwcomputing.csdn.net/690c8f0d82fbe0098ca903bb.html)\n\n2025年11月6日 · 在分布式训练中，结合昇腾（Ascend）的HCCL（Huawei Collective Communication Library）实现多机多卡训练， …\n\n**URL:** https://hwcomputing.csdn.net/690c8f0d82fbe0098ca903bb.html\n\n---\n\n"
+        },
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "## 5. [多卡分布式训练 (DDP + HCCL) on Ascend NPU | AI ...](https://forceinjection.github.io/02_npu_programming/12_ddp/01_ddp_training.html)\n\n2026年9月7日 · DDP（Distributed Data Parallel）是最基础的多卡训练方案——每张卡有完整模型副本，处理不同数据，梯度同步后 …\n\n**URL:** https://forceinjection.github.io/02_npu_programming/12_ddp/01_ddp_training.html\n\n---\n\n"
+        }
+      ],
+      "reason": "Three distinct third-party articles found in one query: devpress HCCL experience, hwcomputing multi-node instructions and forceinjection DDP tutorial. No visible reproduction identity across these entries.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M6": {
+      "score": 3,
+      "status": "scored",
+      "reason": "HCCL role/use supported by official distributed-training sections; full replica/data/gradient statement lacks explicit support for every qualifier in saved examples. Checked unsupported is not false.",
+      "evidence": [
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "hccl是华为的集合通信库，对标NVIDIA的NCCL"
+        },
+        {
+          "event_id": "call_7e4cd9858541441481d0738d.result",
+          "quote": "每张卡有完整模型副本，处理不同数据，梯度同步后"
+        },
+        {
+          "event_id": "call_6e047f42d5ee4dde98582e05.result",
+          "quote": "初始化，将通信方式设置为hccl。\n      \n      ```\n      torch.distributed.init_process_group(backend=\"hccl\",rank=local_ra"
+        }
+      ]
+    },
+    "M7": {
+      "score": null,
+      "status": "unscorable",
+      "reason": "Correct HCCL initialization fragments are present, but asserted mandatory import order, old visibility-variable replacement by ASCEND_SLOG_PRINT_TO_STDOUT, HCCL_IF_IP and whitelist generator behavior lack fixed-packet verification. The=1 sample does not prove=0 invalid under a configured whitelist. These material correctness questions can change a key-error versus correct-fragment grade; preserve unresolved, not inferred false.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "import torch_npu  # 必须在 torch.distributed 之前\nimport torch.distributed as dist\n\ndist.init_p"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "3. 启动方式：用 `torchrun --nnodes=2 --nproc-per-node=8 ...`，配合 MASTER_ADDR/MASTER_PORT；或老式 `torch.distributed.launch`。每机需设置 `ASCEND_RT_VISIBLE_DEVICES` 控制可见卡号（老版本是 `ASCEND_SLOG_PRINT_TO_STDOUT` 等）。\n\n4. 多机通信：HCCL 跨机通信可能需要设置 `HCCL_WHITELIST_DISABLE=0`（或配置白名单，如 ascend-tools 里的 hccl_tools.py 生成 hccl.json），以及 `HCCL_IF_IP` 指定通信网卡 IP。\n\n不确定处：\n- `HCCL_WHITELIST_DISABLE` 在新版 CANN（如 "
+        },
+        {
+          "event_id": "call_21a9e67918ed42a4a4835935.result",
+          "quote": "export HCCL_WHITELIST_DISABLE=1\n  RANK_ID_START=0\n  WORLD_SIZE=8\n  for((RANK_ID="
+        }
+      ]
+    },
+    "M8": {
+      "event_refs": [
+        "call_7e4cd9858541441481d0738d.dispatch",
+        "call_6e047f42d5ee4dde98582e05.dispatch",
+        "call_21a9e67918ed42a4a4835935.dispatch",
+        "call_c33527c8dcc449369fcf2311.dispatch",
+        "call_7e003373be5044e883e1480e.dispatch"
+      ],
+      "reason": "One search plus four fetch dispatches=5; score3.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M9": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Final identifies RC1/RC2 guide scope and torchrun>=1.11.0, but does not establish CANN/TorchNPU/PyTorch package pairing. The suggested interpretation of only1.11.0 as >= is explicitly unverified and cannot extend applicability.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "依据昇腾官方文档（TorchNPU 6.0.RC1 / 6.0.RC2《PyTorch 训练模型迁移调优指南》）：\n\n## 1. 前提\n- 已安装 CANN T"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "torch_npu_run 方式在主文档中标注\"仅在 PyTorch 1.11.0 版本支持使用\"（原文如此，疑为 1.11.0 及以上，未在其他页面核实）。\n</answer>\n\n<stop_reason>\n官方文档（hiascend.c"
+        }
+      ]
+    }
+  },
+  "observations": {},
+  "process_sha256": "9befad8ce2e476a5b1c3f839aeaa6aaf1f3e49c82418c48f2a810cb054e225d1",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cann-glm-5_3-standard-20260921T103605"
+}
