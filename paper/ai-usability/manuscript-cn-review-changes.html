@@ -35,7 +35,17 @@ h2,h3{scroll-margin-top:24px}
 @media screen and (max-width:900px){#review-toc{width:196px;left:12px;top:12px;bottom:12px}body{width:calc(100% - 24px);margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}}
 @media screen and (max-width:600px){#review-toc{width:132px;left:8px;font-size:12px}.review-toc-title{padding:12px 10px}#review-toc nav{padding:6px}#review-toc a{padding:6px}#review-toc .toc-sub a{padding-left:12px;font-size:11px}body{width:calc(100% - 16px);margin-left:auto;margin-right:auto;padding:20px 12px;font-size:14px}h1{font-size:22px}h2{font-size:20px}h3{font-size:17px}}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-@media print{#review-toc{display:none!important}body{width:auto;margin:0;padding:0}}</style></head>
+@media print{#review-toc{display:none!important}body{width:auto;margin:0;padding:0}}</style><style id="review-toc-toggle-style">
+.review-toc-title{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#review-toc-toggle{font:inherit;font-size:12px;color:#465069;background:#f1f4fb;border:1px solid #d9e0f2;border-radius:6px;padding:4px 8px;cursor:pointer;white-space:nowrap}
+#review-toc-toggle:focus-visible{outline:2px solid #294b98;outline-offset:2px}
+@media screen{
+body.review-toc-collapsed #review-toc{width:auto;bottom:auto}
+body.review-toc-collapsed #review-toc nav,body.review-toc-collapsed #review-toc .review-language-switch,body.review-toc-collapsed .review-toc-title-text{display:none}
+body.review-toc-collapsed #review-toc .review-toc-title{padding:8px;border:0}
+body.review-toc-collapsed{width:calc(100% - 40px);max-width:1060px;margin-left:auto;margin-right:auto;padding-top:72px;box-sizing:border-box}
+}
+</style></head>
 <body><div class="edition">中文审阅稿 · 当前版本</div>
 <h1
 id="ai-能找到开发者所需的知识吗开发者生态中面向-ai-的知识可得性的定义与度量">AI
@@ -1017,7 +1027,7 @@ Twelfth International Conference on Learning Representations</em>, 2024.
 href="https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html">https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html</a></div>
 </div>
 </div>
-<aside id="review-toc"><div class="review-toc-title">论文目录</div><div class="review-language-switch" role="group" aria-label="Language"><a href="manuscript-cn-review-changes.html" data-language="cn" aria-current="page">中文</a><a href="manuscript-en-review-changes.html" data-language="en">English</a></div><nav aria-label="论文目录"><ol><li class="toc-main"><a href="#摘要">摘要</a></li><li class="toc-main"><a href="#关键词">关键词</a></li><li class="toc-main"><a href="#引言">引言</a></li><li class="toc-main"><a href="#相关研究与构念边界">相关研究与构念边界</a></li><li class="toc-sub"><a href="#开发者信息寻找与文档">开发者信息寻找与文档</a></li><li class="toc-sub"><a href="#面向编程的-ai-支持">面向编程的 AI 支持</a></li><li class="toc-sub"><a href="#检索归因与可得性构念">检索、归因与可得性构念</a></li><li class="toc-main"><a href="#方法框架">方法框架</a></li><li class="toc-sub"><a href="#分析单位与任务需求">分析单位与任务需求</a></li><li class="toc-sub"><a href="#知识来源与任务支撑">知识来源与任务支撑</a></li><li class="toc-sub"><a href="#证据记录">证据记录</a></li><li class="toc-main"><a href="#操作化与测量协议">操作化与测量协议</a></li><li class="toc-sub"><a href="#十一项指标及其证据角色">十一项指标及其证据角色</a></li><li class="toc-sub"><a href="#协议的应用">协议的应用</a></li><li class="toc-sub"><a href="#评分规则与综合置信度">评分规则与综合置信度</a></li><li class="toc-main"><a href="#案例应用cann-与-cuda-开发生态的案例分析">案例应用：CANN 与 CUDA 开发生态的案例分析</a></li><li class="toc-sub"><a href="#任务覆盖与比较范围">任务覆盖与比较范围</a></li><li class="toc-sub"><a href="#任务实施与数据分析">任务实施与数据分析</a></li><li class="toc-sub"><a href="#任务级评价结果">任务级评价结果</a></li><li class="toc-main"><a href="#发现跨开发任务的知识条件">发现：跨开发任务的知识条件</a></li><li class="toc-sub"><a href="#不同生态在开发场景中的知识支撑分布存在差异">不同生态在开发场景中的知识支撑分布存在差异</a></li><li class="toc-sub"><a href="#官方资料的发现获取内容与版本组织呈现不同缺口">官方资料的发现、获取、内容与版本组织呈现不同缺口</a></li><li class="toc-sub"><a href="#不同来源对任务的补充作用与局限">不同来源对任务的补充作用与局限</a></li><li class="toc-main"><a href="#讨论知识供给与-agent-交互的设计启示">讨论：知识供给与 Agent 交互的设计启示</a></li><li class="toc-sub"><a href="#根据开发场景与知识需求确定建设重点">根据开发场景与知识需求确定建设重点</a></li><li class="toc-sub"><a href="#改善官方知识供给与agent反馈">改善官方知识供给与Agent反馈</a></li><li class="toc-sub"><a href="#扩充社区知识并支持来源核验">扩充社区知识并支持来源核验</a></li><li class="toc-sub"><a href="#诊断方法的复用">诊断方法的复用</a></li><li class="toc-main"><a href="#局限与研究透明度">局限与研究透明度</a></li><li class="toc-main"><a href="#结论">结论</a></li><li class="toc-main"><a href="#附录a评分计算细则">附录A：评分计算细则</a></li><li class="toc-main"><a href="#review-section-32">参考文献</a></li></ol></nav></aside><script>
+<aside id="review-toc"><div class="review-toc-title"><span class="review-toc-title-text">论文目录</span><button id="review-toc-toggle" type="button" aria-controls="review-toc-nav" aria-expanded="true">收起</button></div><div class="review-language-switch" role="group" aria-label="Language"><a href="manuscript-cn-review-changes.html" data-language="cn" aria-current="page">中文</a><a href="manuscript-en-review-changes.html" data-language="en">English</a></div><nav id="review-toc-nav" aria-label="论文目录"><ol><li class="toc-main"><a href="#摘要">摘要</a></li><li class="toc-main"><a href="#关键词">关键词</a></li><li class="toc-main"><a href="#引言">引言</a></li><li class="toc-main"><a href="#相关研究与构念边界">相关研究与构念边界</a></li><li class="toc-sub"><a href="#开发者信息寻找与文档">开发者信息寻找与文档</a></li><li class="toc-sub"><a href="#面向编程的-ai-支持">面向编程的 AI 支持</a></li><li class="toc-sub"><a href="#检索归因与可得性构念">检索、归因与可得性构念</a></li><li class="toc-main"><a href="#方法框架">方法框架</a></li><li class="toc-sub"><a href="#分析单位与任务需求">分析单位与任务需求</a></li><li class="toc-sub"><a href="#知识来源与任务支撑">知识来源与任务支撑</a></li><li class="toc-sub"><a href="#证据记录">证据记录</a></li><li class="toc-main"><a href="#操作化与测量协议">操作化与测量协议</a></li><li class="toc-sub"><a href="#十一项指标及其证据角色">十一项指标及其证据角色</a></li><li class="toc-sub"><a href="#协议的应用">协议的应用</a></li><li class="toc-sub"><a href="#评分规则与综合置信度">评分规则与综合置信度</a></li><li class="toc-main"><a href="#案例应用cann-与-cuda-开发生态的案例分析">案例应用：CANN 与 CUDA 开发生态的案例分析</a></li><li class="toc-sub"><a href="#任务覆盖与比较范围">任务覆盖与比较范围</a></li><li class="toc-sub"><a href="#任务实施与数据分析">任务实施与数据分析</a></li><li class="toc-sub"><a href="#任务级评价结果">任务级评价结果</a></li><li class="toc-main"><a href="#发现跨开发任务的知识条件">发现：跨开发任务的知识条件</a></li><li class="toc-sub"><a href="#不同生态在开发场景中的知识支撑分布存在差异">不同生态在开发场景中的知识支撑分布存在差异</a></li><li class="toc-sub"><a href="#官方资料的发现获取内容与版本组织呈现不同缺口">官方资料的发现、获取、内容与版本组织呈现不同缺口</a></li><li class="toc-sub"><a href="#不同来源对任务的补充作用与局限">不同来源对任务的补充作用与局限</a></li><li class="toc-main"><a href="#讨论知识供给与-agent-交互的设计启示">讨论：知识供给与 Agent 交互的设计启示</a></li><li class="toc-sub"><a href="#根据开发场景与知识需求确定建设重点">根据开发场景与知识需求确定建设重点</a></li><li class="toc-sub"><a href="#改善官方知识供给与agent反馈">改善官方知识供给与Agent反馈</a></li><li class="toc-sub"><a href="#扩充社区知识并支持来源核验">扩充社区知识并支持来源核验</a></li><li class="toc-sub"><a href="#诊断方法的复用">诊断方法的复用</a></li><li class="toc-main"><a href="#局限与研究透明度">局限与研究透明度</a></li><li class="toc-main"><a href="#结论">结论</a></li><li class="toc-main"><a href="#附录a评分计算细则">附录A：评分计算细则</a></li><li class="toc-main"><a href="#review-section-32">参考文献</a></li></ol></nav></aside><script>
 (()=>{
 const tocNav=document.querySelector('#review-toc nav');
 const tocLinks=[...tocNav.querySelectorAll('a')];
@@ -1057,6 +1067,18 @@ if(params.has('section')){
  }
 }
 updateToc();
+})();
+</script><script id="review-toc-toggle-script">
+(()=>{
+ const button=document.getElementById('review-toc-toggle');
+ function setCollapsed(collapsed){
+  document.body.classList.toggle('review-toc-collapsed',collapsed);
+  button.setAttribute('aria-expanded',String(!collapsed));
+  button.textContent=collapsed?'展开目录':'收起';
+  try{localStorage.setItem('paper-review-toc-collapsed',String(collapsed));}catch(e){}
+ }
+ button.addEventListener('click',()=>setCollapsed(!document.body.classList.contains('review-toc-collapsed')));
+ try{setCollapsed(localStorage.getItem('paper-review-toc-collapsed')==='true');}catch(e){}
 })();
 </script></body>
 </html>
