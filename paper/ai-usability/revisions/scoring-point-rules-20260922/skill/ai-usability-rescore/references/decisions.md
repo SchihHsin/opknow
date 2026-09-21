@@ -52,3 +52,7 @@ These checks clarify execution; they do not change the rubric or thresholds.
 - After every correction reread facts and assessment score/status/reason/evidence/documents/observations, interpretation, and M11 inputs together. Do not retain stale explanations or restore rejected facts by copying an earlier draft. A quote helper locator window is not automatically an adequate semantic quotation.
 - Record both endpoints and conditions of each version relation. Orphan footnotes next to an empty interactive result table do not establish a selected-release mapping. Do not automatically penalize M3 operational coverage for the M4 compatibility-table gap.
 - Before reporting completion inspect actual written files. Parent authorization of a review receipt follows content review, and the review scope must match this packet's task. Mechanical success is not semantic approval.
+
+### M5 去重候选表达
+
+`source_items` 可选 `content_group_candidates` 字符串数组，用于保存同一可识别第三方来源在“已知内容组/新内容组”之间的去重争议。程序枚举所有候选绑定并输出 `possible_counts`；同一规范化 URL 的重复搜索结果共用一个绑定，不会被拆成两个独立来源。候选组合超过枚举上限或同 URL 候选没有交集时必须报错并保留未决，不能猜测。未提供该字段时沿用原 `ownership`、`relevant`、`content_group` 逻辑。

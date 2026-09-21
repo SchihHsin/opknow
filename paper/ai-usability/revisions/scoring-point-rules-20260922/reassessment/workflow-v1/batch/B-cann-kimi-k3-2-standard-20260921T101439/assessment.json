@@ -1,0 +1,301 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "B-cann-kimi-k3-2-standard-20260921T101439",
+  "process_sha256": "aff538465ad70841cd51e5a635793666400fced043b531ba1f532928166cfbd5",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次查询第1位命中相关官方文档。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_bcc02af5.result",
+          "quote": "## 1. [Ascend PyTorch Profiler-MindStudio26.0.0-昇腾社区"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.75,
+      "reason": "Four official documents: target title 2, explicitly rewritten profiler extraction 3, general msprof commands direct body 5, AI-runtime parameter direct body 5. No independent completeness certification is inferred.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_ee0ee095.result",
+          "quote": "**标题**: Ascend PyTorch Profiler-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "# Ascend PyTorch Profiler 使用方法——文档正文提取\n\n> **完整性说明**：所提供的网页内容在「analysis.db数据」标题处被截断（原文标注 `[content truncated]`）。因此 **analysis.db 的表结构、profiler_config.json 文件说明、Ascend PyTorch Profiler 接口参数完整说明（接口说明章节）、dynamic_profile 维测日志介绍、原生 torch.profiler 采集方式** 等章节未包含在原文中，下文将逐项注明。另外，**本文档未包含 msprof 命令行采集方式的正文**（仅在 db 表说明中引用了 msprof 命令开关，并外链至 msprof 文档），详见第 5 节说明。\n\n---\n\n## 1. 前提条件（版本与环境要求）\n\n### 1.1 软件版本要求\n\n| 项目 | 要求（原文） |\n|---|---|\n| CANN | 安装配套版本的 CANN Toolkit 开发套件包或算子包并配置环境变量（使用 `source` 执行 CANN 的 `set_env.sh`） |\n| PyTorch | 基于 **PyTorch 2.1.0 或更高版本** 开发的训练模型及配套数据集，并完成模型向昇腾 AI 处理器的迁移 |\n| torch_npu | 代码中 `import torch_npu`，快速入门示例含 `from torch_npu.contrib import transfer_to_npu` |\n| 单进程多 Device 场景 | 须配套 **"
+        },
+        {
+          "event_id": "WebFetch_4_9a3f124b.result",
+          "quote": "**标题**: msprof采集通用命令-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)\n\n# msprof采集通用命令\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**昇腾AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成[使用前准备](h"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "**标题**: 采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.3.RC1.alpha002开发文档-昇腾社区\n\n\n\n# 采集AI任务运行性能数据\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas 800I A2 推理产品/A200I A2 Box 异构组件\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成使用前准备。\n\n不支持采集Python调用栈、PyTorch或MindSpore框架层数据，可使用对应框架接口方式采集。\n\n#### 命令格式（Ascend EP）\n\n登录Ascend-cann-toolkit开发套件包所在环境，可在任意目录下执行以下命令。\n\n- 方式一（推荐）：在msprof命令末尾，直接传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] <app> \n  ```\n- 方式二：通过--application参数传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] --application=<app> \n  ```\n\n#### 命令格式（Ascend RC）\n"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "event_id": "WebFetch_1_ee0ee095.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "event_id": "WebFetch_2_b63cef96.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "event_id": "WebFetch_4_9a3f124b.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "event_id": "WebFetch_6_d90b42b6.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Within the original collection/analysis task, official materials provide profiling code, CLI syntax and parameters, prerequisites, output fields, timeline viewers and custom ranges for locating expensive functions/iterations. Full analysis.db schema and dynamic-config reference are optional branches not required by the question; version mapping remains separately reported in M4.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "prof.step()    # 与schedule配套使用"
+        },
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "通过 mstx 自定义打点识别关键函数/迭代耗时，快速定界性能问题"
+        },
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "**kernel_details.csv**：NPU 上执行的所有算子信息。"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "msprof [options] <app>"
+        }
+      ],
+      "observations": {}
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official material specifies PyTorch >=2.1.0, multi-device version conditions and msprof product support. The required CANN/torch_npu/PyTorch compatibility mapping remains missing.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "PyTorch | 基于 **PyTorch 2.1.0 或更高版本**"
+        },
+        {
+          "event_id": "WebFetch_2_b63cef96.result",
+          "quote": "须配套 **PyTorch 2.1.0post14、2.5.1post2、2.6.0 及之后的版本**"
+        }
+      ],
+      "observations": {}
+    },
+    "M5": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Three identifiable independent CSDN articles; repeated training-camp URL counted once. The kali20gakki repository may mirror official material and the CANN repository publisher is not explicitly established in this packet. The possible source count 3-5 crosses rubric levels; official Ascend repositories are not third-party sources.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_3_9d2d82f8.result",
+          "quote": "## 3. [GitHub - kali20gakki/msprof](https://github.com/kali20gakki/msprof)\n\n2025年12月30日 · MindStudio Profiler（msProf）是面向 AI 训练与推理场景的性能分析工具，支持采集与解析 CANN 层和昇腾 AI 处 …\n\n**URL:** https://github.com/kali20gakki/msprof\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_3_9d2d82f8.result",
+          "quote": "## 4. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf ...](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n3 天之前 · 文章浏览阅读1.1k次，点赞25次，收藏9次。摘要：2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_3_9d2d82f8.result",
+          "quote": "## 5. [CANN msprof 完整介绍（昇腾性能剖析工具） MindStudio ...](https://blog.csdn.net/zhangfeng1133/article/details/162138481)\n\n2026年9月9日 · 摘要（149字）： msprof是昇腾NPU全链路性能剖析工具，集成于CANN Toolkit，支持算子开发与模型训练/推理调优 …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/162138481\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_5_6827eed3.result",
+          "quote": "## 3. [oam-tools/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md)\n\noam-tools/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md-代码预览-用户可借助该项目提升故障定位与AI任务性能分析效 …\n\n**URL:** https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_5_6827eed3.result",
+          "quote": "## 4. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf进行算子 …](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n文章重点介绍性能调优方法，通过MSProf工具进行全链路性能分析，建立三层性能分析模型（应用层、调度层、指令层），详细讲解 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_5_6827eed3.result",
+          "quote": "## 5. [Pytorch框架Profiling调优命令行实战 (训练) - CSDN博客](https://blog.csdn.net/Mr_Wuyan/article/details/126922512)\n\nSep 18, 2022 · 五、msprof 命令行工具说明及操作流程 基本介绍：msprof命令行工具提供了采集通用命令以及AI任务运行性能数据、 …\n\n**URL:** https://blog.csdn.net/Mr_Wuyan/article/details/126922512\n\n---\n\n"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "All visible key third-party assertions checked: AI-task runtime-data collection is independently supported; the complete operator-development/training/inference scope, Toolkit integration and three-layer taxonomy lack sufficient support. This does not establish falsehood. Attribution-uncertain repository generic capability snippets do not change the mixed-support level.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_3_9d2d82f8.result",
+          "quote": "支持算子开发与模型训练/推理调优"
+        },
+        {
+          "event_id": "WebFetch_4_9a3f124b.result",
+          "quote": "msprof命令行工具提供了**AI任务运行性能数据**、**昇腾AI处理器系统数据**等性能数据的采集和解析能力。"
+        },
+        {
+          "event_id": "WebSearch_3_9d2d82f8.result",
+          "quote": "集成于CANN Toolkit"
+        },
+        {
+          "event_id": "WebSearch_5_6827eed3.result",
+          "quote": "建立三层性能分析模型（应用层、调度层、指令层）"
+        },
+        {
+          "event_id": "WebSearch_5_6827eed3.result",
+          "quote": "msprof命令行工具提供了采集通用命令以及AI任务运行性能数据"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "msprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。"
+        }
+      ],
+      "observations": {
+        "supported_claims": 1,
+        "unsupported_claims": 3,
+        "contradictions": [],
+        "source_coverage": "facts.m6.source_coverage"
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "The prior supplies capture methods, but its exact installation path, key_averages/TensorBoard route for NPU profiling and ASCEND_PROFILING switch cannot be established from the fixed packet. The uncertain MemoryBound enum is not silently certified or penalized merely for low confidence. These correctness questions affect the task route; the packet has been exhausted.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "可用 `torch.profiler` 的 key_averages 或 TensorBoard 插件查看算子耗时、调用栈、NPU 利用率。"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "ASCEND_PROFILING"
+        }
+      ],
+      "observations": {
+        "missing_facts": [
+          "precise supported analysis API/plugin route",
+          "profiling environment-switch applicability"
+        ]
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "7 dispatches",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_bcc02af5.result",
+          "quote": "# Search Results"
+        }
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final answer provides the supported PyTorch minimum and multi-device conditions, plus source document versions, while explicitly leaving the full CANN/torch_npu mapping unresolved.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "基于 **PyTorch 2.1.0 或更高版本**"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "CANN↔torch_npu↔PyTorch 的**精确对应表本次未获取**"
+        }
+      ],
+      "observations": {}
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "A concrete capture/analysis route is present, but the option table conflates the on/off --sys-hardware-mem switch with a sampling frequency via [=freq]. Official parameters separate this boolean switch from --sys-hardware-mem-freq. The instruction needs that content correction, not merely a user path substitution. Other unverified diagnostic interpretations remain disclosed; no hardware test was performed.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "`--sys-hardware-mem[=freq]`"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "--sys-hardware-mem=<sys-hardware-mem-value>"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "任务级别的片上内存采集开关，可选on或off，默认为off。"
+        },
+        {
+          "event_id": "WebFetch_6_d90b42b6.result",
+          "quote": "--sys-hardware-mem-freq=<sys-hardware-mem-freq-value>"
+        }
+      ],
+      "observations": {
+        "execution_status": "content_checked_not_executed",
+        "content_repairs": [
+          "Separate --sys-hardware-mem=on|off from --sys-hardware-mem-freq=<frequency>."
+        ],
+        "environment_substitutions": [
+          "training loop/functions",
+          "train.py",
+          "output paths"
+        ],
+        "unverified": [
+          "Full compatibility table",
+          "Free/Bubble attribution to host/data loading is not fully substantiated by mere column labels."
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M5 count ambiguity and M7 prior correctness cannot be resolved within the fixed packet. No composite point or interval is produced.",
+      "missing_inputs": [
+        "M5",
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna draft replaced by root packet-based content review"
+  },
+  "channel_states": {}
+}

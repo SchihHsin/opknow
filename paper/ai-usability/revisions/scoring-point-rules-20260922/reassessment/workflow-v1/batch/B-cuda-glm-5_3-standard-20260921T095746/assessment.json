@@ -1,0 +1,253 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "B-cuda-glm-5_3-standard-20260921T095746",
+  "process_sha256": "4330875f7965f8145eedd27113b769e6185554c8c289ad6b02056ac11b4bbbb3",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次查询前5名第1位命中相关官方来源。",
+      "evidence": [
+        {
+          "event_id": "call_b38c59ba03a24c3b96dc7203.result",
+          "quote": "# Search Results for \"Nsight Systems CLI nsys profile command documentation trace cuda nvtx\"\n\n## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/UserGuide/index.html)\n\n2026年9月9日 · Each Nsight Systems session is defined by a sequence of CLI commands that define one or more collections (e.g., …\n\n**URL:** https://docs.nvidia.com/nsight-systems/UserGuide/index.html\n\n---\n\n## 2. [使用NVTX + Nsight System 进行训练性能分析_nsys nvtx ...](https://blog.csdn.net/wei"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.75,
+      "reason": "Four official documents score 3,3,4,5: rewritten Nsight extraction, rewritten profiler recipe report, visibly truncated profiler API body, and direct NVTX API body. Mean 15/4=3.75; no title-only document is in this run.",
+      "evidence": [
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "# Nsight Systems CLI (`nsys profile`) 参数说明提取\n\n以下内容提取自 NVIDIA Nsight Systems 用户指南。**加粗**表示文档中标注的默认值；部分选项的 Note 说明在本页面内容中未完整展示，已注明。\n\n---\n\n## 1. `nsys` 命令行基本形式(原文)\n\n```\nnsys [global_option]\n```\n\nor\n\n```\nnsys [command_switch][optional command_switch_options][application] [optional application_options]\n```\n\n> \"All command line options are case-sensitive. For command switch options, when short options are used, the parameters should follow the switch after a space; e.g., `-s process-tree`. When long options are used, the switch should be followed by an equal sign and then the parameter(s); e.g., `--sample=process-tree`.\"\n\n**profile 命令用法(原文):**\n\n```\nnsys [global-options] profile [options] [applicat"
+        },
+        {
+          "event_id": "call_756ded685f36490483517220.result",
+          "quote": "# 分析结果\n\n## 总体结论\n\n**本页面（PyTorch Profiler recipe，PyTorch Tutorials 2.14.0+cu130）不包含任何 Nsight Systems / NVTX / nsys 相关内容。** 具体核查结果如下：\n\n| 用户询问的内容 | 本页是否存在 |\n|---|---|\n| NVTX 环境变量（如 `NVTX=1`、`default`/`domain_all` 等作用域设置） | ❌ 未出现 |\n| `nsys` 采集命令示例（含 `--trace` 选项等） | ❌ 未出现 |\n| Nsight Systems 分析方法 | ❌ 未出现 |\n| `torch.profiler` 相关说明 | ✅ 本页核心内容（完整提取见下文） |\n\n> 💡 说明：您所描述的 NVTX 环境变量作用域（`default`、`domain_all` 等）及 `nsys profile --trace=...` 命令，通常出现在 **NVIDIA 官方文档**或 **PyTorch 其他页面**（如 *Optimizing NVIDIA GPU Performance with PyTorch Profiler*）中，而非本 recipe。本页的 trace 导出仅涉及 **Chrome trace**（`chrome://tracing`），与 Nsight Systems 是两套不同的工具链。\n\n---\n\n## 一、本页未包含的内容（核查详情）\n\n全文搜索确认以下关键词**均未出现**：\n- `NVTX`（无任何环境变量或作用域说明）\n- "
+        },
+        {
+          "event_id": "call_63abf72e5dfb4498a0ee7197.result",
+          "quote": "**标题**: torch.profiler — PyTorch 2.14 documentation\n\ntps://docs.pytorch.org/docs/1.1.0/profiler.html)v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# torch.profiler#\n\n## Overview#\n\n# torch.profiler#\n## Overview#\nPyTorch Profiler is a tool that allows the collection of performance metrics during training and inference. Profiler’s context manager API can be used to better understand what model operators are the most expensive, examine their input shapes and stack traces, study device kernel activity and visualize the execution trace.\n\nNote\n\nAn earlier version of the API in `torch.autograd` module is considered legacy and will be deprecated.\n\ntorch.profiler.profiler.schedule(***, *wa"
+        },
+        {
+          "event_id": "call_ca525419d36b483ab1438fe5.result",
+          "quote": "**标题**: torch.cuda.nvtx.range_push — PyTorch 2.14 documentation\n\nBack to top\n\n# torch.cuda.nvtx.range_push[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch-cuda-nvtx-range-push \"Link to this heading\")\n\ntorch.cuda.nvtx.range_push(*msg*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/cuda/nvtx.py#L27)[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch.cuda.nvtx.range_push \"Link to this definition\")\n\nPush a range onto a stack of nested range span. Returns zero-based depth of the range that is started.\n\nParameters:\n\n**msg** ([*str*](https://docs.python.org/3/library/stdtypes.html#str \"(in Python v3.14)\")) – "
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "event_id": "call_756ded685f36490483517220.result",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/profiler.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "event_id": "call_63abf72e5dfb4498a0ee7197.result",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.nvtx.range_push.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "event_id": "call_ca525419d36b483ab1438fe5.result",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official contents cover profile syntax, trace/capture options and the NVTX timeline mechanism. The core task also requires diagnosing low GPU utilization from a timeline; no GUI workflow or CPU/GPU gap diagnosis was obtained. The PyTorch profiler pages describe another tool and do not fill that main-step gap. This evaluates source contents, not the final answer.",
+      "evidence": [
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "nsys [global-options] profile [options] [application] [application-arguments]"
+        },
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "When you add NVTX markers and ranges to your application, the Timeline View shows when your CPU threads are executing within those regions."
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 2,
+      "reason": "PyTorch API pages carry a 2.14 version label, but no required Nsight/CUDA/driver/platform applicability relation is established.",
+      "evidence": [
+        {
+          "event_id": "call_63abf72e5dfb4498a0ee7197.result",
+          "quote": "PyTorch 2.14 documentation"
+        },
+        {
+          "event_id": "call_ca525419d36b483ab1438fe5.result",
+          "quote": "PyTorch 2.14 documentation"
+        }
+      ]
+    },
+    "M5": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "CSDN and devpress share article ID 155752566 and count once. Zhihu has the same title and visible opening, but full-content identity cannot be resolved from this packet. Together with forceinjection, r3k5 and the other CSDN article, the total is 4 or 5, crossing rubric levels. Ownership/relevance are not falsified to force a point.",
+      "evidence": [
+        {
+          "event_id": "call_d0420546d4f547dfae83eeb2.result",
+          "quote": "https://devpress.csdn.net/v1/article/detail/155752566"
+        },
+        {
+          "event_id": "call_b38c59ba03a24c3b96dc7203.result",
+          "quote": "https://zhuanlan.zhihu.com/p/1981830363690074870"
+        },
+        {
+          "event_id": "call_d0420546d4f547dfae83eeb2.result",
+          "quote": "https://github.com/r3k5/training-profiler-nsight"
+        },
+        {
+          "event_id": "call_d0420546d4f547dfae83eeb2.result",
+          "quote": "https://blog.csdn.net/weixin_33205138/article/details/156397863"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          4,
+          5
+        ],
+        "actual_searches": 2
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The identifiable visible technical mechanism is NVTX code annotation for Nsight timeline visualization. NVIDIA explicitly describes NVTX regions on CPU timelines and PyTorch independently documents range_push. Source coverage distinguishes test-environment reports, repository descriptions and truncated article purposes from unseen commands.",
+      "evidence": [
+        {
+          "event_id": "call_b38c59ba03a24c3b96dc7203.result",
+          "quote": "NVTX（NVIDIA Tools Extension）是一个用于标记代码段"
+        },
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "When you add NVTX markers and ranges to your application, the Timeline View shows when your CPU threads are executing within those regions."
+        },
+        {
+          "event_id": "call_ca525419d36b483ab1438fe5.result",
+          "quote": "Push a range onto a stack of nested range span."
+        }
+      ],
+      "observations": {
+        "claim_count": 1,
+        "supported_claims": 1,
+        "independent_crosscheck": true,
+        "source_coverage": "facts.m6.source_coverage"
+      }
+    },
+    "M7": {
+      "status": "scored",
+      "score": 1,
+      "reason": "The prior primary collection command uses --sample=cpu. The archived official available-parameter enumeration does not contain cpu. This affects the key capture command and triggers level 1; unknown historical options are not independently declared false.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "nsys profile -t cuda,nvtx,osrt --cuda-memory-usage=true --sample=cpu --cpuctxsw=none -o report python train.py"
+        },
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "| `--sample` or `-s` | **process-tree**, system-wide, xhv, xhv-system-wide, none |"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "实际派发事件数 C=6，按规则映射。",
+      "event_refs": [
+        "call_b38c59ba03a24c3b96dc7203.dispatch",
+        "call_94a1905ab4a04eda9b13a79d.dispatch",
+        "call_d0420546d4f547dfae83eeb2.dispatch",
+        "call_756ded685f36490483517220.dispatch",
+        "call_63abf72e5dfb4498a0ee7197.dispatch",
+        "call_ca525419d36b483ab1438fe5.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "The final answer identifies PyTorch 2.14 documentation only; it does not establish an applicable Nsight Systems/environment version range.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "PyTorch 2.14"
+        }
+      ]
+    },
+    "M10": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "After checking the fixed packet, the profile output option name remains absent from the official return; stats report parameters, the Python cudart wrapper and some main gap-diagnosis claims are not independently established. This is insufficient to decide between a complete environment-substitution-only route and content repairs. Unknown is not a proven error; no hardware execution was performed.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "nsys stats -r cuda_gpu_kern_sum,cuda_api_sum report.nsys-rep"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "torch.cuda.cudart().cudaProfilerStart()"
+        },
+        {
+          "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+          "quote": "< filename >"
+        }
+      ],
+      "observations": {
+        "execution_status": "content_checked_not_executed",
+        "content_repairs": [],
+        "unresolved": [
+          "profile output option name",
+          "stats report parameters",
+          "main gap-diagnosis applicability"
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M5 deduplication uncertainty crosses levels and cannot be resolved in the fixed packet. Other inputs do not authorize filling it.",
+      "missing_inputs": [
+        "M5"
+      ]
+    }
+  },
+  "observations": {
+    "question": "PyTorch 模型 GPU 利用率不高，怎么用 Nsight Systems 抓 timeline 定位瓶颈？给出采集命令和分析步骤。",
+    "coverage_check": "逐项检查原题主需求、次需求、版本关系、回答阶段与原始来源；未读取旧评分。",
+    "assessor": "GPT-5.6 Luna draft; root content adjudication"
+  },
+  "channel_states": {}
+}

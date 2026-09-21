@@ -274,5 +274,31 @@ class RescoreTests(unittest.TestCase):
         self.assertNotEqual(rescore.review_command(self.packet_path, self.assessment_path, self.facts_path, self.report_path, self.review_path, self.receipt_path), 0)
 
 
+
+
+class M5CandidateTests(unittest.TestCase):
+    def test_candidate_assignments_preserve_duplicate_url_binding(self):
+        facts = {"source_items": [{"url":"https://x.test/fixed","ownership":"third_party","relevant":True,"content_group":"same"},{"url":"https://x.test/a#one","ownership":"third_party","relevant":None,"content_group_candidates":["same","new"]},{"url":"https://x.test/a#two","ownership":"third_party","relevant":None,"content_group_candidates":["same","new"]}]}
+        issues=[]; self.assertEqual(rescore.derive_m5_counts(facts, issues), [1,2]); self.assertEqual(issues, [])
+    def test_fixed_same_url_constrains_candidate_and_inconsistent_rejects(self):
+        fixed={"url":"https://x.test/same","ownership":"third_party","relevant":True,"content_group":"g"}
+        candidate={"url":"https://x.test/same#frag","ownership":"third_party","relevant":None,"content_group_candidates":["g","new"]}
+        self.assertEqual(rescore.derive_m5_counts({"source_items":[fixed,candidate]}, []), [1])
+        bad={"url":"https://x.test/same#other","ownership":"third_party","relevant":None,"content_group_candidates":["other"]}
+        issues=[]; self.assertIsNone(rescore.derive_m5_counts({"source_items":[fixed,bad]}, issues)); self.assertTrue(issues)
+
+    def test_four_fixed_plus_ambiguous_group(self):
+        items=[{"url":f"https://x.test/{i}","ownership":"third_party","relevant":True,"content_group":f"g{i}"} for i in range(4)]
+        items.append({"url":"https://x.test/uncertain","ownership":"third_party","relevant":None,"content_group_candidates":["g0","g-new"]})
+        self.assertEqual(rescore.derive_m5_counts({"source_items":items}, []), [4,5])
+    def test_same_score_band_collapses_to_m5_three(self):
+        items=[{"url":f"https://x.test/{i}","ownership":"third_party","relevant":True,"content_group":f"g{i}"} for i in range(3)]
+        items.append({"url":"https://x.test/uncertain","ownership":"third_party","relevant":None,"content_group_candidates":["g0","g-new"]})
+        possible=rescore.derive_m5_counts({"source_items":items}, []); self.assertEqual(possible,[3,4]); self.assertEqual(rescore.score_m5(possible),3)
+    def test_two_units_selecting_same_new_group_count_once(self):
+        items=[{"url":"https://x.test/a","ownership":"third_party","relevant":True,"content_group_candidates":["new"]},{"url":"https://x.test/b","ownership":"third_party","relevant":True,"content_group_candidates":["new"]}]
+        self.assertEqual(rescore.derive_m5_counts({"source_items":items}, []), [1])
+
+
 if __name__ == "__main__":
     unittest.main()

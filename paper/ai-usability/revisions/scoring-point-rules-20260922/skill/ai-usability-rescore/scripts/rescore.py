@@ -446,27 +446,54 @@ def source_map(facts: dict[str, Any]) -> dict[str, dict[str, Any]]:
 
 
 def derive_m5_counts(facts: dict[str, Any], issues: list[dict[str, str]]) -> list[int] | None:
+    """Enumerate admissible M5 source-group assignments without guessing."""
     groups = facts.get("source_items", [])
     if not isinstance(groups, list): return None
-    known: set[str] = set(); uncertain: set[str] = set()
-    for item in groups:
-        if not isinstance(item, dict): continue
-        # A bare event index row (for example a search event with no URL) is
-        # retained for provenance but is not a candidate source to count.
-        if not item.get("url"):
+    units: dict[str, set[str | None]] = {}
+    for index, item in enumerate(groups):
+        if not isinstance(item, dict) or not item.get("url"):
             continue
-        relevant = item.get("relevant")
-        ownership = item.get("ownership")
-        if relevant is False: continue
-        group = item.get("content_group")
-        if not isinstance(group, str) or not group.strip():
-            issue(issues, "m5.content_group", "every potentially relevant source item needs a content_group")
-            continue
-        if ownership == "third_party" and relevant is True: known.add(group)
-        elif ownership == "third_party" and relevant is None: uncertain.add(group)
-        elif ownership == "unknown" and relevant in (True, None): uncertain.add(group)
-    uncertain -= known
-    return list(range(len(known), len(known) + len(uncertain) + 1))
+        key = url_without_fragment(item.get("url")) or item.get("url")
+        ownership = item.get("ownership"); relevant = item.get("relevant")
+        if relevant is False or ownership == "official":
+            options: set[str | None] = {None}
+        else:
+            candidates = item.get("content_group_candidates")
+            if candidates is not None:
+                if ownership not in ("third_party", "unknown") or relevant not in (True, None):
+                    issues.append({"code":"m5.candidates","message":f"source item {index} has candidates without uncertain third-party classification"}); continue
+                if not isinstance(candidates, list) or not candidates or any(not isinstance(x,str) or not x.strip() for x in candidates):
+                    issues.append({"code":"m5.candidates","message":f"source item {index} content_group_candidates must be a non-empty string list"}); continue
+                options = set(candidates)
+                if ownership == "unknown" or relevant is None:
+                    options.add(None)
+            else:
+                group = item.get("content_group")
+                if not isinstance(group, str) or not group.strip():
+                    issues.append({"code":"m5.content_group","message":"every potentially relevant source item needs a content_group"}); continue
+                options = {group}
+                if ownership == "unknown" or relevant is None:
+                    options.add(None)
+        if key in units:
+            overlap = units[key] & options
+            if not overlap:
+                issues.append({"code":"m5.candidates","message":f"duplicate URL {key} has no shared content-group assignment"}); return None
+            units[key] = overlap
+        else:
+            units[key] = options
+    ambiguous = sum(len(opts) > 1 for opts in units.values())
+    if ambiguous > 12:
+        issues.append({"code":"m5.candidates","message":"content-group ambiguity exceeds exhaustive assignment limit (12)"}); return None
+    states: set[frozenset[str]] = {frozenset()}
+    for options in units.values():
+        expanded: set[frozenset[str]] = set()
+        for state in states:
+            for option in options:
+                expanded.add(state if option is None else state | {option})
+        states = expanded
+        if len(states) > 4096:
+            issues.append({"code":"m5.candidates","message":"content-group assignment state space exceeds exhaustive limit"}); return None
+    return sorted({len(state) for state in states})
 
 
 def assessment_metric(assessment: dict[str, Any], name: str) -> dict[str, Any] | None:

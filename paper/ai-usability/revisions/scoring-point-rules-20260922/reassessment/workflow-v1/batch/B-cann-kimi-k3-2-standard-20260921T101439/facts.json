@@ -6,11 +6,12 @@
         "event_id": "WebFetch_1_ee0ee095.result",
         "quote": "**标题**: Ascend PyTorch Profiler-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "WebFetch_2_b63cef96.result",
@@ -18,11 +19,12 @@
         "event_id": "WebFetch_2_b63cef96.result",
         "quote": "# Ascend PyTorch Profiler 使用方法——文档正文提取\n\n> **完整性说明**：所提供的网页内容在「analysis.db数据」标题处被截断（原文标注 `[content truncated]`）。因此 **analysis.db 的表结构、profiler_config.json 文件说明、Ascend PyTorch Profiler 接口参数完整说明（接口说明章节）、dynamic_profile 维测日志介绍、原生 torch.profiler 采集方式** 等章节未包含在原文中，下文将逐项注明。另外，**本文档未包含 msprof 命令行采集方式的正文**（仅在 db 表说明中引用了 msprof 命令开关，并外链至 msprof 文档），详见第 5 节说明。\n\n---\n\n## 1. 前提条件（版本与环境要求）\n\n### 1.1 软件版本要求\n\n| 项目 | 要求（原文） |\n|---|---|\n| CANN | 安装配套版本的 CANN Toolkit 开发套件包或算子包并配置环境变量（使用 `source` 执行 CANN 的 `set_env.sh`） |\n| PyTorch | 基于 **PyTorch 2.1.0 或更高版本** 开发的训练模型及配套数据集，并完成模型向昇腾 AI 处理器的迁移 |\n| torch_npu | 代码中 `import torch_npu`，快速入门示例含 `from torch_npu.contrib import transfer_to_npu` |\n| 单进程多 Device 场景 | 须配套 **"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "WebFetch_4_9a3f124b.result",
@@ -30,11 +32,12 @@
         "event_id": "WebFetch_4_9a3f124b.result",
         "quote": "**标题**: msprof采集通用命令-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)\n\n# msprof采集通用命令\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**昇腾AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成[使用前准备](h"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "WebFetch_6_d90b42b6.result",
@@ -42,38 +45,138 @@
         "event_id": "WebFetch_6_d90b42b6.result",
         "quote": "**标题**: 采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.3.RC1.alpha002开发文档-昇腾社区\n\n\n\n# 采集AI任务运行性能数据\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas 800I A2 推理产品/A200I A2 Box 异构组件\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成使用前准备。\n\n不支持采集Python调用栈、PyTorch或MindSpore框架层数据，可使用对应框架接口方式采集。\n\n#### 命令格式（Ascend EP）\n\n登录Ascend-cann-toolkit开发套件包所在环境，可在任意目录下执行以下命令。\n\n- 方式一（推荐）：在msprof命令末尾，直接传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] <app> \n  ```\n- 方式二：通过--application参数传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] --application=<app> \n  ```\n\n#### 命令格式（Ascend RC）\n"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": false,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Separate --sys-hardware-mem=on|off from --sys-hardware-mem-freq=<frequency>."
+    ],
+    "environment_substitutions": [
+      "training loop/functions",
+      "train.py",
+      "output paths"
+    ]
   },
   "m4": {
+    "mode": "partial",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "CANN/torch_npu/PyTorch complete applicability mapping"
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      3,
+      4,
+      5
+    ],
+    "actual_searches": 3,
+    "budget_exhausted": false,
+    "stop_reason": "Information sufficient according to recorded stop; 3 of 4 searches used."
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "WebSearch_0_bcc02af5.result",
+      "WebFetch_1_ee0ee095.result",
+      "WebFetch_2_b63cef96.result",
+      "WebSearch_3_9d2d82f8.result",
+      "WebFetch_4_9a3f124b.result",
+      "WebSearch_5_6827eed3.result",
+      "WebFetch_6_d90b42b6.result"
+    ],
+    "no_third_party_material": false,
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "claims": [
+      {
+        "source_id": "source-0004-rank-5",
+        "claim": "msprof supports profiling for model training/inference and operator development.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_3_9d2d82f8.result",
+            "quote": "支持算子开发与模型训练/推理调优"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0004-rank-5",
+        "claim": "msprof is integrated into CANN Toolkit.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_3_9d2d82f8.result",
+            "quote": "集成于CANN Toolkit"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0006-rank-4",
+        "claim": "The article uses an application/scheduling/instruction three-layer analysis model.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_5_6827eed3.result",
+            "quote": "建立三层性能分析模型（应用层、调度层、指令层）"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0006-rank-5",
+        "claim": "msprof provides collection commands and AI-task runtime performance data.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_5_6827eed3.result",
+            "quote": "msprof命令行工具提供了采集通用命令以及AI任务运行性能数据"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "WebFetch_6_d90b42b6.result",
+            "quote": "msprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      }
+    ],
+    "source_coverage": [
+      {
+        "source": "CSDN zhangfeng",
+        "disposition": "Two visible assertions checked: the precise operator-development plus training/inference scope is not fully entailed by generic AI-task collection; exact Toolkit integration also lacks independent substantiation."
+      },
+      {
+        "source": "CSDN training camp repeated across searches",
+        "disposition": "Course purpose excluded; its explicit three-layer model checked unsupported by the packet."
+      },
+      {
+        "source": "CSDN Mr_Wuyan",
+        "disposition": "Visible collection/runtime-data capability independently supported; truncated continuation not invented."
+      },
+      {
+        "source": "kali20gakki and CANN repository",
+        "disposition": "Attribution uncertain; visible generic collection/analysis capability agrees with official materials. Inclusion would add only supported generic claims and cannot remove the known unsupported claims or create a direct contradiction; M6 level 3 is stable across this uncertainty."
+      }
+    ]
   },
   "packet_sha256": "b2e43bc8dacfbd76511062eac8f311caf940af9241fcce4090fc319ed6724e06",
   "question": "昇腾上跑 PyTorch 想定位瓶颈，怎么用 msprof / Ascend PyTorch Profiler 采集分析？给出代码和步骤。",
@@ -87,101 +190,101 @@
         "quote": "# Search Results for \"Ascend PyTorch Profiler torch_npu profiler 使用 官方文档\"\n\n## 1. [Ascend PyTorch Profiler-MindStudio26.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md)\n\nAscend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过在PyTorch训练/在线推理脚本中 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md\n\n---\n\n## 2. [ascend_pytorch_profiler_user_guide.md - GitHub](https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytor"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0001",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebSearch_0_bcc02af5.result",
       "evidence": {
         "event_id": "WebSearch_0_bcc02af5.result",
         "quote": "## 1. [Ascend PyTorch Profiler-MindStudio26.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md)\n\nAscend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过在PyTorch训练/在线推理脚本中 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
       "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md"
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebSearch_0_bcc02af5.result",
       "evidence": {
         "event_id": "WebSearch_0_bcc02af5.result",
         "quote": "## 2. [ascend_pytorch_profiler_user_guide.md - GitHub](https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md)\n\nAscend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过在PyTorch训练/在线推理脚本中 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
       "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md"
     },
     {
-      "content_group": "",
+      "content_group": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebSearch_0_bcc02af5.result",
       "evidence": {
         "event_id": "WebSearch_0_bcc02af5.result",
         "quote": "## 3. [pytorch/docs/zh/ascend_pytorch_profiler/ascend_pytorch ...](https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md)\n\n2024年8月21日 · 简介 Ascend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过 …\n\n**URL:** https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
       "url": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md"
     },
     {
-      "content_group": "",
+      "content_group": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1-26.0.0/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebSearch_0_bcc02af5.result",
       "evidence": {
         "event_id": "WebSearch_0_bcc02af5.result",
         "quote": "## 4. [pytorch/docs/zh/ascend_pytorch_profiler/ascend_pytorch ...](https://gitcode.com/Ascend/pytorch/blob/v2.7.1-26.0.0/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md)\n\n2024年8月21日 · Ascend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过在PyTorch训 …\n\n**URL:** https://gitcode.com/Ascend/pytorch/blob/v2.7.1-26.0.0/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1-26.0.0/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/profiling/atlasprofiling_16_0033.html",
       "event_id": "WebSearch_0_bcc02af5.result",
       "evidence": {
         "event_id": "WebSearch_0_bcc02af5.result",
         "quote": "## 5. [Ascend PyTorch Profiler接口采集-使用PyTorch框架接口采集 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/profiling/atlasprofiling_16_0033.html)\n\nAscend PyTorch Profiler是针对PyTorch框架开发的性能分析工具，通过在PyTorch训练/在线推理脚本中添加Ascend PyTorch Profiler …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/profiling/atlasprofiling_16_0033.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/profiling/atlasprofiling_16_0033.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebFetch_1_ee0ee095.result",
       "evidence": {
         "event_id": "WebFetch_1_ee0ee095.result",
         "quote": "**标题**: Ascend PyTorch Profiler-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md"
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
       "event_id": "WebFetch_2_b63cef96.result",
       "evidence": {
         "event_id": "WebFetch_2_b63cef96.result",
         "quote": "# Ascend PyTorch Profiler 使用方法——文档正文提取\n\n> **完整性说明**：所提供的网页内容在「analysis.db数据」标题处被截断（原文标注 `[content truncated]`）。因此 **analysis.db 的表结构、profiler_config.json 文件说明、Ascend PyTorch Profiler 接口参数完整说明（接口说明章节）、dynamic_profile 维测日志介绍、原生 torch.profiler 采集方式** 等章节未包含在原文中，下文将逐项注明。另外，**本文档未包含 msprof 命令行采集方式的正文**（仅在 db 表说明中引用了 msprof 命令开关，并外链至 msprof 文档），详见第 5 节说明。\n\n---\n\n## 1. 前提条件（版本与环境要求）\n\n### 1.1 软件版本要求\n\n| 项目 | 要求（原文） |\n|---|---|\n| CANN | 安装配套版本的 CANN Toolkit 开发套件包或算子包并配置环境变量（使用 `source` 执行 CANN 的 `set_env.sh`） |\n| PyTorch | 基于 **PyTorch 2.1.0 或更高版本** 开发的训练模型及配套数据集，并完成模型向昇腾 AI 处理器的迁移 |\n| torch_npu | 代码中 `import torch_npu`，快速入门示例含 `from torch_npu.contrib import transfer_to_npu` |\n| 单进程多 Device 场景 | 须配套 **"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0003",
       "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md"
     },
@@ -193,40 +296,40 @@
         "quote": "# Search Results for \"msprof 命令行 性能采集 CANN profiling --application 参数 官方文档\"\n\n## 1. [msprof采集通用命令-性能数据采集（msprof命令行方式 ...](https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html)\n\nmsprof工具用于采集Profiling性能数据，帮助用户快速定位性能瓶颈并提升分析效率。\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html\n\n---\n\n## 2. [msprof采集通用命令-使用msprof命令采集性能数据-性能调优 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)\n\n功能说明 msprof命令行工具提供了 AI任务运行性能数据 、 昇腾AI处理器系统数据 等性能数据的采集和解析能力。 其中，msprof采集 …\n\n**URL:** https://www.hiascend.com"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0004",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html",
       "event_id": "WebSearch_3_9d2d82f8.result",
       "evidence": {
         "event_id": "WebSearch_3_9d2d82f8.result",
         "quote": "## 1. [msprof采集通用命令-性能数据采集（msprof命令行方式 ...](https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html)\n\nmsprof工具用于采集Profiling性能数据，帮助用户快速定位性能瓶颈并提升分析效率。\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-1",
       "url": "https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html",
       "event_id": "WebSearch_3_9d2d82f8.result",
       "evidence": {
         "event_id": "WebSearch_3_9d2d82f8.result",
         "quote": "## 2. [msprof采集通用命令-使用msprof命令采集性能数据-性能调优 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)\n\n功能说明 msprof命令行工具提供了 AI任务运行性能数据 、 昇腾AI处理器系统数据 等性能数据的采集和解析能力。 其中，msprof采集 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-2",
       "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/kali20gakki/msprof",
       "event_id": "WebSearch_3_9d2d82f8.result",
       "evidence": {
         "event_id": "WebSearch_3_9d2d82f8.result",
@@ -235,47 +338,48 @@
       "ownership": "unknown",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-3",
-      "url": "https://github.com/kali20gakki/msprof"
+      "url": "https://github.com/kali20gakki/msprof",
+      "attribution_note": "Potential mirror/fork: snippet does not establish an independent publisher."
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/2401_82857325/article/details/155358698",
       "event_id": "WebSearch_3_9d2d82f8.result",
       "evidence": {
         "event_id": "WebSearch_3_9d2d82f8.result",
         "quote": "## 4. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf ...](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n3 天之前 · 文章浏览阅读1.1k次，点赞25次，收藏9次。摘要：2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-4",
       "url": "https://blog.csdn.net/2401_82857325/article/details/155358698"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/zhangfeng1133/article/details/162138481",
       "event_id": "WebSearch_3_9d2d82f8.result",
       "evidence": {
         "event_id": "WebSearch_3_9d2d82f8.result",
         "quote": "## 5. [CANN msprof 完整介绍（昇腾性能剖析工具） MindStudio ...](https://blog.csdn.net/zhangfeng1133/article/details/162138481)\n\n2026年9月9日 · 摘要（149字）： msprof是昇腾NPU全链路性能剖析工具，集成于CANN Toolkit，支持算子开发与模型训练/推理调优 …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/162138481\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-5",
       "url": "https://blog.csdn.net/zhangfeng1133/article/details/162138481"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html",
       "event_id": "WebFetch_4_9a3f124b.result",
       "evidence": {
         "event_id": "WebFetch_4_9a3f124b.result",
         "quote": "**标题**: msprof采集通用命令-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html)\n\n# msprof采集通用命令\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**昇腾AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成[使用前准备](h"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
       "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/Profiling/atlasprofiling_16_0010.html"
     },
@@ -287,40 +391,40 @@
         "quote": "# Search Results for \"msprof 采集AI任务运行时性能数据 --ai-core-metrics --task-time 参数说明\"\n\n## 1. [采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html)\n\n在--output指定的目录下生成PROF_XXX目录，该目录下的文件未经解析无法查看，您需要将PROF_XXX目录上传到安装toolkit包的开 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html\n\n---\n\n## 2. [采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/devtools/profiling/atlasprofiling_16_0011.html)\n\n命令示例（Ascend RC） 登录运行环境，进入msprof工具所在目录 “/var”，执行以下命令采集性能数据。 命令示例如"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0006",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html",
       "event_id": "WebSearch_5_6827eed3.result",
       "evidence": {
         "event_id": "WebSearch_5_6827eed3.result",
         "quote": "## 1. [采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html)\n\n在--output指定的目录下生成PROF_XXX目录，该目录下的文件未经解析无法查看，您需要将PROF_XXX目录上传到安装toolkit包的开 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-1",
       "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/devtools/profiling/atlasprofiling_16_0011.html",
       "event_id": "WebSearch_5_6827eed3.result",
       "evidence": {
         "event_id": "WebSearch_5_6827eed3.result",
         "quote": "## 2. [采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/devtools/profiling/atlasprofiling_16_0011.html)\n\n命令示例（Ascend RC） 登录运行环境，进入msprof工具所在目录 “/var”，执行以下命令采集性能数据。 命令示例如下： ... 命令支持 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/devtools/profiling/atlasprofiling_16_0011.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-2",
       "url": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/devtools/profiling/atlasprofiling_16_0011.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md",
       "event_id": "WebSearch_5_6827eed3.result",
       "evidence": {
         "event_id": "WebSearch_5_6827eed3.result",
@@ -329,54 +433,64 @@
       "ownership": "unknown",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-3",
-      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md"
+      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md",
+      "attribution_note": "CANN-branded repository, but this packet lacks an author/official linking record; not equated to a third-party source."
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/2401_82857325/article/details/155358698",
       "event_id": "WebSearch_5_6827eed3.result",
       "evidence": {
         "event_id": "WebSearch_5_6827eed3.result",
         "quote": "## 4. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf进行算子 …](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n文章重点介绍性能调优方法，通过MSProf工具进行全链路性能分析，建立三层性能分析模型（应用层、调度层、指令层），详细讲解 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-4",
       "url": "https://blog.csdn.net/2401_82857325/article/details/155358698"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/Mr_Wuyan/article/details/126922512",
       "event_id": "WebSearch_5_6827eed3.result",
       "evidence": {
         "event_id": "WebSearch_5_6827eed3.result",
         "quote": "## 5. [Pytorch框架Profiling调优命令行实战 (训练) - CSDN博客](https://blog.csdn.net/Mr_Wuyan/article/details/126922512)\n\nSep 18, 2022 · 五、msprof 命令行工具说明及操作流程 基本介绍：msprof命令行工具提供了采集通用命令以及AI任务运行性能数据、 …\n\n**URL:** https://blog.csdn.net/Mr_Wuyan/article/details/126922512\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-5",
       "url": "https://blog.csdn.net/Mr_Wuyan/article/details/126922512"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html",
       "event_id": "WebFetch_6_d90b42b6.result",
       "evidence": {
         "event_id": "WebFetch_6_d90b42b6.result",
         "quote": "**标题**: 采集AI任务运行性能数据-使用msprof命令采集性能数据-性能调优工具-开发工具-CANN8.3.RC1.alpha002开发文档-昇腾社区\n\n\n\n# 采集AI任务运行性能数据\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas 800I A2 推理产品/A200I A2 Box 异构组件\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\nmsprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。\n\n#### 注意事项\n\n- 请确保AI任务能在运行环境中正常运行。\n- 请确保完成使用前准备。\n\n不支持采集Python调用栈、PyTorch或MindSpore框架层数据，可使用对应框架接口方式采集。\n\n#### 命令格式（Ascend EP）\n\n登录Ascend-cann-toolkit开发套件包所在环境，可在任意目录下执行以下命令。\n\n- 方式一（推荐）：在msprof命令末尾，直接传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] <app> \n  ```\n- 方式二：通过--application参数传入用户程序或执行脚本。\n  \n  ```\n  msprof [options] --application=<app> \n  ```\n\n#### 命令格式（Ascend RC）\n"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
       "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/devaids/Profiling/atlasprofiling_16_0011.html"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "msprof命令行和Ascend PyTorch Profiler代码采集",
+      "输出与分析步骤"
+    ],
+    "secondary": [
+      "版本/环境前提",
+      "瓶颈分析"
+    ],
+    "version_relations": [
+      "CANN/torch_npu/PyTorch适配",
+      "msprof版本与Atlas支持"
+    ]
   }
 }

@@ -6,11 +6,12 @@
         "event_id": "call_94a1905ab4a04eda9b13a79d.result",
         "quote": "# Nsight Systems CLI (`nsys profile`) 参数说明提取\n\n以下内容提取自 NVIDIA Nsight Systems 用户指南。**加粗**表示文档中标注的默认值；部分选项的 Note 说明在本页面内容中未完整展示，已注明。\n\n---\n\n## 1. `nsys` 命令行基本形式(原文)\n\n```\nnsys [global_option]\n```\n\nor\n\n```\nnsys [command_switch][optional command_switch_options][application] [optional application_options]\n```\n\n> \"All command line options are case-sensitive. For command switch options, when short options are used, the parameters should follow the switch after a space; e.g., `-s process-tree`. When long options are used, the switch should be followed by an equal sign and then the parameter(s); e.g., `--sample=process-tree`.\"\n\n**profile 命令用法(原文):**\n\n```\nnsys [global-options] profile [options] [applicat"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_756ded685f36490483517220.result",
@@ -18,11 +19,12 @@
         "event_id": "call_756ded685f36490483517220.result",
         "quote": "# 分析结果\n\n## 总体结论\n\n**本页面（PyTorch Profiler recipe，PyTorch Tutorials 2.14.0+cu130）不包含任何 Nsight Systems / NVTX / nsys 相关内容。** 具体核查结果如下：\n\n| 用户询问的内容 | 本页是否存在 |\n|---|---|\n| NVTX 环境变量（如 `NVTX=1`、`default`/`domain_all` 等作用域设置） | ❌ 未出现 |\n| `nsys` 采集命令示例（含 `--trace` 选项等） | ❌ 未出现 |\n| Nsight Systems 分析方法 | ❌ 未出现 |\n| `torch.profiler` 相关说明 | ✅ 本页核心内容（完整提取见下文） |\n\n> 💡 说明：您所描述的 NVTX 环境变量作用域（`default`、`domain_all` 等）及 `nsys profile --trace=...` 命令，通常出现在 **NVIDIA 官方文档**或 **PyTorch 其他页面**（如 *Optimizing NVIDIA GPU Performance with PyTorch Profiler*）中，而非本 recipe。本页的 trace 导出仅涉及 **Chrome trace**（`chrome://tracing`），与 Nsight Systems 是两套不同的工具链。\n\n---\n\n## 一、本页未包含的内容（核查详情）\n\n全文搜索确认以下关键词**均未出现**：\n- `NVTX`（无任何环境变量或作用域说明）\n- "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_63abf72e5dfb4498a0ee7197.result",
@@ -30,11 +32,12 @@
         "event_id": "call_63abf72e5dfb4498a0ee7197.result",
         "quote": "**标题**: torch.profiler — PyTorch 2.14 documentation\n\ntps://docs.pytorch.org/docs/1.1.0/profiler.html)v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# torch.profiler#\n\n## Overview#\n\n# torch.profiler#\n## Overview#\nPyTorch Profiler is a tool that allows the collection of performance metrics during training and inference. Profiler’s context manager API can be used to better understand what model operators are the most expensive, examine their input shapes and stack traces, study device kernel activity and visualize the execution trace.\n\nNote\n\nAn earlier version of the API in `torch.autograd` module is considered legacy and will be deprecated.\n\ntorch.profiler.profiler.schedule(***, *wa"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.pytorch.org/docs/stable/profiler.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_ca525419d36b483ab1438fe5.result",
@@ -42,259 +45,387 @@
         "event_id": "call_ca525419d36b483ab1438fe5.result",
         "quote": "**标题**: torch.cuda.nvtx.range_push — PyTorch 2.14 documentation\n\nBack to top\n\n# torch.cuda.nvtx.range_push[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch-cuda-nvtx-range-push \"Link to this heading\")\n\ntorch.cuda.nvtx.range_push(*msg*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/cuda/nvtx.py#L27)[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch.cuda.nvtx.range_push \"Link to this definition\")\n\nPush a range onto a stack of nested range span. Returns zero-based depth of the range that is started.\n\nParameters:\n\n**msg** ([*str*](https://docs.python.org/3/library/stdtypes.html#str \"(in Python v3.14)\")) – "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.nvtx.range_push.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": false,
+    "decisive_records_verified": true,
+    "first_source_id": "source-0001-rank-1",
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
+    "content_check_complete": true,
     "content_repairs": [],
-    "environment_substitutions": []
+    "environment_substitutions": [
+      "train.py",
+      "report",
+      "existing training loop"
+    ],
+    "unresolved": [
+      "profile output option name",
+      "stats report parameters",
+      "main gap-diagnosis applicability"
+    ]
   },
   "m4": {
+    "mode": "none",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "Nsight Systems to CUDA/driver/platform applicability"
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      4,
+      5
+    ],
+    "actual_searches": 2,
+    "stop_reason": "2次搜索完成；对CSDN/知乎/devpress/GitHub/forceinjection候选完整去重"
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_94a1905ab4a04eda9b13a79d.result",
+      "call_756ded685f36490483517220.result",
+      "call_63abf72e5dfb4498a0ee7197.result",
+      "call_ca525419d36b483ab1438fe5.result"
+    ],
+    "claims": [
+      {
+        "source_id": "source-0001-rank-2",
+        "claim": "NVTX用于Nsight Systems时间线标注",
+        "claim_evidence": [
+          {
+            "event_id": "call_b38c59ba03a24c3b96dc7203.result",
+            "quote": "NVTX（NVIDIA Tools Extension）是一个用于标记代码段"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_94a1905ab4a04eda9b13a79d.result",
+            "quote": "When you add NVTX markers and ranges to your application, the Timeline View shows when your CPU threads are executing within those regions."
+          },
+          {
+            "event_id": "call_ca525419d36b483ab1438fe5.result",
+            "quote": "Push a range onto a stack of nested range span."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "source_coverage": [
+      {
+        "source": "CSDN155752566/devpress/Zhihu",
+        "disposition": "Visible NVTX code-marking mechanism assessed; independent full-content identity is separate M5 uncertainty."
+      },
+      {
+        "source": "forceinjection",
+        "disposition": "A100/CUDA13.1 is a reported test environment, not a universal compatibility guarantee. The system-profiler introduction does not preserve a further complete operational assertion."
+      },
+      {
+        "source": "r3k5",
+        "disposition": "Repository-content description: NVTX-instrumented training loop; one-click implementation is truncated and no unseen command is invented."
+      },
+      {
+        "source": "weixin33205138",
+        "disposition": "Article purpose only, no identifiable parameter/version/operational assertion."
+      }
+    ]
   },
   "packet_sha256": "e77ff21bae27d494f346212645439e72b3dcd20ccb2345aaaf7be99a99eec2fa",
   "question": "PyTorch 模型 GPU 利用率不高，怎么用 Nsight Systems 抓 timeline 定位瓶颈？给出采集命令和分析步骤。",
   "run_id": "B-cuda-glm-5_3-standard-20260921T095746",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "third_party",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "# Search Results for \"Nsight Systems CLI nsys profile command documentation trace cuda nvtx\"\n\n## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/UserGuide/index.html)\n\n2026年9月9日 · Each Nsight Systems session is defined by a sequence of CLI commands that define one or more collections (e.g., …\n\n**URL:** https://docs.nvidia.com/nsight-systems/UserGuide/index.html\n\n---\n\n## 2. [使用NVTX + Nsight System 进行训练性能分析_nsys nvtx ...](https://blog.csdn.net/weixin_62286581/article/details/155752566)\n\n2026年7月23日 · 1 NVTX 介绍 NVTX（NVIDIA Tools Extension）是一个用于标记代码段的库，帮助在Nsight Systems等工具中可视 …\n\n**URL:** https://blog.csdn.net/weixin_62286581/article/details/15575"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0001",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/UserGuide/index.html)\n\n2026年9月9日 · Each Nsight Systems session is defined by a sequence of CLI commands that define one or more collections (e.g., …\n\n**URL:** https://docs.nvidia.com/nsight-systems/UserGuide/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
-      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "csdn-nvtx-155752566",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "## 2. [使用NVTX + Nsight System 进行训练性能分析_nsys nvtx ...](https://blog.csdn.net/weixin_62286581/article/details/155752566)\n\n2026年7月23日 · 1 NVTX 介绍 NVTX（NVIDIA Tools Extension）是一个用于标记代码段的库，帮助在Nsight Systems等工具中可视 …\n\n**URL:** https://blog.csdn.net/weixin_62286581/article/details/155752566\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
-      "url": "https://blog.csdn.net/weixin_62286581/article/details/155752566"
+      "url": "https://blog.csdn.net/weixin_62286581/article/details/155752566",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "## 3. [User Guide — nsight-systems - NVIDIA Developer](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/nsight/nsight-systems/UserGuide/index.html)\n\n2025年12月15日 · Each Nsight Systems session is defined by a sequence of CLI commands that define one or more collections (e.g., …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/nsight/nsight-systems/UserGuide/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
-      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/nsight/nsight-systems/UserGuide/index.html"
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/nsight/nsight-systems/UserGuide/index.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "zhihu-nvtx",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "## 4. [使用NVTX + Nsight System 进行训练性能分析 - 知乎](https://zhuanlan.zhihu.com/p/1981830363690074870)\n\n2026年3月25日 · 1 NVTX 介绍 NVTX（NVIDIA Tools Extension）是一个用于标记代码段的库，帮助在Nsight Systems等工具中可视 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1981830363690074870\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
-      "url": "https://zhuanlan.zhihu.com/p/1981830363690074870"
+      "url": "https://zhuanlan.zhihu.com/p/1981830363690074870",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt",
+      "content_group_candidates": [
+        "csdn-nvtx-155752566",
+        "zhihu-nvtx"
+      ]
     },
     {
-      "content_group": "",
+      "content_group": "forceinjection",
       "event_id": "call_b38c59ba03a24c3b96dc7203.result",
       "evidence": {
         "event_id": "call_b38c59ba03a24c3b96dc7203.result",
         "quote": "## 5. [Nsight Systems CLI (nsys) 快速入门 | AI Fundamentals](https://forceinjection.github.io/02_gpu_programming/04_profiling/07_nsight_systems_cli.html)\n\n4 天之前 · Nsight Systems CLI (nsys) 快速入门 基于 A100-SXM4-80GB + CUDA 13.1 实测。 nsys 是 NVIDIA 系统级性能分析器，从 …\n\n**URL:** https://forceinjection.github.io/02_gpu_programming/04_profiling/07_nsight_systems_cli.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
-      "url": "https://forceinjection.github.io/02_gpu_programming/04_profiling/07_nsight_systems_cli.html"
+      "url": "https://forceinjection.github.io/02_gpu_programming/04_profiling/07_nsight_systems_cli.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_94a1905ab4a04eda9b13a79d.result",
       "evidence": {
         "event_id": "call_94a1905ab4a04eda9b13a79d.result",
         "quote": "# Nsight Systems CLI (`nsys profile`) 参数说明提取\n\n以下内容提取自 NVIDIA Nsight Systems 用户指南。**加粗**表示文档中标注的默认值；部分选项的 Note 说明在本页面内容中未完整展示，已注明。\n\n---\n\n## 1. `nsys` 命令行基本形式(原文)\n\n```\nnsys [global_option]\n```\n\nor\n\n```\nnsys [command_switch][optional command_switch_options][application] [optional application_options]\n```\n\n> \"All command line options are case-sensitive. For command switch options, when short options are used, the parameters should follow the switch after a space; e.g., `-s process-tree`. When long options are used, the switch should be followed by an equal sign and then the parameter(s); e.g., `--sample=process-tree`.\"\n\n**profile 命令用法(原文):**\n\n```\nnsys [global-options] profile [options] [applicat"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
-      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "third_party",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "# Search Results for \"PyTorch NVTX profiler nsys recipe site:pytorch.org\"\n\n## 1. [使用NVTX + Nsight System 进行训练性能分析_nsys nvtx ...](https://blog.csdn.net/weixin_62286581/article/details/155752566)\n\n2026年7月23日 · 文章浏览阅读561次。 文章摘要：NVTX（NVIDIA Tools Extension）可用于代码标注，帮助在Nsight Systems中分析 …\n\n**URL:** https://blog.csdn.net/weixin_62286581/article/details/155752566\n\n---\n\n## 2. [使用NVTX + Nsight System 进行训练性能分析](https://devpress.csdn.net/v1/article/detail/155752566)\n\n2025年12月9日 · 文章摘要：NVTX（NVIDIA Tools Extension）可用于代码标注，帮助在Nsight Systems中分析大模型训练性能。 通 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155752566\n\n---\n\n## 3. [Training Profiler with Nsight Systems (Windows) - GitHub](https://github.com"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0003",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "csdn-nvtx-155752566",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "## 1. [使用NVTX + Nsight System 进行训练性能分析_nsys nvtx ...](https://blog.csdn.net/weixin_62286581/article/details/155752566)\n\n2026年7月23日 · 文章浏览阅读561次。 文章摘要：NVTX（NVIDIA Tools Extension）可用于代码标注，帮助在Nsight Systems中分析 …\n\n**URL:** https://blog.csdn.net/weixin_62286581/article/details/155752566\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-1",
-      "url": "https://blog.csdn.net/weixin_62286581/article/details/155752566"
+      "url": "https://blog.csdn.net/weixin_62286581/article/details/155752566",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "csdn-nvtx-155752566",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "## 2. [使用NVTX + Nsight System 进行训练性能分析](https://devpress.csdn.net/v1/article/detail/155752566)\n\n2025年12月9日 · 文章摘要：NVTX（NVIDIA Tools Extension）可用于代码标注，帮助在Nsight Systems中分析大模型训练性能。 通 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155752566\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-2",
-      "url": "https://devpress.csdn.net/v1/article/detail/155752566"
+      "url": "https://devpress.csdn.net/v1/article/detail/155752566",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "github-training-profiler",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "## 3. [Training Profiler with Nsight Systems (Windows) - GitHub](https://github.com/r3k5/training-profiler-nsight)\n\n2025年5月1日 · This repo provides a minimal PyTorch training loop instrumented with NVTX ranges, plus one-click profiling using …\n\n**URL:** https://github.com/r3k5/training-profiler-nsight\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-3",
-      "url": "https://github.com/r3k5/training-profiler-nsight"
+      "url": "https://github.com/r3k5/training-profiler-nsight",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "csdn-pytorch-bottleneck",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "## 4. [CUDA Profiler nsight systems使用：分析PyTorch性能瓶颈 ...](https://blog.csdn.net/weixin_33205138/article/details/156397863)\n\n2025年12月28日 · 通过NVIDIA Nsight Systems工具深入剖析PyTorch训练中的系统级性能问题，揭示CPU与GPU协作中的隐藏开销。 …\n\n**URL:** https://blog.csdn.net/weixin_33205138/article/details/156397863\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-4",
-      "url": "https://blog.csdn.net/weixin_33205138/article/details/156397863"
+      "url": "https://blog.csdn.net/weixin_33205138/article/details/156397863",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "zhihu-nvtx",
       "event_id": "call_d0420546d4f547dfae83eeb2.result",
       "evidence": {
         "event_id": "call_d0420546d4f547dfae83eeb2.result",
         "quote": "## 5. [使用NVTX + Nsight System 进行训练性能分析 - 知乎](https://zhuanlan.zhihu.com/p/1981830363690074870)\n\n2026年3月25日 · 1 NVTX 介绍 NVTX（NVIDIA Tools Extension）是一个用于标记代码段的库，帮助在Nsight Systems等工具中可视 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1981830363690074870\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-5",
-      "url": "https://zhuanlan.zhihu.com/p/1981830363690074870"
+      "url": "https://zhuanlan.zhihu.com/p/1981830363690074870",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt",
+      "content_group_candidates": [
+        "csdn-nvtx-155752566",
+        "zhihu-nvtx"
+      ]
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_756ded685f36490483517220.result",
       "evidence": {
         "event_id": "call_756ded685f36490483517220.result",
         "quote": "# 分析结果\n\n## 总体结论\n\n**本页面（PyTorch Profiler recipe，PyTorch Tutorials 2.14.0+cu130）不包含任何 Nsight Systems / NVTX / nsys 相关内容。** 具体核查结果如下：\n\n| 用户询问的内容 | 本页是否存在 |\n|---|---|\n| NVTX 环境变量（如 `NVTX=1`、`default`/`domain_all` 等作用域设置） | ❌ 未出现 |\n| `nsys` 采集命令示例（含 `--trace` 选项等） | ❌ 未出现 |\n| Nsight Systems 分析方法 | ❌ 未出现 |\n| `torch.profiler` 相关说明 | ✅ 本页核心内容（完整提取见下文） |\n\n> 💡 说明：您所描述的 NVTX 环境变量作用域（`default`、`domain_all` 等）及 `nsys profile --trace=...` 命令，通常出现在 **NVIDIA 官方文档**或 **PyTorch 其他页面**（如 *Optimizing NVIDIA GPU Performance with PyTorch Profiler*）中，而非本 recipe。本页的 trace 导出仅涉及 **Chrome trace**（`chrome://tracing`），与 Nsight Systems 是两套不同的工具链。\n\n---\n\n## 一、本页未包含的内容（核查详情）\n\n全文搜索确认以下关键词**均未出现**：\n- `NVTX`（无任何环境变量或作用域说明）\n- "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
-      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html"
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_63abf72e5dfb4498a0ee7197.result",
       "evidence": {
         "event_id": "call_63abf72e5dfb4498a0ee7197.result",
         "quote": "**标题**: torch.profiler — PyTorch 2.14 documentation\n\ntps://docs.pytorch.org/docs/1.1.0/profiler.html)v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# torch.profiler#\n\n## Overview#\n\n# torch.profiler#\n## Overview#\nPyTorch Profiler is a tool that allows the collection of performance metrics during training and inference. Profiler’s context manager API can be used to better understand what model operators are the most expensive, examine their input shapes and stack traces, study device kernel activity and visualize the execution trace.\n\nNote\n\nAn earlier version of the API in `torch.autograd` module is considered legacy and will be deprecated.\n\ntorch.profiler.profiler.schedule(***, *wa"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
-      "url": "https://docs.pytorch.org/docs/stable/profiler.html"
+      "url": "https://docs.pytorch.org/docs/stable/profiler.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_ca525419d36b483ab1438fe5.result",
       "evidence": {
         "event_id": "call_ca525419d36b483ab1438fe5.result",
         "quote": "**标题**: torch.cuda.nvtx.range_push — PyTorch 2.14 documentation\n\nBack to top\n\n# torch.cuda.nvtx.range_push[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch-cuda-nvtx-range-push \"Link to this heading\")\n\ntorch.cuda.nvtx.range_push(*msg*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/cuda/nvtx.py#L27)[#](https://docs.pytorch.org/docs/2.14/generated/torch.cuda.nvtx.range_push.html#torch.cuda.nvtx.range_push \"Link to this definition\")\n\nPush a range onto a stack of nested range span. Returns zero-based depth of the range that is started.\n\nParameters:\n\n**msg** ([*str*](https://docs.python.org/3/library/stdtypes.html#str \"(in Python v3.14)\")) – "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0006",
-      "url": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.nvtx.range_push.html"
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.nvtx.range_push.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "可执行的采集命令或代码",
+      "分析时间线/算子瓶颈的步骤"
+    ],
+    "secondary": [
+      "前置条件与关键采集参数",
+      "结果查看方式"
+    ],
+    "version_relations": [
+      "工具与运行环境的必要版本/适用关系"
+    ]
   }
 }
