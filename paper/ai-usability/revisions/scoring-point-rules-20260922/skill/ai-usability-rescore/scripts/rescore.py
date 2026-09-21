@@ -330,6 +330,7 @@ def check_fact_shape(facts: Any, issues: list[dict[str, str]]) -> None:
     if not isinstance(facts.get("source_items"), list): issue(issues, "facts.source_items", "source_items must be an array")
     if not isinstance(facts.get("fetches"), list): issue(issues, "facts.fetches", "fetches must be an array")
     if not isinstance(facts.get("task_requirements"), dict): issue(issues, "facts.requirements", "task_requirements must be an object")
+    elif not isinstance(facts["task_requirements"].get("main"), list) or not facts["task_requirements"]["main"]: issue(issues, "facts.requirements.main", "task_requirements.main must contain the original question requirements")
     for item in facts.get("source_items", []) if isinstance(facts.get("source_items"), list) else []:
         if not isinstance(item, dict): issue(issues, "facts.source_item", "source item must be an object"); continue
         for key in ("source_id", "event_id", "url", "ownership", "relevant", "content_group", "evidence"):
@@ -376,7 +377,7 @@ def quote_exists(index: dict[str, list[str]], evidence: Any) -> bool:
     return isinstance(evidence, dict) and isinstance(evidence.get("event_id"), str) and isinstance(evidence.get("quote"), str) and bool(evidence["quote"]) and any(evidence["quote"] in text for text in index.get(evidence["event_id"], []))
 
 
-def check_all_quotes(facts: dict[str, Any], assessment: dict[str, Any], index: dict[str, list[str]], issues: list[dict[str, str]]) -> None:
+def check_all_quotes(packet: dict[str, Any], facts: dict[str, Any], assessment: dict[str, Any], index: dict[str, list[str]], issues: list[dict[str, str]]) -> None:
     def one(ev: Any, where: str) -> None:
         if not quote_exists(index, ev): issue(issues, "quote.missing", f"{where} quote is absent or not verbatim in packet event")
     for i, item in enumerate(facts.get("source_items", [])):
@@ -397,6 +398,17 @@ def check_all_quotes(facts: dict[str, Any], assessment: dict[str, Any], index: d
     for name, metric in assessment.get("metrics", {}).items() if isinstance(assessment.get("metrics"), dict) else []:
         if not isinstance(metric, dict): continue
         for i, ev in enumerate(metric.get("evidence", []) if isinstance(metric.get("evidence"), list) else []): one(ev, f"assessment.{name}.evidence[{i}]")
+    final_ids = set(packet.get("final_event_ids", []))
+    prior_ids = {x.get("event_id") for x in packet.get("prior", []) if isinstance(x, dict)}
+    applicability = packet.get("applicability", {}) if isinstance(packet.get("applicability"), dict) else {}
+    for name in ("M9", "M10"):
+        metric = assessment.get("metrics", {}).get(name, {})
+        if applicability.get(name, {}).get("applicable") is True and metric.get("status") == "scored":
+            if not any(isinstance(e, dict) and e.get("event_id") in final_ids for e in metric.get("evidence", [])):
+                issue(issues, f"{name.lower()}.final_evidence", f"scored {name} requires evidence from packet.final")
+    metric7 = assessment.get("metrics", {}).get("M7", {})
+    if metric7.get("status") == "scored" and not any(isinstance(e, dict) and e.get("event_id") in prior_ids for e in metric7.get("evidence", [])):
+        issue(issues, "m7.prior_evidence", "scored M7 requires evidence from packet.prior")
 
 
 def check_search_inventory(packet: dict[str, Any], facts: dict[str, Any], issues: list[dict[str, str]], warnings: list[dict[str, str]]) -> None:
@@ -539,6 +551,13 @@ def check_m6(facts: dict[str, Any], assessment: dict[str, Any], issues: list[dic
         elif url_without_fragment(smap[sid].get("url")) in official_urls:
             issue(issues, "m6.claim_source", f"claim {i} labels a URL already mapped as official as third-party; ownership needs semantic review")
         ce = claim.get("claim_evidence", []); se = claim.get("support_evidence", [])
+        if not isinstance(ce, list) or not ce or any(not isinstance(x, dict) for x in ce): issue(issues, "m6.claim_evidence", f"claim {i} claim_evidence must be a non-empty list of objects")
+        if not isinstance(se, list) or any(not isinstance(x, dict) for x in se): issue(issues, "m6.support_evidence", f"claim {i} support_evidence must be a list of objects")
+        if not (isinstance(ce, list) and ce and all(isinstance(x, dict) for x in ce) and isinstance(se, list) and all(isinstance(x, dict) for x in se)):
+            continue
+        if isinstance(ce, list) and isinstance(se, list):
+            same = {(x.get("event_id"), x.get("quote")) for x in ce} & {(x.get("event_id"), x.get("quote")) for x in se}
+            if same: issue(issues, "m6.self_support", f"claim {i} reuses identical event and quote as support")
         claim_events = {x.get("event_id") for x in ce if isinstance(x, dict)}
         support_events = {x.get("event_id") for x in se if isinstance(x, dict)}
         source_event = smap.get(sid, {}).get("event_id") if sid in smap else None
@@ -646,7 +665,7 @@ def check_command(packet_path: Path, assessment_path: Path, facts_path: Path, ou
         if assessment.get("process_sha256") != packet_process_hash(packet): issue(issues, "process_sha256", "assessment process hash does not match packet process hash")
     index = event_index(packet)
     if isinstance(facts, dict) and isinstance(assessment, dict):
-        check_all_quotes(facts, assessment, index, issues)
+        check_all_quotes(packet, facts, assessment, index, issues)
         check_search_inventory(packet, facts, issues, warnings)
         check_m2(packet, facts, assessment, issues)
         # A fetch row and its source inventory row must not silently disagree

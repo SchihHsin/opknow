@@ -1,0 +1,482 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_c7536ba8.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c7536ba8.result",
+        "quote": "所提供的网页内容中并未包含 \"Post-installation Actions\" 章节的正文。"
+      },
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "title",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "WebFetch_3_37e2f4e5.result",
+      "evidence": {
+        "event_id": "WebFetch_3_37e2f4e5.result",
+        "quote": "This guide provides installation instructions for the NVIDIA driver (branch 615)."
+      },
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
+      "request_url": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "WebFetch_4_9b9207ce.result",
+      "evidence": {
+        "event_id": "WebFetch_4_9b9207ce.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf)."
+      },
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "error",
+      "request_url": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "WebFetch_5_89b8172e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_89b8172e.result",
+        "quote": "This section covers:\n\n- Ubuntu 22.04\n- Ubuntu 24.04\n- Ubuntu 26.04"
+      },
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
+      "request_url": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "WebFetch_6_4f9cd9f3.result",
+      "evidence": {
+        "event_id": "WebFetch_6_4f9cd9f3.result",
+        "quote": "## 分析结果：未包含"
+      },
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "title",
+      "request_url": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-installation-guide-linux/index.html",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "WebFetch_8_4b7a9994.result",
+      "evidence": {
+        "event_id": "WebFetch_8_4b7a9994.result",
+        "quote": "export PATH=/usr/local/cuda/bin:$PATH"
+      },
+      "observed_defect": false,
+      "ownership": "third_party",
+      "representation": "body",
+      "request_url": "https://www.cnblogs.com/mistsly/p/19088376",
+      "target_match": "matched"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": false,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
+  },
+  "m10": {
+    "content_check_complete": true,
+    "content_repairs": [
+      "主路线URL的<arch>未解释应取x86_64还是sbsa；需补充仓库架构值映射"
+    ],
+    "environment_substitutions": [
+      "<distro>"
+    ],
+    "unresolved": [
+      "未建立所选CUDA toolkit与驱动的兼容依据"
+    ]
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [
+      "返回材料未给出CUDA 13.4.1所需驱动版本下限或兼容范围"
+    ],
+    "mode": "partial"
+  },
+  "m5": {
+    "possible_counts": [
+      7
+    ],
+    "third_party_sources": [
+      {
+        "source_id": "source-0001-rank-3",
+        "relevant": true,
+        "independent": true,
+        "reason": "CSDN installation tutorial addresses CUDA installation."
+      },
+      {
+        "source_id": "source-0001-rank-5",
+        "relevant": true,
+        "independent": true,
+        "reason": "GoLinuxCloud addresses Ubuntu CUDA installation."
+      },
+      {
+        "source_id": "source-0008-rank-1",
+        "relevant": true,
+        "independent": true,
+        "reason": "CSDN page addresses LD_LIBRARY_PATH."
+      },
+      {
+        "source_id": "source-0008-rank-2",
+        "relevant": true,
+        "independent": true,
+        "reason": "CSDN page addresses CUDA environment variables."
+      },
+      {
+        "source_id": "source-0008-rank-3",
+        "relevant": true,
+        "independent": true,
+        "reason": "Cnblogs page addresses adding CUDA paths."
+      },
+      {
+        "source_id": "source-0008-rank-4",
+        "relevant": true,
+        "independent": true,
+        "reason": "Fetched Cnblogs page gives PATH and LD_LIBRARY_PATH exports."
+      },
+      {
+        "source_id": "source-0008-rank-5",
+        "relevant": true,
+        "independent": true,
+        "reason": "CSDN article addresses CUDA library path."
+      }
+    ]
+  },
+  "m6": {
+    "checked_event_ids": [
+      "WebSearch_0_5fdef183.result",
+      "WebFetch_1_0fbc4b45.result",
+      "WebFetch_2_c7536ba8.result",
+      "WebFetch_3_37e2f4e5.result",
+      "WebFetch_4_9b9207ce.result",
+      "WebFetch_5_89b8172e.result",
+      "WebFetch_6_4f9cd9f3.result",
+      "WebSearch_7_f31e5197.result",
+      "WebFetch_8_4b7a9994.result"
+    ],
+    "no_third_party_material": false,
+    "claims": [
+      {
+        "claim_id": "tp1",
+        "source_id": "source-0008-rank-1",
+        "claim": "LD_LIBRARY_PATH is an environment variable specifying where the runtime linker searches shared libraries.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_7_f31e5197.result",
+            "quote": "LD_LIBRARY_PATH 是一个环境变量，用于指定系统在运行时查找共享库的路径。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "claim_id": "tp2",
+        "source_id": "source-0008-rank-2",
+        "claim": "The search result says PyTorch can ignore this error and still find CUDA, while recommending compatibility-safe configuration.",
+        "claim_evidence": [
+          {
+            "event_id": "WebSearch_7_f31e5197.result",
+            "quote": "虽然PyTorch可以无视此错误找到CUDA，但为确保兼容性，建议使用条件语句正确地添加环境变量。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unresolved",
+        "independent_crosscheck": false
+      },
+      {
+        "claim_id": "tp3",
+        "source_id": "source-0009",
+        "claim": "Ubuntu 22.04配置CUDA需在.bashrc添加PATH、CUDA_HOME、LD_LIBRARY_PATH及LIBRARY_PATH四个导出设置",
+        "claim_evidence": [
+          {
+            "event_id": "WebFetch_8_4b7a9994.result",
+            "quote": "Linux-Ubuntu22.04在配置cuda时，还需要在~/.bashrc末尾增加以下内容："
+          },
+          {
+            "event_id": "WebFetch_8_4b7a9994.result",
+            "quote": "export PATH=/usr/local/cuda/bin:$PATH\nexport CUDA_HOME=/usr/local/cuda\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH\nexport LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
+    "excluded_fragments": [
+      "其他搜索条目仅介绍文章主题，未保存可识别的具体操作断言；HF_ENDPOINT与本题CUDA安装无关。"
+    ]
+  },
+  "packet_sha256": "78320e9d8a932bbd88e7063b273f64d13ca4f3c24fc6b53122afd3c0ffacf70b",
+  "question": "Ubuntu 上从零安装 CUDA toolkit，装完要配哪些环境变量（PATH / LD_LIBRARY_PATH）？",
+  "run_id": "J-cuda-kimi-k3-2-standard-20260921T113432",
+  "source_items": [
+    {
+      "content_group": "search-results",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "# Search Results for"
+      },
+      "ownership": "unknown",
+      "relevant": true,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "## 1. [CUDA Installation Guide for Linux - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)\n\n5 天之前 · The NVIDIA CUDA Installation Guide for Linux provides comprehensive instructions for installing the CUDA Toolkit across …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-installation-guide-linux/\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": true,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "## 2. [Installation Guide for Linux - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf)\n\n2025年9月3日 · The NVIDIA CUDA Installation Guide for Linux provides comprehensive instructions for installing the CUDA Toolkit …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": true,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "https://blog.csdn.net/m0_57409671/article/details/154279396",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "## 3. [【保姆教程】Linux系统安装Cuda完整步骤_linux安装cuda ...](https://blog.csdn.net/m0_57409671/article/details/154279396)\n\n2026年3月25日 · 本文介绍了Linux系统下CUDA工具包的安装配置流程。 主要内容包括：1）从NVIDIA官网下载指定版本CUDA安装 …\n\n**URL:** https://blog.csdn.net/m0_57409671/article/details/154279396\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": true,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/m0_57409671/article/details/154279396"
+    },
+    {
+      "content_group": "https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Installation_Guide_Linux.pdf",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "## 4. [NVIDIA CUDA Installation Guide for Linux](https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Installation_Guide_Linux.pdf)\n\n2023年1月28日 · NVIDIA CUDA Installation Guide for Linux Installation and Verification on Linux Systems DU-05347-001_v12.0 | …\n\n**URL:** https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Installation_Guide_Linux.pdf\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": true,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "https://www.golinuxcloud.com/install-cuda-on-ubuntu/",
+      "event_id": "WebSearch_0_5fdef183.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5fdef183.result",
+        "quote": "## 5. [Install NVIDIA CUDA Toolkit on Ubuntu: Driver, APT Repo, and nvcc](https://www.golinuxcloud.com/install-cuda-on-ubuntu/)\n\n2023年4月3日 · This guide walks through install CUDA on Ubuntu the way NVIDIA’s Linux installation guide documents today: driver …\n\n**URL:** https://www.golinuxcloud.com/install-cuda-on-ubuntu/\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": true,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.golinuxcloud.com/install-cuda-on-ubuntu/"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+      "event_id": "WebFetch_1_0fbc4b45.result",
+      "evidence": {
+        "event_id": "WebFetch_1_0fbc4b45.result",
+        "quote": "## (1) Ubuntu 上安装 CUDA Toolkit 的完整步骤"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+      "event_id": "WebFetch_2_c7536ba8.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c7536ba8.result",
+        "quote": "所提供的网页内容中并未包含 \"Post-installation Actions\" 章节的正文。"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html",
+      "event_id": "WebFetch_3_37e2f4e5.result",
+      "evidence": {
+        "event_id": "WebFetch_3_37e2f4e5.result",
+        "quote": "This guide provides installation instructions for the NVIDIA driver (branch 615)."
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf",
+      "event_id": "WebFetch_4_9b9207ce.result",
+      "evidence": {
+        "event_id": "WebFetch_4_9b9207ce.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf)."
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html",
+      "event_id": "WebFetch_5_89b8172e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_89b8172e.result",
+        "quote": "This section covers:\n\n- Ubuntu 22.04\n- Ubuntu 24.04\n- Ubuntu 26.04"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html"
+    },
+    {
+      "content_group": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-installation-guide-linux/index.html",
+      "event_id": "WebFetch_6_4f9cd9f3.result",
+      "evidence": {
+        "event_id": "WebFetch_6_4f9cd9f3.result",
+        "quote": "## 分析结果：未包含"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-installation-guide-linux/index.html"
+    },
+    {
+      "content_group": "search-results",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "# Search Results for"
+      },
+      "ownership": "unknown",
+      "relevant": true,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "https://blog.csdn.net/engchina/article/details/144890271",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "## 1. [如何正确配置 `LD_LIBRARY_PATH` 以支持CUDA？](https://blog.csdn.net/engchina/article/details/144890271)\n\n2026年8月13日 · LD_LIBRARY_PATH 是一个环境变量，用于指定系统在运行时查找共享库的路径。 如果配置不正确，可能会导 …\n\n**URL:** https://blog.csdn.net/engchina/article/details/144890271\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": true,
+      "source_id": "source-0008-rank-1",
+      "url": "https://blog.csdn.net/engchina/article/details/144890271"
+    },
+    {
+      "content_group": "https://blog.csdn.net/qq_33287871/article/details/119001634",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "## 2. [CUDA环境变量的坑（冒号）_export cudahome-CSDN博客](https://blog.csdn.net/qq_33287871/article/details/119001634)\n\n2026年3月30日 · 虽然PyTorch可以无视此错误找到CUDA，但为确保兼容性，建议使用条件语句正确地添加环境变量。 在配 …\n\n**URL:** https://blog.csdn.net/qq_33287871/article/details/119001634\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": true,
+      "source_id": "source-0008-rank-2",
+      "url": "https://blog.csdn.net/qq_33287871/article/details/119001634"
+    },
+    {
+      "content_group": "https://www.cnblogs.com/huadongw/p/15193247.html",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "## 3. [linux添加cuda路径到bashrc环境变量 - 华东博客 - 博 …](https://www.cnblogs.com/huadongw/p/15193247.html)\n\n2021年8月27日 · 查看linux中存在的cuda版本，进入/usr/local： 添加自己需要的cuda版本到环境变量, vim …\n\n**URL:** https://www.cnblogs.com/huadongw/p/15193247.html\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": true,
+      "source_id": "source-0008-rank-3",
+      "url": "https://www.cnblogs.com/huadongw/p/15193247.html"
+    },
+    {
+      "content_group": "https://www.cnblogs.com/mistsly/p/19088376",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "## 4. [Ubuntu安装CUDA时配置环境变量 - FallenLeave - 博客园](https://www.cnblogs.com/mistsly/p/19088376)\n\n2025年9月12日 · Linux-Ubuntu22.04在配置cuda时，还需要在~/.bashrc末尾增加以下内容： ... 前4行配置CUDA环境变量，最后一行 …\n\n**URL:** https://www.cnblogs.com/mistsly/p/19088376\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": true,
+      "source_id": "source-0008-rank-4",
+      "url": "https://www.cnblogs.com/mistsly/p/19088376"
+    },
+    {
+      "content_group": "https://wenku.csdn.net/column/jd3xgxsdz7o",
+      "event_id": "WebSearch_7_f31e5197.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f31e5197.result",
+        "quote": "## 5. [别再被libcuda.so报错折磨了！手把手教你修复CUDA和 ...](https://wenku.csdn.net/column/jd3xgxsdz7o)\n\n2026年4月24日 · 手把手教你修复CUDA和cuDNN的LD_LIBRARY_PATH环境变量（附WSL2和Conda环境配置） 1. 理解动态链接库 …\n\n**URL:** https://wenku.csdn.net/column/jd3xgxsdz7o\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": true,
+      "source_id": "source-0008-rank-5",
+      "url": "https://wenku.csdn.net/column/jd3xgxsdz7o"
+    },
+    {
+      "content_group": "https://www.cnblogs.com/mistsly/p/19088376",
+      "event_id": "WebFetch_8_4b7a9994.result",
+      "evidence": {
+        "event_id": "WebFetch_8_4b7a9994.result",
+        "quote": "export PATH=/usr/local/cuda/bin:$PATH"
+      },
+      "ownership": "third_party",
+      "relevant": true,
+      "source_id": "source-0009",
+      "url": "https://www.cnblogs.com/mistsly/p/19088376"
+    }
+  ],
+  "task_requirements": {
+    "main": [
+      "Ubuntu从零安装CUDA toolkit的完整主路线",
+      "安装后PATH和LD_LIBRARY_PATH配置"
+    ],
+    "secondary": [
+      "验证安装与生效方法"
+    ],
+    "version_relations": [
+      "Ubuntu版本与CUDA toolkit支持关系",
+      "CUDA toolkit与驱动兼容关系"
+    ]
+  }
+}

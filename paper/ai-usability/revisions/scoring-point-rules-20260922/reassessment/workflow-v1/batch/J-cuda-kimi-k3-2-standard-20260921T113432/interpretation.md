@@ -1,0 +1,3 @@
+# Parent-reviewed interpretation
+
+The full question includes installation and environment setup. M4/M9 retain Ubuntu–toolkit and toolkit–driver relations; branch titles are not compatibility proof. M2 uses the last return per fragment-normalized URL (2,5,1,5,2), distinct from M3 content coverage. All two searches and seven fetches were read. M6 retains the unresolved PyTorch referent and does not use a claim to verify itself. M7 old-version package behavior was not established by the current-version excerpt. M10 has an unexplained architecture placeholder and unresolved main-route driver compatibility; no hardware execution deduction was made. These uncertainties remain null; this is not a claim that the experiment lost its logs.

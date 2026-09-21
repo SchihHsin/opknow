@@ -1,0 +1,290 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "A-cann-deepseek-v4_1-flash-standard-20260921T094956",
+  "process_sha256": "9279dc2ab7b50655f672e8726614ed3a7272a234c9dd485526699c46d1ed9e76",
+  "metrics": {
+    "M1": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "论坛条目无作者身份，无法裁决其是否官方；若排除则首次官方为第2次第1位，若计入则第1次第5位，跨分档。"
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.571428571428571,
+      "reason": "7个独立官方fetch按URL合并；6份直接正文无观察到截断，商用版一次仅标题/元数据，分数2；等权均值32/7。",
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devaids/auxiliarydevtool/atlasatc_16_0005.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/doc_center/source/zh/Atlas200IDKA2DeveloperKit/23.0.RC2/Application%20Development%20Guide/tmuacop/tmuacop_0013.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0003.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devaids/auxiliarydevtool/atlasatc_16_0003.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devaids/auxiliarydevtool/atlasatc_16_0070.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devaids/auxiliarydevtool/atlasatc_16_0038.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/softwareinst/instg/instg_0039.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_00_t9KESpmVakYHRaTaksNj7661.result",
+          "quote": "昇腾张量编译器（Ascend Tensor Compiler，简称ATC）是异构计算架构CANN体系下的模型转换工具"
+        },
+        {
+          "event_id": "call_00_POOXi7ifGKggeNbMhbGX4701.result",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "call_00_t65pAsaBEJ42fJxSiqKx5219.result",
+          "quote": "学习向导-ATC模型转换-推理应用开发-CANN商用版5.0.4.6开发文档-昇腾社区"
+        },
+        {
+          "event_id": "call_00_XSB6JXroa7MhGGWXPIJK7421.result",
+          "quote": "本章节以各框架下模型转换为例，演示如何快速转换一个模型。"
+        },
+        {
+          "event_id": "call_00_p1UVBLh6Ls84YB0EQZ3y5529.result",
+          "quote": "指定模型转换时昇腾AI处理器的版本。"
+        },
+        {
+          "event_id": "call_00_IgX7yN9qUkFuwhqigYGK8655.result",
+          "quote": "支持原始框架类型为Caffe、TensorFlow、MindSpore、ONNX的模型转换"
+        },
+        {
+          "event_id": "call_00_TphyiV7jdwzT0UCe28Ad9094.result",
+          "quote": "CANN软件提供进程级环境变量设置脚本，供用户在进程中引用，以自动完成环境变量设置。"
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 4,
+      "reason": "保存官方正文已覆盖静态ONNX转换主流程、环境、芯片查询、命令参数和成功输出；ONNX opset/算子支持细节以及实际部署推理步骤仍指向外部资料。主流程可识别，题目相关约束与后续参考未齐，不能给5。",
+      "evidence": [
+        {
+          "event_id": "call_00_POOXi7ifGKggeNbMhbGX4701.result",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "call_00_IgX7yN9qUkFuwhqigYGK8655.result",
+          "quote": "只支持算子清单中的算子，并需满足算子限制条件。"
+        },
+        {
+          "event_id": "call_00_XSB6JXroa7MhGGWXPIJK7421.result",
+          "quote": "获取msame工具，参考该工具配套的README，进行体验。"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "官方资料给出CANN/Atlas文档版本和soc_version规则，但未直接给出ONNX与目标芯片的完整版本适用关系，仍缺必要关系。",
+      "evidence": [
+        {
+          "event_id": "call_00_p1UVBLh6Ls84YB0EQZ3y5529.result",
+          "quote": "请使用与芯片名相对应的*<soc_version>*取值进行模型转换，然后再进行推理。"
+        },
+        {
+          "event_id": "call_00_XSB6JXroa7MhGGWXPIJK7421.result",
+          "quote": "若用户使用6.0.1之前的CANN版本进行的模型转换，无法在6.0.1及之后CANN版本进行推理"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "去重后有8个相关第三方来源（阿里云、两篇CSDN、华为云社区、掘金、Devpress、GitHub Pages、博客园）；按n≥6为5分。",
+      "evidence": [
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "## 1. [在昇腾上使用ATC将ONNX模型转换为静态和动态OM模型 ..."
+        },
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "## 2. [昇腾ATC模型转换实战：从ONNX到OM的避坑指南-CSDN博客"
+        },
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "## 3. [飞桨x昇腾生态适配方案：10_ONNX转OM-云社区-华为云"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 5,
+      "reason": "四条可识别第三方操作说法经保存的官方ONNX转换示例、OM部署解释和芯片命名规则交叉支持；其余摘要仅介绍文章主题。未据标题虚构性能或PyTorch直接转换断言，未发现这四项的关键矛盾。",
+      "evidence": [
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "本章节主要介绍如何将ONNX模型转化为昇腾AI处理器支持的OM模型，并进行离线推理。"
+        },
+        {
+          "event_id": "call_00_POOXi7ifGKggeNbMhbGX4701.result",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "call_00_t9KESpmVakYHRaTaksNj7661.result",
+          "quote": "通过**AscendCL接口加载模型文件**实现推理过程"
+        },
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "它的核心任务，就是把用不同“方言”（框架）写的模型，翻译成昇腾AI处理器能直接听懂的“机器语言”（OM格式）。"
+        },
+        {
+          "event_id": "call_00_t9KESpmVakYHRaTaksNj7661.result",
+          "quote": "它可以将开源框架的网络模型以及Ascend IR定义的单算子描述文件（json格式）转换为昇腾AI处理器支持的.om格式离线模型。"
+        },
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "本章节介绍 ONNX 模型如何转化为 OM 模型，并在昇腾AI处理器上做离线推理。"
+        },
+        {
+          "event_id": "call_00_POOXi7ifGKggeNbMhbGX4701.result",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "call_00_t9KESpmVakYHRaTaksNj7661.result",
+          "quote": "通过**AscendCL接口加载模型文件**实现推理过程"
+        },
+        {
+          "event_id": "call_00_tTMXtlfzDKQzojifeULb5655.result",
+          "quote": "得到的310B4就是设备名称"
+        },
+        {
+          "event_id": "call_00_POOXi7ifGKggeNbMhbGX4701.result",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "call_00_p1UVBLh6Ls84YB0EQZ3y5529.result",
+          "quote": "在查询到的“Name”前增加Ascend信息"
+        }
+      ]
+    },
+    "M7": {
+      "status": "scored",
+      "score": 4,
+      "reason": "先验给出经官方材料支持的ONNX静态转换主流程和主要参数；精确版本/opset及部分芯片枚举与可选参数未核清，未达到完整约束的5分。4分仅指已核对主流程，不为全部附加说法背书；自报不确定本身不扣分。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "ONNX→OM 的整体流程：准备 ONNX（固定/明确输入维度）→ 配置环境变量 → 调用 `atc` 指定 `--framework=5`（5 代表 ONNX）→ 指定 `--model`、`--output`、`--soc_version` → 生成 `.om` → 用 `msame`/`benchmark`/`acl` 接口加载推理。"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "支持的 ONNX opset 上限、CANN 版本与 ATC 参数差异"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "实际派发事件为11（2 search+7 fetch及后续搜索/环境fetch），C=11，按≥9映射1分。",
+      "evidence": [
+        {
+          "event_id": "call_00_antJV6qc0qWDBUKCiftM5340.result",
+          "quote": "# Search Results for \"昇腾 ATC ONNX 转 om 离线模型 转换命令 framework\""
+        }
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案明确保留 ONNX opset/算子支持清单缺失，并仅给出 CANN 6.0.1 前后兼容说明，因此只能评为3。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "**CANN 8.0.RC2.alpha002（社区版）**"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "**ONNX opset 上限与 ONNX→昇腾算子支持清单**：本次未取得直接正文，无法给出具体 opset 数值范围。"
+        }
+      ]
+    },
+    "M10": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "静态转换主路线和环境替换已给出，动态多档位是额外分支，不能仅因该分支未核清判已知错误；但ONNX与选定ATC的适用范围未核清，影响任意输入模型能否沿主路线转换，按兼容性待复核分支保留null。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "atc --model=model.onnx --framework=5 --output=model --soc_version=Ascend310B4"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "**ONNX opset 上限与 ONNX→昇腾算子支持清单**：本次未取得直接正文，无法给出具体 opset 数值范围。"
+        }
+      ]
+    },
+    "M11": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "M1 needs_review，按规则综合指标传播待复核。",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "observations": {
+    "task_requirements": [
+      "ONNX→ATC→.om完整步骤",
+      "命令",
+      "环境/芯片/shape/算子约束",
+      "部署推理"
+    ],
+    "execution_status": "not_run; content checked"
+  },
+  "channel_states": {}
+}

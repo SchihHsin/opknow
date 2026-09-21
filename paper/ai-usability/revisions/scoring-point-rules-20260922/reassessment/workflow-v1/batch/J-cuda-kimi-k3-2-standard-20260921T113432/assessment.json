@@ -1,0 +1,233 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "J-cuda-kimi-k3-2-standard-20260921T113432",
+  "process_sha256": "1f993a678a77a340f98a721f09bfe8d8b5c20c925d678e84ba1a08610bb8c6dc",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第一轮查询第1位即为与Ubuntu CUDA安装及环境变量直接相关的NVIDIA官方指南。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_5fdef183.result",
+          "quote": "## 1. [CUDA Installation Guide for Linux - NVIDIA Documentation Hub"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.0,
+      "reason": "五个独立官方文档表示分别为摘要/直接正文/非文本错误；按URL合并fragment后等权平均为3.0。主指南片段和旧版HTML仅摘要，PDF请求失败，驱动Ubuntu页为直接正文。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_c7536ba8.result",
+          "quote": "所提供的网页内容中并未包含 \"Post-installation Actions\" 章节的正文。"
+        },
+        {
+          "event_id": "WebFetch_4_9b9207ce.result",
+          "quote": "This URL returned a non-text resource (Content-Type: application/pdf)."
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "explicit summary; target chapter body absent",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/index.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "guide overview summary",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/archive/13.0.0/pdf/CUDA_Installation_Guide_Linux.pdf",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "non-text PDF error",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/latest/ubuntu.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "direct Ubuntu guide body returned",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-installation-guide-linux/index.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "explicit summary saying section absent",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "官方保存内容提供完整安装段落和驱动命令，但核心环境变量章节只返回缺失说明，未取得PATH/LD_LIBRARY_PATH正文；此为本次取得内容的缺口。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_0fbc4b45.result",
+          "quote": "# apt install cuda-toolkit"
+        },
+        {
+          "event_id": "WebFetch_5_89b8172e.result",
+          "quote": "# apt install nvidia-open"
+        },
+        {
+          "event_id": "WebFetch_2_c7536ba8.result",
+          "quote": "- ❌ Environment Setup 中关于 `PATH` 的 export 命令"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "已给出CUDA 13.4.1对应Ubuntu支持列表及驱动单独安装原则，但未给出该toolkit所需驱动版本下限或兼容范围；branch 615指南标题不等于二者兼容规则。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_0fbc4b45.result",
+          "quote": "| Ubuntu 24.04 LTS | `ubuntu2404` | amd64 / arm64 |"
+        },
+        {
+          "event_id": "WebFetch_1_0fbc4b45.result",
+          "quote": "To run CUDA applications, install a compatible driver separately"
+        },
+        {
+          "event_id": "WebFetch_3_37e2f4e5.result",
+          "quote": "This guide provides installation instructions for the NVIDIA driver (branch 615)."
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "预算内发现7个可识别且与安装、驱动或环境变量直接相关的独立第三方来源；按>=6映射为5分。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_5fdef183.result",
+          "quote": "## 3. [【保姆教程】Linux系统安装Cuda完整步骤_linux安装cuda ..."
+        },
+        {
+          "event_id": "WebSearch_7_f31e5197.result",
+          "quote": "## 4. [Ubuntu安装CUDA时配置环境变量 - FallenLeave - 博客园"
+        }
+      ]
+    },
+    "M6": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "已检查全部保存来源。共享库路径定义与博客四项导出设置缺少可追溯的外部核对支持；PyTorch摘要“此错误”对象不明，不能核清限定条件。保留待复核，不把源文重引作支持，也不从未支持推断为假。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_7_f31e5197.result",
+          "quote": "LD_LIBRARY_PATH 是一个环境变量，用于指定系统在运行时查找共享库的路径。"
+        },
+        {
+          "event_id": "WebSearch_7_f31e5197.result",
+          "quote": "虽然PyTorch可以无视此错误找到CUDA，但为确保兼容性，建议使用条件语句正确地添加环境变量。"
+        },
+        {
+          "event_id": "WebFetch_8_4b7a9994.result",
+          "quote": "export PATH=/usr/local/cuda/bin:$PATH\nexport CUDA_HOME=/usr/local/cuda\nexport LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+        }
+      ]
+    },
+    "M7": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "先验确有network/runfile路线和环境命令，官方归档支持keyring及部分安装步骤，第三方支持环境导出形式；但其CUDA 12.x元包包含驱动与ldconfig条件未由固定材料核清，不能据当前13.4规则反推旧版本正确或错误。未核清内容会影响完整正确主路线判定，保留待复核。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "sudo apt update && sudo apt -y install cuda-toolkit-12-x（或 cuda 元包，含驱动）"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "APT 方式通常库已通过 ldconfig 注册，LD_LIBRARY_PATH 有时非必需；runfile 安装时需要。"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "实际派发事件为2次搜索加7次抓取，共9次；按C>=9映射为1分。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_5fdef183.result",
+          "quote": "# Search Results for \"NVIDIA CUDA Installation Guide for Linux Ubuntu PATH LD_LIBRARY_PATH\""
+        }
+      ],
+      "event_refs": [
+        "WebSearch_0_5fdef183.dispatch",
+        "WebFetch_1_0fbc4b45.dispatch",
+        "WebFetch_2_c7536ba8.dispatch",
+        "WebFetch_3_37e2f4e5.dispatch",
+        "WebFetch_4_9b9207ce.dispatch",
+        "WebFetch_5_89b8172e.dispatch",
+        "WebFetch_6_4f9cd9f3.dispatch",
+        "WebSearch_7_f31e5197.dispatch",
+        "WebFetch_8_4b7a9994.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案给出CUDA 13.4.1和Ubuntu支持范围；驱动分支只转述指南标题并标注未核实，未建立所选toolkit与驱动的适用范围。因此是部分组件有依据，而不是所有组件都有范围但未锁具体版本的4分。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "- 当前 CUDA 版本：**13.4 Update 1（13.4.1）**"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "3. 当前驱动分支号：驱动指南标题称 branch 615，正文 warning 提及 branch 590 起包名变更，具体最新版本号未进一步核实。"
+        }
+      ]
+    },
+    "M10": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "有完整安装命令，但<arch>缺少取值说明，另主路线的toolkit/驱动兼容适用性仍未核清。按不可核查的主路线兼容断言分支保留待复核；不把未运行或二手出处本身作为错误。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "wget https://developer.download.nvidia.com/compute/cuda/repos/<distro>/<arch>/cuda-keyring_1.1-1_all.deb"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "sudo apt install nvidia-open"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "sudo apt install cuda-toolkit"
+        }
+      ]
+    },
+    "M11": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "M6、M7为needs_review，必要输入未定，不计算综合指数。",
+      "missing_inputs": [
+        "M6"
+      ]
+    }
+  },
+  "observations": {},
+  "channel_states": {}
+}

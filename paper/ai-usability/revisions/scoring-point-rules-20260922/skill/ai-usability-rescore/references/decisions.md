@@ -38,3 +38,5 @@ Build every quotation through a helper that asserts `quote in event_text` before
 `prepare` 能通过不代表 packet 有效。非 JSON、非 object 或缺 run identifier 会在 `prepare` 阻断；dispatch 无对应保存返回、fetch 覆盖不全、搜索结果无法盘点等异常通常由 `check` 写入失败报告并以非零状态阻断。
 
 通过父 Agent 语义复核后，才使用包含全部 hash 的 review 文件调用 `review`。review 是对当前范围和已解决发现的记录，不是专家全面认证。未解决结果保留在完整评价中并带 `null`，但不得作为有效点值输入进入点值汇总；不得删除记录或以低分替代未决事实。
+
+常见机械错误：共享域名不能代替内容去重；M4 评价的是来源适用关系而非最终答案正确性；未知核验状态不能改判为已知内容错误。上述事项仍须人工语义复核，工具不自动下语义结论。

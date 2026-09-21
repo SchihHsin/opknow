@@ -94,6 +94,9 @@ class RescoreTests(unittest.TestCase):
         metrics["M2"].update(score=5, documents=[{"id": "fetch-1", "status": "scored", "score": 5}], evidence=[q("fetch-1", body)])
         metrics["M5"].update(score=2, evidence=[q("search-1", "third-party result body")])
         metrics["M6"].update(score=5, evidence=[q("fetch-1", body)])
+        metrics["M7"].update(evidence=[q("prior-1", "Prior answer text.")])
+        metrics["M9"].update(evidence=[q("final-1", "Final answer text.")])
+        metrics["M10"].update(evidence=[q("final-1", "Final answer text.")])
         metrics["M8"].pop("evidence"); metrics["M8"]["event_refs"] = ["search-1", "fetch-1"]; metrics["M8"]["score"] = 5
         metrics["M11"].pop("evidence")
         metrics["M11"]["derived_from"] = [f"M{i}" for i in range(1, 9)]
@@ -128,6 +131,47 @@ class RescoreTests(unittest.TestCase):
 
     def test_quote_requires_existing_exact_substring(self):
         with self.assertRaises(rescore.GateError): rescore.exact_quote(rescore.event_index(self.packet), "fetch-1", "fabricated")
+
+    def test_empty_main_requirements_fail(self):
+        facts = copy.deepcopy(self.facts); facts["task_requirements"]["main"] = []
+        self.write_facts(facts); code, report = self.run_check()
+        self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] == "facts.requirements.main" for x in report["issues"]))
+
+    def test_scored_final_metrics_require_final_evidence(self):
+        for name in ("M9", "M10"):
+            assessment = copy.deepcopy(self.assessment); assessment["metrics"][name]["evidence"] = [{"event_id": "fetch-1", "quote": "Official body text: PATH and LD_LIBRARY_PATH."}]
+            self.write_assessment(assessment); code, report = self.run_check()
+            self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] == f"{name.lower()}.final_evidence" for x in report["issues"]))
+
+    def test_scored_m7_requires_prior_evidence(self):
+        assessment = copy.deepcopy(self.assessment); assessment["metrics"]["M7"]["evidence"] = [{"event_id": "fetch-1", "quote": "Official body text: PATH and LD_LIBRARY_PATH."}]
+        self.write_assessment(assessment); code, report = self.run_check()
+        self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] == "m7.prior_evidence" for x in report["issues"]))
+
+    def test_not_applicable_metrics_are_exempt(self):
+        packet = copy.deepcopy(self.packet); packet["applicability"]["M9"] = {"applicable": False}; packet["applicability"]["M10"] = {"applicable": False}
+        self.packet_path.write_text(json.dumps(packet, ensure_ascii=False, indent=2), encoding="utf-8")
+        assessment = copy.deepcopy(self.assessment)
+        for name in ("M9", "M10"):
+            assessment["metrics"][name] = {"status": "not_applicable", "score": None, "reason": "Packet applicability", "evidence": []}
+        self.write_assessment(assessment); code, report = self.run_check()
+        self.assertEqual(code, 0, report)
+
+    def test_m6_claim_and_support_cannot_self_cite_same_event_quote(self):
+        facts = copy.deepcopy(self.facts); claim = facts["m6"]["claims"][0]; claim["support_evidence"] = copy.deepcopy(claim["claim_evidence"])
+        self.write_facts(facts); code, report = self.run_check()
+        self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] == "m6.self_support" for x in report["issues"]))
+
+    def test_m6_claim_evidence_must_be_array(self):
+        facts = copy.deepcopy(self.facts); facts["m6"]["claims"][0]["claim_evidence"] = {"event_id": "search-1", "quote": "third-party result body"}
+        self.write_facts(facts); code, report = self.run_check()
+        self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] == "m6.claim_evidence" for x in report["issues"]))
+
+    def test_m6_malformed_evidence_shapes_fail_without_exception(self):
+        for field, value in (("claim_evidence", None), ("support_evidence", None), ("claim_evidence", ["bad"]), ("support_evidence", ["bad"])):
+            facts = copy.deepcopy(self.facts); facts["m6"]["claims"][0][field] = value
+            self.write_facts(facts); code, report = self.run_check()
+            self.assertNotEqual(code, 0); self.assertTrue(any(x["code"] in {"m6.claim_evidence", "m6.support_evidence"} for x in report["issues"]))
 
     def test_excerpt_cannot_score_as_body_5(self):
         facts = copy.deepcopy(self.facts); facts["fetches"][0]["representation"] = "excerpt"
