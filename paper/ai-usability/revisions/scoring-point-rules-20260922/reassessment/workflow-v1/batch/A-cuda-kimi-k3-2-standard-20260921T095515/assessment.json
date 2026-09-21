@@ -1,0 +1,329 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "A-cuda-kimi-k3-2-standard-20260921T095515",
+  "process_sha256": "c306b13cf81b4a9271924e3483c56b4d6e174385cd328790eb692ad48fc566cb",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "首次查询首位为NVIDIA官方ONNX部署文档。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "## 1. [Example Deployment Using ONNX — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.6666666666666665,
+      "reason": "六份官方目标最后返回分别5、5、4、4、1、3。矩阵交互结果未返回，PyTorch有明确省略/格式损坏；404为失败，GitHub官方README为明确摘录而非直接正文。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_665c83eb.result",
+          "quote": "Select a TensorRT version above to view compatibility information."
+        },
+        {
+          "event_id": "WebFetch_6_c256f2ea.result",
+          "quote": "importtorch"
+        },
+        {
+          "event_id": "WebFetch_6_c256f2ea.result",
+          "quote": "[...]"
+        },
+        {
+          "event_id": "WebFetch_7_d7df63a4.result",
+          "quote": "Page Not Found"
+        },
+        {
+          "event_id": "WebFetch_8_4812079d.result",
+          "quote": "# trtexec README 内容提取报告"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/main/onnx.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/trtexec.html",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "官方正文提供导出、转换、helper获取及修补、加载推理和opset约束；原题所需操作链可从已取得正文形成。版本关系完整程度另由M4评价，内容详尽不代表示例已执行验证。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_683b8443.result",
+          "quote": "torch.onnx.export(resnet50, dummy_input, \"resnet50_pytorch.onnx\", verbose=False)"
+        },
+        {
+          "event_id": "WebFetch_1_683b8443.result",
+          "quote": "trtexec --onnx=resnet50/model.onnx --saveEngine=resnet_engine_intro.engine --stronglyTyped"
+        },
+        {
+          "event_id": "WebFetch_1_683b8443.result",
+          "quote": "predictions = trt_model.predict(dummy_input_batch)"
+        },
+        {
+          "event_id": "WebFetch_6_c256f2ea.result",
+          "quote": "If the model should accept inputs of dynamic shapes, set `dynamic_shapes` when calling `torch.onnx.export()`."
+        }
+      ],
+      "observations": {
+        "coverage": [
+          "导出输入/文件",
+          "engine构建及参数",
+          "helper下载与状态元组修补",
+          "预测调用",
+          "opset和输入约束"
+        ],
+        "execution_status": "not_executed"
+      }
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "已知ONNX1.20/opset9–25与TRT11.x、GPU SM7.5+；必要的TRT↔CUDA关联缺失，不能将孤立脚注视为完整矩阵。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_3_409c5b14.result",
+          "quote": "Values below match the [TensorRT Support Matrix]"
+        },
+        {
+          "event_id": "WebFetch_4_665c83eb.result",
+          "quote": "TensorRT supports NVIDIA hardware with compute capability SM 7.5 or higher."
+        },
+        {
+          "event_id": "WebFetch_4_665c83eb.result",
+          "quote": "Select a TensorRT version above to view compatibility information."
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "7个确定相关独立第三方内容组；另一个中文文档镜像内容组归属不明，纳入与否均在≥6档。torch2trt绕过ONNX条目不纳入本题指定路线。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "https://devpress.csdn.net/v1/article/detail/92002488"
+        },
+        {
+          "event_id": "WebSearch_2_ea82968c.result",
+          "quote": "https://blog.csdn.net/gitblog_00170/article/details/151258287"
+        },
+        {
+          "event_id": "WebSearch_5_a3fb22a8.result",
+          "quote": "https://runebook.dev/zh/docs/pytorch/onnx_dynamo/torch.onnx.dynamo_export"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          7,
+          8
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "可识别关键说法中，格式/转换路线得到官方支持；更高吞吐量断言无指定比较依据，ExportOptions旧导出API陈述无本包核对支持。全部可见材料已查，无已确证直接矛盾；不把无支持解释为错误。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "ONNX（Open Neural Network Exchange） 是由 Facebook 和 Microsoft 推出的通用模型格式，旨在实现跨框架部署"
+        },
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "使用trtexec命令行工具将PyTorch模型通过ONNX格式编译为高性能TensorRT引擎的全流程"
+        },
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "通过将ONNX格式的模型转换为TensorRT引擎，再使用TensorRT执行推理过程，我们可以轻松获得更高的吞吐量"
+        },
+        {
+          "event_id": "WebSearch_2_ea82968c.result",
+          "quote": "开发者可以将使用PyTorch、TensorFlow等训练好的模型导出为ONNX格式，然后在支持ONNX的推理引擎中进行部"
+        },
+        {
+          "event_id": "WebSearch_5_a3fb22a8.result",
+          "quote": "您需要在 torch.onnx.ExportOptions 中明确开启动态形状。"
+        }
+      ],
+      "observations": {
+        "unsupported": [
+          "吞吐量提升",
+          "ExportOptions动态形状具体API"
+        ],
+        "scope": "固定包内可识别关键陈述"
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "已核对导出和trtexec方法；但先验Python BuilderFlag.kFP16、enqueue_v3/enqueueV3的正确性及所述TRT8/10边界没有固定包依据可完成判断。它们属于给出的构建/推理方法，可能影响档位，不能直接宣称完整正确主流程。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "设置 `BuilderFlag.kFP16`"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "`execute_v2`/`enqueue_v3`"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "trtexec --onnx=model.onnx --saveEngine=model.engine --fp16"
+        }
+      ],
+      "observations": {
+        "verified": [
+          "ONNX导出方法",
+          "trtexec转换和shape参数"
+        ],
+        "missing_verification": [
+          "所指旧版本Python精度与执行API的准确名称/适用性"
+        ],
+        "not_a_penalty_for_uncertainty": true
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "3次搜索+6次抓取=9次派发。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f566a533.result",
+          "quote": "# Search Results"
+        }
+      ],
+      "event_refs": [
+        "WebSearch_0_f566a533.dispatch",
+        "WebFetch_1_683b8443.dispatch",
+        "WebSearch_2_ea82968c.dispatch",
+        "WebFetch_3_409c5b14.dispatch",
+        "WebFetch_4_665c83eb.dispatch",
+        "WebSearch_5_a3fb22a8.dispatch",
+        "WebFetch_6_c256f2ea.dispatch",
+        "WebFetch_7_d7df63a4.dispatch",
+        "WebFetch_8_4812079d.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案给出TRT11.3/ONNX1.20/opset与SM范围；但把CUDA12.9脚注直接挂到11.3没有关联证据。因此只是部分必要组件有依据，而非全组件范围已确定。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "| CUDA | TensorRT 11.3.0 构建于 CUDA 12.9（仅兼容 CUDA 12.x）；部分功能需 CUDA 13.4 | Support Matrix 脚注 f1/f9/f10 |"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "| PyTorch | ≥ 2.6"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "有具体导出、engine构建、helper下载及预测方案，但helper补丁仅转引需补写代码，已明确不满足仅环境替换的4分条件。final确有保存resnet_engine_intro.engine的命令，不误判为文件名必然不一致；dynamic_shapes/裸API未核事项保留，不声称运行通过。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "需按文档中的补丁脚本修正 helper（见来源 1）。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "trtexec --onnx=model.onnx --saveEngine=resnet_engine_intro.engine --stronglyTyped"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "predictions = trt_model.predict(dummy)"
+        }
+      ],
+      "observations": {
+        "content_check_complete": true,
+        "content_repairs": [
+          "补充helper状态元组修补的具体代码；当前只要求按链接补丁修正，需要另行补写。"
+        ],
+        "environment_substitutions": [
+          "实际模型/路径/输入形状"
+        ],
+        "remaining_observations": [
+          "dynamic_shapes键与forward参数匹配未由本包核清，需核对；不把它当作已确证错误。",
+          "Python裸API路线明确未核查，为替代说明；实际给出的helper主路线已经存在补写要求。"
+        ],
+        "execution_status": "content_checked_only"
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7必要输入在固定包内无法完成核验，不传播区间也不以其他分项绕过。",
+      "evidence": [],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "execution_status": "content_checked_only",
+    "review_boundary": "完整固定packet；未访问新来源，未执行模型/硬件实验。"
+  },
+  "channel_states": {}
+}
