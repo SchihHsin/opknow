@@ -1,0 +1,210 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "I-cuda-kimi-k3-2-standard-20260921T112844",
+  "process_sha256": "26858325c8df2ab99a693745d0344c555eddf0ef00bb4618a7d445692719c7bb",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The first search returned the relevant official PyTorch previous-versions page at rank 1.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_5bb85a3e.result",
+          "quote": "# Search Results for \"pytorch.org previous versions CUDA compatibility table pip install cu121 cu124 cu126\""
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.25,
+      "reason": "PyTorch page explicitly rewritten as analysis/extraction3; two direct NVIDIA bodies5; Get Started direct sections with repeated omission markers4. Mean17/4. Normal abbreviated nvidia-smi example output is not omitted page content.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_3c5b61d8.result",
+          "quote": "# PyTorch 历史版本页面分析：2.x 版本 CUDA 安装命令提取\n\n## 一、内容完整性说明\n\n- **提供的正文基本完整**，覆盖 `v2.13.0` 至 `v1.0.0` 的全部安装命令，以及 `< 1.0.0` 版本的 conda/pip/源码安装说明。\n- **存在截断**：所提供内容在 \"Mac and misc. binaries\" 小节末尾以 `[content truncated]` 结束，"
+        },
+        {
+          "event_id": "WebFetch_6_ed346dff.result",
+          "quote": "To install the PyTorch binaries, you will need to use the supported package manager: pip.\n\n[...]\n\n## Installation\n\n### pip\n\nTo install PyTorch via pip, use the foll"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://pytorch.org/get-started/previous-versions/",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://pytorch.org/get-started/locally/",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Retrieved material gives wheel choices and driver/cuDNN constraints, but current-version query commands and PyTorch wheel/cuDNN dependency relationship are missing. These are main diagnostic needs of the mismatch question, not optional details.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_3c5b61d8.result",
+          "quote": "**在所提供的页面正文中，未找到任何关于 wheel 是否自带 CUDA runtime 或 cuDNN 的说明性文字。**"
+        },
+        {
+          "event_id": "WebFetch_6_ed346dff.result",
+          "quote": "choose OS: Linux, Package: Pip, Language: Python and the CUDA version suited to your machine."
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "CUDA/driver, cuDNN/CUDA and PyTorch/CUDA mappings exist, but no supported PyTorch/cuDNN dependency edge. Combining shared CUDA constraints does not complete the required relationship.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_3c5b61d8.result",
+          "quote": "页面（所提供部分）无任何相关文字说明"
+        },
+        {
+          "event_id": "WebFetch_3_29b1e87c.result",
+          "quote": "libraries themselves have interdependencies that should be considered."
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Five independent relevant third-party groups after repeated alignment article and identifiable PyTorch/NVIDIA documentation reproductions are excluded. Ownership classification refers to original content channel, not official endorsement of mirror hosts.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_4_66a50b91.result",
+          "quote": "## 4. [cuDNN Support Matrix - CUDA - cuDNN - CUDA driver ...](https://blog.csdn.net/chengyq116/article/details/103161517)\n\n2019年11月20日 · These support matrices provide a look into the supported versions of the OS, CUDA, the CUDA driver, and the …\n\n**URL:** https://blog.csdn.net/chengyq116/article/details/103161517\n\n---\n\n## 5. [NVIDIA cuDNN Support Matrix说明书 - 百度文库](https://wenku.baidu.com/view/81da024eadaad1f34693daef5ef7ba0d4a736df8.html)\n\nfThe Table 2 describes the compatibility of cuDNN versions with the various supported OS versions.\n\n**URL:** https:/"
+        },
+        {
+          "event_id": "WebSearch_0_5bb85a3e.result",
+          "quote": "## 5. [快速安装GPU版本PyTorch (pip/阿里云/CUDA 12.1)](https://blog.csdn.net/qq_38755175/article/details/145892024)\n\n2025年3月24日 · pytorch安装GPU版本 (Cuda12.1)教程 使用本教程前，默认您已经安装并配置好了python3以上版本。 阅读详情. 1. 安 …\n\n**URL:** https://blog.csdn.net/qq_38755175/article/details/145892024\n\n---\n\n*Found 5 results • Provid"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 2,
+      "reason": "The third-party installation prerequisite broadly names Python3+ but fixed official bodies do not establish that applicable version range. Remaining third-party snippets introduce tables without supplying technical entries. No invented claims from titles or official-page descriptions; unsupported is not false.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_5bb85a3e.result",
+          "quote": "使用本教程前，默认您已经安装并配置好了python3以上版本。"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Positive prior cuDNN header-location, wheel bundling, git_version and diagnostic API assertions cannot all be verified in fixed sources. Official tables support version-relationship fragments, not a verified complete prior route. Retain unscorable rather than convert uncertainty to a low knowledge score.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "仅凭已有知识，我可以给出如下回答，但版本号细节需核实："
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Fixed-packet semantic adjudication with task-specific migration/quantization/compatibility scope.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_3c5b61d8.result",
+          "quote": "# PyTorch 历史版本页面分析：2.x 版本 CUDA"
+        }
+      ],
+      "event_refs": []
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Final blanket driver>=580 permits any cu126–cu132 wheel and treats family minimum as sole hard constraint. Captured compatibility source explicitly requires hardware target and excludes PTX/new-feature cases; these caveats are mentioned earlier but not applied in the decisive selection rule. Correct the overbroad applicability rule before claiming a supported range.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "驱动 ≥580 → 可选 cu126–cu132 任何 wheel"
+        },
+        {
+          "event_id": "WebFetch_3_29b1e87c.result",
+          "quote": "Applications that compile device code to PTX will not work on older drivers."
+        },
+        {
+          "event_id": "WebFetch_3_29b1e87c.result",
+          "quote": "Minor Compatibility requires passing the target architecture argument to NVCC"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Concrete commands and decision steps exist, but driver525–579 is said to support onlycu12x despite official backward compatibility, and driver>=580 is made sufficient for any listed wheel without feature/hardware qualifications. Correct decision logic and establish actual wheel dependencies; this exceeds environment substitution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "525–579 → 只能 cu12x"
+        },
+        {
+          "event_id": "WebFetch_3_29b1e87c.result",
+          "quote": "newer drivers still supported through backward compatibility"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "驱动 ≥580 → 可选 cu126–cu132 任何 wheel"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Material prior diagnosis/API and dependency correctness not fully verified."
+    }
+  }
+}
