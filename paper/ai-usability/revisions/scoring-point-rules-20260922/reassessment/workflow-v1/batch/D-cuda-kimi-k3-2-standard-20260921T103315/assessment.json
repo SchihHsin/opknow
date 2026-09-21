@@ -1,0 +1,224 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "D-cuda-kimi-k3-2-standard-20260921T103315",
+  "process_sha256": "cb20d4215640b0eea6f8407a7e2ce3b7ee71313580ee5db99b8992f4776ac7c2",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "First query rank1 relevant official tutorial.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_638c6c75.result",
+          "quote": "## 1. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)\n\n2026年9月3日 · In this tutorial, we defined a custom operator in C++,"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Two explicit extractions score3; repository README and setup source are direct bodies without observed omission score5. Mean4. Tool completeness claims are not independent verification.",
+      "documents": [
+        {
+          "id": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/cpp_extension.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/pytorch/extension-cpp",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/pytorch/extension-cpp/blob/master/extension_cpp/setup.py",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_b43bcf4d.result",
+          "quote": "# Extraction: Custom C++ and CUDA Operators — PyTorch Tutorial\n\n## Completeness Assessment\n\n✅ **The full document body appears to have been returned — no truncation detected.** The content runs continuously from the tutorial header/metadata through the **Conclusion** section, which is the natural end of the tutorial. All major sections (build setup, operator definition, CPU/CUDA implementations, torch.compile support, hybrid registration, autograd, testing, mutable operators) are present with their code blocks intact.\n\n---\n\n## Document Metadata\n\n| Field | Value |\n|---|---|\n| **Title** | Custom C++ and CUDA Operators — PyTorch Tutorials 2.14.0+cu130 |\n| **Author** | Richard Zou (@zou3519) |\n|"
+        },
+        {
+          "event_id": "WebFetch_2_c7644fda.result",
+          "quote": "# torch.utils.cpp_extension — Extracted Documentation (PyTorch 2.14)\n\n## Summary & Completeness Note\n\nThe **full document body appears to have been returned — no truncation detected**. The content runs continuously from the page heading (`torch.utils.cpp_extension`, Created On: Mar 07, 2018 | Last Updated On: May 12, 2026) through all 10 documented API entries and into the page footer/navigation.\n\n**One extraction artifact to flag:** whitespace inside code examples was partially collapsed during page extraction (e.g., `fromsetuptoolsimport setup` should read `from setuptools import setup`). Examples below are preserved **verbatim as received**, with corrections noted where applicable.\n\n---\n\n"
+        },
+        {
+          "event_id": "WebFetch_3_118fe924.result",
+          "quote": "**标题**: GitHub - pytorch/extension-cpp: C++ extensions in PyTorch · GitHub\n\nNameName\n\nLast commit message\n\nLast commit date\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[Maintain separate extension_cpp and extension_cpp_stable (](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extension_cpp_stable (#126)\")[#126](https://github.com/pytorch/extension-cpp/pull/126)[)](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extens"
+        },
+        {
+          "event_id": "WebFetch_4_1df9df66.result",
+          "quote": "```\n# Copyright (c) Meta Platforms, Inc. and affiliates.\n# All rights reserved.\n# This source code is licensed under the license found in the\n# LICENSE file in the root directory of this source tree.\n\nimport os\nimport torch\nimport glob\n\nfrom setuptools import find_packages, setup\n\nfrom torch.utils.cpp_extension import (\n    CppExtension,\n    CUDAExtension,\n    BuildExtension,\n    CUDA_HOME,\n)\n\nlibrary_name = \"extension_cpp\"\n\nif torch.__version__ >= \"2.6.0\":\n    py_limited_api = True\nelse:\n    py_limited_api = False\n\n\ndef get_extensions():\n    debug_mode = os.getenv(\"DEBUG\", \"0\") == \"1\"\n    use_cuda = os.getenv(\"USE_CUDA\", \"1\") == \"1\"\n    if debug_mode:\n        print(\"Compiling in debug mode\""
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Retrieved tutorial, API and repository cover kernel/host wrapper, registration, build setup, installation and loading requested by the question. Release compatibility gap is separately M4.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_b43bcf4d.result",
+          "quote": "__global__ void muladd_kernel(int numel, const float* a, const float* b, float c, float* result) {\n  int idx = blockIdx.x * blockDim.x + threadIdx.x;\n  if (idx < numel) result[idx] = a[idx] * b[idx] + c;\n}\n\ntorch::stable::Tensor mymuladd_cuda(\n    const torch::stable::Tensor& a,\n    const torch::stable::Tensor& b,\n    "
+        },
+        {
+          "event_id": "WebFetch_1_b43bcf4d.result",
+          "quote": "TORCH_LIBRARY_IMPL(extension_cpp, CPU, m) {\n  m.impl(\"mymuladd\", TORCH_BOX(&mymuladd_cpu));\n}\n```\n\nNon-ABI-Sta"
+        },
+        {
+          "event_id": "WebFetch_4_1df9df66.result",
+          "quote": "def get_extensions():\n    debug_mode = os.getenv(\"DEBUG\", \"0\") == \"1\"\n    use_cuda = os.getenv(\"USE_CUDA\", \"1\") == \"1\"\n    if debug_mode:\n        print(\"Compiling in debug mode\")\n\n    use_cuda = use_cuda and torch.cuda.is_available() and CUDA_HOME is not None\n    extension = CUDAExtension if use_cuda else CppExtension\n\n    extra_link_args = []\n    extra_compile_args = {\n        \"cxx\": [\n            \"-O3\" if not debug_mode else \"-O0\",\n            \"-fdiagnostics-color=always\",\n            \"-DPy_LIMITED_API=0x03090000\",  # min CPython version 3.9\n        ],\n        \"nvcc\": [\n            \"-O3\" if not debug_mode else \"-O0\",\n        ],\n    }\n    if debug_mode:\n        extra_compile_args[\"cxx\"].append(\"-g\")\n        extra_compile_args[\"nvcc\"].append(\"-g\")\n        extra_link_args.extend([\"-O0\", \"-g\"])\n\n    this_dir = os.path.dirname(os.path.curdir)\n    extensions_dir = os.path.join(this_dir, library_name, \"csrc\")\n    sources = list(glob.glob(os.path.join(extensions_dir, \"*.cpp\")))\n\n    extensions_cuda_dir = os.path.join(extensions_dir, \"cuda\")\n    cuda_sources = list(glob.glob(os.path.join(extensions_cuda_dir, \"*.cu\")))\n\n    if use_cuda:\n        sources += cuda_sources\n\n    ext_modules = [\n        extension(\n            f\"{library_name}._C\",\n            sources,\n            extra_compile_args=extra_compile_args,\n            extra_link_args=extra_link_args,\n            py_limited_api=py_limited_api,\n        )\n    ]\n\n    return ext_modules\n\n\nsetup(\n    name=library_name,\n    version=\"0.0.1\",\n    packages=find_packages(),\n    ext_module"
+        },
+        {
+          "event_id": "WebFetch_3_118fe924.result",
+          "quote": "pip install --no-build-isolation -e ."
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "PyTorch general/stableABI minimum and Python wheel constraints are supported; complete PyTorch-toolkit-compiler release mapping absent.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_b43bcf4d.result",
+          "quote": "- **PyTorch 2.4 or later** (or **PyTorch 2.10 or later** if using the stable ABI)\n- Basic under"
+        },
+        {
+          "event_id": "WebFetch_2_c7644fda.result",
+          "quote": "| **CUDA toolkit / nvcc** | Not bundled with torch — must be installed separately. `CUDA_HOME` env var is the safest way to point to the CUDA install directory. **CUDA-11.5 nvcc on Windows** hits an internal compiler error parsing `torch/extension.h` — workaround: use `#include <ATen/ATen.h>` and `at::Tensor` in pure C++ files (issue #69460). |\n| **ABI compatibility** | `get_compiler_abi_compatibility_and_version(compiler)` — \"Determine if the given compiler is ABI-"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 2,
+      "reason": "One definite third-party article plus one possible independent CSDN commentary; both1 and2 map to score2. Mirrors excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_638c6c75.result",
+          "quote": "## 4. [Custom C++ and CUDA Extensions - PyTorch-CSDN博客](https://blog.csdn.net/qq_32527569/article/details/142679069)\n\n2024年10月14日 · 经历了一波 pybind11 和 CUDA 编程 的学习, 接下来看一看 PyTorch 官方给的 C++/CUDA 扩展的教程. 发现极其简 …\n\n**URL:** https://blog.csdn.net/qq_32527569/article/details/142679069\n\n---\n\n## 5. [pytorch custom C++/CUDA extension - 知乎](https://zhuanlan.zhihu.com/p/664699263)\n\n2023年11月27日 · CUDA版本切换 编译的时候，首先需要确保pytorch是用哪个cuda版本进行编译的，可以进入python之后调用 …\n\n**URL:** https://zhuanlan.zhihu.com/p/664699263\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Only identifiable independent technical clause is to determine PyTorch built-CUDA before compilation. Fixed sources establish toolchain requirements but do not independently support that exact prerequisite; no confirmed contradiction. Personal introduction and trailing incomplete Python call are not invented claims.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_638c6c75.result",
+          "quote": "CUDA版本切换 编译的时候，首先需要确保pytorch是用哪个cuda版本进行编译的，可以进入python之后调用 …\n\n**URL:** https://zhuanlan.zh"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior contains supported CUDAExtension/BuildExtension and pybind/kernel fragments, but its claim that dispatcher registration makes torch.compile/autograd compatible can mean enabling integration or sufficient registration. Official source requires fake/backward registrations; the compressed prior does not resolve this meaning. Its toolkit-matching or architecture-selection alternative is also not settled by the packet. These can change key-error versus fragment-level adjudication; preserve unscorable rather than assert false or complete knowledge.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "2. 写 `.cpp` 文件做绑定：用 `PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)` 暴露函数；新版也可以用 `TORCH_LIBRARY` / `torch::RegisterOperators` 注册到 PyTorch dispatcher，使其兼容 torch.compile / autograd。\n3. 构建方式有两种：\n   - JIT 加载：`torch.utils"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "6. 安装：`pip install .` 或 `python setup.py develop`；需要 CUDA toolkit 与 PyTorch 编译所用 CUDA 版本匹配，或设置 `TORCH_CUDA_ARCH_LIST` 环境变量指定 GPU 架构（如 \"8.0\"）。\n\n**不确定处（需检索核实）**\n- `TORCH_LIBRARY` 新式注"
+        },
+        {
+          "event_id": "WebFetch_1_b43bcf4d.result",
+          "quote": "# This code adds training support for the operator. You must provide us\n# the backward formula for the operator and a `setup_context` function\n# to save values to be used in the backward.\ntorch.library.register_autograd(\n    \"exte"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Actual one search plus four fetch dispatches=5. Final self-report three fetches is not used.",
+      "event_refs": [
+        "WebSearch_0_638c6c75.dispatch",
+        "WebFetch_1_b43bcf4d.dispatch",
+        "WebFetch_2_c7644fda.dispatch",
+        "WebFetch_3_118fe924.dispatch",
+        "WebFetch_4_1df9df66.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final supports PyTorch/ABI/Python minima but not complete toolkit/compiler release pairing. nvcc-major recommendation remains unsupported, not established conflicting evidence.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "## 版本信息（有官方依据）\n\n- 官方教程当前版本：**PyTorch Tutorials 2.14.0+cu130**（最后更新 2026-01-20）\n- 官方推荐 `TORCH_LIBRARY` 注册方式要求 **PyTorch ≥ 2.4**；若用 Stable ABI（`STABLE_TORCH_LIBRARY`）要求 **PyTorch ≥ 2.10**，且单个 wheel 可跨 2.10/2.11/2.12… 运行\n- 最低 Python 3.9；C++ 标准 `-std=c++20`（由 `BuildExtension` 自动传入）\n- CUDA toolkit（nvcc）需单独安装；用 `CUDA_HOME` 环境变量指向 CUDA 安装目录最稳妥\n- 官方示例仓库当前 master 最近提交 2026-01-13\n\n## 步骤总览\n\n1. 写 `.cu`：kernel + host launcher（接收 `at::Tenso"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "- 当前 CUDA toolkit 与 PyTorch 2.14+cu130 的精确兼容矩阵未单独核实；一般原则：本机 nvcc 主版本不低于 PyTorch 构建所用 CUDA 版本。\n- Wind"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Concrete kernel/setup/registration supplied but this_dir is undefined, registration translation unit lacks kernel declaration, minimal setup filenames do not match supplied tree, and import initialization needs code. Definite content repairs establish3 without hardware execution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "extensions_dir = os.path.join(this_dir, library_name, \"csrc\")\n    sources = list(glob.glob"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "// extension_cpp/csrc/muladd.cpp\n#include <torch/library.h>\n\nTORCH_LIBRARY(extension_cpp, m) {\n  // schema 中 \"float\" 对应 C++ double / Python float\n  m.def(\"mymuladd(Tensor a, Tensor b, float c) -> Tensor\");\n}\n\nTORCH_LIBRARY_IMPL(extension_cpp, CUDA, m) {\n  m.impl(\"mymuladd\", &mymuladd_cuda);\n}\n// CPU 版同理：TORCH_LIBRARY_IMPL(extension_cpp, CPU, m) { m.impl(\"mym"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "sources=['extension.cpp', 'extension_kernel.cu']"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "import extension_cpp  # 触发静态初始化完成注册\nout = torch.ops.extension_cpp.mymuladd(a, b, 1.0)  # a, b 为 CUDA"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 cannot be stably adjudicated from archived evidence; no imputation.",
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "execution_status": "content_checked_not_executed",
+    "m5_possible_counts": [
+      1,
+      2
+    ]
+  },
+  "channel_states": {}
+}

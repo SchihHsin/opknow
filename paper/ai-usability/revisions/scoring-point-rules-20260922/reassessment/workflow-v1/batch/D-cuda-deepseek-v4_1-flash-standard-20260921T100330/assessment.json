@@ -1,0 +1,219 @@
+{
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_00_23uqj4igfvMrJUXdbUiQ0181.result",
+          "quote": "## 1. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)"
+        }
+      ],
+      "reason": "第1次查询第1位命中相关官方PyTorch C++/CUDA算子教程。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "m.def(\"backward\", &lltm_backward, \"LLTM backward (CUDA)\");"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "std::vector<torch::Tensor> lltm_cuda_forward("
+        },
+        {
+          "event_id": "run-end",
+          "quote": "官方明确：**\"对 CUDA 代码（如 `.cu` 文件），使用 `torch.utils.cpp_extension.CUDAExtension` 替代\"**，setup 示例见 extension-cpp 仓库。"
+        }
+      ],
+      "reason": "最终答案有LLTM和现代custom-op路线的具体代码与setup骨架，但LLTM注册了未给完整定义的lltm_backward，lltm_cuda_forward只有声明/启动片段；B路线setup、CPU注册函数和加载代码仍需补齐，属于内容修补。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Calculated from adjudicated point inputs; not a probability.",
+      "score": 75.82924799999998,
+      "status": "scored"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html",
+          "observations": {
+            "representation": "explicit Extraction/Extracted excerpt"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://pytorch.ac.cn/tutorials/advanced/cpp_extension.html",
+          "observations": {
+            "representation": "explicit Extraction/Extracted excerpt"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/cpp_extension.html",
+          "observations": {
+            "representation": "explicit Extraction/Extracted excerpt"
+          },
+          "score": 3,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_00_iQw9bj1V2B8FQW30Ibv30572.result",
+          "quote": "# PyTorch Custom C++/CUDA Operators — Complete Content Extraction"
+        },
+        {
+          "event_id": "call_00_QfVWQJhhXrghGDbrt19L0943.result",
+          "quote": "# Extraction: \"Custom C++ and CUDA Extensions\" — PyTorch Tutorial"
+        },
+        {
+          "event_id": "call_00_Ox6bJBeRcNYFRTAGcij05825.result",
+          "quote": "# torch.utils.cpp_extension — PyTorch 2.14 API Reference (Extracted)"
+        }
+      ],
+      "reason": "三个官方fetch均保存为Extraction/Extracted正文表示，按M2规则均为excerpt分3；抓取表示不是内容完整度判定。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_00_QfVWQJhhXrghGDbrt19L0943.result",
+          "quote": "from torch.utils.cpp_extension import BuildExtension, CUDAExtension\n\nsetup(\n    name='lltm',\n    ext_modules=[\n        CUDAExtension('lltm_cuda', [\n            'lltm_cuda.cpp',\n            'lltm_cuda_kernel.cu',\n        ])\n    ],\n    cmdclass={\n        'build_ext': BuildExtension\n    })\n```\n\nNote: The description says \"we use `CUDAExtension()` instead of `CppExtension()`. We can specify `.cu` files alongside `.cpp` files.\"\n\n---\n\n## 5. Build / Install Commands\n\n**Only one install command is given** (verbatim):\n\n```\npython set"
+        },
+        {
+          "event_id": "call_00_QfVWQJhhXrghGDbrt19L0943.result",
+          "quote": "__global__ void lltm_cuda_forward_kernel(\n    const scalar_t* __restrict__ gates,\n    const scalar_t* __restrict__ old_cell,\n    scalar_t* __restrict__ new_h,\n    scalar_t* __restrict__ new_cell,\n    scalar_t* __restrict__ input_gate,\n    scalar_t* __restrict__ output_gate,\n    scalar_t* __restrict__ candidate_cell,\n    size_t state_size) {\n  const int column = blockIdx.x * blockDim.x + threadIdx.x;\n  const int index = blockIdx.y * state_size + column;\n  const int gates_row = blockIdx.y * (state_size * 3);\n  if (column < state_size) {\n    input_gate[index] = sigmoid(gates[gates_row + column]);\n    output_gate[index] = sigmoid(gates[gates_row + state_size + column]);\n    candidate_cell[index]"
+        },
+        {
+          "event_id": "call_00_iQw9bj1V2B8FQW30Ibv30572.result",
+          "quote": "TORCH_LIBRARY_IMPL(extension_cpp, CUDA, m) {\n  m.impl(\"mymuladd\", TORCH_BOX(&mymuladd_cuda));\n}\n```\n\n### 3.6 CUDA Implementation — Non-ABI-Stable LibTorch API\n\n"
+        }
+      ],
+      "reason": "官方当前教程、弃用教程和API正文合并覆盖LLTM kernel/launcher/binding/setup/install以及现代TORCH_LIBRARY、register_autograd和load路线，满足原题步骤与代码要求；M4版本配套缺口不重复扣M3。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_00_iQw9bj1V2B8FQW30Ibv30572.result",
+          "quote": "- **PyTorch 2.4 or later** (or **PyTorch 2.10 or later** if using the stable ABI)\n- Basic understanding of C++ and CUDA programmin"
+        },
+        {
+          "event_id": "call_00_iQw9bj1V2B8FQW30Ibv30572.result",
+          "quote": "The above builds a **CPython agnostic wheel** — a single wheel that runs across multiple CPython versions (like pure Python packages). Minimum supported version is **3.9**. Build in the same environment as the minimum CPython version you want to support (here, CPython 3.9).\n\nThree key lines:\n\n1. **Specify `Py_LIMITED_API`** to the minimum CPython version:\n```python\nextra_compile_args={\"c"
+        }
+      ],
+      "reason": "资料给出PyTorch 2.14/2.8及2.4弃用边界、CPython3.9稳定ABI和CUDA架构条件，但缺准确PyTorch/CUDA/toolkit/compiler组合。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_00_23uqj4igfvMrJUXdbUiQ0181.result",
+          "quote": "## 2. [保姆级教程：手把手教你用PyTorch C++ Extension编译第 ...](https://blog.csdn.net/weixin_42571738/article/details/161184679)"
+        },
+        {
+          "event_id": "call_00_23uqj4igfvMrJUXdbUiQ0181.result",
+          "quote": "## 3. [CUDA编程学习：自定义Pytorch+cpp/cuda extension - 知乎](https://zhuanlan.zhihu.com/p/671704557)"
+        },
+        {
+          "event_id": "call_00_SB1LUNOAnHzchzNhhJy65587.result",
+          "quote": "## 2. [PyTorch 源码解读之 cpp_extension：讲解 C++/CUDA 算子 ...](https://blog.csdn.net/qq_39967751/article/details/123236230)"
+        }
+      ],
+      "reason": "确定独立第三方内容组为weixin425教程和Zhihu671三线性插值教程；qq399与Zhihu348源码解读候选合并或分开，使possible_counts=[3,4]，均落入3–4档。官方翻译、镜像和逐字API复制不计独立第三方。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_00_SB1LUNOAnHzchzNhhJy65587.result",
+          "quote": "这里可以看到 setup函数中一个主要的参数ext_modules，该参数需要指定为一个Extension列表，代表实际需要编译的扩展。"
+        },
+        {
+          "event_id": "call_00_Ox6bJBeRcNYFRTAGcij05825.result",
+          "quote": "This includes the CUDA include path, library path and runtime library."
+        },
+        {
+          "event_id": "call_00_23uqj4igfvMrJUXdbUiQ0181.result",
+          "quote": "C++扩展API并没有提供自动求导（autograd）的方法。"
+        }
+      ],
+      "reason": "CSDN setuptools/ext_modules and binding descriptions plus Zhihu Cpp/CUDAExtension base-class clause have archived official support. Zhihu autograd absence/custom backward/Python and C++ subclass prescription lacks full applicable support; truncated system-directory fragment is not completed by the evaluator. Partial support, no confirmed contradiction.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "2. 用 `#include <torch/extension.h>` 并在 pybind11 的 `PYBIND11_MODULE(TORCH_EXTENSION_NAME, m)` 中 `m.def(\"name\", &func)` 注册函数。"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "3. `setup.py` 使用 `torch.utils.cpp_extension.CUDAExtension` + `BuildExtension`，通过 `setuptools.setup(..., ext_modules=[CUDAExtension(name=..., sources=[...])])`。"
+        }
+      ],
+      "reason": "检索前回答正确给出CUDAExtension/BuildExtension、PYBIND11_MODULE、kernel launcher、数据指针和安装方法片段，但没有完整kernel/launcher/setup流程；自报不确定不扣分，不能用final补齐先验。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M8": {
+      "event_refs": [
+        "call_00_23uqj4igfvMrJUXdbUiQ0181.dispatch",
+        "call_00_iQw9bj1V2B8FQW30Ibv30572.dispatch",
+        "call_00_SB1LUNOAnHzchzNhhJy65587.dispatch",
+        "call_00_QfVWQJhhXrghGDbrt19L0943.dispatch",
+        "call_00_0h1XrXRlyJZjHTtF87CW0495.dispatch",
+        "call_00_Ox6bJBeRcNYFRTAGcij05825.dispatch"
+      ],
+      "reason": "实际派发为3次搜索+3次fetch，共6次，落入C=5–6分3档。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "- 当前教程页：**PyTorch 教程 2.14.0+cu130**，创建 2024-06-18、最后更新 2026-01-20。要求 **PyTorch 2.4+**；用 stable ABI 需 **PyTorch 2.10+**。"
+        }
+      ],
+      "reason": "最终答案给出现代教程、弃用边界、Python3.9/2.10 ABI及架构条件，但缺完整PyTorch/CUDA/toolkit/compiler版本组合。",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {
+    "evidence_boundary": "Only the fixed D-CUDA packet and prepared facts were used; no new retrieval or execution.",
+    "m2_completeness_verification": {
+      "basis": "All three saved fetches explicitly identify themselves as Extraction/Extracted representations; M2 uses representation status.",
+      "status": "not_independently_verified"
+    },
+    "m5_possible_counts": [
+      3,
+      4
+    ]
+  },
+  "process_sha256": "adab02a92ddd20e2c644fee95e111a6f0d47ff34560dceffe9b3019cceeb3b7d",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "D-cuda-deepseek-v4_1-flash-standard-20260921T100330"
+}
