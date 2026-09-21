@@ -40,3 +40,15 @@ Build every quotation through a helper that asserts `quote in event_text` before
 通过父 Agent 语义复核后，才使用包含全部 hash 的 review 文件调用 `review`。review 是对当前范围和已解决发现的记录，不是专家全面认证。未解决结果保留在完整评价中并带 `null`，但不得作为有效点值输入进入点值汇总；不得删除记录或以低分替代未决事实。
 
 常见机械错误：共享域名不能代替内容去重；M4 评价的是来源适用关系而非最终答案正确性；未知核验状态不能改判为已知内容错误。上述事项仍须人工语义复核，工具不自动下语义结论。
+
+
+## Executor consistency after content review
+
+These checks clarify execution; they do not change the rubric or thresholds.
+
+- For M6, retain a source coverage ledger identifying operational, parameter, version and constraint claims, and explaining exclusions of titles, course goals and incomplete fragments. A long tutorial parameter table cannot be represented by one generic claim. Preserve all material qualifiers. An installation prerequisite does not substantiate an exact environment-script path. A general description does not substantiate an exact API name.
+- After a completed fixed-packet check, absence of support is unsupported. Unresolved is for remaining questions about meaning, reliability or applicability that affect adjudication. Similar API names do not establish synchronous/asynchronous variants; absence from an excerpt does not prove an API nonexistent.
+- For M2 distinguish omitted document content from normal abbreviated log or array output. A tool-rewritten extraction remains excerpt even when it contains full code.
+- After every correction reread facts and assessment score/status/reason/evidence/documents/observations, interpretation, and M11 inputs together. Do not retain stale explanations or restore rejected facts by copying an earlier draft. A quote helper locator window is not automatically an adequate semantic quotation.
+- Record both endpoints and conditions of each version relation. Orphan footnotes next to an empty interactive result table do not establish a selected-release mapping. Do not automatically penalize M3 operational coverage for the M4 compatibility-table gap.
+- Before reporting completion inspect actual written files. Parent authorization of a review receipt follows content review, and the review scope must match this packet's task. Mechanical success is not semantic approval.

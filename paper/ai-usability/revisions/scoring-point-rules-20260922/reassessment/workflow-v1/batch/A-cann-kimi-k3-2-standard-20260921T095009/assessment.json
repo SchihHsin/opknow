@@ -1,0 +1,198 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "A-cann-kimi-k3-2-standard-20260921T095009",
+  "process_sha256": "709e5d550224526526d926a6f9b29d58da7e5f731fbd8354aa3ddb752914b4e8",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "首轮第1位即相关官方文档。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ecd7a15f.result",
+          "quote": "## 1. [导出ONNX模型-CANN8.0.0.alpha001-昇腾社区]"
+        }
+      ]
+    },
+    "M2": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "实际fetch中既有标题壳（WebFetch_1/5/7）、WebFetch_3直接正文（direct body，返回运行流程5级内容）、WebFetch_4直接第三方正文，以及WebFetch_8错误目标的通用网站壳；WebFetch_9虽为正文但署名“昇腾CANN”归属unknown。按规则保留未定，不删疑点文档求均值。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_3_b28af548.result",
+          "quote": "# 运行流程\n\nATC工具运行前需要准备环境或者模型，本节给出ATC工具的运行流程以及每个流程中包括的必选或者可选操作。"
+        },
+        {
+          "event_id": "WebFetch_8_58a5f341.result",
+          "quote": "昇腾社区官网-昇腾万里 让智能无所不及"
+        },
+        {
+          "event_id": "WebFetch_9_b2d0fc77.result",
+          "quote": "**发布时间**: 昇腾CANN 发表于 2023/02/26 22:23:48 2023/02/26"
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "WebFetch_3确实返回运行流程正文，覆盖安装CANN、准备模型、执行ATC；但未给出原题所需的ONNX具体命令及完整参数/约束。泛指“安装CANN”不能推导source set_env精确路径。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_3_b28af548.result",
+          "quote": "1. 使用ATC工具之前，请先在开发环境安装CANN软件包，获取相关路径下的ATC工具"
+        },
+        {
+          "event_id": "WebFetch_3_b28af548.result",
+          "quote": "2. 准备要进行转换的模型或单算子描述文件，并上传到开发环境。"
+        },
+        {
+          "event_id": "WebFetch_3_b28af548.result",
+          "quote": "3. 使用ATC工具进行模型转换，在配置相关参数时，根据实际情况选择是否进行[AIPP配置]"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 2,
+      "reason": "官方返回只提供CANN版本标签/标题，WebFetch_8为错误目标通用网站；未取得官方实质的ONNX/opset↔CANN或ATC↔soc_version芯片适用关系，不能给3或更高。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_3_b28af548.result",
+          "quote": "CANN8.0.RC2.alpha002"
+        },
+        {
+          "event_id": "WebFetch_7_b2a701b3.result",
+          "quote": "**标题**: --soc_version-目标芯片选项-基础功能参数-参数说明-ATC工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "至少6个相关第三方来源已确认，按规则稳定落在≥6档；另有归属/独立性unknown候选，保留疑项但不虚构总数。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ecd7a15f.result",
+          "quote": "## 3. [在昇腾上使用ATC将ONNX模型转换为静态和动态OM模型"
+        },
+        {
+          "event_id": "WebSearch_2_2a2e0fe5.result",
+          "quote": "## 3. [昇腾ACL应用开发之模型转换ATC_atc转换动态输入模型"
+        },
+        {
+          "event_id": "WebSearch_6_7d2de3ad.result",
+          "quote": "## 4. [昇腾 - 用ATC（Ascend Tensor Compiler，简称ATC）工具"
+        }
+      ]
+    },
+    "M6": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "完整固定包已检查。未获支持的精确环境路径、framework、日志与动态约束记unsupported；华为云正文对model/output及动态参数有潜在支持，但来源归属/可靠性和ONNX适用性未能确认。技术栈多前端片段截断，含义未完整。保留这些具体未决项，不把没有查到支持统一写成unresolved。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_ec5ec760.result",
+          "quote": "本章节主要介绍如何将ONNX模型转化为昇腾AI处理器支持的OM模型，并进行离线推理。"
+        },
+        {
+          "event_id": "WebFetch_9_b2d0fc77.result",
+          "quote": "它可以将开源框架的网络模型（例如TensorFlow、ONNX等）转换为昇腾AI处理器支持的模型文件（.om格式），用于后续的模型推理。"
+        },
+        {
+          "event_id": "WebSearch_0_ecd7a15f.result",
+          "quote": "ATC将ONNX等模型编译为OM文件，包含图优化、算子融"
+        }
+      ]
+    },
+    "M7": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "先验主路线的正确性、ONNX/ATC参数适用性及版本边界未由固定证据完全核清；按规则不得强给分。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "atc --framework=5 --model=model.onnx"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "3次搜索+7次抓取=10次派发。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ecd7a15f.result",
+          "quote": "# Search Results"
+        }
+      ],
+      "event_refs": [
+        "WebSearch_0_ecd7a15f.dispatch",
+        "WebFetch_1_06bbca3a.dispatch",
+        "WebSearch_2_2a2e0fe5.dispatch",
+        "WebFetch_3_b28af548.dispatch",
+        "WebFetch_4_ec5ec760.dispatch",
+        "WebFetch_5_583f9e0f.dispatch",
+        "WebSearch_6_7d2de3ad.dispatch",
+        "WebFetch_7_b2a701b3.dispatch",
+        "WebFetch_8_58a5f341.dispatch",
+        "WebFetch_9_b2d0fc77.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "最终答案列出CANN8.0.0/RC2/RC3/8.2RC1版本标签，并断言命令跨版本基本一致，但未建立ONNX/opset与CANN版本或示例芯片的适用范围。版本信息存在，缺有依据的版本选择，判2。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "- 官方文档当前有 CANN 商用版 8.0.0、社区版 8.0.RC2/RC3、8.2RC1 等多套并存；ATC 命令格式在各版本间基本一致。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "- 示例中 soc_version=Ascend910B4 来自第三方示例"
+        }
+      ]
+    },
+    "M10": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "最终答案虽有具体命令，但ONNX/ATC/芯片适用性和若干参数约束的正确性未核清；属于可能改变补改判断的兼容性争议，不能给3或4。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "atc --framework=5 --model=model.onnx --output=out/model"
+        }
+      ],
+      "observations": {
+        "content_check_complete": true,
+        "content_repairs": [],
+        "environment_substitutions": [
+          "模型输入路径",
+          "输出路径",
+          "实际输入名/形状",
+          "目标soc_version"
+        ],
+        "unresolved": [
+          "固定包缺ONNX与所选CANN/芯片适用范围",
+          "第三方精确set_env/framework与参数断言未有可靠独立核对",
+          "部署ACL API具体名称未由包内原文验证"
+        ],
+        "execution_status": "content_checked_only"
+      }
+    },
+    "M11": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "M2、M6、M7为needs_review，必要输入未定，不计算综合指数；M10不作为M11必要输入。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ecd7a15f.result",
+          "quote": "# Search Results"
+        }
+      ]
+    }
+  },
+  "observations": {},
+  "channel_states": {}
+}
