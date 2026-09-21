@@ -1,0 +1,414 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "B-cann-deepseek-v4_1-flash-standard-20260921T095622",
+  "process_sha256": "0fefb0cebac2b8012876069e756fc105026ad781e230bfe218958dcb5955caef",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次搜索第1位即命中官方 Ascend PyTorch Profiler 页面。",
+      "evidence": [
+        {
+          "event_id": "call_00_pR4mSkkwM9zK6FzoM07Q2075.result",
+          "quote": "## 1. [Ascend PyTorch Profiler-MindStudio26.0.0-昇腾社区"
+        }
+      ],
+      "observations": {
+        "first_hit_source_id": "source-0001-rank-1",
+        "first_query": 1,
+        "first_rank": 1
+      }
+    },
+    "M2": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "8个fetch目标全部保留；两个 hiascend URL 实际返回官网通用站点壳，按 wrong-target/error 计1。实践案例和 MindStudio 7 msprof 页为直接正文；Profiler 页为标题，GitCode PyTorch 页为空/不存在。ReadTheDocs 安装页与 GitCode oam-tools 页虽返回正文，但固定 packet 没有独立 publisher/organization ownership 证据；不能用域名或最终答案自称把它们纳入官方均值。完成 packet 内复核后仍缺归属事实，M2不可评分。",
+      "evidence": [
+        {
+          "event_id": "call_00_0MCkuZGiTwtJ1XQFIJpy8824.result",
+          "quote": "**标题**: Ascend PyTorch Profiler-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "call_00_N5QMr6I6EV2JAWiUxUF57366.result",
+          "quote": "**标题**: pytorch/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md · Ascend/pytorch - AtomGit\n**发布时间**: da3d70cb 创建于 7月31日 历史提交\n\n[![ascend-robot](https://cdn-img.gitcode.com/ad/ec/4a22097de2cd8cd630c843b4fb17bd85bc7dd082a7e3a0e7089c373e836a3524.png?time=1753510752944)ascend-robot](https://gitcode.com/ascend-robot \"ascend-robot\")[【docs】Delete related materials under docs](https://gitcode.com/Ascend/pytorch/commit/da3d70cbcd65b3551fc8e79c320f3b63e79adc29?ref=master)\n\n该 v2.7.1 下,"
+        },
+        {
+          "event_id": "call_00_aJ1Jb9SwujDgHJ0X3QYD7884.result",
+          "quote": "**标题**: Ascend PyTorch Profiler采集性能数据-问题定位方法-大模型训练性能瓶颈定位流程案例-实践案例-MindStudio7.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindstudio/700/practicalcases/Largemodeltraining/toolsample1_004.html)[](https://www.hiascend.com/document/detail/zh/mindstudio/700/practicalcases/Largemodeltraining/toolsample1_004.html)\n\n# Ascend PyTorch Profiler采集性能数据\n\nAscend PyTorch Profiler是大模型在Ascend PyTorch框架下训练过程中提供的一套采集性能数据的API接口，能够采集到框架侧、CANN侧和device侧的原始性能数据，并完成解析。在训练脚本（如train_*.py文件）内插入torch_npu.pr"
+        },
+        {
+          "event_id": "call_00_nclwFBvnWnGdRQLFgkDF9683.result",
+          "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n学习\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n博客\n\n开发者计划\n\n[昇腾社区首页](https://www.hiascend.com/ \"昇腾社区首页\")\n\n[支持](https://www.hiascend.com/support \"支持\")\n\n[积分兑换](https://www.hiascend.com/developer/rewards \"积分兑换\")\n\n[![昇腾社区](data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='24px'%20height='24px'%20viewBox='0%200%2024%2024'%20version='1.1'%20xml"
+        },
+        {
+          "event_id": "call_00_dYH5RGhrpclYII78B56g6212.result",
+          "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+          "quote": "**标题**: msprof采集通用命令-性能数据采集-msprof命令行工具-性能调优工具-训练推理开发工具-MindStudio7.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/Profiling/atlasprofiling_16_0010.html)[](https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/Profiling/atlasprofiling_16_0010.html)\n\n# msprof采集通用命令\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**昇腾AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n#### 前提条件\n\n- 请确保AI工程能在运行环境中正常运行。\n- 请确保完成[使用前准备]"
+        },
+        {
+          "event_id": "call_00_4yvpIeOJlgxKtmeVN4El7102.result",
+          "quote": "**标题**: oam-tools/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: 160516bc 创建于 15 小时前 历史提交\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E9%87%87%E9%9B%86ai%E4%BB%BB%E5%8A%A1%E8%BF%90%E8%A1%8C%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE)采集AI任务运行性能数据\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E5%8A%9F%E8%83%BD"
+        },
+        {
+          "event_id": "call_00_mKsUewhtPeyIy4vPtJyV3316.result",
+          "quote": "**标题**: 安装指南 — 昇腾开源 1.0 文档\n\n# 安装指南[](https://ascend.readthedocs.io/zh-cn/latest/sources/pytorch/install.html#id1 \"此标题的永久链接\")\n\n跟随指导，安装在NPU上运行的PyTorch版本。\n\n## 1. 选择需要安装的 PyTorch 版本[](https://ascend.readthedocs.io/zh-cn/latest/sources/pytorch/install.html#pytorch \"此标题的永久链接\")\n\n准备安装 PyTorch：\n\nPyTorch版本\n\nPyTorch-NPU版本\n\nCANN-toolkit版本\n\nCPU架构\n\n安装方式\n\nPyTorch版本\n\n2.3.1\n\n2.2.0\n\n2.1.0\n\nPyTorch-NPU版本\n\n2.3.1\n\nCANN-toolkit版本\n\nCANN 8.0.RC2\n\nCPU架构\n\nx86-64\n\naarch64\n\n安装方式\n\nDocker\n\npip\n\n源码构建\n\n## 2. 安装 PyTorch[](ht"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/ascend_pytorch_profiler/docs/zh/ascend_pytorch_profiler_user_guide.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title_only",
+            "event_id": "call_00_0MCkuZGiTwtJ1XQFIJpy8824.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "empty_or_deleted_target",
+            "event_id": "call_00_N5QMr6I6EV2JAWiUxUF57366.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/700/practicalcases/Largemodeltraining/toolsample1_004.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "event_id": "call_00_aJ1Jb9SwujDgHJ0X3QYD7884.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/devaids/Profiling/atlasprofiling_16_0010.html",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "wrong_target_error",
+            "event_id": "call_00_nclwFBvnWnGdRQLFgkDF9683.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/601/devtools/auxiliarydevtool/atlasprofiling_16_0041.html",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "wrong_target_error",
+            "event_id": "call_00_dYH5RGhrpclYII78B56g6212.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/Profiling/atlasprofiling_16_0010.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "event_id": "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "observations": {
+        "document_count": 6,
+        "scores": [
+          2,
+          1,
+          5,
+          1,
+          1,
+          5
+        ],
+        "classification_basis": "only ownership-resolved official fetches listed; two ownership-unknown bodies retained in facts and kept out of point mean because M2 is unscorable",
+        "unresolved_fetches": [
+          {
+            "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md",
+            "event_id": "call_00_4yvpIeOJlgxKtmeVN4El7102.result",
+            "reason": "AtomGit title identifies a CANN ecosystem project but packet has no independent publisher/organization ownership proof"
+          },
+          {
+            "url": "https://ascend.readthedocs.io/zh-cn/latest/sources/pytorch/install.html",
+            "event_id": "call_00_mKsUewhtPeyIy4vPtJyV3316.result",
+            "reason": "Page title says 昇腾开源文档 but packet has no publisher/organization ownership proof"
+          }
+        ]
+      }
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The official practice page gives capture code and output filenames, and the command page gives collection parameters and a viewer. The original task also requires bottleneck-analysis steps; merely listing produced files does not supply that main diagnostic workflow. The attribution-uncertain runtime parameter document does not fill the full interpretation workflow either.",
+      "evidence": [
+        {
+          "event_id": "call_00_aJ1Jb9SwujDgHJ0X3QYD7884.result",
+          "quote": "示例代码如下："
+        },
+        {
+          "event_id": "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+          "quote": "# msprof采集通用命令"
+        }
+      ],
+      "observations": {
+        "covered": [
+          "profiler capture code",
+          "msprof collection commands",
+          "output structure and viewer"
+        ],
+        "missing": [
+          "main bottleneck diagnostic interpretation workflow"
+        ]
+      }
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The official msprof page directly requires Python >=3.7.5 for parsing and lists supported product families. These are partial applicability relations. The ReadTheDocs selector is not a complete compatibility mapping, and the full CANN/torch_npu/PyTorch/Profiler relation is missing.",
+      "evidence": [
+        {
+          "event_id": "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+          "quote": "指定解析使用的Python解释器路径，要求Python3.7.5及以上版本。可选。"
+        },
+        {
+          "event_id": "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+          "quote": "Atlas A2 训练系列产品/Atlas 800I A2 推理产品"
+        }
+      ],
+      "observations": {
+        "mode": "partial",
+        "missing_relations": [
+          "CANN/torch_npu/PyTorch compatibility",
+          "Profiler version and environment compatibility"
+        ]
+      }
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "固定包去重后9个相关第三方来源组已确认；oam-tools与ReadTheDocs各作为归属未定候选，计入时最多11组。possible_counts=[9,10,11]，所有可能值均达到至少6组，因此M5=5。",
+      "evidence": [
+        {
+          "event_id": "call_00_pR4mSkkwM9zK6FzoM07Q2075.result",
+          "quote": "## 4. [性能画像师：使用torch_npu.profiler进行Ascend算子深度性能"
+        },
+        {
+          "event_id": "call_00_Vq9VH7i2TJAOcYtJK0Ac4698.result",
+          "quote": "## 3. [msprof 性能数据采集命令全解：通用参数、AI 任务运行数据、系统数"
+        },
+        {
+          "event_id": "call_00_vS2PtM9vEXZtHm5TPxjD4923.result",
+          "quote": "## 2. [PyTorch  NPU(torch_npu)]"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          9,
+          10,
+          11
+        ],
+        "independent_groups": [
+          "tp-csdn-profiler-weixin43862642",
+          "tp-csdn-profiler-wenku-z5p7xc4io93",
+          "tp-msprof-general-gitblog-mirror",
+          "tp-csdn-msprof-mrwuyan",
+          "tp-xflops-torch-npu",
+          "tp-veomni-npu",
+          "tp-csdn-ascend-ecosystem",
+          "tp-gitcode-msprof-demo",
+          "tp-hiascend-forum-community"
+        ],
+        "excluded": [],
+        "search_count": 4,
+        "disputed_candidates": [
+          "official-gitcode.com-5a83f4b4 (oam-tools ownership unresolved)",
+          "unknown-ascend-readthedocs (ReadTheDocs ownership unresolved)"
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Twenty-two visible third-party claims checked: the precise AI-task/runtime-system collection capability has official support, while twenty-one exact installation, version, example and broad completeness assertions lack sufficient independent support. Forum hosting does not prove official authorship. Attribution-uncertain sources were also read; their inclusion would not remove the mixed-support finding. No same-scope direct contradiction is established.",
+      "evidence": [
+        {
+          "event_id": "call_00_Vq9VH7i2TJAOcYtJK0Ac4698.result",
+          "quote": "msprof 命令行工具提供 AI 任务运行性能数据 、 AI 处理器系统数据 等性能数据"
+        },
+        {
+          "event_id": "call_00_vS2PtM9vEXZtHm5TPxjD4923.result",
+          "quote": "9.1.0 2.7.1 2.7.1.post8"
+        },
+        {
+          "event_id": "call_00_vS2PtM9vEXZtHm5TPxjD4923.result",
+          "quote": "Python 3.8 至 Python 3.10 之间的版本"
+        },
+        {
+          "event_id": "call_00_vS2PtM9vEXZtHm5TPxjD4923.result",
+          "quote": "严禁 用 pip install torch 默认安装CPU版!必须显式指定 +cpu 后缀,否则会冲突"
+        }
+      ],
+      "observations": {
+        "claim_count": 22,
+        "supported_claims": 1,
+        "unsupported_claims": 21,
+        "contradicted_claims": [],
+        "independent_crosscheck": false,
+        "checked_event_ids": [
+          "call_00_Vq9VH7i2TJAOcYtJK0Ac4698.result",
+          "call_00_uevdQ9mmkosJbH9YiInk9022.result",
+          "call_00_vS2PtM9vEXZtHm5TPxjD4923.result",
+          "call_00_GTgc92MvxJeAbsMg7nAo9891.result",
+          "call_00_4yvpIeOJlgxKtmeVN4El7102.result",
+          "call_00_mKsUewhtPeyIy4vPtJyV3316.result"
+        ],
+        "ownership_boundary": "hiascend forum post has no official author proof; retained as third-party candidate rather than excluded by host domain"
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "先验回答给出 Profiler 插桩、schedule/prof.step 和 msprof 两条主流程，但 profile_on/profile_off、_ExperimentalConfig 的 export_type/Level/API 组合以及产物文件名在固定包中没有逐字核实；这些未决事实可能改变可执行性档位，不能给4分。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "还有 `torch_npu.profiler.profile_on()` / `profile_off()` 的动态开关，以及 `torch_npu.profiler.ProfilerLevel.Level0/Level1/Level2`、`torch_npu.profiler.AiCMetrics.PipeUtilization`、`ExportType.Text/Db`。"
+        }
+      ],
+      "observations": {
+        "supported": [
+          "Profiler code skeleton with prof.step",
+          "msprof route and analysis concepts"
+        ],
+        "missing": [
+          "exact API/default/version constraints"
+        ],
+        "self_report_confidence_ignored": true,
+        "unresolved_applicability": [
+          "profile_on/profile_off",
+          "_ExperimentalConfig export_type list and enum names",
+          "ProfilerLevel/AiCMetrics version applicability",
+          "reported output filenames"
+        ],
+        "execution_status": "prior_only"
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "4次搜索+8次抓取共12次实际派发，C≥9。",
+      "event_refs": [
+        "call_00_pR4mSkkwM9zK6FzoM07Q2075.dispatch",
+        "call_00_0MCkuZGiTwtJ1XQFIJpy8824.dispatch",
+        "call_00_N5QMr6I6EV2JAWiUxUF57366.dispatch",
+        "call_00_aJ1Jb9SwujDgHJ0X3QYD7884.dispatch",
+        "call_00_Vq9VH7i2TJAOcYtJK0Ac4698.dispatch",
+        "call_00_nclwFBvnWnGdRQLFgkDF9683.dispatch",
+        "call_00_dYH5RGhrpclYII78B56g6212.dispatch",
+        "call_00_GTgc92MvxJeAbsMg7nAo9891.dispatch",
+        "call_00_uevdQ9mmkosJbH9YiInk9022.dispatch",
+        "call_00_4yvpIeOJlgxKtmeVN4El7102.dispatch",
+        "call_00_vS2PtM9vEXZtHm5TPxjD4923.dispatch",
+        "call_00_mKsUewhtPeyIy4vPtJyV3316.dispatch"
+      ],
+      "observations": {
+        "search_dispatches": 4,
+        "fetch_dispatches": 8,
+        "dispatch_count": 12
+      }
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final answer repeats the supported msprof Python >=3.7.5 parser requirement and MindStudio 7.0.0 source context. Its selected PyTorch/PyTorch-NPU/CANN combination is not established by a selector listing candidates; overall version selection is only partially supported.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "官方开源文档安装指南给出的配套选项（直接可套用的一组）：**PyTorch 2.3.1 / PyTorch-NPU 2.3.1 / CANN-toolkit 8.0.RC2 / CPU 架构 x86-64 或 aarch64，安装方式 Docker/pip/源码构建**。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "要求 Python 3.7.5 及以上"
+        }
+      ],
+      "observations": {
+        "required_components": [
+          "PyTorch",
+          "PyTorch-NPU",
+          "CANN",
+          "Profiler/msprof/MindStudio"
+        ],
+        "covered": [
+          "PyTorch 2.3.1",
+          "PyTorch-NPU 2.3.1",
+          "CANN 8.0.RC2 candidate"
+        ],
+        "unlocked": [
+          "exact compatibility selector mapping",
+          "Profiler/msprof/MindStudio applicability",
+          "driver/firmware relation"
+        ]
+      }
+    },
+    "M10": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "The main profiler code is reproduced from the official practice page; it is not rejected merely because detailed parameter reference pages were missing. However the fixed packet does not establish all final diagnostic interpretations, the asserted selected environment combination, or all additional API/enumeration explanations. These affect the main route and cannot be classified as environment substitution only or proven content errors; after packet review the metric is unscorable.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "experimental_config = torch_npu.profiler._ExperimentalConfig("
+        },
+        {
+          "event_id": "run-end",
+          "quote": "msprof --output=./prof_out --ascendcl=on --runtime-api=on --task-time=l1 --aicpu=on --ai-core=on --aic-metrics=PipeUtilization --sys-hardware-mem=on python3 train.py"
+        }
+      ],
+      "observations": {
+        "execution_status": "content_checked_not_executed",
+        "environment_substitutions": [
+          "existing training function/model/loader",
+          "train.py and output paths"
+        ],
+        "unverified": [
+          "selected CANN/PyTorch/torch_npu compatibility",
+          "diagnostic interpretations beyond collected file names",
+          "additional enum and schedule explanations"
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M2 在完成 packet 内 ownership 复核后仍不可评分，M7 也不可评分；按规则不插补综合指数。",
+      "missing_inputs": [
+        "M2",
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "GPT-6 Astra",
+    "task": "B",
+    "ecosystem": "cann",
+    "model_id": "deepseek-v4.1-flash",
+    "source_boundary": "fixed packet only",
+    "execution_status": "content_checked_only",
+    "ownership_review": "Only fixed packet evidence used; ReadTheDocs and oam-tools ownership unresolved; hiascend forum post retained as third-party candidate because author identity is absent."
+  },
+  "channel_states": {}
+}

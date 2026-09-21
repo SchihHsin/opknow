@@ -1,0 +1,370 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "B-cuda-deepseek-v4_1-flash-standard-20260921T095421",
+  "process_sha256": "6f0246863341de6075c079e68aabab8cd390b777acfc87af45a771527892965f",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次搜索第1位即命中 NVIDIA Nsight Systems User Guide。",
+      "evidence": [
+        {
+          "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+          "quote": "## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub]"
+        }
+      ],
+      "observations": {
+        "first_hit_source_id": "source-0001-rank-1",
+        "first_query": 1,
+        "first_rank": 1
+      }
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.3333333333333335,
+      "reason": "3个独立官方URL合并重试后分别评定：User Guide直接正文但含[...]截断为4，Get Started明确为提取报告3，Analysis Guide明确为不完整提取报告3；第三方抓取不纳入官方均值。",
+      "evidence": [
+        {
+          "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+          "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n[...]\n\n## Profiling from the CLI#\n\n### CLI Command Switches#\n\nThe Nsight Systems command line interface can be used in two modes. You may launch your application and begin analysis with options specified to the `nsys profile` command. Alternatively, you can control the launch of an application and data collection using interactive CLI commands.\n\nCommand\n\nDescription\n\nanalyze\n\nPost process existing Nsight System"
+        },
+        {
+          "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+          "quote": "# Nsight Systems — Key Information Extraction\n\n## 1. Current Version & Release\n\n**Exact version string (verbatim):** `Nsight Systems 2026.5.1`\n\n- Headline: **\"Nsight Systems 2026.5.1 is Available Now\"**\n- The most recent release notes section is also labeled **`2026.5.1`**\n- Installer filenames consistently embed the full build string: **`2026.5.1.161-3889610`** (e.g., `nsightsystems-2026.5.1.161-3889610.msi`)\n\n*(Note: Some earlier release-note sections below it — 2026.4.1, 2026.3.1, 2026.2.1, 2"
+        },
+        {
+          "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+          "quote": "# Analysis of Nsight Systems Post-Collection Analysis Guide\n\n## Completeness Assessment\n\n**The returned content appears truncated / incomplete** with respect to the user's specific request. Here's why:\n\n- The guide is primarily about the **Analysis Guide** (statistical reports, formatters, expert system, AI-assisted analysis, and advanced recipes).\n- **It contains NO verbatim instructions on how to run `nsys stats`** — the `nsys stats` command usage/syntax is not present.\n- **It contains NO expl"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://developer.nvidia.com/nsight-systems/get-started",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "explicit_extracted_report",
+            "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ],
+      "observations": {
+        "document_count": 3,
+        "scores": [
+          4,
+          3,
+          3
+        ],
+        "classification_basis": "same UserGuide URL merged to last fetch; third-party excluded"
+      }
+    },
+    "M3": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Official sources give a default profile capture route, trace/capture options, analysis command and gap/low-utilization diagnosis. Full manual timeline-navigation detail remains absent. The alternative stats syntax gap is recorded but is not itself an extra requirement imposed on the original task.",
+      "evidence": [
+        {
+          "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+          "quote": "nsys [global-options] profile [options] [application] [application-arguments]"
+        },
+        {
+          "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+          "quote": "**It contains NO verbatim instructions on how to run `nsys stats`**"
+        },
+        {
+          "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+          "quote": "**GPU Starvation**"
+        },
+        {
+          "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+          "quote": "Use CPU sampling data, OS Runtime blocked state backtraces, and/or OS Runtime APIs related to thread synchronization to understand if a sluggish or blocked CPU is causing the gaps. Add NVTX annotations to CPU code to understand the reason behind the gaps."
+        }
+      ],
+      "observations": {
+        "requirements": [
+          "nsys profile collection command",
+          "capture-range/timeline analysis",
+          "stats/recipe analysis",
+          "GPU low-utilization diagnosis"
+        ],
+        "covered": [
+          "profile syntax/options",
+          "report names and recipes",
+          "starvation/low-utilization guidance"
+        ],
+        "missing": [
+          "manual timeline-navigation reference detail"
+        ]
+      }
+    },
+    "M4": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Get Started 官方页直接给出 Nsight Systems 2026.5.1、CUDA 12.0+（CUDA trace）、Driver 418+、Turing+ 及平台/OS条件；这些是本题 Nsight Systems 采集环境所需的完整直接规则，无需另拼兼容矩阵。",
+      "evidence": [
+        {
+          "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+          "quote": "Nsight Systems 2026.5.1"
+        },
+        {
+          "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+          "quote": "CUDA 12.0+ for CUDA trace"
+        },
+        {
+          "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+          "quote": "Driver 418 or newer"
+        },
+        {
+          "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+          "quote": "GPU: **Turing or newer**"
+        }
+      ],
+      "observations": {
+        "mode": "direct",
+        "relations_found": [
+          "Nsight Systems↔CUDA trace",
+          "Nsight Systems↔driver",
+          "Nsight Systems↔GPU generation",
+          "Nsight Systems↔platform/OS"
+        ],
+        "missing_relations": [],
+        "conflicts": []
+      }
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "固定包搜索结果去重后有7个相关独立第三方来源组，达到 n≥6。",
+      "evidence": [
+        {
+          "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+          "quote": "## 4. [【NsightSystem】Nsight System命令大全_qdrep怎么生成 ...]"
+        },
+        {
+          "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+          "quote": "## 2. [cuda性能分析工具nsys使用 | caijizhuo]"
+        },
+        {
+          "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+          "quote": "## 4. [CUDA新手使用Nsight Systems替代nvprof获取性能分析信息 ...]"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          7
+        ],
+        "independent_groups": [
+          "tp-csdn-qq37794738",
+          "tp-zhihu-nsys",
+          "tp-csdn-weixin44231807",
+          "tp-caijizhuo-nsys",
+          "tp-csdn-md2017",
+          "tp-volcengine-nsys",
+          "tp-ashburnlee-nsys"
+        ],
+        "excluded": [
+          "NVIDIA official pages"
+        ],
+        "search_count": 3
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The complete visible third-party ledger contains one independently supported profile/trace command and twelve assertions without sufficient fixed-packet support. A generic help flag, a differently spelled report identifier, or CLI postprocessing description does not verify the exact help invocation, legacy identifiers, or GUI workflow. Historical stats behavior is not declared false without a matching version. This is mixed support, not a truthfulness certification.",
+      "evidence": [
+        {
+          "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+          "quote": "nsys profile --stats=true --trace=cuda,nvtx,cudnn,cublas ./a.out"
+        },
+        {
+          "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+          "quote": "nsys [global-options] profile [options] [application] [application-arguments]"
+        },
+        {
+          "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+          "quote": "`--stats`\n\ntrue, **false**"
+        },
+        {
+          "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+          "quote": "**cuda**, **opengl**, **nvtx**, **osrt**, cuda-sw, cudnn, cublas"
+        },
+        {
+          "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+          "quote": "- **`--stats=true` alone** → produces `osrtsum` (OS runtime focus)\n- **Adding `--trace=cuda,nvtx,cudnn,cublas`** → produces `cudaapisum` (CUDA API focus)"
+        }
+      ],
+      "observations": {
+        "claim_count": 13,
+        "supported_claims": 1,
+        "unsupported_claims": 12,
+        "contradicted_claims": [],
+        "source_coverage": "facts.m6.source_coverage"
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "先验回答给出 nsys profile、capture-range、CUDA/NVTX 和 timeline 分析主流程，但 -o/--output、nsys stats 完整语法及 torch.cuda.cudart/NVTX API 在固定包中未逐字核实；这些事实可能改变可执行性档位，不能给4分。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "Nsight Systems 的命令行工具是 `nsys`。典型用法："
+        }
+      ],
+      "observations": {
+        "supported": [
+          "profile command structure and principal trace domains",
+          "official automated gap analysis exists"
+        ],
+        "missing": [
+          "exact option/version matrix"
+        ],
+        "self_report_confidence_ignored": true,
+        "unresolved_applicability": [
+          "profile -o/--output syntax",
+          "nsys stats syntax/report invocation",
+          "PyTorch cudart/NVTX Python API",
+          "Python trace domain and historical singular GPU metrics flag",
+          "prior blanket diagnosis of GPU gaps versus official excluded-gap conditions"
+        ],
+        "execution_status": "prior_only"
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "3次搜索+6次抓取共9次实际派发，C≥9。",
+      "event_refs": [
+        "call_00_43QPr0l9HRXQhH7sJg1p7310.dispatch",
+        "call_00_Qklj1y8EzB6Gc36q5UaU7910.dispatch",
+        "call_00_nkRjBLVUVQnMj0TuCGqI7715.dispatch",
+        "call_00_pQGrHrwXnIpDKQYNwC654137.dispatch",
+        "call_00_2ZiUeAMxFcuCEF3xJbxI8048.dispatch",
+        "call_00_2pWQ9oGQGJjwm5og5H8R1111.dispatch",
+        "call_00_uNvY1BpZB2hx43Mczt5j2623.dispatch",
+        "call_00_Cr1tYEgXvSH3OkaqkQth9855.dispatch",
+        "call_00_95ji3cGMqNczs1RCekKa3341.dispatch"
+      ],
+      "observations": {
+        "search_dispatches": 3,
+        "fetch_dispatches": 6,
+        "dispatch_count": 9
+      }
+    },
+    "M9": {
+      "status": "scored",
+      "score": 4,
+      "reason": "最终答案给出 Nsight Systems 2026.5.1 及 CUDA 12.0+、Driver 418+、Turing+ 的官方范围；组件有依据但仍是范围而非单一锁定版本。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "当前版本：**Nsight Systems 2026.5.1**"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "**CUDA 12.0+ for CUDA trace**"
+        }
+      ],
+      "observations": {
+        "required_components": [
+          "Nsight Systems",
+          "CUDA",
+          "GPU/driver"
+        ],
+        "covered": [
+          "Nsight Systems 2026.5.1",
+          "CUDA 12.0+",
+          "Driver 418+",
+          "Turing+"
+        ],
+        "unlocked": [
+          "exact CUDA/driver/GPU selection for local PyTorch workload"
+        ]
+      }
+    },
+    "M10": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "最终答案给出 profile、stats/analyze/recipe 主路线，但答案明确承认 profile -o/--output 和 nsys stats usage 未从固定官方正文核实；这些未决语法可能改变是否可执行，不能把它当成纯环境替换或直接判内容错误。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "nsys profile \\"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "nsys stats --report cuda_gpu_kern_sum,cuda_api_sum,cuda_gpu_mem_time_sum,osrt_sum"
+        }
+      ],
+      "observations": {
+        "content_repairs": [],
+        "environment_substitutions": [
+          "train.py and arguments",
+          "output/report paths",
+          "warmup/workload symbols x,y,your_ops"
+        ],
+        "execution_status": "content_checked_only",
+        "unverified_in_final": [
+          "nsys stats usage line",
+          "profile -o/--output entry in fetched User Guide"
+        ],
+        "unresolved_content": [
+          "profile -o/--output option",
+          "nsys stats usage syntax"
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 为 unscorable，按规则不能计算综合指数；M10 不进入 M11 公式。",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna draft; root content adjudication",
+    "task": "B",
+    "ecosystem": "cuda",
+    "model_id": "deepseek-v4.1-flash",
+    "source_boundary": "fixed packet only",
+    "execution_status": "content_checked_only"
+  },
+  "channel_states": {}
+}

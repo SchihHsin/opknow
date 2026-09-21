@@ -1,0 +1,194 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "B-cuda-kimi-k3-2-standard-20260921T095928",
+  "process_sha256": "a3a29971e3e5bcf81abbc4d756e208be2335e0c4e023d7894b59d443b5a4e43c",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 3,
+      "reason": "q2 rank1",
+      "evidence": [
+        {
+          "event_id": "WebSearch_1_4d785b9e.result",
+          "quote": "## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.6666666666666665,
+      "reason": "Nsight extraction=3; profiler/cuda direct bodies with visible internal omissions=4 each. Mean 11/3; no independent completeness certification.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_81ec6f55.result",
+          "quote": "**Summary:** The excerpt covers"
+        },
+        {
+          "event_id": "WebFetch_4_b5b8e4ac.result",
+          "quote": "[...]"
+        },
+        {
+          "event_id": "WebFetch_5_16b8a122.result",
+          "quote": "[...]"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/profiler.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/cuda.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Capture syntax/options and NVTX ranges are present; the main timeline bottleneck diagnosis workflow is missing. Analysis-rule names alone do not supply steps.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_81ec6f55.result",
+          "quote": "nsys [global-options] profile [options] [application] [application-arguments]"
+        },
+        {
+          "event_id": "WebFetch_2_81ec6f55.result",
+          "quote": "There is **no dedicated \"profiling DL applications,\" \"timeline analysis,\" or \"GPU utilization\" narrative section** in this excerpt"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 2,
+      "reason": "PyTorch 2.14 label is given; no primary Nsight/CUDA/driver compatibility relation. Graph driver >=11.7 is optional feature-specific.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_5_16b8a122.result",
+          "quote": "PyTorch 2.14 documentation"
+        },
+        {
+          "event_id": "WebFetch_2_81ec6f55.result",
+          "quote": "requires CUDA driver version 11.7 or higher"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "At least six independent direct Nsight sources remain after official-domain and relevance review; candidates cannot change >=6 level.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "## 1. [Nsight Profiling Workflow"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          7,
+          8
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 2,
+      "reason": "The GUI-category claim lacks sufficient fixed-packet support; the adjacent SegmentFault CUPTI/CPU/CUDA simultaneous claim is also unsupported if included. Generic kernel/NVTX descriptions do not entail their complete qualifiers. All sources checked; this is not proof of falsehood.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "PyTorch Profiler 基于 CUPTI，能同时采集 CPU 算子调度和 CUDA kernel 执行信息"
+        },
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "使用 nsys GUI 工具加载文件，可视化分析 GPU 时间线、CPU-GPU 交互、内存传输、Kernel 执行、库函数性能"
+        }
+      ],
+      "observations": {
+        "supported_claims": 0,
+        "unsupported_claims": 2,
+        "relevance_sensitivity": "Excluding SegmentFault leaves one unsupported claim, same level 2."
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior --sample=cpu is not verified by a packet containing only a process-tree example, not a complete accepted-value enumeration. Exact stats/GPU-metrics options and diagnoses remain unverified after complete review; no stable correctness level.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "nsys profile -o report --trace=cuda,nvtx,osrt"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Three search plus three fetch dispatches, C=6.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "# Search Results"
+        }
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Final PyTorch 2.14 labels and optional graph condition do not establish an applicable Nsight capture-environment version/range.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "Nsight Systems User Guide 在线版（本次抓取未标注具体版本号"
+        }
+      ]
+    },
+    "M10": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Concrete commands are supplied, but profile -o, exact stats/analyze invocation and gap-to-cause recommendations are not established in this archive. They may change needed repairs; uncertainty is not proven error. No hardware execution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "nsys profile -o report"
+        }
+      ],
+      "observations": {
+        "execution_status": "content_checked_not_executed",
+        "missing_facts": [
+          "profile output option",
+          "stats/analyze invocation",
+          "main diagnostic interpretations"
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 unresolved after fixed-packet review.",
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna draft; root reconstruction and content adjudication"
+  },
+  "channel_states": {}
+}
