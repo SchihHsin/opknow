@@ -6,11 +6,11 @@
         "event_id": "call_00_gQ13YcVtfK400YRl8w7o4723.result",
         "quote": "**标题**: NVIDIA Developer Documentation\n\n# CUDA Libraries Documentation\n\n[**cuBLAS Library Documentation**](https://docs.nvidia.com/cuda/cublas/index.html)  \nThe cuBLAS Library is an implementation of BLAS (Basic Linear Algebra Subprograms) on NVIDIA CUDA runtime. It enables the user to access the computational resources of NVIDIA GPUs.  \n[Browse *>*](https://docs.nvidia.com/cuda/cublas/index.html)\n\n[**cuSOLVER Library Documentation**](https://docs.nvidia.com/cuda/cusolver/index.html)  \nThe cuSOLVER Library is a high-level package based on cuBLAS and cuSPARSE libraries. It provides LAPACK-like features such as common matrix factorization and triangular solve routines for dense matrices.  \n[Br"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/cuda-libraries/index.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
@@ -18,11 +18,11 @@
         "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
         "quote": "# cuBLAS 13.4 Documentation — Front Page Analysis\n\n## Page Title & Version Info\n- **Document title:** `1. Introduction — cuBLAS 13.4 documentation`\n- **Header/branding:** \"cuBLAS — The API Reference guide for cuBLAS, the CUDA Basic Linear Algebra Subroutine library.\"\n- **Version:** `v13.4` | PDF available (`../pdf/CUBLAS_Library.pdf`) | Archive link to CUDA Toolkit archive\n- **Logo:** NVIDIA CUDA logo with link to contents\n\n---\n\n## Navigation Structure (Front Page / Table of Contents)\n\nThe TOC reveals the full documentation layout. Key sections relevant to your request:\n\n**1. Introduction**\n- 1.1 Data Layout\n- 1.2 New and Legacy cuBLAS API\n- 1.3 Example Code\n- 1.4 Forward Compatibility\n- 1.5"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/cuda/cublas/index.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_Q3OeKKkH4W5JAAVNSVs38588.result",
@@ -30,11 +30,11 @@
         "event_id": "call_00_Q3OeKKkH4W5JAAVNSVs38588.result",
         "quote": "**标题**: NVIDIA cuDNN - NVIDIA Docs\n\n# NVIDIA cuDNN\n\nThe [NVIDIA CUDA](https://developer.nvidia.com/cudnn)® [Deep Neural Network (cuDNN)](https://developer.nvidia.com/cudnn) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, attention, matmul, pooling, and normalization."
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/cudnn/index.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_ycgfGV8xCRWVFWSjcm8y0450.result",
@@ -42,11 +42,11 @@
         "event_id": "call_00_ycgfGV8xCRWVFWSjcm8y0450.result",
         "quote": "# cuDNN Backend API Overview — Extraction Report\n\n## 1. Title\n**\"Backend API Overview — NVIDIA cuDNN Backend\"**\n\n## 2. Version\n- **Page context:** NVIDIA cuDNN **Backend API**, \"latest\" (v9 backend documentation).\n- **Library version discussed:** **cuDNN version 9**, reorganized into sub-libraries.\n- **Most recent API change entry listed:** **cuDNN 9.21.0**\n- **Version history spans:** 9.0.0 → 9.21.0 (with mention of legacy v7/v8 functionality).\n\n## 3. Navigation / Structure (Nav)\nThe page has two top-level sections:\n\n**A. Backend API Overview** — describes the context-based API, the v9 library split, and the per-library breakdown:\n- `cudnn_graph` (`libcudnn_graph.so`) — context creation/des"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
@@ -54,11 +54,11 @@
         "event_id": "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
         "quote": "# cuSPARSE Documentation Analysis\n\n## Summary\n\nThe page is the **Introduction chapter (Sections 1–5)** of NVIDIA's cuSPARSE 13.4 documentation — the API reference for the CUDA sparse matrix library. Below are the extracted details matching your request. **Note:** The page covers sparse matrix operations and formats extensively, but contains **no mention of cuBLAS or dense GEMM** being delegated to another library.\n\n---\n\n## Title & Version\n\n- **Title:** \"1. Introduction — cuSPARSE 13.4 documentation\"\n- **Subtitle:** \"The API reference guide for cuSPARSE, the CUDA sparse matrix library.\"\n- **Version:** **cuSPARSE 13.4** (as stated in the browser/page title)\n- **Related versioning detail:** The"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/cuda/cusparse/index.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
@@ -66,11 +66,11 @@
         "event_id": "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
         "quote": "**标题**: Graph API — NVIDIA cuDNN Backend\n\nBack to top\n\n# Graph API[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html#graph-api \"Link to this heading\")\n\nFor general information about cuDNN graphs, refer to [Graphs](https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html#graph-api \"(in NVIDIA cuDNN)\") in the *Frontend Developer Guide*. Use the cuDNN frontend to access the cuDNN Graph API unless you want to use legacy fixed-function routines or if you need a [C-only graph API](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/cudnn-graph-library.html#cudnn-graph-library).\n\n## Backend Native CUDA Graph API[#](https://docs.nvidia."
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_6UhuVGtLMB0tPQz0NihB3374.result",
@@ -78,38 +78,175 @@
         "event_id": "call_00_6UhuVGtLMB0tPQz0NihB3374.result",
         "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-5",
+    "first_query": 1,
+    "first_rank": 5
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Create descriptors and configure output tensor before setters/execution",
+      "Allocate workspace and device tensors; initialize data",
+      "Supply concrete graph-convolution operations for recommended modern route"
+    ],
+    "environment_substitutions": [
+      "matrix dimensions and device pointers when fully specified"
+    ]
   },
   "m4": {
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "所选当前cuBLAS/cuSPARSE具体版本与硬件接口关系不完整"
+    ],
+    "mode": "partial"
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      4,
+      5,
+      6
+    ]
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
+      "call_00_gQ13YcVtfK400YRl8w7o4723.result",
+      "call_00_WyiWz6gw94yTejaQkVmu9499.result",
+      "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
+      "call_00_Q3OeKKkH4W5JAAVNSVs38588.result",
+      "call_00_ycgfGV8xCRWVFWSjcm8y0450.result",
+      "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
+      "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
+      "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
+      "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
+      "call_00_6UhuVGtLMB0tPQz0NihB3374.result"
+    ],
+    "claims": [
+      {
+        "source_id": "source-0001-rank-1",
+        "claim": "cuBLAS/cuSPARSE provide optimized dense/sparse linear algebra kernels.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
+            "quote": "These libraries provide optimized kernels for dense and sparse linear algebra"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
+            "quote": "the library \"may automatically make use of Tensor Core capabilities wherever possible"
+          },
+          {
+            "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
+            "quote": "a lightweight library dedicated to GEneral Matrix-to-matrix Multiply (GEMM) operations"
+          },
+          {
+            "event_id": "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
+            "quote": "The cuSPARSE library contains a set of GPU-accelerated basic linear algebra subroutines used for handling sparse matrices that perform significantly faster than CPU-only alternatives."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0001-rank-3",
+        "claim": "cuBLAS and cuSPARSE provide complementary dense/sparse operations.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
+            "quote": "CUBLAS and CUSPARSE represent two complementary approaches to linear algebra on GPUs: dense matrix operations and sparse"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
+            "quote": "a lightweight library dedicated to GEneral Matrix-to-matrix Multiply (GEMM) operations"
+          },
+          {
+            "event_id": "call_00_gQ13YcVtfK400YRl8w7o4723.result",
+            "quote": "The cuSPARSE Library contains a set of basic linear algebra subroutines used for handling sparse matrices."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0008-rank-4",
+        "claim": "Graph API is the primary construction/execution interface in cudnn-frontend.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
+            "quote": "The Graph API is the primary interface for constructing and executing cuDNN operations in cudnn-frontend."
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
+            "quote": "Use the cuDNN frontend to access the cuDNN Graph API unless you want to use legacy fixed-function routines"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0001-rank-4",
+        "claim": "NVIDIA provides optimization libraries including cuBLAS, CUTLASS and cuDNN.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
+            "quote": "为了更好地利用GPU，NVIDIA提供了多个优化库，其中包括 cuBLAS 、 CUTLASS 和 cuDNN。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "excluded_fragments": [
+      "arxiv cuTeSpMM研究问题与三库调用不相关；DeepWiki frontend 2-api-reference仅two paradigms后截断；CSDN/Baidu为官方SupportMatrix转载归官方内容组；NBKomputer原创/转载归属待核"
+    ],
+    "source_coverage": [
+      {
+        "sources": [
+          "source-0001-rank-1",
+          "source-0001-rank-3",
+          "source-0008-rank-4",
+          "source-0001-rank-4"
+        ],
+        "disposition": "All complete visible technical claims checked; CUTLASS qualifier not established by archived sources."
+      },
+      {
+        "sources": [
+          "source-0008-rank-5"
+        ],
+        "disposition": "Two unspecified paradigms followed by Sources ellipsis cannot identify the actual technical distinction."
+      },
+      {
+        "sources": [
+          "source-0010-rank-3",
+          "source-0010-rank-4"
+        ],
+        "disposition": "Identifiable official support-table reproductions."
+      },
+      {
+        "sources": [
+          "source-0010-rank-5"
+        ],
+        "disposition": "Unknown original/mirror authorship affects M5; generic compatibility-table purpose adds no identifiable version pairing claim, so does not change M6."
+      }
+    ]
   },
   "packet_sha256": "092553d612c5e28ca02d3be2c2f892096430a2b2b9c9fe4086a032efe6c5342b",
   "question": "稠密矩阵乘 / 卷积，CUDA 上有哪些官方加速库（cuBLAS/cuDNN/cuSPARSE）？怎么选怎么调用。",
@@ -128,84 +265,91 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "deepwiki-cublas",
       "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
       "evidence": {
         "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
         "quote": "## 1. [Linear Algebra with cuBLAS and cuSPARSE - DeepWiki](https://deepwiki.com/NVIDIA/cuda-samples/6.1-linear-algebra-with-cublas-and-cusparse)\n\n2026年7月4日 · These libraries provide optimized kernels for dense and sparse linear algebra, which are fundamental to scientific …\n\n**URL:** https://deepwiki.com/NVIDIA/cuda-samples/6.1-linear-algebra-with-cublas-and-cusparse\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
-      "url": "https://deepwiki.com/NVIDIA/cuda-samples/6.1-linear-algebra-with-cublas-and-cusparse"
+      "url": "https://deepwiki.com/NVIDIA/cuda-samples/6.1-linear-algebra-with-cublas-and-cusparse",
+      "content_group_candidates": [
+        "deepwiki-cublas"
+      ]
     },
     {
-      "content_group": "",
+      "content_group": "https://arxiv.org/html/2504.06443v1",
       "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
       "evidence": {
         "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
         "quote": "## 2. [cuTeSpMM: Accelerating Sparse-Dense Matrix Multiplication using GPU ...](https://arxiv.org/html/2504.06443v1)\n\n2025年4月10日 · In this paper, we therefore address the question: Can dense TCUs be effectively used to accelerate SpMM for a …\n\n**URL:** https://arxiv.org/html/2504.06443v1\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0001-rank-2",
       "url": "https://arxiv.org/html/2504.06443v1"
     },
     {
-      "content_group": "",
+      "content_group": "deepwiki-cublas",
       "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
       "evidence": {
         "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
         "quote": "## 3. [Linear Algebra with CUBLAS and CUSPARSE - DeepWiki](https://deepwiki.com/NVIDIA/cuda-samples/5.2-linear-algebra-with-cublas-and-cusparse)\n\nCUBLAS and CUSPARSE represent two complementary approaches to linear algebra on GPUs: dense matrix operations and sparse …\n\n**URL:** https://deepwiki.com/NVIDIA/cuda-samples/5.2-linear-algebra-with-cublas-and-cusparse\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
-      "url": "https://deepwiki.com/NVIDIA/cuda-samples/5.2-linear-algebra-with-cublas-and-cusparse"
+      "url": "https://deepwiki.com/NVIDIA/cuda-samples/5.2-linear-algebra-with-cublas-and-cusparse",
+      "content_group_candidates": [
+        "deepwiki-cublas",
+        "deepwiki-cublas-5.2"
+      ]
     },
     {
-      "content_group": "",
+      "content_group": "https://zhuanlan.zhihu.com/p/24010163868",
       "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
       "evidence": {
         "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
         "quote": "## 4. [Nvidia计算优化系列CUDNN、CUTLASS和CUBLAS - 知乎](https://zhuanlan.zhihu.com/p/24010163868)\n\n2025年2月16日 · 为了更好地利用GPU，NVIDIA提供了多个优化库，其中包括 cuBLAS 、 CUTLASS 和 cuDNN。 这些库通过优化底 …\n\n**URL:** https://zhuanlan.zhihu.com/p/24010163868\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://zhuanlan.zhihu.com/p/24010163868"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda-libraries/index.html",
       "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
       "evidence": {
         "event_id": "call_00_MUiHhTVKch9RD0o2p0pq4027.result",
         "quote": "## 5. [NVIDIA Developer Documentation](https://docs.nvidia.com/cuda-libraries/index.html)\n\n2025年10月29日 · It enables the user to access the computational resources of NVIDIA GPUs. The cuSOLVER Library is a high-level …\n\n**URL:** https://docs.nvidia.com/cuda-libraries/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://docs.nvidia.com/cuda-libraries/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda-libraries/index.html",
       "event_id": "call_00_gQ13YcVtfK400YRl8w7o4723.result",
       "evidence": {
         "event_id": "call_00_gQ13YcVtfK400YRl8w7o4723.result",
         "quote": "**标题**: NVIDIA Developer Documentation\n\n# CUDA Libraries Documentation\n\n[**cuBLAS Library Documentation**](https://docs.nvidia.com/cuda/cublas/index.html)  \nThe cuBLAS Library is an implementation of BLAS (Basic Linear Algebra Subprograms) on NVIDIA CUDA runtime. It enables the user to access the computational resources of NVIDIA GPUs.  \n[Browse *>*](https://docs.nvidia.com/cuda/cublas/index.html)\n\n[**cuSOLVER Library Documentation**](https://docs.nvidia.com/cuda/cusolver/index.html)  \nThe cuSOLVER Library is a high-level package based on cuBLAS and cuSPARSE libraries. It provides LAPACK-like features such as common matrix factorization and triangular solve routines for dense matrices.  \n[Br"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://docs.nvidia.com/cuda-libraries/index.html"
     },
@@ -222,120 +366,120 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cudnn/index.html",
       "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
       "evidence": {
         "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
         "quote": "## 1. [NVIDIA cuDNN - NVIDIA Docs - NVIDIA Documentation Hub](https://docs.nvidia.com/cudnn/index.html)\n\nThe NVIDIA CUDA ® Deep Neural Network (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN …\n\n**URL:** https://docs.nvidia.com/cudnn/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-1",
       "url": "https://docs.nvidia.com/cudnn/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/latest/index.html",
       "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
       "evidence": {
         "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
         "quote": "## 2. [NVIDIA cuDNN — NVIDIA cuDNN - NVIDIA Documentation Hub](https://docs.nvidia.com/deeplearning/cudnn/latest/index.html)\n\n2026年9月2日 · The following APIs are available for constructing these graphs: The NVIDIA cuDNN frontend API provides a …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/latest/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-2",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/archives/cudnn-870/developer-guide/index.html",
       "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
       "evidence": {
         "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
         "quote": "## 3. [Developer Guide :: NVIDIA cuDNN Documentation](https://docs.nvidia.com/deeplearning/cudnn/archives/cudnn-870/developer-guide/index.html)\n\n2024年4月20日 · To access the API, refer to the NVIDIA cuDNN API Reference. For previously released developer documentation, …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/archives/cudnn-870/developer-guide/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-3",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/archives/cudnn-870/developer-guide/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html",
       "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
       "evidence": {
         "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
         "quote": "## 4. [Backend API Overview — NVIDIA cuDNN Backend - NVIDIA Documentation …](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html)\n\n2026年9月9日 · The NVIDIA CUDA Deep Neural Network (cuDNN) library offers a context-based API that allows for easy …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-4",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/overview.html",
       "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
       "evidence": {
         "event_id": "call_00_WyiWz6gw94yTejaQkVmu9499.result",
         "quote": "## 5. [Overview — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/overview.html)\n\n2026年9月9日 · Otherwise, use the NVIDIA cuDNN frontend API, which provides a simplified programming model that is sufficient for …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/overview.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-5",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/overview.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cublas/index.html",
       "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
       "evidence": {
         "event_id": "call_00_5lpKsa2pEzmMn5ZfdnUE3131.result",
         "quote": "# cuBLAS 13.4 Documentation — Front Page Analysis\n\n## Page Title & Version Info\n- **Document title:** `1. Introduction — cuBLAS 13.4 documentation`\n- **Header/branding:** \"cuBLAS — The API Reference guide for cuBLAS, the CUDA Basic Linear Algebra Subroutine library.\"\n- **Version:** `v13.4` | PDF available (`../pdf/CUBLAS_Library.pdf`) | Archive link to CUDA Toolkit archive\n- **Logo:** NVIDIA CUDA logo with link to contents\n\n---\n\n## Navigation Structure (Front Page / Table of Contents)\n\nThe TOC reveals the full documentation layout. Key sections relevant to your request:\n\n**1. Introduction**\n- 1.1 Data Layout\n- 1.2 New and Legacy cuBLAS API\n- 1.3 Example Code\n- 1.4 Forward Compatibility\n- 1.5"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
       "url": "https://docs.nvidia.com/cuda/cublas/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cudnn/index.html",
       "event_id": "call_00_Q3OeKKkH4W5JAAVNSVs38588.result",
       "evidence": {
         "event_id": "call_00_Q3OeKKkH4W5JAAVNSVs38588.result",
         "quote": "**标题**: NVIDIA cuDNN - NVIDIA Docs\n\n# NVIDIA cuDNN\n\nThe [NVIDIA CUDA](https://developer.nvidia.com/cudnn)® [Deep Neural Network (cuDNN)](https://developer.nvidia.com/cudnn) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines such as forward and backward convolution, attention, matmul, pooling, and normalization."
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
       "url": "https://docs.nvidia.com/cudnn/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html",
       "event_id": "call_00_ycgfGV8xCRWVFWSjcm8y0450.result",
       "evidence": {
         "event_id": "call_00_ycgfGV8xCRWVFWSjcm8y0450.result",
         "quote": "# cuDNN Backend API Overview — Extraction Report\n\n## 1. Title\n**\"Backend API Overview — NVIDIA cuDNN Backend\"**\n\n## 2. Version\n- **Page context:** NVIDIA cuDNN **Backend API**, \"latest\" (v9 backend documentation).\n- **Library version discussed:** **cuDNN version 9**, reorganized into sub-libraries.\n- **Most recent API change entry listed:** **cuDNN 9.21.0**\n- **Version history spans:** 9.0.0 → 9.21.0 (with mention of legacy v7/v8 functionality).\n\n## 3. Navigation / Structure (Nav)\nThe page has two top-level sections:\n\n**A. Backend API Overview** — describes the context-based API, the v9 library split, and the per-library breakdown:\n- `cudnn_graph` (`libcudnn_graph.so`) — context creation/des"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0006",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/overview.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cusparse/index.html",
       "event_id": "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
       "evidence": {
         "event_id": "call_00_NBc5Ap3nVqSAaevs2t8A5542.result",
         "quote": "# cuSPARSE Documentation Analysis\n\n## Summary\n\nThe page is the **Introduction chapter (Sections 1–5)** of NVIDIA's cuSPARSE 13.4 documentation — the API reference for the CUDA sparse matrix library. Below are the extracted details matching your request. **Note:** The page covers sparse matrix operations and formats extensively, but contains **no mention of cuBLAS or dense GEMM** being delegated to another library.\n\n---\n\n## Title & Version\n\n- **Title:** \"1. Introduction — cuSPARSE 13.4 documentation\"\n- **Subtitle:** \"The API reference guide for cuSPARSE, the CUDA sparse matrix library.\"\n- **Version:** **cuSPARSE 13.4** (as stated in the browser/page title)\n- **Related versioning detail:** The"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
       "url": "https://docs.nvidia.com/cuda/cusparse/index.html"
     },
@@ -352,84 +496,84 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html",
       "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
       "evidence": {
         "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
         "quote": "## 1. [Graph API — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html)\n\n2026年9月9日 · Use the cuDNN frontend to access the cuDNN Graph API unless you want to use legacy fixed-function routines or if …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-1",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html",
       "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
       "evidence": {
         "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
         "quote": "## 2. [Graphs — NVIDIA cuDNN](https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html)\n\n2026年9月2日 · The cuDNN library provides a declarative programming model for describing computation as a graph of operations. …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-2",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/NVIDIA/cudnn-frontend",
       "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
       "evidence": {
         "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
         "quote": "## 3. [GitHub - NVIDIA/cudnn-frontend: cuDNN Frontend is NVIDIA's …](https://github.com/NVIDIA/cudnn-frontend)\n\nIntroductionUsageBuild:DebuggingDocumentationContributing:FeedbackThe cuDNN FrontEnd(FE) API is a C++ header-only library that wraps the cuDNN C backend API. Bot…While there are two entry points to the graph API (i.e. backend and frontend), it is expected that most users will use the FE API. Reasons being:•FE API is less verbose without loss of control. All functionality accessible through the backend API is …•FE API adds functionality on top of the backend API, like errata filters and autotuning.在github.com上查看更多信息\n\n**URL:** https://github.com/NVIDIA/cudnn-frontend\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-3",
       "url": "https://github.com/NVIDIA/cudnn-frontend"
     },
     {
-      "content_group": "",
+      "content_group": "frontend-graph-api-2.1",
       "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
       "evidence": {
         "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
         "quote": "## 4. [Graph API | NVIDIA/cudnn-frontend | DeepWiki](https://deepwiki.com/NVIDIA/cudnn-frontend/2.1-graph-api)\n\n2026年1月24日 · The Graph API is the primary interface for constructing and executing cuDNN operations in cudnn-frontend. It …\n\n**URL:** https://deepwiki.com/NVIDIA/cudnn-frontend/2.1-graph-api\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-4",
       "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/2.1-graph-api"
     },
     {
-      "content_group": "",
+      "content_group": "frontend-api-reference-2",
       "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
       "evidence": {
         "event_id": "call_00_KwxPfANIqv6bb8dBCbYN1309.result",
         "quote": "## 5. [API Reference | NVIDIA/cudnn-frontend | DeepWiki](https://deepwiki.com/NVIDIA/cudnn-frontend/2-api-reference)\n\n2026年1月24日 · The cuDNN Frontend provides two API paradigms with different design philosophies: Sources: …\n\n**URL:** https://deepwiki.com/NVIDIA/cudnn-frontend/2-api-reference\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-5",
       "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/2-api-reference"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html",
       "event_id": "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
       "evidence": {
         "event_id": "call_00_YqVgnmHh9v3ImQ5RAvlC0164.result",
         "quote": "**标题**: Graph API — NVIDIA cuDNN Backend\n\nBack to top\n\n# Graph API[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html#graph-api \"Link to this heading\")\n\nFor general information about cuDNN graphs, refer to [Graphs](https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html#graph-api \"(in NVIDIA cuDNN)\") in the *Frontend Developer Guide*. Use the cuDNN frontend to access the cuDNN Graph API unless you want to use legacy fixed-function routines or if you need a [C-only graph API](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/cudnn-graph-library.html#cudnn-graph-library).\n\n## Backend Native CUDA Graph API[#](https://docs.nvidia."
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0009",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/developer/graph-api.html"
     },
@@ -446,63 +590,63 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
       "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
       "evidence": {
         "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
         "quote": "## 1. [Support Matrix — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n\n2026年9月9日 · The following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-1",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/v9.5.1/reference/support-matrix.html",
       "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
       "evidence": {
         "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
         "quote": "## 2. [Support Matrix — NVIDIA cuDNN](https://docs.nvidia.com/deeplearning/cudnn/backend/v9.5.1/reference/support-matrix.html)\n\n2024年11月12日 · The following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/v9.5.1/reference/support-matrix.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-2",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/v9.5.1/reference/support-matrix.html"
     },
     {
-      "content_group": "",
+      "content_group": "official-support-matrix",
       "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
       "evidence": {
         "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
         "quote": "## 3. [cuDNN Support Matrix - CUDA - cuDNN - CUDA driver ...](https://blog.csdn.net/chengyq116/article/details/103161517)\n\nCudnn v7.6.3 - v7.6.5Cudnn V7.5.1 - v7.6.2Cudnn v7.3.1 - V7.5.0Cudnn V7.1.4 - V7.2.1Refer to the following table to view the list of supported NVIDIA hardware, CUDA, and CUDA driver versions for cuDNN v7.1.4 - v7.2.1.在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/chengyq116/article/details/103161517\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-3",
       "url": "https://blog.csdn.net/chengyq116/article/details/103161517"
     },
     {
-      "content_group": "",
+      "content_group": "official-support-matrix",
       "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
       "evidence": {
         "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
         "quote": "## 4. [NVIDIA cuDNN Support Matrix说明书 - 百度文库](https://wenku.baidu.com/view/81da024eadaad1f34693daef5ef7ba0d4a736df8.html)\n\nfThe Table 2 describes the compatibility of cuDNN versions with the various supported OS versions.\n\n**URL:** https://wenku.baidu.com/view/81da024eadaad1f34693daef5ef7ba0d4a736df8.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-4",
       "url": "https://wenku.baidu.com/view/81da024eadaad1f34693daef5ef7ba0d4a736df8.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://nbkomputer.com/nvidia-cuda-compatibility-chart/",
       "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
       "evidence": {
         "event_id": "call_00_WGnoXSHxNQVbktYEJhBQ5366.result",
@@ -511,26 +655,33 @@
       "ownership": "unknown",
       "query_index": 4,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-5",
       "url": "https://nbkomputer.com/nvidia-cuda-compatibility-chart/"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
       "event_id": "call_00_6UhuVGtLMB0tPQz0NihB3374.result",
       "evidence": {
         "event_id": "call_00_6UhuVGtLMB0tPQz0NihB3374.result",
         "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0011",
       "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "Choose dense GEMM/convolution/sparse libraries",
+      "Explain concrete GEMM and convolution invocation"
+    ],
+    "secondary": [
+      "Relevant layouts, data types and constraints"
+    ],
+    "version_relations": [
+      "Selected library/CUDA/GPU/interface applicability"
+    ]
   }
 }
