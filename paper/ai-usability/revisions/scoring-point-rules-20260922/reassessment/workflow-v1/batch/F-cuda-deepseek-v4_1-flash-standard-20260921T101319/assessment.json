@@ -1,0 +1,346 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cuda-deepseek-v4_1-flash-standard-20260921T101319",
+  "process_sha256": "133359c74d7f6e409391e9a88f92f214d905f25a592075223a0aff801895122a",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 4,
+      "reason": "The first query has a relevant official PyTorch translation at rank 2 (and another at rank 3); the rank-1 DeepWiki result is third-party.",
+      "evidence": [
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 2. [分布式数据并行入门 — PyTorch 教程 2.14.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html)\n\n2025年9月23日 · DistributedDataParallel (DDP) 是 PyTorch 中的一个强大模块，允许您在多台机器上并行化模型，非常适合大规模深 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html\n\n---\n\n## 3. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html)\n\n2025年1月23日 · Multinode Training - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html\n\n---\n\n## 4. [PyTorch : Distributed Data Parallel 详解 - 掘金](https://juejin.cn/post/7211"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.7142857142857144,
+      "reason": "Seven independent official fetches score [3,3,3,4,5,5,3]. Analysis/extraction returns remain excerpts even when they claim completeness; the DDP tutorial has an explicit [...] omission, while the multi-node and multi-GPU tutorials provide direct bodies.",
+      "evidence": [
+        {
+          "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+          "quote": "## Page Metadata / Version Info\n\n- **Page title:** torchrun (Elastic Launch) — PyTorch main documentation\n- **Module documented:** `torch.distributed.run`\n- **Docs version shown:** **v2.15.0 (unstable)**\n- **Created On / Last Updated On:** May 12, 2026 (both dates identical)\n- **Version selector** lists supported releases from v2.15.0 (unstable) down to v0.1.12\n\n### Key version note\n> **Changed in version 2.0.0:** `torchrun` will pass the `--local-rank=<rank>` argument to your script. From PyTor"
+        },
+        {
+          "event_id": "call_00_WlgGkfPlRthlrrMEpnOi2738.result",
+          "quote": "⚠️ **The page is TRUNCATED.** The content ends abruptly mid-sentence in the **Point-to-point communication** section with the marker `[content truncated]`. The `<function torch.distributed.send>` documentation is cut off after the first warning and parameters heading.\n\n**What IS complete (fully captured):**\n- `init_process_group` signature and full parameter docs ✓\n- Environment variables for initialization ✓\n- Backends table ✓\n- Which-backend-to-use guidance ✓\n\n**What is TRUNCATED/missing:**\n- "
+        },
+        {
+          "event_id": "call_00_qODhRh0pVHkJmQEyqYV74157.result",
+          "quote": "## Exact Constructor Signature\n\n```python\nclass torch.nn.parallel.DistributedDataParallel(\n    module,\n    device_ids=None,\n    output_device=None,\n    dim=0,\n    broadcast_buffers=None,\n    init_sync=True,\n    process_group=None,\n    bucket_cap_mb=None,\n    find_unused_parameters=False,\n    check_reduction=False,\n    gradient_as_bucket_view=False,\n    static_graph=False,\n    delay_all_reduce_named_params=None,\n    param_to_hook_all_reduce=None,\n    mixed_precision=None,\n    device_mesh=None,\n  "
+        },
+        {
+          "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+          "quote": "[...]\n\n## Basic Use Case#\n\n# Getting Started with Distributed Data Parallel#\n## Basic Use Case#\nTo create a DDP module, you must first set up process groups properly. More details can be found in Writing Distributed Applications with PyTorch.\n\n```\nimport os\nimport sys\nimport tempfile\nimport torch\nimport torch.distributed as dist\nimport torch.nn as nn\nimport torch.optim as optim\nimport torch.multiprocessing as mp\n\nfrom torch.nn.parallel import DistributedDataParallel as DDP\n\n# On Windows platform"
+        },
+        {
+          "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+          "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: Jan 23, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\n[Introduction](https://docs.pytorch.org/tutorials/beginner/ddp_series_intro.html) || [What is DDP](https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html) || [Single-Node Multi-GPU Training](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html) || [Fault Tolerance](https://docs.pytorch.org"
+        },
+        {
+          "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+          "quote": "**标题**: Multi GPU training with DDP — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: May 12, 2026 | Last Verified: Not Verified\n\nBack to top\n\n# Multi GPU training with DDP[#](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html#multi-gpu-training-with-ddp \"Link to this heading\")\n\nAuthors: [Suraj Subramanian](https://github.com/subramen)\n\nWhat you will learn\n\n- How to migrate a single-GPU training script to multi-GPU via DDP\n- Setti"
+        },
+        {
+          "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+          "quote": "## Document Version\n**NCCL 2.31.2** (per the page title: \"Environment Variables — NCCL 2.31.2 documentation\")\n\n## Categories of Environment Variables\nThe page defines **two categories**:\n\n1. **System configuration** — Needed to make NCCL follow system-specific configuration; can be kept in scripts and system configuration.\n2. **Debugging** — Should not be used in production nor retained in scripts, or only as a workaround, and removed as soon as the issue is resolved. Keeping them set may result"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.pytorch.org/docs/main/elastic/run.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/distributed.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ],
+      "observations": {
+        "completeness_verification": "not_independently_verified",
+        "document_count": 7
+      }
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Official bodies cover the requested route: initialize an NCCL process group, bind one GPU per process, wrap DDP, shard input with DistributedSampler/set_epoch, launch the same torchrun rendezvous command on all nodes, and set NCCL diagnostics/interfaces. The task does not require every unrelated collective or every NCCL variable.",
+      "evidence": [
+        {
+          "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+          "quote": "First, before initializing the group process, call [set_device](https://pytorch.org/docs/stable/generated/torch.cuda.set_device.html?highlight=set_device#torch.cuda.set_device), which sets the default GPU for each process. This is important to prevent hangs or excessive memory utilization on GPU:0\n- The process group can be initialized by TCP (default) or from a shared file-system. Read more on [process group initialization](https://pytorch.org/docs/stable/distributed.html#tcp-initialization)\n- [init_process_group](https://pytorch.org/docs/stable/distributed.html?highlight=init_process_group#torch.distributed.init_process_group) initializes the distributed process group.\n- Read more about [c"
+        },
+        {
+          "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+          "quote": "torchrun --nnodes=2 --nproc_per_node=8 --rdzv_id=100 --rdzv_backend=c10d --rdzv_endpoint=$MASTER_ADDR:29400 elastic_ddp.py\n```\n\nIn the example above, we are running the DDP script on two hosts and we run with 8 processes on each host. That is, we are running this job on 16 GPUs. Note that `$MASTER_ADDR` must be the same across all nodes.\n\nHere `torchrun` will launch 8 processes and invoke `elastic_ddp.py` on each process on the node it is launched on, but user also needs to apply cluster management tools like slurm to actually run this command on 2 nodes.\n\nFor example, on a SLURM enabled cluster, we can write a script to run the command above and set `MASTER_ADDR` as:\n\n```\nexport MASTER_ADDR"
+        },
+        {
+          "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+          "quote": "Ensure that your nodes are able to communicate with each other over TCP.\n- Set env variable `NCCL_DEBUG` to `INFO` (using `export NCCL_DEBUG=INFO`) to print verbose logs that can help diagnose the issue.\n- Sometimes you might need to explicitly set the network interface for the distributed backend (`export NCCL_SOCKET_IFNAME=eth0`). Read more about this [here](https://pytorch.org/docs/stable/distributed.html#choosing-the-network-interface-to-use).\n\n### Further Reading[#](https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html#further-reading \"Link to this heading\")\n\n- [Training a GPT model with DDP](https://docs.pytorch.org/tutorials/intermediate/ddp_series_minGPT.html) (ne"
+        },
+        {
+          "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+          "quote": "For multi-node training you must specify:\n1. `--rdzv-id` — A unique job id (shared by all nodes in the job)\n2. `--rdzv-backend` — An implementation of `torch.distributed.elastic.rendezvous.RendezvousHandler`\n3. `--rdzv-endpoint` — The endpoint where the rendezvous backend is running; usually `host:port`\n\n**Warnings:**\n- `etcd-v2` and `etcd` rendezvous use etcd API v2. You MUST enable the v2 API on the etcd server (e.g. `--enable-v2`). Tests use etcd v3.4.3.\n- For etcd-based rendezvous, `etcd-v2` is recommended over `etcd` (functionally equivalent, revised implementation). `etcd` is in maintenance mode and will be removed in a future version.\n\n---\n\n## Definitions\n\n1. `Node` — A physical insta"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The packet identifies PyTorch v2.15.0 unstable and v2.14.0 tutorial/API material plus NCCL 2.31.2, but no complete official CUDA/PyTorch/NCCL compatibility relation or exact stack selection is available.",
+      "evidence": [
+        {
+          "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+          "quote": "- **Docs version shown:** **v2.15.0 (unstable)**\n- **Created On / Last Updated On:** May 12, 2026 (both dates identical)\n- **Version selector** lists supported releases from v2.15.0 (unstable) down to v0.1.12\n\n### Key version note\n> **Changed in version 2.0.0:** `torchrun` will pass the `--local-rank=<rank>` argument to your script. From PyTorch 2.0.0 onwards, the dashed `--local-rank` is preferre"
+        },
+        {
+          "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+          "quote": "2.14.0+cu130 documentation\n**发布时间**: Created On: Apr 23, 2019 | Last Updated: Sep 23, 2025 | Last Verified: Nov 05, 2024\n\n# Getting Started with Distributed Data Parallel#\n\n# Getting Started with Distributed Data Parallel#\nFor more information on how DDP works and how to use it effectively, be sure to check out the DDP design note. With DDP, you ca"
+        },
+        {
+          "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+          "quote": "**NCCL 2.31.2** (per the page title: \"Environment Variables — NCCL 2.31.2 documentation\")\n\n## Categories of Environment Variables\nThe page defines **two categories**:\n\n1. **System configuration** — Needed to make NCCL follow system-specific configuration; can be kept in scripts and system configuration.\n2. **Debugging** — Should not be used in production nor retained in scripts, or only as a worka"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The deduplicated search inventory has at least six independent relevant third-party URL/content groups; the sulao entry remains ownership/content uncertain, yielding possible counts [6,7], which both map to the >=6 band.",
+      "evidence": [
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 1. [DistributedDataParallel (DDP) | pytorch/examples | DeepWiki](https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp))\n\n2025年4月18日 · DDP enables data parallel training across multiple GPUs and compute nodes by creating replicas of a model on …\n\n**URL:** https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp)\n\n---\n\n## 2. [分布式数据并行入门 — PyTorch 教程 2.14.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html)\n\n2025年9月23日 · DistributedDataParallel (DDP) 是 PyTorch 中的一个强大模块，允许您在多台机器上并行化模型，非常适合大规模深 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html\n\n---\n\n## 3. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文"
+        },
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 4. [PyTorch : Distributed Data Parallel 详解 - 掘金](https://juejin.cn/post/7211775098310950973)\n\n2023年3月18日 · Distributed Data Parallel 简称 DDP，是 PyTorch 框架下一种适用于单机多卡、多机多卡任务的数据并行方式。 熟练 …\n\n**URL:** https://juejin.cn/post/7211775098310950973\n\n---\n\n## 5. [【训练技巧】PyTorch多卡训练模型DistributedDataParallel ...](https://www.cnblogs.com/ljbguanli/p/19144468)\n\n2025年10月15日 · 在深度学习中，使用多GPU（多卡）训练可以显著加速模型训练过程，尤其适用于大规模数据集和复杂模型。 …\n\n**URL:** https://www.cnblogs.com/ljbguanli/p/19144468\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        },
+        {
+          "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+          "quote": "## 5. [【pytorch记录】pytorch的分布式 torch.distributed.launch ...](https://blog.csdn.net/magic_ll/article/details/122359490)\n\n2024年1月25日 · 本文介绍了PyTorch分布式训练中torch.distributed.launch命令的使用方法，包括多机多卡与单机多卡场景下的配置参 …\n\n**URL:** https://blog.csdn.net/magic_ll/article/details/122359490\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        },
+        {
+          "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+          "quote": "## 3. [NCCL Debug 全栈手段：常用环境变量、日志/拓扑/通信诊断 ...](https://yuanlehome.github.io/blog/nccl-debug-hang/)\n\n2026年2月5日 · 本文面向使用 PyTorch DDP / Megatron / DeepSpeed 或自研分布式训练框架的工程师，系统讲解 NCCL 调试的工具 …\n\n**URL:** https://yuanlehome.github.io/blog/nccl-debug-hang/\n\n---\n\n## 4. [nccl常用环境变量整理 - 苏老的学习笔记](https://www.sulao.cn/post/1054)\n\n2025年6月18日 · 今天我们就根据nccl官网文档 https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html 整理了一些常用 …\n\n**URL:** https://www.sulao.cn/post/1054\n\n---\n\n## 5. [NCCL调试指南：当你的多GPU训练卡住时应该检查的6个 ...](https://blog.csdn.net/weixin_30955617/article/details/159334988)\n\n2026年4月28日 · 本文详细介绍了NCCL调试指南，重点解析了6个关键环境变量在多GPU训练卡死问题中的应用。通过设 …\n\n**URL:** https://blog.csdn.net/weixin_30955617/article/det"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          6,
+          7
+        ],
+        "actual_searches": 3,
+        "disputed_candidates": [
+          "https://www.sulao.cn/post/1054"
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The visible third-party claims were checked atomically: DeepWiki and Juejin generic DDP multi-GPU/multi-node applicability are supported by official tutorial text; the cnblogs qualitative acceleration claim has no quantitative or model-general support in the fixed packet. No key contradiction is established.",
+      "evidence": [
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 1. [DistributedDataParallel (DDP) | pytorch/examples | DeepWiki](https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp))\n\n2025年4月18日 · DDP enables data parallel training across multiple GPUs and compute nodes by creating replicas of a model on …\n\n**URL:** https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp)\n\n---\n\n## 2. [分布式数据并行入门 — PyTorch 教程 2.14.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html)\n\n2025年9月23日 · DistributedDataParallel (DDP) 是 PyTorch 中的一个强大模块，允许您在多台机器上并行化模型，非常适合大规模深 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html\n\n---\n\n## 3. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文"
+        },
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 4. [PyTorch : Distributed Data Parallel 详解 - 掘金](https://juejin.cn/post/7211775098310950973)\n\n2023年3月18日 · Distributed Data Parallel 简称 DDP，是 PyTorch 框架下一种适用于单机多卡、多机多卡任务的数据并行方式。 熟练 …\n\n**URL:** https://juejin.cn/post/7211775098310950973\n\n---\n\n## 5. [【训练技巧】PyTorch多卡训练模型DistributedDataParallel ...](https://www.cnblogs.com/ljbguanli/p/19144468)\n\n2025年10月15日 · 在深度学习中，使用多GPU（多卡）训练可以显著加速模型训练过程，尤其适用于大规模数据集和复杂模型。 …\n\n**URL:** https://www.cnblogs.com/ljbguanli/p/19144468\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        },
+        {
+          "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+          "quote": "## 5. [【训练技巧】PyTorch多卡训练模型DistributedDataParallel ...](https://www.cnblogs.com/ljbguanli/p/19144468)\n\n2025年10月15日 · 在深度学习中，使用多GPU（多卡）训练可以显著加速模型训练过程，尤其适用于大规模数据集和复杂模型。 …\n\n**URL:** https://www.cnblogs.com/ljbguanli/p/19144468\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior has supported DDP/NCCL/device-binding fragments, but its static --node_rank launch route and positive NCCL_IB_DISABLE/CUDA_VISIBLE_DEVICES/OMP_NUM_THREADS details are not sufficiently verified by captured materials. Expressly tentative API-history questions are not errors; init ordering alone is not treated as a proven defect. Material correctness uncertainty remains.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "1. **初始化进程组**（每个进程各调一次）：\n```python\nimport os\nimport torch\nimport torch.distributed as dist\n\ndist.init_process_group(backend=\"nccl\")\nlocal_rank = int(os.environ[\"LOCAL_RANK\"])\ntorch.cuda.set_device(local_rank)\n```\n- 后端选 `nccl`（GPU）或 `gloo`（CPU/调试）。\n- `init_process_group` 的 `init_method` 若走环境变量方式则为 `env://`（默认），会读取 `MASTER_ADDR`、`MASTER_PORT`、`RANK`、`WORLD_SIZE`。\n\n2. **包模型**：\n```python\nmodel = torch.nn.parallel.DistributedDataParallel(\n    model, device_ids=[local_rank], output_device=local_rank\n)\n```\n- 必须先 `.cuda()`/`.to(device)` 再包 DDP。\n\n3. **DistributedSampler**（保证每卡看到不同分片，且需 `set_epoch` 打乱）：\n```python\nsampler = DistributedSampler(dataset, shuffle=True)\nloader = DataLoader(dataset, sampler=sampler, batch_size=..., num_workers=...)\nfor epoch in range(epochs):\n    sampler.set_epoch(epoch)\n```\n\n4. **启动方式**：\n- 推荐 `torchrun`（新，取代 `torch.distributed.launch`）。单机：`torchrun --nproc_per_node=N train.py`。\n- 多机（例如 2 机 × 8 卡）：\n```bash\n# node0 (rank 0)\ntorchrun \\\n  --nnodes=2 \\\n  --nproc_per_node=8"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "- 推荐 `torchrun`（新，取代 `torch.distributed.launch`）。单机：`torchrun --nproc_per_node=N train.py`。\n- 多机（例如 2 机 × 8 卡）：\n```bash\n# node0 (rank 0)\ntorchrun \\\n  --nnodes=2 \\\n  --nproc_per_node=8 \\\n  --node_rank=0 \\\n  --master_addr=10.0.0.1 \\\n  --master_port=29500 \\\n  train.py\n# node1\ntorchrun \\\n  --nnodes=2 --nproc_per_node=8 --node_rank=1 \\\n  --master_addr=10.0.0.1 --master_port=29500 \\\n  train.py\n```\n\n5. **DDP 相关环境变量**（由 torchrun 自动注入）：\n- `RANK`：全局唯一进程号\n- `LOCAL_RANK`：节点内本地编号\n- `WORLD_SIZE`：总进程数\n- `MASTER_ADDR` / `MASTER_PORT`：rank0 地址与端口\n- NCCL 常用调优：`NCCL_DEBUG=INFO`、`NCCL_SOCKET_IFNAME=eth0`、`NCCL_IB_DISABLE=1`、`NCCL_P2P_DISABLE=1`、`NCCL_IB_HCA`、`NCCL_DEBUG_SUBSYS`、`TORCH_NCCL_ASYNC_ERROR_HANDLING`（新版可能改名为 `TORCH_NCCL_...`）；`OMP_NUM_THREADS` 用于限制 CPU 线程。\n- `CUDA_VISIBLE_DEVICES` 控制可见 GPU。\n\n6. 其它：`dist.barrier()` 同步、`dist.all_reduce` 等集合通信、checkpoint 只在 rank0 保存、结束时 `dist.destroy_process_group()`。\n\n## 不确定处（需要检索核实）\n- **版本差异**：`torch.distributed.launch` 已被弃用，具体在哪个 PyTorch 版本删除/彻底弃用，`torchrun` 从哪"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "- **环境变量精确命名与是否存在**：`TORCH_NCCL_ASYNC_ERROR_HANDLING` 与旧名 `TORCH_NCCL_ASYNC_ERROR_HANDLING`/`NCCL_ASYNC_ERROR_HANDLING` 的演进；`TORCH_NCCL_BLOCKING_WAIT`；`NCCL_DEBUG` 取值。\n- **torchrun 参数细节**：`--standalone`、`--rdzv_backend`、`--rdzv_endpoint`、`--nnodes` 弹性模式（`min:max`）、`--max_restarts`、`--node_rank` 是否在多机静态模式下必须；以及 `torchrun` 对 `--nproc_per_node` 的默认值（是否等于 GPU 数）。\n- **NCCL 调优变量的准确语义**：`NCCL_SOCKET_IFNAME` 的写法（含 `=` 前缀/排除 `^`）、`NCCL_IB_HCA` 格式、NVLink/InfiniBand 相关变量。\n- **官方推荐的初始化写法**：新版文档是否推荐 `init_process_group(backend=\"nccl\")` 自动读取 env，还是需要显式 `device_id` 参数（较新版本 `init_process_group` 支持 `device_id=` 参数以避免 set_device 竞态）。\n- **DDP vs FSDP**：官方文档是否把 DDP 作为多机多卡首选，或推荐 FSDP 用于大模型。\n- 各变量的**确切适用版本**（M4/M9 需要定版）。\n\n以下开始检索核实。"
+        }
+      ],
+      "observations": {
+        "supported": [
+          "NCCL backend",
+          "LOCAL_RANK/device binding",
+          "DDP wrapper",
+          "DistributedSampler/set_epoch",
+          "torchrun skeleton"
+        ],
+        "unresolved": [
+          "static --node_rank command versus documented rendezvous route",
+          "init_process_group ordering relative to set_device",
+          "NCCL_IB_DISABLE/TORCH_NCCL variable/version semantics"
+        ],
+        "self_report_confidence_ignored": true
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Actual dispatch log contains 3 searches and 7 fetches (C=10).",
+      "event_refs": [
+        "call_00_sLnDaTpvcNSqDhrOlteD9216.dispatch",
+        "call_00_T1hzOGcegMT8uO4LulVn7418.dispatch",
+        "call_00_4tQczy8LQgMB4eAk6ddq0145.dispatch",
+        "call_00_WlgGkfPlRthlrrMEpnOi2738.dispatch",
+        "call_00_qODhRh0pVHkJmQEyqYV74157.dispatch",
+        "call_00_XdHpfeZnXMmkfC8OWZrZ6135.dispatch",
+        "call_00_o7yY8DRwtiO23hCmUWMG7788.dispatch",
+        "call_00_CGY1nG6o8TpzLJmpYgNO0134.dispatch",
+        "call_00_iWpF3a4SWWfHxBIYXdE22688.dispatch",
+        "call_00_AkqPaFdmlwLLIGNo8PdT3689.dispatch"
+      ],
+      "observations": {
+        "search": 3,
+        "fetch": 7,
+        "dispatch_count": 10
+      }
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final names PyTorch v2.14 documentation/tutorials and NCCL 2.31.2, but the required CUDA/PyTorch/NCCL stack compatibility and exact selected runtime are not locked.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "1. https://docs.pytorch.org/docs/main/elastic/run.html — 官方 torchrun，页头 **v2.15.0 (unstable)**；抓取判定完整（有可核对起止）。\n2. https://docs.pytorch.org/docs/stable/distributed.html — 官方 `torch.distributed`，**v2.14.0 (stable)**；正文在 `torch.distributed.send()` 处**被明确截断**。\n3. https://docs.pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html — 官方 DDP API，v2.14；判定完整。\n4. https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html — 官方教程，**2.14.0+cu130**；返回中含 `[...]` 省略，版本/完整性存疑。\n5. https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html — 官方多节点教程，短页完整。\n6. https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html — 官方单机多卡教程，完整（含 DistributedSampler/set_epoch）。\n7. https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html — 官方 NCCL env，**NCCL 2.31.2**；正文截断（止于 `NCCL_MAX_NCHANNELS`）。\n\n检索可观察状态（前 5 条，每轮）：\n- 查询1 `PyTorch distributed data paralle"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "7. https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html — 官方 NCCL env，**NCCL 2.31.2**；正文截断（止于 `NCCL_MAX_NCHANNELS`）。\n\n检索可观察状态（前 5 条，每轮）：\n- 查询1 `PyTorch distributed data parallel DDP multi-node multi-GPU NCCL torchrun official documentation`：1 deepwiki（二手）、2 docs.pytorch.ac.cn、3 docs.pytorch.ac.cn、4 juejin、5 cnblogs。\n- 查询2 `pytorch.org docs torchrun elastic launch distributed training NCCL`：**1 docs.pytorch.org/docs/main/elastic/run.html（规范官方）**、2 ac.cn、3 docs.pytorch.wiki、4 pytorch"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final gives concrete initialization, DDP, sampler, torchrun and environment examples, but requires content repairs: ddp_setup is only defined, checkpoint code uses model.module after wrapping a different variable, local gpu_id is unsafe for multi-node ownership, and the NCCL_IB_HCA exact-match explanation is wrong. Environment substitutions remain separate.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "def ddp_setup():\n    # 每个进程独占一块 GPU；LOCAL_RANK 由 torchrun 注入\n    local_rank = int(os.environ[\"LOCAL_RANK\"])\n    torch.cuda.set_device(local_rank)\n    # 默认 init_method=\"env://\"，从环境变量读取 MASTER_ADDR/MASTER_PORT/RANK/WORLD_SIZE\n    dist.init_process_group(backend=\"nccl\")\n    return local_rank\n```\n\n要点（`distributed.html`，v2.14.0 stable）：\n- `init_process_group(backend=None, init_method=None, timeout=None, world_size=-1, rank=-1, store=None, group_name='', pg_options=None, device_id=None, _ranks=None, enable_reconfigure=False)`。\n- 不传 `init_method`/`store` 时默认 `init_method=\"env://\"`；`env://` 需 `MASTER_ADDR`、`MASTER_PORT`、`WORLD_SIZE`、`RANK`。\n- `timeout` 默认：NCCL 10 分钟，其它后端 30 分钟。\n- 自 **2.6** 起，若不传 `backend`，c10d 按 `device_id` 推断（`cuda`→`nccl`、`cpu`→`gloo`、`xpu`→`xccl`）。\n- `device_id=` 在 NCCL 下会立即建通信子（`ncclCommInit*`），便于尽早暴露初始化错误；一种新写法即 `dist.init_process_group(device_id=local_rank)`。\n- NCCL 下“每进程必"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "只在 rank0 保存 checkpoint（用 `model.module.state_dict()` 去掉 `module.` 前缀），且 `_save_checkpoint` 内不能有集合通信，否则需把集合调用放在 `if self.gpu_id == 0` 之前：\n```python\nif self.gpu_id == 0 and epoch % self.save_every == 0:\n    self._save_checkpoint(epoch)\n```\n- 含 BatchNorm 时用 `torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)` 转 SyncBatchNorm。\n- 训练结束 `dist.destroy_process_group()`。\n\n### 3. 启动命令（torchrun）\n\n单机多卡（官方 `run.html`）：\n```bash\ntorchrun \\\n  --standalone \\\n  --nnodes=1 \\\n  --nproc-per-node=$NUM_TRAINERS \\\n  train.py\n```\n`--nproc-per-node` 可取整数，或 `gpu`/`cpu`/`xpu`/`auto`。\n\n多机多卡（官方 `run.html` 多机要求 + 官方教程示例）：**所有节点执行同一命令**，rendezvous 参数一致：\n```bash\n# 在所有节点上执行（节点间 TCP 可达）\ntorchrun \\\n  --nnodes=2 \\\n  --nproc-per-node=8 \\\n  --rdzv-id=100 \\\n  --rdzv-backend=c10d \\\n  --rdzv-endpoint=$MASTER_ADDR:29400 \\\n  train."
+        },
+        {
+          "event_id": "run-end",
+          "quote": "export NCCL_IB_HCA=mlx5             # 形如 <hca>[:<port>[:<rail>[:<plane>]]]，统一大写用 = 精确匹配\n```\n其它官方页面提及：`TORCH_GLOO_LAZY_INIT`、`TORCH_NCCL_BLOCKING_WAIT`；`NCCL_CONF_FILE`（2.23+）与 `/etc/nccl.conf` 可静态配置。\n\n多机/调试建议（官方多节点教程）：节点间需 TCP 互通；`export NCCL_DEBUG=INFO` 打印详细日志；必要时 `export NCCL_SOCKET_IFNAME=eth0`。\n\n### 5. 来源（本轮实际抓取）\n\n1. https://docs.pytorch.org/docs/main/elastic/run.html — 官方 torchrun，页头 **v2.15.0 (unstable)**；抓取判定完整（有可核对起止）。\n2. https://docs.pytorch.org/docs/stable/distributed.html — 官方 `torch."
+        }
+      ],
+      "observations": {
+        "content_repairs": [
+          "Call ddp_setup() and consistently bind/use its returned local_rank; the final only defines the function.",
+          "Use the wrapped ddp_model when saving (model.module is invalid on the unwrapped model variable).",
+          "Use a global rank for multi-node checkpoint ownership; gpu_id/local rank would save independently on each node.",
+          "Correct the NCCL_IB_HCA exact-match explanation: = is an optional exact-token prefix, not a claim about uppercase formatting.",
+          "Scope NCCL socket default values to the documented platform conditions rather than claiming unconditional defaults of1."
+        ],
+        "environment_substitutions": [
+          "MASTER_ADDR and rendezvous endpoint",
+          "node/process counts",
+          "training script, model, dataset and checkpoint paths",
+          "actual network interface/HCA names"
+        ],
+        "execution_status": "content_checked_not_executed"
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 is unscorable after fixed-packet adjudication; the composite index is not imputed.",
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna",
+    "task": "F",
+    "ecosystem": "cuda",
+    "model": "deepseek-v4.1-flash",
+    "input_case": "case-0067b3d1ec61",
+    "manual_adjudication": true
+  },
+  "channel_states": {}
+}

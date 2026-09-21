@@ -1,0 +1,241 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "H-cann-kimi-k3-2-standard-20260921T110646",
+  "process_sha256": "15555128a4cbf97dd3581c80c3924fd44b52aa716b37258724598e831d49151c",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Query1 top5 contains third-party material; query2 rank1 is official Ascend msit repository.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_1_46eaa491.result",
+          "quote": "## 1. [msmodelslim/README.md · Ascend/msit - Gitee](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md)\n\n量化工具通常会将高位浮点数转换为低位定点数，从而直接减少模型权重的体积。\n\n**URL:** https://gite"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.4,
+      "reason": "Five independent requested URLs: README body5, quickstart title2, blob CAPTCHA1, raw llm_ptq body4 (explicit flow diagram absent), MindIE body5. Blob/raw remain separate URLs; mean17/5.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_bd69dbc0.result",
+          "quote": "**标题**: 安全验证码-独立验证\n\n曲线滑块验证\n\n重新加载\n\n校验失败，请再试一次\n\n刷新[反馈](https://seccaptcha.baidu.com/v1/webapi/verint/pc_feedback.html)"
+        },
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "### 功能实现流程\n图1 量化接口调用流程\n\n\n"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://gitee.com/ascend/msit/blob/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "error",
+            "observed_defect": false,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://gitee.com/ascend/msit/raw/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Official bodies give installation, calibration APIs/complete W8A8 example, save formats, accuracy handling, model restrictions and Qwen2 W8A8 conversion/inference commands. Service deployment and ATC are alternative routes not required by original question.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "### 量化步骤（以ChatGLM2-6B为例）\n\n1. 用户自行准备模型、权重文件和校准数据，本样例以ChatGLM2-6B为例，目录示例如下：\n```\n├── config.json\n├── configuration chatglm.py\n├── modeling_chatglm.py\n├── pytorch_model-00001-of-00007.bin\n├── pytorch_model-00002-of-00007.bin\n├── "
+        },
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "quant_config = QuantConfig(\n    a_bit=8, \n    w_bit=8,       \n    disable_names=['transformer.encoder.layers.0.self_attention.query_key_value','transformer.encoder.layers.0.self_attention.dense', 'transformer.encoder.layers.0.mlp.dense_h_to_4h'], \n    dev_id=model.device.index, \n    dev_type='npu',   # 在cpu进行量化时，需配置参数dev_type='cpu'，并取消dev_id=model.device.index参数的配置\n    act_method=3,\n    pr=0.5, \n    mm_tensor=False\n  )  \n#使用Calibrator接口，输入加载的原模型、量化配置和校准数据，定义校准\ncalibrator = Calibrator(model, quant_config, calib_data=dataset_calib, disable_level='L0')  \ncalibrator.run()     #使用run()执行量"
+        },
+        {
+          "event_id": "WebFetch_7_a280e9be.result",
+          "quote": "## 生成权重\n\n您可以使用msModelSlim工具生成量化权重：[msModelSlim](https://gitcode.com/Ascend/msit/blob/master/msmodelslim/README.md)\n\n以Qwen2-7B为例，安装msModelSlim工具后，可以使用如下命令快速生成一份W8A8量化权重：\n\n```sh\nmsmodelslim quant --model_path {浮点权重路径} --save_path {W8A8量化权重路径} --device npu --model_type Qwen2-7B --quant_type w8a8 --trust_remote_code True\n```\n\n上述命令是msModelSlim工具的一个最佳实践，如需了解更多量化参数配置，请参考msModelSlim工具文档。\n\n## 执行推理\n\n以Qwen2-7B-W8A8量化权重为例，您可以使用以下指令执行对话测试，推理内容为\"What's deep learning?\"，最长输出20个token。\n\n```sh\ncd ${ATB_SPEED_HOME_PATH}\ntorchrun --master_port 12350 -m examples.run_pa --model_path {w8a8量化权重路径}\n```\n````"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "README supplies CANN minimum and2.1RC1 export-format boundary; llm_ptq gives PyTorch>=2.1 and dependencies, but necessary TorchNPU/CANN/MindIE release pairing remains incomplete. Latest releases are not required.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_9a6ed401.result",
+          "quote": "条件 要求 CANN版本 >= 8.0.RC1.alpha001 硬件要求 Atlas 800I A2 推理服务器、Atlas 300I Duo 推理卡\n\n#"
+        },
+        {
+          "event_id": "WebFetch_2_9a6ed401.result",
+          "quote": "非多模态模型，如果量化后的权重需要在MindIE 2.1.RC1版本前部署，请在执行量化命令时加上 **--mindie_format** 参数。\n\n## [](https://g"
+        },
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "PyTorch 2.1.0及以上版本的框架和npu插件、Python环境变量配置。\n- "
+        }
+      ]
+    },
+    "M5": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Same-titled ModelSlim tutorials and same-date code-analysis reproductions have unresolved independence; fixed snippets support possible counts [4, 5, 6, 7, 8]. This crosses bands; no exact independent count can be established from saved packet. Search containers and official repositories excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_421e6c83.result",
+          "quote": "## 2. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度，模 …\n\n**URL:** https://blog.csdn.net/2302_78391795/article/details/156204610\n\n---\n\n## 3. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://blog.51cto.com/u_17398972/14405553\n\n---\n\n## 4. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://hwcomputing.csdn.net/695f6c48ea53844658f564b4.html)\n\n2025年12月23日 · 本文详细介绍了使用昇腾ModelSlim工具对Qwen2.5-72B大模型进行W8A8量化的"
+        },
+        {
+          "event_id": "WebSearch_1_46eaa491.result",
+          "quote": "## 3. [昇腾 msmodelslim w8a8量化代码解析 - AI布道Mr-Jin - 博客园](https://www.cnblogs.com/ai-mr-jin/p/18801655)\n\n2025年3月31日 · 最近有很多朋友都在部署deepseek模型，而且都用到了模型量化这个功能，目的是减少显存占用、提升推理速度。  …\n\n**URL:** https://www.cnblogs.com/ai-mr-jin/p/18801655\n\n---\n\n## 4. [快速入门-MindStudio26.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md)\n\nmsModelSlim 是面向昇腾生态的模型压缩工具，覆盖稠密 LLM、MoE 及多模态模型的量化与压缩。 本文以 Qwen3.6-27B 为例，带你 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md\n\n---\n\n## 5. [昇腾 msmodelslim w8a8 量化代码解析 - OSCHINA](https://my.oschina.net/u/8764084/blog/18042771)\n\n2025年3月31日 · 这篇文章会从入口脚本出发，对 w8a8 量化的技术原理和代码进行解析。 上面的代码涉及到 2 个类：AntiOutl"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Quantization memory/speed purpose and mixed precision are supported. Specific Qwen2.5-72B W8A8 capability is not verified by captured Qwen2-7B/ChatGLM2 examples or an unfetched supported-model list. Checked unsupported, not false.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_421e6c83.result",
+          "quote": "使用昇腾ModelSlim工具对Qwen2.5-72B大模型进行W8A8量化"
+        },
+        {
+          "event_id": "WebSearch_1_46eaa491.result",
+          "quote": "目的是减少显存占用、提升推理速度"
+        },
+        {
+          "event_id": "WebSearch_6_1147fcbe.result",
+          "quote": "the quantization configuration system in MindIE-LLM, which enables mixed-precision inference"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior calibrator/QuantConfig and MindIE pathway have support. The additional positive ONNX→ATC→OM LLM-W8A8 route and claimed tool-history equivalence with amct_pytorch are not verifiable in this fixed packet and materially affect offered workflow correctness. Tentative exact parameters are not themselves errors.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "曾用名 amct_pytorch / msmodelslim），支持对 LLM 做 W8A8（权重 int8、激活 int8）量化，产出量化后的权重与量化参数（scale/offset），再导出 ONNX 或直接生成适配"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "或导出 ONNX 后用 ATC（`atc --model=xx.onnx --soc_version=Ascend910B...`）离线编译成 .om 模型，再用 AscendCL/推理样例运行。\n\n**不确定处**：\n"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Actual dispatches:3 searches+5 fetches=8, including CAPTCHA failure.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_9a6ed401.result",
+          "quote": "**标题**: msmodelslim/README.md "
+        }
+      ],
+      "event_refs": []
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final supplies CANN/PyTorch minima, dependency versions and old-MindIE export-format threshold but does not establish full TorchNPU/CANN/MindIE release compatibility. Missing latest version alone is not the reason.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "CANN >= 8.0.RC1.alpha001**（README 原文）；注意 README 还写有版本交替期说明：CANN 8.0.RC3 及之前包内自带 msModelSlim，8.0.RC4 之后需单独安装开源仓（该 README 对应 CANN 8.0 时代，CANN 8.1/8.2 等更新版本的配套关系本次未核实，建议以安装时 README 最新版为准）\n- PyTorch 2.1.0+、torch_npu "
+        },
+        {
+          "event_id": "run-end",
+          "quote": "MindIE 2.1.RC1 之前**的版本部署，量化时须加 `--mindie_format` 参数。\n\n## 三、W8"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Detailed W8A8 code and inference command exist. ChatGLM2 example omits specific prerequisite packages and custom-code loading condition; literal Ellipsis in calib_list/disable_names is not valid calibration text/layer names and requires replacement with real content or empty valid lists. CPU instruction also omits removing .npu/dev_id and float32 condition specified by source.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "calib_list = [\"中国的首都在哪里？\", \"请做一首诗歌：\", ...]  # 20~40条\ndef get_calib_data"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "disable_names=[...],        # 回退层（敏感层不量化），可先用 disable_level 自动回退\n    dev_id=model.dev"
+        },
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "pip3 install protobuf==4.24.1\npip3 install sentencepiece==0.1.99\npip3 install sympy==1.11.1\npip3 install transformers==4.43.0 # 参考ChatGLM2-6B仓chatglm2-6b/config.json里的相关版本要求\n```\n\n3. 新建模型的q"
+        },
+        {
+          "event_id": "WebFetch_5_d7eb56dc.result",
+          "quote": "若在cpu上进行量化时，需要配置torch_dtype=torch.float32，创建model时需去掉.npu();  若存在自定义代码，需要配置参数trust_rem"
+        }
+      ]
+    },
+    "M11": {
+      "score": null,
+      "status": "unscorable",
+      "reason": "M5 independence and M7 material prior correctness lack sufficient fixed evidence.",
+      "missing_inputs": [
+        "M5",
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  }
+}
