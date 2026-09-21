@@ -6,23 +6,24 @@
         "event_id": "call_74fa0e3c78bc4215b61df840.result",
         "quote": "**标题**: HIPIFY documentation — HIPIFY Documentation\n\nBack to top\n\n# HIPIFY documentation\n\n# HIPIFY documentation[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/#hipify-documentation \"Link to this heading\")\n\nHIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s HIP C++ programming language for use on AMD GPUs. HIPIFY includes two tools offering different levels of capability:\n\n- `hipify-clang`: A clang-based tool that parses CUDA code and converts it to HIP code. It handles syntax changes, API calls, and kernel launch differences.\n- `hipify-perl`: A simpler tool generated from `hipify-clang` that replaces CUDA API calls with HIP equivale"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_c87c56aaf7e04607acd7210d.result",
       "evidence": {
         "event_id": "call_c87c56aaf7e04607acd7210d.result",
-        "quote": "**标题**: Using hipify-clang — HIPIFY Documentation\n\n# Using hipify-clang#\n\n`hipify-clang` is a Clang-based tool for translating NVIDIA CUDA sources into HIP sources.\n\nIt translates CUDA source into an Abstract Syntax Tree (AST), which is traversed by transformation matchers. After applying all the matchers, the output HIP source is produced.\n\n**Advantages:**\n\n- `hipify-clang` is a translator. It parses complex constructs successfully or reports an error.\n- It supports Clang options such as -I, -D, and –cuda-path.\n- The support for new CUDA versions is seamless, as the Clang front-end is statically linked into `hipify-clang` and does all the syntactical parsing of a CUDA source to HIPIFY.\n- It"
+        "quote": "This generates `intro.cu.csv` file with statistics:"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_c27931e42eba46b0818c133b.result",
@@ -30,11 +31,11 @@
         "event_id": "call_c27931e42eba46b0818c133b.result",
         "quote": "**标题**: Using hipify-perl — HIPIFY Documentation\n\nBack to top\n\n# Using hipify-perl\n\n# Using hipify-perl[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html#using-hipify-perl \"Link to this heading\")\n\n`hipify-perl` is perl-based script that heavily uses regular expressions, that is automatically generated from `hipify-clang`.\n\n**Advantages:**\n\n- Ease of use\n- No checks for input source NVIDIA CUDA code for correctness required\n- No dependency on third party tools, including CUDA\n\n**Disadvantages:**\n\n- Inability or difficulty in implementing the following constructs:\n  \n  - Macros expansion\n  - Namespaces:\n    \n    - Redefinition of CUDA entities in user namespaces\n  "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_83498134bf4f4e7688fd8db5.result",
@@ -42,23 +43,24 @@
         "event_id": "call_83498134bf4f4e7688fd8db5.result",
         "quote": "**标题**: Install HIPIFY — HIPIFY Documentation\n\nBack to top\n\n# Install HIPIFY\n\n# Install HIPIFY[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html#install-hipify \"Link to this heading\")\n\nBefore you begin, verify that your system is supported. For more information, see [ROCm Core SDK components](https://rocm.docs.amd.com/en/latest/about/release-notes.html#release-components \"(in ROCm documentation v10.0.0)\").\n\nFor advanced workflows, source builds, or custom configurations, see [Building hipify-clang on Linux](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/building/build-hipify-clang-linux.html) or [Building hipify-clang on Windows](https://rocm.docs.amd.com/projects/HIPI"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_78d9173606954aaab311395c.result",
       "evidence": {
         "event_id": "call_78d9173606954aaab311395c.result",
-        "quote": "**标题**: PyTorch compatibility — ROCm Documentation\n\n# PyTorch compatibility#\n\n2025-06-18\n\n13 min read time\n\nApplies to Linux\n\nPyTorch is an open-source tensor library designed for deep learning. PyTorch on ROCm provides mixed-precision and large-scale training using MIOpen and RCCL libraries.\n\nROCm support for PyTorch is upstreamed into the official PyTorch repository. Due to independent compatibility considerations, this results in two distinct release cycles for PyTorch on ROCm:\n\n- ROCm PyTorch release:\n  \n  - Provides the latest version of ROCm but might not necessarily support the latest stable PyTorch version.\n  - Offers Docker images with ROCm and PyTorch preinstalled.\n  - ROCm PyTorch"
+        "quote": "PyTorch Docker image components#\n\nDocker\n\nPyTorch\n\nUbuntu\n\nPython\n\nApex\n\ntorchvision\n\nTensorBoard\n\nMAGMA\n\nUCX\n\nOMPI\n\nOFED\n\n\n\n2.6.0\n\n24.04\n\n3.12.10\n\n1."
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_ab3bca1003a1402b9a798b63.result",
@@ -66,11 +68,11 @@
         "event_id": "call_ab3bca1003a1402b9a798b63.result",
         "quote": "**标题**: hipify-clang commands — HIPIFY Documentation\n\nBack to top\n\n# hipify-clang commands\n\n# hipify-clang commands[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#hipify-clang-commands \"Link to this heading\")\n\nFor a list of `hipify-clang` options, run:\n\n```\nhipify-clang --help\n```\n\n## Output:[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#output \"Link to this heading\")\n\n### Usage[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#usage \"Link to this heading\")\n\n```\nhipify-clang [options] <source0> [... <sourceN>]\n```\n\n### Options[#](https://rocm.docs.amd.com/projects/HIPIFY/en/l"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_7c60cc8a350e4b8298c37de4.result",
@@ -78,377 +80,469 @@
         "event_id": "call_7c60cc8a350e4b8298c37de4.result",
         "quote": "**标题**: Install PyTorch for ROCm — AMD ROCm AI Ecosystem\n\nBack to top\n\n- [Infera](https://rocm.docs.amd.com/projects/infera)\n- [vLLM with MoRI recipe](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/inference/distributed/vllm-mori-recipe.html)\n\n# Install PyTorch for ROCm\n\n## Contents\n\n- [Prerequisites](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=all&os=linux&rocm-ver=10.0.0&pytorch-ver=2.13.0&i=docker&w=compute#prerequisites)\n\n# Install PyTorch for ROCm[#](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=all&os=linux&rocm-ver=10.0.0&pytorch-ver=2.13.0&i=docker&w=compute#install-pytorch-fo"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "first_query": 1,
+    "first_rank": 4,
+    "first_hit_source_id": "source-0001-rank-4",
+    "decisive_records_verified": true,
+    "budget_exhausted": false
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Include installation prerequisites/GPU-access configuration.",
+      "Bind CUDA selection to compatible LLVM version, rather than juxtaposing latest CUDA and unrelated example LLVM."
+    ],
+    "environment_substitutions": [
+      "installation path",
+      "input script/path",
+      "target device"
+    ],
+    "execution_status": "content_checked_only"
   },
   "m4": {
     "conflicts": [],
     "missing_relations": [],
-    "mode": "none"
+    "mode": "combined",
+    "combined_relations": [
+      "CUDA12.9.11 / LLVM22.1.8; HIPIFY Core SDK packaging; selected ROCm10.0 / PyTorch2.13.0 Docker image."
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      8
+    ]
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_b3a1429f76374ff4bb05d355.result",
+      "call_74fa0e3c78bc4215b61df840.result",
+      "call_c87c56aaf7e04607acd7210d.result",
+      "call_c27931e42eba46b0818c133b.result",
+      "call_83498134bf4f4e7688fd8db5.result",
+      "call_7398f7cc79184856ae9e9151.result",
+      "call_78d9173606954aaab311395c.result",
+      "call_ab3bca1003a1402b9a798b63.result",
+      "call_d6118b7dc0e64872b1f681a2.result",
+      "call_7c60cc8a350e4b8298c37de4.result"
+    ],
+    "claims": [
+      {
+        "source_id": "source-0009-rank-3",
+        "claim": "在 Windows 上 不借助 WSL2，直接用 AMD Radeon 显卡跑 PyTorch 推理",
+        "claim_evidence": [
+          {
+            "event_id": "call_d6118b7dc0e64872b1f681a2.result",
+            "quote": "在 Windows 上 不借助 WSL2，直接用 AMD Radeon 显卡跑 PyTorch 推理"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009-rank-4",
+        "claim": "通过本指南的系统实施，您将能够在Windows系统上成功部署AMD ROCm与PyTorch",
+        "claim_evidence": [
+          {
+            "event_id": "call_d6118b7dc0e64872b1f681a2.result",
+            "quote": "通过本指南的系统实施，您将能够在Windows系统上成功部署AMD ROCm与PyTorch"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "source_coverage": [
+      {
+        "source_id": "source-0001-rank-1",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0001-rank-2",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0001-rank-3",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0006-rank-3",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0006-rank-4",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0006-rank-5",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0009-rank-3",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      },
+      {
+        "source_id": "source-0009-rank-4",
+        "disposition": "Checked full visible search block; retained identifiable qualified assertions; titles/introductory descriptions and incomplete fragments not expanded. No third-party full fetch."
+      }
+    ]
   },
   "packet_sha256": "2d3eadb012e40ad6a683c12d4fc0b4bbe8cd6ec7e73b9088151539ff8ffe9101",
   "question": "我有一份 CUDA 代码/PyTorch GPU 脚本，怎么移植到 AMD ROCm 平台？给出 hipify 工具用法。",
   "run_id": "G-cuda-glm-5_3-standard-20260921T104118",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "source-0001",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "# Search Results for \"hipify-perl hipify-clang usage CUDA to ROCm porting official documentation\"\n\n## 1. [手把手用 HIPify 把 CUDA 代码迁到 ROCm，避坑指南来了](https://devpress.csdn.net/v1/article/detail/162189512)\n\n2026年6月22日 · 但在动手之前，得先搞清楚两个核心工具的区别： hipify-perl 和 hipify-clang。 简单来说， hipify-perl 是基于正则表 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/162189512\n\n---\n\n## 2. [HIPify 工具链迁移，CUDA 代码转 ROCm 实操手册-CSDN博客](https://blog.csdn.net/2600_96323227/article/details/162100859)\n\n2026年6月18日 · 文章浏览阅读17次。 本文详解 HIPify 工具链在 CUDA 代码转 ROCm 中的实战应用。 通过对比 hipify-perl 与 hipify …\n\n**URL:** https://blog.csdn.net/2600_96323227/article/details/162100859\n\n---\n\n## 3. [CUDA迁移到海光DCU实战：HIP编程模型、hipify工具与常见坑](https://www.zdye"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0001",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://devpress.csdn.net/v1/article/detail/162189512",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "## 1. [手把手用 HIPify 把 CUDA 代码迁到 ROCm，避坑指南来了](https://devpress.csdn.net/v1/article/detail/162189512)\n\n2026年6月22日 · 但在动手之前，得先搞清楚两个核心工具的区别： hipify-perl 和 hipify-clang。 简单来说， hipify-perl 是基于正则表 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/162189512\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
       "url": "https://devpress.csdn.net/v1/article/detail/162189512"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/2600_96323227/article/details/162100859",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "## 2. [HIPify 工具链迁移，CUDA 代码转 ROCm 实操手册-CSDN博客](https://blog.csdn.net/2600_96323227/article/details/162100859)\n\n2026年6月18日 · 文章浏览阅读17次。 本文详解 HIPify 工具链在 CUDA 代码转 ROCm 中的实战应用。 通过对比 hipify-perl 与 hipify …\n\n**URL:** https://blog.csdn.net/2600_96323227/article/details/162100859\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
       "url": "https://blog.csdn.net/2600_96323227/article/details/162100859"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.zdyedu.cn/blog/cuda-to-hip-dcu-migration-guide/",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "## 3. [CUDA迁移到海光DCU实战：HIP编程模型、hipify工具与常见坑](https://www.zdyedu.cn/blog/cuda-to-hip-dcu-migration-guide/)\n\n2026年7月22日 · 系统讲解从NVIDIA CUDA迁移到海光DCU（ROCm/HIP）的完整实战流程：hipify-perl自动转换工具使用、HIP …\n\n**URL:** https://www.zdyedu.cn/blog/cuda-to-hip-dcu-migration-guide/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
       "url": "https://www.zdyedu.cn/blog/cuda-to-hip-dcu-migration-guide/"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "## 4. [HIPIFY documentation — HIPIFY Documentation - AMD](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/)\n\n2026年8月28日 · hipify-perl: A simpler tool generated from hipify-clang that replaces CUDA API calls with HIP equivalents for basic …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/latest/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/",
       "event_id": "call_b3a1429f76374ff4bb05d355.result",
       "evidence": {
         "event_id": "call_b3a1429f76374ff4bb05d355.result",
         "quote": "## 5. [HIPIFY documentation — HIPIFY Documentation - rocm…](https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/)\n\n2024年8月19日 · hipify-clang and hipify-perl are tools that automatically translate NVIDIA CUDA source code into portable HIP C++. …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/",
       "event_id": "call_74fa0e3c78bc4215b61df840.result",
       "evidence": {
         "event_id": "call_74fa0e3c78bc4215b61df840.result",
         "quote": "**标题**: HIPIFY documentation — HIPIFY Documentation\n\nBack to top\n\n# HIPIFY documentation\n\n# HIPIFY documentation[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/#hipify-documentation \"Link to this heading\")\n\nHIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s HIP C++ programming language for use on AMD GPUs. HIPIFY includes two tools offering different levels of capability:\n\n- `hipify-clang`: A clang-based tool that parses CUDA code and converts it to HIP code. It handles syntax changes, API calls, and kernel launch differences.\n- `hipify-perl`: A simpler tool generated from `hipify-clang` that replaces CUDA API calls with HIP equivale"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html",
       "event_id": "call_c87c56aaf7e04607acd7210d.result",
       "evidence": {
         "event_id": "call_c87c56aaf7e04607acd7210d.result",
         "quote": "**标题**: Using hipify-clang — HIPIFY Documentation\n\n# Using hipify-clang#\n\n`hipify-clang` is a Clang-based tool for translating NVIDIA CUDA sources into HIP sources.\n\nIt translates CUDA source into an Abstract Syntax Tree (AST), which is traversed by transformation matchers. After applying all the matchers, the output HIP source is produced.\n\n**Advantages:**\n\n- `hipify-clang` is a translator. It parses complex constructs successfully or reports an error.\n- It supports Clang options such as -I, -D, and –cuda-path.\n- The support for new CUDA versions is seamless, as the Clang front-end is statically linked into `hipify-clang` and does all the syntactical parsing of a CUDA source to HIPIFY.\n- It"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0003",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html",
       "event_id": "call_c27931e42eba46b0818c133b.result",
       "evidence": {
         "event_id": "call_c27931e42eba46b0818c133b.result",
         "quote": "**标题**: Using hipify-perl — HIPIFY Documentation\n\nBack to top\n\n# Using hipify-perl\n\n# Using hipify-perl[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html#using-hipify-perl \"Link to this heading\")\n\n`hipify-perl` is perl-based script that heavily uses regular expressions, that is automatically generated from `hipify-clang`.\n\n**Advantages:**\n\n- Ease of use\n- No checks for input source NVIDIA CUDA code for correctness required\n- No dependency on third party tools, including CUDA\n\n**Disadvantages:**\n\n- Inability or difficulty in implementing the following constructs:\n  \n  - Macros expansion\n  - Namespaces:\n    \n    - Redefinition of CUDA entities in user namespaces\n  "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html",
       "event_id": "call_83498134bf4f4e7688fd8db5.result",
       "evidence": {
         "event_id": "call_83498134bf4f4e7688fd8db5.result",
         "quote": "**标题**: Install HIPIFY — HIPIFY Documentation\n\nBack to top\n\n# Install HIPIFY\n\n# Install HIPIFY[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html#install-hipify \"Link to this heading\")\n\nBefore you begin, verify that your system is supported. For more information, see [ROCm Core SDK components](https://rocm.docs.amd.com/en/latest/about/release-notes.html#release-components \"(in ROCm documentation v10.0.0)\").\n\nFor advanced workflows, source builds, or custom configurations, see [Building hipify-clang on Linux](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/building/build-hipify-clang-linux.html) or [Building hipify-clang on Windows](https://rocm.docs.amd.com/projects/HIPI"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html"
     },
     {
-      "content_group": "",
+      "content_group": "source-0006",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "# Search Results for \"PyTorch ROCm torch.cuda compatibility porting GPU scripts AMD official documentation\"\n\n## 1. [PyTorch compatibility — ROCm Documentation](https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html)\n\n2024年12月24日 · torch.cuda in PyTorch is a module that provides utilities and functions for managing …\n\n**URL:** https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html\n\n---\n\n## 2. [PyTorch compatibility — ROCm Documentation](https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html)\n\n2025年6月18日 · For a complete and up-to-date list of PyTorch core modules (for example., torch, …\n\n**URL:** ht"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0006",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "## 1. [PyTorch compatibility — ROCm Documentation](https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html)\n\n2024年12月24日 · torch.cuda in PyTorch is a module that provides utilities and functions for managing …\n\n**URL:** https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-1",
       "url": "https://rocm.docs.amd.com/en/docs-6.3.3/compatibility/pytorch-compatibility.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "## 2. [PyTorch compatibility — ROCm Documentation](https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html)\n\n2025年6月18日 · For a complete and up-to-date list of PyTorch core modules (for example., torch, …\n\n**URL:** https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-2",
       "url": "https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://devpress.csdn.net/amd/6a16a83a10ee7a33f2759bf3.html",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "## 3. [PyTorch ROCm支持：AMD GPU加速计算完全指南](https://devpress.csdn.net/amd/6a16a83a10ee7a33f2759bf3.html)\n\n2025年9月19日 · 你是否曾因NVIDIA显卡高昂的价格而却步深度学习研究？ 是否在寻找CUDA的高性能 …\n\n**URL:** https://devpress.csdn.net/amd/6a16a83a10ee7a33f2759bf3.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-3",
       "url": "https://devpress.csdn.net/amd/6a16a83a10ee7a33f2759bf3.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/weixin_29252171/article/details/158898767",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "## 4. [告别CUDA依赖：AMD显卡+ROCm实战指南，轻松搞定 ...](https://blog.csdn.net/weixin_29252171/article/details/158898767)\n\n2026年7月27日 · 本文提供了一份详细的AMD显卡+ROCm实战指南，帮助用户摆脱CUDA依赖，轻松 …\n\n**URL:** https://blog.csdn.net/weixin_29252171/article/details/158898767\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-4",
       "url": "https://blog.csdn.net/weixin_29252171/article/details/158898767"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/weixin_31800911/article/details/156400637",
       "event_id": "call_7398f7cc79184856ae9e9151.result",
       "evidence": {
         "event_id": "call_7398f7cc79184856ae9e9151.result",
         "quote": "## 5. [PyTorch-CUDA镜像是否支持ROCm？AMD显卡兼容性分析](https://blog.csdn.net/weixin_31800911/article/details/156400637)\n\n2025年12月28日 · 许多开发者误以为“PyTorch-CUDA”是一个通用的 GPU 加速标签，适用于所有支持 …\n\n**URL:** https://blog.csdn.net/weixin_31800911/article/details/156400637\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-5",
       "url": "https://blog.csdn.net/weixin_31800911/article/details/156400637"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html",
       "event_id": "call_78d9173606954aaab311395c.result",
       "evidence": {
         "event_id": "call_78d9173606954aaab311395c.result",
         "quote": "**标题**: PyTorch compatibility — ROCm Documentation\n\n# PyTorch compatibility#\n\n2025-06-18\n\n13 min read time\n\nApplies to Linux\n\nPyTorch is an open-source tensor library designed for deep learning. PyTorch on ROCm provides mixed-precision and large-scale training using MIOpen and RCCL libraries.\n\nROCm support for PyTorch is upstreamed into the official PyTorch repository. Due to independent compatibility considerations, this results in two distinct release cycles for PyTorch on ROCm:\n\n- ROCm PyTorch release:\n  \n  - Provides the latest version of ROCm but might not necessarily support the latest stable PyTorch version.\n  - Offers Docker images with ROCm and PyTorch preinstalled.\n  - ROCm PyTorch"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
       "url": "https://rocm.docs.amd.com/en/docs-6.4.1/compatibility/ml-compatibility/pytorch-compatibility.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html",
       "event_id": "call_ab3bca1003a1402b9a798b63.result",
       "evidence": {
         "event_id": "call_ab3bca1003a1402b9a798b63.result",
         "quote": "**标题**: hipify-clang commands — HIPIFY Documentation\n\nBack to top\n\n# hipify-clang commands\n\n# hipify-clang commands[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#hipify-clang-commands \"Link to this heading\")\n\nFor a list of `hipify-clang` options, run:\n\n```\nhipify-clang --help\n```\n\n## Output:[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#output \"Link to this heading\")\n\n### Usage[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#usage \"Link to this heading\")\n\n```\nhipify-clang [options] <source0> [... <sourceN>]\n```\n\n### Options[#](https://rocm.docs.amd.com/projects/HIPIFY/en/l"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0008",
       "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html"
     },
     {
-      "content_group": "",
+      "content_group": "source-0009",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "# Search Results for \"pytorch.org get started install PyTorch ROCm pip index-url rocm\"\n\n## 1. [Install PyTorch for ROCm — AMD ROCm AI Ecosystem](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html)\n\n2026年9月2日 · Install PyTorch for ROCm # This pages guides you through installing PyTorch with ROCm support on AMD …\n\n**URL:** https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html\n\n---\n\n## 2. [PyTorch on ROCm installation — ROCm installation (Linux) - AMD](https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html)\n\n2026年5月29日 · Check System requirements (Linux) and install ROCm usi"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0009",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "## 1. [Install PyTorch for ROCm — AMD ROCm AI Ecosystem](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html)\n\n2026年9月2日 · Install PyTorch for ROCm # This pages guides you through installing PyTorch with ROCm support on AMD …\n\n**URL:** https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-1",
       "url": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "## 2. [PyTorch on ROCm installation — ROCm installation (Linux) - AMD](https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html)\n\n2026年5月29日 · Check System requirements (Linux) and install ROCm using the instructions in the ROCm installation overview …\n\n**URL:** https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-2",
       "url": "https://rocm.docs.amd.com/projects/install-on-linux/en/develop/install/3rd-party/pytorch-install.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://zhuanlan.zhihu.com/p/2004943214671574039",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "## 3. [Windows + Radeon 显卡：原生 PyTorch 推理部署指南 - 知乎](https://zhuanlan.zhihu.com/p/2004943214671574039)\n\n2026年2月11日 · 本文介绍如何在 Windows 上 不借助 WSL2，直接用 AMD Radeon 显卡跑 PyTorch 推理。 这是最简单的 Radeon + …\n\n**URL:** https://zhuanlan.zhihu.com/p/2004943214671574039\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-3",
       "url": "https://zhuanlan.zhihu.com/p/2004943214671574039"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/gitblog_00273/article/details/156352712",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "## 4. [AMD ROCm与PyTorch Windows部署完整指南-CSDN博客](https://blog.csdn.net/gitblog_00273/article/details/156352712)\n\n2025年12月28日 · 通过本指南的系统实施，您将能够在Windows系统上成功部署AMD ROCm与PyTorch，为深度学习项目提供稳定可 …\n\n**URL:** https://blog.csdn.net/gitblog_00273/article/details/156352712\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-4",
       "url": "https://blog.csdn.net/gitblog_00273/article/details/156352712"
     },
     {
-      "content_group": "",
+      "content_group": "https://pytorch.org/get-started/previous-versions/",
       "event_id": "call_d6118b7dc0e64872b1f681a2.result",
       "evidence": {
         "event_id": "call_d6118b7dc0e64872b1f681a2.result",
         "quote": "## 5. [Previous PyTorch Versions](https://pytorch.org/get-started/previous-versions/)\n\nAccess and install previous PyTorch versions, including binaries and instructions for all platforms.\n\n**URL:** https://pytorch.org/get-started/previous-versions/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-5",
       "url": "https://pytorch.org/get-started/previous-versions/"
     },
     {
-      "content_group": "",
+      "content_group": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html",
       "event_id": "call_7c60cc8a350e4b8298c37de4.result",
       "evidence": {
         "event_id": "call_7c60cc8a350e4b8298c37de4.result",
         "quote": "**标题**: Install PyTorch for ROCm — AMD ROCm AI Ecosystem\n\nBack to top\n\n- [Infera](https://rocm.docs.amd.com/projects/infera)\n- [vLLM with MoRI recipe](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/inference/distributed/vllm-mori-recipe.html)\n\n# Install PyTorch for ROCm\n\n## Contents\n\n- [Prerequisites](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=all&os=linux&rocm-ver=10.0.0&pytorch-ver=2.13.0&i=docker&w=compute#prerequisites)\n\n# Install PyTorch for ROCm[#](https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html?fam=all&os=linux&rocm-ver=10.0.0&pytorch-ver=2.13.0&i=docker&w=compute#install-pytorch-fo"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0010",
       "url": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "我有一份 CUDA 代码/PyTorch GPU 脚本，怎么移植到 AMD ROCm 平台？给出 hipify 工具用法。",
+      "Give actionable migration methods/tool usage"
+    ],
+    "secondary": [
+      "Migration prerequisites and documented restrictions"
+    ],
+    "version_relations": [
+      "Framework/runtime and migration tool applicability; latest releases not mandated"
+    ]
   }
 }
