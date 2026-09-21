@@ -1,0 +1,221 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cann-kimi-k3-2-standard-20260921T105145",
+  "process_sha256": "6250e87fa3d3a3a3aa383dc134452a36b14fc379461f6c04cdc63851fea2f25c",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次查询第1位为相关昇腾官方文档。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_a862cb9e.result",
+          "quote": "## 1. [多卡分布式训练-TorchNPU6.0.RC1-昇腾社区"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 5,
+      "reason": "三个独立官方fetch均取得直接目标正文；0086中的“......”是示例明确说明复用前段代码的省略，不是工具抓取缺损。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_36f3a59f.result",
+          "quote": "**标题**: 多卡分布式训练-启动脚本配置"
+        },
+        {
+          "event_id": "WebFetch_2_af114dc7.result",
+          "quote": "**标题**: 拉起多卡训练脚本示例-附录"
+        },
+        {
+          "event_id": "WebFetch_4_e8230fac.result",
+          "quote": "**标题**: 版本配套关系-版本说明"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0024.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0086.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "官方正文覆盖初始化和多种启动方式，但多机global-rank初始化/完整多机启动参数仍缺，单机示例的local_rank不能直接完成多机要求。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_36f3a59f.result",
+          "quote": "配置相应的rank与world_size。"
+        },
+        {
+          "event_id": "WebFetch_2_af114dc7.result",
+          "quote": "dist.init_process_group(backend=\"hccl\", rank=rank, world_size=world_size)"
+        },
+        {
+          "event_id": "WebFetch_2_af114dc7.result",
+          "quote": "world_size = torch.npu.device_count()\n      args.world_size = world_size\n      main(args"
+        },
+        {
+          "event_id": "WebFetch_2_af114dc7.result",
+          "quote": "torchrun --standalone --nnodes=1 --nproc_per_node=8 ddp_test_shell.py\n  ```\n\n<"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Official table specifies CANN/PyTorch/TorchNPU pairs; launcher rules separately constrain torchrun>=1.11.0 and torch_npu_run to1.11.0. Combining the selected launcher with a table row establishes the necessary stack. Multiple valid combinations are allowed; uniqueness is not required.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_e8230fac.result",
+          "quote": "商发版：8.0.RC1\n\n社区版：8.0.RC1.beta1\n\n1.11.0\n\n6.0.rc1\n\nv1.11.0-6.0.rc1\n\n1.11.0.post11\n\nPython3.7.*x*（3.7.5及以上）、Python3.8.*x*、Python3.9.*x*、Python3.10.*x*\n\n2.1.0\n\nv2.1.0-6.0.rc1\n\n2.1.0.post3\n\nPython3.8.*x*、Python3.9.*x*、Python3.10.*x*\n\n2.2.0\n\nv2.2.0-6.0.rc1\n\n2.2.0\n\nPython3.8.*x*、Python3.9.*x*、Python3.10.*x*\n\n7.0.0\n\n1.11.0\n\n5.0.0\n\nv1.11.0-5.0.0\n\n1.11.0.post8\n\nPython3.7.*x*（3.7.5及以上）、Python3.8."
+        },
+        {
+          "event_id": "WebFetch_1_36f3a59f.result",
+          "quote": "- torchrun方式：仅在PyTorch 1.11.0及以上版本支持使用。\n- torch_npu_run方式**（集群场景推荐）**：此方式是torchrun在大集群场景的改进版，提升集群建链性能，仅在PyTorch 1.11.0版本支持使用。\n\n附录[拉起多卡训练脚本示例](https://www.hiascend.com/document/detail/zh/Pytorch"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Five independent groups: q1devpressHCCL, HCCL fault article, hwcomputing multi-node article, q2version-pairing reproduction group and driver/CANN installation article. verse_armour is identifiable official-example reproduction and excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_a862cb9e.result",
+          "quote": "## 2. [hccl 分布式训练踩坑：从单机到多机的那些事_分布式_心中"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "HCCL distributed-training role/use is supported. High fault-frequency assertion, exact2.4.0.x/CANN8.0 pairing, segmentation-fault cause/remedy, get_cann_version checking and driver prerequisite lack full fixed-packet support. They are checked unsupported, not false.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_a862cb9e.result",
+          "quote": "hccl是华为的集合通信库，对标NVIDIA的NCCL，但在拓 …\n\n**U"
+        },
+        {
+          "event_id": "WebSearch_0_a862cb9e.result",
+          "quote": "很容易出现 HCCL（Huawei Collective Communication Library） 通信相关问题： …\n\n**"
+        },
+        {
+          "event_id": "WebSearch_3_a0a097b9.result",
+          "quote": "核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容 …\n\n**URL:** https://juejin.cn/post/76"
+        },
+        {
+          "event_id": "WebFetch_1_36f3a59f.result",
+          "quote": "初始化，将通信方式设置为hccl。\n      \n      ```\n      torch.distributed.init_process_group(backend=\"hccl\",rank=local_ra"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Correct HCCL/DDP/device-binding fragments are supported and multi-node rank setup is incomplete. The positive prior claim that ASCEND_RT_VISIBLE_DEVICES controls visible cards is not verifiable in the fixed packet and can affect device selection correctness. Explicit questions about ascend-dmi/msnpureport are not treated as false assertions. Material prior correctness remains unresolved.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "dist.init_process_group(backend=\"hccl\")\n  torch.npu.set_device(local_rank)\n  device = torch.device(f\"npu:{local_rank}\")\n  model = torch.nn.parallel.DistributedDataParallel(model.to(device), device_ids=[local_rank])\n  ```\n- 环境变量通常通过启动工具注入：`MASTER"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "Ascend 常用 `ASCEND_RT_VISIBLE_DEVICES` 指定可见卡。\n\n*"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "实际派发5次：2 search + 3 fetch。",
+      "evidence": [],
+      "event_refs": [
+        "WebSearch_0_a862cb9e.dispatch",
+        "WebFetch_1_36f3a59f.dispatch",
+        "WebFetch_2_af114dc7.dispatch",
+        "WebSearch_3_a0a097b9.dispatch",
+        "WebFetch_4_e8230fac.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 4,
+      "reason": "最终答案给出6.0RC1下CANN/PyTorch/torch_npu具体配套范围，但没有把单一PyTorch版本锁为一个值。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "| CANN 版本 | PyTorch | torch_npu 分支 | 安装包版本 |\n|---|---|---|---|\n| 8.0.RC1（商发）/ 8.0.RC1.beta1（社区） | 1.11.0 | v1.11.0-6.0.rc1 | 1.11.0.post11 |\n| 同上 | 2.1.0 | v2.1.0-6.0.rc1 | 2.1.0.post3 |\n| 同上 | 2.2.0 | v2.2.0-6.0.rc1 | 2.2.0 |\n\ntorchrun 仅 PyTorch 1.11.0 及以上支持；`torch_npu_run`（大集群推荐）官方标注仅在 PyTorch 1.11.0 版本支持。新版文档线（如 7.x/更新的 torch_npu 版本）支持更高 PyTorch，本文以检索到的 6.0.RC1 官方文档为准。\n\n## 二、训练脚本改造（初始化）\n\n昇腾 init_process_group 的 init_method "
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终初始化代码world_size未定义且使用local_rank作为多机rank；torchrun示例只有单机standalone，缺多机nnodes/node_rank/master参数，需内容补写。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "dist.init_process_group(backend=\"hccl\", rank=local_rank, world_size=world_size)\n\ntorch_npu"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "多机时每台机器执行相同命令（相同 master_addr/port）。\n4. **t"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "torchrun --standalone --nnodes=1 --nproc_per_node=8 ddp_test_shell.py   # 单机示例\n   ```\n   官方示例仅给出单机 `--standalone` 形式；多机需按标准 torchrun 用法补 `--nnodes`、`-"
+        }
+      ]
+    },
+    "M11": {
+      "score": null,
+      "status": "unscorable",
+      "reason": "M7 material correctness remains unresolved; do not impute.",
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "observations": {
+    "draft_source": "bounded executor adjudication"
+  },
+  "channel_states": {}
+}

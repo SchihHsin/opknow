@@ -6,11 +6,12 @@
         "event_id": "WebFetch_1_391a42d4.result",
         "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: Jan 23, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\n[Introduction](https://docs.pytorch.org/tutorials/beginner/ddp_series_intro.html) || [What is DDP](https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html) || [Single-Node Multi-GPU Training](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html) || [Fault Tolerance](https://docs.pytorch.org/tutorials/beginner/ddp_series_fault_tolerance.html) || **Multi-Node training** || [minGPT Training](https://docs.pytorch.org/tutorials/intermediate/ddp_series_minGPT.html)\n\n# Multinode Training[#](ht"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "WebFetch_2_fe613e7b.result",
@@ -18,11 +19,12 @@
         "event_id": "WebFetch_2_fe613e7b.result",
         "quote": "**标题**: torchrun (Elastic Launch) — PyTorch 2.14 documentation\n\n# torchrun (Elastic Launch)#\n\n# torchrun (Elastic Launch)#\nCreated On: May 12, 2026 | Last Updated On: May 12, 2026\n\nModule `torch.distributed.run`.\n\n`torch.distributed.run` is a module that spawns up multiple distributed training processes on each of the training nodes.\n\n`torchrun` is a python console script to the main module torch.distributed.run declared in the `entry_points` configuration in setup.py. It is equivalent to invoking `python -m torch.distributed.run`.\n\n`torchrun` can be used for single-node distributed training, in which one or more processes per node will be spawned. It can be used for either CPU training or G"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.pytorch.org/docs/stable/elastic/run.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "WebFetch_3_fdf27395.result",
@@ -30,38 +32,69 @@
         "event_id": "WebFetch_3_fdf27395.result",
         "quote": "```\nimport torch\nimport torch.nn.functional as F\nfrom torch.utils.data import Dataset, DataLoader\nfrom datautils import MyTrainDataset\n\nimport torch.multiprocessing as mp\nfrom torch.utils.data.distributed import DistributedSampler\nfrom torch.nn.parallel import DistributedDataParallel as DDP\nfrom torch.distributed import init_process_group, destroy_process_group\nimport os\n\n\ndef ddp_setup():\n    torch.cuda.set_device(int(os.environ[\"LOCAL_RANK\"]))\n    init_process_group(backend=\"nccl\")\n\nclass Trainer:\n    def __init__(\n        self,\n        model: torch.nn.Module,\n        train_data: DataLoader,\n        optimizer: torch.optim.Optimizer,\n        save_every: int,\n        snapshot_path: str,\n    "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://raw.githubusercontent.com/pytorch/examples/main/distributed/ddp-tutorial-series/multinode.py",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Import DataLoader before its unqualified use."
+    ],
+    "environment_substitutions": [
+      "master IP",
+      "master port",
+      "node count",
+      "process count",
+      "script/model path",
+      "network interface"
+    ]
   },
   "m4": {
+    "mode": "partial",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "NCCL version/compatibility relation and exact CUDA-to-PyTorch/NCCL selection are not supplied by official captures"
+    ],
+    "non_decisive_content_conflicts": [
+      "Tutorial allows heterogeneous node GPU counts whereas launcher says homogeneous LOCAL_WORLD_SIZE. Final equal-card route does not rely on heterogeneous scaling; conflict retained separately."
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      1
+    ]
   },
   "m6": {
-    "checked_event_ids": [],
+    "checked_event_ids": [
+      "WebSearch_0_ddaafac3.result",
+      "WebFetch_1_391a42d4.result",
+      "WebFetch_2_fe613e7b.result",
+      "WebFetch_3_fdf27395.result"
+    ],
     "claims": [],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "excluded_fragments": [
+      "Official PyTorch mirrors and official repository results are excluded from third-party claims; title-only/ellipsis wording is retained as the visible claim but not expanded."
+    ],
+    "source_coverage": [
+      {
+        "source_id": "source-0001-rank-4",
+        "disposition": "Only generic challenge/repository promotion; complete, production-grade ends before an identifiable technical object. No complete key technical assertion can be identified."
+      }
+    ]
   },
   "packet_sha256": "9687c231fd622e2f87187ae8ab5265c912665eeafe1de882b453b5494b3bb55e",
   "question": "怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。",
@@ -80,115 +113,122 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "official-pytorch-ddp",
       "event_id": "WebSearch_0_ddaafac3.result",
       "evidence": {
         "event_id": "WebSearch_0_ddaafac3.result",
         "quote": "## 1. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html)\n\n2025年1月23日 · Multinode Training - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
       "url": "https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html"
     },
     {
-      "content_group": "",
+      "content_group": "official-pytorch-ddp",
       "event_id": "WebSearch_0_ddaafac3.result",
       "evidence": {
         "event_id": "WebSearch_0_ddaafac3.result",
         "quote": "## 2. [Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation](https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html)\n\n2026年9月3日 · Multinode training involves deploying a training job across several machines. There are two ways to do this: In this …\n\n**URL:** https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
       "url": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html"
     },
     {
-      "content_group": "",
+      "content_group": "official-pytorch-ddp",
       "event_id": "WebSearch_0_ddaafac3.result",
       "evidence": {
         "event_id": "WebSearch_0_ddaafac3.result",
         "quote": "## 3. [使用 DDP 进行多 GPU 训练 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月5日 · 在 上一个教程 中，我们对 DDP 的工作原理有了一个高层概述；现在我们来看看如何在代码中使用 DDP。 在本教程 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
       "url": "https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html"
     },
     {
-      "content_group": "",
+      "content_group": "github-vk032503",
       "event_id": "WebSearch_0_ddaafac3.result",
       "evidence": {
         "event_id": "WebSearch_0_ddaafac3.result",
         "quote": "## 4. [PyTorch DDP Multi-Node Training Pipeline - GitHub](https://github.com/vk032503/pytorch-ddp-multi-node-training)\n\nScaling deep learning from a single GPU to a multi-node cluster is challenging. This repository provides a complete, production-grade …\n\n**URL:** https://github.com/vk032503/pytorch-ddp-multi-node-training\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://github.com/vk032503/pytorch-ddp-multi-node-training"
     },
     {
-      "content_group": "",
+      "content_group": "official-pytorch-ddp",
       "event_id": "WebSearch_0_ddaafac3.result",
       "evidence": {
         "event_id": "WebSearch_0_ddaafac3.result",
         "quote": "## 5. [Multi GPU training with DDP - PyTorch](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月3日 · In this tutorial, we start with a single-GPU training script and migrate that to running it on 4 GPUs on a single node. …\n\n**URL:** https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html"
     },
     {
-      "content_group": "",
+      "content_group": "source-0002",
       "event_id": "WebFetch_1_391a42d4.result",
       "evidence": {
         "event_id": "WebFetch_1_391a42d4.result",
         "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: Jan 23, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\n[Introduction](https://docs.pytorch.org/tutorials/beginner/ddp_series_intro.html) || [What is DDP](https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html) || [Single-Node Multi-GPU Training](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html) || [Fault Tolerance](https://docs.pytorch.org/tutorials/beginner/ddp_series_fault_tolerance.html) || **Multi-Node training** || [minGPT Training](https://docs.pytorch.org/tutorials/intermediate/ddp_series_minGPT.html)\n\n# Multinode Training[#](ht"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html"
     },
     {
-      "content_group": "",
+      "content_group": "source-0003",
       "event_id": "WebFetch_2_fe613e7b.result",
       "evidence": {
         "event_id": "WebFetch_2_fe613e7b.result",
         "quote": "**标题**: torchrun (Elastic Launch) — PyTorch 2.14 documentation\n\n# torchrun (Elastic Launch)#\n\n# torchrun (Elastic Launch)#\nCreated On: May 12, 2026 | Last Updated On: May 12, 2026\n\nModule `torch.distributed.run`.\n\n`torch.distributed.run` is a module that spawns up multiple distributed training processes on each of the training nodes.\n\n`torchrun` is a python console script to the main module torch.distributed.run declared in the `entry_points` configuration in setup.py. It is equivalent to invoking `python -m torch.distributed.run`.\n\n`torchrun` can be used for single-node distributed training, in which one or more processes per node will be spawned. It can be used for either CPU training or G"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0003",
       "url": "https://docs.pytorch.org/docs/stable/elastic/run.html"
     },
     {
-      "content_group": "",
+      "content_group": "official-pytorch-examples",
       "event_id": "WebFetch_3_fdf27395.result",
       "evidence": {
         "event_id": "WebFetch_3_fdf27395.result",
         "quote": "```\nimport torch\nimport torch.nn.functional as F\nfrom torch.utils.data import Dataset, DataLoader\nfrom datautils import MyTrainDataset\n\nimport torch.multiprocessing as mp\nfrom torch.utils.data.distributed import DistributedSampler\nfrom torch.nn.parallel import DistributedDataParallel as DDP\nfrom torch.distributed import init_process_group, destroy_process_group\nimport os\n\n\ndef ddp_setup():\n    torch.cuda.set_device(int(os.environ[\"LOCAL_RANK\"]))\n    init_process_group(backend=\"nccl\")\n\nclass Trainer:\n    def __init__(\n        self,\n        model: torch.nn.Module,\n        train_data: DataLoader,\n        optimizer: torch.optim.Optimizer,\n        save_every: int,\n        snapshot_path: str,\n    "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
       "url": "https://raw.githubusercontent.com/pytorch/examples/main/distributed/ddp-tutorial-series/multinode.py"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。",
+      "Correct device binding, global rank/world size, and multi-node startup"
+    ],
+    "secondary": [
+      "Network prerequisites and matching framework/communication stack"
+    ],
+    "version_relations": [
+      "PyTorch/CUDA/NCCL applicability and launcher API boundary"
+    ]
   }
 }

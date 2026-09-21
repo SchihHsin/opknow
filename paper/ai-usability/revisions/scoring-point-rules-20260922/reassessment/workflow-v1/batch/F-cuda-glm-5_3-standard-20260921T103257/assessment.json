@@ -1,0 +1,234 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "score": 4,
+      "status": "scored",
+      "reason": "First query ranks2(translated official-content reproduction) and5(origin official tutorial) both fall in first-query2–5 band.",
+      "evidence": [
+        {
+          "event_id": "call_a24ea8f660ca44799aa1974c.result",
+          "quote": "## 2. [使用 DDP 进行多 GPU 训练 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月5日 · Multi GPU training with DDP - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/beginner/"
+        },
+        {
+          "event_id": "call_a24ea8f660ca44799aa1974c.result",
+          "quote": "## 5. [Multi GPU training with DDP - PyTorch](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月3日 · In this tutorial, we start with a single-GPU training script and m"
+        }
+      ]
+    },
+    "M10": {
+      "score": 3,
+      "status": "scored",
+      "reason": "The primary initialization/launch route is concrete. API instructions nevertheless require content correction: the stated complete signature omits two visible arguments, and the eager-NCCL explanation associates it with a sample that never supplies device_id. Environment substitutions and unexecuted status are separate.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "`init_process_group` 当前完整签名（2.14 文档）：\n`init_process_group(backend=None, init_method=None, timeout=None, world_size=-1, rank=-1, store=None, group_name='', pg_options=None, device_id=None)`。不传 `init_method` 和 `store` 时默认 `env://`。\n\n官方教程也支持 `device_id` 传加速器对象的写法（如 `torch.accelerator.set_devi"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "官方教程也支持 `device_id` 传加速器对象的写法（如 `torch.accelerator.set_device_index(int(os.environ[\"LOCAL_RANK\"]))` 后 `dist.init_process_group(backend)`），NCCL 下会立即建立 communicator 并使用 `ncclCommSplit`。\n\n若含 BatchNo"
+        },
+        {
+          "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+          "quote": "### `device_id` optimizations (eager communicator init, `ncclCommSplit`)\n> \"Currently this has two effects, only under NCCL: the communicator is immediately formed (calling `ncclCommInit*` immediately rather than the normal lazy call) and sub-groups will use `ncclCommSplit` when possible to avoid unnecessary overhead of group creation. If you want to know NCCL initialization error early, you can also use th"
+        }
+      ]
+    },
+    "M11": {
+      "status": "scored",
+      "score": 74.74790399999999,
+      "reason": "Computed only from adjudicated M1–M8; not a probability.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.0,
+      "reason": "Four official returns score[5,4,3,4]: direct tutorial body, tutorial body with explicit omitted section, organized API extraction, torchrun body with explicit omitted sections. Mean16/4.",
+      "evidence": [
+        {
+          "event_id": "call_fb5ac436917e417ea8a83c69.result",
+          "quote": "[...]\n\n## Combining DDP with Model Parallelism#\n\nD"
+        },
+        {
+          "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+          "quote": "# PyTorch 2.14 `torch.distributed` — Requested Extractions\n\n**Summary of findings:** All four requested items were located on the page, with some important caveats: (1) the env:// section lists only 4 variables (MASTER_ADDR, MASTER_PORT, WORLD_SIZE, RANK) — LOCAL_WORLD_SIZE and GROUP_RANK do **not** appear anywhere in the provided content, and LOCAL_RANK/TORCHELASTIC_RUN_ID appear only in other API docs; (2) the full backend guidance and capability table are below; (3) `init_process_group` signature and init methods extracted verbatim; (4) numerous NCCL-specific multi-machine constraints found. The page content is **truncated** mid-way throug"
+        },
+        {
+          "event_id": "call_bd9718bf01cf4060949cdffa.result",
+          "quote": "[...]\n\n## Deployment#\n\n1. (Not needed for the C10d"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+          "score": 4,
+          "status": "scored",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/distributed.html",
+          "score": 3,
+          "status": "scored",
+          "observations": {
+            "representation": "excerpt",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/elastic/run.html",
+          "score": 4,
+          "status": "scored",
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "score": 5,
+      "status": "scored",
+      "reason": "The selected env/NCCL+torchrun route has complete initialization, per-GPU process binding, sampler epochs, multi-node launch and environment-variable/precondition explanations. Missing optional file-init body does not block the supplied env route.",
+      "evidence": [
+        {
+          "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+          "quote": "def ddp_setup(rank: int, world_size: int):\n   \"\"\"\n   Args:\n       rank: Unique identifier of each process\n      world_size: Total number of processes\n   \"\"\"\n   os.environ[\"MASTER_ADDR\"] = \"localhost\"\n   os.environ[\"MASTER_PORT\"] = \"12355\"\n   torch.cuda.set_device(rank)\n   init_process_group(backend=\"nccl\", rank=rank, world_size="
+        },
+        {
+          "event_id": "call_fb5ac436917e417ea8a83c69.result",
+          "quote": "torchrun --nnodes=2 --nproc_per_node=8 --rdzv_id=100 --rdzv_backend=c10d --rdzv_endpoint=$MASTER_ADDR:29400 elastic_ddp.py\n```\n\nIn the example above, we are running the DDP script on two hosts and we run with"
+        },
+        {
+          "event_id": "call_bd9718bf01cf4060949cdffa.result",
+          "quote": "## Environment Variables#\n\nThe following environment variables are made available to you in your script:\n\n01. `LOCAL_RANK` - The local rank.\n02. `RANK` - The global rank.\n03. `GROUP_RANK` - The rank of the worker group. A number between 0 and `max_nnodes`. When running a single worker group per node, this is the rank of the node.\n04. `ROLE_RANK` - The rank of the worker across all the workers that have the same role. The role of the worker is specified in the `WorkerSpec`.\n05. `LOCAL_WORLD_SIZE` - The local world size (e.g. number of workers running locally); equals to `--nproc-per-node` specified on `torchrun`.\n06. `WORLD_SIZE` - The world size (total number of workers in the job).\n07. `ROLE_WORLD_SIZE` - The total number of workers that was launched with the same role specified in `WorkerSpec`.\n08. `MASTER_ADDR` - The FQDN of the host that is running worker with rank 0; used to initialize the Torch Distributed backend.\n09. `MASTER_PORT` - The port on the `MASTER_ADDR` that can be used to host the C10d TCP store.\n10. `TORCHELASTIC_RESTART_COUNT` - The number of worker group restarts so far.\n11. `TORCHELASTIC_MAX_RESTARTS` - The configured maximum number of restarts.\n12. `TORCHELASTIC_RUN_ID` - Equal to the rendezvous `run_id` (e.g. unique job id).\n13. `PYTHON_EXEC` - System executable override. If provided, the python user script will use the value of `PYTHON_EXEC` as executable. The sys.executable is used by default.\n\n[...]\n\n## Deployment#\n\n1. (Not needed for the C10d backend) Start the rendezvous backend server and get the endpoint (to be passed as `--rdzv-endpoint` to `torchrun`)\n2. Single-node multi-worker: Start `torchrun` on the host to start the agent process which creates and monitors a local worker group.\n3. Multi-node multi-worker: Start `torchrun` with the same arguments on all the nodes participating in training.\n\nWhen using a job/cluster manager, the entry point command to the multi-node job should be `torchrun`."
+        }
+      ]
+    },
+    "M4": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Sources identify PyTorch2.14/cu130 documentation, torchrun2.0 argument change and Linux-CUDA/NCCL build scope. Exact bundled NCCL and supported stack pairing are not supplied.",
+      "evidence": [
+        {
+          "event_id": "call_bd9718bf01cf4060949cdffa.result",
+          "quote": "Changed in version 2.0.0: `torchrun` will pass the `--local-rank=<rank>` argument to your script. From PyTorch 2.0.0 onwards, the dashed `--local-rank` is preferred over the previously used underscored `--local_rank`.\n\nFor backward compatibility"
+        },
+        {
+          "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+          "quote": "### Platform / build constraints\n- \"By default for Linux, the Gloo and NCCL backends are built and included in PyTorch distributed (NCCL only when building with CUDA).\"\n- \"As of PyTorch v1.8, Windows supports all collective communications backends but NCCL.\"\n- Initialization warning: \"Initialization is not thread-safe. Process group creation should be performed from a single thread, to prevent inconsistent 'UUID' assignment across ranks"
+        }
+      ]
+    },
+    "M5": {
+      "score": 5,
+      "status": "scored",
+      "reason": "At least6 independent relevant content groups; three identically titled parameter tutorials are reproduction candidates, not three assured independent sources. Official translation excluded.",
+      "evidence": [
+        {
+          "event_id": "call_a24ea8f660ca44799aa1974c.result",
+          "quote": "## 1. [Pytorch 分布式训练 DistributedDataParallel （实操篇）](https://blog.csdn.net/weixin_43229348/article/details/124112404)\n\n在启动分布式训练时候，需要在命令行使用torch.distributed.launch启动器，该启动器会将当前进程的序号（若每个GPU使用一个进程，也是指GPU序号）通过local_rank参数传递给Python文件。\n\n**URL:** https://blog.csdn.net/weixin_43229348/article/details/124112404\n\n---\n\n##"
+        },
+        {
+          "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+          "quote": "## 1. [PyTorch 分布式训练实现(DP/DDP/torchrun/多机多卡)](https://zhuanlan.zhihu.com/p/489011749)\n\n1、DataParallel2、DistributedDataParallel3、多机多卡DDP为什么要引入DDP（DistributedDataParallel）？ 1、DP在每个训练批次（batch）中，因为模型的权重都是在 一个进程上先算出来 然后再把他们分发到每个GPU上，所以网络通信就成为了一个瓶颈，而GPU使用率也通常很低。 2、因为它在每一次的前向传播的时候把模型也复制了（即每次更新都复制一遍模型），并且单进程多 …DDP采用多进程控制多GPU，共同训练模型，一份代码会被pytorch自动分配到n个进程并在n个GPU上运行。 DDP运用Ring-Reduce通信算法在每个GPU间对梯度进行通讯，交换彼此的梯度，从而获得所有GPU的梯度。对比DP，不需要在进行模型本体的通信，因此可以加速训练。在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/489011749\n\n---\n\n## 2. [【教程】PyTorch多机多卡分布式训练的参数说明 | 附通用 ...](https://blog.csdn.net/qq_39523365/article/details/148263551)\n\n2025年5月28日 · torchrun 是 PyTorch 官方推荐的分布式训练启动器，它的作用是： 启动 多进程分布式训练 （支持多 GPU，多节 …\n\n**URL:** https://blog.csdn.n"
+        },
+        {
+          "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+          "quote": "## 5. [Pytorch多机多卡分布式训练 - 知乎](https://zhuanlan.zhihu.com/p/373395654)\n\n2022年11月30日 · 不过因为业务需求或者赶论文ddl，毕业以后有条件用多机多卡了，这里也分享一下简单的Pytorch多机多卡分布式训 …\n\n**URL:** https://zhuanlan.zhihu.com/p/373395654\n\n---\n\n*Found 5 results"
+        }
+      ]
+    },
+    "M6": {
+      "score": 1,
+      "status": "scored",
+      "reason": "Generalized no-model-communication statement conflicts with official constructor model-state broadcast. Other claims separately supported/unsupported; contradiction has rubric priority.",
+      "evidence": [
+        {
+          "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+          "quote": "对比DP，不需要在进行模型本体的通信，因此可以加速训练。"
+        },
+        {
+          "event_id": "call_fb5ac436917e417ea8a83c69.result",
+          "quote": "as DDP broadcasts model states from rank 0 process to all other processes in the DDP constructor, you do not need to worry about different DDP processes starting from different initial model parameter values.\n\n# Getting "
+        }
+      ]
+    },
+    "M7": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Prior has supported env/NCCL initialization, local device binding, DDP, DistributedSampler/set_epoch and multi-node launcher fragments. The runnable outline omits imports and required shared rendezvous job id (explicitly left for verification), and does not specify complete GPU/network/version prerequisites; thus correct method fragments with unfinished key setup, not a complete process. No unsupported assertion is treated as false.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "import torch.distributed as dist\ndist.init_process_group(backend=\"nccl\", init_method=\"env://\")\n# 或新版 timeout/init_method 参数\nlocal_rank = int(os.environ[\"LOCAL_RANK\"])\ntorch.cuda.set_device(local_rank)\nmodel = model.to(local_rank)\nmodel = DDP(model, device_ids=[local_rank])\n```\nDataset 需"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "torchrun --nnodes=2 --nproc-per-node=8 --rdzv-backend=c10d \\\n  --rdzv-endpoint=MASTER_IP:29500 train.py\n```\n旧式 la"
+        },
+        {
+          "event_id": "call_bd9718bf01cf4060949cdffa.result",
+          "quote": "For multi-node training you need to specify:\n\n1. `--rdzv-id`: A unique job id (shared by all nodes participating in the job)\n2. `--rdzv-backend`: An implementation of `torch.distributed.elastic.rendezvous.RendezvousHandler`\n3. `--rdzv-endpoint`: The endpoint where the r"
+        },
+        {
+          "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+          "quote": "Calling the `set_epoch()` method on the `DistributedSampler` at the beginning of each epoch is necessary to make shuffling work properly across multiple epochs. Otherwise, the same orde"
+        }
+      ]
+    },
+    "M8": {
+      "event_refs": [
+        "call_a24ea8f660ca44799aa1974c.dispatch",
+        "call_8f9ea7856cb64c49ba4d8274.dispatch",
+        "call_fb5ac436917e417ea8a83c69.dispatch",
+        "call_c5cf1ca2ef5749d5a767a888.dispatch",
+        "call_bd9718bf01cf4060949cdffa.dispatch",
+        "call_0c41ec77614b4f3ca64a1ff1.dispatch"
+      ],
+      "reason": "Two search+four fetch dispatches=6; score3.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M9": {
+      "score": 3,
+      "status": "scored",
+      "reason": "Final names PyTorch2.14/cu130 and2.0 launcher boundary, but explicitly cannot establish NCCL library version; stack pairing remains partial.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "以下内容依据 PyTorch 2.14 官方文档（tutorial 与 API 文档正文均已取得）。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "NCCL 库自身版本要求（与 PyTorch 捆绑的 NCCL 具体版本号）未在所取正文中出现，无法核实。\n</answer>\n\n<stop_reason>\n任务所需内容已齐全：官方 DDP"
+        }
+      ]
+    }
+  },
+  "observations": {},
+  "process_sha256": "022da91fb9580267182e6f42147261c7a8ee770db48f0c2cb71741e68d0a2aa8",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cuda-glm-5_3-standard-20260921T103257"
+}

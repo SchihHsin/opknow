@@ -1,0 +1,195 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "F-cuda-kimi-k3-2-standard-20260921T104958",
+  "process_sha256": "2df8b78b1262b0506772835e5fc6d3d89f414ab4dfacfaaaadeaef99b6fff374",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "First query rank1 is the translated reproduction of the official PyTorch multi-node tutorial; rank2 is original publisher. Reproduction classification concerns content, not control of the mirror domain.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ddaafac3.result",
+          "quote": "## 1. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文档"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.666666666666667,
+      "reason": "官方三个独立fetch分别为直接正文5、含明确[...]缺损的直接正文4、完整官方代码正文5；等权平均14/3。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_391a42d4.result",
+          "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation"
+        },
+        {
+          "event_id": "WebFetch_2_fe613e7b.result",
+          "quote": "**标题**: torchrun (Elastic Launch) — PyTorch 2.14 documentation"
+        },
+        {
+          "event_id": "WebFetch_3_fdf27395.result",
+          "quote": "import torch"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/stable/elastic/run.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/examples/main/distributed/ddp-tutorial-series/multinode.py",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The env/NCCL+torchrun rendezvous route has initialization/code, shared launch arguments, local/global identity, full launcher environment table and basic NCCL diagnostics. A second classic launcher syntax or the complete NCCL tuning catalogue is not required by this task.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_3_fdf27395.result",
+          "quote": "def ddp_setup():\n    torch.cuda.set_device(int(os.environ[\"LOCAL_RANK\"]))\n    init_process_group(backend=\"nccl\")\n\nclass Trainer:\n    def __init__("
+        },
+        {
+          "event_id": "WebFetch_2_fe613e7b.result",
+          "quote": "### Fault tolerant (fixed sized number of workers, no elasticity, tolerates 3 failures)#\n\n```\ntorchrun\n    --nnodes=$NUM_NODES\n    --nproc-per-node=$NUM_TRAINERS\n    --max-restarts=3\n    --rdzv-id=$JOB_ID\n    --rdzv-backend=c10d\n    --rdzv-endpoint=$HOST_NODE_ADDR\n    YOUR_TRAINING_SCRIPT.py (--arg1 ... train script args...)\n```\n\n`HOST_NODE_ADDR`, in form <host>[:<port>] (e.g. node1.example.com:29400), specifies the node and the port on which the C10d rendezvous backend should be instantiated and hosted. It can be any node in your training cluster, but ideally you should pick a node that has a high bandwidth.\n\nNote"
+        },
+        {
+          "event_id": "WebFetch_2_fe613e7b.result",
+          "quote": "## Environment Variables#\n\nThe following environment variables are made available to you in your script:\n\n01. `LOCAL_RANK` - The local rank.\n02. `RANK` - The global rank.\n03. `GROUP_RANK` - The rank of the worker group. A number between 0 and `max_nnodes`. When running a single worker group per node, this is the rank of the node.\n04. `ROLE_RANK` - The rank of the worker across all the workers that have the same role. The role of the worker is specified in the `WorkerSpec`.\n05. `LOCAL_WORLD_SIZE` - The local world size (e.g. number of workers running locally); equals to `--nproc-per-node` specified on `torchrun`.\n06. `WORLD_SIZE` - The world size (total number of workers in the job).\n07. `ROLE_WORLD_SIZE` - The total number of workers that was launched with the same role specified in `WorkerSpec`.\n08. `MASTER_ADDR` - The FQDN of the host that is running worker with rank 0; used to initialize the Torch Distributed backend.\n09. `MASTER_PORT` - The port on the `MASTER_ADDR` that can be used to host the C10d TCP store.\n10. `TORCHELASTIC_RESTART_COUNT` - The number of worker group restarts so far.\n11. `TORCHELASTIC_MAX_RESTARTS` - The configured maximum number of restarts.\n12. `TORCHELASTIC_RUN_ID` - Equal to the rendezvous `run_id` (e.g. unique job id).\n13. `PYTHON_EXEC` - System executable override. If provided, the python user script will use the value of `PYTHON_EXEC` as executable. The sys.executable is used by default.\n\n[...]\n\n## Deployment#\n\n1. (Not needed for the C10d backend) Start the rendezvous backend server and get the endpoint (to be passed as `--rdzv-endpoint` to `torchrun`)\n2. Single-node multi-worker: Start `torchrun` on the host to start the agent process which creates and monitors a local worker group.\n3. Multi-node multi-worker: Start `torchrun` with the same arguments on all the nodes participating in training.\n\nWhen using a job/cluster manager, the entry point command to the multi-node job should be `"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "捕获了 PyTorch 2.14/cu130 文档版本标识，但没有完成 CUDA/PyTorch/NCCL 的全部适用关系。",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_fe613e7b.result",
+          "quote": "Changed in version 2.0.0: `torchrun` will pass the `--local-rank=<rank>` argument to your script. From PyTorch 2.0.0 onwards, the dashed `--local-rank` is preferred over the previously used underscored `--local_rank`.\n\nFor backward compatib"
+        },
+        {
+          "event_id": "WebFetch_1_391a42d4.result",
+          "quote": "- PyTorch [installed](https://pytorch.org/get-started/locally/) with CUDA on all machines\n\nFo"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 2,
+      "reason": "搜索摘要中仅1个相关第三方内容组（vk032503 GitHub）；docs.pytorch.ac.cn为官方镜像再现，官方仓库与文档不计第三方。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ddaafac3.result",
+          "quote": "## 4. [PyTorch DDP Multi-Node Training Pipeline - GitHub"
+        }
+      ]
+    },
+    "M6": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "A related third-party repository is present, but its snippet contains only generic challenge/promotion and a truncated production-grade phrase. No identifiable key technical assertion can be checked; unscorable, not absence of third-party material.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_ddaafac3.result",
+          "quote": "Scaling deep learning from a single GPU to a multi-node cluster is challenging. This repository provides a complete, production-grade …\n\n**URL:** h"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "先验主流程正确，但tcp/file init_method、torchrun 1.9+/1.10 deprecated、NCCL_IB_DISABLE/NCCL_NET_GDR_LEVEL等关键适用断言在固定证据包中未核实；不同裁决会影响档位。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "init_method 常用三种：\n  1. `env://`（从环境变量读取，配合 torchrun 最常用）\n  2. TCP: `tcp://<master_ip>:<port>`\n  3. 共享文件系统: `file:///path/to/shared/fi"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "PyTorch 1.9+ 推荐 `torchrun`（旧称 `torch.distributed.launch`，1.10 起 deprecated）：\n```bash\n# "
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "`NCCL_DEBUG=INFO`、`NCCL_SOCKET_IFNAME=eth0`（指定网卡）、`NCCL_IB_DISABLE`、`NCCL_NET_GDR_LEVEL` 等。\n\n**不确定处**：\n1. 当前最新 P"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 4,
+      "reason": "实际派发4次：1 search + 3 fetch。",
+      "evidence": [],
+      "event_refs": [
+        "WebSearch_0_ddaafac3.dispatch",
+        "WebFetch_1_391a42d4.dispatch",
+        "WebFetch_2_fe613e7b.dispatch",
+        "WebFetch_3_fdf27395.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案锁定了 PyTorch 2.14/cu130 文档线，但没有锁定 NCCL/CUDA 所需全部适用版本关系。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "文档对应 PyTorch 2.14"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Specific initialization and rendezvous launch route exists, but unqualified DataLoader has no import in supplied code and requires a content fix. Classic-method/default-init claims are not declared false from absent evidence; no-execution is not a deduction.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "import os\nimport torch\nimport torch.distributed as dist\nfrom torch.nn.parallel import DistributedDataParallel as DDP\nfrom torch.utils.data.distributed import Distri"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "loader = DataLoader(dataset, batch_size=bs, shuffle=False,\n                    sampler=DistributedSampler(dataset))  # 每个 epoch 调 sampler.set_epoch(epoch)\n# 训练结束后 dist.destroy_process_gr"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M6和M7均为unscorable，不能计算综合指数。",
+      "missing_inputs": [
+        "M6",
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "draft_source": "bounded executor adjudication"
+  },
+  "channel_states": {}
+}
