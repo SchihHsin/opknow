@@ -1,0 +1,15 @@
+{
+  "scope": "Syntax-only check of the archived article function. No CUDA execution, collection, or network access.",
+  "source_event": "call_01fb397c33ec404191450265.result",
+  "source_quote": "void printMatrix2(float* matrix, int row, int col) {\n\n    for(int i=0;i<row;i++)\n\n    {\n\n        std::cout << std::endl;\n\n        std::cout << \" [ \";\n\n        for (int j=0; j<col; j++) {\n\n         std::cout << matrix[i][j] << \" \";\n\n        }\n\n        std::cout << \" ] \";\n\n    }\n\n    std::cout << std::endl;\n\n}",
+  "command": [
+    "clang++",
+    "-x",
+    "c++",
+    "-fsyntax-only",
+    "-"
+  ],
+  "returncode": 1,
+  "stderr": "<stdin>:14:32: error: subscripted value is not an array, pointer, or vector\n   14 |          std::cout << matrix[i][j] << \" \";\n      |                       ~~~~~~~~~^~\n1 error generated.\n",
+  "reason": "float* matrix makes matrix[i] a float; matrix[i][j] is ill-typed."
+}

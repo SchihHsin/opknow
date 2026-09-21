@@ -571,6 +571,26 @@ def check_m6(facts: dict[str, Any], assessment: dict[str, Any], issues: list[dic
     unknown_relevant = any(item.get("ownership") == "unknown" and item.get("relevant") in (True, None) for item in smap.values())
     official_urls = {url_without_fragment(x.get("request_url")) for x in facts.get("fetches", []) if isinstance(x, dict) and x.get("ownership") == "official"}
     verdicts: list[dict[str, Any]] = []
+    admissions = facts.get("m6", {}).get("admission_uncertainties", []) if isinstance(facts.get("m6"), dict) else []
+    valid_admissions = []
+    if admissions is not None:
+        if not isinstance(admissions, list):
+            issues.append({"code": "m6.admission_uncertainty", "message": "admission_uncertainties must be a list"})
+            admissions = []
+        for i, item in enumerate(admissions):
+            sid = item.get("source_id") if isinstance(item, dict) else None
+            source = smap.get(sid) if isinstance(sid, str) else None
+            ce = item.get("claim_evidence") if isinstance(item, dict) else None
+            se = item.get("support_evidence", []) if isinstance(item, dict) else None
+            source_event = source.get("event_id") if source else None
+            if (not source or source.get("ownership") != "unknown" or source.get("relevant") not in (True, None)
+                    or not isinstance(item.get("reason"), str) or not item["reason"].strip()
+                    or item.get("affects_score") is not True or not isinstance(ce, list) or not ce
+                    or any(not isinstance(x, dict) or (source_event and x.get("event_id") != source_event) for x in ce)
+                    or not isinstance(se, list) or any(not isinstance(x, dict) for x in se)):
+                issues.append({"code": "m6.admission_uncertainty", "message": f"invalid admission_uncertainties entry {i}"})
+            else:
+                valid_admissions.append(item)
     for i, claim in enumerate(claims if isinstance(claims, list) else []):
         if not isinstance(claim, dict): continue
         sid = claim.get("source_id")
@@ -605,6 +625,8 @@ def check_m6(facts: dict[str, Any], assessment: dict[str, Any], issues: list[dic
                 issue(issues, "m6.independence", f"supported claim {i} support is not tied to a different source event")
         verdicts.append(claim)
     metric = assessment_metric(assessment, "M6")
+    if valid_admissions and metric and metric.get("status") == "scored":
+        issues.append({"code": "m6.admission_uncertainty", "message": "admission uncertainty affecting score forbids numeric M6"})
     no_material = facts.get("m6", {}).get("no_third_party_material") if isinstance(facts.get("m6"), dict) else None
     if no_material is True:
         if third_party_relevant or unknown_relevant: issue(issues, "m6.no_material", "no_third_party_material conflicts with relevant third-party/unknown source items")
@@ -615,6 +637,10 @@ def check_m6(facts: dict[str, Any], assessment: dict[str, Any], issues: list[dic
         return
     if any(c.get("verdict") == "unresolved" for c in verdicts):
         if metric and metric.get("status") == "scored": issue(issues, "m6.unresolved", "an unresolved claim cannot receive a numeric M6")
+        return
+    # Valid admission uncertainty preserves the unresolved adjudication. Claims
+    # are structurally checked above, but no expected numeric point is mapped.
+    if valid_admissions:
         return
     if any(c.get("verdict") == "contradicted" for c in verdicts): expected = 1
     elif all(c.get("verdict") == "supported" and c.get("independent_crosscheck") for c in verdicts): expected = 5
@@ -722,7 +748,11 @@ def check_command(packet_path: Path, assessment_path: Path, facts_path: Path, ou
                 if m1.get("first_query") is not None:
                     earlier = [x for x in smap.values() if x.get("ownership") == "official" and x.get("relevant") is True and isinstance(x.get("query_index"), int) and isinstance(x.get("rank"), int) and (x["query_index"], x["rank"]) < (m1["first_query"], m1["first_rank"])]
                     if earlier: issue(issues, "m1.first_hit", "M1 first hit is not the earliest reviewed official relevant result")
-                    uncertain_before = [x for x in smap.values() if x.get("url") and x.get("relevant") in (True, None) and (x.get("ownership") == "unknown" or x.get("relevant") is None) and isinstance(x.get("query_index"), int) and isinstance(x.get("rank"), int) and x.get("rank") <= 5 and (x["query_index"], x["rank"]) < (m1["first_query"], m1["first_rank"])]
+                    uncertain_before = [x for x in smap.values() if x.get("url") and
+                        ((x.get("ownership") == "unknown" and x.get("relevant") in (True, None)) or
+                         (x.get("ownership") == "official" and x.get("relevant") is None)) and
+                        isinstance(x.get("query_index"), int) and isinstance(x.get("rank"), int) and
+                        x.get("rank") <= 5 and (x["query_index"], x["rank"]) < (m1["first_query"], m1["first_rank"])]
                     if uncertain_before:
                         # An unknown earlier row only blocks a point when it
                         # could move the result across a rubric band.  For

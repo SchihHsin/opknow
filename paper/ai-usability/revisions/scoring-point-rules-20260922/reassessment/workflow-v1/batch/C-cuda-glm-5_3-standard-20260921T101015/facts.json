@@ -6,11 +6,12 @@
         "event_id": "call_97c3f68682724d8c98d94b79.result",
         "quote": "**标题**: cuBLAS | NVIDIA Developer\n\n# cuBLAS\n\n* * *\n\n## Basic Linear Algebra on NVIDIA GPUs\n\nNVIDIA cuBLAS is a GPU-accelerated library for accelerating AI and HPC applications. It includes several API extensions for providing drop-in industry standard BLAS APIs and GEMM APIs with support for fusions that are highly optimized for NVIDIA GPUs. The cuBLAS library also contains extensions for batched operations, execution across multiple GPUs, and mixed- and low-precision execution with additional tuning for the best performance.\n\nThe cuBLAS library is included in both the [NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk) and the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads).\n"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://developer.nvidia.com/cublas",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_e57204bc3dff4aefa122b042.result",
@@ -18,11 +19,12 @@
         "event_id": "call_e57204bc3dff4aefa122b042.result",
         "quote": "**标题**: CUDA Deep Neural Network (cuDNN) | NVIDIA Developer\n\n# NVIDIA cuDNN\n\nNVIDIA® CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines, such as forward and backward convolution, attention, matmul, pooling, and normalization.\n\n* * *\n\ncuDNN is also available to download via one of the package managers below.\n\n[Documentation](https://docs.nvidia.com/deeplearning/cudnn/latest/)\n\n[Forum](https://forums.developer.nvidia.com/c/ai-data-science/deep-learning/cudnn/90)\n\n* * *\n\n## How cuDNN Works\n\n- **Accelerated Llearning:** cuDNN provides kernels, targeting Tensor Cores whene"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://developer.nvidia.com/cudnn",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_a8e04614c35e41bca78c5a0d.result",
@@ -30,11 +32,12 @@
         "event_id": "call_a8e04614c35e41bca78c5a0d.result",
         "quote": "**标题**: cuSPARSE | NVIDIA Developer\n\n# cuSPARSE\n\nGPU library APIs for sparse computation.  \ncuSPARSE host APIs provide GPU accelerated basic linear algebra routines, and cuSPARSELt host APIs provide structured sparsity support that leverages sparse tensor cores for GEMM. Sparsity is widely applicable in machine learning, AI, computational fluid dynamics, seismic exploration and computational sciences.\n\n## cuSPARSE Host API\n\n[Download](https://developer.nvidia.com/hpc-sdk) [Documentation](https://docs.nvidia.com/cuda/cusparse/index.html)\n\nThe cuSPARSE APIs provides GPU-accelerated basic linear algebra subroutines for sparse matrix computations for unstructured sparsity. cuSPARSE is widely use"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://developer.nvidia.com/cusparse",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_9c1040c6a34941f0a14f56c5.result",
@@ -42,11 +45,12 @@
         "event_id": "call_9c1040c6a34941f0a14f56c5.result",
         "quote": "# cublas<t>gemm() Function Reference — Extraction Results\n\n## Summary\n\n**The full `cublas<t>gemm()` function reference (Section 2.7.1) is NOT present in the provided content.** The page content is truncated before reaching that section. Below I detail exactly what is present, what is truncated, and all gemm-related information that *is* available in the captured content.\n\n---\n\n## 1. What Is Truncated / Missing\n\nThe content ends mid-way through **Section 2.4.13 `cublasGetVector()`** — specifically, the text cuts off in the middle of its return-value table, with the final characters being:\n\n> `CUBLA`\n\nSections 2.4.14 through 2.8 (which include the Level-3 Function Reference at **Section 2.7.1."
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/cuda/cublas/index.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_434b6345d6c8487d94ba0d0e.result",
@@ -54,11 +58,12 @@
         "event_id": "call_434b6345d6c8487d94ba0d0e.result",
         "quote": "**标题**: NVIDIA cuDNN — NVIDIA cuDNN\n\nBack to top\n\n# NVIDIA cuDNN[#](https://docs.nvidia.com/deeplearning/cudnn/latest/#nvidia-cudnn \"Link to this heading\")\n\nThe NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. It provides highly tuned implementations of operations arising frequently in deep neural network (DNN) applications:\n\n- Scaled dot-product attention\n- Convolution, including cross-correlation\n- Matrix multiplication\n- Normalizations, softmax, and pooling\n- Arithmetic, mathematical, relational, and logical pointwise operations\n\nBeyond just providing high-performance implementations of individual operations, cuDNN also s"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_04efc5d636f6467daf13fe39.result",
@@ -66,11 +71,12 @@
         "event_id": "call_04efc5d636f6467daf13fe39.result",
         "quote": "**标题**: Samples — NVIDIA cuDNN\n\nBack to top\n\n# Samples[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#samples \"Link to this heading\")\n\nSamples illustrate usage of the Python and C++ frontend APIs.\n\n## Python Samples[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#python-samples \"Link to this heading\")\n\nPython samples are Jupyter notebooks with step-by-step instructions for using the frontend API.\n\n### Source Code[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#source-code \"Link to this heading\")\n\n[Python Interface Samples](https://github.com/NVIDIA/cudnn-frontend/blob/main/samples/README.md#python-interface-samples) on GitHub.\n\n### Depen"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_01fb397c33ec404191450265.result",
@@ -78,389 +84,709 @@
         "event_id": "call_01fb397c33ec404191450265.result",
         "quote": "**标题**: 【代码分析】cublasSgemm 矩阵乘法详解-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-15 08:05:37 发布\n原创 于 2019-11-13 19:05:21 发布 · 5.3k 阅读\n\n# 【代码分析】cublasSgemm 矩阵乘法详解\n\n![](https://i-operation.csdnimg.cn/images/a7311a21245d4888a669ca3155f1f4e5.png)本文深入解析了NV cublas库中的cublasSgemm函数，详细阐述了如何利用该函数进行矩阵乘法运算，特别是针对矩阵存储方式（行优先或列优先）的不同情况，提供了具体的参数设置指南及示例程序。\n\n**目录**\n\n[前言](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#main-toc)\n\n[预备知识](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t0)\n\n[cublasSgemm 函数](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t1)\n\n[求解C=AxB](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t2)\n\n[不使用cublasSgemm transa与transb参数](https://blog.csdn.net/HaoBB"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "third_party",
+      "representation": "body",
       "request_url": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1,
+    "first_source_id": "source-0001-rank-1"
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Restore output tensor allocation and binding in shortened cuDNN graph example",
+      "Provide actual convolution node construction and arguments instead of analogy to matmul"
+    ],
+    "environment_substitutions": [
+      "installation paths",
+      "user tensor inputs"
+    ]
   },
   "m4": {
+    "mode": "partial",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "relations_found": [
+      "cuBLAS API since CUDA 6.0",
+      "cuBLASLt since CUDA 10.1"
+    ],
+    "missing_relations": [
+      "current cuDNN/CUDA/driver/device pairing"
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      5
+    ],
+    "count_basis": "Five independent relevant CSDN/Juejin/DeepWiki pages. Official NVIDIA repositories and manual mirror excluded; algorithm-only arXiv snippet outside library invocation scope. Same domain is not a deduplication criterion."
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_2aff16073ec84ea39120991e.result",
+      "call_97c3f68682724d8c98d94b79.result",
+      "call_e57204bc3dff4aefa122b042.result",
+      "call_a8e04614c35e41bca78c5a0d.result",
+      "call_7b0f96b35ad5440995c296d4.result",
+      "call_ac70e4eb81e64fb9867504c9.result",
+      "call_9c1040c6a34941f0a14f56c5.result",
+      "call_434b6345d6c8487d94ba0d0e.result",
+      "call_a3683c88521741a5af23a017.result",
+      "call_04efc5d636f6467daf13fe39.result",
+      "call_01fb397c33ec404191450265.result"
+    ],
+    "claims": [
+      {
+        "source_id": "source-0011",
+        "claim": "cuBLAS matrix storage is column-major.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "由于cublas中矩阵的存储是列优先"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+            "quote": "the cuBLAS library uses column-major storage, and 1-based indexing."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "The exact cublasSgemm parameter signature and GEMM alpha/beta equation are supplied.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cublasStatus_t cublasSgemm(cublasHandle_t handle,\n\n                           cublasOperation_t transa, cublasOperation_t transb,\n\n                           int m, int n, int k,\n\n                           const float           *alpha,\n\n                           const float           *A, int lda,\n\n                           const float           *B, int ldb,\n\n                           const float           *beta,\n\n                           float           *C, int ldc)\n"
+          },
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "C = alpha * op ( A ) * op ( B ) + beta * C"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "N and T operation flags mean non-transpose and transpose.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "如果 transa的参数是CUBLAS_OP_N 则op(A) = A ，如果是CUBLAS_OP_T 则op(A)=A的转置"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_9c1040c6a34941f0a14f56c5.result",
+            "quote": "| `CUBLAS_OP_N` | The non-transpose operation is selected. |\n| `CUBLAS_OP_T` | The transpose operation is selected. |"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "Row-major storage read as column-major transposes the logical matrix.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "当矩阵按行优先存储然后又按相反的列优先读取的话，就会得到元矩阵转置的结果"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+            "quote": "#define IDX2C(i,j,ld) (((j)*(ld))+(i))"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "The NN reversed-operand call with N,M,K and N,K,N leading dimensions computes row-major C=A*B.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cublasSgemm(handle,CUBLAS_OP_N,CUBLAS_OP_N, N, M, K,&alpha,d_b, N, d_a, K,&beta, d_c, N)"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "The TT call computes column-major C with M,N,K and K,N,M leading dimensions, requiring output interpretation adjustment.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cublasSgemm(handle,CUBLAS_OP_T,CUBLAS_OP_T, M, N, K,&alpha,d_a, K, d_b, N,&beta, d_c, M)"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "The example creates a handle before library calls.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cublasCreate(&handle);"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+            "quote": "must be called prior to making any other cuBLAS library calls."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "Examples use CUDA allocation, copy and memset for inputs and outputs.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cudaMalloc((void**)&d_a,M*K*sizeof(float));"
+          },
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cudaMemcpy(d_a,&h_A,M*K*sizeof(float),cudaMemcpyHostToDevice);"
+          },
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "cudaMemset(d_c,0,M*N*sizeof(float));"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0011",
+        "claim": "The second sample is a valid compilable invocation example, including printMatrix2.",
+        "claim_evidence": [
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "void printMatrix2(float* matrix, int row, int col)"
+          },
+          {
+            "event_id": "call_01fb397c33ec404191450265.result",
+            "quote": "std::cout << matrix[i][j] << \" \";"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "contradicted",
+        "independent_crosscheck": false,
+        "verification": "static-code-check.json: archived function fails syntax-only clang++ check because matrix[i] is float and cannot be subscripted; also missing semicolon after the second GEMM call. No CUDA/hardware run."
+      },
+      {
+        "source_id": "source-0005-rank-4",
+        "claim": "Juejin identifies cublasSgemm as a cuBLAS multiplication function using column-major layout.",
+        "claim_evidence": [
+          {
+            "event_id": "call_7b0f96b35ad5440995c296d4.result",
+            "quote": "cublasSgemm是CUDA的cublas库的矩阵相乘函数，与cblas中矩阵相乘函数不同，cublas中矩阵的存储是列优"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+            "quote": "the cuBLAS library uses column-major storage, and 1-based indexing."
+          },
+          {
+            "event_id": "call_9c1040c6a34941f0a14f56c5.result",
+            "quote": "cublas\\<t\\>gemm()"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "source_coverage": [
+      {
+        "source": "arXiv",
+        "disposition": "Out-of-scope algorithm research snippet."
+      },
+      {
+        "source": "aidoczh",
+        "disposition": "Official manual mirror, not independent author."
+      },
+      {
+        "source": "DeepWiki MatX and two Frontend pages",
+        "disposition": "Scope descriptions of matrix multiplication/sample documentation; no complete specific invocation beyond titles/overview fragments."
+      },
+      {
+        "source": "Juejin",
+        "disposition": "Visible GEMM/column-major assertion retained; unseen body not invented."
+      },
+      {
+        "source": "CSDN full article",
+        "disposition": "Signature/equation, layout, operation flags, two calls, CUDA memory/handle setup and sample compilation checked. Specific displayed timing/performance absent. Displayed numerical results are example outcomes; not hardware-reproduced."
+      }
+    ],
+    "static_verification": "static-code-check.json"
   },
   "packet_sha256": "2218c01eaafb24693751a879722415bbcc7bc6b040dea08f995336d2609d0151",
   "question": "稠密矩阵乘 / 卷积，CUDA 上有哪些官方加速库（cuBLAS/cuDNN/cuSPARSE）？怎么选怎么调用。",
   "run_id": "C-cuda-glm-5_3-standard-20260921T101015",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "call_2aff16073ec84ea39120991e.result",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "# Search Results for \"NVIDIA cuBLAS cuDNN cuSPARSE dense matrix multiply convolution library selection documentation\"\n\n## 1. [cuSPARSE | NVIDIA 开发者](https://developer.nvidia.cn/cusparse)\n\ncuSPARSE 用于稀疏计算的 GPU 库 API。 cuSPARSE 主机 API 提供 GPU 加速的基本线性代数例程，cuSPARSELt 主机 API 提供结 …\n\n**URL:** https://developer.nvidia.cn/cusparse\n\n---\n\n## 2. [cuSPARSE - NVIDIA Developer](https://developer.nvidia.com/cusparse)\n\nFull suite of sparse routines covering sparse vector x dense vector operations, sparse matrix x dense vector operations, and sparse …\n\n**URL:** https://developer.nvidia.com/cusparse\n\n---\n\n## 3. [cuTeSpMM: Accelerating Sparse-Dense Matrix Multiplication …](https://arxiv.org/pdf/2504.06443)\n\n2025年"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0001",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.cn/cusparse",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "## 1. [cuSPARSE | NVIDIA 开发者](https://developer.nvidia.cn/cusparse)\n\ncuSPARSE 用于稀疏计算的 GPU 库 API。 cuSPARSE 主机 API 提供 GPU 加速的基本线性代数例程，cuSPARSELt 主机 API 提供结 …\n\n**URL:** https://developer.nvidia.cn/cusparse\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
-      "url": "https://developer.nvidia.cn/cusparse"
+      "url": "https://developer.nvidia.cn/cusparse",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.com/cusparse",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "## 2. [cuSPARSE - NVIDIA Developer](https://developer.nvidia.com/cusparse)\n\nFull suite of sparse routines covering sparse vector x dense vector operations, sparse matrix x dense vector operations, and sparse …\n\n**URL:** https://developer.nvidia.com/cusparse\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
-      "url": "https://developer.nvidia.com/cusparse"
+      "url": "https://developer.nvidia.com/cusparse",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://arxiv.org/pdf/2504.06443",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "## 3. [cuTeSpMM: Accelerating Sparse-Dense Matrix Multiplication …](https://arxiv.org/pdf/2504.06443)\n\n2025年11月25日 · In this paper, we therefore address the question: Can dense TCUs be effectively used to accelerate SpMM for a …\n\n**URL:** https://arxiv.org/pdf/2504.06443\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0001-rank-3",
-      "url": "https://arxiv.org/pdf/2504.06443"
+      "url": "https://arxiv.org/pdf/2504.06443",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "relevance_basis": "Sparse-dense algorithm research question, no visible official-library selection/invocation guidance."
     },
     {
-      "content_group": "",
+      "content_group": "https://www.aidoczh.com/cuda/cusparse/index.html",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "## 4. [1. Introduction — cuSPARSE 12.8 documentation](https://www.aidoczh.com/cuda/cusparse/index.html)\n\n2025年6月19日 · To achieve the overlap of computation between the tasks, the developer should create CUDA streams using the …\n\n**URL:** https://www.aidoczh.com/cuda/cusparse/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
-      "url": "https://www.aidoczh.com/cuda/cusparse/index.html"
+      "url": "https://www.aidoczh.com/cuda/cusparse/index.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Mirrored cuSPARSE 12.8 manual content, not an independent technical article."
     },
     {
-      "content_group": "",
+      "content_group": "https://deepwiki.com/NVIDIA/MatX/4.1-matrix-multiplication",
       "event_id": "call_2aff16073ec84ea39120991e.result",
       "evidence": {
         "event_id": "call_2aff16073ec84ea39120991e.result",
         "quote": "## 5. [Matrix Multiplication | NVIDIA/MatX | DeepWiki](https://deepwiki.com/NVIDIA/MatX/4.1-matrix-multiplication)\n\n2025年4月21日 · This page documents the matrix multiplication operations in MatX, including dense and sparse matrix multiplication, …\n\n**URL:** https://deepwiki.com/NVIDIA/MatX/4.1-matrix-multiplication\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
-      "url": "https://deepwiki.com/NVIDIA/MatX/4.1-matrix-multiplication"
+      "url": "https://deepwiki.com/NVIDIA/MatX/4.1-matrix-multiplication",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.com/cublas",
       "event_id": "call_97c3f68682724d8c98d94b79.result",
       "evidence": {
         "event_id": "call_97c3f68682724d8c98d94b79.result",
         "quote": "**标题**: cuBLAS | NVIDIA Developer\n\n# cuBLAS\n\n* * *\n\n## Basic Linear Algebra on NVIDIA GPUs\n\nNVIDIA cuBLAS is a GPU-accelerated library for accelerating AI and HPC applications. It includes several API extensions for providing drop-in industry standard BLAS APIs and GEMM APIs with support for fusions that are highly optimized for NVIDIA GPUs. The cuBLAS library also contains extensions for batched operations, execution across multiple GPUs, and mixed- and low-precision execution with additional tuning for the best performance.\n\nThe cuBLAS library is included in both the [NVIDIA HPC SDK](https://developer.nvidia.com/hpc-sdk) and the [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads).\n"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
-      "url": "https://developer.nvidia.com/cublas"
+      "url": "https://developer.nvidia.com/cublas",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.com/cudnn",
       "event_id": "call_e57204bc3dff4aefa122b042.result",
       "evidence": {
         "event_id": "call_e57204bc3dff4aefa122b042.result",
         "quote": "**标题**: CUDA Deep Neural Network (cuDNN) | NVIDIA Developer\n\n# NVIDIA cuDNN\n\nNVIDIA® CUDA® Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. cuDNN provides highly tuned implementations for standard routines, such as forward and backward convolution, attention, matmul, pooling, and normalization.\n\n* * *\n\ncuDNN is also available to download via one of the package managers below.\n\n[Documentation](https://docs.nvidia.com/deeplearning/cudnn/latest/)\n\n[Forum](https://forums.developer.nvidia.com/c/ai-data-science/deep-learning/cudnn/90)\n\n* * *\n\n## How cuDNN Works\n\n- **Accelerated Llearning:** cuDNN provides kernels, targeting Tensor Cores whene"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0003",
-      "url": "https://developer.nvidia.com/cudnn"
+      "url": "https://developer.nvidia.com/cudnn",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.com/cusparse",
       "event_id": "call_a8e04614c35e41bca78c5a0d.result",
       "evidence": {
         "event_id": "call_a8e04614c35e41bca78c5a0d.result",
         "quote": "**标题**: cuSPARSE | NVIDIA Developer\n\n# cuSPARSE\n\nGPU library APIs for sparse computation.  \ncuSPARSE host APIs provide GPU accelerated basic linear algebra routines, and cuSPARSELt host APIs provide structured sparsity support that leverages sparse tensor cores for GEMM. Sparsity is widely applicable in machine learning, AI, computational fluid dynamics, seismic exploration and computational sciences.\n\n## cuSPARSE Host API\n\n[Download](https://developer.nvidia.com/hpc-sdk) [Documentation](https://docs.nvidia.com/cuda/cusparse/index.html)\n\nThe cuSPARSE APIs provides GPU-accelerated basic linear algebra subroutines for sparse matrix computations for unstructured sparsity. cuSPARSE is widely use"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
-      "url": "https://developer.nvidia.com/cusparse"
+      "url": "https://developer.nvidia.com/cusparse",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "call_7b0f96b35ad5440995c296d4.result",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "# Search Results for \"cublasSgemm example code docs.nvidia.com cublas developer guide GEMM\"\n\n## 1. [1. Introduction — cuBLAS 13.4 documentation](https://docs.nvidia.com/cuda/cublas/index.html)\n\n5 天之前 · The API Reference guide for cuBLAS, the CUDA Basic Linear Algebra Subroutine library.\n\n**URL:** https://docs.nvidia.com/cuda/cublas/index.html\n\n---\n\n## 2. [Contents — cuBLAS 13.4 documentation](https://docs.nvidia.com/cuda/cublas/contents.html)\n\n5 天之前 · Using the cuBLAS API. 2.1. General Description. 2.1.1. Error Status. 2.1.3. Thread Safety. 2.1.4. Results Reproducibility. …\n\n**URL:** https://docs.nvidia.com/cuda/cublas/contents.html\n\n---\n\n## 3. [【代码分析】cublasSgemm 矩阵乘法详解-CSDN博客](https://blog."
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0005",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cublas/index.html",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "## 1. [1. Introduction — cuBLAS 13.4 documentation](https://docs.nvidia.com/cuda/cublas/index.html)\n\n5 天之前 · The API Reference guide for cuBLAS, the CUDA Basic Linear Algebra Subroutine library.\n\n**URL:** https://docs.nvidia.com/cuda/cublas/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0005-rank-1",
-      "url": "https://docs.nvidia.com/cuda/cublas/index.html"
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": true
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cublas/contents.html",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "## 2. [Contents — cuBLAS 13.4 documentation](https://docs.nvidia.com/cuda/cublas/contents.html)\n\n5 天之前 · Using the cuBLAS API. 2.1. General Description. 2.1.1. Error Status. 2.1.3. Thread Safety. 2.1.4. Results Reproducibility. …\n\n**URL:** https://docs.nvidia.com/cuda/cublas/contents.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0005-rank-2",
-      "url": "https://docs.nvidia.com/cuda/cublas/contents.html"
+      "url": "https://docs.nvidia.com/cuda/cublas/contents.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "## 3. [【代码分析】cublasSgemm 矩阵乘法详解-CSDN博客](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357)\n\n前言预备知识CublasSgemm 函数cublasSgemm是NV cublas库的矩阵相乘API，由于cublas中矩阵的存储是列优先，所以cublasSgemm API的参数让新手一头雾水，经过仔细研究和实践后总结为本文，便于后来者参考在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/HaoBBNuanMM/article/details/103054357\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0005-rank-3",
-      "url": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357"
+      "url": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://juejin.cn/post/7044164005966905375",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "## 4. [cublasSgemm 用法详解介绍 cublasSgemm是CUDA的 ...](https://juejin.cn/post/7044164005966905375)\n\n2021年12月21日 · 介绍 cublasSgemm是CUDA的cublas库的矩阵相乘函数，与cblas中矩阵相乘函数不同，cublas中矩阵的存储是列优 …\n\n**URL:** https://juejin.cn/post/7044164005966905375\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0005-rank-4",
-      "url": "https://juejin.cn/post/7044164005966905375"
+      "url": "https://juejin.cn/post/7044164005966905375",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://developer.nvidia.com/cublas",
       "event_id": "call_7b0f96b35ad5440995c296d4.result",
       "evidence": {
         "event_id": "call_7b0f96b35ad5440995c296d4.result",
         "quote": "## 5. [cuBLAS - NVIDIA Developer](https://developer.nvidia.com/cublas)\n\nNVIDIA cuBLAS is a GPU-accelerated library for accelerating AI and HPC applications. It includes several API extensions for …\n\n**URL:** https://developer.nvidia.com/cublas\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0005-rank-5",
-      "url": "https://developer.nvidia.com/cublas"
+      "url": "https://developer.nvidia.com/cublas",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cublas/index.html",
       "event_id": "call_ac70e4eb81e64fb9867504c9.result",
       "evidence": {
         "event_id": "call_ac70e4eb81e64fb9867504c9.result",
         "quote": "# cuBLAS API Extraction Analysis\n\n## Summary\n\nThe content is the **\"1. Introduction\" page of the cuBLAS 13.4 documentation**, which — despite the URL/title — also includes the body text for Chapter 1 and much of Chapter 2 (sections 2.1–2.4.13). It covers data layout conventions, the new vs. legacy API, handle/stream management, and compilation instructions. **Important caveat:** no `cublasSgemm` example code exists in this content, and the page is truncated mid-section (details below).\n\n---\n\n## 1. Version Information\n\n- **Library version:** cuBLAS **v13.4** (shown in the sidebar: `v13.4 | PDF | Archive`)\n- Documentation title: *\"cuBLAS 13.4 documentation\"*\n- API history noted in text: cuBLAS"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0006",
-      "url": "https://docs.nvidia.com/cuda/cublas/index.html"
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": true
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/cuda/cublas/index.html#cublasgemm",
       "event_id": "call_9c1040c6a34941f0a14f56c5.result",
       "evidence": {
         "event_id": "call_9c1040c6a34941f0a14f56c5.result",
         "quote": "# cublas<t>gemm() Function Reference — Extraction Results\n\n## Summary\n\n**The full `cublas<t>gemm()` function reference (Section 2.7.1) is NOT present in the provided content.** The page content is truncated before reaching that section. Below I detail exactly what is present, what is truncated, and all gemm-related information that *is* available in the captured content.\n\n---\n\n## 1. What Is Truncated / Missing\n\nThe content ends mid-way through **Section 2.4.13 `cublasGetVector()`** — specifically, the text cuts off in the middle of its return-value table, with the final characters being:\n\n> `CUBLA`\n\nSections 2.4.14 through 2.8 (which include the Level-3 Function Reference at **Section 2.7.1."
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
-      "url": "https://docs.nvidia.com/cuda/cublas/index.html#cublasgemm"
+      "url": "https://docs.nvidia.com/cuda/cublas/index.html#cublasgemm",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": true
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
       "event_id": "call_434b6345d6c8487d94ba0d0e.result",
       "evidence": {
         "event_id": "call_434b6345d6c8487d94ba0d0e.result",
         "quote": "**标题**: NVIDIA cuDNN — NVIDIA cuDNN\n\nBack to top\n\n# NVIDIA cuDNN[#](https://docs.nvidia.com/deeplearning/cudnn/latest/#nvidia-cudnn \"Link to this heading\")\n\nThe NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. It provides highly tuned implementations of operations arising frequently in deep neural network (DNN) applications:\n\n- Scaled dot-product attention\n- Convolution, including cross-correlation\n- Matrix multiplication\n- Normalizations, softmax, and pooling\n- Arithmetic, mathematical, relational, and logical pointwise operations\n\nBeyond just providing high-performance implementations of individual operations, cuDNN also s"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0008",
-      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/"
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "call_a3683c88521741a5af23a017.result",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "# Search Results for \"cuDNN frontend API convolution sample C++ NVIDIA github cudnn-frontend\"\n\n## 1. [GitHub - NVIDIA/cudnn-frontend: cuDNN Frontend is NVIDIA's …](https://github.com/NVIDIA/cudnn-frontend)\n\nThe cuDNN FrontEnd(FE) API is a C++ header-only library that wraps the cuDNN C backend API. Both the FE and backend APIs are entry points to the same set of functionality that is commonly referred to as the \"graph API\".\n\n**URL:** https://github.com/NVIDIA/cudnn-frontend\n\n---\n\n## 2. [cudnn-frontend/samples/cpp at main · NVIDIA/cudnn-frontend · GitHub](https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp)\n\ncudnn_frontend provides a c++ wrapper for the cudnn backend API and samples"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0009",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/NVIDIA/cudnn-frontend",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "## 1. [GitHub - NVIDIA/cudnn-frontend: cuDNN Frontend is NVIDIA's …](https://github.com/NVIDIA/cudnn-frontend)\n\nThe cuDNN FrontEnd(FE) API is a C++ header-only library that wraps the cuDNN C backend API. Both the FE and backend APIs are entry points to the same set of functionality that is commonly referred to as the \"graph API\".\n\n**URL:** https://github.com/NVIDIA/cudnn-frontend\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-1",
-      "url": "https://github.com/NVIDIA/cudnn-frontend"
+      "url": "https://github.com/NVIDIA/cudnn-frontend",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "NVIDIA publisher repository, also linked from official product page."
     },
     {
-      "content_group": "",
+      "content_group": "https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "## 2. [cudnn-frontend/samples/cpp at main · NVIDIA/cudnn-frontend · GitHub](https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp)\n\ncudnn_frontend provides a c++ wrapper for the cudnn backend API and samples on how to use it - cudnn-frontend/samples/cpp at …\n\n**URL:** https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-2",
-      "url": "https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp"
+      "url": "https://github.com/NVIDIA/cudnn-frontend/tree/main/samples/cpp",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "NVIDIA publisher repository, also linked from official product page."
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "## 3. [Samples — NVIDIA cuDNN](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html)\n\n2026年9月2日 · Python samples are Jupyter notebooks with step-by-step instructions for using the frontend API. Python Interface …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-3",
-      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html"
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://deepwiki.com/NVIDIA/cudnn-frontend/6.1-c++-examples",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "## 4. [C++ Examples | NVIDIA/cudnn-frontend | DeepWiki](https://deepwiki.com/NVIDIA/cudnn-frontend/6.1-c++-examples)\n\n2026年1月24日 · This page documents the C++ sample programs provided in the cuDNN Frontend repository. These examples …\n\n**URL:** https://deepwiki.com/NVIDIA/cudnn-frontend/6.1-c++-examples\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-4",
-      "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/6.1-c++-examples"
+      "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/6.1-c++-examples",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples",
       "event_id": "call_a3683c88521741a5af23a017.result",
       "evidence": {
         "event_id": "call_a3683c88521741a5af23a017.result",
         "quote": "## 5. [Examples & Samples | NVIDIA/cudnn-frontend | DeepWiki](https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples)\n\n2026年1月24日 · This document provides an overview of the example code and sample programs included in the cuDNN Frontend …\n\n**URL:** https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0009-rank-5",
-      "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples"
+      "url": "https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
       "event_id": "call_04efc5d636f6467daf13fe39.result",
       "evidence": {
         "event_id": "call_04efc5d636f6467daf13fe39.result",
         "quote": "**标题**: Samples — NVIDIA cuDNN\n\nBack to top\n\n# Samples[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#samples \"Link to this heading\")\n\nSamples illustrate usage of the Python and C++ frontend APIs.\n\n## Python Samples[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#python-samples \"Link to this heading\")\n\nPython samples are Jupyter notebooks with step-by-step instructions for using the frontend API.\n\n### Source Code[#](https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html#source-code \"Link to this heading\")\n\n[Python Interface Samples](https://github.com/NVIDIA/cudnn-frontend/blob/main/samples/README.md#python-interface-samples) on GitHub.\n\n### Depen"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0010",
-      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html"
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357",
       "event_id": "call_01fb397c33ec404191450265.result",
       "evidence": {
         "event_id": "call_01fb397c33ec404191450265.result",
         "quote": "**标题**: 【代码分析】cublasSgemm 矩阵乘法详解-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-15 08:05:37 发布\n原创 于 2019-11-13 19:05:21 发布 · 5.3k 阅读\n\n# 【代码分析】cublasSgemm 矩阵乘法详解\n\n![](https://i-operation.csdnimg.cn/images/a7311a21245d4888a669ca3155f1f4e5.png)本文深入解析了NV cublas库中的cublasSgemm函数，详细阐述了如何利用该函数进行矩阵乘法运算，特别是针对矩阵存储方式（行优先或列优先）的不同情况，提供了具体的参数设置指南及示例程序。\n\n**目录**\n\n[前言](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#main-toc)\n\n[预备知识](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t0)\n\n[cublasSgemm 函数](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t1)\n\n[求解C=AxB](https://blog.csdn.net/HaoBBNuanMM/article/details/103054357#t2)\n\n[不使用cublasSgemm transa与transb参数](https://blog.csdn.net/HaoBB"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "third_party",
+      "relevant": true,
       "source_id": "source-0011",
-      "url": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357"
+      "url": "https://blog.csdn.net/HaoBBNuanMM/article/details/103054357",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "Choose cuBLAS for dense GEMM and cuDNN for convolution",
+      "Explain when cuSPARSE applies",
+      "Supply concrete library invocation guidance"
+    ],
+    "secondary": [
+      "Relevant data-layout and build prerequisites"
+    ],
+    "version_relations": [
+      "cuBLAS/CUDA applicability",
+      "cuDNN/CUDA/device compatibility"
+    ]
   }
 }

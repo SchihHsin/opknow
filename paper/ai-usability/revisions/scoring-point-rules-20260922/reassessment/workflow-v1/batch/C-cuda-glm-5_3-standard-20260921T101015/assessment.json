@@ -1,0 +1,252 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "C-cuda-glm-5_3-standard-20260921T101015",
+  "process_sha256": "7a8877875c6075d146fb1badca8bbc87e82c738c62ec7aea219f4cd2daababf8",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "First-query rank 1 is the relevant official NVIDIA China cuSPARSE page.",
+      "evidence": [
+        {
+          "event_id": "call_2aff16073ec84ea39120991e.result",
+          "quote": "## 1. [cuSPARSE | NVIDIA 开发者]"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.666666666666667,
+      "reason": "Five direct official bodies without observed defects, plus one merged cuBLAS URL whose last return is an explicit extraction (3). The third-party fetch is excluded.",
+      "evidence": [
+        {
+          "event_id": "call_9c1040c6a34941f0a14f56c5.result",
+          "quote": "# cublas<t>gemm() Function Reference — Extraction Results"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://developer.nvidia.com/cublas",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "call_97c3f68682724d8c98d94b79.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.nvidia.com/cudnn",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "call_e57204bc3dff4aefa122b042.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.nvidia.com/cusparse",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "call_a8e04614c35e41bca78c5a0d.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cublas/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "event_id": "call_9c1040c6a34941f0a14f56c5.result",
+            "representation": "excerpt",
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/latest/",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "call_434b6345d6c8487d94ba0d0e.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/latest/samples.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "call_04efc5d636f6467daf13fe39.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official contents explain library selection, cuBLAS setup and graph API structure, but neither the actual GEMM function reference nor concrete convolution invocation is obtained. These are main requirements.",
+      "evidence": [
+        {
+          "event_id": "call_9c1040c6a34941f0a14f56c5.result",
+          "quote": "The complete C signature of `cublas<t>gemm()`"
+        },
+        {
+          "event_id": "call_e57204bc3dff4aefa122b042.result",
+          "quote": "c_cudnn_tensor = graph.matmul"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "cuBLAS API introduction versions provide partial CUDA relationships; the necessary cuDNN/CUDA/device compatibility is absent.",
+      "evidence": [
+        {
+          "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+          "quote": "cuBLAS API (since CUDA 6.0)"
+        },
+        {
+          "event_id": "call_ac70e4eb81e64fb9867504c9.result",
+          "quote": "cuBLASLt (since CUDA 10.1)"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Five relevant independent third-party pages after publisher/relevance review.",
+      "evidence": [
+        {
+          "event_id": "call_7b0f96b35ad5440995c296d4.result",
+          "quote": "https://juejin.cn/post/7044164005966905375"
+        },
+        {
+          "event_id": "call_a3683c88521741a5af23a017.result",
+          "quote": "https://deepwiki.com/NVIDIA/cudnn-frontend/6-examples-and-samples"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          5
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 1,
+      "reason": "The full third-party sample contains a definite C++ type error: float* matrix is accessed as matrix[i][j], so its invocation example does not compile. A syntax-only check of the archived function confirms the failure. This key operational error takes precedence over supported layout and flag statements.",
+      "evidence": [
+        {
+          "event_id": "call_01fb397c33ec404191450265.result",
+          "quote": "void printMatrix2(float* matrix, int row, int col)"
+        },
+        {
+          "event_id": "call_01fb397c33ec404191450265.result",
+          "quote": "std::cout << matrix[i][j] << \" \";"
+        }
+      ],
+      "observations": {
+        "verification": "static-code-check.json",
+        "source_coverage": "facts.m6.source_coverage",
+        "execution_status": "syntax_only_no_CUDA_execution"
+      }
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior library roles/layout and handle setup have support, but exact cuDNN legacy algorithm calls, full GEMM/SpMM invocation and TF32 control applicability cannot be established from the saved material. These affect the required invocation completeness.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "cudnnGetConvolutionForwardAlgorithm"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "cublasSetMathMode"
+        }
+      ],
+      "observations": {
+        "missing_facts": [
+          "legacy convolution algorithm API applicability",
+          "specific GEMM/SpMM and math-mode correctness"
+        ]
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Three search plus eight fetch dispatches, C=11.",
+      "event_refs": [
+        "call_2aff16073ec84ea39120991e.dispatch",
+        "call_97c3f68682724d8c98d94b79.dispatch",
+        "call_e57204bc3dff4aefa122b042.dispatch",
+        "call_a8e04614c35e41bca78c5a0d.dispatch",
+        "call_7b0f96b35ad5440995c296d4.dispatch",
+        "call_ac70e4eb81e64fb9867504c9.dispatch",
+        "call_9c1040c6a34941f0a14f56c5.dispatch",
+        "call_434b6345d6c8487d94ba0d0e.dispatch",
+        "call_a3683c88521741a5af23a017.dispatch",
+        "call_04efc5d636f6467daf13fe39.dispatch",
+        "call_01fb397c33ec404191450265.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Final gives cuBLAS 13.4 and cuDNN 9.x documentation labels but no applicable primary CUDA/cuDNN pairing. Optional cuSPARSELt architecture advice does not fill the dense/convolution version requirement.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "cuBLAS 13.4 文档"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "cuDNN 当前具体版本号及与 CUDA Toolkit 的版本兼容矩阵"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The shortened cuDNN graph example omits output allocation/binding from its claimed complete original and gives only an analogy for convolution. It requires code/content completion, not merely path substitution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "graph.execute({a_t: A, b_t: B}, workspace)"
+        },
+        {
+          "event_id": "call_e57204bc3dff4aefa122b042.result",
+          "quote": "d_cudnn_tensor: result,"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "卷积同理：在 graph 上建 `convolution` 节点"
+        }
+      ],
+      "observations": {
+        "content_repairs": [
+          "Restore output tensor allocation and binding in shortened cuDNN graph example",
+          "Provide actual convolution node construction and arguments instead of analogy to matmul"
+        ],
+        "execution_status": "content_checked_not_executed"
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 lacks resolved input; do not impute.",
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "Luna draft replaced by root full packet review and deterministic syntax check"
+  }
+}

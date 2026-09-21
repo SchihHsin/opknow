@@ -1,0 +1,326 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "C-cann-kimi-k3-2-standard-20260921T102054",
+  "process_sha256": "4bbeb6c11a98d14acf0f4b037450369886d103c729de50f3cc68c63c59f172ae",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "First query rank 1 is the official ATB/aclnn integration guide.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_1fc1cb89.result",
+          "quote": "## 1. [Aclnn算子接入ATB Plugin介绍"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.5,
+      "reason": "Four direct bodies without observed fetch defects and four matched title/navigation-only returns. Official README mirror is classified by original content, not hosting domain.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_469d3781.result",
+          "quote": "**标题**: Aclnn算子接入ATB Plugin介绍-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)\n\n# Aclnn算子接入ATB Plugin介绍\n\n#### 概述\n\nAclnn算子接入ATB Plugin主要思路如下：\n\n1. 创建自定义类，该类继承ATB的Operation类。\n2. 使用aclnn接口实现Operation类中几个特定接口。\n\n本节将主要围绕思路中的第二点对Aclnn算子接入ATB Plugin进行详细介绍。\n\n**图1** 自定义Operation类继承自ATB Operation类  \n![](https://www.hiascend.com/doc_center/source/zh/canncommercial/800/developmentguide/acce/ascendtb/figure/zh-cn_image_0000002136909142.png)\n\n**表1** Ope"
+        },
+        {
+          "event_id": "WebFetch_2_d3df0464.result",
+          "quote": "**标题**: 算子使用指导-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.RC2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_4_de954a44.result",
+          "quote": "**标题**: aclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单算子执行-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC2开发文档-昇腾社区\n\n# aclnnMatmul\n\n## 支持的产品型号\n\n- Atlas 推理系列产品。\n- Atlas 训练系列产品。\n- Atlas A2训练系列产品/Atlas 800I A2推理产品。\n\n## 接口原型\n\n每个算子分为[两段式接口](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/common/%E4%B8%A4%E6%AE%B5%E5%BC%8F%E6%8E%A5%E5%8F%A3.md)，必须先调用“aclnnMatmulGetWorkspaceSize”接口获取计算所需workspace大小以及包含了算子计算流程的执行器，再调用“aclnnMatmul”接口执行计算。\n\n- `aclnnStatus aclnnMatmulGetWorkspaceSize(const aclTensor *self, const aclTensor *mat2, aclTensor *out, int8_t cubeMathType, uint64_t *workspaceSize, aclOpExecutor **executor)`\n- `aclnnStatus aclnnMatmul(void *workspace, uint64_t workspa"
+        },
+        {
+          "event_id": "WebFetch_6_a8716c8f.result",
+          "quote": "**标题**: Introduction-Ascend Transformer Boost-Domain-Specific Acceleration Library-CANN Commercial Edition8.5.0开发文档-昇腾社区\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\nMore\n\n[Documentation](https://www.hiascend.com/en/document)\n\nDownload\n\nBack to Top\n\nRate This Document\n\nFindability\n\nAccuracy\n\nCompleteness\n\nReadability\n\n[Submit](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)[Close](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)\n\n在线提单\n\nCopyright © 2021-2026 Huawei Technologies Co., "
+        },
+        {
+          "event_id": "WebFetch_7_7c18e42e.result",
+          "quote": "**标题**: 概述-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)\n\n# 概述\n\n本用例为aclnnPluginOperation与ATBOperation混搭组图的简单示例，具体请参考[用例源码](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0052.html)。本文将从以下四部分对该示例进行讲解，旨在帮助用户进一步理解ATB的使用：\n\n1. 用例整体介绍与运行 。\n2. aclnn算子接入ATB Plugin介绍。\n3. 多线程部分介绍 。\n4. 内存池部分介绍。\n\n除了aclnn算子外，其他自定义算子在实现了对应接口的情况下也可以通过Plugin机制接入到ATB中。"
+        },
+        {
+          "event_id": "WebFetch_9_f21b4c5b.result",
+          "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_10_3ac718cf.result",
+          "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_11_0f4f3cef.result",
+          "quote": "````\n# Ascend Transformer Boost\n\n🔥 [2025/09] Ascend Transformer Boost项目首次上线。\n\n## 一、什么是ATB\n\n### ATB介绍\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。具体的工作原理可以参考[ATB加速原理](docs/ATB加速原理.md)。\n\n### 软件架构\n\n![架构图](docs/images/架构图.png)\nATB的架构图如上图所示，其接口功能主要分成三部分：\n\n- 提供经过优化的融合算子（Operation），用户可以根据需求使用对应的算子完成计算功能。\n- 提供图算子机制，用户根据模型设计对应的图算子，使用加速库提供的原生算子和创建的自定义算子创建图算子，完成相应的计算。\n- 提供插件（Plugin）机制，用户可以根据自己的需求创建自定义的算子。\n\n### ATB仓介绍\n\nATB库的目录结构如下：\n\n```text\nascend-transformer-boost\n├── 3rdparty            //第三方依赖库文件夹\n├── build               //可存放构建生成的文件\n├── ci                  //持续集成相关的配置文件\n├── docs                //文档文件\n├── example             //算子调用示例代码，包含可直接运行的Demo"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "WebFetch_1_469d3781.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "event_id": "WebFetch_2_d3df0464.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "WebFetch_4_de954a44.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "event_id": "WebFetch_6_a8716c8f.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "WebFetch_7_7c18e42e.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "event_id": "WebFetch_9_f21b4c5b.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "event_id": "WebFetch_10_3ac718cf.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "event_id": "WebFetch_11_0f4f3cef.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Matmul signatures/examples and ATB/plugin invocation are detailed, but the required convolution invocation body is absent. Core convolution parameters cannot be supplied from its title and search summary.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_de954a44.result",
+          "quote": "aclnnStatus aclnnMatmulGetWorkspaceSize"
+        },
+        {
+          "event_id": "WebFetch_9_f21b4c5b.result",
+          "quote": "文档评分"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "ATB8.5/main-to-toolkit>=8.5 and Matmul device/dtype relations are explicit, while convolution and exact framework pairing remain missing. Different release documents alone are not a contradiction.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_11_0f4f3cef.result",
+          "quote": "ATB 8.5版本以及主线分支必须匹配8.5或以上版本的toolkit包。"
+        },
+        {
+          "event_id": "WebFetch_4_de954a44.result",
+          "quote": "BFLOAT16（仅Atlas A2训练系列产品/Atlas 800I A2推理产品支持）"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Three distinct relevant independent articles; official mirrors and generic ecosystem announcements are excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_1fc1cb89.result",
+          "quote": "https://cann.csdn.net/6a59a883662f9a54cb9036a4.html"
+        },
+        {
+          "event_id": "WebSearch_5_eeb004b4.result",
+          "quote": "https://blog.csdn.net/gitblog_01015/article/details/160915751"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          3
+        ]
+      }
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "ATB identity/capability and mixed aclnn/ATB graph claims have independent support. The complete AscendCL name/definition assertion is not established in the fixed sources. All visible task-relevant claims checked; lack of support is not falsehood.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_1fc1cb89.result",
+          "quote": "ATB 全称 Ascend Transformer Boost，是昇腾 CANN 提供的高性能 Transformer 算子加速库。"
+        },
+        {
+          "event_id": "WebSearch_3_faa58ce1.result",
+          "quote": "AscendCL（Ascend Computing Language）是一套用于在昇腾平台上开发深度神经网络应用的 C 语言"
+        },
+        {
+          "event_id": "WebSearch_5_eeb004b4.result",
+          "quote": "aclnn算子部分：实现了aclnn算子对ATB的接入。 ATB算子部分：使用ATB原生算子构建了一个ATB图算子。"
+        }
+      ],
+      "observations": {
+        "supported_claims": 2,
+        "unsupported_claims": 1,
+        "source_coverage": "facts.m6.source_coverage"
+      }
+    },
+    "M7": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Prior identifies correct matmul/convolution API families and the ATB selection route, but explicitly lacks initialization, invocation and cleanup steps. These are correct method fragments, not a complete call workflow. The extra operator-name inventory is not used as verified coverage or as grounds for a higher level.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "常见形如 `aclnnMatmul*`、卷积类 `aclnnConvolution*`"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "精确 API 名称、头文件、链接库、初始化/销毁顺序和示例代码"
+        },
+        {
+          "event_id": "WebFetch_4_de954a44.result",
+          "quote": "# aclnnMatmul"
+        },
+        {
+          "event_id": "WebSearch_8_55ebd155.result",
+          "quote": "算子功能：实现卷积功能"
+        }
+      ],
+      "observations": {
+        "not_credited": [
+          "specific attention/FFN/RMSNorm/Rotary inventory and framework preference not fully checked"
+        ],
+        "level_boundary": "Missing invocation steps prevent levels4/5; supported library/API selection establishes method fragments."
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Four search and eight fetch dispatches, C=12; final self-report of six fetches is not used.",
+      "event_refs": [
+        "WebSearch_0_1fc1cb89.dispatch",
+        "WebFetch_1_469d3781.dispatch",
+        "WebFetch_2_d3df0464.dispatch",
+        "WebSearch_3_faa58ce1.dispatch",
+        "WebFetch_4_de954a44.dispatch",
+        "WebSearch_5_eeb004b4.dispatch",
+        "WebFetch_6_a8716c8f.dispatch",
+        "WebFetch_7_7c18e42e.dispatch",
+        "WebSearch_8_55ebd155.dispatch",
+        "WebFetch_9_f21b4c5b.dispatch",
+        "WebFetch_10_3ac718cf.dispatch",
+        "WebFetch_11_0f4f3cef.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final preserves supported ATB/toolkit and Matmul device/dtype relations but leaves convolution and framework pairing unverified.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "ATB 8.5/主线必须配 CANN toolkit ≥8.5"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "卷积版本关系本次未核实到正文"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The answer provides concrete Matmul/ATB methods but needs tensor construction/release, convolution invocation and the archived NNAL pre-build prerequisite. These are substantive completion steps beyond environment-value substitution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "aclnnMatmulGetWorkspaceSize(self, mat2, out, cubeMathType, &workspaceSize, &executor);"
+        },
+        {
+          "event_id": "WebFetch_4_de954a44.result",
+          "quote": "// 2. 构造输入与输出，需要根据API的接口自定义构造"
+        },
+        {
+          "event_id": "WebFetch_11_0f4f3cef.result",
+          "quote": "在编译前，需要安装nnal软件包。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "具体签名、dtype、format、约束本次未核实"
+        }
+      ],
+      "observations": {
+        "content_repairs": [
+          "Complete tensor creation/copy/release around the compressed matmul snippet",
+          "Supply convolution signature/arguments",
+          "Restore NNAL pre-build prerequisite and relevant ABI/build environment instructions"
+        ],
+        "execution_status": "content_checked_not_executed"
+      }
+    },
+    "M11": {
+      "status": "scored",
+      "score": 68.9390592,
+      "reason": "Computed from eight adjudicated point inputs with unchanged frozen formula.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "observations": {
+    "assessor": "Luna source index; root complete packet adjudication"
+  },
+  "channel_states": {}
+}

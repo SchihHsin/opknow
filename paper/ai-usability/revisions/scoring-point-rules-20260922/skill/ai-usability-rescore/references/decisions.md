@@ -56,3 +56,7 @@ These checks clarify execution; they do not change the rubric or thresholds.
 ### M5 去重候选表达
 
 `source_items` 可选 `content_group_candidates` 字符串数组，用于保存同一可识别第三方来源在“已知内容组/新内容组”之间的去重争议。程序枚举所有候选绑定并输出 `possible_counts`；同一规范化 URL 的重复搜索结果共用一个绑定，不会被拆成两个独立来源。候选组合超过枚举上限或同 URL 候选没有交集时必须报错并保留未决，不能猜测。未提供该字段时沿用原 `ownership`、`relevant`、`content_group` 逻辑。
+
+### M6 admission uncertainty
+
+`facts.m6.admission_uncertainties` preserves a material unknown publisher or ownership decision that could change whether an M6 claim is admissible. Each entry must identify an unknown, relevant source item, include a non-empty reason and claim evidence, and set `affects_score: true`; invalid entries fail the mechanical check. A valid entry forbids a numeric M6 result while allowing `needs_review` or `unscorable`. A missing or empty list preserves the legacy M6 calculation.

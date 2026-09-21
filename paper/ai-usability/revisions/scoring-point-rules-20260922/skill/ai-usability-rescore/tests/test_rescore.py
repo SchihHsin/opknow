@@ -300,5 +300,84 @@ class M5CandidateTests(unittest.TestCase):
         self.assertEqual(rescore.derive_m5_counts({"source_items":items}, []), [1])
 
 
+class M1UncertaintyTests(RescoreTests):
+    def test_known_third_party_unknown_relevance_does_not_block(self):
+        facts = copy.deepcopy(self.facts)
+        facts["source_items"].append({"source_id":"tp","url":"https://third.example/x","event_id":"search-1","ownership":"third_party","relevant":None,"query_index":1,"rank":1,"content_group":"tp"})
+        self.write_facts(facts); code, report = self.run_check()
+        self.assertFalse(any(x["code"] == "m1.uncertain_preceding" for x in report["issues"]))
+
+    def test_official_unknown_relevance_remains_uncertain(self):
+        facts = copy.deepcopy(self.facts)
+        facts["source_items"][0]["rank"] = 2
+        facts["m1"]["first_rank"] = 2
+        facts["source_items"].append({"source_id":"maybe","url":"https://official.example/maybe","event_id":"search-1","ownership":"official","relevant":None,"query_index":1,"rank":1,"content_group":"official"})
+        assessment = copy.deepcopy(self.assessment); assessment["metrics"]["M1"]["score"] = 4
+        self.write_facts(facts); self.write_assessment(assessment); code, report = self.run_check()
+        self.assertFalse(report["mechanical_pass"])
+
+
+class M6AdmissionUncertaintyTests(unittest.TestCase):
+    def _facts(self, admission):
+        return {
+            "source_items": [{
+                "source_id": "u1", "event_id": "search-1",
+                "url": "https://unknown.example/x", "ownership": "unknown", "relevant": None,
+            }],
+            "m6": {"claims": [], "admission_uncertainties": admission},
+        }
+
+    def test_valid_unknown_admission_blocks_numeric_m6(self):
+        facts = self._facts([{
+            "source_id": "u1", "reason": "作者归属会改变是否计入独立第三方",
+            "affects_score": True, "claim_evidence": [{"event_id": "search-1", "quote": "unknown"}],
+            "support_evidence": [],
+        }])
+        assessment = {"metrics": {"M6": {"status": "scored", "score": 3}}}
+        issues = []
+        rescore.check_m6(facts, assessment, issues)
+        self.assertTrue(any(x["code"] == "m6.admission_uncertainty" for x in issues))
+
+    def test_valid_admission_allows_unscorable_m6_without_status_issue(self):
+        facts = self._facts([{
+            "source_id": "u1", "reason": "作者归属仍无法确认", "affects_score": True,
+            "claim_evidence": [{"event_id": "search-1", "quote": "unknown"}],
+        }])
+        facts["source_items"].append({"source_id": "tp", "event_id": "search-1", "url": "https://third.example/x", "ownership": "third_party", "relevant": True})
+        facts["m6"]["claims"] = [{
+            "source_id": "tp", "verdict": "supported",
+            "claim_evidence": [{"event_id": "search-1", "quote": "claim"}],
+            "support_evidence": [{"event_id": "other", "quote": "support"}],
+        }]
+        issues = []
+        rescore.check_m6(facts, {"metrics": {"M6": {"status": "unscorable", "score": None}}}, issues)
+        self.assertFalse(any(x["code"] == "M6.status" for x in issues))
+
+    def test_known_official_source_or_empty_reason_is_invalid(self):
+        facts = self._facts([{
+            "source_id": "u1", "reason": " ", "affects_score": True,
+            "claim_evidence": [{"event_id": "search-1", "quote": "unknown"}],
+        }])
+        facts["source_items"][0]["ownership"] = "official"
+        issues = []
+        rescore.check_m6(facts, {"metrics": {"M6": {"status": "unscorable", "score": None}}}, issues)
+        self.assertTrue(any(x["code"] == "m6.admission_uncertainty" for x in issues))
+
+    def test_empty_admission_list_preserves_legacy_calculation(self):
+        facts = self._facts([])
+        facts["m6"]["claims"] = [{
+            "source_id": "tp", "verdict": "supported",
+            "claim_evidence": [{"event_id": "search-1", "quote": "claim"}],
+            "support_evidence": [{"event_id": "other", "quote": "support"}],
+        }]
+        facts["source_items"].append({
+            "source_id": "tp", "event_id": "search-1", "url": "https://third.example/x",
+            "ownership": "third_party", "relevant": True,
+        })
+        issues = []
+        rescore.check_m6(facts, {"metrics": {"M6": {"status": "scored", "score": 3}}}, issues)
+        self.assertFalse(any(x["code"] == "m6.admission_uncertainty" for x in issues))
+
+
 if __name__ == "__main__":
     unittest.main()

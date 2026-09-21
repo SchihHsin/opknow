@@ -6,11 +6,12 @@
         "event_id": "call_905c6948ed454f4abc6683a2.result",
         "quote": "**标题**: 简介-ATB加速库-API参考-CANN9.1.0-beta.3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)\n\n# 简介\n\n#### 概述\n\n随着AI的高速发展，特别是2023年GPT大模型的生产级可用，AI行业产生了巨大的经济价值。以GPT为代表的Transformer模型百花齐放，触发了对AI设备的巨大需求。\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。\n\nATB加速库采用了一系列优化策略，包括算法优化、硬件优化和软件优化，能够显著提升Transformer模型的训练和推理速度，同时降低能耗和成本。具体来说，ATB加速库通过优化矩阵乘法等核心算子和注意力机制的实现方式，实现了对Transformer模型的高效加速。此外，ATB加速库还充分利用了Ascend AI处理器的硬件特性，如算力、存储带宽和内存带宽，通过硬件加速和数据重用等技术，进一步提升了性能和效率。ATB加速库目前提供了底层基础的高性能算子以及"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_bc483f4d1682475f8889e985.result",
@@ -18,11 +19,12 @@
         "event_id": "call_bc483f4d1682475f8889e985.result",
         "quote": "**标题**: CANN-算子库-昇腾社区\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n[![昇腾社区](https://www.hiascend.com/_static3/cann-log-pc.BRiIAXC8.png)](https://www.hiascend.com/cann)\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n[学习](https://www.hiascend.com/cann/learn \"学习\")\n\n社区\n\n动态\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://www.hiascend.com/cann/aol",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_b8bcc505e1024b8f84f03863.result",
@@ -30,11 +32,12 @@
         "event_id": "call_b8bcc505e1024b8f84f03863.result",
         "quote": "**标题**: ascend-transformer-boost/README.md-代码预览-ascend-transformer-boost:基于华为Ascend AI处理器的Transformer模型加速库项目 - AtomGit\n**发布时间**: fee9a9fb 创建于 2025年10月15日 历史提交\n\n# Ascend Transformer Boost\n\n🔥 [2025/09] Ascend Transformer Boost项目首次上线。\n\n## 一、什么是ATB\n\n### ATB介绍\n\nAscend Transformer Boost（下文简称为ATB加速库）加速库是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。\n\n### 软件架构\n\n  \nATB的架构图如上图所示，其接口功能主要分成三部分：\n\n- 提供经过优化的融合算子（Operation），用户可以根据需求使用对应的算子完成计算功能。\n- 提供图算子机制，用户根据模型设计对应的图算子，使用加速库提供的原生算子和创建的自定义算子创建图算子，完成相应的计算。\n- 提供插件（Plugin）机制，用户可以根据自己的需求创建自定义的算子。\n\n### ATB仓介绍\n\nATB库的目录结构如下：\n\n```text\nascend-transformer-boost\n├── 3rdparty            //第三方依赖库文件夹\n├── build               //可存放构建生成的文件\n├── ci                  "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_7f4a2222ba3c40d4a5394c22.result",
@@ -42,11 +45,12 @@
         "event_id": "call_7f4a2222ba3c40d4a5394c22.result",
         "quote": "**标题**: 接口简介-AOL算子加速库接口-API-CANN8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)\n\n# 接口简介\n\n#### 概述\n\n为加速模型算力释放，CANN（Compute Architecture for Neural Networks）提供了算子加速库（Ascend Operator Library，简称AOL）。\n\n该库提供了一系列丰富的深度优化、硬件亲和的高性能算子，如Neural Network、Digital Vision Pre-Processing算子等，为神经网络在昇腾硬件上加速计算奠定了基础。为方便开发者调用算子，提供了**单算子API执行方式**调用算子（基于C语言的API，无需提供IR（Intermediate Representation）定义），以便开发者快速且高效使能模型创新与应用，API的调用流程如[图1](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/opera"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_9e730e8bfdd347d5836fdcc2.result",
@@ -54,11 +58,12 @@
         "event_id": "call_9e730e8bfdd347d5836fdcc2.result",
         "quote": "**标题**: 安装部署-ATB加速库-领域加速库-CANN8.5.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_d23f27fd33164af7a8403cda.result",
@@ -66,151 +71,304 @@
         "event_id": "call_d23f27fd33164af7a8403cda.result",
         "quote": "**标题**: 安装部署-ATB加速库-加速库-CANN9.2.0-beta.2开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Supply concrete AOL operator invocation signature/arguments or complete worked call; final currently only names generic two-stage functions."
+    ],
+    "environment_substitutions": [
+      "installation path",
+      "user device number"
+    ]
   },
   "m4": {
+    "mode": "partial",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "ATB/PyTorch/torch_npu exact compatibility",
+      "ATB supported devices"
+    ],
+    "relations_found": [
+      "AOL release-specific product support",
+      "ATB README CANN/Python example prerequisites"
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      6,
+      7
+    ],
+    "count_basis": "Six relevant independent CSDN articles; community author uncertainty can add one. ATB official README mirrors/forks and explicitly official-author reprint excluded."
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_f634c70b936a4ba183a8a1ce.result",
+      "call_905c6948ed454f4abc6683a2.result",
+      "call_c32cf5754f5e4d03bf4ad4b6.result",
+      "call_bc483f4d1682475f8889e985.result",
+      "call_b8bcc505e1024b8f84f03863.result",
+      "call_5fda07d63aa9446abbc6ee33.result",
+      "call_7f4a2222ba3c40d4a5394c22.result",
+      "call_ca94638998d74729bc231f58.result",
+      "call_9e730e8bfdd347d5836fdcc2.result",
+      "call_d23f27fd33164af7a8403cda.result"
+    ],
+    "claims": [
+      {
+        "source_id": "source-0003-rank-3",
+        "claim": "ops-nn is an open-source CANN basic library with matmul/activation as core content and fusion support; the complete ops-nn-specific assertion is not established by the older generic AOL table.",
+        "claim_evidence": [
+          {
+            "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
+            "quote": "ops-nn 是昇腾CANN开源的基础算子库，matmul 和 activation 类是它的核心内容，支持算子融合。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0006-rank-3",
+        "claim": "ops-math is a core basic-math component located in the computing-service layer; the precise layer is not corroborated.",
+        "claim_evidence": [
+          {
+            "event_id": "call_5fda07d63aa9446abbc6ee33.result",
+            "quote": "ops-math算子库是基础数学运算的核心组件，位于计算服务层"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0006-rank-4",
+        "claim": "AOL provides eight specialized library categories; the saved older AOL list does not establish the claimed eight-category decomposition.",
+        "claim_evidence": [
+          {
+            "event_id": "call_5fda07d63aa9446abbc6ee33.result",
+            "quote": "AOL算子库是CANN架构中的核心组件，提供8类专用算子库"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0006-rank-5",
+        "claim": "Operator fusion is the core competitive capability of ops-nn; generic existence of AOL fused operators does not establish that ranking.",
+        "claim_evidence": [
+          {
+            "event_id": "call_5fda07d63aa9446abbc6ee33.result",
+            "quote": "为什么\"算子融合\"是它的核心竞争力"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "source_coverage": [
+      {
+        "source": "ATB README and forks",
+        "disposition": "Same official material, not independent third-party claims."
+      },
+      {
+        "source": "hwcomputing MatMul article",
+        "disposition": "Topic and truncated introduction; no precise optimization method visible."
+      },
+      {
+        "source": "beautifulSunrise/ops-math/adg/devpress",
+        "disposition": "All four visible specific claims retained with qualifiers."
+      },
+      {
+        "source": "gitblog ATB guide",
+        "disposition": "Article title and download preamble, no specific method visible."
+      },
+      {
+        "source": "Huawei community AOL article",
+        "disposition": "Supported Softmax claim retained separately because author attribution affects M6."
+      },
+      {
+        "source": "cnblogs huaweiyun",
+        "disposition": "Explicitly Ascend CANN author, official reprint excluded."
+      }
+    ],
+    "admission_uncertainties": [
+      {
+        "source_id": "source-0003-rank-1",
+        "claim_evidence": [
+          {
+            "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
+            "quote": "昇腾提供AOL（Ascend Operator Library）算子加速库，不仅覆盖Softmax"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_7f4a2222ba3c40d4a5394c22.result",
+            "quote": "例如常见的Softmax、MatMul、Convolution等。"
+          }
+        ],
+        "reason": "If community article is independently authored, this supported claim changes M6 from all-unsupported to mixed. Author identity cannot be resolved in packet.",
+        "affects_score": true
+      }
+    ]
   },
   "packet_sha256": "b3a28104ab525737aed5df706a4f26b45e07d15c6450d2223b6df34e6d914392",
   "question": "昇腾上做矩阵乘 / 卷积 / Transformer，有哪些官方加速库（AOL/ATB）？怎么选怎么调用。",
   "run_id": "C-cann-glm-5_3-standard-20260921T100754",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "call_f634c70b936a4ba183a8a1ce.result",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "# Search Results for \"昇腾 Ascend Transformer Boost ATB 官方文档 CANN\"\n\n## 1. [简介-ATB加速库-API参考-CANN9.1.0-beta.3开发文档-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)\n\n以GPT为代表的Transformer模型百花齐放，触发了对AI设备的巨大需求。 Ascend Transformer Boost加速库（下文简称为ATB加速 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html\n\n---\n\n## 2. [简介-Ascend Transformer Boost加速库-领域加速库开发 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html)\n\n随着AI的高速发展，特别是2023年GPT大模型的生产级可用，AI行业产生了巨大的经济价值。 以GPT为代表的Transformer模型百花齐 …\n\n**URL:** https://www.hiascend"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0001",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "## 1. [简介-ATB加速库-API参考-CANN9.1.0-beta.3开发文档-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)\n\n以GPT为代表的Transformer模型百花齐放，触发了对AI设备的巨大需求。 Ascend Transformer Boost加速库（下文简称为ATB加速 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "## 2. [简介-Ascend Transformer Boost加速库-领域加速库开发 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html)\n\n随着AI的高速发展，特别是2023年GPT大模型的生产级可用，AI行业产生了巨大的经济价值。 以GPT为代表的Transformer模型百花齐 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
-      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html"
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0001.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "## 3. [ascend-transformer-boost/README.md at master · mirror-cann …](https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md)\n\n一、什么是ATB ATB介绍 Ascend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend …\n\n**URL:** https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
-      "url": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md"
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "## 4. [ascend-transformer-boost/README.md · CANN/ascend ...](https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md)\n\n2025年10月15日 · Ascend Transformer Boost（下文简称为ATB加速库）加速库是一款高效、可靠的加速库，基于华为Ascend AI处理 …\n\n**URL:** https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
-      "url": "https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md"
+      "url": "https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_f634c70b936a4ba183a8a1ce.result",
       "evidence": {
         "event_id": "call_f634c70b936a4ba183a8a1ce.result",
         "quote": "## 5. [GitHub - mirror-cann/ascend-transformer-boost](https://github.com/mirror-cann/ascend-transformer-boost)\n\n2026年7月9日 · 一、什么是ATB ATB介绍 Ascend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库， …\n\n**URL:** https://github.com/mirror-cann/ascend-transformer-boost\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
-      "url": "https://github.com/mirror-cann/ascend-transformer-boost"
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html",
       "event_id": "call_905c6948ed454f4abc6683a2.result",
       "evidence": {
         "event_id": "call_905c6948ed454f4abc6683a2.result",
         "quote": "**标题**: 简介-ATB加速库-API参考-CANN9.1.0-beta.3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html)\n\n# 简介\n\n#### 概述\n\n随着AI的高速发展，特别是2023年GPT大模型的生产级可用，AI行业产生了巨大的经济价值。以GPT为代表的Transformer模型百花齐放，触发了对AI设备的巨大需求。\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。\n\nATB加速库采用了一系列优化策略，包括算法优化、硬件优化和软件优化，能够显著提升Transformer模型的训练和推理速度，同时降低能耗和成本。具体来说，ATB加速库通过优化矩阵乘法等核心算子和注意力机制的实现方式，实现了对Transformer模型的高效加速。此外，ATB加速库还充分利用了Ascend AI处理器的硬件特性，如算力、存储带宽和内存带宽，通过硬件加速和数据重用等技术，进一步提升了性能和效率。ATB加速库目前提供了底层基础的高性能算子以及"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendtb/ascendtb_0001.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
         "quote": "# Search Results for \"AOL Ascend Operation Library 昇腾 算子库 matmul 官方文档\"\n\n## 1. [一文了解AOL算子加速库 - 华为云社区](https://bbs.huaweicloud.com/blogs/432035)\n\n2024年7月31日 · 【摘要】 为加速大模型算力释放，昇腾提供AOL（Ascend Operator Library）算子加速库，不仅覆盖Softmax …\n\n**URL:** https://bbs.huaweicloud.com/blogs/432035\n\n---\n\n## 2. [ops-nn MatMul 算子深度解读：从 Tiling 到 Cube/Vector 双缓冲](https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html)\n\n2026年5月23日 · 摘要 本文深入解析了昇腾CANN中MatMul算子的优化策略。 MatMul算子看似简单，但在昇腾达芬奇架构上实现高性 …\n\n**URL:** https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html\n\n---\n\n## 3. [MatMul 算子在昇腾 NPU 上的优化实践：从原理到实战](https://blog.csdn.net/beautifulSunrise/article/details/161291455)\n\n2026年5月22日 · ops-nn 是昇腾CANN开源的基础算子库，matmul 和 "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0003",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://bbs.huaweicloud.com/blogs/432035",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
@@ -219,294 +377,373 @@
       "ownership": "unknown",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-1",
-      "url": "https://bbs.huaweicloud.com/blogs/432035"
+      "url": "https://bbs.huaweicloud.com/blogs/432035",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Community host without archived author identity."
     },
     {
-      "content_group": "",
+      "content_group": "https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
         "quote": "## 2. [ops-nn MatMul 算子深度解读：从 Tiling 到 Cube/Vector 双缓冲](https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html)\n\n2026年5月23日 · 摘要 本文深入解析了昇腾CANN中MatMul算子的优化策略。 MatMul算子看似简单，但在昇腾达芬奇架构上实现高性 …\n\n**URL:** https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-2",
-      "url": "https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html"
+      "url": "https://hwcomputing.csdn.net/6a1167d610ee7a33f2749ce4.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/beautifulSunrise/article/details/161291455",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
         "quote": "## 3. [MatMul 算子在昇腾 NPU 上的优化实践：从原理到实战](https://blog.csdn.net/beautifulSunrise/article/details/161291455)\n\n2026年5月22日 · ops-nn 是昇腾CANN开源的基础算子库，matmul 和 activation 类是它的核心内容，支持算子融合。\n\n**URL:** https://blog.csdn.net/beautifulSunrise/article/details/161291455\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-3",
-      "url": "https://blog.csdn.net/beautifulSunrise/article/details/161291455"
+      "url": "https://blog.csdn.net/beautifulSunrise/article/details/161291455",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/cann/aol",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
         "quote": "## 4. [CANN-算子库-昇腾社区](https://www.hiascend.com/cann/aol)\n\n数学库 数学库ops-math是CANN生态下基础数学计算算子库，提供基础数学运算与张量操作能力。 该库专为昇腾NPU优化适配，能为 …\n\n**URL:** https://www.hiascend.com/cann/aol\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-4",
-      "url": "https://www.hiascend.com/cann/aol"
+      "url": "https://www.hiascend.com/cann/aol",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.cnblogs.com/huaweiyun/p/18469484",
       "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
       "evidence": {
         "event_id": "call_c32cf5754f5e4d03bf4ad4b6.result",
         "quote": "## 5. [基于Ascend C的Matmul算子性能优化最佳实践 - 华为云开发 ...](https://www.cnblogs.com/huaweiyun/p/18469484)\n\n2024年10月16日 · 本文分享自华为云社区《基于Ascend C的Matmul算子性能优化最佳实践》，作者：昇腾CANN。 矩阵乘法是深度学 …\n\n**URL:** https://www.cnblogs.com/huaweiyun/p/18469484\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-5",
-      "url": "https://www.cnblogs.com/huaweiyun/p/18469484"
+      "url": "https://www.cnblogs.com/huaweiyun/p/18469484",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Saved snippet explicitly identifies author as Ascend CANN."
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/cann/aol",
       "event_id": "call_bc483f4d1682475f8889e985.result",
       "evidence": {
         "event_id": "call_bc483f4d1682475f8889e985.result",
         "quote": "**标题**: CANN-算子库-昇腾社区\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n[![昇腾社区](https://www.hiascend.com/_static3/cann-log-pc.BRiIAXC8.png)](https://www.hiascend.com/cann)\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n[学习](https://www.hiascend.com/cann/learn \"学习\")\n\n社区\n\n动态\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
-      "url": "https://www.hiascend.com/cann/aol"
+      "url": "https://www.hiascend.com/cann/aol",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_b8bcc505e1024b8f84f03863.result",
       "evidence": {
         "event_id": "call_b8bcc505e1024b8f84f03863.result",
         "quote": "**标题**: ascend-transformer-boost/README.md-代码预览-ascend-transformer-boost:基于华为Ascend AI处理器的Transformer模型加速库项目 - AtomGit\n**发布时间**: fee9a9fb 创建于 2025年10月15日 历史提交\n\n# Ascend Transformer Boost\n\n🔥 [2025/09] Ascend Transformer Boost项目首次上线。\n\n## 一、什么是ATB\n\n### ATB介绍\n\nAscend Transformer Boost（下文简称为ATB加速库）加速库是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。\n\n### 软件架构\n\n  \nATB的架构图如上图所示，其接口功能主要分成三部分：\n\n- 提供经过优化的融合算子（Operation），用户可以根据需求使用对应的算子完成计算功能。\n- 提供图算子机制，用户根据模型设计对应的图算子，使用加速库提供的原生算子和创建的自定义算子创建图算子，完成相应的计算。\n- 提供插件（Plugin）机制，用户可以根据自己的需求创建自定义的算子。\n\n### ATB仓介绍\n\nATB库的目录结构如下：\n\n```text\nascend-transformer-boost\n├── 3rdparty            //第三方依赖库文件夹\n├── build               //可存放构建生成的文件\n├── ci                  "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
-      "url": "https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md"
+      "url": "https://gitcode.com/cann/ascend-transformer-boost/blob/2a77722f2b44f5811a89acdad5872bc6f110f4bc/README.md",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "call_5fda07d63aa9446abbc6ee33.result",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "# Search Results for \"hiascend AOL \"ops-nn\" \"ops-math\" 算子库 文档 安装\"\n\n## 1. [CANN-算子库-昇腾社区](https://www.hiascend.com/cann/aol)\n\n本项目是CANN提供的数学类基础计算算子库，实现网络在NPU上加速计算。\n\n**URL:** https://www.hiascend.com/cann/aol\n\n---\n\n## 2. [接口简介-CANN8.1.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)\n\n该库提供了一系列丰富的深度优化、硬件亲和的高性能算子，如Neural Network、 Digital Vision Pre-Processing 算子等，为神经网络 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html\n\n---\n\n## 3. [昇腾CANN ops-math 仓：昇腾NPU上那些天天用但容易被 ...](https://blog.csdn.net/2501_94138677/article/details/161311656)\n\n2026年5月22日 · 昇腾CANN op"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0006",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/cann/aol",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "## 1. [CANN-算子库-昇腾社区](https://www.hiascend.com/cann/aol)\n\n本项目是CANN提供的数学类基础计算算子库，实现网络在NPU上加速计算。\n\n**URL:** https://www.hiascend.com/cann/aol\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-1",
-      "url": "https://www.hiascend.com/cann/aol"
+      "url": "https://www.hiascend.com/cann/aol",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "## 2. [接口简介-CANN8.1.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)\n\n该库提供了一系列丰富的深度优化、硬件亲和的高性能算子，如Neural Network、 Digital Vision Pre-Processing 算子等，为神经网络 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-2",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/2501_94138677/article/details/161311656",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "## 3. [昇腾CANN ops-math 仓：昇腾NPU上那些天天用但容易被 ...](https://blog.csdn.net/2501_94138677/article/details/161311656)\n\n2026年5月22日 · 昇腾CANN ops-math算子库摘要 昇腾CANN架构中的ops-math算子库是基础数学运算的核心组件，位于计算服务层 …\n\n**URL:** https://blog.csdn.net/2501_94138677/article/details/161311656\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-3",
-      "url": "https://blog.csdn.net/2501_94138677/article/details/161311656"
+      "url": "https://blog.csdn.net/2501_94138677/article/details/161311656",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://adg.csdn.net/6a3123cf662f9a54cb7fea8b.html",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "## 4. [AOL 算子库技术手册与最佳实践_开发语言_waitingforloveJJ ...](https://adg.csdn.net/6a3123cf662f9a54cb7fea8b.html)\n\n2026年5月24日 · AOL算子库是CANN架构中的核心组件，提供8类专用算子库：数学类 (ops-math)、神经网络类 (ops-nn)、线性代数 …\n\n**URL:** https://adg.csdn.net/6a3123cf662f9a54cb7fea8b.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-4",
-      "url": "https://adg.csdn.net/6a3123cf662f9a54cb7fea8b.html"
+      "url": "https://adg.csdn.net/6a3123cf662f9a54cb7fea8b.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://devpress.csdn.net/v1/article/detail/161869993",
       "event_id": "call_5fda07d63aa9446abbc6ee33.result",
       "evidence": {
         "event_id": "call_5fda07d63aa9446abbc6ee33.result",
         "quote": "## 5. [深入解析昇腾CANN神经网络算子库ops-nn：从架构定位到 ...](https://devpress.csdn.net/v1/article/detail/161869993)\n\n2026年6月10日 · 这篇文章就来拆解 ops-nn 到底是什么、它在 CANN 软件栈里扮演什么角色、为什么\"算子融合\"是它的核心竞争力， …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161869993\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-5",
-      "url": "https://devpress.csdn.net/v1/article/detail/161869993"
+      "url": "https://devpress.csdn.net/v1/article/detail/161869993",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html",
       "event_id": "call_7f4a2222ba3c40d4a5394c22.result",
       "evidence": {
         "event_id": "call_7f4a2222ba3c40d4a5394c22.result",
         "quote": "**标题**: 接口简介-AOL算子加速库接口-API-CANN8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html)\n\n# 接口简介\n\n#### 概述\n\n为加速模型算力释放，CANN（Compute Architecture for Neural Networks）提供了算子加速库（Ascend Operator Library，简称AOL）。\n\n该库提供了一系列丰富的深度优化、硬件亲和的高性能算子，如Neural Network、Digital Vision Pre-Processing算子等，为神经网络在昇腾硬件上加速计算奠定了基础。为方便开发者调用算子，提供了**单算子API执行方式**调用算子（基于C语言的API，无需提供IR（Intermediate Representation）定义），以便开发者快速且高效使能模型创新与应用，API的调用流程如[图1](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/opera"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/API/aolapi/operatorlist_00001.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "call_ca94638998d74729bc231f58.result",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "# Search Results for \"hiascend \"加速库包安装部署\" ATB torch_atb 版本要求 Ascend Transformer Boost pip\"\n\n## 1. [安装部署-CANN9.2.0-beta.2-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html)\n\n安装部署 ATB（Ascend Transformer Boost）加速库集成在CANN神经网络加速库NNAL包中，加速库包的安装部署请参考《CANN 快 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html\n\n---\n\n## 2. [安装部署-CANN8.5.0-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html)\n\nATB加速库采用了一系列优化策略，包括算法优化、硬件优化和软件优化，能够显著提升Transformer模型的训练和推理速度，同时降 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCom"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0008",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "## 1. [安装部署-CANN9.2.0-beta.2-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html)\n\n安装部署 ATB（Ascend Transformer Boost）加速库集成在CANN神经网络加速库NNAL包中，加速库包的安装部署请参考《CANN 快 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-1",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "## 2. [安装部署-CANN8.5.0-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html)\n\nATB加速库采用了一系列优化策略，包括算法优化、硬件优化和软件优化，能够显著提升Transformer模型的训练和推理速度，同时降 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-2",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "## 3. [GitHub - nowang6/ascend-transformer-boost](https://github.com/nowang6/ascend-transformer-boost)\n\n2025年10月21日 · 高性能和效率：ATB加速库充分利用了Ascend AI处理器的硬件特性，如算力、存储带宽和内存带宽，通过硬件加速 …\n\n**URL:** https://github.com/nowang6/ascend-transformer-boost\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-3",
-      "url": "https://github.com/nowang6/ascend-transformer-boost"
+      "url": "https://github.com/nowang6/ascend-transformer-boost",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "atb-canonical-readme",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "## 4. [GitHub - RobertJYang/ascend-transformer-boost](https://github.com/RobertJYang/ascend-transformer-boost/tree/master)\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门 …\n\n**URL:** https://github.com/RobertJYang/ascend-transformer-boost/tree/master\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-4",
-      "url": "https://github.com/RobertJYang/ascend-transformer-boost/tree/master"
+      "url": "https://github.com/RobertJYang/ascend-transformer-boost/tree/master",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false,
+      "ownership_basis": "Canonical CANN ATB repository or mirrored same ATB README content, not independent technical author."
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/gitblog_00807/article/details/165877237",
       "event_id": "call_ca94638998d74729bc231f58.result",
       "evidence": {
         "event_id": "call_ca94638998d74729bc231f58.result",
         "quote": "## 5. [Ascend Transformer Boost（ATB）加速库实战指南：从架构 ...](https://blog.csdn.net/gitblog_00807/article/details/165877237)\n\n3 天之前 · Ascend Transformer Boost（ATB）加速库实战指南：从架构原理、环境构建到算子调用 【免费下载链接】ascend …\n\n**URL:** https://blog.csdn.net/gitblog_00807/article/details/165877237\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 4,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0008-rank-5",
-      "url": "https://blog.csdn.net/gitblog_00807/article/details/165877237"
+      "url": "https://blog.csdn.net/gitblog_00807/article/details/165877237",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html",
       "event_id": "call_9e730e8bfdd347d5836fdcc2.result",
       "evidence": {
         "event_id": "call_9e730e8bfdd347d5836fdcc2.result",
         "quote": "**标题**: 安装部署-ATB加速库-领域加速库-CANN8.5.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0009",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/acce/ascendtb/ascendtb_0034.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     },
     {
-      "content_group": "",
+      "content_group": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html",
       "event_id": "call_d23f27fd33164af7a8403cda.result",
       "evidence": {
         "event_id": "call_d23f27fd33164af7a8403cda.result",
         "quote": "**标题**: 安装部署-ATB加速库-加速库-CANN9.2.0-beta.2开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0010",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/920beta2/acce/ascendtb/ascendtb_0034.html",
+      "target_match": "matched",
+      "representation": "excerpt",
+      "observed_defect": false
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "Identify AOL/ATB roles for matmul/convolution/Transformer",
+      "Explain library choice and how to invoke each"
+    ],
+    "secondary": [
+      "Installation prerequisites and selected-route constraints"
+    ],
+    "version_relations": [
+      "AOL/CANN/product support",
+      "ATB/CANN and Python/framework requirements"
+    ]
   }
 }
