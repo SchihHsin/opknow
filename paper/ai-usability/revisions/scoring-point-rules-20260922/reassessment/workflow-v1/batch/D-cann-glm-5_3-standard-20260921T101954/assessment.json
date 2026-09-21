@@ -1,0 +1,290 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_dff188761c464561b9aa82e4.result",
+          "quote": "## 5. [创建算子工程-工程化算子开发-算子实现-自定义算子开发 ...](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project)\n\n2026年6月4日 · DDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括 算子host侧代 …\n\n**URL:** https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project\n\n---\n\n"
+        }
+      ],
+      "reason": "The first relevant official result is query 1 rank 1 with decisive records verified.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "`KernelAdd` 类封装 `Init / Process / CopyIn / Compute / CopyOut`;"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "setup.py              // wheel包编译文件"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "cd build_out\n./custom_opp_<target_os>_<target_architecture>.run"
+        }
+      ],
+      "reason": "KernelAdd has explanation without a complete implementation; setup.py/helper contents are absent and the optional C++ validation relative path is inconsistent with build_out.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "missing_inputs": [
+        "M7"
+      ],
+      "reason": "Point total cannot be finalized while M7 remains unscorable.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html",
+          "score": 2,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html",
+          "score": 2,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_ffb2664abdac4bca920084f9.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-on-the",
+          "score": 5,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_8bca4ef972cb43b08fa82795.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md",
+          "score": 1,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html",
+          "score": 2,
+          "status": "scored",
+          "observations": {
+            "event_id": "call_7939500f53d343ebb273fd1b.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+          "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+          "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子开发-CANN商用版8.1.RC1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+          "quote": "**标题**: 创建算子工程-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# 创建算子工程\n\nDDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括**算子host侧代码实现文件**、**算子kernel侧实现文件**以及**工程编译配置文件等**。\n\n**简要说明：**\n\n使用msOpGen工具创建算子工程之前，需要参考[环境准备](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-environment-preparation)章节安装驱动固件和DDK软件包，完成开发环境和运行环境的准备。\n\n同时需要配置ascendc环境变量，示例如下。\n\n收起\n\n自动换行\n\n```shell\nsource ddk/tools/tools_ascendc/set_ascendc_env.sh\n```\n\n使用msOpGen工具创建算子开发工程的步骤如下。\n\n1. 编写算子的原型定义json文件，用于生成算子开发工程。\n   \n   例如，AddCustom算子的json文件命名为add_custom.json，文件内容如下。\n   \n   收起\n   \n   自动换行\n   \n   深色代码主题\n   \n   复制\n   \n   ```json\n   [    {        \"op\""
+        },
+        {
+          "event_id": "call_ffb2664abdac4bca920084f9.result",
+          "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+        },
+        {
+          "event_id": "call_8bca4ef972cb43b08fa82795.result",
+          "quote": "**标题**: Kernel侧算子实现-基于工程实现算子-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# Kernel侧算子实现\n\n在[算子实现](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-overview)章节已经介绍了kernel侧算子核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。\n\n## 自动生成kernel侧算子实现模板\n\n在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过msOpGen工具自动生成，样例如下所示。**这里参数的顺序按照“输入、输出、workspace、tiling”的顺序排布，开发者不要调整其顺序。**\n\n收起\n\n自动换行\n\n深色代码主题\n\n复制\n\n```cpp\n#include \"kernel_operator.h\"extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR x, GM_ADDR y, GM_ADDR z, GM_ADDR workspace, GM_ADDR tiling) {    GET_TILING_DATA(tiling_data, tiling);// 获取Tiling参数，详"
+        },
+        {
+          "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+          "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "call_7939500f53d343ebb273fd1b.result",
+          "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        }
+      ],
+      "reason": "Seven official targets score [2,2,5,5,5,1,2], mean22/7; body scores mean no observed defect, not independently proven full delivery. Wrong-target homepage=1.",
+      "score": 3.142857142857143,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+          "quote": "**标题**: 创建算子工程-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# 创建算子工程\n\nDDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括**算子host侧代码实现文件**、**算子kernel侧实现文件**以及**工程编译配置文件等**。\n\n**简要说明：**\n\n使用msOpGen工具创建算子工程之前，需要参考[环境准备](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-environment-preparation)章节安装驱动固件和DDK软件包，完成开发环境和运行环境的准备。\n\n同时需要配置ascendc环境变量，示例如下。\n\n收起\n\n自动换行\n\n```shell\nsource ddk/tools/tools_ascendc/set_ascendc_env.sh\n```\n\n使用msOpGen工具创建算子开发工程的步骤如下。\n\n1. 编写算子的原型定义json文件，用于生成算子开发工程。\n   \n   例如，AddCustom算子的json文件命名为add_custom.json，文件内容如下。\n   \n   收起\n   \n   自动换行\n   \n   深色代码主题\n   \n   复制\n   \n   ```json\n   [    {        \"op\""
+        },
+        {
+          "event_id": "call_ffb2664abdac4bca920084f9.result",
+          "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+        }
+      ],
+      "reason": "Official PyTorch adaptation is detailed, but a complete server Ascend C host/kernel build chain is missing; CANN Kit Kirin DDK cannot be treated as a server-complete flow.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_ffb2664abdac4bca920084f9.result",
+          "quote": "NPU设备在pytorch 2.1及以上版本使用的设备名称是PrivateUse1，在2.1以下版本用的是XLA，如果是2.1以下版本PrivateUse1需要改成XLA\n         TORCH_LIBRARY_IMPL(myops, PrivateUse1, m) {\n             m.impl(\"add_custom\", &add_cu"
+        }
+      ],
+      "reason": "PyTorch >=2.1 PrivateUse1 versus XLA has an official relation; CANN Kit is Kirin-only and the TorchNPU 8.2.RC1 prerequisite is not a hard or unique compatibility guarantee.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_dff188761c464561b9aa82e4.result",
+          "quote": "## 3. [Ascend C 算子开发全流程揭秘 - 从 msopgen 到精度校验](https://blog.csdn.net/m0_46721576/article/details/155584090)\n\n2026年8月2日 · 简单来说， msopgen 是 Ascend C 算子开发的 “脚手架”（Scaffolding）生成器。 它是一个命令行工具，接受一个 …\n\n**URL:** https://blog.csdn.net/m0_46721576/article/details/155584090\n\n---\n\n"
+        },
+        {
+          "event_id": "call_dff188761c464561b9aa82e4.result",
+          "quote": "## 4. [AscendC从入门到精通系列（三）基于自定义算子工程开发 ...](https://developer.aliyun.com/article/1643997)\n\n2024年12月5日 · 以动态shape的AddCustom算子为例，详细描述了如何利用CANN提供的工具msOpGen生成开发工程，实现算子核函 …\n\n**URL:** https://developer.aliyun.com/article/1643997\n\n---\n\n"
+        },
+        {
+          "event_id": "call_165d939b1a1c41b19673a160.result",
+          "quote": "## 1. [Ascend C算子接入torch_npu指南：自定义NPU算子PyTorch ...](https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin)\n\n详解Ascend C算子接入torch_npu的完整流程，包括Host注册、编译打包、安装验证。 对比torch.library、Pybind、OpCommand、图 …\n\n**URL:** https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin\n\n---\n\n"
+        },
+        {
+          "event_id": "call_165d939b1a1c41b19673a160.result",
+          "quote": "## 3. [API 文档 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/pytorch/api_doc.html)\n\n4 天之前 · PyTorch-NPU 除了提供了 PyTorch 官方算子实现之外，也提供了大量高性能的自定义算子，详细的算子信息以及描述如下 …\n\n**URL:** https://ascend.github.io/docs/sources/pytorch/api_doc.html\n\n---\n\n"
+        },
+        {
+          "event_id": "call_165d939b1a1c41b19673a160.result",
+          "quote": "## 4. [在PyTorch中集成与调用自定义Ascend C融合算子_pytorch ...](https://blog.csdn.net/seven_1243096140/article/details/155852655)\n\n2026年7月12日 · 本文探讨了在PyTorch框架中高效集成AscendC自定义算子的关键技术。 通过CANN注册机制、张量适配和梯度传播 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155852655\n\n---\n\n"
+        },
+        {
+          "event_id": "call_62f186379fd8424394360b63.result",
+          "quote": "## 1. [零基础玩转 CANN 全链路：从 ACL 接口到自定义算子的 ...](https://blog.csdn.net/weixin_62765017/article/details/158614161)\n\n2026年7月29日 · 本文围绕 CANN 框架核心，通过设备状态核查与 ACL 传输接口性能测试筑牢硬件基础、建立性能基线，再完整落地 …\n\n**URL:** https://blog.csdn.net/weixin_62765017/article/details/158614161\n\n---\n\n"
+        },
+        {
+          "event_id": "call_62f186379fd8424394360b63.result",
+          "quote": "## 2. [使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证 ...](https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html)\n\n4 天之前 · 本技术指南以 CANN asc-tools 仓库中的 examples/03_msopgen 样例为核心，系统讲解如何基于算子原型定义文件，使用 …\n\n**URL:** https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html\n\n---\n\n"
+        },
+        {
+          "event_id": "call_62f186379fd8424394360b63.result",
+          "quote": "## 3. [昇腾CANN实战指南：从ACL接口到自定义算子开发的完整 ...](https://blog.csdn.net/herb5/article/details/155683264)\n\n2026年4月18日 · 本文详细介绍了昇腾CANN开发的全流程，从ACL接口使用到自定义算子开发，涵盖环境搭建、基础配置、性能优化 …\n\n**URL:** https://blog.csdn.net/herb5/article/details/155683264\n\n---\n\n"
+        },
+        {
+          "event_id": "call_62f186379fd8424394360b63.result",
+          "quote": "## 4. [昇腾 CANN 算子开发实战：从自定义算子到部署调优](https://ascendai.csdn.net/698610600a2f6a37c590615a.html)\n\n2026年2月7日 · 介绍昇腾计算架构（CANN）的核心组件与功能，包括异构计算架构、算子开发框架和推理引擎的作用。 说明自定义 …\n\n**URL:** https://ascendai.csdn.net/698610600a2f6a37c590615a.html\n\n---\n\n"
+        },
+        {
+          "event_id": "call_b40fc11fe3634317a8a90228.result",
+          "quote": "**标题**: 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析 - AtomGit | GitCode博客\n**发布时间**: 原创 2026-09-17 10:18:06 374 阅读\n\n# 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[开源项目asc-tools  \n\\\nAscend C Tools仓是CANN基于Ascend C编程语言推出的配套调试工具仓。](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[项目地址：](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)[https://gitcode.com/cann/asc-tools](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n立即免费下载\n\n本技术指南以 CANN asc-tools 仓库中的 `examples/03_msopgen` 样例为核心，系统讲解如何"
+        }
+      ],
+      "reason": "Derived possible independent content counts are 7–8; the author-unknown skillsmd source is retained without merging domains, and the lower bound remains in the 5-point band.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_b40fc11fe3634317a8a90228.result",
+          "quote": "**根据算子原型定义文件（JSON）自动生成自定义算子工程框架**"
+        },
+        {
+          "event_id": "call_b40fc11fe3634317a8a90228.result",
+          "quote": "产品 CANN 软件版本 Ascend 950PR / Ascend 950DT >= CANN 9.1.0 Atlas A3 训练系列产品 / Atlas A3 推理系列产品 >= CANN 9.0.0 Atlas A2 训练系列产品 / Atlas A2 推理系列产品 >= CANN 9.0.0"
+        },
+        {
+          "event_id": "call_dff188761c464561b9aa82e4.result",
+          "quote": "简单来说， msopgen 是 Ascend C 算子开发的 “脚手架”（Scaffolding）生成器。"
+        }
+      ],
+      "reason": "Atomic claims separate generic official mechanisms from server-specific details. The latter are checked but unsupported by this packet, not false.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "msopgen gen -l {芯片型号列表} -o {输出目录} -i {op项目json文件} -c {ai_core} -t {operator}"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "CustomOctensor + `_npu_aclnn` / `custom_op` 装饰器调用 aclnn 接口"
+        }
+      ],
+      "reason": "Prior contains concrete msopgen and CustomOctensor/_npu_aclnn assertions, but this packet cannot verify their exact calling correctness.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M8": {
+      "event_refs": [
+        "call_dff188761c464561b9aa82e4.dispatch",
+        "call_dbfeb98d69c64865aa92c7f5.dispatch",
+        "call_fdb0c62f2d4b419d9498333a.dispatch",
+        "call_7872088a1ec54df1ba8a3a94.dispatch",
+        "call_165d939b1a1c41b19673a160.dispatch",
+        "call_ffb2664abdac4bca920084f9.dispatch",
+        "call_8bca4ef972cb43b08fa82795.dispatch",
+        "call_62f186379fd8424394360b63.dispatch",
+        "call_bf35f9987dfc4e8ca09c1eda.dispatch",
+        "call_b40fc11fe3634317a8a90228.dispatch",
+        "call_7939500f53d343ebb273fd1b.dispatch"
+      ],
+      "reason": "Three searches and eight fetches were dispatched; M8 is the lowest band for this completed run.",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": ";\nat::Tensor add_custom_autograd(const at::Tensor& self, const at::Tensor& other) {\n    return AddCustomFunction::apply(self, other);\n}\n// 为NPU设备注册实现:PyTorch 2.1+设备名为PrivateUse1,2.1以下用XLA\nTORCH_LIBRARY_IMPL(myops, PrivateUse1, m) {\n    m.impl(\"add_custom\", &add_custom_impl_npu);\n    m.impl(\"add_custom_backward\", &add_custom_backward_impl_npu);\n}\nTORCH_LIBRARY_IMPL(myops, AutogradPrivateUse1, m) {   // 2.1以下为AutogradXLA\n    m.impl(\"add_custom\", &add_custom_autograd);\n}\n```\n\n**(3) function.h 与 pybind 绑定**\n\n```cpp\n// function.h\n#ifndef FUNCTION_H_"
+        }
+      ],
+      "reason": "PyTorch 2.1 dispatch relation is supported, but the complete required version chain is missing; installation guidance is not hard compatibility confirmation.",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {},
+  "process_sha256": "b4f0832f7f647a6127aa5a4c4d1d7b6f330da1b6bb0455fb21bfd4174b3f8f6b",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "D-cann-glm-5_3-standard-20260921T101954"
+}

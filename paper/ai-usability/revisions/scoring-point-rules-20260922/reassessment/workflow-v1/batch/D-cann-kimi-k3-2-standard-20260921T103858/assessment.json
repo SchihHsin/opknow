@@ -1,0 +1,223 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "D-cann-kimi-k3-2-standard-20260921T103858",
+  "process_sha256": "fa7779a5c83a72b799e2a44c309d905eefaca83e115b028b2bc7823c748e271a",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 4,
+      "reason": "First query rank2 official relevant title; rank3 also official, same score band.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_28ae6b5e.result",
+          "quote": "## 2. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 5,
+      "reason": "All four official fetches are direct target body with no observed missing portion; not independent full-page certification.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_692367d8.result",
+          "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子工具-MindStudio8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmentt"
+        },
+        {
+          "event_id": "WebFetch_3_752d7173.result",
+          "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguid"
+        },
+        {
+          "event_id": "WebFetch_4_10ddf5dd.result",
+          "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/f"
+        },
+        {
+          "event_id": "WebFetch_5_add06bb1.result",
+          "quote": "**标题**: 概述-算子实现-Ascend C算子开发-算子开发-CANN商用版8.2.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n# 概述\n\nA"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00025.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official generator and PyTorch registration are detailed, but actual kernel/host implementation and setup.py contents are not supplied in official saved body.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_692367d8.result",
+          "quote": "msOpGen工具仅生成空的算子工程模板，需要用户自行添加算子实现"
+        },
+        {
+          "event_id": "WebFetch_4_10ddf5dd.result",
+          "quote": "├── setup.py                        // wheel包编译文件"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "PyTorch dispatch-version relation exists; complete software/device version pairing absent.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_10ddf5dd.result",
+          "quote": "NPU设备在pytorch 2.1及以上版本使用的设备名称是PrivateUse1，在2.1以下版本用的是XLA，如果是2.1以下版本PrivateUse1需要改成XLA"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "At least seven independent related groups remain even after possible repost merges; unknown skills publisher cannot change band.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_28ae6b5e.result",
+          "quote": "https://developer.aliyun.com/article/1643997"
+        },
+        {
+          "event_id": "WebSearch_7_fba68185.result",
+          "quote": "https://hwcomputing.csdn.net/6947ee13836da32144868911.html"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Common JSON and host/kernel roles supported; exact tutorial kernel/tiling/build methods remain checked unsupported, not false. CLI example differs from official example but absence of full CLI reference cannot prove invalidity.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_8_26ec4a6f.result",
+          "quote": "**op_kernel目录**：存放核函数实现，这些代码会在AI Core上执行。核函数是算子的核心计算逻辑，使用Ascend C编写。\n\n**op_host目录**：存放Host端代码，包括Tiling策略、形状推导、数据类型推导、算子注册等。这些代码在CPU上执行，负责为核函数准备参数。\n\n"
+        },
+        {
+          "event_id": "WebFetch_8_26ec4a6f.result",
+          "quote": "AddCustom.json是算子的描述文件，定义了算子的输入输出规格：\n\n```prolog\n[\n    {\n        \"op\": \"AddCustom\",\n        \"input_desc\": [\n            {\n                \"name\": \"x\",\n                \"param_type\": \"required\",\n                \"format\": [\"ND\"],\n                \"type\": [\"float16\"]\n            },\n            {\n                \"name\": \"y\",\n                \"param_type\": \"required\",\n                \"format\": [\"ND\"],\n                \"type\": [\"float16\"]\n            }\n        ],\n        \"output_desc\": [\n            {\n                \"name\": \"z\",\n                \"param_type\": \"required\",\n                \"format\": [\"ND\"],\n                \"type\": [\"float16\"]\n            }\n        ]\n    }\n]\n复制\n```\n\n这个文件描述了AddCustom算子有两个输入（x和y），一个输出（z），都是float16类型，ND格式。msOpGen工具会根据这个文件生成算子工程的框架代码。\n\n* * *\n\n"
+        },
+        {
+          "event_id": "WebFetch_8_26ec4a6f.result",
+          "quote": "#### 10.5.1 使用msOpGen生成工程\n\nmsOpGen是CANN提供的算子工程生成工具，可以根据JSON描述文件生成算子工程框架：\n\n```mipsasm\n# 使用AddCustom.json生成算子工程\nmsOpGen -i AddCustom.json -o CustomOp\n复制\n```\n\n生成的工程包含：\n\n- 目录结构：op_kernel、op_host、framework等\n- 框架代码：基础的Kernel函数、Tiling函数框架\n- 编译脚本：CMakeLists.txt等\n\n"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior specific REGISTER_KERNEL/NPUCustomOp/gen_custom_op/libopapi route cannot be verified from reliable archived references; general workflow is partly supported, but exact integration correctness affects band.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "社区版 torch_npu 支持 `NPUCustomOp`/gen_custom_op 方式。"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Four dispatched searches plus five fetches =9.",
+      "evidence": [],
+      "event_refs": [
+        "WebSearch_0_28ae6b5e.dispatch",
+        "WebFetch_1_692367d8.dispatch",
+        "WebSearch_2_f24e8bae.dispatch",
+        "WebFetch_3_752d7173.dispatch",
+        "WebFetch_4_10ddf5dd.dispatch",
+        "WebFetch_5_add06bb1.dispatch",
+        "WebSearch_6_3fe7cc14.dispatch",
+        "WebSearch_7_fba68185.dispatch",
+        "WebFetch_8_26ec4a6f.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final provides supported PyTorch dispatch relation; CANN/TorchNPU doc labels are not sufficient proof of the whole selected combination.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "PyTorch | 2.1+（PrivateUse1）；<2.1 需把 PrivateUse1 改 XLA"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Concrete route requires missing kernel/host code, setup.py/helper, backward/autograd definitions and package exports; content repairs exceed environment substitution.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "// 反向实现 add_custom_backward_impl_npu ..."
+        },
+        {
+          "event_id": "run-end",
+          "quote": "`setup.py` 的完整内容"
+        }
+      ],
+      "observations": {
+        "content_repairs": [
+          "Supply KernelAdd class and full host tiling implementation",
+          "Supply setup.py and helper header implementation",
+          "Define registered add_custom_backward_impl_npu and add_custom_autograd; export Python wrapper in __init__.py"
+        ],
+        "execution_status": "content_checked_not_executed"
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "M7 unresolved correctness cannot be imputed.",
+      "evidence": [],
+      "missing_inputs": [
+        "M7"
+      ]
+    }
+  },
+  "observations": {
+    "m5_possible_counts": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "execution_status": "content_checked_not_executed"
+  },
+  "channel_states": {}
+}

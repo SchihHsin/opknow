@@ -1,0 +1,3 @@
+# Parent adjudication D-CANN DeepSeek
+
+All eleven sources/prior/final read. M1=5; M2=32/7; M3=3; M4=3; M5=5 (8–9 content groups); M6=3; M7=1; M8=1; M9=3; M10=3; M11=69.26474971428571. Prior -f tf_pytorch is contradicted by the full official parameter enum; no self-confidence deduction. Official PyTorch>=1.11/v2r1 relation is partial, not a complete compatibility matrix. M6 splits generated-aclnn (supported) from FrameworkLaunch naming and native_functions dispatch (unsupported, not false). Final requires kernel/tiling/adapter implementation and directory/variable corrections. No new collection or hardware execution.

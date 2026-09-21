@@ -1,0 +1,3 @@
+# Parent adjudication: D-CANN GLM
+
+All saved prior/source/final content reviewed. Seven official fetches yield22/7. CANN Kit DDK bodies establish generic mechanisms but not server hardware/version/API particulars. M6 retains full GitCode tutorial atomic assertions; reliable support is partial, missing support is not falsity. Search fragments contain mostly topic descriptions. M7 exact CLI and CustomOctensor APIs remain unscorable. Final requires KernelAdd implementation, setup.py/build instructions and corrected working-directory paths. No new retrieval/hardware execution. M11 excluded for M7.

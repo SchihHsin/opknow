@@ -1,0 +1,282 @@
+{
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_00_sZsXaNOzCpbcbtY7tNpL3853.result",
+          "quote": "## 1. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ..."
+        }
+      ],
+      "reason": "第1次查询第1位是与原题相关的官方Ascend C自定义算子开发实践。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "KernelAdd op;"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "int deviceId = 0;\naclRet = aclrtSetDevice(deviceid);"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "./build_out/custom_opp_<target_os>_<target_architecture>.run"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "在 `op_plugin/config/<版本目录，如v2r1>/op_plugin_functions.yaml` 添加自定义算子定义："
+        }
+      ],
+      "reason": "最终答案有具体JSON/msOpGen/aclnn/部署与PyTorch适配方案，但需要补写KernelAdd/host tiling/adapter主体并修正my_abs/AddCustom路线、deviceId/deviceid及构建输出路径错误；属于内容修补，不是环境值替换。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Calculated from adjudicated point inputs; not a probability.",
+      "score": 69.26474971428571,
+      "status": "scored"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html",
+          "observations": {
+            "event_id": "call_00_N6n36e4R3Bs9umJJEFwO5683.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/80RC1alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0050.html",
+          "observations": {
+            "event_id": "call_00_QKPUFsOJUjR88ry93sUj7821.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0067.html",
+          "observations": {
+            "event_id": "call_00_SqGy9Cmtrfn9oGrUrS3m1258.result",
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0070.html",
+          "observations": {
+            "event_id": "call_00_Tm8JjE5kE0y6wGoweUEE0711.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0060.html",
+          "observations": {
+            "event_id": "call_00_yfvTQffJCXdXaUgnLGRb5100.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_0017.html",
+          "observations": {
+            "event_id": "call_00_k69pfg4C3oQZbKysNTs97656.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0063.html",
+          "observations": {
+            "event_id": "call_00_PCDZc7dp99R97p60FAex2746.result",
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          },
+          "score": 5,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_00_N6n36e4R3Bs9umJJEFwO5683.result",
+          "quote": "# Ascend C自定义算子开发实践"
+        },
+        {
+          "event_id": "call_00_SqGy9Cmtrfn9oGrUrS3m1258.result",
+          "quote": "**标题**: 调用流程-单算子API调用-算子调用-Ascend C算子开发-算子开发-CANN商用版8.0.RC2开发文档-昇腾社区"
+        }
+      ],
+      "reason": "7个官方目标页面按实际最终返回表示等权平均，分数为[5,5,2,5,5,5,5]。",
+      "score": 4.571428571428571,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_00_N6n36e4R3Bs9umJJEFwO5683.result",
+          "quote": "展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署，并使用msOpST工具对Ascend C自定义算子进行功能测试。"
+        },
+        {
+          "event_id": "call_00_QKPUFsOJUjR88ry93sUj7821.result",
+          "quote": "本节将介绍自定义算子开发完成后，如何通过适配开发，从而在PyTorch框架中可以调用到该算子。"
+        },
+        {
+          "event_id": "call_00_Tm8JjE5kE0y6wGoweUEE0711.result",
+          "quote": "单算子API调用方式，是指直接调用单算子API接口，基于C语言的API执行算子。算子工程创建完成后，基于工程代码框架完成算子原型定义、kernel侧算子实现、host侧tiling实现，通过工程编译脚本完成算子的编译部署，之后再进行单算子API的调用。"
+        },
+        {
+          "event_id": "call_00_PCDZc7dp99R97p60FAex2746.result",
+          "quote": "// TODO: user kernel impl"
+        },
+        {
+          "event_id": "call_00_QKPUFsOJUjR88ry93sUj7821.result",
+          "quote": "实现算子适配主体函数，根据Ascend C算子原型构造得到对应的input、output、attr。"
+        }
+      ],
+      "reason": "官方正文覆盖JSON/msOpGen、Host/Kernel、编译部署、aclnn两段式和PyTorch适配主流程，但缺具体KernelAdd、host tiling及完整PyTorch适配函数。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_00_QKPUFsOJUjR88ry93sUj7821.result",
+          "quote": "下文以PyTorch 1.11.0及以上官方版本为例，介绍PyTorch的适配流程。"
+        },
+        {
+          "event_id": "call_00_QKPUFsOJUjR88ry93sUj7821.result",
+          "quote": "v2r1                             # pt2.1版本算子配置文件目录"
+        }
+      ],
+      "reason": "已取得PyTorch 1.11.0及以上基准、v2r1/pt2.1目录关系和多版CANN文档标签，但缺完整PyTorch/torch_npu/CANN配套矩阵。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_00_sZsXaNOzCpbcbtY7tNpL3853.result",
+          "quote": "## 3. [Ascend C 算子开发全流程揭秘 - 从 msopgen 到精度校验](https://blog.csdn.net/m0_46721576/article/details/155584090)"
+        },
+        {
+          "event_id": "call_00_16vXx19Gy10iEvRUTqdc2917.result",
+          "quote": "## 5. [Ascend上开发自定义算子接入PyTorch有几种实现方式？ - 知乎](https://zhuanlan.zhihu.com/p/1946230593403745334)"
+        },
+        {
+          "event_id": "call_00_xa9Dgm8XfLooS6oVus2O6701.result",
+          "quote": "## 5. [昇腾Ascend C单算子API调用指南 - 在Python中直接调用 ...](https://blog.csdn.net/weixin_39450680/article/details/155647401)"
+        }
+      ],
+      "reason": "Independent content count candidates are8 or9; same-title Python guide is retained as a repost candidate. Both counts map to5.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_00_GB4ezfg2MDNc69PQj9L62413.result",
+          "quote": "算子编译部署后，会自动生成aclnn API"
+        },
+        {
+          "event_id": "call_00_16vXx19Gy10iEvRUTqdc2917.result",
+          "quote": "PyTorch官方提供的native_functions.yaml文件定义了PyTorch Native Functions的具体算子定义和分发细节，定义则通过.cpp文件实现"
+        },
+        {
+          "event_id": "call_00_GB4ezfg2MDNc69PQj9L62413.result",
+          "quote": "FrameworkLaunch是通过框架调用自定义算子的方式。"
+        }
+      ],
+      "reason": "Compilation-generated aclnn has official support. FrameworkLaunch naming and native_functions.yaml exact dispatch claims remain unsupported after archived-source check; no established direct contradiction.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "3. 运行 `msopgen gen -i add_custom.json -c ai_core-<soc_version> -f tf_pytorch -out ./AddCustom`（`-f` 框架类型、`-c` 为 soc 版本如 `Ascend310P3`）。"
+        },
+        {
+          "event_id": "call_00_k69pfg4C3oQZbKysNTs97656.result",
+          "quote": "- 默认为TensorFlow框架，默认值：tf或者tensorflow\n- Caffe框架，参数值：caffe"
+        },
+        {
+          "event_id": "call_00_k69pfg4C3oQZbKysNTs97656.result",
+          "quote": "- PyTorch框架，参数值：pytorch\n- ONNX框架，参数值：onnx\n- 单算子API调用，参数值：aclnn"
+        }
+      ],
+      "reason": "检索前主命令使用`-f tf_pytorch`，而固定官方参数表只列tf/tensorflow、caffe、pytorch、onnx、aclnn；关键msOpGen框架参数与PyTorch接入路线因此被可靠证据否定，且先验没有可核验的完整adapter细节。",
+      "score": 1,
+      "status": "scored"
+    },
+    "M8": {
+      "event_refs": [
+        "call_00_sZsXaNOzCpbcbtY7tNpL3853.dispatch",
+        "call_00_N6n36e4R3Bs9umJJEFwO5683.dispatch",
+        "call_00_16vXx19Gy10iEvRUTqdc2917.dispatch",
+        "call_00_QKPUFsOJUjR88ry93sUj7821.dispatch",
+        "call_00_GB4ezfg2MDNc69PQj9L62413.dispatch",
+        "call_00_xa9Dgm8XfLooS6oVus2O6701.dispatch",
+        "call_00_SqGy9Cmtrfn9oGrUrS3m1258.dispatch",
+        "call_00_Tm8JjE5kE0y6wGoweUEE0711.dispatch",
+        "call_00_yfvTQffJCXdXaUgnLGRb5100.dispatch",
+        "call_00_k69pfg4C3oQZbKysNTs97656.dispatch",
+        "call_00_PCDZc7dp99R97p60FAex2746.dispatch"
+      ],
+      "reason": "4次搜索+7次抓取，共11次实际派发，按C=S+F落入C≥9档。",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "- **无法核实处**：CANN 具体版本号与 torch_npu/PyTorch 版本的精确对应表，本轮未取到官方对照表原文，只能确认\"PyTorch 1.11.0 及以上\"这一措辞，不给出精确配套版本。"
+        }
+      ],
+      "reason": "最终答案支持PyTorch≥1.11及v2r1/pt2.1目录的部分关系，但明确没有取得CANN与torch_npu/PyTorch的精确配套表。",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {
+    "evidence_boundary": "Only the fixed D-CANN packet and prepared facts were used; no new retrieval or execution.",
+    "m2_completeness_verification": {
+      "basis": "Direct-body returns had no observed defect; one title-only fetch is scored by representation.",
+      "status": "not_independently_verified"
+    },
+    "m5_possible_counts": [
+      8,
+      9
+    ]
+  },
+  "process_sha256": "b32c71d52977a62c6a93d75e1b0e0a0ee2e8ed6fdaf409e0eb674388f963d51e",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "D-cann-deepseek-v4_1-flash-standard-20260921T100558"
+}
