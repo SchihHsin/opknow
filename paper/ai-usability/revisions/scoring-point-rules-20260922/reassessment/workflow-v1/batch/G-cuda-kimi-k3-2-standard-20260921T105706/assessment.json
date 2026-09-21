@@ -1,0 +1,227 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "G-cuda-kimi-k3-2-standard-20260921T105706",
+  "process_sha256": "ffc92697702691d0a453757748bd515e4a891b6a57c23928ab1766dcb0a9921b",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第1次查询第1位即为相关AMD官方HIPIFY文档。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_d0d43e0e.result",
+          "quote": "## 1. [HIPIFY documentation - AMD]"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.8,
+      "reason": "Five direct bodies; hipify-clang body ends at an introduction to CSV output with that content absent, an observable boundary omission (4); other four have no observed body defect (5). Mean24/5; not proof of full delivery.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_1015fc4e.result",
+          "quote": "This generates `intro.cu.csv` file with statistics:"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://rocm.docs.amd.com/projects/ai-ecosystem/en/latest/frameworks/pytorch/install.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/install.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "HIPIFY installation, tool conversion commands and restrictions are detailed, and ROCm PyTorch Docker installation is present. The question also covers moving a PyTorch script: the retrieved bodies do not explain torch.cuda namespace reuse or the Python-script migration steps. This is a task-content gap, separate from fetch completeness.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_7240e26e.result",
+          "quote": "hipify_torch](https://github.com/ROCm/hipify_torch) is a related tool that also translates CUDA source code into portable HIP C++. It was developed as part of the PyTorch project to cater to the project’s unique requirements, was found to be useful for PyTorch-related projects, and released as an independent utility.\n\nH"
+        },
+        {
+          "event_id": "WebFetch_5_b5e1c693.result",
+          "quote": "1. Pull the ROCm PyTorch 2.13.0 Docker image.\n   \n   Python 3.14\n   \n   ```\n   docker pull rocm/pytorch:rocm10.0_ubuntu26.04_py3.14_pytorch_release_2.13.0\n   ```\n   \n   Python 3.13\n   \n   ```\n   docker pull rocm/pytorch:rocm10.0_ubuntu24.04_py3.13_pytorch_release_2.13.0\n   ```\n   \n   Python 3.12\n   \n   ```\n   docker pull rocm/pytorch:rocm10.0_ubuntu24.04_py3.12_pytorch_release_2.13.0\n   ```\n   \n   Python 3.11\n   \n   ```\n   docker pull rocm/pytorch:rocm10.0_ubuntu24.04_py3.11_pytorch_release_2.13.0\n   ```\n\n<!--THE END-->\n\n2. Start the Docker container.\n   \n   Python 3.14\n   \n   `"
+        },
+        {
+          "event_id": "WebFetch_2_1015fc4e.result",
+          "quote": "## Usage#\n\nNote\n\nFor additional details on the following `hipify-clang` command options, see hipify-clang commands\n\nTo process a file, `hipify-clang` needs access to the same headers that are required to compile it with `Clang`:\n\n```\n./hipify-clang square.cu --cuda-path=/usr/local/cuda-12.9 -I /usr/local/cuda-12.9/samples/common/inc\n```\n\n`hipify-clang` arguments are supplied first, followed by a separator `--` and the arguments to be passed to Clang for compiling the input file:\n\n```\n./hipify-clang cpp17.cu --cuda-path=/usr/local/cuda-12.9 -- -std=c++17\n```\n\n`hipify-clang` also supports the hipification of multiple files that can be specified in a single command with absolute or relative paths:\n\n```\n./hipify-clang cpp17.cu ../../square.cu /home/user/cuda/intro.cu --cuda-path=/usr/local/cuda-12.9 -- -std=c++17\n```\n\nTo use a specific version of LLVM during hipification, specify the `hipify-clang` op"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Official CUDA/LLVM dependency table, HIPIFY Core SDK packaging rule and selected ROCm10.0/PyTorch2.13.0 Docker tag together support a versioned route. Multiple constraints must be combined. Missing pip alternative is not a missing necessary relation for Docker.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_1015fc4e.result",
+          "quote": "12.9.11\n\n# Using hipify-clang#\n## Release Dependencies#\n21.1.0, 21.1.1, 21.1.2, 21.1.3, 21.1.4, 21.1.5, 21.1.6, 21.1.7, 21.1.8, 22.1.0, 22.1.1, 22.1.2, 22.1.3, 22.1.4, 22.1.5, 22.1.6, 22.1.7, 22.1.81\n\n✅\n\n✅\n\n12.8.1\n\n# Using hipify-clang#\n## Release Dependencies#\n20.1.0, 20.1"
+        },
+        {
+          "event_id": "WebFetch_6_77dddfab.result",
+          "quote": "HIPIFY is included with the ROCm Core SDK on Linux and Windows. For the most complete installation, we recommend that developers use the `amdrocm-core-sdk` meta package.\n\nFor instructions, see [Install AMD ROCm](http"
+        },
+        {
+          "event_id": "WebFetch_5_b5e1c693.result",
+          "quote": "docker pull rocm/pytorch:rocm10.0_ubuntu24.04_py3.13_pytorch_release_2.13.0"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 2,
+      "reason": "搜索结果中仅2个相关第三方ROCm/PyTorch安装候选；AMD官方文档、官方GitHub及官方镜像不计第三方。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_4_1a2cb020.result",
+          "quote": "## 4. [AMD显卡深度学习环境搭建：ROCm与PyTorch安装避坑"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Only identifiable task-changing third-party claim is ROCm/PyTorch deployment on Windows. The captured selected deployment body is Linux; unselected Windows option alone does not verify this claim. Checked unsupported, not proven false. Generic platform positioning and unfinished stability phrase excluded.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_4_1a2cb020.result",
+          "quote": "通过本指南的系统实施，您将能够在Windows系统上成功部署AMD ROCm与PyTorch"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior correctly distinguishes translator approaches. Material claims about torch.cuda namespace reuse, specific API/library mappings and PyTorch build_amd.py flow cannot be fully checked in this packet. Tentative output-name/CLI details are not treated as established errors, but unknown correctness cannot support score4.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "tools/amd_build/build_amd.py` 做 hipify。用户脚本层面，`torch.cuda` API 在 ROCm 构建中仍然叫 `torch.cuda`（HIP 后端复用 cuda 命名空间），大多数纯 PyTorch 脚本无需改动。\n4. API 映射规律：cudaMalloc→"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "cudaMalloc→hipMalloc、cudaMemcpy→hipMemcpy、cudaStream_t→hipStream_t、cuBLAS→hipBLAS/rocBLAS、cuDNN→MIOpen、cuFFT→hipFFT/rocFFT、NCCL→RCCL、Thrust→rocThrust、CUB→rocPRIM。头文件 `cuda_runtime.h` → `hip/hip_runtime.h`，编译用 `hipc"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "实际派发7次：2次搜索、5次fetch。",
+      "evidence": [],
+      "event_refs": [
+        "WebSearch_0_d0d43e0e.dispatch",
+        "WebFetch_1_7240e26e.dispatch",
+        "WebFetch_2_1015fc4e.dispatch",
+        "WebFetch_3_8b9a827d.dispatch",
+        "WebSearch_4_1a2cb020.dispatch",
+        "WebFetch_5_b5e1c693.dispatch",
+        "WebFetch_6_77dddfab.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Final CUDA11.8→LLVM16.0.x pairing contradicts captured table (11.8→14.0.5/14.0.6/15.0.x;12.2.2→16.0.x). A key explicit version relation is wrong despite valid Docker pairing elsewhere. Selector value lists also do not prove their Cartesian product.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "CUDA 11.8 → 16.0.x"
+        },
+        {
+          "event_id": "WebFetch_2_1015fc4e.result",
+          "quote": "12.2.2\n\n16.0.0, 16.0.1, 16.0.2, 16.0.3, 16.0.4, 16.0.5, 16.0.6\n\n✅\n\n✅\n\n11.8.0\n\n# Using hipify-clang#\n## Release Dependencies#\n14.0.5, 14.0.6, 15.0.0, 15.0.1, 15.0.2, 15.0.3, 15.0.4, 15.0.5, 15.0.6, 15.0.7\n\n✅\n\n✅\n\n11.7.1\n\n14.0.0, 14.0.1, 14.0.2, 14.0.3, 14."
+        },
+        {
+          "event_id": "run-end",
+          "quote": "ROCm 10.0.0 / 7.14.1 / 7.14.0 × PyTorch 2.13.0 / 2.12.0 / 2.11.0"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Specific conversion/installation guidance exists, but CUDA11.8/LLVM16 pairing needs correction and HIPIFY installation omits the documented prerequisite step (dependencies/GPU-access configuration). Pip and default-output alternatives are explicitly unresolved and are not by themselves errors; absence of hardware execution is not a deduction.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "CUDA 11.8 → 16.0.x"
+        },
+        {
+          "event_id": "WebFetch_6_77dddfab.result",
+          "quote": "1. Complete the [ROCm installation prerequisites](https://rocm.docs.amd.com/en/latest/install/rocm.html \"(in ROCm documentation v10.0.0)\") to install dependencies and configure GPU access permissions.\n2. Instal"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "sudo apt install amdrocm-hipify        # 或 amdrocm-hipify<rocm_vers"
+        }
+      ]
+    },
+    "M11": {
+      "score": null,
+      "status": "unscorable",
+      "reason": "Material prior correctness verification is insufficient.",
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  }
+}
