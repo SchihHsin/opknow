@@ -119,6 +119,8 @@ class RescoreTests(unittest.TestCase):
         self.assertEqual(rescore.prepare(self.packet_path, out), out / "facts.json")
         prepared = json.loads((out / "facts.json").read_text())
         self.assertTrue(prepared["fetches"])
+        for row in prepared["source_items"] + prepared["fetches"]:
+            self.assertTrue(rescore.quote_exists(rescore.event_index(self.packet), row["evidence"]))
         self.assertTrue(all(x["ownership"] == "unknown" for x in prepared["fetches"]))
         self.write_facts(); self.write_assessment()
         self.assertEqual(rescore.check_command(self.packet_path, self.assessment_path, self.facts_path, self.report_path), 0)

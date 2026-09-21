@@ -266,7 +266,7 @@ def prepare(packet_path: Path, out_dir: Path) -> Path:
             "source_id": f"source-{i:04d}", "event_id": event_id,
             "url": source.get("url") if isinstance(source.get("url"), str) else None,
             "ownership": "unknown", "relevant": None, "content_group": "",
-            "evidence": {"event_id": event_id, "quote": ""},
+            "evidence": {"event_id": event_id, "quote": (scalar_texts(source) or [""])[0][:700]},
         }
         source_items.append(base_item)
         if source.get("role") == "search":
@@ -285,7 +285,7 @@ def prepare(packet_path: Path, out_dir: Path) -> Path:
         fetches.append({
             "request_url": url, "event_id": source.get("event_id"), "ownership": "unknown",
             "target_match": "unknown", "representation": "unknown", "observed_defect": None,
-            "evidence": {"event_id": source.get("event_id"), "quote": ""},
+            "evidence": {"event_id": source.get("event_id"), "quote": (scalar_texts(source) or [""])[0][:700]},
         })
     facts = {
         "run_id": run_id, "packet_sha256": sha256_file(packet_path),

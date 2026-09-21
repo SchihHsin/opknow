@@ -22,7 +22,7 @@ From the skill directory, run the available implementation tests with:
 PYTHONPATH=./scripts python3 -B -m unittest discover -s tests
 ```
 
-Consume the facts format emitted by `prepare` exactly; do not hand-design replacement fields. `quote` must mechanically take the quoted evidence as a substring of the event. A semicolon-joined paraphrase is not a verbatim quote.
+Read the facts-format notes in [decisions.md](references/decisions.md). Consume the facts format emitted by `prepare` exactly; do not hand-design replacement fields. `quote` must mechanically take the quoted evidence as a substring of the event. A semicolon-joined paraphrase is not a verbatim quote.
 
 Run the workflow in this order:
 

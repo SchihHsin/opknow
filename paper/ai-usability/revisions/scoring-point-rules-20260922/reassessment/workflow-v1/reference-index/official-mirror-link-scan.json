@@ -1,0 +1,34 @@
+{
+  "scope": "只读扫描 156 个 reassessment input packet 的 sources；筛选直接官方来源正文/抓取事件，再查其保存文本或 URL 是否出现 asc.gitcode.com 或 pytorch.ac.cn。未读取评分建议、pilot 草稿或旧分，未联网。",
+  "input_glob": "paper/ai-usability/revisions/scoring-point-rules-20260922/reassessment/inputs/*.json",
+  "official_source_filter": [
+    "hiascend.com",
+    "support.huawei.com / Huawei 官方文档域",
+    "docs.pytorch.org / pytorch.org",
+    "docs.nvidia.com / nvidia.com"
+  ],
+  "target_strings": ["asc.gitcode.com", "pytorch.ac.cn"],
+  "counts": {
+    "source_records_scanned": 1437,
+    "official_candidate_records": 731,
+    "official_candidate_records_containing_target": 0,
+    "matches": 0
+  },
+  "matches": [],
+  "ownership_reference_archive_scan": {
+    "directory": "/Users/hsin/Documents/Coding/ai-usability-benchmark/experiments/full-rerun-protocol-20260921/ownership-references",
+    "files_checked": [
+      "index.json",
+      "ascend-readthedocs-project.json",
+      "huaweicloud-author-1560754383728560.html",
+      "huaweicloud-blog-393282.html"
+    ],
+    "target_matches": 0,
+    "note": "该 ownership-references 目录没有 asc.gitcode.com 或 pytorch.ac.cn 字符串，因此没有可报告的逐字对照/跳转引文。它包含的是 Ascend Read the Docs 项目指向 GitHub 的核验及华为云页面/作者归档；这些材料不证明上述两个目标域名的 ownership。"
+  },
+  "interpretation": {
+    "result": "在本次扫描边界内为 0 命中",
+    "mirror_boundary": "0 命中只表示已保存的直接官方来源正文没有出现目标镜像 URL 或跳转链接；不能据此断言镜像内容不属于官方，也不能把缺少 whois/ownership 材料当作镜像必然非官方。镜像内容归属与网站 ownership 分开记录。",
+    "cross_run_boundary": "没有把其他 run 的正文、ownership reference 或后验材料加入任何原模型检索上下文；本文件仅供事后 provenance 核验。"
+  }
+}

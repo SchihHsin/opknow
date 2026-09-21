@@ -1,0 +1,669 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_32150df52fa745f5b5bee63b.result",
+      "evidence": {
+        "event_id": "call_32150df52fa745f5b5bee63b.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "title",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md",
+      "target_match": "wrong"
+    },
+    {
+      "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+      "evidence": {
+        "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+        "quote": "核函数（Kernel）是在设备侧并行执行的C/C++函数。它由主机端代码调用，调用时被实例化为多份并行副本，分别调度到多个AI Core上运行（每个AI Core被抽象为一个Block）。"
+      },
+      "observed_defect": false,
+      "ownership": "unknown",
+      "representation": "body",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+      "evidence": {
+        "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+        "quote": "**标题**: Ascend C\n\n[Skip to content](https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html#VPContent)\n\n# 基本架构\n\n如下图所示，基于Ascend C开发的算子运行在AI Core上。Ascend C编程模型基于AI Core硬件架构的抽象进行介绍，了解硬件架构能够帮助开发者更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，算子实践参考中很多内容都以本章为基础进行介绍。\n\nAI Core负责执行矩阵、矢量计算密集的任务，其包括以下组成部分：\n\n- **计算单元**：包括Cube（矩阵）计算单元、Vector（矢量）计算单元和Scalar（标量）计算单元。\n- **存储单元**：包括L1 Buffer、L0A Buffer、L0B Buffer、L0C Buffer、Unified Buffer（UB）、BiasTable Buffer、Fixpipe Buffer等专为高效计算设计的存储单元。\n- **搬运单元**：包括MTE1、MTE2、MTE3和FixPipe，用于数据在不同存储单元之间的高效传输。\n\n以Atlas A2系列产品为例，硬件架构图如下：\n\n本章节首先介绍硬件架构相关的关键概念和术语，以及AI Core的工作模式，为理解后续内容奠定基础。随后以Atlas A2系列产品为例，提供AI Core基本架构的介绍"
+      },
+      "observed_defect": false,
+      "ownership": "unknown",
+      "representation": "body",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+      "evidence": {
+        "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+        "quote": "**标题**: 从CUDA到Ascend C：一文入门昇腾异构计算核函数编程\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](ht"
+      },
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "title",
+      "request_url": "https://www.hiascend.com/developer/blog/details/0297193497731671997",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "call_ebef356c363544deba9a40ce.result",
+      "evidence": {
+        "event_id": "call_ebef356c363544deba9a40ce.result",
+        "quote": "# 《从CUDA到Ascend C开发实战》对比内容完整提取\n\n## 页面完整性说明\n\n**该页面是完整文章，未被截断，也非纯导航页。** 目录中的全部章节（摘要、1~5章、参考链接、官方介绍）均有实际内容，包含两份性能对比表格和多段完整代码。需注意两点：\n\n1. 文中有两处**图片占位符**（“图：昇腾与CUDA硬件架构核心差异对比”、“图：不同计算模式下Ascend C与CUDA的性能表现对比”），图片本身未包含在文本抓取中；\n2. 文末“实现 C=A+B……”是跳转到另一篇文章的**导航链接**，非本文内容。\n\n⚠️ **术语覆盖提示**：用户要求的几组对比中，文章**未出现** \"SM（流式多处理器）\"、\"AI Core\"、\"Tensor Core\"、\"numBlocks\" 这些字面术语。文章实际采用的是“达芬奇架构异构单元 vs CUDA Core 统一架构”的对比框架，下文将按最接近的对应关系提取，并明确标注缺口。\n\n---\n\n## 一、硬件单元对比（对应：SM/AI Core、Tensor Core/Cube、CUDA Core/Vector）\n\n### 原文关键句\n\n> “昇腾AI处理器的**达芬奇架构**（Da Vinci Architecture）与NVIDIA的**CUDA核心**（CUDA Core）代表了两种不同的设计哲学。达芬奇架构采用**异构计算单元分工**模式，其核心是专精化的Cube单元（矩阵计算）、Vector单元（向量运算）和Scalar单元（控制逻辑）的协同。这种设计类似于现代化工厂的流水线，每个单元专注特定任务，通过协作实现高效处理。与"
+      },
+      "observed_defect": false,
+      "ownership": "third_party",
+      "representation": "excerpt",
+      "request_url": "https://blog.csdn.net/seven_767823098/article/details/155889858",
+      "target_match": "matched"
+    },
+    {
+      "event_id": "call_629fcd32435242cebc8da634.result",
+      "evidence": {
+        "event_id": "call_629fcd32435242cebc8da634.result",
+        "quote": "**标题**: Ascend C\n\n[Skip to content](https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html#VPContent)\n\n# 编程模型概述\n\n如[异构系统](https://asc.gitcode.com/guide/programming_guide/programming_model/heterogeneous_system.html)章节所述，基于昇腾处理器的应用程序通常分为两部分：**Host代码**与**Device代码**。其中，Host代码运行在CPU上，负责设备资源管理、Host Memory与Device Memory间的数据搬运及任务调度等；Device代码运行在NPU（神经网络处理器）上，专门执行实际的计算任务。本编程指南重点讲解如何基于**Ascend C编程语言**编写Device代码，以及如何通过Host代码完成Device代码的调度与执行。\n\n## 并行执行模型：SPMD[​](https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html#%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B%EF%BC%9ASPMD)\n\n**SPMD**（Single Program, Multiple Dat"
+      },
+      "observed_defect": false,
+      "ownership": "unknown",
+      "representation": "body",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html",
+      "target_match": "matched"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": false,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0002-rank-4",
+    "first_query": 2,
+    "first_rank": 4,
+    "reason": "首轮第4位仅泛 CANN 文档门户，摘要未显示本题概念，不计任务相关命中；第2轮第4位 hiascend AI-Core-SIMD 概述直接涉及编程模型核心要素，因此首次任务相关官方命中为 query2 rank4。"
+  },
+  "m10": {
+    "content_check_complete": true,
+    "content_repairs": [],
+    "environment_substitutions": [],
+    "reason": "纯概念解释题，不要求执行或环境替换；无 M10 操作性评分输入。"
+  },
+  "m4": {
+    "mode": "none",
+    "conflicts": [],
+    "missing_relations": [],
+    "reason": "概念解释题，无版本选择要求。"
+  },
+  "m5": {
+    "possible_counts": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "confirmed_groups": [
+      "third-ai-core-hw",
+      "third-ascend-arch",
+      "third-ascend-kernel-1",
+      "third-ascend-kernel-2",
+      "third-ascend-vector",
+      "third-cuda-ascend"
+    ],
+    "actual_searches": 3,
+    "stop_reason": "全部 search 结果去重后至少6个可辨独立第三方内容组；AI Core硬件同标题三处转载合并一组，CUDA到Ascend C同标题三处转载/镜像合并一组；官方来源不计入。",
+    "evidence": [
+      {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)"
+      },
+      {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 2. [Ascend C 编程模型揭秘：深入理解核函数、任务并行与流水 ...](https://blog.csdn.net/sinat_41617212/article/details/154583581)"
+      },
+      {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 1. [从CUDA到Ascend C开发实战_达芬奇架构和cuda架构的区别-CSDN博客](https://blog.csdn.net/seven_767823098/article/details/155889858)"
+      }
+    ]
+  },
+  "m6": {
+    "checked_event_ids": [
+      "call_29c1446768c14c5cab14c667.result",
+      "call_ab952c7a43274e529f034b71.result",
+      "call_32150df52fa745f5b5bee63b.result",
+      "call_3cedafe5c2064a6b9475f29f.result",
+      "call_e6b5520b1c6f4a888e4c3fe4.result",
+      "call_d9e13466abe049c89b28a887.result",
+      "call_ea3a8a4439e14bdb87fd864d.result",
+      "call_ebef356c363544deba9a40ce.result",
+      "call_629fcd32435242cebc8da634.result"
+    ],
+    "no_third_party_material": false,
+    "claims": [
+      {
+        "source_id": "source-0008",
+        "claim": "Ascend C 的矩阵/向量/标量单元分工",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "其核心是专精化的Cube单元（矩阵计算）、Vector单元（向量运算）和Scalar单元（控制逻辑）的协同。"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+            "quote": "**计算单元**：包括Cube（矩阵）计算单元、Vector（矢量）计算单元和Scalar（标量）计算单元。"
+          }
+        ],
+        "verdict": "unresolved",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "以块为单位分解 Ascend C 工作",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "SPMD模型以**任务块**（Task Block）为基本调度单位，开发者关注如何将大规模数据分解为块，每个计算核处理一个数据块。"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+            "quote": "每个AI Core被抽象为一个Block"
+          }
+        ],
+        "verdict": "unresolved",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "CUDA SIMT以线程为单位分配工作",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "CUDA的SIMT模型以**线程**（Thread）为基本单位，开发者需要管理大量细粒度线程的协作。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "Ascend C显式管理GM/UB/多级Buffer数据流",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "昇腾的存储体系明确分为全局内存（Global Memory）、统一缓冲区（Unified Buffer, UB）和多级缓存（L0/L1 Buffer），且要求程序员**显式管理**数据流动。"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+            "quote": "GM → UB → Vector → UB → GM"
+          }
+        ],
+        "verdict": "unresolved",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "UB访问32字节对齐要求",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "以Unified Buffer（UB）访问为例，必须保证32字节对齐，否则会导致性能显著下降。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "第三方的Ascend C启动配置只有块数与stream两项",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "vector_add_ascend_c_kernel<<<block_num, stream>>>(a, b, c, n);"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+            "quote": "kernel_name<<<numBlocks, dynUBufSize, stream>>>(argument list);"
+          }
+        ],
+        "verdict": "unresolved",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "GET_BLOCK_NUM/GET_BLOCK_IDX作为示例核索引API",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "int block_size = n / GET_BLOCK_NUM();  // 计算每个块的任务量"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "matmul_api可直接映射Cube计算",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "matmul_api(a, b, c, M, N, K);"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "Ascend C显式搬运使用所展示的__memcpy方向宏",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "MEMCPY_GM_TO_UB);          // GM → UB 显式搬运"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "示例编译命令及acl参数",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "ascendc-cc -o vector_add vector_add_ascend_c.cpp --acl=acl.json"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "1024矩阵FP16性能对照数字",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "Ascend C利用Cube单元可实现最高15 TFLOPS的 FP16 计算性能，而CUDA在同等条件下可达12-14 TFLOPS。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "ResNet50能效比较数字",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "昇腾910B的能效比（性能/功耗）相比同代GPU高出约40%。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0008",
+        "claim": "整体规则计算性能比较数字",
+        "claim_evidence": [
+          {
+            "event_id": "call_ebef356c363544deba9a40ce.result",
+            "quote": "Ascend C在规则计算模式下的性能通常比CUDA高15-30%，但CUDA在复杂不规则计算中仍保持优势。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
+    "confirmed_unavailable": {}
+  },
+  "packet_sha256": "21d8d575b61eb212123464ce41a72e64dee35e2b45ddc841dd0f579ee2f01fe5",
+  "question": "请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？",
+  "run_id": "Z-cann-glm-5_3-standard-20260921T151251",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "# Search Results for \"昇腾 CANN AI Core 编程模型 Cube Vector Scalar Unified Buffer L1 Global Memory\"\n\n## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n## 3. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://bbs.huaweicloud.com/blogs/471408)\n\n2025年12月24日 ·"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "third-ai-core-hw",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": true,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/IRpickstars/article/details/156223345"
+    },
+    {
+      "content_group": "third-ai-core-hw",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": true,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.tahou.com/article/193362450480125957"
+    },
+    {
+      "content_group": "third-ai-core-hw",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 3. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://bbs.huaweicloud.com/blogs/471408)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/471408\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": true,
+      "source_id": "source-0001-rank-3",
+      "url": "https://bbs.huaweicloud.com/blogs/471408"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 4. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": false,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.hiascend.com/cann/document"
+    },
+    {
+      "content_group": "third-ascend-arch",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 5. [《Ascend C 架构篇：揭秘 AI Core 与三大编程范式》](https://devpress.csdn.net/v1/article/detail/155193421)\n\n2025年11月24日 · 本文深入解析昇腾AICore架构与AscendC编程模型，揭示达芬奇架构核心组件（Scalar/Vector/Cube单元、UB缓存 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155193421\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": true,
+      "source_id": "source-0001-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/155193421"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "# Search Results for \"site:hiascend.com Ascend C 编程模型 AI Core 核函数 block\"\n\n## 1. [Ascend C](https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html)\n\n2026年9月5日 · __aicore__：标识该核函数（Kernel）在设备端AI核上执行，不区分具体核类型（通常用于 耦合模式）。 …\n\n**URL:** https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html\n\n---\n\n## 2. [Ascend C 编程模型揭秘：深入理解核函数、任务并行与流水 ...](https://blog.csdn.net/sinat_41617212/article/details/154583581)\n\n2025年11月8日 · 本文基于“昇腾 CANN 训练营”核心素材，深度揭秘 Ascend C 的编程模型。 我们将系统解析 核函数（Kernel …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154583581\n\n---\n\n## 3. [Ascend C 核函数编程模型精解：从概念到实"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "official-asc-gitcode-kernel",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 1. [Ascend C](https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html)\n\n2026年9月5日 · __aicore__：标识该核函数（Kernel）在设备端AI核上执行，不区分具体核类型（通常用于 耦合模式）。 …\n\n**URL:** https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": true,
+      "source_id": "source-0002-rank-1",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html"
+    },
+    {
+      "content_group": "third-ascend-kernel-1",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 2. [Ascend C 编程模型揭秘：深入理解核函数、任务并行与流水 ...](https://blog.csdn.net/sinat_41617212/article/details/154583581)\n\n2025年11月8日 · 本文基于“昇腾 CANN 训练营”核心素材，深度揭秘 Ascend C 的编程模型。 我们将系统解析 核函数（Kernel …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154583581\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": true,
+      "source_id": "source-0002-rank-2",
+      "url": "https://blog.csdn.net/sinat_41617212/article/details/154583581"
+    },
+    {
+      "content_group": "third-ascend-kernel-2",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 3. [Ascend C 核函数编程模型精解：从概念到实践掌握并行计算 ...](https://devpress.csdn.net/v1/article/detail/154885978)\n\n2025年11月15日 · 我们将从并行计算的 理论基础 (Theoretical Foundation) 出发，系统化解析 Ascend C 的 核函数执行模型 (Kernel …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/154885978\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": true,
+      "source_id": "source-0002-rank-3",
+      "url": "https://devpress.csdn.net/v1/article/detail/154885978"
+    },
+    {
+      "content_group": "official-hiascend-overview",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 4. [Ascend C概述与学习路径-CANN9.1.0-beta.3-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md)\n\n本文作为算子编程快速入门章节，将从昇腾异构系统基础入手，逐步拆解编程模型核心要素，帮助您快速建立昇腾算子编程的整体认 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": true,
+      "source_id": "source-0002-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md"
+    },
+    {
+      "content_group": "third-ascend-vector",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 5. [从零到精通：华为昇腾AI Core架构下的Ascend C矢量算子 ...](https://blog.csdn.net/weixin_28327051/article/details/159599952)\n\n2026年3月29日 · 通过深入剖析AI Core的计算单元、存储体系和任务调度机制，结合实战案例展示如何利用Ascend C高效开发AI算 …\n\n**URL:** https://blog.csdn.net/weixin_28327051/article/details/159599952\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": true,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/weixin_28327051/article/details/159599952"
+    },
+    {
+      "content_group": "official-hiascend-overview",
+      "event_id": "call_32150df52fa745f5b5bee63b.result",
+      "evidence": {
+        "event_id": "call_32150df52fa745f5b5bee63b.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md"
+    },
+    {
+      "content_group": "official-asc-gitcode-kernel",
+      "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+      "evidence": {
+        "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+        "quote": "**标题**: Ascend C\n\n[Skip to content](https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html#VPContent)\n\n# 核函数（Kernel）\n\n核函数（Kernel）是在设备侧并行执行的C/C++函数。它由主机端代码调用，调用时被实例化为多份并行副本，分别调度到多个AI Core上运行（每个AI Core被抽象为一个Block）。这些Block利用AI Core的计算能力，协同完成某一算子的计算。\n\n## 核函数（Kernel）的定义[​](https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html#%E6%A0%B8%E5%87%BD%E6%95%B0%EF%BC%88Kernel%EF%BC%89%E7%9A%84%E5%AE%9A%E4%B9%89)\n\n定义核函数（Kernel）时需要遵循以下规则。\n\n- **使用函数类型限定符和函数执行空间限定符**\n  \n  除了需要按照C/C++函数声明的方式定义核函数（Kernel）之外，还要为核函数（Kernel）加上额外的函数类型限定符。\n  \n  必须使用__global__函数类型限定符来标识它是一个核函数（Kernel），可以被<<<...>>>调用。同时，"
+      },
+      "ownership": "unknown",
+      "relevant": true,
+      "source_id": "source-0004",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html"
+    },
+    {
+      "content_group": "official-asc-gitcode-arch",
+      "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+      "evidence": {
+        "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+        "quote": "**标题**: Ascend C\n\n[Skip to content](https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html#VPContent)\n\n# 基本架构\n\n如下图所示，基于Ascend C开发的算子运行在AI Core上。Ascend C编程模型基于AI Core硬件架构的抽象进行介绍，了解硬件架构能够帮助开发者更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，算子实践参考中很多内容都以本章为基础进行介绍。\n\nAI Core负责执行矩阵、矢量计算密集的任务，其包括以下组成部分：\n\n- **计算单元**：包括Cube（矩阵）计算单元、Vector（矢量）计算单元和Scalar（标量）计算单元。\n- **存储单元**：包括L1 Buffer、L0A Buffer、L0B Buffer、L0C Buffer、Unified Buffer（UB）、BiasTable Buffer、Fixpipe Buffer等专为高效计算设计的存储单元。\n- **搬运单元**：包括MTE1、MTE2、MTE3和FixPipe，用于数据在不同存储单元之间的高效传输。\n\n以Atlas A2系列产品为例，硬件架构图如下：\n\n本章节首先介绍硬件架构相关的关键概念和术语，以及AI Core的工作模式，为理解后续内容奠定基础。随后以Atlas A2系列产品为例，提供AI Core基本架构的介绍"
+      },
+      "ownership": "unknown",
+      "relevant": true,
+      "source_id": "source-0005",
+      "url": "https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "# Search Results for \"Ascend C CUDA 对照 概念迁移 grid block thread shared memory 昇腾 官方\"\n\n## 1. [从CUDA到Ascend C开发实战_达芬奇架构和cuda架构的区别-CSDN博客](https://blog.csdn.net/seven_767823098/article/details/155889858)\n\n本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核心内容包括： …\n\n**URL:** https://blog.csdn.net/seven_767823098/article/details/155889858\n\n---\n\n## 2. [从CUDA到Ascend C开发实战_开发语言_seven_767823098-CANN开 …](https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html)\n\nDec 13, 2025 · 本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核 …\n\n**URL:** https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html\n\n---\n\n## 3. [从CUDA到Ascend C：一文入门昇腾异构计算核函数编程](https://www.hiascend.com/developer/blog/details/029719"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "third-cuda-ascend",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 1. [从CUDA到Ascend C开发实战_达芬奇架构和cuda架构的区别-CSDN博客](https://blog.csdn.net/seven_767823098/article/details/155889858)\n\n本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核心内容包括： …\n\n**URL:** https://blog.csdn.net/seven_767823098/article/details/155889858\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": true,
+      "source_id": "source-0006-rank-1",
+      "url": "https://blog.csdn.net/seven_767823098/article/details/155889858"
+    },
+    {
+      "content_group": "third-cuda-ascend",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 2. [从CUDA到Ascend C开发实战_开发语言_seven_767823098-CANN开 …](https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html)\n\nDec 13, 2025 · 本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核 …\n\n**URL:** https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": true,
+      "source_id": "source-0006-rank-2",
+      "url": "https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html"
+    },
+    {
+      "content_group": "official-hiascend-blog",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 3. [从CUDA到Ascend C：一文入门昇腾异构计算核函数编程](https://www.hiascend.com/developer/blog/details/0297193497731671997)\n\nSep 17, 2025 · 摘要 本文面向有CUDA编程经验的开发者，通过对比CUDA与Ascend C的编程模型，结合向量加法的实际示例，详细 …\n\n**URL:** https://www.hiascend.com/developer/blog/details/0297193497731671997\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": true,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.hiascend.com/developer/blog/details/0297193497731671997"
+    },
+    {
+      "content_group": "third-cuda-ascend",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 4. [从CUDA到Ascend C开发实战_开发语言_seven_767823098-鲲鹏昇腾 …](https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html)\n\nDec 13, 2025 · 本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核 …\n\n**URL:** https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html\n\n---\n\n"
+      },
+      "ownership": "third_party",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": true,
+      "source_id": "source-0006-rank-4",
+      "url": "https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html"
+    },
+    {
+      "content_group": "official-hiascend-docs",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 5. [昇腾文档-昇腾社区 - hiascend.com](https://www.hiascend.com/document)\n\nAug 19, 2026 · 热门文档 CANN软件快速安装 CANN算子库 Ascend C算子开发 Ascend C API MindSpeed是什么 PyTorch原生API支 …\n\n**URL:** https://www.hiascend.com/document\n\n---\n\n"
+      },
+      "ownership": "official",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": true,
+      "source_id": "source-0006-rank-5",
+      "url": "https://www.hiascend.com/document"
+    },
+    {
+      "content_group": "official-hiascend-blog",
+      "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+      "evidence": {
+        "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+        "quote": "**标题**: 从CUDA到Ascend C：一文入门昇腾异构计算核函数编程\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](ht"
+      },
+      "ownership": "official",
+      "relevant": true,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/developer/blog/details/0297193497731671997"
+    },
+    {
+      "content_group": "third-cuda-ascend",
+      "event_id": "call_ebef356c363544deba9a40ce.result",
+      "evidence": {
+        "event_id": "call_ebef356c363544deba9a40ce.result",
+        "quote": "# 《从CUDA到Ascend C开发实战》对比内容完整提取\n\n## 页面完整性说明\n\n**该页面是完整文章，未被截断，也非纯导航页。** 目录中的全部章节（摘要、1~5章、参考链接、官方介绍）均有实际内容，包含两份性能对比表格和多段完整代码。需注意两点：\n\n1. 文中有两处**图片占位符**（“图：昇腾与CUDA硬件架构核心差异对比”、“图：不同计算模式下Ascend C与CUDA的性能表现对比”），图片本身未包含在文本抓取中；\n2. 文末“实现 C=A+B……”是跳转到另一篇文章的**导航链接**，非本文内容。\n\n⚠️ **术语覆盖提示**：用户要求的几组对比中，文章**未出现** \"SM（流式多处理器）\"、\"AI Core\"、\"Tensor Core\"、\"numBlocks\" 这些字面术语。文章实际采用的是“达芬奇架构异构单元 vs CUDA Core 统一架构”的对比框架，下文将按最接近的对应关系提取，并明确标注缺口。\n\n---\n\n## 一、硬件单元对比（对应：SM/AI Core、Tensor Core/Cube、CUDA Core/Vector）\n\n### 原文关键句\n\n> “昇腾AI处理器的**达芬奇架构**（Da Vinci Architecture）与NVIDIA的**CUDA核心**（CUDA Core）代表了两种不同的设计哲学。达芬奇架构采用**异构计算单元分工**模式，其核心是专精化的Cube单元（矩阵计算）、Vector单元（向量运算）和Scalar单元（控制逻辑）的协同。这种设计类似于现代化工厂的流水线，每个单元专注特定任务，通过协作实现高效处理。与"
+      },
+      "ownership": "third_party",
+      "relevant": true,
+      "source_id": "source-0008",
+      "url": "https://blog.csdn.net/seven_767823098/article/details/155889858"
+    },
+    {
+      "content_group": "official-asc-gitcode-overview",
+      "event_id": "call_629fcd32435242cebc8da634.result",
+      "evidence": {
+        "event_id": "call_629fcd32435242cebc8da634.result",
+        "quote": "**标题**: Ascend C\n\n[Skip to content](https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html#VPContent)\n\n# 编程模型概述\n\n如[异构系统](https://asc.gitcode.com/guide/programming_guide/programming_model/heterogeneous_system.html)章节所述，基于昇腾处理器的应用程序通常分为两部分：**Host代码**与**Device代码**。其中，Host代码运行在CPU上，负责设备资源管理、Host Memory与Device Memory间的数据搬运及任务调度等；Device代码运行在NPU（神经网络处理器）上，专门执行实际的计算任务。本编程指南重点讲解如何基于**Ascend C编程语言**编写Device代码，以及如何通过Host代码完成Device代码的调度与执行。\n\n## 并行执行模型：SPMD[​](https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html#%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B%EF%BC%9ASPMD)\n\n**SPMD**（Single Program, Multiple Dat"
+      },
+      "ownership": "unknown",
+      "relevant": true,
+      "source_id": "source-0009",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [
+      "解释 AI Core、Cube、Vector、Scalar 单元的职责",
+      "解释 UB、L1、GM 存储层级及数据搬运关系",
+      "将上述概念与 CUDA 的 grid、block、thread、SM、shared-mem 对应并说明差异"
+    ],
+    "secondary": [
+      "说明核函数/Block 调度概念",
+      "保留无精确对应或需版本限定之处"
+    ],
+    "version_relations": []
+  }
+}

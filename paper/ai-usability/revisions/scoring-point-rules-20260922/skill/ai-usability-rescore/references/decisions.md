@@ -1,5 +1,13 @@
 # 重评执行判定说明
 
+## Facts format and literal evidence
+
+`prepare` now copies the first 700 characters of saved event text into each base source/fetch evidence field; search-result rows preserve their literal result blocks. This is locator context, not a judgment of relevance, ownership, representation or technical support. Read the full saved event before assigning those facts.
+
+Each M6 claim uses `source_id` (a relevant third-party source row), `claim`, `claim_evidence` and `support_evidence` (arrays of event_id/quote objects), `verdict` (supported / unsupported / contradicted / unresolved), and `independent_crosscheck`. Do not invent supporting/refuting fields instead. Support must entail the specific atomic assertion; quoting a claim back to itself is not independent support.
+
+Build every quotation through a helper that asserts `quote in event_text` before serializing JSON. Do not normalize whitespace, paraphrase, change quotation marks or join fragments. Derive M5 `possible_counts` using `derive_m5_counts` on the completed source inventory. Exclude known third-party fetches from M2 documents; keep uncertain admissions explicit.
+
 本说明只解释 `point-rubric-20260922-v1` 中容易混淆的分支，不增加阈值、公式或新的评分档。完整判定以同目录的 `rules.md` 为准；版本标识分为量规 `point-rubric-20260922-v1` 与流程 `rescore-workflow-v1`。
 
 ## 先固定对象

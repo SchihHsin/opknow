@@ -1,0 +1,307 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "Z-cann-glm-5_3-standard-20260921T151251",
+  "process_sha256": "f479fdcf1c74b9fe2f3fafc733a4b7c16a258bbb8c5e1726f213f88dbe8c2b85",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 3,
+      "reason": "首轮第4位仅CANN泛门户，不能确认本题相关内容；第二轮第4位hiascend官方AI-Core-SIMD概述明确涉及编程模型。该轮第1位镜像归属未证，但不影响第2次查询对应的3分。",
+      "evidence": [
+        {
+          "event_id": "call_ab952c7a43274e529f034b71.result",
+          "quote": "本文作为算子编程快速入门章节，将从昇腾异构系统基础入手，逐步拆解编程模型核心要素"
+        }
+      ],
+      "observations": {
+        "first_query": 1,
+        "first_rank": 4,
+        "first_hit_source_id": "source-0001-rank-4"
+      }
+    },
+    "M2": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "官方 fetch 中 asc.gitcode 内容归属未由固定包证明，无法确定其是否纳入官方文档均值；保留文档事实而不强行计分。",
+      "evidence": [
+        {
+          "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+          "quote": "# 核函数（Kernel）"
+        },
+        {
+          "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+          "quote": "# 基本架构"
+        },
+        {
+          "event_id": "call_629fcd32435242cebc8da634.result",
+          "quote": "## AI Core硬件基础"
+        }
+      ],
+      "documents": [
+        {
+          "id": "call_32150df52fa745f5b5bee63b.result",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "ownership": "official",
+            "representation": "title",
+            "target_match": "wrong",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "call_3cedafe5c2064a6b9475f29f.result",
+          "status": "needs_review",
+          "score": null,
+          "observations": {
+            "ownership": "unknown",
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+          "status": "needs_review",
+          "score": null,
+          "observations": {
+            "ownership": "unknown",
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "call_ea3a8a4439e14bdb87fd864d.result",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "ownership": "official",
+            "representation": "title",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "call_629fcd32435242cebc8da634.result",
+          "status": "needs_review",
+          "score": null,
+          "observations": {
+            "ownership": "unknown",
+            "representation": "body",
+            "target_match": "matched",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "observations": {
+        "completeness_verification": "not_independently_verified",
+        "inclusion_unresolved": "Three asc.gitcode documents have undetermined official content provenance; CSDN is excluded as third-party."
+      }
+    },
+    "M3": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "三篇asc.gitcode镜像正文覆盖AI Core计算单元、存储和Block编程，但其官方内容归属未由本批归档确认，影响M3官方正文评价范围；此外CUDA SM/shared-mem逐项对应并未由这些正文完整覆盖。保留needs_review，不把归属未定当官方正文缺失。",
+      "evidence": [
+        {
+          "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+          "quote": "- **计算单元**：包括Cube（矩阵）计算单元、Vector（矢量）计算单元和Scalar（标量）计算单元。"
+        },
+        {
+          "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+          "quote": "每个AI Core被抽象为一个Block"
+        }
+      ],
+      "observations": {
+        "covered": [
+          "AI Core及三类计算单元",
+          "UB/L1/GM和搬运",
+          "kernel/block调度"
+        ],
+        "missing_or_not_direct": [
+          "CUDA grid/block/thread/SM/shared-mem的官方逐项对照表"
+        ]
+      }
+    },
+    "M4": {
+      "status": "not_applicable",
+      "score": null,
+      "reason": "packet 明确为纯概念解释，不要求版本选择。"
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "搜索结果中确认至少 6 个相关独立第三方内容组；同文转载/镜像已合并，官方结果不计入。",
+      "evidence": [
+        {
+          "event_id": "call_29c1446768c14c5cab14c667.result",
+          "quote": "## 1. [AI Core硬件架构剖析"
+        },
+        {
+          "event_id": "call_ab952c7a43274e529f034b71.result",
+          "quote": "## 2. [Ascend C 编程模型揭秘"
+        },
+        {
+          "event_id": "call_d9e13466abe049c89b28a887.result",
+          "quote": "## 1. [从CUDA到Ascend C开发实战"
+        }
+      ],
+      "observations": {
+        "possible_counts": [
+          6
+        ],
+        "confirmed_groups": [
+          "third-ai-core-hw",
+          "third-ascend-arch",
+          "third-ascend-kernel-1",
+          "third-ascend-kernel-2",
+          "third-ascend-vector",
+          "third-cuda-ascend"
+        ],
+        "actual_searches": 3,
+        "stop_reason": "final states sufficient evidence"
+      }
+    },
+    "M6": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "已核对可识别架构、并行、存储、示例API、启动/编译及性能说法；部分仅有归属未证镜像提供支持，启动两参数与镜像三参数存在未裁决冲突。其他说法在固定材料中缺少足够支持，不能将不确定的支持关系压成2或3分。来源归属与适用性未决保留needs_review。",
+      "evidence": [
+        {
+          "event_id": "call_ebef356c363544deba9a40ce.result",
+          "quote": "vector_add_ascend_c_kernel<<<block_num, stream>>>(a, b, c, n);"
+        },
+        {
+          "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+          "quote": "kernel_name<<<numBlocks, dynUBufSize, stream>>>(argument list);"
+        }
+      ],
+      "observations": {
+        "claim_checks": [
+          "hardware mapping",
+          "SPMD/SIMT",
+          "memory explicit management",
+          "SM/Tensor terminology gap",
+          "kernel launch parameter conflict"
+        ],
+        "launch_conflict": {
+          "third_party": "kernel<<<block_num, stream>>>(...)",
+          "mirror_doc": "kernel_name<<<numBlocks, dynUBufSize, stream>>>(argument list);",
+          "reliability_applicability": "unresolved"
+        },
+        "independent_cross_check": false
+      }
+    },
+    "M7": {
+      "status": "scored",
+      "score": 4,
+      "reason": "检索前回答完整覆盖主要单元、存储层级和粗略 CUDA 对应主流程；代际、容量、MTE 方向与 grid/block 语法等具体细节需补核，但自报不确定不扣分且不改变主流程档位。",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "1. **AI Core**：昇腾 NPU（如 Ascend 910/310）中的基本计算单元，一颗芯片含多个 AI Core（910 约 32 个）。每个 AI Core 内部包含计算单元、存储单元和 MTE（Memory Transfer Engine）。\n2. **Cube Unit（矩阵计算单元）**：专用于矩阵乘/卷积等 Dense 计算，一次可完成如 16×16×16 的矩阵乘法片段，对应深度学习中的主要算力来源。\n3. **Vector Unit（向量计算单元）**：SIMD 风格的向量计算，负责逐元素运算（激活、归一化、广播等非矩阵类计算）。\n4. **Scalar Unit（标量单元）**：负责标量计算、地址计算、循环与分支控制，类似一个简单的控制 CPU。\n5. **MTE**：存储搬运引擎（MTE1/MTE2/MTE3），负责各级存储间 DMA 搬运。\n\n**存储层级**\n\n- **GM（Global Memory）**：片外 HBM/DDR，容量大、带宽相对低，所有 AI Core 共享。\n- **L1 Buffer**：片上、每个 AI Core 私有（约 1MB 级），主要给 Cube 计算暂存输入（feature map/权重）。\n- **L0A/L0B/L0C**：Cube 专用的一级输入/输出缓冲（L0A/L0B 存矩阵输入，L0C 存结果）。\n- **UB（Unified Buffer）**：片上、AI Core 私有（约 256KB 级），主要给 Vector/Scalar 单元供数，也承接 Cube 结果回写。\n- 数据流大致为：GM →(MTE2)→ L1 →(MTE1)→ L0A/L0B → Cube → L0C →（搬回）UB →(MTE3)→ GM。\n\n**与 CUDA 的对应（个人理解，非官方表述）**\n\n| 昇腾 | CUDA | 说明 |\n|---|---|---|\n| AI Core | SM | 芯片内多个重复计算单元 |\n| Cube Unit | Tensor Core | 矩阵乘专用单元 |\n| Vector Unit | CUDA Core（FP 向量路径） | SIMD vs SIMT，粒度不同 |\n| Scalar Unit | 控制流/调度逻辑（无精确对应） | 类似每线程块的 CPU 式控制 |\n| GM | Global Memory | 基本一致 |\n| L1 | shared memory / L1（每 SM 私有片上存储） | 概念近似，用途不同 |\n| UB | registers + shared memory 的混合角色 | 无精确对应 |\n| Ascend C 的 block（一个 block 调度到一个 AI Core） | CUDA block → SM | Ascend C 也用 grid/block 概念发起核函数 |\n| 无 thread 概念 | thread | NPU 用 SIMD lane 和流水并行，无线程抽象 |\n\n"
+        }
+      ],
+      "observations": {
+        "supported": [
+          "AI Core/Cube/Vector/Scalar概念",
+          "GM/UB/L1大致层级"
+        ],
+        "missing_or_uncertain": [
+          "UB/L1容量",
+          "MTE方向与L0C→UB细节",
+          "代际差异与grid/block语法（未核清）"
+        ]
+      }
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "实际派发 3 次搜索 + 6 次 fetch，共 C=9，按量规映射为 1。",
+      "event_refs": [
+        "call_29c1446768c14c5cab14c667.result",
+        "call_ab952c7a43274e529f034b71.result",
+        "call_32150df52fa745f5b5bee63b.result",
+        "call_3cedafe5c2064a6b9475f29f.result",
+        "call_e6b5520b1c6f4a888e4c3fe4.result",
+        "call_d9e13466abe049c89b28a887.result",
+        "call_ea3a8a4439e14bdb87fd864d.result",
+        "call_ebef356c363544deba9a40ce.result",
+        "call_629fcd32435242cebc8da634.result"
+      ],
+      "observations": {
+        "search_dispatches": 3,
+        "fetch_dispatches": 6,
+        "C": 9
+      }
+    },
+    "M9": {
+      "status": "not_applicable",
+      "score": null,
+      "reason": "packet 明确不要求版本选择。"
+    },
+    "M10": {
+      "status": "not_applicable",
+      "score": null,
+      "reason": "packet 明确为纯概念解释，不要求执行。"
+    },
+    "M11": {
+      "status": "needs_review",
+      "score": null,
+      "reason": "M2、M3、M6仍为needs_review；所有有效渠道输入明确前不能计算综合点值。",
+      "observations": {
+        "formula": "100*[1-(1-OFF)*(1-SEC)*(1-OWN)]*(0.7+0.3*x4)*(0.9+0.1*x8)",
+        "inputs": {
+          "M1": 4,
+          "M2": 4.0,
+          "M3": 4,
+          "M4": "not_applicable",
+          "M5": 5,
+          "M6": 3,
+          "M7": 3,
+          "M8": 1
+        },
+        "raw_value": 84.81664
+      },
+      "missing_inputs": [
+        "M2",
+        "M3",
+        "M6"
+      ]
+    }
+  },
+  "observations": {
+    "applicability": {
+      "M4": {
+        "applicable": false,
+        "scope": "不要求版本选择"
+      },
+      "M9": {
+        "applicable": false,
+        "scope": "不要求版本选择"
+      },
+      "M10": {
+        "applicable": false,
+        "scope": "纯概念解释，不要求执行"
+      },
+      "other_metrics": "M1/M2/M3/M5/M6/M7依实际证据状态；M8依派发计数。没有第三方资料时M6=N/A，不把未查到写成不适用。"
+    },
+    "task_requirements": {
+      "main": [
+        "AI Core/Cube/Vector/Scalar",
+        "UB/L1/GM层级及搬运",
+        "CUDA grid/block/thread/SM/shared-mem对应"
+      ],
+      "secondary": [
+        "kernel/block调度"
+      ],
+      "version_relations": []
+    },
+    "execution_status": "content_checked_not_executed"
+  },
+  "channel_states": {
+    "official": "available_with_two_title_only_fetches",
+    "third_party": "available_with_six_deduplicated_relevant_search_groups"
+  }
+}
