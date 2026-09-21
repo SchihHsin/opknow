@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-usability:point-rubric-20260922-v1:assessment",
+  "title": "Point assessment structure — point-rubric-20260922-v1",
+  "description": "Single-value assessment structure. This schema does not verify technical meaning, quotation authenticity, process-file hash correspondence, or the M11 formula.",
+  "$comment": "Use scripts/validate_point_assessment.py to reject duplicate JSON keys/non-finite constants, reject duplicate document ids, and check the M2 equal-document mean (absolute tolerance 1e-9). JSON Schema cannot express those cross-field calculations. No lower/upper/candidate_score/display_interval fields are permitted directly on metrics, and bounded is not an assessment status. Independent observations/channel_states are objects whose content and meaning are not validated here; they preserve facts and unknowns, not new score intervals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "rule_version",
+    "run_id",
+    "process_sha256",
+    "metrics"
+  ],
+  "properties": {
+    "rule_version": {
+      "const": "point-rubric-20260922-v1"
+    },
+    "run_id": {
+      "$ref": "#/$defs/nonempty"
+    },
+    "process_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8",
+        "M9",
+        "M10",
+        "M11"
+      ],
+      "properties": {
+        "M1": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M2": {
+          "$ref": "#/$defs/m2_metric"
+        },
+        "M3": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M4": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M5": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M6": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M7": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M8": {
+          "$ref": "#/$defs/m8_metric"
+        },
+        "M9": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M10": {
+          "$ref": "#/$defs/ordinal_metric"
+        },
+        "M11": {
+          "$ref": "#/$defs/m11_metric"
+        }
+      }
+    },
+    "observations": {
+      "type": "object",
+      "description": "Independent factual observations and unknown states. Their meaning is not validated here; do not introduce new score intervals."
+    },
+    "channel_states": {
+      "type": "object",
+      "description": "Retained channel-state observations; their meaning is not validated by this structure schema."
+    }
+  },
+  "$defs": {
+    "nonempty": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scored",
+        "not_applicable",
+        "blocked",
+        "needs_review",
+        "unscorable",
+        "not_assessed"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "quote"
+        ],
+        "properties": {
+          "event_id": {
+            "$ref": "#/$defs/nonempty"
+          },
+          "quote": {
+            "$ref": "#/$defs/nonempty"
+          }
+        }
+      }
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "score"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "observations": {
+          "type": "object",
+          "description": "Independent factual observations and unknown states. Their meaning is not validated here; do not introduce new score intervals."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "not": {
+                  "const": "scored"
+                }
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "metric_base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "score",
+        "reason"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/nonempty"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        },
+        "event_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nonempty"
+          }
+        },
+        "derived_from": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "M1",
+              "M2",
+              "M3",
+              "M4",
+              "M5",
+              "M6",
+              "M7",
+              "M8"
+            ]
+          }
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/document"
+          }
+        },
+        "observations": {
+          "type": "object",
+          "description": "Independent factual observations and unknown states. Their meaning is not validated here; do not introduce new score intervals."
+        },
+        "missing_inputs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "M1",
+              "M2",
+              "M3",
+              "M4",
+              "M5",
+              "M6",
+              "M7",
+              "M8"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "not": {
+                  "const": "scored"
+                }
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ordinal_metric": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric_base"
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "evidence"
+            ]
+          }
+        },
+        {
+          "not": {
+            "required": [
+              "missing_inputs"
+            ]
+          }
+        }
+      ]
+    },
+    "m2_metric": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric_base"
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "evidence": {
+                "minItems": 1
+              },
+              "documents": {
+                "minItems": 1,
+                "items": {
+                  "properties": {
+                    "status": {
+                      "const": "scored"
+                    },
+                    "score": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 5
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "evidence",
+              "documents"
+            ]
+          }
+        },
+        {
+          "not": {
+            "required": [
+              "missing_inputs"
+            ]
+          }
+        }
+      ]
+    },
+    "m8_metric": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric_base"
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "evidence"
+                ],
+                "properties": {
+                  "evidence": {
+                    "minItems": 1
+                  }
+                }
+              },
+              {
+                "required": [
+                  "event_refs"
+                ],
+                "properties": {
+                  "event_refs": {
+                    "minItems": 1
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "not": {
+            "required": [
+              "missing_inputs"
+            ]
+          }
+        }
+      ]
+    },
+    "m11_metric": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric_base"
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "evidence"
+                ],
+                "properties": {
+                  "evidence": {
+                    "minItems": 1
+                  }
+                }
+              },
+              {
+                "required": [
+                  "derived_from"
+                ],
+                "properties": {
+                  "derived_from": {
+                    "minItems": 1
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

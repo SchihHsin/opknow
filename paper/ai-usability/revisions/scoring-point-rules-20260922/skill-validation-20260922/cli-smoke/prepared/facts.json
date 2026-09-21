@@ -1,0 +1,104 @@
+{
+  "fetches": [
+    {
+      "event_id": "fetch-1",
+      "evidence": {
+        "event_id": "fetch-1",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://official.example/doc",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "90e474004f090aa866b28663d6e5c91d177b6c19f204339696feb30c56efe322",
+  "question": "Install the toolkit",
+  "run_id": "synthetic-run-1",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "search-1",
+      "evidence": {
+        "event_id": "search-1",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "search-1",
+      "evidence": {
+        "event_id": "search-1",
+        "quote": "## 1. [Official guide](https://official.example/doc)\n\nOfficial result summary\n\n**URL:** https://official.example/doc\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://official.example/doc"
+    },
+    {
+      "content_group": "",
+      "event_id": "search-1",
+      "evidence": {
+        "event_id": "search-1",
+        "quote": "## 2. [Community guide](https://third.example/post)\n\nthird-party result body\n\n**URL:** https://third.example/post\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://third.example/post"
+    },
+    {
+      "content_group": "",
+      "event_id": "fetch-1",
+      "evidence": {
+        "event_id": "fetch-1",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://official.example/doc#section"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

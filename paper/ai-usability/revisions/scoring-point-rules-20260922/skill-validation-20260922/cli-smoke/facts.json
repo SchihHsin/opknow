@@ -1,0 +1,129 @@
+{
+  "run_id": "synthetic-run-1",
+  "packet_sha256": "90e474004f090aa866b28663d6e5c91d177b6c19f204339696feb30c56efe322",
+  "question": "Install the toolkit",
+  "task_requirements": {
+    "main": [
+      "install"
+    ],
+    "secondary": [],
+    "version_relations": []
+  },
+  "source_items": [
+    {
+      "source_id": "search-event",
+      "event_id": "search-1",
+      "url": null,
+      "ownership": "unknown",
+      "relevant": null,
+      "content_group": "",
+      "evidence": {
+        "event_id": "search-1",
+        "quote": "## 1. [Official guide](https://official.example/doc)\n\nOfficial result summary\n\n**URL:** https://official.example/doc\n\n## 2. [Community guide](https://third.example/post)\n\nthird-party result body\n\n**URL:** https://third.example/post\n"
+      }
+    },
+    {
+      "source_id": "official-result",
+      "event_id": "search-1",
+      "url": "https://official.example/doc",
+      "ownership": "official",
+      "relevant": true,
+      "content_group": "official-doc",
+      "query_index": 1,
+      "rank": 1,
+      "evidence": {
+        "event_id": "search-1",
+        "quote": "## 1. [Official guide](https://official.example/doc)\n\nOfficial result summary\n\n**URL:** https://official.example/doc\n\n"
+      }
+    },
+    {
+      "source_id": "third-result",
+      "event_id": "search-1",
+      "url": "https://third.example/post",
+      "ownership": "third_party",
+      "relevant": true,
+      "content_group": "community-post",
+      "query_index": 1,
+      "rank": 2,
+      "evidence": {
+        "event_id": "search-1",
+        "quote": "## 2. [Community guide](https://third.example/post)\n\nthird-party result body\n\n**URL:** https://third.example/post\n"
+      }
+    },
+    {
+      "source_id": "official-fetch",
+      "event_id": "fetch-1",
+      "url": "https://official.example/doc#section",
+      "ownership": "official",
+      "relevant": true,
+      "content_group": "official-doc",
+      "evidence": {
+        "event_id": "fetch-1",
+        "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+      }
+    }
+  ],
+  "fetches": [
+    {
+      "request_url": "https://official.example/doc",
+      "event_id": "fetch-1",
+      "ownership": "official",
+      "target_match": "matched",
+      "representation": "body",
+      "observed_defect": false,
+      "evidence": {
+        "event_id": "fetch-1",
+        "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+      }
+    }
+  ],
+  "m1": {
+    "first_query": 1,
+    "first_rank": 1,
+    "first_hit_source_id": "official-result",
+    "decisive_records_verified": true,
+    "budget_exhausted": false
+  },
+  "m5": {
+    "possible_counts": [
+      1
+    ]
+  },
+  "m4": {
+    "missing_relations": [],
+    "conflicts": [],
+    "mode": "direct"
+  },
+  "m6": {
+    "checked_event_ids": [
+      "search-1",
+      "fetch-1"
+    ],
+    "no_third_party_material": false,
+    "claims": [
+      {
+        "source_id": "third-result",
+        "claim": "The community post describes the install.",
+        "claim_evidence": [
+          {
+            "event_id": "search-1",
+            "quote": "third-party result body"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "fetch-1",
+            "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      }
+    ]
+  },
+  "m10": {
+    "content_repairs": [],
+    "environment_substitutions": [],
+    "content_check_complete": true
+  }
+}

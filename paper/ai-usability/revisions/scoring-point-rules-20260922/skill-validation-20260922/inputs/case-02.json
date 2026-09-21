@@ -1,0 +1,53 @@
+{
+  "request": "以这些归档官方资料为本检查的固定证据包，按原题评价M4，列明必要关系与依据。",
+  "question": "我装了 torch_npu 报版本不匹配，怎么查 CANN、torch_npu、固件驱动、PyTorch 之间的版本配套关系？",
+  "applicability": {
+    "M4": {
+      "applicable": true,
+      "scope": "CANN、torch_npu、固件驱动、PyTorch配套"
+    },
+    "M9": {
+      "applicable": true,
+      "scope": "CANN、torch_npu、固件驱动、PyTorch配套"
+    },
+    "M10": {
+      "applicable": true,
+      "scope": "原题要求的操作；概念解释不强制代码"
+    },
+    "other_metrics": "M1/M2/M3/M5/M6/M7依实际证据状态；M8依派发计数。没有第三方资料时M6=N/A，不把未查到写成不适用。"
+  },
+  "excerpts": [
+    {
+      "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+      "request_id": "call_00_VxMBb5pwcYpnPBe2IquR7450",
+      "role": "fetch",
+      "tool": "WebFetch",
+      "url": "https://raw.githubusercontent.com/Ascend/pytorch/master/COMPATIBILITY.md",
+      "arguments": {
+        "url": "https://raw.githubusercontent.com/Ascend/pytorch/master/COMPATIBILITY.md",
+        "prompt": "Extract the full version compatibility table(s): relations between torch_npu (Ascend Extension for PyTorch) versions, PyTorch versions, CANN versions, Python versions, and firmware/driver versions. Include exact version numbers, any tables, any commands mentioned to check versions, and any notes about how to select the matching versions. Preserve structure verbatim."
+      },
+      "query": null,
+      "text": "```\n# 版本配套\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。各版本间的匹配关系由昇腾社区统一维护，建议优先使用推荐版本组合以确保最佳兼容性和性能。固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/commercial)。\n\n## 推荐版本组合\n\n|    组件    |               推荐版本               |\n|:--------:|:--------------------------------:|\n| TorchNPU |              2.12.0（安装包版本）             |\n| PyTorch  |              2.12.0              |\n|   CANN   |              9.1.0               |\n|  Python  | 3.10 / 3.11 / 3.12 / 3.13 / 3.14 |\n\n## TorchNPU 版本配套表\n\n下表中的TorchNPU版本与`torch_npu`安装包版本采用不同的命名规则：\n\n- **TorchNPU版本**：标识产品的发布版本，采用独立于PyTorch的版本编号，如`26.1.0`、`26.1.1`。正式版本通常使用三段数字，历史预发布版本包含`RC`标识，如`6.0.RC3`。同一个TorchNPU产品版本可以配套多个PyTorch版本，因此会发布多个不同版本号的安装包。\n- **TorchNPU安装包版本**：以配套的PyTorch版本号为基础，通常采用`{PyTorch版本}`或`{PyTorch版本}.postN`的形式。`.postN`用于区分同一PyTorch版本下安装包的后续发布，`N`为发布序号，不能直接换算为TorchNPU产品版本。历史预发布安装包还可能包含`rc`标识。使用`pip`安装或查询`torch_npu`时，应使用安装包版本号。\n\n例如，TorchNPU `26.1.0`配套PyTorch `2.7.1`时，安装包版本为`2.7.1.post8`；配套PyTorch `2.12.0`时，安装包版本为`2.12.0`。TorchNPU产品版本、安装包版本及依赖版本的对应关系以下表为准。\n\n以下为当前活跃版本的匹配关系：\n\n> 26.1.1的安装包版本及CANN `9.1.X`配套范围依据[发行版说明](https://gitcode.com/Ascend/pytorch/releases)。\n\n| TorchNPU版本 | TorchNPU安装包版本 | PyTorch版本 | CANN版本 |\n|:---:|:---:|:---:|:---:|\n| 26.1.1 | 2.12.0.post2 | 2.12.0 | CANN 9.1.X |\n| 26.1.1 | 2.11.0.post2 | 2.11.0 | CANN 9.1.X |\n| 26.1.1 | 2.10.0.post6 | 2.10.0 | CANN 9.1.X |\n| 26.1.1 | 2.9.0.post8 | 2.9.0 | CANN 9.1.X |\n| 26.1.1 | 2.7.1.post10 | 2.7.1 | CANN 9.1.X |\n| 26.1.0 | 2.12.0 | 2.12.0 | CANN 9.1.0 |\n| 26.1.0 | 2.11.0 | 2.11.0 | CANN 9.1.0 |\n| 26.1.0 | 2.10.0.post4 | 2.10.0 | CANN 9.1.0 |\n| 26.1.0 | 2.9.0.post6 | 2.9.0 | CANN 9.1.0 |\n| 26.1.0 | 2.7.1.post8 | 2.7.1 | CANN 9.1.0 |\n| 26.0.0 | 2.10.0 | 2.10.0 | CANN 9.0.0 |\n| 26.0.0 | 2.9.0.post2 | 2.9.0 | CANN 9.0.0 |\n| 26.0.0 | 2.8.0.post4 | 2.8.0 | CANN 9.0.0 |\n| 26.0.0 | 2.7.1.post4 | 2.7.1 | CANN 9.0.0 |\n| 7.3.0 | 2.9.0 | 2.9.0 | CANN 8.5.0 |\n| 7.3.0 | 2.8.0.post2 | 2.8.0 | CANN 8.5.0 |\n| 7.3.0 | 2.7.1.post2 | 2.7.1 | CANN 8.5.0 |\n| 7.3.0 | 2.6.0.post5 | 2.6.0 | CANN 8.5.0 |\n| 7.2.0 | 2.8.0 | 2.8.0 | CANN 8.3.RC1 |\n| 7.2.0 | 2.7.1 | 2.7.1 | CANN 8.3.RC1 |\n| 7.2.0 | 2.6.0.post3 | 2.6.0 | CANN 8.3.RC1 |\n| 7.2.0 | 2.1.0.post17 | 2.1.0 | CANN 8.3.RC1 |\n| 7.1.0 | 2.6.0 | 2.6.0 | CANN 8.2.RC1 |\n| 7.1.0 | 2.5.1.post1 | 2.5.1 | CANN 8.2.RC1 |\n| 7.1.0 | 2.1.0.post13 | 2.1.0 | CANN 8.2.RC1 |\n| 7.0.0 | 2.5.1 | 2.5.1 | CANN 8.1.RC1 |\n| 7.0.0 | 2.4.0.post4 | 2.4.0 | CANN 8.1.RC1 |\n| 7.0.0 | 2.3.1.post6 | 2.3.1 | CANN 8.1.RC1 |\n| 7.0.0 | 2.1.0.post12 | 2.1.0 | CANN 8.1.RC1 |\n| 6.0.0 | 2.4.0.post2 | 2.4.0 | CANN 8.0.0 |\n| 6.0.0 | 2.3.1.post4 | 2.3.1 | CANN 8.0.0 |\n| 6.0.0 | 2.1.0.post10 | 2.1.0 | CANN 8.0.0 |\n\n<details>\n<summary>点击展开历史版本（含 EOL）</summary>\n\n| TorchNPU版本 | TorchNPU安装包版本 | PyTorch版本 | CANN版本 |\n|:---:|:---:|:---:|:---:|\n| 6.0.RC3 | 2.4.0 | 2.4.0 | CANN 8.0.RC3 |\n| 6.0.RC3 | 2.3.1.post2 | 2.3.1 | CANN 8.0.RC3 |\n| 6.0.RC3 | 2.1.0.post8 | 2.1.0 | CANN 8.0.RC3 |\n| 6.0.RC2 | 2.3.1 | 2.3.1 | CANN 8.0.RC2 |\n| 6.0.RC2 | 2.2.0.post2 | 2.2.0 | CANN 8.0.RC2 |\n| 6.0.RC2 | 2.1.0.post6 | 2.1.0 | CANN 8.0.RC2 |\n| 6.0.RC2 | 1.11.0.post14 | 1.11.0 | CANN 8.0.RC2 |\n| 6.0.RC1 | 2.2.0 | 2.2.0 | CANN 8.0.RC1 |\n| 6.0.RC1 | 2.1.0.post4 | 2.1.0 | CANN 8.0.RC1 |\n| 6.0.RC1 | 1.11.0.post11 | 1.11.0 | CANN 8.0.RC1 |\n| 5.0.0 | 2.1.0 | 2.1.0 | CANN 7.0.0 |\n| 5.0.0 | 2.0.1.post1 | 2.0.1 | CANN 7.0.0 |\n| 5.0.0 | 1.11.0.post8 | 1.11.0 | CANN 7.0.0 |\n| 5.0.RC3 | 2.1.0.rc1 | 2.1.0 | CANN 7.0.RC1 |\n| 5.0.RC3 | 2.0.1 | 2.0.1 | CANN 7.0.RC1 |\n| 5.0.RC3 | 1.11.0.post4 | 1.11.0 | CANN 7.0.RC1 |\n| 5.0.RC2.2 | 1.11.0.post3 | 1.11.0 | CANN 6.3.RC3.1 |\n| 5.0.RC2.1 | 1.11.0.post2 | 1.11.0 | CANN 6.3.RC3 |\n| 5.0.RC2 | 2.0.1.rc1 | 2.0.1 | CANN 6.3.RC2 |\n| 5.0.RC2 | 1.11.0.post1 | 1.11.0 | CANN 6.3.RC2 |\n| 5.0.RC2 | 1.8.1.post2 | 1.8.1 | CANN 6.3.RC2 |\n| 5.0.RC1 | 1.11.0 | 1.11.0 | CANN 6.3.RC1 |\n| 5.0.RC1 | 1.8.1.post1 | 1.8.1 | CANN 6.3.RC1 |\n| 3.0.0 | 1.5.0.post8 | 1.5.0 | CANN 6.0.1 |\n| 3.0.0 | 1.8.1 | 1.8.1 | CANN 6.0.1 |\n| 3.0.0 | 1.11.0.rc2（beta） | 1.11.0 | CANN 6.0.1 |\n| 3.0.RC3 | 1.5.0.post7 | 1.5.0 | CANN 6.0.RC1 |\n| 3.0.RC3 | 1.8.1.rc3 | 1.8.1 | CANN 6.0.RC1 |\n| 3.0.RC3 | 1.11.0.rc1（beta） | 1.11.0 | CANN 6.0.RC1 |\n| 3.0.RC2 | 1.5.0.post6 | 1.5.0 | CANN 5.1.RC2 |\n| 3.0.RC2 | 1.8.1.rc2 | 1.8.1 | CANN 5.1.RC2 |\n| 3.0.RC1 | 1.5.0.post5 | 1.5.0 | CANN 5.1.RC1 |\n| 3.0.RC1 | 1.8.1.rc1 | 1.8.1 | CANN 5.1.RC1 |\n| 2.0.4 | 1.5.0.post4 | 1.5.0 | CANN 5.0.4 |\n| 2.0.3 | 1.5.0.post3 | 1.8.1 | CANN 5.0.3 |\n| 2.0.2 | 1.5.0.post2 | 1.5.0 | CANN 5.0.2 |\n\n</details>\n\n## PyTorch与Python版本配套表\n\n|   PyTorch版本   |                           Python版本                           |\n|:--------------:|:-------------------------------------------------------------:|\n| PyTorch 2.13.0 | Python3.10, Python3.11, Python 3.12, Python 3.13, Python 3.14 |\n| PyTorch 2.12.0 | Python3.10, Python3.11, Python 3.12, Python 3.13, Python 3.14 |\n| PyTorch 2.11.0 | Python3.10, Python3.11, Python 3.12, Python 3.13, Python 3.14 |\n| PyTorch 2.10.0 |       Python3.10, Python3.11, Python 3.12, Python 3.13        |\n| PyTorch 2.9.0  |       Python3.10, Python3.11, Python 3.12, Python 3.13        |\n| PyTorch 2.8.0  | Python3.9, Python3.10, Python 3.11, Python 3.12, Python 3.13  |\n| PyTorch 2.7.1  | Python3.9, Python3.10, Python 3.11, Python 3.12, Python 3.13  |\n| PyTorch 2.6.0  |              Python3.9, Python3.10, Python 3.11               |\n| PyTorch 2.5.1  |              Python3.9, Python3.10, Python 3.11               |\n| PyTorch 2.4.0  |         Python3.8, Python3.9, Python3.10, Python 3.11         |\n| PyTorch 2.3.1  |         Python3.8, Python3.9, Python3.10, Python 3.11         |\n| PyTorch 2.2.0  |               Python3.8, Python3.9, Python3.10                |\n| PyTorch 2.1.0  |         Python3.8, Python3.9, Python3.10, Python 3.11         |\n| PyTorch 1.11.0 |     Python3.7(>=3.7.5), Python3.8, Python3.9, Python3.10      |\n\n## 硬件支持\n\nTorchNPU支持如下昇腾产品系列：\n\n|     产品系列      |\n|:-------------:|\n| 昇腾 950DT 系列产品 |\n|  昇腾 A3 系列产品   |\n|  昇腾 A2 系列产品   |\n|  昇腾 910 系列产品  |\n| 昇腾 310P 系列产品  |\n| 昇腾 310B 系列产品  |\n|   昇腾310系列产品   |\n```",
+      "status": "ok"
+    },
+    {
+      "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+      "request_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313",
+      "role": "fetch",
+      "tool": "WebFetch",
+      "url": "https://www.hiascend.com/hardware/firmware-drivers/commercial",
+      "arguments": {
+        "prompt": "Report only what is returned. Is there a real body with firmware/driver version compatibility info for Ascend hardware and CANN, or only navigation/JS framework text? Extract any tables or text describing the correspondence between firmware/driver (HDK) versions and CANN versions, plus any query/selection guidance.",
+        "url": "https://www.hiascend.com/hardware/firmware-drivers/commercial"
+      },
+      "query": null,
+      "text": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中...",
+      "status": "ok"
+    }
+  ],
+  "fixture_id": "case-02",
+  "source_run_id": "I-cann-deepseek-v4_1-flash-standard-20260921T102748",
+  "source_packet_sha256": "f6dcbcc673e989e796605ec448e8af888852f2d257569706480206b29bd62d5d",
+  "scope": "Selected archived material for a bounded workflow check, not a complete run reassessment."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "interim_record_superseded",
+  "scope": "Standalone rescoring Skill; no new collection, no canonical assessment promotion, no matrix replacement.",
+  "forward_test": {
+    "initial_cases": 4,
+    "initial_expected_branch_matches": 3,
+    "case_04_initial": 3,
+    "case_04_recheck": 2,
+    "initial_output_preserved": true,
+    "recheck_is_not_a_new_blind_test": true
+  },
+  "independent_code_findings": [
+    "Search parser omitted one URL containing parentheses",
+    "M6 source/support/independent-crosscheck roles require distinct validation",
+    "M8 must count dispatches, not returned source objects",
+    "Last fetch must follow dispatch order and incomplete packets must be blocked"
+  ],
+  "batch_input_integrity": {
+    "packets": 156,
+    "dispatch_source_one_to_one": true,
+    "dispatch_totals_equal_saved_counts": true
+  },
+  "limits": [
+    "The four cases are bounded archived excerpts, not full-run re-evaluations.",
+    "A mechanical pass cannot verify technical meaning or provenance.",
+    "A whole-record pilot and small-batch review remain necessary before bulk rescore."
+  ],
+  "superseded_by": "validation-result.json"
+}

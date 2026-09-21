@@ -1,0 +1,50 @@
+{
+  "preserved_original_probe_file": "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/isolated-gate-probes.json",
+  "correction": "The original unknown-official probe derived [1,2]; both counts map to M5=2. Its rejection was due to facts.m5.possible_counts being left at [1], not a cross-band M5 failure.",
+  "probes": [
+    {
+      "probe": "known_two_plus_unknown_one_possible_counts_2_3_forced_m5_2",
+      "exit_code": 1,
+      "report_written": true,
+      "mechanical_pass": false,
+      "issue_codes": [
+        "M5.unknown"
+      ],
+      "m5_issues": [
+        {
+          "code": "M5.unknown",
+          "message": "M5 is scored although its factual inputs are incomplete or unresolved"
+        }
+      ],
+      "guard_result": "rejected_as_expected"
+    },
+    {
+      "probe": "known_one_plus_unknown_one_possible_counts_1_2_m5_2",
+      "exit_code": 0,
+      "report_written": true,
+      "mechanical_pass": true,
+      "issue_codes": [],
+      "m5_issues": [],
+      "guard_result": "accepted_as_expected"
+    }
+  ],
+  "direct_point_arithmetic": {
+    "same_band_1_2": {
+      "possible_counts": [
+        1,
+        2
+      ],
+      "score": 2,
+      "issues": []
+    },
+    "cross_band_2_3": {
+      "possible_counts": [
+        2,
+        3
+      ],
+      "score": null,
+      "issues": []
+    }
+  },
+  "scope": "Synthetic M5 gate probes only; original probe record preserved; no Skill/code edits and no full rescore."
+}

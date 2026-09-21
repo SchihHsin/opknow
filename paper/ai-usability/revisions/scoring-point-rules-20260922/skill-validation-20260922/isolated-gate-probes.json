@@ -1,0 +1,95 @@
+{
+  "source": "/Users/hsin/.codex/skills/ai-usability-rescore/tests/test_rescore.py::RescoreTests",
+  "scope": "Synthetic gate probes only; no Skill/code edits and no full rescore.",
+  "probes": [
+    {
+      "probe": "supported_m6_without_support_evidence",
+      "exit_code": 1,
+      "report_written": true,
+      "mechanical_pass": false,
+      "issue_codes": [
+        "m6.support",
+        "M11.score"
+      ],
+      "relevant_issues": [
+        {
+          "code": "m6.support",
+          "message": "supported claim 0 needs at least one packet support_evidence quote"
+        }
+      ],
+      "guard_result": "rejected_as_expected"
+    },
+    {
+      "probe": "m6_null_writes_failure_report",
+      "exit_code": 1,
+      "report_written": true,
+      "mechanical_pass": false,
+      "issue_codes": [
+        "facts.m6",
+        "m6.claims"
+      ],
+      "relevant_issues": [
+        {
+          "code": "facts.m6",
+          "message": "m6 must be an object"
+        },
+        {
+          "code": "m6.claims",
+          "message": "numeric M6 requires an explicit claim inventory or confirmed no-third-party exception"
+        }
+      ],
+      "guard_result": "rejected_as_expected"
+    },
+    {
+      "probe": "tampered_search_rank",
+      "exit_code": 1,
+      "report_written": true,
+      "mechanical_pass": false,
+      "issue_codes": [
+        "search.inventory",
+        "m1.first_hit",
+        "M1.unknown"
+      ],
+      "relevant_issues": [
+        {
+          "code": "search.inventory",
+          "message": "source_items rank/query index disagrees with saved search row https://official.example/doc"
+        },
+        {
+          "code": "m1.first_hit",
+          "message": "M1 first hit query/rank does not match its source inventory row"
+        }
+      ],
+      "guard_result": "rejected_as_expected"
+    },
+    {
+      "probe": "unknown_official_candidate_may_change_m5_band",
+      "exit_code": 1,
+      "report_written": true,
+      "mechanical_pass": false,
+      "issue_codes": [
+        "m1.first_hit",
+        "M1.unknown",
+        "m5.counts"
+      ],
+      "relevant_issues": [
+        {
+          "code": "m1.first_hit",
+          "message": "M1 first hit must be explicitly reviewed as relevant official"
+        },
+        {
+          "code": "m5.counts",
+          "message": "possible_counts must equal derived admissible counts [1, 2]"
+        }
+      ],
+      "guard_result": "rejected_as_expected"
+    }
+  ],
+  "interpretation": {
+    "supported_m6_without_support_evidence": "Rejected via m6.support; M11.score is a secondary stale-arithmetic consequence of changing M6 from 5 to 4 in the probe assessment.",
+    "m6_null_writes_failure_report": "Rejected and report was written; facts.m6 plus m6.claims issues are present.",
+    "tampered_search_rank": "Rejected via search.inventory; M1 first-hit issues are secondary effects of the same tamper.",
+    "unknown_official_candidate_may_change_m5_band": "Rejected via m5.counts with derived possible_counts [1, 2], so a numeric M5 cannot be accepted; M1 issues are secondary because the mutated item is the first official hit."
+  },
+  "overall": "All four requested misuse paths were mechanically rejected in the current implementation."
+}

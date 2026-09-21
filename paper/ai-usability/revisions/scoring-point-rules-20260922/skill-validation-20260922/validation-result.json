@@ -1,0 +1,41 @@
+{
+  "status": "skill_implementation_validated_with_limits",
+  "rule_version": "point-rubric-20260922-v1",
+  "workflow_version": "rescore-workflow-v1",
+  "unit_tests": {
+    "passed": 45,
+    "original": 26,
+    "new_workflow": 19
+  },
+  "cli_smoke": {
+    "commands_passed": 4,
+    "synthetic": true
+  },
+  "archived_fixture_forward_test": {
+    "cases": 4,
+    "initial_expected_branch_matches": 3,
+    "case_04_initial_score": 3,
+    "case_04_rechecked_score": 2,
+    "recheck_was_directed": true
+  },
+  "independent_gate_probes": {
+    "missing_support_quote_rejected": true,
+    "malformed_facts_rejected": true,
+    "changed_search_rank_rejected": true,
+    "m5_same_band_allowed": true,
+    "m5_cross_band_forced_point_rejected": true,
+    "initial_probe_interpretation_corrected": true
+  },
+  "packet_inventory": {
+    "packets": 156,
+    "search_events": 491,
+    "parsed_result_rows": 2450,
+    "dispatch_source_one_to_one": true
+  },
+  "canonical_assessments_promoted": 0,
+  "matrix_replaced": false,
+  "whole_record_pilot_completed": false,
+  "bulk_rescore_authorized_by_this_validation": false,
+  "report": "VALIDATION.md",
+  "core_script_sha256": "e02f9de8e6dc0cd9ef8e96441f3d5688540494b36193821e8becbeee693959a6"
+}

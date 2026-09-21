@@ -1,0 +1,137 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "synthetic-run-1",
+  "process_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "search-1",
+          "quote": "## 1. [Official guide](https://official.example/doc)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ],
+      "documents": [
+        {
+          "id": "fetch-1",
+          "status": "scored",
+          "score": 5
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "search-1",
+          "quote": "third-party result body"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M7": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Reviewed fact.",
+      "event_refs": [
+        "search-1",
+        "fetch-1"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 4,
+      "reason": "Reviewed fact.",
+      "evidence": [
+        {
+          "event_id": "fetch-1",
+          "quote": "Official body text: PATH and LD_LIBRARY_PATH."
+        }
+      ]
+    },
+    "M11": {
+      "status": "scored",
+      "score": 91.74399999999999,
+      "reason": "Reviewed fact.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  }
+}

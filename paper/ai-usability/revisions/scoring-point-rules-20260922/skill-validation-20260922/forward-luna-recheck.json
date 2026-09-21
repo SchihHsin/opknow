@@ -1,0 +1,63 @@
+{
+  "skill_rules_sha256": "93b6f02067cd16d4d94c7bf58c23eebb6dcd19b8c57bcfa923d8b8cfc9aaf5d3",
+  "decisions": [
+    {
+      "fixture_id": "case-04",
+      "metric": "M6",
+      "status": "scored",
+      "score": 2,
+      "reason": "原子断言复核后，官方材料只陈述可研究 model operators 与 device kernel activity；这些较宽泛表述不能蕴含第三方说法中的 CPU 算子调度、CUDA kernel 执行、同时采集或基于 CUPTI。固定材料没有对这些关键限定提供可追溯支持，也没有反驳；因此对这条完整关键说法按 M6=2（已完成核对但无足够支持）判定。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "PyTorch Profiler 基于 CUPTI，能同时采集 CPU 算子调度和 CUDA kernel 执行信息"
+        },
+        {
+          "event_id": "WebFetch_4_b5b8e4ac.result",
+          "quote": "Profiler’s context manager API can be used to better understand what model operators are the most expensive, examine their input shapes and stack traces, study device kernel activity and visualize the execution trace."
+        }
+      ],
+      "observations": {
+        "prior_decision_preserved": {
+          "status": "scored",
+          "score": 3,
+          "reason_summary": "初始判定将 model operators/device kernel activity 作为 CPU 算子与 CUDA kernel 信息的部分支持。"
+        },
+        "atomic_claims": [
+          {
+            "claim": "PyTorch Profiler 基于 CUPTI",
+            "official_entailment": false,
+            "basis": "核查摘录未提及 CUPTI。"
+          },
+          {
+            "claim": "能采集 CPU 算子调度",
+            "official_entailment": false,
+            "basis": "model operators 未限定为 CPU，也未描述调度。"
+          },
+          {
+            "claim": "能采集 CUDA kernel 执行信息",
+            "official_entailment": false,
+            "basis": "device kernel activity 未限定为 CUDA，也未明确为执行信息。"
+          },
+          {
+            "claim": "上述信息能同时采集",
+            "official_entailment": false,
+            "basis": "摘录未说明同时采集或同一采集窗口。"
+          }
+        ],
+        "adjacent_but_non_entailing_text": [
+          "model operators",
+          "device kernel activity",
+          "execution trace"
+        ],
+        "support_status": "无关键限定的可追溯支持；存在相关但不蕴含的宽泛表述",
+        "contradiction_found": false,
+        "independent_cross_check": false,
+        "checking_material_count": 1,
+        "why_not_score_3": "若把宽泛的 operators/device kernel 改写成 CPU/CUDA，会增加原文没有的限定；M6 不能通过削弱第三方说法来制造部分支持。",
+        "execution_scope": "仅复核该第三方说法及所附官方核查材料；不补抓全文或新来源。"
+      }
+    }
+  ],
+  "scope_note": "这是对 case-04 原判定的原子断言复核；初始 forward-luna-decisions.json 保持不变。该复核仍是有限检查，不能外推全量评分可靠性。"
+}

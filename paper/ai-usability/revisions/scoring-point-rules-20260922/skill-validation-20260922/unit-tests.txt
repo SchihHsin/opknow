@@ -1,0 +1,50 @@
+test_all_non_scored_statuses_require_null (test_point_assessment.PointAssessmentTests) ... ok
+test_complete_example_passes (test_point_assessment.PointAssessmentTests) ... ok
+test_duplicate_metric_json_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_interval_fields_and_bounded_status_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_list_metrics_and_unknown_metric_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_m11_reference_names_valid_and_unique (test_point_assessment.PointAssessmentTests) ... ok
+test_m2_documents_required_integer_unique (test_point_assessment.PointAssessmentTests) ... ok
+test_m2_mean_must_use_all_documents (test_point_assessment.PointAssessmentTests) ... ok
+test_m2_unknown_document_cannot_be_ignored (test_point_assessment.PointAssessmentTests) ... ok
+test_m8_m11_alternatives_must_be_nonempty (test_point_assessment.PointAssessmentTests) ... ok
+test_missing_inputs_m11_only_valid_names_no_duplicates (test_point_assessment.PointAssessmentTests) ... ok
+test_missing_m11_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_nonfinite_json_tokens_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_nonfinite_numeric_and_boolean_scores_rejected (test_point_assessment.PointAssessmentTests) ... ok
+test_optional_observation_fields_require_objects (test_point_assessment.PointAssessmentTests) ... ok
+test_optional_observations_and_missing_inputs_pass (test_point_assessment.PointAssessmentTests) ... ok
+test_provenance_and_required_score_fields (test_point_assessment.PointAssessmentTests) ... ok
+test_reason_and_scored_evidence_required (test_point_assessment.PointAssessmentTests) ... ok
+test_score_ranges_and_integer_metrics (test_point_assessment.PointAssessmentTests) ... ok
+test_exceptions_need_explicit_basis (test_point_math.PointMathTests) ... ok
+test_first_hit_and_missing_history (test_point_math.PointMathTests) ... ok
+test_formula_and_missing_saturation (test_point_math.PointMathTests) ... ok
+test_no_silent_deletion_of_unknown_document (test_point_math.PointMathTests) ... ok
+test_no_zero_call_reward (test_point_math.PointMathTests) ... ok
+test_outcomes_do_not_enter_m11 (test_point_math.PointMathTests) ... ok
+test_same_source_band_not_interval (test_point_math.PointMathTests) ... ok
+test_dispatch_without_saved_return_fails_closed (test_rescore.RescoreTests) ... ok
+test_excerpt_cannot_score_as_body_5 (test_rescore.RescoreTests) ... ok
+test_invalid_m6_verdict_and_empty_claim_inventory_fail (test_rescore.RescoreTests) ... ok
+test_m11_missing_input_cannot_be_saturated (test_rescore.RescoreTests) ... ok
+test_m6_four_is_valid_with_supported_claim_without_independent_crosscheck (test_rescore.RescoreTests) ... ok
+test_m8_uses_actual_dispatch_count (test_rescore.RescoreTests) ... ok
+test_m9_five_requires_version_relation_fact (test_rescore.RescoreTests) ... ok
+test_missing_or_malformed_facts_writes_failure_report (test_rescore.RescoreTests) ... ok
+test_missing_version_relation_blocks_four_or_five (test_rescore.RescoreTests) ... ok
+test_nonexistent_assessment_quote_fails (test_rescore.RescoreTests) ... ok
+test_official_claim_labeled_third_party_fails (test_rescore.RescoreTests) ... ok
+test_old_fetch_return_is_not_used_when_later_return_exists (test_rescore.RescoreTests) ... ok
+test_quote_requires_existing_exact_substring (test_rescore.RescoreTests) ... ok
+test_review_rejects_old_hash (test_rescore.RescoreTests) ... ok
+test_source_and_fetch_ownership_disagreement_fails (test_rescore.RescoreTests) ... ok
+test_supported_without_support_quote_fails_even_for_nonindependent_four (test_rescore.RescoreTests) ... ok
+test_unknown_fetch_cannot_be_omitted (test_rescore.RescoreTests) ... ok
+test_unresolved_claim_cannot_receive_three (test_rescore.RescoreTests) ... ok
+test_valid_positive_and_prepare_unknown_template (test_rescore.RescoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 0.081s
+
+OK

@@ -1,0 +1,64 @@
+[
+  {
+    "args": [
+      "prepare",
+      "--packet",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/packet.json",
+      "--out",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/prepared"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "quote",
+      "--packet",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/packet.json",
+      "--event",
+      "fetch-1",
+      "--contains",
+      "Official body text: PATH and LD_LIBRARY_PATH."
+    ],
+    "returncode": 0,
+    "stdout": "{\"event_id\": \"fetch-1\", \"quote\": \"Official body text: PATH and LD_LIBRARY_PATH.\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "check",
+      "--packet",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/packet.json",
+      "--assessment",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/assessment.json",
+      "--facts",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/facts.json",
+      "--out",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/check.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "review",
+      "--packet",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/packet.json",
+      "--assessment",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/assessment.json",
+      "--facts",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/facts.json",
+      "--check-report",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/check.json",
+      "--review-file",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/review.json",
+      "--out",
+      "/Users/hsin/Documents/Coding/opknow/paper/ai-usability/revisions/scoring-point-rules-20260922/skill-validation-20260922/cli-smoke/receipt.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

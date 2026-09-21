@@ -1,0 +1,144 @@
+{
+  "skill_rules_sha256": "93b6f02067cd16d4d94c7bf58c23eebb6dcd19b8c57bcfa923d8b8cfc9aaf5d3",
+  "decisions": [
+    {
+      "fixture_id": "case-01",
+      "metric": "M2",
+      "status": "scored",
+      "score": 3,
+      "reason": "返回内容明确标为从官方 CUDA Quick Start Guide 提取的摘录，并给出 VERBATIM START/END 与代码块，但保存的是工具生成的摘要/摘录而非目标网页直接正文；按 M2 摘录且无直接正文计 3 分。",
+      "evidence": [
+        {
+          "event_id": "call_c1319406a8474ebfbfb36171.result",
+          "quote": "在**CUDA Quick Start Guide 13.4** 文档中，相同的 “Set up the development environment”（设置开发环境）步骤——包含相同的两个 `export` 命令——在 **12 个 Linux 安装章节**中逐字出现。Ubuntu 专属的章节是 **§4.1.9.1 (Debian Installer)** 和 **§4.1.9.2 (Runfile Installer)**。所有提取内容均在下方逐字重现，并带有明确的 START/END（开始/结束）标记。"
+        },
+        {
+          "event_id": "call_c1319406a8474ebfbfb36171.result",
+          "quote": "**[VERBATIM START — Section 4.1.9.1 \"Debian Installer\", steps 3–5]**"
+        }
+      ],
+      "observations": {
+        "target_match": "官方 CUDA Quick Start Guide 的 Ubuntu Debian/Runfile 章节可识别",
+        "return_representation": "工具改写的提取摘要，含明确逐字摘录边界",
+        "direct_body_observed": false,
+        "completeness_verification": "not_independently_verified",
+        "missing_fact": "未保存目标网页直接正文，无法按 M2=4/5 评为直接正文可抓取"
+      }
+    },
+    {
+      "fixture_id": "case-02",
+      "metric": "M4",
+      "status": "scored",
+      "score": 3,
+      "reason": "官方表格直接给出 TorchNPU 安装包、PyTorch 与 CANN 的配套关系；但原题还要求固件/驱动关系，固件驱动官方页面返回仅有导航和“加载中”，没有版本对应表或可执行选择依据。因此只有部分必要关系明确，按 M4 计 3 分。",
+      "evidence": [
+        {
+          "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+          "quote": "TorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。"
+        },
+        {
+          "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+          "quote": "| 26.1.1 | 2.12.0.post2 | 2.12.0 | CANN 9.1.X |"
+        },
+        {
+          "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+          "quote": "配套版本号发布日期说明操作\n\n加载中..."
+        }
+      ],
+      "observations": {
+        "applicable": true,
+        "required_relations": [
+          "torch_npu/TorchNPU 安装包 ↔ PyTorch",
+          "TorchNPU ↔ CANN",
+          "CANN/硬件 ↔ 固件与驱动"
+        ],
+        "relations_with_direct_support": [
+          "TorchNPU 安装包 ↔ PyTorch",
+          "TorchNPU ↔ CANN"
+        ],
+        "missing_relations": [
+          "固件/驱动版本 ↔ 硬件/CANN 的具体配套与选择规则"
+        ],
+        "firmware_driver_page_state": "仅标题/导航/加载中，无可识别配套正文"
+      }
+    },
+    {
+      "fixture_id": "case-03",
+      "metric": "M10",
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案给出具体 kernel、注册、setup.py、构建和调用方案，但主路线内部存在需修正的文件与模块对应关系：文件布局使用 myadd.cpp/myadd_cuda.cu，setup.py 却引用 extension.cpp/extension_kernel.cu，且扩展名 cuda_extension 与 Python 端 from . import _C 不一致。故需要内容补改，不能按仅替换环境值计 4/5。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "│       ├── myadd.cpp        # C++ 接口/注册\n│       └── cuda/\n│           └── myadd_cuda.cu  # CUDA kernel"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "sources=['extension.cpp', 'extension_kernel.cu']"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "name='cuda_extension'"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "from . import _C  # 触发 TORCH_LIBRARY 静态注册（或用 torch.ops.load_library(\"_C.so\")）"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "代码均未实际运行（仅内容核查，非复现验证）。"
+        }
+      ],
+      "observations": {
+        "execution_status": "only_content_check; not run",
+        "environment_replacements": [
+          "CUDA_HOME（答案已说明其用途）",
+          "TORCH_CUDA_ARCH_LIST（可选架构值）",
+          "本机 CUDA/PyTorch 环境值"
+        ],
+        "content_repairs_required": [
+          "将 setup.py 的 sources 与前述 myadd.cpp/myadd_cuda.cu 文件布局对齐，或改写布局",
+          "使构建产物名称/包内模块与 from . import _C（或 load_library 路径）一致",
+          "补齐一致的包目录与扩展加载 wiring"
+        ],
+        "why_not_score_4": "存在内容和路径修正，不是仅替换已解释的用户环境值"
+      }
+    },
+    {
+      "fixture_id": "case-04",
+      "metric": "M6",
+      "status": "scored",
+      "score": 3,
+      "reason": "固定官方核查材料支持“了解模型算子”和“研究 device kernel activity/执行 trace”，因此支持第三方说法中 CPU 算子与 CUDA kernel 信息部分；材料没有说明 PyTorch Profiler 基于 CUPTI，也未提供独立交叉来源。可识别关键说法只有部分得到可追溯支持且无矛盾，按 M6 计 3 分。",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_f9734e83.result",
+          "quote": "PyTorch Profiler 基于 CUPTI，能同时采集 CPU 算子调度和 CUDA kernel 执行信息"
+        },
+        {
+          "event_id": "WebFetch_4_b5b8e4ac.result",
+          "quote": "Profiler’s context manager API can be used to better understand what model operators are the most expensive, examine their input shapes and stack traces, study device kernel activity and visualize the execution trace."
+        }
+      ],
+      "observations": {
+        "key_claims": [
+          "PyTorch Profiler 基于 CUPTI",
+          "能够采集 CPU 算子调度信息",
+          "能够采集 CUDA/device kernel 执行信息"
+        ],
+        "supported_by_checking_material": [
+          "model operators",
+          "device kernel activity / execution trace"
+        ],
+        "unsupported_in_checking_material": [
+          "基于 CUPTI 的实现依据",
+          "明确的同时采集表述"
+        ],
+        "contradiction_found": false,
+        "independent_cross_check": false,
+        "checking_material_count": 1
+      }
+    }
+  ]
+}

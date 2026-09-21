@@ -1,0 +1,430 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_32150df52fa745f5b5bee63b.result",
+      "evidence": {
+        "event_id": "call_32150df52fa745f5b5bee63b.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+      "evidence": {
+        "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+      "evidence": {
+        "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+      "evidence": {
+        "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/developer/blog/details/0297193497731671997",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_ebef356c363544deba9a40ce.result",
+      "evidence": {
+        "event_id": "call_ebef356c363544deba9a40ce.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/seven_767823098/article/details/155889858",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_629fcd32435242cebc8da634.result",
+      "evidence": {
+        "event_id": "call_629fcd32435242cebc8da634.result",
+        "quote": ""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "21d8d575b61eb212123464ce41a72e64dee35e2b45ddc841dd0f579ee2f01fe5",
+  "question": "请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？",
+  "run_id": "Z-cann-glm-5_3-standard-20260921T151251",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/IRpickstars/article/details/156223345"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.tahou.com/article/193362450480125957"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 3. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://bbs.huaweicloud.com/blogs/471408)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/471408\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://bbs.huaweicloud.com/blogs/471408"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 4. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.hiascend.com/cann/document"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_29c1446768c14c5cab14c667.result",
+      "evidence": {
+        "event_id": "call_29c1446768c14c5cab14c667.result",
+        "quote": "## 5. [《Ascend C 架构篇：揭秘 AI Core 与三大编程范式》](https://devpress.csdn.net/v1/article/detail/155193421)\n\n2025年11月24日 · 本文深入解析昇腾AICore架构与AscendC编程模型，揭示达芬奇架构核心组件（Scalar/Vector/Cube单元、UB缓存 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155193421\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/155193421"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 1. [Ascend C](https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html)\n\n2026年9月5日 · __aicore__：标识该核函数（Kernel）在设备端AI核上执行，不区分具体核类型（通常用于 耦合模式）。 …\n\n**URL:** https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 2. [Ascend C 编程模型揭秘：深入理解核函数、任务并行与流水 ...](https://blog.csdn.net/sinat_41617212/article/details/154583581)\n\n2025年11月8日 · 本文基于“昇腾 CANN 训练营”核心素材，深度揭秘 Ascend C 的编程模型。 我们将系统解析 核函数（Kernel …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154583581\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://blog.csdn.net/sinat_41617212/article/details/154583581"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 3. [Ascend C 核函数编程模型精解：从概念到实践掌握并行计算 ...](https://devpress.csdn.net/v1/article/detail/154885978)\n\n2025年11月15日 · 我们将从并行计算的 理论基础 (Theoretical Foundation) 出发，系统化解析 Ascend C 的 核函数执行模型 (Kernel …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/154885978\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://devpress.csdn.net/v1/article/detail/154885978"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 4. [Ascend C概述与学习路径-CANN9.1.0-beta.3-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md)\n\n本文作为算子编程快速入门章节，将从昇腾异构系统基础入手，逐步拆解编程模型核心要素，帮助您快速建立昇腾算子编程的整体认 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ab952c7a43274e529f034b71.result",
+      "evidence": {
+        "event_id": "call_ab952c7a43274e529f034b71.result",
+        "quote": "## 5. [从零到精通：华为昇腾AI Core架构下的Ascend C矢量算子 ...](https://blog.csdn.net/weixin_28327051/article/details/159599952)\n\n2026年3月29日 · 通过深入剖析AI Core的计算单元、存储体系和任务调度机制，结合实战案例展示如何利用Ascend C高效开发AI算 …\n\n**URL:** https://blog.csdn.net/weixin_28327051/article/details/159599952\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/weixin_28327051/article/details/159599952"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_32150df52fa745f5b5bee63b.result",
+      "evidence": {
+        "event_id": "call_32150df52fa745f5b5bee63b.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/AI-Core-SIMD%E7%BC%96%E7%A8%8B/%E6%A6%82%E8%BF%B0.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+      "evidence": {
+        "event_id": "call_3cedafe5c2064a6b9475f29f.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/ai_core_simd_programming/kernel_function.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+      "evidence": {
+        "event_id": "call_e6b5520b1c6f4a888e4c3fe4.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://asc.gitcode.com/guide/programming_guide/advanced_programming/hardware_implementation/basic_architecture.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 1. [从CUDA到Ascend C开发实战_达芬奇架构和cuda架构的区别-CSDN博客](https://blog.csdn.net/seven_767823098/article/details/155889858)\n\n本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核心内容包括： …\n\n**URL:** https://blog.csdn.net/seven_767823098/article/details/155889858\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://blog.csdn.net/seven_767823098/article/details/155889858"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 2. [从CUDA到Ascend C开发实战_开发语言_seven_767823098-CANN开 …](https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html)\n\nDec 13, 2025 · 本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核 …\n\n**URL:** https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://cann.csdn.net/69ef0b6b0a2f6a37c5a654d6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 3. [从CUDA到Ascend C：一文入门昇腾异构计算核函数编程](https://www.hiascend.com/developer/blog/details/0297193497731671997)\n\nSep 17, 2025 · 摘要 本文面向有CUDA编程经验的开发者，通过对比CUDA与Ascend C的编程模型，结合向量加法的实际示例，详细 …\n\n**URL:** https://www.hiascend.com/developer/blog/details/0297193497731671997\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.hiascend.com/developer/blog/details/0297193497731671997"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 4. [从CUDA到Ascend C开发实战_开发语言_seven_767823098-鲲鹏昇腾 …](https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html)\n\nDec 13, 2025 · 本文深入解析昇腾Ascend C与NVIDIA CUDA的编程范式差异，从架构设计、编程模型到底层实现进行全方位对比。 核 …\n\n**URL:** https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://hwcomputing.csdn.net/695f57650846ec2c4c5ad3f3.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d9e13466abe049c89b28a887.result",
+      "evidence": {
+        "event_id": "call_d9e13466abe049c89b28a887.result",
+        "quote": "## 5. [昇腾文档-昇腾社区 - hiascend.com](https://www.hiascend.com/document)\n\nAug 19, 2026 · 热门文档 CANN软件快速安装 CANN算子库 Ascend C算子开发 Ascend C API MindSpeed是什么 PyTorch原生API支 …\n\n**URL:** https://www.hiascend.com/document\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://www.hiascend.com/document"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+      "evidence": {
+        "event_id": "call_ea3a8a4439e14bdb87fd864d.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/developer/blog/details/0297193497731671997"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ebef356c363544deba9a40ce.result",
+      "evidence": {
+        "event_id": "call_ebef356c363544deba9a40ce.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://blog.csdn.net/seven_767823098/article/details/155889858"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_629fcd32435242cebc8da634.result",
+      "evidence": {
+        "event_id": "call_629fcd32435242cebc8da634.result",
+        "quote": ""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://asc.gitcode.com/guide/programming_guide/programming_model/programming_model_overview.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

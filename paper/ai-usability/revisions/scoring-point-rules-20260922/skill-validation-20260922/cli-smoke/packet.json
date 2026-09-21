@@ -1,0 +1,58 @@
+{
+  "run_name": "synthetic-run-1",
+  "task_id": "A",
+  "question": "Install the toolkit",
+  "metadata": {
+    "run_id": "synthetic-run-1",
+    "process_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "applicability": {
+    "M4": {
+      "applicable": true
+    },
+    "M9": {
+      "applicable": true
+    },
+    "M10": {
+      "applicable": true
+    }
+  },
+  "prior": [
+    {
+      "event_id": "prior-1",
+      "text": "Prior answer text."
+    }
+  ],
+  "sources": [
+    {
+      "event_id": "search-1",
+      "request_id": "req-search",
+      "role": "search",
+      "url": null,
+      "text": "## 1. [Official guide](https://official.example/doc)\n\nOfficial result summary\n\n**URL:** https://official.example/doc\n\n## 2. [Community guide](https://third.example/post)\n\nthird-party result body\n\n**URL:** https://third.example/post\n"
+    },
+    {
+      "event_id": "fetch-1",
+      "request_id": "req-fetch",
+      "role": "fetch",
+      "url": "https://official.example/doc#section",
+      "text": "Official body text: PATH and LD_LIBRARY_PATH."
+    }
+  ],
+  "final": "Final answer text.",
+  "final_event_ids": [
+    "final-1"
+  ],
+  "dispatch_events": [
+    {
+      "id": "req-search.dispatch",
+      "type": "tool_dispatch",
+      "request_id": "req-search"
+    },
+    {
+      "id": "req-fetch.dispatch",
+      "type": "tool_dispatch",
+      "request_id": "req-fetch"
+    }
+  ]
+}
