@@ -1,0 +1,304 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_91b072fc.result",
+          "quote": "## 1. [1. Introduction — cuBLAS 13.4 documentation](https://docs.nvidia.com/cuda/cublas/index.html)"
+        }
+      ],
+      "reason": "The first relevant official result is query 1 rank 1 and decisive records were verified.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "cublasLtMatrixLayout_t Adesc, Bdesc, Cdesc;"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "auto W = g->tensor(...);"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "g->execute(handle, {X->uid:x_ptr, ...}, workspace);"
+        },
+        {
+          "event_id": "WebFetch_4_52983056_bc8ed60e.result",
+          "quote": "In the frontend API, you can describe multiple operations that form subgraphs through a persistent graph object."
+        },
+        {
+          "event_id": "run-end",
+          "quote": "cublasLtMatrixLayoutCreate(&Adesc, CUDA_R_32F, m, k, lda); // 同 Bdesc/Cdesc"
+        },
+        {
+          "event_id": "WebFetch_4_52983056_bc8ed60e.result",
+          "quote": "11. Execute the graph with the relevant data pointers."
+        }
+      ],
+      "reason": "Concrete library choices and graph workflow are present, but Bdesc/Cdesc, tensor mapping, and convolution execute/output wiring are incomplete.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "missing_inputs": [
+        "M5",
+        "M7"
+      ],
+      "reason": "Point total cannot be finalized while M5 and M7 remain unscorable.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/cuda/cublas/index.html",
+          "observations": {
+            "representation": "excerpt"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/latest/index.html",
+          "observations": {
+            "representation": "body"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/overview.html",
+          "observations": {
+            "representation": "body"
+          },
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cusparse/index.html",
+          "observations": {
+            "representation": "excerpt"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html",
+          "observations": {
+            "representation": "body"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
+          "observations": {
+            "representation": "body"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/api/ops/convolution.html",
+          "observations": {
+            "representation": "error"
+          },
+          "score": 1,
+          "status": "scored"
+        },
+        {
+          "id": "https://developer.nvidia.cn/blog/boosting-matrix-multiplication-speed-and-flexibility-with-nvidia-cublas-12-9/",
+          "observations": {
+            "representation": "body"
+          },
+          "score": 5,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_5db26793.result",
+          "quote": "# cuBLAS 文档内容提取结果\n\n## ⚠️ 重要说明：文档存在截断\n\n所提供的网页内容**并非完整文档**，正文在 **2.4.13. cublasGetVector()** 一节中途截断（最后一个词 \"`CUBLA\" 被拦腰切断）。因此：\n\n| 用户请求项 | 状态 |\n|---|---|\n| `cublasLtMatmul` 完整函数签名与参数 | ❌ **未包含**（仅目录中出现，见 3.4.17 条目；正文在截断点之后） |\n| `cublasSgemm` 经典 API 签名 | ❌ **未包含**（仅目录中出现 2.7.1 `cublas<t>gemm()` 条目；正文在截断点之后） |\n| 列主序（Data Layout）说明 | ✅ **完整包含**（1.1 节，全文无缺） |\n| Tensor Core 用法 | ✅ **完整包含**（2.1.11 节，全文无缺） |\n\n截断点原文末尾为：\n\n> `CUBLAS_STATUS_MAPPING_ERROR` | There was an error accessing GPU memory\n> `CUBLA` ←（此处中断）\n\n以下仅提取所提供内容中实际存在的信息，未包含的部分不做臆测补全。\n\n---\n\n## 一、列主序说明（1.1. Data Layout）— 完整原文\n\n> For maximum compatibility with existing Fortran environments, the cuBLAS library uses column-major storage, and 1-bas"
+        },
+        {
+          "event_id": "WebFetch_3_e7ba3dac.result",
+          "quote": "**标题**: NVIDIA cuDNN — NVIDIA cuDNN\n\nBack to top\n\n# NVIDIA cuDNN[#](https://docs.nvidia.com/deeplearning/cudnn/latest/index.html#nvidia-cudnn \"Link to this heading\")\n\nThe NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. It provides highly tuned implementations of operations arising frequently in deep neural network (DNN) applications:\n\n- Scaled dot-product attention\n- Convolution, including cross-correlation\n- Matrix multiplication\n- Normalizations, softmax, and pooling\n- Arithmetic, mathematical, relational, and logical pointwise operations\n\nBeyond just providing high-performance implementations of individual operations, cu"
+        },
+        {
+          "event_id": "WebFetch_4_52983056_bc8ed60e.result",
+          "quote": "**标题**: Overview — NVIDIA cuDNN\n\n# Overview#\n\nThe cuDNN library exposes open-source frontend Python and C++ API layers, which provide a simplified programming model that is sufficient for most use cases. These layers offer all of the graph functionality of the cuDNN backend while adding abstractions and utilities for ease of use. In the frontend API, you can describe multiple operations that form subgraphs through a persistent graph object. You don’t have to worry about specifying the shapes and sizes of the intermediate virtual tensors.\n\nThe Python frontend API layer and C++ frontend API layer are functionally equivalent. Therefore, you can choose which API layer to use according to your la"
+        },
+        {
+          "event_id": "WebFetch_6_1d64c8bd.result",
+          "quote": "# 分析结果：关于 cusparseSpMM 章节的提取请求\n\n## ⚠️ 核心结论：目标内容不在所提供的文档中\n\n**所提供的网页内容是被截断的文档片段**，其中**不包含 cusparseSpMM 章节正文**。文档在 **第 5.3.9 节 `cusparseSetMatDiagType()`** 处中断（该节本身也未完整，止于 \"**Output**\" 一词），而 cusparseSpMM 所属的 **Generic APIs 章节（cuSPARSE Generic API Reference）整章缺失**。\n\n因此：\n- ❌ cusparseSpMM 完整函数签名与参数表（handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer）—— **文档中不存在**\n- ❌ cusparseSpMM_bufferSize / cusparseSpMM_preprocess 流程说明 —— **文档中不存在**\n- ❌ 算法枚举 `cusparseSpMMAlg_t`（CUSPARSE_SPMM_ALG_DEFAULT 等）—— **文档中不存在**\n- ✅ 稀疏/稠密格式说明（CSR/COO/CSC/SELL/BSR/BLOCKED-ELL、稠密矩阵布局）—— **文档中存在（第 3 章，完整）**\n- ✅ 相关数据类型定义（cudaDataType_t、cusparseOperation_t、cusparseStatus_t）—— **文档中存在（完整）**\n\n---\n\n"
+        },
+        {
+          "event_id": "WebFetch_8_d92621d8.result",
+          "quote": "**标题**: Supported Products — NVIDIA cuDNN\n\nBack to top\n\n# Supported Products[#](https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html#supported-products \"Link to this heading\")\n\ncuDNN Frontend 1.28.0 is supported by cuDNN backend versions starting with v8.5.0.\n\nThe GPU, CUDA Toolkit, CUDA driver, CPU architecture, and OS requirements are the same as for the cuDNN backend version with which you are using cuDNN frontend. For details, refer to the support matrix for the relevant cuDNN backend version:\n\n- [cuDNN backend support matrix](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n  \n  Earlier 9.x releases are available from th"
+        },
+        {
+          "event_id": "WebFetch_9_8ecb4d18.result",
+          "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+        },
+        {
+          "event_id": "WebFetch_10_c52de6b1.result",
+          "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+        },
+        {
+          "event_id": "WebFetch_11_5f860cef.result",
+          "quote": "**标题**: 借助 NVIDIA cuBLAS 12.9 提高矩阵乘法速度和灵活性 - NVIDIA 技术博客\n**发布时间**: 2025年 5月 1日\n\n# 借助 NVIDIA cuBLAS 12.9 提高矩阵乘法速度和灵活性\n\n作者：[Babak Hejazi](https://developer.nvidia.cn/blog/author/babak-hejazi/ \"Posts by Babak Hejazi\"), [Mark Wolf](https://developer.nvidia.cn/blog/author/mark-wolf/ \"Posts by Mark Wolf\"), [Roman Dubtsov](https://developer.nvidia.cn/blog/author/roman-dubtsov/ \"Posts by Roman Dubtsov\") 和 [Becca Zandstein](https://developer.nvidia.cn/blog/author/becca-zandstein/ \"Posts by Becca Zandstein\")\n\nNVIDIA CUDA-X 数学库助力开发者为 AI、科学计算、数据处理等领域构建加速应用。\n\nCUDA-X 库的两个最重要的应用是训练和推理 LLM，无论是用于日常消费者应用，还是用于药物研发等高度专业化的科学领域。要在 NVIDIA Blackwell 架构上高效训练 LLM 和执行 [具有突破性性能的推理任务](https://developer.nvidia.cn/zh-cn/b"
+        },
+        {
+          "event_id": "WebFetch_4_52983056_bc8ed60e.result",
+          "quote": "[...]"
+        }
+      ],
+      "reason": "Eight mapped documents score [3,5,4,3,5,5,1,5]; the mean is 31/8. The overview extraction is abbreviated, two excerpts are partial, and the 404 is an error representation.",
+      "score": 3.875,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "WebFetch_4_52983056_bc8ed60e.result",
+          "quote": "**标题**: Overview — NVIDIA cuDNN\n\n# Overview#\n\nThe cuDNN library exposes open-source frontend Python and C++ API layers, which provide a simplified programming model that is sufficient for most use cases. These layers offer all of the graph functionality of the cuDNN backend while adding abstractions and utilities for ease of use. In the frontend API, you can describe multiple operations that form subgraphs through a persistent graph object. You don’t have to worry about specifying the shapes and sizes of the intermediate virtual tensors.\n\nThe Python frontend API layer and C++ frontend API layer are functionally equivalent. Therefore, you can choose which API layer to use according to your la"
+        },
+        {
+          "event_id": "WebFetch_6_1d64c8bd.result",
+          "quote": "# 分析结果：关于 cusparseSpMM 章节的提取请求\n\n## ⚠️ 核心结论：目标内容不在所提供的文档中\n\n**所提供的网页内容是被截断的文档片段**，其中**不包含 cusparseSpMM 章节正文**。文档在 **第 5.3.9 节 `cusparseSetMatDiagType()`** 处中断（该节本身也未完整，止于 \"**Output**\" 一词），而 cusparseSpMM 所属的 **Generic APIs 章节（cuSPARSE Generic API Reference）整章缺失**。\n\n因此：\n- ❌ cusparseSpMM 完整函数签名与参数表（handle, opA, opB, alpha, matA, matB, beta, matC, computeType, alg, externalBuffer）—— **文档中不存在**\n- ❌ cusparseSpMM_bufferSize / cusparseSpMM_preprocess 流程说明 —— **文档中不存在**\n- ❌ 算法枚举 `cusparseSpMMAlg_t`（CUSPARSE_SPMM_ALG_DEFAULT 等）—— **文档中不存在**\n- ✅ 稀疏/稠密格式说明（CSR/COO/CSC/SELL/BSR/BLOCKED-ELL、稠密矩阵布局）—— **文档中存在（第 3 章，完整）**\n- ✅ 相关数据类型定义（cudaDataType_t、cusparseOperation_t、cusparseStatus_t）—— **文档中存在（完整）**\n\n---\n\n"
+        }
+      ],
+      "reason": "GEMM and SpMM function bodies and parameters are incomplete; convolution graph workflow is present but operation parameters are not complete.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "WebFetch_8_d92621d8.result",
+          "quote": "**标题**: Supported Products — NVIDIA cuDNN\n\nBack to top\n\n# Supported Products[#](https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html#supported-products \"Link to this heading\")\n\ncuDNN Frontend 1.28.0 is supported by cuDNN backend versions starting with v8.5.0.\n\nThe GPU, CUDA Toolkit, CUDA driver, CPU architecture, and OS requirements are the same as for the cuDNN backend version with which you are using cuDNN frontend. For details, refer to the support matrix for the relevant cuDNN backend version:\n\n- [cuDNN backend support matrix](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n  \n  Earlier 9.x releases are available from th"
+        },
+        {
+          "event_id": "WebFetch_9_8ecb4d18.result",
+          "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+        }
+      ],
+      "reason": "Compatibility support is partial: cuDNN frontend/backend and CUDA/GPU/driver tables are direct, while selected cuBLAS/cuSPARSE interfaces lack complete applicability relations.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "observations": {
+        "possible_counts": [
+          5,
+          6
+        ]
+      },
+      "reason": "Official mirrors are excluded from third-party counts; two same-title third-party fragments have unresolved same-document grouping, yielding possible counts 5 or 6 across the 4/5 band.",
+      "score": null,
+      "status": "unscorable",
+      "evidence": [
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "https://jishuzhan.net/article/2068656086676238337"
+        },
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "https://blog.csdn.net/m0_67316550/article/details/161994198"
+        }
+      ]
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "## 1. [NIVIDIA高性能计算CUDA笔记 (二) cuBLAS库简介及矩阵乘法 ...](https://www.cnblogs.com/GeophysicsWorker/p/19448479)\n\n2026年1月6日 · cuBLAS 是NIVIDIA提供的GPU加速线性代数库，基于CUDA实现BLAS (基本线性代数子程序)，广泛应用于科学计算 …\n\n**URL:** https://www.cnblogs.com/GeophysicsWorker/p/19448479\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "## 2. [Nvidia计算优化系列CUDNN、CUTLASS和CUBLAS - 知乎](https://zhuanlan.zhihu.com/p/24010163868)\n\n2025年2月16日 · cuBLAS 是NVIDIA提供的一个用于加速基础 线性代数 运算的库。 它提供了一些常见的线性代数操作接口，尤其是 矩 …\n\n**URL:** https://zhuanlan.zhihu.com/p/24010163868\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "## 3. [CUDA C++ 矩阵乘法详解：从 CUBLAS 示例到 ...](https://jishuzhan.net/article/2068656086676238337)\n\n2026年6月21日 · 在 GPU 高性能计算领域，矩阵乘法是最基础也是最重要的操作之一。 NVIDIA 的 CUBLAS 库提供了高度优化的矩阵 …\n\n**URL:** https://jishuzhan.net/article/2068656086676238337\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "## 4. [CUDA C++ 矩阵乘法详解：从 CUBLAS 示例到 ...](https://blog.csdn.net/m0_67316550/article/details/161994198)\n\n2026年7月22日 · 正确做法是颠倒参数顺序调用cublasSgemm (B,A)，这样既避免了显式转置，又能直接获得行主序结果。 文中提供了 …\n\n**URL:** https://blog.csdn.net/m0_67316550/article/details/161994198\n\n---\n\n"
+        },
+        {
+          "event_id": "WebSearch_7_8a8597c4.result",
+          "quote": "## 5. [一文读懂CUDA常用库: CUBLAS、CUDNN、CUTLASS - 知乎](https://zhuanlan.zhihu.com/p/1929943281552330961)\n\n2025年7月21日 · 其他: 2019 - cuBLASLt发布 (是 cuBLAS 的轻量级扩展，专注于灵活的高性能矩阵乘法), 伴随CUDA 10.1 [2] CUDA, …\n\n**URL:** https://zhuanlan.zhihu.com/p/1929943281552330961\n\n---\n\n"
+        }
+      ],
+      "reason": "Five material claims: two supported; three checked but unsupported in full detail. This is not a falsehood finding.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "NVIDIA 官方稠密线性代数库，提供 GEMM（`cublasSgemm`/`cublasDgemm`/`cublasGemmEx`），新版推荐 `cublasLtMatmul`（cublasLt）。"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "cuDNN 卷积旧 API：创建 tensor/filter/convolution descriptor，`cudnnGetConvolutionForwardAlgorithm` 选算法，分配 workspace，`cudnnConvolutionForward`。"
+        }
+      ],
+      "reason": "Prior contains concrete GEMM and legacy convolution API assertions, but this packet does not verify those specific calls; M7 remains unscorable.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M8": {
+      "reason": "Four search dispatches and eight fetches were completed, giving 4+8 evidence units.",
+      "score": 1,
+      "status": "scored",
+      "event_refs": [
+        "WebSearch_0_91b072fc.dispatch",
+        "WebFetch_1_5db26793.dispatch",
+        "WebSearch_2_73a77569.dispatch",
+        "WebFetch_3_e7ba3dac.dispatch",
+        "WebFetch_4_52983056_bc8ed60e.dispatch",
+        "WebSearch_5_33c55102.dispatch",
+        "WebFetch_6_1d64c8bd.dispatch",
+        "WebSearch_7_8a8597c4.dispatch",
+        "WebFetch_8_d92621d8.dispatch",
+        "WebFetch_9_8ecb4d18.dispatch",
+        "WebFetch_10_c52de6b1.dispatch",
+        "WebFetch_11_5f860cef.dispatch"
+      ]
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "cuDNN Frontend 1.28.0"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "cuDNN 9.26.0 for CUDA 12.x"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "cuBLAS / cuSPARSE"
+        },
+        {
+          "event_id": "WebFetch_8_d92621d8.result",
+          "quote": "cuDNN Frontend 1.28.0 is supported by cuDNN backend versions starting with v8.5.0."
+        }
+      ],
+      "reason": "cuDNN and some hardware compatibility relations are supported, but complete current cuBLAS/cuSPARSE applicability remains missing.",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {},
+  "process_sha256": "fa1f59cda377e4e33dadb0bd928a881691da2a5a948e9acf5649d1892edccc2a",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "C-cuda-kimi-k3-2-standard-20260921T102458"
+}
