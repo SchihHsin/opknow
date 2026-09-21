@@ -1,0 +1,358 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_c09c39f3.result",
+      "evidence": {
+        "event_id": "WebFetch_1_c09c39f3.result",
+        "quote": "**标题**: 1. Hopper Architecture Compatibility — Hopper Compatibility Guide 13.4 documentation\n\n# 1. Hopper Architecture Compatibility\n\n## 1.1. About this Document\n\nThis application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers ensure that their NVIDIA® CUDA® applications will run on the NVIDIA® Hopper architecture based GPUs. This document provides guidance to developers who are familiar with programming in CUDA C++ and want to make sure that their software applications are compatible with Hopper architecture.\n\n## 1.2. Application Compatibility on Hopper Architecture\n\n# 1. Hopper Architecture Compatibility\n## 1.2. Application Compatibi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_c0efd86c.result",
+      "evidence": {
+        "event_id": "WebFetch_3_c0efd86c.result",
+        "quote": "**标题**: Engine Compatibility — NVIDIA TensorRT\n\n# Engine Compatibility#\n\nThis page covers engine compatibility across TensorRT versions and hardware targets, including version compatibility, hardware compatibility, compatibility checks, and cross-platform compatibility.\n\n## Version Compatibility#\n\n# Engine Compatibility#\n## Version Compatibility#\nBy default, TensorRT engines are compatible only with the version of TensorRT used to build them. With appropriate build-time configuration, you can build engines that are compatible with later TensorRT versions.\n\nFor example, when version compatibility is enabled, engines built with TensorRT 10 work with TensorRT 11. However, engines built with new"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_aa54e6ef.result",
+      "evidence": {
+        "event_id": "WebFetch_5_aa54e6ef.result",
+        "quote": "# Deprecated / Dropped GPU Architecture Support — Extraction from CUDA 13.4 Update 1 Release Notes\n\n## Summary of Findings\n\nThis document contains **limited** architecture deprecation information. The platform-level deprecation section (§2.6.2) mentions only **one future ARM architecture change**; the Maxwell/Pascal/Volta removal appears **only in library-specific release notes** (cuFFT, cuSPARSE), not in the platform section. There is **no information** about CUDA 12.x architecture drops, and **no statement** of when `sm_90` was first introduced. Gaps are detailed at the end.\n\n---\n\n## 1. Platform-Level Architecture Deprecation (§2.6.2 \"Architectures\")\n\nThe only entry in the platform depreca"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "6c9988fb6f0b46b0dfe45cbc509265e222d702255e69111dff0f6d24ab9f966f",
+  "question": "我的模型/代码从一代 NVIDIA GPU 迁到另一代（如 Volta→Hopper、不同 compute capability），要注意什么（重编译 `-arch/sm_xx`、PTX 兼容、TensorRT engine 不跨架构复用）？",
+  "run_id": "Y-cuda-kimi-k3-2-standard-20260921T141252",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "# Search Results for \"CUDA compute capability nvcc gencode arch compute sm_90 Hopper compatibility documentation\"\n\n## 1. [Matching CUDA arch and CUDA gencode for various NVIDIA …](https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/)\n\nI’ve seen some confusion regarding NVIDIA’s nvcc sm flags and what they’re used for: When compiling with NVCC, the arch flag (‘-arch‘) specifies the name of the NVIDIA GPU architecture that the CUDA files will be compiled for. Gencodes (‘-gen…\n\n**URL:** https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/\n\n---\n\n## 2. [1. Hopper Architecture Compatibility — Hopper Compatibility …](https://docs.nvi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "## 1. [Matching CUDA arch and CUDA gencode for various NVIDIA …](https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/)\n\nI’ve seen some confusion regarding NVIDIA’s nvcc sm flags and what they’re used for: When compiling with NVCC, the arch flag (‘-arch‘) specifies the name of the NVIDIA GPU architecture that the CUDA files will be compiled for. Gencodes (‘-gen…\n\n**URL:** https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "## 2. [1. Hopper Architecture Compatibility — Hopper Compatibility …](https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html)\n\n5 天之前 · This application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers …\n\n**URL:** https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "## 3. [为各种 NVIDIA 架构匹配 CUDA arch 和 CUDA gencode](https://zhuanlan.zhihu.com/p/631850036)\n\n2023年5月24日 · 使用 NVCC 进行编译时，arch 标志 (' -arch') 指定了 CUDA 文件将为其编译的 NVIDIA GPU 架构的名称。 …\n\n**URL:** https://zhuanlan.zhihu.com/p/631850036\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/631850036"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "## 4. [[深度学习][转载]CUDA arch和CUDA gencode对应关系 ...](https://blog.csdn.net/FL1623863129/article/details/124207995)\n\n2026年3月3日 · 文章列举了从Fermi到Hopper的各种架构对应的compute capability，并提供了不同CUDA版本的示例编译标志。 对 …\n\n**URL:** https://blog.csdn.net/FL1623863129/article/details/124207995\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/FL1623863129/article/details/124207995"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_4f7bc243.result",
+      "evidence": {
+        "event_id": "WebSearch_0_4f7bc243.result",
+        "quote": "## 5. [NVIDIA 显卡架构匹配 CUDA arch 和 CUDA gencode](https://blog.csdn.net/u010087338/article/details/136580245)\n\n3 天之前 · “ Devices of compute capability 8.6 have 2x more FP32 operations per cycle per SM than devices of compute capability …\n\n**URL:** https://blog.csdn.net/u010087338/article/details/136580245\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/u010087338/article/details/136580245"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_c09c39f3.result",
+      "evidence": {
+        "event_id": "WebFetch_1_c09c39f3.result",
+        "quote": "**标题**: 1. Hopper Architecture Compatibility — Hopper Compatibility Guide 13.4 documentation\n\n# 1. Hopper Architecture Compatibility\n\n## 1.1. About this Document\n\nThis application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers ensure that their NVIDIA® CUDA® applications will run on the NVIDIA® Hopper architecture based GPUs. This document provides guidance to developers who are familiar with programming in CUDA C++ and want to make sure that their software applications are compatible with Hopper architecture.\n\n## 1.2. Application Compatibility on Hopper Architecture\n\n# 1. Hopper Architecture Compatibility\n## 1.2. Application Compatibi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "# Search Results for \"TensorRT engine portability serialized engine not compatible across GPU architectures rebuild documentation\"\n\n## 1. [TensorRT引擎文件跨显卡架构不兼容？从CUDA capability与 ...](https://raybyte.cn/post/2026/7/26/34f7bf39)\n\n2026年7月26日 · 本文深度解析TensorRT引擎文件跨显卡架构不兼容的根本原因，包括CUDA Capability与设备特性码的核心概念。 通 …\n\n**URL:** https://raybyte.cn/post/2026/7/26/34f7bf39\n\n---\n\n## 2. [Engine Compatibility — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html)\n\n2026年9月8日 · This page covers engine compatibility across TensorRT versions and hardware targets, including version …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inferenc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "## 1. [TensorRT引擎文件跨显卡架构不兼容？从CUDA capability与 ...](https://raybyte.cn/post/2026/7/26/34f7bf39)\n\n2026年7月26日 · 本文深度解析TensorRT引擎文件跨显卡架构不兼容的根本原因，包括CUDA Capability与设备特性码的核心概念。 通 …\n\n**URL:** https://raybyte.cn/post/2026/7/26/34f7bf39\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://raybyte.cn/post/2026/7/26/34f7bf39"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "## 2. [Engine Compatibility — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html)\n\n2026年9月8日 · This page covers engine compatibility across TensorRT versions and hardware targets, including version …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "## 3. [Support Matrix — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html)\n\n2026年9月8日 · This support matrix provides filterable access to TensorRT compatibility information across all releases from 10.0.0 …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "## 4. [Are Serialized engines not portable across platforms (OS) even …](https://github.com/NVIDIA/TensorRT/issues/977)\n\n2020年12月22日 · \"Serialized engines are not portable across platforms (means Linux and Windows.) or TensorRT versions.\" (from …\n\n**URL:** https://github.com/NVIDIA/TensorRT/issues/977\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://github.com/NVIDIA/TensorRT/issues/977"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e812b264.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e812b264.result",
+        "quote": "## 5. [TensorRT常见问题 - 部署不内卷 - 老潘的AI社区](https://ai.oldpan.me/t/topic/142)\n\n2023年6月29日 · The engine plan file is not compatible with this version of TensorRT, expecting (format library) version got , please …\n\n**URL:** https://ai.oldpan.me/t/topic/142\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://ai.oldpan.me/t/topic/142"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_c0efd86c.result",
+      "evidence": {
+        "event_id": "WebFetch_3_c0efd86c.result",
+        "quote": "**标题**: Engine Compatibility — NVIDIA TensorRT\n\n# Engine Compatibility#\n\nThis page covers engine compatibility across TensorRT versions and hardware targets, including version compatibility, hardware compatibility, compatibility checks, and cross-platform compatibility.\n\n## Version Compatibility#\n\n# Engine Compatibility#\n## Version Compatibility#\nBy default, TensorRT engines are compatible only with the version of TensorRT used to build them. With appropriate build-time configuration, you can build engines that are compatible with later TensorRT versions.\n\nFor example, when version compatibility is enabled, engines built with TensorRT 10 work with TensorRT 11. However, engines built with new"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "# Search Results for \"CUDA toolkit versions supported compute capabilities sm_90 deprecated architectures Maxwell Pascal Volta release notes\"\n\n## 1. [CUDA Toolkit 13.4 Update 1 - Release Notes — Release Notes …](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html)\n\n5 天之前 · This release includes enhancements and fixes across the CUDA Toolkit and its libraries. This documentation is organized …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html\n\n---\n\n## 2. [NVIDIA GPU 计算能力（ compute capability，SM version ...](https://www.cnblogs.com/DHclly/p/18838133)\n\n2025年4月21日 · While new versions of the CUDA platform often add native support for a new GPU architectur"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "## 1. [CUDA Toolkit 13.4 Update 1 - Release Notes — Release Notes …](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html)\n\n5 天之前 · This release includes enhancements and fixes across the CUDA Toolkit and its libraries. This documentation is organized …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "## 2. [NVIDIA GPU 计算能力（ compute capability，SM version ...](https://www.cnblogs.com/DHclly/p/18838133)\n\n2025年4月21日 · While new versions of the CUDA platform often add native support for a new GPU architecture by supporting the …\n\n**URL:** https://www.cnblogs.com/DHclly/p/18838133\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.cnblogs.com/DHclly/p/18838133"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "## 3. [【CUDA】GPU 算力与 CUDA 版本对应关系_cuda算力 ...](https://blog.csdn.net/weixin_43667077/article/details/135654738)\n\n2026年4月23日 · 本文介绍了如何查询GPU的ComputeCapability以及它与CUDA版本之间的对应关系，引用了NVIDIA开发者文档 …\n\n**URL:** https://blog.csdn.net/weixin_43667077/article/details/135654738\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/weixin_43667077/article/details/135654738"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "## 4. [GPU驱动与CUDA Toolkit版本不兼容的报错与修复指南_gpu ...](https://blog.csdn.net/shejizuopin/article/details/148976826)\n\n2026年9月8日 · 文章浏览阅读4k次，点赞18次，收藏23次。 本文针对GPU驱动与CUDA Toolkit版本不兼容问题，提供系统性的解决方 …\n\n**URL:** https://blog.csdn.net/shejizuopin/article/details/148976826\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/shejizuopin/article/details/148976826"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_e0133d91.result",
+      "evidence": {
+        "event_id": "WebSearch_4_e0133d91.result",
+        "quote": "## 5. [CUDA GPU Compute Capability | NVIDIA Developer](https://developer.nvidia.com/cuda/gpus)\n\nCompute capability (CC) defines the hardware features and supported instructions for each NVIDIA GPU …\n\n**URL:** https://developer.nvidia.com/cuda/gpus\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://developer.nvidia.com/cuda/gpus"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_aa54e6ef.result",
+      "evidence": {
+        "event_id": "WebFetch_5_aa54e6ef.result",
+        "quote": "# Deprecated / Dropped GPU Architecture Support — Extraction from CUDA 13.4 Update 1 Release Notes\n\n## Summary of Findings\n\nThis document contains **limited** architecture deprecation information. The platform-level deprecation section (§2.6.2) mentions only **one future ARM architecture change**; the Maxwell/Pascal/Volta removal appears **only in library-specific release notes** (cuFFT, cuSPARSE), not in the platform section. There is **no information** about CUDA 12.x architecture drops, and **no statement** of when `sm_90` was first introduced. Gaps are detailed at the end.\n\n---\n\n## 1. Platform-Level Architecture Deprecation (§2.6.2 \"Architectures\")\n\nThe only entry in the platform depreca"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

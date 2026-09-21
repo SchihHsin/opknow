@@ -1,0 +1,382 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_0db0b682ff0a4a9f860a1b97.result",
+      "evidence": {
+        "event_id": "call_0db0b682ff0a4a9f860a1b97.result",
+        "quote": "**标题**: 1. Hopper Architecture Compatibility — Hopper Compatibility Guide 13.4 documentation\n\n# 1. Hopper Architecture Compatibility\n\n## 1.1. About this Document\n\nThis application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers ensure that their NVIDIA® CUDA® applications will run on the NVIDIA® Hopper architecture based GPUs. This document provides guidance to developers who are familiar with programming in CUDA C++ and want to make sure that their software applications are compatible with Hopper architecture.\n\n## 1.2. Application Compatibility on Hopper Architecture\n\n# 1. Hopper Architecture Compatibility\n## 1.2. Application Compatibi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_e763e06d12a84e8483079251.result",
+      "evidence": {
+        "event_id": "call_e763e06d12a84e8483079251.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/faq.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_75272348eaa44abbb834389c.result",
+      "evidence": {
+        "event_id": "call_75272348eaa44abbb834389c.result",
+        "quote": "# TensorRT Engine Compatibility — Full Content Extraction\n\nThis page from the NVIDIA TensorRT documentation (latest version, covering TensorRT 10.x/11.x) covers four compatibility dimensions: **version**, **hardware**, **checks performed at deserialization**, and **cross-platform**. Below is the complete extraction with exact wording of all rules and all code commands preserved.\n\n> **Note on your request:** This page does **not** cover refitting vs. rebuilding — that topic lives on a separate page (\"Refitting an Engine\" under Advanced Topics). \"When engines must be rebuilt\" is not an explicit section here, but the rules below imply the rebuild scenarios; I've summarized them at the end.\n\n---"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3ecaaab6c09141edb8dc9abd.result",
+      "evidence": {
+        "event_id": "call_3ecaaab6c09141edb8dc9abd.result",
+        "quote": "**标题**: CUDA Toolkit 13.0 - Release Notes — Release Notes 13.0 documentation\n\nCUDA Toolkit 13.0 - Release Notes\n\n# 1. Overview\n\nWelcome to the release notes for NVIDIA® CUDA® Toolkit 13.0. This release includes enhancements and fixes across the CUDA Toolkit and its libraries.\n\nThis documentation is organized into two main sections:\n\n- **General CUDA**\n  \n  Focuses on the core CUDA infrastructure including component versions, driver compatibility, compiler/runtime features, issues, and deprecations.\n- **CUDA Libraries**\n  \n  Covers the specialized computational libraries with their feature updates, performance improvements, API changes, and version history across CUDA 13.x releases.\n\n# 2. Ge"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "5bbd8f1144b642eb14df8efbf413125584f7d6a15d78a3469690abe8d871bf7c",
+  "question": "我的模型/代码从一代 NVIDIA GPU 迁到另一代（如 Volta→Hopper、不同 compute capability），要注意什么（重编译 `-arch/sm_xx`、PTX 兼容、TensorRT engine 不跨架构复用）？",
+  "run_id": "Y-cuda-glm-5_3-standard-20260921T145801",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "# Search Results for \"CUDA compatibility compute capability Volta Hopper sm_90 recompile -arch official documentation\"\n\n## 1. [Hopper Compatibility Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/Hopper_Compatibility_Guide.pdf)\n\n2026年9月9日 · Chapter 1. About this Document This application note, Hopper Architecture Compatibility Guide for CUDA …\n\n**URL:** https://docs.nvidia.com/cuda/pdf/Hopper_Compatibility_Guide.pdf\n\n---\n\n## 2. [1. Hopper Architecture Compatibility — Hopper Compatibility …](https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html)\n\n5 天之前 · This application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "## 1. [Hopper Compatibility Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/Hopper_Compatibility_Guide.pdf)\n\n2026年9月9日 · Chapter 1. About this Document This application note, Hopper Architecture Compatibility Guide for CUDA …\n\n**URL:** https://docs.nvidia.com/cuda/pdf/Hopper_Compatibility_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/cuda/pdf/Hopper_Compatibility_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "## 2. [1. Hopper Architecture Compatibility — Hopper Compatibility …](https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html)\n\n5 天之前 · This application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers …\n\n**URL:** https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "## 3. [NVIDIA GPU 计算能力（ compute capability，SM version ...](https://www.cnblogs.com/DHclly/p/18838133)\n\n2025年4月21日 · The compute capability version of a particular GPU should not be confused with the CUDA version (for example, …\n\n**URL:** https://www.cnblogs.com/DHclly/p/18838133\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.cnblogs.com/DHclly/p/18838133"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "## 4. [【接单外包笔记】各种NVIDIA架构对应的编译参数](https://blog.csdn.net/a370413564/article/details/135552918)\n\n2024年1月12日 · 文章浏览阅读2k次，点赞8次，收藏15次。 本文详细介绍了从Fermi到Hopper架构的GPU显卡，对应的不同CUDA版 …\n\n**URL:** https://blog.csdn.net/a370413564/article/details/135552918\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/a370413564/article/details/135552918"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+      "evidence": {
+        "event_id": "call_2d2b3e1b672b48ff8ba41e68.result",
+        "quote": "## 5. [告别版本地狱：一张表搞懂NVIDIA GPU架构、CUDA版本与 ...](https://wenku.csdn.net/column/j699lgd7am2)\n\n2026年5月7日 · 每当新一代NVIDIA GPU发布，从Fermi到最新的Hopper架构，开发者们不得不面对CUDA版本、PyTorch支持范围以 …\n\n**URL:** https://wenku.csdn.net/column/j699lgd7am2\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://wenku.csdn.net/column/j699lgd7am2"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0db0b682ff0a4a9f860a1b97.result",
+      "evidence": {
+        "event_id": "call_0db0b682ff0a4a9f860a1b97.result",
+        "quote": "**标题**: 1. Hopper Architecture Compatibility — Hopper Compatibility Guide 13.4 documentation\n\n# 1. Hopper Architecture Compatibility\n\n## 1.1. About this Document\n\nThis application note, Hopper Architecture Compatibility Guide for CUDA Applications, is intended to help developers ensure that their NVIDIA® CUDA® applications will run on the NVIDIA® Hopper architecture based GPUs. This document provides guidance to developers who are familiar with programming in CUDA C++ and want to make sure that their software applications are compatible with Hopper architecture.\n\n## 1.2. Application Compatibility on Hopper Architecture\n\n# 1. Hopper Architecture Compatibility\n## 1.2. Application Compatibi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/hopper-compatibility-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e763e06d12a84e8483079251.result",
+      "evidence": {
+        "event_id": "call_e763e06d12a84e8483079251.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/faq.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "# Search Results for \"TensorRT documentation engines not portable across GPU architectures rebuild engine compute capability\"\n\n## 1. [Engine Compatibility — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html)\n\n2026年9月8日 · This page covers engine compatibility across TensorRT versions and hardware targets, including version …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html\n\n---\n\n## 2. [TensorRT引擎文件跨显卡架构不兼容？从CUDA capability与 ...](https://raybyte.cn/post/2026/7/26/34f7bf39)\n\n2026年7月26日 · 本文深度解析TensorRT引擎文件跨显卡架构不兼容的根本原因，包括CUDA Capability与设备特性码的核心概念。 通 …\n\n**URL:** https://rayb"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "## 1. [Engine Compatibility — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html)\n\n2026年9月8日 · This page covers engine compatibility across TensorRT versions and hardware targets, including version …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "## 2. [TensorRT引擎文件跨显卡架构不兼容？从CUDA capability与 ...](https://raybyte.cn/post/2026/7/26/34f7bf39)\n\n2026年7月26日 · 本文深度解析TensorRT引擎文件跨显卡架构不兼容的根本原因，包括CUDA Capability与设备特性码的核心概念。 通 …\n\n**URL:** https://raybyte.cn/post/2026/7/26/34f7bf39\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://raybyte.cn/post/2026/7/26/34f7bf39"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "## 3. [TensorRT Engine 的跨平台通用性问题与部署策略 - CSDN博客](https://blog.csdn.net/weixin_73414031/article/details/151753667)\n\n2025年9月16日 · TensorRT Engine（也称 plan 文件）本质上是一个经过底层 CUDA 内核编译优化的二进制文件。 包含了模型权重（ …\n\n**URL:** https://blog.csdn.net/weixin_73414031/article/details/151753667\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/weixin_73414031/article/details/151753667"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "## 4. [Troubleshooting — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/troubleshooting.html)\n\n2026年9月8日 · This guide helps you diagnose and resolve common issues when working with TensorRT. It provides solutions to …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/troubleshooting.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/troubleshooting.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1d37d31f699046c784ce00ad.result",
+      "evidence": {
+        "event_id": "call_1d37d31f699046c784ce00ad.result",
+        "quote": "## 5. [TensorRT常见问题 - 部署不内卷 - 老潘的AI社区](https://ai.oldpan.me/t/topic/142)\n\n2023年6月29日 · 问：如何在多个 GPU 上使用TensorRT ？ 答：每个 ICudaEngine 对象在实例化时都绑定到特定的 GPU，无论是由 …\n\n**URL:** https://ai.oldpan.me/t/topic/142\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://ai.oldpan.me/t/topic/142"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_75272348eaa44abbb834389c.result",
+      "evidence": {
+        "event_id": "call_75272348eaa44abbb834389c.result",
+        "quote": "# TensorRT Engine Compatibility — Full Content Extraction\n\nThis page from the NVIDIA TensorRT documentation (latest version, covering TensorRT 10.x/11.x) covers four compatibility dimensions: **version**, **hardware**, **checks performed at deserialization**, and **cross-platform**. Below is the complete extraction with exact wording of all rules and all code commands preserved.\n\n> **Note on your request:** This page does **not** cover refitting vs. rebuilding — that topic lives on a separate page (\"Refitting an Engine\" under Advanced Topics). \"When engines must be rebuilt\" is not an explicit section here, but the rules below imply the rebuild scenarios; I've summarized them at the end.\n\n---"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-compatibility.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "# Search Results for \"CUDA 13.0 release notes dropped support Maxwell Pascal Volta compute capability deprecation\"\n\n## 1. [CUDA Toolkit 13.0 Update 1 - Release Notes — Release Notes 13.0 ...](https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html)\n\n2025年10月30日 · Architecture support for Maxwell, Pascal, and Volta is considered feature-complete. Offline compilation and library …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html\n\n---\n\n## 2. [CUDA Toolkit 13.0 - Release Notes — Release Notes 13.0 …](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html)\n\n2025年10月30日 · Architecture support for Maxwel"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "## 1. [CUDA Toolkit 13.0 Update 1 - Release Notes — Release Notes 13.0 ...](https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html)\n\n2025年10月30日 · Architecture support for Maxwell, Pascal, and Volta is considered feature-complete. Offline compilation and library …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.1/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "## 2. [CUDA Toolkit 13.0 - Release Notes — Release Notes 13.0 …](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html)\n\n2025年10月30日 · Architecture support for Maxwell, Pascal, and Volta is considered feature-complete. Offline compilation and library …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "## 3. [Nvidia to drop CUDA support for Maxwell, Pascal, …](https://www.tomshardware.com/pc-components/gpus/nvidia-to-drop-cuda-support-for-maxwell-pascal-and-volta-gpus-with-the-next-major-toolkit-release)\n\n2025年5月6日 · The official release notes for Nvidia's CUDA 12.9 Toolkit explicitly indicate that the next …\n\n**URL:** https://www.tomshardware.com/pc-components/gpus/nvidia-to-drop-cuda-support-for-maxwell-pascal-and-volta-gpus-with-the-next-major-toolkit-release\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.tomshardware.com/pc-components/gpus/nvidia-to-drop-cuda-support-for-maxwell-pascal-and-volta-gpus-with-the-next-major-toolkit-release"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "## 4. [NVIDIA 即将终止支持 GPU CUDA Toolkit 未来版本中的 ...](https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit?highlight=wyj0b29sa2l0il0=)\n\n7 小时之前 · CUDA 工具包是 NVIDIA 显卡并行计算的基础，涵盖机器学习、仿真、3D 渲染等诸多任务。 多年来，NVIDIA 一直致力 …\n\n**URL:** https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit?highlight=wyj0b29sa2l0il0=\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit?highlight=wyj0b29sa2l0il0="
+    },
+    {
+      "content_group": "",
+      "event_id": "call_47aa7102cf3247379836a23d.result",
+      "evidence": {
+        "event_id": "call_47aa7102cf3247379836a23d.result",
+        "quote": "## 5. [NVIDIA 即将终止支持 GPU CUDA Toolkit 未来版本中的 ...](https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit)\n\n2025年5月4日 · CUDA 工具包是 NVIDIA 显卡并行计算的基础，涵盖机器学习、仿真、3D 渲染等诸多任务。 多年来，NVIDIA 一直致 …\n\n**URL:** https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://zh-cn.gamegpu.com/news/zhelezo/nvidia-prekrashchaet-podderzhku-gpu-maxwell-pascal-i-volta-v-budushchikh-versiyakh-cuda-toolkit"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3ecaaab6c09141edb8dc9abd.result",
+      "evidence": {
+        "event_id": "call_3ecaaab6c09141edb8dc9abd.result",
+        "quote": "**标题**: CUDA Toolkit 13.0 - Release Notes — Release Notes 13.0 documentation\n\nCUDA Toolkit 13.0 - Release Notes\n\n# 1. Overview\n\nWelcome to the release notes for NVIDIA® CUDA® Toolkit 13.0. This release includes enhancements and fixes across the CUDA Toolkit and its libraries.\n\nThis documentation is organized into two main sections:\n\n- **General CUDA**\n  \n  Focuses on the core CUDA infrastructure including component versions, driver compatibility, compiler/runtime features, issues, and deprecations.\n- **CUDA Libraries**\n  \n  Covers the specialized computational libraries with their feature updates, performance improvements, API changes, and version history across CUDA 13.x releases.\n\n# 2. Ge"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.0/cuda-toolkit-release-notes/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

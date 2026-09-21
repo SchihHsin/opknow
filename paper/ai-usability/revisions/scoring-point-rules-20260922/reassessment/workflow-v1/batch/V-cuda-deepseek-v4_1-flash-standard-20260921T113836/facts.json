@@ -1,0 +1,276 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_CQC4sQ5gtBFc13ecrHl70139.result",
+      "evidence": {
+        "event_id": "call_00_CQC4sQ5gtBFc13ecrHl70139.result",
+        "quote": "# CUDA Asynchronous Execution — Extracted Content\n\n**Source:** NVIDIA CUDA Programming Guide, Section **2.5. Asynchronous Execution**\n**Version:** **v13.4.2** (shown in header) | Last updated: Sep 10, 2026\n**Body content starts at:** heading \"2.5. Asynchronous Execution\"\n**Body content ends at:** \"2.5.10. Summary of Asynchronous Execution\" (before the page footer/navigation)\n\n---\n\n## 2.5.1. What is Asynchronous Concurrent Execution?\n\nCUDA allows concurrent (overlapping) execution of these tasks:\n- computation on the host\n- computation on the device\n- memory transfers host→device\n- memory transfers device→host\n- memory transfers within the memory of a given device\n- memory transfers among dev"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Z0rETYdC3YE96pHqUBhh5617.result",
+      "evidence": {
+        "event_id": "call_00_Z0rETYdC3YE96pHqUBhh5617.result",
+        "quote": "**标题**: 如何在 CUDA C/C++ 中实现数据传输的重叠 - NVIDIA 技术博客\n**发布时间**: 2012年 12月 13日\n\n# 如何在 CUDA C/C++ 中实现数据传输的重叠\n\n作者：[Mark Harris](https://developer.nvidia.cn/blog/author/mark-harris/ \"Posts by Mark Harris\")\n\n![](https://developer.nvidia.com/blog/wp-content/uploads/2012/10/CUDA_Cube_1K-300x298.jpg)在[上一期的 C / C ++ 文章](https://developer.nvidia.com/blog/parallelforall/how-optimize-data-transfers-cuda-cc/ \"How to Optimize Data Transfers in CUDA C/C++\") 中，我们讨论了如何在主机和设备之间高效地传输数据。在这篇文章中，我们讨论了如何将数据传输与主机上的计算、设备上的计算相重叠，在某些情况下，主机和设备之间的其他数据传输。实现数据传输和其他操作之间的重叠需要使用 CUDA 流，所以首先让我们了解一下流。\n\n# CUDA 流\n\nCUDA 中的 *stream* 是按照主机代码发出的顺序在设备上执行的操作序列。虽然流中的操作被保证按规定的顺序执行，但是不同流中的操作可以被交错，并且在可能的情况下，它们甚至可以并发运行。\n\n## 默认流[](https://develop"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_01_JBrQ1KBg0W11emBmNW1Q6602.result",
+      "evidence": {
+        "event_id": "call_01_JBrQ1KBg0W11emBmNW1Q6602.result",
+        "quote": "**标题**: Asynchronous CUDA Calls — Introduction to CUDA Programming 0.1 documentation\n\n# Asynchronous CUDA Calls[](https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html#asynchronous-cuda-calls \"Permalink to this heading\")\n\nOverview\n\n> - **Time:** 60 min\n> \n> <!--THE END-->\n> \n> 1. Learn how to use asynchronous CUDA APIs to improve performance.\n> 2. Understand the concept of CUDA streams and how they can be used to overlap memory transfers and kernel execution.\n\nThis section provides an example of how to use asynchronous CUDA APIs to improve the performance of a simple vector addition program. By using CUDA streams, we can overlap memory transfers and kernel execution, lea"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "9f594381bb7f5fa0ed79ac1bf62fe52c67d2795316d38e92a890bc49e1adf277",
+  "question": "我想用 CUDA streams + 异步内存拷贝（`cudaMemcpyAsync`）让 H2D/D2H 数据传输与 kernel 计算重叠，怎么做（stream / event / pinned memory）？",
+  "run_id": "V-cuda-deepseek-v4_1-flash-standard-20260921T113836",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "# Search Results for \"CUDA streams cudaMemcpyAsync overlap pinned memory official documentation\"\n\n## 1. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the rest …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html\n\n---\n\n## 2. [CUDA Streams：异步执行、Event 同步与计算传输重叠](https://hd9568.github.io/blog/cuda-streams-events-overlap/)\n\n2026年5月29日 · 理解 CUDA Stream 的异步执行模型，掌握 Event 同步、cudaMemcpyAsync 和 Ping-Pong Buffer 实现计算与数据传 …\n\n**URL:** https://hd9568.g"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "## 1. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the rest …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "## 2. [CUDA Streams：异步执行、Event 同步与计算传输重叠](https://hd9568.github.io/blog/cuda-streams-events-overlap/)\n\n2026年5月29日 · 理解 CUDA Stream 的异步执行模型，掌握 Event 同步、cudaMemcpyAsync 和 Ping-Pong Buffer 实现计算与数据传 …\n\n**URL:** https://hd9568.github.io/blog/cuda-streams-events-overlap/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://hd9568.github.io/blog/cuda-streams-events-overlap/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "## 3. [CUDA stream、Pinned Memory、Async Copy、Warmup - 知乎](https://zhuanlan.zhihu.com/p/2034590895723562617)\n\n2026年5月4日 · 什么场景需要CUDA stream？ 在论文、各种技术文章里常见“把copy和compute overlap起来”，那这里的overlap具体 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2034590895723562617\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/2034590895723562617"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "## 4. [Asynchronous CUDA Calls — Introduction to CUDA …](https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html)\n\n2025年9月15日 · By using CUDA streams, we can overlap memory transfers and kernel execution, leading to better GPU utilization. …\n\n**URL:** https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+      "evidence": {
+        "event_id": "call_00_bscIjrPijXKpsEYNdR2x5030.result",
+        "quote": "## 5. [cuda异步拷贝的隐式同步 - 知乎](https://zhuanlan.zhihu.com/p/1940771953817395871)\n\n2025年8月18日 · cudaMemcpyAsync 是 CUDA 运行时 API 中一个非常重要的函数，用于 在主机（Host）和设备（Device）之间异步 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1940771953817395871\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/1940771953817395871"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_CQC4sQ5gtBFc13ecrHl70139.result",
+      "evidence": {
+        "event_id": "call_00_CQC4sQ5gtBFc13ecrHl70139.result",
+        "quote": "# CUDA Asynchronous Execution — Extracted Content\n\n**Source:** NVIDIA CUDA Programming Guide, Section **2.5. Asynchronous Execution**\n**Version:** **v13.4.2** (shown in header) | Last updated: Sep 10, 2026\n**Body content starts at:** heading \"2.5. Asynchronous Execution\"\n**Body content ends at:** \"2.5.10. Summary of Asynchronous Execution\" (before the page footer/navigation)\n\n---\n\n## 2.5.1. What is Asynchronous Concurrent Execution?\n\nCUDA allows concurrent (overlapping) execution of these tasks:\n- computation on the host\n- computation on the device\n- memory transfers host→device\n- memory transfers device→host\n- memory transfers within the memory of a given device\n- memory transfers among dev"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "# Search Results for \"CUDA C++ Best Practices Guide overlapping data transfer with computation cudaMemcpyAsync pinned memory streams\"\n\n## 1. [CUDAC++BestPracticesGuide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf)\n\n5 天之前 · C++ Best Practices Guide The CUDA C++ Best Practices Guide provides practical guidelines for writing high-perf. rmance …\n\n**URL:** https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf\n\n---\n\n## 2. [如何在 CUDA C/C++ 中实现数据传输的重叠](https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/)\n\n在这篇文章中，我们讨论了如何将数据传输与主机上的计算、设备上的计算相重叠，在某些情况下，主机和 …\n\n**URL:** https://developer.nvidia.cn/blog/how-overlap-data-transfers-cu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "## 1. [CUDAC++BestPracticesGuide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf)\n\n5 天之前 · C++ Best Practices Guide The CUDA C++ Best Practices Guide provides practical guidelines for writing high-perf. rmance …\n\n**URL:** https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://docs.nvidia.com/cuda/pdf/CUDA_C_Best_Practices_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "## 2. [如何在 CUDA C/C++ 中实现数据传输的重叠](https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/)\n\n在这篇文章中，我们讨论了如何将数据传输与主机上的计算、设备上的计算相重叠，在某些情况下，主机和 …\n\n**URL:** https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "## 3. [CUDA C++最佳实践指导 — CUDA中文手册 1.0.1 文档](https://cuda-doc.readthedocs.io/zh-cn/latest/CUDA-C-Best-Practices-Guide/index.html)\n\n2010年1月1日 · 欢迎来到 CUDA C++ Best Practices Guide 的中文翻译页面。 10. 内存优化.\n\n**URL:** https://cuda-doc.readthedocs.io/zh-cn/latest/CUDA-C-Best-Practices-Guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://cuda-doc.readthedocs.io/zh-cn/latest/CUDA-C-Best-Practices-Guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "## 4. [How to Overlap Data Transfers in CUDA C/C++ - CSDN博客](https://blog.csdn.net/chenxiuli0810/article/details/90900244)\n\n2026年7月23日 · In this post, we discuss how to overlap data transfers with computation on the host, computation on the device, and …\n\n**URL:** https://blog.csdn.net/chenxiuli0810/article/details/90900244\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://blog.csdn.net/chenxiuli0810/article/details/90900244"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+      "evidence": {
+        "event_id": "call_00_QDCv04uhfJJbbss0IeYp4888.result",
+        "quote": "## 5. [如何在cuda c/c++中实现数据传输的重叠 - Wangtn - 博客园](https://www.cnblogs.com/wangtianning1223/p/15716456.html)\n\n2021年12月21日 · 在我们上一篇 CUDA C/C++ 文章中，我们讨论了如何在主机和设备之间有效地传输数据。 在这篇文章中我们将讨论 …\n\n**URL:** https://www.cnblogs.com/wangtianning1223/p/15716456.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://www.cnblogs.com/wangtianning1223/p/15716456.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Z0rETYdC3YE96pHqUBhh5617.result",
+      "evidence": {
+        "event_id": "call_00_Z0rETYdC3YE96pHqUBhh5617.result",
+        "quote": "**标题**: 如何在 CUDA C/C++ 中实现数据传输的重叠 - NVIDIA 技术博客\n**发布时间**: 2012年 12月 13日\n\n# 如何在 CUDA C/C++ 中实现数据传输的重叠\n\n作者：[Mark Harris](https://developer.nvidia.cn/blog/author/mark-harris/ \"Posts by Mark Harris\")\n\n![](https://developer.nvidia.com/blog/wp-content/uploads/2012/10/CUDA_Cube_1K-300x298.jpg)在[上一期的 C / C ++ 文章](https://developer.nvidia.com/blog/parallelforall/how-optimize-data-transfers-cuda-cc/ \"How to Optimize Data Transfers in CUDA C/C++\") 中，我们讨论了如何在主机和设备之间高效地传输数据。在这篇文章中，我们讨论了如何将数据传输与主机上的计算、设备上的计算相重叠，在某些情况下，主机和设备之间的其他数据传输。实现数据传输和其他操作之间的重叠需要使用 CUDA 流，所以首先让我们了解一下流。\n\n# CUDA 流\n\nCUDA 中的 *stream* 是按照主机代码发出的顺序在设备上执行的操作序列。虽然流中的操作被保证按规定的顺序执行，但是不同流中的操作可以被交错，并且在可能的情况下，它们甚至可以并发运行。\n\n## 默认流[](https://develop"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_01_JBrQ1KBg0W11emBmNW1Q6602.result",
+      "evidence": {
+        "event_id": "call_01_JBrQ1KBg0W11emBmNW1Q6602.result",
+        "quote": "**标题**: Asynchronous CUDA Calls — Introduction to CUDA Programming 0.1 documentation\n\n# Asynchronous CUDA Calls[](https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html#asynchronous-cuda-calls \"Permalink to this heading\")\n\nOverview\n\n> - **Time:** 60 min\n> \n> <!--THE END-->\n> \n> 1. Learn how to use asynchronous CUDA APIs to improve performance.\n> 2. Understand the concept of CUDA streams and how they can be used to overlap memory transfers and kernel execution.\n\nThis section provides an example of how to use asynchronous CUDA APIs to improve the performance of a simple vector addition program. By using CUDA streams, we can overlap memory transfers and kernel execution, lea"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

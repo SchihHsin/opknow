@@ -1,0 +1,218 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_b43bcf4d.result",
+      "evidence": {
+        "event_id": "WebFetch_1_b43bcf4d.result",
+        "quote": "# Extraction: Custom C++ and CUDA Operators — PyTorch Tutorial\n\n## Completeness Assessment\n\n✅ **The full document body appears to have been returned — no truncation detected.** The content runs continuously from the tutorial header/metadata through the **Conclusion** section, which is the natural end of the tutorial. All major sections (build setup, operator definition, CPU/CUDA implementations, torch.compile support, hybrid registration, autograd, testing, mutable operators) are present with their code blocks intact.\n\n---\n\n## Document Metadata\n\n| Field | Value |\n|---|---|\n| **Title** | Custom C++ and CUDA Operators — PyTorch Tutorials 2.14.0+cu130 |\n| **Author** | Richard Zou (@zou3519) |\n|"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_c7644fda.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c7644fda.result",
+        "quote": "# torch.utils.cpp_extension — Extracted Documentation (PyTorch 2.14)\n\n## Summary & Completeness Note\n\nThe **full document body appears to have been returned — no truncation detected**. The content runs continuously from the page heading (`torch.utils.cpp_extension`, Created On: Mar 07, 2018 | Last Updated On: May 12, 2026) through all 10 documented API entries and into the page footer/navigation.\n\n**One extraction artifact to flag:** whitespace inside code examples was partially collapsed during page extraction (e.g., `fromsetuptoolsimport setup` should read `from setuptools import setup`). Examples below are preserved **verbatim as received**, with corrections noted where applicable.\n\n---\n\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/cpp_extension.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_118fe924.result",
+      "evidence": {
+        "event_id": "WebFetch_3_118fe924.result",
+        "quote": "**标题**: GitHub - pytorch/extension-cpp: C++ extensions in PyTorch · GitHub\n\nNameName\n\nLast commit message\n\nLast commit date\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[Maintain separate extension_cpp and extension_cpp_stable (](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extension_cpp_stable (#126)\")[#126](https://github.com/pytorch/extension-cpp/pull/126)[)](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extens"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/pytorch/extension-cpp",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_1df9df66.result",
+      "evidence": {
+        "event_id": "WebFetch_4_1df9df66.result",
+        "quote": "```\n# Copyright (c) Meta Platforms, Inc. and affiliates.\n# All rights reserved.\n# This source code is licensed under the license found in the\n# LICENSE file in the root directory of this source tree.\n\nimport os\nimport torch\nimport glob\n\nfrom setuptools import find_packages, setup\n\nfrom torch.utils.cpp_extension import (\n    CppExtension,\n    CUDAExtension,\n    BuildExtension,\n    CUDA_HOME,\n)\n\nlibrary_name = \"extension_cpp\"\n\nif torch.__version__ >= \"2.6.0\":\n    py_limited_api = True\nelse:\n    py_limited_api = False\n\n\ndef get_extensions():\n    debug_mode = os.getenv(\"DEBUG\", \"0\") == \"1\"\n    use_cuda = os.getenv(\"USE_CUDA\", \"1\") == \"1\"\n    if debug_mode:\n        print(\"Compiling in debug mode\""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/pytorch/extension-cpp/blob/master/extension_cpp/setup.py",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "a94643f535e502e9da847ffb6a4e56ab7451cbebb4471f9f7e71b8b5982a351a",
+  "question": "怎么写自定义 CUDA kernel 并集成进 PyTorch（C++ extension）？给出完整步骤、`setup.py` 和注册代码。",
+  "run_id": "D-cuda-kimi-k3-2-standard-20260921T103315",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "# Search Results for \"PyTorch custom CUDA kernel C++ extension tutorial pytorch.org\"\n\n## 1. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)\n\n2026年9月3日 · In this tutorial, we defined a custom operator in C++, added CPU/CUDA implementations in C++, and added …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n## 2. [自定义 C++ 和 CUDA 算子 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html)\n\n2026年1月20日 · Custom C++ and CUDA Operators - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "## 1. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)\n\n2026年9月3日 · In this tutorial, we defined a custom operator in C++, added CPU/CUDA implementations in C++, and added …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "## 2. [自定义 C++ 和 CUDA 算子 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html)\n\n2026年1月20日 · Custom C++ and CUDA Operators - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "## 3. [Custom C++ and CUDA Operators — PyTorch Tutorials 2.3 ...](https://maskerprc.github.io/tutorials/advanced/cpp_custom_ops.html)\n\n2025年5月21日 · 本教程演示了在 C++/CUDA 中编写自定义算子的官方途径。 在我们的教程中，我们将演示如何编写一个融合乘加的 …\n\n**URL:** https://maskerprc.github.io/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://maskerprc.github.io/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "## 4. [Custom C++ and CUDA Extensions - PyTorch-CSDN博客](https://blog.csdn.net/qq_32527569/article/details/142679069)\n\n2024年10月14日 · 经历了一波 pybind11 和 CUDA 编程 的学习, 接下来看一看 PyTorch 官方给的 C++/CUDA 扩展的教程. 发现极其简 …\n\n**URL:** https://blog.csdn.net/qq_32527569/article/details/142679069\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/qq_32527569/article/details/142679069"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_638c6c75.result",
+      "evidence": {
+        "event_id": "WebSearch_0_638c6c75.result",
+        "quote": "## 5. [pytorch custom C++/CUDA extension - 知乎](https://zhuanlan.zhihu.com/p/664699263)\n\n2023年11月27日 · CUDA版本切换 编译的时候，首先需要确保pytorch是用哪个cuda版本进行编译的，可以进入python之后调用 …\n\n**URL:** https://zhuanlan.zhihu.com/p/664699263\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/664699263"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_b43bcf4d.result",
+      "evidence": {
+        "event_id": "WebFetch_1_b43bcf4d.result",
+        "quote": "# Extraction: Custom C++ and CUDA Operators — PyTorch Tutorial\n\n## Completeness Assessment\n\n✅ **The full document body appears to have been returned — no truncation detected.** The content runs continuously from the tutorial header/metadata through the **Conclusion** section, which is the natural end of the tutorial. All major sections (build setup, operator definition, CPU/CUDA implementations, torch.compile support, hybrid registration, autograd, testing, mutable operators) are present with their code blocks intact.\n\n---\n\n## Document Metadata\n\n| Field | Value |\n|---|---|\n| **Title** | Custom C++ and CUDA Operators — PyTorch Tutorials 2.14.0+cu130 |\n| **Author** | Richard Zou (@zou3519) |\n|"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_c7644fda.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c7644fda.result",
+        "quote": "# torch.utils.cpp_extension — Extracted Documentation (PyTorch 2.14)\n\n## Summary & Completeness Note\n\nThe **full document body appears to have been returned — no truncation detected**. The content runs continuously from the page heading (`torch.utils.cpp_extension`, Created On: Mar 07, 2018 | Last Updated On: May 12, 2026) through all 10 documented API entries and into the page footer/navigation.\n\n**One extraction artifact to flag:** whitespace inside code examples was partially collapsed during page extraction (e.g., `fromsetuptoolsimport setup` should read `from setuptools import setup`). Examples below are preserved **verbatim as received**, with corrections noted where applicable.\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/stable/cpp_extension.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_118fe924.result",
+      "evidence": {
+        "event_id": "WebFetch_3_118fe924.result",
+        "quote": "**标题**: GitHub - pytorch/extension-cpp: C++ extensions in PyTorch · GitHub\n\nNameName\n\nLast commit message\n\nLast commit date\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[.github](https://github.com/pytorch/extension-cpp/tree/master/.github \".github\")\n\n[Maintain separate extension_cpp and extension_cpp_stable (](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extension_cpp_stable (#126)\")[#126](https://github.com/pytorch/extension-cpp/pull/126)[)](https://github.com/pytorch/extension-cpp/commit/1c325b202ae5e11de3cefb9a65be28f47949edd4 \"Maintain separate extension_cpp and extens"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://github.com/pytorch/extension-cpp"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_1df9df66.result",
+      "evidence": {
+        "event_id": "WebFetch_4_1df9df66.result",
+        "quote": "```\n# Copyright (c) Meta Platforms, Inc. and affiliates.\n# All rights reserved.\n# This source code is licensed under the license found in the\n# LICENSE file in the root directory of this source tree.\n\nimport os\nimport torch\nimport glob\n\nfrom setuptools import find_packages, setup\n\nfrom torch.utils.cpp_extension import (\n    CppExtension,\n    CUDAExtension,\n    BuildExtension,\n    CUDA_HOME,\n)\n\nlibrary_name = \"extension_cpp\"\n\nif torch.__version__ >= \"2.6.0\":\n    py_limited_api = True\nelse:\n    py_limited_api = False\n\n\ndef get_extensions():\n    debug_mode = os.getenv(\"DEBUG\", \"0\") == \"1\"\n    use_cuda = os.getenv(\"USE_CUDA\", \"1\") == \"1\"\n    if debug_mode:\n        print(\"Compiling in debug mode\""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://github.com/pytorch/extension-cpp/blob/master/extension_cpp/setup.py"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

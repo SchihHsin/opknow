@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_4b7cadaed18049c5b5ef66c1.result",
+      "evidence": {
+        "event_id": "call_4b7cadaed18049c5b5ef66c1.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_ff56fd8a93684e668288c777.result",
+      "evidence": {
+        "event_id": "call_ff56fd8a93684e668288c777.result",
+        "quote": "# 文档提取：Dynamic Shapes: Core Concepts — NVIDIA TensorRT\n\n## 提取说明\n\n已提取文档完整正文。**需要指出**：用户要求的 `setCalibrationProfile`、`setBindingDimensions` 在本文档中**并未出现**——文档使用的是新式 API `setInputShape`/`set_input_shape`（`setBindingDimensions` 是其已废弃的前身，本文档未涉及）。以下按文档原始结构完整呈现，并对 Optimization Profiles 部分重点标注。\n\n---\n\n## 1. Specifying Runtime Dimensions（运行时维度指定）\n\n构建网络时，使用 `-1` 表示输入张量的运行时维度。例如创建名为 `foo` 的 3D 输入张量，后两个维度在运行时指定，第一维度在构建时固定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\n选择 optimization profile 之后，必须在运行时设置输入维度。设输入维度为 `[3,150,250]`：\n\n**C++**\n```cpp\ncontext.setInputShape(\"foo\", Di"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_27731f41038b420ba564a8a7.result",
+      "evidence": {
+        "event_id": "call_27731f41038b420ba564a8a7.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/trtexec.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_28a4279c2cbf4e3a9ba39fc4.result",
+      "evidence": {
+        "event_id": "call_28a4279c2cbf4e3a9ba39fc4.result",
+        "quote": "# trtexec 动态 shape 命令行参数说明\n\n以下内容提取自该页面的 **\"Example 3: Running an ONNX model with full dimensions and dynamic shapes\"** 章节，这是文档中唯一系统讲解动态 shape 参数的部分。\n\n---\n\n## 一、Shape Spec 格式定义\n\n文档未给出正式的格式语法规范(完整参数说明需运行 `./trtexec --help` 查看),但从示例可归纳出格式为:\n\n```\n输入张量名称:维度0x维度1x...x维度N\n```\n\n- 用冒号 `:` 分隔输入名称和形状\n- 各维度用小写字母 `x` 分隔\n- 示例:`input:32x3x244x244`(对应 4 维张量 NCHW)\n- 多个输入时,每个输入单独作为一个参数值传入(文档示例仅展示了单输入场景)\n\n> ⚠️ **注意**:文档原文示例使用的是 `244x244`(而非 224x224),以下引用忠实保留原文。\n\n---\n\n## 二、各参数用途说明\n\n根据文档中的使用场景:\n\n| 参数 | 用途(依据文档) |\n|------|------|\n| `--shapes` | 为动态 shape 的 ONNX 模型指定**本次运行实际使用的输入形状**(\"run an ONNX model in full-dimensions mode with a given input shape\") |\n| `--minShapes` | 指定基准测试时**可能的输入形状范围的下限** |\n| `--optShapes` "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/NVIDIA/TensorRT/blob/main/samples/trtexec/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3d384d510251413d87c67af7.result",
+      "evidence": {
+        "event_id": "call_3d384d510251413d87c67af7.result",
+        "quote": "**标题**: Batchers — NVIDIA Triton Inference Server\n\nBack to top\n\n# Batchers#\n\n## Dynamic Batcher#\n\nDynamic batching is a feature of Triton that allows inference requests to be combined by the server, so that a batch is created dynamically. Creating a batch of requests typically results in increased throughput. The dynamic batcher should be used for stateless models. The dynamically created batches are distributed to all model instances configured for the model.\n\nDynamic batching is enabled and configured independently for each model using the *ModelDynamicBatching* property in the model configuration. These settings control the preferred size(s) of the dynamically created batches, the maximum"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_64902194359d44f59e0b2b18.result",
+      "evidence": {
+        "event_id": "call_64902194359d44f59e0b2b18.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_dcc7471fe80d479487dbace3.result",
+      "evidence": {
+        "event_id": "call_dcc7471fe80d479487dbace3.result",
+        "quote": "**标题**: Model Configuration — NVIDIA Triton Inference Server\n\n# Model Configuration#\n\n## Minimal Model Configuration#\n\nA minimal model configuration must specify the *platform* and/or *backend* properties, the *max_batch_size* property, and the input and output tensors of the model.\n\nAs an example consider a TensorRT model that has two inputs, *input0* and *input1*, and one output, *output0*, all of which are 16 entry float32 tensors. The minimal configuration is:\n\n```\n  platform: \"tensorrt_plan\"\n  max_batch_size: 8\n  input [\n    {\n      name: \"input0\"\n      data_type: TYPE_FP32\n      dims: [ 16 ]\n    },\n    {\n      name: \"input1\"\n      data_type: TYPE_FP32\n      dims: [ 16 ]\n    }\n  ]\n  out"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_09d5a01cf06f43d5b5560e87.result",
+      "evidence": {
+        "event_id": "call_09d5a01cf06f43d5b5560e87.result",
+        "quote": "**标题**: Triton Inference Server Backend — NVIDIA Triton Inference Server\n\n# Triton Inference Server Backend#\n\nA Triton *backend* is the implementation that executes a model. A backend can be a wrapper around a deep-learning framework, like PyTorch, TensorFlow, TensorRT or ONNX Runtime. Or a backend can be custom C/C++ logic performing any operation (for example, image pre-processing).\n\nThis repo contains documentation on Triton backends and also source, scripts and utilities for creating Triton backends. You do not need to use anything provided in this repo to create a Triton backend but you will likely find its contents useful.\n\n## Frequently Asked Questions#\n\nFull documentation is included"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "99e8843d20ad2b91d8ca7125c60038371f4c63d2b81ae16ac636face46bb4075",
+  "question": "我用 TensorRT/Triton 部署模型，怎么配置动态 batch / 动态 shape 推理（optimization profile / dynamic batching / min-opt-max shape）？",
+  "run_id": "T-cuda-glm-5_3-standard-20260921T132550",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "# Search Results for \"TensorRT optimization profile min opt max shape dynamic trtexec documentation\"\n\n## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n## 2. [多优化配置文件 (Prefill / Decode) — Torch-TensorRT ...](https://docs.pytorch.ac.cn/TensorRT/tutorials/runtime_opt/multi_optimization_profiles.html)\n\n2026年7月31日 · 多优化配置文件 (Prefill / Decode) # TensorRT 根据引擎的 优化配置文件 (optimization profile) 来调优内核：即为每个 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/tutorials/runtime_opt/mult"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_29163857/article/details/158554770"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "## 2. [多优化配置文件 (Prefill / Decode) — Torch-TensorRT ...](https://docs.pytorch.ac.cn/TensorRT/tutorials/runtime_opt/multi_optimization_profiles.html)\n\n2026年7月31日 · 多优化配置文件 (Prefill / Decode) # TensorRT 根据引擎的 优化配置文件 (optimization profile) 来调优内核：即为每个 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/tutorials/runtime_opt/multi_optimization_profiles.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/tutorials/runtime_opt/multi_optimization_profiles.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "## 3. [動態形狀支援 — Torch-TensorRT - PyTorch 文件](https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html)\n\n2026年9月9日 · TensorRT 的 最佳化設定檔 (optimization profile) 機制處理了這一點：每個引擎在建置時，都會為每個動態維度設定一 …\n\n**URL:** https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "## 4. [动态形状支持 — Torch-TensorRT - PyTorch 文档](https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html)\n\n2026年7月31日 · 本页记录了 Torch-TensorRT 中动态形状支持的设计。 原始设计讨论请参阅： RFC #2014, RFC #2409, RFC #2634 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb2937a709824564b31c3bd3.result",
+      "evidence": {
+        "event_id": "call_cb2937a709824564b31c3bd3.result",
+        "quote": "## 5. [Dynamic Shape Support — Torch-TensorRT](https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html)\n\n5 天之前 · TensorRT’s optimization profile mechanism handles this: each engine is built with a (min, opt, max) shape range for every …\n\n**URL:** https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "# Search Results for \"NVIDIA TensorRT developer guide working with dynamic shapes optimization profile set_shape\"\n\n## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n## 2. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html)\n\n2026年5月27日 · Dynamic Shapes is "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "## 2. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html)\n\n2026年5月27日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "## 3. [Working with Dynamic Shapes — NVIDIA TensorRT 10.10.10 Developer Guide ...](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html)\n\n2025年7月11日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "## 4. [8. TensorRT 中的动态形状 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/)\n\n8.3. Layer Extensions For Dynamic Shapes 一些层具有允许指定动态形状信息的可选输入，并且有一个新 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+      "evidence": {
+        "event_id": "call_6dfcb14ea31849d891c5be9a.result",
+        "quote": "## 5. [TensorRT-Developer_Guide_in_Chinese/8.TensorRT中的动态 ...](https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/8.TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6/TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6.md?plain=1)\n\n2008年2月1日 · 优化配置文件描述了每个网络输入的维度范围以及自动调谐器将用于优化的维度。 使用运行时维度时，您必须在构建 …\n\n**URL:** https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/8.TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6/TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6.md?plain=1\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/8.TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6/TensorRT%E4%B8%AD%E7%9A%84%E5%8A%A8%E6%80%81%E5%BD%A2%E7%8A%B6.md?plain=1"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4b7cadaed18049c5b5ef66c1.result",
+      "evidence": {
+        "event_id": "call_4b7cadaed18049c5b5ef66c1.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff56fd8a93684e668288c777.result",
+      "evidence": {
+        "event_id": "call_ff56fd8a93684e668288c777.result",
+        "quote": "# 文档提取：Dynamic Shapes: Core Concepts — NVIDIA TensorRT\n\n## 提取说明\n\n已提取文档完整正文。**需要指出**：用户要求的 `setCalibrationProfile`、`setBindingDimensions` 在本文档中**并未出现**——文档使用的是新式 API `setInputShape`/`set_input_shape`（`setBindingDimensions` 是其已废弃的前身，本文档未涉及）。以下按文档原始结构完整呈现，并对 Optimization Profiles 部分重点标注。\n\n---\n\n## 1. Specifying Runtime Dimensions（运行时维度指定）\n\n构建网络时，使用 `-1` 表示输入张量的运行时维度。例如创建名为 `foo` 的 3D 输入张量，后两个维度在运行时指定，第一维度在构建时固定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\n选择 optimization profile 之后，必须在运行时设置输入维度。设输入维度为 `[3,150,250]`：\n\n**C++**\n```cpp\ncontext.setInputShape(\"foo\", Di"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_27731f41038b420ba564a8a7.result",
+      "evidence": {
+        "event_id": "call_27731f41038b420ba564a8a7.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/trtexec.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "# Search Results for \"trtexec \"minShapes\" \"optShapes\" \"maxShapes\" site:docs.nvidia.com\"\n\n## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n## 2. [tensorRT trtexec命令常用参数_trtexec --fp32-CSDN博客](https://blog.csdn.net/weicao1990/article/details/130827602)\n\n构建阶段运行阶段--onnx=./model.onnx  # 指定onnx模型文件名--minShapes=input0:1x3x224x224  # 指定动态输入形状的范围最小值--optShapes=input0:8x3x224x224  # 指定动态输入形状的范围常见值--maxShapes=input0:16x3x224x224  # 指定动态输入形状的范围最大值在blog.csdn.net上查看更多信息\n\n**URL:** h"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://blog.csdn.net/weixin_29163857/article/details/158554770"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "## 2. [tensorRT trtexec命令常用参数_trtexec --fp32-CSDN博客](https://blog.csdn.net/weicao1990/article/details/130827602)\n\n构建阶段运行阶段--onnx=./model.onnx  # 指定onnx模型文件名--minShapes=input0:1x3x224x224  # 指定动态输入形状的范围最小值--optShapes=input0:8x3x224x224  # 指定动态输入形状的范围常见值--maxShapes=input0:16x3x224x224  # 指定动态输入形状的范围最大值在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/weicao1990/article/details/130827602\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://blog.csdn.net/weicao1990/article/details/130827602"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "## 3. [trtexec 参数笔记 - qinchaojie - 博客园](https://www.cnblogs.com/qinchaojie/p/18884161)\n\n2025年5月8日 · --maxShapes=spec Build with dynamic shapes using a profile with the max shapes provided. - …\n\n**URL:** https://www.cnblogs.com/qinchaojie/p/18884161\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.cnblogs.com/qinchaojie/p/18884161"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "## 4. [如何编写trtexec命令编译支持动态输入形状的TensorRT引擎？](https://www.volcengine.com/article/1972345)\n\n2026年7月27日 · 讲解如何通过trtexec命令为ONNX模型编译支持动态输入形状的TensorRT引擎，解决默认固定1x1形状无法适配可 …\n\n**URL:** https://www.volcengine.com/article/1972345\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://www.volcengine.com/article/1972345"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf96f1092675469684998ad1.result",
+      "evidence": {
+        "event_id": "call_bf96f1092675469684998ad1.result",
+        "quote": "## 5. [从PyTorch到TensorRT引擎：一份完整的trtexec工作流避坑 ...](https://wenku.csdn.net/column/m2234sl8ta4)\n\n2026年5月15日 · 而trtexec，就是TensorRT自带的一个“瑞士军刀”级别的命令行工具，它能帮你完成从模型转换、性能分析到最终推理 …\n\n**URL:** https://wenku.csdn.net/column/m2234sl8ta4\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://wenku.csdn.net/column/m2234sl8ta4"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_28a4279c2cbf4e3a9ba39fc4.result",
+      "evidence": {
+        "event_id": "call_28a4279c2cbf4e3a9ba39fc4.result",
+        "quote": "# trtexec 动态 shape 命令行参数说明\n\n以下内容提取自该页面的 **\"Example 3: Running an ONNX model with full dimensions and dynamic shapes\"** 章节，这是文档中唯一系统讲解动态 shape 参数的部分。\n\n---\n\n## 一、Shape Spec 格式定义\n\n文档未给出正式的格式语法规范(完整参数说明需运行 `./trtexec --help` 查看),但从示例可归纳出格式为:\n\n```\n输入张量名称:维度0x维度1x...x维度N\n```\n\n- 用冒号 `:` 分隔输入名称和形状\n- 各维度用小写字母 `x` 分隔\n- 示例:`input:32x3x244x244`(对应 4 维张量 NCHW)\n- 多个输入时,每个输入单独作为一个参数值传入(文档示例仅展示了单输入场景)\n\n> ⚠️ **注意**:文档原文示例使用的是 `244x244`(而非 224x224),以下引用忠实保留原文。\n\n---\n\n## 二、各参数用途说明\n\n根据文档中的使用场景:\n\n| 参数 | 用途(依据文档) |\n|------|------|\n| `--shapes` | 为动态 shape 的 ONNX 模型指定**本次运行实际使用的输入形状**(\"run an ONNX model in full-dimensions mode with a given input shape\") |\n| `--minShapes` | 指定基准测试时**可能的输入形状范围的下限** |\n| `--optShapes` "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://github.com/NVIDIA/TensorRT/blob/main/samples/trtexec/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "# Search Results for \"Triton Inference Server dynamic batching model configuration max_queue_delay_microseconds preferred_batch_sizes documentation\"\n\n## 1. [Batchers — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html)\n\n2026年9月1日 · The max_queue_delay_microseconds property setting changes the dynamic batcher behavior when a maximum size …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html\n\n---\n\n## 2. [Dynamic Batching & Concurrent Model Execution — NVIDIA Triton Inference ...](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/doc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "## 1. [Batchers — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html)\n\n2026年9月1日 · The max_queue_delay_microseconds property setting changes the dynamic batcher behavior when a maximum size …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "## 2. [Dynamic Batching & Concurrent Model Execution — NVIDIA Triton Inference ...](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html)\n\n2026年9月1日 · Users can also add preferred_batch_size and max_queue_delay_microseconds in the body of dynamic batching to …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "## 3. [Triton Inference Server动态批处理参数调优：基于业务场景的 ...](https://blog.csdn.net/gitblog_00352/article/details/152111427)\n\n2025年9月26日 · 动态批处理（Dynamic Batching）作为Triton Inference Server（推理服务器）的核心优化能力，能自动合并推理请求 …\n\n**URL:** https://blog.csdn.net/gitblog_00352/article/details/152111427\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/gitblog_00352/article/details/152111427"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "## 4. [Triton 概念指南（Part 2）：如何使用动态批处理和并行模型 ...](https://zhuanlan.zhihu.com/p/661163174)\n\n2023年10月27日 · 一、什么是动态批处理 (Dynamic batching)？ 动态批处理 (Dynamic batching)，是指 Triton Inference Server 中的 …\n\n**URL:** https://zhuanlan.zhihu.com/p/661163174\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/661163174"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_eee4e6cd37404ab38870ebff.result",
+      "evidence": {
+        "event_id": "call_eee4e6cd37404ab38870ebff.result",
+        "quote": "## 5. [Dynamic Batcher - Triton Model Navigator - GitHub Pages](https://triton-inference-server.github.io/model_navigator/0.6.3/triton/dynamic_batcher/)\n\n2025年4月22日 · The maximum time, in microseconds, a request will be delayed in the scheduling queue to wait for additional …\n\n**URL:** https://triton-inference-server.github.io/model_navigator/0.6.3/triton/dynamic_batcher/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://triton-inference-server.github.io/model_navigator/0.6.3/triton/dynamic_batcher/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3d384d510251413d87c67af7.result",
+      "evidence": {
+        "event_id": "call_3d384d510251413d87c67af7.result",
+        "quote": "**标题**: Batchers — NVIDIA Triton Inference Server\n\nBack to top\n\n# Batchers#\n\n## Dynamic Batcher#\n\nDynamic batching is a feature of Triton that allows inference requests to be combined by the server, so that a batch is created dynamically. Creating a batch of requests typically results in increased throughput. The dynamic batcher should be used for stateless models. The dynamically created batches are distributed to all model instances configured for the model.\n\nDynamic batching is enabled and configured independently for each model using the *ModelDynamicBatching* property in the model configuration. These settings control the preferred size(s) of the dynamically created batches, the maximum"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/batcher.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_64902194359d44f59e0b2b18.result",
+      "evidence": {
+        "event_id": "call_64902194359d44f59e0b2b18.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dcc7471fe80d479487dbace3.result",
+      "evidence": {
+        "event_id": "call_dcc7471fe80d479487dbace3.result",
+        "quote": "**标题**: Model Configuration — NVIDIA Triton Inference Server\n\n# Model Configuration#\n\n## Minimal Model Configuration#\n\nA minimal model configuration must specify the *platform* and/or *backend* properties, the *max_batch_size* property, and the input and output tensors of the model.\n\nAs an example consider a TensorRT model that has two inputs, *input0* and *input1*, and one output, *output0*, all of which are 16 entry float32 tensors. The minimal configuration is:\n\n```\n  platform: \"tensorrt_plan\"\n  max_batch_size: 8\n  input [\n    {\n      name: \"input0\"\n      data_type: TYPE_FP32\n      dims: [ 16 ]\n    },\n    {\n      name: \"input1\"\n      data_type: TYPE_FP32\n      dims: [ 16 ]\n    }\n  ]\n  out"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_09d5a01cf06f43d5b5560e87.result",
+      "evidence": {
+        "event_id": "call_09d5a01cf06f43d5b5560e87.result",
+        "quote": "**标题**: Triton Inference Server Backend — NVIDIA Triton Inference Server\n\n# Triton Inference Server Backend#\n\nA Triton *backend* is the implementation that executes a model. A backend can be a wrapper around a deep-learning framework, like PyTorch, TensorFlow, TensorRT or ONNX Runtime. Or a backend can be custom C/C++ logic performing any operation (for example, image pre-processing).\n\nThis repo contains documentation on Triton backends and also source, scripts and utilities for creating Triton backends. You do not need to use anything provided in this repo to create a Triton backend but you will likely find its contents useful.\n\n## Frequently Asked Questions#\n\nFull documentation is included"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/backend/README.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

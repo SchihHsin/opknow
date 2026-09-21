@@ -1,0 +1,182 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_482984b8.result",
+      "evidence": {
+        "event_id": "WebFetch_1_482984b8.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_22b23bbc.result",
+      "evidence": {
+        "event_id": "WebFetch_3_22b23bbc.result",
+        "quote": "**标题**: 1.2. Programming Model — CUDA Programming Guide\n\n# 1.2. Programming Model#\n\n## 1.2.3. GPU Memory#\n\n### 1.2.3.1. DRAM Memory in Heterogeneous Systems#\n\nGPUs and CPUs both have directly attached DRAM chips. In systems with more than one GPU, each GPU has its own memory. From the perspective of device code, the DRAM attached to the GPU is called *global memory*, because it is accessible to all SMs in the GPU. This terminology does not mean it is necessarily accessible everywhere within the system. The DRAM attached to the CPU(s) is called *system memory* or *host memory*.\n\nLike CPUs, GPUs use virtual memory addressing. On all currently-supported systems, the CPU and GPU use a single uni"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "a519d3e4acfcda6714d1384f826994ede4dfc12ea70d5de2597b56b8bd2ad594",
+  "question": "请讲清 CUDA 编程模型的核心概念（grid / block / thread / warp / SM / global·shared·register memory），它们怎么映射到硬件？",
+  "run_id": "Z-cuda-kimi-k3-2-standard-20260921T141704",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "# Search Results for \"NVIDIA CUDA C++ Programming Guide grid block thread warp SM shared memory registers global memory hardware mapping\"\n\n## 1. [CUDA 编程模型详解：Grid / Block / Warp / Thread 层级与 ...](https://blog.csdn.net/BFZS1994/article/details/161623494)\n\n2026年6月2日 · 文章浏览阅读94次。CUDA编程模型学习笔记 本文是NVIDIA CUDA编程指南的学习笔记，重点介绍了CUDA的核心编 …\n\n**URL:** https://blog.csdn.net/BFZS1994/article/details/161623494\n\n---\n\n## 2. [理解CUDA中的thread,block,grid和warp | 三七和酒](https://alcohol37.github.io/posts/85eb5247179b/)\n\n2023年1月5日 · 一个CUDA core可以执行一个thread，一个SM的CUDA core会分成几个warp（即CUDA …\n\n**URL:** https://alcohol37.github.io/posts/85eb5247179b/\n\n---\n\n## 3. [理解CUDA中的thread,block,grid和warp - 知乎](https://zhuanlan.zhihu.co"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "## 1. [CUDA 编程模型详解：Grid / Block / Warp / Thread 层级与 ...](https://blog.csdn.net/BFZS1994/article/details/161623494)\n\n2026年6月2日 · 文章浏览阅读94次。CUDA编程模型学习笔记 本文是NVIDIA CUDA编程指南的学习笔记，重点介绍了CUDA的核心编 …\n\n**URL:** https://blog.csdn.net/BFZS1994/article/details/161623494\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/BFZS1994/article/details/161623494"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "## 2. [理解CUDA中的thread,block,grid和warp | 三七和酒](https://alcohol37.github.io/posts/85eb5247179b/)\n\n2023年1月5日 · 一个CUDA core可以执行一个thread，一个SM的CUDA core会分成几个warp（即CUDA …\n\n**URL:** https://alcohol37.github.io/posts/85eb5247179b/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://alcohol37.github.io/posts/85eb5247179b/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "## 3. [理解CUDA中的thread,block,grid和warp - 知乎](https://zhuanlan.zhihu.com/p/123170285)\n\n从硬件上看从软件上看Warpthread,block,gridSM采用的SIMT(Single-Instruction, Multiple-Thread，单指令多线程)架构，warp(线程束)是最基本的执 …当一个kernel被执行时，grid中的线程块被分配到SM上，一个线程块的thread只能在一个SM上调度，SM一般可以调度多个线程块，大量的thread可能被分到不同的SM上。每个thread拥有它自己的程序计数器和状态寄存器，并且用该线程自己的数据执行指令，这就是所谓的Single Instruction Multiple Thr…一个CUDA core可以执行一个thread，一个SM的CUDA core会分成几个warp（即CUDA core在SM中分 …每个block的warp数量可以由下面的公式计算获得：在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/123170285\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/123170285"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "## 4. [学习笔记：理解CUDA中的thread,block,grid,warp,cluster ...](https://zhuanlan.zhihu.com/p/8780179505)\n\n2024年11月25日 · 首先在CUDA中有两种模型 物理/硬件执行模型SM： Streaming Multiprocessors ：GPU 的核心组件， 是执行线程 …\n\n**URL:** https://zhuanlan.zhihu.com/p/8780179505\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/8780179505"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_2f220480.result",
+      "evidence": {
+        "event_id": "WebSearch_0_2f220480.result",
+        "quote": "## 5. [CUDA C++ Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf)\n\n2025年10月8日 · With the introduction of NVIDIA Compute Capability 9.0, the CUDA programming model introduces an optional level …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_482984b8.result",
+      "evidence": {
+        "event_id": "WebFetch_1_482984b8.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_663da9e1.result",
+      "evidence": {
+        "event_id": "WebFetch_2_663da9e1.result",
+        "quote": "**标题**: 1.2. Programming Model — CUDA Programming Guide\n\n# 1.2. Programming Model#\n\nThis chapter introduces the CUDA programming model at a high level and separate from any language. The terminology and concepts introduced here apply to CUDA in any supported programming language. Later chapters will illustrate these concepts in C++.\n\n## 1.2.1. Heterogeneous Systems#\n\nThe CUDA programming model assumes a heterogeneous computing system, which means a system that includes both GPUs and CPUs. The CPU and the memory directly connected to it are called the *host* and *host memory*, respectively. A GPU and the memory directly connected to it are referred to as the *device* and *device memory*, resp"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_22b23bbc.result",
+      "evidence": {
+        "event_id": "WebFetch_3_22b23bbc.result",
+        "quote": "**标题**: 1.2. Programming Model — CUDA Programming Guide\n\n# 1.2. Programming Model#\n\n## 1.2.3. GPU Memory#\n\n### 1.2.3.1. DRAM Memory in Heterogeneous Systems#\n\nGPUs and CPUs both have directly attached DRAM chips. In systems with more than one GPU, each GPU has its own memory. From the perspective of device code, the DRAM attached to the GPU is called *global memory*, because it is accessible to all SMs in the GPU. This terminology does not mean it is necessarily accessible everywhere within the system. The DRAM attached to the CPU(s) is called *system memory* or *host memory*.\n\nLike CPUs, GPUs use virtual memory addressing. On all currently-supported systems, the CPU and GPU use a single uni"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

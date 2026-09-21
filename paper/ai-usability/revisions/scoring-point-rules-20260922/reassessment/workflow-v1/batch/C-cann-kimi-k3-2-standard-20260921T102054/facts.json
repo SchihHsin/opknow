@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_469d3781.result",
+      "evidence": {
+        "event_id": "WebFetch_1_469d3781.result",
+        "quote": "**标题**: Aclnn算子接入ATB Plugin介绍-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)\n\n# Aclnn算子接入ATB Plugin介绍\n\n#### 概述\n\nAclnn算子接入ATB Plugin主要思路如下：\n\n1. 创建自定义类，该类继承ATB的Operation类。\n2. 使用aclnn接口实现Operation类中几个特定接口。\n\n本节将主要围绕思路中的第二点对Aclnn算子接入ATB Plugin进行详细介绍。\n\n**图1** 自定义Operation类继承自ATB Operation类  \n![](https://www.hiascend.com/doc_center/source/zh/canncommercial/800/developmentguide/acce/ascendtb/figure/zh-cn_image_0000002136909142.png)\n\n**表1** Ope"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_d3df0464.result",
+      "evidence": {
+        "event_id": "WebFetch_2_d3df0464.result",
+        "quote": "**标题**: 算子使用指导-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.RC2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_de954a44.result",
+      "evidence": {
+        "event_id": "WebFetch_4_de954a44.result",
+        "quote": "**标题**: aclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单算子执行-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC2开发文档-昇腾社区\n\n# aclnnMatmul\n\n## 支持的产品型号\n\n- Atlas 推理系列产品。\n- Atlas 训练系列产品。\n- Atlas A2训练系列产品/Atlas 800I A2推理产品。\n\n## 接口原型\n\n每个算子分为[两段式接口](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/common/%E4%B8%A4%E6%AE%B5%E5%BC%8F%E6%8E%A5%E5%8F%A3.md)，必须先调用“aclnnMatmulGetWorkspaceSize”接口获取计算所需workspace大小以及包含了算子计算流程的执行器，再调用“aclnnMatmul”接口执行计算。\n\n- `aclnnStatus aclnnMatmulGetWorkspaceSize(const aclTensor *self, const aclTensor *mat2, aclTensor *out, int8_t cubeMathType, uint64_t *workspaceSize, aclOpExecutor **executor)`\n- `aclnnStatus aclnnMatmul(void *workspace, uint64_t workspa"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_a8716c8f.result",
+      "evidence": {
+        "event_id": "WebFetch_6_a8716c8f.result",
+        "quote": "**标题**: Introduction-Ascend Transformer Boost-Domain-Specific Acceleration Library-CANN Commercial Edition8.5.0开发文档-昇腾社区\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\nMore\n\n[Documentation](https://www.hiascend.com/en/document)\n\nDownload\n\nBack to Top\n\nRate This Document\n\nFindability\n\nAccuracy\n\nCompleteness\n\nReadability\n\n[Submit](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)[Close](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)\n\n在线提单\n\nCopyright © 2021-2026 Huawei Technologies Co., "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_7c18e42e.result",
+      "evidence": {
+        "event_id": "WebFetch_7_7c18e42e.result",
+        "quote": "**标题**: 概述-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)\n\n# 概述\n\n本用例为aclnnPluginOperation与ATBOperation混搭组图的简单示例，具体请参考[用例源码](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0052.html)。本文将从以下四部分对该示例进行讲解，旨在帮助用户进一步理解ATB的使用：\n\n1. 用例整体介绍与运行 。\n2. aclnn算子接入ATB Plugin介绍。\n3. 多线程部分介绍 。\n4. 内存池部分介绍。\n\n除了aclnn算子外，其他自定义算子在实现了对应接口的情况下也可以通过Plugin机制接入到ATB中。"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_f21b4c5b.result",
+      "evidence": {
+        "event_id": "WebFetch_9_f21b4c5b.result",
+        "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_10_3ac718cf.result",
+      "evidence": {
+        "event_id": "WebFetch_10_3ac718cf.result",
+        "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_11_0f4f3cef.result",
+      "evidence": {
+        "event_id": "WebFetch_11_0f4f3cef.result",
+        "quote": "````\n# Ascend Transformer Boost\n\n🔥 [2025/09] Ascend Transformer Boost项目首次上线。\n\n## 一、什么是ATB\n\n### ATB介绍\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。具体的工作原理可以参考[ATB加速原理](docs/ATB加速原理.md)。\n\n### 软件架构\n\n![架构图](docs/images/架构图.png)\nATB的架构图如上图所示，其接口功能主要分成三部分：\n\n- 提供经过优化的融合算子（Operation），用户可以根据需求使用对应的算子完成计算功能。\n- 提供图算子机制，用户根据模型设计对应的图算子，使用加速库提供的原生算子和创建的自定义算子创建图算子，完成相应的计算。\n- 提供插件（Plugin）机制，用户可以根据自己的需求创建自定义的算子。\n\n### ATB仓介绍\n\nATB库的目录结构如下：\n\n```text\nascend-transformer-boost\n├── 3rdparty            //第三方依赖库文件夹\n├── build               //可存放构建生成的文件\n├── ci                  //持续集成相关的配置文件\n├── docs                //文档文件\n├── example             //算子调用示例代码，包含可直接运行的Demo"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "2d204807dc7b64c67c1dec00f7f11337cb3f48d34d5316647863840e0c9b4644",
+  "question": "昇腾上做矩阵乘 / 卷积 / Transformer，有哪些官方加速库（AOL/ATB）？怎么选怎么调用。",
+  "run_id": "C-cann-kimi-k3-2-standard-20260921T102054",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "# Search Results for \"site:hiascend.com CANN AOL ATB Ascend Transformer Boost aclnn matmul convolution 官方文档\"\n\n## 1. [Aclnn算子接入ATB Plugin介绍-ATB使用示例-加速库使用指导-Ascend …](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)\n\nExecute接口的实现 Execute接口的主要功能是根据用户给到的显存地址，去进行对应算子任务的下发。 在Aclnn算子接入ATB Plugin …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html\n\n---\n\n## 2. [算子使用指导--昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html)\n\n首先，根据设计的图算子结构，分别计算出图输入Tensor（假设为x个），图输出Tensor（假设为y个）以及图中间Tensor（假设为z …\n\n**UR"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "## 1. [Aclnn算子接入ATB Plugin介绍-ATB使用示例-加速库使用指导-Ascend …](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)\n\nExecute接口的实现 Execute接口的主要功能是根据用户给到的显存地址，去进行对应算子任务的下发。 在Aclnn算子接入ATB Plugin …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "## 2. [算子使用指导--昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html)\n\n首先，根据设计的图算子结构，分别计算出图输入Tensor（假设为x个），图输出Tensor（假设为y个）以及图中间Tensor（假设为z …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "## 3. [ascend-transformer-boost/example/atb_aclnn · CANN/ascend …](https://gitcode.com/cann/ascend-transformer-boost/tree/2a77722f2b44f5811a89acdad5872bc6f110f4bc/example/atb_aclnn)\n\nATB算子部分：使用ATB原生算子构建了一个ATB图算子。 model部分：主要使用了ATB算子部分与aclnn算子部分生成的算子构建了 …\n\n**URL:** https://gitcode.com/cann/ascend-transformer-boost/tree/2a77722f2b44f5811a89acdad5872bc6f110f4bc/example/atb_aclnn\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://gitcode.com/cann/ascend-transformer-boost/tree/2a77722f2b44f5811a89acdad5872bc6f110f4bc/example/atb_aclnn"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "## 4. [GitHub - mirror-cann/ascend-transformer-boost](https://github.com/mirror-cann/ascend-transformer-boost)\n\nJul 9, 2026 · 一、什么是ATB ATB介绍 Ascend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基 …\n\n**URL:** https://github.com/mirror-cann/ascend-transformer-boost\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_1fc1cb89.result",
+      "evidence": {
+        "event_id": "WebSearch_0_1fc1cb89.result",
+        "quote": "## 5. [CANN ATB：Transformer 极致性能优化实战](https://cann.csdn.net/6a59a883662f9a54cb9036a4.html)\n\nJul 17, 2026 · ATB 全称 Ascend Transformer Boost，是昇腾 CANN 提供的高性能 Transformer 算子加速库。 它的核心目标是为 …\n\n**URL:** https://cann.csdn.net/6a59a883662f9a54cb9036a4.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://cann.csdn.net/6a59a883662f9a54cb9036a4.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_469d3781.result",
+      "evidence": {
+        "event_id": "WebFetch_1_469d3781.result",
+        "quote": "**标题**: Aclnn算子接入ATB Plugin介绍-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html)\n\n# Aclnn算子接入ATB Plugin介绍\n\n#### 概述\n\nAclnn算子接入ATB Plugin主要思路如下：\n\n1. 创建自定义类，该类继承ATB的Operation类。\n2. 使用aclnn接口实现Operation类中几个特定接口。\n\n本节将主要围绕思路中的第二点对Aclnn算子接入ATB Plugin进行详细介绍。\n\n**图1** 自定义Operation类继承自ATB Operation类  \n![](https://www.hiascend.com/doc_center/source/zh/canncommercial/800/developmentguide/acce/ascendtb/figure/zh-cn_image_0000002136909142.png)\n\n**表1** Ope"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0049.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_d3df0464.result",
+      "evidence": {
+        "event_id": "WebFetch_2_d3df0464.result",
+        "quote": "**标题**: 算子使用指导-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.RC2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/acce/ascendtb/ascendtb_0037.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "# Search Results for \"site:hiascend.com canncommercial aclnnMatmul aclnnConvolution AscendCL API 官方文档\"\n\n## 1. [aclnnMatmul-CANN商用版8.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/context/aclnnMatmul.md)\n\n每个算子分为 两段式接口，必须先调用“aclnnLogSoftmaxGetWorkspaceSize”接口获取计算所需workspace大小以及包含了算子计算流 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/context/aclnnMatmul.md\n\n---\n\n## 2. [aclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md)\n\naclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单算子执行-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC2 …\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "## 1. [aclnnMatmul-CANN商用版8.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/context/aclnnMatmul.md)\n\n每个算子分为 两段式接口，必须先调用“aclnnLogSoftmaxGetWorkspaceSize”接口获取计算所需workspace大小以及包含了算子计算流 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/context/aclnnMatmul.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/context/aclnnMatmul.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "## 2. [aclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md)\n\naclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单算子执行-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC2 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "## 3. [Ascend aclnn 算子开发入门 · Home](https://shen-shanshan.github.io/articles/ascend-aclnn-%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/)\n\n2024年10月23日 · 官方介绍： AscendCL（Ascend Computing Language）是一套用于在昇腾平台上开发深度神经网络应用的 C 语言 …\n\n**URL:** https://shen-shanshan.github.io/articles/ascend-aclnn-%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://shen-shanshan.github.io/articles/ascend-aclnn-%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "## 4. [aclnnMatmul](https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMatmul.md)\n\n此外，计算结果与数据的位置无关。 aclnnMatmul默认非一致性实现，支持通过aclrtCtxSetSysParamOpt开启一致性。 例如，在进行 …\n\n**URL:** https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMatmul.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMatmul.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_faa58ce1.result",
+      "evidence": {
+        "event_id": "WebSearch_3_faa58ce1.result",
+        "quote": "## 5. [ops-nn/matmul/mat_mul_v3/docs/aclnnMm.md-代码预览-ops ...](https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMm.md)\n\n接口功能：完成张量self与张量mat2的矩阵乘计算。 每个算子分为 两段式接口，必须先调用“aclnnMmGetWorkspaceSize”接口获取计 …\n\n**URL:** https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMm.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://gitcode.com/cann/ops-nn/blob/master/matmul/mat_mul_v3/docs/aclnnMm.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_de954a44.result",
+      "evidence": {
+        "event_id": "WebFetch_4_de954a44.result",
+        "quote": "**标题**: aclnnMatmul-单算子接口-NN类算子接口-单算子API执行-单算子执行-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC2开发文档-昇腾社区\n\n# aclnnMatmul\n\n## 支持的产品型号\n\n- Atlas 推理系列产品。\n- Atlas 训练系列产品。\n- Atlas A2训练系列产品/Atlas 800I A2推理产品。\n\n## 接口原型\n\n每个算子分为[两段式接口](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/common/%E4%B8%A4%E6%AE%B5%E5%BC%8F%E6%8E%A5%E5%8F%A3.md)，必须先调用“aclnnMatmulGetWorkspaceSize”接口获取计算所需workspace大小以及包含了算子计算流程的执行器，再调用“aclnnMatmul”接口执行计算。\n\n- `aclnnStatus aclnnMatmulGetWorkspaceSize(const aclTensor *self, const aclTensor *mat2, aclTensor *out, int8_t cubeMathType, uint64_t *workspaceSize, aclOpExecutor **executor)`\n- `aclnnStatus aclnnMatmul(void *workspace, uint64_t workspa"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/apiref/appdevgapi/context/aclnnMatmul.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "# Search Results for \"site:hiascend.com canncommercial aclnnConvolution Ascend Transformer Boost ATB 介绍 官方 8.0\"\n\n## 1. [Introduction-Ascend Transformer Boost-Domain-Specific Acceleration ...](https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html)\n\nTransformer models like GPT have diversified, sparking a significant demand for AI devices. The Ascend Transformer Boost (ATB for …\n\n**URL:** https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html\n\n---\n\n## 2. [概述-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库 …](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.h"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "## 1. [Introduction-Ascend Transformer Boost-Domain-Specific Acceleration ...](https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html)\n\nTransformer models like GPT have diversified, sparking a significant demand for AI devices. The Ascend Transformer Boost (ATB for …\n\n**URL:** https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "## 2. [概述-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库 …](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)\n\n本文将从以下四部分对该示例进行讲解，旨在帮助用户进一步理解ATB的使用：\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "## 3. [GitHub - mirror-cann/ascend-transformer-boost](https://github.com/mirror-cann/ascend-transformer-boost)\n\n一、什么是ATB ATB介绍 Ascend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend …\n\n**URL:** https://github.com/mirror-cann/ascend-transformer-boost\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "## 4. [CANN ascend-transformer-boost aclnn与ATB算子混搭示例-CSDN博客](https://blog.csdn.net/gitblog_01015/article/details/160915751)\n\nMay 9, 2026 · aclnn算子部分：实现了aclnn算子对ATB的接入。 ATB算子部分：使用ATB原生算子构建了一个ATB图算子。 model部 …\n\n**URL:** https://blog.csdn.net/gitblog_01015/article/details/160915751\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/gitblog_01015/article/details/160915751"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_eeb004b4.result",
+      "evidence": {
+        "event_id": "WebSearch_5_eeb004b4.result",
+        "quote": "## 5. [ascend-transformer-boost/README.md at master · mirror-cann](https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md)\n\n一、什么是ATB ATB介绍 Ascend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend …\n\n**URL:** https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_a8716c8f.result",
+      "evidence": {
+        "event_id": "WebFetch_6_a8716c8f.result",
+        "quote": "**标题**: Introduction-Ascend Transformer Boost-Domain-Specific Acceleration Library-CANN Commercial Edition8.5.0开发文档-昇腾社区\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\n[Home](https://www.hiascend.com/en \"Home\")\n\nProducts\n\nSolutions\n\nDevelopers\n\nMore\n\n[Documentation](https://www.hiascend.com/en/document)\n\nDownload\n\nBack to Top\n\nRate This Document\n\nFindability\n\nAccuracy\n\nCompleteness\n\nReadability\n\n[Submit](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)[Close](https://www.hiascend.com/document/detail/en/canncommercial/latest/acce/ascendtb/ascendtb_0001.html)\n\n在线提单\n\nCopyright © 2021-2026 Huawei Technologies Co., "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/en/canncommercial/850/acce/ascendtb/ascendtb_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_7c18e42e.result",
+      "evidence": {
+        "event_id": "WebFetch_7_7c18e42e.result",
+        "quote": "**标题**: 概述-ATB使用示例-加速库使用指导-Ascend Transformer Boost加速库-领域加速库开发-CANN商用版8.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html)\n\n# 概述\n\n本用例为aclnnPluginOperation与ATBOperation混搭组图的简单示例，具体请参考[用例源码](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0052.html)。本文将从以下四部分对该示例进行讲解，旨在帮助用户进一步理解ATB的使用：\n\n1. 用例整体介绍与运行 。\n2. aclnn算子接入ATB Plugin介绍。\n3. 多线程部分介绍 。\n4. 内存池部分介绍。\n\n除了aclnn算子外，其他自定义算子在实现了对应接口的情况下也可以通过Plugin机制接入到ATB中。"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/acce/ascendtb/ascendtb_0047.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "# Search Results for \"site:hiascend.com/document/detail/zh/canncommercial aclnnConv2d OR aclnnConvolution CANN 8.0 昇腾\"\n\n## 1. [aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md)\n\n算子功能：实现卷积功能，支持1D卷积，2D卷积，3D卷积，同时支持转置卷积、空洞卷积、分组卷积。 对于入参 [object Object] 时， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md\n\n---\n\n## 2. [昇腾社区官网-昇腾万里 让智能无所不及](https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md)\n\n昇腾社区是基于昇腾系列处理器和基础软件构建的全栈 AI计算基础设施、行业应用及服务，包括昇腾系列处理器、系列硬件、CANN异 …\n\n**URL:** https://ww"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "## 1. [aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md)\n\n算子功能：实现卷积功能，支持1D卷积，2D卷积，3D卷积，同时支持转置卷积、空洞卷积、分组卷积。 对于入参 [object Object] 时， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "## 2. [昇腾社区官网-昇腾万里 让智能无所不及](https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md)\n\n昇腾社区是基于昇腾系列处理器和基础软件构建的全栈 AI计算基础设施、行业应用及服务，包括昇腾系列处理器、系列硬件、CANN异 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "## 3. [昇腾CANN 8.0正式发布，多项核心技术引领大模型原生创新](https://devpress.csdn.net/v1/article/detail/143055608)\n\n2024年10月18日 · 随着CANN 8.0版本的发布以及CANN的深度开放，相关教程和学习资源正在陆续上线昇腾社 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/143055608\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://devpress.csdn.net/v1/article/detail/143055608"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "## 4. [昇腾CANN 8.0正式发布，多项核心技术引领大模型原生创新](https://bbs.huaweicloud.com/blogs/436835)\n\n2024年10月17日 · 昇腾异构计算架构CANN作为昇腾AI生态的根基和锚点，基于软硬件深度协同优化，持续构建昇腾产品解决方案在性 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/436835\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://bbs.huaweicloud.com/blogs/436835"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_8_55ebd155.result",
+      "evidence": {
+        "event_id": "WebSearch_8_55ebd155.result",
+        "quote": "## 5. [华为CANN 8.0实战解析：从算子优化到端云协同的AI加速之道](https://blog.csdn.net/sugar/article/details/155681016)\n\n2026年9月13日 · 本文深入解析华为CANN 8.0在AI计算架构中的创新实践，涵盖算子优化、端云协同等关键技术。 通过昇腾AI生态的 …\n\n**URL:** https://blog.csdn.net/sugar/article/details/155681016\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://blog.csdn.net/sugar/article/details/155681016"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_f21b4c5b.result",
+      "evidence": {
+        "event_id": "WebFetch_9_f21b4c5b.result",
+        "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/apiref/aolapi/context/aclnnConvolution.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_10_3ac718cf.result",
+      "evidence": {
+        "event_id": "WebFetch_10_3ac718cf.result",
+        "quote": "**标题**: aclnnConvolution-NN算子接口-算子加速库-CANN商用版8.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/apiref/aolapi/context/aclnnConvolution.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_11_0f4f3cef.result",
+      "evidence": {
+        "event_id": "WebFetch_11_0f4f3cef.result",
+        "quote": "````\n# Ascend Transformer Boost\n\n🔥 [2025/09] Ascend Transformer Boost项目首次上线。\n\n## 一、什么是ATB\n\n### ATB介绍\n\nAscend Transformer Boost加速库（下文简称为ATB加速库）是一款高效、可靠的加速库，基于华为Ascend AI处理器，专门为Transformer模型的训练和推理而设计。具体的工作原理可以参考[ATB加速原理](docs/ATB加速原理.md)。\n\n### 软件架构\n\n![架构图](docs/images/架构图.png)\nATB的架构图如上图所示，其接口功能主要分成三部分：\n\n- 提供经过优化的融合算子（Operation），用户可以根据需求使用对应的算子完成计算功能。\n- 提供图算子机制，用户根据模型设计对应的图算子，使用加速库提供的原生算子和创建的自定义算子创建图算子，完成相应的计算。\n- 提供插件（Plugin）机制，用户可以根据自己的需求创建自定义的算子。\n\n### ATB仓介绍\n\nATB库的目录结构如下：\n\n```text\nascend-transformer-boost\n├── 3rdparty            //第三方依赖库文件夹\n├── build               //可存放构建生成的文件\n├── ci                  //持续集成相关的配置文件\n├── docs                //文档文件\n├── example             //算子调用示例代码，包含可直接运行的Demo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://github.com/mirror-cann/ascend-transformer-boost/blob/master/README.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

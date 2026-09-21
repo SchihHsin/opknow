@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_588c31d5.result",
+      "evidence": {
+        "event_id": "WebFetch_1_588c31d5.result",
+        "quote": "**标题**: Oops! | PyTorch\n\n# Oops!\n\n#### You've reached a dead end.[](https://docs.pytorch.org/en/stable/notes/cuda.html#youve-reached-a-dead-end)\n\n#### If you feel like something should be here, you can [open an issue](https://github.com/pytorch/pytorch.github.io/issues) on GitHub.[](https://docs.pytorch.org/en/stable/notes/cuda.html#if-you-feel-like-something-should-be-here-you-can-open-an-issue)\n\n#### Click [here](https://docs.pytorch.org/) to go back to the main page.[](https://docs.pytorch.org/en/stable/notes/cuda.html#click-here-to-go-back-to-the-main-page)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/en/stable/notes/cuda.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_a877736d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_a877736d.result",
+        "quote": "# Memory Management Section — Full Extraction\n\n**Summary:** The complete \"Memory management\" section was present in the provided content with **no apparent truncation**. It covers the caching allocator, `empty_cache()` behavior, memory monitoring APIs, and the full `PYTORCH_ALLOC_CONF` option list (note: the docs now use `PYTORCH_ALLOC_CONF` as the primary name — `PYTORCH_CUDA_ALLOC_CONF` is a backward-compatibility alias). Below is the verbatim text, organized by subsection.\n\n---\n\n## Memory management (intro text — verbatim)\n\n> PyTorch uses a caching memory allocator to speed up memory allocations. This allows fast memory deallocation without device synchronizations. However, the unused mem"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/main/notes/cuda.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_90fc0b34.result",
+      "evidence": {
+        "event_id": "WebFetch_4_90fc0b34.result",
+        "quote": "**标题**: Oops! | PyTorch\n\n# Oops!\n\n#### You've reached a dead end.[](https://docs.pytorch.org/en/stable/checkpoint.html#youve-reached-a-dead-end)\n\n#### If you feel like something should be here, you can [open an issue](https://github.com/pytorch/pytorch.github.io/issues) on GitHub.[](https://docs.pytorch.org/en/stable/checkpoint.html#if-you-feel-like-something-should-be-here-you-can-open-an-issue)\n\n#### Click [here](https://docs.pytorch.org/) to go back to the main page.[](https://docs.pytorch.org/en/stable/checkpoint.html#click-here-to-go-back-to-the-main-page)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/en/stable/checkpoint.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_e1afcdd5.result",
+      "evidence": {
+        "event_id": "WebFetch_5_e1afcdd5.result",
+        "quote": "# torch.utils.checkpoint — Full Documentation Extraction\n\n**Source:** PyTorch main documentation (v2.15.0 unstable) · Created On: Jun 16, 2025 | Last Updated On: Jul 27, 2026\n\n**Summary:** The page documents activation checkpointing in PyTorch. The main API is `torch.utils.checkpoint.checkpoint()` with two overloads (direct call and decorator form), plus `checkpoint_sequential()` for sequential models, and several supporting utilities for selective checkpointing, RNG state, and debugging. The `use_reentrant` parameter defaults to `None` in the signature but **must be passed explicitly** (an exception is planned); `use_reentrant=False` is explicitly recommended.\n\n---\n\n## 1. Page-Level Usage N"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/main/checkpoint.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_64792e12.result",
+      "evidence": {
+        "event_id": "WebFetch_6_64792e12.result",
+        "quote": "# Understanding CUDA Memory Usage — Full Content Extraction\n\n**Source**: PyTorch main documentation (v2.15.0 unstable) | Created On: Aug 23, 2023 | Last Updated On: Jul 07, 2026\n\nThis page documents PyTorch's CUDA memory snapshot tooling: recording allocation history with `_record_memory_history()`, saving snapshots with `_dump_snapshot()`, and visualizing them at `pytorch.org/memory_viz`. Below is the extracted content organized by your requested topics, with original wording preserved.\n\n---\n\n## 1. Overview & Visibility Limitations\n\n> To debug CUDA memory use, PyTorch provides a way to generate memory snapshots that record the state of allocated CUDA memory at any point in time, and optiona"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/main/torch_cuda_memory.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "cc4eb6570ea2da6723b5d211c7d0c26d6355b606288a18e280987d588f78ded8",
+  "question": "PyTorch 训练报 CUDA out of memory，怎么排查和优化显存（max_split_size_mb / 梯度检查点 / empty_cache）？",
+  "run_id": "Q-cuda-kimi-k3-2-standard-20260921T124246",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "# Search Results for \"PyTorch PYTORCH_CUDA_ALLOC_CONF max_split_size_mb expandable_segments documentation\"\n\n## 1. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://blog.csdn.net/weixin_41338279/article/details/155775829)\n\n2025年12月11日 · 文章浏览阅读1.8k次，点赞13次，收藏13次。 本文介绍 PYTORCH_CUDA_ALLOC_CONF 环境变量的配置方法， …\n\n**URL:** https://blog.csdn.net/weixin_41338279/article/details/155775829\n\n---\n\n## 2. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://devpress.csdn.net/v1/article/detail/155775829)\n\n2025年12月10日 · 本文介绍 PYTORCH_CUDA_ALLOC_CONF 环境变量的配置方法，帮助你在显存紧张时最大化利用 GPU 资源，减 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155775829\n\n---\n\n## 3. [解决PyTorch显存碎片化问题：利用`PYTORCH_CUDA ...](https://developer.baidu.c"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "## 1. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://blog.csdn.net/weixin_41338279/article/details/155775829)\n\n2025年12月11日 · 文章浏览阅读1.8k次，点赞13次，收藏13次。 本文介绍 PYTORCH_CUDA_ALLOC_CONF 环境变量的配置方法， …\n\n**URL:** https://blog.csdn.net/weixin_41338279/article/details/155775829\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_41338279/article/details/155775829"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "## 2. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://devpress.csdn.net/v1/article/detail/155775829)\n\n2025年12月10日 · 本文介绍 PYTORCH_CUDA_ALLOC_CONF 环境变量的配置方法，帮助你在显存紧张时最大化利用 GPU 资源，减 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155775829\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://devpress.csdn.net/v1/article/detail/155775829"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "## 3. [解决PyTorch显存碎片化问题：利用`PYTORCH_CUDA ...](https://developer.baidu.com/article/details/3268904)\n\n2024年3月28日 · 当使用PyTorch进行深度学习训练时，显存碎片化可能导致'CUDA: Out of Memory'错误。 通过设置环境变 …\n\n**URL:** https://developer.baidu.com/article/details/3268904\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.baidu.com/article/details/3268904"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "## 4. [保姆级教程：在Windows/Linux终端里设置PYTORCH ...](https://blog.csdn.net/weixin_42701915/article/details/160458699)\n\n2026年9月14日 · 本文详细介绍了如何通过设置PYTORCH_CUDA_ALLOC_CONF环境变量中的max_split_size_mb参数，有效解 …\n\n**URL:** https://blog.csdn.net/weixin_42701915/article/details/160458699\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/weixin_42701915/article/details/160458699"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_8e209e3b.result",
+      "evidence": {
+        "event_id": "WebSearch_0_8e209e3b.result",
+        "quote": "## 5. [CUDA oom 通过设置PYTORCH_CUDA_ALLOC_CONF中 ...](https://zhuanlan.zhihu.com/p/652560340)\n\n2023年8月27日 · 原文链接： 通过设置PYTORCH_CUDA_ALLOC_CONF中的max_split_size_mb解决Pytorch的显存碎片化导致 …\n\n**URL:** https://zhuanlan.zhihu.com/p/652560340\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/652560340"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_588c31d5.result",
+      "evidence": {
+        "event_id": "WebFetch_1_588c31d5.result",
+        "quote": "**标题**: Oops! | PyTorch\n\n# Oops!\n\n#### You've reached a dead end.[](https://docs.pytorch.org/en/stable/notes/cuda.html#youve-reached-a-dead-end)\n\n#### If you feel like something should be here, you can [open an issue](https://github.com/pytorch/pytorch.github.io/issues) on GitHub.[](https://docs.pytorch.org/en/stable/notes/cuda.html#if-you-feel-like-something-should-be-here-you-can-open-an-issue)\n\n#### Click [here](https://docs.pytorch.org/) to go back to the main page.[](https://docs.pytorch.org/en/stable/notes/cuda.html#click-here-to-go-back-to-the-main-page)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/en/stable/notes/cuda.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "# Search Results for \"pytorch docs \"Memory management\" CUDA semantics PYTORCH_CUDA_ALLOC_CONF empty_cache\"\n\n## 1. [CUDA Environment Variables — PyTorch main documentation](http://docs.pytorch.org/docs/main/cuda_environment_variables.html)\n\n2026年5月8日 · If set to 1, disables caching of memory allocations in CUDA. This can be useful for debugging. For a more in depth …\n\n**URL:** http://docs.pytorch.org/docs/main/cuda_environment_variables.html\n\n---\n\n## 2. [CUDA semantics — PyTorch main documentation](https://docs.pytorch.org/docs/main/notes/cuda.html)\n\n2017年1月16日 · If USE_PYTORCH_KERNEL_CACHE is set to 0 then no cache will be used, and if …\n\n**URL:** https://docs.pytorch.org/docs/main/notes/cud"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "## 1. [CUDA Environment Variables — PyTorch main documentation](http://docs.pytorch.org/docs/main/cuda_environment_variables.html)\n\n2026年5月8日 · If set to 1, disables caching of memory allocations in CUDA. This can be useful for debugging. For a more in depth …\n\n**URL:** http://docs.pytorch.org/docs/main/cuda_environment_variables.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "http://docs.pytorch.org/docs/main/cuda_environment_variables.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "## 2. [CUDA semantics — PyTorch main documentation](https://docs.pytorch.org/docs/main/notes/cuda.html)\n\n2017年1月16日 · If USE_PYTORCH_KERNEL_CACHE is set to 0 then no cache will be used, and if …\n\n**URL:** https://docs.pytorch.org/docs/main/notes/cuda.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.pytorch.org/docs/main/notes/cuda.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "## 3. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://blog.csdn.net/weixin_41338279/article/details/155775829)\n\n2025年12月11日 · 明明 GPU 还有 180MB 空闲，为什么分配 256MB 就失败了？ 答案是：显存碎片化（Memory Fragmentation） …\n\n**URL:** https://blog.csdn.net/weixin_41338279/article/details/155775829\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://blog.csdn.net/weixin_41338279/article/details/155775829"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "## 4. [CUDA 环境变量 — PyTorch 2.4 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.4/cuda_environment_variables.html)\n\n2026年7月11日 · 有关 CUDA 运行时环境变量的更多信息，请参阅 CUDA 环境变量。 如果设置为 1，则禁用 CUDA 中内存分配的缓存 …\n\n**URL:** https://pytorch.ac.cn/docs/2.4/cuda_environment_variables.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://pytorch.ac.cn/docs/2.4/cuda_environment_variables.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b2dd507.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b2dd507.result",
+        "quote": "## 5. [PyTorch 显存不足？一个环境变量帮你优化 GPU 内存管理 ...](https://devpress.csdn.net/v1/article/detail/155775829)\n\n2025年12月10日 · 本文介绍 PYTORCH_CUDA_ALLOC_CONF 环境变量的配置方法，帮助你在显存紧张时最大化利用 GPU 资源，减 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155775829\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/155775829"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_a877736d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_a877736d.result",
+        "quote": "# Memory Management Section — Full Extraction\n\n**Summary:** The complete \"Memory management\" section was present in the provided content with **no apparent truncation**. It covers the caching allocator, `empty_cache()` behavior, memory monitoring APIs, and the full `PYTORCH_ALLOC_CONF` option list (note: the docs now use `PYTORCH_ALLOC_CONF` as the primary name — `PYTORCH_CUDA_ALLOC_CONF` is a backward-compatibility alias). Below is the verbatim text, organized by subsection.\n\n---\n\n## Memory management (intro text — verbatim)\n\n> PyTorch uses a caching memory allocator to speed up memory allocations. This allows fast memory deallocation without device synchronizations. However, the unused mem"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/docs/main/notes/cuda.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_90fc0b34.result",
+      "evidence": {
+        "event_id": "WebFetch_4_90fc0b34.result",
+        "quote": "**标题**: Oops! | PyTorch\n\n# Oops!\n\n#### You've reached a dead end.[](https://docs.pytorch.org/en/stable/checkpoint.html#youve-reached-a-dead-end)\n\n#### If you feel like something should be here, you can [open an issue](https://github.com/pytorch/pytorch.github.io/issues) on GitHub.[](https://docs.pytorch.org/en/stable/checkpoint.html#if-you-feel-like-something-should-be-here-you-can-open-an-issue)\n\n#### Click [here](https://docs.pytorch.org/) to go back to the main page.[](https://docs.pytorch.org/en/stable/checkpoint.html#click-here-to-go-back-to-the-main-page)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.pytorch.org/en/stable/checkpoint.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_e1afcdd5.result",
+      "evidence": {
+        "event_id": "WebFetch_5_e1afcdd5.result",
+        "quote": "# torch.utils.checkpoint — Full Documentation Extraction\n\n**Source:** PyTorch main documentation (v2.15.0 unstable) · Created On: Jun 16, 2025 | Last Updated On: Jul 27, 2026\n\n**Summary:** The page documents activation checkpointing in PyTorch. The main API is `torch.utils.checkpoint.checkpoint()` with two overloads (direct call and decorator form), plus `checkpoint_sequential()` for sequential models, and several supporting utilities for selective checkpointing, RNG state, and debugging. The `use_reentrant` parameter defaults to `None` in the signature but **must be passed explicitly** (an exception is planned); `use_reentrant=False` is explicitly recommended.\n\n---\n\n## 1. Page-Level Usage N"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.pytorch.org/docs/main/checkpoint.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_64792e12.result",
+      "evidence": {
+        "event_id": "WebFetch_6_64792e12.result",
+        "quote": "# Understanding CUDA Memory Usage — Full Content Extraction\n\n**Source**: PyTorch main documentation (v2.15.0 unstable) | Created On: Aug 23, 2023 | Last Updated On: Jul 07, 2026\n\nThis page documents PyTorch's CUDA memory snapshot tooling: recording allocation history with `_record_memory_history()`, saving snapshots with `_dump_snapshot()`, and visualizing them at `pytorch.org/memory_viz`. Below is the extracted content organized by your requested topics, with original wording preserved.\n\n---\n\n## 1. Overview & Visibility Limitations\n\n> To debug CUDA memory use, PyTorch provides a way to generate memory snapshots that record the state of allocated CUDA memory at any point in time, and optiona"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.pytorch.org/docs/main/torch_cuda_memory.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "# Search Results for \"PyTorch CUDA out of memory 解决 梯度检查点 gradient checkpointing empty_cache 显存优化 知乎 CSDN\"\n\n## 1. [CUDA内存不足：如何优化PyTorch显存使用？ - CSDN问答](https://ask.csdn.net/questions/8794703)\n\n2025年9月28日 · 如何在不降低模型性能的前提下，有效减少显存占用？ 常见优化手段包括使用梯度检查点（Gradient …\n\n**URL:** https://ask.csdn.net/questions/8794703\n\n---\n\n## 2. [PyTorch 训练报 CUDA out of memory 显存不足怎么办-人人代码](https://www.renrendaima.com/article/18762.html)\n\n5 天之前 · 4. 用梯度检查点：model 开启 checkpoint，用算力换显存（重算激活）。 5. 换小模型或切 CPU 试跑；多卡用 …\n\n**URL:** https://www.renrendaima.com/article/18762.html\n\n---\n\n## 3. [CUDA Out of Memory (OOM) 立即启用 Gradient ...](https://blog.csdn.net/zhangfeng1133/article/details/158501417)\n\n2026年8月12日 · Gradient Checkpointin"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "## 1. [CUDA内存不足：如何优化PyTorch显存使用？ - CSDN问答](https://ask.csdn.net/questions/8794703)\n\n2025年9月28日 · 如何在不降低模型性能的前提下，有效减少显存占用？ 常见优化手段包括使用梯度检查点（Gradient …\n\n**URL:** https://ask.csdn.net/questions/8794703\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://ask.csdn.net/questions/8794703"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "## 2. [PyTorch 训练报 CUDA out of memory 显存不足怎么办-人人代码](https://www.renrendaima.com/article/18762.html)\n\n5 天之前 · 4. 用梯度检查点：model 开启 checkpoint，用算力换显存（重算激活）。 5. 换小模型或切 CPU 试跑；多卡用 …\n\n**URL:** https://www.renrendaima.com/article/18762.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://www.renrendaima.com/article/18762.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "## 3. [CUDA Out of Memory (OOM) 立即启用 Gradient ...](https://blog.csdn.net/zhangfeng1133/article/details/158501417)\n\n2026年8月12日 · Gradient Checkpointing（梯度检查点技术）是一种“用时间换空间”的显存优化策略，专门用于解决训练超大模型（ …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/158501417\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/zhangfeng1133/article/details/158501417"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "## 4. [CUDA Out of Memory (OOM) 立即启用 Gradient ...](https://blog.51cto.com/u_16120231/14505174)\n\n2026年3月12日 · Gradient Checkpointing（梯度检查点技术）是一种“用时间换空间”的显存优化策略，专门用于解决训练超大模型（ …\n\n**URL:** https://blog.51cto.com/u_16120231/14505174\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://blog.51cto.com/u_16120231/14505174"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3e0d424a.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3e0d424a.result",
+        "quote": "## 5. [CUDA out of memory错误别急着减batch size：显存碎片 ...](https://raybyte.cn/post/2026/7/15/de1bf603)\n\n2026年7月15日 · 在深度学习训练中，遇到CUDA out of memory错误不必急着减batch size。 本文介绍了显存碎片整理与梯度累积策略 …\n\n**URL:** https://raybyte.cn/post/2026/7/15/de1bf603\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://raybyte.cn/post/2026/7/15/de1bf603"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

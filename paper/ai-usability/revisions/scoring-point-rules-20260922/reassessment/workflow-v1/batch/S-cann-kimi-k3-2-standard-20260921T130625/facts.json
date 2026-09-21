@@ -1,0 +1,430 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_a5ec2f45.result",
+      "evidence": {
+        "event_id": "WebFetch_1_a5ec2f45.result",
+        "quote": "**标题**: 配置参数说明（服务化）-安装与配置-MindIE LLM-大语言模型推理框架-MindIE2.1.RC1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_7e25fe60.result",
+      "evidence": {
+        "event_id": "WebFetch_2_7e25fe60.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n学习\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n博客\n\n开发者计划\n\n[昇腾社区首页](https://www.hiascend.com/ \"昇腾社区首页\")\n\n[支持](https://www.hiascend.com/support \"支持\")\n\n[积分兑换](https://www.hiascend.com/developer/rewards \"积分兑换\")\n\n[![昇腾社区](data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='24px'%20height='24px'%20viewBox='0%200%2024%2024'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3ctitle%3eas-mb2%3c/title%3e%3cg%20id='as-mb2'%20stroke='none'%20stroke-width='1'%20fill='none'%20fill-rule='evenodd'%3e"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindieservice/servicedev/mindie_service0032.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_91f8efe9.result",
+      "evidence": {
+        "event_id": "WebFetch_3_91f8efe9.result",
+        "quote": "**标题**: 访问被拦截！\n\n您的请求疑似攻击行为！\n\n事件ID：31-10-139-20260921112319-b9c88e99\n\n如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_af52c821.result",
+      "evidence": {
+        "event_id": "WebFetch_4_af52c821.result",
+        "quote": "# MindIE 服务参数配置文档分析报告\n\n## 一、总体结论（先说重点）\n\n| 用户要求项 | 是否在原文中存在 | 说明 |\n|---|---|---|\n| config.json 完整结构与字段说明 | ✅ 基本完整 | 四大配置块（ServerConfig / BackendConfig / ModelDeployConfig / ScheduleConfig）均有详细字段表 |\n| 示例配置 JSON | ❌ **不存在** | 原文未提供任何 config.json 示例代码块 |\n| 启动方式说明 | ❌ **不存在** | 仅给出配置文件的两种获取路径（whl 包 / run 包），无启动命令或启动流程说明 |\n| 版本信息 | ⚠️ 部分存在 | 仅注明配置文件 Version 字段固定为 \"1.0.0\"；文档 URL 路径含 \"latest\"，无明确软件版本号 |\n| 正文完整性 | ⚠️ **疑似不完整** | LogConfig 段落疑被截断（详见第九节） |\n| 截断标记 | ❌ 无显式截断标记 | 无\"……\"、\"（未完待续）\"等标记，但存在结构性截断迹象 |\n\n---\n\n## 二、文档头部信息（配置参数说明·服务化）\n\n**配置文件位置**（原文说明）：\n- Server 的配置文件为 `config.json`\n- **whl 包安装方式**：`{MindIE安装目录}/mindie_llm/conf/config.json`\n- **run 包安装方式**：`{MindIE安装目录}/latest/mindie-service/conf/con"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_2a6e2467.result",
+      "evidence": {
+        "event_id": "WebFetch_6_2a6e2467.result",
+        "quote": "**标题**: 安装软件包和依赖 - MindIE-LLM-Doc\n\n# 安装软件包和依赖[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%92%8C%E4%BE%9D%E8%B5%96 \"Permanent link\")\n\n介绍安装MindIE前，需要安装的相关软件包和依赖。\n\n## 安装CANN[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/#%E5%AE%89%E8%A3%85cann \"Permanent link\")\n\n安装配套版本的NPU驱动固件、CANN软件（Toolkit、ops和NNAL）并配置CANN环境变量，具体请参考《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/canncommercial/850/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/CANNCommunityEd"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_c40e9cce.result",
+      "evidence": {
+        "event_id": "WebFetch_8_c40e9cce.result",
+        "quote": "# MindIE 快速入门文档提取（Atlas 800I A2 + Qwen2-7B）\n\n## 一、正文完整性说明\n\n**正文主体完整取得，无截断。** 文档六大章节（环境准备 → 启动容器 → 模型推理 → 精度测试 → 性能测试）的文字、命令、代码块均完整。但存在以下瑕疵需注明：\n\n| 问题 | 说明 |\n|---|---|\n| 图片缺失 | 「图 1 回显信息」（npu-smi info 截图）仅有图题，图像内容无法以文本呈现；「设置环境变量」小节后有一个空链接（疑似图片未渲染） |\n| 表格扁平化 | 表 1（Atlas A2 产品）、表 2（组件安装路径）、config.json 参数说明表的格式被压平为纯文本 |\n| 日期异常 | 发布时间字段同时出现「2026年6月23日」和「2025年12月22日」两个日期（疑为页面生成时间 + 文档更新时间） |\n| 版本号缺失 | **正文未直接标注 CANN / MindIE 的具体版本号**，仅通过链接指向 CANN 850 安装文档（商用版/社区版） |\n\n---\n\n## 二、前提条件\n\n### 硬件\n- **服务器**：Atlas 800I A2 推理服务器（注意事项中另提及 Atlas 800I A3 超节点）\n- **NPU**：示例使用 4 卡（davinci0~davinci3）\n- **模型**：Qwen2-7B\n\n### 软件检查\n```bash\n# 1. 检查 NPU 驱动固件（出现图1所示回显即已安装）\nnpu-smi info\n\n# 2. 检查 Docker 已安装并启动\ndocker ps\n```"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "ba46a300b62e5b42a3332ce17c9a942bd9d301bec536e938e033e305a58ffe4a",
+  "question": "怎么把模型在昇腾上部署成推理服务？用 MindIE / 昇腾推理服务，怎么配和起服务？",
+  "run_id": "S-cann-kimi-k3-2-standard-20260921T130625",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "# Search Results for \"MindIE 部署推理服务 config.json 启动 昇腾 官方文档\"\n\n## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 打开mindie-service目录中的config.json，修改server相关配置。 其中 modelWeightPath 和 backendType 必须修改配置为： …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n## 2. [配置参数说明（服务化）-安装与配置-MindIE LLM-大语言 ...](https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html)\n\nMindIE LLM对接MindIE Motor服务化后，会使用MindIE Server的配置文件config.json。\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 打开mindie-service目录中的config.json，修改server相关配置。 其中 modelWeightPath 和 backendType 必须修改配置为： …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "## 2. [配置参数说明（服务化）-安装与配置-MindIE LLM-大语言 ...](https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html)\n\nMindIE LLM对接MindIE Motor服务化后，会使用MindIE Server的配置文件config.json。\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "## 3. [服务参数配置 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/)\n\n2026年6月23日 · 如果网络环境不安全，不开启HTTPS通信，即\"httpsEnabled\"=\"false\"时，会存在较高的网络安全风险。 如果推理服 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "## 4. [服务化部署 | MindSpore Transformers 1.5.0 文档 | 昇思 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.5.0/usage/deployment.html)\n\n2026年9月13日 · mindformers仓上提供一键拉起MindIE脚本，脚本中已预置环境变量设置和服务化配置，仅需输入模型文件目录后即 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.5.0/usage/deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.5.0/usage/deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_9fe9c596.result",
+      "evidence": {
+        "event_id": "WebSearch_0_9fe9c596.result",
+        "quote": "## 5. [部署推理服务前准备-部署MindIE Server-使用Deployer部署 ...](https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindieservice/servicedev/mindie_service0032.html)\n\n部署推理服务前准备-部署MindIE Server-使用Deployer部署服务示例-安装部署-单机（非分布式）服务部署-集群服务部署-MindIE …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindieservice/servicedev/mindie_service0032.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindieservice/servicedev/mindie_service0032.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_a5ec2f45.result",
+      "evidence": {
+        "event_id": "WebFetch_1_a5ec2f45.result",
+        "quote": "**标题**: 配置参数说明（服务化）-安装与配置-MindIE LLM-大语言模型推理框架-MindIE2.1.RC1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindiellm/llmdev/mindie_llm0004.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_7e25fe60.result",
+      "evidence": {
+        "event_id": "WebFetch_2_7e25fe60.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n学习\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n博客\n\n开发者计划\n\n[昇腾社区首页](https://www.hiascend.com/ \"昇腾社区首页\")\n\n[支持](https://www.hiascend.com/support \"支持\")\n\n[积分兑换](https://www.hiascend.com/developer/rewards \"积分兑换\")\n\n[![昇腾社区](data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20width='24px'%20height='24px'%20viewBox='0%200%2024%2024'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3ctitle%3eas-mb2%3c/title%3e%3cg%20id='as-mb2'%20stroke='none'%20stroke-width='1'%20fill='none'%20fill-rule='evenodd'%3e"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/21RC1/mindieservice/servicedev/mindie_service0032.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_91f8efe9.result",
+      "evidence": {
+        "event_id": "WebFetch_3_91f8efe9.result",
+        "quote": "**标题**: 访问被拦截！\n\n您的请求疑似攻击行为！\n\n事件ID：31-10-139-20260921112319-b9c88e99\n\n如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_af52c821.result",
+      "evidence": {
+        "event_id": "WebFetch_4_af52c821.result",
+        "quote": "# MindIE 服务参数配置文档分析报告\n\n## 一、总体结论（先说重点）\n\n| 用户要求项 | 是否在原文中存在 | 说明 |\n|---|---|---|\n| config.json 完整结构与字段说明 | ✅ 基本完整 | 四大配置块（ServerConfig / BackendConfig / ModelDeployConfig / ScheduleConfig）均有详细字段表 |\n| 示例配置 JSON | ❌ **不存在** | 原文未提供任何 config.json 示例代码块 |\n| 启动方式说明 | ❌ **不存在** | 仅给出配置文件的两种获取路径（whl 包 / run 包），无启动命令或启动流程说明 |\n| 版本信息 | ⚠️ 部分存在 | 仅注明配置文件 Version 字段固定为 \"1.0.0\"；文档 URL 路径含 \"latest\"，无明确软件版本号 |\n| 正文完整性 | ⚠️ **疑似不完整** | LogConfig 段落疑被截断（详见第九节） |\n| 截断标记 | ❌ 无显式截断标记 | 无\"……\"、\"（未完待续）\"等标记，但存在结构性截断迹象 |\n\n---\n\n## 二、文档头部信息（配置参数说明·服务化）\n\n**配置文件位置**（原文说明）：\n- Server 的配置文件为 `config.json`\n- **whl 包安装方式**：`{MindIE安装目录}/mindie_llm/conf/config.json`\n- **run 包安装方式**：`{MindIE安装目录}/latest/mindie-service/conf/con"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "# Search Results for \"MindIE 安装 CANN 版本配套 mindieservice_daemon 启动 环境变量 readthedocs\"\n\n## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 之后前往 MindIE资源下载中心 下载软件包进行安装。 MindIE与CANN版本必须配套使用，其版本配套关系如下所示。 若安装 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n## 2. [安装软件包和依赖 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/)\n\n2022年10月2日 · 安装配套版本的NPU驱动固件、CANN软件（Toolkit、ops和NNAL）并配置CANN环境变量，具体请参考《CANN 软 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/u"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 之后前往 MindIE资源下载中心 下载软件包进行安装。 MindIE与CANN版本必须配套使用，其版本配套关系如下所示。 若安装 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "## 2. [安装软件包和依赖 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/)\n\n2022年10月2日 · 安装配套版本的NPU驱动固件、CANN软件（Toolkit、ops和NNAL）并配置CANN环境变量，具体请参考《CANN 软 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "## 3. [MindIE+MindFormers推理方案指导 - cc_beolus - 博客园](https://www.cnblogs.com/beolus/p/18675728)\n\n2025年1月16日 · CANN是什么 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算 …\n\n**URL:** https://www.cnblogs.com/beolus/p/18675728\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.cnblogs.com/beolus/p/18675728"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "## 4. [MindIE安装部署-昇腾社区](https://www.hiascend.com/developer/software/mindie/download)\n\n2026年8月19日 · MindIE下载页面提供最新Release版本的下载方式，供开发者使用。 若您想查询昇腾全栈软件版本的配套关系和兼容 …\n\n**URL:** https://www.hiascend.com/developer/software/mindie/download\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://www.hiascend.com/developer/software/mindie/download"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_abefb272.result",
+      "evidence": {
+        "event_id": "WebSearch_5_abefb272.result",
+        "quote": "## 5. [MindIE+MindFormers推理方案指导 - 知乎](https://zhuanlan.zhihu.com/p/18559034449)\n\n2025年1月20日 · CANN是什么 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算 …\n\n**URL:** https://zhuanlan.zhihu.com/p/18559034449\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/18559034449"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_2a6e2467.result",
+      "evidence": {
+        "event_id": "WebFetch_6_2a6e2467.result",
+        "quote": "**标题**: 安装软件包和依赖 - MindIE-LLM-Doc\n\n# 安装软件包和依赖[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%92%8C%E4%BE%9D%E8%B5%96 \"Permanent link\")\n\n介绍安装MindIE前，需要安装的相关软件包和依赖。\n\n## 安装CANN[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/#%E5%AE%89%E8%A3%85cann \"Permanent link\")\n\n安装配套版本的NPU驱动固件、CANN软件（Toolkit、ops和NNAL）并配置CANN环境变量，具体请参考《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/canncommercial/850/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/CANNCommunityEd"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "# Search Results for \"mindie-llm-doc readthedocs 快速开始 启动推理服务 mindieservice curl generate\"\n\n## 1. [MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/)\n\n2026年4月24日 · MindIE LLM（Mind Inference Engine Large Language Model）是 MindIE 下的大语言模型推理组件，基于昇腾硬件 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/\n\n---\n\n## 2. [快速入门 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/)\n\n2026年6月23日 · 本文档以 Atlas 800I A2 推理服务器和 Qwen2-7B 模型为例，让开发者快速开始使用 MindIE 进行大模型推理流程。  …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/\n\n---\n\n## 3. [MindIE-LLM/docs/zh at master · Ascend/MindIE-LLM · Gi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "## 1. [MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/)\n\n2026年4月24日 · MindIE LLM（Mind Inference Engine Large Language Model）是 MindIE 下的大语言模型推理组件，基于昇腾硬件 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "## 2. [快速入门 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/)\n\n2026年6月23日 · 本文档以 Atlas 800I A2 推理服务器和 Qwen2-7B 模型为例，让开发者快速开始使用 MindIE 进行大模型推理流程。  …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "## 3. [MindIE-LLM/docs/zh at master · Ascend/MindIE-LLM · GitHub](https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh)\n\n2026年4月4日 · MindIE LLM（Mind Inference Engine Large Language Model）是 MindIE 下的大语言模型推理组件，基于昇腾硬件提 …\n\n**URL:** https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "## 4. [MindIE-LLM/docs/zh/user_guide/quick_start/quick_start.md ...](https://gitcode.com/Ascend/MindIE-LLM/blob/dev/docs/zh/user_guide/quick_start/quick_start.md)\n\n本文档以Atlas 800I A2 推理服务器和Qwen2-7B模型为例，让开发者快速开始使用MindIE进行大模型推理流程。 物理机部署场景，需 …\n\n**URL:** https://gitcode.com/Ascend/MindIE-LLM/blob/dev/docs/zh/user_guide/quick_start/quick_start.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://gitcode.com/Ascend/MindIE-LLM/blob/dev/docs/zh/user_guide/quick_start/quick_start.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f5844de8.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f5844de8.result",
+        "quote": "## 5. [MindIE LLM场景快速上手实验 - OSCHINA - 中文开源技术 ...](https://my.oschina.net/u/8764084/blog/18099879)\n\n2025年4月7日 · MindIE是昇腾自研推理框架，本实验手册可指导小白用户快速掌握MindIE在LLM（large language model）场景的基本 …\n\n**URL:** https://my.oschina.net/u/8764084/blog/18099879\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://my.oschina.net/u/8764084/blog/18099879"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_c40e9cce.result",
+      "evidence": {
+        "event_id": "WebFetch_8_c40e9cce.result",
+        "quote": "# MindIE 快速入门文档提取（Atlas 800I A2 + Qwen2-7B）\n\n## 一、正文完整性说明\n\n**正文主体完整取得，无截断。** 文档六大章节（环境准备 → 启动容器 → 模型推理 → 精度测试 → 性能测试）的文字、命令、代码块均完整。但存在以下瑕疵需注明：\n\n| 问题 | 说明 |\n|---|---|\n| 图片缺失 | 「图 1 回显信息」（npu-smi info 截图）仅有图题，图像内容无法以文本呈现；「设置环境变量」小节后有一个空链接（疑似图片未渲染） |\n| 表格扁平化 | 表 1（Atlas A2 产品）、表 2（组件安装路径）、config.json 参数说明表的格式被压平为纯文本 |\n| 日期异常 | 发布时间字段同时出现「2026年6月23日」和「2025年12月22日」两个日期（疑为页面生成时间 + 文档更新时间） |\n| 版本号缺失 | **正文未直接标注 CANN / MindIE 的具体版本号**，仅通过链接指向 CANN 850 安装文档（商用版/社区版） |\n\n---\n\n## 二、前提条件\n\n### 硬件\n- **服务器**：Atlas 800I A2 推理服务器（注意事项中另提及 Atlas 800I A3 超节点）\n- **NPU**：示例使用 4 卡（davinci0~davinci3）\n- **模型**：Qwen2-7B\n\n### 软件检查\n```bash\n# 1. 检查 NPU 驱动固件（出现图1所示回显即已安装）\nnpu-smi info\n\n# 2. 检查 Docker 已安装并启动\ndocker ps\n```"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/quick_start/quick_start/"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_xyGE6ObAGUHoIZMbUJ8D7059.result",
+      "evidence": {
+        "event_id": "call_00_xyGE6ObAGUHoIZMbUJ8D7059.result",
+        "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Ke6h3XOH71zZiHHjzDT99533.result",
+      "evidence": {
+        "event_id": "call_00_Ke6h3XOH71zZiHHjzDT99533.result",
+        "quote": "# PyTorch Previous Versions — Analysis\n\n## Page Title & Content Status\n\n- **Page title:** \"Previous PyTorch Versions\"\n- **Full page heading:** \"Installing previous versions of PyTorch\"\n- **Content status:** ⚠️ **TRUNCATED** — The message explicitly ends with `[content truncated]`. The page is cut off in the \"Mac and misc. binaries\" section near the bottom. However, the main version-compatibility sections (all versions from v1.0.0 up to v2.13.0) appear to be **fully shown** before the truncation point.\n\n**Important note on cuDNN:** The page does **NOT** list cuDNN versions anywhere in the visible content. It only specifies CUDA versions (and ROCm versions for AMD). cuDNN compatibility is not "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/get-started/previous-versions/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_LyGgP2C9AfavjTNieb6e6255.result",
+      "evidence": {
+        "event_id": "call_00_LyGgP2C9AfavjTNieb6e6255.result",
+        "quote": "**标题**: CUDA Compatibility — CUDA Compatibility\n\nBack to top\n\n# CUDA Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html#cuda-compatibility \"Link to this heading\")\n\n[CUDA Compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/) describes how CUDA applications and toolkit components can run across different NVIDIA driver versions. It enables greater flexibility when upgrading CUDA toolkits and applications by reducing the need to upgrade drivers at the same time in every deployment scenario.\n\nThis flexibility is important for data center, enterprise, and managed environments, where driver updates may follow different qualification or maintenance sche"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_D5T2fkd3wf5BMzNzvEBO8519.result",
+      "evidence": {
+        "event_id": "call_00_D5T2fkd3wf5BMzNzvEBO8519.result",
+        "quote": "**标题**: Minor Version Compatibility — CUDA Compatibility\n\nBack to top\n\n# Minor Version Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html#minor-version-compatibility \"Link to this heading\")\n\n## CUDA 11 and Later Defaults to Minor Version Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html#cuda-11-and-later-defaults-to-minor-version-compatibility \"Link to this heading\")\n\nFrom CUDA 11 onwards, applications compiled with a CUDA Toolkit release from within a CUDA major release family can run, with limited feature-set, on systems having at least the minimum required driver version as indicated below. "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "bc06d0f1d14a644273fe637d4ac0788562c90fb4b6b1e71665a5e47380eb65dc",
+  "question": "我的 PyTorch 跟 CUDA/cuDNN 版本对不上，怎么查 PyTorch、CUDA toolkit、cuDNN、驱动之间的版本配套关系？",
+  "run_id": "I-cuda-deepseek-v4_1-flash-standard-20260921T103011",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "# Search Results for \"PyTorch CUDA cuDNN driver version compatibility check\"\n\n## 1. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏36次。 PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/qq_73472828/article/details/160484021\n\n---\n\n## 2. [GitHub - elenacliu/pytorch_cuda_driver_compatibilities: Quick check …](https://github.com/elenacliu/pytorch_cuda_driver_compatibilities)\n\nOverviewCompute Capabilities of each PyTorch PackageStart Web Service for Environment SelectionAcknowledgementReferencespytorch_compute_capabilities.py checks the compute capabalities of each pytorch package "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "## 1. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏36次。 PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/qq_73472828/article/details/160484021\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/qq_73472828/article/details/160484021"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "## 2. [GitHub - elenacliu/pytorch_cuda_driver_compatibilities: Quick check …](https://github.com/elenacliu/pytorch_cuda_driver_compatibilities)\n\nOverviewCompute Capabilities of each PyTorch PackageStart Web Service for Environment SelectionAcknowledgementReferencespytorch_compute_capabilities.py checks the compute capabalities of each pytorch package in the PyT…For results see table.csv.在github.com上查看更多信息\n\n**URL:** https://github.com/elenacliu/pytorch_cuda_driver_compatibilities\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://github.com/elenacliu/pytorch_cuda_driver_compatibilities"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "## 3. [Support Matrix — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n\n2026年9月9日 · The following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "## 4. [CUDA、cuDNN、PyTorch版本如何精准匹配？一文解决安装 ...](https://blog.csdn.net/FuncIsle/article/details/157210729)\n\n2026年8月4日 · 在深度学习开发中，正确匹配 CUDA、cuDNN 与 PyTorch 版本是确保模型高效训练的基础。 三者之间的兼容性不仅 …\n\n**URL:** https://blog.csdn.net/FuncIsle/article/details/157210729\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/FuncIsle/article/details/157210729"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+      "evidence": {
+        "event_id": "call_00_zcx4KQmK52D9QwWeNdap8656.result",
+        "quote": "## 5. [PyTorch、CUDA与显卡驱动版本对应关系及配置指南_文心快码](https://comate.baidu.com/zh/page/57ueeqzh4yj)\n\n2026年3月5日 · 本文系统阐述了PyTorch、CUDA与显卡驱动的版本对应关系，提出三步筛选法确定最佳配置组合：先满足PyTorch功 …\n\n**URL:** https://comate.baidu.com/zh/page/57ueeqzh4yj\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://comate.baidu.com/zh/page/57ueeqzh4yj"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xyGE6ObAGUHoIZMbUJ8D7059.result",
+      "evidence": {
+        "event_id": "call_00_xyGE6ObAGUHoIZMbUJ8D7059.result",
+        "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "# Search Results for \"PyTorch previous versions get-started official CUDA wheel\"\n\n## 1. [Previous PyTorch Versions](https://pytorch.org/get-started/previous-versions/)\n\nAccess and install previous PyTorch versions, including binaries and instructions for all platforms.\n\n**URL:** https://pytorch.org/get-started/previous-versions/\n\n---\n\n## 2. [Previous PyTorch Versions](https://docs.pytorch.org/get-started/previous-versions/)\n\n2026年9月2日 · Installing previous versions of PyTorch We’d prefer you install the latest version, but old …\n\n**URL:** https://docs.pytorch.org/get-started/previous-versions/\n\n---\n\n## 3. [以前的 PyTorch 版本 - PyTorch 框架](https://pytorch.ac.cn/get-started/previous-versions/)\n\n20"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "## 1. [Previous PyTorch Versions](https://pytorch.org/get-started/previous-versions/)\n\nAccess and install previous PyTorch versions, including binaries and instructions for all platforms.\n\n**URL:** https://pytorch.org/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "## 2. [Previous PyTorch Versions](https://docs.pytorch.org/get-started/previous-versions/)\n\n2026年9月2日 · Installing previous versions of PyTorch We’d prefer you install the latest version, but old …\n\n**URL:** https://docs.pytorch.org/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "## 3. [以前的 PyTorch 版本 - PyTorch 框架](https://pytorch.ac.cn/get-started/previous-versions/)\n\n2026年9月5日 · 您可以使用 git tag 列出 PyTorch git 仓库中的标签，并使用以下命令检出特定版本（将 ‘0.1.9’ 替换为所需的版本）： …\n\n**URL:** https://pytorch.ac.cn/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://pytorch.ac.cn/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "## 4. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏37次。PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/qq_73472828/article/details/160484021\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://blog.csdn.net/qq_73472828/article/details/160484021"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+      "evidence": {
+        "event_id": "call_00_bQpaoDGXSQxYrBzdVYYR0593.result",
+        "quote": "## 5. [舊版 PyTorch - PyTorch 框架](https://pytorch.com.tw/get-started/previous-versions/)\n\n2026年7月30日 · 注意：大多數 pytorch 版本僅適用於特定的 CUDA 版本。 例如 pytorch=1.0.1 不適用於 CUDA 9.2. 這些早於上述的 …\n\n**URL:** https://pytorch.com.tw/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://pytorch.com.tw/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Ke6h3XOH71zZiHHjzDT99533.result",
+      "evidence": {
+        "event_id": "call_00_Ke6h3XOH71zZiHHjzDT99533.result",
+        "quote": "# PyTorch Previous Versions — Analysis\n\n## Page Title & Content Status\n\n- **Page title:** \"Previous PyTorch Versions\"\n- **Full page heading:** \"Installing previous versions of PyTorch\"\n- **Content status:** ⚠️ **TRUNCATED** — The message explicitly ends with `[content truncated]`. The page is cut off in the \"Mac and misc. binaries\" section near the bottom. However, the main version-compatibility sections (all versions from v1.0.0 up to v2.13.0) appear to be **fully shown** before the truncation point.\n\n**Important note on cuDNN:** The page does **NOT** list cuDNN versions anywhere in the visible content. It only specifies CUDA versions (and ROCm versions for AMD). cuDNN compatibility is not "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "# Search Results for \"CUDA toolkit minimum required driver version table release notes\"\n\n## 1. [Minor Version Compatibility — CUDA Compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html)\n\n2026年9月9日 · From CUDA 11 onwards, applications compiled with a CUDA Toolkit release from within a CUDA major release …\n\n**URL:** https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html\n\n---\n\n## 2. [CUDA Compatibility — CUDA Compatibility - NVIDIA …](https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html)\n\n2026年9月9日 · This guide introduces these compatibility models, outlines the supported upgrade paths, and helps developers a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "## 1. [Minor Version Compatibility — CUDA Compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html)\n\n2026年9月9日 · From CUDA 11 onwards, applications compiled with a CUDA Toolkit release from within a CUDA major release …\n\n**URL:** https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "## 2. [CUDA Compatibility — CUDA Compatibility - NVIDIA …](https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html)\n\n2026年9月9日 · This guide introduces these compatibility models, outlines the supported upgrade paths, and helps developers and …\n\n**URL:** https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "## 3. [最新的 cuda 版本 与 驱动 driver 版本的最小匹配表_cuda12 ...](https://blog.csdn.net/eloudy/article/details/129178894)\n\n2023年2月23日 · CUDA12.0Update1的发布说明中详细列出了与之兼容的最低驱动版本。 在维护多个CUDA版本的环境中，只需要安 …\n\n**URL:** https://blog.csdn.net/eloudy/article/details/129178894\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/eloudy/article/details/129178894"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "## 4. [CUDA Toolkit与Driver版本对应关系查询表 - CSDN博客](https://blog.csdn.net/weixin_35094083/article/details/156397682)\n\n2025年12月28日 · CUDA Toolkit与Driver版本对应关系解析 在深度学习项目中，最令人头疼的问题往往不是模型设计或调参，而是环 …\n\n**URL:** https://blog.csdn.net/weixin_35094083/article/details/156397682\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/weixin_35094083/article/details/156397682"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+      "evidence": {
+        "event_id": "call_00_pTn2nirc4m5EvdGoUrnF5495.result",
+        "quote": "## 5. [更新cuda驱动程序版本与cuda版本对照表 - CSDN文库](https://wenku.csdn.net/answer/4bmu4ezh2e)\n\n2025年1月20日 · 以下是常见的 CUDA Toolkit 和驱动程序版本之间的兼容性列表： ... 此表格提供了不同 CUDA Toolkit 版本所需最低 …\n\n**URL:** https://wenku.csdn.net/answer/4bmu4ezh2e\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://wenku.csdn.net/answer/4bmu4ezh2e"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_LyGgP2C9AfavjTNieb6e6255.result",
+      "evidence": {
+        "event_id": "call_00_LyGgP2C9AfavjTNieb6e6255.result",
+        "quote": "**标题**: CUDA Compatibility — CUDA Compatibility\n\nBack to top\n\n# CUDA Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html#cuda-compatibility \"Link to this heading\")\n\n[CUDA Compatibility](https://docs.nvidia.com/deploy/cuda-compatibility/) describes how CUDA applications and toolkit components can run across different NVIDIA driver versions. It enables greater flexibility when upgrading CUDA toolkits and applications by reducing the need to upgrade drivers at the same time in every deployment scenario.\n\nThis flexibility is important for data center, enterprise, and managed environments, where driver updates may follow different qualification or maintenance sche"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/latest/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_D5T2fkd3wf5BMzNzvEBO8519.result",
+      "evidence": {
+        "event_id": "call_00_D5T2fkd3wf5BMzNzvEBO8519.result",
+        "quote": "**标题**: Minor Version Compatibility — CUDA Compatibility\n\nBack to top\n\n# Minor Version Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html#minor-version-compatibility \"Link to this heading\")\n\n## CUDA 11 and Later Defaults to Minor Version Compatibility[#](https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html#cuda-11-and-later-defaults-to-minor-version-compatibility \"Link to this heading\")\n\nFrom CUDA 11 onwards, applications compiled with a CUDA Toolkit release from within a CUDA major release family can run, with limited feature-set, on systems having at least the minimum required driver version as indicated below. "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deploy/cuda-compatibility/minor-version-compatibility.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

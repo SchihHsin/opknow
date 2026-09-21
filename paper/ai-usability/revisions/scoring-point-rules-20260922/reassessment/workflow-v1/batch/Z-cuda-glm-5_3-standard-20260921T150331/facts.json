@@ -1,0 +1,348 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_d23e03eff60849279da75459.result",
+      "evidence": {
+        "event_id": "call_d23e03eff60849279da75459.result",
+        "quote": "**标题**: 1.2. Programming Model — CUDA Programming Guide\n\n# 1.2. Programming Model#\n\nThis chapter introduces the CUDA programming model at a high level and separate from any language. The terminology and concepts introduced here apply to CUDA in any supported programming language. Later chapters will illustrate these concepts in C++.\n\n## 1.2.1. Heterogeneous Systems#\n\nThe CUDA programming model assumes a heterogeneous computing system, which means a system that includes both GPUs and CPUs. The CPU and the memory directly connected to it are called the *host* and *host memory*, respectively. A GPU and the memory directly connected to it are referred to as the *device* and *device memory*, resp"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_0c09655809a04b9b9739fdfa.result",
+      "evidence": {
+        "event_id": "call_0c09655809a04b9b9739fdfa.result",
+        "quote": "## Summary\n\nThis is the **CUDA Programming Guide v13.4.2** table of contents (landing page only). The guide is organized into 5 parts plus a Notices section. Based on chapter titles, the hardware/SIMT/memory topics you asked about map primarily to **1.2 Programming Model**, **5.1 Compute Capabilities**, **5.7 CUDA C++ Memory Model**, and **5.8 CUDA C++ Execution Model**.\n\n---\n\n## Full Table of Contents\n\n**Part 1: Introduction to CUDA** — `part1.html`\n- 1.1. Introduction — `01-introduction/introduction.html`\n- 1.2. Programming Model — `01-introduction/programming-model.html`\n- 1.3. The CUDA platform — `01-introduction/cuda-platform.html`\n\n**Part 2: Programming GPUs in CUDA** — `part2.html`\n- "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_7e9188bfff834bfaab9741fe.result",
+      "evidence": {
+        "event_id": "call_7e9188bfff834bfaab9741fe.result",
+        "quote": "# Analysis Result: Requested Content Not Present in This Section\n\n## ⚠️ Key Finding\n\nThe web content provided is **Section 5.8 \"CUDA C++ Execution model\"** of the CUDA Programming Guide (v13.4.2). This section covers **C++ forward progress guarantees**, **not** the hardware execution model topics you requested.\n\n**None of your requested topics appear in this content:**\n- ❌ Warp definition / warp size (e.g., 32 threads) — not mentioned\n- ❌ SIMT execution — only appears as a table-of-contents link (\"2.3. Writing SIMT Kernels\")\n- ❌ Warp divergence — not mentioned\n- ❌ Warp scheduling on SMs — not mentioned\n- ❌ Thread block scheduling — only progress guarantees, not scheduling mechanics\n- ❌ Regis"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cuda-cpp-execution-model.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_38485ac0f786441e92bd3fca.result",
+      "evidence": {
+        "event_id": "call_38485ac0f786441e92bd3fca.result",
+        "quote": "# Extraction: Chapter 2.3 \"Writing SIMT Kernels\" (CUDA Programming Guide)\n\n**Summary:** The provided content is the complete Chapter 2.3 of NVIDIA's CUDA Programming Guide, covering SIMT kernel writing in C++ and Python. It spans the chapter title through §2.3.7 \"Kernel Launch and Occupancy.\" Below, all prose in the \"Full Text\" sections and all code blocks are **verbatim from the source**. Because your requested topics (thread/block/warp organization, warp size, indexing variables, `<<<...>>>` syntax) are concentrated in some sections but scattered through others, I've extracted the on-topic sections in full, collected the scattered on-topic statements verbatim, preserved all their code bloc"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_6736d4b01ec34eda83340b28.result",
+      "evidence": {
+        "event_id": "call_6736d4b01ec34eda83340b28.result",
+        "quote": "# Extraction: SIMT Execution Model & Hardware Multithreading\n\n## Summary\n\nI extracted sections **3.2.2 (Hardware Implementation)**, **3.2.2.1 (SIMT Execution Model)**, **3.2.2.1.1 (Independent Thread Scheduling)**, and **3.2.2.2 (Hardware Multithreading)** from the page. The content covers warp formation, branch divergence, independent thread scheduling, and warp scheduler operation. **One important gap:** the page does **not** describe how warps are assigned to SM partitions/sub-partitions (see \"Coverage Gaps\" below). Both requested sections appear **complete** in the source — no truncation detected within them.\n\n---\n\n## Content Boundaries\n\n| Item | Status |\n|---|---|\n| Section 3.2.2.1 star"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/03-advanced/advanced-kernel-programming.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_a39201341c154808acb52ef4.result",
+      "evidence": {
+        "event_id": "call_a39201341c154808acb52ef4.result",
+        "quote": "**标题**: 5.1. Compute Capabilities — CUDA Programming Guide\n\n# 5.1. Compute Capabilities#\n\nThe general specifications and features of a compute device depend on its compute capability (see Compute Capability and Streaming Multiprocessor Versions).\n\nTable 29, Table 30, and Table 31 show the features and technical specifications associated with each compute capability that is currently supported.\n\nAll NVIDIA GPU architectures use a little-endian representation.\n\n## 5.1.1. Obtain the GPU Compute Capability#\n\nThe CUDA GPU Compute Capability page provides a comprehensive mapping from NVIDIA GPU models to their compute capability.\n\nAlternatively, the nvidia-smi tool, provided with the NVIDIA Driver"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "bc381f4c1dbe73826da9d1d30bb1959c2dd73de0ed8998ea8ab7018a92329b64",
+  "question": "请讲清 CUDA 编程模型的核心概念（grid / block / thread / warp / SM / global·shared·register memory），它们怎么映射到硬件？",
+  "run_id": "Z-cuda-glm-5_3-standard-20260921T150331",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "# Search Results for \"CUDA C++ Programming Guide thread block grid warp SM programming model site:docs.nvidia.com\"\n\n## 1. [CUDA 编程模型详解：Grid / Block / Warp / Thread 层级与 ...](https://blog.csdn.net/BFZS1994/article/details/161623494)\n\n2026年6月2日 · 文章浏览阅读94次。CUDA编程模型学习笔记 本文是NVIDIA CUDA编程指南的学习笔记，重点介绍了CUDA的核心编 …\n\n**URL:** https://blog.csdn.net/BFZS1994/article/details/161623494\n\n---\n\n## 2. [CUDA Programming Guide — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "## 1. [CUDA 编程模型详解：Grid / Block / Warp / Thread 层级与 ...](https://blog.csdn.net/BFZS1994/article/details/161623494)\n\n2026年6月2日 · 文章浏览阅读94次。CUDA编程模型学习笔记 本文是NVIDIA CUDA编程指南的学习笔记，重点介绍了CUDA的核心编 …\n\n**URL:** https://blog.csdn.net/BFZS1994/article/details/161623494\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/BFZS1994/article/details/161623494"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "## 2. [CUDA Programming Guide — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "## 3. [1.2. Programming Model — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html)\n\n2026年9月10日 · Like any programming model, CUDA relies on a conceptual model of the underlying hardware. For the purposes of …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "## 4. [CUDA C++ Programming Guide（v12.1） - 知乎](https://zhuanlan.zhihu.com/p/612177967)\n\n2023年3月8日 · 每个Thread Block都可以在 GPU 中的任何可用的SM上以任何顺序同步或者异步地进行调度，使得CUDA 程序可以在 …\n\n**URL:** https://zhuanlan.zhihu.com/p/612177967\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/612177967"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+      "evidence": {
+        "event_id": "call_e7fc53bac9ee4051b65dcd2a.result",
+        "quote": "## 5. [GPU架构，由sp，sm，thread，block，grid，warp说起 ...](https://blog.csdn.net/u013171226/article/details/118365934)\n\n2026年8月11日 · thread，block，grid，warp是CUDA编程上的概念，以方便程序员软件设计，组织线程，同样的我们给出一个示意图 …\n\n**URL:** https://blog.csdn.net/u013171226/article/details/118365934\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/u013171226/article/details/118365934"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d23e03eff60849279da75459.result",
+      "evidence": {
+        "event_id": "call_d23e03eff60849279da75459.result",
+        "quote": "**标题**: 1.2. Programming Model — CUDA Programming Guide\n\n# 1.2. Programming Model#\n\nThis chapter introduces the CUDA programming model at a high level and separate from any language. The terminology and concepts introduced here apply to CUDA in any supported programming language. Later chapters will illustrate these concepts in C++.\n\n## 1.2.1. Heterogeneous Systems#\n\nThe CUDA programming model assumes a heterogeneous computing system, which means a system that includes both GPUs and CPUs. The CPU and the memory directly connected to it are called the *host* and *host memory*, respectively. A GPU and the memory directly connected to it are referred to as the *device* and *device memory*, resp"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "# Search Results for \"CUDA programming guide warp SIMT architecture site:docs.nvidia.com\"\n\n## 1. [2.1 Warp 与执行模型 - AIInfraGuide](https://caomaolufei.github.io/AIInfraGuide/cuda/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/)\n\n2026年5月9日 · 本文从 SIMT 执行模型出发，详解 Warp Divergence 的性能代价与规避策略，掌握 Warp Shuffle 实现线程间零延迟数 …\n\n**URL:** https://caomaolufei.github.io/AIInfraGuide/cuda/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/\n\n---\n\n## 2. [CUDA编程系列 (5)：Warp与执行模型 - 知乎](https://zhuanlan.zhihu.com/p/203762"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "## 1. [2.1 Warp 与执行模型 - AIInfraGuide](https://caomaolufei.github.io/AIInfraGuide/cuda/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/)\n\n2026年5月9日 · 本文从 SIMT 执行模型出发，详解 Warp Divergence 的性能代价与规避策略，掌握 Warp Shuffle 实现线程间零延迟数 …\n\n**URL:** https://caomaolufei.github.io/AIInfraGuide/cuda/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://caomaolufei.github.io/AIInfraGuide/cuda/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "## 2. [CUDA编程系列 (5)：Warp与执行模型 - 知乎](https://zhuanlan.zhihu.com/p/2037629700688852588)\n\n2026年5月12日 · 深入理解 GPU 最核心的 执行单元 ——Warp。 本文从 SIMT 执行模型出发，详解 Warp Divergence 的性能代价与规 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2037629700688852588\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/2037629700688852588"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "## 3. [CUDA 编程模型详解：Grid / Block / Warp / Thread 层级与 ...](https://blog.csdn.net/BFZS1994/article/details/161623494)\n\n2026年6月2日 · CPU负责启动kernel和数据传输，GPU执行并行计算。 线程层级： thread → thread block → grid 新增cluster层级 …\n\n**URL:** https://blog.csdn.net/BFZS1994/article/details/161623494\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://blog.csdn.net/BFZS1994/article/details/161623494"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "## 4. [深入SIMT执行模型：Warp、分支与占用率 - 知乎](https://zhuanlan.zhihu.com/p/2012210771661181752)\n\n2026年3月3日 · 当一个Warp内的Thread执行不同的代码路径时，就会发生 Warp Divergence （分支分化） …\n\n**URL:** https://zhuanlan.zhihu.com/p/2012210771661181752\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/2012210771661181752"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+      "evidence": {
+        "event_id": "call_fa6a2221ada746d8b2b5bf1a.result",
+        "quote": "## 5. [2.1 Warp 与执行模型 - AIInfraGuide](https://caomaolufei.github.io/AIInfraGuide/guides/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/)\n\n2026年5月9日 · 深入理解 GPU 最核心的执行单元——Warp。 本文从 SIMT 执行模型出发，详解 Warp Divergence 的性能代价与规避 …\n\n**URL:** https://caomaolufei.github.io/AIInfraGuide/guides/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://caomaolufei.github.io/AIInfraGuide/guides/%E6%A8%A1%E5%9D%97%E4%BA%8C-cuda%E7%BC%96%E7%A8%8B%E4%B8%8E%E7%AE%97%E5%AD%90%E4%BC%98%E5%8C%96/21-warp%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c09655809a04b9b9739fdfa.result",
+      "evidence": {
+        "event_id": "call_0c09655809a04b9b9739fdfa.result",
+        "quote": "## Summary\n\nThis is the **CUDA Programming Guide v13.4.2** table of contents (landing page only). The guide is organized into 5 parts plus a Notices section. Based on chapter titles, the hardware/SIMT/memory topics you asked about map primarily to **1.2 Programming Model**, **5.1 Compute Capabilities**, **5.7 CUDA C++ Memory Model**, and **5.8 CUDA C++ Execution Model**.\n\n---\n\n## Full Table of Contents\n\n**Part 1: Introduction to CUDA** — `part1.html`\n- 1.1. Introduction — `01-introduction/introduction.html`\n- 1.2. Programming Model — `01-introduction/programming-model.html`\n- 1.3. The CUDA platform — `01-introduction/cuda-platform.html`\n\n**Part 2: Programming GPUs in CUDA** — `part2.html`\n- "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7e9188bfff834bfaab9741fe.result",
+      "evidence": {
+        "event_id": "call_7e9188bfff834bfaab9741fe.result",
+        "quote": "# Analysis Result: Requested Content Not Present in This Section\n\n## ⚠️ Key Finding\n\nThe web content provided is **Section 5.8 \"CUDA C++ Execution model\"** of the CUDA Programming Guide (v13.4.2). This section covers **C++ forward progress guarantees**, **not** the hardware execution model topics you requested.\n\n**None of your requested topics appear in this content:**\n- ❌ Warp definition / warp size (e.g., 32 threads) — not mentioned\n- ❌ SIMT execution — only appears as a table-of-contents link (\"2.3. Writing SIMT Kernels\")\n- ❌ Warp divergence — not mentioned\n- ❌ Warp scheduling on SMs — not mentioned\n- ❌ Thread block scheduling — only progress guarantees, not scheduling mechanics\n- ❌ Regis"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cuda-cpp-execution-model.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_38485ac0f786441e92bd3fca.result",
+      "evidence": {
+        "event_id": "call_38485ac0f786441e92bd3fca.result",
+        "quote": "# Extraction: Chapter 2.3 \"Writing SIMT Kernels\" (CUDA Programming Guide)\n\n**Summary:** The provided content is the complete Chapter 2.3 of NVIDIA's CUDA Programming Guide, covering SIMT kernel writing in C++ and Python. It spans the chapter title through §2.3.7 \"Kernel Launch and Occupancy.\" Below, all prose in the \"Full Text\" sections and all code blocks are **verbatim from the source**. Because your requested topics (thread/block/warp organization, warp size, indexing variables, `<<<...>>>` syntax) are concentrated in some sections but scattered through others, I've extracted the on-topic sections in full, collected the scattered on-topic statements verbatim, preserved all their code bloc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6736d4b01ec34eda83340b28.result",
+      "evidence": {
+        "event_id": "call_6736d4b01ec34eda83340b28.result",
+        "quote": "# Extraction: SIMT Execution Model & Hardware Multithreading\n\n## Summary\n\nI extracted sections **3.2.2 (Hardware Implementation)**, **3.2.2.1 (SIMT Execution Model)**, **3.2.2.1.1 (Independent Thread Scheduling)**, and **3.2.2.2 (Hardware Multithreading)** from the page. The content covers warp formation, branch divergence, independent thread scheduling, and warp scheduler operation. **One important gap:** the page does **not** describe how warps are assigned to SM partitions/sub-partitions (see \"Coverage Gaps\" below). Both requested sections appear **complete** in the source — no truncation detected within them.\n\n---\n\n## Content Boundaries\n\n| Item | Status |\n|---|---|\n| Section 3.2.2.1 star"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/03-advanced/advanced-kernel-programming.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a39201341c154808acb52ef4.result",
+      "evidence": {
+        "event_id": "call_a39201341c154808acb52ef4.result",
+        "quote": "**标题**: 5.1. Compute Capabilities — CUDA Programming Guide\n\n# 5.1. Compute Capabilities#\n\nThe general specifications and features of a compute device depend on its compute capability (see Compute Capability and Streaming Multiprocessor Versions).\n\nTable 29, Table 30, and Table 31 show the features and technical specifications associated with each compute capability that is currently supported.\n\nAll NVIDIA GPU architectures use a little-endian representation.\n\n## 5.1.1. Obtain the GPU Compute Capability#\n\nThe CUDA GPU Compute Capability page provides a comprehensive mapping from NVIDIA GPU models to their compute capability.\n\nAlternatively, the nvidia-smi tool, provided with the NVIDIA Driver"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

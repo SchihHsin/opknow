@@ -1,0 +1,478 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+      "evidence": {
+        "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+      "evidence": {
+        "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子开发-CANN商用版8.1.RC1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+      "evidence": {
+        "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+        "quote": "**标题**: 创建算子工程-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# 创建算子工程\n\nDDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括**算子host侧代码实现文件**、**算子kernel侧实现文件**以及**工程编译配置文件等**。\n\n**简要说明：**\n\n使用msOpGen工具创建算子工程之前，需要参考[环境准备](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-environment-preparation)章节安装驱动固件和DDK软件包，完成开发环境和运行环境的准备。\n\n同时需要配置ascendc环境变量，示例如下。\n\n收起\n\n自动换行\n\n```shell\nsource ddk/tools/tools_ascendc/set_ascendc_env.sh\n```\n\n使用msOpGen工具创建算子开发工程的步骤如下。\n\n1. 编写算子的原型定义json文件，用于生成算子开发工程。\n   \n   例如，AddCustom算子的json文件命名为add_custom.json，文件内容如下。\n   \n   收起\n   \n   自动换行\n   \n   深色代码主题\n   \n   复制\n   \n   ```json\n   [    {        \"op\""
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_ffb2664abdac4bca920084f9.result",
+      "evidence": {
+        "event_id": "call_ffb2664abdac4bca920084f9.result",
+        "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_8bca4ef972cb43b08fa82795.result",
+      "evidence": {
+        "event_id": "call_8bca4ef972cb43b08fa82795.result",
+        "quote": "**标题**: Kernel侧算子实现-基于工程实现算子-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# Kernel侧算子实现\n\n在[算子实现](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-overview)章节已经介绍了kernel侧算子核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。\n\n## 自动生成kernel侧算子实现模板\n\n在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过msOpGen工具自动生成，样例如下所示。**这里参数的顺序按照“输入、输出、workspace、tiling”的顺序排布，开发者不要调整其顺序。**\n\n收起\n\n自动换行\n\n深色代码主题\n\n复制\n\n```cpp\n#include \"kernel_operator.h\"extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR x, GM_ADDR y, GM_ADDR z, GM_ADDR workspace, GM_ADDR tiling) {    GET_TILING_DATA(tiling_data, tiling);// 获取Tiling参数，详"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-on-the",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+      "evidence": {
+        "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_b40fc11fe3634317a8a90228.result",
+      "evidence": {
+        "event_id": "call_b40fc11fe3634317a8a90228.result",
+        "quote": "**标题**: 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析 - AtomGit | GitCode博客\n**发布时间**: 原创 2026-09-17 10:18:06 374 阅读\n\n# 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[开源项目asc-tools  \n\\\nAscend C Tools仓是CANN基于Ascend C编程语言推出的配套调试工具仓。](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[项目地址：](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)[https://gitcode.com/cann/asc-tools](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n立即免费下载\n\n本技术指南以 CANN asc-tools 仓库中的 `examples/03_msopgen` 样例为核心，系统讲解如何"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_7939500f53d343ebb273fd1b.result",
+      "evidence": {
+        "event_id": "call_7939500f53d343ebb273fd1b.result",
+        "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "a65fc1f25d2ab92daa461a51698f4c33bfb8742edfa63dc2594e5f4b73b2683e",
+  "question": "怎么用 Ascend C 开发自定义算子并集成进 PyTorch（msOpGen / aclnn）？给出完整步骤。",
+  "run_id": "D-cann-glm-5_3-standard-20260921T101954",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "# Search Results for \"msOpgen Ascend C 自定义算子开发 官方文档 CANN hiascend\"\n\n## 1. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html)\n\n<!DOCTYPE html> Ascend C自定义算子开发实践 展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html\n\n---\n\n## 2. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html)\n\n使用msOpGen工具执行以下命令，创建算子工程。 msOpGen工具仅生成空的算子工程模板，需要用户自行添加算子实现，具体请参 …\n\n**URL:** https://www.hiascend.com/docum"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "## 1. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html)\n\n<!DOCTYPE html> Ascend C自定义算子开发实践 展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "## 2. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html)\n\n使用msOpGen工具执行以下命令，创建算子工程。 msOpGen工具仅生成空的算子工程模板，需要用户自行添加算子实现，具体请参 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "## 3. [Ascend C 算子开发全流程揭秘 - 从 msopgen 到精度校验](https://blog.csdn.net/m0_46721576/article/details/155584090)\n\n2026年8月2日 · 简单来说， msopgen 是 Ascend C 算子开发的 “脚手架”（Scaffolding）生成器。 它是一个命令行工具，接受一个 …\n\n**URL:** https://blog.csdn.net/m0_46721576/article/details/155584090\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/m0_46721576/article/details/155584090"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "## 4. [AscendC从入门到精通系列（三）基于自定义算子工程开发 ...](https://developer.aliyun.com/article/1643997)\n\n2024年12月5日 · 以动态shape的AddCustom算子为例，详细描述了如何利用CANN提供的工具msOpGen生成开发工程，实现算子核函 …\n\n**URL:** https://developer.aliyun.com/article/1643997\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.aliyun.com/article/1643997"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dff188761c464561b9aa82e4.result",
+      "evidence": {
+        "event_id": "call_dff188761c464561b9aa82e4.result",
+        "quote": "## 5. [创建算子工程-工程化算子开发-算子实现-自定义算子开发 ...](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project)\n\n2026年6月4日 · DDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括 算子host侧代 …\n\n**URL:** https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+      "evidence": {
+        "event_id": "call_dbfeb98d69c64865aa92c7f5.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-开发工具-CANN8.5.0.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/devaids/optool/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+      "evidence": {
+        "event_id": "call_fdb0c62f2d4b419d9498333a.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子开发-CANN商用版8.1.RC1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/81RC1/devaids/opdev/optool/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+      "evidence": {
+        "event_id": "call_7872088a1ec54df1ba8a3a94.result",
+        "quote": "**标题**: 创建算子工程-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# 创建算子工程\n\nDDK开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括**算子host侧代码实现文件**、**算子kernel侧实现文件**以及**工程编译配置文件等**。\n\n**简要说明：**\n\n使用msOpGen工具创建算子工程之前，需要参考[环境准备](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-environment-preparation)章节安装驱动固件和DDK软件包，完成开发环境和运行环境的准备。\n\n同时需要配置ascendc环境变量，示例如下。\n\n收起\n\n自动换行\n\n```shell\nsource ddk/tools/tools_ascendc/set_ascendc_env.sh\n```\n\n使用msOpGen工具创建算子开发工程的步骤如下。\n\n1. 编写算子的原型定义json文件，用于生成算子开发工程。\n   \n   例如，AddCustom算子的json文件命名为add_custom.json，文件内容如下。\n   \n   收起\n   \n   自动换行\n   \n   深色代码主题\n   \n   复制\n   \n   ```json\n   [    {        \"op\""
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-creating-an-operator-project"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "# Search Results for \"torch_npu 自定义算子 aclnn PyTorch 集成 custom_op CustomOctensor 官方文档\"\n\n## 1. [Ascend C算子接入torch_npu指南：自定义NPU算子PyTorch ...](https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin)\n\n详解Ascend C算子接入torch_npu的完整流程，包括Host注册、编译打包、安装验证。 对比torch.library、Pybind、OpCommand、图 …\n\n**URL:** https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin\n\n---\n\n## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/p"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "## 1. [Ascend C算子接入torch_npu指南：自定义NPU算子PyTorch ...](https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin)\n\n详解Ascend C算子接入torch_npu的完整流程，包括Host注册、编译打包、安装验证。 对比torch.library、Pybind、OpCommand、图 …\n\n**URL:** https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "## 3. [API 文档 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/pytorch/api_doc.html)\n\n4 天之前 · PyTorch-NPU 除了提供了 PyTorch 官方算子实现之外，也提供了大量高性能的自定义算子，详细的算子信息以及描述如下 …\n\n**URL:** https://ascend.github.io/docs/sources/pytorch/api_doc.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://ascend.github.io/docs/sources/pytorch/api_doc.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "## 4. [在PyTorch中集成与调用自定义Ascend C融合算子_pytorch ...](https://blog.csdn.net/seven_1243096140/article/details/155852655)\n\n2026年7月12日 · 本文探讨了在PyTorch框架中高效集成AscendC自定义算子的关键技术。 通过CANN注册机制、张量适配和梯度传播 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155852655\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/seven_1243096140/article/details/155852655"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_165d939b1a1c41b19673a160.result",
+      "evidence": {
+        "event_id": "call_165d939b1a1c41b19673a160.result",
+        "quote": "## 5. [适配开发-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n适配文件结构 ... 操作步骤 在算子适配层c++代码目录（csrc）中完成C++侧算子代码适配。 在registration.cpp中，注册自定义算 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ffb2664abdac4bca920084f9.result",
+      "evidence": {
+        "event_id": "call_ffb2664abdac4bca920084f9.result",
+        "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8bca4ef972cb43b08fa82795.result",
+      "evidence": {
+        "event_id": "call_8bca4ef972cb43b08fa82795.result",
+        "quote": "**标题**: Kernel侧算子实现-基于工程实现算子-工程化算子开发-算子实现-自定义算子开发-AscendC算子开发-CANN Kit（CANN异构计算框架服务）-AI - 华为HarmonyOS开发者\n**发布时间**: 更新时间: 2026-06-05 10:03\n\n# Kernel侧算子实现\n\n在[算子实现](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-overview)章节已经介绍了kernel侧算子核心的实现方法，本章节侧重于介绍接入DDK框架时编程模式和API的使用。\n\n## 自动生成kernel侧算子实现模板\n\n在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过msOpGen工具自动生成，样例如下所示。**这里参数的顺序按照“输入、输出、workspace、tiling”的顺序排布，开发者不要调整其顺序。**\n\n收起\n\n自动换行\n\n深色代码主题\n\n复制\n\n```cpp\n#include \"kernel_operator.h\"extern \"C\" __global__ __aicore__ void add_custom(GM_ADDR x, GM_ADDR y, GM_ADDR z, GM_ADDR workspace, GM_ADDR tiling) {    GET_TILING_DATA(tiling_data, tiling);// 获取Tiling参数，详"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-operator-implementation-on-the"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "# Search Results for \"CANN 自定义算子 aclnn接口 生成 算子适配 auto_gen 编译部署 build.sh vendors\"\n\n## 1. [零基础玩转 CANN 全链路：从 ACL 接口到自定义算子的 ...](https://blog.csdn.net/weixin_62765017/article/details/158614161)\n\n2026年7月29日 · 本文围绕 CANN 框架核心，通过设备状态核查与 ACL 传输接口性能测试筑牢硬件基础、建立性能基线，再完整落地 …\n\n**URL:** https://blog.csdn.net/weixin_62765017/article/details/158614161\n\n---\n\n## 2. [使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证 ...](https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html)\n\n4 天之前 · 本技术指南以 CANN asc-tools 仓库中的 examples/03_msopgen 样例为核心，系统讲解如何基于算子原型定义文件，使用 …\n\n**URL:** https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html\n\n---\n\n## 3. [昇腾CANN实战指南：从ACL接口到自定义算子开发的完整 ...](https://blog.csdn.net/herb5/article/details"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "## 1. [零基础玩转 CANN 全链路：从 ACL 接口到自定义算子的 ...](https://blog.csdn.net/weixin_62765017/article/details/158614161)\n\n2026年7月29日 · 本文围绕 CANN 框架核心，通过设备状态核查与 ACL 传输接口性能测试筑牢硬件基础、建立性能基线，再完整落地 …\n\n**URL:** https://blog.csdn.net/weixin_62765017/article/details/158614161\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://blog.csdn.net/weixin_62765017/article/details/158614161"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "## 2. [使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证 ...](https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html)\n\n4 天之前 · 本技术指南以 CANN asc-tools 仓库中的 examples/03_msopgen 样例为核心，系统讲解如何基于算子原型定义文件，使用 …\n\n**URL:** https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "## 3. [昇腾CANN实战指南：从ACL接口到自定义算子开发的完整 ...](https://blog.csdn.net/herb5/article/details/155683264)\n\n2026年4月18日 · 本文详细介绍了昇腾CANN开发的全流程，从ACL接口使用到自定义算子开发，涵盖环境搭建、基础配置、性能优化 …\n\n**URL:** https://blog.csdn.net/herb5/article/details/155683264\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/herb5/article/details/155683264"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "## 4. [昇腾 CANN 算子开发实战：从自定义算子到部署调优](https://ascendai.csdn.net/698610600a2f6a37c590615a.html)\n\n2026年2月7日 · 介绍昇腾计算架构（CANN）的核心组件与功能，包括异构计算架构、算子开发框架和推理引擎的作用。 说明自定义 …\n\n**URL:** https://ascendai.csdn.net/698610600a2f6a37c590615a.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://ascendai.csdn.net/698610600a2f6a37c590615a.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_62f186379fd8424394360b63.result",
+      "evidence": {
+        "event_id": "call_62f186379fd8424394360b63.result",
+        "quote": "## 5. [创建算子工程-CANN9.1.0-beta.3-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md)\n\nCANN开发套件包中提供了自定义算子工程生成工具msOpGen，可基于算子原型定义输出算子工程：包括 算子host侧代码实现文件 、 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+      "evidence": {
+        "event_id": "call_bf35f9987dfc4e8ca09c1eda.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/programug/Ascendcopdevg/docs/guide/%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/Aclnn%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%80%E5%8F%91/%E5%88%9B%E5%BB%BA%E7%AE%97%E5%AD%90%E5%B7%A5%E7%A8%8B.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b40fc11fe3634317a8a90228.result",
+      "evidence": {
+        "event_id": "call_b40fc11fe3634317a8a90228.result",
+        "quote": "**标题**: 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析 - AtomGit | GitCode博客\n**发布时间**: 原创 2026-09-17 10:18:06 374 阅读\n\n# 使用 msopgen 生成自定义算子工程并以 ACLNN 调用验证：CANN asc-tools 03_msopgen 样例全解析\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[开源项目asc-tools  \n\\\nAscend C Tools仓是CANN基于Ascend C编程语言推出的配套调试工具仓。](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n[项目地址：](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)[https://gitcode.com/cann/asc-tools](https://link.gitcode.com/i/90025e299345e41a32a16a2b7608892e)\n\n立即免费下载\n\n本技术指南以 CANN asc-tools 仓库中的 `examples/03_msopgen` 样例为核心，系统讲解如何"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://blog.gitcode.com/9337766079c465b0217c2ab8e031db52.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7939500f53d343ebb273fd1b.result",
+      "evidence": {
+        "event_id": "call_7939500f53d343ebb273fd1b.result",
+        "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

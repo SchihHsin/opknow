@@ -1,0 +1,536 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_a7423a6ca07e4990bbd1c801.result",
+      "evidence": {
+        "event_id": "call_a7423a6ca07e4990bbd1c801.result",
+        "quote": "**标题**: 安装后自动配置环境变量-安装配置相关-环境变量参考-参考-CANN9.0.X开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_21c6d1b7734f45dfa9945f1d.result",
+      "evidence": {
+        "event_id": "call_21c6d1b7734f45dfa9945f1d.result",
+        "quote": "# 分析结果：提供的网页内容不包含CANN安装文档正文\n\n## 总体结论\n\n**⚠️ 您提供的网页快照实际上是昇腾社区官网的导航栏、产品菜单和页脚（页面外壳），而非《快速安装CANN》文档的正文内容。** 所需的安装步骤、命令、环境变量等信息均不在其中。\n\n以下按您的6项需求逐一说明：\n\n---\n\n## 1) Ubuntu上安装CANN toolkit的完整步骤和命令\n\n**❌ 未提取到。** 提供的内容中没有任何安装步骤或命令行代码。\n\n## 2) source set_env.sh 的确切路径和命令\n\n**❌ 未提取到。** 页面中未出现 `set_env.sh` 相关内容或任何 shell 命令。\n\n## 3) 需要配置的环境变量及说明\n\n**❌ 未提取到。** 无任何环境变量（如 `LD_LIBRARY_PATH`、`ASCEND_HOME_PATH` 等）内容。\n\n## 4) 前置条件（驱动、依赖）\n\n**❌ 未提取到。** 无驱动版本要求（如 `npu-driver`）或依赖包信息。\n\n## 5) 文档版本号\n\n**✅ 可从URL间接推断：**\n\n| 线索 | 内容 |\n|------|------|\n| 快速安装文档链接 | `/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html` |\n| 推断版本 | **CANN 社区版 8.3.RC1.alpha001** |\n| 说明 | 版本号并非来自正文，而是编码在URL路径 `83RC1al"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_e29ab00ea9134955aaa172e4.result",
+      "evidence": {
+        "event_id": "call_e29ab00ea9134955aaa172e4.result",
+        "quote": "**标题**: cplusplus/environment/environment_variable_configuration_CN.md · Ascend/samples - Gitee.com\n\n[叶成美](https://gitee.com/ycm0821) 提交于 4年前 . [update cplusplus/environment/environment_variable_configuration_CN.md.](https://gitee.com/ascend/samples/commit/40f64978ebdef78a3353ee44c067fd86142a2f64)\n\n- [CANN基础环境变量和Python环境变量配置说明（C++样例）](https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md#cann%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8Cpython%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8Ec%E6%A0%B7%E4%BE%8B \"CANN基础环境变量和Python环境变量配置说明（C++样例）\")\n\n## [](https://gitee.com/ascend/samples/blob/master/cp"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3e13a745f21c4c1891a79af6.result",
+      "evidence": {
+        "event_id": "call_3e13a745f21c4c1891a79af6.result",
+        "quote": "````\n## CANN基础环境变量和Python环境变量配置说明（C++样例）\n\n### 前置条件\n已在环境上部署昇腾AI软件栈，请参见[Link](https://www.hiascend.com/document)中对应版本的CANN安装指南。 \n\n\n### 安装须知\n开发环境及运行环境说明如下：\n- **运行环境：** 运行环境指可运行算子、推理或训练等程序的环境，运行环境必须带昇腾AI处理器的设备。       \n- **开发环境：** 可用于代码开发、调试、编译等开发活动。该环境可以是带昇腾AI处理器的设备，也可以是其他满足CANN软件安装的环境。\n\n开发环境和运行环境可以合设在同一台服务器上，也可以分设，分设场景下，开发环境下编译出来的可执行文件，在运行环境下执行时，若开发环境和运行环境上的操作系统架构不同，则需要在开发环境中执行交叉编译。     \n\n### 操作步骤\n\n1.  以运行用户登录安装CANN软件的环境。\n\n2.  配置CANN基础环境变量。\n\n    1.  （可选）查看set_env.sh脚本中涉及哪些环境变量。\n\n        根据环境上安装的软件包，到对应的安装目录下，查看set_env.sh脚本。此处以普通用户的默认安装路径为例:\n\n        - 若环境上安装的是Ascend-cann-toolkit软件包，则在$HOME/Ascend/ascend-toolkit目录下查看set_env.sh脚本；\n\n        - 若环境上安装的是Ascend-cann-nnrt软件包，则在$HOME/Ascend/nnrt目录下查看set"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/Ascend/samples/master/cplusplus/environment/environment_variable_configuration_CN.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_217331a005e1433c92958c44.result",
+      "evidence": {
+        "event_id": "call_217331a005e1433c92958c44.result",
+        "quote": "````\n# Ascend DMI 环境配置\n\n## 前提条件\n\n| 软件包 | 说明 | 必选 |\n|--------|------|------|\n| npu-driver | NPU 驱动程序 | 是 |\n| npu-firmware | NPU 固件 | 是 |\n| CANN 开发套件包 | 性能测试和诊断依赖 | 是 |\n| Ascend-cann-ops | 算子库（CANN 8.5.0 前为 Ascend-cann-kernels） | 训练场景必选 |\n\n---\n\n## ToolBox 环境配置\n\nascend-dmi 包含在 MindCluster ToolBox 中。\n\n### 配置流程\n\n```bash\n# 1. 检查 ascend-dmi 是否可用\nwhich ascend-dmi\n\n# 2. 如不可用，source ToolBox 环境\nsource /usr/local/Ascend/toolbox/set_env.sh\n\n# 3. 验证\nwhich ascend-dmi && ascend-dmi -v\n```\n\n### 如果仍不可用：安装 MindCluster ToolBox\n\n```bash\n# 下载（以 7.3.0 / aarch64 为例，按实际版本和架构调整）\nwget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/MindX/MindX%207.3.0/Ascend-mindx-toolbox_7.3.0_linux-aarch64.run\n\n# 安装（需要 root 权限）\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/ascend-ai-coding/awesome-ascend-skills/main/skills/base/ascend-dmi/references/environment-setup.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_51fa13a351014fbda00086c2.result",
+      "evidence": {
+        "event_id": "call_51fa13a351014fbda00086c2.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)\n\n# 安装后自动配置环境变量\n\n描述CANN软件安装完成后，系统通过“set_env.sh”脚本默认配置的程序编译、执行相关的基础环境变量，以及后续程序编译执行时，需要手工配置的与安装包相关的环境变量。\n\nCANN软件安装完成后，默认会自动配置程序编译、执行所依赖的基础环境变量，但用户进程结束后相关环境变量自动失效，您也可以通过如下环境变量脚本一键式配置。\n\n```\n# root用户安装时环境变量配置示例：\n# 安装Toolkit包时\nsource /usr/local/Ascend/cann/set_env.sh\n# 安装NNAL包的ATB加速库时\nsource /usr/local/Ascend/nnal/atb/set_env.sh\n# 安装NNAL包的SiP加速库时\nsource /usr/local/Ascend/nnal/asdsip/set_env.sh\n```\n\n```\n# 非root用户安装时环境变量配置示例：\nsource ${HOME}/Ascend/cann/se"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_0aea251bb4514f02b0d9724b.result",
+      "evidence": {
+        "event_id": "call_0aea251bb4514f02b0d9724b.result",
+        "quote": "**标题**: CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann-kernel 安装-CSDN博客\n**发布时间**: 最新推荐文章于 2026-02-26 00:06:35 发布\n2025-10-27 20:16:34\n\n# CANN训练营环境搭建实战：Ubuntu系统安装全记录 原创\n\n### [](https://blog.csdn.net/aasd23/article/details/153980447)[](https://blog.csdn.net/aasd23/article/details/153980447)训练营简介\n\n2025年昇腾CANN训练营第二季，基于CANN开源开放全场景，推出0基础入门系列、码力全开特辑、开发者案例等专题课程，助力不同阶段开发者快速提升算子开发技能。获得Ascend C算子中级认证，即可领取精美证书，完成社区任务更有机会赢取华为手机、平板、开发板等大奖。\n\n### [](https://blog.csdn.net/aasd23/article/details/153980447)[](https://blog.csdn.net/aasd23/article/details/153980447)环境准备：打好基础是关键\n\n在开始安装CANN之前，充分的准备工作能避免后续很多不必要的问题。根据官方文档要求，我需要确保系统具备Python环境及pip3，当前CANN支持的**Python版本为3.7.x至3.11.4**。\n\n我使用的是Ubuntu 20.04 LTS，首先检查Python版本：\n\n```bash\npyt"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/aasd23/article/details/153980447",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "a33bfcecee03050d01c73df10fc984f0fcb0b14af85f87609a01098f9a623eb1",
+  "question": "Ubuntu 上从零安装 CANN toolkit，装完要 source 哪个 set_env.sh、配哪些环境变量？",
+  "run_id": "J-cann-glm-5_3-standard-20260921T110635",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "# Search Results for \"CANN toolkit 安装 Ubuntu set_env.sh 环境变量 source\"\n\n## 1. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n## 2. [搭建第一个CANN开发环境：避坑指南_重装cann kernels ...](https://blog.csdn.net/qq_41397792/article/details/153776541)\n\n2026年8月19日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到环 …\n\n**URL:** https://blog.csdn.net/qq_41397792/article/details/153776541\n\n---\n\n## 3. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html)\n\n2026年7月8日 · 本文详细介绍"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "## 1. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/aasd23/article/details/153980447"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "## 2. [搭建第一个CANN开发环境：避坑指南_重装cann kernels ...](https://blog.csdn.net/qq_41397792/article/details/153776541)\n\n2026年8月19日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到环 …\n\n**URL:** https://blog.csdn.net/qq_41397792/article/details/153776541\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/qq_41397792/article/details/153776541"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "## 3. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html)\n\n2026年7月8日 · 本文详细介绍了在Ubuntu 22.04系统上配置昇腾 CANN 7.0环境的5大关键步骤，包括系统环境预检、CANN组件化安 …\n\n**URL:** https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "## 4. [CANN环境搭建与配置指南_c#_2501_94424430-昇腾开源 ...](https://ascendai.csdn.net/69d7982c72111d255bf883d2.html)\n\n2026年2月6日 · CANN环境搭建是开发昇腾AI应用的第一步，正确的环境配置可以避免很多后续问题。 本文详细介绍了从驱动安装 …\n\n**URL:** https://ascendai.csdn.net/69d7982c72111d255bf883d2.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://ascendai.csdn.net/69d7982c72111d255bf883d2.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+      "evidence": {
+        "event_id": "call_83afc4cdc3fe43deb5245d87.result",
+        "quote": "## 5. [昇腾 CANN 开发环境 - 简书](https://www.jianshu.com/p/b48ca12e9b12)\n\n2021年7月20日 · 昇腾 CANN 是华为开发的 AI 场景的异构计算架构，支持用户快速构建基于昇腾平台的 AI 应用和业务。 本文为 …\n\n**URL:** https://www.jianshu.com/p/b48ca12e9b12\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.jianshu.com/p/b48ca12e9b12"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "# Search Results for \"hiascend.com CANN 安装指南 环境变量 set_env.sh\"\n\n## 1. [安装后自动配置环境变量-安装配置相关-环境变量参考-参考 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html)\n\nCANN软件安装完成后，默认会自动配置程序编译、执行所依赖的基础环境变量，但用户进程结束后相关环境变量自动失效，您也可以 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html\n\n---\n\n## 2. [快速安装CANN-CANN8.3.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html)\n\n配置环境变量脚本set_env.sh，当前安装路径以$ {HOME}/Ascend为例。 安装业务运行时依赖的Python第三方库（如果使用root用户安 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCom"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "## 1. [安装后自动配置环境变量-安装配置相关-环境变量参考-参考 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html)\n\nCANN软件安装完成后，默认会自动配置程序编译、执行所依赖的基础环境变量，但用户进程结束后相关环境变量自动失效，您也可以 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "## 2. [快速安装CANN-CANN8.3.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html)\n\n配置环境变量脚本set_env.sh，当前安装路径以$ {HOME}/Ascend为例。 安装业务运行时依赖的Python第三方库（如果使用root用户安 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "## 3. [CANN环境搭建与配置指南_c#_2501_94424430-昇腾开源 ...](https://ascendai.csdn.net/69d7982c72111d255bf883d2.html)\n\n2026年2月6日 · CANN环境搭建是开发昇腾AI应用的第一步，正确的环境配置可以避免很多后续问题。 本文详细介绍了从驱动安装 …\n\n**URL:** https://ascendai.csdn.net/69d7982c72111d255bf883d2.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://ascendai.csdn.net/69d7982c72111d255bf883d2.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "## 4. [CANN环境搭建与配置指南_cann开发环境-CSDN博客](https://blog.csdn.net/2501_94424430/article/details/157812922)\n\n2026年7月1日 · 本文详细介绍了从驱动安装到CANN工具链配置的完整流程，以及常见问题的排查方法。\n\n**URL:** https://blog.csdn.net/2501_94424430/article/details/157812922\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://blog.csdn.net/2501_94424430/article/details/157812922"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cf6f6eb302004b90862d6f13.result",
+      "evidence": {
+        "event_id": "call_cf6f6eb302004b90862d6f13.result",
+        "quote": "## 5. [04 CANN 安装 | 昇腾之家](https://revolutionla.github.io/AscendMate/setup/cann-install)\n\n2026年9月5日 · 04 CANN 安装 什么时候读：驱动已识别设备后，安装昇腾算力使能平台 CANN。 CANN（Compute Architecture for …\n\n**URL:** https://revolutionla.github.io/AscendMate/setup/cann-install\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://revolutionla.github.io/AscendMate/setup/cann-install"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a7423a6ca07e4990bbd1c801.result",
+      "evidence": {
+        "event_id": "call_a7423a6ca07e4990bbd1c801.result",
+        "quote": "**标题**: 安装后自动配置环境变量-安装配置相关-环境变量参考-参考-CANN9.0.X开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/maintenref/envvar/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_21c6d1b7734f45dfa9945f1d.result",
+      "evidence": {
+        "event_id": "call_21c6d1b7734f45dfa9945f1d.result",
+        "quote": "# 分析结果：提供的网页内容不包含CANN安装文档正文\n\n## 总体结论\n\n**⚠️ 您提供的网页快照实际上是昇腾社区官网的导航栏、产品菜单和页脚（页面外壳），而非《快速安装CANN》文档的正文内容。** 所需的安装步骤、命令、环境变量等信息均不在其中。\n\n以下按您的6项需求逐一说明：\n\n---\n\n## 1) Ubuntu上安装CANN toolkit的完整步骤和命令\n\n**❌ 未提取到。** 提供的内容中没有任何安装步骤或命令行代码。\n\n## 2) source set_env.sh 的确切路径和命令\n\n**❌ 未提取到。** 页面中未出现 `set_env.sh` 相关内容或任何 shell 命令。\n\n## 3) 需要配置的环境变量及说明\n\n**❌ 未提取到。** 无任何环境变量（如 `LD_LIBRARY_PATH`、`ASCEND_HOME_PATH` 等）内容。\n\n## 4) 前置条件（驱动、依赖）\n\n**❌ 未提取到。** 无驱动版本要求（如 `npu-driver`）或依赖包信息。\n\n## 5) 文档版本号\n\n**✅ 可从URL间接推断：**\n\n| 线索 | 内容 |\n|------|------|\n| 快速安装文档链接 | `/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html` |\n| 推断版本 | **CANN 社区版 8.3.RC1.alpha001** |\n| 说明 | 版本号并非来自正文，而是编码在URL路径 `83RC1al"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/softwareinst/instg/instg_quick.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "# Search Results for \"gitee ascend CANN toolkit set_env.sh \"source\" 安装 环境变量 ASCEND_HOME_PATH\"\n\n## 1. [cplusplus/environment/environment_variable_configuration_CN.md · …](https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md)\n\n例如，set_env.sh脚本中有ASCEND_HOME_PATH环境变量，则执行“echo $ASCEND_HOME_PATH”命令，查看当前环境中该环境 …\n\n**URL:** https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md\n\n---\n\n## 2. [environment_variable_configuration_CN.md - GitHub](https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md)\n\n例如，set_env.sh脚本中有ASCEND_HOME_PATH环境变量，则执行“echo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "## 1. [cplusplus/environment/environment_variable_configuration_CN.md · …](https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md)\n\n例如，set_env.sh脚本中有ASCEND_HOME_PATH环境变量，则执行“echo $ASCEND_HOME_PATH”命令，查看当前环境中该环境 …\n\n**URL:** https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "## 2. [environment_variable_configuration_CN.md - GitHub](https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md)\n\n例如，set_env.sh脚本中有ASCEND_HOME_PATH环境变量，则执行“echo $ASCEND_HOME_PATH”命令，查看当前环境中该环境 …\n\n**URL:** https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "## 3. [环境变量列表-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html)\n\n本手册描述开发者基于CANN构建AI应用和业务过程中可使用的环境变量。 环境变量支持通过命令、接口、配置等方式实现，包 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "## 4. [安装后自动配置环境变量-安装配置相关-环境变量参考-参考-CANN8.2.…](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/envvar/envref_07_0003.html)\n\n描述CANN软件安装完成后，系统通过“set_env.sh”脚本默认配置的程序编译、执行相关的基础环境变量，以及后续程序编译执行时， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/envvar/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/envvar/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6e87fb66517e4459bde45dad.result",
+      "evidence": {
+        "event_id": "call_6e87fb66517e4459bde45dad.result",
+        "quote": "## 5. [awesome-ascend-skills/skills/base/ascend …](https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/skills/base/ascend-dmi/references/environment-setup.md)\n\n按上方「CANN 环境配置」步骤处理。 如果 source 后仍报错，检查驱动和固件是否安装： npu-smi info.\n\n**URL:** https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/skills/base/ascend-dmi/references/environment-setup.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://github.com/ascend-ai-coding/awesome-ascend-skills/blob/main/skills/base/ascend-dmi/references/environment-setup.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e29ab00ea9134955aaa172e4.result",
+      "evidence": {
+        "event_id": "call_e29ab00ea9134955aaa172e4.result",
+        "quote": "**标题**: cplusplus/environment/environment_variable_configuration_CN.md · Ascend/samples - Gitee.com\n\n[叶成美](https://gitee.com/ycm0821) 提交于 4年前 . [update cplusplus/environment/environment_variable_configuration_CN.md.](https://gitee.com/ascend/samples/commit/40f64978ebdef78a3353ee44c067fd86142a2f64)\n\n- [CANN基础环境变量和Python环境变量配置说明（C++样例）](https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md#cann%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%92%8Cpython%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8Ec%E6%A0%B7%E4%BE%8B \"CANN基础环境变量和Python环境变量配置说明（C++样例）\")\n\n## [](https://gitee.com/ascend/samples/blob/master/cp"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://gitee.com/ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3e13a745f21c4c1891a79af6.result",
+      "evidence": {
+        "event_id": "call_3e13a745f21c4c1891a79af6.result",
+        "quote": "````\n## CANN基础环境变量和Python环境变量配置说明（C++样例）\n\n### 前置条件\n已在环境上部署昇腾AI软件栈，请参见[Link](https://www.hiascend.com/document)中对应版本的CANN安装指南。 \n\n\n### 安装须知\n开发环境及运行环境说明如下：\n- **运行环境：** 运行环境指可运行算子、推理或训练等程序的环境，运行环境必须带昇腾AI处理器的设备。       \n- **开发环境：** 可用于代码开发、调试、编译等开发活动。该环境可以是带昇腾AI处理器的设备，也可以是其他满足CANN软件安装的环境。\n\n开发环境和运行环境可以合设在同一台服务器上，也可以分设，分设场景下，开发环境下编译出来的可执行文件，在运行环境下执行时，若开发环境和运行环境上的操作系统架构不同，则需要在开发环境中执行交叉编译。     \n\n### 操作步骤\n\n1.  以运行用户登录安装CANN软件的环境。\n\n2.  配置CANN基础环境变量。\n\n    1.  （可选）查看set_env.sh脚本中涉及哪些环境变量。\n\n        根据环境上安装的软件包，到对应的安装目录下，查看set_env.sh脚本。此处以普通用户的默认安装路径为例:\n\n        - 若环境上安装的是Ascend-cann-toolkit软件包，则在$HOME/Ascend/ascend-toolkit目录下查看set_env.sh脚本；\n\n        - 若环境上安装的是Ascend-cann-nnrt软件包，则在$HOME/Ascend/nnrt目录下查看set"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://raw.githubusercontent.com/Ascend/samples/master/cplusplus/environment/environment_variable_configuration_CN.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_217331a005e1433c92958c44.result",
+      "evidence": {
+        "event_id": "call_217331a005e1433c92958c44.result",
+        "quote": "````\n# Ascend DMI 环境配置\n\n## 前提条件\n\n| 软件包 | 说明 | 必选 |\n|--------|------|------|\n| npu-driver | NPU 驱动程序 | 是 |\n| npu-firmware | NPU 固件 | 是 |\n| CANN 开发套件包 | 性能测试和诊断依赖 | 是 |\n| Ascend-cann-ops | 算子库（CANN 8.5.0 前为 Ascend-cann-kernels） | 训练场景必选 |\n\n---\n\n## ToolBox 环境配置\n\nascend-dmi 包含在 MindCluster ToolBox 中。\n\n### 配置流程\n\n```bash\n# 1. 检查 ascend-dmi 是否可用\nwhich ascend-dmi\n\n# 2. 如不可用，source ToolBox 环境\nsource /usr/local/Ascend/toolbox/set_env.sh\n\n# 3. 验证\nwhich ascend-dmi && ascend-dmi -v\n```\n\n### 如果仍不可用：安装 MindCluster ToolBox\n\n```bash\n# 下载（以 7.3.0 / aarch64 为例，按实际版本和架构调整）\nwget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/MindX/MindX%207.3.0/Ascend-mindx-toolbox_7.3.0_linux-aarch64.run\n\n# 安装（需要 root 权限）\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://raw.githubusercontent.com/ascend-ai-coding/awesome-ascend-skills/main/skills/base/ascend-dmi/references/environment-setup.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "# Search Results for \"CANN set_env.sh 环境变量列表 ASCEND_TOOLKIT_HOME LD_LIBRARY_PATH PATH 说明\"\n\n## 1. [环境变量列表-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html)\n\n本手册描述开发者基于CANN构建AI应用和业务过程中可使用的环境变量。 环境变量支持通过命令、接口、配置等方式实现，包 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html\n\n---\n\n## 2. [安装后自动配置环境变量-安装配置相关-环境变量参考-参考 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)\n\n描述CANN软件安装完成后，系统通过“set_env.sh”脚本默认配置的程序编译、执行相关的基础环境变量，以及后续程序编译执行时， …\n\n**URL:** https://www.hiascend.com/document/detai"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "## 1. [环境变量列表-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html)\n\n本手册描述开发者基于CANN构建AI应用和业务过程中可使用的环境变量。 环境变量支持通过命令、接口、配置等方式实现，包 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "## 2. [安装后自动配置环境变量-安装配置相关-环境变量参考-参考 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)\n\n描述CANN软件安装完成后，系统通过“set_env.sh”脚本默认配置的程序编译、执行相关的基础环境变量，以及后续程序编译执行时， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "## 3. [samples/cplusplus/environment/environment_variable ...](https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md)\n\n配置Python环境变量（以Python3.7.5版本的默认安装路径为例）。 （可选）执行 echo $LD_LIBRARY_PATH 命令，若返回的环境变 …\n\n**URL:** https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://github.com/Ascend/samples/blob/master/cplusplus/environment/environment_variable_configuration_CN.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "## 4. [CANN SiP 环境变量参考：set_env.sh 用法与日志调优完整指南](https://blog.gitcode.com/b7b8e91f4245a8c69f9077200bf2002c.html)\n\n4 天之前 · 本文基于 CANN SiP（信号处理算子加速库）官方环境变量参考文档，系统梳理加速库安装完成后需要掌握的全部环境变 …\n\n**URL:** https://blog.gitcode.com/b7b8e91f4245a8c69f9077200bf2002c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://blog.gitcode.com/b7b8e91f4245a8c69f9077200bf2002c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7bbc1ec6d055413c933c7806.result",
+      "evidence": {
+        "event_id": "call_7bbc1ec6d055413c933c7806.result",
+        "quote": "## 5. [CANN AscendSiPBoost 信号处理加速库安装部署指南 ...](https://blog.gitcode.com/0bef2f8515476d4351353f37b62ad1f1.html)\n\n4 天之前 · 其中，日志相关变量（ASCEND_PROCESS_LOG_PATH 、 ASCEND_SLOG_PRINT_TO_STDOUT 、 …\n\n**URL:** https://blog.gitcode.com/0bef2f8515476d4351353f37b62ad1f1.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://blog.gitcode.com/0bef2f8515476d4351353f37b62ad1f1.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_51fa13a351014fbda00086c2.result",
+      "evidence": {
+        "event_id": "call_51fa13a351014fbda00086c2.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html)\n\n# 安装后自动配置环境变量\n\n描述CANN软件安装完成后，系统通过“set_env.sh”脚本默认配置的程序编译、执行相关的基础环境变量，以及后续程序编译执行时，需要手工配置的与安装包相关的环境变量。\n\nCANN软件安装完成后，默认会自动配置程序编译、执行所依赖的基础环境变量，但用户进程结束后相关环境变量自动失效，您也可以通过如下环境变量脚本一键式配置。\n\n```\n# root用户安装时环境变量配置示例：\n# 安装Toolkit包时\nsource /usr/local/Ascend/cann/set_env.sh\n# 安装NNAL包的ATB加速库时\nsource /usr/local/Ascend/nnal/atb/set_env.sh\n# 安装NNAL包的SiP加速库时\nsource /usr/local/Ascend/nnal/asdsip/set_env.sh\n```\n\n```\n# 非root用户安装时环境变量配置示例：\nsource ${HOME}/Ascend/cann/se"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/maintenref/envvar/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0aea251bb4514f02b0d9724b.result",
+      "evidence": {
+        "event_id": "call_0aea251bb4514f02b0d9724b.result",
+        "quote": "**标题**: CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann-kernel 安装-CSDN博客\n**发布时间**: 最新推荐文章于 2026-02-26 00:06:35 发布\n2025-10-27 20:16:34\n\n# CANN训练营环境搭建实战：Ubuntu系统安装全记录 原创\n\n### [](https://blog.csdn.net/aasd23/article/details/153980447)[](https://blog.csdn.net/aasd23/article/details/153980447)训练营简介\n\n2025年昇腾CANN训练营第二季，基于CANN开源开放全场景，推出0基础入门系列、码力全开特辑、开发者案例等专题课程，助力不同阶段开发者快速提升算子开发技能。获得Ascend C算子中级认证，即可领取精美证书，完成社区任务更有机会赢取华为手机、平板、开发板等大奖。\n\n### [](https://blog.csdn.net/aasd23/article/details/153980447)[](https://blog.csdn.net/aasd23/article/details/153980447)环境准备：打好基础是关键\n\n在开始安装CANN之前，充分的准备工作能避免后续很多不必要的问题。根据官方文档要求，我需要确保系统具备Python环境及pip3，当前CANN支持的**Python版本为3.7.x至3.11.4**。\n\n我使用的是Ubuntu 20.04 LTS，首先检查Python版本：\n\n```bash\npyt"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://blog.csdn.net/aasd23/article/details/153980447"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

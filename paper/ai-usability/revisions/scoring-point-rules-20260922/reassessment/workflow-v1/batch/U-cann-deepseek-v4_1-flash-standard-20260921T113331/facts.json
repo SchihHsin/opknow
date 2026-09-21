@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_MWaGsCvgGt3dtZ1oPBpr7633.result",
+      "evidence": {
+        "event_id": "call_00_MWaGsCvgGt3dtZ1oPBpr7633.result",
+        "quote": "**标题**: 工具概述-算子调优（msProf）-算子开发工具-开发工具-CANN8.5.0.alpha002开发文档-昇腾社区\n\n# 工具概述\n\nmsProf工具用于采集和分析运行在**昇腾AI处理器**上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、硬件性能瓶颈，提升算子性能的分析效率。\n\n当前支持基于不同运行模式（上板或仿真）和不同文件形式（可执行文件或算子二进制**.o**文件）进行性能数据的采集和自动解析。\n\nmsProf工具的使用依赖CANN包中的msopprof可执行文件，该文件中的接口使用和msprof op一致，该文件为CANN包自带，无需单独安装。\n\n#### 功能特性\n\n# 工具概述\n#### 功能特性\n算子调优工具使用请参考工具使用，通过MindStudio Insight展示计算内存热力图、Roofline瓶颈分析图、Cache热力图、通算流水图（通算融合算子）、指令流水图、算子代码热点图、内存通路吞吐率波形图以及性能数据文件等单算子调优能力，具体请参考表1。\n\n\n\n**表1** msProf工具功能特性\n\n功能\n\n链接\n\n计算内存热力图\n\n计算内存热力图\n\nRoofline瓶颈分析图\n\nRoofline瓶颈分析图\n\nCache热力图\n\nCache热力图\n\n通算流水图\n\n通算流水图\n\n指令流水图\n\n指令流水图\n\n算子代码热点图\n\n算子代码热点图\n\n内存通路吞吐率波形图\n\n内存通路吞吐率波形图\n\n性能数据文件\n\n性能数据文件\n\n# 工具概述\n#### 功能特性\n- 通过键盘输入“CTRL+C”后，算子执行将会被停止，工具会根据当前已有"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_QAAIovTJ5CnurUNEez925169.result",
+      "evidence": {
+        "event_id": "call_00_QAAIovTJ5CnurUNEez925169.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.0.RC2.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html)\n\n# 使能double buffer\n\n【优先级】中\n\n【描述】执行于AI Core或Vector Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运指令队列（MTE1/MTE2/MTE3）。不同指令队列间的相互独立性和可并行执行特性，是double buffer优化机制的基石。\n\n矢量计算前后的CopyIn、CopyOut过程使用搬运指令队列（MTE2/MTE3），Compute过程使用Vector指令队列（V），不同指令队列可并行执行，意味着CopyIn、CopyOut过程和Compute过程是可以并行的。如[图1](https://ww"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_MJt53KuTTzsBe6XphqGz6988.result",
+      "evidence": {
+        "event_id": "call_00_MJt53KuTTzsBe6XphqGz6988.result",
+        "quote": "**标题**: Ascend C算子性能优化实用技巧01——流水优化-云社区-华为云\n**发布时间**: 昇腾CANN 发表于 2024/08/19 10:20:29 2024/08/19\n\n# Ascend C算子性能优化实用技巧01——流水优化\n\n【摘要】 目前已经有越来越多的开发者使用Ascend C，我们将通过几期“Ascend C算子性能优化”专题分享，围绕开发者最为关心的算子性能优化环节，介绍Ascend C算子常用的优化技巧，帮助开发者自主构建出更优性能的算子。专题内容将围绕流水优化、搬运优化、内存优化、API使用优化以及Tiling优化等优化技巧，从方案讲解、优化案例、性能对比等多角度展开介绍。\n\nAscend C是CANN针对算子开发场景推出的编程语言，原生支持C和C++标准规范，兼具开发效率和运行性能。使用Ascend C，开发者可以基于昇腾AI硬件，高效的实现自定义的创新算法。\n\n目前已经有越来越多的开发者使用Ascend C，我们将通过几期“Ascend C算子性能优化”专题分享，围绕开发者最为关心的算子性能优化环节，介绍Ascend C算子常用的优化技巧，帮助开发者自主构建出更优性能的算子。专题内容将围绕流水优化、搬运优化、内存优化、API使用优化以及Tiling优化等优化技巧，从方案讲解、优化案例、性能对比等多角度展开介绍。下面进入第一期内容：Ascend C流水优化，您将了解到以下流水优化技巧：\n\n- 基于Ascend C编程范式快速高效实现AI Core内流水并行\n- 使能double buffer将待处理的数据一分为二，提高Vector单元利用"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://bbs.huaweicloud.com/blogs/433234",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_UFaZTzi0LzQx5RmQQ4PO0769.result",
+      "evidence": {
+        "event_id": "call_00_UFaZTzi0LzQx5RmQQ4PO0769.result",
+        "quote": "**标题**: 昇腾算子性能优化方法 - 知乎\n**发布时间**: 编辑于 2026-07-13 09:13 ・ 上海\n\n# 昇腾算子性能优化方法\n\n昇腾算子性能优化方法，主要包含：算子计算流程优化，代码实现优化，层次化访存优化和计算资源利用优化。\n\n## 一、算子计算流程优化\n\n在算子计算流程优化之前，需要学习如何分析算子的理论性能。首先要充分了解输入条件，如芯片参数、访存带宽、buffer大小，计算指令的 cycle 数据，计算数据搬运量。\n\n### 切分优化\n\n1. tiling 需要考虑部署环境，也就是并行计算单元的个数，切分后的计算尽量负载均衡，避免有忙有闲而浪费资源；\n2. tiling 尽量用满所有可用资源，不要有闲置资源；\n3. 核内切分的块要考虑 double buffer 机制（在 Ascend C 中需要把流水线用的 TQue 缓冲区分配为 2 块）；\n4. 核内切分的块要尽量大，一方面可以降低 scalar 的压力（循环次数少）；另一方面有利于 SIMD 充分发挥算力，降低指令启动开销；\n\n在多核切分时需要注意，尽量不要设计多核同步算法，因为多核同步算法会导致计算流水线中断。若要使用多核同步算法，需要注意在 tiling 计算启动时设置的运行的个数一定要小于当前实际的可运行核数量，否则会触发死锁。\n\n### 核内异步流水线\n\n核内异步流水线就是 double buffer 机制，Ascend C 提供的编程范式会自动实现流水线并行的能力，通常只要把流水线的 TQue 缓冲区数量设置为 2，就会自动形成流水线效果，即在核还输中的 init 代码 pipe."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://zhuanlan.zhihu.com/p/2059685082563139137",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_nWq5a5IUjArDZ6qjZ5bF8582.result",
+      "evidence": {
+        "event_id": "call_00_nWq5a5IUjArDZ6qjZ5bF8582.result",
+        "quote": "**标题**: Ascend C 内存体系深潜：从硬件原理到极致优化，掌握Global Memory、UB与L1 Cache的高效数据搬运策略-CSDN博客\n**发布时间**: 2025-11-26 20:21:35\n\n# Ascend C 内存体系深潜：从硬件原理到极致优化，掌握Global Memory、UB与L1 Cache的高效数据搬运策略 原创\n\n**目录**\n\n[摘要](https://blog.csdn.net/qq_39757921/article/details/155282874#%E6%91%98%E8%A6%81)\n\n[1. 内存体系：AI加速器的性能生死线](https://blog.csdn.net/qq_39757921/article/details/155282874#t1)\n\n[2. 内存层级深度解析：量化指标与特性对比](https://blog.csdn.net/qq_39757921/article/details/155282874#t2)\n\n[2.1 Global Memory：容量巨大但延迟高昂的\"仓库\"](https://blog.csdn.net/qq_39757921/article/details/155282874#t3)\n\n[2.2 Unified Buffer（UB）：程序员直接管理的\"高速工作区\"](https://blog.csdn.net/qq_39757921/article/details/155282874#t4)\n\n[2.3 L1 Cache：硬件管理的透明加速器](https://blog.csdn."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/qq_39757921/article/details/155282874",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_6uW0lD3QOq7CUDj7gHZS2323.result",
+      "evidence": {
+        "event_id": "call_00_6uW0lD3QOq7CUDj7gHZS2323.result",
+        "quote": "**标题**: 使用导读-CANN商用版9.0.0开发文档-昇腾社区\n\n更新时间：\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/index/index.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/index/index.html)\n\n# CANN\n\n异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持多种AI框架，包括MindSpore、PyTorch、TensorFlow等，向下服务AI处理器与编程，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。同时针对多样化应用场景，提供多层次编程接口，支持用户快速构建基于昇腾平台的AI应用和业务。\n\n- [版本说明](https://www.hiascend.com/document/detail/zh/canncommercial/900/releasenote/9.0.0/release-notes)\n  \n  CANN的版本配套关系及版本特性变更等信息。\n- [昇腾产品形态说明](https://www.hiascend.com/document/detail/zh/AscendFAQ/ProduTech/productform/hardwaredesc_0001.html)\n  \n  昇腾产品的具体系列名称以及其对应的全"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/63RC1/development/performanceoptimization/optimizationgudie/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "6cdba646f896589c90f8aa9df41f85b1ed12adb0e9d85892d505256ae6afd54a",
+  "question": "我的昇腾算子访存是瓶颈、AI Core 利用率低，怎么分析并优化（UB/L1 数据搬运、Cube/Vector 利用率、double buffer）？",
+  "run_id": "U-cann-deepseek-v4_1-flash-standard-20260921T113331",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "# Search Results for \"昇腾 AI Core 利用率低 UB L1 数据搬运 优化 double buffer CANN\"\n\n## 1. [Ascend C 内存体系深潜：从硬件原理到极致优化，掌握 ...](https://blog.csdn.net/qq_39757921/article/details/155282874)\n\n2025年11月26日 · 摘要：本文系统解析昇腾AI处理器的多级内存架构，重点探讨Global Memory、Unified Buffer和L1 Cache的性能特 …\n\n**URL:** https://blog.csdn.net/qq_39757921/article/details/155282874\n\n---\n\n## 2. [[AI] [昇腾950]高性能数据搬运 - CSDN博客](https://blog.csdn.net/mlidongfeng/article/details/163095662)\n\n2026年7月22日 · 一、分块粒度：宁大勿小 核心原则 单次 DataCopy 搬运的字节数越大越好 ，前提是 UB/L1 容量允许。 小分块会成 …\n\n**URL:** https://blog.csdn.net/mlidongfeng/article/details/163095662\n\n---\n\n## 3. [Ascend C 内存体系深潜：从硬件原理到极致优化，掌握 ...](https://ascendai.csdn.net/6926f1302087ae0db79cda07.html)\n\n2025年11月"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "## 1. [Ascend C 内存体系深潜：从硬件原理到极致优化，掌握 ...](https://blog.csdn.net/qq_39757921/article/details/155282874)\n\n2025年11月26日 · 摘要：本文系统解析昇腾AI处理器的多级内存架构，重点探讨Global Memory、Unified Buffer和L1 Cache的性能特 …\n\n**URL:** https://blog.csdn.net/qq_39757921/article/details/155282874\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/qq_39757921/article/details/155282874"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "## 2. [[AI] [昇腾950]高性能数据搬运 - CSDN博客](https://blog.csdn.net/mlidongfeng/article/details/163095662)\n\n2026年7月22日 · 一、分块粒度：宁大勿小 核心原则 单次 DataCopy 搬运的字节数越大越好 ，前提是 UB/L1 容量允许。 小分块会成 …\n\n**URL:** https://blog.csdn.net/mlidongfeng/article/details/163095662\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/mlidongfeng/article/details/163095662"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "## 3. [Ascend C 内存体系深潜：从硬件原理到极致优化，掌握 ...](https://ascendai.csdn.net/6926f1302087ae0db79cda07.html)\n\n2025年11月26日 · 摘要：本文系统解析昇腾AI处理器的多级内存架构，重点探讨Global Memory、Unified Buffer和L1 Cache的性能特 …\n\n**URL:** https://ascendai.csdn.net/6926f1302087ae0db79cda07.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://ascendai.csdn.net/6926f1302087ae0db79cda07.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "## 4. [[AI] [昇腾950]高性能数据搬运_人工智能_mlidongfeng-鲲鹏昇 ...](https://hwcomputing.csdn.net/6a600c5710ee7a33f29127e3.html)\n\n2026年7月22日 · 硬件背景：Ascend AICore 是流水线架构（MTE2 搬入 → Vector/Cube 计算 → MTE3 搬出）， 计算算力远高于 GM  …\n\n**URL:** https://hwcomputing.csdn.net/6a600c5710ee7a33f29127e3.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://hwcomputing.csdn.net/6a600c5710ee7a33f29127e3.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+      "evidence": {
+        "event_id": "call_00_qaA4OKHFDLU7WU7eZMD84778.result",
+        "quote": "## 5. [[AI] [昇腾950]高性能数据搬运 - 知乎](https://zhuanlan.zhihu.com/p/2065534877223720194)\n\n2026年7月28日 · 一、分块粒度：宁大勿小 核心原则 单次 DataCopy 搬运的字节数越大越好，前提是 UB/L1 容量允许。 小分块会成倍 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2065534877223720194\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/2065534877223720194"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "# Search Results for \"昇腾 CANN 官方文档 msProf 算子性能分析 AI Core 流水线忙闲 MTE2 Cube Vector\"\n\n## 1. [工具概述-算子调优（msProf）-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html)\n\nmsProf工具用于采集和分析运行在 昇腾AI处理器 上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、硬件性能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html\n\n---\n\n## 2. [工具概述-算子调优（msProf）-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/optool/atlasopdev_16_0082.html)\n\n工具概述 msProf工具用于采集和分析运行在昇腾AI处理器上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、 …\n\n**URL:** https://www.hiascend."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "## 1. [工具概述-算子调优（msProf）-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html)\n\nmsProf工具用于采集和分析运行在 昇腾AI处理器 上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、硬件性能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "## 2. [工具概述-算子调优（msProf）-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/optool/atlasopdev_16_0082.html)\n\n工具概述 msProf工具用于采集和分析运行在昇腾AI处理器上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/optool/atlasopdev_16_0082.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/optool/atlasopdev_16_0082.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "## 3. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf ...](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n3 天之前 · 摘要：2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开发技能。 文章重点介绍性能调优方法，通 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/155358698"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "## 4. [CANN msprof 完整介绍（昇腾性能剖析工具） MindStudio ...](https://blog.csdn.net/zhangfeng1133/article/details/162138481)\n\n2026年9月9日 · 摘要（149字）： msprof是昇腾NPU全链路性能剖析工具，集成于CANN Toolkit，支持算子开发与模型训练/推理调优 …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/162138481\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://blog.csdn.net/zhangfeng1133/article/details/162138481"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+      "evidence": {
+        "event_id": "call_00_0xKGFqSBq2Q4j5b0rs9t2320.result",
+        "quote": "## 5. [msprof 性能采集实战指南：在 CANN oam-tools 中用四种 ...](https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html)\n\n4 天之前 · 一、Demo 概览：四种采集方式的定位 msprof_experience_demo 是一套 msprof 上手示例，用同一个最简 TinyMLP 负 …\n\n**URL:** https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_MWaGsCvgGt3dtZ1oPBpr7633.result",
+      "evidence": {
+        "event_id": "call_00_MWaGsCvgGt3dtZ1oPBpr7633.result",
+        "quote": "**标题**: 工具概述-算子调优（msProf）-算子开发工具-开发工具-CANN8.5.0.alpha002开发文档-昇腾社区\n\n# 工具概述\n\nmsProf工具用于采集和分析运行在**昇腾AI处理器**上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、硬件性能瓶颈，提升算子性能的分析效率。\n\n当前支持基于不同运行模式（上板或仿真）和不同文件形式（可执行文件或算子二进制**.o**文件）进行性能数据的采集和自动解析。\n\nmsProf工具的使用依赖CANN包中的msopprof可执行文件，该文件中的接口使用和msprof op一致，该文件为CANN包自带，无需单独安装。\n\n#### 功能特性\n\n# 工具概述\n#### 功能特性\n算子调优工具使用请参考工具使用，通过MindStudio Insight展示计算内存热力图、Roofline瓶颈分析图、Cache热力图、通算流水图（通算融合算子）、指令流水图、算子代码热点图、内存通路吞吐率波形图以及性能数据文件等单算子调优能力，具体请参考表1。\n\n\n\n**表1** msProf工具功能特性\n\n功能\n\n链接\n\n计算内存热力图\n\n计算内存热力图\n\nRoofline瓶颈分析图\n\nRoofline瓶颈分析图\n\nCache热力图\n\nCache热力图\n\n通算流水图\n\n通算流水图\n\n指令流水图\n\n指令流水图\n\n算子代码热点图\n\n算子代码热点图\n\n内存通路吞吐率波形图\n\n内存通路吞吐率波形图\n\n性能数据文件\n\n性能数据文件\n\n# 工具概述\n#### 功能特性\n- 通过键盘输入“CTRL+C”后，算子执行将会被停止，工具会根据当前已有"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/devaids/optool/atlasopdev_16_0082.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "# Search Results for \"Ascend C 算子性能优化 double buffer 流水线并行 TQue depth 官方文档 hiascend\"\n\n## 1. [利用Double Buffer技术优化Ascend C算子内存带宽](https://blog.csdn.net/weixin_45255454/article/details/155646937)\n\n2025年12月23日 · 本文深入解析AscendC中DoubleBuffer技术的原理与实践，探讨如何通过双缓冲优化解决AI计算中的内存墙问题。  …\n\n**URL:** https://blog.csdn.net/weixin_45255454/article/details/155646937\n\n---\n\n## 2. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解 ...](https://blog.csdn.net/six_1243096140/article/details/155393212)\n\n2025年12月10日 · 在昇腾AI处理器的异构计算架构中， 内存墙（Memory Wall） 是性能优化的核心挑战。 本文深入剖析Ascend C编 …\n\n**URL:** https://blog.csdn.net/six_1243096140/article/details/155393212\n\n---\n\n## 3. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解](https://cann.csdn.net/69ef0b9c"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "## 1. [利用Double Buffer技术优化Ascend C算子内存带宽](https://blog.csdn.net/weixin_45255454/article/details/155646937)\n\n2025年12月23日 · 本文深入解析AscendC中DoubleBuffer技术的原理与实践，探讨如何通过双缓冲优化解决AI计算中的内存墙问题。  …\n\n**URL:** https://blog.csdn.net/weixin_45255454/article/details/155646937\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.csdn.net/weixin_45255454/article/details/155646937"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "## 2. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解 ...](https://blog.csdn.net/six_1243096140/article/details/155393212)\n\n2025年12月10日 · 在昇腾AI处理器的异构计算架构中， 内存墙（Memory Wall） 是性能优化的核心挑战。 本文深入剖析Ascend C编 …\n\n**URL:** https://blog.csdn.net/six_1243096140/article/details/155393212\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://blog.csdn.net/six_1243096140/article/details/155393212"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "## 3. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解](https://cann.csdn.net/69ef0b9c54b52172bc70477c.html)\n\n2025年11月29日 · 本文深入剖析了昇腾AI处理器中AscendC编程模型的内存优化技术，重点解析了DoubleBuffer双缓冲机制和多级流水 …\n\n**URL:** https://cann.csdn.net/69ef0b9c54b52172bc70477c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://cann.csdn.net/69ef0b9c54b52172bc70477c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "## 4. [Ascend C 高级优化实战：从 Tiling 到流水线并行_c语言 ...](https://hwcomputing.csdn.net/695f74f60846ec2c4c5ae077.html)\n\n2025年12月15日 · 性能优化 才是 Ascend C 开发的核心挑战。 本文将深入探讨 Ascend C 的高级优化技术，包括 分块策略（Tiling）  …\n\n**URL:** https://hwcomputing.csdn.net/695f74f60846ec2c4c5ae077.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://hwcomputing.csdn.net/695f74f60846ec2c4c5ae077.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+      "evidence": {
+        "event_id": "call_00_JF02ZeQgzPPn5RszzMU17366.result",
+        "quote": "## 5. [【昇腾CANN训练营·优化篇】流水线的艺术：深入解析 ...](https://devpress.csdn.net/v1/article/detail/156025987)\n\n2025年12月17日 · 摘要：本文深入解析了AscendC算子开发中的性能优化技巧，重点介绍了DoubleBuffer（双缓冲）技术。 通过分析 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/156025987\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/156025987"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "# Search Results for \"hiascend 算子性能优化 流水线 双缓冲 BUFFER_NUM TQue 数据搬运 章节\"\n\n## 1. [【昇腾CANN训练营·优化篇】流水线的艺术：深入解析 Double Buffer …](https://blog.csdn.net/2401_82857325/article/details/156025987)\n\nDec 17, 2025 · 通过分析达芬奇架构的硬件特性，展示了如何利用TQue队列机制构建Ping-Pong流水线，实现MTE和Vector单元的并 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/156025987\n\n---\n\n## 2. [Ascend C性能之魂：流水线（Pipeline）并行编程详解_达芬奇核 …](https://blog.csdn.net/seven_1243096140/article/details/155455543)\n\n本文深度解析 Ascend C流水线并行编程 核心技术，揭示如何通过 流水线并行 将计算与数据搬运重叠，实现硬件利用率最大化。 涵盖 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155455543\n\n---\n\n## 3. [使能double buffer-CANN8.0.RC2.alpha002-昇腾社区](https://www.hiascend.com/document/detail/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "## 1. [【昇腾CANN训练营·优化篇】流水线的艺术：深入解析 Double Buffer …](https://blog.csdn.net/2401_82857325/article/details/156025987)\n\nDec 17, 2025 · 通过分析达芬奇架构的硬件特性，展示了如何利用TQue队列机制构建Ping-Pong流水线，实现MTE和Vector单元的并 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/156025987\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/156025987"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "## 2. [Ascend C性能之魂：流水线（Pipeline）并行编程详解_达芬奇核 …](https://blog.csdn.net/seven_1243096140/article/details/155455543)\n\n本文深度解析 Ascend C流水线并行编程 核心技术，揭示如何通过 流水线并行 将计算与数据搬运重叠，实现硬件利用率最大化。 涵盖 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155455543\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/seven_1243096140/article/details/155455543"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "## 3. [使能double buffer-CANN8.0.RC2.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html)\n\n总体来说，double buffer是基于MTE指令队列与Vector指令队列的独立性和可并行性，通过将数据搬运与Vector计算并行执行以隐藏大 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "## 4. [昇腾算子性能优化方法 - 知乎 - 知乎专栏](https://zhuanlan.zhihu.com/p/2059685082563139137)\n\n昇腾算子 性能优化方法，主要包含： 算子计算流程优化，代码实现优化， 层次化访存优化 和计算资源利用优化。 在算子计算流程优 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2059685082563139137\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/2059685082563139137"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+      "evidence": {
+        "event_id": "call_00_5It4ueyacB3YE2PNRlOr9031.result",
+        "quote": "## 5. [Ascend C算子性能优化实用技巧01——流水优化-云社区-华为云](https://bbs.huaweicloud.com/blogs/433234)\n\nAug 19, 2024 · 当原始数据较小且Vector可一次性完成所有数据量的计算时，强行使用double buffer会降低Vector计算资源的利用率， …\n\n**URL:** https://bbs.huaweicloud.com/blogs/433234\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://bbs.huaweicloud.com/blogs/433234"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QAAIovTJ5CnurUNEez925169.result",
+      "evidence": {
+        "event_id": "call_00_QAAIovTJ5CnurUNEez925169.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.0.RC2.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html)\n\n# 使能double buffer\n\n【优先级】中\n\n【描述】执行于AI Core或Vector Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运指令队列（MTE1/MTE2/MTE3）。不同指令队列间的相互独立性和可并行执行特性，是double buffer优化机制的基石。\n\n矢量计算前后的CopyIn、CopyOut过程使用搬运指令队列（MTE2/MTE3），Compute过程使用Vector指令队列（V），不同指令队列可并行执行，意味着CopyIn、CopyOut过程和Compute过程是可以并行的。如[图1](https://ww"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_MJt53KuTTzsBe6XphqGz6988.result",
+      "evidence": {
+        "event_id": "call_00_MJt53KuTTzsBe6XphqGz6988.result",
+        "quote": "**标题**: Ascend C算子性能优化实用技巧01——流水优化-云社区-华为云\n**发布时间**: 昇腾CANN 发表于 2024/08/19 10:20:29 2024/08/19\n\n# Ascend C算子性能优化实用技巧01——流水优化\n\n【摘要】 目前已经有越来越多的开发者使用Ascend C，我们将通过几期“Ascend C算子性能优化”专题分享，围绕开发者最为关心的算子性能优化环节，介绍Ascend C算子常用的优化技巧，帮助开发者自主构建出更优性能的算子。专题内容将围绕流水优化、搬运优化、内存优化、API使用优化以及Tiling优化等优化技巧，从方案讲解、优化案例、性能对比等多角度展开介绍。\n\nAscend C是CANN针对算子开发场景推出的编程语言，原生支持C和C++标准规范，兼具开发效率和运行性能。使用Ascend C，开发者可以基于昇腾AI硬件，高效的实现自定义的创新算法。\n\n目前已经有越来越多的开发者使用Ascend C，我们将通过几期“Ascend C算子性能优化”专题分享，围绕开发者最为关心的算子性能优化环节，介绍Ascend C算子常用的优化技巧，帮助开发者自主构建出更优性能的算子。专题内容将围绕流水优化、搬运优化、内存优化、API使用优化以及Tiling优化等优化技巧，从方案讲解、优化案例、性能对比等多角度展开介绍。下面进入第一期内容：Ascend C流水优化，您将了解到以下流水优化技巧：\n\n- 基于Ascend C编程范式快速高效实现AI Core内流水并行\n- 使能double buffer将待处理的数据一分为二，提高Vector单元利用"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://bbs.huaweicloud.com/blogs/433234"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_UFaZTzi0LzQx5RmQQ4PO0769.result",
+      "evidence": {
+        "event_id": "call_00_UFaZTzi0LzQx5RmQQ4PO0769.result",
+        "quote": "**标题**: 昇腾算子性能优化方法 - 知乎\n**发布时间**: 编辑于 2026-07-13 09:13 ・ 上海\n\n# 昇腾算子性能优化方法\n\n昇腾算子性能优化方法，主要包含：算子计算流程优化，代码实现优化，层次化访存优化和计算资源利用优化。\n\n## 一、算子计算流程优化\n\n在算子计算流程优化之前，需要学习如何分析算子的理论性能。首先要充分了解输入条件，如芯片参数、访存带宽、buffer大小，计算指令的 cycle 数据，计算数据搬运量。\n\n### 切分优化\n\n1. tiling 需要考虑部署环境，也就是并行计算单元的个数，切分后的计算尽量负载均衡，避免有忙有闲而浪费资源；\n2. tiling 尽量用满所有可用资源，不要有闲置资源；\n3. 核内切分的块要考虑 double buffer 机制（在 Ascend C 中需要把流水线用的 TQue 缓冲区分配为 2 块）；\n4. 核内切分的块要尽量大，一方面可以降低 scalar 的压力（循环次数少）；另一方面有利于 SIMD 充分发挥算力，降低指令启动开销；\n\n在多核切分时需要注意，尽量不要设计多核同步算法，因为多核同步算法会导致计算流水线中断。若要使用多核同步算法，需要注意在 tiling 计算启动时设置的运行的个数一定要小于当前实际的可运行核数量，否则会触发死锁。\n\n### 核内异步流水线\n\n核内异步流水线就是 double buffer 机制，Ascend C 提供的编程范式会自动实现流水线并行的能力，通常只要把流水线的 TQue 缓冲区数量设置为 2，就会自动形成流水线效果，即在核还输中的 init 代码 pipe."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://zhuanlan.zhihu.com/p/2059685082563139137"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_nWq5a5IUjArDZ6qjZ5bF8582.result",
+      "evidence": {
+        "event_id": "call_00_nWq5a5IUjArDZ6qjZ5bF8582.result",
+        "quote": "**标题**: Ascend C 内存体系深潜：从硬件原理到极致优化，掌握Global Memory、UB与L1 Cache的高效数据搬运策略-CSDN博客\n**发布时间**: 2025-11-26 20:21:35\n\n# Ascend C 内存体系深潜：从硬件原理到极致优化，掌握Global Memory、UB与L1 Cache的高效数据搬运策略 原创\n\n**目录**\n\n[摘要](https://blog.csdn.net/qq_39757921/article/details/155282874#%E6%91%98%E8%A6%81)\n\n[1. 内存体系：AI加速器的性能生死线](https://blog.csdn.net/qq_39757921/article/details/155282874#t1)\n\n[2. 内存层级深度解析：量化指标与特性对比](https://blog.csdn.net/qq_39757921/article/details/155282874#t2)\n\n[2.1 Global Memory：容量巨大但延迟高昂的\"仓库\"](https://blog.csdn.net/qq_39757921/article/details/155282874#t3)\n\n[2.2 Unified Buffer（UB）：程序员直接管理的\"高速工作区\"](https://blog.csdn.net/qq_39757921/article/details/155282874#t4)\n\n[2.3 L1 Cache：硬件管理的透明加速器](https://blog.csdn."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://blog.csdn.net/qq_39757921/article/details/155282874"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_6uW0lD3QOq7CUDj7gHZS2323.result",
+      "evidence": {
+        "event_id": "call_00_6uW0lD3QOq7CUDj7gHZS2323.result",
+        "quote": "**标题**: 使用导读-CANN商用版9.0.0开发文档-昇腾社区\n\n更新时间：\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/index/index.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/index/index.html)\n\n# CANN\n\n异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持多种AI框架，包括MindSpore、PyTorch、TensorFlow等，向下服务AI处理器与编程，发挥承上启下的关键作用，是提升昇腾AI处理器计算效率的关键平台。同时针对多样化应用场景，提供多层次编程接口，支持用户快速构建基于昇腾平台的AI应用和业务。\n\n- [版本说明](https://www.hiascend.com/document/detail/zh/canncommercial/900/releasenote/9.0.0/release-notes)\n  \n  CANN的版本配套关系及版本特性变更等信息。\n- [昇腾产品形态说明](https://www.hiascend.com/document/detail/zh/AscendFAQ/ProduTech/productform/hardwaredesc_0001.html)\n  \n  昇腾产品的具体系列名称以及其对应的全"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/63RC1/development/performanceoptimization/optimizationgudie/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

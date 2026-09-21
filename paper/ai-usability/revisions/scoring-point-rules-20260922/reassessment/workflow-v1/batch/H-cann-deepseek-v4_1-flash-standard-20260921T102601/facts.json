@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_WSKTpPvp1ZxVfM3MNi4M8297.result",
+      "evidence": {
+        "event_id": "call_00_WSKTpPvp1ZxVfM3MNi4M8297.result",
+        "quote": "**标题**: msModelSlim Documentation\n\n# 欢迎来到 msModelSlim[¶](https://modelslim.readthedocs.io/zh-cn/latest/#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0-msmodelslim \"Permanent link\")\n\nMindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和压缩工具。包含量化和压缩等一系列推理优化技术，旨在加速大语言稠密模型、MoE模型、多模态理解模型、多模态生成模型等。 ![💻](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4bb.svg \":computer:\")\n\n昇腾 AI 开发者可通过调用 msModelSlim 提供的丰富 Python API，灵活实现算法适配与模型压缩，支持多种格式的权重导出及全流程的精度、性能调优。经过优化后的模型可无缝接入 MindIE、vLLM Ascend 等主流推理框架，在昇腾 AI 处理器上实现高效部署。 ![⚡](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a1.svg \":zap:\")\n\n## ![⭐](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2b50.svg \":st"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://modelslim.readthedocs.io/zh-cn/latest/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_MQpKc8tpYFi98slkmn6N5515.result",
+      "evidence": {
+        "event_id": "call_00_MQpKc8tpYFi98slkmn6N5515.result",
+        "quote": "**标题**: 快速入门 - msModelSlim Documentation\n\n# 量化快速入门[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/#%E9%87%8F%E5%8C%96%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8 \"Permanent link\")\n\n## 概述[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/#%E6%A6%82%E8%BF%B0 \"Permanent link\")\n\nmsModelSlim 提供了两种量化方式：**一键量化（V1）**和**传统量化（V0）**。\n\n- **一键量化（V1）**：面向零基础用户，通过命令行方式快速完成量化，具备“开箱即用”的特性。系统会自动匹配最佳实践配置，用户只需指定必要参数即可；此外也支持自定义精细化混合量化策略，灵活性高。\n- **传统量化（V0）**：通过 Python 脚本方式执行量化，在泛化性、可读性等方面均低于一键量化，已停止演进，通常用于一键量化尚未支持的模型。\n\n下面将以 Qwen2.5-7B-Instruct 为例完成量化并基于vllm-ascend完成一次推理。\n\n## 环境准备[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/ge"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_M1RqK3QQyRMuxnUR3nUp9765.result",
+      "evidence": {
+        "event_id": "call_00_M1RqK3QQyRMuxnUR3nUp9765.result",
+        "quote": "# msModelSlim 使用指南 — 完整内容提取\n\n## Summary\n\nThe provided page is the **\"一键量化完整指南\"** (One-Click Quantization Complete Guide) from the msModelSlim documentation. I have extracted everything present in the content you supplied. **Important caveat:** The page as provided covers the **command-line parameters**, **YAML configuration schema**, **runner/algorithm support**, and **multimodal configs** in detail — but it does **NOT** contain a section that lists **version requirements** (CANN version, Python version, torch_npu version, or msModelSlim version). Those are referenced only as external links (e.g., the install guide). See the **\"Gaps / Missing Content\"** section at the end.\n\n---\n\n## 1. Comman"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_ch4mMc5pEklh0Bn8YjEK6772.result",
+      "evidence": {
+        "event_id": "call_00_ch4mMc5pEklh0Bn8YjEK6772.result",
+        "quote": "**标题**: 安装指南 - msModelSlim Documentation\n\n# msModelSlim 安装指南[¶](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#msmodelslim-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97 \"Permanent link\")\n\n## 1. 安装说明[¶](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#1-%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E \"Permanent link\")\n\n1. 本工具支持[在线安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#21-%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)、[离线安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#22-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85)、[源码安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_QZtM64ZUT6yzRo56Nsr35333.result",
+      "evidence": {
+        "event_id": "call_00_QZtM64ZUT6yzRo56Nsr35333.result",
+        "quote": "**标题**: 大模型支持矩阵 - msModelSlim Documentation\n\n# 大模型支持矩阵[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/model_support/foundation_model_support_matrix/#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%94%AF%E6%8C%81%E7%9F%A9%E9%98%B5 \"Permanent link\")\n\n**说明：** - 点击“模型类别”列中的链接，即可跳转到msModelSlim为您推荐的最佳实践页面，里面详细介绍了量化命令和配置说明。 - √ 表示该量化策略已通过msModelSlim官方验证，功能完整、性能稳定，建议优先采用。 - - 表示该量化策略暂未通过msModelSlim官方验证，用户可根据实际需求进行配置尝试，但量化效果和功能稳定性无法得到官方保证。 - 标记了“一键量化”的“模型名称-量化模式（w8a8s等）”组合可在[安装](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/)后使用如下[一键量化](https://modelslim.readthedocs.io/zh-cn/latest/zh/feature_guide/quick_quantization_v1/usage/)命令行执行模型量化。 - 因 Qwen 系列推出能力更强的新版本，Qwen1.5-14B/32B/72B "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/model_support/foundation_model_support_matrix/",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "30a80165aa4c4fd0e8c670d56f9840eb78c3034d29954baf803a1cb1fcc11f1b",
+  "question": "怎么在昇腾上把大模型量化（W8A8）做推理部署？给出量化工具和流程。",
+  "run_id": "H-cann-deepseek-v4_1-flash-standard-20260921T102601",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "# Search Results for \"昇腾 CANN 大模型 W8A8 量化 msModelSlim 推理部署 流程\"\n\n## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著------大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n## 2. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 它通过压缩权重与激活数据精度，在牺牲极少精度的前提下，大幅降低显存占用与推理延迟。 本文将以 Qwen2.5 …\n\n**URL:** https://blog.51cto.com/u_17398972/14405553\n\n---\n\n## 3. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著------大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://jishuzhan.net/article/2003625934021263362"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "## 2. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 它通过压缩权重与激活数据精度，在牺牲极少精度的前提下，大幅降低显存占用与推理延迟。 本文将以 Qwen2.5 …\n\n**URL:** https://blog.51cto.com/u_17398972/14405553\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.51cto.com/u_17398972/14405553"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "## 3. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度，模 …\n\n**URL:** https://blog.csdn.net/2302_78391795/article/details/156204610\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/2302_78391795/article/details/156204610"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "## 4. [昇腾 msmodelslim w8a8量化代码解析 - 知乎](https://zhuanlan.zhihu.com/p/1889247820344692874)\n\n2025年7月10日 · 最近有很多朋友都在部署 deepseek模型，而且都用到了模型量化这个功能，目的是减少显存占用、提升推理速度。  …\n\n**URL:** https://zhuanlan.zhihu.com/p/1889247820344692874\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/1889247820344692874"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+      "evidence": {
+        "event_id": "call_00_3cFxdd2w6SCuRE3lrbaj4113.result",
+        "quote": "## 5. [msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/)\n\n2026年2月13日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://modelslim.readthedocs.io/zh-cn/latest/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WSKTpPvp1ZxVfM3MNi4M8297.result",
+      "evidence": {
+        "event_id": "call_00_WSKTpPvp1ZxVfM3MNi4M8297.result",
+        "quote": "**标题**: msModelSlim Documentation\n\n# 欢迎来到 msModelSlim[¶](https://modelslim.readthedocs.io/zh-cn/latest/#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0-msmodelslim \"Permanent link\")\n\nMindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和压缩工具。包含量化和压缩等一系列推理优化技术，旨在加速大语言稠密模型、MoE模型、多模态理解模型、多模态生成模型等。 ![💻](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4bb.svg \":computer:\")\n\n昇腾 AI 开发者可通过调用 msModelSlim 提供的丰富 Python API，灵活实现算法适配与模型压缩，支持多种格式的权重导出及全流程的精度、性能调优。经过优化后的模型可无缝接入 MindIE、vLLM Ascend 等主流推理框架，在昇腾 AI 处理器上实现高效部署。 ![⚡](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a1.svg \":zap:\")\n\n## ![⭐](https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2b50.svg \":st"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "# Search Results for \"modelslim.readthedocs.io W8A8 量化 使用 文档 CANN 版本\"\n\n## 1. [使用指南 - msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/)\n\n2026年9月14日 · 一键量化提供了两种使用方式： 方式1（推荐）：适用于工具已经支持且用户无特殊量化诉求的主流模型量化场景， …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/\n\n---\n\n## 2. [msModelSlim Documentation](https://msmodelslim.readthedocs.io/)\n\n2026年8月29日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://msmodelslim.readthedocs.io/\n\n---\n\n## 3. [快速入门 - msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_q"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "## 1. [使用指南 - msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/)\n\n2026年9月14日 · 一键量化提供了两种使用方式： 方式1（推荐）：适用于工具已经支持且用户无特殊量化诉求的主流模型量化场景， …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "## 2. [msModelSlim Documentation](https://msmodelslim.readthedocs.io/)\n\n2026年8月29日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://msmodelslim.readthedocs.io/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://msmodelslim.readthedocs.io/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "## 3. [快速入门 - msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/)\n\n2026年2月13日 · 量化快速入门 概述 msModelSlim 提供了两种量化方式： 一键量化（V1） 和 传统量化（V0）。 一键量化（V1）： …\n\n**URL:** https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "## 4. [msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/)\n\n2026年2月13日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://modelslim.readthedocs.io/zh-cn/latest/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+      "evidence": {
+        "event_id": "call_00_luAJJvSzV1izQ4jYdhhD2373.result",
+        "quote": "## 5. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 重点讲解了量化过程中的关键步骤：模型加载、校准数据准备、AntiOutlier离群值抑制、量化参数配置等。 通过实测数 …\n\n**URL:** https://blog.csdn.net/2302_78391795/article/details/156204610\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://blog.csdn.net/2302_78391795/article/details/156204610"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_MQpKc8tpYFi98slkmn6N5515.result",
+      "evidence": {
+        "event_id": "call_00_MQpKc8tpYFi98slkmn6N5515.result",
+        "quote": "**标题**: 快速入门 - msModelSlim Documentation\n\n# 量化快速入门[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/#%E9%87%8F%E5%8C%96%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8 \"Permanent link\")\n\n## 概述[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/#%E6%A6%82%E8%BF%B0 \"Permanent link\")\n\nmsModelSlim 提供了两种量化方式：**一键量化（V1）**和**传统量化（V0）**。\n\n- **一键量化（V1）**：面向零基础用户，通过命令行方式快速完成量化，具备“开箱即用”的特性。系统会自动匹配最佳实践配置，用户只需指定必要参数即可；此外也支持自定义精细化混合量化策略，灵活性高。\n- **传统量化（V0）**：通过 Python 脚本方式执行量化，在泛化性、可读性等方面均低于一键量化，已停止演进，通常用于一键量化尚未支持的模型。\n\n下面将以 Qwen2.5-7B-Instruct 为例完成量化并基于vllm-ascend完成一次推理。\n\n## 环境准备[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/ge"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/quantization_quick_start/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_M1RqK3QQyRMuxnUR3nUp9765.result",
+      "evidence": {
+        "event_id": "call_00_M1RqK3QQyRMuxnUR3nUp9765.result",
+        "quote": "# msModelSlim 使用指南 — 完整内容提取\n\n## Summary\n\nThe provided page is the **\"一键量化完整指南\"** (One-Click Quantization Complete Guide) from the msModelSlim documentation. I have extracted everything present in the content you supplied. **Important caveat:** The page as provided covers the **command-line parameters**, **YAML configuration schema**, **runner/algorithm support**, and **multimodal configs** in detail — but it does **NOT** contain a section that lists **version requirements** (CANN version, Python version, torch_npu version, or msModelSlim version). Those are referenced only as external links (e.g., the install guide). See the **\"Gaps / Missing Content\"** section at the end.\n\n---\n\n## 1. Comman"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/user_guide/usage_quick_quantization/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "# Search Results for \"msModelSlim 安装指南 CANN torch_npu 版本要求 modelslim.readthedocs.io\"\n\n## 1. [安装指南 - msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/)\n\n2026年9月8日 · 本工具支持 在线安装 、 离线安装 、 源码安装 三种安装方式，请根据您的实际环境选择最合适的方案。 本工具依赖 …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/\n\n---\n\n## 2. [安装指南 - msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/)\n\n2026年2月13日 · 下载 CANN，请根据系统选择aarch64或x86_64对应版本，具体安装方式请参考 CANN安装指南。 PyTorch安装请参 …\n\n**URL:** https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/\n\n---\n\n## 3. [环境准备-CANN8.0.RC3."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "## 1. [安装指南 - msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/)\n\n2026年9月8日 · 本工具支持 在线安装 、 离线安装 、 源码安装 三种安装方式，请根据您的实际环境选择最合适的方案。 本工具依赖 …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "## 2. [安装指南 - msModelSlim Documentation](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/)\n\n2026年2月13日 · 下载 CANN，请根据系统选择aarch64或x86_64对应版本，具体安装方式请参考 CANN安装指南。 PyTorch安装请参 …\n\n**URL:** https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "## 3. [环境准备-CANN8.0.RC3.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/modelslim_0002.html)\n\n训练脚本中包含两个0维Tensor在不同设备上进行比较的代码，当前该比较不支持在torch_npu上运行。 原因一解决措施： 注释掉相关 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/modelslim_0002.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/modelslim_0002.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "## 4. [msmodelslim/docs/zh/getting_started/install_guide.md-代码 ...](https://gitcode.com/Ascend/msmodelslim/blob/master/docs/zh/getting_started/install_guide.md)\n\n请参见昇腾社区MindStudio下载页面，选择对应的CANN版本，并在安装方式中选择“在线安装”，系统将引导您完成后续操作。 2.2 离 …\n\n**URL:** https://gitcode.com/Ascend/msmodelslim/blob/master/docs/zh/getting_started/install_guide.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://gitcode.com/Ascend/msmodelslim/blob/master/docs/zh/getting_started/install_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+      "evidence": {
+        "event_id": "call_00_WF0cFCuti02dOSxEnnA92068.result",
+        "quote": "## 5. [msit/msmodelslim/docs/安装指南.md at master · Ascend/msit](https://github.com/Ascend/msit/blob/master/msmodelslim/docs/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md)\n\nmsModelSlim安装 注：使用 msmodelslim 命令行工具时，请不要在 msit/msmodelslim 源码目录下执行 msmodelslim 命令，这样做可 …\n\n**URL:** https://github.com/Ascend/msit/blob/master/msmodelslim/docs/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://github.com/Ascend/msit/blob/master/msmodelslim/docs/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ch4mMc5pEklh0Bn8YjEK6772.result",
+      "evidence": {
+        "event_id": "call_00_ch4mMc5pEklh0Bn8YjEK6772.result",
+        "quote": "**标题**: 安装指南 - msModelSlim Documentation\n\n# msModelSlim 安装指南[¶](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#msmodelslim-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97 \"Permanent link\")\n\n## 1. 安装说明[¶](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#1-%E5%AE%89%E8%A3%85%E8%AF%B4%E6%98%8E \"Permanent link\")\n\n1. 本工具支持[在线安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#21-%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85)、[离线安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/#22-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85)、[源码安装](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/install_guide/install_guide/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QZtM64ZUT6yzRo56Nsr35333.result",
+      "evidence": {
+        "event_id": "call_00_QZtM64ZUT6yzRo56Nsr35333.result",
+        "quote": "**标题**: 大模型支持矩阵 - msModelSlim Documentation\n\n# 大模型支持矩阵[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/model_support/foundation_model_support_matrix/#%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%94%AF%E6%8C%81%E7%9F%A9%E9%98%B5 \"Permanent link\")\n\n**说明：** - 点击“模型类别”列中的链接，即可跳转到msModelSlim为您推荐的最佳实践页面，里面详细介绍了量化命令和配置说明。 - √ 表示该量化策略已通过msModelSlim官方验证，功能完整、性能稳定，建议优先采用。 - - 表示该量化策略暂未通过msModelSlim官方验证，用户可根据实际需求进行配置尝试，但量化效果和功能稳定性无法得到官方保证。 - 标记了“一键量化”的“模型名称-量化模式（w8a8s等）”组合可在[安装](https://modelslim.readthedocs.io/zh-cn/latest/zh/getting_started/install_guide/)后使用如下[一键量化](https://modelslim.readthedocs.io/zh-cn/latest/zh/feature_guide/quick_quantization_v1/usage/)命令行执行模型量化。 - 因 Qwen 系列推出能力更强的新版本，Qwen1.5-14B/32B/72B "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://modelslim.readthedocs.io/zh-cn/latest/zh/model_support/foundation_model_support_matrix/"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_75dd9582.result",
+      "evidence": {
+        "event_id": "WebFetch_1_75dd9582.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\n# Automatic Mixed Precision#\n\n# Automatic Mixed Precision#\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriate datatype, which can reduce your "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_8dcdc2f1.result",
+      "evidence": {
+        "event_id": "WebFetch_3_8dcdc2f1.result",
+        "quote": "**标题**: Automatic Mixed Precision package - torch.amp — PyTorch 2.14 documentation\n\n://docs.pytorch.org/docs/0.4.1/amp.html)v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# Automatic Mixed Precision package - torch.amp#\n\n# Automatic Mixed Precision package - torch.amp#\n`torch.cuda.amp.autocast(args...)` and `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast(\"cuda\", args...)` or `torch.amp.autocast(\"cpu\", args...)` instead. `torch.cuda.amp.GradScaler(args...)` and `torch.cpu.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler(\"cuda\", args...)` or `torch.amp.GradScaler(\"cpu\", args...)` instead.\n\nWarning\n\nWhen combining AMP with `torch.compile`, note t"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/amp.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "681da4ce5cedce58059e8fa2582bd06e4f576527748b0ed653960916434396f2",
+  "question": "PyTorch 训练怎么开混合精度（AMP）？`torch.cuda.amp.autocast` / GradScaler 怎么用？",
+  "run_id": "P-cuda-kimi-k3-2-standard-20260921T123152",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "# Search Results for \"PyTorch AMP autocast GradScaler official documentation\"\n\n## 1. [Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · This recipe measures the performance of a simple network in default precision, then walks through adding autocast …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n## 2. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "## 1. [Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · This recipe measures the performance of a simple network in default precision, then walks through adding autocast …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "## 2. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "## 3. [自动混合精度包 - torch.amp — PyTorch 2.13 文档 - PyTorch ...](https://docs.pytorch.ac.cn/docs/2.13/amp.html)\n\n2025年6月12日 · 通常情况下，数据类型为 torch.float16 的“自动混合精度训练”会同时使用 torch.autocast 和 torch.amp.GradScaler， …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "## 4. [Automatic Mixed Precision package - torch.cuda.amp — PyTorch …](https://docs.pytorch.wiki/en/amp.html)\n\n2022年3月27日 · Ordinarily, “automatic mixed precision training” uses torch.autocast and torch.cuda.amp.GradScaler together, as …\n\n**URL:** https://docs.pytorch.wiki/en/amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.wiki/en/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_5d85c6b9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_5d85c6b9.result",
+        "quote": "## 5. [自动混合精度包 - torch.amp — PyTorch 2.4 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.4/amp.html)\n\n2026年7月11日 · 通常，“使用 torch.float16 数据类型的自动混合精度训练”将使用 torch.autocast 和 torch.amp.GradScaler 结合使用， …\n\n**URL:** https://pytorch.ac.cn/docs/2.4/amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://pytorch.ac.cn/docs/2.4/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_75dd9582.result",
+      "evidence": {
+        "event_id": "WebFetch_1_75dd9582.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\n# Automatic Mixed Precision#\n\n# Automatic Mixed Precision#\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriate datatype, which can reduce your "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_f39d1390.result",
+      "evidence": {
+        "event_id": "WebFetch_2_f39d1390.result",
+        "quote": "# torch.amp Documentation Extraction\n\n**Source**: PyTorch 2.14.0 (stable) documentation — \"Automatic Mixed Precision package - torch.amp\" (Created: Jun 12, 2025 | Last Updated: Jul 11, 2026)\n\n---\n\n## 1. autocast API\n\n### Primary Signature\n\n```python\nclass torch.autocast(device_type, dtype=None, enabled=True, cache_enabled=None)\n```\n\n### Parameters\n\n| Parameter | Type | Default | Description |\n|-----------|------|---------|-------------|\n| **device_type** | `str` (required) | — | Device type to use. Possible values: `'cuda'`, `'cpu'`, `'mtia'`, `'maia'`, `'xpu'`, and `'hpu'`. Same as the `type` attribute of a `torch.device` (obtainable via `Tensor.device.type`). |\n| **enabled** | `bool` (opti"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://pytorch.org/docs/stable/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_8dcdc2f1.result",
+      "evidence": {
+        "event_id": "WebFetch_3_8dcdc2f1.result",
+        "quote": "**标题**: Automatic Mixed Precision package - torch.amp — PyTorch 2.14 documentation\n\n://docs.pytorch.org/docs/0.4.1/amp.html)v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# Automatic Mixed Precision package - torch.amp#\n\n# Automatic Mixed Precision package - torch.amp#\n`torch.cuda.amp.autocast(args...)` and `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast(\"cuda\", args...)` or `torch.amp.autocast(\"cpu\", args...)` instead. `torch.cuda.amp.GradScaler(args...)` and `torch.cpu.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler(\"cuda\", args...)` or `torch.amp.GradScaler(\"cpu\", args...)` instead.\n\nWarning\n\nWhen combining AMP with `torch.compile`, note t"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://pytorch.org/docs/stable/amp.html#torch.amp.GradScaler"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "# Search Results for \"pytorch autocast GradScaler mixed precision training example stack overflow blog\"\n\n## 1. [PyTorch AMP实战：用autocast与GradScaler解锁混合精度 ...](https://blog.csdn.net/weixin_29057065/article/details/159330239)\n\n2026年8月10日 · 本文详细介绍了PyTorch AMP（自动混合精度）训练技术，通过autocast与GradScaler实现显存减半和训练加速。 文 …\n\n**URL:** https://blog.csdn.net/weixin_29057065/article/details/159330239\n\n---\n\n## 2. [自动混合精度示例 — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html)\n\n2026年5月7日 · Automatic Mixed Precision examples - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html\n\n---\n\n## 3. [Automatic Mi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "## 1. [PyTorch AMP实战：用autocast与GradScaler解锁混合精度 ...](https://blog.csdn.net/weixin_29057065/article/details/159330239)\n\n2026年8月10日 · 本文详细介绍了PyTorch AMP（自动混合精度）训练技术，通过autocast与GradScaler实现显存减半和训练加速。 文 …\n\n**URL:** https://blog.csdn.net/weixin_29057065/article/details/159330239\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://blog.csdn.net/weixin_29057065/article/details/159330239"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "## 2. [自动混合精度示例 — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html)\n\n2026年5月7日 · Automatic Mixed Precision examples - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "## 3. [Automatic Mixed Precision - PyTorch](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · This recipe measures the performance of a simple network in default precision, then walks through adding autocast …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "## 4. [自动混合精度示例 | PyTorch文档 v2.5.0 (stable) -- Pytorch ...](https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html)\n\n通常，“自动混合精度训练”指的是使用 torch.autocast 和 torch.amp.GradScaler 一起进行训练。 torch.autocast 的实例可以为选定区域 …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_28a909a7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_28a909a7.result",
+        "quote": "## 5. [Automatic Mixed Precision examples — PyTorch 2.14 …](https://docs.pytorch.org/docs/2.14/notes/amp_examples.html)\n\n2026年5月7日 · Ordinarily, “automatic mixed precision training” means training with torch.autocast and torch.amp.GradScaler …\n\n**URL:** https://docs.pytorch.org/docs/2.14/notes/amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/amp_examples.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

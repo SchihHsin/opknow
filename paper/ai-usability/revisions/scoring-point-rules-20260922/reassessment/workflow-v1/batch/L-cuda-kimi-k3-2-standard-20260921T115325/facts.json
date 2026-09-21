@@ -1,0 +1,358 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_c85552f8.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c85552f8.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expected` are strided, non-quantized, real-valued, and finite, they are considered close if\n\n∣actual−expected∣≤atol+rtol⋅∣expected∣\\lvert \\text{actual} - \\text{expected} \\rv"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/testing.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_d174f34d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_d174f34d.result",
+        "quote": "# Compute Sanitizer 完整说明（内容提取）\n\n> **截断说明**：⚠️ 原始网页内容在文末\"Compute Sanitizer Tool Examples → Example Use of Memcheck → memcheck_demo Output with Memcheck (Release Build)\"一节中途被截断（该节描述不完整，后续示例内容缺失）。其余章节内容完整。\n\n---\n\n## 一、简介（Introduction）\n\n### 1.1 关于 Compute Sanitizer\nCompute Sanitizer 是包含在 **CUDA toolkit** 中的功能正确性检查套件（functional correctness checking suite），包含多个可执行不同类型检查的工具：\n\n| 子工具 | 功能 |\n|---|---|\n| **Memcheck** | 精确检测并定位 CUDA 应用中的越界（out of bounds）和未对齐（misaligned）内存访问错误；还可报告 GPU 硬件异常；内存泄漏检测 |\n| **Racecheck** | 报告可能导致数据竞争（data races）的共享内存数据访问冒险（hazards） |\n| **Initcheck** | 报告 GPU 对全局内存的未初始化访问 |\n| **Synccheck** | 报告应用对同步原语（synchronization primitives）的非法使用 |\n\n### 1.2 为什么需要 Compute Sanitizer\nCUDA 应用常并行"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_52609888_59f73812.result",
+      "evidence": {
+        "event_id": "WebFetch_5_52609888_59f73812.result",
+        "quote": "**标题**: Numerical accuracy — PyTorch 2.14 documentation\n**发布时间**: Created On: May 13, 2026 | Last Updated On: Jun 01, 2026\n\nBack to top\n\n# Numerical accuracy[#](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html#numerical-accuracy \"Link to this heading\")\n\nIn modern computers, floating point numbers are represented using IEEE 754 standard. For more details on floating point arithmetic and IEEE 754 standard, please see [Floating point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic). In particular, note that floating point provides limited accuracy (about 7 decimal digits for single precision floating point numbers, about 16 decimal digits for double precision"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b3a40c9f7d3403f5e9aa295af6bd0fc5f4e4f62020b5d64dc13c3945e331bdf2",
+  "question": "我的自定义 CUDA 算子结果和 CPU/PyTorch 参考不一致，怎么定位数值精度问题（逐层/逐元素比对）？",
+  "run_id": "L-cuda-kimi-k3-2-standard-20260921T115325",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "# Search Results for \"PyTorch torch.testing.assert_close documentation rtol atol default\"\n\n## 1. [torch.testing — PyTorch 2.3 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.3/testing.html)\n\n2026年9月4日 · 如果省略，则根据 dtype 选择以下表格中的默认值。 atol (可选[float]) – 绝对容差。 如果指定了 rtol，则也必须指定 …\n\n**URL:** https://pytorch.ac.cn/docs/2.3/testing.html\n\n---\n\n## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n## 3. [torch.testing — PyTorch 2.14 documentation](https://docs.pytorch.org/docs/2.14/te"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "## 1. [torch.testing — PyTorch 2.3 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.3/testing.html)\n\n2026年9月4日 · 如果省略，则根据 dtype 选择以下表格中的默认值。 atol (可选[float]) – 绝对容差。 如果指定了 rtol，则也必须指定 …\n\n**URL:** https://pytorch.ac.cn/docs/2.3/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://pytorch.ac.cn/docs/2.3/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "## 3. [torch.testing — PyTorch 2.14 documentation](https://docs.pytorch.org/docs/2.14/testing.html)\n\n1 天前 · AssertionError – If the values of corresponding tensors are not close according to the definition above. The following table …\n\n**URL:** https://docs.pytorch.org/docs/2.14/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "## 4. [torch.testing — PyTorch 2.6 文件 - PyTorch 框架](https://pytorch.com.tw/docs/stable/testing.html)\n\n2026年9月4日 · 引發 ValueError – 如果無法從輸入建構 torch.Tensor。 ValueError – 如果僅指定 rtol 或 atol。 AssertionError – 如果對 …\n\n**URL:** https://pytorch.com.tw/docs/stable/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://pytorch.com.tw/docs/stable/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_49c00cc0.result",
+      "evidence": {
+        "event_id": "WebSearch_0_49c00cc0.result",
+        "quote": "## 5. [torch.testing | PyTorch文档 v2.5.0 (stable) -- Pytorch官方 ...](https://pytorch.it-docs.cn/docs/2.5/testing.html)\n\ntorch.testing 中。 assert_close（实际， 预期， *， allow_subclasses=真， rtol=无， atol=无， equal_nan=False， …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.5/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://pytorch.it-docs.cn/docs/2.5/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "# Search Results for \"NVIDIA compute-sanitizer documentation memcheck racecheck CUDA kernel debugging\"\n\n## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n## 2. [Compute Sanitizer :: CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n2022年12月28日 · The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access …"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "## 2. [Compute Sanitizer :: CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n2022年12月28日 · The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access …\n\n**URL:** https://docs.nvidia.com/cuda/compute-sanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://docs.nvidia.com/cuda/compute-sanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "## 3. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nThe Compute Sanitizer API enables the creation of sanitizing and tracing tools that target CUDA …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "## 4. [NVIDIA Compute Sanitizer工具链解析与CUDA 13实战 ...](https://blog.csdn.net/weixin_42545503/article/details/164818906)\n\n2026年9月9日 · 与传统的cuda-gdb相比，Compute Sanitizer的最大优势在于其非侵入式检测机制。 它通过二进制插桩技术（Binary …\n\n**URL:** https://blog.csdn.net/weixin_42545503/article/details/164818906\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://blog.csdn.net/weixin_42545503/article/details/164818906"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_bedfeb1e.result",
+      "evidence": {
+        "event_id": "WebSearch_1_bedfeb1e.result",
+        "quote": "## 5. [NVIDIA Compute Sanitizer与NVTX内存API的CUDA调试 ...](https://blog.csdn.net/weixin_42518874/article/details/160452885)\n\n2026年8月1日 · 其工作原理是在GPU指令层面进行插桩检测，结合NVTX内存API的元数据标注能力，可实现对复杂内存池和动态分配 …\n\n**URL:** https://blog.csdn.net/weixin_42518874/article/details/160452885\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/weixin_42518874/article/details/160452885"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_c85552f8.result",
+      "evidence": {
+        "event_id": "WebFetch_2_c85552f8.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expected` are strided, non-quantized, real-valued, and finite, they are considered close if\n\n∣actual−expected∣≤atol+rtol⋅∣expected∣\\lvert \\text{actual} - \\text{expected} \\rv"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_d174f34d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_d174f34d.result",
+        "quote": "# Compute Sanitizer 完整说明（内容提取）\n\n> **截断说明**：⚠️ 原始网页内容在文末\"Compute Sanitizer Tool Examples → Example Use of Memcheck → memcheck_demo Output with Memcheck (Release Build)\"一节中途被截断（该节描述不完整，后续示例内容缺失）。其余章节内容完整。\n\n---\n\n## 一、简介（Introduction）\n\n### 1.1 关于 Compute Sanitizer\nCompute Sanitizer 是包含在 **CUDA toolkit** 中的功能正确性检查套件（functional correctness checking suite），包含多个可执行不同类型检查的工具：\n\n| 子工具 | 功能 |\n|---|---|\n| **Memcheck** | 精确检测并定位 CUDA 应用中的越界（out of bounds）和未对齐（misaligned）内存访问错误；还可报告 GPU 硬件异常；内存泄漏检测 |\n| **Racecheck** | 报告可能导致数据竞争（data races）的共享内存数据访问冒险（hazards） |\n| **Initcheck** | 报告 GPU 对全局内存的未初始化访问 |\n| **Synccheck** | 报告应用对同步原语（synchronization primitives）的非法使用 |\n\n### 1.2 为什么需要 Compute Sanitizer\nCUDA 应用常并行"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "# Search Results for \"PyTorch documentation TF32 numerical accuracy torch.backends.cuda.matmul.allow_tf32\"\n\n## 1. [数值精度 — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html)\n\n2026年5月13日 · 在 Ampere（及更高版本）的 NVIDIA GPU 上，PyTorch 可以使用 TensorFloat32 (TF32) 来加速高强度的数学运 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html\n\n---\n\n## 2. [PyTorch TF32开关详解：从allow_tf32到精度工程实践-CSDN博客](https://blog.csdn.net/weixin_28224217/article/details/165637747)\n\n5 天之前 · PyTorch通过torch.backends.cudnn.allow_tf32和torch.backends.cuda.matmul.allow_tf32两个开关分别控制cuDNN …\n\n**URL:** https://blog.csdn.net/weixin_28224217/article/details/165637747\n\n---\n\n## 3. ["
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "## 1. [数值精度 — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html)\n\n2026年5月13日 · 在 Ampere（及更高版本）的 NVIDIA GPU 上，PyTorch 可以使用 TensorFloat32 (TF32) 来加速高强度的数学运 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "## 2. [PyTorch TF32开关详解：从allow_tf32到精度工程实践-CSDN博客](https://blog.csdn.net/weixin_28224217/article/details/165637747)\n\n5 天之前 · PyTorch通过torch.backends.cudnn.allow_tf32和torch.backends.cuda.matmul.allow_tf32两个开关分别控制cuDNN …\n\n**URL:** https://blog.csdn.net/weixin_28224217/article/details/165637747\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/weixin_28224217/article/details/165637747"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "## 3. [PyTorch TF32精度开关全解析：原理、默认值与训练推理 ...](https://blog.csdn.net/weixin_29047919/article/details/165638049)\n\n2 天之前 · TF32 是 NVIDIA 从 Ampere 架构（A100、RTX 30 系列）开始引入的一种数值格式，全称是 Tensor Float 32。 它本质上是 …\n\n**URL:** https://blog.csdn.net/weixin_29047919/article/details/165638049\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/weixin_29047919/article/details/165638049"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "## 4. [数值精度 - PyTorch 中文文档](https://bearneck.github.io/pytorch-docs-zh/source/notes/numerical_accuracy/)\n\n2026年3月24日 · 正因为如此，PyTorch 不能保证对于数学上相同的浮点计算产生逐位相同的结果。 同样，也不能保证跨 PyTorch 版 …\n\n**URL:** https://bearneck.github.io/pytorch-docs-zh/source/notes/numerical_accuracy/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://bearneck.github.io/pytorch-docs-zh/source/notes/numerical_accuracy/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_20f46a56.result",
+      "evidence": {
+        "event_id": "WebSearch_4_20f46a56.result",
+        "quote": "## 5. [数值精度 — PyTorch 2.6 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.6/notes/numerical_accuracy.html)\n\n2026年7月11日 · 如果您的网络不需要完整的 float32 精度，我们建议为矩阵乘法启用 TF32 张量核心 …\n\n**URL:** https://pytorch.ac.cn/docs/2.6/notes/numerical_accuracy.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://pytorch.ac.cn/docs/2.6/notes/numerical_accuracy.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_52609888_59f73812.result",
+      "evidence": {
+        "event_id": "WebFetch_5_52609888_59f73812.result",
+        "quote": "**标题**: Numerical accuracy — PyTorch 2.14 documentation\n**发布时间**: Created On: May 13, 2026 | Last Updated On: Jun 01, 2026\n\nBack to top\n\n# Numerical accuracy[#](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html#numerical-accuracy \"Link to this heading\")\n\nIn modern computers, floating point numbers are represented using IEEE 754 standard. For more details on floating point arithmetic and IEEE 754 standard, please see [Floating point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic). In particular, note that floating point provides limited accuracy (about 7 decimal digits for single precision floating point numbers, about 16 decimal digits for double precision"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

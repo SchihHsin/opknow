@@ -1,0 +1,300 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+      "evidence": {
+        "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+        "quote": "**标题**: Multi GPU training with DDP — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: May 12, 2026 | Last Verified: Not Verified\n\nBack to top\n\n# Multi GPU training with DDP[#](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html#multi-gpu-training-with-ddp \"Link to this heading\")\n\nAuthors: [Suraj Subramanian](https://github.com/subramen)\n\nWhat you will learn\n\n- How to migrate a single-GPU training script to multi-GPU via DDP\n- Setting up the distributed process group\n- Saving and loading models in a distributed setup\n\nView the code used in this tutorial on [GitHub](https://github.com/pytorch/examples/blob/main/distributed/ddp-tu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_fb5ac436917e417ea8a83c69.result",
+      "evidence": {
+        "event_id": "call_fb5ac436917e417ea8a83c69.result",
+        "quote": "**标题**: Getting Started with Distributed Data Parallel — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Apr 23, 2019 | Last Updated: Sep 23, 2025 | Last Verified: Nov 05, 2024\n\n# Getting Started with Distributed Data Parallel#\n\n# Getting Started with Distributed Data Parallel#\nFor more information on how DDP works and how to use it effectively, be sure to check out the DDP design note. With DDP, you can train your models faster and more efficiently than ever before!\n\nThe recommended way to use DDP is to spawn one process for each model replica. The model replica can span multiple devices. DDP processes can be placed on the same machine or across machines. Note that GPU de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+      "evidence": {
+        "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+        "quote": "# PyTorch 2.14 `torch.distributed` — Requested Extractions\n\n**Summary of findings:** All four requested items were located on the page, with some important caveats: (1) the env:// section lists only 4 variables (MASTER_ADDR, MASTER_PORT, WORLD_SIZE, RANK) — LOCAL_WORLD_SIZE and GROUP_RANK do **not** appear anywhere in the provided content, and LOCAL_RANK/TORCHELASTIC_RUN_ID appear only in other API docs; (2) the full backend guidance and capability table are below; (3) `init_process_group` signature and init methods extracted verbatim; (4) numerous NCCL-specific multi-machine constraints found. The page content is **truncated** mid-way through the Point-to-point communication section (during"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/distributed.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_bd9718bf01cf4060949cdffa.result",
+      "evidence": {
+        "event_id": "call_bd9718bf01cf4060949cdffa.result",
+        "quote": "**标题**: torchrun (Elastic Launch) — PyTorch 2.14 documentation\n\n# torchrun (Elastic Launch)#\n\n# torchrun (Elastic Launch)#\nCreated On: May 12, 2026 | Last Updated On: May 12, 2026\n\nModule `torch.distributed.run`.\n\n`torch.distributed.run` is a module that spawns up multiple distributed training processes on each of the training nodes.\n\n`torchrun` is a python console script to the main module torch.distributed.run declared in the `entry_points` configuration in setup.py. It is equivalent to invoking `python -m torch.distributed.run`.\n\n`torchrun` can be used for single-node distributed training, in which one or more processes per node will be spawned. It can be used for either CPU training or G"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/elastic/run.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "85684fd908a1911cec927bf9bb05902ba89e603344718d81b0cc4ea69a234eb8",
+  "question": "怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。",
+  "run_id": "F-cuda-glm-5_3-standard-20260921T103257",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "# Search Results for \"PyTorch DistributedDataParallel NCCL torchrun multi-node distributed training official documentation\"\n\n## 1. [Pytorch 分布式训练 DistributedDataParallel （实操篇）](https://blog.csdn.net/weixin_43229348/article/details/124112404)\n\n在启动分布式训练时候，需要在命令行使用torch.distributed.launch启动器，该启动器会将当前进程的序号（若每个GPU使用一个进程，也是指GPU序号）通过local_rank参数传递给Python文件。\n\n**URL:** https://blog.csdn.net/weixin_43229348/article/details/124112404\n\n---\n\n## 2. [使用 DDP 进行多 GPU 训练 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月5日 · Multi GPU training with DDP - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "## 1. [Pytorch 分布式训练 DistributedDataParallel （实操篇）](https://blog.csdn.net/weixin_43229348/article/details/124112404)\n\n在启动分布式训练时候，需要在命令行使用torch.distributed.launch启动器，该启动器会将当前进程的序号（若每个GPU使用一个进程，也是指GPU序号）通过local_rank参数传递给Python文件。\n\n**URL:** https://blog.csdn.net/weixin_43229348/article/details/124112404\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_43229348/article/details/124112404"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "## 2. [使用 DDP 进行多 GPU 训练 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月5日 · Multi GPU training with DDP - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/tutorials/beginner/ddp_series_multigpu.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "## 3. [pytorch中DistributedDataParallel的基本使用框架_pytorch nccl ...](https://blog.csdn.net/mrliuzhao/article/details/128807119)\n\n2023年1月30日 · 本文详细介绍使用torch.nn.parallel.DistributedDataParallel进行分布式并行训练的方法。 包括如何利 …\n\n**URL:** https://blog.csdn.net/mrliuzhao/article/details/128807119\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/mrliuzhao/article/details/128807119"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "## 4. [【训练技巧】PyTorch多卡训练模型DistributedDataParallel ...](https://www.cnblogs.com/ljbguanli/p/19144468)\n\n2025年10月15日 · PyTorch提供了两种主要方法： DataParallel （简单易用，适用于单机多卡）和 DistributedDataParallel （高效，支 …\n\n**URL:** https://www.cnblogs.com/ljbguanli/p/19144468\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.cnblogs.com/ljbguanli/p/19144468"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a24ea8f660ca44799aa1974c.result",
+      "evidence": {
+        "event_id": "call_a24ea8f660ca44799aa1974c.result",
+        "quote": "## 5. [Multi GPU training with DDP - PyTorch](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html)\n\n2026年9月3日 · In this tutorial, we start with a single-GPU training script and migrate that to running it on 4 GPUs on a single node. …\n\n**URL:** https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+      "evidence": {
+        "event_id": "call_8f9ea7856cb64c49ba4d8274.result",
+        "quote": "**标题**: Multi GPU training with DDP — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: May 12, 2026 | Last Verified: Not Verified\n\nBack to top\n\n# Multi GPU training with DDP[#](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html#multi-gpu-training-with-ddp \"Link to this heading\")\n\nAuthors: [Suraj Subramanian](https://github.com/subramen)\n\nWhat you will learn\n\n- How to migrate a single-GPU training script to multi-GPU via DDP\n- Setting up the distributed process group\n- Saving and loading models in a distributed setup\n\nView the code used in this tutorial on [GitHub](https://github.com/pytorch/examples/blob/main/distributed/ddp-tu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_fb5ac436917e417ea8a83c69.result",
+      "evidence": {
+        "event_id": "call_fb5ac436917e417ea8a83c69.result",
+        "quote": "**标题**: Getting Started with Distributed Data Parallel — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Apr 23, 2019 | Last Updated: Sep 23, 2025 | Last Verified: Nov 05, 2024\n\n# Getting Started with Distributed Data Parallel#\n\n# Getting Started with Distributed Data Parallel#\nFor more information on how DDP works and how to use it effectively, be sure to check out the DDP design note. With DDP, you can train your models faster and more efficiently than ever before!\n\nThe recommended way to use DDP is to spawn one process for each model replica. The model replica can span multiple devices. DDP processes can be placed on the same machine or across machines. Note that GPU de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+      "evidence": {
+        "event_id": "call_c5cf1ca2ef5749d5a767a888.result",
+        "quote": "# PyTorch 2.14 `torch.distributed` — Requested Extractions\n\n**Summary of findings:** All four requested items were located on the page, with some important caveats: (1) the env:// section lists only 4 variables (MASTER_ADDR, MASTER_PORT, WORLD_SIZE, RANK) — LOCAL_WORLD_SIZE and GROUP_RANK do **not** appear anywhere in the provided content, and LOCAL_RANK/TORCHELASTIC_RUN_ID appear only in other API docs; (2) the full backend guidance and capability table are below; (3) `init_process_group` signature and init methods extracted verbatim; (4) numerous NCCL-specific multi-machine constraints found. The page content is **truncated** mid-way through the Point-to-point communication section (during"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/docs/stable/distributed.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_bd9718bf01cf4060949cdffa.result",
+      "evidence": {
+        "event_id": "call_bd9718bf01cf4060949cdffa.result",
+        "quote": "**标题**: torchrun (Elastic Launch) — PyTorch 2.14 documentation\n\n# torchrun (Elastic Launch)#\n\n# torchrun (Elastic Launch)#\nCreated On: May 12, 2026 | Last Updated On: May 12, 2026\n\nModule `torch.distributed.run`.\n\n`torch.distributed.run` is a module that spawns up multiple distributed training processes on each of the training nodes.\n\n`torchrun` is a python console script to the main module torch.distributed.run declared in the `entry_points` configuration in setup.py. It is equivalent to invoking `python -m torch.distributed.run`.\n\n`torchrun` can be used for single-node distributed training, in which one or more processes per node will be spawned. It can be used for either CPU training or G"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.pytorch.org/docs/stable/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "# Search Results for \"torchrun 多机多卡 DDP NCCL MASTER_ADDR NODE_RANK 分布式训练 教程\"\n\n## 1. [PyTorch 分布式训练实现(DP/DDP/torchrun/多机多卡)](https://zhuanlan.zhihu.com/p/489011749)\n\n1、DataParallel2、DistributedDataParallel3、多机多卡DDP为什么要引入DDP（DistributedDataParallel）？ 1、DP在每个训练批次（batch）中，因为模型的权重都是在 一个进程上先算出来 然后再把他们分发到每个GPU上，所以网络通信就成为了一个瓶颈，而GPU使用率也通常很低。 2、因为它在每一次的前向传播的时候把模型也复制了（即每次更新都复制一遍模型），并且单进程多 …DDP采用多进程控制多GPU，共同训练模型，一份代码会被pytorch自动分配到n个进程并在n个GPU上运行。 DDP运用Ring-Reduce通信算法在每个GPU间对梯度进行通讯，交换彼此的梯度，从而获得所有GPU的梯度。对比DP，不需要在进行模型本体的通信，因此可以加速训练。在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/489011749\n\n---\n\n## 2. [【教程】PyTorch多机多卡分布式训练的参数说明 | 附通用 ...](https://blog.csdn.net/qq_39523365/article/details/14"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "## 1. [PyTorch 分布式训练实现(DP/DDP/torchrun/多机多卡)](https://zhuanlan.zhihu.com/p/489011749)\n\n1、DataParallel2、DistributedDataParallel3、多机多卡DDP为什么要引入DDP（DistributedDataParallel）？ 1、DP在每个训练批次（batch）中，因为模型的权重都是在 一个进程上先算出来 然后再把他们分发到每个GPU上，所以网络通信就成为了一个瓶颈，而GPU使用率也通常很低。 2、因为它在每一次的前向传播的时候把模型也复制了（即每次更新都复制一遍模型），并且单进程多 …DDP采用多进程控制多GPU，共同训练模型，一份代码会被pytorch自动分配到n个进程并在n个GPU上运行。 DDP运用Ring-Reduce通信算法在每个GPU间对梯度进行通讯，交换彼此的梯度，从而获得所有GPU的梯度。对比DP，不需要在进行模型本体的通信，因此可以加速训练。在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/489011749\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://zhuanlan.zhihu.com/p/489011749"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "## 2. [【教程】PyTorch多机多卡分布式训练的参数说明 | 附通用 ...](https://blog.csdn.net/qq_39523365/article/details/148263551)\n\n2025年5月28日 · torchrun 是 PyTorch 官方推荐的分布式训练启动器，它的作用是： 启动 多进程分布式训练 （支持多 GPU，多节 …\n\n**URL:** https://blog.csdn.net/qq_39523365/article/details/148263551\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://blog.csdn.net/qq_39523365/article/details/148263551"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "## 3. [【教程】PyTorch多机多卡分布式训练的参数说明 | 附通用 ...](https://blog.51cto.com/xfxuezhang/13859370)\n\n2025年4月22日 · 在分布式训练中， 一个 node 就是一台物理或虚拟的主机。 node的编号从 0 开始。 例子：你用 2 台机器 → - …\n\n**URL:** https://blog.51cto.com/xfxuezhang/13859370\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://blog.51cto.com/xfxuezhang/13859370"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "## 4. [【教程】PyTorch多机多卡分布式训练的参数说明 | 附通用 ...](https://blog.csdn.net/sxf1061700625/article/details/147259566)\n\n2025年4月15日 · 二、 torchrun 的核心参数讲解 ... 🔹 1. --nnodes（Number of Nodes） 表示 参与训练的总机器数。 你有几台服务器， …\n\n**URL:** https://blog.csdn.net/sxf1061700625/article/details/147259566\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/sxf1061700625/article/details/147259566"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+      "evidence": {
+        "event_id": "call_0c41ec77614b4f3ca64a1ff1.result",
+        "quote": "## 5. [Pytorch多机多卡分布式训练 - 知乎](https://zhuanlan.zhihu.com/p/373395654)\n\n2022年11月30日 · 不过因为业务需求或者赶论文ddl，毕业以后有条件用多机多卡了，这里也分享一下简单的Pytorch多机多卡分布式训 …\n\n**URL:** https://zhuanlan.zhihu.com/p/373395654\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/373395654"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

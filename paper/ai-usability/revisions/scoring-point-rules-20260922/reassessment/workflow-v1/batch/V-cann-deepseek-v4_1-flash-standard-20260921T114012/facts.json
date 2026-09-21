@@ -1,0 +1,488 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_poa538KkSr4UTGaLxVDK5936.result",
+      "evidence": {
+        "event_id": "call_00_poa538KkSr4UTGaLxVDK5936.result",
+        "quote": "**标题**: aclrtMemcpyAsync-内存管理-运行时管理-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)\n\n# aclrtMemcpyAsync\n\n#### 函数功能\n\n实现内存复制，异步接口。\n\n#### 约束说明\n\n- 调用本接口进行内存复制时，源地址和目的地址都必须64字节对齐。\n- 该接口是异步接口，调用接口成功仅表示任务下发成功，不表示任务执行成功。调用该接口后，需调用同步等待接口（例如，[aclrtSynchronizeStream](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0070.html)）确保内存复制的任务已执行完成，否则可能会导致训练或推理等业务异常、Device断链掉卡等未知情况。\n- 若调用本接口传入的kind为ACL_MEMCPY_HOST_TO_DEVICE或ACL_MEMCPY_DEVICE_"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_NFARwA9sWbTP7TvL4oXA8446.result",
+      "evidence": {
+        "event_id": "call_00_NFARwA9sWbTP7TvL4oXA8446.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_zXi1zVfJqGvfW3MbK03B5557.result",
+      "evidence": {
+        "event_id": "call_00_zXi1zVfJqGvfW3MbK03B5557.result",
+        "quote": "**标题**: 数据传输-运行时管理-AscendCL应用开发（C&C++）-应用开发-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html)\n\n# 数据传输\n\n本节介绍数据传输的相关接口、注意事项，并给出示例代码。\n\n#### 接口调用流程\n\n数据传输的关键接口调用流程如下：\n\n1. **申请内存**。\n   \n   - Host上的内存，可以使用AscendCL提供的[aclrtMallocHost](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0095.html)接口申请内存，也可以用C++标准库中的new、malloc接口申请内存。\n     \n     - aclrtMallocHost会尝试申请物理地址连续的内存，后续在Host与Device数据交互时性能更优。调用aclrtMallocHost接口后、使用内存前，建议先调用"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Wttyr3hfhCZ5gtgI7DKb8421.result",
+      "evidence": {
+        "event_id": "call_00_Wttyr3hfhCZ5gtgI7DKb8421.result",
+        "quote": "**标题**: aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C&C++）-应用开发接口-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n# aclrtCreateEvent\n\n#### 函数功能\n\n创建一个Event，创建出来的Event可用于统计两个Event之间的耗时、多Stream场景下的同步等待等场景。\n\n#### 约束说明\n\n调用本接口创建Event后，后续调用[aclrtRecordEvent](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0083.html)接口时，系统内部才会申请Event资源，因此会受Event数量的限制，Event达到上限后，系统内部会等待资源释放。\n\n不同型号的硬件支持的Event数量不同，如下表所示：\n\n型号\n\n单个Device支持"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_nB0Bq1OzM8PZtezIDySC1869.result",
+      "evidence": {
+        "event_id": "call_00_nB0Bq1OzM8PZtezIDySC1869.result",
+        "quote": "**标题**: 同步等待-运行时管理-AscendCL应用开发（C&C++）-应用开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解\n\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html)\n\n# 同步等待\n\n本节介绍Device、Stream、Event在异步场景下的使用示例及关键接口。\n\n#### 同步机制\n\nAscendCL提供以下同步机制：\n\n- [Event的同步等待示例代码](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html#ZH-CN_TOPIC_0000002115676480__section6442154118396)：调用[aclrtSynchronizeEvent](https://www.hiascend.com/document/de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "bf3dd3b42e9589419329d6bc1303a570acd0f9beeceab10d3547f46117cbe0b5",
+  "question": "我想在昇腾上让数据传输与计算重叠，怎么做（多 stream / 异步内存拷贝 `aclrtMemcpyAsync` / event 同步）？",
+  "run_id": "V-cann-deepseek-v4_1-flash-standard-20260921T114012",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "# Search Results for \"昇腾 AscendCL aclrtMemcpyAsync 多stream 数据传输与计算重叠 event 同步\"\n\n## 1. [昇思 AscendCL：调用 aclrtMemcpyAsync 接口实现异步 ...](https://www.hiascend.com/developer/blog/details/02202222181983026360)\n\nAscendCL 是昇腾 NPU 的 C 语言运行时接口，aclrtMemcpyAsync为异步内存拷贝核心接口，支持 Host↔Device、Device↔Device 之 …\n\n**URL:** https://www.hiascend.com/developer/blog/details/02202222181983026360\n\n---\n\n## 2. [aclrtMemcpyAsync-内存管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)\n\naclrtMemcpyAsync 函数功能 实现内存复制，异步接口。 约束说明 调用本接口进行内存复制时，源地址和目的地址都必须64字节对齐 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdev"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "## 1. [昇思 AscendCL：调用 aclrtMemcpyAsync 接口实现异步 ...](https://www.hiascend.com/developer/blog/details/02202222181983026360)\n\nAscendCL 是昇腾 NPU 的 C 语言运行时接口，aclrtMemcpyAsync为异步内存拷贝核心接口，支持 Host↔Device、Device↔Device 之 …\n\n**URL:** https://www.hiascend.com/developer/blog/details/02202222181983026360\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/developer/blog/details/02202222181983026360"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "## 2. [aclrtMemcpyAsync-内存管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)\n\naclrtMemcpyAsync 函数功能 实现内存复制，异步接口。 约束说明 调用本接口进行内存复制时，源地址和目的地址都必须64字节对齐 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "## 3. [华为昇腾CANN——AscendCL特性之同步异步 (C++)](https://bbs.huaweicloud.com/blogs/358353)\n\n2022年6月6日 · 多Stream场景是AscendCL的一个核心知识点，也是后续很多接口调用的不可或缺的一部分。 在开始讲解多Stream场 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/358353\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://bbs.huaweicloud.com/blogs/358353"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "## 4. [华为昇腾CANN——AscendCL特性之同步异步 (C++)](https://blog.csdn.net/qq_40679625/article/details/125153382)\n\n2022年6月6日 · 多Stream场景是AscendCL的一个核心知识点，也是后续很多接口调用的不可或缺的一部分。 在开始讲解多Stream场 …\n\n**URL:** https://blog.csdn.net/qq_40679625/article/details/125153382\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/qq_40679625/article/details/125153382"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+      "evidence": {
+        "event_id": "call_00_C6F1ew64FvZizzKsNbeh8590.result",
+        "quote": "## 5. [AscendCL (ACL) 内存管理解析：3种分配模式与Stream异步 ...](https://wenku.csdn.net/column/4a0q71p7gh7)\n\n2026年7月11日 · 本文将深入解析AscendCL（ACL）提供的三种内存分配模式与Stream异步传输机制，通过原理剖析和实战代码演 …\n\n**URL:** https://wenku.csdn.net/column/4a0q71p7gh7\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://wenku.csdn.net/column/4a0q71p7gh7"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_poa538KkSr4UTGaLxVDK5936.result",
+      "evidence": {
+        "event_id": "call_00_poa538KkSr4UTGaLxVDK5936.result",
+        "quote": "**标题**: aclrtMemcpyAsync-内存管理-运行时管理-AscendCL API（C&C++）-应用开发接口-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html)\n\n# aclrtMemcpyAsync\n\n#### 函数功能\n\n实现内存复制，异步接口。\n\n#### 约束说明\n\n- 调用本接口进行内存复制时，源地址和目的地址都必须64字节对齐。\n- 该接口是异步接口，调用接口成功仅表示任务下发成功，不表示任务执行成功。调用该接口后，需调用同步等待接口（例如，[aclrtSynchronizeStream](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0070.html)）确保内存复制的任务已执行完成，否则可能会导致训练或推理等业务异常、Device断链掉卡等未知情况。\n- 若调用本接口传入的kind为ACL_MEMCPY_HOST_TO_DEVICE或ACL_MEMCPY_DEVICE_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0100.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "# Search Results for \"hiascend CANN AscendCL aclrtStreamWaitEvent aclrtRecordEvent 多stream 数据传输 官方文档\"\n\n## 1. [aclrtStreamWaitEvent-Event管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html)\n\naclrtRecordEvent 接口与 aclrtStreamWaitEvent 接口配合使用时，主要用于多Stream之间同步的场景，在调用aclrtRecordEvent接口 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html\n\n---\n\n## 2. [aclrtStreamWaitEvent-Event管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0091.html)\n\naclrtRe"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "## 1. [aclrtStreamWaitEvent-Event管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html)\n\naclrtRecordEvent 接口与 aclrtStreamWaitEvent 接口配合使用时，主要用于多Stream之间同步的场景，在调用aclrtRecordEvent接口 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "## 2. [aclrtStreamWaitEvent-Event管理-运行时管理-AscendCL API ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0091.html)\n\naclrtRecordEvent接口与aclrtStreamWaitEvent接口配合使用时，主要用于多Stream之间同步的场景，在调用aclrtRecordEvent接口 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0091.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0091.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "## 3. [【2024第一期CANN训练营】3、AscendCL运行时管理](https://zhuanlan.zhihu.com/p/687494235)\n\n2024年3月17日 · 本教程将介绍 如何使用昇腾社区AscendCL应用开发接口进行运行时管理。 并从AscendCL的初始化与去初始化、运 …\n\n**URL:** https://zhuanlan.zhihu.com/p/687494235\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/687494235"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "## 4. [华为昇腾CANN——AscendCL特性之同步异步 (C++)](https://bbs.huaweicloud.com/blogs/358353)\n\n2022年6月6日 · 本次介绍到的AscendCL接口系列旨在了解AscendCL提供的多种特性，其中每种特性都包含了若干个可调用的接口。  …\n\n**URL:** https://bbs.huaweicloud.com/blogs/358353\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://bbs.huaweicloud.com/blogs/358353"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+      "evidence": {
+        "event_id": "call_00_Pvt9CTydsTo6tY85cNfq2901.result",
+        "quote": "## 5. [【2024第一期CANN训练营】3、AscendCL运行时管理 ...](https://blog.csdn.net/weixin_46227276/article/details/136784432)\n\n2024年3月27日 · 本文详细介绍了如何使用昇腾社区的AscendCL进行运行时管理，包括初始化与去初始化、资源申请与释放、数据传 …\n\n**URL:** https://blog.csdn.net/weixin_46227276/article/details/136784432\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://blog.csdn.net/weixin_46227276/article/details/136784432"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NFARwA9sWbTP7TvL4oXA8446.result",
+      "evidence": {
+        "event_id": "call_00_NFARwA9sWbTP7TvL4oXA8446.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/appdevgapi/aclcppdevg_03_0091.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zXi1zVfJqGvfW3MbK03B5557.result",
+      "evidence": {
+        "event_id": "call_00_zXi1zVfJqGvfW3MbK03B5557.result",
+        "quote": "**标题**: 数据传输-运行时管理-AscendCL应用开发（C&C++）-应用开发-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html)\n\n# 数据传输\n\n本节介绍数据传输的相关接口、注意事项，并给出示例代码。\n\n#### 接口调用流程\n\n数据传输的关键接口调用流程如下：\n\n1. **申请内存**。\n   \n   - Host上的内存，可以使用AscendCL提供的[aclrtMallocHost](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/apiref/appdevgapi/aclcppdevg_03_0095.html)接口申请内存，也可以用C++标准库中的new、malloc接口申请内存。\n     \n     - aclrtMallocHost会尝试申请物理地址连续的内存，后续在Host与Device数据交互时性能更优。调用aclrtMallocHost接口后、使用内存前，建议先调用"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/appdevg/aclcppdevg/aclcppdevg_000010.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "# Search Results for \"hiascend CANN AscendCL Event管理 aclrtCreateEvent aclrtRecordEvent 官方文档 多Stream同步\"\n\n## 1. [aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n创建一个Event，创建出来的Event可用于统计两个Event之间的耗时、多Stream场景下的同步等待等场景。 约束说明 调用本接口创 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0079.html\n\n---\n\n## 2. [aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n创建一个Event，创建出来的Event可用于统计两个Even"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "## 1. [aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n创建一个Event，创建出来的Event可用于统计两个Event之间的耗时、多Stream场景下的同步等待等场景。 约束说明 调用本接口创 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0079.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/appdevgapi/aclcppdevg_03_0079.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "## 2. [aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n创建一个Event，创建出来的Event可用于统计两个Event之间的耗时、多Stream场景下的同步等待等场景。 约束说明 调用本接口创 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "## 3. [CANN Runtime Event 状态机实战：从 aclrtCreateEvent 到 ...](https://blog.gitcode.com/9af562e26171c3cf79d1279a6ffc5640.html)\n\n3 天之前 · 本文以 CANN Runtime 官方示例 0_event_status 为主体，完整讲解 Event 在\"创建后、记录后、同步后\"三个关键节点的状 …\n\n**URL:** https://blog.gitcode.com/9af562e26171c3cf79d1279a6ffc5640.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://blog.gitcode.com/9af562e26171c3cf79d1279a6ffc5640.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "## 4. [CANN Runtime事件管理API参考 - CSDN博客](https://blog.csdn.net/gitblog_00755/article/details/160916427)\n\n2026年5月9日 · 本章节描述 CANN Runtime 的 Event 管理接口，用于事件的创建、记录、同步、计时及 IPC 跨进程共享。 - [`aclError …\n\n**URL:** https://blog.csdn.net/gitblog_00755/article/details/160916427\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/gitblog_00755/article/details/160916427"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+      "evidence": {
+        "event_id": "call_00_ik0qxkoMNiQ2u0OuNCw37026.result",
+        "quote": "## 5. [华为昇腾CANN——AscendCL特性之同步异步 (C++)](https://bbs.huaweicloud.com/blogs/358353)\n\n2022年6月6日 · 支持多次调用aclrtSubscribeReport接口给多个Stream（仅支持同一Device内的多个Stream）注册同一个处理回调函数 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/358353\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://bbs.huaweicloud.com/blogs/358353"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Wttyr3hfhCZ5gtgI7DKb8421.result",
+      "evidence": {
+        "event_id": "call_00_Wttyr3hfhCZ5gtgI7DKb8421.result",
+        "quote": "**标题**: aclrtCreateEvent-Event管理-运行时管理-AscendCL API（C&C++）-应用开发接口-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html)\n\n# aclrtCreateEvent\n\n#### 函数功能\n\n创建一个Event，创建出来的Event可用于统计两个Event之间的耗时、多Stream场景下的同步等待等场景。\n\n#### 约束说明\n\n调用本接口创建Event后，后续调用[aclrtRecordEvent](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0083.html)接口时，系统内部才会申请Event资源，因此会受Event数量的限制，Event达到上限后，系统内部会等待资源释放。\n\n不同型号的硬件支持的Event数量不同，如下表所示：\n\n型号\n\n单个Device支持"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/apiref/appdevgapi/aclcppdevg_03_0079.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_nB0Bq1OzM8PZtezIDySC1869.result",
+      "evidence": {
+        "event_id": "call_00_nB0Bq1OzM8PZtezIDySC1869.result",
+        "quote": "**标题**: 同步等待-运行时管理-AscendCL应用开发（C&C++）-应用开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解\n\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html)\n\n# 同步等待\n\n本节介绍Device、Stream、Event在异步场景下的使用示例及关键接口。\n\n#### 同步机制\n\nAscendCL提供以下同步机制：\n\n- [Event的同步等待示例代码](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html#ZH-CN_TOPIC_0000002115676480__section6442154118396)：调用[aclrtSynchronizeEvent](https://www.hiascend.com/document/de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devguide/appdevg/aclcppdevg/aclcppdevg_000013.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "# Search Results for \"昇腾 AscendCL 多stream 数据传输与计算重叠 double buffer 示例 官方 CANN 最佳实践\"\n\n## 1. [double buffer-CANN商用版8.0.0-昇腾社区 - hiascend.com](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0090.html)\n\nAug 19, 2026 · 为减少Vector等待时间，double buffer机制将待处理的数据一分为二，比如Tensor1、Tensor2。 如 图2 所示， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0090.html\n\n---\n\n## 2. [使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发 …](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.ht"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "## 1. [double buffer-CANN商用版8.0.0-昇腾社区 - hiascend.com](https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0090.html)\n\nAug 19, 2026 · 为减少Vector等待时间，double buffer机制将待处理的数据一分为二，比如Tensor1、Tensor2。 如 图2 所示， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0090.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0090.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "## 2. [使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发 …](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)\n\n总体来说，double buffer是基于MTE指令队列与Vector指令队列的独立性和可并行性，通过将数据搬运与Vector计算并行执行以隐藏大 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "## 3. [利用Double Buffer技术优化Ascend C算子内存带宽](https://blog.csdn.net/weixin_45255454/article/details/155646937)\n\nDec 23, 2025 · 本文深入解析Double Buffer（双缓冲）技术在昇腾Ascend C算子内存优化中的核心价值与实践方法。 通过实际代码示 …\n\n**URL:** https://blog.csdn.net/weixin_45255454/article/details/155646937\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://blog.csdn.net/weixin_45255454/article/details/155646937"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "## 4. [【昇腾CANN训练营·优化篇】流水线的艺术：深入解析 Double Buffer …](https://blog.csdn.net/2401_82857325/article/details/156025987)\n\nDec 17, 2025 · 理论上，如果你的算法包含 MTE2, Vector, MTE3 三个阶段，深度为 3 可以容忍更大的抖动。 但在 Ascend 实际开发 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/156025987\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/156025987"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+      "evidence": {
+        "event_id": "call_00_4TpMXXvP3ClU3WdPoS1W2505.result",
+        "quote": "## 5. [asc-devkit/docs/guide/算子实践参考/SIMD算子性能优化/流水编排/使 …](https://gitcode.com/cann/asc-devkit/blob/master/docs/guide/算子实践参考/SIMD算子性能优化/流水编排/使能DoubleBuffer.md)\n\n本项目是CANN 推出的昇腾AI处理器专用的算子程序开发语言，原生支持C和C++标准规范，主要由类库和语言扩展层构成，提供多层 …\n\n**URL:** https://gitcode.com/cann/asc-devkit/blob/master/docs/guide/算子实践参考/SIMD算子性能优化/流水编排/使能DoubleBuffer.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://gitcode.com/cann/asc-devkit/blob/master/docs/guide/算子实践参考/SIMD算子性能优化/流水编排/使能DoubleBuffer.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

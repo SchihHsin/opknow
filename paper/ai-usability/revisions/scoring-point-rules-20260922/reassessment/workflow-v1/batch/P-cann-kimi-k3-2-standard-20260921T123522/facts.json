@@ -1,0 +1,464 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_f88fd992.result",
+      "evidence": {
+        "event_id": "WebFetch_1_f88fd992.result",
+        "quote": "**标题**: 适配简介-（可选）混合精度适配-关键特性适配-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n# 适配简介\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度(float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的精度。\n\n混合精度适配支持两种方式：\n\n- PyTorch框架内置的AMP功能模块\n- 第三方APEX混合精度模块\n\n我们推荐用户使用PyTorch框架内置的AMP功能模块来进行混合精度训练，本节将介绍其适配方法，AMP混合精度具体原理与计算过程请参考[混合精度原理与计算过程（AMP）](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0071.html)。\n\n如果用户想使用APEX模块，可参考[APEX](https://gitee.com/ascend/apex)。\n\n#### 使用约束\n\n当前混合精"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_8c100751.result",
+      "evidence": {
+        "event_id": "WebFetch_3_8c100751.result",
+        "quote": "**标题**: docs/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md · Ascend/docs - AtomGit\n\n[![ascend-robot](https://cdn-img.gitcode.com/ad/ec/4a22097de2cd8cd630c843b4fb17bd85bc7dd082a7e3a0e7089c373e836a3524.png?time=1753510752944)ascend-robot](https://gitcode.com/ascend-robot \"ascend-robot\")[modify document](https://gitcode.com/Ascend/docs/commit/bb62c43ccddd9407b5b3c1ebe3b91dce0cdc222a?ref=master)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/Ascend/docs/blob/master/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_18a36262.result",
+      "evidence": {
+        "event_id": "WebFetch_4_18a36262.result",
+        "quote": "**标题**: apex: Ascend apex adapter\n\n## Ascend / apex 暂停\n\n- - - - [新增参数说明](https://gitee.com/ascend/apex#%E6%96%B0%E5%A2%9E%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E \"新增参数说明\")\n      - [示例](https://gitee.com/ascend/apex#%E7%A4%BA%E4%BE%8B \"示例\")\n      - [接口说明](https://gitee.com/ascend/apex#%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E-1 \"接口说明\")\n    - - [接口说明：](https://gitee.com/ascend/apex#%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E-2 \"接口说明：\")\n      - [示例](https://gitee.com/ascend/apex#%E7%A4%BA%E4%BE%8B-1 \"示例\")\n      - [已支持的融合优化器及参数说明如下](https://gitee.com/ascend/apex#%E5%B7%B2%E6%94%AF%E6%8C%81%E7%9A%84%E8%9E%8D%E5%90%88%E4%BC%98%E5%8C%96%E5%99%A8%E5%8F%8A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E5%A6%82%E4%B8%8B \"已支持的融"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitee.com/ascend/apex",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_a57b13eb.result",
+      "evidence": {
+        "event_id": "WebFetch_7_a57b13eb.result",
+        "quote": "# 分析结果：Ascend/pytorch 仓库页面\n\n## ⚠️ 重要说明（是否截断）\n\n**本次提供的网页内容是 GitHub 仓库的文件列表页，而非 README 渲染正文。** 页面在 `pyproject.toml` 条目处以 **\"content truncated\"（内容已截断）** 结束，且 GitHub 仓库主页的 README 正文（位于文件列表下方）**完全未被捕获**。\n\n因此，您要求的以下内容**不在本次抓取内容中，无法直接引用**：\n\n- ❌ README 安装命令正文（如 `pip install torch_npu...`）\n- ❌ 快速上手代码块（`import torch` / `import torch_npu` / `.npu()` 等示例代码）\n- ❌ 设备 `npu` 的 direct 正文/代码段\n\n我不会臆造这些代码。以下是从页面**实际存在的内容**中提取的相关信息。\n\n---\n\n## 一、README 文件本身的信息（来自文件列表）\n\n| 项目 | 内容 |\n|---|---|\n| README.md URL | https://github.com/Ascend/pytorch/blob/master/README.md |\n| README.zh.md URL | https://github.com/Ascend/pytorch/blob/master/README.zh.md |\n| 最近提交 | `docs: 更新README链接、安装说明、TC组织说明`（2026-09-11） |\n| 提交链接 | https:/"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/Ascend/pytorch",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "c01afb840b070c39e04a79da761cc9395d91d4fe6b723c48ecac31281134c561",
+  "question": "昇腾上 PyTorch 训练怎么开混合精度？用 torch_npu 的 amp / apex，loss scale 怎么配？",
+  "run_id": "P-cann-kimi-k3-2-standard-20260921T123522",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "# Search Results for \"torch_npu amp apex loss scale Ascend PyTorch 混合精度 官方文档 CANN\"\n\n## 1. [适配简介-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度 (float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html\n\n---\n\n## 2. [从+NV+Apex+到+Apex+for+Ascend：混合精度训练在昇腾 ...](https://blog.csdn.net/2301_80840905/article/details/156229053)\n\n2025年12月24日 · 在 PyTorch 生态中， NVIDIA Apex 一直是混合精度训练（Automatic Mixed Precision, AMP）的核心工具。 它能有 …\n\n**URL:** https://blog.csdn.net/2301_80840905/article/details/156229053\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "## 1. [适配简介-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度 (float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "## 2. [从+NV+Apex+到+Apex+for+Ascend：混合精度训练在昇腾 ...](https://blog.csdn.net/2301_80840905/article/details/156229053)\n\n2025年12月24日 · 在 PyTorch 生态中， NVIDIA Apex 一直是混合精度训练（Automatic Mixed Precision, AMP）的核心工具。 它能有 …\n\n**URL:** https://blog.csdn.net/2301_80840905/article/details/156229053\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/2301_80840905/article/details/156229053"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "## 3. [适配简介-TorchNPU6.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html)\n\n本节介绍命令行工具迁移方式，若用户想使用图形界面（MindStudio），可以参考 《MindStudio IDE用户指南》 中的“分析迁移 > …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "## 4. [从+NV+Apex+到+Apex+for+Ascend：混合精度训练在昇腾 ...](https://bbs.huaweicloud.com/blogs/471428)\n\n2025年12月24日 · 在 PyTorch 生态中， NVIDIA Apex 一直是混合精度训练（Automatic Mixed Precision, AMP）的核心工具。 它能有 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/471428\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://bbs.huaweicloud.com/blogs/471428"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_690f3388.result",
+      "evidence": {
+        "event_id": "WebSearch_0_690f3388.result",
+        "quote": "## 5. [docs/FrameworkPTAdapter/26.0.0/zh/pytorch_model ...](https://gitcode.com/Ascend/docs/blob/master/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md)\n\n推荐使用PyTorch框架内置的AMP功能模块来进行混合精度训练，本节将介绍其适配方法，AMP混合精度具体原理与计算过程请参考  …\n\n**URL:** https://gitcode.com/Ascend/docs/blob/master/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://gitcode.com/Ascend/docs/blob/master/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_f88fd992.result",
+      "evidence": {
+        "event_id": "WebFetch_1_f88fd992.result",
+        "quote": "**标题**: 适配简介-（可选）混合精度适配-关键特性适配-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n# 适配简介\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度(float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的精度。\n\n混合精度适配支持两种方式：\n\n- PyTorch框架内置的AMP功能模块\n- 第三方APEX混合精度模块\n\n我们推荐用户使用PyTorch框架内置的AMP功能模块来进行混合精度训练，本节将介绍其适配方法，AMP混合精度具体原理与计算过程请参考[混合精度原理与计算过程（AMP）](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0071.html)。\n\n如果用户想使用APEX模块，可参考[APEX](https://gitee.com/ascend/apex)。\n\n#### 使用约束\n\n当前混合精"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "# Search Results for \"site:hiascend.com TorchNPU6.0.0 混合精度 AMP 适配示例 GradScaler dynamic init_scale\"\n\n## 1. [适配简介-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度 (float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html\n\n---\n\n## 2. [PyTorch 混合精度训练 (AMP) - 菜鸟教程](https://www.runoob.com/pytorch/pytorch-amp.html)\n\nPyTorch 混合精度训练 (AMP) 混合精度训练是深度学习中最重要的性能优化技术之一。 它通过同时使用 FP32（单精度）和 FP16（半 …\n\n**URL:** https://www.runoob.com/pytorch/pytorch-amp.html\n\n---\n\n## 3. [适配简介-TorchNPU6.0.RC1-昇腾社区](https:/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "## 1. [适配简介-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度 (float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "## 2. [PyTorch 混合精度训练 (AMP) - 菜鸟教程](https://www.runoob.com/pytorch/pytorch-amp.html)\n\nPyTorch 混合精度训练 (AMP) 混合精度训练是深度学习中最重要的性能优化技术之一。 它通过同时使用 FP32（单精度）和 FP16（半 …\n\n**URL:** https://www.runoob.com/pytorch/pytorch-amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://www.runoob.com/pytorch/pytorch-amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "## 3. [适配简介-TorchNPU6.0.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html)\n\n模型训练适配：介绍在昇腾设备上运行PyTorch模型代码时，需要做的适配操作。 必须的操作包括 环境变量配置， 启动脚本配置；对 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/ptmoddevg/trainingmigrguide/PT_LMTMOG_0028.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "## 4. [手把手教你配置PyTorch AMP（混合精度训练性能提升必看）](https://blog.csdn.net/QuickProceed/article/details/154572851)\n\n2025年11月8日 · PyTorch 自 1.6 版本起引入了 torch.cuda.amp 模块，为混合精度训练提供了原生支持。 核心机制 PyTorch 使用自动 …\n\n**URL:** https://blog.csdn.net/QuickProceed/article/details/154572851\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://blog.csdn.net/QuickProceed/article/details/154572851"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_2b7419b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_2b7419b3.result",
+        "quote": "## 5. [PyTorch混合精度训练AMP实战（节省GPU显存）-CSDN博客](https://blog.csdn.net/weixin_36231030/article/details/156368109)\n\n2025年12月27日 · 通过PyTorch的自动混合精度（AMP）技术，可显著降低GPU显存占用并加速模型训练。 结合autocast …\n\n**URL:** https://blog.csdn.net/weixin_36231030/article/details/156368109\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://blog.csdn.net/weixin_36231030/article/details/156368109"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_8c100751.result",
+      "evidence": {
+        "event_id": "WebFetch_3_8c100751.result",
+        "quote": "**标题**: docs/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md · Ascend/docs - AtomGit\n\n[![ascend-robot](https://cdn-img.gitcode.com/ad/ec/4a22097de2cd8cd630c843b4fb17bd85bc7dd082a7e3a0e7089c373e836a3524.png?time=1753510752944)ascend-robot](https://gitcode.com/ascend-robot \"ascend-robot\")[modify document](https://gitcode.com/Ascend/docs/commit/bb62c43ccddd9407b5b3c1ebe3b91dce0cdc222a?ref=master)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://gitcode.com/Ascend/docs/blob/master/FrameworkPTAdapter/26.0.0/zh/pytorch_model_migration_fine_tuning/adaptation_introduction.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_18a36262.result",
+      "evidence": {
+        "event_id": "WebFetch_4_18a36262.result",
+        "quote": "**标题**: apex: Ascend apex adapter\n\n## Ascend / apex 暂停\n\n- - - - [新增参数说明](https://gitee.com/ascend/apex#%E6%96%B0%E5%A2%9E%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E \"新增参数说明\")\n      - [示例](https://gitee.com/ascend/apex#%E7%A4%BA%E4%BE%8B \"示例\")\n      - [接口说明](https://gitee.com/ascend/apex#%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E-1 \"接口说明\")\n    - - [接口说明：](https://gitee.com/ascend/apex#%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E-2 \"接口说明：\")\n      - [示例](https://gitee.com/ascend/apex#%E7%A4%BA%E4%BE%8B-1 \"示例\")\n      - [已支持的融合优化器及参数说明如下](https://gitee.com/ascend/apex#%E5%B7%B2%E6%94%AF%E6%8C%81%E7%9A%84%E8%9E%8D%E5%90%88%E4%BC%98%E5%8C%96%E5%99%A8%E5%8F%8A%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%E5%A6%82%E4%B8%8B \"已支持的融"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://gitee.com/ascend/apex"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "# Search Results for \"torch_npu.npu amp GradScaler autocast import torch_npu 官方 API\"\n\n## 1. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n## 2. [训练提速 2 倍！PyTorch AMP 中 torch.autocast 和 ...](https://runebook.dev/zh/docs/pytorch/amp/torch.autocast)\n\n2025年11月19日 · torch. autocast 是 PyTorch AMP (Automatic Mixed Precision) 功能的核心部分。 它的主要作用是自动地在模型的不 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/amp/torch.autocast\n\n---\n\n## 3. [自动混合精度示例 | PyTorc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "## 1. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "## 2. [训练提速 2 倍！PyTorch AMP 中 torch.autocast 和 ...](https://runebook.dev/zh/docs/pytorch/amp/torch.autocast)\n\n2025年11月19日 · torch. autocast 是 PyTorch AMP (Automatic Mixed Precision) 功能的核心部分。 它的主要作用是自动地在模型的不 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/amp/torch.autocast\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://runebook.dev/zh/docs/pytorch/amp/torch.autocast"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "## 3. [自动混合精度示例 | PyTorch文档 v2.5.0 (stable) -- Pytorch ...](https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html)\n\n通常，“自动混合精度训练”指的是使用 torch.autocast 和 torch.amp.GradScaler 一起进行训练。 torch.autocast 的实例可以为选定区域 …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://pytorch.it-docs.cn/docs/2.5/notes.amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "## 4. [PyTorch混合精度训练AMP实战（节省GPU显存）-CSDN博客](https://blog.csdn.net/weixin_36231030/article/details/156368109)\n\n2025年12月27日 · 通过PyTorch的自动混合精度（AMP）技术，可显著降低GPU显存占用并加速模型训练。 结合autocast …\n\n**URL:** https://blog.csdn.net/weixin_36231030/article/details/156368109\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/weixin_36231030/article/details/156368109"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_67d08095.result",
+      "evidence": {
+        "event_id": "WebSearch_5_67d08095.result",
+        "quote": "## 5. [Pytorch自动混合精度 (AMP)介绍与使用 - autocast和Gradscaler](https://developer.aliyun.com/article/1081448)\n\n2022年11月17日 · 混合精度：采用不止一种精度的Tensor，torch.FloatTensor和torch.HalfTensor pytorch1.6的新 …\n\n**URL:** https://developer.aliyun.com/article/1081448\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://developer.aliyun.com/article/1081448"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "# Search Results for \"gitee ascend pytorch torch_npu amp GradScaler dynamic False init_scale README\"\n\n## 1. [Gitee - 基于 Git 的代码托管和研发协作平台](https://gitee.com/ascend/pytorch)\n\n2021年6月24日 · 如果有任何疑问或建议，请提交 [Gitee Issues] (https://gitee.com/Ascend/pytorch/issues)，我们会尽快回复。 感谢您 …\n\n**URL:** https://gitee.com/ascend/pytorch\n\n---\n\n## 2. [GitHub - Ascend/pytorch: Ascend PyTorch adapter (torch_npu).](https://github.com/Ascend/pytorch)\n\nOverviewInstallationGetting StartedUser ManualAscend Auxiliary SoftwarePipeline StatusSuggestions and CommunicationBranch Maintenance PoliciesReference DocumentsLicenseThis repository develops the Ascend Adapter for PyTorch named torch_npu to adapt Ascend NPU to P…Ascend i"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "## 1. [Gitee - 基于 Git 的代码托管和研发协作平台](https://gitee.com/ascend/pytorch)\n\n2021年6月24日 · 如果有任何疑问或建议，请提交 [Gitee Issues] (https://gitee.com/Ascend/pytorch/issues)，我们会尽快回复。 感谢您 …\n\n**URL:** https://gitee.com/ascend/pytorch\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://gitee.com/ascend/pytorch"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "## 2. [GitHub - Ascend/pytorch: Ascend PyTorch adapter (torch_npu).](https://github.com/Ascend/pytorch)\n\nOverviewInstallationGetting StartedUser ManualAscend Auxiliary SoftwarePipeline StatusSuggestions and CommunicationBranch Maintenance PoliciesReference DocumentsLicenseThis repository develops the Ascend Adapter for PyTorch named torch_npu to adapt Ascend NPU to P…Ascend is a full-stack AI computing infrastructure for industry applications and services based on Huawei Ascend processors and software. For more information about Ascend, see Ascend Community.在github.com上查看更多信息\n\n**URL:** https://github.com/Ascend/pytorch\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://github.com/Ascend/pytorch"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "## 3. [README.zh.md · Ascend/pytorch - Gitee.com](https://api.gitee.com/ascend/pytorch/blob/master/README.zh.md)\n\n2025年11月10日 · Ascend Extension for PyTorch插件 简介 本项目开发了名为 torch_npu 的 Ascend …\n\n**URL:** https://api.gitee.com/ascend/pytorch/blob/master/README.zh.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://api.gitee.com/ascend/pytorch/blob/master/README.zh.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "## 4. [GitHub - Tiantian-Han/Ascend-pytorch: Ascend PyTorch adapter (torch_npu ...](https://github.com/Tiantian-Han/Ascend-pytorch)\n\n2023年7月19日 · This repository develops the Ascend Extension for PyTorch named torch_npu to adapt Ascend NPU to PyTorch so …\n\n**URL:** https://github.com/Tiantian-Han/Ascend-pytorch\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://github.com/Tiantian-Han/Ascend-pytorch"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_55c4d844.result",
+      "evidence": {
+        "event_id": "WebSearch_6_55c4d844.result",
+        "quote": "## 5. [pytorch/README.md-代码预览-pytorch:基于昇腾NPU的 ...](https://gitcode.com/Ascend/pytorch/blob/master/README.md)\n\n2026年6月30日 · As the core component of the Ascend for PyTorch community, TorchNPU is a deep learning adapter plugin built by …\n\n**URL:** https://gitcode.com/Ascend/pytorch/blob/master/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://gitcode.com/Ascend/pytorch/blob/master/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_a57b13eb.result",
+      "evidence": {
+        "event_id": "WebFetch_7_a57b13eb.result",
+        "quote": "# 分析结果：Ascend/pytorch 仓库页面\n\n## ⚠️ 重要说明（是否截断）\n\n**本次提供的网页内容是 GitHub 仓库的文件列表页，而非 README 渲染正文。** 页面在 `pyproject.toml` 条目处以 **\"content truncated\"（内容已截断）** 结束，且 GitHub 仓库主页的 README 正文（位于文件列表下方）**完全未被捕获**。\n\n因此，您要求的以下内容**不在本次抓取内容中，无法直接引用**：\n\n- ❌ README 安装命令正文（如 `pip install torch_npu...`）\n- ❌ 快速上手代码块（`import torch` / `import torch_npu` / `.npu()` 等示例代码）\n- ❌ 设备 `npu` 的 direct 正文/代码段\n\n我不会臆造这些代码。以下是从页面**实际存在的内容**中提取的相关信息。\n\n---\n\n## 一、README 文件本身的信息（来自文件列表）\n\n| 项目 | 内容 |\n|---|---|\n| README.md URL | https://github.com/Ascend/pytorch/blob/master/README.md |\n| README.zh.md URL | https://github.com/Ascend/pytorch/blob/master/README.zh.md |\n| 最近提交 | `docs: 更新README链接、安装说明、TC组织说明`（2026-09-11） |\n| 提交链接 | https:/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://github.com/Ascend/pytorch"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

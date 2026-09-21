@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_l0JzGgFo67CdvQMbhBui8037.result",
+      "evidence": {
+        "event_id": "call_00_l0JzGgFo67CdvQMbhBui8037.result",
+        "quote": "**标题**: 快速入门-算子开发（基础篇）-Ascend C算子开发-算子开发-CANN商用版7.0.0开发文档-昇腾社区\n\n\n\n# 快速入门\n\n本入门教程，将会引导你完成以下任务，体验Ascend C算子开发的基本流程。\n\n1. 使用Ascend C完成Add算子**核函数开发**；\n2. 使用ICPU_RUN_KF CPU调测宏完成算子核函数**CPU侧运行验证**；\n3. 使用<<<>>>内核调用符完成算子核函数**NPU侧运行验证**。\n\n在正式的开发之前，还需要先完成**环境准备**和**算子分析**工作，开发Ascend C算子的基本流程如下图所示：\n\n**图1** 开发Ascend C算子的基本流程  \n\n\n- 请点击quick-start获取样例代码。\n- 使用本教程只需要您具有一定的C/C++基础，在此基础上，如果您已经对Ascend C编程模型有一定的了解，您可以在实际操作的过程中加深对理论的理解；如果您还没有开始了解Ascend C编程模型，也无需担心，您可以先尝试跑通教程中的样例，参考教程最后的指引进行进一步的学习。\n\n#### 环境准备\n\n- CANN软件安装\n  \n  开发算子前，需要先准备好开发环境和运行环境，开发环境和运行环境的介绍和具体的安装步骤可参见《CANN 软件安装指南》。\n- 环境变量配置\n  \n  安装CANN软件后，使用CANN运行用户编译、运行时，需要以CANN运行用户登录环境，执行**. ${install_path}/set_env.sh**命令设置环境变量。其中${install_path}为CANN软件的安装目录。\n\n#"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Hy3ImpUGlirpawC1epq67345.result",
+      "evidence": {
+        "event_id": "call_00_Hy3ImpUGlirpawC1epq67345.result",
+        "quote": "**标题**: AI Core架构\n\n[](https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html)[](https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html)\n\n# AI Core架构\n\n基于TBE开发的算子运行在AI Core上，开发人员需要对AI Core架构有认识，本章节介绍AI Core架构基础知识。\n\n#### 总体架构\n\n不同于传统的支持通用计算的CPU和GPU，也不同于专用于某种特定算法的专用芯片ASIC（Application Specific Integrated Circuit），AI Core架构本质上是为了适应某个特定领域中的常见应用和算法，通常称为“特定域架构”（Domain Specific Architecture,DSA）。\n\n昇腾AI处理器的计算核心主要由AI Core构成，其基本结构如下图所示，从控制上可以看成是一个相对简化的现代微处理器的基本架构。它包括了三种基础计算资源：矩阵计算单元（Cube Unit）、向量计算单元（Vector Unit）和标量计算单元（Scalar Unit）。这三种计算单元各司其职，形成了三条独立的执行流水线，在系统软件的统一调度下互相配合达到优化的计算效率。此外"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_PVtwlAu6GNPOWQpi0SKu8237.result",
+      "evidence": {
+        "event_id": "call_00_PVtwlAu6GNPOWQpi0SKu8237.result",
+        "quote": "**标题**: 基本架构-硬件架构-Ascend C算子开发-算子开发-CANN8.0.RC2.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html)\n\n# 基本架构\n\n如下图所示，基于Ascend C开发的算子运行在AI Core上，对于初学者需要对硬件架构有基本认识，下文的编程模型基于硬件架构的抽象进行介绍，了解该内容能够更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，最佳实践中很多内容都以本章为基础进行介绍。\n\nAI Core负责执行标量、向量和张量相关的计算密集型算子，包括三种基础**计算单元**：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，同时还包含**存储单元**（包括硬件存储和用于数据搬运的搬运单元）和**控制单元**。硬件架构根据Cube计算单元和Vector计算单元是否同核部署分为**耦合架构**和**分离架构**两种。如下产品型号对应的处理器架构模式如"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_uVD945q34GIjpq0Qh4PX4272.result",
+      "evidence": {
+        "event_id": "call_00_uVD945q34GIjpq0Qh4PX4272.result",
+        "quote": "**标题**: SPMD模型\n\n[](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)[](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)\n\n# SPMD模型\n\nAscend C算子编程是SPMD（Single-Program Multiple-Data）编程，SPMD是一种常用的并行计算的方法，是提高计算速度的有效手段。\n\n假设，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3）。如下图所示，SPMD模式下，系统会启动一组进程，并行处理待处理的数据：首先待处理数据会被切分成多个数据分片，切分后的数据分片随后被分发给不同进程处理，每个进程接收到一个或多个数据分片，并独立地对这些分片进行3个任务的处理。\n\n**图1** SPMD数据并行示意图  \n![](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/figure/zh-cn_image_0000002336177354.png)\n\n具体到Ascend C编程模型中的应用，是将需要处理的数据拆"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_yOo4yS1oUoeYT5XmPFpi1499.result",
+      "evidence": {
+        "event_id": "call_00_yOo4yS1oUoeYT5XmPFpi1499.result",
+        "quote": "**标题**: Ascend C的编程模型-阿里云开发者社区\n**发布时间**: 2024-12-05 569 发布于广东\n\n# Ascend C的编程模型\n\n**简介：** Ascend C采用SPMD编程模型，实现多核并行计算。通过将数据切分为多个分片，分配给不同的计算核心（或称为block）并行处理，每个核心根据自身的block_idx执行相同代码但处理不同的数据分片，从而提高计算效率。此模型支持高效的数据并行处理，适用于大规模数据计算任务。\n\n# 1 并发执行\n\nAscend C和cudnn相似，都是一种多核心编程的范式。想要了解Ascend C，必须得先掌握这种“多核”是怎么实现得。\n\n多核执行，说白了就是使用CPU/GPU/Ascend的物理多核并发去执行一段流程，一般情况下，可以通过以下几种方式实现：\n\n1. **多线程并行处理**：使用多线程可以将循环中的任务分配给多个线程同时执行，提高代码的执行效率。可以使用线程池来管理线程的创建和销毁，避免频繁创建和销毁线程的开销。\n2. **多进程并行处理**：使用多进程可以将循环中的任务分配给多个进程同时执行，充分利用多核处理器的优势。可以使用multiprocessing模块来创建和管理多个进程，并通过进程间通信来实现数据的共享和同步。\n3. **向量化操作**：对于一些数值计算密集型的任务，可以使用向量化操作来提高代码的执行效率。向量化操作利用了现代处理器的SIMD（Single Instruction, Multiple Data）指令集，可以同时对多个数据进行相同的操作，减少了循环的开销。在Python中，可以使"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.aliyun.com/article/1643959",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_HBjtG2seo4ZVcCtsqrOg1332.result",
+      "evidence": {
+        "event_id": "call_00_HBjtG2seo4ZVcCtsqrOg1332.result",
+        "quote": "# Ascend C 核函数编程模型文章正文提取分析\n\n## 一、先说明：正文完整性与覆盖范围\n\n我已完整接收并提取了该页面的正文内容（**未被截断**）。但需要**明确说明以下几点**，避免误导：\n\n1. **全文均为正文**，非仅导航/元数据，代码示例完整。\n2. **原文中没有出现** \"Block / AI Core\"、\"Cube / Vector / Scalar 单元\" 的显式表述（仅在\"UB 向量化指令\"等处隐式涉及 Vector 单元概念）。\n3. **原文完全没有与 CUDA 的 grid/block/thread/SM/shared memory 做对照**（这是原文的缺失点，我会在末尾专门说明）。\n4. 原文标题自带的副标题和目录**多处未在本页正文中展开**（见第三节\"章节结构\"标注）。\n\n---\n\n## 二、元数据（原文明确给出）\n\n| 项目 | 内容 |\n|---|---|\n| **标题** | Ascend C 核函数编程模型精解：从概念到实践掌握并行计算精髓 |\n| **副标题/CMS标签** | `_ascendc并行计算理论-CSDN博客` |\n| **平台** | CSDN 博客 |\n| **作者** | CSDN 用户 `qq_39757921`（文章 URL: `/qq_39757921/article/details/154885978`） |\n| **发布时间** | 2025-11-15 23:56:53 |\n| **修改时间** | 2025-11-16 01:24:13 |\n| **标记** | 原创 |\n\n> 注：原文**未"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/qq_39757921/article/details/154885978",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "3dca855a00f0dc155640f2789c4e4968fe2aacda9e413e36e3a2deb68dda9a55",
+  "question": "请讲清昇腾 AI Core 编程模型的核心概念（AI Core / Cube / Vector / Scalar 单元、UB·L1·GM 存储层级），并与 CUDA 的 grid/block/thread/SM/shared-mem 概念怎么对应？",
+  "run_id": "Z-cann-deepseek-v4_1-flash-standard-20260921T115639",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "# Search Results for \"昇腾 AI Core 编程模型 Cube Vector Scalar 单元 UB L1 GM 存储层级\"\n\n## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n## 3. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://bbs.huaweicloud.com/blogs/471408)\n\n2025年12月24日 · 昇腾AI处理器的计算核心主要由AI C"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/IRpickstars/article/details/156223345"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.tahou.com/article/193362450480125957"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "## 3. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://bbs.huaweicloud.com/blogs/471408)\n\n2025年12月24日 · 昇腾AI处理器的计算核心主要由AI Core构成，其架构设计本质上采用了\"特定域架构\"（Domain Specific …\n\n**URL:** https://bbs.huaweicloud.com/blogs/471408\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://bbs.huaweicloud.com/blogs/471408"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "## 4. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://jishuzhan.net/article/2004114686036475905)\n\n2025年12月25日 · 本文深入剖析昇腾AI处理器的核心计算单元------AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://jishuzhan.net/article/2004114686036475905\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://jishuzhan.net/article/2004114686036475905"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+      "evidence": {
+        "event_id": "call_00_stBO2XU9FXWC3xaeRoE55130.result",
+        "quote": "## 5. [昇腾950 AI Core微架构详解：从计算单元到性能调优-CSDN博客](https://blog.csdn.net/weixin_29053383/article/details/166156591)\n\n1 天前 · 所谓AI Core微架构，是指处理器核心内部计算单元、存储层级与数据通路的组织方式，它决定了算力能否高效释放。 昇腾950 …\n\n**URL:** https://blog.csdn.net/weixin_29053383/article/details/166156591\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/weixin_29053383/article/details/166156591"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "# Search Results for \"Ascend C 算子开发指南 编程模型 核函数 AI Core GM UB L1 hiascend\"\n\n## 1. [Ascend C算子开发指南](https://asc.gitcode.com/guide/)\n\n3 天之前 · Ascend C 算子开发文档 Ascend C算子开发指南 入门教程 Ascend C概述与学习路径 环境准备 快速入门 异构系统与编程模 …\n\n**URL:** https://asc.gitcode.com/guide/\n\n---\n\n## 2. [Ascend C 算子开发入门指南（进阶版）-腾讯云开发者 …](https://cloud.tencent.com/developer/article/2606574)\n\n2025年12月22日 · Ascend C算子开发指南详解华为昇腾AI处理器高性能编程，涵盖自定义算子开发全流程、 …\n\n**URL:** https://cloud.tencent.com/developer/article/2606574\n\n---\n\n## 3. [Ascend C简介](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html)\n\n面向算子开发场景的编程语言Ascend C，原生支持C和C++标准规范，最大化匹配用户开发习惯；通过多层接口抽象、自动并行计算、 …\n\n**URL:** http"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "## 1. [Ascend C算子开发指南](https://asc.gitcode.com/guide/)\n\n3 天之前 · Ascend C 算子开发文档 Ascend C算子开发指南 入门教程 Ascend C概述与学习路径 环境准备 快速入门 异构系统与编程模 …\n\n**URL:** https://asc.gitcode.com/guide/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://asc.gitcode.com/guide/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "## 2. [Ascend C 算子开发入门指南（进阶版）-腾讯云开发者 …](https://cloud.tencent.com/developer/article/2606574)\n\n2025年12月22日 · Ascend C算子开发指南详解华为昇腾AI处理器高性能编程，涵盖自定义算子开发全流程、 …\n\n**URL:** https://cloud.tencent.com/developer/article/2606574\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://cloud.tencent.com/developer/article/2606574"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "## 3. [Ascend C简介](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html)\n\n面向算子开发场景的编程语言Ascend C，原生支持C和C++标准规范，最大化匹配用户开发习惯；通过多层接口抽象、自动并行计算、 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "## 4. [Ascend C 算子开发入门指南（进阶版）_c语言_晚霞的不甘 ...](https://devpress.csdn.net/v1/article/detail/155040385)\n\n2025年11月20日 · 在深度学习框架中， 算子（Operator） 是执行具体计算任务的最小单元。 而 Ascend C 算子 则是华为面向昇 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155040385\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/155040385"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+      "evidence": {
+        "event_id": "call_00_cenOsIgs73ivsWNL9xJX1177.result",
+        "quote": "## 5. [AscendC编程实战：从核函数到算子开发 ...](https://blog.csdn.net/rcygym/article/details/155074260)\n\n2026年7月1日 · Ascend C 作为面向昇腾 AI 处理器的原生编程范式，通过提供高效的硬件抽象层，为开发者提供了直接操控底层硬件 …\n\n**URL:** https://blog.csdn.net/rcygym/article/details/155074260\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/rcygym/article/details/155074260"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_l0JzGgFo67CdvQMbhBui8037.result",
+      "evidence": {
+        "event_id": "call_00_l0JzGgFo67CdvQMbhBui8037.result",
+        "quote": "**标题**: 快速入门-算子开发（基础篇）-Ascend C算子开发-算子开发-CANN商用版7.0.0开发文档-昇腾社区\n\n\n\n# 快速入门\n\n本入门教程，将会引导你完成以下任务，体验Ascend C算子开发的基本流程。\n\n1. 使用Ascend C完成Add算子**核函数开发**；\n2. 使用ICPU_RUN_KF CPU调测宏完成算子核函数**CPU侧运行验证**；\n3. 使用<<<>>>内核调用符完成算子核函数**NPU侧运行验证**。\n\n在正式的开发之前，还需要先完成**环境准备**和**算子分析**工作，开发Ascend C算子的基本流程如下图所示：\n\n**图1** 开发Ascend C算子的基本流程  \n\n\n- 请点击quick-start获取样例代码。\n- 使用本教程只需要您具有一定的C/C++基础，在此基础上，如果您已经对Ascend C编程模型有一定的了解，您可以在实际操作的过程中加深对理论的理解；如果您还没有开始了解Ascend C编程模型，也无需担心，您可以先尝试跑通教程中的样例，参考教程最后的指引进行进一步的学习。\n\n#### 环境准备\n\n- CANN软件安装\n  \n  开发算子前，需要先准备好开发环境和运行环境，开发环境和运行环境的介绍和具体的安装步骤可参见《CANN 软件安装指南》。\n- 环境变量配置\n  \n  安装CANN软件后，使用CANN运行用户编译、运行时，需要以CANN运行用户登录环境，执行**. ${install_path}/set_env.sh**命令设置环境变量。其中${install_path}为CANN软件的安装目录。\n\n#"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0006.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "# Search Results for \"昇腾 AI Core 硬件架构 Cube Vector Scalar L0A L0B L0C UB L1 存储层级 hiascend 文档\"\n\n## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n## 3. [昇腾950 AI Core微架构详解：从计算单元到性能调优-CSDN博客](https://blog.csdn.net/weixin_29053383/article/details/166156"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "## 1. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://blog.csdn.net/IRpickstars/article/details/156223345)\n\n2026年9月7日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向量 …\n\n**URL:** https://blog.csdn.net/IRpickstars/article/details/156223345\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.csdn.net/IRpickstars/article/details/156223345"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "## 2. [AI Core硬件架构剖析：Cube、Vector、Scalar三核协同机制](https://www.tahou.com/article/193362450480125957)\n\n2025年12月24日 · 本文深入剖析昇腾AI处理器的核心计算单元——AI Core的硬件架构，重点解析Cube（矩阵计算单元）、Vector（向 …\n\n**URL:** https://www.tahou.com/article/193362450480125957\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://www.tahou.com/article/193362450480125957"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "## 3. [昇腾950 AI Core微架构详解：从计算单元到性能调优-CSDN博客](https://blog.csdn.net/weixin_29053383/article/details/166156591)\n\n1 天前 · 所谓AI Core微架构，是指处理器核心内部计算单元、存储层级与数据通路的组织方式，它决定了算力能否高效释放。 昇腾950 …\n\n**URL:** https://blog.csdn.net/weixin_29053383/article/details/166156591\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/weixin_29053383/article/details/166156591"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "## 4. [AI Core架构](https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html)\n\n2025年10月30日 · 昇腾AI处理器 的计算核心主要由AI Core构成，其基本结构如下图所示，从控制上可以看成是一个相对简化的现代微 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+      "evidence": {
+        "event_id": "call_00_itVypjxRrm8wvhuXdGCo8552.result",
+        "quote": "## 5. [Ascend C简介-CANN8.0.RC2.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html)\n\nAI Core的主要内部存储包括：L1 Buffer（L1缓冲区），L0 Buffer（L0缓冲区），Unified Buffer（统一缓冲区）等。 为了配合AI Core …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Hy3ImpUGlirpawC1epq67345.result",
+      "evidence": {
+        "event_id": "call_00_Hy3ImpUGlirpawC1epq67345.result",
+        "quote": "**标题**: AI Core架构\n\n[](https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html)[](https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html)\n\n# AI Core架构\n\n基于TBE开发的算子运行在AI Core上，开发人员需要对AI Core架构有认识，本章节介绍AI Core架构基础知识。\n\n#### 总体架构\n\n不同于传统的支持通用计算的CPU和GPU，也不同于专用于某种特定算法的专用芯片ASIC（Application Specific Integrated Circuit），AI Core架构本质上是为了适应某个特定领域中的常见应用和算法，通常称为“特定域架构”（Domain Specific Architecture,DSA）。\n\n昇腾AI处理器的计算核心主要由AI Core构成，其基本结构如下图所示，从控制上可以看成是一个相对简化的现代微处理器的基本架构。它包括了三种基础计算资源：矩阵计算单元（Cube Unit）、向量计算单元（Vector Unit）和标量计算单元（Scalar Unit）。这三种计算单元各司其职，形成了三条独立的执行流水线，在系统软件的统一调度下互相配合达到优化的计算效率。此外"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/63RC1/operatordev/operatordevg/atlasopdev_10_0009.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_PVtwlAu6GNPOWQpi0SKu8237.result",
+      "evidence": {
+        "event_id": "call_00_PVtwlAu6GNPOWQpi0SKu8237.result",
+        "quote": "**标题**: 基本架构-硬件架构-Ascend C算子开发-算子开发-CANN8.0.RC2.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html)\n\n# 基本架构\n\n如下图所示，基于Ascend C开发的算子运行在AI Core上，对于初学者需要对硬件架构有基本认识，下文的编程模型基于硬件架构的抽象进行介绍，了解该内容能够更好的理解编程模型；对于需要完成高性能编程的深度开发者，更需要了解硬件架构相关知识，最佳实践中很多内容都以本章为基础进行介绍。\n\nAI Core负责执行标量、向量和张量相关的计算密集型算子，包括三种基础**计算单元**：Cube（矩阵）计算单元、Vector（向量）计算单元和Scalar（标量）计算单元，同时还包含**存储单元**（包括硬件存储和用于数据搬运的搬运单元）和**控制单元**。硬件架构根据Cube计算单元和Vector计算单元是否同核部署分为**耦合架构**和**分离架构**两种。如下产品型号对应的处理器架构模式如"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/devguide/opdevg/ascendcopdevg/atlas_ascendc_10_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "# Search Results for \"Ascend C 编程模型 SPMD 核函数 Block AI Core 与 CUDA block thread SM 对应\"\n\n## 1. [SPMD模型](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)\n\n2025年10月30日 · Ascend C 算子编程是SPMD（Single-Program Multiple-Data）编程，SPMD是一种常用的并行计算的方法，是提高 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html\n\n---\n\n## 2. [SPMD模型-编程模型-基本概念-自定义算子开发-AscendC ...](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-spmd-model)\n\n2026年5月12日 · AscendC算子编程是SPMD (Single-Program Multiple-Data)编程，SPMD是一种常用的并行计算的方法，是提高计算 …\n\n**URL:** https://developer.huaw"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "## 1. [SPMD模型](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)\n\n2025年10月30日 · Ascend C 算子编程是SPMD（Single-Program Multiple-Data）编程，SPMD是一种常用的并行计算的方法，是提高 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "## 2. [SPMD模型-编程模型-基本概念-自定义算子开发-AscendC ...](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-spmd-model)\n\n2026年5月12日 · AscendC算子编程是SPMD (Single-Program Multiple-Data)编程，SPMD是一种常用的并行计算的方法，是提高计算 …\n\n**URL:** https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-spmd-model\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/cannkit-spmd-model"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "## 3. [从零深入Ascend C：融合算子编程范式与核函数设计精要](https://devpress.csdn.net/aitech/6939c9b3791c233193d45998.html)\n\n2025年12月11日 · 从零深入Ascend C：融合算子编程范式与核函数设计精要 本文为昇腾Ascend C算子开发的深度入门指南。 文章 …\n\n**URL:** https://devpress.csdn.net/aitech/6939c9b3791c233193d45998.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://devpress.csdn.net/aitech/6939c9b3791c233193d45998.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "## 4. [Ascend C的编程模型 - 阿里云开发者社区](https://developer.aliyun.com/article/1643959)\n\n2024年12月5日 · 简介： Ascend C采用SPMD编程模型，实现多核并行计算。 通过将数据切分为多个分片，分配给不同的计算核心（ …\n\n**URL:** https://developer.aliyun.com/article/1643959\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://developer.aliyun.com/article/1643959"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+      "evidence": {
+        "event_id": "call_00_VgybDZrRoVZlzZXkg4ho8687.result",
+        "quote": "## 5. [Ascend C 核函数编程模型精解：从概念到实践掌握并行计算 ...](https://blog.csdn.net/qq_39757921/article/details/154885978)\n\n2025年11月16日 · 重点包括：1）从冯诺依曼到数据流架构的范式转变；2）SPMD执行模型与核函数本质；3）三级存储体系（GM-UB …\n\n**URL:** https://blog.csdn.net/qq_39757921/article/details/154885978\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://blog.csdn.net/qq_39757921/article/details/154885978"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uVD945q34GIjpq0Qh4PX4272.result",
+      "evidence": {
+        "event_id": "call_00_uVD945q34GIjpq0Qh4PX4272.result",
+        "quote": "**标题**: SPMD模型\n\n[](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)[](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html)\n\n# SPMD模型\n\nAscend C算子编程是SPMD（Single-Program Multiple-Data）编程，SPMD是一种常用的并行计算的方法，是提高计算速度的有效手段。\n\n假设，从输入数据到输出数据需要经过3个阶段任务的处理（T1、T2、T3）。如下图所示，SPMD模式下，系统会启动一组进程，并行处理待处理的数据：首先待处理数据会被切分成多个数据分片，切分后的数据分片随后被分发给不同进程处理，每个进程接收到一个或多个数据分片，并独立地对这些分片进行3个任务的处理。\n\n**图1** SPMD数据并行示意图  \n![](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/figure/zh-cn_image_0000002336177354.png)\n\n具体到Ascend C编程模型中的应用，是将需要处理的数据拆"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0013.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_yOo4yS1oUoeYT5XmPFpi1499.result",
+      "evidence": {
+        "event_id": "call_00_yOo4yS1oUoeYT5XmPFpi1499.result",
+        "quote": "**标题**: Ascend C的编程模型-阿里云开发者社区\n**发布时间**: 2024-12-05 569 发布于广东\n\n# Ascend C的编程模型\n\n**简介：** Ascend C采用SPMD编程模型，实现多核并行计算。通过将数据切分为多个分片，分配给不同的计算核心（或称为block）并行处理，每个核心根据自身的block_idx执行相同代码但处理不同的数据分片，从而提高计算效率。此模型支持高效的数据并行处理，适用于大规模数据计算任务。\n\n# 1 并发执行\n\nAscend C和cudnn相似，都是一种多核心编程的范式。想要了解Ascend C，必须得先掌握这种“多核”是怎么实现得。\n\n多核执行，说白了就是使用CPU/GPU/Ascend的物理多核并发去执行一段流程，一般情况下，可以通过以下几种方式实现：\n\n1. **多线程并行处理**：使用多线程可以将循环中的任务分配给多个线程同时执行，提高代码的执行效率。可以使用线程池来管理线程的创建和销毁，避免频繁创建和销毁线程的开销。\n2. **多进程并行处理**：使用多进程可以将循环中的任务分配给多个进程同时执行，充分利用多核处理器的优势。可以使用multiprocessing模块来创建和管理多个进程，并通过进程间通信来实现数据的共享和同步。\n3. **向量化操作**：对于一些数值计算密集型的任务，可以使用向量化操作来提高代码的执行效率。向量化操作利用了现代处理器的SIMD（Single Instruction, Multiple Data）指令集，可以同时对多个数据进行相同的操作，减少了循环的开销。在Python中，可以使"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://developer.aliyun.com/article/1643959"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_HBjtG2seo4ZVcCtsqrOg1332.result",
+      "evidence": {
+        "event_id": "call_00_HBjtG2seo4ZVcCtsqrOg1332.result",
+        "quote": "# Ascend C 核函数编程模型文章正文提取分析\n\n## 一、先说明：正文完整性与覆盖范围\n\n我已完整接收并提取了该页面的正文内容（**未被截断**）。但需要**明确说明以下几点**，避免误导：\n\n1. **全文均为正文**，非仅导航/元数据，代码示例完整。\n2. **原文中没有出现** \"Block / AI Core\"、\"Cube / Vector / Scalar 单元\" 的显式表述（仅在\"UB 向量化指令\"等处隐式涉及 Vector 单元概念）。\n3. **原文完全没有与 CUDA 的 grid/block/thread/SM/shared memory 做对照**（这是原文的缺失点，我会在末尾专门说明）。\n4. 原文标题自带的副标题和目录**多处未在本页正文中展开**（见第三节\"章节结构\"标注）。\n\n---\n\n## 二、元数据（原文明确给出）\n\n| 项目 | 内容 |\n|---|---|\n| **标题** | Ascend C 核函数编程模型精解：从概念到实践掌握并行计算精髓 |\n| **副标题/CMS标签** | `_ascendc并行计算理论-CSDN博客` |\n| **平台** | CSDN 博客 |\n| **作者** | CSDN 用户 `qq_39757921`（文章 URL: `/qq_39757921/article/details/154885978`） |\n| **发布时间** | 2025-11-15 23:56:53 |\n| **修改时间** | 2025-11-16 01:24:13 |\n| **标记** | 原创 |\n\n> 注：原文**未"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://blog.csdn.net/qq_39757921/article/details/154885978"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

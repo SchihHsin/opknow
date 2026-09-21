@@ -1,0 +1,548 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_uCiyf0epSl6h7hpDKPXs8191.result",
+      "evidence": {
+        "event_id": "call_00_uCiyf0epSl6h7hpDKPXs8191.result",
+        "quote": "**标题**: 安装torch_npu插件-安装步骤-配置与安装-TorchNPU6.0.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/configandinstg/instg/insg_0006.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_kqdnIzRhPigissftg0Ix6770.result",
+      "evidence": {
+        "event_id": "call_00_kqdnIzRhPigissftg0Ix6770.result",
+        "quote": "# 昇腾开源 · PyTorch 安装指南 — 正文提取\n\n## 一、页面标题与章节结构\n\n**页面标题**：`安装指南 — 昇腾开源 文档`\n\n**文档层级**：昇腾开源 › pytorch › 安装指南\n\n**正文引言**：\n> 跟随指导，安装在NPU上运行的PyTorch版本。\n\n**章节起止**（正文共 3 大节）：\n\n| 编号 | 章节标题 | 锚点 |\n|---|---|---|\n| 1 | 选择需要安装的 PyTorch 版本 | `#pytorch` |\n| 2 | 安装 PyTorch | `#id2` |\n| 3 | 验证安装结果 | `#id4` |\n\n> 注：正文中**未出现**独立的“从 CUDA/GPU 迁移到 NPU”章节，亦未出现具体安装命令（见下文说明）。\n\n---\n\n## 二、1. 选择需要安装的 PyTorch 版本\n\n原文说明：\n> 准备安装 PyTorch：\n\n文档以一张**交互式选择表格**给出版本对应关系，可选字段如下：\n\n- **PyTorch版本**：`2.7.1`、`2.6.0`、`2.5.1`\n- **PyTorch-NPU版本**：`null`（页面未渲染出可选值）\n- **CANN-toolkit版本**：`null`（页面未渲染出可选值）\n- **CPU架构**：`x86-64`、`aarch64`\n- **安装方式**：`Docker`、`pip`、`源码构建`\n\n### ⚠️ 提取限制说明\n**PyTorch ↔ torch_npu ↔ CANN-toolkit 的具体版本号对应关系在抓取到的页面中为动态渲染内容（"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://ascend.github.io/docs/sources/pytorch/install.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_LVil0Esv3e3KL7RXz5Vu4598.result",
+      "evidence": {
+        "event_id": "call_00_LVil0Esv3e3KL7RXz5Vu4598.result",
+        "quote": "**标题**: 模型迁移流程-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)\n\n# 模型迁移流程\n\n模型迁移流程总体可分为[模型脚本迁移](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0012.html)、[环境变量和脚本配置](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0017.html)和[关键特性适配](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0023.html)三部分，主要包含以下工作：\n\n- 模型脚本迁移：介绍如何把三方平台上的PyTorch模型代码映射到昇腾设备上。推"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_TSefMMlS8k5Xdh0mQ0Xs9528.result",
+      "evidence": {
+        "event_id": "call_00_TSefMMlS8k5Xdh0mQ0Xs9528.result",
+        "quote": "**标题**: 脚本迁移说明-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)\n\n# 脚本迁移说明\n\n脚本迁移操作的目的是将PyTorch的训练脚本迁移到昇腾AI处理器上，以支持模型在NPU上训练。\n\n目前支持3种迁移方式：自动迁移（推荐）、工具迁移、手工迁移。**推荐用户使用最简单的自动迁移方式**。\n\n迁移前要保证该脚本能在GPU或CPU上运行。\n\n- **自动迁移**：在训练脚本中导入脚本转换库，然后拉起脚本执行训练。训练脚本在运行时，会自动将脚本中的CUDA接口替换为昇腾AI处理器支持的NPU接口。整体过程为边训练边转换。\n- 工具迁移：使用迁移工具PyTorch GPU2Ascend，自动将训练脚本中的CUDA接口替换为昇腾AI处理器支持的NPU接口，并生成迁移报告（脚本转换日志、不支持算子的列表、脚本修改记录）。训练时，运行转换后的脚本。整体过程为先转换脚本，再进行训练。\n- 手工迁移：通过分析模型，对比GPU与NPU接口，手动对训练脚本进行修改，以支持在昇腾AI处理器上执行训练。迁移"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_vsM0cGw74gQwAGjGdopB0229.result",
+      "evidence": {
+        "event_id": "call_00_vsM0cGw74gQwAGjGdopB0229.result",
+        "quote": "**标题**: （推荐）自动迁移-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0014.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_DGEoalHqMPxVaQCzKfpq3646.result",
+      "evidence": {
+        "event_id": "call_00_DGEoalHqMPxVaQCzKfpq3646.result",
+        "quote": "**标题**: 工具迁移-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html)\n\n# 工具迁移\n\n工具迁移支持使用命令行方式迁移。\n\n#### 使用约束\n\n- 若用户训练脚本中包含NPU平台不支持的**amp_C**模块，需要用户手动删除后再进行训练。\n\n<!--THE END-->\n\n- 由于转换后的脚本与原始脚本平台不一致，迁移后的脚本在调试运行过程中可能会由于算子差异等原因而抛出异常，导致进程终止，该类异常需要用户根据异常信息进一步调试解决。\n\n#### 使用方法\n\n使用命令行方式进行工具迁移的核心步骤如下：\n\n1. 环境准备。\n   \n   1. 安装开发套件包Ascend-cann-toolkit。具体操作请参考《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/800/softwareinst/instg/instg_0000.html)》。\n   2. 须安装如下依赖（以root用户安装为例，"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Ta8vdbUTHS1WzzmBIRcj0829.result",
+      "evidence": {
+        "event_id": "call_00_Ta8vdbUTHS1WzzmBIRcj0829.result",
+        "quote": "**标题**: 版本配套关系-版本说明-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)\n\n# 版本配套关系\n\nAscend Extension for PyTorch代码分支名称采用**{PyTorch版本}-{昇腾版本}**的命名规则，前者为Ascend Extension for PyTorch匹配的PyTorch版本，后者为Ascend Extension for PyTorch版本，详细匹配如下表：\n\n**表1** PyTorch软件版本配套关系\n\n展开\n\nCANN版本\n\nPyTorch版本\n\nAscend Extension for PyTorch版本\n\nAscend Extension for PyTorch代码分支名称\n\nAscend Extension for PyTorch安装包版本\n\nPython版本\n\n商用版：8.0.0\n\n社区版：8.0.0.beta1\n\n2.1.0\n\n6.0.0\n\nv2.1.0-6.0.0\n\n2.1.0.post10\n\nPython3.8.*x*、Python3.9.*x*、Python3.10.*x*、Python3.11."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "f3327b3dc060020c5b9362e6d243e52af406e684acf6d87dfaac36ed208716b4",
+  "question": "我有一份 GPU(PyTorch CUDA) 训练脚本，怎么迁移到昇腾 NPU？给出迁移方式和工具。",
+  "run_id": "G-cann-deepseek-v4_1-flash-standard-20260921T101916",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "# Search Results for \"昇腾 NPU PyTorch CUDA 迁移 torch_npu 官方文档\"\n\n## 1. [昇腾 NPU 环境下 PyTorch 项目迁移](https://www.hiascend.com/dev/forum/thread-02178214133377043079-1-1.html)\n\n2026年5月14日 · 与传统 CUDA 环境不同，昇腾平台需要通过 CANN 和 torch_npu 完成 PyTorch 对 NPU 的调用。 本文从环境创建 …\n\n**URL:** https://www.hiascend.com/dev/forum/thread-02178214133377043079-1-1.html\n\n---\n\n## 2. [GPU训练迁到昇腾怎么改：torch.cuda 替换、transfer_to_npu ...](https://juejin.cn/post/7685701789798465546)\n\n5 天之前 · 昇腾知识图谱如何检索示例 检索主题: GPU 迁移 NPU 训练代码怎么改：torch.cuda 替换、transfer_to_npu 与迁移工具全景 …\n\n**URL:** https://juejin.cn/post/7685701789798465546\n\n---\n\n## 3. [华为昇腾NPU上运行pytorch —— 使用torch_npu进行模型 ...](https://www.cnblogs.com/xyz/p/19641602)\n\n2026年2月26日 · 它通过底层的 “mon"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "## 1. [昇腾 NPU 环境下 PyTorch 项目迁移](https://www.hiascend.com/dev/forum/thread-02178214133377043079-1-1.html)\n\n2026年5月14日 · 与传统 CUDA 环境不同，昇腾平台需要通过 CANN 和 torch_npu 完成 PyTorch 对 NPU 的调用。 本文从环境创建 …\n\n**URL:** https://www.hiascend.com/dev/forum/thread-02178214133377043079-1-1.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/dev/forum/thread-02178214133377043079-1-1.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "## 2. [GPU训练迁到昇腾怎么改：torch.cuda 替换、transfer_to_npu ...](https://juejin.cn/post/7685701789798465546)\n\n5 天之前 · 昇腾知识图谱如何检索示例 检索主题: GPU 迁移 NPU 训练代码怎么改：torch.cuda 替换、transfer_to_npu 与迁移工具全景 …\n\n**URL:** https://juejin.cn/post/7685701789798465546\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://juejin.cn/post/7685701789798465546"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "## 3. [华为昇腾NPU上运行pytorch —— 使用torch_npu进行模型 ...](https://www.cnblogs.com/xyz/p/19641602)\n\n2026年2月26日 · 它通过底层的 “monkey-patch”动态替换技术，将PyTorch运算自动对接至昇腾计算库，从而实现了对NPU硬件的原生 …\n\n**URL:** https://www.cnblogs.com/xyz/p/19641602\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.cnblogs.com/xyz/p/19641602"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "## 4. [PyTorch GPU代码迁移昇腾NPU全指南：从torch.cuda到 ...](https://blog.csdn.net/weixin_32285357/article/details/165931526)\n\n3 天之前 · 在GPU场景下，PyTorch 原生内置了 CUDA 后端， torch.cuda 这一整套接口直接和 CUDA runtime、cuDNN 打交道。 昇 …\n\n**URL:** https://blog.csdn.net/weixin_32285357/article/details/165931526\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/weixin_32285357/article/details/165931526"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+      "evidence": {
+        "event_id": "call_00_gmLOlRoTSx8Miec1uSEq7753.result",
+        "quote": "## 5. [GPU训练迁到昇腾怎么改：torch.cuda 替换、transfer_to_npu ...](https://blog.csdn.net/jieph01/article/details/165592649)\n\n5 天之前 · 官方提供三种方式——自动、工具、手工迁移，分别对应最小改动、离线转换与手动替换。 迁移后务必进行精度对拍，排查 …\n\n**URL:** https://blog.csdn.net/jieph01/article/details/165592649\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/jieph01/article/details/165592649"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "# Search Results for \"torch_npu 安装 版本对应表 PyTorch 昇腾 hiascend 文档 迁移\"\n\n## 1. [安装torch_npu - 华为云社区](https://bbs.huaweicloud.com/blogs/452359)\n\n2025年5月10日 · 【摘要】 环境昊算平台910b NPUdocker容器 下载中心Ascend/pytorch安装torch_npu插件-安装步骤-配置与安装-开 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/452359\n\n---\n\n## 2. [安装指南 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/pytorch/install.html)\n\n5 天之前 · 跟随指导，安装在NPU上运行的PyTorch版本。 1. 选择需要安装的 PyTorch 版本. 准备安装 PyTorch： 2. 安装 PyTorch. 如 …\n\n**URL:** https://ascend.github.io/docs/sources/pytorch/install.html\n\n---\n\n## 3. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "## 1. [安装torch_npu - 华为云社区](https://bbs.huaweicloud.com/blogs/452359)\n\n2025年5月10日 · 【摘要】 环境昊算平台910b NPUdocker容器 下载中心Ascend/pytorch安装torch_npu插件-安装步骤-配置与安装-开 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/452359\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://bbs.huaweicloud.com/blogs/452359"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "## 2. [安装指南 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/pytorch/install.html)\n\n5 天之前 · 跟随指导，安装在NPU上运行的PyTorch版本。 1. 选择需要安装的 PyTorch 版本. 准备安装 PyTorch： 2. 安装 PyTorch. 如 …\n\n**URL:** https://ascend.github.io/docs/sources/pytorch/install.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://ascend.github.io/docs/sources/pytorch/install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "## 3. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://juejin.cn/post/7685774019191799859"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "## 4. [安装torch_npu插件-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/configandinstg/instg/insg_0006.html)\n\n安装torch_npu插件 2.1 导读 torch_npu插件有如下两种安装方式： 快速安装：通过wheel格式的二进制软件包直接安装。 源码编译安 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/configandinstg/instg/insg_0006.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/configandinstg/instg/insg_0006.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+      "evidence": {
+        "event_id": "call_00_3uIqkBgdw1HeCkHCLPus2805.result",
+        "quote": "## 5. [05 PyTorch + torch_npu 安装 | 昇腾之家](https://revolutionla.github.io/AscendMate/setup/torch-npu-install)\n\n2026年9月5日 · 什么时候读：CANN 就绪后，安装最主流的 AI 框架组合 —— PyTorch + torch_npu。 torch_npu 是让 PyTorch 能在昇 …\n\n**URL:** https://revolutionla.github.io/AscendMate/setup/torch-npu-install\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://revolutionla.github.io/AscendMate/setup/torch-npu-install"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uCiyf0epSl6h7hpDKPXs8191.result",
+      "evidence": {
+        "event_id": "call_00_uCiyf0epSl6h7hpDKPXs8191.result",
+        "quote": "**标题**: 安装torch_npu插件-安装步骤-配置与安装-TorchNPU6.0.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/configandinstg/instg/insg_0006.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_kqdnIzRhPigissftg0Ix6770.result",
+      "evidence": {
+        "event_id": "call_00_kqdnIzRhPigissftg0Ix6770.result",
+        "quote": "# 昇腾开源 · PyTorch 安装指南 — 正文提取\n\n## 一、页面标题与章节结构\n\n**页面标题**：`安装指南 — 昇腾开源 文档`\n\n**文档层级**：昇腾开源 › pytorch › 安装指南\n\n**正文引言**：\n> 跟随指导，安装在NPU上运行的PyTorch版本。\n\n**章节起止**（正文共 3 大节）：\n\n| 编号 | 章节标题 | 锚点 |\n|---|---|---|\n| 1 | 选择需要安装的 PyTorch 版本 | `#pytorch` |\n| 2 | 安装 PyTorch | `#id2` |\n| 3 | 验证安装结果 | `#id4` |\n\n> 注：正文中**未出现**独立的“从 CUDA/GPU 迁移到 NPU”章节，亦未出现具体安装命令（见下文说明）。\n\n---\n\n## 二、1. 选择需要安装的 PyTorch 版本\n\n原文说明：\n> 准备安装 PyTorch：\n\n文档以一张**交互式选择表格**给出版本对应关系，可选字段如下：\n\n- **PyTorch版本**：`2.7.1`、`2.6.0`、`2.5.1`\n- **PyTorch-NPU版本**：`null`（页面未渲染出可选值）\n- **CANN-toolkit版本**：`null`（页面未渲染出可选值）\n- **CPU架构**：`x86-64`、`aarch64`\n- **安装方式**：`Docker`、`pip`、`源码构建`\n\n### ⚠️ 提取限制说明\n**PyTorch ↔ torch_npu ↔ CANN-toolkit 的具体版本号对应关系在抓取到的页面中为动态渲染内容（"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://ascend.github.io/docs/sources/pytorch/install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "# Search Results for \"昇腾 PyTorch 网络模型迁移 自动迁移 工具迁移 torch.cuda 官方文档 hiascend\"\n\n## 1. [模型迁移流程-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)\n\n模型脚本迁移：介绍如何把三方平台上的PyTorch模型代码映射到昇腾设备上。 推荐使用自动迁移，通过导入transfer_to_npu一键式迁 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html\n\n---\n\n## 2. [脚本迁移说明-模型脚本迁移-模型迁移-PyTorch 训练模型 ...](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)\n\n脚本迁移操作的目的是将PyTorch的训练脚本迁移到昇腾AI处理器上，以支持模型在NPU上训练。 目前支持3种迁移方式：自动迁移（ …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmod"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "## 1. [模型迁移流程-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)\n\n模型脚本迁移：介绍如何把三方平台上的PyTorch模型代码映射到昇腾设备上。 推荐使用自动迁移，通过导入transfer_to_npu一键式迁 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "## 2. [脚本迁移说明-模型脚本迁移-模型迁移-PyTorch 训练模型 ...](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)\n\n脚本迁移操作的目的是将PyTorch的训练脚本迁移到昇腾AI处理器上，以支持模型在NPU上训练。 目前支持3种迁移方式：自动迁移（ …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "## 3. [PyTorch 模型迁移实战：从 GPU 到 NPU](https://blog.csdn.net/passion098/article/details/161363493)\n\n2026年8月1日 · 本文详细介绍了将PyTorch模型从GPU迁移到昇腾NPU的完整流程。 首先需要安装NPU驱动、CANN工具包和适配 …\n\n**URL:** https://blog.csdn.net/passion098/article/details/161363493\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/passion098/article/details/161363493"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "## 4. [PyTorch 模型迁移实战：从 GPU 到 NPU](https://devpress.csdn.net/v1/article/detail/161363493)\n\n2026年5月24日 · 本文详细介绍了将PyTorch模型从GPU迁移到昇腾NPU的完整流程。 首先需要安装NPU驱动、CANN工具包和适配 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161363493\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/161363493"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+      "evidence": {
+        "event_id": "call_00_IvkAGlXdfQ1uPFIl5Oip6042.result",
+        "quote": "## 5. [如何将PyTorch模型迁移到昇腾平台](https://hwcomputing.csdn.net/695f582c0846ec2c4c5ad8e0.html)\n\n2023年4月18日 · 为了使这些脚本能够利用昇腾AI处理器的强大算力执行训练，需要对PyTorch的训练脚本进行迁移。 首先，我们了解 …\n\n**URL:** https://hwcomputing.csdn.net/695f582c0846ec2c4c5ad8e0.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://hwcomputing.csdn.net/695f582c0846ec2c4c5ad8e0.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_LVil0Esv3e3KL7RXz5Vu4598.result",
+      "evidence": {
+        "event_id": "call_00_LVil0Esv3e3KL7RXz5Vu4598.result",
+        "quote": "**标题**: 模型迁移流程-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html)\n\n# 模型迁移流程\n\n模型迁移流程总体可分为[模型脚本迁移](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0012.html)、[环境变量和脚本配置](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0017.html)和[关键特性适配](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0023.html)三部分，主要包含以下工作：\n\n- 模型脚本迁移：介绍如何把三方平台上的PyTorch模型代码映射到昇腾设备上。推"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0011.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_TSefMMlS8k5Xdh0mQ0Xs9528.result",
+      "evidence": {
+        "event_id": "call_00_TSefMMlS8k5Xdh0mQ0Xs9528.result",
+        "quote": "**标题**: 脚本迁移说明-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html)\n\n# 脚本迁移说明\n\n脚本迁移操作的目的是将PyTorch的训练脚本迁移到昇腾AI处理器上，以支持模型在NPU上训练。\n\n目前支持3种迁移方式：自动迁移（推荐）、工具迁移、手工迁移。**推荐用户使用最简单的自动迁移方式**。\n\n迁移前要保证该脚本能在GPU或CPU上运行。\n\n- **自动迁移**：在训练脚本中导入脚本转换库，然后拉起脚本执行训练。训练脚本在运行时，会自动将脚本中的CUDA接口替换为昇腾AI处理器支持的NPU接口。整体过程为边训练边转换。\n- 工具迁移：使用迁移工具PyTorch GPU2Ascend，自动将训练脚本中的CUDA接口替换为昇腾AI处理器支持的NPU接口，并生成迁移报告（脚本转换日志、不支持算子的列表、脚本修改记录）。训练时，运行转换后的脚本。整体过程为先转换脚本，再进行训练。\n- 手工迁移：通过分析模型，对比GPU与NPU接口，手动对训练脚本进行修改，以支持在昇腾AI处理器上执行训练。迁移"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0013.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_F6a6CIBRBmdw1Hbzdwug1937.result",
+      "evidence": {
+        "event_id": "call_00_F6a6CIBRBmdw1Hbzdwug1937.result",
+        "quote": "**标题**: （推荐）自动迁移-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0014.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_vsM0cGw74gQwAGjGdopB0229.result",
+      "evidence": {
+        "event_id": "call_00_vsM0cGw74gQwAGjGdopB0229.result",
+        "quote": "**标题**: （推荐）自动迁移-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0014.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_DGEoalHqMPxVaQCzKfpq3646.result",
+      "evidence": {
+        "event_id": "call_00_DGEoalHqMPxVaQCzKfpq3646.result",
+        "quote": "**标题**: 工具迁移-模型脚本迁移-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html)\n\n# 工具迁移\n\n工具迁移支持使用命令行方式迁移。\n\n#### 使用约束\n\n- 若用户训练脚本中包含NPU平台不支持的**amp_C**模块，需要用户手动删除后再进行训练。\n\n<!--THE END-->\n\n- 由于转换后的脚本与原始脚本平台不一致，迁移后的脚本在调试运行过程中可能会由于算子差异等原因而抛出异常，导致进程终止，该类异常需要用户根据异常信息进一步调试解决。\n\n#### 使用方法\n\n使用命令行方式进行工具迁移的核心步骤如下：\n\n1. 环境准备。\n   \n   1. 安装开发套件包Ascend-cann-toolkit。具体操作请参考《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/800/softwareinst/instg/instg_0000.html)》。\n   2. 须安装如下依赖（以root用户安装为例，"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0015.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "# Search Results for \"TorchNPU PyTorch CANN 版本配套表 昇腾社区 6.0.0 支持版本\"\n\n## 1. [pytorch/COMPATIBILITY.md at master · Ascend/pytorch ...](https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md)\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。 各版本间的匹配关系由昇腾社区统一维护，建议优先使 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md\n\n---\n\n## 2. [版本配套关系-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)\n\n文档中心 版本配套关系 Ascend Extension for PyTorch 代码分支名称采用 {PyTorch版本}- {昇腾版本} 的命名规则，前者为 Ascend …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html\n\n---\n\n## 3. [昇"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "## 1. [pytorch/COMPATIBILITY.md at master · Ascend/pytorch ...](https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md)\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。 各版本间的匹配关系由昇腾社区统一维护，建议优先使 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0011-rank-1",
+      "url": "https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "## 2. [版本配套关系-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)\n\n文档中心 版本配套关系 Ascend Extension for PyTorch 代码分支名称采用 {PyTorch版本}- {昇腾版本} 的命名规则，前者为 Ascend …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0011-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "## 3. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://hwcomputing.csdn.net/6aaa02e7cf836948fcd2557d.html)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），通过get_cann_version与环境变量校验版本 …\n\n**URL:** https://hwcomputing.csdn.net/6aaa02e7cf836948fcd2557d.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0011-rank-3",
+      "url": "https://hwcomputing.csdn.net/6aaa02e7cf836948fcd2557d.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "## 4. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0011-rank-4",
+      "url": "https://juejin.cn/post/7685774019191799859"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+      "evidence": {
+        "event_id": "call_00_ZHK2mHWygh6jFSgssQ8D3793.result",
+        "quote": "## 5. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://blog.csdn.net/jieph01/article/details/165593745)\n\n3 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），通过get_cann_version与环境变量校验版本 …\n\n**URL:** https://blog.csdn.net/jieph01/article/details/165593745\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0011-rank-5",
+      "url": "https://blog.csdn.net/jieph01/article/details/165593745"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Ta8vdbUTHS1WzzmBIRcj0829.result",
+      "evidence": {
+        "event_id": "call_00_Ta8vdbUTHS1WzzmBIRcj0829.result",
+        "quote": "**标题**: 版本配套关系-版本说明-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html)\n\n# 版本配套关系\n\nAscend Extension for PyTorch代码分支名称采用**{PyTorch版本}-{昇腾版本}**的命名规则，前者为Ascend Extension for PyTorch匹配的PyTorch版本，后者为Ascend Extension for PyTorch版本，详细匹配如下表：\n\n**表1** PyTorch软件版本配套关系\n\n展开\n\nCANN版本\n\nPyTorch版本\n\nAscend Extension for PyTorch版本\n\nAscend Extension for PyTorch代码分支名称\n\nAscend Extension for PyTorch安装包版本\n\nPython版本\n\n商用版：8.0.0\n\n社区版：8.0.0.beta1\n\n2.1.0\n\n6.0.0\n\nv2.1.0-6.0.0\n\n2.1.0.post10\n\nPython3.8.*x*、Python3.9.*x*、Python3.10.*x*、Python3.11."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/quickstart/releasenote/releasenote_0001.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

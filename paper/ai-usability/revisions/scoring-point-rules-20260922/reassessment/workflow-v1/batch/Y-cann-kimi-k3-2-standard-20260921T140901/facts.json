@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_2f596249.result",
+      "evidence": {
+        "event_id": "WebFetch_1_2f596249.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_9f16a8a5.result",
+      "evidence": {
+        "event_id": "WebFetch_2_9f16a8a5.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_7d2fd69e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_7d2fd69e.result",
+        "quote": "**标题**: --soc_version-目标芯片选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n# --soc_version\n\n#### 功能说明\n\n配置模型在推理运行阶段所使用的昇腾AI处理器型号。\n\n模型转换阶段不依赖昇腾AI处理器，但是转换时使用的--soc_version取值，必须为转换后模型运行阶段所使用的昇腾AI处理器型号。\n\n兼容性说明：\n\n- 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。\n- 部署运行环境要求：请确保产品运行环境的CANN软件包版本不低于转换om模型时转换环境的CANN软件包版本。\n- 低版本的CANN软件包环境上转换出的om离线模型，支持在高版本的CANN软件包环境上运行，兼容4个版本周期。\n\n#### 关联参数\n\n无。\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_b2d744bb.result",
+      "evidence": {
+        "event_id": "WebFetch_6_b2d744bb.result",
+        "quote": "**标题**: 昇腾NPU芯片代际：A2/A3/A5、910_95/910_96、arch22/arch35 宏怎么对应精准掌握昇腾三套 - 掘金\n**发布时间**: 2026-09-10 31 阅读4分钟\n\n# 昇腾NPU芯片代际：A2/A3/A5、910_95/910_96、arch22/arch35 宏怎么对应\n\n[升腾锦程](https://juejin.cn/user/815192959091258/posts)\n\n关注\n\n> 一句话让Agent变成昇腾专家，不必再找人问了。评测入口： （To Agent）请按这个开源仓接入昇腾图谱 [gitcode.com/agent0/kg-t…](https://link.juejin.cn?target=https%3A%2F%2Fgitcode.com%2Fagent0%2Fkg-tools \"https://gitcode.com/agent0/kg-tools\")\n\n写跨平台算子或编译脚本时，昇腾的芯片代号有三套并行的命名体系：服务器平台名（A2/A3/A5）、soc_version 字符串（Ascend910B3、Ascend910_9392、Ascend950PR_9589）、架构宏（`__NPU_ARCH__` 2201/3510，编译器内还有 arch22/arch35 目录）。三套体系对不齐是编译报错和 tiling 错配的常见根因。\n\n## 一、核心映射表（各节点原文汇总）\n\n平台芯片soc_version 示例`__NPU_ARCH__`arch 目录编程模型Atlas A2Ascend 910B（单 di"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://juejin.cn/post/7683722642071191602",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_1d54c606.result",
+      "evidence": {
+        "event_id": "WebFetch_8_1d54c606.result",
+        "quote": "**标题**: CANN算子清单-算子清单-CANN商用版6.0.1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_c63c5ad1.result",
+      "evidence": {
+        "event_id": "WebFetch_9_c63c5ad1.result",
+        "quote": "**标题**: --soc_version-目标芯片选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n# --soc_version\n\n#### 功能说明\n\n配置模型在推理运行阶段所使用的昇腾AI处理器型号。\n\n模型转换阶段不依赖昇腾AI处理器，但是转换时使用的--soc_version取值，必须为转换后模型运行阶段所使用的昇腾AI处理器型号。\n\n兼容性说明：\n\n- 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。\n- 部署运行环境要求：请确保产品运行环境的CANN软件包版本不低于转换om模型时转换环境的CANN软件包版本。\n- 低版本的CANN软件包环境上转换出的om离线模型，支持在高版本的CANN软件包环境上运行，兼容4个版本周期。\n\n#### 关联参数\n\n无。\n\n[](https://www.hiascend.com/document/detai"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "2b46b807f6a71a6042d754979790a570293973bb0496d4fe17dedcc2f4dfd85c",
+  "question": "我的模型从一款昇腾芯片迁到另一款（如 310→910 或不同昇腾型号），要注意什么（soc_version 重新 ATC 转 .om、算子支持差异、精度/性能重测）？",
+  "run_id": "Y-cann-kimi-k3-2-standard-20260921T140901",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "# Search Results for \"昇腾 ATC 模型转换 soc_version 官方文档 hiascend\"\n\n## 1. [--soc_version-目标芯片选项-基础功能参数-参数说明-ATC ...](https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html)\n\n使用atc命令转换模型时，实际配置的 <soc_version> 值，要去掉 “Chip Name” 对应取值中的空格，例 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html\n\n---\n\n## 2. [--soc_version-目标芯片选项-基础功能参数-参数说明-ATC ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html)\n\n医疗 大规模专家并行解决方案 昇腾大模型解决方案 昇腾生态解决方案 开发者 从入门到进阶，开启昇 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/C"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "## 1. [--soc_version-目标芯片选项-基础功能参数-参数说明-ATC ...](https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html)\n\n使用atc命令转换模型时，实际配置的 <soc_version> 值，要去掉 “Chip Name” 对应取值中的空格，例 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "## 2. [--soc_version-目标芯片选项-基础功能参数-参数说明-ATC ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html)\n\n医疗 大规模专家并行解决方案 昇腾大模型解决方案 昇腾生态解决方案 开发者 从入门到进阶，开启昇 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "## 3. [华为昇腾Atlas部署YOLO全流程：从模型转换到推理调优](https://blog.csdn.net/weixin_29061997/article/details/166095869)\n\n2 天之前 · 在视频分析、目标检测等场景中，推理加速卡能显著降低CPU占用并提升多路处理能力。 以 …\n\n**URL:** https://blog.csdn.net/weixin_29061997/article/details/166095869\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/weixin_29061997/article/details/166095869"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "## 4. [ATC模型转换工具](https://caixiongjiang.github.io/blog/2023/%E5%8D%8E%E4%B8%BA%E6%98%87%E8%85%BE%E9%83%A8%E7%BD%B2/atc%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/)\n\n2023年8月9日 · ATC模型转换工具聚焦于开源框架的网络模型（Caffe，TensorFlow，Pytorch）通过昇 …\n\n**URL:** https://caixiongjiang.github.io/blog/2023/%E5%8D%8E%E4%B8%BA%E6%98%87%E8%85%BE%E9%83%A8%E7%BD%B2/atc%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://caixiongjiang.github.io/blog/2023/%E5%8D%8E%E4%B8%BA%E6%98%87%E8%85%BE%E9%83%A8%E7%BD%B2/atc%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_c067194c.result",
+      "evidence": {
+        "event_id": "WebSearch_0_c067194c.result",
+        "quote": "## 5. [昇腾ATC工具使用详解：如何正确设置input_shape和soc ...](https://blog.csdn.net/weixin_29043895/article/details/158228653)\n\n2026年2月20日 · 本文详细解析了华为昇腾ATC工具中input_shape和soc_version参数的配置方法，帮 …\n\n**URL:** https://blog.csdn.net/weixin_29043895/article/details/158228653\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/weixin_29043895/article/details/158228653"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_2f596249.result",
+      "evidence": {
+        "event_id": "WebFetch_1_2f596249.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_9f16a8a5.result",
+      "evidence": {
+        "event_id": "WebFetch_2_9f16a8a5.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha003/devaids/atctool/atlasatcparam_16_0036.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "# Search Results for \"昇腾 310 910 芯片 迁移 算子支持差异 om 模型 兼容性\"\n\n## 1. [华为昇腾芯片适配全流程：Ascend平台模型转换终极指南](https://www.toutiao.com/article/7483012399730082342/)\n\n2025年3月18日 · 但如何将传统框架模型高效迁移至昇腾平台，仍是许多开发者的痛点。 本文将从算子兼容性分析、数据类型精度调优 …\n\n**URL:** https://www.toutiao.com/article/7483012399730082342/\n\n---\n\n## 2. [华为昇腾NPU与NVIDIA CUDA生态兼容层开发实录：手写 ...](https://jishuzhan.net/article/1943502434441146370)\n\n2025年7月10日 · 当国产AI芯片崛起遭遇生态壁垒，如何实现CUDA算子到昇腾平台的无损迁移成为关键挑战。 本文首次公开基于抽象 …\n\n**URL:** https://jishuzhan.net/article/1943502434441146370\n\n---\n\n## 3. [华为算力卡全解析：昇腾芯片如何撑起国产AI算力_百度文库](https://wenku.baidu.com/view/602b386d7d563c1ec5da50e2524de518964bd3a9.html)\n\n例如DeepSeek-V4的训练就采用“英伟达GPU承担核心计算密集型阶段 + 华为昇腾承担推理适配与轻量微调”的分层策略。 昇腾91"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "## 1. [华为昇腾芯片适配全流程：Ascend平台模型转换终极指南](https://www.toutiao.com/article/7483012399730082342/)\n\n2025年3月18日 · 但如何将传统框架模型高效迁移至昇腾平台，仍是许多开发者的痛点。 本文将从算子兼容性分析、数据类型精度调优 …\n\n**URL:** https://www.toutiao.com/article/7483012399730082342/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://www.toutiao.com/article/7483012399730082342/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "## 2. [华为昇腾NPU与NVIDIA CUDA生态兼容层开发实录：手写 ...](https://jishuzhan.net/article/1943502434441146370)\n\n2025年7月10日 · 当国产AI芯片崛起遭遇生态壁垒，如何实现CUDA算子到昇腾平台的无损迁移成为关键挑战。 本文首次公开基于抽象 …\n\n**URL:** https://jishuzhan.net/article/1943502434441146370\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://jishuzhan.net/article/1943502434441146370"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "## 3. [华为算力卡全解析：昇腾芯片如何撑起国产AI算力_百度文库](https://wenku.baidu.com/view/602b386d7d563c1ec5da50e2524de518964bd3a9.html)\n\n例如DeepSeek-V4的训练就采用“英伟达GPU承担核心计算密集型阶段 + 华为昇腾承担推理适配与轻量微调”的分层策略。 昇腾910B在 …\n\n**URL:** https://wenku.baidu.com/view/602b386d7d563c1ec5da50e2524de518964bd3a9.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://wenku.baidu.com/view/602b386d7d563c1ec5da50e2524de518964bd3a9.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "## 4. [一天一个昇腾 Agent-Skills 小技巧：轻松完成昇腾910 到昇 ...](https://blog.csdn.net/qq_39497565/article/details/164034932)\n\n2026年8月30日 · 本文介绍的 op-ascend-migration Skill，聚焦昇腾 910 到昇腾 310P 的迁移场景，提供一套从静态扫描、路线选择、 …\n\n**URL:** https://blog.csdn.net/qq_39497565/article/details/164034932\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/qq_39497565/article/details/164034932"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_d0a004c0.result",
+      "evidence": {
+        "event_id": "WebSearch_3_d0a004c0.result",
+        "quote": "## 5. [昇腾 910B 国产 GPU 适配改造，异构算力租赁兼容 CUDA ...](https://cloud.tencent.com/developer/article/2690422)\n\n2026年6月16日 · 2026年政务金融信创项目强制国产算力替代，昇腾910B成为主流NPU机型。 实测显示84%企业AI业务基于CUDA开 …\n\n**URL:** https://cloud.tencent.com/developer/article/2690422\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://cloud.tencent.com/developer/article/2690422"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "# Search Results for \"soc_version 取值 Ascend910B3 Ascend310P3 ATC 芯片型号 对应\"\n\n## 1. [--soc_version-CANN8.0.0.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n兼容性说明： 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。 部署运行环境要 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html\n\n---\n\n## 2. [--soc_version-CANN商用版8.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n兼容性说明： 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。 部署运行环境要 …\n\n**URL:** http"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "## 1. [--soc_version-CANN8.0.0.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n兼容性说明： 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。 部署运行环境要 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "## 2. [--soc_version-CANN商用版8.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n兼容性说明： 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。 部署运行环境要 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "## 3. [昇腾NPU芯片代际：A2/A3/A5、910_95/910_96、arch22 ...](https://juejin.cn/post/7683722642071191602)\n\n2026年9月10日 · 精准掌握昇腾三套命名体系（平台名、soc_version、__NPU_ARCH__）映射关系，避免编译报错与tiling错配。 重 …\n\n**URL:** https://juejin.cn/post/7683722642071191602\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://juejin.cn/post/7683722642071191602"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "## 4. [--soc_version-目标芯片选项-基础功能参数-参数说明-ATC ...](https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html)\n\n使用atc命令转换模型时，实际配置的 <soc_version> 值，要去掉 “Chip Name” 对应取值中的空格，例如 “Chip Name” 对应取值 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/5046/inferapplicationdev/atctool/atlasatc_16_0064.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_768d15c7.result",
+      "evidence": {
+        "event_id": "WebSearch_4_768d15c7.result",
+        "quote": "## 5. [Atlas 300V 24G部署YOLO实战：推理加速卡选型与pyACL ...](https://blog.csdn.net/weixin_32597009/article/details/165940994)\n\n3 天之前 · 如果你的环境里插了两张 Atlas 300V，这里会列出两个设备，设备号从 0 开始。 看见设备后，还需要确认算力芯片对应的 …\n\n**URL:** https://blog.csdn.net/weixin_32597009/article/details/165940994\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://blog.csdn.net/weixin_32597009/article/details/165940994"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_7d2fd69e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_7d2fd69e.result",
+        "quote": "**标题**: --soc_version-目标芯片选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n# --soc_version\n\n#### 功能说明\n\n配置模型在推理运行阶段所使用的昇腾AI处理器型号。\n\n模型转换阶段不依赖昇腾AI处理器，但是转换时使用的--soc_version取值，必须为转换后模型运行阶段所使用的昇腾AI处理器型号。\n\n兼容性说明：\n\n- 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。\n- 部署运行环境要求：请确保产品运行环境的CANN软件包版本不低于转换om模型时转换环境的CANN软件包版本。\n- 低版本的CANN软件包环境上转换出的om离线模型，支持在高版本的CANN软件包环境上运行，兼容4个版本周期。\n\n#### 关联参数\n\n无。\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0036.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_b2d744bb.result",
+      "evidence": {
+        "event_id": "WebFetch_6_b2d744bb.result",
+        "quote": "**标题**: 昇腾NPU芯片代际：A2/A3/A5、910_95/910_96、arch22/arch35 宏怎么对应精准掌握昇腾三套 - 掘金\n**发布时间**: 2026-09-10 31 阅读4分钟\n\n# 昇腾NPU芯片代际：A2/A3/A5、910_95/910_96、arch22/arch35 宏怎么对应\n\n[升腾锦程](https://juejin.cn/user/815192959091258/posts)\n\n关注\n\n> 一句话让Agent变成昇腾专家，不必再找人问了。评测入口： （To Agent）请按这个开源仓接入昇腾图谱 [gitcode.com/agent0/kg-t…](https://link.juejin.cn?target=https%3A%2F%2Fgitcode.com%2Fagent0%2Fkg-tools \"https://gitcode.com/agent0/kg-tools\")\n\n写跨平台算子或编译脚本时，昇腾的芯片代号有三套并行的命名体系：服务器平台名（A2/A3/A5）、soc_version 字符串（Ascend910B3、Ascend910_9392、Ascend950PR_9589）、架构宏（`__NPU_ARCH__` 2201/3510，编译器内还有 arch22/arch35 目录）。三套体系对不齐是编译报错和 tiling 错配的常见根因。\n\n## 一、核心映射表（各节点原文汇总）\n\n平台芯片soc_version 示例`__NPU_ARCH__`arch 目录编程模型Atlas A2Ascend 910B（单 di"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://juejin.cn/post/7683722642071191602"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "# Search Results for \"昇腾 CANN 算子支持清单 不同芯片 算子支持差异 文档\"\n\n## 1. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n## 2. [CANN算子清单-算子清单-CANN商用版6.0.1开发文档-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html)\n\nCANN算子库支持的算子规格说明。\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html\n\n---\n\n## 3. [昇腾生态开发深度实践：CANN算子库架构解析与MindSpore ...](https://blog.csdn.net/2601_96690100/article/details/165874800)\n\n3 天之前 · 本文基于CANN 5.0.2.alpha与MindSpore"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "## 1. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算架构，向上支持 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://www.hiascend.com/cann/document"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "## 2. [CANN算子清单-算子清单-CANN商用版6.0.1开发文档-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html)\n\nCANN算子库支持的算子规格说明。\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "## 3. [昇腾生态开发深度实践：CANN算子库架构解析与MindSpore ...](https://blog.csdn.net/2601_96690100/article/details/165874800)\n\n3 天之前 · 本文基于CANN 5.0.2.alpha与MindSpore 2.2.10，深入解析昇腾生态算子库架构与模型优化路径。 从算子分层设计、自定 …\n\n**URL:** https://blog.csdn.net/2601_96690100/article/details/165874800\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/2601_96690100/article/details/165874800"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "## 4. [华为 CANN 配置手册、产品文档、PDF - 华为 - Huawei ...](https://support.huawei.com/enterprise/zh/ascend-computing/cann-pid-251168373)\n\n2020年12月15日 · CANN：包括配置手册、HedEx文档、软件下载、补丁升级、案例、工具、产品公告、视频、论坛等内容。\n\n**URL:** https://support.huawei.com/enterprise/zh/ascend-computing/cann-pid-251168373\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://support.huawei.com/enterprise/zh/ascend-computing/cann-pid-251168373"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_3425c324.result",
+      "evidence": {
+        "event_id": "WebSearch_7_3425c324.result",
+        "quote": "## 5. [昇腾生态开发深度实践：CANN算子库架构解析与MindSpore ...](https://jishuzhan.net/article/2101150786877837314)\n\n2 天之前 · 昇腾AI生态中，CANN作为芯片使能层承担着算子编译与执行的关键角色，而MindSpore则通过图算融合将计算图自动拆解 …\n\n**URL:** https://jishuzhan.net/article/2101150786877837314\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://jishuzhan.net/article/2101150786877837314"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_1d54c606.result",
+      "evidence": {
+        "event_id": "WebFetch_8_1d54c606.result",
+        "quote": "**标题**: CANN算子清单-算子清单-CANN商用版6.0.1开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/601/oplist/operatorlist/operatorlist_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_c63c5ad1.result",
+      "evidence": {
+        "event_id": "WebFetch_9_c63c5ad1.result",
+        "quote": "**标题**: --soc_version-目标芯片选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html)\n\n# --soc_version\n\n#### 功能说明\n\n配置模型在推理运行阶段所使用的昇腾AI处理器型号。\n\n模型转换阶段不依赖昇腾AI处理器，但是转换时使用的--soc_version取值，必须为转换后模型运行阶段所使用的昇腾AI处理器型号。\n\n兼容性说明：\n\n- 不同产品，只要--soc_version取值相同，则只需转换一次模型，即可分别在这些产品上进行部署运行。\n- 部署运行环境要求：请确保产品运行环境的CANN软件包版本不低于转换om模型时转换环境的CANN软件包版本。\n- 低版本的CANN软件包环境上转换出的om离线模型，支持在高版本的CANN软件包环境上运行，兼容4个版本周期。\n\n#### 关联参数\n\n无。\n\n[](https://www.hiascend.com/document/detai"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/devtools/atc/atlasatcparam_16_0036.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

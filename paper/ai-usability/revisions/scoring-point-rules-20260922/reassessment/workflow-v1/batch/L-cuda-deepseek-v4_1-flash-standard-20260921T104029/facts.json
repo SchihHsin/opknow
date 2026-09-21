@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_4PynDHnFAGR0aEgrKkwl9471.result",
+      "evidence": {
+        "event_id": "call_00_4PynDHnFAGR0aEgrKkwl9471.result",
+        "quote": "**标题**: Numerical accuracy — PyTorch 2.14 documentation\n**发布时间**: Created On: May 13, 2026 | Last Updated On: Jun 01, 2026\n\nBack to top\n\n# Numerical accuracy[#](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html#numerical-accuracy \"Link to this heading\")\n\nIn modern computers, floating point numbers are represented using IEEE 754 standard. For more details on floating point arithmetic and IEEE 754 standard, please see [Floating point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic). In particular, note that floating point provides limited accuracy (about 7 decimal digits for single precision floating point numbers, about 16 decimal digits for double precision"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_JSwqavxrlfQDDcb6sTvj9957.result",
+      "evidence": {
+        "event_id": "call_00_JSwqavxrlfQDDcb6sTvj9957.result",
+        "quote": "# Verifying/Testing Custom C++/CUDA Operators\n\n## Summary of Relevant Content\n\nThe tutorial contains **one dedicated section on testing**: **\"Testing an operator\"**. It centers on `torch.library.opcheck`, and explicitly discusses (but does *not* provide) gradient checking. Notably, the tutorial **does not use or mention `gradcheck` code, `float64`/`double` precision, or tolerances** anywhere in its testing coverage — those are referenced only as recommendations the reader should write themselves. This is a significant gap given your request.\n\n---\n\n## Section: \"Testing an operator\"\n\n### Key statements (verbatim)\n\n> Use `torch.library.opcheck` to test that the custom op was registered correctl"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_q6x0K06QXwxmHm9kvPPh2843.result",
+      "evidence": {
+        "event_id": "call_00_q6x0K06QXwxmHm9kvPPh2843.result",
+        "quote": "# Floating-Point Computation in CUDA — Extracted Guidance\n\nBelow is a complete extraction of the CUDA Programming Guide content on floating-point computation, organized by the topics you requested: FMA, `--use_fast_math`/`-use_fast_math`, denormals/FTZ, `-fmad`, IEEE 754 compliance, rounding, and accuracy/portability guidance.\n\n---\n\n## 1. Fused Multiply-Add (FMA)\n\n**Section 5.5.1.5 — Fused Multiply-Add (FMA)**\n\nThe FMA operation computes the result with only **one rounding step**. Without FMA, the result would require **two rounding steps**: one for multiplication and one for addition. Because the FMA uses only one rounding step, it produces a **more accurate result**.\n\n**NaN propagation not"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_p1i23osEN6LTpFUGsYaA7671.result",
+      "evidence": {
+        "event_id": "call_00_p1i23osEN6LTpFUGsYaA7671.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n- Install PyTorch\n- User Guide\n\n- PyTorch Main Components\n  - torch.compiler\n  - torch.export\n  - Developer Notes\n  - Accelerator Integration\n- Reference API\n\n[...]\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expecte"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/testing.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_uU4VvNttddmHmSgKwlBT0306.result",
+      "evidence": {
+        "event_id": "call_00_uU4VvNttddmHmSgKwlBT0306.result",
+        "quote": "**标题**: torch.use_deterministic_algorithms — PyTorch main documentation\n\nThis website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy Policy\n\nManage Preferences\n\nSkip to main content\n\nBack to top\n\n`Ctrl`+`K`\n\n\n\n![PyTorch - Home ](https://docs.pytorch.org/docs/main/index.html)\n\n![PyTorch - Home ](https://docs.pytorch.org/docs/main/index.html)\n\nv2.15.0 (unstable)\n\n[...]\n\nch.use_deterministic_algorithms.html)v1.9.0v1.8.1v1.8.0v1.7.1v1.7.0v1.6.0v1.5.1v1.5.0v1.4.0v1.3.1v1.3.0v1.2.0v1.1.0v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# torch."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/main/generated/torch.use_deterministic_algorithms.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_xvFxk1frLGqkM2YUlvnN1142.result",
+      "evidence": {
+        "event_id": "call_00_xvFxk1frLGqkM2YUlvnN1142.result",
+        "quote": "**标题**: Reproducibility — PyTorch 2.14 documentation\n**发布时间**: Created On: May 14, 2026 | Last Updated On: May 14, 2026\n\nBack to top\n\n# Reproducibility[#](https://docs.pytorch.org/docs/2.14/notes/randomness.html#reproducibility \"Link to this heading\")\n\nCompletely reproducible results are not guaranteed across PyTorch releases, individual commits, or different platforms. Furthermore, results may not be reproducible between CPU and GPU executions, even when using identical seeds.\n\nHowever, there are some steps you can take to limit the number of sources of nondeterministic behavior for a specific platform, device, and PyTorch release. First, you can control sources of randomness that can cause"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/notes/randomness.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "7a1502bb9442035ad882e92d766f589133c28b1ccdbe3a65bb964fad79041851",
+  "question": "我的自定义 CUDA 算子结果和 CPU/PyTorch 参考不一致，怎么定位数值精度问题（逐层/逐元素比对）？",
+  "run_id": "L-cuda-deepseek-v4_1-flash-standard-20260921T104029",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "# Search Results for \"PyTorch numerical accuracy notes custom CUDA operator compare torch.testing.assert_close float64 reference\"\n\n## 1. [自定义 C++ 和 CUDA 算子 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html)\n\n2026年1月20日 · 注意 本教程无需任何额外修改，同样适用于 AMD ROCm。 PyTorch 提供了大量用于张量操作的算子库（例如 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n## 2. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors (e.g. torch.add, torch.sum, etc). However, you may …\n\n**URL:** https://docs.pytorch.org/tutorials/a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "## 1. [自定义 C++ 和 CUDA 算子 — PyTorch 教程 2.14.0+cu130 ...](https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html)\n\n2026年1月20日 · 注意 本教程无需任何额外修改，同样适用于 AMD ROCm。 PyTorch 提供了大量用于张量操作的算子库（例如 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.ac.cn/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "## 2. [Custom C++ and CUDA Operators - PyTorch](https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors (e.g. torch.add, torch.sum, etc). However, you may …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "## 3. [数值精度 — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html)\n\n2026年5月13日 · 特别需要注意的是，浮点数提供的精度有限（单精度浮点数约为 7 位十进制有效数字，双精度浮点数约为 16 位十进 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/docs/2.14/notes/numerical_accuracy.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "## 4. [自定义 C++ 和 CUDA 运算符 | PyTorch 1.0 -- Pytorch官方 ...](https://pytorch.it-docs.cn/tutorials_en/1.0/advanced.cpp_custom_ops.html)\n\nPyTorch offers a large library of operators that work on Tensors (e.g. torch.add, torch.sum, etc). However, you may wish to bring a …\n\n**URL:** https://pytorch.it-docs.cn/tutorials_en/1.0/advanced.cpp_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://pytorch.it-docs.cn/tutorials_en/1.0/advanced.cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+      "evidence": {
+        "event_id": "call_00_JhyN0nfMWvz3Ua2ovZpC1676.result",
+        "quote": "## 5. [Numerical accuracy — PyTorch 2.14 documentation](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html)\n\n2026年5月13日 · This will improve numerical accuracy of the final output for the math backend with FP16/BF16 inputs, but increases …\n\n**URL:** https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PynDHnFAGR0aEgrKkwl9471.result",
+      "evidence": {
+        "event_id": "call_00_4PynDHnFAGR0aEgrKkwl9471.result",
+        "quote": "**标题**: Numerical accuracy — PyTorch 2.14 documentation\n**发布时间**: Created On: May 13, 2026 | Last Updated On: Jun 01, 2026\n\nBack to top\n\n# Numerical accuracy[#](https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html#numerical-accuracy \"Link to this heading\")\n\nIn modern computers, floating point numbers are represented using IEEE 754 standard. For more details on floating point arithmetic and IEEE 754 standard, please see [Floating point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic). In particular, note that floating point provides limited accuracy (about 7 decimal digits for single precision floating point numbers, about 16 decimal digits for double precision"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JSwqavxrlfQDDcb6sTvj9957.result",
+      "evidence": {
+        "event_id": "call_00_JSwqavxrlfQDDcb6sTvj9957.result",
+        "quote": "# Verifying/Testing Custom C++/CUDA Operators\n\n## Summary of Relevant Content\n\nThe tutorial contains **one dedicated section on testing**: **\"Testing an operator\"**. It centers on `torch.library.opcheck`, and explicitly discusses (but does *not* provide) gradient checking. Notably, the tutorial **does not use or mention `gradcheck` code, `float64`/`double` precision, or tolerances** anywhere in its testing coverage — those are referenced only as recommendations the reader should write themselves. This is a significant gap given your request.\n\n---\n\n## Section: \"Testing an operator\"\n\n### Key statements (verbatim)\n\n> Use `torch.library.opcheck` to test that the custom op was registered correctl"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "# Search Results for \"CUDA C++ Programming Guide floating point accuracy FMA fast math --use_fast_math ftz denormal compute-sanitizer\"\n\n## 1. [5.5. Floating-Point Computation — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html)\n\n2026年9月10日 · To maximize the portability of results, users are recommended to use the default settings of the nvcc compiler’s …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html\n\n---\n\n## 2. [5.5 浮点运算 - CUDA 编程指南（中文版）](https://bearneck.github.io/cuda-programming-guide-zh/chapters/38-floating-point/)\n\n2026年3月24日 · 有关影响浮点行为的选项的详细信息，请参阅 GCC、Clang、Micr"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "## 1. [5.5. Floating-Point Computation — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html)\n\n2026年9月10日 · To maximize the portability of results, users are recommended to use the default settings of the nvcc compiler’s …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "## 2. [5.5 浮点运算 - CUDA 编程指南（中文版）](https://bearneck.github.io/cuda-programming-guide-zh/chapters/38-floating-point/)\n\n2026年3月24日 · 有关影响浮点行为的选项的详细信息，请参阅 GCC、Clang、Microsoft Visual Studio Compiler、nvc++ 和 Arm …\n\n**URL:** https://bearneck.github.io/cuda-programming-guide-zh/chapters/38-floating-point/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://bearneck.github.io/cuda-programming-guide-zh/chapters/38-floating-point/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "## 3. [CUDA-Programming-Guide-in-Chinese/附录H数学方法/附录 ...](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md)\n\n2025年9月5日 · 它们具有相同的名称，前缀为 __（例如 __sinf (x)）。 它们更快，因为它们映射到更少的本机指令。 编译器有一个选 …\n\n**URL:** https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "## 4. [附录H - 数学方法 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-math-method-cn/)\n\nThe maximum error is stated as the absolute value of the difference in ulps between a correctly rounded …\n\n**URL:** https://developer.nvidia.cn/blog/cuda-math-method-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://developer.nvidia.cn/blog/cuda-math-method-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+      "evidence": {
+        "event_id": "call_00_ORpWjxT9IWg5D0SSJDsW6275.result",
+        "quote": "## 5. [CUDA C++ Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive//11.0_GA/pdf/CUDA_C_Programming_Guide.pdf)\n\n2024年6月25日 · CUDA C++ extends C++ by allowing the programmer to define C++ functions, called kernels, that, when called, are …\n\n**URL:** https://docs.nvidia.com/cuda/archive//11.0_GA/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://docs.nvidia.com/cuda/archive//11.0_GA/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_q6x0K06QXwxmHm9kvPPh2843.result",
+      "evidence": {
+        "event_id": "call_00_q6x0K06QXwxmHm9kvPPh2843.result",
+        "quote": "# Floating-Point Computation in CUDA — Extracted Guidance\n\nBelow is a complete extraction of the CUDA Programming Guide content on floating-point computation, organized by the topics you requested: FMA, `--use_fast_math`/`-use_fast_math`, denormals/FTZ, `-fmad`, IEEE 754 compliance, rounding, and accuracy/portability guidance.\n\n---\n\n## 1. Fused Multiply-Add (FMA)\n\n**Section 5.5.1.5 — Fused Multiply-Add (FMA)**\n\nThe FMA operation computes the result with only **one rounding step**. Without FMA, the result would require **two rounding steps**: one for multiplication and one for addition. Because the FMA uses only one rounding step, it produces a **more accurate result**.\n\n**NaN propagation not"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "# Search Results for \"torch.testing.assert_close documentation rtol atol default mismatch report\"\n\n## 1. [torch.testing — PyTorch 2.7 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.7/testing.html)\n\n2026年7月11日 · 抛出 ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol。 AssertionError – 如 …\n\n**URL:** https://pytorch.ac.cn/docs/2.7/testing.html\n\n---\n\n## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n## 3. [torch.testing — PyTorch 2.14 documentation](https:/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "## 1. [torch.testing — PyTorch 2.7 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.7/testing.html)\n\n2026年7月11日 · 抛出 ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol。 AssertionError – 如 …\n\n**URL:** https://pytorch.ac.cn/docs/2.7/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://pytorch.ac.cn/docs/2.7/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "## 3. [torch.testing — PyTorch 2.14 documentation](https://docs.pytorch.org/docs/2.14/testing.html)\n\n1 天前 · AssertionError – If the values of corresponding tensors are not close according to the definition above. The following table …\n\n**URL:** https://docs.pytorch.org/docs/2.14/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "## 4. [torch.testing | PyTorch文档 v2.4.0 -- Pytorch官方文档 ...](https://pytorch.it-docs.cn/docs/2.4/testing.html)\n\ntorch.testing 中。 assert_close（实际， 预期， *， allow_subclasses=真， rtol=无， atol=无， equal_nan=False， …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.4/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://pytorch.it-docs.cn/docs/2.4/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+      "evidence": {
+        "event_id": "call_00_p58gtH6E1wLfsCsRULaA5915.result",
+        "quote": "## 5. [深度解析 PyTorch 张量比较：解决 assert_close 的精度和 ...](https://runebook.dev/zh/docs/pytorch/testing)\n\n2025年12月12日 · 在 PyTorch 1.9 版本之前，常用的比较函数是 torch.testing.assert_allclose。 但是，这个函数已经被弃用，并推荐使 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/testing\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://runebook.dev/zh/docs/pytorch/testing"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_p1i23osEN6LTpFUGsYaA7671.result",
+      "evidence": {
+        "event_id": "call_00_p1i23osEN6LTpFUGsYaA7671.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n- Install PyTorch\n- User Guide\n\n- PyTorch Main Components\n  - torch.compiler\n  - torch.export\n  - Developer Notes\n  - Accelerator Integration\n- Reference API\n\n[...]\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expecte"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "# Search Results for \"PyTorch reproducibility torch.use_deterministic_algorithms CUBLAS_WORKSPACE_CONFIG documentation\"\n\n## 1. [torch.use_deterministic_algorithms — PyTorch 2.8 文档 ...](https://docs.pytorch.ac.cn/docs/2.8/generated/torch.use_deterministic_algorithms.html)\n\n2026年9月4日 · torch.is_floating_point torch.is_nonzero torch.set_default_dtype torch.get_default_dtype torch.set_default_device …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.8/generated/torch.use_deterministic_algorithms.html\n\n---\n\n## 2. [torch.use_deterministic_algorithms — PyTorch 2.7 文档 ...](https://pytorch.ac.cn/docs/2.7/generated/torch.use_deterministic_algorithms.html)\n\n2026年7月11日 · 设置 PyTorch 操作是否必须使用“确定性”算法。 也就是说，给定相同"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "## 1. [torch.use_deterministic_algorithms — PyTorch 2.8 文档 ...](https://docs.pytorch.ac.cn/docs/2.8/generated/torch.use_deterministic_algorithms.html)\n\n2026年9月4日 · torch.is_floating_point torch.is_nonzero torch.set_default_dtype torch.get_default_dtype torch.set_default_device …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.8/generated/torch.use_deterministic_algorithms.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://docs.pytorch.ac.cn/docs/2.8/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "## 2. [torch.use_deterministic_algorithms — PyTorch 2.7 文档 ...](https://pytorch.ac.cn/docs/2.7/generated/torch.use_deterministic_algorithms.html)\n\n2026年7月11日 · 设置 PyTorch 操作是否必须使用“确定性”算法。 也就是说，给定相同的输入，并在相同的软件和硬件上运行时，始终 …\n\n**URL:** https://pytorch.ac.cn/docs/2.7/generated/torch.use_deterministic_algorithms.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://pytorch.ac.cn/docs/2.7/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "## 3. [torch.use_deterministic_algorithms — PyTorch 2.7 文件 ...](https://pytorch.com.tw/docs/stable/generated/torch.use_deterministic_algorithms.html)\n\n2026年7月11日 · 設定 PyTorch 操作是否必須使用“確定性”演算法。 也就是說，給定相同的輸入，並在相同的軟體和硬體上執行時，始 …\n\n**URL:** https://pytorch.com.tw/docs/stable/generated/torch.use_deterministic_algorithms.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://pytorch.com.tw/docs/stable/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "## 4. [torch.use_deterministic_algorithms — PyTorch 2.12 文档 ...](https://docs.pytorch.ac.cn/docs/2.12/generated/torch.use_deterministic_algorithms.html)\n\n2026年7月31日 · torch.use_deterministic_algorithms - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.12/generated/torch.use_deterministic_algorithms.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://docs.pytorch.ac.cn/docs/2.12/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+      "evidence": {
+        "event_id": "call_00_uplrqwY2pAL3w3Ar2Cr15670.result",
+        "quote": "## 5. [torch.use_deterministic_algorithms — PyTorch main documentation](https://docs.pytorch.org/docs/main/generated/torch.use_deterministic_algorithms.html)\n\n5 天之前 · Sets whether PyTorch operations must use “deterministic” algorithms. That is, algorithms which, given the same input, and …\n\n**URL:** https://docs.pytorch.org/docs/main/generated/torch.use_deterministic_algorithms.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://docs.pytorch.org/docs/main/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uU4VvNttddmHmSgKwlBT0306.result",
+      "evidence": {
+        "event_id": "call_00_uU4VvNttddmHmSgKwlBT0306.result",
+        "quote": "**标题**: torch.use_deterministic_algorithms — PyTorch main documentation\n\nThis website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy Policy\n\nManage Preferences\n\nSkip to main content\n\nBack to top\n\n`Ctrl`+`K`\n\n\n\n![PyTorch - Home ](https://docs.pytorch.org/docs/main/index.html)\n\n![PyTorch - Home ](https://docs.pytorch.org/docs/main/index.html)\n\nv2.15.0 (unstable)\n\n[...]\n\nch.use_deterministic_algorithms.html)v1.9.0v1.8.1v1.8.0v1.7.1v1.7.0v1.6.0v1.5.1v1.5.0v1.4.0v1.3.1v1.3.0v1.2.0v1.1.0v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# torch."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.pytorch.org/docs/main/generated/torch.use_deterministic_algorithms.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xvFxk1frLGqkM2YUlvnN1142.result",
+      "evidence": {
+        "event_id": "call_00_xvFxk1frLGqkM2YUlvnN1142.result",
+        "quote": "**标题**: Reproducibility — PyTorch 2.14 documentation\n**发布时间**: Created On: May 14, 2026 | Last Updated On: May 14, 2026\n\nBack to top\n\n# Reproducibility[#](https://docs.pytorch.org/docs/2.14/notes/randomness.html#reproducibility \"Link to this heading\")\n\nCompletely reproducible results are not guaranteed across PyTorch releases, individual commits, or different platforms. Furthermore, results may not be reproducible between CPU and GPU executions, even when using identical seeds.\n\nHowever, there are some steps you can take to limit the number of sources of nondeterministic behavior for a specific platform, device, and PyTorch release. First, you can control sources of randomness that can cause"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://docs.pytorch.org/docs/stable/notes/randomness.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

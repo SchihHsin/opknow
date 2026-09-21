@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+      "evidence": {
+        "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n[...]\n\n## Profiling from the CLI#\n\n### CLI Command Switches#\n\nThe Nsight Systems command line interface can be used in two modes. You may launch your application and begin analysis with options specified to the `nsys profile` command. Alternatively, you can control the launch of an application and data collection using interactive CLI commands.\n\nCommand\n\nDescription\n\nanalyze\n\nPost process existing Nsight Systems result, either in .nsys-rep or SQLite format, to generate expert systems report.\n\nexport\n\nGenerates an export file from an existing `.nsys-rep` file. For more information about the exported formats "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+      "evidence": {
+        "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+        "quote": "# Nsight Systems — Key Information Extraction\n\n## 1. Current Version & Release\n\n**Exact version string (verbatim):** `Nsight Systems 2026.5.1`\n\n- Headline: **\"Nsight Systems 2026.5.1 is Available Now\"**\n- The most recent release notes section is also labeled **`2026.5.1`**\n- Installer filenames consistently embed the full build string: **`2026.5.1.161-3889610`** (e.g., `nsightsystems-2026.5.1.161-3889610.msi`)\n\n*(Note: Some earlier release-note sections below it — 2026.4.1, 2026.3.1, 2026.2.1, 2026.1.2, 2026.1.1 — are labeled with older version numbers. The 2026.1.2 and 2026.1.1 sections appear to contain identical duplicate text.)*\n\n---\n\n## 2. Supported Platforms / Operating Systems\n\nPer th"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.nvidia.com/nsight-systems/get-started",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+      "evidence": {
+        "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+        "quote": "# Analysis of Nsight Systems Post-Collection Analysis Guide\n\n## Completeness Assessment\n\n**The returned content appears truncated / incomplete** with respect to the user's specific request. Here's why:\n\n- The guide is primarily about the **Analysis Guide** (statistical reports, formatters, expert system, AI-assisted analysis, and advanced recipes).\n- **It contains NO verbatim instructions on how to run `nsys stats`** — the `nsys stats` command usage/syntax is not present.\n- **It contains NO explicit `nsys stats` command-line examples** (e.g., `nsys stats --report cuda_gpu_kern_sum file.nsys-rep`).\n- The **report names are listed**, but as report/recipe descriptions, **not as a consolidated `"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+      "evidence": {
+        "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+        "quote": "# nsys Content Extraction — caijizhuo Blog\n\n## Summary\n\nThis is a complete blog post titled **\"cuda性能分析工具nsys使用\"** (Using the CUDA profiling tool nsys) by author **caijizhuo**. It covers installation of the nsys CLI tool, usage examples with a reduce-sum CUDA kernel, command-line profiling options, PyTorch-specific profiling guidance, and the Nsight Systems visualization tool. The content appears **complete** — it includes an introduction, installation steps, full code example, command outputs, PyTorch section, visualization section, and footer metadata with no truncation markers.\n\n---\n\n## 1. nsys Commands (Verbatim)\n\n### `nsys status -e`\n```\n@└────> # nsys status -e\nTimestamp counter suppor"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://caijizhuo.github.io/20240519171831_2854729219/",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b4d80d29117d476001e242d3c999b8e092ddf47abfb1462941244d85e94f921b",
+  "question": "PyTorch 模型 GPU 利用率不高，怎么用 Nsight Systems 抓 timeline 定位瓶颈？给出采集命令和分析步骤。",
+  "run_id": "B-cuda-deepseek-v4_1-flash-standard-20260921T095421",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "# Search Results for \"Nsight Systems nsys profile command line options official documentation\"\n\n## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/UserGuide/index.html)\n\n2026年9月9日 · The Nsight Systems command line interface can be used in two modes. You may launch your application and begin …\n\n**URL:** https://docs.nvidia.com/nsight-systems/UserGuide/index.html\n\n---\n\n## 2. [USER GUIDE - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/pdf/UserGuide.pdf)\n\n2023年8月18日 · The Nsight Systems command line interface can be used in two modes. You may launch your application and begin …\n\n**URL:** https://docs.nvidia.com/nsight-systems/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "## 1. [User Guide — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/UserGuide/index.html)\n\n2026年9月9日 · The Nsight Systems command line interface can be used in two modes. You may launch your application and begin …\n\n**URL:** https://docs.nvidia.com/nsight-systems/UserGuide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "## 2. [USER GUIDE - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/pdf/UserGuide.pdf)\n\n2023年8月18日 · The Nsight Systems command line interface can be used in two modes. You may launch your application and begin …\n\n**URL:** https://docs.nvidia.com/nsight-systems/pdf/UserGuide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/nsight-systems/pdf/UserGuide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "## 3. [Nsight Systems - Get Started | NVIDIA Developer](https://developer.nvidia.com/nsight-systems/get-started)\n\nHT Systems 2025.1.1 Is Available NowSupported PlatformsSystem RequirementsReview the supported platforms for NVIDIA Nsight™ Systems to choose the correct version for your host and profiling target. If profiling from the CLI, pick your platform based on where the CLI will be run. If using the GUI (Full Version) to view reports, do profiling, or do remote profiling, pick your platform based on the host PC architecture wher...在developer.nvidia.com上查看更多信息\n\n**URL:** https://developer.nvidia.com/nsight-systems/get-started\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.nvidia.com/nsight-systems/get-started"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "## 4. [【NsightSystem】Nsight System命令大全_qdrep怎么生成 ...](https://blog.csdn.net/qq_37794738/article/details/137379665)\n\n2026年7月18日 · 本文详细介绍了如何启动NsightSystems的性能分析模式，包括输出文件命名、统计信息收集、性能数据范围选择、 …\n\n**URL:** https://blog.csdn.net/qq_37794738/article/details/137379665\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/qq_37794738/article/details/137379665"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+      "evidence": {
+        "event_id": "call_00_43QPr0l9HRXQhH7sJg1p7310.result",
+        "quote": "## 5. [nsys工具使用 - 知乎](https://zhuanlan.zhihu.com/p/716133647)\n\n2024年8月23日 · Use 'nsys --help <command>' for more information about a specific command. To run a basic profiling session: nsys …\n\n**URL:** https://zhuanlan.zhihu.com/p/716133647\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/716133647"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Qklj1y8EzB6Gc36q5UaU7910.result",
+      "evidence": {
+        "event_id": "call_00_Qklj1y8EzB6Gc36q5UaU7910.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n[...]\n\n## Profiling from the CLI#\n\n### CLI Command Switches#\n\nThe Nsight Systems command line interface can be used in two modes. You may launch your application and begin analysis with options specified to the `nsys profile` command. Alternatively, you can control the launch of an application and data collection using interactive CLI commands.\n\nCommand\n\nDescription\n\nanalyze\n\nPost process existing Nsight Systems result, either in .nsys-rep or SQLite format, to generate expert systems report.\n\nexport\n\nGenerates an export file from an existing `.nsys-rep` file. For more information about the exported formats "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+      "evidence": {
+        "event_id": "call_00_nkRjBLVUVQnMj0TuCGqI7715.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n[...]\n\n## Profiling from the CLI#\n\n### CLI Command Switches#\n\n#### CLI Profile Command Switch Options#\n\n# User Guide#\n## Profiling from the CLI#\n### CLI Command Switches#\n#### CLI Profile Command Switch Options#\nAfter choosing the `profile` command switch, the following options are available. Usage:\n\n```\nnsys [global-options] profile [options] [application] [application-arguments]\n```\n\nOption\n\nAvailable Parameters (default in bold)\n\nSwitch Description\n\n`--accelerator-trace` (Nsight Systems Embedded Platforms Edition)\n\n**none**, tegra-accelerators\n\nCollect other accelerators workload trace from the hardware "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "# Search Results for \"nsys stats --report cuda_gpu_kern_sum cuda_api_sum report names Nsight Systems documentation\"\n\n## 1. [【CUDA 】核函数性能分析工具_cuda nsys-CSDN博客](https://blog.csdn.net/weixin_44231807/article/details/148511876)\n\n2026年7月15日 · 文章浏览阅读909次，点赞6次，收藏7次。 最近因为有事很久没有学习cuda代码了，关于性能分析的命令也已经忘的 …\n\n**URL:** https://blog.csdn.net/weixin_44231807/article/details/148511876\n\n---\n\n## 2. [cuda性能分析工具nsys使用 | caijizhuo](https://caijizhuo.github.io/20240519171831_2854729219/)\n\n2024年5月19日 · 而如果在命令行中加入 ... 则使用的是 cudaapisum（CUDA API Summary），关注的是 CUDA API 层面的性能数据 …\n\n**URL:** https://caijizhuo.github.io/20240519171831_2854729219/\n\n---\n\n## 3. [cuda性能分析工具: nsight systems - CSDN博客](https://blog.csdn.net/MD201"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "## 1. [【CUDA 】核函数性能分析工具_cuda nsys-CSDN博客](https://blog.csdn.net/weixin_44231807/article/details/148511876)\n\n2026年7月15日 · 文章浏览阅读909次，点赞6次，收藏7次。 最近因为有事很久没有学习cuda代码了，关于性能分析的命令也已经忘的 …\n\n**URL:** https://blog.csdn.net/weixin_44231807/article/details/148511876\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.csdn.net/weixin_44231807/article/details/148511876"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "## 2. [cuda性能分析工具nsys使用 | caijizhuo](https://caijizhuo.github.io/20240519171831_2854729219/)\n\n2024年5月19日 · 而如果在命令行中加入 ... 则使用的是 cudaapisum（CUDA API Summary），关注的是 CUDA API 层面的性能数据 …\n\n**URL:** https://caijizhuo.github.io/20240519171831_2854729219/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://caijizhuo.github.io/20240519171831_2854729219/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "## 3. [cuda性能分析工具: nsight systems - CSDN博客](https://blog.csdn.net/MD2017/article/details/141457836)\n\n2024年9月8日 · 选择File->Open找到timeline.nsys-rep（注意这个nsys-rep文件是通用的，比如可以在linux上生成，在mac上用nsight …\n\n**URL:** https://blog.csdn.net/MD2017/article/details/141457836\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/MD2017/article/details/141457836"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "## 4. [CUDA新手使用Nsight Systems替代nvprof获取性能分析信息 ...](https://www.volcengine.com/article/1827273)\n\n2026年7月20日 · 查资料得知nvprof已被弃用，改用Nsight Systems CLI。 执行 nsys nvprof ./myapp 后生成了 report1.nsys-rep 和 …\n\n**URL:** https://www.volcengine.com/article/1827273\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://www.volcengine.com/article/1827273"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+      "evidence": {
+        "event_id": "call_00_pQGrHrwXnIpDKQYNwC654137.result",
+        "quote": "## 5. [Nsight System | Junhui's Journal 2](https://ashburnlee.github.io/blog-2-hugo/cuda-notes/nsight-system/)\n\n2025年9月19日 · nsys/nsys-ui 作用是CPU活动和GPU活动的并行可视化，显示两者在时间轴上的具体事件和占用时长。 对于kernel 他 …\n\n**URL:** https://ashburnlee.github.io/blog-2-hugo/cuda-notes/nsight-system/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://ashburnlee.github.io/blog-2-hugo/cuda-notes/nsight-system/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+      "evidence": {
+        "event_id": "call_00_2ZiUeAMxFcuCEF3xJbxI8048.result",
+        "quote": "# Nsight Systems — Key Information Extraction\n\n## 1. Current Version & Release\n\n**Exact version string (verbatim):** `Nsight Systems 2026.5.1`\n\n- Headline: **\"Nsight Systems 2026.5.1 is Available Now\"**\n- The most recent release notes section is also labeled **`2026.5.1`**\n- Installer filenames consistently embed the full build string: **`2026.5.1.161-3889610`** (e.g., `nsightsystems-2026.5.1.161-3889610.msi`)\n\n*(Note: Some earlier release-note sections below it — 2026.4.1, 2026.3.1, 2026.2.1, 2026.1.2, 2026.1.1 — are labeled with older version numbers. The 2026.1.2 and 2026.1.1 sections appear to contain identical duplicate text.)*\n\n---\n\n## 2. Supported Platforms / Operating Systems\n\nPer th"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://developer.nvidia.com/nsight-systems/get-started"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "# Search Results for \"Nsight Systems Post-Collection Analysis Guide nsys stats reports official docs.nvidia.com\"\n\n## 1. [Post-Collection Analysis Guide — Nsight Systems](https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html)\n\n2026年9月9日 · Nsight Systems ships with an AI skill that helps users use the CLI, run post-collection analysis recipes and analyze …\n\n**URL:** https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html\n\n---\n\n## 2. [Nsight Systems — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/index.html)\n\n2026年9月9日 · Information on the NVIDIA Software License Agreement as well as third party software and tools used by Nsight …\n\n**URL:** "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "## 1. [Post-Collection Analysis Guide — Nsight Systems](https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html)\n\n2026年9月9日 · Nsight Systems ships with an AI skill that helps users use the CLI, run post-collection analysis recipes and analyze …\n\n**URL:** https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "## 2. [Nsight Systems — Nsight Systems - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-systems/index.html)\n\n2026年9月9日 · Information on the NVIDIA Software License Agreement as well as third party software and tools used by Nsight …\n\n**URL:** https://docs.nvidia.com/nsight-systems/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://docs.nvidia.com/nsight-systems/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "## 3. [NVIDIA Nsight Systems | NVIDIA 开发者](https://developer.nvidia.cn/nsight-systems)\n\n2026年2月1日 · Nsight Systems 是一款通用工具，用于在 NVIDIA 平台上开发本地或云端应用程序。 从 NVIDIA DGX™ 到 NVIDIA …\n\n**URL:** https://developer.nvidia.cn/nsight-systems\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://developer.nvidia.cn/nsight-systems"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "## 4. [Nsight Systems - 开始使用 | NVIDIA 开发者](https://developer.nvidia.cn/nsight-systems/get-started)\n\n2026年1月2日 · 借助 Nsight Tools Sidecar Injector，NVIDIA Nsight 应用可以分析容器化应用 (目前仅使用 Nsight Systems) 。 此解决 …\n\n**URL:** https://developer.nvidia.cn/nsight-systems/get-started\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://developer.nvidia.cn/nsight-systems/get-started"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+      "evidence": {
+        "event_id": "call_00_2pWQ9oGQGJjwm5og5H8R1111.result",
+        "quote": "## 5. [Nsight Systems - Get Started | NVIDIA Developer](https://developer.nvidia.com/nsight-systems/get-started)\n\n2026年5月1日 · Review the supported platforms for NVIDIA Nsight™ Systems to choose the correct version for your host and …\n\n**URL:** https://developer.nvidia.com/nsight-systems/get-started\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://developer.nvidia.com/nsight-systems/get-started"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+      "evidence": {
+        "event_id": "call_00_uNvY1BpZB2hx43Mczt5j2623.result",
+        "quote": "# Analysis of Nsight Systems Post-Collection Analysis Guide\n\n## Completeness Assessment\n\n**The returned content appears truncated / incomplete** with respect to the user's specific request. Here's why:\n\n- The guide is primarily about the **Analysis Guide** (statistical reports, formatters, expert system, AI-assisted analysis, and advanced recipes).\n- **It contains NO verbatim instructions on how to run `nsys stats`** — the `nsys stats` command usage/syntax is not present.\n- **It contains NO explicit `nsys stats` command-line examples** (e.g., `nsys stats --report cuda_gpu_kern_sum file.nsys-rep`).\n- The **report names are listed**, but as report/recipe descriptions, **not as a consolidated `"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/nsight-systems/AnalysisGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+      "evidence": {
+        "event_id": "call_00_Cr1tYEgXvSH3OkaqkQth9855.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n[...]\n\n## Profiling from the CLI#\n\n### CLI Command Switches#\n\nThe Nsight Systems command line interface can be used in two modes. You may launch your application and begin analysis with options specified to the `nsys profile` command. Alternatively, you can control the launch of an application and data collection using interactive CLI commands.\n\nCommand\n\nDescription\n\nanalyze\n\nPost process existing Nsight Systems result, either in .nsys-rep or SQLite format, to generate expert systems report.\n\nexport\n\nGenerates an export file from an existing `.nsys-rep` file. For more information about the exported formats "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+      "evidence": {
+        "event_id": "call_00_95ji3cGMqNczs1RCekKa3341.result",
+        "quote": "# nsys Content Extraction — caijizhuo Blog\n\n## Summary\n\nThis is a complete blog post titled **\"cuda性能分析工具nsys使用\"** (Using the CUDA profiling tool nsys) by author **caijizhuo**. It covers installation of the nsys CLI tool, usage examples with a reduce-sum CUDA kernel, command-line profiling options, PyTorch-specific profiling guidance, and the Nsight Systems visualization tool. The content appears **complete** — it includes an introduction, installation steps, full code example, command outputs, PyTorch section, visualization section, and footer metadata with no truncation markers.\n\n---\n\n## 1. nsys Commands (Verbatim)\n\n### `nsys status -e`\n```\n@└────> # nsys status -e\nTimestamp counter suppor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://caijizhuo.github.io/20240519171831_2854729219/"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

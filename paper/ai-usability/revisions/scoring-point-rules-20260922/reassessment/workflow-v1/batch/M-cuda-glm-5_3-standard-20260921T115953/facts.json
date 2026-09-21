@@ -1,0 +1,430 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_d04ed9e7efae47dbbb5410bc.result",
+      "evidence": {
+        "event_id": "call_d04ed9e7efae47dbbb5410bc.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_cad01039e9a64718a3c88973.result",
+      "evidence": {
+        "event_id": "call_cad01039e9a64718a3c88973.result",
+        "quote": "# TensorRT Dynamic Shapes: Core Concepts — 完整内容提取\n\n以下为本页全部内容的完整提取，保留原文结构与代码块。**经核对，本页内容无截断**（页面从 \"Specifying Runtime Dimensions\" 开头，至 \"Bindings for Multiple Optimization Profiles\" 小节自然结束）。唯一无法呈现的是一张图片（binding 表格示意图），仅有 URL 引用，详见文末说明。\n\n---\n\n## 1. Specifying Runtime Dimensions（指定运行时维度）\n\n构建网络时，使用 `-1` 表示输入张量的运行时维度。例如，创建名为 `foo` 的 3D 输入张量，后两个维度在运行时指定，第一个维度在构建时固定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\n选择 optimization profile 之后，必须在运行时设置输入维度。设输入维度为 `[3,150,250]`：\n\n**C++**\n```cpp\ncontext.setInputShape(\"foo\", Dims{3, {3, 150, 250}})\n```\n\n**Python**\n```python\nco"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3ab551f6456d49629d16ce0f.result",
+      "evidence": {
+        "event_id": "call_3ab551f6456d49629d16ce0f.result",
+        "quote": "**标题**: Dynamic Shapes: Advanced Topics — NVIDIA TensorRT\n\nBack to top\n\n# Dynamic Shapes: Advanced Topics[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#dynamic-shapes-advanced-topics \"Link to this heading\")\n\n## Layer Extensions For Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#layer-extensions-for-dynamic-shapes \"Link to this heading\")\n\nSome layers have optional inputs that allow specifying dynamic shape information; `IShapeLayer` can access a tensor’s shape at runtime. Some layers also allow for calculating new shapes. The next section goes into semantic details a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_4bfe120dbf3c4d54b2d34fcc.result",
+      "evidence": {
+        "event_id": "call_4bfe120dbf3c4d54b2d34fcc.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_830eee738be84fa58d5c9425.result",
+      "evidence": {
+        "event_id": "call_830eee738be84fa58d5c9425.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/01-introduction/programming-model.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_1c5c9d7438454e85a9256ba4.result",
+      "evidence": {
+        "event_id": "call_1c5c9d7438454e85a9256ba4.result",
+        "quote": "# 提取结果:`__shared__` 内存相关内容\n\n## 一、总体说明\n\n- ✅ **已取到** 5.4.1.2.1 `__shared__` Memory 小节,内容**完整**(该小节本身无截断)。\n- ✅ Kernel Configuration(5.4.3)中关于第三个启动参数 `dynamic_smem_bytes` 的说明已取到。\n- ❌ **未找到** 关于 48KB 动态共享内存上限及 `cudaFuncSetAttribute(cudaFuncAttributeMaxDynamicSharedMemorySize, size)` 的说明和示例代码——在本页所提供的内容范围内完全没有出现。\n- ⚠️ 页面内容在 5.4.6.5(Warp Shuffle Functions)的示例代码中间被截断(原文末尾标注 `[content truncated]`),但截断点位于 `__shared__` 小节**之后**,不影响本小节的完整性;截断部分是否含 48KB 相关内容无法确认。\n\n---\n\n## 二、原文摘录:5.4.1.2.1. `__shared__` Memory(完整小节)\n\n> `__shared__` memory variables can have a static size, which is determined at compile time, or a dynamic size, which is determined at kernel launch time. See the [Kernel Configuration](https"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cpp-language-extensions.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b209d91abcf39c991c849fbf96f02f14e313cca8b85fee09c24b8f8560040b5b",
+  "question": "TensorRT/CUDA kernel 处理动态 shape 输入怎么做（optimization profile / 运行时 shape）？",
+  "run_id": "M-cuda-glm-5_3-standard-20260921T115953",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "# Search Results for \"TensorRT dynamic shapes optimization profile documentation NVIDIA developer guide\"\n\n## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n## 2. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html)\n\n2026年5月23日 · The shapes defined by t"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "## 2. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html)\n\n2026年5月23日 · The shapes defined by the optimization profile must define valid input shapes for the network. Here are the calls for …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "## 3. [Working with Dynamic Shapes — NVIDIA TensorRT 10.10.10 Developer Guide ...](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html)\n\n2025年7月11日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/work-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "## 4. [NVIDIA TensorRT 11.0.1 Developer Guide](https://developer.nvidia.com/docs/drive/drive-os/7.2.5/public/NVIDIA-TensorRT-Developer-Guide.pdf)\n\n2026年7月29日 · This book is part of the NVIDIA TensorRT 11.0.1 for DriveOS 7.2.5 PDF documentation set. Com-panion PDFs in …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.2.5/public/NVIDIA-TensorRT-Developer-Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.2.5/public/NVIDIA-TensorRT-Developer-Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+      "evidence": {
+        "event_id": "call_f93a2f29b7854e5691edfcd3.result",
+        "quote": "## 5. [8. TensorRT 中的动态形状 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/)\n\n8.3. Layer Extensions For Dynamic Shapes 一些层具有允许指定动态形状信息的可选输入，并且有一个新层IShapeLayer用于在运行 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d04ed9e7efae47dbbb5410bc.result",
+      "evidence": {
+        "event_id": "call_d04ed9e7efae47dbbb5410bc.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cad01039e9a64718a3c88973.result",
+      "evidence": {
+        "event_id": "call_cad01039e9a64718a3c88973.result",
+        "quote": "# TensorRT Dynamic Shapes: Core Concepts — 完整内容提取\n\n以下为本页全部内容的完整提取，保留原文结构与代码块。**经核对，本页内容无截断**（页面从 \"Specifying Runtime Dimensions\" 开头，至 \"Bindings for Multiple Optimization Profiles\" 小节自然结束）。唯一无法呈现的是一张图片（binding 表格示意图），仅有 URL 引用，详见文末说明。\n\n---\n\n## 1. Specifying Runtime Dimensions（指定运行时维度）\n\n构建网络时，使用 `-1` 表示输入张量的运行时维度。例如，创建名为 `foo` 的 3D 输入张量，后两个维度在运行时指定，第一个维度在构建时固定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\n选择 optimization profile 之后，必须在运行时设置输入维度。设输入维度为 `[3,150,250]`：\n\n**C++**\n```cpp\ncontext.setInputShape(\"foo\", Dims{3, {3, 150, 250}})\n```\n\n**Python**\n```python\nco"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3ab551f6456d49629d16ce0f.result",
+      "evidence": {
+        "event_id": "call_3ab551f6456d49629d16ce0f.result",
+        "quote": "**标题**: Dynamic Shapes: Advanced Topics — NVIDIA TensorRT\n\nBack to top\n\n# Dynamic Shapes: Advanced Topics[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#dynamic-shapes-advanced-topics \"Link to this heading\")\n\n## Layer Extensions For Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#layer-extensions-for-dynamic-shapes \"Link to this heading\")\n\nSome layers have optional inputs that allow specifying dynamic shape information; `IShapeLayer` can access a tensor’s shape at runtime. Some layers also allow for calculating new shapes. The next section goes into semantic details a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "# Search Results for \"CUDA C++ Programming Guide dynamic shared memory cudaFuncSetAttribute launch configuration site:docs.nvidia.com\"\n\n## 1. [CUDAC++ProgrammingGuide CU - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)\n\n文件大小: 3MB页数: 442CUDA C++ extends C++ by allowing the programmer to define C++ functions, called kernels, that, when called, are executed N times in parallel by N different CUDA threads, as opposed to only once like regular C++ functions.\n\n**URL:** https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n## 2. [在 CUDA C / C ++ 中使用共享内存 - 知乎](https://zhuanlan.zhihu.com/p/567847545)\n\nIntroductionShared MemoryStatic Shared Memor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "## 1. [CUDAC++ProgrammingGuide CU - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)\n\n文件大小: 3MB页数: 442CUDA C++ extends C++ by allowing the programmer to define C++ functions, called kernels, that, when called, are executed N times in parallel by N different CUDA threads, as opposed to only once like regular C++ functions.\n\n**URL:** https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "## 2. [在 CUDA C / C ++ 中使用共享内存 - 知乎](https://zhuanlan.zhihu.com/p/567847545)\n\nIntroductionShared MemoryStatic Shared MemoryDynamic Shared MemoryShared memory bank conflictsConfiguring the amount of shared memorySummary共享内存是编写优化良好的 CUDA 代码的一个强大功能。共享内存的访问比全局内存访问快得多，因为它位于芯片上。因为共享内存由线程块中的线程共享，它为线程提供了一种协作机制。利用这种线程协作使用共享内存的一种方法是启用全局内存合并，如本文中的数组反转。通过使用 CUDA GPU 共享内存，我们可以在 GPU 上执行所有读操作。在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/567847545\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/567847545"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "## 3. [cuda共享内存 (静态和动态)的使用和注意点_cuda中使用静态 ...](https://blog.csdn.net/zhaoyqcsdn/article/details/135313478)\n\n2025年10月5日 · 文章介绍了CUDA共享内存的优势、结构（32个bank与warp线程对应），以及静态和动态共享内存的声明方式。 重 …\n\n**URL:** https://blog.csdn.net/zhaoyqcsdn/article/details/135313478\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/zhaoyqcsdn/article/details/135313478"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "## 4. [cudaFuncAttribute 成员的作用解释_cudafuncsetattribute ...](https://blog.csdn.net/eloudy/article/details/151074134)\n\n2026年2月15日 · 这些属性用于精细控制内核函数在GPU上的执行行为，特别是在Ampere及更新架构中引入的集群（Cluster）和共享 …\n\n**URL:** https://blog.csdn.net/eloudy/article/details/151074134\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/eloudy/article/details/151074134"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ea48188756048c796dbb716.result",
+      "evidence": {
+        "event_id": "call_6ea48188756048c796dbb716.result",
+        "quote": "## 5. [CUDA dynamic shared memory - 知乎](https://zhuanlan.zhihu.com/p/646325041)\n\n2023年7月27日 · 使用 动态内存，我们需要在kernel launch时指明共享内存的大小，在kernel内可以利 …\n\n**URL:** https://zhuanlan.zhihu.com/p/646325041\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/646325041"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4bfe120dbf3c4d54b2d34fcc.result",
+      "evidence": {
+        "event_id": "call_4bfe120dbf3c4d54b2d34fcc.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_830eee738be84fa58d5c9425.result",
+      "evidence": {
+        "event_id": "call_830eee738be84fa58d5c9425.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/01-introduction/programming-model.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "# Search Results for \"docs.nvidia.com cuda-c-programming-guide \"extern __shared__\" dynamic shared memory kernel launch\"\n\n## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n## 2. [CUDAC++ProgrammingGuide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)\n\n5 天之前 · CUDA C++ extends C++ by allowing the programmer to define C++ functions, called kernels, that, when called, are …\n\n**URL:** h"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "## 2. [CUDAC++ProgrammingGuide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf)\n\n5 天之前 · CUDA C++ extends C++ by allowing the programmer to define C++ functions, called kernels, that, when called, are …\n\n**URL:** https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://docs.nvidia.com/cuda/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "## 3. [CUDA C++ Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf)\n\n2025年10月8日 · The CUDA C Programming Guide is the official, comprehensive resource that explains how to write programs using …\n\n**URL:** https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://docs.nvidia.com/cuda/archive/13.0.1/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "## 4. [CUDA C Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/9.1/pdf/CUDA_C_Programming_Guide.pdf)\n\n2024年6月25日 · CUDA C extends C by allowing the programmer to define C functions, called kernels, that, when called, are …\n\n**URL:** https://docs.nvidia.com/cuda/archive/9.1/pdf/CUDA_C_Programming_Guide.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://docs.nvidia.com/cuda/archive/9.1/pdf/CUDA_C_Programming_Guide.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+      "evidence": {
+        "event_id": "call_ad7eb4c6f25e4c898f52e453.result",
+        "quote": "## 5. [5.4. C/C++ Language Extensions — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cpp-language-extensions.html)\n\n2026年9月10日 · A CUDA program with an int* pointer to an object in __shared__ memory needs to convert this pointer to the shared …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cpp-language-extensions.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cpp-language-extensions.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1c5c9d7438454e85a9256ba4.result",
+      "evidence": {
+        "event_id": "call_1c5c9d7438454e85a9256ba4.result",
+        "quote": "# 提取结果:`__shared__` 内存相关内容\n\n## 一、总体说明\n\n- ✅ **已取到** 5.4.1.2.1 `__shared__` Memory 小节,内容**完整**(该小节本身无截断)。\n- ✅ Kernel Configuration(5.4.3)中关于第三个启动参数 `dynamic_smem_bytes` 的说明已取到。\n- ❌ **未找到** 关于 48KB 动态共享内存上限及 `cudaFuncSetAttribute(cudaFuncAttributeMaxDynamicSharedMemorySize, size)` 的说明和示例代码——在本页所提供的内容范围内完全没有出现。\n- ⚠️ 页面内容在 5.4.6.5(Warp Shuffle Functions)的示例代码中间被截断(原文末尾标注 `[content truncated]`),但截断点位于 `__shared__` 小节**之后**,不影响本小节的完整性;截断部分是否含 48KB 相关内容无法确认。\n\n---\n\n## 二、原文摘录:5.4.1.2.1. `__shared__` Memory(完整小节)\n\n> `__shared__` memory variables can have a static size, which is determined at compile time, or a dynamic size, which is determined at kernel launch time. See the [Kernel Configuration](https"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/cpp-language-extensions.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

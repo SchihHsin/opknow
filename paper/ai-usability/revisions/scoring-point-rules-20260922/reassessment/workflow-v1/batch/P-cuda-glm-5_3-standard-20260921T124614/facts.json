@@ -1,0 +1,500 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_c2e095c98eb64821a7f1ac7b.result",
+      "evidence": {
+        "event_id": "call_c2e095c98eb64821a7f1ac7b.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\nGo to the end to download the full example code.\n\n# Automatic Mixed Precision#\n\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriat"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_328a931a15674db893032896.result",
+      "evidence": {
+        "event_id": "call_328a931a15674db893032896.result",
+        "quote": "## 结论：本页不包含 `torch.amp.GradScaler` 类的完整条目\n\n经逐节核查，该文档页面（PyTorch 2.14 的 `torch.amp` 包页面）**没有** `torch.amp.GradScaler` 类的正式 API 条目。因此无法提取其构造签名（含 `device` 参数）、参数说明，以及 `scale()`、`step()`、`update()`、`unscale_()`、`state_dict()`、`load_state_dict()` 方法的文档与示例代码——这些内容在本页均不存在。\n\n以下按您的要求，列明页面上 **GradScaler 相关的全部条目标题及其实际内容**：\n\n---\n\n### 1. 页面中出现的 GradScaler 相关条目（正式 API 条目，共 2 个，均为弃用桩）\n\n| 条目标题 | 签名 | 页面实际内容 |\n|---|---|---|\n| `torch.cuda.amp.GradScaler` | `torch.cuda.amp.GradScaler(init_scale=65536.0, growth_factor=2.0, backoff_factor=0.5, growth_interval=2000, enabled=True)` | 仅一句说明：\"See `torch.amp.GradScaler`. `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler(\"cuda\", args."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/amp.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_d79d9eb141cb41eb8971b33d.result",
+      "evidence": {
+        "event_id": "call_d79d9eb141cb41eb8971b33d.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/generated/torch.amp.GradScaler.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_f88f0b78f0f44383b69a772a.result",
+      "evidence": {
+        "event_id": "call_f88f0b78f0f44383b69a772a.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.amp.GradScaler.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_c94972b86a1e4fb2b03e0957.result",
+      "evidence": {
+        "event_id": "call_c94972b86a1e4fb2b03e0957.result",
+        "quote": "# GradScaler 完整内容提取 — Automatic Mixed Precision examples（PyTorch 2.14 文档）\n\n以下为本页中与 **GradScaler**（`torch.amp.GradScaler`）相关的全部内容，按场景组织，代码均保留原文。\n\n---\n\n## 1. GradScaler 概述\n\n> Instances of `torch.amp.GradScaler` help perform the steps of gradient scaling conveniently. Gradient scaling improves convergence for networks with `float16` (by default on CUDA and XPU) gradients by minimizing gradient underflow.\n\n- 通常 “automatic mixed precision training” 指 `torch.autocast` 与 `torch.amp.GradScaler` 配合使用。\n- 两者是模块化的，各文档中的示例可独立使用。\n- 本页示例为说明性代码，可运行版本见 Automatic Mixed Precision recipe。\n\n---\n\n## 2. 典型混合精度训练（scale / step / update 基本模式）\n\n```python\n# Creates Model and optimizer in default precision\nmodel = Net()"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/notes/amp_examples.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "9f601bc127c490218656a9058eb842d3d8794239a7804fa108283da801212995",
+  "question": "PyTorch 训练怎么开混合精度（AMP）？`torch.cuda.amp.autocast` / GradScaler 怎么用？",
+  "run_id": "P-cuda-glm-5_3-standard-20260921T124614",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "# Search Results for \"torch.cuda.amp.autocast GradScaler usage PyTorch mixed precision\"\n\n## 1. [Automatic Mixed Precision - PyTorch](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · Mixed precision tries to match each op to its appropriate datatype, which can reduce your network’s runtime and …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n## 2. [PyTorch AMP训练避坑指南：autocast和GradScaler的正确 ...](https://blog.csdn.net/weixin_42628941/article/details/160680135)\n\n2026年5月1日 · 本文深入解析PyTorch AMP训练中的autocast和GradScaler使用技巧，揭示混合精度训练（Automatic Mixed …\n\n**URL:** https://blog.csdn.net/weixin_42628941/article/details/160680135\n\n---\n\n## 3. "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "## 1. [Automatic Mixed Precision - PyTorch](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · Mixed precision tries to match each op to its appropriate datatype, which can reduce your network’s runtime and …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "## 2. [PyTorch AMP训练避坑指南：autocast和GradScaler的正确 ...](https://blog.csdn.net/weixin_42628941/article/details/160680135)\n\n2026年5月1日 · 本文深入解析PyTorch AMP训练中的autocast和GradScaler使用技巧，揭示混合精度训练（Automatic Mixed …\n\n**URL:** https://blog.csdn.net/weixin_42628941/article/details/160680135\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_42628941/article/details/160680135"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "## 3. [Automatic Mixed Precision package - torch.amp — PyTorch main …](https://docs.pytorch.org/docs/main/amp.html)\n\n2025年6月12日 · Mixed precision tries to match each op to its appropriate datatype. Ordinarily, “automatic mixed precision training” …\n\n**URL:** https://docs.pytorch.org/docs/main/amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.org/docs/main/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "## 4. [【Trick2】torch.cuda.amp自动混合精度训练 —— 节省显存 ...](https://blog.csdn.net/qq_38253797/article/details/116210911)\n\n2022年4月9日 · 本文详细介绍了PyTorch中的自动混合精度(AMP)训练，旨在加速计算并节省显存。 AMP利用半精度浮点型数据进行 …\n\n**URL:** https://blog.csdn.net/qq_38253797/article/details/116210911\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/qq_38253797/article/details/116210911"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+      "evidence": {
+        "event_id": "call_8b21b04dc3cd4d3f8c5a24b3.result",
+        "quote": "## 5. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2e095c98eb64821a7f1ac7b.result",
+      "evidence": {
+        "event_id": "call_c2e095c98eb64821a7f1ac7b.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\nGo to the end to download the full example code.\n\n# Automatic Mixed Precision#\n\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriat"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d036901e203946d999c3ec3b.result",
+      "evidence": {
+        "event_id": "call_d036901e203946d999c3ec3b.result",
+        "quote": "# torch.amp API 文档提取结果\n\n## 提取说明（重要提示）\n\n在开始之前，需要如实说明两点：\n\n1. **本页未包含完整的 `torch.amp.GradScaler` 类文档**。本页（torch.amp 总览页）只包含 `torch.cuda.amp.GradScaler` 和 `torch.cpu.amp.GradScaler` 两个**已弃用的桩（stub）定义**（含构造参数签名），以及梯度缩放的概念说明。`scale()` / `step()` / `update()` / `unscale_()` 等方法的详细文档**不在本页中**（文档中仅提到 \"See `torch.amp.GradScaler`\"，即指向别处）。\n2. **本页未说明具体的弃用移除版本号**。所有弃用警告只说明\"deprecated\"（已弃用）及替代用法，未给出未来移除的具体版本。\n\n以下为页面中实际存在的全部相关原文内容。\n\n---\n\n## 一、`torch.autocast`（即 `torch.amp.autocast`）\n\n### 类签名\n\n```\nclass torch.autocast(device_type, dtype=None, enabled=True, cache_enabled=None)\n```\n\n### 参数（原文）\n\n- **device_type** (*str*, *required*) – Device type to use. Possible values are: 'cuda', 'cpu', 'mtia', 'maia', 'xpu'"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/stable/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d79d9eb141cb41eb8971b33d.result",
+      "evidence": {
+        "event_id": "call_d79d9eb141cb41eb8971b33d.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.amp.GradScaler.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "# Search Results for \"\"torch.amp.GradScaler\" site:docs.pytorch.org\"\n\n## 1. [如何正确使用GradScaler？一文讲透PyTorch梯度缩放核心 ...](https://blog.csdn.net/LearnPlex/article/details/154908918)\n\n2025年11月16日 · 掌握PyTorch混合精度训练的梯度缩放技巧，有效解决训练中梯度下溢问题。 适用于GPU显存优化与大模型加速， …\n\n**URL:** https://blog.csdn.net/LearnPlex/article/details/154908918\n\n---\n\n## 2. [torch.cuda.amp.GradScaler-CSDN博客](https://blog.csdn.net/weixin_44012667/article/details/144241053)\n\n2026年3月1日 · torch.cuda.amp.GradScaler 是 PyTorch 中自动混合精度（AMP）训练的一部分，用于动态缩放梯度以避免在混合精 …\n\n**URL:** https://blog.csdn.net/weixin_44012667/article/details/144241053\n\n---\n\n## 3. [PyTorch的GradScaler - 知乎](https://zhuanlan.zhihu.com/p/2020212840615653898)\n\n2026年3月25日 · 在深度学习的训练过程"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "## 1. [如何正确使用GradScaler？一文讲透PyTorch梯度缩放核心 ...](https://blog.csdn.net/LearnPlex/article/details/154908918)\n\n2025年11月16日 · 掌握PyTorch混合精度训练的梯度缩放技巧，有效解决训练中梯度下溢问题。 适用于GPU显存优化与大模型加速， …\n\n**URL:** https://blog.csdn.net/LearnPlex/article/details/154908918\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://blog.csdn.net/LearnPlex/article/details/154908918"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "## 2. [torch.cuda.amp.GradScaler-CSDN博客](https://blog.csdn.net/weixin_44012667/article/details/144241053)\n\n2026年3月1日 · torch.cuda.amp.GradScaler 是 PyTorch 中自动混合精度（AMP）训练的一部分，用于动态缩放梯度以避免在混合精 …\n\n**URL:** https://blog.csdn.net/weixin_44012667/article/details/144241053\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/weixin_44012667/article/details/144241053"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "## 3. [PyTorch的GradScaler - 知乎](https://zhuanlan.zhihu.com/p/2020212840615653898)\n\n2026年3月25日 · 在深度学习的训练过程中， GradScaler 是 PyTorch 自动混合精度 （Automatic Mixed Precision, AMP）训练中的核 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2020212840615653898\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/2020212840615653898"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "## 4. [PyTorch 混合精度训练 (AMP) - 菜鸟教程](https://www.runoob.com/pytorch/pytorch-amp.html)\n\n本节详细介绍 PyTorch 中的自动混合精度（Automatic Mixed Precision，AMP）技术。 适用版本： 本文代码基于 PyTorch 1.6+ 的 …\n\n**URL:** https://www.runoob.com/pytorch/pytorch-amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.runoob.com/pytorch/pytorch-amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+      "evidence": {
+        "event_id": "call_ff502a1af48a4c6c89ffa93b.result",
+        "quote": "## 5. [优化你的深度学习训练：GradScaler 在 PyTorch AMP 中的 ...](https://runebook.dev/zh/docs/pytorch/amp/torch.cuda.amp.GradScaler)\n\n2025年11月20日 · torch.cuda.amp.GradScaler 是在使用 PyTorch 的 AMP（自动混合精度）功能时，为了实现稳定的梯度更新而引入 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/amp/torch.cuda.amp.GradScaler\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://runebook.dev/zh/docs/pytorch/amp/torch.cuda.amp.GradScaler"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f88f0b78f0f44383b69a772a.result",
+      "evidence": {
+        "event_id": "call_f88f0b78f0f44383b69a772a.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.cuda.amp.GradScaler.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_328a931a15674db893032896.result",
+      "evidence": {
+        "event_id": "call_328a931a15674db893032896.result",
+        "quote": "## 结论：本页不包含 `torch.amp.GradScaler` 类的完整条目\n\n经逐节核查，该文档页面（PyTorch 2.14 的 `torch.amp` 包页面）**没有** `torch.amp.GradScaler` 类的正式 API 条目。因此无法提取其构造签名（含 `device` 参数）、参数说明，以及 `scale()`、`step()`、`update()`、`unscale_()`、`state_dict()`、`load_state_dict()` 方法的文档与示例代码——这些内容在本页均不存在。\n\n以下按您的要求，列明页面上 **GradScaler 相关的全部条目标题及其实际内容**：\n\n---\n\n### 1. 页面中出现的 GradScaler 相关条目（正式 API 条目，共 2 个，均为弃用桩）\n\n| 条目标题 | 签名 | 页面实际内容 |\n|---|---|---|\n| `torch.cuda.amp.GradScaler` | `torch.cuda.amp.GradScaler(init_scale=65536.0, growth_factor=2.0, backoff_factor=0.5, growth_interval=2000, enabled=True)` | 仅一句说明：\"See `torch.amp.GradScaler`. `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler(\"cuda\", args."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.pytorch.org/docs/stable/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c94972b86a1e4fb2b03e0957.result",
+      "evidence": {
+        "event_id": "call_c94972b86a1e4fb2b03e0957.result",
+        "quote": "# GradScaler 完整内容提取 — Automatic Mixed Precision examples（PyTorch 2.14 文档）\n\n以下为本页中与 **GradScaler**（`torch.amp.GradScaler`）相关的全部内容，按场景组织，代码均保留原文。\n\n---\n\n## 1. GradScaler 概述\n\n> Instances of `torch.amp.GradScaler` help perform the steps of gradient scaling conveniently. Gradient scaling improves convergence for networks with `float16` (by default on CUDA and XPU) gradients by minimizing gradient underflow.\n\n- 通常 “automatic mixed precision training” 指 `torch.autocast` 与 `torch.amp.GradScaler` 配合使用。\n- 两者是模块化的，各文档中的示例可独立使用。\n- 本页示例为说明性代码，可运行版本见 Automatic Mixed Precision recipe。\n\n---\n\n## 2. 典型混合精度训练（scale / step / update 基本模式）\n\n```python\n# Creates Model and optimizer in default precision\nmodel = Net()"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "# Search Results for \"torch.cuda.amp.autocast GradScaler deprecated removed PyTorch 2.x version\"\n\n## 1. [python PyTorch 混合精度训练中的警告处理与代码适配指南](https://www.kuazhi.com/post/715711295.html)\n\npython PyTorch 混合精度训练中的警告处理与代码适配指南 夸智网｡python PyTorch 混合精度训练中的警告处理与代码适配指南 https://www.kuazhi.net/ 在最近的 PyTorch 项目开发中,遇到了两个与混合精度训练相关的警告信息｡这些警告主要涉及 torch.cuda.amp 模块的部分 API 已被标记为弃用(deprecated)｡本文将详细介绍这些警告的原因､解决方法以及最佳实践｡ 警告内容 警告 1: torch.cuda.amp.autocast FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead. with autocast(): 警告 2: torch.cuda.amp.GradScaler FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "## 1. [python PyTorch 混合精度训练中的警告处理与代码适配指南](https://www.kuazhi.com/post/715711295.html)\n\npython PyTorch 混合精度训练中的警告处理与代码适配指南 夸智网｡python PyTorch 混合精度训练中的警告处理与代码适配指南 https://www.kuazhi.net/ 在最近的 PyTorch 项目开发中,遇到了两个与混合精度训练相关的警告信息｡这些警告主要涉及 torch.cuda.amp 模块的部分 API 已被标记为弃用(deprecated)｡本文将详细介绍这些警告的原因､解决方法以及最佳实践｡ 警告内容 警告 1: torch.cuda.amp.autocast FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead. with autocast(): 警告 2: torch.cuda.amp.GradScaler FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead. scaler = GradScaler() 原因分析 根据 PyTorch 官方文档的更新说明,从 PyTorch 2.4 版本开始,torch.cuda.amp 模块中的部分 API 已被标记为弃用｡官方此举旨在统一 API 的设计风格,并增强对多设备(如 CPU 和其他加速器)的支持｡ 虽然目前这些警告不会导致程序运行失败,但官方强烈建议开发者尽快调整代码以适配最新版本的规范,从而确保代码的兼容性和可维护性｡ 解决方案 方法 1: 使用新版 API 进行适配 这是最推荐的解决方案,通过替换旧版 API 为新版 API 来消除警告｡\n\n**URL:** https://www.kuazhi.com/post/715711295.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://www.kuazhi.com/post/715711295.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "## 2. [PyTorch升级到2.1后,GradScaler和autocast报FutureWarning该怎么改?](https://wenku.csdn.net/answer/4f8dxij044fp)\n\nPyTorch升级到2.1+后,GradScaler和autocast报FutureWarning该怎么改? CSDN文库｡PyTorch升级到2.1+后,GradScaler和autocast报FutureWarning该怎么改? 该警告源于PyTorch 2.1引入的统一AMP模块torch.amp,取代了旧版torch.cuda.amp｡需将torch.cuda.amp.GradScaler()替换为torch.amp.GradScaler('cuda'),并将所有torch.cuda.amp.autocast()调用改为torch.amp.autocast('cuda'),共涉及3处修改(1次初始化､2次上下文管理)｡此举可彻底消除警告,确保代码在PyTorch 2.3+仍能正常运行,且提升跨硬件后端(如CPU､XPU)兼容性｡同时建议添加PyTorch版本检查以预防环境不匹配问题｡ 你遇到的警告是 PyTorch 2.1+ 引入的 API 迁移提示,属于向后兼容性警告(FutureWarning),不影响当前代码运行,但为保证未来版本(如 PyTorch 2.3+)完全兼容,必须升级 GradScaler 和 autocast 的调用方式｡ ✅ 问题本质 旧写法(已弃用) 新写法(推荐,PyTorch ≥ 2.1) 说明 torch.cuda.amp.GradScaler() torch.amp.GradScaler(\"cuda\") \"cuda\" 可显式指定设备,支持多后端(如 \"cpu\"､\"xpu\") torch.cuda.amp.autocast() torch.amp.autocast(\"cuda\") 同上,语义更清晰､可移植性更强 🔔 注意:torch.amp 是 PyTorch 2.1+ 统一的自动混合精度(AMP)模块,取代了旧的 torch.cuda.amp｡ ✅ 你的代码在 PyTorch 2.0 中仍可用(仅警告),但在 PyTorch 2.3+ 将直接报错(RuntimeError)｡ ✅ 修复方案:仅需修改 2 处代码 ✅ 修改 1:替换 GradScaler 初始化(第 659 行附近) # ❌ 旧(触发警告) scaler = torch.cuda.amp.GradScaler() # ✅ 新(无警告,PyTorch ≥ 2.1 兼容) scaler = torch.amp.\n\n**URL:** https://wenku.csdn.net/answer/4f8dxij044fp\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://wenku.csdn.net/answer/4f8dxij044fp"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "## 3. [Mixed precision support  Nvidia Cuda For Ai Intermediate Course  The Neural Base](http://theneuralbase.com/nvidia-cuda-for-ai/learn/intermediate/mixed-precision-support)\n\nMixed precision support | Nvidia Cuda For Ai Intermediate Course | The Neural Base The Neural Base｡Mixed precision support What you will learn Use FP16 computation with FP32 fallback to cut memory usage by half and speed up training on modern GPUs without accuracy loss. Team Note @theneuralbase_teamPyTorch 2.4+, CUDA 12.6+✓ verified torch.amp.GradScaler('cuda') syntax is deprecated in PyTorch 2.4+ - the constructor no longer accepts a device string argument. Correct: scaler = torch.amp.GradScaler() (device defaults to 'cuda' automatically). The article's code will throw TypeError: init() got an unexpected keyword argument 'cuda' on PyTorch 2.4+. Second critical issue: optimizer.zero_grad() must be called AFTER scaler.step() and scaler.update(), not at the end of the loop as shown. The article's placement causes gradient accumulation where old gradients persist into the next iteration, silently corrupting training. For BF16 on H100/Ada: torch.amp.autocast_mode.AutocastMode.set_preferredtype() was removed in PyTorch 2.0 - use dtype=torch.bfloat16 parameter in autocast() instead: with torch.amp.autocast('cuda', dtype=torch.bfloat16). On RTX 40series and H100 GPUs, BF16 is genuinely faster than FP16 and does not require GradScaler (set it to None), reducing code complexity. CUDA 12.6+ is current as of April 2026; verify with nvidiasmi that your compute capability is 7.0+ or mixed precision will silently fall back to FP32 with no warnings. FIX: GradScaler() no longer accepts device argument (PyTorch 2.4+) OLD: scaler = torch.amp.GradScaler('cuda') scaler = torch.amp.GradScaler() # PyTorch 2.4+ FIX: optimizer.zero_grad() placement — must come AFTER scaler.step/update to prevent gradient accumulation corruption for epoch in range(3): with torch.amp.autocast('cuda'): output = model(input_tensor) loss = torch.nn.functional.mse_loss(output, target) scaler.scale(loss).backward() scaler.step(optimizer) scaler.update() optimizer.zero_grad() # CORRECT: after update, not before next iteration print(f\"Epoch {epoch}, Loss: {loss.item():.4f}\") FIX: BF16 on newer GPUs — use dtype parameter, not set_preferredtype() OLD: torch.amp.autocast_mode.AutocastMode.set_preferredtype('bfloat16') with torch.amp.autocast('cuda', dtype=torch.bfloat16): # PyTorch 2.0+ output = model(input_tensor) loss = torch.nn.functional.mse_loss(output, target) Copy Apr 23, 2026 Helpful 0 Why this matters Modern GPUs (V100, A100, H100) have specialized tensor cores that execute FP16 ops 2-8x faster than FP32. Without mixed precision, you're leaving massive performance and memory gains on the table. A 24GB GPU becomes effectively 48GB; training that takes 12 hours drops to 3-4 hours. This is the difference between feasible and infeasible for large models. Skip if: Use pure FP32 if your model is small enough to fit in memory comfortably, your hardware is old (K80, older), or you're debugging numerical instability: FP32 gives you more headroom. Also skip mixed precision if your model involves custom CUDA kernels that don't support FP16 (rare, but check). Explanation Mixed precision training uses lower-precision (FP16) tensors for forward and backward passes where possible, but keeps a master copy of weights in FP32 to prevent gradient underflow. NVIDIA GPUs since the Volta architecture have dedicated tensor cores that accelerate FP16 matrix multiplications. PyTorch's torch.amp module automatically casts operations to FP16, while loss scaling prevents gradient values from becoming too small and disappearing. CUDA 12.4+ includes cuDNN 9.x, which has optimized kernels for mixed precision operations. You enable this with torch.amp.autocast('cuda') context managers and torch.amp.GradScaler for loss scaling. The GPU driver and CUDA compute capability must both support FP16 (Compute Capability 7.0+, meaning Volta or newer). Configuration python Copy #!\n\n**URL:** http://theneuralbase.com/nvidia-cuda-for-ai/learn/intermediate/mixed-precision-support\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "http://theneuralbase.com/nvidia-cuda-for-ai/learn/intermediate/mixed-precision-support"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "## 4. [Second-gen Transformer Engine](https://theneuralbase.com/nvidia-cuda-for-ai/learn/advanced/second-gen-transformer-engine)\n\nSecond-gen Transformer Engine The Neural Base｡Second-gen Transformer Engine What you will learn Enable Transformer Engine mixed-precision kernels in CUDA 12.4+ to accelerate transformer workloads with automatic FP8 casting and dynamic loss scaling. Team Note torch.float8_e4m3fn autocast requires CUDA 12.4+ (not 12.0) and cuDNN 9.x explicitly - older versions silently fall back to FP32 with no error. The GradScaler(device='cuda') parameter shown in the article was deprecated in PyTorch 2.1.0 and removed in 2.2.0 - use GradScaler(device=device) or just GradScaler() without device parameter instead. The article's claim that 'model must be in float32' is correct for catching Transformer Engine kernels, but .half() or .bfloat16() anywhere in the model will silently disable the engine for those layers with no warning. torch.amp.autocast with dtype=torch.float8_e4m3fn only works inside the context manager - operations outside still run in FP32, so wrap your entire forward+loss computation. Verify activation: nvidiasmi q d compute_cap confirms Hopper (compute_capability >= 9.0) or Ada (8.9), but this alone doesn't prove the engine is running - check NVIDIA's nsys profiler output for 'tensor_float32' or 'fp8' kernel launches to confirm actual execution. # FIX: GradScaler(device='cuda') removed in PyTorch 2.1+ — use device parameter or omit entirely from torch.amp import autocast, GradScaler scaler = GradScaler() # PyTorch 2.1+ # OR if using older PyTorch < 2.1: # scaler = GradScaler() # FIX: Verify CUDA and cuDNN versions support FP8 before calling autocast with float8_e4m3fn import torch print(f'CUDA Version: {torch.version.cuda}') # must be 12.4+ print(f'cuDNN Version: {torch.backends.cudnn.version()}') # must be 9.x # FIX: dtype=torch.float8_e4m3fn ONLY works inside autocast context # Operations outside the context still run in FP32 — ensure full forward+loss is wrapped with autocast(device_type='cuda', dtype=torch.float8_e4m3fn): output = model(x) loss = criterion(output, target) # FIX: If model uses .half() or .bfloat16() anywhere, Transformer Engine silently disables # Keep model in float32 for the entire forward pass model = MyTransformer().cuda().float() # NOT .half() or .bfloat16() # FIX: To verify engine is actually running, check with NVIDIA profiler # nvidiasmi dmon shows SM% and MEM% during execution # nsys profile o trace.qdrep python train.py && nsys stats r cuda_memory_time trace.qdrep | grep fp8 Why this matters Second-gen Transformer Engine (introduced in Hopper/Ada architectures) provides 2-8x speedup on transformer training by transparently converting FP32 activations to FP8 compute while maintaining FP32 accuracy. Without enabling it, you pay 5-10x the power cost and miss critical performance wins on H100/L40S GPUs. The engine requires explicit configuration: it doesn't auto-enable. Skip if: Use standard mixed precision (torch.amp.autocast) if: (1) your model doesn't contain matrix multiplications (linear layers, attention), (2) you're on pre-Hopper GPUs (H100, L40S, GB200 are Transformer Engine–capable; A100 is not), (3) your batch size is tiny (<32) where kernel overhead dominates, (4) you need debuggable gradients (FP8 precision loss shows up in backward pass inspection). Explanation Transformer Engine is a CUDA 12.4+ feature that executes transformer compute in lower precision (FP8) while keeping model state in higher precision (FP32/BF16). Second-gen Transformer Engine improves upon first-gen by adding dynamic per-token scaling, better numerics for long-sequence attention, and lower latency for smaller batches. The engine is built into cuDNN 9.x and exposed via NVIDIA's Apex library and PyTorch's native torch.cuda.nvtx-level kernel invocation. Enabling it requires: (1) verifying GPU capability with nvidia-smi, (2) setting CUDA compute capability check, (3) configuring loss scaling strategy, (4) pinning cuDNN algorithm selection. The engine intercepts FP32→FP8 casting at the GEMM (general matrix multiply) boundary, applies per-token or per-tensor scaling factors, and reconstructs FP32 results before optimizer steps. Configuration python Copy #!\n\n**URL:** https://theneuralbase.com/nvidia-cuda-for-ai/learn/advanced/second-gen-transformer-engine\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://theneuralbase.com/nvidia-cuda-for-ai/learn/advanced/second-gen-transformer-engine"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6ad6ee1984d044258d4bd689.result",
+      "evidence": {
+        "event_id": "call_6ad6ee1984d044258d4bd689.result",
+        "quote": "## 5. [PyTorch 2.4升级后,混合精度训练报DeprecationWarning?手把手教你适配新API](https://blog.csdn.net/weixin_30919429/article/details/98115388)\n\nPyTorch 2.4升级后,混合精度训练报DeprecationWarning?手把手教你适配新API CSDN博客｡搜索 登录 登录后您可以: 复制代码和一键运行 与博主大V深度互动 解锁海量精选资源 获取前沿技术资讯 立即登录 未登录 登录领取最高 ¥30 算力币 最新推荐文章于 2026-08-27 12:21:28 发布 原创 于2026-03-27 03:37:30 发布 · 345 阅读 PyTorch 2.4升级后混合 精度 训练报DeprecationWarning?三步精准修复指南 最近在技术社区看到不少开发者反馈,升级到PyTorch 2.4后运行 混合精度训练 时控制台突然冒出黄色警告,虽然不影响程序执行,但总让人心里不踏实｡作为深度参与过多个PyTorch迁移项目的工程师,我完全理解这种看到DeprecationWarning时的焦虑——既担心代码未来会突然失效,又不确定修改会不会引入新问题｡本文将用最直白的方式带你快速定位问题,并提供 可立即套用的代码修改方案 ｡ 1. 问题诊断:为什么会出现这些警告? 上周我在升级一个 图像分类 项目时,控制台突然输出两行刺眼的黄色文字: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated... FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated... AI写代码 python 这其实是PyTorch 2.4引入的 API规范化改造 的一部分｡官方团队正在将设备相关的功能统一收敛到 torch.amp 命名空间下,主要出于三个考虑: 多设备支持统一化 :旧版 cuda.amp 设计时只考虑GPU场景,而现代深度学习可能涉及CPU､NPU等多种计算设备 API命名标准化 :消除原先分散在各设备子模块中的重复功能 未来扩展性 :为后续可能加入的混合精度训练新特性预留空间 关键事实 :这些改动属于\"软弃用\"(soft deprecation),当前版本(2.4)仍会保持向后兼容,但官方明确建议尽快迁移｡根据PyTorch的版本政策,这类 API 通常会在2-3个主版本后彻底移除｡ 标签 点赞 踩 收藏 觉得还不错? 一键收藏 举报 举报 深度学习技术正在重塑网络安全防护的范式｡传统入侵检测依赖规则匹配和手工特征,面对加密流量与变种攻击时力不从心｡\n\n**URL:** https://blog.csdn.net/weixin_30919429/article/details/98115388\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://blog.csdn.net/weixin_30919429/article/details/98115388"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "# Search Results for \"\"torch.cuda.amp.autocast\" FutureWarning stackoverflow which PyTorch version introduced\"\n\n## 1. [PyTorch 混合精度训练中的警告处理与代码适配指南 ...](https://blog.csdn.net/nyxdsb/article/details/145577206)\n\n2025年2月13日 · 根据 PyTorch 官方文档的更新说明，从 PyTorch 2.4版本开始，torch.cuda.amp模块中的部分 API 已被标记为弃用。  …\n\n**URL:** https://blog.csdn.net/nyxdsb/article/details/145577206\n\n---\n\n## 2. [完美解决，无需降版本 报错FutureWarning: `torch.cuda.amp ...](https://blog.csdn.net/m0_57010556/article/details/142986263)\n\n2026年2月4日 · 完美解决，无需降版本 报错FutureWarning: `torch.cuda.amp.autocast (args...)` is deprecated. 近期跑YOLO系列模型 …\n\n**URL:** https://blog.csdn.net/m0_57010556/article/details/142986263\n\n---\n\n## 3. [PyTorch 混合精度训练中的警告处理与代码适配指"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "## 1. [PyTorch 混合精度训练中的警告处理与代码适配指南 ...](https://blog.csdn.net/nyxdsb/article/details/145577206)\n\n2025年2月13日 · 根据 PyTorch 官方文档的更新说明，从 PyTorch 2.4版本开始，torch.cuda.amp模块中的部分 API 已被标记为弃用。  …\n\n**URL:** https://blog.csdn.net/nyxdsb/article/details/145577206\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://blog.csdn.net/nyxdsb/article/details/145577206"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "## 2. [完美解决，无需降版本 报错FutureWarning: `torch.cuda.amp ...](https://blog.csdn.net/m0_57010556/article/details/142986263)\n\n2026年2月4日 · 完美解决，无需降版本 报错FutureWarning: `torch.cuda.amp.autocast (args...)` is deprecated. 近期跑YOLO系列模型 …\n\n**URL:** https://blog.csdn.net/m0_57010556/article/details/142986263\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://blog.csdn.net/m0_57010556/article/details/142986263"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "## 3. [PyTorch 混合精度训练中的警告处理与代码适配指南 ...](https://blog.youkuaiyun.com/nyxdsb/article/details/145577206)\n\n2025年2月13日 · 在最近的 PyTorch 项目开发中，遇到了两个与混合精度训练相关的警告信息。 这些警告主要涉及 torch.cuda.amp 模 …\n\n**URL:** https://blog.youkuaiyun.com/nyxdsb/article/details/145577206\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://blog.youkuaiyun.com/nyxdsb/article/details/145577206"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "## 4. [PyTorch中torch.cuda.amp相关警告的解决方法 - 日常编程 ...](https://www.ufcn.cn/tutorials/3370411.html)\n\n2025年2月13日 · 在最近的写代码过程中,遇到了两个与 PyTorch 的混合精度训练相关的警告信息,torch.cuda.amp.autocast …\n\n**URL:** https://www.ufcn.cn/tutorials/3370411.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://www.ufcn.cn/tutorials/3370411.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+      "evidence": {
+        "event_id": "call_70a918aca8484ad9bb4a40ff.result",
+        "quote": "## 5. [FutureWarning: `torch.cuda.amp.autocast(args...)` is ...](https://wenku.csdn.net/answer/2fidc35r06)\n\n2025年5月28日 · 首页 FutureWarning: `torch.cuda.amp.autocast (args...)` is deprecated. Please use `torch.amp.autocast ('cuda', …\n\n**URL:** https://wenku.csdn.net/answer/2fidc35r06\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://wenku.csdn.net/answer/2fidc35r06"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

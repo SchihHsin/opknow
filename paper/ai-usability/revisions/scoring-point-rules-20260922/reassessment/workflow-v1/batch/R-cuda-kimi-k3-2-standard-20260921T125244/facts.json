@@ -1,0 +1,464 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_4_5e782f2b.result",
+      "evidence": {
+        "event_id": "WebFetch_4_5e782f2b.result",
+        "quote": "# 提取结果：Anomaly Detection（异常检测）章节\n\n**内容来源**：PyTorch 2.14.0 (stable) 官方文档 `torch.autograd` 页面中的 \"Debugging and anomaly detection\" 章节。\n\n**完整性说明**：✅ 该章节在本页中为**完整内容，未被截断**。两个类（`detect_anomaly` 和 `set_detect_anomaly`）的签名、说明、参数、警告及代码示例均完整呈现。章节末尾还附带了两个相关的 `grad_mode` 上下文管理器条目（仅一行简介）。代码示例中存在少量 HTML 提取造成的格式瑕疵（如 `importtorch`、`defforward` 缺少空格），已按原文保留。\n\n---\n\n## 原文内容（保留原始结构）\n\n## Debugging and anomaly detection[#](https://docs.pytorch.org/docs/2.14/autograd.html#debugging-and-anomaly-detection \"Link to this heading\")\n\n---\n\n### 1. `torch.autograd.detect_anomaly`\n\n***class*** **torch.autograd.detect_anomaly(*check_nan=True*)** [[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/autograd/anomal"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/autograd.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_a8f08d60.result",
+      "evidence": {
+        "event_id": "WebFetch_5_a8f08d60.result",
+        "quote": "# torch.amp 文档页面内容提取（PyTorch 2.14）\n\n## ⚠️ 完整性说明（首先回答）\n\n**所提供的页面内容不完整 / 已被截断。** 具体表现为：\n\n- 页面正文中 **`torch.amp.GradScaler` 主类的完整 API 文档缺失**（快照只保留了指向它的弃用别名 `torch.cuda.amp.GradScaler` / `torch.cpu.amp.GradScaler` 的签名）。\n- 因此，您要求的以下内容**在本快照中不存在**：\n  - ❌ GradScaler 如何检查 inf/NaN（`found_inf`）并跳过 `optimizer.step()` 的机制说明\n  - ❌ `unscale_()` 的方法文档\n  - ❌ `clip_grad_norm_` 与 GradScaler 配合使用的示例（即\"先 unscale 再 clip 再 step\"的典型工作流代码）\n  - ❌ GradScaler 的典型用法代码示例（`scaler.scale(loss)` / `scaler.step(optimizer)` / `scaler.update()`）\n\n以下为本快照中**实际存在**的内容的完整提取。\n\n---\n\n## 1. 版本迁移 / 弃用说明（✅ 完整存在）\n\n### 弃用警告（原文 Warning）\n\n> `torch.cuda.amp.autocast(args...)` and `torch.cpu.amp.autocast(args...)` is deprecated. Please use `to"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/amp.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_ec06b821.result",
+      "evidence": {
+        "event_id": "WebFetch_6_ec06b821.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/generated/torch.amp.GradScaler.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_83f462d2.result",
+      "evidence": {
+        "event_id": "WebFetch_7_83f462d2.result",
+        "quote": "# 提取结果摘要\n\n已成功从该 PyTorch 2.14 文档页提取以下三部分的**完整原文**（内容与代码均未被截断，该页所提供的文本覆盖了所有请求章节的结尾）：\n\n1. **Typical Mixed Precision Training**（典型 AMP 训练循环）\n2. **Gradient clipping**（位于 \"Working with Unscaled Gradients\" 章节下，含 `scaler.unscale_` + `torch.nn.utils.clip_grad_norm_` 完整示例及说明）\n3. **Working with Scaled Gradients**（含 Gradient accumulation 与 Gradient penalty 两个子节）\n\n以下为原文内容：\n\n---\n\n## 1. Typical Mixed Precision Training（典型 AMP 训练循环）\n\n> 页面开头说明：Ordinarily, \"automatic mixed precision training\" means training with `torch.autocast` and `torch.amp.GradScaler` together. Instances of `torch.autocast` enable autocasting for chosen regions. Autocasting automatically chooses the precision for operations to improve per"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/notes/amp_examples.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "e75fe5de296f9e1178a4d82f3e8ea730aaeceb33696185217ad9f4c57fbbd2b9",
+  "question": "我的模型在 GPU 上训练 loss 不收敛 / 出现 NaN，怎么系统排查（梯度爆炸/学习率/数据）？",
+  "run_id": "R-cuda-kimi-k3-2-standard-20260921T125244",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "# Search Results for \"PyTorch official docs autograd detect_anomaly NaN gradient debugging\"\n\n## 1. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n# 正向传播时：开启自动求导的异常侦测torch.autograd.set_detect_anomaly(True) # 反向传播时：在求导时开启侦测 with  torch.autograd.detect_anomaly():\n\n**URL:** https://blog.csdn.net/ybacm/article/details/131528711\n\n---\n\n## 2. [训练中 Loss 变 NaN？PyTorch 异常检测模式（detect ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly)\n\n2025年12月3日 · torch.autograd.set_detect_anomaly 是 PyTorch 自动微分（Autograd） 引擎中的一个调试工具。 当设置为 True  …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_an"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "## 1. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n# 正向传播时：开启自动求导的异常侦测torch.autograd.set_detect_anomaly(True) # 反向传播时：在求导时开启侦测 with  torch.autograd.detect_anomaly():\n\n**URL:** https://blog.csdn.net/ybacm/article/details/131528711\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/ybacm/article/details/131528711"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "## 2. [训练中 Loss 变 NaN？PyTorch 异常检测模式（detect ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly)\n\n2025年12月3日 · torch.autograd.set_detect_anomaly 是 PyTorch 自动微分（Autograd） 引擎中的一个调试工具。 当设置为 True  …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "## 3. [模型训练指南：如何使用 torch.autograd.detect_anomaly ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly)\n\n2025年12月13日 · torch. autograd. detect_anomaly () 是 PyTorch 中一个非常有用的上下文管理器，用于 检测自动微分过程中可能出 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "## 4. [自动微分包 - torch.autograd — PyTorch 2.13 文档 - PyTorch ...](https://docs.pytorch.ac.cn/docs/2.13/autograd.html)\n\n2016年12月23日 · Automatic differentiation package - torch.autograd - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/autograd.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/autograd.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_aedad955.result",
+      "evidence": {
+        "event_id": "WebSearch_0_aedad955.result",
+        "quote": "## 5. [手把手教你用torch.autograd.set_detect_anomaly ()定位 ...](https://blog.csdn.net/iii12/article/details/154371958)\n\n2026年2月21日 · 文章手把手教你利用`torch.autograd.set_detect_anomaly ()`工具精准定位inplace操作错误，并结合GAN …\n\n**URL:** https://blog.csdn.net/iii12/article/details/154371958\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/iii12/article/details/154371958"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "# Search Results for \"pytorch.org amp GradScaler documentation inf NaN skip step\"\n\n## 1. [| PyTorch文档 v2.0.0 -- Pytorch官方文档|PyTorch教程 ...](https://pytorch.it-docs.cn/docs/2.0/notes.amp_examples.html)\n\n应针对有效批次进行缩放校准，这意味着需要检查 inf/NaN 值， 在发现 inf/NaN 梯度时跳过步骤，并且缩放更新应在有效批次粒度上进 …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.0/notes.amp_examples.html\n\n---\n\n## 2. [训练模型时梯度出现NAN或者INF（禁用amp的不同level ...](https://blog.csdn.net/vivi_cin/article/details/143350841)\n\n2024年10月29日 · 在 PyTorch 中，使用 torch.bfloat16 时，可能会遇到与 torch.cuda.amp （自动混合精度）相关的问题，特别是关于 …\n\n**URL:** https://blog.csdn.net/vivi_cin/article/details/143350841\n\n---\n\n## 3. [解决pytorch半精度amp训练nan问题 - 知乎](https://zhuanlan.zhihu.com/p/443166496)\n\n概览Why?H"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "## 1. [| PyTorch文档 v2.0.0 -- Pytorch官方文档|PyTorch教程 ...](https://pytorch.it-docs.cn/docs/2.0/notes.amp_examples.html)\n\n应针对有效批次进行缩放校准，这意味着需要检查 inf/NaN 值， 在发现 inf/NaN 梯度时跳过步骤，并且缩放更新应在有效批次粒度上进 …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.0/notes.amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://pytorch.it-docs.cn/docs/2.0/notes.amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "## 2. [训练模型时梯度出现NAN或者INF（禁用amp的不同level ...](https://blog.csdn.net/vivi_cin/article/details/143350841)\n\n2024年10月29日 · 在 PyTorch 中，使用 torch.bfloat16 时，可能会遇到与 torch.cuda.amp （自动混合精度）相关的问题，特别是关于 …\n\n**URL:** https://blog.csdn.net/vivi_cin/article/details/143350841\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://blog.csdn.net/vivi_cin/article/details/143350841"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "## 3. [解决pytorch半精度amp训练nan问题 - 知乎](https://zhuanlan.zhihu.com/p/443166496)\n\n概览Why?How?一些思考&废话如果要解决问题，首先就要明确原因：为什么全精度训练时不会nan，但是半精度就开始nan？这其实 …1.计算loss 时，出现了除以0的情况2.loss过大，被半精度判断为inf3.网络参数中有nan，那么运算结果也会输出nan在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/443166496\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/443166496"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "## 4. [Pytorch 混合精度训练 - 知乎](https://zhuanlan.zhihu.com/p/2057485938033537412)\n\n2026年7月6日 · 每个优化器独立检查其梯度是否含 inf/NaN，并独立决定是否跳过 step。 step 跳过频率较低（通常每数百轮一次）， …\n\n**URL:** https://zhuanlan.zhihu.com/p/2057485938033537412\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/2057485938033537412"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_3d05be09.result",
+      "evidence": {
+        "event_id": "WebSearch_1_3d05be09.result",
+        "quote": "## 5. [CUDA 自动混合精度示例 | PyTorch文档 v2.3.0 -- Pytorch ...](https://pytorch.it-docs.cn/docs_en/2.3/notes.amp_examples.html)\n\nEach optimizer checks its gradients for infs/NaNs and makes an independent decision whether or not to skip the step. This may result …\n\n**URL:** https://pytorch.it-docs.cn/docs_en/2.3/notes.amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://pytorch.it-docs.cn/docs_en/2.3/notes.amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "# Search Results for \"site:pytorch.org torch.autograd detect_anomaly documentation\"\n\n## 1. [模型训练指南：如何使用 torch.autograd.detect_anomaly ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly)\n\n2025年12月13日 · torch. autograd. detect_anomaly () 是 PyTorch 中一个非常有用的上下文管理器，用于 检测自动微分过程中可能出 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly\n\n---\n\n## 2. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n先放上使用方法主要在此记录一下我的找bug过程他说我进行了两次梯度回传，或者是在backward的时候，有中间变量已经被释放了。因为是加了新模块才导致出现的问题，而且新模块中并没有backward，所以排除是两次backward的问题。然后我就一顿好找啊。。改改这行代码，换换那行代码，看看到底是哪里出现了问题，愣是没找到。然后使用了 detect_anomaly () 来检测"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "## 1. [模型训练指南：如何使用 torch.autograd.detect_anomaly ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly)\n\n2025年12月13日 · torch. autograd. detect_anomaly () 是 PyTorch 中一个非常有用的上下文管理器，用于 检测自动微分过程中可能出 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "## 2. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n先放上使用方法主要在此记录一下我的找bug过程他说我进行了两次梯度回传，或者是在backward的时候，有中间变量已经被释放了。因为是加了新模块才导致出现的问题，而且新模块中并没有backward，所以排除是两次backward的问题。然后我就一顿好找啊。。改改这行代码，换换那行代码，看看到底是哪里出现了问题，愣是没找到。然后使用了 detect_anomaly () 来检测。在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/ybacm/article/details/131528711\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://blog.csdn.net/ybacm/article/details/131528711"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "## 3. [训练中 Loss 变 NaN？PyTorch 异常检测模式（detect ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly)\n\n2025年12月3日 · torch.autograd.set_detect_anomaly 是 PyTorch 自动微分（Autograd） 引擎中的一个调试工具。 当设置为 True  …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "## 4. [自动微分包 - torch.autograd — PyTorch 2.14 文档 - PyTorch ...](https://docs.pytorch.ac.cn/docs/2.14/autograd.html)\n\n2016年12月23日 · Automatic differentiation package - torch.autograd - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/autograd.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://docs.pytorch.ac.cn/docs/2.14/autograd.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_3b470c82.result",
+      "evidence": {
+        "event_id": "WebSearch_2_3b470c82.result",
+        "quote": "## 5. [[Pytorch] torch.autograd.detect_anomaly () - 知乎](https://zhuanlan.zhihu.com/p/461202163)\n\n2022年2月14日 · 最近在调试torch反向梯度计算异常时，搜索引擎查到torch本身提供调试模式功能，torch.autograd.detect_anomaly () …\n\n**URL:** https://zhuanlan.zhihu.com/p/461202163\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/461202163"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "# Search Results for \"\"pytorch.org/docs\" autograd anomaly detection context manager\"\n\n## 1. [训练中 Loss 变 NaN？PyTorch 异常检测模式（detect ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly)\n\n2025年12月3日 · torch.autograd.set_detect_anomaly 是 PyTorch 自动微分（Autograd） 引擎中的一个调试工具。 当设置为 True  …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly\n\n---\n\n## 2. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n2026年9月7日 · 文章讲述了在PyTorch中遇到多次梯度回传的错误，通过启用autograd的异常检测功能，作者发现了问题出在一个变量 …\n\n**URL:** https://blog.csdn.net/ybacm/article/details/131528711\n\n---\n\n## 3. [PyTorch训练报NaN？别慌，用torch.autog"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "## 1. [训练中 Loss 变 NaN？PyTorch 异常检测模式（detect ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly)\n\n2025年12月3日 · torch.autograd.set_detect_anomaly 是 PyTorch 自动微分（Autograd） 引擎中的一个调试工具。 当设置为 True  …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.set_detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "## 2. [torch.autograd.detect_anomaly () 工具的使用（记录 ...](https://blog.csdn.net/ybacm/article/details/131528711)\n\n2026年9月7日 · 文章讲述了在PyTorch中遇到多次梯度回传的错误，通过启用autograd的异常检测功能，作者发现了问题出在一个变量 …\n\n**URL:** https://blog.csdn.net/ybacm/article/details/131528711\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://blog.csdn.net/ybacm/article/details/131528711"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "## 3. [PyTorch训练报NaN？别慌，用torch.autograd.set_detect ...](https://wenku.csdn.net/column/26g29nin01u)\n\n2026年4月25日 · 这可能是每个PyTorch开发者都经历过的噩梦时刻——模型训练突然崩溃，而你甚至不知道从哪里开始排查。 本文将 …\n\n**URL:** https://wenku.csdn.net/column/26g29nin01u\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://wenku.csdn.net/column/26g29nin01u"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "## 4. [模型训练指南：如何使用 torch.autograd.detect_anomaly ...](https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly)\n\n2025年12月13日 · torch. autograd. detect_anomaly () 是 PyTorch 中一个非常有用的上下文管理器，用于 检测自动微分过程中可能出 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://runebook.dev/zh/docs/pytorch/autograd/torch.autograd.detect_anomaly"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_a1b21747.result",
+      "evidence": {
+        "event_id": "WebSearch_3_a1b21747.result",
+        "quote": "## 5. [PyTorch训练报NaN？别慌，用torch.autograd.set_detect ...](https://blog.csdn.net/weixin_28694295/article/details/160580104)\n\n2026年8月13日 · 本文详细介绍了如何使用PyTorch的`torch.autograd.set_detect_anomaly (True)`功能快速定位训练过程中的梯度爆炸 …\n\n**URL:** https://blog.csdn.net/weixin_28694295/article/details/160580104\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/weixin_28694295/article/details/160580104"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_5e782f2b.result",
+      "evidence": {
+        "event_id": "WebFetch_4_5e782f2b.result",
+        "quote": "# 提取结果：Anomaly Detection（异常检测）章节\n\n**内容来源**：PyTorch 2.14.0 (stable) 官方文档 `torch.autograd` 页面中的 \"Debugging and anomaly detection\" 章节。\n\n**完整性说明**：✅ 该章节在本页中为**完整内容，未被截断**。两个类（`detect_anomaly` 和 `set_detect_anomaly`）的签名、说明、参数、警告及代码示例均完整呈现。章节末尾还附带了两个相关的 `grad_mode` 上下文管理器条目（仅一行简介）。代码示例中存在少量 HTML 提取造成的格式瑕疵（如 `importtorch`、`defforward` 缺少空格），已按原文保留。\n\n---\n\n## 原文内容（保留原始结构）\n\n## Debugging and anomaly detection[#](https://docs.pytorch.org/docs/2.14/autograd.html#debugging-and-anomaly-detection \"Link to this heading\")\n\n---\n\n### 1. `torch.autograd.detect_anomaly`\n\n***class*** **torch.autograd.detect_anomaly(*check_nan=True*)** [[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/autograd/anomal"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://pytorch.org/docs/stable/autograd.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_a8f08d60.result",
+      "evidence": {
+        "event_id": "WebFetch_5_a8f08d60.result",
+        "quote": "# torch.amp 文档页面内容提取（PyTorch 2.14）\n\n## ⚠️ 完整性说明（首先回答）\n\n**所提供的页面内容不完整 / 已被截断。** 具体表现为：\n\n- 页面正文中 **`torch.amp.GradScaler` 主类的完整 API 文档缺失**（快照只保留了指向它的弃用别名 `torch.cuda.amp.GradScaler` / `torch.cpu.amp.GradScaler` 的签名）。\n- 因此，您要求的以下内容**在本快照中不存在**：\n  - ❌ GradScaler 如何检查 inf/NaN（`found_inf`）并跳过 `optimizer.step()` 的机制说明\n  - ❌ `unscale_()` 的方法文档\n  - ❌ `clip_grad_norm_` 与 GradScaler 配合使用的示例（即\"先 unscale 再 clip 再 step\"的典型工作流代码）\n  - ❌ GradScaler 的典型用法代码示例（`scaler.scale(loss)` / `scaler.step(optimizer)` / `scaler.update()`）\n\n以下为本快照中**实际存在**的内容的完整提取。\n\n---\n\n## 1. 版本迁移 / 弃用说明（✅ 完整存在）\n\n### 弃用警告（原文 Warning）\n\n> `torch.cuda.amp.autocast(args...)` and `torch.cpu.amp.autocast(args...)` is deprecated. Please use `to"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://pytorch.org/docs/stable/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_ec06b821.result",
+      "evidence": {
+        "event_id": "WebFetch_6_ec06b821.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://pytorch.org/docs/stable/generated/torch.amp.GradScaler.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_83f462d2.result",
+      "evidence": {
+        "event_id": "WebFetch_7_83f462d2.result",
+        "quote": "# 提取结果摘要\n\n已成功从该 PyTorch 2.14 文档页提取以下三部分的**完整原文**（内容与代码均未被截断，该页所提供的文本覆盖了所有请求章节的结尾）：\n\n1. **Typical Mixed Precision Training**（典型 AMP 训练循环）\n2. **Gradient clipping**（位于 \"Working with Unscaled Gradients\" 章节下，含 `scaler.unscale_` + `torch.nn.utils.clip_grad_norm_` 完整示例及说明）\n3. **Working with Scaled Gradients**（含 Gradient accumulation 与 Gradient penalty 两个子节）\n\n以下为原文内容：\n\n---\n\n## 1. Typical Mixed Precision Training（典型 AMP 训练循环）\n\n> 页面开头说明：Ordinarily, \"automatic mixed precision training\" means training with `torch.autocast` and `torch.amp.GradScaler` together. Instances of `torch.autocast` enable autocasting for chosen regions. Autocasting automatically chooses the precision for operations to improve per"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://pytorch.org/docs/stable/notes/amp_examples.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

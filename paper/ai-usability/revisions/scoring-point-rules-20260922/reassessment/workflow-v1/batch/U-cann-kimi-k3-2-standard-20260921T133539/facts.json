@@ -1,0 +1,358 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_3_77f87142.result",
+      "evidence": {
+        "event_id": "WebFetch_3_77f87142.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.2.RC1开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_ff994af6.result",
+      "evidence": {
+        "event_id": "WebFetch_4_ff994af6.result",
+        "quote": "**标题**: 获取性能数据-性能分析-算子实践参考-Ascend C算子开发-算子开发-CANN8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)\n\n# 获取性能数据\n\n在进行性能优化之前，需要拿到准确的性能数据，了解性能现状，并根据性能现状分析下一步的优化方向。Ascend C提供了多种性能测试方法，包括上板Profiling、单算子性能仿真流水图等手段。\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_cbe2dbc7.result",
+      "evidence": {
+        "event_id": "WebFetch_5_cbe2dbc7.result",
+        "quote": "**标题**: 工具使用-算子调优（msProf）-算子开发工具-开发工具-CANN8.5.0开发文档-昇腾社区\n\n\n\n# 工具使用\n\nmsProf工具包含msprof op和msprof op simulator两种使用方式，协助用户定位算子内存、算子代码以及算子指令的异常，实现全方位的算子调优。两种使用方式的详细说明请参考表1。\n\n\n\n**表1** msprof op和msprof op simulator功能说明表\n\n功能名称\n\n适用场景\n\n使用方式\n\n展示的图形\n\nmsprof op\n\n适用于实际运行环境中的性能分析，可协助用户定位算子内存和性能瓶颈。\n\n直接分析运行中的算子，无需额外配置，适合在板环境中快速定位算子性能问题。\n\n计算内存热力图\n\nRoofline瓶颈分析图\n\nCache热力图\n\n通算流水图\n\n算子代码热点图\n\n说明：\n\n若要实现Cache热力图跳转功能，需参考msprof op配置进行配置。\n\nmsprof op simulator\n\n适用于开发和调试阶段，进行详细仿真调优，可协助用户分析算子指令和代码热点问题。\n\n需要参考msprof op simulator配置，配置环境变量（如LD_LIBRARY_PATH）和编译选项（如添加-g生成调试信息），适合在仿真环境中详细分析算子行为。\n\n指令流水图\n\n算子代码热点图\n\n内存通路吞吐率波形图\n\n说明：\n\n资料中的msprof op simulator的仿真结果仅供参考，算子真实的运行情况以用户的实际仿真数据为准。\n\n- msProf工具的使用依赖CANN包中的msopprof可执行文件，该文件中的接口使"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/optool/atlasopdev_16_00851.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "f18d7d41c34689a5d348c6565ed0f8fa171eee2ca7ca3e8fb3161a77e849214b",
+  "question": "我的昇腾算子访存是瓶颈、AI Core 利用率低，怎么分析并优化（UB/L1 数据搬运、Cube/Vector 利用率、double buffer）？",
+  "run_id": "U-cann-kimi-k3-2-standard-20260921T133539",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "# Search Results for \"CANN msprof 算子性能分析 AI Core 利用率 profiling 昇腾 官方文档\"\n\n## 1. [用msprof精准定位AI Core利用率瓶颈：CANN性能分析实战 ...](https://blog.csdn.net/weixin_26833503/article/details/165369527)\n\n2026年9月14日 · msprof作为CANN Toolkit自带的性能分析工具，能够采集AI Core、AI CPU、内存搬运等多维度数据，精准量化计算 …\n\n**URL:** https://blog.csdn.net/weixin_26833503/article/details/165369527\n\n---\n\n## 2. [CANN msprof 完整介绍（昇腾性能剖析工具） MindStudio ...](https://blog.csdn.net/zhangfeng1133/article/details/162138481)\n\n2026年9月9日 · 摘要（149字）： msprof是昇腾NPU全链路性能剖析工具，集成于CANN Toolkit，支持算子开发与模型训练/推理调优 …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/162138481\n\n---\n\n## 3. [用msprof精准定位AI Core利用率瓶颈：CANN性能分析实战 ...](http://www.lmnt.cn/news/245399)\n\n5"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "## 1. [用msprof精准定位AI Core利用率瓶颈：CANN性能分析实战 ...](https://blog.csdn.net/weixin_26833503/article/details/165369527)\n\n2026年9月14日 · msprof作为CANN Toolkit自带的性能分析工具，能够采集AI Core、AI CPU、内存搬运等多维度数据，精准量化计算 …\n\n**URL:** https://blog.csdn.net/weixin_26833503/article/details/165369527\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_26833503/article/details/165369527"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "## 2. [CANN msprof 完整介绍（昇腾性能剖析工具） MindStudio ...](https://blog.csdn.net/zhangfeng1133/article/details/162138481)\n\n2026年9月9日 · 摘要（149字）： msprof是昇腾NPU全链路性能剖析工具，集成于CANN Toolkit，支持算子开发与模型训练/推理调优 …\n\n**URL:** https://blog.csdn.net/zhangfeng1133/article/details/162138481\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/zhangfeng1133/article/details/162138481"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "## 3. [用msprof精准定位AI Core利用率瓶颈：CANN性能分析实战 ...](http://www.lmnt.cn/news/245399)\n\n5 天之前 · msprof是CANN Toolkit自带的性能分析工具主要用来采集和统计加速卡上各个计算单元的使用情况、算子耗时、任务下发和 …\n\n**URL:** http://www.lmnt.cn/news/245399\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "http://www.lmnt.cn/news/245399"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "## 4. [性能探针：Ascend C算子性能分析与Profiling工具链实战_昇 ...](https://devpress.csdn.net/v1/article/detail/156004861)\n\n2025年12月17日 · 本文系统介绍了华为昇腾AI算子性能优化工具链CANNProfiling的完整生态。 从性能分析认知革命入手，强调数据驱 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/156004861\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/156004861"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_620d4ae2.result",
+      "evidence": {
+        "event_id": "WebSearch_0_620d4ae2.result",
+        "quote": "## 5. [msproftx数据说明-性能数据文件参考-性能调优工具-开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/Profiling/atlasprofiling_16_0061.html)\n\ncommunication_statistic（集合通信算子统计信息） op_summary（算子详细信息） op_statistic（算子调用次数及耗时） …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/Profiling/atlasprofiling_16_0061.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/Profiling/atlasprofiling_16_0061.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "# Search Results for \"Ascend C double buffer UB 搬运 流水 TQue InitBuffer 官方文档 昇腾社区\"\n\n## 1. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解 ...](https://blog.csdn.net/six_1243096140/article/details/155393212)\n\n2025年12月10日 · 本文深入剖析Ascend C编程模型中 Double Buffer双缓冲机制 与 流水线（Pipeline）优化 的精妙设计，揭示如何通 …\n\n**URL:** https://blog.csdn.net/six_1243096140/article/details/155393212\n\n---\n\n## 2. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解](https://cann.csdn.net/69ef0b9c54b52172bc70477c.html)\n\n2025年11月29日 · 本文深入剖析了昇腾AI处理器中AscendC编程模型的内存优化技术，重点解析了DoubleBuffer双缓冲机制和多级流水 …\n\n**URL:** https://cann.csdn.net/69ef0b9c54b52172bc70477c.html\n\n---\n\n## 3. [使能double buffer-流水优化-性能优化-Ascend C最佳实践 ...](https://www.hiascend.com/document/detail/z"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "## 1. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解 ...](https://blog.csdn.net/six_1243096140/article/details/155393212)\n\n2025年12月10日 · 本文深入剖析Ascend C编程模型中 Double Buffer双缓冲机制 与 流水线（Pipeline）优化 的精妙设计，揭示如何通 …\n\n**URL:** https://blog.csdn.net/six_1243096140/article/details/155393212\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://blog.csdn.net/six_1243096140/article/details/155393212"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "## 2. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解](https://cann.csdn.net/69ef0b9c54b52172bc70477c.html)\n\n2025年11月29日 · 本文深入剖析了昇腾AI处理器中AscendC编程模型的内存优化技术，重点解析了DoubleBuffer双缓冲机制和多级流水 …\n\n**URL:** https://cann.csdn.net/69ef0b9c54b52172bc70477c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://cann.csdn.net/69ef0b9c54b52172bc70477c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "## 3. [使能double buffer-流水优化-性能优化-Ascend C最佳实践 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)\n\n【描述】执行于AI Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "## 4. [Ascend C背后的魔法：深度理解多核并行/流水计算/dobule ...](https://www.hiascend.com/developer/techArticles/20230807-1)\n\n2023年8月7日 · 本文试图对隐藏在多核并行，流水计算、dobule buffer背后的CANN Ascend C算子魔法进行摸索和理解，是什么样的 …\n\n**URL:** https://www.hiascend.com/developer/techArticles/20230807-1\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://www.hiascend.com/developer/techArticles/20230807-1"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_eedb12d8.result",
+      "evidence": {
+        "event_id": "WebSearch_1_eedb12d8.result",
+        "quote": "## 5. [Ascend C 矢量编程范式：CopyIn、Compute、CopyOut 与 ...](https://neurpulse.github.io/notes/ascend-c-vector-programming-paradigm/)\n\n2026年9月11日 · 学习目标 这篇笔记解释 Ascend C 为什么采用流水线式编程，以及 TPipe 、 TQue 、 TBuf 、 TPosition 如何协同。  …\n\n**URL:** https://neurpulse.github.io/notes/ascend-c-vector-programming-paradigm/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://neurpulse.github.io/notes/ascend-c-vector-programming-paradigm/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "# Search Results for \"hiascend msprof-analyze 算子 内存带宽 cube vector 利用率 mte profiling 命令\"\n\n## 1. [获取性能数据](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)\n\n获取性能数据 昇腾社区｡使用msProf工具获取仿真流水图的具体方式请参考指令流水图｡ 支持以下两种可视化呈现方式: Chrome浏览器 在Chrome浏览器中输入“chrome://tracing”地址,并将通过msprof op simulator生成指令流水图文件(trace.json)拖到空白处打开,键盘上输入快捷键(W:放大,S:缩小,A:左移,D:右移)可进行查看｡ 指令流水图支持MindStudio Insight可视化呈现,MindStudio Insight工具以时序图方式为用户提供指令在昇腾AI处理器上的运行情况,用户可通过分析时序图中的指令详情､指令执行时间､指令关联代码的调用栈及指令/流水间同步连线等信息,识别微观指令的时序优化点｡ 图2 时间线界面 说明 本文部分样例中展示的算子仿真流水图和上述两种可视化呈现方式不一致,但是其中的关键字段含义是对应的,开发者可以参考指令流水图查看具体字段的含义｡ 分析性能数据 分析性能数据 理论参数 理论性能为算子实际性能的理想目标｡不同的硬件平台的硬"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "## 1. [获取性能数据](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)\n\n获取性能数据 昇腾社区｡使用msProf工具获取仿真流水图的具体方式请参考指令流水图｡ 支持以下两种可视化呈现方式: Chrome浏览器 在Chrome浏览器中输入“chrome://tracing”地址,并将通过msprof op simulator生成指令流水图文件(trace.json)拖到空白处打开,键盘上输入快捷键(W:放大,S:缩小,A:左移,D:右移)可进行查看｡ 指令流水图支持MindStudio Insight可视化呈现,MindStudio Insight工具以时序图方式为用户提供指令在昇腾AI处理器上的运行情况,用户可通过分析时序图中的指令详情､指令执行时间､指令关联代码的调用栈及指令/流水间同步连线等信息,识别微观指令的时序优化点｡ 图2 时间线界面 说明 本文部分样例中展示的算子仿真流水图和上述两种可视化呈现方式不一致,但是其中的关键字段含义是对应的,开发者可以参考指令流水图查看具体字段的含义｡ 分析性能数据 分析性能数据 理论参数 理论性能为算子实际性能的理想目标｡不同的硬件平台的硬件规格各异,理论性能可以帮助我们了解硬件的潜能,从而设定性能优化的目标｡ 搬运相关流水(MTE1/MTE2/MTE3等)的理论耗时 = 搬运数据量(单位:Byte) / 理论带宽｡例如:某款AI处理器的GM峰值带宽约为1.8TB/s,想要进行一次float数据类型､4096 * 4096大小的矩阵搬运,搬运的理论耗时是sizeof(float) * 4096 * 4096 / 1.8TB/s = 37.28us(按照1TB =1012Byte来计算)｡ 说明 搬运指令同时存在时,会存在共享带宽的情况,并不能每条都以接近理论带宽的速率搬运数据｡比如,当MTE2/MTE3同时进行GM读写时,搬运流水线的耗时应该是(MTE2搬运量 + MTE3搬运量)/ GM带宽｡ 搬运不同大小的数据块时,对带宽的利用率(有效带宽/理论带宽)不一样｡针对每次搬运数据量较小的情况,实测性能达不到理论带宽｡ 计算相关流水(Cube/Vector/Scalar等)的理论耗时 = 计算数据量(单位:Element) / 理论算力｡\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "## 2. [Performance Tool Usage](https://www.hiascend.com/document/detail/en/mindstudio/2600/practicalcases/GeneralPerformanceIssue/MindStudio/26.0.0/en/cases/general_performance_issue_troubleshooting_guide/performance_tool_usage.md)\n\nPerformance Tool Usage 昇腾社区｡ If competing product analysis is involved, you are advised to collect performance metrics of competing products under the same conditions (including but not limited to the number of collected steps, hyperparameter settings, and used data). Performance bottleneck analysis: After profile data is collected, use the performance analysis tool to analyze bottlenecks. The msprof-analyze tool performs preliminary analysis, identifies performance issues at a fine-grained level, and provides clear direction for further in-depth analysis. For details, see Quick Analysis for Model Tuning (msprof-analyze). The MindStudio Insight tool identifies bottlenecks and analyzes root causes. For details, see In-depth Model Tuning Analysis (MindStudio Insight). Model Tuning Profiling Tools MindStudio provides multiple flexible system-level profile data collection methods. You can select a proper solution to accurately locate performance bottlenecks and improve training efficiency. Two collection modes are available based on the enabling mode: msprof CLI and AI framework Profiler APIs (Ascend PyTorch Profiler and MindSpore Profiler). The msprof CLI is used to collect profile data at the CANN and NPU layers. It serves as the basis for other profile data collection APIs. Note The msprof CLI does not have AI framework layer data. The Profiler APIs of the AI framework encapsulate the msprof CLI and enable further collection and parsing of profile data at the AI framework layer. This method is the most commonly used approach. According to their functions and features, the Profiler APIs can be classified into three modes: general (static) collection, dynamic collection, and online monitoring. In addition, some training or inference kits further encapsulate the AI framework Profiler APIs, which can be directly invoked through the APIs in the kits, such as MindSpeed-MM and MindFormers. Figure 1 Profile data collection framework Table 1 Collection methods Collection Method Features Recommended Application Scenario Reference Document Link Profiling using the msprof CLI The msprof command line tool collects and parses profile data such as AI task profile data and data of AI Compute Service AI processors. The msprof CLI does not have AI framework layer data. Training and inference scenarios. msProf Model Tuning Tool Ascend PyTorch Profiler APIs Fully align with the usage in PyTorch-GPU scenarios and support collection of PyTorch framework and Ascend software and hardware data. General performance analysis based on PyTorch. Ascend PyTorch Profiler MindSpore Profiler APIs Collect MindSpore framework and Ascend software and hardware data. General performance analysis based on MindSpore. MindSpore Tuning Tool When using the AI framework Profiler for collection, you can set parameters by referring to Table 2. Table 2 Parameter configuration Application Scenario Parameter Configuration General performance analysis •profiler_level=Level1 • Retain the default valuePipeUtilizationforaic_metrics. • Setactivitiesto collect CPU and NPU data. • Enable other switches as required. NPU/GPU comparison This configuration is used to compare the end-to-end duration of the NPU and GPU. • profiler_level=Level0 • Setactivitiesto collect only NPU or CPU and NPU data (as required). • Disable other switches. Code locating To locate the code of an abnormal operator, you can enable thewith_stackorwith_modulesswitch in common scenarios. (Do not enable the switch unless necessary. Otherwise, the performance will deteriorate.) Analyzing the on-chip memory allocation of the operator NPU profile_memory=True Analyzing cluster communication profiler_level=Level1 Based on functions and features, the collection methods in Table 1 can be classified into three modes: general collection, dynamic collection, and online monitoring, as described in Table 3. Table 3 Collection classifications Collection Mode Features Recommended Application Scenario General collection Sets the collection period or collects all data, and flushes the detailed profile data to disks. General performance analysis dynamic_profile dynamic collection During model training, you canstart the collection process at any time and dynamically modify configuration collection itemswithout frequently modifying the script code. Scenarios with high startup and shutdown costs (such as ultra-large-scale training) Quick Analysis for Model Tuning (msprof-analyze) msprof-analyze provides a command line tool for quick analysis of performance bottlenecks in AI jobs. Table 1 lists the three core capabilities. Table 1 Core capabilities of the msprof-analyze tool Tool Name Function Description cluster_analyze (cluster analysis) Locates slow nodes, cards, and links. It can be used together with MindStudio Insight. compare (performance breakdown and comparison) Compares operators between NPUs and GPUs and between two NPUs in terms of time and memory, helping users quickly locate operators. Advisor (expert suggestions) Based on the experience of performance optimization experts and the affinity adaptation of Ascend software and hardware to operators, the automatic tuning capability is provided to help users identify performance bottlenecks and provide tuning suggestions.\n\n**URL:** https://www.hiascend.com/document/detail/en/mindstudio/2600/practicalcases/GeneralPerformanceIssue/MindStudio/26.0.0/en/cases/general_performance_issue_troubleshooting_guide/performance_tool_usage.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://www.hiascend.com/document/detail/en/mindstudio/2600/practicalcases/GeneralPerformanceIssue/MindStudio/26.0.0/en/cases/general_performance_issue_troubleshooting_guide/performance_tool_usage.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "## 3. [昇腾开源生态专区](https://ascendai.csdn.net/692c5f30791c233193d1487a.html)\n\n昇腾开源生态专区 昇腾开源生态专区｡Ascend C提供了多层次的性能分析工具｡ 3.1 上板Profiling分析流水线利用率 通过msprof工具收集实际运行性能数据,解析后的op_summary_*.csv文件包含关键指标: aic_mac_ratio:Cube计算单元利用率,理想应>85% aic_mte2_ratio:MTE2搬运单元利用率,过高可能表示内存瓶颈 aic_vector_ratio:向量单元利用率 Block Dim:实际使用的AI Core数量,检查是否用满所有核 开启性能数据收集 export ASCEND_SLOG_PRINT_TO_STDOUT=0 export PROFILING_MODE=true export PROFILING_OPTIONS=\"trace:task\" ./your_application msprof --analyze --output=./profiling_result复制 代码清单3-1:Profiling数据收集命令 关键分析模式: 如果MTE2利用率持续高于90%,且Cube利用率低,表明是内存瓶颈(Memory-Bound) 如果Cube利用率高但MTE2利用率低,表明是计算瓶颈(Compute-Bound) 如果两者利用率都低,可能是调度问题或流水线断裂 3.2 仿真流水图分析流水线连续性 仿真流水图可以可视化展示各流水线的执行情况,帮助识别断流现象｡理想情况下,各流水线应保持连续执行,没有明显空隙｡ 常见的异常模式包括: 规律性断流:可能由于数据依赖或资源冲突 长空闲间隙:流水线启动间隔过长,存在同步等待 头开销过大:算子初始化阶段耗时过长 3.3 自定义性能计数器的植入 对于复杂算子,我建议在关键位置插入自定义性能计数器,精确测量各阶段耗时: // 自定义性能计数示例 class PerfTimer { public: void Start() { start_clock = GetClockCycle(); } void Stop(const std::string& tag) { uint64_t end_clock = GetClockCycle(); uint64_t cycles = end_clock - start_clock; // 记录到性能统计库 RecordMetric(tag, cycles);\n\n**URL:** https://ascendai.csdn.net/692c5f30791c233193d1487a.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://ascendai.csdn.net/692c5f30791c233193d1487a.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "## 4. [昇腾GEMM类算子开发优化](https://www.hiascend.com/developer/blog/details/02108183312893606197)\n\n昇腾GEMM类算子开发优化 昇腾社区｡更直观的是可视化工具(MindStudio Insight),它能把芯片内部的计算流程用时间线图展示出来,就像看电影分镜一样清楚｡调试时要分场景处理:CPU侧代码可以用普通调试器(gdb)检查逻辑错误,而芯片侧代码则需要利用芯片专用调试接口(AscendC::printf)输出信息｡通过系统化的验证流程,您能确保算子不仅能跑起来,还能跑得准确｡ 5.1 性能分析工具 msprof 昇腾NPU的性能分析工具 msprof 是开发者优化算子的得力助手,它能够帮助我们快速定位性能瓶颈并提供改进方向｡以下是使用 msprof 的关键步骤: 性能评估模式 msprof op 模式用于评估实际运行在昇腾AI处理器上的算子性能,支持采集多类指标(如计算负载､内存负载等)｡基本命令如下: msprof op --application=\"./ascblasSgemm 0 0 3333 4444 7777 3333 4444 7777\" --output=../prof 关键参数说明: --application: 指定运行的算子程序及其参数｡ --output: 输出性能数据的目录｡ --aic-metrics: 可指定采集的指标(如 L2Cache､Memory 等),例如: msprof op --application=\"./ascblasSgemm ...\" --aic-metrics=L2Cache,Memory --output=../prof 仿真模式 msprof op simulator 模式用于生成算子的仿真数据,通过指令流水图分析优化潜力｡常用命令: msprof op simulator --application=\"./ascblasSgemm ...\" --output=../prof 仿真模式的特殊参数: 采集 PipeUtilization(流水线利用率)和 ResourceConflictRatio(资源冲突比例)｡ 示例命令: msprof op simulator --application=\"./ascblasSgemm ...\" --aic-metrics=PipeUtilization --output=../prof 性能数据解读 通过 msprof 采集的性能数据会生成多个文件,例如: *.csv:以表格形式展示性能指标(如 Cube 流水利用率､MTE2 搬运延迟)｡\n\n**URL:** https://www.hiascend.com/developer/blog/details/02108183312893606197\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://www.hiascend.com/developer/blog/details/02108183312893606197"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f7723493.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f7723493.result",
+        "quote": "## 5. [Profile Data Parsing and Export](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/devaids/Profiling/atlasprofiling_16_0021.html)\n\nProfile Data Parsing and Export 昇腾社区｡Profile Data Parsing and Export Profile Data Parsing and Export Applicable Products Product Supported Ascend 950PR/Ascend 950DT √ Atlas A3 training products/Atlas A3 inference products √ Atlas A2 training products/Atlas A2 inference products √ Atlas 200I/500 A2 inference products √ Atlas inference products √ Atlas training products √ Function This function is used to parse and export profile data. Precautions Complete the operations in Before You Start first. The profiling has completed. Direct parsing on the device is not supported for the products below. You must copy the generated PROF_XXX directory to an environment where the Toolkit package is installed. Ascend RC scenarios of Atlas 200I/500 A2 inference products Command Format msprof --export=on --output= [--type=] [--reports=] [--model-id=] [--iteration-id=] [--summary-format=] [--clear=on] Command-line Options Table 1Options Option Description Required/Optional --export Profile data parsing and export, The value can beonoroff(default). on : This option is enabled.; off : This option is disabled. To export data of a specific model (model ID) or iteration (iteration ID), run themsprof --exportcommand again to configure the--model-idand--iteration-idoptions after the msprof profiling command is executed. ThePROF_XXXfiles that are not parsed are automatically parsed and then exported. Example:msprof --export=on --output=/home/profiler_data/PROF_XXX Required --output Directory for storing the profile data file. The value must be thePROF_XXXdirectory or the parent directory of thePROF_XXXdirectory, for example,/home/profiler_data/PROF_XXX. The path cannot contain the following characters: \"\\n\", \"\\\\n\", \"\\f\", \"\\\\f\", \"\\r\", \"\\\\r\", \"\\b\", \"\\\\b\", \"\\t\", \"\\\\t\", \"\\v\", \"\\\\v\", \"\\u007F\", \"\\\\u007F\", \"\\\"\", \"\\\\\\\"\", \"'\", \"\\'\", \"\\\\\", \"\\\\\\\\\", \"%\", \"\\\\%\", \">\", \"\\\\>\", \"\", \"\\\\>\", \"<\", \"\\\\<\", \"|\", \"\\\\|\", \"&\", \"\\\\&\", \"$\", \"\\\\$\", \";\", \"\\\\;\", \"`\", \"\\\\`\". --reports specifies the reports_sample_config.json file. Use this option with the --export option and configure --type=text. It controls only the timeline data in the .json file. The summary data in the .csv file will always be fully exported. Soft links are not supported. The maximum file size is 64 MB, and the maximum length of the file path (including the file name) is 1,024 characters. By default, the reports_sample_config.json file is stored in the ${INSTALL_DIR}/tools/profiler/profiler_tool/analysis/msconfig/ directory. The content of the file is as follows: The reports_sample_config.json file can be created in any directory, on which you have read and write permissions. { \"json_process\": { \"ascend\": true, \"acc_pmu\": true, \"cann\": true, \"ddr\": true, \"stars_chip_trans\": true, \"hbm\": true, \"communication\": true, \"hccs\": true, \"os_runtime_api\": true, \"network_usage\": true, \"disk_usage\": true, \"memory_usage\": true, \"cpu_usage\": true, \"msproftx\": true, \"npu_mem\": true, \"overlap_analyse\": true, \"pcie\": true, \"sio\": true, \"stars_soc\": true, \"step_trace\": true, \"freq\": true, \"llc\": true, \"nic\": true, \"roce\": true, \"qos\": true, \"device_tx\": true } } The preceding parameters are switches for profiling specific data. You can set them to true or false (or delete unwanted fields). The following timeline data layers in the msprof_*.json file can be profiled: CANN, Ascend Hardware, AI Core Freq, On-Chip Memory, Communication, Overlap Analysis, and NPU_MEM. The prerequisite for exporting these data is that the original profile data already contains these fields, which means these data fields are profiled. Ensure that the reports_sample_config.json file is in the correct format. Otherwise, the following situations may occur: If the file contains errors like misspellings, the --reports option fails, exporting all profile data instead. The system stops the export and reports an error if the --reports option cannot access the configuration file due to insufficient permissions or a non-existent file. Output Description After the msprof --export command is executed, the mindstudio_profiler_output directory is generated in the PROF_XXX directory.\n\n**URL:** https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/devaids/Profiling/atlasprofiling_16_0021.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://www.hiascend.com/document/detail/en/CANNCommunityEdition/910/devaids/Profiling/atlasprofiling_16_0021.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_77f87142.result",
+      "evidence": {
+        "event_id": "WebFetch_3_77f87142.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.2.RC1开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_ff994af6.result",
+      "evidence": {
+        "event_id": "WebFetch_4_ff994af6.result",
+        "quote": "**标题**: 获取性能数据-性能分析-算子实践参考-Ascend C算子开发-算子开发-CANN8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)\n\n# 获取性能数据\n\n在进行性能优化之前，需要拿到准确的性能数据，了解性能现状，并根据性能现状分析下一步的优化方向。Ascend C提供了多种性能测试方法，包括上板Profiling、单算子性能仿真流水图等手段。\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/opdevg/Ascendcopdevg/atlas_ascendc_best_practices_10_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_cbe2dbc7.result",
+      "evidence": {
+        "event_id": "WebFetch_5_cbe2dbc7.result",
+        "quote": "**标题**: 工具使用-算子调优（msProf）-算子开发工具-开发工具-CANN8.5.0开发文档-昇腾社区\n\n\n\n# 工具使用\n\nmsProf工具包含msprof op和msprof op simulator两种使用方式，协助用户定位算子内存、算子代码以及算子指令的异常，实现全方位的算子调优。两种使用方式的详细说明请参考表1。\n\n\n\n**表1** msprof op和msprof op simulator功能说明表\n\n功能名称\n\n适用场景\n\n使用方式\n\n展示的图形\n\nmsprof op\n\n适用于实际运行环境中的性能分析，可协助用户定位算子内存和性能瓶颈。\n\n直接分析运行中的算子，无需额外配置，适合在板环境中快速定位算子性能问题。\n\n计算内存热力图\n\nRoofline瓶颈分析图\n\nCache热力图\n\n通算流水图\n\n算子代码热点图\n\n说明：\n\n若要实现Cache热力图跳转功能，需参考msprof op配置进行配置。\n\nmsprof op simulator\n\n适用于开发和调试阶段，进行详细仿真调优，可协助用户分析算子指令和代码热点问题。\n\n需要参考msprof op simulator配置，配置环境变量（如LD_LIBRARY_PATH）和编译选项（如添加-g生成调试信息），适合在仿真环境中详细分析算子行为。\n\n指令流水图\n\n算子代码热点图\n\n内存通路吞吐率波形图\n\n说明：\n\n资料中的msprof op simulator的仿真结果仅供参考，算子真实的运行情况以用户的实际仿真数据为准。\n\n- msProf工具的使用依赖CANN包中的msopprof可执行文件，该文件中的接口使"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/optool/atlasopdev_16_00851.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_1MPHGwwhc4q9MuFqxuoo8157.result",
+      "evidence": {
+        "event_id": "call_00_1MPHGwwhc4q9MuFqxuoo8157.result",
+        "quote": "**标题**: 算子融合规则配置功能（fusion_switch_file）-GE图模式功能-GE图模式-PyTorch图模式使用(TorchAir)-套件与三方库-TorchNPU26.0.0开发文档-昇腾社区\n\n# 算子融合规则配置功能（fusion_switch_file）\n\n## 功能简介\n\n图模式场景下执行模型时会自动融合算子，以降低网络推理时间、提高整网性能。算子融合方式主要包括如下两种：\n\n- 图融合（Graph Fusion）：指融合引擎根据融合规则进行改图的过程，该过程主要通过拆分/合并计算图中的算子来提升计算效率，以实现加速运算的目的，与硬件无关。\n- UB融合（Unified Buffer Fusion）：指对图上使用UB的算子进行融合优化。例如两个算子单独运行时，算子1的计算结果存储在UB上，需搬移到DDR（Double Data Rate，双倍速率同步动态随机存储器）。算子2执行时，需要将算子1的输出从DDR搬移到UB，再进行算子2的计算，完成后再从UB搬移回DDR。\n  \n  从上述过程可知，算子1的结果经历了从UB->DDR->UB->DDR，过程中的DDR数据搬移是不必要的。可以将算子1和算子2合并成一个算子，融合后算子1的数据直接保留在UB中，算子2直接从UB获取数据进行算子2的计算，这样就节省了一次输出DDR和一次输入DDR，减少了数据搬移时间，提高运算效率，有效降低了带宽。\n\n更多融合规则相关介绍请参见《CANN 图融合和UB融合规则参考》。目前系统内置了一些算子融合规则，**默认情况下均为开启**（如有默认关闭，会有特殊说明）。Torch"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_6zPJQBOcdgLxk6Qf46kp5408.result",
+      "evidence": {
+        "event_id": "call_00_6zPJQBOcdgLxk6Qf46kp5408.result",
+        "quote": "**标题**: 算子融合规则配置功能（optimization_switch）-GE图模式功能-GE图模式-PyTorch图模式使用(TorchAir)-套件与三方库-TorchNPU26.0.0开发文档-昇腾社区\n\n# 算子融合规则配置功能（optimization_switch）\n\n## 功能简介\n\n算子编译时，可根据实际业务需要灵活地配置算子融合，以降低网络推理时间、提高整网性能。\n\n本功能是算子融合规则的控制开关，与[算子融合规则配置功能（fusion_switch_file）](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md)类似，差异如下：\n\nconfig.fusion_config.fusion_switch_file仅能关闭图融合和UB（Unified Buffer）融合的规则，并且需要单独配置Json文件；而本功能适用于所有融合规则的指定，不需要再单独设置Json文件。如果两个功能都配置，且配置了同一个融合规则，则以本功能配置为准。\n\n## 使用约束\n\n本功能仅适用于GE图模式场景。\n\n## 使用方法\n\n该功能通过[torchair.get_npu_backend](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchai"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_oLDBBnDkTBHRXNOPWNhj6637.result",
+      "evidence": {
+        "event_id": "call_00_oLDBBnDkTBHRXNOPWNhj6637.result",
+        "quote": "**标题**: 基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自定义Pass开发-编程指南-图开发-编程指南-CANN9.1.0-beta.1开发文档-昇腾社区\n\n# 基于Pattern匹配实现Pass\n\n# 基于Pattern匹配实现Pass\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。整个融合行为的逻辑可分为以下三个步骤：\n\n1. 匹配：通过Pattern来定义一种图结构，进行子图结构的匹配查找。\n2. 决策：根据匹配结果，结合更具体的条件，判断该匹配是否满足融合要求。\n3. 替换：在确认可融合后，执行图结构的替换操作，完成优化。\n\n**图1** 逻辑架构图  \n\n\n逻辑架构如图1所示，相关核心概念解释如下：\n\n- Pattern（模式）：在图匹配过程中，Pattern用于描述子图结构特征的模板或规则，通过图匹配算法在Graph中查找符合特定规则的子图。\n- PatternMatcher（匹配器）：执行匹配算法的核心对象，它接收一个Pattern，并按照Pattern中定义的子图结构去Graph中查找符合定义的子图。\n- GraphRewriter（重写器）：执行改图的核心对象，接收匹配到的子图边界及目标Replacement图（替换后），将原子图节点替换为Replacement中的节点结构，完成图的重构。\n\n开发者通过继承GE提供的基类并重写其方法来实现自定义融合Pass， 接着调用注册宏将Pass注册到指定阶段，根据应用场景的不同，GE提供两类基类供继承：\n\n# 基于Pattern匹配实现"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_A45XoXSntFlZOCFnZb7D2483.result",
+      "evidence": {
+        "event_id": "call_00_A45XoXSntFlZOCFnZb7D2483.result",
+        "quote": "**标题**: REG_FUSION_PASS-图基础数据结构和接口-C++语言接口-GE图引擎API-API参考-CANN9.1.0-beta.3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_9L97D0MOp6r0li5uztxS3174.result",
+      "evidence": {
+        "event_id": "call_00_9L97D0MOp6r0li5uztxS3174.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/maintenref/graphubfusionref/atlasrr_30_0003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Cz34i7y9ucaRaSgvX9hH9298.result",
+      "evidence": {
+        "event_id": "call_00_Cz34i7y9ucaRaSgvX9hH9298.result",
+        "quote": "**标题**: ge/examples/fusion_pass/README.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n# [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%9E%8D%E5%90%88-pass)自定义融合 Pass\n\n本目录提供 GE 自定义融合 pass 的开发文档和样例。\n\n如果是第一次开发，建议按下面顺序阅读：\n\n1. [融合 Pattern Pass 机制](https://gitcode.com/cann/ge/blob/develop/docs/zh/design/features/fusion_pattern_pass.md)：先理解 pattern、匹配、过滤、replacement 和边界规则。\n2. [Python 融合 Pass 开发指南](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md)：支持运行时接入和 `@pattern` 表达式写法。\n3. [C++ 融合 Pass 开发指南](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/cpp_fusion_pass_development_guide.md)：适合编译"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_cP9hFOP7dGfyge0Ic6ba7499.result",
+      "evidence": {
+        "event_id": "call_00_cP9hFOP7dGfyge0Ic6ba7499.result",
+        "quote": "**标题**: ge/examples/fusion_pass/cpp_fusion_pass_development_guide.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n[![cann-robot](https://cdn-img.gitcode.com/bf/ad/b7f29486a040d7b2f52bf6c78414692d7d585eb1ec628cea3eb01c9d63f68618.png?time=1755691472703)cann-robot](https://gitcode.com/cann-robot \"cann-robot\")[feat: 融合Pass注册支持声明默认开关状态(PassSwitch)](https://gitcode.com/cann/ge/commit/351a747bcd465b5e5848654d26a0978a5d08a8cd?ref=master)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/cpp_fusion_pass_development_guide.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_87v8lqnWd8eePNn1oQhj1003.result",
+      "evidence": {
+        "event_id": "call_00_87v8lqnWd8eePNn1oQhj1003.result",
+        "quote": "**标题**: ge/examples/fusion_pass/python_fusion_pass_development_guide.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n# [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md#python-%E8%9E%8D%E5%90%88-pass-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97)Python 融合 Pass 开发指南\n\n本文面向想用 Python 编写 GE 融合 pass 的开发者。建议先阅读语言无关的机制说明：[融合 Pattern Pass 机制](https://gitcode.com/cann/ge/blob/develop/docs/zh/design/features/fusion_pattern_pass.md)。\n\n如果你已经理解“定义 pattern、匹配、过滤、replacement、重连”这条主线，可以直接按本文写代码。\n\n## [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%98%E5%85%88%E8%80%83%E8%99%91-pytho"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "2bcd599ce6fe307d9fc4b60b8e338d0dba57f82a207d0168a7b2d83230ef4751",
+  "question": "昇腾 GE 图编译里算子融合规则怎么看、怎么自定义融合 pass（UB 融合/图融合）？",
+  "run_id": "N-cann-deepseek-v4_1-flash-standard-20260921T105237",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "# Search Results for \"昇腾 GE 图编译 算子融合 fusion_switch 自定义融合pass UB融合\"\n\n## 1. [算子融合规则配置功能（optimization_switch）-GE图模式 ...](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md)\n\n# 算子融合规则配置功能（optimization\\_switch） ## 功能简介 算子编译时，可根据实际业务需要灵活地配置算子融合，以降低网络推 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md\n\n---\n\n## 2. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://blog.csdn.net/jin421352/article/details/162193834)\n\n2026年7月25日 · 以下从编译流水线结构、图优化关键路径、算子融合策略、数据布局转换以及动态Shape处理等维度，对GE的核心 …\n\n**URL:** https://blog."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "## 1. [算子融合规则配置功能（optimization_switch）-GE图模式 ...](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md)\n\n# 算子融合规则配置功能（optimization\\_switch） ## 功能简介 算子编译时，可根据实际业务需要灵活地配置算子融合，以降低网络推 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "## 2. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://blog.csdn.net/jin421352/article/details/162193834)\n\n2026年7月25日 · 以下从编译流水线结构、图优化关键路径、算子融合策略、数据布局转换以及动态Shape处理等维度，对GE的核心 …\n\n**URL:** https://blog.csdn.net/jin421352/article/details/162193834\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/jin421352/article/details/162193834"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "## 3. [算子融合规则配置功能（fusion_switch_file）-TorchNPU26.0.0 ...](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md)\n\n可以将算子1和算子2合并成一个算子，融合后算子1的数据直接保留在UB中，算子2直接从UB获取数据进行算子2的计算，这样就节省 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "## 4. [CANN图引擎GE架构原理深度剖析：昇腾NPU上计算图编译 ...](https://blog.csdn.net/2401_86031952/article/details/161982313)\n\n2026年6月14日 · 图级优化涵盖常量折叠（Constant Folding）、公共子表达式消除（CSE）、死代码消除（Dead Code Elimination） …\n\n**URL:** https://blog.csdn.net/2401_86031952/article/details/161982313\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/2401_86031952/article/details/161982313"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+      "evidence": {
+        "event_id": "call_00_AYSRasinsYPabR8EWpRF2899.result",
+        "quote": "## 5. [CANN-昇腾NPU-GE编译优化-graph-autofusion进阶](https://hwcomputing.csdn.net/6a13cea2662f9a54cb76dce9.html)\n\n2026年5月25日 · 摘要：本文深入解析了昇腾CANN架构中GE（Graph Engine）的graph-autofusion技术。 该技术通过模式匹配和算子 …\n\n**URL:** https://hwcomputing.csdn.net/6a13cea2662f9a54cb76dce9.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://hwcomputing.csdn.net/6a13cea2662f9a54cb76dce9.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_1MPHGwwhc4q9MuFqxuoo8157.result",
+      "evidence": {
+        "event_id": "call_00_1MPHGwwhc4q9MuFqxuoo8157.result",
+        "quote": "**标题**: 算子融合规则配置功能（fusion_switch_file）-GE图模式功能-GE图模式-PyTorch图模式使用(TorchAir)-套件与三方库-TorchNPU26.0.0开发文档-昇腾社区\n\n# 算子融合规则配置功能（fusion_switch_file）\n\n## 功能简介\n\n图模式场景下执行模型时会自动融合算子，以降低网络推理时间、提高整网性能。算子融合方式主要包括如下两种：\n\n- 图融合（Graph Fusion）：指融合引擎根据融合规则进行改图的过程，该过程主要通过拆分/合并计算图中的算子来提升计算效率，以实现加速运算的目的，与硬件无关。\n- UB融合（Unified Buffer Fusion）：指对图上使用UB的算子进行融合优化。例如两个算子单独运行时，算子1的计算结果存储在UB上，需搬移到DDR（Double Data Rate，双倍速率同步动态随机存储器）。算子2执行时，需要将算子1的输出从DDR搬移到UB，再进行算子2的计算，完成后再从UB搬移回DDR。\n  \n  从上述过程可知，算子1的结果经历了从UB->DDR->UB->DDR，过程中的DDR数据搬移是不必要的。可以将算子1和算子2合并成一个算子，融合后算子1的数据直接保留在UB中，算子2直接从UB获取数据进行算子2的计算，这样就节省了一次输出DDR和一次输入DDR，减少了数据搬移时间，提高运算效率，有效降低了带宽。\n\n更多融合规则相关介绍请参见《CANN 图融合和UB融合规则参考》。目前系统内置了一些算子融合规则，**默认情况下均为开启**（如有默认关闭，会有特殊说明）。Torch"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_6zPJQBOcdgLxk6Qf46kp5408.result",
+      "evidence": {
+        "event_id": "call_00_6zPJQBOcdgLxk6Qf46kp5408.result",
+        "quote": "**标题**: 算子融合规则配置功能（optimization_switch）-GE图模式功能-GE图模式-PyTorch图模式使用(TorchAir)-套件与三方库-TorchNPU26.0.0开发文档-昇腾社区\n\n# 算子融合规则配置功能（optimization_switch）\n\n## 功能简介\n\n算子编译时，可根据实际业务需要灵活地配置算子融合，以降低网络推理时间、提高整网性能。\n\n本功能是算子融合规则的控制开关，与[算子融合规则配置功能（fusion_switch_file）](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/fusion_switch_file.md)类似，差异如下：\n\nconfig.fusion_config.fusion_switch_file仅能关闭图融合和UB（Unified Buffer）融合的规则，并且需要单独配置Json文件；而本功能适用于所有融合规则的指定，不需要再单独设置Json文件。如果两个功能都配置，且配置了同一个融合规则，则以本功能配置为准。\n\n## 使用约束\n\n本功能仅适用于GE图模式场景。\n\n## 使用方法\n\n该功能通过[torchair.get_npu_backend](https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchai"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/modthirdparty/torchairuseguide/docs/zh/ascend_ir/features/advanced/optimization_switch.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "# Search Results for \"昇腾 自定义融合pass REGISTER_FUSION_PASS FusionBasePass 开发\"\n\n## 1. [基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html)\n\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。 整个融合行为的逻辑可分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html\n\n---\n\n## 2. [REG_FUSION_PASS-图基础数据结构和接口-C++语言 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html)\n\n<!DOCTYPE html> REG_FUSION_PASS 产品支持情况全量芯片支持。 头文件#include <ge/fusion/pass/pattern_fusion_pass.h> "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "## 1. [基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html)\n\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。 整个融合行为的逻辑可分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "## 2. [REG_FUSION_PASS-图基础数据结构和接口-C++语言 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html)\n\n<!DOCTYPE html> REG_FUSION_PASS 产品支持情况全量芯片支持。 头文件#include <ge/fusion/pass/pattern_fusion_pass.h> 功能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "## 3. [图级优化的手术刀：自定义 Scope 融合模式与 Pass 开发](https://blog.csdn.net/2401_82857325/article/details/155504884)\n\n2026年7月4日 · 2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开发技能，参与可获认证证书及丰厚奖品。 本文 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155504884\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/155504884"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "## 4. [昇腾CANN GE融合Pass示例 - CSDN博客](https://blog.csdn.net/gitblog_00071/article/details/154622578)\n\n2026年5月10日 · 本样例为移动ReLu到Concat前的自定义pass样例，当融合pass场景中需要包含**动态数量输入/出的算子**时，可参 …\n\n**URL:** https://blog.csdn.net/gitblog_00071/article/details/154622578\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/gitblog_00071/article/details/154622578"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+      "evidence": {
+        "event_id": "call_00_GSWTeEONgXckh77h8zQ39275.result",
+        "quote": "## 5. [custom_development_code:基于昇腾生态的自定义算子与 ...](https://gitcode.com/CharmanderFang/custom_development_code)\n\n用于存放和管理客户自定义开发代码，涵盖自定义算子、插件和融合Pass的源码及使用场景。 提供清晰的目录结构，便于开发者归档 …\n\n**URL:** https://gitcode.com/CharmanderFang/custom_development_code\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://gitcode.com/CharmanderFang/custom_development_code"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_oLDBBnDkTBHRXNOPWNhj6637.result",
+      "evidence": {
+        "event_id": "call_00_oLDBBnDkTBHRXNOPWNhj6637.result",
+        "quote": "**标题**: 基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自定义Pass开发-编程指南-图开发-编程指南-CANN9.1.0-beta.1开发文档-昇腾社区\n\n# 基于Pattern匹配实现Pass\n\n# 基于Pattern匹配实现Pass\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。整个融合行为的逻辑可分为以下三个步骤：\n\n1. 匹配：通过Pattern来定义一种图结构，进行子图结构的匹配查找。\n2. 决策：根据匹配结果，结合更具体的条件，判断该匹配是否满足融合要求。\n3. 替换：在确认可融合后，执行图结构的替换操作，完成优化。\n\n**图1** 逻辑架构图  \n\n\n逻辑架构如图1所示，相关核心概念解释如下：\n\n- Pattern（模式）：在图匹配过程中，Pattern用于描述子图结构特征的模板或规则，通过图匹配算法在Graph中查找符合特定规则的子图。\n- PatternMatcher（匹配器）：执行匹配算法的核心对象，它接收一个Pattern，并按照Pattern中定义的子图结构去Graph中查找符合定义的子图。\n- GraphRewriter（重写器）：执行改图的核心对象，接收匹配到的子图边界及目标Replacement图（替换后），将原子图节点替换为Replacement中的节点结构，完成图的重构。\n\n开发者通过继承GE提供的基类并重写其方法来实现自定义融合Pass， 接着调用注册宏将Pass注册到指定阶段，根据应用场景的不同，GE提供两类基类供继承：\n\n# 基于Pattern匹配实现"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_A45XoXSntFlZOCFnZb7D2483.result",
+      "evidence": {
+        "event_id": "call_00_A45XoXSntFlZOCFnZb7D2483.result",
+        "quote": "**标题**: REG_FUSION_PASS-图基础数据结构和接口-C++语言接口-GE图引擎API-API参考-CANN9.1.0-beta.3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/API/ascendgraphapi/atlasgeapi_07_0683.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "# Search Results for \"CANN 图融合和UB融合规则参考 UB融合 pass\"\n\n## 1. [图融合和UB融合规则参考](https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf)\n\n2024年11月15日 · 本最终用户许可协议是最终用户(个人、公司或其他任何实体)与华为公司就华为软件的使用所缔结的协议。 最终用户 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf\n\n---\n\n## 2. [图融合和UB融合规则参考 (训练) - 华为云](https://support.huaweicloud.com/grapubfusionreference-cann330alphaXtraining/grapubfusionr"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "## 1. [图融合和UB融合规则参考](https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf)\n\n2024年11月15日 · 本最终用户许可协议是最终用户(个人、公司或其他任何实体)与华为公司就华为软件的使用所缔结的协议。 最终用户 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "## 2. [图融合和UB融合规则参考 (训练) - 华为云](https://support.huaweicloud.com/grapubfusionreference-cann330alphaXtraining/grapubfusionreference-cann330alphaXtraining.pdf)\n\n2021年2月26日 · UB 即昇腾AI 处理器上的Unified Buffer,UB 融合指A 算子的计算结果在Unified Buffer上,需要搬移到Global Memory。 …\n\n**URL:** https://support.huaweicloud.com/grapubfusionreference-cann330alphaXtraining/grapubfusionreference-cann330alphaXtraining.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://support.huaweicloud.com/grapubfusionreference-cann330alphaXtraining/grapubfusionreference-cann330alphaXtraining.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "## 3. [简介-图融合和UB融合规则参考-参考-CANN8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/maintenref/graphubfusionref/atlasrr_30_0003.html)\n\n算子融合是整网性能提升的一种关键手段，包括图融合和UB融合。\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/maintenref/graphubfusionref/atlasrr_30_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/maintenref/graphubfusionref/atlasrr_30_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "## 4. [融合规则参考 - 华为云](https://support.huaweicloud.com/fusionref-cann330alpha2infer/fusionref-cann330alpha2infer.pdf)\n\n2021年4月14日 · Scope 融合是一种基于Scope 来进行融合的能力,把Scope内的多个小算子替换为一个大算子或多个算子组合,以实现 …\n\n**URL:** https://support.huaweicloud.com/fusionref-cann330alpha2infer/fusionref-cann330alpha2infer.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://support.huaweicloud.com/fusionref-cann330alpha2infer/fusionref-cann330alpha2infer.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+      "evidence": {
+        "event_id": "call_00_AfUUhymlBUyZe1S98CUe4816.result",
+        "quote": "## 5. [CANN算子融合深度解密-从图编译到性能跃迁的实战指南](https://blog.csdn.net/six_1243096140/article/details/155856715)\n\n2026年8月23日 · 本文深度解析华为CANN（Compute Architecture for Neural Networks）中算子融合（Operator Fusion）技术的核心 …\n\n**URL:** https://blog.csdn.net/six_1243096140/article/details/155856715\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://blog.csdn.net/six_1243096140/article/details/155856715"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_9L97D0MOp6r0li5uztxS3174.result",
+      "evidence": {
+        "event_id": "call_00_9L97D0MOp6r0li5uztxS3174.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/maintenref/graphubfusionref/atlasrr_30_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "# Search Results for \"昇腾 GE 自定义UB融合 pass 开发 UB融合知识库\"\n\n## 1. [ge/examples/fusion_pass/README.md-代码预览-ge:基于昇 ...](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md)\n\n本指南介绍如何开发一个融合pass来实现自定义改图功能，此外我们还提供了可运行的样例以供参考,其中graph_base_pass sample  …\n\n**URL:** https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md\n\n---\n\n## 2. [基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html)\n\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。 整个融合行为的逻辑可分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "## 1. [ge/examples/fusion_pass/README.md-代码预览-ge:基于昇 ...](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md)\n\n本指南介绍如何开发一个融合pass来实现自定义改图功能，此外我们还提供了可运行的样例以供参考,其中graph_base_pass sample  …\n\n**URL:** https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "## 2. [基于Pattern匹配实现Pass-使用自定义Pass修改Graph-自 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html)\n\n为提高自定义融合Pass的开发效率，本章提供了一组基于图结构的匹配与替换接口，用于实现Pass的构建。 整个融合行为的逻辑可分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta1/programug/graphdevg/atlasag_25_0093.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "## 3. [昇腾CANN GE融合Pass示例 - CSDN博客](https://blog.csdn.net/gitblog_00071/article/details/154622578)\n\n2026年5月10日 · 本样例为移动ReLu到Concat前的自定义pass样例，当融合pass场景中需要包含**动态数量输入/出的算子**时，可参 …\n\n**URL:** https://blog.csdn.net/gitblog_00071/article/details/154622578\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://blog.csdn.net/gitblog_00071/article/details/154622578"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "## 4. [CANN-昇腾NPU-GE编译优化-graph-autofusion进阶](https://devpress.csdn.net/v1/article/detail/161388263)\n\n2026年5月25日 · 摘要：本文深入解析了昇腾CANN架构中GE（Graph Engine）的graph-autofusion技术。 该技术通过模式匹配和算子 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161388263\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/161388263"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+      "evidence": {
+        "event_id": "call_00_fyhIkNpZGr4o67xep4mX0664.result",
+        "quote": "## 5. [昇腾CANN ge 仓：图引擎的架构与实战 - 技术栈](https://jishuzhan.net/article/2058010095711784961)\n\n2026年5月22日 · 训练大模型的时候，计算图要跑到昇腾NPU上，中间要经过一层转换——从 PyTorch/TensorFlow 的计算图转换成昇 …\n\n**URL:** https://jishuzhan.net/article/2058010095711784961\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://jishuzhan.net/article/2058010095711784961"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Cz34i7y9ucaRaSgvX9hH9298.result",
+      "evidence": {
+        "event_id": "call_00_Cz34i7y9ucaRaSgvX9hH9298.result",
+        "quote": "**标题**: ge/examples/fusion_pass/README.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n# [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%9E%8D%E5%90%88-pass)自定义融合 Pass\n\n本目录提供 GE 自定义融合 pass 的开发文档和样例。\n\n如果是第一次开发，建议按下面顺序阅读：\n\n1. [融合 Pattern Pass 机制](https://gitcode.com/cann/ge/blob/develop/docs/zh/design/features/fusion_pattern_pass.md)：先理解 pattern、匹配、过滤、replacement 和边界规则。\n2. [Python 融合 Pass 开发指南](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md)：支持运行时接入和 `@pattern` 表达式写法。\n3. [C++ 融合 Pass 开发指南](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/cpp_fusion_pass_development_guide.md)：适合编译"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cP9hFOP7dGfyge0Ic6ba7499.result",
+      "evidence": {
+        "event_id": "call_00_cP9hFOP7dGfyge0Ic6ba7499.result",
+        "quote": "**标题**: ge/examples/fusion_pass/cpp_fusion_pass_development_guide.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n[![cann-robot](https://cdn-img.gitcode.com/bf/ad/b7f29486a040d7b2f52bf6c78414692d7d585eb1ec628cea3eb01c9d63f68618.png?time=1755691472703)cann-robot](https://gitcode.com/cann-robot \"cann-robot\")[feat: 融合Pass注册支持声明默认开关状态(PassSwitch)](https://gitcode.com/cann/ge/commit/351a747bcd465b5e5848654d26a0978a5d08a8cd?ref=master)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/cpp_fusion_pass_development_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_87v8lqnWd8eePNn1oQhj1003.result",
+      "evidence": {
+        "event_id": "call_00_87v8lqnWd8eePNn1oQhj1003.result",
+        "quote": "**标题**: ge/examples/fusion_pass/python_fusion_pass_development_guide.md-代码预览-ge:基于昇腾的图编译器和执行器项目 - AtomGit\n\n# [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md#python-%E8%9E%8D%E5%90%88-pass-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97)Python 融合 Pass 开发指南\n\n本文面向想用 Python 编写 GE 融合 pass 的开发者。建议先阅读语言无关的机制说明：[融合 Pattern Pass 机制](https://gitcode.com/cann/ge/blob/develop/docs/zh/design/features/fusion_pattern_pass.md)。\n\n如果你已经理解“定义 pattern、匹配、过滤、replacement、重连”这条主线，可以直接按本文写代码。\n\n## [](https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%98%E5%85%88%E8%80%83%E8%99%91-pytho"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://gitcode.com/cann/ge/blob/develop/examples/fusion_pass/python_fusion_pass_development_guide.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

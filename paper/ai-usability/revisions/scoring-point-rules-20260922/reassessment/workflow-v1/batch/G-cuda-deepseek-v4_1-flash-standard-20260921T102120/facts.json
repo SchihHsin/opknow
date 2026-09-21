@@ -1,0 +1,454 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_UmNSw2PtCb6fIrenKDHM5906.result",
+      "evidence": {
+        "event_id": "call_00_UmNSw2PtCb6fIrenKDHM5906.result",
+        "quote": "**标题**: HIPIFY documentation — HIPIFY Documentation\n\nBack to top\n\n# HIPIFY documentation\n\n# HIPIFY documentation[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/#hipify-documentation \"Link to this heading\")\n\nHIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s HIP C++ programming language for use on AMD GPUs. HIPIFY includes two tools offering different levels of capability:\n\n- `hipify-clang`: A clang-based tool that parses CUDA code and converts it to HIP code. It handles syntax changes, API calls, and kernel launch differences.\n- `hipify-perl`: A simpler tool generated from `hipify-clang` that replaces CUDA API calls with HIP equivale"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_FeinOa2lrJS3YFS03vR33844.result",
+      "evidence": {
+        "event_id": "call_00_FeinOa2lrJS3YFS03vR33844.result",
+        "quote": "**标题**: Using hipify-clang — HIPIFY Documentation\n\n# Using hipify-clang#\n\n`hipify-clang` is a Clang-based tool for translating NVIDIA CUDA sources into HIP sources.\n\nIt translates CUDA source into an Abstract Syntax Tree (AST), which is traversed by transformation matchers. After applying all the matchers, the output HIP source is produced.\n\n**Advantages:**\n\n- `hipify-clang` is a translator. It parses complex constructs successfully or reports an error.\n- It supports Clang options such as -I, -D, and –cuda-path.\n- The support for new CUDA versions is seamless, as the Clang front-end is statically linked into `hipify-clang` and does all the syntactical parsing of a CUDA source to HIPIFY.\n- It"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_QkNAMvMpIUNcQTSCGK0L2056.result",
+      "evidence": {
+        "event_id": "call_00_QkNAMvMpIUNcQTSCGK0L2056.result",
+        "quote": "**标题**: Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen\n\nBack to top\n\n# Install PyTorch for ROCm\n\n# Install PyTorch for ROCm[#](https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html#install-pytorch-for-rocm \"Link to this heading\")\n\nRefer to this section for the recommended PyTorch via PIP installation method, as well as Docker-based installation.\n\n> **PCIe atomics**\n> \n> ROCm is an extension of HSA platform architecture, and shares queuing model, memory model, signaling and synchronization protocols.\n> \n> Platform atomics are integral to perform queuing and signaling memory operations, where there may be multiple-writers ac"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_2gaME88Z32PDy7WA84U99856.result",
+      "evidence": {
+        "event_id": "call_00_2gaME88Z32PDy7WA84U99856.result",
+        "quote": "**标题**: Using hipify-perl — HIPIFY Documentation\n\nBack to top\n\n# Using hipify-perl\n\n# Using hipify-perl[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html#using-hipify-perl \"Link to this heading\")\n\n`hipify-perl` is perl-based script that heavily uses regular expressions, that is automatically generated from `hipify-clang`.\n\n**Advantages:**\n\n- Ease of use\n- No checks for input source NVIDIA CUDA code for correctness required\n- No dependency on third party tools, including CUDA\n\n**Disadvantages:**\n\n- Inability or difficulty in implementing the following constructs:\n  \n  - Macros expansion\n  - Namespaces:\n    \n    - Redefinition of CUDA entities in user namespaces\n  "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_h2PcDtQgOfcSIXH94lMk6432.result",
+      "evidence": {
+        "event_id": "call_00_h2PcDtQgOfcSIXH94lMk6432.result",
+        "quote": "**标题**: GitHub - ROCm/hipify_torch · GitHub\n\n[![ipanfilo](https://avatars.githubusercontent.com/u/145064111?v=4&size=40)](https://github.com/ipanfilo)[ipanfilo](https://github.com/ROCm/hipify_torch/commits?author=ipanfilo)\n\nMar 5, 2026\n\nNameName\n\nLast commit message\n\nLast commit date\n\n[cmake](https://github.com/ROCm/hipify_torch/tree/master/cmake \"cmake\")\n\n[cmake](https://github.com/ROCm/hipify_torch/tree/master/cmake \"cmake\")\n\n[hipify_torch](https://github.com/ROCm/hipify_torch/tree/master/hipify_torch \"hipify_torch\")\n\n[hipify_torch](https://github.com/ROCm/hipify_torch/tree/master/hipify_torch \"hipify_torch\")\n\n[test](https://github.com/ROCm/hipify_torch/tree/master/test \"test\")\n\n[test](htt"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/ROCm/hipify_torch",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_14u9h9yWkUzgLpYfBy7N9142.result",
+      "evidence": {
+        "event_id": "call_00_14u9h9yWkUzgLpYfBy7N9142.result",
+        "quote": "# PyTorch on ROCm Installation — Extracted Information\n\n## Summary\nThis AMD ROCm documentation page covers installing PyTorch on ROCm using four methods: prebuilt Docker images (recommended), wheels packages, building from source, and the upstream Dockerfile. Below is all requested information extracted verbatim where applicable.\n\n---\n\n## 1. Installation Methods Overview\n\nFour options are provided:\n- **Use a prebuilt Docker image with PyTorch pre-installed** (recommended)\n- **Use a wheels package**\n- **Build PyTorch from source**\n- **Use the PyTorch upstream Dockerfile**\n\n---\n\n## 2. Exact pip install Commands and Index URLs\n\n### Wheels Package Install (the primary pip command)\n```bash\npip3 i"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocm.docs.amd.com/en/latest/how_to/pytorch_install/pytorch_install.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_nhjw3pJRkOQPxiuZCdqg4563.result",
+      "evidence": {
+        "event_id": "call_00_nhjw3pJRkOQPxiuZCdqg4563.result",
+        "quote": "**标题**: hipify-clang commands — HIPIFY Documentation\n\nBack to top\n\n# hipify-clang commands\n\n# hipify-clang commands[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#hipify-clang-commands \"Link to this heading\")\n\nFor a list of `hipify-clang` options, run:\n\n```\nhipify-clang --help\n```\n\n## Output:[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#output \"Link to this heading\")\n\n### Usage[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#usage \"Link to this heading\")\n\n```\nhipify-clang [options] <source0> [... <sourceN>]\n```\n\n### Options[#](https://rocm.docs.amd.com/projects/HIPIFY/en/l"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "8066e472e6bf044270d1142016aefa2adea2b5d7340675a4f2e23563473ec68a",
+  "question": "我有一份 CUDA 代码/PyTorch GPU 脚本，怎么移植到 AMD ROCm 平台？给出 hipify 工具用法。",
+  "run_id": "G-cuda-deepseek-v4_1-flash-standard-20260921T102120",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "# Search Results for \"hipify CUDA to HIP migration tool official ROCm documentation\"\n\n## 1. [HIPIFY documentation — HIPIFY Documentation - AMD](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/)\n\n2026年8月28日 · HIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/latest/\n\n---\n\n## 2. [HIPIFY documentation — HIPIFY Documentation - rocm…](https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/)\n\n2024年8月19日 · HIPIFY documentation # hipify-clang and hipify-perl are tools that automatically translate NVIDIA CUDA source …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/\n\n---"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "## 1. [HIPIFY documentation — HIPIFY Documentation - AMD](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/)\n\n2026年8月28日 · HIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/latest/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "## 2. [HIPIFY documentation — HIPIFY Documentation - rocm…](https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/)\n\n2024年8月19日 · HIPIFY documentation # hipify-clang and hipify-perl are tools that automatically translate NVIDIA CUDA source …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "## 3. [GitHub - ROCm/HIPIFY: HIPIFY: Convert CUDA to Portable C](https://github.com/ROCm/HIPIFY)\n\nThe published documentation is available at HIPIFY in an organized, easy-to-read format, with search and a table of contents. The …\n\n**URL:** https://github.com/ROCm/HIPIFY\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://github.com/ROCm/HIPIFY"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "## 4. [HIPIFY Documentation - AMD](https://rocmdocs.amd.com/_/downloads/HIPIFY/en/latest/pdf/)\n\n2026年8月28日 · HIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s …\n\n**URL:** https://rocmdocs.amd.com/_/downloads/HIPIFY/en/latest/pdf/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://rocmdocs.amd.com/_/downloads/HIPIFY/en/latest/pdf/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+      "evidence": {
+        "event_id": "call_00_NCTvdJXkxXAok7c6Lp7s3964.result",
+        "quote": "## 5. [手把手教你用 HIPify 把 CUDA 代码迁到 ROCm](https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html)\n\n2026年6月24日 · 本文详解如何利用 hipify-clang 工具将 CUDA 代码高效迁移至 ROCm 平台。 通过自动化转换与人工校验结合，解决 …\n\n**URL:** https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_UmNSw2PtCb6fIrenKDHM5906.result",
+      "evidence": {
+        "event_id": "call_00_UmNSw2PtCb6fIrenKDHM5906.result",
+        "quote": "**标题**: HIPIFY documentation — HIPIFY Documentation\n\nBack to top\n\n# HIPIFY documentation\n\n# HIPIFY documentation[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/#hipify-documentation \"Link to this heading\")\n\nHIPIFY is a ROCm tool to help developers migrate GPU programming from NVIDIA’s CUDA language to AMD’s HIP C++ programming language for use on AMD GPUs. HIPIFY includes two tools offering different levels of capability:\n\n- `hipify-clang`: A clang-based tool that parses CUDA code and converts it to HIP code. It handles syntax changes, API calls, and kernel launch differences.\n- `hipify-perl`: A simpler tool generated from `hipify-clang` that replaces CUDA API calls with HIP equivale"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_FeinOa2lrJS3YFS03vR33844.result",
+      "evidence": {
+        "event_id": "call_00_FeinOa2lrJS3YFS03vR33844.result",
+        "quote": "**标题**: Using hipify-clang — HIPIFY Documentation\n\n# Using hipify-clang#\n\n`hipify-clang` is a Clang-based tool for translating NVIDIA CUDA sources into HIP sources.\n\nIt translates CUDA source into an Abstract Syntax Tree (AST), which is traversed by transformation matchers. After applying all the matchers, the output HIP source is produced.\n\n**Advantages:**\n\n- `hipify-clang` is a translator. It parses complex constructs successfully or reports an error.\n- It supports Clang options such as -I, -D, and –cuda-path.\n- The support for new CUDA versions is seamless, as the Clang front-end is statically linked into `hipify-clang` and does all the syntactical parsing of a CUDA source to HIPIFY.\n- It"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-clang.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "# Search Results for \"PyTorch ROCm migration CUDA to AMD official documentation install\"\n\n## 1. [Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.1/docs/install/installrad/wsl/install-pytorch.html)\n\n2026年7月24日 · AMD recommends the PIP install method to create a PyTorch environment when working with ROCm™ for …\n\n**URL:** https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.1/docs/install/installrad/wsl/install-pytorch.html\n\n---\n\n## 2. [Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen](https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/native_linux/install-pytorch.html)\n\n2026年7月24日 · AMD"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "## 1. [Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen](https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.1/docs/install/installrad/wsl/install-pytorch.html)\n\n2026年7月24日 · AMD recommends the PIP install method to create a PyTorch environment when working with ROCm™ for …\n\n**URL:** https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.1/docs/install/installrad/wsl/install-pytorch.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://rocm.docs.amd.com/projects/radeon-ryzen/en/docs-7.1/docs/install/installrad/wsl/install-pytorch.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "## 2. [Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen](https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/native_linux/install-pytorch.html)\n\n2026年7月24日 · AMD recommends the PIP install method to create a PyTorch environment when working with ROCm™ for …\n\n**URL:** https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/native_linux/install-pytorch.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installryz/native_linux/install-pytorch.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "## 3. [用AMD显卡跑PyTorch：ROCm 7.2环境搭建与实战踩坑指南](https://blog.csdn.net/Wy1306/article/details/161828112)\n\n2026年6月9日 · 文章浏览阅读504次，点赞9次，收藏7次。 如果你手头有 AMD 显卡，不妨试试，`torch.cuda.*` 的代码一行都不用改 …\n\n**URL:** https://blog.csdn.net/Wy1306/article/details/161828112\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/Wy1306/article/details/161828112"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "## 4. [Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen](https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html)\n\n2026年7月24日 · Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen. Skip to main content. Back to top. Ctrl+K. This …\n\n**URL:** https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+      "evidence": {
+        "event_id": "call_00_OyLFjwRrEFPsLADCg5mD5980.result",
+        "quote": "## 5. [AMD ROCm与PyTorch Windows部署完整指南-CSDN博客](https://blog.csdn.net/gitblog_00273/article/details/156352712)\n\n2025年12月28日 · 文章浏览阅读2.7k次，点赞30次，收藏15次。 在Windows 11系统上部署AMD ROCm平台与PyTorch框架，为深度 …\n\n**URL:** https://blog.csdn.net/gitblog_00273/article/details/156352712\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/gitblog_00273/article/details/156352712"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QkNAMvMpIUNcQTSCGK0L2056.result",
+      "evidence": {
+        "event_id": "call_00_QkNAMvMpIUNcQTSCGK0L2056.result",
+        "quote": "**标题**: Install PyTorch for ROCm — Use ROCm on Radeon and Ryzen\n\nBack to top\n\n# Install PyTorch for ROCm\n\n# Install PyTorch for ROCm[#](https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html#install-pytorch-for-rocm \"Link to this heading\")\n\nRefer to this section for the recommended PyTorch via PIP installation method, as well as Docker-based installation.\n\n> **PCIe atomics**\n> \n> ROCm is an extension of HSA platform architecture, and shares queuing model, memory model, signaling and synchronization protocols.\n> \n> Platform atomics are integral to perform queuing and signaling memory operations, where there may be multiple-writers ac"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://rocmdocs.amd.com/projects/radeon-ryzen/en/latest/docs/install/installrad/native_linux/install-pytorch.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_2gaME88Z32PDy7WA84U99856.result",
+      "evidence": {
+        "event_id": "call_00_2gaME88Z32PDy7WA84U99856.result",
+        "quote": "**标题**: Using hipify-perl — HIPIFY Documentation\n\nBack to top\n\n# Using hipify-perl\n\n# Using hipify-perl[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html#using-hipify-perl \"Link to this heading\")\n\n`hipify-perl` is perl-based script that heavily uses regular expressions, that is automatically generated from `hipify-clang`.\n\n**Advantages:**\n\n- Ease of use\n- No checks for input source NVIDIA CUDA code for correctness required\n- No dependency on third party tools, including CUDA\n\n**Disadvantages:**\n\n- Inability or difficulty in implementing the following constructs:\n  \n  - Macros expansion\n  - Namespaces:\n    \n    - Redefinition of CUDA entities in user namespaces\n  "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/how-to/hipify-perl.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_h2PcDtQgOfcSIXH94lMk6432.result",
+      "evidence": {
+        "event_id": "call_00_h2PcDtQgOfcSIXH94lMk6432.result",
+        "quote": "**标题**: GitHub - ROCm/hipify_torch · GitHub\n\n[![ipanfilo](https://avatars.githubusercontent.com/u/145064111?v=4&size=40)](https://github.com/ipanfilo)[ipanfilo](https://github.com/ROCm/hipify_torch/commits?author=ipanfilo)\n\nMar 5, 2026\n\nNameName\n\nLast commit message\n\nLast commit date\n\n[cmake](https://github.com/ROCm/hipify_torch/tree/master/cmake \"cmake\")\n\n[cmake](https://github.com/ROCm/hipify_torch/tree/master/cmake \"cmake\")\n\n[hipify_torch](https://github.com/ROCm/hipify_torch/tree/master/hipify_torch \"hipify_torch\")\n\n[hipify_torch](https://github.com/ROCm/hipify_torch/tree/master/hipify_torch \"hipify_torch\")\n\n[test](https://github.com/ROCm/hipify_torch/tree/master/test \"test\")\n\n[test](htt"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://github.com/ROCm/hipify_torch"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_14u9h9yWkUzgLpYfBy7N9142.result",
+      "evidence": {
+        "event_id": "call_00_14u9h9yWkUzgLpYfBy7N9142.result",
+        "quote": "# PyTorch on ROCm Installation — Extracted Information\n\n## Summary\nThis AMD ROCm documentation page covers installing PyTorch on ROCm using four methods: prebuilt Docker images (recommended), wheels packages, building from source, and the upstream Dockerfile. Below is all requested information extracted verbatim where applicable.\n\n---\n\n## 1. Installation Methods Overview\n\nFour options are provided:\n- **Use a prebuilt Docker image with PyTorch pre-installed** (recommended)\n- **Use a wheels package**\n- **Build PyTorch from source**\n- **Use the PyTorch upstream Dockerfile**\n\n---\n\n## 2. Exact pip install Commands and Index URLs\n\n### Wheels Package Install (the primary pip command)\n```bash\npip3 i"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://rocm.docs.amd.com/en/latest/how_to/pytorch_install/pytorch_install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_nhjw3pJRkOQPxiuZCdqg4563.result",
+      "evidence": {
+        "event_id": "call_00_nhjw3pJRkOQPxiuZCdqg4563.result",
+        "quote": "**标题**: hipify-clang commands — HIPIFY Documentation\n\nBack to top\n\n# hipify-clang commands\n\n# hipify-clang commands[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#hipify-clang-commands \"Link to this heading\")\n\nFor a list of `hipify-clang` options, run:\n\n```\nhipify-clang --help\n```\n\n## Output:[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#output \"Link to this heading\")\n\n### Usage[#](https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html#usage \"Link to this heading\")\n\n```\nhipify-clang [options] <source0> [... <sourceN>]\n```\n\n### Options[#](https://rocm.docs.amd.com/projects/HIPIFY/en/l"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/latest/reference/hipify-clang-cmd.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "# Search Results for \"hipify-clang PyTorch CUDA extension ROCm migration tutorial github example\"\n\n## 1. [GitHub - ROCm/HIPIFY: HIPIFY: Convert CUDA to Portable C](https://github.com/ROCm/HIPIFY)\n\n1. hipify-clang2. Dependencies3. Usage4. Building5. Testing6. Linux\n\n**URL:** https://github.com/ROCm/HIPIFY\n\n---\n\n## 2. [手把手教你用 HIPify 把 CUDA 代码迁到 ROCm - CSDN博客](https://blog.csdn.net/2600_96323227/article/details/162260697)\n\n2026年6月24日 · 本文详解如何利用 hipify-clang 工具将 CUDA 代码高效迁移至 ROCm 平台。 通过自动化转换与人工校验结合，解决 …\n\n**URL:** https://blog.csdn.net/2600_96323227/article/details/162260697\n\n---\n\n## 3. [手把手用 HIPify 把 CUDA 代码迁到 ROCm，避坑指南来了](https://devpress.csdn.net/v1/article/detail/162189512)\n\n2026年6月22日 · 本文详解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "## 1. [GitHub - ROCm/HIPIFY: HIPIFY: Convert CUDA to Portable C](https://github.com/ROCm/HIPIFY)\n\n1. hipify-clang2. Dependencies3. Usage4. Building5. Testing6. Linux\n\n**URL:** https://github.com/ROCm/HIPIFY\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://github.com/ROCm/HIPIFY"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "## 2. [手把手教你用 HIPify 把 CUDA 代码迁到 ROCm - CSDN博客](https://blog.csdn.net/2600_96323227/article/details/162260697)\n\n2026年6月24日 · 本文详解如何利用 hipify-clang 工具将 CUDA 代码高效迁移至 ROCm 平台。 通过自动化转换与人工校验结合，解决 …\n\n**URL:** https://blog.csdn.net/2600_96323227/article/details/162260697\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://blog.csdn.net/2600_96323227/article/details/162260697"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "## 3. [手把手用 HIPify 把 CUDA 代码迁到 ROCm，避坑指南来了](https://devpress.csdn.net/v1/article/detail/162189512)\n\n2026年6月22日 · 本文详解如何利用 HIPify 工具将 CUDA 代码高效迁移至 ROCm 平台。 通过对比 hipify-perl 与 hipify-clang，提供避 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/162189512\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://devpress.csdn.net/v1/article/detail/162189512"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "## 4. [手把手教你用 HIPify 把 CUDA 代码迁到 ROCm](https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html)\n\n2026年6月24日 · 本文详解如何利用 hipify-clang 工具将 CUDA 代码高效迁移至 ROCm 平台。 通过自动化转换与人工校验结合，解决 …\n\n**URL:** https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://devpress.csdn.net/amd/6a3b414b662f9a54cb837593.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+      "evidence": {
+        "event_id": "call_00_T9lWJsoDLCkjaW5w6BnT6455.result",
+        "quote": "## 5. [HIPIFY documentation — HIPIFY Documentation - rocm…](https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/)\n\n2024年8月19日 · You can access HIPIFY code on our GitHub repository. The documentation is structured as follows: To contribute to …\n\n**URL:** https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://rocm.docs.amd.com/projects/HIPIFY/en/docs-6.2.1/"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

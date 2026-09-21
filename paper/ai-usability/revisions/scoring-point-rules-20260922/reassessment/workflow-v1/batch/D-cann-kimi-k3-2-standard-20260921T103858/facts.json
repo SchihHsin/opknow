@@ -1,0 +1,488 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_692367d8.result",
+      "evidence": {
+        "event_id": "WebFetch_1_692367d8.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子工具-MindStudio8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)\n\n# Ascend C自定义算子开发实践\n\n展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署，并使用msOpST工具对Ascend C自定义算子进行功能测试。\n\n#### 前提条件\n\n已参考[使用前准备](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0019.html#ZH-CN_TOPIC_0000002389355909)，完成msOpGen工具的使用准备。\n\n#### 操作步骤\n\n1. 参考以下json文件，准备算子原型文件（以MatmulCustom算子为例）。\n   \n   ```\n    1\n    2\n    3\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_752d7173.result",
+      "evidence": {
+        "event_id": "WebFetch_3_752d7173.result",
+        "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\n# 适配说明\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能力，基于PyTorch原生提供的自定义算子扩展功能，用户可以编译安装自定义算子wheel包并运行。本章节基于C++ extensions的方式介绍如何在昇腾NPU上完成自定义算子开发和适配。PyTorch官方的C++ extensions功能具体可参考[C++ extensions官方文档](https://pytorch.org/tutorials/advanced/cpp_extension.html)。\n\n- 单算子API调用适配可参考[单算子API调用适配](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frame"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_10ddf5dd.result",
+      "evidence": {
+        "event_id": "WebFetch_4_10ddf5dd.result",
+        "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00025.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_add06bb1.result",
+      "evidence": {
+        "event_id": "WebFetch_5_add06bb1.result",
+        "quote": "**标题**: 概述-算子实现-Ascend C算子开发-算子开发-CANN商用版8.2.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n# 概述\n\nAscend C的算子实现主要包含两个部分：\n\n- Host侧Tiling实现\n  \n  [](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)由于NPU中AI Core内部存储无法完全容纳算子输入输出的所有数据，需要每次搬运一部分输入数据进行计算然后搬出，再搬运下一部分输入数据进行计算，这个过程就称之为Tiling。切分数据的算法称为Tiling算法或者Tiling策略。根据算子的sha"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_26ec4a6f.result",
+      "evidence": {
+        "event_id": "WebFetch_8_26ec4a6f.result",
+        "quote": "**标题**: 从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程_c语言_红目香薰-鲲鹏昇腾开发者社区\n**发布时间**: 1172人浏览 · 2025-12-21 20:54:05\n红目香薰 · 2025-12-21 20:54:05 发布\n\n# 从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程\n\n\n\n### 红目香薰\n\n红目香薰  ·  2025-12-21 20:54:05 发布\n\n### 10.1 算子工程结构\n\n结构大致情况。  \n  \n定义变量  \n  \n具体操作：  \n\n\n#### 10.1.1 目录结构\n\nAddCustom算子工程采用标准的CANN算子工程结构，包含三个主要目录：\n\n```stylus\nAddCustom/\n├── op_kernel/              // Kernel侧实现\n│   └── add_custom.cpp      // 核函数实现\n├── op_host/                // Host侧实现\n│   ├── add_custom.cpp      // Tiling函数、形状推导、算子注册\n│   └── add_custom_tiling.h // Tiling数据结构定义\n└── framework/              // 框架集成\n    └── tf_plugin/          // TensorFlow插件\n        └── tensorflow_add_custom_plugin.cc\n复制\n```\n\n**op_kernel目录*"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://hwcomputing.csdn.net/6947ee13836da32144868911.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "2f3ac102e1ba8d5825b4de790bba186fb3d41c9abd4c1d26e3813fe104a7f68b",
+  "question": "怎么用 Ascend C 开发自定义算子并集成进 PyTorch（msOpGen / aclnn）？给出完整步骤。",
+  "run_id": "D-cann-kimi-k3-2-standard-20260921T103858",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "# Search Results for \"Ascend C 自定义算子 msOpGen PyTorch 集成 aclnn 官方文档\"\n\n## 1. [Ascend C 算子开发全流程揭秘 - 从 msopgen 到精度校验](https://blog.csdn.net/m0_46721576/article/details/155584090)\n\n2026年8月2日 · 通过构建Add算子的实战案例，详细展示了从工程生成、内核函数实现到主机端调用的完整开发过程，并重点强调了精 …\n\n**URL:** https://blog.csdn.net/m0_46721576/article/details/155584090\n\n---\n\n## 2. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html)\n\n2026年8月19日 · 热门文档 CANN软件快速安装 CANN算子库 Ascend C算子开发 Ascend C API MindSpeed是什么 PyTorch原生API支 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html\n\n---"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "## 1. [Ascend C 算子开发全流程揭秘 - 从 msopgen 到精度校验](https://blog.csdn.net/m0_46721576/article/details/155584090)\n\n2026年8月2日 · 通过构建Add算子的实战案例，详细展示了从工程生成、内核函数实现到主机端调用的完整开发过程，并重点强调了精 …\n\n**URL:** https://blog.csdn.net/m0_46721576/article/details/155584090\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/m0_46721576/article/details/155584090"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "## 2. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html)\n\n2026年8月19日 · 热门文档 CANN软件快速安装 CANN算子库 Ascend C算子开发 Ascend C API MindSpeed是什么 PyTorch原生API支 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/70RC3/ODtools/Operatordevelopmenttools/msopdev_16_0085.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "## 3. [Ascend C自定义算子开发实践-典型案例-算子工程创建 ...](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)\n\n<!DOCTYPE html> Ascend C自定义算子开发实践 展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "## 4. [AscendC从入门到精通系列（三）基于自定义算子工程开发 ...](https://developer.aliyun.com/article/1643997)\n\n2024年12月5日 · 以动态shape的AddCustom算子为例，详细描述了如何利用CANN提供的工具msOpGen生成开发工程，实现算子核函 …\n\n**URL:** https://developer.aliyun.com/article/1643997\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.aliyun.com/article/1643997"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_28ae6b5e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_28ae6b5e.result",
+        "quote": "## 5. [使用 msopgen 生成自定义算子工程并完成 ACLNN 调用验证 ...](https://blog.gitcode.com/7a2dd9f8acbeafeb0f9f6de9f3c186a6.html)\n\n4 天之前 · 本文围绕 CANN asc-tools 仓库中的 examples/03_msopgen 样例，完整讲解如何基于算子原型定义文件，使用 msopgen 工 …\n\n**URL:** https://blog.gitcode.com/7a2dd9f8acbeafeb0f9f6de9f3c186a6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.gitcode.com/7a2dd9f8acbeafeb0f9f6de9f3c186a6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_692367d8.result",
+      "evidence": {
+        "event_id": "WebFetch_1_692367d8.result",
+        "quote": "**标题**: Ascend C自定义算子开发实践-典型案例-算子工程创建（msOpGen）-算子开发工具-算子工具-MindStudio8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)[](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html)\n\n# Ascend C自定义算子开发实践\n\n展示如何使用msOpGen工具进行Ascend C自定义算子的工程创建、编译和部署，并使用msOpST工具对Ascend C自定义算子进行功能测试。\n\n#### 前提条件\n\n已参考[使用前准备](https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0019.html#ZH-CN_TOPIC_0000002389355909)，完成msOpGen工具的使用准备。\n\n#### 操作步骤\n\n1. 参考以下json文件，准备算子原型文件（以MatmulCustom算子为例）。\n   \n   ```\n    1\n    2\n    3\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/81RC1/ODtools/Operatordevelopmenttools/atlasopdev_16_0027.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "# Search Results for \"昇腾 自定义算子 aclnn PyTorch torch_npu 集成 调用 官方文档 site:hiascend.com\"\n\n## 1. [PyTorch与昇腾平台算子适配：从注册到部署的完整指南](https://ascendai.csdn.net/697378a57c1d88441d8f133e.html)\n\n2026年1月23日 · 在PyTorch与昇腾平台的深度适配过程中，算子注册是实现 模型 训练和推理的关键环节。 本文将详细介绍如何将自 …\n\n**URL:** https://ascendai.csdn.net/697378a57c1d88441d8f133e.html\n\n---\n\n## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html\n\n---\n\n## 3. [PyTorch与昇腾平台算子适配：从注册到部署的完整指"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "## 1. [PyTorch与昇腾平台算子适配：从注册到部署的完整指南](https://ascendai.csdn.net/697378a57c1d88441d8f133e.html)\n\n2026年1月23日 · 在PyTorch与昇腾平台的深度适配过程中，算子注册是实现 模型 训练和推理的关键环节。 本文将详细介绍如何将自 …\n\n**URL:** https://ascendai.csdn.net/697378a57c1d88441d8f133e.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://ascendai.csdn.net/697378a57c1d88441d8f133e.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "## 3. [PyTorch与昇腾平台算子适配：从注册到部署的完整指南 - 教程](https://www.cnblogs.com/yangykaifa/p/19623330)\n\n2026年2月18日 · 通过完整的算子注册、Meta函数实现和Converter转换流程，我们成功将自定义算子集成到PyTorch生态中，并实现在 …\n\n**URL:** https://www.cnblogs.com/yangykaifa/p/19623330\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://www.cnblogs.com/yangykaifa/p/19623330"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "## 4. [PyTorch与昇腾平台算子适配：从注册到部署的完整指南](https://blog.csdn.net/rej177/article/details/154547977)\n\n2026年9月1日 · 本文将详细介绍如何将自定义算子成功注册到PyTorch框架，并实现在昇腾NPU上的高效执行。 算子注册到PyTorch框 …\n\n**URL:** https://blog.csdn.net/rej177/article/details/154547977\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://blog.csdn.net/rej177/article/details/154547977"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_f24e8bae.result",
+      "evidence": {
+        "event_id": "WebSearch_2_f24e8bae.result",
+        "quote": "## 5. [PyTorch与昇腾平台算子适配：从注册到部署的完整指南 - 技术栈](https://jishuzhan.net/article/2010192136231763969)\n\n2026年1月10日 · 本文将详细介绍如何将自定义算子成功注册到PyTorch框架，并实现在昇腾NPU上的高效执行。 算子注册到PyTorch …\n\n**URL:** https://jishuzhan.net/article/2010192136231763969\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://jishuzhan.net/article/2010192136231763969"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_752d7173.result",
+      "evidence": {
+        "event_id": "WebFetch_3_752d7173.result",
+        "quote": "**标题**: 适配说明-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\n# 适配说明\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能力，基于PyTorch原生提供的自定义算子扩展功能，用户可以编译安装自定义算子wheel包并运行。本章节基于C++ extensions的方式介绍如何在昇腾NPU上完成自定义算子开发和适配。PyTorch官方的C++ extensions功能具体可参考[C++ extensions官方文档](https://pytorch.org/tutorials/advanced/cpp_extension.html)。\n\n- 单算子API调用适配可参考[单算子API调用适配](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frame"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_10ddf5dd.result",
+      "evidence": {
+        "event_id": "WebFetch_4_10ddf5dd.result",
+        "quote": "**标题**: 适配开发-单算子API调用适配-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU7.1.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n# 适配开发\n\n基于C++ extensions方式，通过torch_npu来调用单算子API的适配开发过程。\n\n#### 前提条件\n\n完成CANN软件的安装具体请参见《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/softwareinst/instg/instg_0000.html)》（商用版）或《[CANN 软件安装指南](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/softwareinst/instg/instg_0000.html)》（社区版），完成PyTorch框架的安装具体请参见《[Ascend Extension fo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00025.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_add06bb1.result",
+      "evidence": {
+        "event_id": "WebFetch_5_add06bb1.result",
+        "quote": "**标题**: 概述-算子实现-Ascend C算子开发-算子开发-CANN商用版8.2.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n# 概述\n\nAscend C的算子实现主要包含两个部分：\n\n- Host侧Tiling实现\n  \n  [](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html)由于NPU中AI Core内部存储无法完全容纳算子输入输出的所有数据，需要每次搬运一部分输入数据进行计算然后搬出，再搬运下一部分输入数据进行计算，这个过程就称之为Tiling。切分数据的算法称为Tiling算法或者Tiling策略。根据算子的sha"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/82RC1/opdevg/Ascendcopdevg/atlas_ascendc_10_0031.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "# Search Results for \"torch_npu 自定义算子 EXEC_NPU_CMD pytorch_npu_helper.hpp setup.py 编译 wheel\"\n\n## 1. [适配开发-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n在registration.cpp中，注册自定义算子schema。 PyTorch提供TORCH_LIBRARY宏来定义新的命名空间，并在该命名空间里注 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html\n\n---\n\n## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "## 1. [适配开发-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html)\n\n在registration.cpp中，注册自定义算子schema。 PyTorch提供TORCH_LIBRARY宏来定义新的命名空间，并在该命名空间里注 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "## 2. [适配说明-TorchNPU7.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html)\n\nC++ extensions插件提供了将自定义算子映射到昇腾AI处理器的功能，为使用PyTorch框架的开发者提供了便捷的NPU算子库调用能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/710/ptmoddevg/Frameworkfeatures/featuresguide_00024.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "## 3. [Ascend C算子接入torch_npu指南：自定义NPU算子PyTorch ...](https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin)\n\n详解Ascend C算子接入torch_npu的完整流程，包括Host注册、编译打包、安装验证。 对比torch.library、Pybind、OpCommand、图 …\n\n**URL:** https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "## 4. [PyTorch 适配 NPU：从 torch_npu 到 CANN 算子的全链路 ...](https://blog.csdn.net/2503_93740796/article/details/161362742)\n\n2026年5月26日 · 本文介绍了华为 torch_npu 扩展包如何实现 PyTorch 在 NPU 上的运行支持。 主要内容包括：1）torch_npu 通过注 …\n\n**URL:** https://blog.csdn.net/2503_93740796/article/details/161362742\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://blog.csdn.net/2503_93740796/article/details/161362742"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_3fe7cc14.result",
+      "evidence": {
+        "event_id": "WebSearch_6_3fe7cc14.result",
+        "quote": "## 5. [PyTorch 适配 NPU：从 torch_npu 到 CANN 算子的全链路 ...](https://devpress.csdn.net/v1/article/detail/161362742)\n\n2026年5月24日 · 本文介绍了华为 torch_npu 扩展包如何实现 PyTorch 在 NPU 上的运行支持。 主要内容包括：1）torch_npu 通过注 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161362742\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/161362742"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "# Search Results for \"hiascend Ascend C AddCustom Kernel实现 CopyIn Compute CopyOut __aicore__ 核函数 示例\"\n\n## 1. [从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程](https://hwcomputing.csdn.net/6947ee13836da32144868911.html)\n\n2025年12月21日 · 本文介绍了Ascend C自定义算子AddCustom的实现结构，主要包括工程目录设计和Kernel侧核心代码实现。 工程采 …\n\n**URL:** https://hwcomputing.csdn.net/6947ee13836da32144868911.html\n\n---\n\n## 2. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://segmentfault.com/a/1190000045617479)\n\n2024年12月17日 · 本次主要讨论下AscendC算子的开发流程，基于Kernel直调工程的算子开发。 使用<<<>>>内核调用符完成算子核函 …\n\n**URL:** https://segmentfault.com/a/1190000045617479\n\n---\n\n## 3. [从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程](https://blog.csdn.net/feng8403000/article/details/156134296)\n\n2025年12月21日"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "## 1. [从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程](https://hwcomputing.csdn.net/6947ee13836da32144868911.html)\n\n2025年12月21日 · 本文介绍了Ascend C自定义算子AddCustom的实现结构，主要包括工程目录设计和Kernel侧核心代码实现。 工程采 …\n\n**URL:** https://hwcomputing.csdn.net/6947ee13836da32144868911.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://hwcomputing.csdn.net/6947ee13836da32144868911.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "## 2. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://segmentfault.com/a/1190000045617479)\n\n2024年12月17日 · 本次主要讨论下AscendC算子的开发流程，基于Kernel直调工程的算子开发。 使用<<<>>>内核调用符完成算子核函 …\n\n**URL:** https://segmentfault.com/a/1190000045617479\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://segmentfault.com/a/1190000045617479"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "## 3. [从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程](https://blog.csdn.net/feng8403000/article/details/156134296)\n\n2025年12月21日 · 文章浏览阅读1.1k次，点赞28次，收藏12次。 本文介绍了Ascend C自定义算子AddCustom的实现结构，主要包括工 …\n\n**URL:** https://blog.csdn.net/feng8403000/article/details/156134296\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/feng8403000/article/details/156134296"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "## 4. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://developer.aliyun.com/article/1643995)\n\n2024年12月5日 · 通过具体示例`add_custom.cpp`，详细展示了如何使用Ascend C完成算子核函数的定义、初始化、数据搬运和计算过 …\n\n**URL:** https://developer.aliyun.com/article/1643995\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://developer.aliyun.com/article/1643995"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_fba68185.result",
+      "evidence": {
+        "event_id": "WebSearch_7_fba68185.result",
+        "quote": "## 5. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://blog.51cto.com/u_17127343/12501005)\n\n2024年11月9日 · AscendC从入门到精通系列（二）基于Kernel直调开发AscendC算子，本次主要讨论下AscendC算子的开发流程，基 …\n\n**URL:** https://blog.51cto.com/u_17127343/12501005\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://blog.51cto.com/u_17127343/12501005"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_26ec4a6f.result",
+      "evidence": {
+        "event_id": "WebFetch_8_26ec4a6f.result",
+        "quote": "**标题**: 从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程_c语言_红目香薰-鲲鹏昇腾开发者社区\n**发布时间**: 1172人浏览 · 2025-12-21 20:54:05\n红目香薰 · 2025-12-21 20:54:05 发布\n\n# 从零开始学昇腾Ascend C算子开发- 第十篇：完整算子开发流程\n\n\n\n### 红目香薰\n\n红目香薰  ·  2025-12-21 20:54:05 发布\n\n### 10.1 算子工程结构\n\n结构大致情况。  \n  \n定义变量  \n  \n具体操作：  \n\n\n#### 10.1.1 目录结构\n\nAddCustom算子工程采用标准的CANN算子工程结构，包含三个主要目录：\n\n```stylus\nAddCustom/\n├── op_kernel/              // Kernel侧实现\n│   └── add_custom.cpp      // 核函数实现\n├── op_host/                // Host侧实现\n│   ├── add_custom.cpp      // Tiling函数、形状推导、算子注册\n│   └── add_custom_tiling.h // Tiling数据结构定义\n└── framework/              // 框架集成\n    └── tf_plugin/          // TensorFlow插件\n        └── tensorflow_add_custom_plugin.cc\n复制\n```\n\n**op_kernel目录*"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://hwcomputing.csdn.net/6947ee13836da32144868911.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

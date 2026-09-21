@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_DBNDd1Fxcw1Z3s8C9ahT1348.result",
+      "evidence": {
+        "event_id": "call_00_DBNDd1Fxcw1Z3s8C9ahT1348.result",
+        "quote": "**标题**: CANN-通信库-昇腾社区\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n[![昇腾社区](https://www.hiascend.com/_static3/cann-log-pc.BRiIAXC8.png)](https://www.hiascend.com/cann)\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n[学习](https://www.hiascend.com/cann/learn \"学习\")\n\n社区\n\n动态\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/cann/hccl",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_KGFilBB0WIvTsqirFbiO6909.result",
+      "evidence": {
+        "event_id": "call_00_KGFilBB0WIvTsqirFbiO6909.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)\n\n# HCCL_ALGO\n\n#### 功能描述\n\n此环境变量用于配置集合通信Server间通信算法以及超节点间通信算法，支持全局配置算法类型与按算子配置算法类型两种配置方式。\n\nHCCL提供自适应算法选择功能，默认会根据产品形态、数据量和Server个数选择合适的算法，一般情况下用户无需手工指定。若通过此环境变量指定了Server间通信算法，则自适应算法选择功能不再生效。\n\n- **全局配置算法类型，配置方式如下：**\n  \n  **export HCCL_ALGO=\"level0:NA;level1:<algo>;level2:<algo>\"**\n  \n  - level0代表Server内通信算法，当前仅支持配置为NA。\n  - level1代表Server间通信算法，支持如下取值：\n    \n    - ring：基于环结构的通信算法，通信步数多（线性复杂度），时延相对较高，但通信关系简单，受网络拥塞影响较小。适合通信域内Server个数较少"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_lVhROy9eMnx7exACo5M43958.result",
+      "evidence": {
+        "event_id": "call_00_lVhROy9eMnx7exACo5M43958.result",
+        "quote": "**标题**: 简介 - Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03 - 华为\n**发布时间**: 更新时间： 2026-08-06\n\n# Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03\n\n- [前言](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/426cffd9)\n- [简介](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7)\n- [信息查询](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/7e865fd)\n- [配置功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/80b95747)\n- [添加功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/dc076fa6)\n- [删除功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/c7a5ce2d)\n- [清除功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/e5939375)\n- [缩略语](https://support.huawe"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_a2a02m9lNcv4q5a9rgOt3271.result",
+      "evidence": {
+        "event_id": "call_00_a2a02m9lNcv4q5a9rgOt3271.result",
+        "quote": "**标题**: Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03 - 华为\n**发布时间**: 更新时间： 2026-08-06\n\n# Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/7e865fd",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_gilWCd3Sf09k4GGO98263555.result",
+      "evidence": {
+        "event_id": "call_00_gilWCd3Sf09k4GGO98263555.result",
+        "quote": "**标题**: Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN Tool接口参考-Atlas A2 推理和训练系列产品-HDK26.1.x开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/HDK/latest/A2/A2HCCN/hccntoola2_003.html)[](https://www.hiascend.com/document/detail/zh/HDK/latest/A2/A2HCCN/hccntoola2_003.html)\n\n# Ascend HDK接口和命令工具简介\n\n- npu-smi（NPU System Management Interface）是NPU的设备管理工具，在驱动安装完成后，可以使用该工具查询NPU设备的信息和使用情况，便于用户了解当前NPU的状态，并提供命令用于对NPU进行固件升级、清除设备信息、配置参数和资源复位等操作。驱动安装过程中会默认安装npu-smi工具至“/usr/local/sbin/”和“/usr/local/bin/”路径下。\n- DCMI（DaVinci Card Management Interface）是NPU的设备管理API接口，在驱动安装完成后，可以使用该接口查询NPU设备的信息和使用情况，便于用户了解当前NPU的状态，并提供接口用于对NPU进行固件升级、清除设备信息、配置参数和资源复位等操作。用户可以根据业务需要，调用DCMI接口完成第三方系统二次集成开发。\n- hccn_tool（Huawei Collecti"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_cfCqfUDaVM39NicfeECS4440.result",
+      "evidence": {
+        "event_id": "call_00_cfCqfUDaVM39NicfeECS4440.result",
+        "quote": "**标题**: 使用HCCN Tool工具配置-配置参数面网络-常用操作-Ascend Deployer 安装部署工具-MindCluster5.0.1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html)[](https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html)\n\n# 使用HCCN Tool工具配置\n\n当进行分布式训练时，需要通过昇腾软件中的HCCN Tool工具配置device的网卡IP，用于多个device间通信以实现网络模型参数的同步更新。如果用户需要使用HCCN Tool工具的其他功能（如检查网口Link状态），请参见《[Atlas 中心训练服务器 23.0.x(23.0.3及其系列版本) HCCN Tool 接口参考](https://support.huawei.com/enterprise/zh/doc/EDOC1100348881)》或《[Atlas A2 中心推理和训练硬件 23.0.x(23.0.3及其系列版本) HCCN Tool 接口参考](https://support.huawei.com/enterprise/zh/doc/EDOC1100348871)》。\n\n#### **Atlas 800 训练服务器、Atlas 900 AI集群"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_jGa1xshAjDFDV4QLy4g75546.result",
+      "evidence": {
+        "event_id": "call_00_jGa1xshAjDFDV4QLy4g75546.result",
+        "quote": "**标题**: Huawei Enterprises Sales | Enterprise Networking | Optical Networking | Data Storage | Intelligent Collaboration | Enterprise Wireless | Enterprise Services and Software | Management System\n\n# ICT Enterprises\n\n## We offer Huawei Enterprise Networking | Optical Networking | Data Storage | Intelligent Collaboration | Enterprise Wireless | Enterprise Services and Software | Management System\n\n## Products\n\nPart Number\n\nDatasheet\n\nMOQ\n\nOffer\n\nNo matching records found\n\nFile Name\n\nFile Size (MB)\n\nDocument\n\nMOQ\n\nSupport\n\nATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf3.38[](https://www.ictenterprisesupport.com/datasheet/ictenterprisesupport/EDOC11"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.huaweienterprises.com/datasheet/huaweienterprises/EDOC1100463866/ATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_LIKhgV2qtCBnCZreXWyM5040.result",
+      "evidence": {
+        "event_id": "call_00_LIKhgV2qtCBnCZreXWyM5040.result",
+        "quote": "**标题**: 获取网络健康状态 - Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 05 - 华为\n**发布时间**: 更新时间： 2025-08-01\n\n# Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 05\n\n- [信息查询](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/f9c13c56)\n  \n  - [获取hccn_tool帮助提示信息](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/f6b6538c)\n  - [获取IP地址和子网掩码](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/b9b036b)\n  - [获取RoCE网卡默认网关](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/df55cee)\n  - [查询网络检测对象IP](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/774177fd)\n  - [查询RoCE网卡MAC地址接口](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/8b0860ad)\n  - [查询LLDP接口](https://support.huawei.com"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "f887a3e01f5b6508ea60061a8ecabae50092261f0d93e5bb2b45daf32d15c3b4",
+  "question": "我的多卡 HCCL all-reduce 通信慢，怎么调优（HCCL 拓扑/RoCE 网络/HCCL_ALGO/hccn_tool 诊断）？",
+  "run_id": "W-cann-deepseek-v4_1-flash-standard-20260921T114201",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "# Search Results for \"HCCL all-reduce 调优 HCCL_ALGO hccn_tool 诊断 昇腾\"\n\n## 1. [HCCL昇腾集合通信库深度解读：AllReduce原理与分布式 ...](https://jishuzhan.net/article/2064601695975452673)\n\n2026年6月9日 · 对于从事分布式深度学习开发的工程师而言，理解HCCL的设计原理和使用方法是构建大规模训练系统的基础。 HCCL …\n\n**URL:** https://jishuzhan.net/article/2064601695975452673\n\n---\n\n## 2. [CANN-通信库-昇腾社区](https://www.hiascend.com/cann/hccl)\n\n集合通信库（ Huawei Collective Communication Library ，简称HCCL）是基于昇腾硬件的高性能集合通信库，提供单机多卡以及多机 …\n\n**URL:** https://www.hiascend.com/cann/hccl\n\n---\n\n## 3. [AllReduce-Hccl-Hccl-高阶API-Ascend C算子开发接口 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/ascendcopapi/atlasascendc_api_07_0805.html)\n\n集合通信算子AllReduce的任务下发接口"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "## 1. [HCCL昇腾集合通信库深度解读：AllReduce原理与分布式 ...](https://jishuzhan.net/article/2064601695975452673)\n\n2026年6月9日 · 对于从事分布式深度学习开发的工程师而言，理解HCCL的设计原理和使用方法是构建大规模训练系统的基础。 HCCL …\n\n**URL:** https://jishuzhan.net/article/2064601695975452673\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://jishuzhan.net/article/2064601695975452673"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "## 2. [CANN-通信库-昇腾社区](https://www.hiascend.com/cann/hccl)\n\n集合通信库（ Huawei Collective Communication Library ，简称HCCL）是基于昇腾硬件的高性能集合通信库，提供单机多卡以及多机 …\n\n**URL:** https://www.hiascend.com/cann/hccl\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/cann/hccl"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "## 3. [AllReduce-Hccl-Hccl-高阶API-Ascend C算子开发接口 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/ascendcopapi/atlasascendc_api_07_0805.html)\n\n集合通信算子AllReduce的任务下发接口，返回该任务的标识handleId给用户。 AllReduce功能为：将通信域内所有节点的同名张量进 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/ascendcopapi/atlasascendc_api_07_0805.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/apiref/ascendcopapi/atlasascendc_api_07_0805.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "## 4. [HCCL昇腾集合通信库深度解读：AllReduce原理与分布式 ...](https://devpress.csdn.net/v1/article/detail/161839587)\n\n2026年6月9日 · 本文将从集合通信的原理出发，系统讲解HCCL的核心能力、实现机制、性能优化以及在分布式训练中的实战应用，帮 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161839587\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/161839587"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+      "evidence": {
+        "event_id": "call_00_a0iq40DtDSJC6xVOVgLj8703.result",
+        "quote": "## 5. [CANN HCCL集合通信库深度实践：昇腾NPU多卡AllReduce ...](https://hwcomputing.csdn.net/6a2fb97310ee7a33f27d7a24.html)\n\n2026年6月15日 · CANN（Compute Architecture for Neural Networks）作为昇腾AI处理器的全栈软件平台，其集合通信 …\n\n**URL:** https://hwcomputing.csdn.net/6a2fb97310ee7a33f27d7a24.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://hwcomputing.csdn.net/6a2fb97310ee7a33f27d7a24.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_DBNDd1Fxcw1Z3s8C9ahT1348.result",
+      "evidence": {
+        "event_id": "call_00_DBNDd1Fxcw1Z3s8C9ahT1348.result",
+        "quote": "**标题**: CANN-通信库-昇腾社区\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n[![昇腾社区](https://www.hiascend.com/_static3/cann-log-pc.BRiIAXC8.png)](https://www.hiascend.com/cann)\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n[学习](https://www.hiascend.com/cann/learn \"学习\")\n\n社区\n\n动态\n\n[主页](https://www.hiascend.com/cann \"主页\")\n\n[下载](https://www.hiascend.com/cann/download \"下载\")\n\n[开发](https://www.hiascend.com/cann/develop \"开发\")\n\n[文档](https://www.hiascend.com/cann/document \"文档\")\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/cann/hccl"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "# Search Results for \"hccn_tool 命令参考 HCCL_ALGO 环境变量 官方文档 hiascend CANN\"\n\n## 1. [HCCL_ALGO-集合通信-环境变量参考-参考-CANN8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)\n\nHCCL提供自适应算法选择功能，默认会根据产品形态、数据量和Server个数选择合适的算法，一般情况下用户无需手工指定。 若通过 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html\n\n---\n\n## 2. [HCCL环境准备指南：驱动固件与CANN软件包安装及环境 ...](https://blog.gitcode.com/7106b757c87fc6048d5e0af4ff23e6b1.html)\n\n4 天之前 · 读完本文，你将能够独立完成一套可用于编译、运行 HCCL 通信程序（包括集合通信算子的使用与通信算子的自定义开发） …\n\n**URL:** https://blog.gitcode.com/7106b757c87fc6048d5e0af4ff23e6b1.html\n\n---\n\n## 3. "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "## 1. [HCCL_ALGO-集合通信-环境变量参考-参考-CANN8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)\n\nHCCL提供自适应算法选择功能，默认会根据产品形态、数据量和Server个数选择合适的算法，一般情况下用户无需手工指定。 若通过 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "## 2. [HCCL环境准备指南：驱动固件与CANN软件包安装及环境 ...](https://blog.gitcode.com/7106b757c87fc6048d5e0af4ff23e6b1.html)\n\n4 天之前 · 读完本文，你将能够独立完成一套可用于编译、运行 HCCL 通信程序（包括集合通信算子的使用与通信算子的自定义开发） …\n\n**URL:** https://blog.gitcode.com/7106b757c87fc6048d5e0af4ff23e6b1.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://blog.gitcode.com/7106b757c87fc6048d5e0af4ff23e6b1.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "## 3. [简介 - Atlas 中心训练卡 25.2.0 HCCN Tool 接口参考 02 - 华为](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7)\n\n2026年1月7日 · hccn_tool是集群网络工具，包括配置RoCE网卡的IP、网关，配置网络检测对象IP和查询LLDP信息等。 驱动安装过程 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "## 4. [Atlas 中心训练卡 23.0.RC1 HCCN Tool 接口参考 01 - 华为](https://support.huawei.com/enterprise/zh/doc/EDOC1100303317)\n\n2023年12月3日 · 本文档主要描述集群网络工具hccn_tool对外接口说明书，包括配置RoCE网卡的IP、网关，配置网络检测对象IP和查 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100303317\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100303317"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+      "evidence": {
+        "event_id": "call_00_hJMZ8uytDrecr2I5wuNX1671.result",
+        "quote": "## 5. [ZZUDONGXIANG](https://zzudongxiang.com/archives/1713425843539)\n\n2024年4月18日 · HCCL（Huawei Collective Communication Library）是基于昇腾AI处理器的高性能集合通信库，其主要功能与作用 …\n\n**URL:** https://zzudongxiang.com/archives/1713425843539\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://zzudongxiang.com/archives/1713425843539"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_KGFilBB0WIvTsqirFbiO6909.result",
+      "evidence": {
+        "event_id": "call_00_KGFilBB0WIvTsqirFbiO6909.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html)\n\n# HCCL_ALGO\n\n#### 功能描述\n\n此环境变量用于配置集合通信Server间通信算法以及超节点间通信算法，支持全局配置算法类型与按算子配置算法类型两种配置方式。\n\nHCCL提供自适应算法选择功能，默认会根据产品形态、数据量和Server个数选择合适的算法，一般情况下用户无需手工指定。若通过此环境变量指定了Server间通信算法，则自适应算法选择功能不再生效。\n\n- **全局配置算法类型，配置方式如下：**\n  \n  **export HCCL_ALGO=\"level0:NA;level1:<algo>;level2:<algo>\"**\n  \n  - level0代表Server内通信算法，当前仅支持配置为NA。\n  - level1代表Server间通信算法，支持如下取值：\n    \n    - ring：基于环结构的通信算法，通信步数多（线性复杂度），时延相对较高，但通信关系简单，受网络拥塞影响较小。适合通信域内Server个数较少"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/maintenref/envvar/envref_07_0079.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_lVhROy9eMnx7exACo5M43958.result",
+      "evidence": {
+        "event_id": "call_00_lVhROy9eMnx7exACo5M43958.result",
+        "quote": "**标题**: 简介 - Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03 - 华为\n**发布时间**: 更新时间： 2026-08-06\n\n# Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03\n\n- [前言](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/426cffd9)\n- [简介](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7)\n- [信息查询](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/7e865fd)\n- [配置功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/80b95747)\n- [添加功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/dc076fa6)\n- [删除功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/c7a5ce2d)\n- [清除功能](https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/e5939375)\n- [缩略语](https://support.huawe"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/6611cee7"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_a2a02m9lNcv4q5a9rgOt3271.result",
+      "evidence": {
+        "event_id": "call_00_a2a02m9lNcv4q5a9rgOt3271.result",
+        "quote": "**标题**: Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03 - 华为\n**发布时间**: 更新时间： 2026-08-06\n\n# Atlas 中心训练卡 25.2.x HCCN Tool 接口参考 03"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100493984/7e865fd"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "# Search Results for \"hccn_tool -net_health -link -roce 命令 RoCE 网卡 配置 昇腾 集群\"\n\n## 1. [hccn_tool工具使用导读 - Atlas 中心训练服务器 25.5.x ...](https://support.huawei.com/enterprise/zh/doc/EDOC1100540100/e57e1981)\n\n2026年8月5日 · hccn_tool工具不支持多线程并发操作。 hccn_tool工具无昇腾虚拟化实例场景。 光模块、铜缆、AOC线缆拔插时间间 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100540100/e57e1981\n\n---\n\n## 2. [Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN ...](https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html)\n\n用户在使用npu-smi工具、DCMI接口和hccn_tool工具时，对于不同产品的不同命令或接口，在不同的部署场景下支持情况亦不相同， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html\n\n---\n\n## 3. [PyTorch + NPU（torch_npu）"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "## 1. [hccn_tool工具使用导读 - Atlas 中心训练服务器 25.5.x ...](https://support.huawei.com/enterprise/zh/doc/EDOC1100540100/e57e1981)\n\n2026年8月5日 · hccn_tool工具不支持多线程并发操作。 hccn_tool工具无昇腾虚拟化实例场景。 光模块、铜缆、AOC线缆拔插时间间 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100540100/e57e1981\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100540100/e57e1981"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "## 2. [Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN ...](https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html)\n\n用户在使用npu-smi工具、DCMI接口和hccn_tool工具时，对于不同产品的不同命令或接口，在不同的部署场景下支持情况亦不相同， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "## 3. [PyTorch + NPU（torch_npu） - HPC入门指南](https://xflops.sjtu.edu.cn/hpc-start-guide/ascend/torch-npu/)\n\n2026年8月29日 · torch_npu 是昇腾官方维护的 PyTorch 适配插件（Ascend Extension for PyTorch）。装上它之后，你熟悉的 …\n\n**URL:** https://xflops.sjtu.edu.cn/hpc-start-guide/ascend/torch-npu/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://xflops.sjtu.edu.cn/hpc-start-guide/ascend/torch-npu/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "## 4. [算力芯片适配踩坑实录：从驱动到容器透传-腾讯云开发者社区 ...](https://cloud.tencent.com/developer/article/2745152)\n\n5 天之前 · 负责 GPU/NPU/DCU 算力集群部署的运维工程师、基础架构工程师、AI 平台工程 师。 如果你经常在 NVIDIA、昇腾、海光 …\n\n**URL:** https://cloud.tencent.com/developer/article/2745152\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://cloud.tencent.com/developer/article/2745152"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+      "evidence": {
+        "event_id": "call_00_dHcrZxv1M8E3Uh6Z9FTc4068.result",
+        "quote": "## 5. [昇腾Atlas 300V推理卡部署YOLO实战：环境搭建、模型转换 ...](https://www.mzph.cn/news/433899)\n\n3 小时之前 · Atlas 是华为昇腾的硬件平台系列名300V 表示这是面向视频分析场景的推理卡24G 指的是板载显存容量。 核心芯片是昇 …\n\n**URL:** https://www.mzph.cn/news/433899\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://www.mzph.cn/news/433899"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gilWCd3Sf09k4GGO98263555.result",
+      "evidence": {
+        "event_id": "call_00_gilWCd3Sf09k4GGO98263555.result",
+        "quote": "**标题**: Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN Tool接口参考-Atlas A2 推理和训练系列产品-HDK26.1.x开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/HDK/latest/A2/A2HCCN/hccntoola2_003.html)[](https://www.hiascend.com/document/detail/zh/HDK/latest/A2/A2HCCN/hccntoola2_003.html)\n\n# Ascend HDK接口和命令工具简介\n\n- npu-smi（NPU System Management Interface）是NPU的设备管理工具，在驱动安装完成后，可以使用该工具查询NPU设备的信息和使用情况，便于用户了解当前NPU的状态，并提供命令用于对NPU进行固件升级、清除设备信息、配置参数和资源复位等操作。驱动安装过程中会默认安装npu-smi工具至“/usr/local/sbin/”和“/usr/local/bin/”路径下。\n- DCMI（DaVinci Card Management Interface）是NPU的设备管理API接口，在驱动安装完成后，可以使用该接口查询NPU设备的信息和使用情况，便于用户了解当前NPU的状态，并提供接口用于对NPU进行固件升级、清除设备信息、配置参数和资源复位等操作。用户可以根据业务需要，调用DCMI接口完成第三方系统二次集成开发。\n- hccn_tool（Huawei Collecti"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "# Search Results for \"hccn_tool 信息查询 net_health link 命令 语法 Atlas A2 HCCN Tool接口参考\"\n\n## 1. [获取网络健康状态 - Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 03](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939)\n\n本功能支持用户执行命令获取网络健康状态（本端与所配置的检测IP之间的连通状态），用户可指定上报的状态信息名称。 使用本功 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939\n\n---\n\n## 2. [Atlas A2 中心推理和训练硬件 25.5.0 HCCN Tool 接口参考 01](https://support.huawei.com/enterprise/zh/doc/EDOC1100540101/bd813c71)\n\n本功能支持用户执行命令获取网络健康状态（本端与所配置的检测IP之间的连通状态），用户可指定上报的状态信息名称。 指定设 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100540101/bd813c71\n\n---\n\n## 3. [Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN Tool接口 …](https://www.hia"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "## 1. [获取网络健康状态 - Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 03](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939)\n\n本功能支持用户执行命令获取网络健康状态（本端与所配置的检测IP之间的连通状态），用户可指定上报的状态信息名称。 使用本功 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "## 2. [Atlas A2 中心推理和训练硬件 25.5.0 HCCN Tool 接口参考 01](https://support.huawei.com/enterprise/zh/doc/EDOC1100540101/bd813c71)\n\n本功能支持用户执行命令获取网络健康状态（本端与所配置的检测IP之间的连通状态），用户可指定上报的状态信息名称。 指定设 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100540101/bd813c71\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100540101/bd813c71"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "## 3. [Ascend HDK接口和命令工具简介-用户必读-Atlas A2 HCCN Tool接口 …](https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html)\n\n用户在使用npu-smi工具、DCMI接口和hccn_tool工具时，对于不同产品的不同命令或接口，在不同的部署场景下支持情况亦不相同， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/HDK/2610/A2/A2HCCN/hccntoola2_003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "## 4. [使用HCCN Tool工具配置-MindCluster5.0.1-昇腾社区](https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html)\n\n当进行分布式训练时，需要通过昇腾软件中的HCCN Tool工具配置device的网卡IP，用于多个device间通信以实现网络模型参数的同步 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+      "evidence": {
+        "event_id": "call_00_IiDTcNV76ia1J6UTXFtv4260.result",
+        "quote": "## 5. [HCCN Tool Interface Reference - huaweienterprises.com](https://www.huaweienterprises.com/datasheet/huaweienterprises/EDOC1100463866/ATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf)\n\nPurpose This document describes the external interfaces of the cluster network tool HCCN, including interfaces for configuring the IP …\n\n**URL:** https://www.huaweienterprises.com/datasheet/huaweienterprises/EDOC1100463866/ATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://www.huaweienterprises.com/datasheet/huaweienterprises/EDOC1100463866/ATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cfCqfUDaVM39NicfeECS4440.result",
+      "evidence": {
+        "event_id": "call_00_cfCqfUDaVM39NicfeECS4440.result",
+        "quote": "**标题**: 使用HCCN Tool工具配置-配置参数面网络-常用操作-Ascend Deployer 安装部署工具-MindCluster5.0.1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html)[](https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html)\n\n# 使用HCCN Tool工具配置\n\n当进行分布式训练时，需要通过昇腾软件中的HCCN Tool工具配置device的网卡IP，用于多个device间通信以实现网络模型参数的同步更新。如果用户需要使用HCCN Tool工具的其他功能（如检查网口Link状态），请参见《[Atlas 中心训练服务器 23.0.x(23.0.3及其系列版本) HCCN Tool 接口参考](https://support.huawei.com/enterprise/zh/doc/EDOC1100348881)》或《[Atlas A2 中心推理和训练硬件 23.0.x(23.0.3及其系列版本) HCCN Tool 接口参考](https://support.huawei.com/enterprise/zh/doc/EDOC1100348871)》。\n\n#### **Atlas 800 训练服务器、Atlas 900 AI集群"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/mindcluster/501/deployer/deployerug/deployer_0025.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_jGa1xshAjDFDV4QLy4g75546.result",
+      "evidence": {
+        "event_id": "call_00_jGa1xshAjDFDV4QLy4g75546.result",
+        "quote": "**标题**: Huawei Enterprises Sales | Enterprise Networking | Optical Networking | Data Storage | Intelligent Collaboration | Enterprise Wireless | Enterprise Services and Software | Management System\n\n# ICT Enterprises\n\n## We offer Huawei Enterprise Networking | Optical Networking | Data Storage | Intelligent Collaboration | Enterprise Wireless | Enterprise Services and Software | Management System\n\n## Products\n\nPart Number\n\nDatasheet\n\nMOQ\n\nOffer\n\nNo matching records found\n\nFile Name\n\nFile Size (MB)\n\nDocument\n\nMOQ\n\nSupport\n\nATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf3.38[](https://www.ictenterprisesupport.com/datasheet/ictenterprisesupport/EDOC11"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.huaweienterprises.com/datasheet/huaweienterprises/EDOC1100463866/ATLAS_A2_CENTER_INFERENCE_AND_TRAINING_HARDWARE_24_1_0_HCCN_TOOL_INTERFACE_REFERENCE_04.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_LIKhgV2qtCBnCZreXWyM5040.result",
+      "evidence": {
+        "event_id": "call_00_LIKhgV2qtCBnCZreXWyM5040.result",
+        "quote": "**标题**: 获取网络健康状态 - Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 05 - 华为\n**发布时间**: 更新时间： 2025-08-01\n\n# Atlas 中心训练卡 24.1.0 HCCN Tool 接口参考 05\n\n- [信息查询](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/f9c13c56)\n  \n  - [获取hccn_tool帮助提示信息](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/f6b6538c)\n  - [获取IP地址和子网掩码](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/b9b036b)\n  - [获取RoCE网卡默认网关](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/df55cee)\n  - [查询网络检测对象IP](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/774177fd)\n  - [查询RoCE网卡MAC地址接口](https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/8b0860ad)\n  - [查询LLDP接口](https://support.huawei.com"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100439048/bbd40939"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

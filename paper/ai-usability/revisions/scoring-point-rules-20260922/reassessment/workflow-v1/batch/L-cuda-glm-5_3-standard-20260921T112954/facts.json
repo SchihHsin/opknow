@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_1fc3480817c444e39290fe41.result",
+      "evidence": {
+        "event_id": "call_1fc3480817c444e39290fe41.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expected` are strided, non-quantized, real-valued, and finite, they are considered close if\n\n∣actual−expected∣≤atol+rtol⋅∣expected∣\\lvert \\text{actual} - \\text{expected} \\rv"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/testing.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_b9246ea9983743bdb0da3e4f.result",
+      "evidence": {
+        "event_id": "call_b9246ea9983743bdb0da3e4f.result",
+        "quote": "**标题**: Reproducibility — PyTorch 2.14 documentation\n**发布时间**: Created On: May 14, 2026 | Last Updated On: May 14, 2026\n\nBack to top\n\n# Reproducibility[#](https://docs.pytorch.org/docs/2.14/notes/randomness.html#reproducibility \"Link to this heading\")\n\nCompletely reproducible results are not guaranteed across PyTorch releases, individual commits, or different platforms. Furthermore, results may not be reproducible between CPU and GPU executions, even when using identical seeds.\n\nHowever, there are some steps you can take to limit the number of sources of nondeterministic behavior for a specific platform, device, and PyTorch release. First, you can control sources of randomness that can cause"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/notes/randomness.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3096e8926c70406fb0e4f5f8.result",
+      "evidence": {
+        "event_id": "call_3096e8926c70406fb0e4f5f8.result",
+        "quote": "**标题**: Compute Sanitizer :: CUDA Toolkit Documentation\n\n[](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n## [Compute Sanitizer](https://docs.nvidia.com/cuda/compute-sanitizer/index.html#abstract)\n\nThe user guide for Compute Sanitizer.\n\n[](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n## [Overview](https://docs.nvidia.com/cuda/compute-sanitizer/index.html#compute-sanitizer-overview)\n\nCompute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks. The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access error"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/compute-sanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_d1739cf6556b46d68ca4d123.result",
+      "evidence": {
+        "event_id": "call_d1739cf6556b46d68ca4d123.result",
+        "quote": "# Compute Sanitizer 各工具功能与用法提取\n\n以下内容提取自 NVIDIA Compute Sanitizer 官方文档，原文保留。\n\n---\n\n## 📋 总览（来自 \"Compute Sanitizer Tools\" 章节）\n\n> Compute Sanitizer provides different checking mechanisms through different tools. Currently the supported tools are:\n>\n> - **Memcheck** – The memory access error and leak detection tool.\n> - **Racecheck** – The shared memory data access hazard detection tool.\n> - **Initcheck** – The uninitialized device global memory access detection tool.\n> - **Synccheck** – The thread synchronization hazard detection tool.\n\n基本调用格式：\n\n```\ncompute-sanitizer [options] app_name [app_options]\n```\n\n工具选择选项：`--tool memcheck, racecheck, initcheck, synccheck`（默认值为 `memcheck`）\n\n---\n\n## 1️⃣ Memc"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_982b1d5a6ef24c62821c4426.result",
+      "evidence": {
+        "event_id": "call_982b1d5a6ef24c62821c4426.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_d16963d5002f4276b7f7937b.result",
+      "evidence": {
+        "event_id": "call_d16963d5002f4276b7f7937b.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/2.14/generated/torch.autograd.gradcheck.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_e178eab6c68c4f209ce8bf2d.result",
+      "evidence": {
+        "event_id": "call_e178eab6c68c4f209ce8bf2d.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_46e716ecbc3c499dbf057999.result",
+      "evidence": {
+        "event_id": "call_46e716ecbc3c499dbf057999.result",
+        "quote": "**标题**: CUDA Math API Reference Manual — CUDA Math API Reference Manual 13.4 documentation\n\n# CUDA Math API Reference Manual[](https://docs.nvidia.com/cuda/cuda-math-api/index.html#cuda-math-api-reference-manual \"Permalink to this headline\")\n\nCUDA mathematical functions are always available in device code.\n\nHost implementations of the common mathematical functions are mapped in a platform-specific way to standard math library functions, provided by the host compiler and respective host libm where available. Some functions, not available with the host compilers, are implemented in crt/math_functions.hpp header file. For example, see [erfinv()](https://docs.nvidia.com/cuda/cuda-math-api/cuda_"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-math-api/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "519fe3942ebc6d5ad12861d26a90f565ed69fcf0fe3dd614242ab20b01a4e723",
+  "question": "我的自定义 CUDA 算子结果和 CPU/PyTorch 参考不一致，怎么定位数值精度问题（逐层/逐元素比对）？",
+  "run_id": "L-cuda-glm-5_3-standard-20260921T112954",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "# Search Results for \"torch.testing.assert_close site:pytorch.org documentation rtol atol\"\n\n## 1. [torch.testing — PyTorch 2.7 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.7/testing.html)\n\n2026年7月11日 · ValueError – 如果仅指定了 rtol 或 atol。 AssertionError – 如果对应的输入不是 Python 标量且不直接相关。 …\n\n**URL:** https://pytorch.ac.cn/docs/2.7/testing.html\n\n---\n\n## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n## 3. [torch.testing — PyTorch 2.14 documentation](https://docs.pytorch.org/docs"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "## 1. [torch.testing — PyTorch 2.7 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.7/testing.html)\n\n2026年7月11日 · ValueError – 如果仅指定了 rtol 或 atol。 AssertionError – 如果对应的输入不是 Python 标量且不直接相关。 …\n\n**URL:** https://pytorch.ac.cn/docs/2.7/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://pytorch.ac.cn/docs/2.7/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "## 2. [torch.testing — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/testing.html)\n\n2025年6月10日 · 抛出: ValueError – 如果无法从输入构造 torch.Tensor。 ValueError – 如果仅指定了 rtol 或 atol 之一。 AssertionError …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "## 3. [torch.testing — PyTorch 2.14 documentation](https://docs.pytorch.org/docs/2.14/testing.html)\n\n1 天前 · AssertionError – If the values of corresponding tensors are not close according to the definition above. The following table …\n\n**URL:** https://docs.pytorch.org/docs/2.14/testing.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "## 4. [深度解析 PyTorch 张量比较：解决 assert_close 的精度和 ...](https://runebook.dev/zh/docs/pytorch/testing)\n\n2025年12月12日 · 这个函数用于断言两个输入（通常是 PyTorch 张量）在数值上是否足够接近。 它类似于 NumPy 中的 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/testing\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://runebook.dev/zh/docs/pytorch/testing"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c2c1860738df40529da90359.result",
+      "evidence": {
+        "event_id": "call_c2c1860738df40529da90359.result",
+        "quote": "## 5. [pytorch - 测试必读：assert_close () 失败原因解析与 Allclose ...](https://runebook.dev/zh/docs/pytorch/testing/torch.testing.assert_close)\n\n2025年12月3日 · torch. testing. assert_close () 是 PyTorch 中一个非常实用的函数，用于比较两个张量（Tensors）是否“足够接 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/testing/torch.testing.assert_close\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://runebook.dev/zh/docs/pytorch/testing/torch.testing.assert_close"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1fc3480817c444e39290fe41.result",
+      "evidence": {
+        "event_id": "call_1fc3480817c444e39290fe41.result",
+        "quote": "**标题**: torch.testing — PyTorch 2.14 documentation\n\n# torch.testing#\n\n# torch.testing#\nCreated On: May 07, 2021 | Last Updated On: Jun 10, 2025\n\ntorch.testing.assert_close(*actual*, *expected*, ***, *allow_subclasses=True*, *rtol=None*, *atol=None*, *equal_nan=False*, *check_device=True*, *check_dtype=True*, *check_layout=True*, *check_stride=False*, *msg=None*)[[source]](https://github.com/pytorch/pytorch/blob/v2.14.0/torch/testing/_comparison.py#L1415)#\n\nAsserts that `actual` and `expected` are close.\n\nIf `actual` and `expected` are strided, non-quantized, real-valued, and finite, they are considered close if\n\n∣actual−expected∣≤atol+rtol⋅∣expected∣\\lvert \\text{actual} - \\text{expected} \\rv"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/docs/2.14/testing.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b9246ea9983743bdb0da3e4f.result",
+      "evidence": {
+        "event_id": "call_b9246ea9983743bdb0da3e4f.result",
+        "quote": "**标题**: Reproducibility — PyTorch 2.14 documentation\n**发布时间**: Created On: May 14, 2026 | Last Updated On: May 14, 2026\n\nBack to top\n\n# Reproducibility[#](https://docs.pytorch.org/docs/2.14/notes/randomness.html#reproducibility \"Link to this heading\")\n\nCompletely reproducible results are not guaranteed across PyTorch releases, individual commits, or different platforms. Furthermore, results may not be reproducible between CPU and GPU executions, even when using identical seeds.\n\nHowever, there are some steps you can take to limit the number of sources of nondeterministic behavior for a specific platform, device, and PyTorch release. First, you can control sources of randomness that can cause"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/stable/notes/randomness.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "# Search Results for \"compute-sanitizer racecheck memcheck documentation NVIDIA developer\"\n\n## 1. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nThe Compute Sanitizer API enables the creation of sanitizing and tracing tools that target CUDA …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n## 2. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · Compute Sanitizer memcheck supports compile-time instrumentation as an alternative to the default runtime binary …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.h"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "## 1. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nThe Compute Sanitizer API enables the creation of sanitizing and tracing tools that target CUDA …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "## 2. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · Compute Sanitizer memcheck supports compile-time instrumentation as an alternative to the default runtime binary …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "## 3. [Compute Sanitizer :: CUDA Toolkit Documentation](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n2022年12月28日 · The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access …\n\n**URL:** https://docs.nvidia.com/cuda/compute-sanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://docs.nvidia.com/cuda/compute-sanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "## 4. [NVIDIA Compute Sanitizer工具链解析与CUDA 13实战 ...](https://blog.csdn.net/weixin_42545503/article/details/164818906)\n\n2026年9月9日 · NVIDIA Compute Sanitizer采用二进制插桩技术实现非侵入式检测，相比传统调试器具有更低性能开销。 该工具链包 …\n\n**URL:** https://blog.csdn.net/weixin_42545503/article/details/164818906\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/weixin_42545503/article/details/164818906"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+      "evidence": {
+        "event_id": "call_146f6e87c2fa4e599d5a3ec5.result",
+        "quote": "## 5. [NVIDIA Compute Sanitizer与NVTX内存API的CUDA调试 ...](https://blog.csdn.net/weixin_42518874/article/details/160452885)\n\n2026年8月1日 · CUDA调试是GPU并行计算开发中的关键环节，NVIDIA Compute Sanitizer作为官方调试工具套件，通过内存检查 …\n\n**URL:** https://blog.csdn.net/weixin_42518874/article/details/160452885\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/weixin_42518874/article/details/160452885"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3096e8926c70406fb0e4f5f8.result",
+      "evidence": {
+        "event_id": "call_3096e8926c70406fb0e4f5f8.result",
+        "quote": "**标题**: Compute Sanitizer :: CUDA Toolkit Documentation\n\n[](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n## [Compute Sanitizer](https://docs.nvidia.com/cuda/compute-sanitizer/index.html#abstract)\n\nThe user guide for Compute Sanitizer.\n\n[](https://docs.nvidia.com/cuda/compute-sanitizer/index.html)\n\n## [Overview](https://docs.nvidia.com/cuda/compute-sanitizer/index.html#compute-sanitizer-overview)\n\nCompute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks. The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access error"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/compute-sanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d1739cf6556b46d68ca4d123.result",
+      "evidence": {
+        "event_id": "call_d1739cf6556b46d68ca4d123.result",
+        "quote": "# Compute Sanitizer 各工具功能与用法提取\n\n以下内容提取自 NVIDIA Compute Sanitizer 官方文档，原文保留。\n\n---\n\n## 📋 总览（来自 \"Compute Sanitizer Tools\" 章节）\n\n> Compute Sanitizer provides different checking mechanisms through different tools. Currently the supported tools are:\n>\n> - **Memcheck** – The memory access error and leak detection tool.\n> - **Racecheck** – The shared memory data access hazard detection tool.\n> - **Initcheck** – The uninitialized device global memory access detection tool.\n> - **Synccheck** – The thread synchronization hazard detection tool.\n\n基本调用格式：\n\n```\ncompute-sanitizer [options] app_name [app_options]\n```\n\n工具选择选项：`--tool memcheck, racecheck, initcheck, synccheck`（默认值为 `memcheck`）\n\n---\n\n## 1️⃣ Memc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "# Search Results for \"CUDA programming guide fast math __expf accuracy ulp numerical accuracy site:docs.nvidia.com\"\n\n## 1. [附录H - 数学方法 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-math-method-cn/)\n\nSingle-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is …\n\n**URL:** https://developer.nvidia.cn/blog/cuda-math-method-cn/\n\n---\n\n## 2. [CUDA-Programming-Guide-in-Chinese/附录H数学方法/附录 ...](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md)\n\n2025年9月5日 · Single-Precision Mathematical Standard Library Functions w"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "## 1. [附录H - 数学方法 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-math-method-cn/)\n\nSingle-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is …\n\n**URL:** https://developer.nvidia.cn/blog/cuda-math-method-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://developer.nvidia.cn/blog/cuda-math-method-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "## 2. [CUDA-Programming-Guide-in-Chinese/附录H数学方法/附录 ...](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md)\n\n2025年9月5日 · Single-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is stated as …\n\n**URL:** https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "## 3. [CUDA 编程手册系列 附录H – 数学方法 - 知乎](https://zhuanlan.zhihu.com/p/546418284)\n\n概览H.1. Standard FunctionsH.2. Intrinsic Functions参考手册列出了设备代码中支持的 C/C++ 标准库数学函数的所有函数及其描述，以及所有内部函数（ …本附录在适用时提供了其中一些功能的准确性信息。它使用 ULP 进行量化。有关最后位置单元 (ULP: Unit in the Last Place, 上面是直译的,这里可以理解为最小精度单元) 定义的更多信息，请参阅 Jean-Michel Muller's paper On the definition of ulp(x), RR-5504, LIP RR-2005-09, INRIA, LIP. 2005, pp.16 a…在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/546418284\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/546418284"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "## 4. [CUDA-Programming-Guide/附录H数学方法/附录H数学方法 ...](https://github.com/chiux/CUDA-Programming-Guide/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md)\n\n2024年12月18日 · Single-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is stated …\n\n**URL:** https://github.com/chiux/CUDA-Programming-Guide/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://github.com/chiux/CUDA-Programming-Guide/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+      "evidence": {
+        "event_id": "call_8a8a35d4df1f46b8a411e2f7.result",
+        "quote": "## 5. [12.CUDA编程手册中文版---附录H数学方法_cuda12文档 ...](https://blog.csdn.net/kunhe0512/article/details/124320946)\n\n2022年5月14日 · 本文档详细介绍了NVIDIA CUDA设备代码中支持的数学函数的精度信息，包括单精度和双精度浮点运算的误差边 …\n\n**URL:** https://blog.csdn.net/kunhe0512/article/details/124320946\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://blog.csdn.net/kunhe0512/article/details/124320946"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "# Search Results for \"CUDA C Programming Guide \"Intrinsic Functions\" __expf __fdividef maximum ulp error docs.nvidia.com cuda-c-programming-guide\"\n\n## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n## 2. [附录H - 数学方法 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-math-method-cn/)\n\nSingle-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is …\n\n**URL:** https://developer.nvidia.c"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "## 2. [附录H - 数学方法 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-math-method-cn/)\n\nSingle-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is …\n\n**URL:** https://developer.nvidia.cn/blog/cuda-math-method-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://developer.nvidia.cn/blog/cuda-math-method-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "## 3. [CUDA-Programming-Guide-in-Chinese/附录H数学方法/附录 ...](https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md)\n\n2025年9月5日 · Single-Precision Mathematical Standard Library Functions with Maximum ULP Error. The maximum error is stated as …\n\n**URL:** https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://github.com/HeKun-NVIDIA/CUDA-Programming-Guide-in-Chinese/blob/main/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95/%E9%99%84%E5%BD%95H%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "## 4. [【CUDA编程】数学函数（Mathematical Functions） - 知乎](https://zhuanlan.zhihu.com/p/678283126)\n\n2024年1月17日 · CUDA 参考手册（NVIDIA CUDA Reference Manual）列出了 设备代码 中支持的 C/C++ 标准库数学函数的所有函数 …\n\n**URL:** https://zhuanlan.zhihu.com/p/678283126\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/678283126"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3856c052622c463b9cac2464.result",
+      "evidence": {
+        "event_id": "call_3856c052622c463b9cac2464.result",
+        "quote": "## 5. [附录H数学方法 | kongen](https://kongenen.github.io/pages/dd3f5d/)\n\n2025年2月8日 · 附录H数学方法 参考手册列出了设备代码中支持的 C/C++ 标准库数学函数的所有函数及其描述，以及所有内部函数（ …\n\n**URL:** https://kongenen.github.io/pages/dd3f5d/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://kongenen.github.io/pages/dd3f5d/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_982b1d5a6ef24c62821c4426.result",
+      "evidence": {
+        "event_id": "call_982b1d5a6ef24c62821c4426.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.autograd.gradcheck.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d16963d5002f4276b7f7937b.result",
+      "evidence": {
+        "event_id": "call_d16963d5002f4276b7f7937b.result",
+        "quote": "**标题**: Page not found · GitHub Pages\n\n# 404\n\n**File not found**\n\nThe site configured at this address does not contain the requested file.\n\nIf this is your site, make sure that the filename case matches the URL as well as any file permissions.  \nFor root URLs (like `http://example.com/`) you must provide an `index.html` file.\n\n[Read the full documentation](https://help.github.com/pages/) for more information about using **GitHub Pages**.\n\n[](https://docs.pytorch.org/)[](https://docs.pytorch.org/)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.autograd.gradcheck.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e178eab6c68c4f209ce8bf2d.result",
+      "evidence": {
+        "event_id": "call_e178eab6c68c4f209ce8bf2d.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_46e716ecbc3c499dbf057999.result",
+      "evidence": {
+        "event_id": "call_46e716ecbc3c499dbf057999.result",
+        "quote": "**标题**: CUDA Math API Reference Manual — CUDA Math API Reference Manual 13.4 documentation\n\n# CUDA Math API Reference Manual[](https://docs.nvidia.com/cuda/cuda-math-api/index.html#cuda-math-api-reference-manual \"Permalink to this headline\")\n\nCUDA mathematical functions are always available in device code.\n\nHost implementations of the common mathematical functions are mapped in a platform-specific way to standard math library functions, provided by the host compiler and respective host libm where available. Some functions, not available with the host compilers, are implemented in crt/math_functions.hpp header file. For example, see [erfinv()](https://docs.nvidia.com/cuda/cuda-math-api/cuda_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://docs.nvidia.com/cuda/cuda-math-api/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

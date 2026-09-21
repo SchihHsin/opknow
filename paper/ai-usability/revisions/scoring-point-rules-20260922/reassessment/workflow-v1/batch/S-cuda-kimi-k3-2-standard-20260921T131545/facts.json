@@ -1,0 +1,536 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_2f6135f4.result",
+      "evidence": {
+        "event_id": "WebFetch_1_2f6135f4.result",
+        "quote": "# Triton Model Configuration 文档分析\n\n## 📋 摘要与截断说明\n\n**截断情况：未发现截断。** 本文档为完整页面，从 \"Model Configuration\" 章节开始，到 \"Response Cache\" 章节结束，覆盖了官方页的全部小节（Minimal Configuration → Auto-Generated → Custom Configuration → Datatypes → Reshape → Shape Tensors → Non-Linear I/O → Version Policy → Instance Groups → CUDA Compute Capability → Optimization Policy → Model Warmup → Response Cache）。\n\n⚠️ 唯一瑕疵：**Datatypes 表格在文本化过程中丢失了表格结构**（行列被压平为纯文本列表），但数据本身完整。\n\n---\n\n## 一、config.pbtxt 字段总览（必填 / 可选）\n\n### ✅ 必填字段（Minimal Model Configuration）\n\n| 字段 | 说明 |\n|---|---|\n| `platform` 和/或 `backend` | 指定模型平台或后端（二选一或同时指定），取值见 backend 文档 |\n| `max_batch_size` | 模型支持的最大 batch size。支持 batching 的模型设为 **≥1**；不支持 batching 的模型**必须设为 0** |\n| `"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_fd288185.result",
+      "evidence": {
+        "event_id": "WebFetch_2_fd288185.result",
+        "quote": "# Triton Model Repository 文档分析\n\n**摘要**：已按要求从官方文档中提取了目录布局、各 backend 模型文件约定、`--model-repository` 启动参数及版本策略相关信息。**关于截断**：所提供内容完整呈现了该页面的主要章节（至 DALI Models 结束），无明显截断；但需注意两点——(1) **TensorFlow SavedModel 未出现在本文档中**（新版 Triton 文档已不含 TensorFlow 章节）；(2) `version_policy` 的具体语法**不在本页**，本页仅引用链接至 Model Configuration 文档。详见文末说明。\n\n---\n\n## 1. Model Repository 目录布局（模型名/版本号/模型文件）\n\n原文结构如下：\n\n```\n<model-repository-path>/\n  <model-name>/\n    [config.pbtxt]                  # 模型配置（部分模型必需，部分可选）\n    [<output-labels-file> ...]      # 可选：输出标签文件\n    [configs]/\n      [<custom-config-file> ...]    # 可选：自定义配置（.pbtxt 后缀）\n    <version>/                      # 数字命名的版本子目录（至少一个）\n      <model-definition-file>       # 模型定义文件（由 back"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_4b855af3.result",
+      "evidence": {
+        "event_id": "WebFetch_3_4b855af3.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_6731356a.result",
+      "evidence": {
+        "event_id": "WebFetch_6_6731356a.result",
+        "quote": "# trtexec 文档提取结果\n\n## ⚠️ 关键发现（先行说明）\n\n**所提供的网页内容中并不存在一条\"从 ONNX 构建 engine 的完整端到端命令示例\"。** 该页面仅在 flags 表格中逐一定义了 `--onnx`、`--saveEngine`、`--fp16`、`--minShapes/--optShapes/--maxShapes` 等参数的语义，而**没有给出将它们组合在一起的示例命令**。原文明确将示例引导至外部资源：\n\n> \"Refer to `trtexec --help` for all supported flags and detailed explanations.\"\n> \"Refer to the GitHub: trtexec/README.md file for detailed information about building this tool and examples of its usage.\"\n\n因此：下方第 1、2 节为**原文逐字提取**；第 3 节的组合示例为**依据原文 flag 定义构造**（非原文引用，已标注）；第 4 节为两张 flags 表的完整收录。\n\n---\n\n## 1. 与 ONNX 构建 Engine 直接相关的 flags（原文定义，逐字）\n\n| Flag（原文语法） | 原文描述 |\n|---|---|\n| `--onnx=<model>` | \"Specify the input ONNX model. If the input model is in ONNX format, use the"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_e8899301.result",
+      "evidence": {
+        "event_id": "WebFetch_8_e8899301.result",
+        "quote": "**标题**: Release Notes :: NVIDIA Deep Learning Triton Inference Server Documentation\n**发布时间**: Release Notes ( PDF ) - Last updated August 31, 2026\n\n[](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html)\n\n## [Triton Inference Server Container Release Notes](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html#abstract)\n\nThe actual inference server is packaged in the Triton Inference Server container. This document provides information about how to set up and run the Triton inference server container, from the prerequisites to running the container. The release notes also provide a list of key features, packaged software in th"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_972c93b7.result",
+      "evidence": {
+        "event_id": "WebFetch_9_972c93b7.result",
+        "quote": "# 提取结果摘要\n\n已完整检索该 README。**重要说明**：原文中**不存在**任何单条命令同时包含 `--onnx` + `--saveEngine` + `--fp16` + `--minShapes/--optShapes/--maxShapes` 全部四类参数。这些参数分散在不同示例中，以下按类别列出原文命令（**均为完整命令，未截断**），并在最后给出一条标注为\"拼接示例\"的组合命令供参考。\n\n---\n\n## 一、shapes 参数书写语法（Example 3，原文完整命令）\n\n原文假设模型有一个名为 `input` 的动态输入，维度为 `[-1, 3, 244, 244]`。\n\n**语法格式**：`参数名=张量名:维度1x维度2x维度3x维度4`（维度间用小写字母 `x` 分隔，无空格）\n\n**静态/固定输入形状**：\n```bash\n./trtexec --onnx=model.onnx --shapes=input:32x3x244x244\n```\n\n**动态形状区间（优化 profile）**：\n```bash\n./trtexec --onnx=model.onnx --minShapes=input:1x3x244x244 --optShapes=input:16x3x244x244 --maxShapes=input:32x3x244x244 --shapes=input:5x3x244x244\n```\n\n要点：\n- `--minShapes` / `--optShapes` / `--maxShapes` 三者共同定义动态形状的优化 profile"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_10_0e2f802e.result",
+      "evidence": {
+        "event_id": "WebFetch_10_0e2f802e.result",
+        "quote": "**标题**: Releases · triton-inference-server/server\n\n# Releases: triton-inference-server/server\n\nReleases Tags\n\n## Release list\n\n# Releases: triton-inference-server/server\n## Release list\n- Release 2.72.0 corresponding to NGC container 26.08\n- Release 2.71.0 corresponding to NGC container 26.07\n- Release 2.70.0 corresponding to NGC container 26.06\n- Release 2.69.0 corresponding to NGC container 26.05\n- Release 2.68.0 corresponding to NGC container 26.04\n- Release 2.67.0 corresponding to NGC container 26.03\n- Release 2.66.0 corresponding to NGC container 26.02\n- Release 2.65.0 corresponding to NGC container 26.01\n- Release 2.64.0 corresponding to NGC container 25.12\n- Release 2.63.0 correspondi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/triton-inference-server/server/releases",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "8e59702ca4eb348115bb7069ee0db36279b08a7d93b185425d02537f6d7dcbfb",
+  "question": "怎么把模型部署成推理服务？用 Triton Inference Server / TensorRT，怎么配 model repository 和起服务？",
+  "run_id": "S-cuda-kimi-k3-2-standard-20260921T131545",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "# Search Results for \"Triton Inference Server model repository config.pbtxt tensorrt_plan official documentation\"\n\n## 1. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\n2026年9月1日 · Each model in a model repository must include a model configuration that provides required and optional information …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n## 2. [Model Configuration — NVIDIA Triton Inference Server 1.12.0 documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/archive"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "## 1. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\n2026年9月1日 · Each model in a model repository must include a model configuration that provides required and optional information …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "## 2. [Model Configuration — NVIDIA Triton Inference Server 1.12.0 documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html)\n\n2025年10月30日 · Run Triton Inference Server. Verify Inference Server Is Running Correctly. Getting The Client Examples. Running …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "## 3. [Triton config.pbtxt配置解析关键要点 config.pbtxt 是 Triton ...](https://juejin.cn/post/7483764347041071158)\n\n2025年3月21日 · 关键要点 config.pbtxt 是 Triton Inference Server 的模型配置文件，定义模型的加载和服务方式。 它包含模型名称、 …\n\n**URL:** https://juejin.cn/post/7483764347041071158\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://juejin.cn/post/7483764347041071158"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "## 4. [Model Repository | triton-inference-server/server | DeepWiki](https://deepwiki.com/triton-inference-server/server/4.1-model-repository)\n\n2026年4月14日 · It defines the directory layout, file organization, version management, and storage backend configuration that …\n\n**URL:** https://deepwiki.com/triton-inference-server/server/4.1-model-repository\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://deepwiki.com/triton-inference-server/server/4.1-model-repository"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_dd8f4632.result",
+      "evidence": {
+        "event_id": "WebSearch_0_dd8f4632.result",
+        "quote": "## 5. [突破性能瓶颈：Triton Inference Server模型配置文件pbtxt ...](https://blog.csdn.net/gitblog_00491/article/details/151337525)\n\n2025年9月9日 · 本文将深入解析Triton Inference Server的 config.pbtxt配置文件，通过优化关键参数，帮助你解决90%的模型部署性能 …\n\n**URL:** https://blog.csdn.net/gitblog_00491/article/details/151337525\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/gitblog_00491/article/details/151337525"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_2f6135f4.result",
+      "evidence": {
+        "event_id": "WebFetch_1_2f6135f4.result",
+        "quote": "# Triton Model Configuration 文档分析\n\n## 📋 摘要与截断说明\n\n**截断情况：未发现截断。** 本文档为完整页面，从 \"Model Configuration\" 章节开始，到 \"Response Cache\" 章节结束，覆盖了官方页的全部小节（Minimal Configuration → Auto-Generated → Custom Configuration → Datatypes → Reshape → Shape Tensors → Non-Linear I/O → Version Policy → Instance Groups → CUDA Compute Capability → Optimization Policy → Model Warmup → Response Cache）。\n\n⚠️ 唯一瑕疵：**Datatypes 表格在文本化过程中丢失了表格结构**（行列被压平为纯文本列表），但数据本身完整。\n\n---\n\n## 一、config.pbtxt 字段总览（必填 / 可选）\n\n### ✅ 必填字段（Minimal Model Configuration）\n\n| 字段 | 说明 |\n|---|---|\n| `platform` 和/或 `backend` | 指定模型平台或后端（二选一或同时指定），取值见 backend 文档 |\n| `max_batch_size` | 模型支持的最大 batch size。支持 batching 的模型设为 **≥1**；不支持 batching 的模型**必须设为 0** |\n| `"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_fd288185.result",
+      "evidence": {
+        "event_id": "WebFetch_2_fd288185.result",
+        "quote": "# Triton Model Repository 文档分析\n\n**摘要**：已按要求从官方文档中提取了目录布局、各 backend 模型文件约定、`--model-repository` 启动参数及版本策略相关信息。**关于截断**：所提供内容完整呈现了该页面的主要章节（至 DALI Models 结束），无明显截断；但需注意两点——(1) **TensorFlow SavedModel 未出现在本文档中**（新版 Triton 文档已不含 TensorFlow 章节）；(2) `version_policy` 的具体语法**不在本页**，本页仅引用链接至 Model Configuration 文档。详见文末说明。\n\n---\n\n## 1. Model Repository 目录布局（模型名/版本号/模型文件）\n\n原文结构如下：\n\n```\n<model-repository-path>/\n  <model-name>/\n    [config.pbtxt]                  # 模型配置（部分模型必需，部分可选）\n    [<output-labels-file> ...]      # 可选：输出标签文件\n    [configs]/\n      [<custom-config-file> ...]    # 可选：自定义配置（.pbtxt 后缀）\n    <version>/                      # 数字命名的版本子目录（至少一个）\n      <model-definition-file>       # 模型定义文件（由 back"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_4b855af3.result",
+      "evidence": {
+        "event_id": "WebFetch_3_4b855af3.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "# Search Results for \"trtexec TensorRT build engine from ONNX --saveEngine --onnx official documentation\"\n\n## 1. [trtexec实战：从ONNX到TensorRT engine的完整部署指南](https://blog.csdn.net/weixin_35756130/article/details/164974082)\n\n2026年9月10日 · TensorRT作为NVIDIA推出的高性能推理优化引擎，通过层融合、精度校准（如FP16/INT8量化）与内核自动调优， …\n\n**URL:** https://blog.csdn.net/weixin_35756130/article/details/164974082\n\n---\n\n## 2. [【深度学习】TensorRT 转换 onnx 为 engine - 知乎](https://zhuanlan.zhihu.com/p/1988990258356962139)\n\n2025年12月29日 · 下载 TensorRT解压文件，将 bin 目录中的 trtexec.exe 复制到 lib 文件夹 在 lib 文件夹打开 cmd 执行下面的命令 通 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1988990258356962139\n\n---\n\n## 3. [tensorrt onnx转engine工具 trtexec](https://un.csdn.net/6wd08cjoyr"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "## 1. [trtexec实战：从ONNX到TensorRT engine的完整部署指南](https://blog.csdn.net/weixin_35756130/article/details/164974082)\n\n2026年9月10日 · TensorRT作为NVIDIA推出的高性能推理优化引擎，通过层融合、精度校准（如FP16/INT8量化）与内核自动调优， …\n\n**URL:** https://blog.csdn.net/weixin_35756130/article/details/164974082\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://blog.csdn.net/weixin_35756130/article/details/164974082"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "## 2. [【深度学习】TensorRT 转换 onnx 为 engine - 知乎](https://zhuanlan.zhihu.com/p/1988990258356962139)\n\n2025年12月29日 · 下载 TensorRT解压文件，将 bin 目录中的 trtexec.exe 复制到 lib 文件夹 在 lib 文件夹打开 cmd 执行下面的命令 通 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1988990258356962139\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/1988990258356962139"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "## 3. [tensorrt onnx转engine工具 trtexec](https://un.csdn.net/6wd08cjoyr)\n\n此命令会加载指定路径下的 .onnx 文件并将其编译为 TensorRT 的引擎文件保存到给定位置 [^1]。 处理动态形状 当处理具有动态尺寸 …\n\n**URL:** https://un.csdn.net/6wd08cjoyr\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://un.csdn.net/6wd08cjoyr"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "## 4. [从Onnx到TensorRT Engine：手把手教你用trtexec转换模型 ...](https://wenku.csdn.net/column/39mx6343djt)\n\n2026年4月6日 · 1. trtexec工具深度解析与实战技巧 trtexec是TensorRT安装包中自带的命令行工具，堪称模型转换的瑞士军刀。 它不 …\n\n**URL:** https://wenku.csdn.net/column/39mx6343djt\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://wenku.csdn.net/column/39mx6343djt"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_feac9f89.result",
+      "evidence": {
+        "event_id": "WebSearch_4_feac9f89.result",
+        "quote": "## 5. [TensorRT实战：trtexec工具从ONNX到engine的完整转换 ...](https://blog.csdn.net/weixin_29290863/article/details/158714153)\n\n2026年6月25日 · 对于使用PyTorch或TensorFlow等框架训练的模型，ONNX格式已经成为一种通用的中间表示。 然而，要将ONNX模 …\n\n**URL:** https://blog.csdn.net/weixin_29290863/article/details/158714153\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://blog.csdn.net/weixin_29290863/article/details/158714153"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "# Search Results for \"site:docs.nvidia.com trtexec command line tool TensorRT\"\n\n## 1. [Command-Line Programs — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html)\n\n2026年5月23日 · If you have a model saved as an ONNX file, you can use the trtexec tool to test the performance of running …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html\n\n---\n\n## 2. [Command-Line Programs — NVIDIA TensorRT 10.10.10](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html)\n\n2025年7月11日 · If you have a model saved as an ONNX file, you can use th"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "## 1. [Command-Line Programs — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html)\n\n2026年5月23日 · If you have a model saved as an ONNX file, you can use the trtexec tool to test the performance of running …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "## 2. [Command-Line Programs — NVIDIA TensorRT 10.10.10](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html)\n\n2025年7月11日 · If you have a model saved as an ONNX file, you can use the trtexec tool to test the performance of running …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "## 3. [TensorRT/samples/trtexec at main · NVIDIA/TensorRT · GitHub](https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec)\n\n2026年3月10日 · Included in the samples directory is a command line wrapper tool, called trtexec. trtexec is a tool to quickly utilize …\n\n**URL:** https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "## 4. [17. TensorRT 的命令行程序 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/)\n\nA.3.1. trtexec 示例目录中包含一个名为 trtexec 的命令行包装工具。 trtexec 是一种无需开发自己的应用程序 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_358d81f5.result",
+      "evidence": {
+        "event_id": "WebSearch_5_358d81f5.result",
+        "quote": "## 5. [TensorRT - 命令行程序 - 详解 - yxysuanfa - 博客园](https://www.cnblogs.com/yxysuanfa/p/19210940)\n\n2025年11月11日 · 命令行程序trtexec在 samples 目录中包含了一个命令行包装工具 trtexec。 trtexec 是一个可以快速使用 TensorRT  …\n\n**URL:** https://www.cnblogs.com/yxysuanfa/p/19210940\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://www.cnblogs.com/yxysuanfa/p/19210940"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_6731356a.result",
+      "evidence": {
+        "event_id": "WebFetch_6_6731356a.result",
+        "quote": "# trtexec 文档提取结果\n\n## ⚠️ 关键发现（先行说明）\n\n**所提供的网页内容中并不存在一条\"从 ONNX 构建 engine 的完整端到端命令示例\"。** 该页面仅在 flags 表格中逐一定义了 `--onnx`、`--saveEngine`、`--fp16`、`--minShapes/--optShapes/--maxShapes` 等参数的语义，而**没有给出将它们组合在一起的示例命令**。原文明确将示例引导至外部资源：\n\n> \"Refer to `trtexec --help` for all supported flags and detailed explanations.\"\n> \"Refer to the GitHub: trtexec/README.md file for detailed information about building this tool and examples of its usage.\"\n\n因此：下方第 1、2 节为**原文逐字提取**；第 3 节的组合示例为**依据原文 flag 定义构造**（非原文引用，已标注）；第 4 节为两张 flags 表的完整收录。\n\n---\n\n## 1. 与 ONNX 构建 Engine 直接相关的 flags（原文定义，逐字）\n\n| Flag（原文语法） | 原文描述 |\n|---|---|\n| `--onnx=<model>` | \"Specify the input ONNX model. If the input model is in ONNX format, use the"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "# Search Results for \"Triton Inference Server latest release version 2026 NGC container tag\"\n\n## 1. [Triton Inference Server | NVIDIA NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver)\n\n2026年8月31日 · For the latest Release Notes, see the Triton Inference Server Release Notes. For a full list of the supported software …\n\n**URL:** https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver\n\n---\n\n## 2. [Releases: triton-inference-server/server - GitHub](https://github.com/triton-inference-server/server/releases)\n\nNew Features and ImprovementsKnown IssuesClient Libraries and ExamplesWindows SupportJetson iGPU SupportUbuntu 22.04 builds of the client libraries and exam"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "## 1. [Triton Inference Server | NVIDIA NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver)\n\n2026年8月31日 · For the latest Release Notes, see the Triton Inference Server Release Notes. For a full list of the supported software …\n\n**URL:** https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tritonserver"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "## 2. [Releases: triton-inference-server/server - GitHub](https://github.com/triton-inference-server/server/releases)\n\nNew Features and ImprovementsKnown IssuesClient Libraries and ExamplesWindows SupportJetson iGPU SupportUbuntu 22.04 builds of the client libraries and examples are included in this release in the attached v2.49.0_ubuntu22.04.clients.tar.gz file. The SDK is also available for as an Ubuntu 22.04 based NGC Container. The SDK container includes the client libraries and examples, Performance Analyzer and Model Analyzer. Some components are also available...在github.com上查看更多信息\n\n**URL:** https://github.com/triton-inference-server/server/releases\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://github.com/triton-inference-server/server/releases"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "## 3. [Triton Inference Server Container Release Notes - NVIDIA …](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html)\n\n2026年8月31日 · This document provides information about how to set up and run the Triton inference server container, from the …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "## 4. [Releases · triton-inference-server/server - GitHub](https://github.com/triton-inference-server/server/releases?after=v2.4.0)\n\nThe last release of Triton Inference Server with the Tensorflow Backend is 25.02. Users wishing to continue using the Tensorflow …\n\n**URL:** https://github.com/triton-inference-server/server/releases?after=v2.4.0\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://github.com/triton-inference-server/server/releases?after=v2.4.0"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_78378e11.result",
+      "evidence": {
+        "event_id": "WebSearch_7_78378e11.result",
+        "quote": "## 5. [Documentation - Latest Release :: NVIDIA Deep Learning Triton Inference ...](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/index.html)\n\n2026年8月31日 · This guide provides step-by-step instructions for pulling and running the Triton inference server container, along with …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_e8899301.result",
+      "evidence": {
+        "event_id": "WebFetch_8_e8899301.result",
+        "quote": "**标题**: Release Notes :: NVIDIA Deep Learning Triton Inference Server Documentation\n**发布时间**: Release Notes ( PDF ) - Last updated August 31, 2026\n\n[](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html)\n\n## [Triton Inference Server Container Release Notes](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html#abstract)\n\nThe actual inference server is packaged in the Triton Inference Server container. This document provides information about how to set up and run the Triton inference server container, from the prerequisites to running the container. The release notes also provide a list of key features, packaged software in th"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_972c93b7.result",
+      "evidence": {
+        "event_id": "WebFetch_9_972c93b7.result",
+        "quote": "# 提取结果摘要\n\n已完整检索该 README。**重要说明**：原文中**不存在**任何单条命令同时包含 `--onnx` + `--saveEngine` + `--fp16` + `--minShapes/--optShapes/--maxShapes` 全部四类参数。这些参数分散在不同示例中，以下按类别列出原文命令（**均为完整命令，未截断**），并在最后给出一条标注为\"拼接示例\"的组合命令供参考。\n\n---\n\n## 一、shapes 参数书写语法（Example 3，原文完整命令）\n\n原文假设模型有一个名为 `input` 的动态输入，维度为 `[-1, 3, 244, 244]`。\n\n**语法格式**：`参数名=张量名:维度1x维度2x维度3x维度4`（维度间用小写字母 `x` 分隔，无空格）\n\n**静态/固定输入形状**：\n```bash\n./trtexec --onnx=model.onnx --shapes=input:32x3x244x244\n```\n\n**动态形状区间（优化 profile）**：\n```bash\n./trtexec --onnx=model.onnx --minShapes=input:1x3x244x244 --optShapes=input:16x3x244x244 --maxShapes=input:32x3x244x244 --shapes=input:5x3x244x244\n```\n\n要点：\n- `--minShapes` / `--optShapes` / `--maxShapes` 三者共同定义动态形状的优化 profile"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_10_0e2f802e.result",
+      "evidence": {
+        "event_id": "WebFetch_10_0e2f802e.result",
+        "quote": "**标题**: Releases · triton-inference-server/server\n\n# Releases: triton-inference-server/server\n\nReleases Tags\n\n## Release list\n\n# Releases: triton-inference-server/server\n## Release list\n- Release 2.72.0 corresponding to NGC container 26.08\n- Release 2.71.0 corresponding to NGC container 26.07\n- Release 2.70.0 corresponding to NGC container 26.06\n- Release 2.69.0 corresponding to NGC container 26.05\n- Release 2.68.0 corresponding to NGC container 26.04\n- Release 2.67.0 corresponding to NGC container 26.03\n- Release 2.66.0 corresponding to NGC container 26.02\n- Release 2.65.0 corresponding to NGC container 26.01\n- Release 2.64.0 corresponding to NGC container 25.12\n- Release 2.63.0 correspondi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://github.com/triton-inference-server/server/releases"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

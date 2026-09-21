@@ -1,0 +1,454 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+      "evidence": {
+        "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+        "quote": "# torchrun (Elastic Launch) — PyTorch Documentation Analysis\n\n## Summary\n\nThis is the official PyTorch documentation page for `torchrun` (the Elastic Launch console script). The page documents the command-line interface, environment variables, deployment, failure modes, membership changes, and usage examples for distributed training. The content appears **complete** — it includes the full API reference section (usage examples, definitions, environment variables, logging, deployment, failure modes) and ends with the module's function reference list, followed by standard footer navigation. No truncation indicators are present.\n\n---\n\n## Page Metadata / Version Info\n\n- **Page title:** torchrun ("
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/main/elastic/run.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_WlgGkfPlRthlrrMEpnOi2738.result",
+      "evidence": {
+        "event_id": "call_00_WlgGkfPlRthlrrMEpnOi2738.result",
+        "quote": "# Analysis: `torch.distributed` Documentation (PyTorch 2.14)\n\n## Page Completeness Assessment\n\n⚠️ **The page is TRUNCATED.** The content ends abruptly mid-sentence in the **Point-to-point communication** section with the marker `[content truncated]`. The `<function torch.distributed.send>` documentation is cut off after the first warning and parameters heading.\n\n**What IS complete (fully captured):**\n- `init_process_group` signature and full parameter docs ✓\n- Environment variables for initialization ✓\n- Backends table ✓\n- Which-backend-to-use guidance ✓\n\n**What is TRUNCATED/missing:**\n- `torch.distributed.send()` parameters (cut off)\n- All remaining point-to-point functions (`recv`, `isend`"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/distributed.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_qODhRh0pVHkJmQEyqYV74157.result",
+      "evidence": {
+        "event_id": "call_00_qODhRh0pVHkJmQEyqYV74157.result",
+        "quote": "# DistributedDataParallel (`torch.nn.parallel`) — PyTorch 2.14\n\n## Page Completeness Assessment\n\nThe page appears **substantially complete** for a documentation API reference. It contains the full constructor signature, all Notes and Warnings, the complete parameter list, and the documented methods (`join`, `join_hook`, `no_sync`, `register_comm_hook`) with examples. There is no visible truncation marker. Some inline cross-reference links are present but the content of the surrounding doc is intact. The only \"missing\" things would be parts of the surrounding docs (linked tutorials/notes), not this page itself.\n\n---\n\n## Exact Constructor Signature\n\n```python\nclass torch.nn.parallel.Distribute"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+      "evidence": {
+        "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+        "quote": "**标题**: Getting Started with Distributed Data Parallel — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Apr 23, 2019 | Last Updated: Sep 23, 2025 | Last Verified: Nov 05, 2024\n\n# Getting Started with Distributed Data Parallel#\n\n# Getting Started with Distributed Data Parallel#\nFor more information on how DDP works and how to use it effectively, be sure to check out the DDP design note. With DDP, you can train your models faster and more efficiently than ever before!\n\nThe recommended way to use DDP is to spawn one process for each model replica. The model replica can span multiple devices. DDP processes can be placed on the same machine or across machines. Note that GPU de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+      "evidence": {
+        "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+        "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: Jan 23, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\n[Introduction](https://docs.pytorch.org/tutorials/beginner/ddp_series_intro.html) || [What is DDP](https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html) || [Single-Node Multi-GPU Training](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html) || [Fault Tolerance](https://docs.pytorch.org/tutorials/beginner/ddp_series_fault_tolerance.html) || **Multi-Node training** || [minGPT Training](https://docs.pytorch.org/tutorials/intermediate/ddp_series_minGPT.html)\n\n# Multinode Training[#](ht"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+      "evidence": {
+        "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+        "quote": "**标题**: Multi GPU training with DDP — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: May 12, 2026 | Last Verified: Not Verified\n\nBack to top\n\n# Multi GPU training with DDP[#](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html#multi-gpu-training-with-ddp \"Link to this heading\")\n\nAuthors: [Suraj Subramanian](https://github.com/subramen)\n\nWhat you will learn\n\n- How to migrate a single-GPU training script to multi-GPU via DDP\n- Setting up the distributed process group\n- Saving and loading models in a distributed setup\n\nView the code used in this tutorial on [GitHub](https://github.com/pytorch/examples/blob/main/distributed/ddp-tu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+      "evidence": {
+        "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+        "quote": "# NCCL Environment Variables — Documentation Extract\n\n## Document Version\n**NCCL 2.31.2** (per the page title: \"Environment Variables — NCCL 2.31.2 documentation\")\n\n## Categories of Environment Variables\nThe page defines **two categories**:\n\n1. **System configuration** — Needed to make NCCL follow system-specific configuration; can be kept in scripts and system configuration.\n2. **Debugging** — Should not be used in production nor retained in scripts, or only as a workaround, and removed as soon as the issue is resolved. Keeping them set may result in sub-optimal behavior, crashes, or hangs.\n\nEnvironment variables can also be set statically in `/etc/nccl.conf` (system-wide) or in `${NCCL_CON"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "5e74ce83b3aea9749f671812d06d904a285b2cafe890735ea30045627523af46",
+  "question": "怎么用 PyTorch 做多机多卡分布式训练（DDP + NCCL）？给出初始化、启动命令和环境变量。",
+  "run_id": "F-cuda-deepseek-v4_1-flash-standard-20260921T101319",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "# Search Results for \"PyTorch distributed data parallel DDP multi-node multi-GPU NCCL torchrun official documentation\"\n\n## 1. [DistributedDataParallel (DDP) | pytorch/examples | DeepWiki](https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp))\n\n2025年4月18日 · DDP enables data parallel training across multiple GPUs and compute nodes by creating replicas of a model on …\n\n**URL:** https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp)\n\n---\n\n## 2. [分布式数据并行入门 — PyTorch 教程 2.14.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html)\n\n2025年9月23日 · DistributedDataParallel (DDP) 是 PyTorch 中的一个强大模块，允许您在多台机器上并行化模型，非常适合大规模深 …\n\n**URL:** https:/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "## 1. [DistributedDataParallel (DDP) | pytorch/examples | DeepWiki](https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp))\n\n2025年4月18日 · DDP enables data parallel training across multiple GPUs and compute nodes by creating replicas of a model on …\n\n**URL:** https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp)\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://deepwiki.com/pytorch/examples/6.1-distributeddataparallel-(ddp)"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "## 2. [分布式数据并行入门 — PyTorch 教程 2.14.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html)\n\n2025年9月23日 · DistributedDataParallel (DDP) 是 PyTorch 中的一个强大模块，允许您在多台机器上并行化模型，非常适合大规模深 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_tutorial.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "## 3. [多节点训练 — PyTorch 教程 2.14.0+cu130 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html)\n\n2025年1月23日 · Multinode Training - Documentation for PyTorch Tutorials, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/tutorials/intermediate/ddp_series_multinode.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "## 4. [PyTorch : Distributed Data Parallel 详解 - 掘金](https://juejin.cn/post/7211775098310950973)\n\n2023年3月18日 · Distributed Data Parallel 简称 DDP，是 PyTorch 框架下一种适用于单机多卡、多机多卡任务的数据并行方式。 熟练 …\n\n**URL:** https://juejin.cn/post/7211775098310950973\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://juejin.cn/post/7211775098310950973"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+      "evidence": {
+        "event_id": "call_00_sLnDaTpvcNSqDhrOlteD9216.result",
+        "quote": "## 5. [【训练技巧】PyTorch多卡训练模型DistributedDataParallel ...](https://www.cnblogs.com/ljbguanli/p/19144468)\n\n2025年10月15日 · 在深度学习中，使用多GPU（多卡）训练可以显著加速模型训练过程，尤其适用于大规模数据集和复杂模型。 …\n\n**URL:** https://www.cnblogs.com/ljbguanli/p/19144468\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.cnblogs.com/ljbguanli/p/19144468"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "# Search Results for \"pytorch.org docs torchrun elastic launch distributed training NCCL\"\n\n## 1. [torchrun (Elastic Launch) — PyTorch main documentation](https://docs.pytorch.org/docs/main/elastic/run.html)\n\n2026年5月12日 · This can achieve well-improved single-node training performance. torchrun can also be used in multi-node …\n\n**URL:** https://docs.pytorch.org/docs/main/elastic/run.html\n\n---\n\n## 2. [torchrun (Elastic Launch) — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/elastic/run.html)\n\n2026年5月12日 · torchrun 是主模块 torch.distributed.run 的 python 控制台脚本，在 setup.py 的 entry_points 配置中声明。 它相当于 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/elastic/run.html\n\n---\n\n## 3. [to"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "## 1. [torchrun (Elastic Launch) — PyTorch main documentation](https://docs.pytorch.org/docs/main/elastic/run.html)\n\n2026年5月12日 · This can achieve well-improved single-node training performance. torchrun can also be used in multi-node …\n\n**URL:** https://docs.pytorch.org/docs/main/elastic/run.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://docs.pytorch.org/docs/main/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "## 2. [torchrun (Elastic Launch) — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/elastic/run.html)\n\n2026年5月12日 · torchrun 是主模块 torch.distributed.run 的 python 控制台脚本，在 setup.py 的 entry_points 配置中声明。 它相当于 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/elastic/run.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://docs.pytorch.ac.cn/docs/2.14/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "## 3. [torchrun (Elastic Launch) — PyTorch 1.11.0 documentation](https://docs.pytorch.wiki/en/elastic/run.html)\n\n2022年3月27日 · This utility and multi-process distributed (single-node or multi-node) GPU training currently only achieves the best …\n\n**URL:** https://docs.pytorch.wiki/en/elastic/run.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://docs.pytorch.wiki/en/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "## 4. [torchrun (弹性启动) — PyTorch 2.5 文档 - PyTorch 框架](https://pytorch.ac.cn/docs/2.5/elastic/run.html)\n\n2026年9月4日 · torchrun 提供了 torch.distributed.launch 的所有功能，并增加了以下功能. 通过重新启动所有工作器来优雅地处理工作 …\n\n**URL:** https://pytorch.ac.cn/docs/2.5/elastic/run.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://pytorch.ac.cn/docs/2.5/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+      "evidence": {
+        "event_id": "call_00_T1hzOGcegMT8uO4LulVn7418.result",
+        "quote": "## 5. [【pytorch记录】pytorch的分布式 torch.distributed.launch ...](https://blog.csdn.net/magic_ll/article/details/122359490)\n\n2024年1月25日 · 本文介绍了PyTorch分布式训练中torch.distributed.launch命令的使用方法，包括多机多卡与单机多卡场景下的配置参 …\n\n**URL:** https://blog.csdn.net/magic_ll/article/details/122359490\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/magic_ll/article/details/122359490"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+      "evidence": {
+        "event_id": "call_00_4tQczy8LQgMB4eAk6ddq0145.result",
+        "quote": "# torchrun (Elastic Launch) — PyTorch Documentation Analysis\n\n## Summary\n\nThis is the official PyTorch documentation page for `torchrun` (the Elastic Launch console script). The page documents the command-line interface, environment variables, deployment, failure modes, membership changes, and usage examples for distributed training. The content appears **complete** — it includes the full API reference section (usage examples, definitions, environment variables, logging, deployment, failure modes) and ends with the module's function reference list, followed by standard footer navigation. No truncation indicators are present.\n\n---\n\n## Page Metadata / Version Info\n\n- **Page title:** torchrun ("
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/main/elastic/run.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_WlgGkfPlRthlrrMEpnOi2738.result",
+      "evidence": {
+        "event_id": "call_00_WlgGkfPlRthlrrMEpnOi2738.result",
+        "quote": "# Analysis: `torch.distributed` Documentation (PyTorch 2.14)\n\n## Page Completeness Assessment\n\n⚠️ **The page is TRUNCATED.** The content ends abruptly mid-sentence in the **Point-to-point communication** section with the marker `[content truncated]`. The `<function torch.distributed.send>` documentation is cut off after the first warning and parameters heading.\n\n**What IS complete (fully captured):**\n- `init_process_group` signature and full parameter docs ✓\n- Environment variables for initialization ✓\n- Backends table ✓\n- Which-backend-to-use guidance ✓\n\n**What is TRUNCATED/missing:**\n- `torch.distributed.send()` parameters (cut off)\n- All remaining point-to-point functions (`recv`, `isend`"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/docs/stable/distributed.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qODhRh0pVHkJmQEyqYV74157.result",
+      "evidence": {
+        "event_id": "call_00_qODhRh0pVHkJmQEyqYV74157.result",
+        "quote": "# DistributedDataParallel (`torch.nn.parallel`) — PyTorch 2.14\n\n## Page Completeness Assessment\n\nThe page appears **substantially complete** for a documentation API reference. It contains the full constructor signature, all Notes and Warnings, the complete parameter list, and the documented methods (`join`, `join_hook`, `no_sync`, `register_comm_hook`) with examples. There is no visible truncation marker. Some inline cross-reference links are present but the content of the surrounding doc is intact. The only \"missing\" things would be parts of the surrounding docs (linked tutorials/notes), not this page itself.\n\n---\n\n## Exact Constructor Signature\n\n```python\nclass torch.nn.parallel.Distribute"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.pytorch.org/docs/stable/generated/torch.nn.parallel.DistributedDataParallel.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+      "evidence": {
+        "event_id": "call_00_XdHpfeZnXMmkfC8OWZrZ6135.result",
+        "quote": "**标题**: Getting Started with Distributed Data Parallel — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Apr 23, 2019 | Last Updated: Sep 23, 2025 | Last Verified: Nov 05, 2024\n\n# Getting Started with Distributed Data Parallel#\n\n# Getting Started with Distributed Data Parallel#\nFor more information on how DDP works and how to use it effectively, be sure to check out the DDP design note. With DDP, you can train your models faster and more efficiently than ever before!\n\nThe recommended way to use DDP is to spawn one process for each model replica. The model replica can span multiple devices. DDP processes can be placed on the same machine or across machines. Note that GPU de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.pytorch.org/tutorials/intermediate/ddp_tutorial.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+      "evidence": {
+        "event_id": "call_00_o7yY8DRwtiO23hCmUWMG7788.result",
+        "quote": "**标题**: Multinode Training — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: Jan 23, 2025 | Last Verified: Nov 05, 2024\n\nBack to top\n\n[Introduction](https://docs.pytorch.org/tutorials/beginner/ddp_series_intro.html) || [What is DDP](https://docs.pytorch.org/tutorials/beginner/ddp_series_theory.html) || [Single-Node Multi-GPU Training](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html) || [Fault Tolerance](https://docs.pytorch.org/tutorials/beginner/ddp_series_fault_tolerance.html) || **Multi-Node training** || [minGPT Training](https://docs.pytorch.org/tutorials/intermediate/ddp_series_minGPT.html)\n\n# Multinode Training[#](ht"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.pytorch.org/tutorials/intermediate/ddp_series_multinode.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+      "evidence": {
+        "event_id": "call_00_CGY1nG6o8TpzLJmpYgNO0134.result",
+        "quote": "**标题**: Multi GPU training with DDP — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 27, 2022 | Last Updated: May 12, 2026 | Last Verified: Not Verified\n\nBack to top\n\n# Multi GPU training with DDP[#](https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html#multi-gpu-training-with-ddp \"Link to this heading\")\n\nAuthors: [Suraj Subramanian](https://github.com/subramen)\n\nWhat you will learn\n\n- How to migrate a single-GPU training script to multi-GPU via DDP\n- Setting up the distributed process group\n- Saving and loading models in a distributed setup\n\nView the code used in this tutorial on [GitHub](https://github.com/pytorch/examples/blob/main/distributed/ddp-tu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.pytorch.org/tutorials/beginner/ddp_series_multigpu.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "# Search Results for \"NVIDIA NCCL environment variables NCCL_DEBUG NCCL_SOCKET_IFNAME NCCL_IB_DISABLE official documentation\"\n\n## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · When both NCCL_IB_PKEY_VALUE and NCCL_IB_PKEY are set, NCCL_IB_PKEY_VALUE takes precedence. If …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n## 2. [Environment Variables — NCCL 2.28.9 documentation](https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2289/user-guide/docs/env.html)\n\n2025年11月19日 · There are two categories of environment variables. Some are needed to make NCCL follow system"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · When both NCCL_IB_PKEY_VALUE and NCCL_IB_PKEY are set, NCCL_IB_PKEY_VALUE takes precedence. If …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "## 2. [Environment Variables — NCCL 2.28.9 documentation](https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2289/user-guide/docs/env.html)\n\n2025年11月19日 · There are two categories of environment variables. Some are needed to make NCCL follow system-specific …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2289/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2289/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "## 3. [NCCL Debug 全栈手段：常用环境变量、日志/拓扑/通信诊断 ...](https://yuanlehome.github.io/blog/nccl-debug-hang/)\n\n2026年2月5日 · 本文面向使用 PyTorch DDP / Megatron / DeepSpeed 或自研分布式训练框架的工程师，系统讲解 NCCL 调试的工具 …\n\n**URL:** https://yuanlehome.github.io/blog/nccl-debug-hang/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://yuanlehome.github.io/blog/nccl-debug-hang/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "## 4. [nccl常用环境变量整理 - 苏老的学习笔记](https://www.sulao.cn/post/1054)\n\n2025年6月18日 · 今天我们就根据nccl官网文档 https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html 整理了一些常用 …\n\n**URL:** https://www.sulao.cn/post/1054\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://www.sulao.cn/post/1054"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+      "evidence": {
+        "event_id": "call_00_iWpF3a4SWWfHxBIYXdE22688.result",
+        "quote": "## 5. [NCCL调试指南：当你的多GPU训练卡住时应该检查的6个 ...](https://blog.csdn.net/weixin_30955617/article/details/159334988)\n\n2026年4月28日 · 本文详细介绍了NCCL调试指南，重点解析了6个关键环境变量在多GPU训练卡死问题中的应用。通过设 …\n\n**URL:** https://blog.csdn.net/weixin_30955617/article/details/159334988\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://blog.csdn.net/weixin_30955617/article/details/159334988"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+      "evidence": {
+        "event_id": "call_00_AkqPaFdmlwLLIGNo8PdT3689.result",
+        "quote": "# NCCL Environment Variables — Documentation Extract\n\n## Document Version\n**NCCL 2.31.2** (per the page title: \"Environment Variables — NCCL 2.31.2 documentation\")\n\n## Categories of Environment Variables\nThe page defines **two categories**:\n\n1. **System configuration** — Needed to make NCCL follow system-specific configuration; can be kept in scripts and system configuration.\n2. **Debugging** — Should not be used in production nor retained in scripts, or only as a workaround, and removed as soon as the issue is resolved. Keeping them set may result in sub-optimal behavior, crashes, or hangs.\n\nEnvironment variables can also be set statically in `/etc/nccl.conf` (system-wide) or in `${NCCL_CON"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

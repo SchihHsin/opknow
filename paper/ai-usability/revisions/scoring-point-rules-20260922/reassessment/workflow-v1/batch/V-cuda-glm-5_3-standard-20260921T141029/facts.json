@@ -1,0 +1,348 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_cdb1d00751424291a3e1497b.result",
+      "evidence": {
+        "event_id": "call_cdb1d00751424291a3e1497b.result",
+        "quote": "# 《How to Overlap Data Transfers in CUDA C/C++》技术内容完整提取\n\n**来源**：NVIDIA Technical Blog | 作者：Mark Harris | 发布：2012年12月13日\n\n**本文主旨**：讨论如何将数据传输与主机端计算、设备端计算（甚至在某些情况下与其他数据传输）进行重叠。实现传输与其他操作的重叠需要使用 CUDA streams。\n\n---\n\n## 一、CUDA Streams（CUDA 流）\n\n### 1.1 流的定义（原文）\n\n> A *stream* in CUDA is a sequence of operations that execute on the device in the order in which they are issued by the host code. While operations within a stream are guaranteed to execute in the prescribed order, operations in different streams can be interleaved and, when possible, they can even run concurrently.\n\n**要点**：\n- 流内操作：严格按主机代码发出的顺序执行\n- 不同流之间的操作：可以交错，且在可能时可以**并发运行**\n\n### 1.2 默认流\n\n**原文完整表述**：\n\n> All device operations (kernels and"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_24dddb5ebabc432b84168d8d.result",
+      "evidence": {
+        "event_id": "call_24dddb5ebabc432b84168d8d.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_2b3b9ae1aacd410880bd316e.result",
+      "evidence": {
+        "event_id": "call_2b3b9ae1aacd410880bd316e.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/03-advanced/concurrent-execution.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_867f281975c34143bb3ddc2f.result",
+      "evidence": {
+        "event_id": "call_867f281975c34143bb3ddc2f.result",
+        "quote": "# cudaMemcpyAsync 函数信息提取\n\n## 📋 概要\n\n以下信息提取自 CUDA Runtime API v13.3.1 文档（6.10 Memory Management 章节）。需注意：**该函数的详细说明部分（含完整的参数描述和 pageable memory 行为说明）位于文档被截断的部分**，以下签名信息来自文档的函数列表部分，是完整准确的。\n\n---\n\n## 1. 完整函数签名\n\n```c\n__host__ __device__ cudaError_t cudaMemcpyAsync (\n    void*          dst,\n    const void*    src,\n    size_t         count,\n    cudaMemcpyKind kind,\n    cudaStream_t   stream = 0\n)\n```\n\n**官方简述**：*\"Copies data between host and device.\"*（在主机与设备之间复制数据）\n\n---\n\n## 2. 参数说明\n\n| 参数 | 类型 | 说明 |\n|------|------|------|\n| `dst` | `void*` | 目标内存指针 |\n| `src` | `const void*` | 源内存指针 |\n| `count` | `size_t` | 复制的字节数 |\n| `kind` | `cudaMemcpyKind` | 传输类型枚举（如 HostToDevice / DeviceToHost 等） |\n| `stream` | `c"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__MEMORY.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_63f6cab40b034ab59a8f8c78.result",
+      "evidence": {
+        "event_id": "call_63f6cab40b034ab59a8f8c78.result",
+        "quote": "# CUDA 异步执行章节完整内容提取\n\n## 内容完整性说明\n\n**未截断**。所提供的页面内容包含完整的第 2.5 章（2.5.1 – 2.5.10，含 Summary 小节）。文中存在多处对**其他章节**的交叉引用（如 Compute Capabilities、4.1 CUDA Graphs、Programmatic Dependent Launch、Batched Memory Transfers），这些属于外部链接而非本页内容截断。另注：原文 Figure 20 标题中 \"COncurrent\" 为原文本身的拼写错误。\n\n---\n\n## 一、定义\n\n### CUDA Streams（§2.5.2）\n\n> \"At the most basic level, a CUDA stream is an abstraction which allows the programmer to express a sequence of operations. A stream operates like a work-queue into which programs can add operations, such as memory copies or kernel launches, to be executed in order.\"\n\n关键语义：\n- 流内操作**按入队顺序串行执行**（in-order stream），操作不能\"跳过\"前面的操作\n- 应用可同时使用多个流，运行时根据 GPU 资源状态选择执行任务\n- 流优先级只是**提示**，不保证执行顺序\n- 流中 A"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_c69b567047e3480384fb529d.result",
+      "evidence": {
+        "event_id": "call_c69b567047e3480384fb529d.result",
+        "quote": "**标题**: CUDA Runtime API :: CUDA Toolkit Documentation\n\n## [Data types used by CUDA Runtime]\n\nCUDA device properties\n\n### Public Variables\n\n## [Data types used by CUDA Runtime]\n### Public Variables\nint  ECCEnabled\n\nint  accessPolicyMaxWindowSize\n\nint  asyncEngineCount\n\nint  canMapHostMemory\n\nint  canUseHostPointerForRegisteredMem\n\nint  clusterLaunch\n\nint  computePreemptionSupported\n\nint  concurrentKernels\n\nint  concurrentManagedAccess\n\nint  cooperativeLaunch\n\nint  deferredMappingCudaArraySupported\n\nint  deviceNumaConfig\n\n## [Data types used by CUDA Runtime]\n### Public Variables\nint  deviceNumaId\n\nint  directManagedMemAccessFromHost\n\nint  globalL1CacheSupported\n\nunsigned int  gpuDirectRDMAFlu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaDeviceProp.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "625d2b099bd811b9a54cdd9b3f8d688adf4534eda8f1c7c5d0eed749a7f0795f",
+  "question": "我想用 CUDA streams + 异步内存拷贝（`cudaMemcpyAsync`）让 H2D/D2H 数据传输与 kernel 计算重叠，怎么做（stream / event / pinned memory）？",
+  "run_id": "V-cuda-glm-5_3-standard-20260921T141029",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "# Search Results for \"CUDA streams overlap data transfer kernel execution cudaMemcpyAsync pinned memory site:docs.nvidia.com\"\n\n## 1. [如何在 CUDA C/C++ 中实现数据传输的重叠](https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/)\n\n在 C1060 上执行示例代码的时间线如下图所示。 在这个示意图中，我们假设主机到设备传输、内核执行和 …\n\n**URL:** https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/\n\n---\n\n## 2. [CUDA Streams：异步执行、Event 同步与计算传输重叠](https://hd9568.github.io/blog/cuda-streams-events-overlap/)\n\n2026年5月29日 · 理解 CUDA Stream 的异步执行模型，掌握 Event 同步、cudaMemcpyAsync 和 Ping-Pong Buffer 实现计算与数据传 …\n\n**URL:** https://hd9568.github.io/blog/cuda-streams-events-overlap/\n\n---\n\n## 3. [How to Overlap Data Transfers in CUDA C/C++ | NVID"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "## 1. [如何在 CUDA C/C++ 中实现数据传输的重叠](https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/)\n\n在 C1060 上执行示例代码的时间线如下图所示。 在这个示意图中，我们假设主机到设备传输、内核执行和 …\n\n**URL:** https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://developer.nvidia.cn/blog/how-overlap-data-transfers-cuda-cc/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "## 2. [CUDA Streams：异步执行、Event 同步与计算传输重叠](https://hd9568.github.io/blog/cuda-streams-events-overlap/)\n\n2026年5月29日 · 理解 CUDA Stream 的异步执行模型，掌握 Event 同步、cudaMemcpyAsync 和 Ping-Pong Buffer 实现计算与数据传 …\n\n**URL:** https://hd9568.github.io/blog/cuda-streams-events-overlap/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://hd9568.github.io/blog/cuda-streams-events-overlap/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "## 3. [How to Overlap Data Transfers in CUDA C/C++ | NVIDIA …](https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/)\n\nCuda StreamsOverlapping Kernel Execution and Data TransfersSummaryEarlier we demonstrated how to overlap kernel execution in the default stream with execution of code on the host. But our main goal in this post is to show you how to overlap kernel execution with data transfers. There are several requirements for this to happen. 1. The device must be capable of “concurrent copy and execution”. This can be queried ...在developer.nvidia.com上查看更多信息\n\n**URL:** https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "## 4. [CUDA Streams & Pinned Memory — Overlap Compute & Transfers](https://github.com/FlosMume/cpp-cuda-streams-and-pinned-mem)\n\n2025年10月28日 · A CUDA C++ demo showing how to overlap data transfer and kernel execution using multiple streams and pinned …\n\n**URL:** https://github.com/FlosMume/cpp-cuda-streams-and-pinned-mem\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://github.com/FlosMume/cpp-cuda-streams-and-pinned-mem"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8935db389c624f3688c172de.result",
+      "evidence": {
+        "event_id": "call_8935db389c624f3688c172de.result",
+        "quote": "## 5. [CUDA高性能计算系列06：流 (Stream) 与并发执行_gpu ...](https://blog.csdn.net/weixin_52694742/article/details/156775794)\n\n2026年8月3日 · 本文介绍了如何利用CUDA流(Stream)实现GPU计算与数据传输的并发执行，提升资源利用率。默认情况下，CUDA命 …\n\n**URL:** https://blog.csdn.net/weixin_52694742/article/details/156775794\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/weixin_52694742/article/details/156775794"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cdb1d00751424291a3e1497b.result",
+      "evidence": {
+        "event_id": "call_cdb1d00751424291a3e1497b.result",
+        "quote": "# 《How to Overlap Data Transfers in CUDA C/C++》技术内容完整提取\n\n**来源**：NVIDIA Technical Blog | 作者：Mark Harris | 发布：2012年12月13日\n\n**本文主旨**：讨论如何将数据传输与主机端计算、设备端计算（甚至在某些情况下与其他数据传输）进行重叠。实现传输与其他操作的重叠需要使用 CUDA streams。\n\n---\n\n## 一、CUDA Streams（CUDA 流）\n\n### 1.1 流的定义（原文）\n\n> A *stream* in CUDA is a sequence of operations that execute on the device in the order in which they are issued by the host code. While operations within a stream are guaranteed to execute in the prescribed order, operations in different streams can be interleaved and, when possible, they can even run concurrently.\n\n**要点**：\n- 流内操作：严格按主机代码发出的顺序执行\n- 不同流之间的操作：可以交错，且在可能时可以**并发运行**\n\n### 1.2 默认流\n\n**原文完整表述**：\n\n> All device operations (kernels and"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://developer.nvidia.com/blog/how-overlap-data-transfers-cuda-cc/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_24dddb5ebabc432b84168d8d.result",
+      "evidence": {
+        "event_id": "call_24dddb5ebabc432b84168d8d.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#async-and-streams"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3b9ae1aacd410880bd316e.result",
+      "evidence": {
+        "event_id": "call_2b3b9ae1aacd410880bd316e.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/03-advanced/concurrent-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_867f281975c34143bb3ddc2f.result",
+      "evidence": {
+        "event_id": "call_867f281975c34143bb3ddc2f.result",
+        "quote": "# cudaMemcpyAsync 函数信息提取\n\n## 📋 概要\n\n以下信息提取自 CUDA Runtime API v13.3.1 文档（6.10 Memory Management 章节）。需注意：**该函数的详细说明部分（含完整的参数描述和 pageable memory 行为说明）位于文档被截断的部分**，以下签名信息来自文档的函数列表部分，是完整准确的。\n\n---\n\n## 1. 完整函数签名\n\n```c\n__host__ __device__ cudaError_t cudaMemcpyAsync (\n    void*          dst,\n    const void*    src,\n    size_t         count,\n    cudaMemcpyKind kind,\n    cudaStream_t   stream = 0\n)\n```\n\n**官方简述**：*\"Copies data between host and device.\"*（在主机与设备之间复制数据）\n\n---\n\n## 2. 参数说明\n\n| 参数 | 类型 | 说明 |\n|------|------|------|\n| `dst` | `void*` | 目标内存指针 |\n| `src` | `const void*` | 源内存指针 |\n| `count` | `size_t` | 复制的字节数 |\n| `kind` | `cudaMemcpyKind` | 传输类型枚举（如 HostToDevice / DeviceToHost 等） |\n| `stream` | `c"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__MEMORY.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "# Search Results for \"docs.nvidia.com cuda-programming-guide streams asynchronous execution concurrent copy\"\n\n## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n## 2. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the r"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "## 1. [CUDA Programming Guide - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html)\n\n2026年9月10日 · This CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model and how …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "## 2. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the rest …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "## 3. [CUDA 编程指南（中文版）](https://bearneck.github.io/cuda-programming-guide-zh/)\n\n2026年3月24日 · 📖 关于本文档 本文档是 NVIDIA CUDA Programming Guide 的官方中文翻译版本，旨在帮助中文开发者更好地学习和 …\n\n**URL:** https://bearneck.github.io/cuda-programming-guide-zh/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://bearneck.github.io/cuda-programming-guide-zh/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "## 4. [NVIDIA 文档中心](https://docs.nvidia.cn/)\n\nNVIDIA OpenShell 是一款开源运行时，用于更安全地构建和部署自主、自演进的智能体。OpenShell 位于智能体与底层基础设施之 …\n\n**URL:** https://docs.nvidia.cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://docs.nvidia.cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8ac55d485cea4cf9b203a707.result",
+      "evidence": {
+        "event_id": "call_8ac55d485cea4cf9b203a707.result",
+        "quote": "## 5. [CUDA高性能计算系列06：流 (Stream) 与并发执行_gpu ...](https://blog.csdn.net/weixin_52694742/article/details/156775794)\n\n2026年8月3日 · 本文介绍了如何利用CUDA流(Stream)实现GPU计算与数据传输的并发执行，提升资源利用率。默认情况下，CUDA命 …\n\n**URL:** https://blog.csdn.net/weixin_52694742/article/details/156775794\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://blog.csdn.net/weixin_52694742/article/details/156775794"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_63f6cab40b034ab59a8f8c78.result",
+      "evidence": {
+        "event_id": "call_63f6cab40b034ab59a8f8c78.result",
+        "quote": "# CUDA 异步执行章节完整内容提取\n\n## 内容完整性说明\n\n**未截断**。所提供的页面内容包含完整的第 2.5 章（2.5.1 – 2.5.10，含 Summary 小节）。文中存在多处对**其他章节**的交叉引用（如 Compute Capabilities、4.1 CUDA Graphs、Programmatic Dependent Launch、Batched Memory Transfers），这些属于外部链接而非本页内容截断。另注：原文 Figure 20 标题中 \"COncurrent\" 为原文本身的拼写错误。\n\n---\n\n## 一、定义\n\n### CUDA Streams（§2.5.2）\n\n> \"At the most basic level, a CUDA stream is an abstraction which allows the programmer to express a sequence of operations. A stream operates like a work-queue into which programs can add operations, such as memory copies or kernel launches, to be executed in order.\"\n\n关键语义：\n- 流内操作**按入队顺序串行执行**（in-order stream），操作不能\"跳过\"前面的操作\n- 应用可同时使用多个流，运行时根据 GPU 资源状态选择执行任务\n- 流优先级只是**提示**，不保证执行顺序\n- 流中 A"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c69b567047e3480384fb529d.result",
+      "evidence": {
+        "event_id": "call_c69b567047e3480384fb529d.result",
+        "quote": "**标题**: CUDA Runtime API :: CUDA Toolkit Documentation\n\n## [Data types used by CUDA Runtime]\n\nCUDA device properties\n\n### Public Variables\n\n## [Data types used by CUDA Runtime]\n### Public Variables\nint  ECCEnabled\n\nint  accessPolicyMaxWindowSize\n\nint  asyncEngineCount\n\nint  canMapHostMemory\n\nint  canUseHostPointerForRegisteredMem\n\nint  clusterLaunch\n\nint  computePreemptionSupported\n\nint  concurrentKernels\n\nint  concurrentManagedAccess\n\nint  cooperativeLaunch\n\nint  deferredMappingCudaArraySupported\n\nint  deviceNumaConfig\n\n## [Data types used by CUDA Runtime]\n### Public Variables\nint  deviceNumaId\n\nint  directManagedMemAccessFromHost\n\nint  globalL1CacheSupported\n\nunsigned int  gpuDirectRDMAFlu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaDeviceProp.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

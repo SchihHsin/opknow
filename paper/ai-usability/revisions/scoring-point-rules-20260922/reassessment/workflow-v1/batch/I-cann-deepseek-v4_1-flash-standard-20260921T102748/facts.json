@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+      "evidence": {
+        "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+        "quote": "```\n# 版本配套\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。各版本间的匹配关系由昇腾社区统一维护，建议优先使用推荐版本组合以确保最佳兼容性和性能。固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/commercial)。\n\n## 推荐版本组合\n\n|    组件    |               推荐版本               |\n|:--------:|:--------------------------------:|\n| TorchNPU |              2.12.0（安装包版本）             |\n| PyTorch  |              2.12.0              |\n|   CANN   |              9.1.0               |\n|  Python  | 3.10 / 3.11 / 3.12 / 3.13 / 3.14 |\n\n## TorchNPU 版本配套表\n\n下表中的TorchNPU版本与`torch_npu`安装包版本采用不同的命名规则：\n\n- **TorchNPU版本**：标识产品的发布版本，采用独立于PyTorch的版本编号，如`26.1.0`、`26.1.1`。正式版本通常使用三段数字，历史预发布版本包含`RC`标识，如`6.0.RC3`。同一个TorchNPU产品版"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/Ascend/pytorch/master/COMPATIBILITY.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_5IDpuCH9X069FllFC6Lp2131.result",
+      "evidence": {
+        "event_id": "call_00_5IDpuCH9X069FllFC6Lp2131.result",
+        "quote": "**标题**: 版本配套关系-版本说明-TorchNPU6.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html)\n\n# 版本配套关系\n\nAscend Extension for PyTorch版本号采用**{PyTorch版本}-{昇腾版本}**命名规则，前者为Ascend Extension for PyTorch匹配的PyTorch版本，后者用于匹配CANN版本，详细匹配如下表：\n\n**表1** PyTorch软件版本配套关系\n\nCANN版本\n\nPyTorch版本\n\n**Ascend Extension for PyTorch**版本\n\n**Ascend Extension for PyTorch**代码分支名称\n\n**Ascend Extension for PyTorch**安装包版本\n\nPython版本\n\n商发版：8.0.RC1\n\n社区版：8.0.RC1.beta1\n\n1.11.0\n\n6.0.rc1\n\nv1.11.0-6.0.rc1\n\n1.11.0.post11\n\nPython3.7.*x*（3.7.5及以上）、Python3.8.*x*、Python3.9.*x*、Py"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_cDXj4vcEIXezoy91oewG2354.result",
+      "evidence": {
+        "event_id": "call_00_cDXj4vcEIXezoy91oewG2354.result",
+        "quote": "**标题**: 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询）_查看cann版本-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-28 14:53:47 发布\n2025-02-21 17:14:57\n\n# 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询） 原创\n\n![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/cb848392c9724e439b38caa0e94fb801.png)\n\n#### [](https://blog.csdn.net/Dontla/article/details/145781563)文章目录\n\n- - - [1. **查看固件和驱动版本**](https://blog.csdn.net/Dontla/article/details/145781563#1__6)\n    - [2. **查看CANN版本**](https://blog.csdn.net/Dontla/article/details/145781563#2_CANN_19)\n    - [3. **其他辅助方法**](https://blog.csdn.net/Dontla/article/details/145781563#3__47)\n    - [注意事项](https://blog.csdn.net/Dontla/article/details/145781563#_57)\n\n在华为昇腾服务器上查看固件、驱动和CANN版本的常用方法如下：\n\n#### [](https://blog.cs"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/Dontla/article/details/145781563",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+      "evidence": {
+        "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+        "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/hardware/firmware-drivers/commercial",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_MMJO83NFX55plHiRHFmF6069.result",
+      "evidence": {
+        "event_id": "call_00_MMJO83NFX55plHiRHFmF6069.result",
+        "quote": "**标题**: 华为昇腾服务器上查看固件、驱动和CANN版本的常用方法 - 技术栈\n**发布时间**: CZIDC 2025-04-11 21:31\n\n# 华为昇腾服务器上查看固件、驱动和CANN版本的常用方法\n\nHey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！💻 这些信息对于确保你的服务器运行顺畅可是超级重要的哦！下面就来给大家介绍几种常用的查看方法！👇\n\n🌟 ‌1. 查看固件和驱动版本‌\n\n‌使用命令行工具npu-smi‌：\n\n打开你的终端，输入以下命令：\n\nbash\n\nCopy Code\n\nnpu-smi info\n\n这个命令会列出NPU设备的详细信息，包括固件版本（Firmware Version）和驱动版本（Driver Version）哦！😉\n\n‌通过系统日志或安装路径‌：\n\n驱动和固件默认安装路径为/usr/local/Ascend，你可以检查相关子目录中的版本文件。比如，驱动包的安装信息文件通常位于/usr/local/Ascend/driver/version.info。🔍\n\n🌟 ‌2. 查看CANN版本‌\n\n‌通过安装信息文件‌：\n\n进入CANN安装目录：\n\nbash\n\nCopy Code\n\ncd /usr/local/Ascend/ascend-toolkit/latest/{arch}-linux\n\n其中{arch}表示CPU架构，比如aarch64或x86_64。然后查看版本文件：\n\nbash\n\nCopy Code\n\ncat ascend_toolkit_install.info\n\n这个文件会记录CANN的版本号及安"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://jishuzhan.net/article/1910687101412245505",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Jcw86Qj3msKOH3kkXg8U9655.result",
+      "evidence": {
+        "event_id": "call_00_Jcw86Qj3msKOH3kkXg8U9655.result",
+        "quote": "**标题**: 兼容性查询助手-昇腾软件兼容性信息-操作系统兼容性-部件兼容性-昇腾社区\n\n兼容性查询助手\n\n兼容性查询助手\n\n获取昇腾全栈软件的操作系统兼容性，Raid卡/网卡/板卡等硬件部件的OS兼容性请参考[Link](https://info.support.huawei.com/computing/tools/compatibility-query/enterprise/ascend-computing/system-compatibility)\n\n操作系统兼容性\n\n部件兼容性\n\n操作系统兼容性\n\n部件兼容性\n\n[版本OS兼容性更新。](https://www.hiascend.com/hardware/compatibility)\n\n[查看公告](https://www.hiascend.com/hardware/compatibility)\n\n产品系列\n\n产品型号\n\nNPU\n\n操作系统\n\n解决方案"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.cn/hardware/compatibility",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Jj9wh2ICalLChyJJ5DrR6347.result",
+      "evidence": {
+        "event_id": "call_00_Jj9wh2ICalLChyJJ5DrR6347.result",
+        "quote": "**标题**: CANN 9.1.0版本说明-版本说明-发行与安装-CANN9.1.X开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_GYUCvrfrHf9M48qqOo2x5848.result",
+      "evidence": {
+        "event_id": "call_00_GYUCvrfrHf9M48qqOo2x5848.result",
+        "quote": "**标题**: 搞定昇腾软件版本配套问题-云社区-华为云\n**发布时间**: yd_294961020 发表于 2025/06/20 15:36:28 2025/06/20\n\n# 搞定昇腾软件版本配套问题\n\n【摘要】 场景开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。 物理机安装场景1.先看安装指导：点击链接2.查询操作系统兼容性：点击链接3.确认固件驱动和CANN版本配套：点击链接一般建议选择新版本CANN和固件驱动，固件驱动有多个兼容版本，建议选最新版本。（可以...\n\n## [](https://bbs.huaweicloud.com/blogs/454517)场景\n\n开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。\n\n## [](https://bbs.huaweicloud.com/blogs/454517)物理机安装场景\n\n**1.先看安装指导：**  \n点击[链接](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/softwareinst/instg/instg_0005.html?Mode=PmIns&OS=openEuler&Software=cannToolKit)\n\n**2."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://bbs.huaweicloud.com/blogs/454517",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "f6dcbcc673e989e796605ec448e8af888852f2d257569706480206b29bd62d5d",
+  "question": "我装了 torch_npu 报版本不匹配，怎么查 CANN、torch_npu、固件驱动、PyTorch 之间的版本配套关系？",
+  "run_id": "I-cann-deepseek-v4_1-flash-standard-20260921T102748",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "# Search Results for \"torch_npu CANN PyTorch 版本配套关系 固件驱动\"\n\n## 1. [pytorch/COMPATIBILITY.md at master · Ascend/pytorch ...](https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md)\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。 各版本间的匹配关系由昇腾社区统一维护，建议优先使 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md\n\n---\n\n## 2. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n## 3. [PyTorch与昇腾NPU适配详解：从CANN到torch_npu的环境 ...](https://blog.csdn.net/weixin_42542669/article/details/164717776)\n\n6 天之前"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "## 1. [pytorch/COMPATIBILITY.md at master · Ascend/pytorch ...](https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md)\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。 各版本间的匹配关系由昇腾社区统一维护，建议优先使 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "## 2. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://juejin.cn/post/7685774019191799859"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "## 3. [PyTorch与昇腾NPU适配详解：从CANN到torch_npu的环境 ...](https://blog.csdn.net/weixin_42542669/article/details/164717776)\n\n6 天之前 · 这个表对老NVIDIA玩家最有用的一点是：你不能把昇腾的适配理解成\"装个驱动就完事\"。驱动只是最底层的一环，CANN …\n\n**URL:** https://blog.csdn.net/weixin_42542669/article/details/164717776\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/weixin_42542669/article/details/164717776"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "## 4. [Ascend昇腾npu设备上安装cann和torch，昇腾npu驱动 ...](https://blog.csdn.net/m0_52182894/article/details/156616648)\n\n2026年1月5日 · 在昇腾设备上跑深度学习，就一定需要安装npu驱动、CANN，如果是跑pytorch框架的，就还要安装torch和torch_npu …\n\n**URL:** https://blog.csdn.net/m0_52182894/article/details/156616648\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/m0_52182894/article/details/156616648"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+      "evidence": {
+        "event_id": "call_00_iMKUcHu8XnZOMesA1Y7Y4639.result",
+        "quote": "## 5. [版本配套关系--昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html)\n\n文档中心 版本配套关系 Ascend Extension for PyTorch 版本号采用 {PyTorch版本}- {昇腾版本} 命名规则，前者为 Ascend Extension …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+      "evidence": {
+        "event_id": "call_00_VxMBb5pwcYpnPBe2IquR7450.result",
+        "quote": "```\n# 版本配套\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。各版本间的匹配关系由昇腾社区统一维护，建议优先使用推荐版本组合以确保最佳兼容性和性能。固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/commercial)。\n\n## 推荐版本组合\n\n|    组件    |               推荐版本               |\n|:--------:|:--------------------------------:|\n| TorchNPU |              2.12.0（安装包版本）             |\n| PyTorch  |              2.12.0              |\n|   CANN   |              9.1.0               |\n|  Python  | 3.10 / 3.11 / 3.12 / 3.13 / 3.14 |\n\n## TorchNPU 版本配套表\n\n下表中的TorchNPU版本与`torch_npu`安装包版本采用不同的命名规则：\n\n- **TorchNPU版本**：标识产品的发布版本，采用独立于PyTorch的版本编号，如`26.1.0`、`26.1.1`。正式版本通常使用三段数字，历史预发布版本包含`RC`标识，如`6.0.RC3`。同一个TorchNPU产品版"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://raw.githubusercontent.com/Ascend/pytorch/master/COMPATIBILITY.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5IDpuCH9X069FllFC6Lp2131.result",
+      "evidence": {
+        "event_id": "call_00_5IDpuCH9X069FllFC6Lp2131.result",
+        "quote": "**标题**: 版本配套关系-版本说明-TorchNPU6.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html)\n\n# 版本配套关系\n\nAscend Extension for PyTorch版本号采用**{PyTorch版本}-{昇腾版本}**命名规则，前者为Ascend Extension for PyTorch匹配的PyTorch版本，后者用于匹配CANN版本，详细匹配如下表：\n\n**表1** PyTorch软件版本配套关系\n\nCANN版本\n\nPyTorch版本\n\n**Ascend Extension for PyTorch**版本\n\n**Ascend Extension for PyTorch**代码分支名称\n\n**Ascend Extension for PyTorch**安装包版本\n\nPython版本\n\n商发版：8.0.RC1\n\n社区版：8.0.RC1.beta1\n\n1.11.0\n\n6.0.rc1\n\nv1.11.0-6.0.rc1\n\n1.11.0.post11\n\nPython3.7.*x*（3.7.5及以上）、Python3.8.*x*、Python3.9.*x*、Py"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/60RC1/quickstart/releasenote/releasenote_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "# Search Results for \"昇腾 查看CANN版本 命令 npu-smi info 固件 驱动版本 torch_npu版本查询\"\n\n## 1. [华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本 ...](https://blog.csdn.net/Dontla/article/details/145781563)\n\n2026年6月28日 · 使用昇腾社区的 兼容性查询助手，输入设备型号和操作系统，可快速获取配套的固件、驱动及CANN版本兼容性信息 …\n\n**URL:** https://blog.csdn.net/Dontla/article/details/145781563\n\n---\n\n## 2. [华为昇腾服务器上查看固件、驱动和CANN版本的常用方法](https://jishuzhan.net/article/1910687101412245505)\n\n2025年4月11日 · Hey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！ 💻 这些信息对于确保你的服务器 …\n\n**URL:** https://jishuzhan.net/article/1910687101412245505\n\n---\n\n## 3. [华为昇腾服务器版本管理全攻略：固件、驱动与CANN版本 ...](https://blog.csdn.net/corn8/article/details/155120298)\n\n2026年2月15日 · 文章浏览阅读683次，点赞12次，收藏21次。本文详细介绍了华为昇腾服务器的版本管理方法，包括固件、驱"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "## 1. [华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本 ...](https://blog.csdn.net/Dontla/article/details/145781563)\n\n2026年6月28日 · 使用昇腾社区的 兼容性查询助手，输入设备型号和操作系统，可快速获取配套的固件、驱动及CANN版本兼容性信息 …\n\n**URL:** https://blog.csdn.net/Dontla/article/details/145781563\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.csdn.net/Dontla/article/details/145781563"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "## 2. [华为昇腾服务器上查看固件、驱动和CANN版本的常用方法](https://jishuzhan.net/article/1910687101412245505)\n\n2025年4月11日 · Hey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！ 💻 这些信息对于确保你的服务器 …\n\n**URL:** https://jishuzhan.net/article/1910687101412245505\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://jishuzhan.net/article/1910687101412245505"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "## 3. [华为昇腾服务器版本管理全攻略：固件、驱动与CANN版本 ...](https://blog.csdn.net/corn8/article/details/155120298)\n\n2026年2月15日 · 文章浏览阅读683次，点赞12次，收藏21次。本文详细介绍了华为昇腾服务器的版本管理方法，包括固件、驱动 …\n\n**URL:** https://blog.csdn.net/corn8/article/details/155120298\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/corn8/article/details/155120298"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "## 4. [华为昇腾服务器版本管理全攻略：固件、驱动与CANN版本 ...](https://devpress.csdn.net/v1/article/detail/155120298)\n\n2023年5月12日 · 本文详细介绍了华为昇腾服务器的版本管理方法，包括固件、驱动与CANN版本的查询指南。 通过npu-smi工具、系 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155120298\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/155120298"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+      "evidence": {
+        "event_id": "call_00_78D3Ya3YTl5L43jBDumm2975.result",
+        "quote": "## 5. [昇腾CANN版本怎么查？3种方法详解，新手必看！_百度文库](https://wenku.baidu.com/view/444606926b1aff00bed5b9f3f90f76c661374ccc.html)\n\n最直接、最权威的查询方法是使用昇腾NPU设备管理工具npu-smi info命令行。 但比查询本身更重要的是理解版本之间的强依赖关系： …\n\n**URL:** https://wenku.baidu.com/view/444606926b1aff00bed5b9f3f90f76c661374ccc.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://wenku.baidu.com/view/444606926b1aff00bed5b9f3f90f76c661374ccc.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "# Search Results for \"如何查询 CANN 版本信息 固件 驱动 npu-smi info\"\n\n## 1. [华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本 ...](https://blog.csdn.net/Dontla/article/details/145781563)\n\n2026年6月28日 · 使用昇腾社区的 兼容性查询助手，输入设备型号和操作系统，可快速获取配套的固件、驱动及CANN版本兼容性信息 …\n\n**URL:** https://blog.csdn.net/Dontla/article/details/145781563\n\n---\n\n## 2. [华为昇腾服务器上查看固件、驱动和CANN版本的常用方法](https://jishuzhan.net/article/1910687101412245505)\n\n2025年4月11日 · Hey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！ 💻 这些信息对于确保你的服务器 …\n\n**URL:** https://jishuzhan.net/article/1910687101412245505\n\n---\n\n## 3. [华为昇腾服务器版本管理全攻略：固件、驱动与CANN版本 ...](https://blog.csdn.net/c8d9e0f1/article/details/155346665)\n\n2026年2月12日 · 文章浏览阅读1.1k次，点赞25次，收藏29次。本文详细介绍了华为昇腾服务器版本管理的核心方法，重点阐述了固件 …\n\n**URL"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "## 1. [华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本 ...](https://blog.csdn.net/Dontla/article/details/145781563)\n\n2026年6月28日 · 使用昇腾社区的 兼容性查询助手，输入设备型号和操作系统，可快速获取配套的固件、驱动及CANN版本兼容性信息 …\n\n**URL:** https://blog.csdn.net/Dontla/article/details/145781563\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://blog.csdn.net/Dontla/article/details/145781563"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "## 2. [华为昇腾服务器上查看固件、驱动和CANN版本的常用方法](https://jishuzhan.net/article/1910687101412245505)\n\n2025年4月11日 · Hey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！ 💻 这些信息对于确保你的服务器 …\n\n**URL:** https://jishuzhan.net/article/1910687101412245505\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://jishuzhan.net/article/1910687101412245505"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "## 3. [华为昇腾服务器版本管理全攻略：固件、驱动与CANN版本 ...](https://blog.csdn.net/c8d9e0f1/article/details/155346665)\n\n2026年2月12日 · 文章浏览阅读1.1k次，点赞25次，收藏29次。本文详细介绍了华为昇腾服务器版本管理的核心方法，重点阐述了固件 …\n\n**URL:** https://blog.csdn.net/c8d9e0f1/article/details/155346665\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/c8d9e0f1/article/details/155346665"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "## 4. [华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本 ...](https://www.wsisp.com/helps/8374.html)\n\n2025年4月18日 · 文章目录 1. **查看固件和驱动版本** 2. **查看CANN版本** 3. **其他辅助方法** 注意事项 在华为昇腾服务器上查看固 …\n\n**URL:** https://www.wsisp.com/helps/8374.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.wsisp.com/helps/8374.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+      "evidence": {
+        "event_id": "call_00_VLCDLmOgFoBldFdnAs2n2817.result",
+        "quote": "## 5. [华为昇腾服务器固件/驱动/CANN版本查询全攻略：从命令行到 ...](https://www.wsisp.com/helps/85525.html)\n\n2026年7月27日 · 华为昇腾服务器固件/驱动/CANN版本查询全攻略：从命令行到MindStudio的5种方法 在昇腾AI服务器的日常运维中， …\n\n**URL:** https://www.wsisp.com/helps/85525.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://www.wsisp.com/helps/85525.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cDXj4vcEIXezoy91oewG2354.result",
+      "evidence": {
+        "event_id": "call_00_cDXj4vcEIXezoy91oewG2354.result",
+        "quote": "**标题**: 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询）_查看cann版本-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-28 14:53:47 发布\n2025-02-21 17:14:57\n\n# 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询） 原创\n\n![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/cb848392c9724e439b38caa0e94fb801.png)\n\n#### [](https://blog.csdn.net/Dontla/article/details/145781563)文章目录\n\n- - - [1. **查看固件和驱动版本**](https://blog.csdn.net/Dontla/article/details/145781563#1__6)\n    - [2. **查看CANN版本**](https://blog.csdn.net/Dontla/article/details/145781563#2_CANN_19)\n    - [3. **其他辅助方法**](https://blog.csdn.net/Dontla/article/details/145781563#3__47)\n    - [注意事项](https://blog.csdn.net/Dontla/article/details/145781563#_57)\n\n在华为昇腾服务器上查看固件、驱动和CANN版本的常用方法如下：\n\n#### [](https://blog.cs"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://blog.csdn.net/Dontla/article/details/145781563"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+      "evidence": {
+        "event_id": "call_00_IKjyebNfGHoJ7Re3IAVj8313.result",
+        "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/hardware/firmware-drivers/commercial"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_MMJO83NFX55plHiRHFmF6069.result",
+      "evidence": {
+        "event_id": "call_00_MMJO83NFX55plHiRHFmF6069.result",
+        "quote": "**标题**: 华为昇腾服务器上查看固件、驱动和CANN版本的常用方法 - 技术栈\n**发布时间**: CZIDC 2025-04-11 21:31\n\n# 华为昇腾服务器上查看固件、驱动和CANN版本的常用方法\n\nHey小伙伴们~👋 今天来聊聊怎么在华为昇腾服务器上查看固件、驱动和CANN版本吧！💻 这些信息对于确保你的服务器运行顺畅可是超级重要的哦！下面就来给大家介绍几种常用的查看方法！👇\n\n🌟 ‌1. 查看固件和驱动版本‌\n\n‌使用命令行工具npu-smi‌：\n\n打开你的终端，输入以下命令：\n\nbash\n\nCopy Code\n\nnpu-smi info\n\n这个命令会列出NPU设备的详细信息，包括固件版本（Firmware Version）和驱动版本（Driver Version）哦！😉\n\n‌通过系统日志或安装路径‌：\n\n驱动和固件默认安装路径为/usr/local/Ascend，你可以检查相关子目录中的版本文件。比如，驱动包的安装信息文件通常位于/usr/local/Ascend/driver/version.info。🔍\n\n🌟 ‌2. 查看CANN版本‌\n\n‌通过安装信息文件‌：\n\n进入CANN安装目录：\n\nbash\n\nCopy Code\n\ncd /usr/local/Ascend/ascend-toolkit/latest/{arch}-linux\n\n其中{arch}表示CPU架构，比如aarch64或x86_64。然后查看版本文件：\n\nbash\n\nCopy Code\n\ncat ascend_toolkit_install.info\n\n这个文件会记录CANN的版本号及安"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://jishuzhan.net/article/1910687101412245505"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Jcw86Qj3msKOH3kkXg8U9655.result",
+      "evidence": {
+        "event_id": "call_00_Jcw86Qj3msKOH3kkXg8U9655.result",
+        "quote": "**标题**: 兼容性查询助手-昇腾软件兼容性信息-操作系统兼容性-部件兼容性-昇腾社区\n\n兼容性查询助手\n\n兼容性查询助手\n\n获取昇腾全栈软件的操作系统兼容性，Raid卡/网卡/板卡等硬件部件的OS兼容性请参考[Link](https://info.support.huawei.com/computing/tools/compatibility-query/enterprise/ascend-computing/system-compatibility)\n\n操作系统兼容性\n\n部件兼容性\n\n操作系统兼容性\n\n部件兼容性\n\n[版本OS兼容性更新。](https://www.hiascend.com/hardware/compatibility)\n\n[查看公告](https://www.hiascend.com/hardware/compatibility)\n\n产品系列\n\n产品型号\n\nNPU\n\n操作系统\n\n解决方案"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.cn/hardware/compatibility"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "# Search Results for \"昇腾 HDK 固件 驱动 CANN 版本配套关系 表 安装\"\n\n## 1. [配套MindSpore 昇腾软件安装指引（23.0.0） - 华为 - Huawei ...](https://support.huawei.com/enterprise/zh/doc/EDOC1100351217)\n\n2024年1月17日 · 本文主要提供昇腾各硬件所需的固件、驱动和CANN（Compute Architecture for Neural Networks，AI异构计算架 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100351217\n\n---\n\n## 2. [搞定昇腾软件版本配套问题-云社区-华为云](https://bbs.huaweicloud.com/blogs/454517)\n\n2025年6月20日 · 物理机安装场景1.先看安装指导：点击链接2.查询操作系统兼容性：点击链接3.确认固件驱动和CANN版本配套：点击 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/454517\n\n---\n\n## 3. [CANN 9.1.0版本说明-CANN9.1.X-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md)\n\nCANN软件"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "## 1. [配套MindSpore 昇腾软件安装指引（23.0.0） - 华为 - Huawei ...](https://support.huawei.com/enterprise/zh/doc/EDOC1100351217)\n\n2024年1月17日 · 本文主要提供昇腾各硬件所需的固件、驱动和CANN（Compute Architecture for Neural Networks，AI异构计算架 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100351217\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100351217"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "## 2. [搞定昇腾软件版本配套问题-云社区-华为云](https://bbs.huaweicloud.com/blogs/454517)\n\n2025年6月20日 · 物理机安装场景1.先看安装指导：点击链接2.查询操作系统兼容性：点击链接3.确认固件驱动和CANN版本配套：点击 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/454517\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://bbs.huaweicloud.com/blogs/454517"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "## 3. [CANN 9.1.0版本说明-CANN9.1.X-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md)\n\nCANN软件包内部配套关系 CANN组合配套关系 CANN 9.1.0包含Toolkit包、算子包（ops）、加速库（NNAL）3个组合包，CANN组 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "## 4. [搞定昇腾软件版本配套问题_cann与驱动的版本依赖-CSDN博客](https://blog.csdn.net/cc_beolus/article/details/148793506)\n\n2026年8月20日 · 开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS …\n\n**URL:** https://blog.csdn.net/cc_beolus/article/details/148793506\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://blog.csdn.net/cc_beolus/article/details/148793506"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+      "evidence": {
+        "event_id": "call_00_dBlNchNDW5uo8jIDjTzB7234.result",
+        "quote": "## 5. [华为昇腾服务器固件、驱动与CANN版本兼容性检查全攻略](https://blog.csdn.net/weixin_29294597/article/details/158716700)\n\n2026年5月25日 · CANN版本与驱动、固件版本之间存在严格的配套关系，这是兼容性问题的核心。 一个特定版本的CANN，往往只支 …\n\n**URL:** https://blog.csdn.net/weixin_29294597/article/details/158716700\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://blog.csdn.net/weixin_29294597/article/details/158716700"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Jj9wh2ICalLChyJJ5DrR6347.result",
+      "evidence": {
+        "event_id": "call_00_Jj9wh2ICalLChyJJ5DrR6347.result",
+        "quote": "**标题**: CANN 9.1.0版本说明-版本说明-发行与安装-CANN9.1.X开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910/softwareinst/releasenote/9.1.0/release-notes.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GYUCvrfrHf9M48qqOo2x5848.result",
+      "evidence": {
+        "event_id": "call_00_GYUCvrfrHf9M48qqOo2x5848.result",
+        "quote": "**标题**: 搞定昇腾软件版本配套问题-云社区-华为云\n**发布时间**: yd_294961020 发表于 2025/06/20 15:36:28 2025/06/20\n\n# 搞定昇腾软件版本配套问题\n\n【摘要】 场景开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。 物理机安装场景1.先看安装指导：点击链接2.查询操作系统兼容性：点击链接3.确认固件驱动和CANN版本配套：点击链接一般建议选择新版本CANN和固件驱动，固件驱动有多个兼容版本，建议选最新版本。（可以...\n\n## [](https://bbs.huaweicloud.com/blogs/454517)场景\n\n开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。\n\n## [](https://bbs.huaweicloud.com/blogs/454517)物理机安装场景\n\n**1.先看安装指导：**  \n点击[链接](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/softwareinst/instg/instg_0005.html?Mode=PmIns&OS=openEuler&Software=cannToolKit)\n\n**2."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://bbs.huaweicloud.com/blogs/454517"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

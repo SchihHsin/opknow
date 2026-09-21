@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_d989d682.result",
+      "evidence": {
+        "event_id": "WebFetch_1_d989d682.result",
+        "quote": "**标题**: 命令格式说明-附录-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n# 命令格式说明\n\n#### 通用参数\n\n精度比对命令行格式如下：\n\n```\npython3 msaccucmp.py compare -m my_dump_path -g golden_dump_path [-f fusion_rule_file] [-cf close_fusion_rule_file] [-q quant_fusion_rule_file] [-out output] [-map] [-c custom_script_path] [-alg algorithm] [-v version] [-r range] [-overflow_detection] [-max]\n```\n\n命令行参数说明如[表1](https://www.hiascend.com/document/detail/zh/CANNCommu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_2b91987c.result",
+      "evidence": {
+        "event_id": "WebFetch_2_2b91987c.result",
+        "quote": "**标题**: 数据格式要求-附录-精度调试工具-开发工具-CANN8.2.RC1.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n# 数据格式要求\n\n**msaccucmp.py**脚本精度比对工具支持多种比对方式，因此dump、npy数据文件命名需满足以下要求：\n\n**表1** 数据文件命名规则\n\n数据类型\n\n数据命名格式\n\n备注\n\n非量化离线模型在昇腾AI处理器上运行生成的dump数据文件\n\n*{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n\n当前包含如下三种文件名格式：\n\n- *{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n- *{op_type}.{op_name_lxsliceX}.({stream_id}.){task_id}.{timestamp}.{task_type}.{context_id}."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_1d10dbff.result",
+      "evidence": {
+        "event_id": "WebFetch_4_1d10dbff.result",
+        "quote": "**标题**: 准备离线模型dump数据文件\n\n[](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)[](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)\n\n# 准备离线模型dump数据文件\n\n#### 前提条件\n\n在准备dump数据前，请参见《[ATC工具使用指南](https://www.hiascend.com/document/detail/zh/canncommercial/62RC1/inferapplicationdev/atctool/atctool_000001.html)》模型转换，准备好模型文件；如果涉及模型量化，请参见《[AMCT工具（Caffe）](https://www.hiascend.com/document/detail/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasamctcaffe_16_0004.html)》完成量化操作后再进行模型转换，生成量化的模型文件。并请配套生成的模型文件完成应用工程的编译、运行，确保工程正常。\n\n- 执行昇腾模型压缩工具时，同步会生成量化融合规则文件，该文件在精度比对时会"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_02c923b4.result",
+      "evidence": {
+        "event_id": "WebFetch_5_02c923b4.result",
+        "quote": "**标题**: 比对操作和分析-NPU vs NPU（推理）-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0035.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_ee0624b3.result",
+      "evidence": {
+        "event_id": "WebFetch_7_ee0624b3.result",
+        "quote": "**标题**: 比对结果说明 — MindStudio Probe 1.0 文档\n\n# 比对结果说明[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id1 \"Link to this heading\")\n\n## 简介[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id2 \"Link to this heading\")\n\n本节以非量化昇腾AI处理器运行生成的dump数据与非量化ONNX模型npy数据比对为例，介绍比对结果分析步骤，下文中参数说明均以该示例介绍，请根据您的实际情况进行替换。\n\n## 比对输出结果说明[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id3 \"Link to this heading\")\n\n```\n{output_path}/{timestamp}/{input_name-input_shape}  # {input_name-input_shape}用来区分动态shape时不同的模型实际输入，静态shape时没有该层\n├-- dump_data\n│   ├-- npu    "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "724a0a4437e2f03ac75b5e53513fd7e5eed0a5957f4d1c6bc0554f7ccbb82d1e",
+  "question": "我的昇腾算子输出和标杆不一致，怎么用昇腾精度比对工具（msaccucmp / 精度比对 / dump）定位？",
+  "run_id": "L-cann-kimi-k3-2-standard-20260921T120029",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "# Search Results for \"昇腾 msaccucmp.py 精度比对工具 使用方法 dump\"\n\n## 1. [数据格式要求-附录-精度调试工具-开发工具-CANN社区版8.2 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n<!DOCTYPE html> 数据格式要求 msaccucmp.py脚本精度比对工具支持多种比对方式，因此dump、npy数据文件命名需满足以下要 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html\n\n---\n\n## 2. [命令格式说明-附录-精度比对工具-开发工具-CANN社区版8.0 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n支持多个dump数据文件的批量比对，可指定固定路径为dump_path/time/，仅支持TensorFl"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "## 1. [数据格式要求-附录-精度调试工具-开发工具-CANN社区版8.2 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n<!DOCTYPE html> 数据格式要求 msaccucmp.py脚本精度比对工具支持多种比对方式，因此dump、npy数据文件命名需满足以下要 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "## 2. [命令格式说明-附录-精度比对工具-开发工具-CANN社区版8.0 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n支持多个dump数据文件的批量比对，可指定固定路径为dump_path/time/，仅支持TensorFlow为原始训练网络的比对。 指定的路径下 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "## 3. [tools/msquickcmp/Readme_cn.md at master · Ascend/tools](https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md)\n\n2003年7月5日 · 本文介绍一键式全流程精度比对（推理）工具，该工具适用于TensorFlow和ONNX模型，用户只需要输入原始模型， …\n\n**URL:** https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "## 4. [昇腾NPU四件套工具实战：精度比对、溢出检测、内存与 ...](https://blog.csdn.net/weixin_42529328/article/details/165085773)\n\n2026年9月12日 · 好消息是，昇腾官方把这四件事分别做成了专门工具，也就是标题里这四位： msprobe 负责精度比对， msdebug 负 …\n\n**URL:** https://blog.csdn.net/weixin_42529328/article/details/165085773\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/weixin_42529328/article/details/165085773"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f5e2fde.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f5e2fde.result",
+        "quote": "## 5. [昇腾模型调试工具链实战：精度比对、溢出检测与性能调优 ...](https://blog.csdn.net/weixin_33521678/article/details/165403199)\n\n2026年9月14日 · 先说个我这周刚遇到的场景：把一份在GPU上已经跑通的DeepSeek-R1-Distill-Llama-70B W8A8量化权重迁移到昇腾 …\n\n**URL:** https://blog.csdn.net/weixin_33521678/article/details/165403199\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/weixin_33521678/article/details/165403199"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_d989d682.result",
+      "evidence": {
+        "event_id": "WebFetch_1_d989d682.result",
+        "quote": "**标题**: 命令格式说明-附录-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n# 命令格式说明\n\n#### 通用参数\n\n精度比对命令行格式如下：\n\n```\npython3 msaccucmp.py compare -m my_dump_path -g golden_dump_path [-f fusion_rule_file] [-cf close_fusion_rule_file] [-q quant_fusion_rule_file] [-out output] [-map] [-c custom_script_path] [-alg algorithm] [-v version] [-r range] [-overflow_detection] [-max]\n```\n\n命令行参数说明如[表1](https://www.hiascend.com/document/detail/zh/CANNCommu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_2b91987c.result",
+      "evidence": {
+        "event_id": "WebFetch_2_2b91987c.result",
+        "quote": "**标题**: 数据格式要求-附录-精度调试工具-开发工具-CANN8.2.RC1.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n# 数据格式要求\n\n**msaccucmp.py**脚本精度比对工具支持多种比对方式，因此dump、npy数据文件命名需满足以下要求：\n\n**表1** 数据文件命名规则\n\n数据类型\n\n数据命名格式\n\n备注\n\n非量化离线模型在昇腾AI处理器上运行生成的dump数据文件\n\n*{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n\n当前包含如下三种文件名格式：\n\n- *{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n- *{op_type}.{op_name_lxsliceX}.({stream_id}.){task_id}.{timestamp}.{task_type}.{context_id}."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "# Search Results for \"昇腾 acl.json dump 配置 dump_path dump_mode 精度比对 昇腾AI处理器 dump数据 获取\"\n\n## 1. [CANN Runtime 配置式 Dump 实战：基于 aclmdlInitDump ...](https://blog.gitcode.com/524411631774347de4d3331931200ce5.html)\n\n3 天之前 · 通过阅读本文，你将掌握如何在单算子 API（aclnn）场景下通过 acl.json 配置文件按需开启 Dump、如何查询当前生效的 …\n\n**URL:** https://blog.gitcode.com/524411631774347de4d3331931200ce5.html\n\n---\n\n## 2. [准备离线模型dump数据文件](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)\n\n2025年10月30日 · 执行 昇腾模型压缩工具 时，同步会生成量化融合规则文件，该文件在精度比对时会使用。 Docker场景下，不支持 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "## 1. [CANN Runtime 配置式 Dump 实战：基于 aclmdlInitDump ...](https://blog.gitcode.com/524411631774347de4d3331931200ce5.html)\n\n3 天之前 · 通过阅读本文，你将掌握如何在单算子 API（aclnn）场景下通过 acl.json 配置文件按需开启 Dump、如何查询当前生效的 …\n\n**URL:** https://blog.gitcode.com/524411631774347de4d3331931200ce5.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.gitcode.com/524411631774347de4d3331931200ce5.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "## 2. [准备离线模型dump数据文件](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)\n\n2025年10月30日 · 执行 昇腾模型压缩工具 时，同步会生成量化融合规则文件，该文件在精度比对时会使用。 Docker场景下，不支持 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "## 3. [准备离线模型dump数据-推理场景数据准备-比对数据准备 ...](https://www.hiascend.com/document/detail/zh/mindstudio/500/msug/msug_000214.html)\n\n编译后的模型中部分算子并不会在AI CPU或AI Core执行，如concatD类型算子，则无法生成dump数据。 采用dump部分算子场景下， …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/500/msug/msug_000214.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/500/msug/msug_000214.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "## 4. [昇思MindSpore进阶教程--Dump功能调试 (下) - CSDN博客](https://blog.csdn.net/weixin_42553583/article/details/143106917)\n\n2026年6月1日 · 如果Dump配置文件没有设置path字段或者设置为空字符串，还需要配置环境变量MS_DIAGNOSTIC_DATA_PATH。  …\n\n**URL:** https://blog.csdn.net/weixin_42553583/article/details/143106917\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/weixin_42553583/article/details/143106917"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_3367493a.result",
+      "evidence": {
+        "event_id": "WebSearch_3_3367493a.result",
+        "quote": "## 5. [昇腾TensorFlow适配器精度比对配置 - CSDN博客](https://blog.csdn.net/gitblog_00672/article/details/160917918)\n\n2026年5月9日 · 开启Data Dump的场景下，可通过将此配置项配置为“1”，确保可以采集量化前的dump数据。 融合开关 配置文件 路径 …\n\n**URL:** https://blog.csdn.net/gitblog_00672/article/details/160917918\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/gitblog_00672/article/details/160917918"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_1d10dbff.result",
+      "evidence": {
+        "event_id": "WebFetch_4_1d10dbff.result",
+        "quote": "**标题**: 准备离线模型dump数据文件\n\n[](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)[](https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html)\n\n# 准备离线模型dump数据文件\n\n#### 前提条件\n\n在准备dump数据前，请参见《[ATC工具使用指南](https://www.hiascend.com/document/detail/zh/canncommercial/62RC1/inferapplicationdev/atctool/atctool_000001.html)》模型转换，准备好模型文件；如果涉及模型量化，请参见《[AMCT工具（Caffe）](https://www.hiascend.com/document/detail/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasamctcaffe_16_0004.html)》完成量化操作后再进行模型转换，生成量化的模型文件。并请配套生成的模型文件完成应用工程的编译、运行，确保工程正常。\n\n- 执行昇腾模型压缩工具时，同步会生成量化融合规则文件，该文件在精度比对时会"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/62RC1/devtools/auxiliarydevtool/atlasaccuracy_16_0070.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_02c923b4.result",
+      "evidence": {
+        "event_id": "WebFetch_5_02c923b4.result",
+        "quote": "**标题**: 比对操作和分析-NPU vs NPU（推理）-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0035.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "# Search Results for \"msaccucmp 比对结果说明 csv CosineSimilarity MaxRelativeError 字段 定位精度不达标算子\"\n\n## 1. [对比结果说明 — MindStudio Probe 1.0 文档](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html)\n\n2026年9月1日 · 比对结果 在文件 result_ {timestamp}.csv 中，比对结果的含义与基础精度比对工具完全相同，其中每个字段的含义可 …\n\n**URL:** https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html\n\n---\n\n## 2. [msit/msit/docs/debug/compare/融合算子匹配对应pass使用 ...](https://gitcode.com/Ascend/msit/blob/fa372d9582810c6c24e812334e69e0d13166f7a2/msit/docs/debug/compare/%E8%9E%8D%E5%90%88%E7%AE%97%E5%AD%90%E5%8C%B9%E9%85%8D%E5%AF%B9%E5%BA%94pass%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%9"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "## 1. [对比结果说明 — MindStudio Probe 1.0 文档](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html)\n\n2026年9月1日 · 比对结果 在文件 result_ {timestamp}.csv 中，比对结果的含义与基础精度比对工具完全相同，其中每个字段的含义可 …\n\n**URL:** https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "## 2. [msit/msit/docs/debug/compare/融合算子匹配对应pass使用 ...](https://gitcode.com/Ascend/msit/blob/fa372d9582810c6c24e812334e69e0d13166f7a2/msit/docs/debug/compare/%E8%9E%8D%E5%90%88%E7%AE%97%E5%AD%90%E5%8C%B9%E9%85%8D%E5%AF%B9%E5%BA%94pass%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)\n\n使用CANN包中 msaccucmp.py 工具的比对功能，得到算子融合前后的比对结果csv； 基于比对结果csv，生成一个新的csv，将融合算 …\n\n**URL:** https://gitcode.com/Ascend/msit/blob/fa372d9582810c6c24e812334e69e0d13166f7a2/msit/docs/debug/compare/%E8%9E%8D%E5%90%88%E7%AE%97%E5%AD%90%E5%8C%B9%E9%85%8D%E5%AF%B9%E5%BA%94pass%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://gitcode.com/Ascend/msit/blob/fa372d9582810c6c24e812334e69e0d13166f7a2/msit/docs/debug/compare/%E8%9E%8D%E5%90%88%E7%AE%97%E5%AD%90%E5%8C%B9%E9%85%8D%E5%AF%B9%E5%BA%94pass%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "## 3. [tools/msquickcmp/Readme_cn.md at master · Ascend/tools](https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md)\n\n2003年7月5日 · 本文介绍一键式全流程精度比对（推理）工具，该工具适用于TensorFlow和ONNX模型，用户只需要输入原始模型， …\n\n**URL:** https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://github.com/Ascend/tools/blob/master/msquickcmp/Readme_cn.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "## 4. [通过命令行方式分析比对结果-比对结果专家建议-比对结果分析 ...](https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/ModelAccuracyAnalyzer/atlasaccuracy_16_0042.html)\n\n<!DOCTYPE html> 通过命令行方式分析比对结果 命令格式说明通过命令行方式分析比对结果是基于Tensor比对的基础上执行-advisor …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/ModelAccuracyAnalyzer/atlasaccuracy_16_0042.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/700/T&ITools/ModelAccuracyAnalyzer/atlasaccuracy_16_0042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_b5d7b2d9.result",
+      "evidence": {
+        "event_id": "WebSearch_6_b5d7b2d9.result",
+        "quote": "## 5. [命令格式说明-附录-精度比对工具-开发工具-CANN社区版8.0 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n支持多个dump数据文件的批量比对，可指定固定路径为dump_path/time/，仅支持TensorFlow为原始训练网络的比对。 指定的路径下 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_ee0624b3.result",
+      "evidence": {
+        "event_id": "WebFetch_7_ee0624b3.result",
+        "quote": "**标题**: 比对结果说明 — MindStudio Probe 1.0 文档\n\n# 比对结果说明[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id1 \"Link to this heading\")\n\n## 简介[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id2 \"Link to this heading\")\n\n本节以非量化昇腾AI处理器运行生成的dump数据与非量化ONNX模型npy数据比对为例，介绍比对结果分析步骤，下文中参数说明均以该示例介绍，请根据您的实际情况进行替换。\n\n## 比对输出结果说明[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html#id3 \"Link to this heading\")\n\n```\n{output_path}/{timestamp}/{input_name-input_shape}  # {input_name-input_shape}用来区分动态shape时不同的模型实际输入，静态shape时没有该层\n├-- dump_data\n│   ├-- npu    "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/infer_compare_result.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

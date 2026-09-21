@@ -1,0 +1,382 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_3_24a7da31.result",
+      "evidence": {
+        "event_id": "WebFetch_3_24a7da31.result",
+        "quote": "# Compute Sanitizer 手册概述章节提取结果\n\n**说明**：以下为 NVIDIA Compute Sanitizer 官方文档概述（Introduction）章节的直接正文。由于源内容在 \"Example Use of Memcheck\" 部分被截断（截断点见文末说明），**本回答为概述章节的完整内容 + 部分相关补充，示例章节仅为部分内容**。\n\n---\n\n## 1. Compute Sanitizer 的用途\n\n### About Compute Sanitizer（原文）\n\n> \"Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks. The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access errors in CUDA applications. The tool can also report hardware exceptions encountered by the GPU. The racecheck tool can report shared memory data access hazards tha"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_874f91bf.result",
+      "evidence": {
+        "event_id": "WebFetch_4_874f91bf.result",
+        "quote": "**标题**: CUDA Environment Variables — PyTorch 2.14 documentation\n\n/docs/1.7.0/cuda_environment_variables.html)v1.6.0v1.5.1v1.5.0v1.4.0v1.3.1v1.3.0v1.2.0v1.1.0v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n- torch.utils.model_zoo\n  - torch.utils.tensorboard\n  - torch.utils.module_tracker\n  - Type Info\n  - torch.config\n  - torch.__future__\n  - torch._logging\n  - Torch Environment Variables\n- Developer Notes\n\n[...]\n\n# CUDA Environment Variables#\n\n# CUDA Environment Variables#\nCreated On: May 08, 2026 | Last Updated On: May 08, 2026\n\nFor more information on CUDA runtime environment variables, see CUDA Environment Variables.\n\n**PyTorch Environment Variables**\n\nVariable\n\nDescription\n\n`PY"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/docs/stable/cuda_environment_variables.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_163af38e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_163af38e.result",
+        "quote": "**标题**: 【LLM-DEBUG】deepspeed 调试： Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions. - 知乎\n**发布时间**: 发布于 2024-05-13 22:52 ・ 广东\n\n# 【LLM-DEBUG】deepspeed 调试： Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n```text\nTraceback (most recent call last):\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 285, in <module>\n    main()\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 268, in main\n    args, training_args = setup_everything()\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 99, in setup_everything\n    args, training_args = parser.parse_yaml_file(yaml_file=train_args_file)\n  File \"/home"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://zhuanlan.zhihu.com/p/676484288",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_9fa657e2.result",
+      "evidence": {
+        "event_id": "WebFetch_6_9fa657e2.result",
+        "quote": "**标题**: PyTorch训练报错‘CUDA error: device-side assert triggered’？别慌，手把手教你用CUDA_LAUNCH_BLOCKING定位真凶-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-20 22:38:59 发布\n2026-05-03 10:26:10\n\n# PyTorch训练报错‘CUDA error: device-side assert triggered’？别慌，手把手教你用CUDA_LAUNCH_BLOCKING定位真凶 原创 [![vip_tag](https://csdnimg.cn/release/blogv2/dist/mobile/img/vip-article-tag.png)](https://mall.csdn.net/vip?spm=1003.2018.3001.6455)\n\n## [](https://blog.csdn.net/weixin_42652674/article/details/160732746)PyTorch调试实战：如何精准捕获CUDA异步报错的真实源头\n\n当你正在全神贯注地训练一个重要的3D医学 图像分割 模型时，突然终端弹出一条令人窒息的错误信息：\n\n```cobol\n\n\nRuntimeError: CUDA error: device-side assert triggered\n\nCUDA kernel errors might be asynchronously reported at some other API call,\n\nso the st"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/weixin_42652674/article/details/160732746",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b70c88a4c10cf886dedbb4ab1b266ca8eff7c922003860d7ad7cbdac333b9d4f",
+  "question": "我的 PyTorch/CUDA 程序报 `RuntimeError: CUDA error: device-side assert triggered`，怎么定位是哪一行、哪个 kernel 出的问题？",
+  "run_id": "E-cuda-kimi-k3-2-standard-20260921T104600",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "# Search Results for \"PyTorch CUDA error device-side assert triggered 定位 CUDA_LAUNCH_BLOCKING compute-sanitizer\"\n\n## 1. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://blog.csdn.net/weixin_42652674/article/details/160732746)\n\n2 天之前 · 本文详细解析了PyTorch训练中常见的‘CUDA error: device-side assert triggered’报错问题，重点介绍了如何使 …\n\n**URL:** https://blog.csdn.net/weixin_42652674/article/details/160732746\n\n---\n\n## 2. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/16070454"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "## 1. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://blog.csdn.net/weixin_42652674/article/details/160732746)\n\n2 天之前 · 本文详细解析了PyTorch训练中常见的‘CUDA error: device-side assert triggered’报错问题，重点介绍了如何使 …\n\n**URL:** https://blog.csdn.net/weixin_42652674/article/details/160732746\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_42652674/article/details/160732746"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "## 2. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_42561040/article/details/160704542"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "## 3. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://wenku.csdn.net/column/rce881q5su0)\n\n2026年4月19日 · 本文将带你深入理解这类CUDA异步报错的本质，并构建一套系统化的调试方法论，让你下次遇到类似问题时能够游 …\n\n**URL:** https://wenku.csdn.net/column/rce881q5su0\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://wenku.csdn.net/column/rce881q5su0"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "## 4. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://wenku.csdn.net/column/z74x621lgn3)\n\n2026年4月27日 · # PyTorch训练报错‘CUDA device-side assert triggered’的深度排查指南 当你正在全神贯注地训练一个PyTorch模 …\n\n**URL:** https://wenku.csdn.net/column/z74x621lgn3\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://wenku.csdn.net/column/z74x621lgn3"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_69031dca.result",
+      "evidence": {
+        "event_id": "WebSearch_0_69031dca.result",
+        "quote": "## 5. [解决PyTorch中的RuntimeError: CUDA error: device-side ...](https://cloud.tencent.com/developer/article/2469157)\n\n2024年11月21日 · 本文分析了PyTorch中RuntimeError: CUDA error: device-side assert triggered错误的产生原因，主要包括数据类型 …\n\n**URL:** https://cloud.tencent.com/developer/article/2469157\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://cloud.tencent.com/developer/article/2469157"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "# Search Results for \"pytorch.org documentation device-side assert CUDA_LAUNCH_BLOCKING TORCH_USE_CUDA_DSA debugging\"\n\n## 1. [深度学习报错“Compile with TORCH_USE_CUDA_DSA to ...](https://blog.csdn.net/xxiaot/article/details/146062907)\n\n2026年3月27日 · 在使用PyTorch进行深度学习模型训练时，尤其是依赖GPU加速的情况下，偶尔会遇到一些与CUDA相关的错误提示 …\n\n**URL:** https://blog.csdn.net/xxiaot/article/details/146062907\n\n---\n\n## 2. [别再被PyTorch的CUDA异步报错搞懵了！手把手教你用 ...](https://wenku.csdn.net/column/uxhja149juz)\n\n2026年4月29日 · 本文将带你深入CUDA异步错误报告的机制，掌握两种核心调试工具的使用方法，让你在面对这类问题时不再束手无 …\n\n**URL:** https://wenku.csdn.net/column/uxhja149juz\n\n---\n\n## 3. [conda环境下Compile with `TORCH_USE_CUDA_DSA` to ...](https://blog.csdn.net/lsb2002/article/details/134341417)\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "## 1. [深度学习报错“Compile with TORCH_USE_CUDA_DSA to ...](https://blog.csdn.net/xxiaot/article/details/146062907)\n\n2026年3月27日 · 在使用PyTorch进行深度学习模型训练时，尤其是依赖GPU加速的情况下，偶尔会遇到一些与CUDA相关的错误提示 …\n\n**URL:** https://blog.csdn.net/xxiaot/article/details/146062907\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://blog.csdn.net/xxiaot/article/details/146062907"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "## 2. [别再被PyTorch的CUDA异步报错搞懵了！手把手教你用 ...](https://wenku.csdn.net/column/uxhja149juz)\n\n2026年4月29日 · 本文将带你深入CUDA异步错误报告的机制，掌握两种核心调试工具的使用方法，让你在面对这类问题时不再束手无 …\n\n**URL:** https://wenku.csdn.net/column/uxhja149juz\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://wenku.csdn.net/column/uxhja149juz"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "## 3. [conda环境下Compile with `TORCH_USE_CUDA_DSA` to ...](https://blog.csdn.net/lsb2002/article/details/134341417)\n\n2 问题分析4 conda环境介绍4.1 Conda的核心功能•包管理：Conda作为包管理器，可以安装、更新和移除Python包。它通过Conda仓库，如Anaconda Cloud或Conda Forge，来获取包。\n•环境管理：Conda允许用户创建隔离的环境，以便于不同项目可以拥有不同的库和/或Python版本。这在处理不兼容的依赖项或不同项目的需求时非常有用。\n•跨平台：Co…4.2 使用Conda的优势•解决依赖性问题：Conda可以自动解决包之间的依赖关系，简化了安装过程。\n•环境隔离：创建独立的环境可以避免包之间的版本冲突，使得项目更稳定。\n•易于使用：Conda的命令行界面简单直观，易于学习和使用。\n•广泛的包支持：Conda支持Python的许多流行库和应用程序。\n•社区支持：作为一个流行的工 …在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/lsb2002/article/details/134341417\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://blog.csdn.net/lsb2002/article/details/134341417"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "## 4. [【LLM-DEBUG】deepspeed 调试： Compile with `TORCH ...](https://zhuanlan.zhihu.com/p/676484288)\n\n2024年5月13日 · For debugging consider passing CUDA_LAUNCH_BLOCKING=1. Compile with ` TORCH_USE_CUDA_DSA ` to …\n\n**URL:** https://zhuanlan.zhihu.com/p/676484288\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/676484288"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_056139e1.result",
+      "evidence": {
+        "event_id": "WebSearch_1_056139e1.result",
+        "quote": "## 5. [【LLM DEBUG】 Compile with `TORCH_USE_CUDA_DSA ...](https://zhuanlan.zhihu.com/p/672835154)\n\n2024年1月14日 · 192.168.37.6: RuntimeError: CUDA error: device-side assert triggered192.168.37.6: CUDA kernel errors might be …\n\n**URL:** https://zhuanlan.zhihu.com/p/672835154\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/672835154"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "# Search Results for \"site:docs.nvidia.com compute-sanitizer memcheck user manual\"\n\n## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · Compute Sanitizer memcheck supports compile-time instrumentation as an alternative to the default runtime binary …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n## 2. [Compute Sanitizer User Manual - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/11.2.0/sanitizer-docs/ComputeSanitizer/index.html)\n\n2025年10月29日 · Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite cont"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · Compute Sanitizer memcheck supports compile-time instrumentation as an alternative to the default runtime binary …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "## 2. [Compute Sanitizer User Manual - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/11.2.0/sanitizer-docs/ComputeSanitizer/index.html)\n\n2025年10月29日 · Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains …\n\n**URL:** https://docs.nvidia.com/cuda/archive/11.2.0/sanitizer-docs/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.nvidia.com/cuda/archive/11.2.0/sanitizer-docs/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "## 3. [NVIDIA_NVIDIA_Compute_Sanitizer_v2023.3.1说明书_百度文库](https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html)\n\nCompute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can …\n\n**URL:** https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "## 4. [Compute Sanitizer - NERSC Documentation](https://docs.nersc.gov/tools/debug/compute-sanitizer/)\n\n2026年9月8日 · Compute Sanitizer, previously known as CUDA-MEMCHECK, is a functional correctness checking suite included in …\n\n**URL:** https://docs.nersc.gov/tools/debug/compute-sanitizer/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://docs.nersc.gov/tools/debug/compute-sanitizer/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_8ac7628b.result",
+      "evidence": {
+        "event_id": "WebSearch_2_8ac7628b.result",
+        "quote": "## 5. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nThe memcheck tool is a run time error detection tool for CUDA applications. The tool can precisely detect and report out of bounds …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_24a7da31.result",
+      "evidence": {
+        "event_id": "WebFetch_3_24a7da31.result",
+        "quote": "# Compute Sanitizer 手册概述章节提取结果\n\n**说明**：以下为 NVIDIA Compute Sanitizer 官方文档概述（Introduction）章节的直接正文。由于源内容在 \"Example Use of Memcheck\" 部分被截断（截断点见文末说明），**本回答为概述章节的完整内容 + 部分相关补充，示例章节仅为部分内容**。\n\n---\n\n## 1. Compute Sanitizer 的用途\n\n### About Compute Sanitizer（原文）\n\n> \"Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks. The memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access errors in CUDA applications. The tool can also report hardware exceptions encountered by the GPU. The racecheck tool can report shared memory data access hazards tha"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_874f91bf.result",
+      "evidence": {
+        "event_id": "WebFetch_4_874f91bf.result",
+        "quote": "**标题**: CUDA Environment Variables — PyTorch 2.14 documentation\n\n/docs/1.7.0/cuda_environment_variables.html)v1.6.0v1.5.1v1.5.0v1.4.0v1.3.1v1.3.0v1.2.0v1.1.0v1.0.1v1.0.0v0.4.1v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n- torch.utils.model_zoo\n  - torch.utils.tensorboard\n  - torch.utils.module_tracker\n  - Type Info\n  - torch.config\n  - torch.__future__\n  - torch._logging\n  - Torch Environment Variables\n- Developer Notes\n\n[...]\n\n# CUDA Environment Variables#\n\n# CUDA Environment Variables#\nCreated On: May 08, 2026 | Last Updated On: May 08, 2026\n\nFor more information on CUDA runtime environment variables, see CUDA Environment Variables.\n\n**PyTorch Environment Variables**\n\nVariable\n\nDescription\n\n`PY"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://pytorch.org/docs/stable/cuda_environment_variables.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_163af38e.result",
+      "evidence": {
+        "event_id": "WebFetch_5_163af38e.result",
+        "quote": "**标题**: 【LLM-DEBUG】deepspeed 调试： Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions. - 知乎\n**发布时间**: 发布于 2024-05-13 22:52 ・ 广东\n\n# 【LLM-DEBUG】deepspeed 调试： Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n\n```text\nTraceback (most recent call last):\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 285, in <module>\n    main()\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 268, in main\n    args, training_args = setup_everything()\n  File \"/home/ma-user/work/pretrain/peft-baichuan2-13b-1/train.py\", line 99, in setup_everything\n    args, training_args = parser.parse_yaml_file(yaml_file=train_args_file)\n  File \"/home"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://zhuanlan.zhihu.com/p/676484288"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_9fa657e2.result",
+      "evidence": {
+        "event_id": "WebFetch_6_9fa657e2.result",
+        "quote": "**标题**: PyTorch训练报错‘CUDA error: device-side assert triggered’？别慌，手把手教你用CUDA_LAUNCH_BLOCKING定位真凶-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-20 22:38:59 发布\n2026-05-03 10:26:10\n\n# PyTorch训练报错‘CUDA error: device-side assert triggered’？别慌，手把手教你用CUDA_LAUNCH_BLOCKING定位真凶 原创 [![vip_tag](https://csdnimg.cn/release/blogv2/dist/mobile/img/vip-article-tag.png)](https://mall.csdn.net/vip?spm=1003.2018.3001.6455)\n\n## [](https://blog.csdn.net/weixin_42652674/article/details/160732746)PyTorch调试实战：如何精准捕获CUDA异步报错的真实源头\n\n当你正在全神贯注地训练一个重要的3D医学 图像分割 模型时，突然终端弹出一条令人窒息的错误信息：\n\n```cobol\n\n\nRuntimeError: CUDA error: device-side assert triggered\n\nCUDA kernel errors might be asynchronously reported at some other API call,\n\nso the st"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://blog.csdn.net/weixin_42652674/article/details/160732746"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

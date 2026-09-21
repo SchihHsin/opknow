@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_405f4572355145deb09cf0f5.result",
+      "evidence": {
+        "event_id": "call_405f4572355145deb09cf0f5.result",
+        "quote": "**标题**: 工具使用-算子调优（msProf）-算子开发工具-算子开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html)\n\n# 工具使用\n\nmsProf工具包含msprof op和msprof op simulator两种使用方式，[msprof op](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html#ZH-CN_TOPIC_0000002151340273__section0449171943115)通过MindStudio Insight展示计算内存热力图和Roofline瓶颈分析图，[msprof op simulator](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_70dc119dc07b4ced935dfb97.result",
+      "evidence": {
+        "event_id": "call_70dc119dc07b4ced935dfb97.result",
+        "quote": "**标题**: 工具概述-算子调优（msProf）-算子开发工具-算子开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_0082.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_c56f567720ea4f678b153e1e.result",
+      "evidence": {
+        "event_id": "call_c56f567720ea4f678b153e1e.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)\n\n# 使能double buffer\n\n【优先级】中\n\n【描述】执行于AI Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运指令队列（MTE1/MTE2/MTE3）。不同指令队列间的相互独立性和可并行执行特性，是double buffer优化机制的基石。\n\n矢量计算前后的CopyIn、CopyOut过程使用搬运指令队列（MTE2/MTE3），Compute过程使用Vector指令队列（V），不同指令队列可并行执行，意味着CopyIn、CopyOut过程和Compute过程是可以并行的。如[图1](https://www.hiascend.c"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_ad8cbbb2c840447db7c56bc6.result",
+      "evidence": {
+        "event_id": "call_ad8cbbb2c840447db7c56bc6.result",
+        "quote": "**标题**: 使用说明-Ascend C最佳实践-算子开发-CANN8.0.0.alpha001开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_4bfdc96cf75a41948d6e3aca.result",
+      "evidence": {
+        "event_id": "call_4bfdc96cf75a41948d6e3aca.result",
+        "quote": "**标题**: 前言-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html)\n\n# 前言\n\n#### 需要具备的知识\n\n本文档主要用于指导开发者基于Ascend C编程语言在昇腾AI处理器上开发高性能的算子。在阅读此文档时，需要开发者具备如下能力：\n\n- 熟练使用C++编程语言。\n- 了解计算机架构。\n- 理解昇腾AI处理器硬件架构。\n- 完成Ascend C编程相关文档、课程学习。\n- 可以完成Ascend C开发、调试环境搭建。\n- 可以独立完成Ascend C算子的开发。\n- 熟练使用性能分析工具获取性能数据。\n\n您可以通过[LINK](https://www.hiascend.com/zh/ascend-c)获取如上内容的学习资料。\n\n#### 可以解决的问题\n\n开发者完成Ascend C算子（本文后续提到的算子均指使用Asc"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_8d9de5cfb36b460aa900eccd.result",
+      "evidence": {
+        "event_id": "call_8d9de5cfb36b460aa900eccd.result",
+        "quote": "**标题**: 获取性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)\n\n# 获取性能数据\n\n在进行性能优化之前，需要拿到准确的性能数据，了解性能现状，并根据性能现状分析下一步的优化方向。Ascend C提供了多种性能测试方法，包括上板Profiling、单算子性能仿真流水图等手段。\n\n#### 上板Profiling\n\n如下命令行是一个算子上板性能数据采集的示例，可以根据自身的需要灵活组合配置参数。示例中--output为可选参数，用于指定收集到的性能数据的存放路径；$HOME/projects/MyApp/out/main为算子可执行文件。\n\n```\nmsprof op --output=$HOME/projects/output $HOME/projects/MyApp/out/main\n```\n\n如下示"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0007.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_8a5e22c64da24f25bf68f552.result",
+      "evidence": {
+        "event_id": "call_8a5e22c64da24f25bf68f552.result",
+        "quote": "**标题**: 尽量一次搬运较大的数据块-搬运优化-性能优化-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0013.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0013.html)\n\n# 尽量一次搬运较大的数据块\n\n【优先级】高\n\n【描述】搬运不同大小的数据块时，对带宽的利用率（有效带宽/理论带宽）不一样。单次搬运数据16KB以上时，可以较好的发挥带宽的最佳性能。因此对于单次搬运，应考虑尽可能的搬运较大的数据块。下图展示了某款AI处理器上实测的不同搬运数据量下带宽的变化图。\n\n测试数据与处理器型号相关，且实际测试时可能会存在略微抖动，具体带宽数值并不一定和下文的测试数据严格一致。\n\n**图1** UB->GM方向不同搬运数据量下实际占用带宽的变化  \n![](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/81R"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0010.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_b5a593a5db704f87b717c0cc.result",
+      "evidence": {
+        "event_id": "call_b5a593a5db704f87b717c0cc.result",
+        "quote": "**标题**: 分析性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "eafa17222e4541e1a9098c7754e43f72c1906afba34545fc58c0d315366d63e0",
+  "question": "我的昇腾算子访存是瓶颈、AI Core 利用率低，怎么分析并优化（UB/L1 数据搬运、Cube/Vector 利用率、double buffer）？",
+  "run_id": "U-cann-glm-5_3-standard-20260921T133309",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "# Search Results for \"CANN msprof 算子性能分析 AI Core 利用率 PipeUtilization 命令行 hiascend\"\n\n## 1. [msprof 性能数据采集命令全解：通用参数、AI 任务运行 ...](https://blog.csdn.net/gitblog_00485/article/details/165891815)\n\n3 天之前 · msprof 采集通用命令：一切采集的基础 msprof 命令行工具提供 AI 任务运行性能数据 、 AI 处理器系统数据 等性能数据的 …\n\n**URL:** https://blog.csdn.net/gitblog_00485/article/details/165891815\n\n---\n\n## 2. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf ...](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n3 天之前 · 摘要：2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开发技能。 文章重点介绍性能调优方法，通 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n## 3. [msprof 性能采集实战指南：在 CANN oam-tools 中用四种 ...](https://blog.gitcode.com/a36c67416663d0d3dfab09f0"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "## 1. [msprof 性能数据采集命令全解：通用参数、AI 任务运行 ...](https://blog.csdn.net/gitblog_00485/article/details/165891815)\n\n3 天之前 · msprof 采集通用命令：一切采集的基础 msprof 命令行工具提供 AI 任务运行性能数据 、 AI 处理器系统数据 等性能数据的 …\n\n**URL:** https://blog.csdn.net/gitblog_00485/article/details/165891815\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/gitblog_00485/article/details/165891815"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "## 2. [【昇腾CANN训练营·第十五期】数据驱动优化：使用MSProf ...](https://blog.csdn.net/2401_82857325/article/details/155358698)\n\n3 天之前 · 摘要：2025年昇腾CANN训练营第二季推出系列课程，助力开发者提升算子开发技能。 文章重点介绍性能调优方法，通 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/155358698\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/155358698"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "## 3. [msprof 性能采集实战指南：在 CANN oam-tools 中用四种 ...](https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html)\n\n4 天之前 · 全文以最简 TinyMLP 为统一负载，逐一演示每种方式的原理、代码结构、运行命令与输出解读，并结合仓库源码剖析 …\n\n**URL:** https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.gitcode.com/a36c67416663d0d3dfab09f0d6360634.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "## 4. [性能探针：Ascend C算子性能分析与Profiling工具链实战](https://devpress.csdn.net/v1/article/detail/156004861)\n\n2025年12月17日 · 本文系统介绍了华为昇腾AI算子性能优化工具链CANNProfiling的完整生态。 从性能分析认知革命入手，强调数据驱 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/156004861\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/156004861"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a522762916d14c038de0ce2d.result",
+      "evidence": {
+        "event_id": "call_a522762916d14c038de0ce2d.result",
+        "quote": "## 5. [工具使用-算子调优（msProf）-算子开发工具-算子开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html)\n\nmsProf工具用于采集和分析运行在 昇腾AI处理器 上算子的关键性能指标，用户可根据输出的性能数据，快速定位算子的软、硬件性能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_405f4572355145deb09cf0f5.result",
+      "evidence": {
+        "event_id": "call_405f4572355145deb09cf0f5.result",
+        "quote": "**标题**: 工具使用-算子调优（msProf）-算子开发工具-算子开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html)\n\n# 工具使用\n\nmsProf工具包含msprof op和msprof op simulator两种使用方式，[msprof op](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html#ZH-CN_TOPIC_0000002151340273__section0449171943115)通过MindStudio Insight展示计算内存热力图和Roofline瓶颈分析图，[msprof op simulator](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_00851.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_70dc119dc07b4ced935dfb97.result",
+      "evidence": {
+        "event_id": "call_70dc119dc07b4ced935dfb97.result",
+        "quote": "**标题**: 工具概述-算子调优（msProf）-算子开发工具-算子开发-CANN8.0.0.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha003/devaids/opdev/optool/atlasopdev_16_0082.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "# Search Results for \"CANN Ascend C 算子 性能优化 double buffer 双缓冲 TPipe InitBuffer 数据搬运\"\n\n## 1. [利用Double Buffer技术优化Ascend C算子内存带宽](https://ascendai.csdn.net/6934222d791c233193d30db6.html)\n\n2025年12月6日 · 本文深入解析AscendC中DoubleBuffer技术的原理与实践，探讨如何通过双缓冲优化解决AI计算中的内存墙问题。 文 …\n\n**URL:** https://ascendai.csdn.net/6934222d791c233193d30db6.html\n\n---\n\n## 2. [利用Double Buffer技术优化Ascend C算子内存带宽](https://blog.csdn.net/weixin_45255454/article/details/155646937)\n\n2025年12月23日 · 本文深入解析Double Buffer（双缓冲）技术在昇腾Ascend C算子内存优化中的核心价值与实践方法。 通过实际代码 …\n\n**URL:** https://blog.csdn.net/weixin_45255454/article/details/155646937\n\n---\n\n## 3. [使能double buffer-流水优化-性能优化-Ascend C最佳实践 ...](https://www.hiascend.com/document/detail/zh/CA"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "## 1. [利用Double Buffer技术优化Ascend C算子内存带宽](https://ascendai.csdn.net/6934222d791c233193d30db6.html)\n\n2025年12月6日 · 本文深入解析AscendC中DoubleBuffer技术的原理与实践，探讨如何通过双缓冲优化解决AI计算中的内存墙问题。 文 …\n\n**URL:** https://ascendai.csdn.net/6934222d791c233193d30db6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://ascendai.csdn.net/6934222d791c233193d30db6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "## 2. [利用Double Buffer技术优化Ascend C算子内存带宽](https://blog.csdn.net/weixin_45255454/article/details/155646937)\n\n2025年12月23日 · 本文深入解析Double Buffer（双缓冲）技术在昇腾Ascend C算子内存优化中的核心价值与实践方法。 通过实际代码 …\n\n**URL:** https://blog.csdn.net/weixin_45255454/article/details/155646937\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://blog.csdn.net/weixin_45255454/article/details/155646937"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "## 3. [使能double buffer-流水优化-性能优化-Ascend C最佳实践 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)\n\n【描述】执行于AI Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "## 4. [Ascend C内存搬运的艺术：Double Buffer与流水线优化详解](https://cann.csdn.net/69ef0b9c54b52172bc70477c.html)\n\n2025年11月29日 · 本文深入剖析了昇腾AI处理器中AscendC编程模型的内存优化技术，重点解析了DoubleBuffer双缓冲机制和多级流水 …\n\n**URL:** https://cann.csdn.net/69ef0b9c54b52172bc70477c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://cann.csdn.net/69ef0b9c54b52172bc70477c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cc1704dd0a754e12b3299134.result",
+      "evidence": {
+        "event_id": "call_cc1704dd0a754e12b3299134.result",
+        "quote": "## 5. [【昇腾CANN训练营·优化篇】流水线的艺术：深入解析 ...](https://blog.csdn.net/2401_82857325/article/details/156025987)\n\n2025年12月17日 · 摘要：本文深入解析了AscendC算子开发中的性能优化技巧，重点介绍了DoubleBuffer（双缓冲）技术。 通过分析 …\n\n**URL:** https://blog.csdn.net/2401_82857325/article/details/156025987\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/2401_82857325/article/details/156025987"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c56f567720ea4f678b153e1e.result",
+      "evidence": {
+        "event_id": "call_c56f567720ea4f678b153e1e.result",
+        "quote": "**标题**: 使能double buffer-流水优化-性能优化-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html)\n\n# 使能double buffer\n\n【优先级】中\n\n【描述】执行于AI Core上的指令队列主要包括如下几类，Vector指令队列（V）、Cube指令队列（M）、Scalar指令队列（S）和搬运指令队列（MTE1/MTE2/MTE3）。不同指令队列间的相互独立性和可并行执行特性，是double buffer优化机制的基石。\n\n矢量计算前后的CopyIn、CopyOut过程使用搬运指令队列（MTE2/MTE3），Compute过程使用Vector指令队列（V），不同指令队列可并行执行，意味着CopyIn、CopyOut过程和Compute过程是可以并行的。如[图1](https://www.hiascend.c"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0033.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "# Search Results for \"hiascend Ascend C 最佳实践 性能优化 Cube Vector 计算单元利用率 流水\"\n\n## 1. [Ascend C最佳实践](https://www.hiascend.com/doc_center/source/zh/canncommercial/80RC3/developmentguide/opdevg/ascendcbestP/CANN%208.0.RC3%20Ascend%20C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2001.pdf)\n\n2024年11月14日 · 开发者完成Ascend C 算子(本文后续提到的算子均指使用Ascend C开发的算子)的开发后,需要对算子性能进一步优 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/80RC3/developmentguide/opdevg/ascendcbestP/CANN%208.0.RC3%20Ascend%20C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2001.pdf\n\n---\n\n## 2. [使用说明-CANN8.0.0.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascend"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "## 1. [Ascend C最佳实践](https://www.hiascend.com/doc_center/source/zh/canncommercial/80RC3/developmentguide/opdevg/ascendcbestP/CANN%208.0.RC3%20Ascend%20C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2001.pdf)\n\n2024年11月14日 · 开发者完成Ascend C 算子(本文后续提到的算子均指使用Ascend C开发的算子)的开发后,需要对算子性能进一步优 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/80RC3/developmentguide/opdevg/ascendcbestP/CANN%208.0.RC3%20Ascend%20C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/80RC3/developmentguide/opdevg/ascendcbestP/CANN%208.0.RC3%20Ascend%20C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "## 2. [使用说明-CANN8.0.0.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html)\n\n本文档首先介绍算子运行数据流的概念，然后介绍使用Ascend C编程时调试调优的思路，以及结合经验总结的性能优化手段，最后介 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "## 3. [Ascend C编程语言进阶：高性能算子开发技巧](https://hwcomputing.csdn.net/6a130314662f9a54cb76c2bb.html)\n\n2026年5月24日 · 本文介绍了Ascend C编程语言的高级特性和性能优化技巧。 主要内容包括：1）精细的内存层级管 …\n\n**URL:** https://hwcomputing.csdn.net/6a130314662f9a54cb76c2bb.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://hwcomputing.csdn.net/6a130314662f9a54cb76c2bb.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "## 4. [深度优化 Ascend C：从理论到实践的高性能算子开发](https://devpress.csdn.net/v1/article/detail/155987015)\n\n2025年12月16日 · 本文将深入 Ascend C 的高级特性，结合 GELU、Conv+Bias+ReLU 等真实案例，系统讲解如何实现 接近硬件理论 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155987015\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/155987015"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9864a1f892a9440583ab1b39.result",
+      "evidence": {
+        "event_id": "call_9864a1f892a9440583ab1b39.result",
+        "quote": "## 5. [Ascend C实战指南：从零构建高性能AI算子](https://ascendai.csdn.net/69392dd4791c233193d4299d.html)\n\n2025年12月10日 · 华为推出的Ascend C编程语言，专为昇腾AI芯片设计，通过 静态流水线调度 、 统一内存模型 和 Cube单元原语 三 …\n\n**URL:** https://ascendai.csdn.net/69392dd4791c233193d4299d.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://ascendai.csdn.net/69392dd4791c233193d4299d.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ad8cbbb2c840447db7c56bc6.result",
+      "evidence": {
+        "event_id": "call_ad8cbbb2c840447db7c56bc6.result",
+        "quote": "**标题**: 使用说明-Ascend C最佳实践-算子开发-CANN8.0.0.alpha001开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4bfdc96cf75a41948d6e3aca.result",
+      "evidence": {
+        "event_id": "call_4bfdc96cf75a41948d6e3aca.result",
+        "quote": "**标题**: 前言-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html)\n\n# 前言\n\n#### 需要具备的知识\n\n本文档主要用于指导开发者基于Ascend C编程语言在昇腾AI处理器上开发高性能的算子。在阅读此文档时，需要开发者具备如下能力：\n\n- 熟练使用C++编程语言。\n- 了解计算机架构。\n- 理解昇腾AI处理器硬件架构。\n- 完成Ascend C编程相关文档、课程学习。\n- 可以完成Ascend C开发、调试环境搭建。\n- 可以独立完成Ascend C算子的开发。\n- 熟练使用性能分析工具获取性能数据。\n\n您可以通过[LINK](https://www.hiascend.com/zh/ascend-c)获取如上内容的学习资料。\n\n#### 可以解决的问题\n\n开发者完成Ascend C算子（本文后续提到的算子均指使用Asc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8d9de5cfb36b460aa900eccd.result",
+      "evidence": {
+        "event_id": "call_8d9de5cfb36b460aa900eccd.result",
+        "quote": "**标题**: 获取性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)\n\n# 获取性能数据\n\n在进行性能优化之前，需要拿到准确的性能数据，了解性能现状，并根据性能现状分析下一步的优化方向。Ascend C提供了多种性能测试方法，包括上板Profiling、单算子性能仿真流水图等手段。\n\n#### 上板Profiling\n\n如下命令行是一个算子上板性能数据采集的示例，可以根据自身的需要灵活组合配置参数。示例中--output为可选参数，用于指定收集到的性能数据的存放路径；$HOME/projects/MyApp/out/main为算子可执行文件。\n\n```\nmsprof op --output=$HOME/projects/output $HOME/projects/MyApp/out/main\n```\n\n如下示"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0007.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8a5e22c64da24f25bf68f552.result",
+      "evidence": {
+        "event_id": "call_8a5e22c64da24f25bf68f552.result",
+        "quote": "**标题**: 尽量一次搬运较大的数据块-搬运优化-性能优化-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0013.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0013.html)\n\n# 尽量一次搬运较大的数据块\n\n【优先级】高\n\n【描述】搬运不同大小的数据块时，对带宽的利用率（有效带宽/理论带宽）不一样。单次搬运数据16KB以上时，可以较好的发挥带宽的最佳性能。因此对于单次搬运，应考虑尽可能的搬运较大的数据块。下图展示了某款AI处理器上实测的不同搬运数据量下带宽的变化图。\n\n测试数据与处理器型号相关，且实际测试时可能会存在略微抖动，具体带宽数值并不一定和下文的测试数据严格一致。\n\n**图1** UB->GM方向不同搬运数据量下实际占用带宽的变化  \n![](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/81R"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0010.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b5a593a5db704f87b717c0cc.result",
+      "evidence": {
+        "event_id": "call_b5a593a5db704f87b717c0cc.result",
+        "quote": "**标题**: 分析性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "# Search Results for \"\"分析性能数据\" Ascend C最佳实践 性能分析 瓶颈 指标 利用率 hiascend\"\n\n## 1. [分析性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html)\n\n下文将介绍如何通过性能数据找到瓶颈点和对应的优化方向。 查看上板Profiling解析后的 op_summary_*.csv 文件分析流水情况。  …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html\n\n---\n\n## 2. [获取性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)\n\n在进行性能优化之前，需要拿到准确的性能"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "## 1. [分析性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html)\n\n下文将介绍如何通过性能数据找到瓶颈点和对应的优化方向。 查看上板Profiling解析后的 op_summary_*.csv 文件分析流水情况。  …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0012-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0009.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "## 2. [获取性能数据-性能分析-Ascend C最佳实践-算子开发-CANN8 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html)\n\n在进行性能优化之前，需要拿到准确的性能数据，了解性能现状，并根据性能现状分析下一步的优化方向。 Ascend C提供了多种性能 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0012-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha002/opdevg/ascendcbestP/atlas_ascendc_best_practices_10_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "## 3. [Ascend C 性能优化指南：算子调用中的最佳实践与陷阱规避](https://blog.csdn.net/qq_39757921/article/details/154886003)\n\n2025年11月15日 · 文章浏览阅读788次，点赞25次，收藏7次。本文将以您提供的PPT素材为基础，深度解析Ascend C算子开发中的性 …\n\n**URL:** https://blog.csdn.net/qq_39757921/article/details/154886003\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0012-rank-3",
+      "url": "https://blog.csdn.net/qq_39757921/article/details/154886003"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "## 4. [Ascend C性能分析工具深度解析与算子瓶颈定位实战-CSDN博客](https://blog.csdn.net/zxylovezxylovezxy/article/details/155982218)\n\n2025年12月16日 · 本文深入解析CANN性能分析工具链的技术原理与实战应用，涵盖两段式采集架构、多维度指标体系和Roofline模型 …\n\n**URL:** https://blog.csdn.net/zxylovezxylovezxy/article/details/155982218\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0012-rank-4",
+      "url": "https://blog.csdn.net/zxylovezxylovezxy/article/details/155982218"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5a2969da34f24b639331add1.result",
+      "evidence": {
+        "event_id": "call_5a2969da34f24b639331add1.result",
+        "quote": "## 5. [从零构建高性能算子：Ascend C 实战指南与性能调优深度剖析](https://ascendai.csdn.net/693827432087ae0db7a06806.html)\n\n2025年12月9日 · 本文将手把手带你从环境搭建、代码编写、编译部署到性能调优，完成一个工业级 Ascend C 算子的全生命周期开发 …\n\n**URL:** https://ascendai.csdn.net/693827432087ae0db7a06806.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0012-rank-5",
+      "url": "https://ascendai.csdn.net/693827432087ae0db7a06806.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

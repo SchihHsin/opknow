@@ -1,0 +1,466 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_tHhzanKWYexxXCZaPdkL8760.result",
+      "evidence": {
+        "event_id": "call_00_tHhzanKWYexxXCZaPdkL8760.result",
+        "quote": "# Analysis of NCCL Environment Variables Documentation\n\n## Summary of Findings\n\n**Critical finding:** None of the three requested variables — `NCCL_ALGO`, `NCCL_PROTO`, or `NCCL_MIN_NCHANNELS` — appear anywhere on this page. I searched the entire document content systematically and can state this explicitly and confidently.\n\nThis appears to be an **incomplete or partial capture** of the NCCL 2.31.2 Environment Variables page. The page contains the \"System configuration\" section and a \"Debugging\" section, but the middle section that typically contains performance-tuning variables (where `NCCL_ALGO`, `NCCL_PROTO`, and `NCCL_MIN_NCHANNELS` normally live) is **not present** in the provided conte"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_NsYTz8cgUSCBhWmSAX7f2120.result",
+      "evidence": {
+        "event_id": "call_00_NsYTz8cgUSCBhWmSAX7f2120.result",
+        "quote": "**标题**: Collective Operations — NCCL 2.31.2 documentation\n\n# Collective Operations[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html#collective-operations \"Permalink to this heading\")\n\nCollective operations have to be called for each rank (hence CUDA device), using the same count and the same datatype, to form a complete collective operation. Failure to do so will result in undefined behavior, including hangs, crashes, or data corruption.\n\n## AllReduce[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html#allreduce \"Permalink to this heading\")\n\nThe AllReduce operation performs reductions on data (for example, sum, min, max) acro"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_beXiXylCjaTptDJRTiR87142.result",
+      "evidence": {
+        "event_id": "call_00_beXiXylCjaTptDJRTiR87142.result",
+        "quote": "**标题**: Troubleshooting — NCCL 2.31.2 documentation\n\n# Troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html#troubleshooting \"Permalink to this heading\")\n\nUse the pages below to narrow the problem down before changing NCCL settings.\n\n- [Diagnostics](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html) covers NCCL’s built-in diagnostics that can help identify and potentialy fix problems.\n- [GPU troubleshooting](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html) covers GPU-to-GPU, GPU-to-NIC, IOMMU, ACS, topology, and multi-node NVLink issues.\n- [Networking Troubl"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_qeiM3JBuy3xsMJYfmx4v8738.result",
+      "evidence": {
+        "event_id": "call_00_qeiM3JBuy3xsMJYfmx4v8738.result",
+        "quote": "**标题**: Performance and tuning — NCCL 2.31.2 documentation\n\n# Performance and tuning[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-and-tuning \"Permalink to this heading\")\n\n## Performance issues[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-issues \"Permalink to this heading\")\n\nPerformance issues may be caused by a variety of factors and may be specific to a particular application or particular hardware. Under these conditions it is important to differentiate a NCCL performance bug from possible configuration or hardware issues.\n\n`nvbandwidth` ([https://"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_xGb2xAIxEUlAfWcA7zEI1736.result",
+      "evidence": {
+        "event_id": "call_00_xGb2xAIxEUlAfWcA7zEI1736.result",
+        "quote": "**标题**: Diagnostics — NCCL 2.31.2 documentation\n\n# Diagnostics[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html#diagnostics \"Permalink to this heading\")\n\nAs of v2.31, NCCL provides a set of built-in diagnostics that can be helpful in identifying the source of problems observed when running NCCL applications. The diagnostics fall into two categories:\n\n- **RAS diagnostics** passively collect and compare state information (GPU, CUDA driver, and NCCL configuration) across ranks, without exercising NCCL data paths.\n- **Active diagnostics** exercise actual communication paths between GPUs to verify that they function correctly.\n\nIdeally NCCL diagnostics"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_DLo11ftzeLTWrE8DrLs45142.result",
+      "evidence": {
+        "event_id": "call_00_DLo11ftzeLTWrE8DrLs45142.result",
+        "quote": "**标题**: GPU troubleshooting — NCCL 2.31.2 documentation\n\n# GPU troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-troubleshooting \"Permalink to this heading\")\n\n## GPU Direct[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-direct \"Permalink to this heading\")\n\nNCCL heavily relies on GPU Direct for inter-GPU communication. This refers to the ability for a GPU to directly communicate with another device, such as another GPU or a network card, using direct point-to-point PCI messages.\n\nDirect point-to-point PCI messages can fail or perform poorly for a variety of reason"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_ldDTo8wTRx4BynX9zJMf2080.result",
+      "evidence": {
+        "event_id": "call_00_ldDTo8wTRx4BynX9zJMf2080.result",
+        "quote": "**标题**: 通信库NCCL-Algo/Proto/Transport解读 - 知乎\n**发布时间**: 编辑于 2025-09-20 13:38 ・ 北京\n\n# 通信库NCCL-Algo/Proto/Transport解读\n\nNCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深了护城河。\n\n随着模型大小不断增加、workload的急速变化，模型的分布式排布方式也在一步步打破从业者的固有认知，不同的分布式导向不同的通信模式。从DDP (all-reduce)-> Zero (reduce-scatter+all-gather) -> TP/SP (reduce-scatter+all-gather) -> EP(all-to-all/all-to-allv)，PD分离(send/recv)->AF分离(M-N mesh)。这些不同的通信模式对通信库的性能要求是不同，DeepEP在EP场景的优化，是对NCCL发起冲击的优秀案例。\n\n本文主要借着这篇文章《Demystifying NCCL: An In-depth Analysis of GPU Communication Protocols and Algorithms》的脉络，分享下自己对NCCL的理解，以及记录下一些学习笔记。毕竟一篇NVIDIA对NCCL的官方解读确实比较难得。通信库的核心就是数据的搬移，了解NCCL对了解其他通信库原理自然是很有帮助的。\n\n* * *\n\n本文内容涉及NCCL通信协议（NCCL_PROTO），集合通信算法（NCCL_ALGO）和"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://zhuanlan.zhihu.com/p/1947979580301346603",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "daef9a98fada1dd91b2607a8f730da4da49a570bfac321e0775bc49caf76428f",
+  "question": "我的多卡 NCCL all-reduce 通信慢，怎么调优（NCCL_ALGO/NCCL_PROTO/拓扑感知/NVLink/NCCL_DEBUG 诊断）？",
+  "run_id": "W-cuda-deepseek-v4_1-flash-standard-20260921T114421",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "# Search Results for \"NCCL_ALGO NCCL_PROTO tuning all-reduce NCCL_DEBUG NVIDIA documentation environment variables\"\n\n## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · The NCCL_SOCKET_FAMILY variable allows users to force NCCL to use only IPv4 or IPv6 interface. Set to …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n## 2. [通信库NCCL-Algo/Proto/Transport解读 - 知乎](https://zhuanlan.zhihu.com/p/1947979580301346603)\n\n2025年9月20日 · NCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1947979580301346603\n\n---\n\n## 3. [NCCL Tuning for "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · The NCCL_SOCKET_FAMILY variable allows users to force NCCL to use only IPv4 or IPv6 interface. Set to …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "## 2. [通信库NCCL-Algo/Proto/Transport解读 - 知乎](https://zhuanlan.zhihu.com/p/1947979580301346603)\n\n2025年9月20日 · NCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1947979580301346603\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/1947979580301346603"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "## 3. [NCCL Tuning for Multi-GPU LLM Training: Environment Variables…](https://www.spheron.network/blog/nccl-tuning-multi-gpu-llm-training-2026/)\n\n2026年4月27日 · NCCL tuning guide for multi-GPU LLM training: topology discovery, NCCL_ALGO, NCCL_P2P_LEVEL, …\n\n**URL:** https://www.spheron.network/blog/nccl-tuning-multi-gpu-llm-training-2026/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.spheron.network/blog/nccl-tuning-multi-gpu-llm-training-2026/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "## 4. [NCCL完全指南：集合通信原理、AllReduce性能调优与故障 ...](https://blog.csdn.net/weixin_42549451/article/details/165028363)\n\n6 天之前 · 理解AllReduce等核心算子与总线带宽（busbw）的评估方法，能帮助工程师快速定位训练缓慢、超时等疑难问题，并借 …\n\n**URL:** https://blog.csdn.net/weixin_42549451/article/details/165028363\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/weixin_42549451/article/details/165028363"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+      "evidence": {
+        "event_id": "call_00_ZlcTRZTutT4JPylusWPQ3176.result",
+        "quote": "## 5. [【DeepSpeed】NCCL 的环境变量设置_nccl 环境变量-CSDN博客](https://blog.csdn.net/u013172930/article/details/147267398)\n\n2025年4月16日 · 在使用 DeepSpeed 进行分布式训练时， NCCL（NVIDIA Collective Communications Library） 是 DeepSpeed 和 …\n\n**URL:** https://blog.csdn.net/u013172930/article/details/147267398\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/u013172930/article/details/147267398"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_tEnStkQHznUqojUZjC8i2314.result",
+      "evidence": {
+        "event_id": "call_00_tEnStkQHznUqojUZjC8i2314.result",
+        "quote": "# NCCL Environment Variables — Extraction Report\n\n**Source:** \"Environment Variables — NCCL 2.31.2 documentation\" (`https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html`)\n\n## Summary of Findings\n\nThe page is a partial listing of NCCL's environment variables. For the ~21 variables you specifically requested, **14 are documented on this page**, **1 appears only as an unresolved cross-reference**, and **6 (`NCCL_ALGO`, `NCCL_PROTO`, `NCCL_MIN_NCHANNELS`, `NCCL_NET_GDR_LEVEL`, `NCCL_NVLS_ENABLE`, and — partially — `NCCL_MAX_NCHANNELS`) are referenced but not actually described here.** There are strong signs of truncation (see final section).\n\n---\n\n## Requested Variables Documented "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NsYTz8cgUSCBhWmSAX7f2120.result",
+      "evidence": {
+        "event_id": "call_00_NsYTz8cgUSCBhWmSAX7f2120.result",
+        "quote": "**标题**: Collective Operations — NCCL 2.31.2 documentation\n\n# Collective Operations[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html#collective-operations \"Permalink to this heading\")\n\nCollective operations have to be called for each rank (hence CUDA device), using the same count and the same datatype, to form a complete collective operation. Failure to do so will result in undefined behavior, including hangs, crashes, or data corruption.\n\n## AllReduce[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html#allreduce \"Permalink to this heading\")\n\nThe AllReduce operation performs reductions on data (for example, sum, min, max) acro"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "# Search Results for \"NCCL_ALGO Ring Tree NVLS NCCL_PROTO LL128 Simple tuning all-reduce docs.nvidia.com\"\n\n## 1. [NCCL 集合通信库深度解析：从 Ring/Tree 算法到 NVLS 与 ...](https://blog.csdn.net/a13662080711/article/details/163894222)\n\n2026年8月19日 · 收获能力：深入理解 NCCL 在 AllReduce/AllGather/ReduceScatter/Broadcast/AllToAll 上的 Ring、Tree、CollNet …\n\n**URL:** https://blog.csdn.net/a13662080711/article/details/163894222\n\n---\n\n## 2. [NCCL算法的拓扑建立与通路选择 - 知乎](https://zhuanlan.zhihu.com/p/735606197)\n\n2024年10月6日 · 在NCCL完成集群函数操作（如allreduce/allgather等）时，底层拓扑逻辑是如何建立的？ 以及通信算 …\n\n**URL:** https://zhuanlan.zhihu.com/p/735606197\n\n---\n\n## 3. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/ncc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "## 1. [NCCL 集合通信库深度解析：从 Ring/Tree 算法到 NVLS 与 ...](https://blog.csdn.net/a13662080711/article/details/163894222)\n\n2026年8月19日 · 收获能力：深入理解 NCCL 在 AllReduce/AllGather/ReduceScatter/Broadcast/AllToAll 上的 Ring、Tree、CollNet …\n\n**URL:** https://blog.csdn.net/a13662080711/article/details/163894222\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://blog.csdn.net/a13662080711/article/details/163894222"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "## 2. [NCCL算法的拓扑建立与通路选择 - 知乎](https://zhuanlan.zhihu.com/p/735606197)\n\n2024年10月6日 · 在NCCL完成集群函数操作（如allreduce/allgather等）时，底层拓扑逻辑是如何建立的？ 以及通信算 …\n\n**URL:** https://zhuanlan.zhihu.com/p/735606197\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/735606197"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "## 3. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · Some are needed to make NCCL follow system-specific configuration, and can be kept in scripts and system …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "## 4. [通信库NCCL-Algo/Proto/Transport解读 - 知乎](https://zhuanlan.zhihu.com/p/1947979580301346603)\n\n2025年9月20日 · NCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1947979580301346603\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/1947979580301346603"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+      "evidence": {
+        "event_id": "call_00_5oGipOsaEMAbTjI86c0M3247.result",
+        "quote": "## 5. [NVIDIA NCCL 源码学习（十七）- LL和LL128协议](https://blog.csdn.net/KIDGIN7439/article/details/159382174)\n\n2026年3月24日 · 之前提到nccl有多种协议，并且主要以simple协议为例介绍nccl的流程，本节我们具体看下simple之外的LL和LL128协 …\n\n**URL:** https://blog.csdn.net/KIDGIN7439/article/details/159382174\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/KIDGIN7439/article/details/159382174"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_tHhzanKWYexxXCZaPdkL8760.result",
+      "evidence": {
+        "event_id": "call_00_tHhzanKWYexxXCZaPdkL8760.result",
+        "quote": "# Analysis of NCCL Environment Variables Documentation\n\n## Summary of Findings\n\n**Critical finding:** None of the three requested variables — `NCCL_ALGO`, `NCCL_PROTO`, or `NCCL_MIN_NCHANNELS` — appear anywhere on this page. I searched the entire document content systematically and can state this explicitly and confidently.\n\nThis appears to be an **incomplete or partial capture** of the NCCL 2.31.2 Environment Variables page. The page contains the \"System configuration\" section and a \"Debugging\" section, but the middle section that typically contains performance-tuning variables (where `NCCL_ALGO`, `NCCL_PROTO`, and `NCCL_MIN_NCHANNELS` normally live) is **not present** in the provided conte"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_beXiXylCjaTptDJRTiR87142.result",
+      "evidence": {
+        "event_id": "call_00_beXiXylCjaTptDJRTiR87142.result",
+        "quote": "**标题**: Troubleshooting — NCCL 2.31.2 documentation\n\n# Troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html#troubleshooting \"Permalink to this heading\")\n\nUse the pages below to narrow the problem down before changing NCCL settings.\n\n- [Diagnostics](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html) covers NCCL’s built-in diagnostics that can help identify and potentialy fix problems.\n- [GPU troubleshooting](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html) covers GPU-to-GPU, GPU-to-NIC, IOMMU, ACS, topology, and multi-node NVLink issues.\n- [Networking Troubl"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qeiM3JBuy3xsMJYfmx4v8738.result",
+      "evidence": {
+        "event_id": "call_00_qeiM3JBuy3xsMJYfmx4v8738.result",
+        "quote": "**标题**: Performance and tuning — NCCL 2.31.2 documentation\n\n# Performance and tuning[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-and-tuning \"Permalink to this heading\")\n\n## Performance issues[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-issues \"Permalink to this heading\")\n\nPerformance issues may be caused by a variety of factors and may be specific to a particular application or particular hardware. Under these conditions it is important to differentiate a NCCL performance bug from possible configuration or hardware issues.\n\n`nvbandwidth` ([https://"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xGb2xAIxEUlAfWcA7zEI1736.result",
+      "evidence": {
+        "event_id": "call_00_xGb2xAIxEUlAfWcA7zEI1736.result",
+        "quote": "**标题**: Diagnostics — NCCL 2.31.2 documentation\n\n# Diagnostics[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html#diagnostics \"Permalink to this heading\")\n\nAs of v2.31, NCCL provides a set of built-in diagnostics that can be helpful in identifying the source of problems observed when running NCCL applications. The diagnostics fall into two categories:\n\n- **RAS diagnostics** passively collect and compare state information (GPU, CUDA driver, and NCCL configuration) across ranks, without exercising NCCL data paths.\n- **Active diagnostics** exercise actual communication paths between GPUs to verify that they function correctly.\n\nIdeally NCCL diagnostics"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_DLo11ftzeLTWrE8DrLs45142.result",
+      "evidence": {
+        "event_id": "call_00_DLo11ftzeLTWrE8DrLs45142.result",
+        "quote": "**标题**: GPU troubleshooting — NCCL 2.31.2 documentation\n\n# GPU troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-troubleshooting \"Permalink to this heading\")\n\n## GPU Direct[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-direct \"Permalink to this heading\")\n\nNCCL heavily relies on GPU Direct for inter-GPU communication. This refers to the ability for a GPU to directly communicate with another device, such as another GPU or a network card, using direct point-to-point PCI messages.\n\nDirect point-to-point PCI messages can fail or perform poorly for a variety of reason"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "# Search Results for \"NCCL_PROTO values LL LL128 Simple NCCL_ALGO Ring Tree NVLS environment variable default thresholds\"\n\n## 1. [NCCL 专家课程 14：Simple、LL、LL128 的线格式、同步与 ...](https://blog.cptz.space/posts/nccl-simple-ll-ll128-protocols/)\n\n2026年7月22日 · FIFO 的 NCCL_STEPS、buffer 和有效 data bytes/step 如何关联。 LL 为什么只有 50% payload efficiency，却能在 …\n\n**URL:** https://blog.cptz.space/posts/nccl-simple-ll-ll128-protocols/\n\n---\n\n## 2. [第95篇 - NCCL通信协议深度分析：LL、LL128 …](https://zhuanlan.zhihu.com/p/1984770740919215073)\n\n2026年1月29日 · 1. 概述1.1 NCCL协议体系NCCL (NVIDIA Collective Communications Library) 实现了三种 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1984770740919215073\n\n---\n\n## 3. [【NCCL】NCCL通信协议:Simple, LL, LL128-CS"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "## 1. [NCCL 专家课程 14：Simple、LL、LL128 的线格式、同步与 ...](https://blog.cptz.space/posts/nccl-simple-ll-ll128-protocols/)\n\n2026年7月22日 · FIFO 的 NCCL_STEPS、buffer 和有效 data bytes/step 如何关联。 LL 为什么只有 50% payload efficiency，却能在 …\n\n**URL:** https://blog.cptz.space/posts/nccl-simple-ll-ll128-protocols/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://blog.cptz.space/posts/nccl-simple-ll-ll128-protocols/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "## 2. [第95篇 - NCCL通信协议深度分析：LL、LL128 …](https://zhuanlan.zhihu.com/p/1984770740919215073)\n\n2026年1月29日 · 1. 概述1.1 NCCL协议体系NCCL (NVIDIA Collective Communications Library) 实现了三种 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1984770740919215073\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/1984770740919215073"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "## 3. [【NCCL】NCCL通信协议:Simple, LL, LL128-CSDN博客](https://blog.csdn.net/bandaoyu/article/details/158427203)\n\n2026年3月2日 · Simple协议采用连续缓冲区设计，有效载荷接近100%，适合大消息传输；LL协议通过内嵌flag实现低延迟，但有效载 …\n\n**URL:** https://blog.csdn.net/bandaoyu/article/details/158427203\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://blog.csdn.net/bandaoyu/article/details/158427203"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "## 4. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · On AWS, the default value is 2; on Google Cloud instances with the gVNIC network interface, the default value is 4 …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+      "evidence": {
+        "event_id": "call_00_dIYbKf6MrvElAttTlX3b6417.result",
+        "quote": "## 5. [NCCL通信协议解析：Simple、LL与LL128的设计与应用](https://codechina.net/article/weixin_30219613/160656)\n\n2026年6月30日 · 本文将深入剖析NCCL的三种通信协议：Simple、LL（Low Latency）和LL128，从底层设计原理到实际应用场景，帮 …\n\n**URL:** https://codechina.net/article/weixin_30219613/160656\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://codechina.net/article/weixin_30219613/160656"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ldDTo8wTRx4BynX9zJMf2080.result",
+      "evidence": {
+        "event_id": "call_00_ldDTo8wTRx4BynX9zJMf2080.result",
+        "quote": "**标题**: 通信库NCCL-Algo/Proto/Transport解读 - 知乎\n**发布时间**: 编辑于 2025-09-20 13:38 ・ 北京\n\n# 通信库NCCL-Algo/Proto/Transport解读\n\nNCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深了护城河。\n\n随着模型大小不断增加、workload的急速变化，模型的分布式排布方式也在一步步打破从业者的固有认知，不同的分布式导向不同的通信模式。从DDP (all-reduce)-> Zero (reduce-scatter+all-gather) -> TP/SP (reduce-scatter+all-gather) -> EP(all-to-all/all-to-allv)，PD分离(send/recv)->AF分离(M-N mesh)。这些不同的通信模式对通信库的性能要求是不同，DeepEP在EP场景的优化，是对NCCL发起冲击的优秀案例。\n\n本文主要借着这篇文章《Demystifying NCCL: An In-depth Analysis of GPU Communication Protocols and Algorithms》的脉络，分享下自己对NCCL的理解，以及记录下一些学习笔记。毕竟一篇NVIDIA对NCCL的官方解读确实比较难得。通信库的核心就是数据的搬移，了解NCCL对了解其他通信库原理自然是很有帮助的。\n\n* * *\n\n本文内容涉及NCCL通信协议（NCCL_PROTO），集合通信算法（NCCL_ALGO）和"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://zhuanlan.zhihu.com/p/1947979580301346603"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

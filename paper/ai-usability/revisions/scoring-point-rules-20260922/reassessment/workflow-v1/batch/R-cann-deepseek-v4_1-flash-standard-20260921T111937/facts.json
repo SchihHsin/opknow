@@ -1,0 +1,478 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_M3H10BtOmynGkCwbgQ3X7152.result",
+      "evidence": {
+        "event_id": "call_00_M3H10BtOmynGkCwbgQ3X7152.result",
+        "quote": "**标题**: CANN精度调试工具详解\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/developer/blog/details/02152211175104217059",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_vyJD3LJBI5d909pgPIMD7606.result",
+      "evidence": {
+        "event_id": "call_00_vyJD3LJBI5d909pgPIMD7606.result",
+        "quote": "**标题**: 溢出检测与解析-MindSpore训练场景-功能介绍-精度调试 msProbe-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msProbe/docs/zh/overflow_check/mindspore_overflow_check_instruct.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_fbN2ePXQgH6EjkL5Hn9i4900.result",
+      "evidence": {
+        "event_id": "call_00_fbN2ePXQgH6EjkL5Hn9i4900.result",
+        "quote": "**标题**: 精度调试 | MindStudio 81RC1 文档 | 昇思MindSpore社区\n\n# 精度调试[](https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html#%E7%B2%BE%E5%BA%A6%E8%B0%83%E8%AF%95 \"永久链接至标题\")\n\nmsprobe 是 MindStudio Training Tools 工具链下精度调试部分的工具包。主要包括精度预检、溢出检测和精度比对等功能，目前适配 PyTorch 和 MindSpore 框架。msprobe提供多个于子工具侧重不同的训练场景，可以定位模型训练中的精度问题。\n\n工具 功能 简介 适用场景/优势 当前版本限制 msprobe [离线精度预检](https://gitee.com/ascend/mstt/blob/br_release_MindStudio_8.1.RC1_TR5_20260623/debug/accuracy_tools/msprobe/docs/09.accuracy_checker_MindSpore.md) 为网络中每个API创建用例，检验其精度，并根据不同比对算法综合判定API在NPU上的精度是否达标，快速找出精度差异API。 1. 对模型中所有的API做精度初步排查  \n2. 精度排查不受模型累计误差影响 仅支持mindspore.mint API [数据采集](https://gitee.com/ascend/mstt/blob/br_release_MindS"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_rNZAxFnzXHEQdIlLFeTr7572.result",
+      "evidence": {
+        "event_id": "call_00_rNZAxFnzXHEQdIlLFeTr7572.result",
+        "quote": "**标题**: msProbe 使用指南 — MindStudio Probe 1.0 文档\n\n# msProbe 使用指南[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html#msprobe \"Link to this heading\")\n\nMindStudio Probe（msProbe）针对昇腾 AI 处理器提供全场景精度调试能力，覆盖数据采集、精度比对、可视化以及多种进阶调试功能。下文按框架和使用场景汇总各场景下支持的完整功能项，请根据实际使用场景选择对应功能并参考相应文档进行配置和使用。\n\n## PyTorch[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html#pytorch \"Link to this heading\")\n\n功能项\n\n功能说明\n\n参考文档\n\n数据采集\n\n通过 `config.json` 配置，完成 msProbe 精度数据采集操作\n\n[数据采集](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/dump/pytorch_data_dump_instruct.html)\n\n分级可视化构图比对\n\n将 msProbe 工具 dump 的精度数据进行解析，还原模型图结构，实现模型各个层级的精度数据比对\n\n[分级可视化构图比对](https://msprobe.readthedocs.io/zh-cn/la"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Q1rK5ftwA7XIZE0srp5D2656.result",
+      "evidence": {
+        "event_id": "call_00_Q1rK5ftwA7XIZE0srp5D2656.result",
+        "quote": "**标题**: 整网首个溢出节点分析 — MindStudio Probe 1.0 文档\n\n# 整网首个溢出节点分析[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id1 \"Link to this heading\")\n\n## 简介[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id2 \"Link to this heading\")\n\n在分析inf、nan的场景下，会采集多个rank下的多个step的dump数据，前面出现的异常会传播到同rank后续的节点，并通过通信算子传播到其他rank的后续节点中，因此如何分析首个nan出现的节点位置尤为重要。\n\n整网首个溢出节点分析（overflow_check）可以对PyTorch的dump数据进行分析，在多卡场景下，检测到每张卡中产生inf/nan的节点。若是经过通信导致的inf/nan，可以分析并找出首个产生inf/nan的rank和节点。\n\n## 使用前准备[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id3 \"Link to this head"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_rYtgCssmXlHofAX7GhNM8421.result",
+      "evidence": {
+        "event_id": "call_00_rYtgCssmXlHofAX7GhNM8421.result",
+        "quote": "# PyTorch场景精度比对 — msProbe 1.0 完整内容提取\n\n**来源**: [msprobe.readthedocs.io](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/pytorch_accuracy_compare_instruct.html)\n\n**摘要**: 本文档介绍 msProbe 在 PyTorch 场景下进行 CPU/GPU 与 NPU 精度数据比对的方法，支持单卡/多卡，涵盖命令行比对、比对函数、多卡数据汇总，以及自定义映射与后处理能力。\n\n**⚠️ 内容截断说明**: 文档正文在\"附录 → 自定义映射文件（cell_mapping）\"部分结束，末尾仅到两种映射格式示例（`通过模块名称映射` 与 `通过字符串映射`）。页面导航栏标记\"☰\"表明该页尚有后续内容未提供（如可能的比对函数 API、更多附录或相关链接）。以下为**已提供内容**的完整提取。\n\n---\n\n## 1. 简介\n\n- **用途**: 通过命令行和比对函数，进行 CPU 或 GPU 与 NPU 的精度数据比对。\n- **前置条件**: 执行比对前需先完成 CPU/GPU 与 NPU 的精度数据 dump（参见《PyTorch场景精度数据采集》）。\n- **子命令**: `msprobe compare`，支持**单卡和多卡**场景。\n- **比对函数**: 通过单独创建精度比对脚本执行，同样支持单卡/多卡。\n- **工具性能**:\n  - 数据量小（单份文件 < 10 GB）"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/pytorch_accuracy_compare_instruct.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_996CAgpxRVJNp9fpuZNC0912.result",
+      "evidence": {
+        "event_id": "call_00_996CAgpxRVJNp9fpuZNC0912.result",
+        "quote": "**标题**: 适配简介-（可选）混合精度适配-关键特性适配-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n# 适配简介\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度(float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的精度。\n\n混合精度适配支持两种方式：\n\n- PyTorch框架内置的AMP功能模块\n- 第三方APEX混合精度模块\n\n我们推荐用户使用PyTorch框架内置的AMP功能模块来进行混合精度训练，本节将介绍其适配方法，AMP混合精度具体原理与计算过程请参考[混合精度原理与计算过程（AMP）](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0071.html)。\n\n如果用户想使用APEX模块，可参考[APEX](https://gitee.com/ascend/apex)。\n\n#### 使用约束\n\n当前混合精"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_dVipZfPvLRTzrPvdqnw40477.result",
+      "evidence": {
+        "event_id": "call_00_dVipZfPvLRTzrPvdqnw40477.result",
+        "quote": "**标题**: 混合精度问题调测-附录-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html)\n\n# 混合精度问题调测\n\n#### 问题发现\n\n使能混合精度后，由于数值表示范围和最小间隔发生变化，可能导致极少部分网络出现精度掉点甚至无法收敛的情况。如下图所示。\n\n**图1** 正常loss情况  \n![](https://www.hiascend.com/doc_center/source/zh/Pytorch/600/ptmoddevg/trainingmigrguide/figure/zh-cn_image_0000002173257949.png)\n\n**图2** 异常loss情况  \n![](https://www.hiascend.com/doc_center/source/zh/Pytorch/600/ptmoddevg/trainingmigrguide/figure/zh-cn_image_0000002137976812.png)\n\n在以上样例情况中，loss值由于未使能混合精度，导致梯度上溢，进而loss出"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "d57abf5a663b0e0641df35b2f83e63fc1892d53485b3a115045e00c329285604",
+  "question": "我的模型迁到昇腾 NPU 后 loss 不收敛 / 精度对不齐 GPU，怎么排查（loss scale / 溢出检测 / 算子精度）？",
+  "run_id": "R-cann-deepseek-v4_1-flash-standard-20260921T111937",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "# Search Results for \"昇腾 CANN 精度调试 msprobe 溢出检测 loss scale 精度比对 官方文档\"\n\n## 1. [昇腾模型迁移调试：msprobe/msdebug精度比对与溢出检测 ...](https://blog.csdn.net/weixin_27734811/article/details/165403202)\n\n2026年9月14日 · 昇腾AI处理器为此提供了msprobe/msdebug工具链：通过精度比对对比NPU与CPU参考实现的逐层张量输出，借助 …\n\n**URL:** https://blog.csdn.net/weixin_27734811/article/details/165403202\n\n---\n\n## 2. [昇腾NPU模型迁移调试工具链：精度比对、溢出检测与性能 ...](https://blog.csdn.net/weixin_28833069/article/details/164776792)\n\n2026年9月9日 · 这些问题的定位往往依赖系统化的调试工具支持。 昇腾NPU基于CANN工具链，提供了msprobe、msdebug …\n\n**URL:** https://blog.csdn.net/weixin_28833069/article/details/164776792\n\n---\n\n## 3. [msprobe/msdebug 全家桶：昇腾精度比对、溢出检测 ...](https://juejin.cn/post/7682605088746373171)\n\n2026年9月7日 · 聚焦昇"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "## 1. [昇腾模型迁移调试：msprobe/msdebug精度比对与溢出检测 ...](https://blog.csdn.net/weixin_27734811/article/details/165403202)\n\n2026年9月14日 · 昇腾AI处理器为此提供了msprobe/msdebug工具链：通过精度比对对比NPU与CPU参考实现的逐层张量输出，借助 …\n\n**URL:** https://blog.csdn.net/weixin_27734811/article/details/165403202\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_27734811/article/details/165403202"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "## 2. [昇腾NPU模型迁移调试工具链：精度比对、溢出检测与性能 ...](https://blog.csdn.net/weixin_28833069/article/details/164776792)\n\n2026年9月9日 · 这些问题的定位往往依赖系统化的调试工具支持。 昇腾NPU基于CANN工具链，提供了msprobe、msdebug …\n\n**URL:** https://blog.csdn.net/weixin_28833069/article/details/164776792\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_28833069/article/details/164776792"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "## 3. [msprobe/msdebug 全家桶：昇腾精度比对、溢出检测 ...](https://juejin.cn/post/7682605088746373171)\n\n2026年9月7日 · 聚焦昇腾开发三大高频坑——精度丢失、内存越界、算子慢，逐一拆解 MindStudio 工具链的对应解法。 文末附昇腾知 …\n\n**URL:** https://juejin.cn/post/7682605088746373171\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://juejin.cn/post/7682605088746373171"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "## 4. [msprobe/msdebug 全家桶：昇腾精度比对、溢出检测 ...](https://hwcomputing.csdn.net/6a9e777548977663a5dda79b.html)\n\n2026年9月7日 · 聚焦昇腾开发三大高频坑——精度丢失、内存越界、算子慢，逐一拆解 MindStudio 工具链的对应解法：msprobe 负责 …\n\n**URL:** https://hwcomputing.csdn.net/6a9e777548977663a5dda79b.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://hwcomputing.csdn.net/6a9e777548977663a5dda79b.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+      "evidence": {
+        "event_id": "call_00_REwh4BoMyhb14ZoNmxh61116.result",
+        "quote": "## 5. [CANN精度调试工具详解](https://www.hiascend.com/developer/blog/details/02152211175104217059)\n\n在昇腾CANN（Compute Architecture for Neural Networks）异构计算架构开发中，精度异常是常见痛点，如模型训练loss跑飞、推理 …\n\n**URL:** https://www.hiascend.com/developer/blog/details/02152211175104217059\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/developer/blog/details/02152211175104217059"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_M3H10BtOmynGkCwbgQ3X7152.result",
+      "evidence": {
+        "event_id": "call_00_M3H10BtOmynGkCwbgQ3X7152.result",
+        "quote": "**标题**: CANN精度调试工具详解\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/developer/blog/details/02152211175104217059"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "# Search Results for \"MindStudio msprobe 工具 溢出检测 overflow 精度比对 使用指南 hiascend document\"\n\n## 1. [精度调试 | MindStudio 81RC1 文档 | 昇思MindSpore社区](https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html)\n\n5 天之前 · 精度调试 msprobe 是 MindStudio Training Tools 工具链下精度调试部分的工具包。 主要包括精度预检、溢出检测和精度比 …\n\n**URL:** https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html\n\n---\n\n## 2. [msProbe 使用指南 — MindStudio Probe 1.0 文档](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html)\n\n2026年9月8日 · MindStudio Probe（msProbe）针对昇腾 AI 处理器提供全场景精度调试能力，覆盖数据采集、精度比对、可视化以及 …\n\n**URL:** https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html\n\n---\n\n## 3. [MindSpore场景精度调"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "## 1. [精度调试 | MindStudio 81RC1 文档 | 昇思MindSpore社区](https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html)\n\n5 天之前 · 精度调试 msprobe 是 MindStudio Training Tools 工具链下精度调试部分的工具包。 主要包括精度预检、溢出检测和精度比 …\n\n**URL:** https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "## 2. [msProbe 使用指南 — MindStudio Probe 1.0 文档](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html)\n\n2026年9月8日 · MindStudio Probe（msProbe）针对昇腾 AI 处理器提供全场景精度调试能力，覆盖数据采集、精度比对、可视化以及 …\n\n**URL:** https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "## 3. [MindSpore场景精度调试工具快速入门 — MindStudio Probe ...](https://msprobe.readthedocs.io/zh-cn/latest/zh/quick_start/mindspore_quick_start.html)\n\n2026年8月19日 · 本文介绍MindSpore场景精度调试工具快速入门，主要针对训练开发流程中的模型精度调试环节使用的开发工具进行 …\n\n**URL:** https://msprobe.readthedocs.io/zh-cn/latest/zh/quick_start/mindspore_quick_start.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/quick_start/mindspore_quick_start.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "## 4. [溢出检测与解析-MindSpore训练场景-功能介绍-精度调试 ...](https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msProbe/docs/zh/overflow_check/mindspore_overflow_check_instruct.md)\n\n# MindSpore场景溢出检测 ## 简介 msProbe 工具提供静态图O2编译等级下的溢出检测功能。 其中检测对象为 **kernel** 级别，对应 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msProbe/docs/zh/overflow_check/mindspore_overflow_check_instruct.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msProbe/docs/zh/overflow_check/mindspore_overflow_check_instruct.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+      "evidence": {
+        "event_id": "call_00_xruSCSu2bJmJOlPB4WZs4352.result",
+        "quote": "## 5. [昇腾模型调试工具链实战：精度比对、溢出检测与性能调优指南](https://blog.csdn.net/weixin_33521678/article/details/165403199)\n\n2026年9月14日 · 排查到最后，我靠的并不是猜，而是一套固定动作——用msprobe做精度比对、用溢出检测抓数值异常、 …\n\n**URL:** https://blog.csdn.net/weixin_33521678/article/details/165403199\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://blog.csdn.net/weixin_33521678/article/details/165403199"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_vyJD3LJBI5d909pgPIMD7606.result",
+      "evidence": {
+        "event_id": "call_00_vyJD3LJBI5d909pgPIMD7606.result",
+        "quote": "**标题**: 溢出检测与解析-MindSpore训练场景-功能介绍-精度调试 msProbe-训练推理开发工具-MindStudio26.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2600/msTT_msIT/msProbe/docs/zh/overflow_check/mindspore_overflow_check_instruct.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_fbN2ePXQgH6EjkL5Hn9i4900.result",
+      "evidence": {
+        "event_id": "call_00_fbN2ePXQgH6EjkL5Hn9i4900.result",
+        "quote": "**标题**: 精度调试 | MindStudio 81RC1 文档 | 昇思MindSpore社区\n\n# 精度调试[](https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html#%E7%B2%BE%E5%BA%A6%E8%B0%83%E8%AF%95 \"永久链接至标题\")\n\nmsprobe 是 MindStudio Training Tools 工具链下精度调试部分的工具包。主要包括精度预检、溢出检测和精度比对等功能，目前适配 PyTorch 和 MindSpore 框架。msprobe提供多个于子工具侧重不同的训练场景，可以定位模型训练中的精度问题。\n\n工具 功能 简介 适用场景/优势 当前版本限制 msprobe [离线精度预检](https://gitee.com/ascend/mstt/blob/br_release_MindStudio_8.1.RC1_TR5_20260623/debug/accuracy_tools/msprobe/docs/09.accuracy_checker_MindSpore.md) 为网络中每个API创建用例，检验其精度，并根据不同比对算法综合判定API在NPU上的精度是否达标，快速找出精度差异API。 1. 对模型中所有的API做精度初步排查  \n2. 精度排查不受模型累计误差影响 仅支持mindspore.mint API [数据采集](https://gitee.com/ascend/mstt/blob/br_release_MindS"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.mindspore.cn/mindstudio/docs/zh-CN/81RC1/feature/precision.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_rNZAxFnzXHEQdIlLFeTr7572.result",
+      "evidence": {
+        "event_id": "call_00_rNZAxFnzXHEQdIlLFeTr7572.result",
+        "quote": "**标题**: msProbe 使用指南 — MindStudio Probe 1.0 文档\n\n# msProbe 使用指南[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html#msprobe \"Link to this heading\")\n\nMindStudio Probe（msProbe）针对昇腾 AI 处理器提供全场景精度调试能力，覆盖数据采集、精度比对、可视化以及多种进阶调试功能。下文按框架和使用场景汇总各场景下支持的完整功能项，请根据实际使用场景选择对应功能并参考相应文档进行配置和使用。\n\n## PyTorch[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html#pytorch \"Link to this heading\")\n\n功能项\n\n功能说明\n\n参考文档\n\n数据采集\n\n通过 `config.json` 配置，完成 msProbe 精度数据采集操作\n\n[数据采集](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/dump/pytorch_data_dump_instruct.html)\n\n分级可视化构图比对\n\n将 msProbe 工具 dump 的精度数据进行解析，还原模型图结构，实现模型各个层级的精度数据比对\n\n[分级可视化构图比对](https://msprobe.readthedocs.io/zh-cn/la"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/README.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Q1rK5ftwA7XIZE0srp5D2656.result",
+      "evidence": {
+        "event_id": "call_00_Q1rK5ftwA7XIZE0srp5D2656.result",
+        "quote": "**标题**: 整网首个溢出节点分析 — MindStudio Probe 1.0 文档\n\n# 整网首个溢出节点分析[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id1 \"Link to this heading\")\n\n## 简介[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id2 \"Link to this heading\")\n\n在分析inf、nan的场景下，会采集多个rank下的多个step的dump数据，前面出现的异常会传播到同rank后续的节点，并通过通信算子传播到其他rank的后续节点中，因此如何分析首个nan出现的节点位置尤为重要。\n\n整网首个溢出节点分析（overflow_check）可以对PyTorch的dump数据进行分析，在多卡场景下，检测到每张卡中产生inf/nan的节点。若是经过通信导致的inf/nan，可以分析并找出首个产生inf/nan的rank和节点。\n\n## 使用前准备[](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html#id3 \"Link to this head"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/overflow_check/overflow_check_instruct.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_rYtgCssmXlHofAX7GhNM8421.result",
+      "evidence": {
+        "event_id": "call_00_rYtgCssmXlHofAX7GhNM8421.result",
+        "quote": "# PyTorch场景精度比对 — msProbe 1.0 完整内容提取\n\n**来源**: [msprobe.readthedocs.io](https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/pytorch_accuracy_compare_instruct.html)\n\n**摘要**: 本文档介绍 msProbe 在 PyTorch 场景下进行 CPU/GPU 与 NPU 精度数据比对的方法，支持单卡/多卡，涵盖命令行比对、比对函数、多卡数据汇总，以及自定义映射与后处理能力。\n\n**⚠️ 内容截断说明**: 文档正文在\"附录 → 自定义映射文件（cell_mapping）\"部分结束，末尾仅到两种映射格式示例（`通过模块名称映射` 与 `通过字符串映射`）。页面导航栏标记\"☰\"表明该页尚有后续内容未提供（如可能的比对函数 API、更多附录或相关链接）。以下为**已提供内容**的完整提取。\n\n---\n\n## 1. 简介\n\n- **用途**: 通过命令行和比对函数，进行 CPU 或 GPU 与 NPU 的精度数据比对。\n- **前置条件**: 执行比对前需先完成 CPU/GPU 与 NPU 的精度数据 dump（参见《PyTorch场景精度数据采集》）。\n- **子命令**: `msprobe compare`，支持**单卡和多卡**场景。\n- **比对函数**: 通过单独创建精度比对脚本执行，同样支持单卡/多卡。\n- **工具性能**:\n  - 数据量小（单份文件 < 10 GB）"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://msprobe.readthedocs.io/zh-cn/latest/zh/user_guide/accuracy_compare/pytorch_accuracy_compare_instruct.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "# Search Results for \"torch_npu 混合精度 loss scale GradScaler 溢出检测 昇腾 NPU 训练 loss 不收敛\"\n\n## 1. [混合精度训练中loss缩放因子动态调整原理与GradScaler参数 ...](https://raybyte.cn/post/2026/8/6/10c511d3)\n\n2026年8月6日 · 混合精度训练是当前大模型训练常用的显存优化技术，float16的数值范围限制会导致梯度丢失、训练崩溃，动态loss缩 …\n\n**URL:** https://raybyte.cn/post/2026/8/6/10c511d3\n\n---\n\n## 2. [如何正确使用GradScaler？一文讲透PyTorch梯度缩放核心 ...](https://blog.csdn.net/LearnPlex/article/details/154908918)\n\n2025年11月16日 · 梯度溢出的表现 当损失函数产生极大梯度时，FP16无法表示，导致梯度变为NaN，模型无法收敛。 常见于深层网络 …\n\n**URL:** https://blog.csdn.net/LearnPlex/article/details/154908918\n\n---\n\n## 3. [混合精度训练导致的精度溢出问题Grad Overflow_gradscaler ...](https://blog.csdn.net/weixin_45051281/article/details/148222399)\n\n2026年8月10日 · Grad Over"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "## 1. [混合精度训练中loss缩放因子动态调整原理与GradScaler参数 ...](https://raybyte.cn/post/2026/8/6/10c511d3)\n\n2026年8月6日 · 混合精度训练是当前大模型训练常用的显存优化技术，float16的数值范围限制会导致梯度丢失、训练崩溃，动态loss缩 …\n\n**URL:** https://raybyte.cn/post/2026/8/6/10c511d3\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0009-rank-1",
+      "url": "https://raybyte.cn/post/2026/8/6/10c511d3"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "## 2. [如何正确使用GradScaler？一文讲透PyTorch梯度缩放核心 ...](https://blog.csdn.net/LearnPlex/article/details/154908918)\n\n2025年11月16日 · 梯度溢出的表现 当损失函数产生极大梯度时，FP16无法表示，导致梯度变为NaN，模型无法收敛。 常见于深层网络 …\n\n**URL:** https://blog.csdn.net/LearnPlex/article/details/154908918\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0009-rank-2",
+      "url": "https://blog.csdn.net/LearnPlex/article/details/154908918"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "## 3. [混合精度训练导致的精度溢出问题Grad Overflow_gradscaler ...](https://blog.csdn.net/weixin_45051281/article/details/148222399)\n\n2026年8月10日 · Grad Overflow 本质上意味着： 梯度张量中某个值 ≫ float16 的最大值（65504） 或者某一步反向传播中产生 inf/nan. …\n\n**URL:** https://blog.csdn.net/weixin_45051281/article/details/148222399\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0009-rank-3",
+      "url": "https://blog.csdn.net/weixin_45051281/article/details/148222399"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "## 4. [适配简介-TorchNPU6.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n如果性能没有提升，则需要做进一步性能调优修改。 在开启混合精度训练后，由于数值表示范围和最小间隔发生变化，可能导致极少 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0009-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+      "evidence": {
+        "event_id": "call_00_IcDA6KKsJzYg1mBYIbv08271.result",
+        "quote": "## 5. [PyTorch的GradScaler - 知乎](https://zhuanlan.zhihu.com/p/2020212840615653898)\n\n2026年3月25日 · 在深度学习的训练过程中， GradScaler 是 PyTorch 自动混合精度 （Automatic Mixed Precision, AMP）训练中的核 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2020212840615653898\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0009-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/2020212840615653898"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_996CAgpxRVJNp9fpuZNC0912.result",
+      "evidence": {
+        "event_id": "call_00_996CAgpxRVJNp9fpuZNC0912.result",
+        "quote": "**标题**: 适配简介-（可选）混合精度适配-关键特性适配-模型迁移-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html)\n\n# 适配简介\n\n混合精度训练是在训练时混合使用单精度（float32）与半精度(float16)数据类型，使用相同的超参数训练，能达到与float32几乎相同的精度。\n\n混合精度适配支持两种方式：\n\n- PyTorch框架内置的AMP功能模块\n- 第三方APEX混合精度模块\n\n我们推荐用户使用PyTorch框架内置的AMP功能模块来进行混合精度训练，本节将介绍其适配方法，AMP混合精度具体原理与计算过程请参考[混合精度原理与计算过程（AMP）](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0071.html)。\n\n如果用户想使用APEX模块，可参考[APEX](https://gitee.com/ascend/apex)。\n\n#### 使用约束\n\n当前混合精"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0026.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dVipZfPvLRTzrPvdqnw40477.result",
+      "evidence": {
+        "event_id": "call_00_dVipZfPvLRTzrPvdqnw40477.result",
+        "quote": "**标题**: 混合精度问题调测-附录-PyTorch 训练模型迁移调优指南-TorchNPU6.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html)[](https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html)\n\n# 混合精度问题调测\n\n#### 问题发现\n\n使能混合精度后，由于数值表示范围和最小间隔发生变化，可能导致极少部分网络出现精度掉点甚至无法收敛的情况。如下图所示。\n\n**图1** 正常loss情况  \n![](https://www.hiascend.com/doc_center/source/zh/Pytorch/600/ptmoddevg/trainingmigrguide/figure/zh-cn_image_0000002173257949.png)\n\n**图2** 异常loss情况  \n![](https://www.hiascend.com/doc_center/source/zh/Pytorch/600/ptmoddevg/trainingmigrguide/figure/zh-cn_image_0000002137976812.png)\n\n在以上样例情况中，loss值由于未使能混合精度，导致梯度上溢，进而loss出"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/600/ptmoddevg/trainingmigrguide/PT_LMTMOG_0073.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_Bgh2Tx8skKMUnGoDnZNW9410.result",
+      "evidence": {
+        "event_id": "call_00_Bgh2Tx8skKMUnGoDnZNW9410.result",
+        "quote": "**标题**: 用户指南-异常检测 msSanitizer-算子开发工具-开发工具-CANN商用版9.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_N65aVBWk1ubYWr14tNrF7448.result",
+      "evidence": {
+        "event_id": "call_00_N65aVBWk1ubYWr14tNrF7448.result",
+        "quote": "# Analysis Result: Content Unavailable\n\n## Summary\n\nI was **unable to extract any of the requested information** because the web content provided is **not the actual documentation page**. Instead, the retrieved content is a **Web Application Firewall (WAF) block page**.\n\n## What the Content Actually Contains\n\nThe retrieved page is an access-denied / security interception notice, which reads in Chinese:\n\n> **访问被拦截！** (Access Blocked!)\n> 中文 English / 418\n> 您的请求疑似攻击行为！ (Your request is suspected of being an attack!)\n> 事件ID (Event ID): `30-dect-76-20260921114903-88007325`\n> 如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截\n> (If you are the site administrator, you can go to the WAF console to configure fals"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/Ascend/mssanitizer/blob/master/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_TEnB2jWnfFGFSuy4MoRT8468.result",
+      "evidence": {
+        "event_id": "call_00_TEnB2jWnfFGFSuy4MoRT8468.result",
+        "quote": "````\n# mssanitizer 使用指南\n\nmssanitizer 是昇腾 CANN 提供的算子异常检测工具，用于检测 Ascend C 算子的内存问题、竞争条件和未初始化内存访问。\n\n## 检测模式\n\n| 模式 | 命令 | 检测内容 |\n|------|------|----------|\n| 内存检测 | `-t memcheck` | 非法内存访问、非法释放、内存泄漏、UB地址越界 |\n| 竞争检测 | `-t racecheck` | 多核并行竞争条件、数据竞争 |\n| 未初始化检测 | `-t initcheck` | 未初始化内存读取 |\n| 同步检测 | `-t synccheck` | 同步错误、同步点问题 |\n\n---\n\n## 一、内存检测 (memcheck)\n\n### 检测流程\n\n```\n环境准备 → 编译算子 → 构建测试 → 运行检测 → 分析结果 → 修复验证\n```\n\n### 1. 环境准备\n\n```bash\nsource /usr/local/Ascend/ascend-toolkit/latest/set_env.sh\n```\n\n### 2. 编译算子\n\n```bash\n# 方式一：使用 build.sh\nbash build.sh --opkernel --soc=ascend910b --ops=<operator_name> --mssanitizer\n\n# 方式二：CMakeLists.txt 添加编译选项\nset(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} --cce-enable-sanitize"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/Ascend/agent-skills/blob/master/skills/ascendc-operator-mssanitizer/references/mssanitizer_usage_guide.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_cwsrfHtVZ9NNgmhQOTn35890.result",
+      "evidence": {
+        "event_id": "call_00_cwsrfHtVZ9NNgmhQOTn35890.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html)\n\n# 工具概述\n\nmsSanitizer工具是基于昇腾AI处理器的一个异常检测工具，包含了单算子开发场景下的内存检测、竞争检测、未初始化检测和同步检测四个子功能。用户使用[msOpST工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0028.html)在真实的硬件环境中对算子的功能进行测试后，可根据实际测试情况选择是否使用msSanitizer工具进行异常检测。\n\n- 内存检测：工具可以在用户开发算子的过程中，协助定位非法读写、多核踩踏、非对齐访问、内存泄漏以及非法释放等内存问题。同时工具也支持对CANN软件栈的内存检测，帮助用户定界软件栈内存异常发生的模块。\n- 竞争检测：工具可以协助用户定位由于竞争风险可能导致的数据竞争问题，包含核内竞争和核间竞争问题。其中，核内竞争"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_3grDLoZMBnSuP6ejF8um6661.result",
+      "evidence": {
+        "event_id": "call_00_3grDLoZMBnSuP6ejF8um6661.result",
+        "quote": "**标题**: 内存检测-异常检测（msSanitizer）-算子开发工具-开发工具-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0042.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "6f0564e8c8057a5266e8b09f2ef8057740a7615e191b8f8e73e9ab6dd424c475",
+  "question": "我的昇腾算子内存越界 / 踩内存，怎么用昇腾工具（msSanitizer / mem check / 算子内存检测）定位？",
+  "run_id": "X-cann-deepseek-v4_1-flash-standard-20260921T114831",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "# Search Results for \"msSanitizer 昇腾 算子 内存越界 memcheck CANN\"\n\n## 1. [工具概述-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/devaids/opdev/optool/atlasopdev_16_0039.html)\n\n使用前准备 请参考 环境准备，完成相关环境变量的配置。 使用此工具生成算子测试用例前，需要将要测试的算子部署到算子库中，具 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/devaids/opdev/optool/atlasopdev_16_0039.html\n\n---\n\n## 2. [用户指南-异常检测 msSanitizer-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md)\n\n内存检测是针对用户程序运行时的一种异常检测，该工具可以检测并报告算子运行中对外部存储（Global Memory）和内部存 …\n\n**URL:** https://www.hiascend.com/docume"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "## 1. [工具概述-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/devaids/opdev/optool/atlasopdev_16_0039.html)\n\n使用前准备 请参考 环境准备，完成相关环境变量的配置。 使用此工具生成算子测试用例前，需要将要测试的算子部署到算子库中，具 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/devaids/opdev/optool/atlasopdev_16_0039.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/devaids/opdev/optool/atlasopdev_16_0039.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "## 2. [用户指南-异常检测 msSanitizer-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md)\n\n内存检测是针对用户程序运行时的一种异常检测，该工具可以检测并报告算子运行中对外部存储（Global Memory）和内部存 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "## 3. [msprobe/msdebug 全家桶：昇腾精度比对、溢出检测 ...](https://blog.csdn.net/jieph01/article/details/164471339)\n\n2026年9月7日 · 聚焦昇腾开发三大高频坑——精度丢失、内存越界、算子慢，逐一拆解 MindStudio 工具链的对应解法：msprobe 负责 …\n\n**URL:** https://blog.csdn.net/jieph01/article/details/164471339\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/jieph01/article/details/164471339"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "## 4. [昇腾模型调试工具链实战：精度比对、溢出检测与性能调优 ...](https://blog.csdn.net/weixin_33521678/article/details/165403199)\n\n2026年9月14日 · 内存安全层 ：是否存在越界读、越界写、野指针、内存泄漏，典型场景是“训练到一半随机段错误”或“显存异常增 …\n\n**URL:** https://blog.csdn.net/weixin_33521678/article/details/165403199\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/weixin_33521678/article/details/165403199"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+      "evidence": {
+        "event_id": "call_00_0TDicH82H9u2mOtFvAXL3494.result",
+        "quote": "## 5. [mssanitizer/README.md-代码预览-MindStudio-Sanitizer ...](https://gitcode.com/Ascend/mssanitizer/blob/master/README.md)\n\n2025年12月31日 · mssanitizer/README.md-代码预览-可用于单算子开发场景的异常检测，提供内存检测、竞争检测、未初始化检测 …\n\n**URL:** https://gitcode.com/Ascend/mssanitizer/blob/master/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://gitcode.com/Ascend/mssanitizer/blob/master/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Bgh2Tx8skKMUnGoDnZNW9410.result",
+      "evidence": {
+        "event_id": "call_00_Bgh2Tx8skKMUnGoDnZNW9410.result",
+        "quote": "**标题**: 用户指南-异常检测 msSanitizer-算子开发工具-开发工具-CANN商用版9.0.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/900/devaids/optool/docs/zh/user_guide/mssanitizer_user_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_N65aVBWk1ubYWr14tNrF7448.result",
+      "evidence": {
+        "event_id": "call_00_N65aVBWk1ubYWr14tNrF7448.result",
+        "quote": "# Analysis Result: Content Unavailable\n\n## Summary\n\nI was **unable to extract any of the requested information** because the web content provided is **not the actual documentation page**. Instead, the retrieved content is a **Web Application Firewall (WAF) block page**.\n\n## What the Content Actually Contains\n\nThe retrieved page is an access-denied / security interception notice, which reads in Chinese:\n\n> **访问被拦截！** (Access Blocked!)\n> 中文 English / 418\n> 您的请求疑似攻击行为！ (Your request is suspected of being an attack!)\n> 事件ID (Event ID): `30-dect-76-20260921114903-88007325`\n> 如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截\n> (If you are the site administrator, you can go to the WAF console to configure fals"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://gitcode.com/Ascend/mssanitizer/blob/master/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "# Search Results for \"msSanitizer memcheck initcheck racecheck 使用 命令 参数 算子 昇腾\"\n\n## 1. [ops-test-kit/docs/Operator_Test_Guides/mssanitizer_guide.md at …](https://github.com/hicann/ops-test-kit/blob/master/docs/Operator_Test_Guides/mssanitizer_guide.md)\n\n2026年8月19日 · mssanitizer （MindStudio Sanitizer）是 MindStudio 提供的算子级异常检测工具，包含内存检测（memcheck）、竞 …\n\n**URL:** https://github.com/hicann/ops-test-kit/blob/master/docs/Operator_Test_Guides/mssanitizer_guide.md\n\n---\n\n## 2. [mssanitizer/docs/zh/user_guide/mssanitizer_user_guide.md ...](https://gitcode.com/Ascend/mssanitizer/blob/26.0.0/docs/zh/user_guide/mssanitizer_user_guide.md)\n\n1. 功能概述 MindStudio Sanitizer（异常检测工具，msSanitizer）是一种基于AI处理器的工具，包含了单算子开发场景"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "## 1. [ops-test-kit/docs/Operator_Test_Guides/mssanitizer_guide.md at …](https://github.com/hicann/ops-test-kit/blob/master/docs/Operator_Test_Guides/mssanitizer_guide.md)\n\n2026年8月19日 · mssanitizer （MindStudio Sanitizer）是 MindStudio 提供的算子级异常检测工具，包含内存检测（memcheck）、竞 …\n\n**URL:** https://github.com/hicann/ops-test-kit/blob/master/docs/Operator_Test_Guides/mssanitizer_guide.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://github.com/hicann/ops-test-kit/blob/master/docs/Operator_Test_Guides/mssanitizer_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "## 2. [mssanitizer/docs/zh/user_guide/mssanitizer_user_guide.md ...](https://gitcode.com/Ascend/mssanitizer/blob/26.0.0/docs/zh/user_guide/mssanitizer_user_guide.md)\n\n1. 功能概述 MindStudio Sanitizer（异常检测工具，msSanitizer）是一种基于AI处理器的工具，包含了单算子开发场景下的内存检测、 …\n\n**URL:** https://gitcode.com/Ascend/mssanitizer/blob/26.0.0/docs/zh/user_guide/mssanitizer_user_guide.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://gitcode.com/Ascend/mssanitizer/blob/26.0.0/docs/zh/user_guide/mssanitizer_user_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "## 3. [工具简介-使用mssanitizer检测算子异常-算子开发工具-算子 ...](https://www.hiascend.com/document/detail/zh/mindstudio/70RC1/mscommandtoolug/mscommandug/atlasopdev_16_0019.html)\n\n竞争检测：工具可以协助用户定位由于竞争风险可能导致的数据竞争问题。 msSanitizer工具不支持对多线程算子、二级指针类算子及 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/70RC1/mscommandtoolug/mscommandug/atlasopdev_16_0019.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/70RC1/mscommandtoolug/mscommandug/atlasopdev_16_0019.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "## 4. [agent-skills/skills/ascendc-operator-mssanitizer/references](https://github.com/Ascend/agent-skills/blob/master/skills/ascendc-operator-mssanitizer/references/mssanitizer_usage_guide.md)\n\nmssanitizer 使用指南 mssanitizer 是昇腾 CANN 提供的算子异常检测工具，用于检测 Ascend C 算子的内存问题、竞争条件和未初始 …\n\n**URL:** https://github.com/Ascend/agent-skills/blob/master/skills/ascendc-operator-mssanitizer/references/mssanitizer_usage_guide.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://github.com/Ascend/agent-skills/blob/master/skills/ascendc-operator-mssanitizer/references/mssanitizer_usage_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+      "evidence": {
+        "event_id": "call_00_uO8AE3KmK1gfig5TwOz96174.result",
+        "quote": "## 5. [工具概述-异常检测（msSanitizer）-算子开发工具-开发工具 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html)\n\nmsSanitizer工具是基于 昇腾AI处理器 的一个异常检测工具，包含了单算子开发场景下的内存检测、竞争检测、未初始化检测和同步检 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_TEnB2jWnfFGFSuy4MoRT8468.result",
+      "evidence": {
+        "event_id": "call_00_TEnB2jWnfFGFSuy4MoRT8468.result",
+        "quote": "````\n# mssanitizer 使用指南\n\nmssanitizer 是昇腾 CANN 提供的算子异常检测工具，用于检测 Ascend C 算子的内存问题、竞争条件和未初始化内存访问。\n\n## 检测模式\n\n| 模式 | 命令 | 检测内容 |\n|------|------|----------|\n| 内存检测 | `-t memcheck` | 非法内存访问、非法释放、内存泄漏、UB地址越界 |\n| 竞争检测 | `-t racecheck` | 多核并行竞争条件、数据竞争 |\n| 未初始化检测 | `-t initcheck` | 未初始化内存读取 |\n| 同步检测 | `-t synccheck` | 同步错误、同步点问题 |\n\n---\n\n## 一、内存检测 (memcheck)\n\n### 检测流程\n\n```\n环境准备 → 编译算子 → 构建测试 → 运行检测 → 分析结果 → 修复验证\n```\n\n### 1. 环境准备\n\n```bash\nsource /usr/local/Ascend/ascend-toolkit/latest/set_env.sh\n```\n\n### 2. 编译算子\n\n```bash\n# 方式一：使用 build.sh\nbash build.sh --opkernel --soc=ascend910b --ops=<operator_name> --mssanitizer\n\n# 方式二：CMakeLists.txt 添加编译选项\nset(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} --cce-enable-sanitize"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://github.com/Ascend/agent-skills/blob/master/skills/ascendc-operator-mssanitizer/references/mssanitizer_usage_guide.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cwsrfHtVZ9NNgmhQOTn35890.result",
+      "evidence": {
+        "event_id": "call_00_cwsrfHtVZ9NNgmhQOTn35890.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html)\n\n# 工具概述\n\nmsSanitizer工具是基于昇腾AI处理器的一个异常检测工具，包含了单算子开发场景下的内存检测、竞争检测、未初始化检测和同步检测四个子功能。用户使用[msOpST工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0028.html)在真实的硬件环境中对算子的功能进行测试后，可根据实际测试情况选择是否使用msSanitizer工具进行异常检测。\n\n- 内存检测：工具可以在用户开发算子的过程中，协助定位非法读写、多核踩踏、非对齐访问、内存泄漏以及非法释放等内存问题。同时工具也支持对CANN软件栈的内存检测，帮助用户定界软件栈内存异常发生的模块。\n- 竞争检测：工具可以协助用户定位由于竞争风险可能导致的数据竞争问题，包含核内竞争和核间竞争问题。其中，核内竞争"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0039.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_3grDLoZMBnSuP6ejF8um6661.result",
+      "evidence": {
+        "event_id": "call_00_3grDLoZMBnSuP6ejF8um6661.result",
+        "quote": "**标题**: 内存检测-异常检测（msSanitizer）-算子开发工具-开发工具-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/optool/atlasopdev_16_0042.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

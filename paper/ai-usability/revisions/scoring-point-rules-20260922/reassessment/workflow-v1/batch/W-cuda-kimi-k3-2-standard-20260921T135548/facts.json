@@ -1,0 +1,254 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_40791c83.result",
+      "evidence": {
+        "event_id": "WebFetch_2_40791c83.result",
+        "quote": "## Summary of Findings\n\nI analyzed the **Debugging** section of the provided NCCL 2.31.2 documentation excerpt. Here's the key finding upfront:\n\n> ⚠️ **The provided web content is truncated.** It ends mid-way through the Debugging section at `NCCL_MAX_NCHANNELS`. **NCCL_ALGO, NCCL_PROTO, and NCCL_NVLS_ENABLE are NOT present in the supplied content.** Only partial/indirect information is available for NCCL_NVLS_ENABLE. Details below.\n\n---\n\n## 1. NCCL_ALGO — ❌ Not Present\n\n**NCCL_ALGO does not appear anywhere in the provided content.** The excerpt is cut off after the `NCCL_MAX_NCHANNELS` entry, and in the live NCCL documentation, `NCCL_ALGO` appears later in the Debugging section. No informat"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_e3294a9d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_e3294a9d.result",
+        "quote": "**标题**: Troubleshooting — NCCL 2.31.2 documentation\n\n# Troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html#troubleshooting \"Permalink to this heading\")\n\nUse the pages below to narrow the problem down before changing NCCL settings.\n\n- [Diagnostics](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html) covers NCCL’s built-in diagnostics that can help identify and potentialy fix problems.\n- [GPU troubleshooting](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html) covers GPU-to-GPU, GPU-to-NIC, IOMMU, ACS, topology, and multi-node NVLink issues.\n- [Networking Troubl"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_84252375_f7dc9058.result",
+      "evidence": {
+        "event_id": "WebFetch_4_84252375_f7dc9058.result",
+        "quote": "**标题**: Performance and tuning — NCCL 2.31.2 documentation\n\n# Performance and tuning[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-and-tuning \"Permalink to this heading\")\n\n## Performance issues[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-issues \"Permalink to this heading\")\n\nPerformance issues may be caused by a variety of factors and may be specific to a particular application or particular hardware. Under these conditions it is important to differentiate a NCCL performance bug from possible configuration or hardware issues.\n\n`nvbandwidth` ([https://"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_ffb9ce4d.result",
+      "evidence": {
+        "event_id": "WebFetch_5_ffb9ce4d.result",
+        "quote": "**标题**: GPU troubleshooting — NCCL 2.31.2 documentation\n\n# GPU troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-troubleshooting \"Permalink to this heading\")\n\n## GPU Direct[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-direct \"Permalink to this heading\")\n\nNCCL heavily relies on GPU Direct for inter-GPU communication. This refers to the ability for a GPU to directly communicate with another device, such as another GPU or a network card, using direct point-to-point PCI messages.\n\nDirect point-to-point PCI messages can fail or perform poorly for a variety of reason"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_575bac26.result",
+      "evidence": {
+        "event_id": "WebFetch_6_575bac26.result",
+        "quote": "**标题**: Environment Variables — NCCL 2.21.5 documentation\n\n# Environment Variables¶\n\nNCCL has an extensive set of environment variables to tune for specific usage.\n\nThey can also be set statically in /etc/nccl.conf (for an administrator to set system-wide values) or in ~/.nccl.conf (for users). For example, those files could contain :\n\n```\nNCCL_DEBUG=WARN\nNCCL_SOCKET_IFNAME==ens1f0\n```\n\n[...]\n\n## NCCL_DEBUG¶\n\nThe `NCCL_DEBUG` variable controls the debug information that is displayed from NCCL. This variable is commonly used for debugging.\n\n### Values accepted¶\n\nVERSION - Prints the NCCL version at the start of the program.\n\nWARN - Prints an explicit error message whenever any NCCL call error"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "09aeb22a32435929605386fa88a32b1be9eea97e329095a939297ae47504e093",
+  "question": "我的多卡 NCCL all-reduce 通信慢，怎么调优（NCCL_ALGO/NCCL_PROTO/拓扑感知/NVLink/NCCL_DEBUG 诊断）？",
+  "run_id": "W-cuda-kimi-k3-2-standard-20260921T135548",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "# Search Results for \"NCCL environment variables NCCL_ALGO NCCL_PROTO documentation docs.nvidia.com\"\n\n## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · Environment variables can also be set statically in /etc/nccl.conf (for an administrator to set system-wide values) or …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n## 2. [Environment Variables — NCCL 2.21.5 documentation](https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html)\n\n2025年10月30日 · NCCL has an extensive set of environment variables to tune for specific usage. They can also b"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "## 1. [Environment Variables — NCCL 2.31.2 documentation](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html)\n\n2026年8月17日 · Environment variables can also be set statically in /etc/nccl.conf (for an administrator to set system-wide values) or …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "## 2. [Environment Variables — NCCL 2.21.5 documentation](https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html)\n\n2025年10月30日 · NCCL has an extensive set of environment variables to tune for specific usage. They can also be set statically in …\n\n**URL:** https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "## 3. [通信库NCCL-Algo/Proto/Transport解读 - 知乎](https://zhuanlan.zhihu.com/p/1947979580301346603)\n\n2025年9月20日 · NCCL是一个NVIDIA自研的集合通信库，随着十数年的迭代研发，其强大的通用性、稳定性也在不断帮NVIDIA加深 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1947979580301346603\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/1947979580301346603"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "## 4. [【DeepSpeed】NCCL 的环境变量设置_nccl 环境变量-CSDN博客](https://blog.csdn.net/u013172930/article/details/147267398)\n\n2025年4月16日 · 在使用 DeepSpeed 进行分布式训练时， NCCL（NVIDIA Collective Communications Library） 是 DeepSpeed 和 …\n\n**URL:** https://blog.csdn.net/u013172930/article/details/147267398\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/u013172930/article/details/147267398"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_26ad5f05.result",
+      "evidence": {
+        "event_id": "WebSearch_0_26ad5f05.result",
+        "quote": "## 5. [NCCL Debug 全栈手段：常用环境变量、日志/拓扑/通信诊断 ...](https://yuanlehome.github.io/blog/nccl-debug-hang/)\n\n2026年2月5日 · NCCL（NVIDIA Collectives Communications Library）提供了丰富的环境变量和工具，允许我们从多个层面进行调 …\n\n**URL:** https://yuanlehome.github.io/blog/nccl-debug-hang/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://yuanlehome.github.io/blog/nccl-debug-hang/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_7389fd7a.result",
+      "evidence": {
+        "event_id": "WebFetch_1_7389fd7a.result",
+        "quote": "# Extraction Results: Requested NCCL Environment Variables\n\n## ⚠️ Truncation Status\n\n**The provided web content is truncated.** It ends mid-section at `NCCL_MAX_NCHANNELS` (in the Debugging section). In the full NCCL 2.31.2 documentation, `NCCL_ALGO`, `NCCL_PROTO`, and `NCCL_NVLS_ENABLE` appear **after** this cutoff point.\n\n| Requested Variable | Status |\n|---|---|\n| `NCCL_ALGO` | ❌ **Not present** (content truncated before this section) |\n| `NCCL_PROTO` | ❌ **Not present** (content truncated before this section) |\n| `NCCL_TOPO_FILE` | ✅ Full text present |\n| `NCCL_TOPO_DUMP_FILE` | ✅ Full text present (bonus, topology-related) |\n| `NCCL_P2P_DISABLE` | ✅ Full text present |\n| `NCCL_P2P_LEVEL"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_40791c83.result",
+      "evidence": {
+        "event_id": "WebFetch_2_40791c83.result",
+        "quote": "## Summary of Findings\n\nI analyzed the **Debugging** section of the provided NCCL 2.31.2 documentation excerpt. Here's the key finding upfront:\n\n> ⚠️ **The provided web content is truncated.** It ends mid-way through the Debugging section at `NCCL_MAX_NCHANNELS`. **NCCL_ALGO, NCCL_PROTO, and NCCL_NVLS_ENABLE are NOT present in the supplied content.** Only partial/indirect information is available for NCCL_NVLS_ENABLE. Details below.\n\n---\n\n## 1. NCCL_ALGO — ❌ Not Present\n\n**NCCL_ALGO does not appear anywhere in the provided content.** The excerpt is cut off after the `NCCL_MAX_NCHANNELS` entry, and in the live NCCL documentation, `NCCL_ALGO` appears later in the Debugging section. No informat"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/env.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_e3294a9d.result",
+      "evidence": {
+        "event_id": "WebFetch_3_e3294a9d.result",
+        "quote": "**标题**: Troubleshooting — NCCL 2.31.2 documentation\n\n# Troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html#troubleshooting \"Permalink to this heading\")\n\nUse the pages below to narrow the problem down before changing NCCL settings.\n\n- [Diagnostics](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/diagnostics.html) covers NCCL’s built-in diagnostics that can help identify and potentialy fix problems.\n- [GPU troubleshooting](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html) covers GPU-to-GPU, GPU-to-NIC, IOMMU, ACS, topology, and multi-node NVLink issues.\n- [Networking Troubl"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_84252375_f7dc9058.result",
+      "evidence": {
+        "event_id": "WebFetch_4_84252375_f7dc9058.result",
+        "quote": "**标题**: Performance and tuning — NCCL 2.31.2 documentation\n\n# Performance and tuning[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-and-tuning \"Permalink to this heading\")\n\n## Performance issues[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html#performance-issues \"Permalink to this heading\")\n\nPerformance issues may be caused by a variety of factors and may be specific to a particular application or particular hardware. Under these conditions it is important to differentiate a NCCL performance bug from possible configuration or hardware issues.\n\n`nvbandwidth` ([https://"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/performance_and_tuning.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_ffb9ce4d.result",
+      "evidence": {
+        "event_id": "WebFetch_5_ffb9ce4d.result",
+        "quote": "**标题**: GPU troubleshooting — NCCL 2.31.2 documentation\n\n# GPU troubleshooting[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-troubleshooting \"Permalink to this heading\")\n\n## GPU Direct[](https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html#gpu-direct \"Permalink to this heading\")\n\nNCCL heavily relies on GPU Direct for inter-GPU communication. This refers to the ability for a GPU to directly communicate with another device, such as another GPU or a network card, using direct point-to-point PCI messages.\n\nDirect point-to-point PCI messages can fail or perform poorly for a variety of reason"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/troubleshooting/gpu_troubleshooting.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_575bac26.result",
+      "evidence": {
+        "event_id": "WebFetch_6_575bac26.result",
+        "quote": "**标题**: Environment Variables — NCCL 2.21.5 documentation\n\n# Environment Variables¶\n\nNCCL has an extensive set of environment variables to tune for specific usage.\n\nThey can also be set statically in /etc/nccl.conf (for an administrator to set system-wide values) or in ~/.nccl.conf (for users). For example, those files could contain :\n\n```\nNCCL_DEBUG=WARN\nNCCL_SOCKET_IFNAME==ens1f0\n```\n\n[...]\n\n## NCCL_DEBUG¶\n\nThe `NCCL_DEBUG` variable controls the debug information that is displayed from NCCL. This variable is commonly used for debugging.\n\n### Values accepted¶\n\nVERSION - Prints the NCCL version at the start of the program.\n\nWARN - Prints an explicit error message whenever any NCCL call error"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/archives/nccl_2215/user-guide/docs/env.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

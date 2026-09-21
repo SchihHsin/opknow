@@ -1,0 +1,348 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_QhO2JT1ZoPg7Tr9tythz7530.result",
+      "evidence": {
+        "event_id": "call_00_QhO2JT1ZoPg7Tr9tythz7530.result",
+        "quote": "# Nsight Compute Profiling Guide — Extraction Report\n\n## Summary\n\nI extracted all content from the provided page relevant to your three topics: **(1) Occupancy analysis**, **(2) Memory Workload Analysis (global coalescing/sectors, shared memory bank conflicts)**, and **(3) corresponding ncu commands/sections/metrics**.\n\n**Important finding on completeness:** The provided content is **truncated**. The Metrics Reference chapter (Section 2.4) cuts off after **2.4.2 Launch Metrics** (\"[content truncated]\"). This means detailed memory-metric tables and much of the Metrics Reference — where some of your requested exact metrics would normally live — are **not present** in the material given.\n\n---\n\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_pWXMuk9hiIWoV4MJSJmi7421.result",
+      "evidence": {
+        "event_id": "call_00_pWXMuk9hiIWoV4MJSJmi7421.result",
+        "quote": "# Nsight Compute CLI (ncu) — Command-Line Reference Extraction\n\n## Summary\n\nThe page is the **full Nsight Compute CLI User Guide** (chapter 5). It contains a dedicated **Command Line Options** section (§5.4) with all requested options. Content covers §5.1 through §5.6 plus legal notices. The page does **not** appear truncated — it ends with the Nvprof Transition Guide pointer and the complete NVIDIA Notices/Trademarks boilerplate.\n\n**Where the reference content lives:**\n- Starts: §5.4 \"Command Line Options\" and its subsections §5.4.1–§5.4.11\n- Ends: §5.4.11 (MPS), followed by §5.5 Environment Variables and §5.6 Nvprof Transition Guide, then Notices.\n\n---\n\n## Requested Options — Exact Syntax,"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_9u4Zh5D3hh3l3Kfh9jLa6587.result",
+      "evidence": {
+        "event_id": "call_00_9u4Zh5D3hh3l3Kfh9jLa6587.result",
+        "quote": "# Analysis: Nsight Compute UI — Details Page (Occupancy & Memory Workload Analysis)\n\n## Summary of Findings\n\n**The requested content is NOT present in the provided web content.**\n\nThe provided page (titled \"4. Nsight Compute — NsightCompute\") is the **top-level index/overview page** of the Nsight Compute User Guide. It ends at **Section 4.7.2 (Report Pages → Summary Page)** and is explicitly **cut off mid-content** at the Summary Page subsection. It does not reach the Details page or its individual sections.\n\n---\n\n## 1. Where the Content Starts and Ends\n\n| Location | Section | Notes |\n|----------|---------|-------|\n| **Start** | Section 4.1 Introduction | Document begins normally |\n| **...**"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-compute/NsightCompute/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_tuPjsq0u2TLlT5RUB37S6861.result",
+      "evidence": {
+        "event_id": "call_00_tuPjsq0u2TLlT5RUB37S6861.result",
+        "quote": "# Analysis of CUDA Best Practices Guide Content\n\n## Summary\n\nThe provided content is a **truncated extraction** of the NVIDIA CUDA C++ Best Practices Guide (v13.4). It covers memory optimizations extensively but **the content is cut off mid-sentence** in Section 10.2.3.2 (Shared Memory in Matrix Multiplication), ending at `cudaMemcpyHostGetDevicePointer` context — specifically after a code block.\n\n**Critical finding regarding the user's request:** The three primary topics requested — **occupancy**, **memory coalescing details beyond what's shown**, and **shared memory bank conflicts (padding, broadcast, 32 banks)** — are only *partially* present or entirely *absent* in this excerpt:\n\n| Reque"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_bfeTRzbcqUQUb9EVKr0S9706.result",
+      "evidence": {
+        "event_id": "call_00_bfeTRzbcqUQUb9EVKr0S9706.result",
+        "quote": "**标题**: CUDA Runtime API :: CUDA Toolkit Documentation\n\n## 6.9. Occupancy\n\n## 6.9. Occupancy\nThis section describes the occupancy calculation functions of the CUDA runtime application programming interface.\n\nBesides the occupancy calculator functions (cudaOccupancyMaxActiveBlocksPerMultiprocessor and cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags), there are also C++ only occupancy-based launch configuration functions documented in C++ API Routines module.\n\n## 6.9. Occupancy\nSee cudaOccupancyMaxPotentialBlockSize ( C++ API), cudaOccupancyMaxPotentialBlockSize ( C++ API), cudaOccupancyMaxPotentialBlockSizeVariableSMem ( C++ API), cudaOccupancyMaxPotentialBlockSizeVariableSMem ( C++ AP"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__OCCUPANCY.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_JRJy4U39mamjnDVBZh108824.result",
+      "evidence": {
+        "event_id": "call_00_JRJy4U39mamjnDVBZh108824.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "9e0f9c20364f1abe0f383074adabb402b0dc9846806eaf836c41ffa5eb4416ca",
+  "question": "我的 kernel occupancy 低、访存受限，怎么用 Nsight Compute 分析并优化（memory coalescing / shared memory / occupancy calculator / bank conflict）？",
+  "run_id": "U-cuda-deepseek-v4_1-flash-standard-20260921T113542",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "# Search Results for \"Nsight Compute occupancy memory coalescing bank conflict shared memory analysis\"\n\n## 1. [手撕深度学习之CUDA矩阵乘法（中篇）：Nsight Compute ...](https://www.cnblogs.com/qzero233/p/19222513)\n\n2025年11月14日 · 本文主要记录了使用Nsight Compute排查CUDA矩阵乘法性能瓶颈的过程。 本文首先简单介绍了Nsight Compute这 …\n\n**URL:** https://www.cnblogs.com/qzero233/p/19222513\n\n---\n\n## 2. [用Nsight Compute实测CUDA共享内存：手把手教你定位和 ...](https://wenku.csdn.net/column/ax46x2ni2r9)\n\n2026年4月16日 · Bank Conflict（存储体冲突）可能是罪魁祸首之一。 本文将带你使用Nsight Compute这一专业工具，像侦探一样一步 …\n\n**URL:** https://wenku.csdn.net/column/ax46x2ni2r9\n\n---\n\n## 3. [【infra之路】CUDA Kernel 性能分析实战：用 Nsight Compute ...](https://jishuzhan.net/article/2071144000970649602)\n\n2026年6月28日 · 本文是 AI "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "## 1. [手撕深度学习之CUDA矩阵乘法（中篇）：Nsight Compute ...](https://www.cnblogs.com/qzero233/p/19222513)\n\n2025年11月14日 · 本文主要记录了使用Nsight Compute排查CUDA矩阵乘法性能瓶颈的过程。 本文首先简单介绍了Nsight Compute这 …\n\n**URL:** https://www.cnblogs.com/qzero233/p/19222513\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.cnblogs.com/qzero233/p/19222513"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "## 2. [用Nsight Compute实测CUDA共享内存：手把手教你定位和 ...](https://wenku.csdn.net/column/ax46x2ni2r9)\n\n2026年4月16日 · Bank Conflict（存储体冲突）可能是罪魁祸首之一。 本文将带你使用Nsight Compute这一专业工具，像侦探一样一步 …\n\n**URL:** https://wenku.csdn.net/column/ax46x2ni2r9\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://wenku.csdn.net/column/ax46x2ni2r9"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "## 3. [【infra之路】CUDA Kernel 性能分析实战：用 Nsight Compute ...](https://jishuzhan.net/article/2071144000970649602)\n\n2026年6月28日 · 本文是 AI Infra 学习系列的第四篇，聚焦 CUDA kernel 性能分析。 我们从零实现了三个矩阵乘法版本（Naive → …\n\n**URL:** https://jishuzhan.net/article/2071144000970649602\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://jishuzhan.net/article/2071144000970649602"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "## 4. [[nsight compute使用指南] 查看存储体冲突-CSDN博客](https://blog.csdn.net/fumingxiaoshen/article/details/141257748)\n\n2026年8月12日 · 作为cuda初学者，深知\"工欲善其事必先利其器\"，奈何nsight compute如此庞杂，眼睛看花了的同时，心灵也受到了 …\n\n**URL:** https://blog.csdn.net/fumingxiaoshen/article/details/141257748\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/fumingxiaoshen/article/details/141257748"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+      "evidence": {
+        "event_id": "call_00_chMl2GWcGr65J9VpJSkZ4644.result",
+        "quote": "## 5. [cuda学习日记 (6) nsight system / nsight compute - 知乎](https://zhuanlan.zhihu.com/p/640344249)\n\n2024年5月1日 · 本章将学习Nsight System和Nsight Compute相关内容，并利用分析工具对cuda程序进行初步性能进行分析；核 …\n\n**URL:** https://zhuanlan.zhihu.com/p/640344249\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/640344249"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "# Search Results for \"site:docs.nvidia.com Nsight Compute kernprof Profiling Guide Memory Workload Analysis\"\n\n## 1. [2. Profiling Guide — NsightCompute - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html)\n\n2026年8月27日 · This guide describes various profiling topics related to NVIDIA Nsight Compute and NVIDIA Nsight Compute CLI. …\n\n**URL:** https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html\n\n---\n\n## 2. [Nsight Compute CLI (ncu) 实战 | AI Fundamentals](https://forceinjection.github.io/02_gpu_programming/04_profiling/06_nsight_compute_cli.html)\n\n2026年9月7日 · 4.2 深入 Memory → --set detailed 在 basic 基础上增加了 Memory Workload Analysis（含 chart 和 tables"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "## 1. [2. Profiling Guide — NsightCompute - NVIDIA Documentation Hub](https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html)\n\n2026年8月27日 · This guide describes various profiling topics related to NVIDIA Nsight Compute and NVIDIA Nsight Compute CLI. …\n\n**URL:** https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "## 2. [Nsight Compute CLI (ncu) 实战 | AI Fundamentals](https://forceinjection.github.io/02_gpu_programming/04_profiling/06_nsight_compute_cli.html)\n\n2026年9月7日 · 4.2 深入 Memory → --set detailed 在 basic 基础上增加了 Memory Workload Analysis（含 chart 和 tables）、Source …\n\n**URL:** https://forceinjection.github.io/02_gpu_programming/04_profiling/06_nsight_compute_cli.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://forceinjection.github.io/02_gpu_programming/04_profiling/06_nsight_compute_cli.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "## 3. [NVIDIA Kernel级性能分析工具Nsight Compute入门 …](https://www.cnblogs.com/zhaoweiwei/p/19058528/NsightCompute)\n\n2025年9月3日 · NVIDIA Kernel级性能分析工具Nsight Compute入门详解 本文较为全面的说明了Nsight …\n\n**URL:** https://www.cnblogs.com/zhaoweiwei/p/19058528/NsightCompute\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://www.cnblogs.com/zhaoweiwei/p/19058528/NsightCompute"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "## 4. [【infra之路】CUDA Kernel 性能分析实战：用 Nsight Compute ...](https://jishuzhan.net/article/2071144000970649602)\n\n2026年6月28日 · 本文是 AI Infra 学习系列的第四篇，聚焦 CUDA kernel 性能分析。 我们从零实现了三个矩阵乘法版本（Naive → …\n\n**URL:** https://jishuzhan.net/article/2071144000970649602\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://jishuzhan.net/article/2071144000970649602"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+      "evidence": {
+        "event_id": "call_00_4PUvYa8L7r6mDB7XWFdO5363.result",
+        "quote": "## 5. [AI-Learning/02_gpu_programming/04_profiling/06_nsight ...](https://github.com/linxid/AI-Learning/blob/main/02_gpu_programming/04_profiling/06_nsight_compute_cli.md)\n\n2026年1月1日 · 4.2 深入 Memory → --set detailed 在 basic 基础上增加了 Memory Workload Analysis（含 chart 和 tables）、Source …\n\n**URL:** https://github.com/linxid/AI-Learning/blob/main/02_gpu_programming/04_profiling/06_nsight_compute_cli.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://github.com/linxid/AI-Learning/blob/main/02_gpu_programming/04_profiling/06_nsight_compute_cli.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QhO2JT1ZoPg7Tr9tythz7530.result",
+      "evidence": {
+        "event_id": "call_00_QhO2JT1ZoPg7Tr9tythz7530.result",
+        "quote": "# Nsight Compute Profiling Guide — Extraction Report\n\n## Summary\n\nI extracted all content from the provided page relevant to your three topics: **(1) Occupancy analysis**, **(2) Memory Workload Analysis (global coalescing/sectors, shared memory bank conflicts)**, and **(3) corresponding ncu commands/sections/metrics**.\n\n**Important finding on completeness:** The provided content is **truncated**. The Metrics Reference chapter (Section 2.4) cuts off after **2.4.2 Launch Metrics** (\"[content truncated]\"). This means detailed memory-metric tables and much of the Metrics Reference — where some of your requested exact metrics would normally live — are **not present** in the material given.\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pWXMuk9hiIWoV4MJSJmi7421.result",
+      "evidence": {
+        "event_id": "call_00_pWXMuk9hiIWoV4MJSJmi7421.result",
+        "quote": "# Nsight Compute CLI (ncu) — Command-Line Reference Extraction\n\n## Summary\n\nThe page is the **full Nsight Compute CLI User Guide** (chapter 5). It contains a dedicated **Command Line Options** section (§5.4) with all requested options. Content covers §5.1 through §5.6 plus legal notices. The page does **not** appear truncated — it ends with the Nvprof Transition Guide pointer and the complete NVIDIA Notices/Trademarks boilerplate.\n\n**Where the reference content lives:**\n- Starts: §5.4 \"Command Line Options\" and its subsections §5.4.1–§5.4.11\n- Ends: §5.4.11 (MPS), followed by §5.5 Environment Variables and §5.6 Nvprof Transition Guide, then Notices.\n\n---\n\n## Requested Options — Exact Syntax,"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_9u4Zh5D3hh3l3Kfh9jLa6587.result",
+      "evidence": {
+        "event_id": "call_00_9u4Zh5D3hh3l3Kfh9jLa6587.result",
+        "quote": "# Analysis: Nsight Compute UI — Details Page (Occupancy & Memory Workload Analysis)\n\n## Summary of Findings\n\n**The requested content is NOT present in the provided web content.**\n\nThe provided page (titled \"4. Nsight Compute — NsightCompute\") is the **top-level index/overview page** of the Nsight Compute User Guide. It ends at **Section 4.7.2 (Report Pages → Summary Page)** and is explicitly **cut off mid-content** at the Summary Page subsection. It does not reach the Details page or its individual sections.\n\n---\n\n## 1. Where the Content Starts and Ends\n\n| Location | Section | Notes |\n|----------|---------|-------|\n| **Start** | Section 4.1 Introduction | Document begins normally |\n| **...**"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/nsight-compute/NsightCompute/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_tuPjsq0u2TLlT5RUB37S6861.result",
+      "evidence": {
+        "event_id": "call_00_tuPjsq0u2TLlT5RUB37S6861.result",
+        "quote": "# Analysis of CUDA Best Practices Guide Content\n\n## Summary\n\nThe provided content is a **truncated extraction** of the NVIDIA CUDA C++ Best Practices Guide (v13.4). It covers memory optimizations extensively but **the content is cut off mid-sentence** in Section 10.2.3.2 (Shared Memory in Matrix Multiplication), ending at `cudaMemcpyHostGetDevicePointer` context — specifically after a code block.\n\n**Critical finding regarding the user's request:** The three primary topics requested — **occupancy**, **memory coalescing details beyond what's shown**, and **shared memory bank conflicts (padding, broadcast, 32 banks)** — are only *partially* present or entirely *absent* in this excerpt:\n\n| Reque"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_bfeTRzbcqUQUb9EVKr0S9706.result",
+      "evidence": {
+        "event_id": "call_00_bfeTRzbcqUQUb9EVKr0S9706.result",
+        "quote": "**标题**: CUDA Runtime API :: CUDA Toolkit Documentation\n\n## 6.9. Occupancy\n\n## 6.9. Occupancy\nThis section describes the occupancy calculation functions of the CUDA runtime application programming interface.\n\nBesides the occupancy calculator functions (cudaOccupancyMaxActiveBlocksPerMultiprocessor and cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags), there are also C++ only occupancy-based launch configuration functions documented in C++ API Routines module.\n\n## 6.9. Occupancy\nSee cudaOccupancyMaxPotentialBlockSize ( C++ API), cudaOccupancyMaxPotentialBlockSize ( C++ API), cudaOccupancyMaxPotentialBlockSizeVariableSMem ( C++ API), cudaOccupancyMaxPotentialBlockSizeVariableSMem ( C++ AP"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__OCCUPANCY.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_JRJy4U39mamjnDVBZh108824.result",
+      "evidence": {
+        "event_id": "call_00_JRJy4U39mamjnDVBZh108824.result",
+        "quote": "**标题**: CUDA Programming Guide — CUDA Programming Guide\n\nBack to top\n\n# CUDA Programming Guide[#](https://docs.nvidia.com/cuda/cuda-programming-guide/index.html#cuda-programming-guide \"Link to this heading\")\n\n**CUDA and the CUDA Programming Guide**\n\nCUDA is a parallel computing platform and programming model developed by NVIDIA that enables dramatic increases in computing performance by harnessing the power of the GPU. It allows developers to accelerate compute-intensive applications and is widely used in fields such as deep learning, scientific computing, and high-performance computing (HPC).\n\nThis CUDA Programming Guide is the official, comprehensive resource on the CUDA programming model "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

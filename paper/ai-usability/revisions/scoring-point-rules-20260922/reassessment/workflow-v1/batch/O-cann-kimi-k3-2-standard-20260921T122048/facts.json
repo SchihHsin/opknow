@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_7dde33f6.result",
+      "evidence": {
+        "event_id": "WebFetch_1_7dde33f6.result",
+        "quote": "**标题**: 适配开发及调用（AscendC）-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU26.0.0开发文档-昇腾社区\n\n# 适配开发及调用（AscendC）\n\n基于C++ extensions方式，通过torch_npu框架调用AscendC自定义算子的完整适配开发流程。本样例展示了如何将AscendC算子集成到PyTorch生态中，实现高效的NPU加速计算。\n\n## 算子适配开发\n\n### 前提条件\n\n在开始之前，请确保您已完成以下环境的安装。\n\n1. 请参考《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/canncommercial/900/softwareinst/instg/instg_0000.html?OS=openEuler&InstallType=netyum)》（商用版）或《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/softwareinst/instg/instg_0000.html?OS=openEuler&InstallType=netyum)》（社区版），安装NPU驱动固件和CANN软件（Toolkit、ops和NNAL）。\n2. 请参考《[Ascend Extension for PyTorch 软件安装指南](https://www.hiascend.com/document/deta"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/Frameworkfeatures/examples/cpp_extension_asc/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_24abc37b.result",
+      "evidence": {
+        "event_id": "WebFetch_4_24abc37b.result",
+        "quote": "**标题**: 简介-单算子API执行相关接口-Host API-Ascend C算子开发接口-API-CANN8.2.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_084ffe9a.result",
+      "evidence": {
+        "event_id": "WebFetch_5_084ffe9a.result",
+        "quote": "**标题**: 简介-单算子API执行相关接口-Host API-Ascend C算子开发接口-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_c7792456.result",
+      "evidence": {
+        "event_id": "WebFetch_6_c7792456.result",
+        "quote": "**标题**: 什么是Ascend C-入门教程-Ascend C算子开发-编程指南-CANN商用版9.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html)\n\n# 什么是Ascend C\n\nAscend C是CANN针对算子开发场景推出的编程语言，原生支持C和C++标准规范，兼具开发效率和运行性能。基于Ascend C编写的算子程序，通过编译器编译和运行时调度，运行在昇腾AI处理器上。使用Ascend C，开发者可以基于昇腾AI硬件，高效的实现自定义的创新算法。您可以通过[Ascend C主页](https://www.hiascend.com/zh/ascend-c)了解更详细的内容。\n\nAscend C提供多层级API，满足多维场景算子开发诉求。\n\n- **语言扩展层 C API**：开放芯片完备编程能力，支持数组分配内存，一般基于指针编程，提供与业界一致的C语言编程体验。\n- **基础API**：基于Tensor进行编程的C++类库API，实现单指令级抽象，为底层算子开发提供灵活控制能力。\n- **高阶API"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/900/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_2f1f3203.result",
+      "evidence": {
+        "event_id": "WebFetch_8_2f1f3203.result",
+        "quote": "**标题**: 单算子API执行相关接口列表-单算子API执行相关接口-Host API-Ascend C算子开发接口-API-CANN8.3.RCX开发文档-昇腾社区\n\n\n\n# 单算子API执行相关接口列表\n\n#### 整体说明\n\n无论是基于Ascend C自定义的算子还是CANN提供的内置算子，均可通过**aclnn前缀API**（简称aclnn接口）形式调用算子，这种方式称为“**单算子API执行**”。该方法简单且灵活，更便于用户进行AI业务开发与应用。\n\n- **aclnn前缀API**：简称aclnn接口，属于Level2层接口，本质是一类C语言API，调用算子时无需提供IR（Intermediate Representation）定义。\n- **内置算子**：CANN提供了一系列深度优化、硬件亲和的高性能算子库，用户可直接使用，无需自定义，详细介绍请参考《算子库接口参考》。\n- **单算子API执行**：是一种单算子调用方式，调用流程和使用介绍请参考“单算子调用流程”。\n\n为实现API形式直调算子，本章提供了aclnn接口依赖的底层框架接口和基础核函数接口（即Level0层接口），详细阐述了接口的原型、功能、参数说明、约束与限制、调用示例等，指导开发者快速掌握接口含义和使用方法。\n\n- **框架能力接口**：提供实现aclnn接口相关的基础能力接口，比如算子执行器（opExecutor）处理、数据类型/格式/shape等操作，具体如表1所示；此外还包括常用类和宏，具体参见表2、表3。\n- **基础张量操作接口**：提供实现aclnn接口的基础张量操作接口，比如Te"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_f41578ea.result",
+      "evidence": {
+        "event_id": "WebFetch_9_f41578ea.result",
+        "quote": "# Ascend C 算子接入 torch_npu 完整指南（正文提取）\n\n**内容概要**：本文是 `ascend-opplugin` skill 的完整说明文档，聚焦 Ascend C 算子（`op_host`/`op_kernel`、tiling、CANN 构建链）实现完成后，如何接入 `torch_npu` 并在 PyTorch 中可用。核心主线为 **Plan A（优先在算子工程内接入）/ Plan B（基于 op-plugin）** 两条路径，以及 **Pattern A/B/C** 三种接入模式。以下按原文结构完整提取。\n\n---\n\n## 一、接入方式总览：4 类路线对比\n\n| 路线 | 定位 | 适用场景 |\n|------|------|----------|\n| **`torch.library` / `TORCH_LIBRARY[_IMPL]`** | 正式接入 PyTorch 算子系统的**主路线** | 需要 schema、`torch.ops.*` 调用、长期维护的正式算子接入，默认都走这条 |\n| **`Pybind`** | 快速暴露 C++ 函数给 Python 联调 | **不是完整算子注册路线**，不适合作为正式接入默认方案；仅作快速验证的辅助路线（详见 `references/pybind.md`） |\n| **`op-plugin` / `OpCommand`** | 补一层 PyTorch host wrapper | 底层图算子（CANN/`xpu_kernel`）已存在，只需补 Host 封装 |\n| **图模式 / 入图路线（如"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "c549123a059009b6ee0f4375849069ea82129a6b869336414f2d613df1a84f6e",
+  "question": "我用 Ascend C 写了算子，怎么注册成 aclnn 接口并集成进 torch_npu / PyTorch 让框架能调？",
+  "run_id": "O-cann-kimi-k3-2-standard-20260921T122048",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "# Search Results for \"Ascend C 自定义算子 注册 aclnn 接口 torch_npu PyTorch 集成 官方文档\"\n\n## 1. [在PyTorch中集成与调用自定义Ascend C融合算子_pytorch ...](https://blog.csdn.net/seven_1243096140/article/details/155852655)\n\n2026年7月12日 · 本文探讨了在PyTorch框架中高效集成AscendC自定义算子的关键技术。 通过CANN注册机制、张量适配和梯度传播 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155852655\n\n---\n\n## 2. [深入浅出 Ascend C：新一代算子开发接口 Aclnn 原理解析 ...](https://blog.csdn.net/sinat_41617212/article/details/154621323)\n\n2025年11月11日 · 本文将以CANN训练营学习的算子开发课程为蓝图，全方位深度解析华为昇腾（Ascend）AI 处理器上新一代算子开 …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154621323\n\n---\n\n## 3. [适配开发及调用（AscendC）-基于C++ extensions算子适配 ...](https://www.hiascend.com/document/de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "## 1. [在PyTorch中集成与调用自定义Ascend C融合算子_pytorch ...](https://blog.csdn.net/seven_1243096140/article/details/155852655)\n\n2026年7月12日 · 本文探讨了在PyTorch框架中高效集成AscendC自定义算子的关键技术。 通过CANN注册机制、张量适配和梯度传播 …\n\n**URL:** https://blog.csdn.net/seven_1243096140/article/details/155852655\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/seven_1243096140/article/details/155852655"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "## 2. [深入浅出 Ascend C：新一代算子开发接口 Aclnn 原理解析 ...](https://blog.csdn.net/sinat_41617212/article/details/154621323)\n\n2025年11月11日 · 本文将以CANN训练营学习的算子开发课程为蓝图，全方位深度解析华为昇腾（Ascend）AI 处理器上新一代算子开 …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154621323\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/sinat_41617212/article/details/154621323"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "## 3. [适配开发及调用（AscendC）-基于C++ extensions算子适配 ...](https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/Frameworkfeatures/examples/cpp_extension_asc/README.md)\n\n# 适配开发及调用（AscendC） 基于C++ extensions方式，通过torch_npu框架调用AscendC自定义算子的完整适配开发流程。本样例 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/Frameworkfeatures/examples/cpp_extension_asc/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/Frameworkfeatures/examples/cpp_extension_asc/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "## 4. [Ascend C算子接入torch_npu指南：自定义NPU算子PyTorch ...](https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin)\n\n详解Ascend C算子接入torch_npu的完整流程，包括Host注册、编译打包、安装验证。 对比torch.library、Pybind、OpCommand、图 …\n\n**URL:** https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_f3314b7f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_f3314b7f.result",
+        "quote": "## 5. [珠联璧合：PyTorch与Ascend C自定义算子的深度融合工程](https://hwcomputing.csdn.net/69424346bf6b0e4b285c2081.html)\n\n2025年12月17日 · 本文将系统解析在PyTorch模型中无缝集成自定义Ascend C算子的完整技术栈。 文章从 框架融合的本质 切入，揭 …\n\n**URL:** https://hwcomputing.csdn.net/69424346bf6b0e4b285c2081.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://hwcomputing.csdn.net/69424346bf6b0e4b285c2081.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_7dde33f6.result",
+      "evidence": {
+        "event_id": "WebFetch_1_7dde33f6.result",
+        "quote": "**标题**: 适配开发及调用（AscendC）-基于C++ extensions算子适配开发-自定义算子适配开发-PyTorch框架特性指南-模型开发-TorchNPU26.0.0开发文档-昇腾社区\n\n# 适配开发及调用（AscendC）\n\n基于C++ extensions方式，通过torch_npu框架调用AscendC自定义算子的完整适配开发流程。本样例展示了如何将AscendC算子集成到PyTorch生态中，实现高效的NPU加速计算。\n\n## 算子适配开发\n\n### 前提条件\n\n在开始之前，请确保您已完成以下环境的安装。\n\n1. 请参考《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/canncommercial/900/softwareinst/instg/instg_0000.html?OS=openEuler&InstallType=netyum)》（商用版）或《[CANN 软件安装](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/softwareinst/instg/instg_0000.html?OS=openEuler&InstallType=netyum)》（社区版），安装NPU驱动固件和CANN软件（Toolkit、ops和NNAL）。\n2. 请参考《[Ascend Extension for PyTorch 软件安装指南](https://www.hiascend.com/document/deta"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/2600/ptmoddevg/Frameworkfeatures/examples/cpp_extension_asc/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "# Search Results for \"CANN 自定义算子 aclnn 接口 封装 aclnnXxxGetWorkspaceSize 官方文档 昇腾\"\n\n## 1. [使用 Aclnn 接口实现你的第一个自定义算子（以逐元素加法为 ...](https://cann.csdn.net/69ef0b380a2f6a37c5a6546a.html)\n\n2025年12月5日 · 本文将基于图片中展示的 Aclnn接口调用流程，完整实现一个 逐元素加法算子（Element-wise Addition）。 核心价值 …\n\n**URL:** https://cann.csdn.net/69ef0b380a2f6a37c5a6546a.html\n\n---\n\n## 2. [昇腾CANN实战指南：从ACL接口到自定义算子开发的完整 ...](https://blog.csdn.net/herb5/article/details/155683264)\n\n2026年4月18日 · 本文详细介绍了昇腾CANN开发的全流程，从ACL接口使用到自定义算子开发，涵盖环境搭建、基础配置、性能优化 …\n\n**URL:** https://blog.csdn.net/herb5/article/details/155683264\n\n---\n\n## 3. [深入实践 CANN：从 ACL 接口到自定义算子开发，全面释放 ...](https://blog.csdn.net/devops8pract/article/details/155959880)\n\n2026年4月18日 · 本文深入探讨华为CANN开发实"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "## 1. [使用 Aclnn 接口实现你的第一个自定义算子（以逐元素加法为 ...](https://cann.csdn.net/69ef0b380a2f6a37c5a6546a.html)\n\n2025年12月5日 · 本文将基于图片中展示的 Aclnn接口调用流程，完整实现一个 逐元素加法算子（Element-wise Addition）。 核心价值 …\n\n**URL:** https://cann.csdn.net/69ef0b380a2f6a37c5a6546a.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://cann.csdn.net/69ef0b380a2f6a37c5a6546a.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "## 2. [昇腾CANN实战指南：从ACL接口到自定义算子开发的完整 ...](https://blog.csdn.net/herb5/article/details/155683264)\n\n2026年4月18日 · 本文详细介绍了昇腾CANN开发的全流程，从ACL接口使用到自定义算子开发，涵盖环境搭建、基础配置、性能优化 …\n\n**URL:** https://blog.csdn.net/herb5/article/details/155683264\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://blog.csdn.net/herb5/article/details/155683264"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "## 3. [深入实践 CANN：从 ACL 接口到自定义算子开发，全面释放 ...](https://blog.csdn.net/devops8pract/article/details/155959880)\n\n2026年4月18日 · 本文深入探讨华为CANN开发实践，从ACL接口基础到自定义算子开发，全面解析昇腾AI算力释放技巧。涵盖环境搭 …\n\n**URL:** https://blog.csdn.net/devops8pract/article/details/155959880\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://blog.csdn.net/devops8pract/article/details/155959880"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "## 4. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 华为昇腾CANN文档聚合页，涵盖开发指南、API参考、部署教程、故障排查及主流框架适配说明等，助力开发者快速 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://www.hiascend.com/cann/document"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_6daa76b3.result",
+      "evidence": {
+        "event_id": "WebSearch_2_6daa76b3.result",
+        "quote": "## 5. [CANN aclnn 深度解析：NPU 算子调用的极简接口层](https://devpress.csdn.net/v1/article/detail/155396619)\n\n2025年11月30日 · 摘要：CANN生态中的aclnn接口层通过\"接口封装-自动适配-高效转发\"三层架构，为NPU算子调用提供极简封装方案 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/155396619\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/155396619"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "# Search Results for \"hiascend CANN 自定义算子 \"aclnn\" 单算子API执行 调用 自定义算子工程 文档\"\n\n## 1. [简介-CANN8.1.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html)\n\n整体说明 无论是基于Ascend C自定义的算子还是CANN内置算子，通常会以aclnn前缀API（简称aclnn接口）实现算子调用，换言之用 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n## 2. [【2023CANN训练营第二季】——Ascend C算子调用及实验演示](https://blog.csdn.net/qq_45257495/article/details/134708796)\n\n自定义算子调用方式调用方式样例演示单算子API执行，Aclnn调用方式要进行单算子API执行，首先需要做一些前置工作：\n参考基于msopgen工具创建算子工程完成算子工程的创建，参考kernel侧算子实现完成kernel侧实现的相关准备，参考host侧算子实现完成"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "## 1. [简介-CANN8.1.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html)\n\n整体说明 无论是基于Ascend C自定义的算子还是CANN内置算子，通常会以aclnn前缀API（简称aclnn接口）实现算子调用，换言之用 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "## 2. [【2023CANN训练营第二季】——Ascend C算子调用及实验演示](https://blog.csdn.net/qq_45257495/article/details/134708796)\n\n自定义算子调用方式调用方式样例演示单算子API执行，Aclnn调用方式要进行单算子API执行，首先需要做一些前置工作：\n参考基于msopgen工具创建算子工程完成算子工程的创建，参考kernel侧算子实现完成kernel侧实现的相关准备，参考host侧算子实现完成host侧实现相关准备。参考算子编译部署完成算子的编译部署。\n然后检查API执行需要的头文件和库文件是否自动生成， …在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/qq_45257495/article/details/134708796\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://blog.csdn.net/qq_45257495/article/details/134708796"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "## 3. [简介-单算子API执行相关接口-Host API-Ascend C算子开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html)\n\n本章主要介绍Host侧实现aclnn API依赖的基础接口，包括aclnn框架能力接口（如常用宏、类等）和基础核函数接口（即Level0层接 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "## 4. [昇腾Ascend C单算子API调用指南 - 在Python中直接调用 ...](https://cann.csdn.net/69ef0b580a2f6a37c5a6548c.html)\n\n2025年12月6日 · 本文直击昇腾AI开发者最实际的需求：当你手搓了一个高性能Ascend C算子后，如何在Python中像调用一样轻松地 …\n\n**URL:** https://cann.csdn.net/69ef0b580a2f6a37c5a6548c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://cann.csdn.net/69ef0b580a2f6a37c5a6548c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_e3e54fa5.result",
+      "evidence": {
+        "event_id": "WebSearch_3_e3e54fa5.result",
+        "quote": "## 5. [【2023CANN训练营第二季】——Ascend C算子调用及实验演示](https://zhuanlan.zhihu.com/p/669628280)\n\n2023年11月30日 · 完成自定义算子的开发部署后，可以通过 单算子 调用的方式来验证单算子的功能。 单算子调用有API执行和模型执 …\n\n**URL:** https://zhuanlan.zhihu.com/p/669628280\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/669628280"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_24abc37b.result",
+      "evidence": {
+        "event_id": "WebFetch_4_24abc37b.result",
+        "quote": "**标题**: 简介-单算子API执行相关接口-Host API-Ascend C算子开发接口-API-CANN8.2.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_084ffe9a.result",
+      "evidence": {
+        "event_id": "WebFetch_5_084ffe9a.result",
+        "quote": "**标题**: 简介-单算子API执行相关接口-Host API-Ascend C算子开发接口-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/apiref/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_c7792456.result",
+      "evidence": {
+        "event_id": "WebFetch_6_c7792456.result",
+        "quote": "**标题**: 什么是Ascend C-入门教程-Ascend C算子开发-编程指南-CANN商用版9.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html)\n\n# 什么是Ascend C\n\nAscend C是CANN针对算子开发场景推出的编程语言，原生支持C和C++标准规范，兼具开发效率和运行性能。基于Ascend C编写的算子程序，通过编译器编译和运行时调度，运行在昇腾AI处理器上。使用Ascend C，开发者可以基于昇腾AI硬件，高效的实现自定义的创新算法。您可以通过[Ascend C主页](https://www.hiascend.com/zh/ascend-c)了解更详细的内容。\n\nAscend C提供多层级API，满足多维场景算子开发诉求。\n\n- **语言扩展层 C API**：开放芯片完备编程能力，支持数组分配内存，一般基于指针编程，提供与业界一致的C语言编程体验。\n- **基础API**：基于Tensor进行编程的C++类库API，实现单指令级抽象，为底层算子开发提供灵活控制能力。\n- **高阶API"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/900/programug/Ascendcopdevg/atlas_ascendc_map_10_0002.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "# Search Results for \"\"单算子API执行\" aclnn 自定义算子 hiascend.com document CANN 编程指南 调用流程\"\n\n## 1. [简介-单算子API执行相关接口-Host API-Ascend C算子开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html)\n\n本章主要介绍Host侧实现aclnn API依赖的基础接口，包括aclnn框架能力接口（如常用宏、类等）和基础核函数接口（即Level0层接 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n## 2. [单算子API执行相关接口列表-单算子API执行相关接口-Host ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html)\n\n单算子API执行相关接口列表 整体说明 无论是基于Ascend C自定义的算子还是CANN提供的内置算子，均可通过a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "## 1. [简介-单算子API执行相关接口-Host API-Ascend C算子开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html)\n\n本章主要介绍Host侧实现aclnn API依赖的基础接口，包括aclnn框架能力接口（如常用宏、类等）和基础核函数接口（即Level0层接 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/API/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "## 2. [单算子API执行相关接口列表-单算子API执行相关接口-Host ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html)\n\n单算子API执行相关接口列表 整体说明 无论是基于Ascend C自定义的算子还是CANN提供的内置算子，均可通过aclnn前缀API（简 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "## 3. [【2023CANN训练营第二季】——Ascend C算子调用及实验演示](https://blog.csdn.net/qq_45257495/article/details/134708796)\n\n自定义算子调用方式调用方式样例演示单算子API执行，Aclnn调用方式要进行单算子API执行，首先需要做一些前置工作：\n参考基于msopgen工具创建算子工程完成算子工程的创建，参考kernel侧算子实现完成kernel侧实现的相关准备，参考host侧算子实现完成host侧实现相关准备。参考算子编译部署完成算子的编译部署。\n然后检查API执行需要的头文件和库文件是否自动生成， …在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/qq_45257495/article/details/134708796\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/qq_45257495/article/details/134708796"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "## 4. [深入浅出 Ascend C：新一代算子开发接口 Aclnn 原理解析 ...](https://blog.csdn.net/sinat_41617212/article/details/154621323)\n\n2025年11月11日 · Aclnn采用\"Pythonic+高性能\"设计理念，解决传统方案学习成本高、代码冗长等痛点，提供类似NumPy的编程体验。 …\n\n**URL:** https://blog.csdn.net/sinat_41617212/article/details/154621323\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://blog.csdn.net/sinat_41617212/article/details/154621323"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_bda70796.result",
+      "evidence": {
+        "event_id": "WebSearch_7_bda70796.result",
+        "quote": "## 5. [AscendC从入门到精通系列（五）调用基于工程开发 ...](https://cloud.tencent.com/developer/article/2473654)\n\n2024年12月4日 · 单算子 API 调用需先创建并编译部署自定义算子工程以生成相关文件。 然后在应用程序中按流程调用，包括初始化 …\n\n**URL:** https://cloud.tencent.com/developer/article/2473654\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://cloud.tencent.com/developer/article/2473654"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_2f1f3203.result",
+      "evidence": {
+        "event_id": "WebFetch_8_2f1f3203.result",
+        "quote": "**标题**: 单算子API执行相关接口列表-单算子API执行相关接口-Host API-Ascend C算子开发接口-API-CANN8.3.RCX开发文档-昇腾社区\n\n\n\n# 单算子API执行相关接口列表\n\n#### 整体说明\n\n无论是基于Ascend C自定义的算子还是CANN提供的内置算子，均可通过**aclnn前缀API**（简称aclnn接口）形式调用算子，这种方式称为“**单算子API执行**”。该方法简单且灵活，更便于用户进行AI业务开发与应用。\n\n- **aclnn前缀API**：简称aclnn接口，属于Level2层接口，本质是一类C语言API，调用算子时无需提供IR（Intermediate Representation）定义。\n- **内置算子**：CANN提供了一系列深度优化、硬件亲和的高性能算子库，用户可直接使用，无需自定义，详细介绍请参考《算子库接口参考》。\n- **单算子API执行**：是一种单算子调用方式，调用流程和使用介绍请参考“单算子调用流程”。\n\n为实现API形式直调算子，本章提供了aclnn接口依赖的底层框架接口和基础核函数接口（即Level0层接口），详细阐述了接口的原型、功能、参数说明、约束与限制、调用示例等，指导开发者快速掌握接口含义和使用方法。\n\n- **框架能力接口**：提供实现aclnn接口相关的基础能力接口，比如算子执行器（opExecutor）处理、数据类型/格式/shape等操作，具体如表1所示；此外还包括常用类和宏，具体参见表2、表3。\n- **基础张量操作接口**：提供实现aclnn接口的基础张量操作接口，比如Te"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1/API/ascendcopapi/atlasascendc_api_07_1042.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_f41578ea.result",
+      "evidence": {
+        "event_id": "WebFetch_9_f41578ea.result",
+        "quote": "# Ascend C 算子接入 torch_npu 完整指南（正文提取）\n\n**内容概要**：本文是 `ascend-opplugin` skill 的完整说明文档，聚焦 Ascend C 算子（`op_host`/`op_kernel`、tiling、CANN 构建链）实现完成后，如何接入 `torch_npu` 并在 PyTorch 中可用。核心主线为 **Plan A（优先在算子工程内接入）/ Plan B（基于 op-plugin）** 两条路径，以及 **Pattern A/B/C** 三种接入模式。以下按原文结构完整提取。\n\n---\n\n## 一、接入方式总览：4 类路线对比\n\n| 路线 | 定位 | 适用场景 |\n|------|------|----------|\n| **`torch.library` / `TORCH_LIBRARY[_IMPL]`** | 正式接入 PyTorch 算子系统的**主路线** | 需要 schema、`torch.ops.*` 调用、长期维护的正式算子接入，默认都走这条 |\n| **`Pybind`** | 快速暴露 C++ 函数给 Python 联调 | **不是完整算子注册路线**，不适合作为正式接入默认方案；仅作快速验证的辅助路线（详见 `references/pybind.md`） |\n| **`op-plugin` / `OpCommand`** | 补一层 PyTorch host wrapper | 底层图算子（CANN/`xpu_kernel`）已存在，只需补 Host 封装 |\n| **图模式 / 入图路线（如"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.skillsmd.top/skills/ascend-ai-coding/awesome-ascend-skills/ascend-opplugin"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

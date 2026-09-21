@@ -1,0 +1,382 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_4fa42d03ba524502ae516d94.result",
+      "evidence": {
+        "event_id": "call_4fa42d03ba524502ae516d94.result",
+        "quote": "# Triton Inference Server — Model Repository 文档完整提取\n\n## 内容概要\n\n本文档为 NVIDIA Triton Inference Server 的 **Model Repository（模型仓库）** 用户指南，涵盖：仓库目录布局、config.pbtxt 的角色说明、支持的存储位置（本地/GCS/S3/Azure）、模型版本子目录规则，以及各后端（TensorRT、ONNX、TorchScript、OpenVINO、Python、DALI）所需的模型文件与最小示例。\n\n> ⚠️ **关于请求中“config.pbtxt 必需与可选字段（尤其 TensorRT platform `tensorrt_plan` 的写法）”的说明**：本页面**不包含** config.pbtxt 的完整字段规范，也未出现 `platform: \"tensorrt_plan\"` 的写法——该内容位于文档链接指向的 [Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) 页面。本页面仅说明 config.pbtxt 的必要性规则及引用的相关属性（见下文第 3 节）。以下为页面上所有相关信息。\n\n---\n\n## 1. 总览（原文开头）\n\n> The Triton Inference Server serves models from on"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_438a631ea52640d6a615a6d6.result",
+      "evidence": {
+        "event_id": "call_438a631ea52640d6a615a6d6.result",
+        "quote": "# Triton Model Configuration 关键字段提取\n\n以下为 config.pbtxt 中所请求字段的完整内容与示例，代码块均保留原文。\n\n---\n\n## 1. platform / backend 字段（含 tensorrt_plan 写法）\n\n**来源章节：Name, Platform and Backend / Auto-Generated Model Configuration**\n\n- `name` 属性是可选的。若未在配置中指定模型名称，则默认与模型仓库中包含该模型的目录名相同。若指定了 `name`，则必须与模型仓库目录名一致。\n- `platform` 和 `backend` 的必需取值参见后端文档。Triton 的 TensorRT 平台标识为 **`\"tensorrt_plan\"`**。\n- 对自定义后端：**\"For custom backends, your config.pbtxt file must include a `backend` field or your model name must be in the form `<model_name>.<backend_name>`.\"**\n\n**tensorrt_plan 最小配置示例（Minimal Model Configuration）：**\n\n```\n  platform: \"tensorrt_plan\"\n  max_batch_size: 8\n  input [\n    {\n      name: \"input0\"\n      data_type: TYPE_FP3"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_50defa28495b41dab4344fdd.result",
+      "evidence": {
+        "event_id": "call_50defa28495b41dab4344fdd.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_16f19cbf583f42068dd88ed2.result",
+      "evidence": {
+        "event_id": "call_16f19cbf583f42068dd88ed2.result",
+        "quote": "# trtexec 用法提取\n\n## 一、工具定位\n\n`trtexec` 是 TensorRT 的命令行封装工具，有两大用途：\n\n> - **基准测试网络** — 可用随机或用户提供的输入数据测试推理性能\n> - **生成序列化 engine** — \"If you generate a saved serialized engine file, you can pull it into another application that runs inference.\"\n\n---\n\n## 二、从 ONNX 构建 Engine 的命令\n\n### 1. 基本构建(静态形状)\n\n```\n./trtexec --onnx=model.onnx\n```\n\n### 2. 动态形状构建\n\n页面假设 ONNX 模型含一个名为 `input` 的动态输入，维度为 `[-1, 3, 244, 244]`。\n\n指定单一输入形状运行：\n\n```\n./trtexec --onnx=model.onnx --shapes=input:32x3x244x244\n```\n\n指定形状范围并按某一实际形状做基准测试：\n\n```\n./trtexec --onnx=model.onnx --minShapes=input:1x3x244x244 --optShapes=input:16x3x244x244 --maxShapes=input:32x3x244x244 --shapes=input:5x3x244x244\n```\n\n### 3. 精度标志\n\n**FP16(在 DLA 上运行)：**\n\n```\n./trt"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b5f4d595fbdc0bbc39ba8f9b1bf4fb2273c570e40417cd0e94f1e8d6791bb6ae",
+  "question": "怎么把模型部署成推理服务？用 Triton Inference Server / TensorRT，怎么配 model repository 和起服务？",
+  "run_id": "S-cuda-glm-5_3-standard-20260921T132027",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "# Search Results for \"Triton Inference Server model repository TensorRT plan config.pbtxt documentation\"\n\n## 1. [Model Repository — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)\n\n2026年9月1日 · Each of the sub-directories contains the repository information for the corresponding model. The config.pbtxt file …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html\n\n---\n\n## 2. [Model Repository — NVIDIA Triton Inference Server 2.0.0 documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_serv"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "## 1. [Model Repository — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)\n\n2026年9月1日 · Each of the sub-directories contains the repository information for the corresponding model. The config.pbtxt file …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "## 2. [Model Repository — NVIDIA Triton Inference Server 2.0.0 documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1140/user-guide/docs/model_repository.html)\n\n2025年10月30日 · As an alternative to creating a TensorRT/TensorFlow model offline it is possible to use model configuration …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1140/user-guide/docs/model_repository.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1140/user-guide/docs/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "## 3. [Rep-YOLO/deploy/triton-inference-server at master - GitHub](https://github.com/DrLSB/Rep-YOLO/tree/master/deploy/triton-inference-server)\n\nInstructions to deploy YOLOv7 as TensorRT engine to Triton Inference Server. Triton Inference Server takes care of model …\n\n**URL:** https://github.com/DrLSB/Rep-YOLO/tree/master/deploy/triton-inference-server\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://github.com/DrLSB/Rep-YOLO/tree/master/deploy/triton-inference-server"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "## 4. [Model Repository | triton-inference-server/server | DeepWiki](https://deepwiki.com/triton-inference-server/server/4.1-model-repository)\n\n2026年4月14日 · It defines the directory layout, file organization, version management, and storage backend configuration that …\n\n**URL:** https://deepwiki.com/triton-inference-server/server/4.1-model-repository\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://deepwiki.com/triton-inference-server/server/4.1-model-repository"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_84d8fe0c9cf6496dac268088.result",
+      "evidence": {
+        "event_id": "call_84d8fe0c9cf6496dac268088.result",
+        "quote": "## 5. [Triton server的部署、构建、backend插件机制整体介绍 ...](https://blog.csdn.net/u013171226/article/details/148792425)\n\n2025年6月20日 · Triton Inference Server is an open source inference serving software that streamlines AI inferencing. Triton enables …\n\n**URL:** https://blog.csdn.net/u013171226/article/details/148792425\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/u013171226/article/details/148792425"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4fa42d03ba524502ae516d94.result",
+      "evidence": {
+        "event_id": "call_4fa42d03ba524502ae516d94.result",
+        "quote": "# Triton Inference Server — Model Repository 文档完整提取\n\n## 内容概要\n\n本文档为 NVIDIA Triton Inference Server 的 **Model Repository（模型仓库）** 用户指南，涵盖：仓库目录布局、config.pbtxt 的角色说明、支持的存储位置（本地/GCS/S3/Azure）、模型版本子目录规则，以及各后端（TensorRT、ONNX、TorchScript、OpenVINO、Python、DALI）所需的模型文件与最小示例。\n\n> ⚠️ **关于请求中“config.pbtxt 必需与可选字段（尤其 TensorRT platform `tensorrt_plan` 的写法）”的说明**：本页面**不包含** config.pbtxt 的完整字段规范，也未出现 `platform: \"tensorrt_plan\"` 的写法——该内容位于文档链接指向的 [Model Configuration](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html) 页面。本页面仅说明 config.pbtxt 的必要性规则及引用的相关属性（见下文第 3 节）。以下为页面上所有相关信息。\n\n---\n\n## 1. 总览（原文开头）\n\n> The Triton Inference Server serves models from on"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_438a631ea52640d6a615a6d6.result",
+      "evidence": {
+        "event_id": "call_438a631ea52640d6a615a6d6.result",
+        "quote": "# Triton Model Configuration 关键字段提取\n\n以下为 config.pbtxt 中所请求字段的完整内容与示例，代码块均保留原文。\n\n---\n\n## 1. platform / backend 字段（含 tensorrt_plan 写法）\n\n**来源章节：Name, Platform and Backend / Auto-Generated Model Configuration**\n\n- `name` 属性是可选的。若未在配置中指定模型名称，则默认与模型仓库中包含该模型的目录名相同。若指定了 `name`，则必须与模型仓库目录名一致。\n- `platform` 和 `backend` 的必需取值参见后端文档。Triton 的 TensorRT 平台标识为 **`\"tensorrt_plan\"`**。\n- 对自定义后端：**\"For custom backends, your config.pbtxt file must include a `backend` field or your model name must be in the form `<model_name>.<backend_name>`.\"**\n\n**tensorrt_plan 最小配置示例（Minimal Model Configuration）：**\n\n```\n  platform: \"tensorrt_plan\"\n  max_batch_size: 8\n  input [\n    {\n      name: \"input0\"\n      data_type: TYPE_FP3"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_50defa28495b41dab4344fdd.result",
+      "evidence": {
+        "event_id": "call_50defa28495b41dab4344fdd.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "# Search Results for \"trtexec --onnx --saveEngine TensorRT documentation NVIDIA\"\n\n## 1. [NVIDIA TensorRT Documentation](https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html)\n\n2026年9月8日 · NVIDIA TensorRT Documentation # NVIDIA® TensorRT™ is an SDK for optimizing deep learning inference on …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html\n\n---\n\n## 2. [Optimizing and Profiling with TensorRT - NVIDIA Documentation …](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html)\n\n2026年8月4日 · Models exported from TAO can be directly optimized and profiled with TensorRT using the trtexec tool, which is a …\n\n**URL:** https://docs.nvidia.com/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "## 1. [NVIDIA TensorRT Documentation](https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html)\n\n2026年9月8日 · NVIDIA TensorRT Documentation # NVIDIA® TensorRT™ is an SDK for optimizing deep learning inference on …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "## 2. [Optimizing and Profiling with TensorRT - NVIDIA Documentation …](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html)\n\n2026年8月4日 · Models exported from TAO can be directly optimized and profiled with TensorRT using the trtexec tool, which is a …\n\n**URL:** https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "## 3. [从零开始 TensorRT（4）命令行工具篇：trtexec 基本功能 ...](https://blog.csdn.net/weixin_43605641/article/details/135866806)\n\n前言解析输出日志信息示例二：7项功能学习资料：TensorRT 源码示例B站视频：TensorRT 教程 | 基于 8.6.1 版本视频配套代码 cookbook在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/weixin_43605641/article/details/135866806\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/weixin_43605641/article/details/135866806"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "## 4. [TensorRT/samples/trtexec at main · NVIDIA/TensorRT · GitHub](https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec)\n\n2026年3月10日 · Benchmarking network - If you have a model saved as an ONNX file, you can use the trtexec tool to test the …\n\n**URL:** https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+      "evidence": {
+        "event_id": "call_ccd1745d5ef24d62a0c00310.result",
+        "quote": "## 5. [17. TensorRT 的命令行程序 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/)\n\n如果输入模型是 ONNX 格式，请使用 --minShapes 、 --optShapes 、 --maxShapes 标志来控制输入形状的范围，包括批量大小。 - …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_16f19cbf583f42068dd88ed2.result",
+      "evidence": {
+        "event_id": "call_16f19cbf583f42068dd88ed2.result",
+        "quote": "# trtexec 用法提取\n\n## 一、工具定位\n\n`trtexec` 是 TensorRT 的命令行封装工具，有两大用途：\n\n> - **基准测试网络** — 可用随机或用户提供的输入数据测试推理性能\n> - **生成序列化 engine** — \"If you generate a saved serialized engine file, you can pull it into another application that runs inference.\"\n\n---\n\n## 二、从 ONNX 构建 Engine 的命令\n\n### 1. 基本构建(静态形状)\n\n```\n./trtexec --onnx=model.onnx\n```\n\n### 2. 动态形状构建\n\n页面假设 ONNX 模型含一个名为 `input` 的动态输入，维度为 `[-1, 3, 244, 244]`。\n\n指定单一输入形状运行：\n\n```\n./trtexec --onnx=model.onnx --shapes=input:32x3x244x244\n```\n\n指定形状范围并按某一实际形状做基准测试：\n\n```\n./trtexec --onnx=model.onnx --minShapes=input:1x3x244x244 --optShapes=input:16x3x244x244 --maxShapes=input:32x3x244x244 --shapes=input:5x3x244x244\n```\n\n### 3. 精度标志\n\n**FP16(在 DLA 上运行)：**\n\n```\n./trt"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "# Search Results for \"Triton Inference Server latest release version 2026 TensorRT container NGC\"\n\n## 1. [Triton Inference Server Release 26.08](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-08.html)\n\nTriton Inference Server Release 26.08 NVIDIA Docs｡Release Notes (PDF) - Last updated August 31, 2026 Triton Inference Server Release 26.08 The Triton Inference Server container image is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container inclu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "## 1. [Triton Inference Server Release 26.08](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-08.html)\n\nTriton Inference Server Release 26.08 NVIDIA Docs｡Release Notes (PDF) - Last updated August 31, 2026 Triton Inference Server Release 26.08 The Triton Inference Server container image is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container includes, refer to Deep Learning Frameworks Support Matrix. The container also includes the following: Ubuntu 24.04 including Python 3.12 NVIDIA CUDA 13.3.4.1 NVIDIA cuBLAS 13.7 cuDNN 9.25.0. NVIDIA NCCL 2.30.7 TensorRT 11.2.1 OpenUCX 1.21.0 GDRCopy 2.5.1 NVIDIA HPC-X 2.50 OpenMPI 5.0.10 FIL NVIDIA DALI® 2.2.0 nvImageCodec 0.8.0 ONNX Runtime 1.28.0 Intel OpenVINO 2026.3.0 DCGM 4.6.1-1 vLLM version 0.27.1 Driver Requirements Release 26.08 is based on CUDA 13.4.1 which requires the NVIDIA Driver release. Please see CUDA Compatibility for more information. The CUDA driver's compatibility package only supports particular drivers. Thus, users should upgrade from all R418, R440, R450, R460, R510, R520, R530, R545 and R555 drivers, which are not forward-compatible with CUDA 12.6. For a complete list of supported drivers, see the CUDA Application Compatibility topic. For more information, see CUDA Compatibility and Upgrades. GPU Requirements Release 26.08 supports CUDA compute capability 7.5 and later. This corresponds to GPUs in the NVIDIA Turing™, NVIDIA Ampere architecture, NVIDIA Hopper™, NVIDIA Ada Lovelace, and NVIDIA Blackwell architecture families. For a list of GPUs to which this compute capability corresponds, see CUDA GPUs. For additional support details, see Deep Learning Frameworks Support Matrix. Key Features and Enhancements This Inference Server release includes the following key features and enhancements. Added a log callback option to the tritonserver C and Python APIs and to the common Logger, allowing an embedding application to route Triton log records into its own logging stack instead of a file or stream. Fixed dynamic-batcher starvation caused by waiting_consumer_countdrift, where the scheduler could stop dispatching work despite queued requests. Restored preserve_ordering semantics by reserving the completion-queue slot at enqueue time rather than at completion. Improved model-readiness reporting in TRITONSERVER_ServerModelIsReady — non-availability errors are now returned and unresolved models correctly report ready=false. Model loading now catches exceptions rather than propagating them out of the load path, and uses logic_error so both invalid_argument and out_of_range are handled uniformly. TensorRT backend: Fixed CUDA graph execution for non-batching models.. vLLM backend: Corrected JSON input parsing. OpenVINO backend: Enabled OpenVINO model generation on SBSA (aarch64). Client: Removed the upper bound on the grpcio package requirement, so client installations are no longer pinned to an outdated gRPC. Added experimental build presets, allowing a build to be driven from a file via --build-presets-file instead of a long command line. Default build parallelism is now capped by available memory, with matching caps for the ONNX Runtime and OpenVINO backend builds, preventing out-of-memory failures during container builds. Aligned protobuf and related dependencies with the gRPC 1.81.1 bump across the server, core, client, third-party and Model Analyzer components. Documentation: Added a RHEL / manylinux build tutorial. NVIDIA Triton Inference Server Container Versions The following table shows what versions of Ubuntu, CUDA, Triton Inference Server, and NVIDIA TensorRT™ are supported in each of the NVIDIA containers for Triton Inference Server. For older container versions, refer to the Frameworks Support Matrix.\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-08.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-08.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "## 2. [Triton Inference Server Release 24.04](https://docs.nvidia.com/deeplearning/sdk/inference-release-notes/rel-24-04.html)\n\nTriton Inference Server Release 24.04 NVIDIA Docs｡Release Notes (PDF) - Last updated May 27, 2026 Triton Inference Server Release 24.04 The Triton Inference Server container image, release 24.04, is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container includes, refer to Deep Learning Frameworks Support Matrix. The container also includes the following: Ubuntu 22.04 including Python 3.10 NVIDIA CUDA 12.4 NVIDIA cuBLAS 12.4.5.8 cuDNN 9.1.0.70 NVIDIA NCCL 2.21.5 (optimized for NVIDIA NVLink®) NVIDIA TensorRT™ 8.6.3 OpenUCX 1.15.0 GDRCopy 2.3 NVIDIA HPC-X 2.18 OpenMPI 4.1.4+ FIL NVIDIA DALI® 1.36 ONNX Runtime 1.17.3 Intel OpenVINO 2023.3.0 DCGM 3.2.6 TensorRT-LLM version release/0.9 vLLM version 0.4.0 post1 nvImageCodec 0.2.0.7 Driver Requirements Release 24.04 is based on NVIDIA CUDA 12.4, which requires NVIDIA Driver release 545 or later. However, if you are running on a data center GPU (for example, T4 or any other data center GPU), you can use NVIDIA driver release 470.57 (or later R470), 525.85 (or later R525), 535.86 (or later R535), or 545.23 (or later R545). The CUDA driver's compatibility package only supports particular drivers. Thus, users should upgrade from all R418, R440, R450, R460, R510, and R520 drivers, which are not forward-compatible with CUDA 12.3. For a complete list of supported drivers, see the CUDA Application Compatibility topic. For more information, see CUDA Compatibility and Upgrades. GPU Requirements Release 24.04 supports CUDA compute capability 6.0 and later. This corresponds to GPUs in the NVIDIA Pascal, NVIDIA Volta™, NVIDIA Turing™, NVIDIA Ampere architecture, NVIDIA Hopper™, and NVIDIA Ada Lovelace architecture families. For a list of GPUs to which this compute capability corresponds, see CUDA GPUs. For additional support details, see Deep Learning Frameworks Support Matrix. Key Features and Enhancements This Inference Server release includes the following key features and enhancements. Beta support for asyncio in decoupled mode in Python backend. Enhancements to server shutdown to take into account both HTTP live connections and inflight inferences. Python backend shared memory region naming has been updated to use UUIDs. This allows multiple servers to run on the machine without requiring different shared memory region prefixes. Support retrieving OpenTelemetry trace settings from the gRPC/HTTP endpoints. Log file and trace file locations can no longer be updated using the gRPC/HTTP endpoints. Added an iterative scheduling tutorial to demonstrate how to use iterative scheduling with a GPT2 model. Trace settings API now returns trace_mode and trace_config information. The TensorRT-LLM container now includes the tensorrt_llm Python package for creating engines. Added Python Client API docs to the documentation website. Added metric visualizations to GenAI-Perf. Added support to Model Analyzer for profiling LLMs with GenAI-Perf. Added the ability to select an output token distribution in GenAI-Perf. Some arguments have been renamed in the latest version of GenAI-Perf. NVIDIA Triton Inference Server Container Versions The following table shows what versions of Ubuntu, CUDA, Triton Inference Server, and NVIDIA TensorRT™ are supported in each of the NVIDIA containers for Triton Inference Server. For older container versions, refer to the Frameworks Support Matrix.\n\n**URL:** https://docs.nvidia.com/deeplearning/sdk/inference-release-notes/rel-24-04.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/sdk/inference-release-notes/rel-24-04.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "## 3. [Triton Inference Server Release 26.06](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-06.html)\n\nTriton Inference Server Release 26.06 NVIDIA Docs｡Release Notes (PDF) - Last updated July 29, 2026 Triton Inference Server Release 26.06 The Triton Inference Server container image is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container includes, refer to Deep Learning Frameworks Support Matrix. The container also includes the following: Ubuntu 24.04 including Python 3.12 NVIDIA CUDA 13.3.0.35 NVIDIA cuBLAS 13.5.1.27 cuDNN 9.23.0.39 NVIDIA NCCL 2.30.4 TensorRT 11.0.0.114 OpenUCX 1.20.0 GDRCopy 2.5.1 NVIDIA HPC-X 2.25.1-RC2 OpenMPI 4.1.7 FIL NVIDIA DALI® 2.1.1 nvImageCodec 0.7.0 ONNX Runtime 1.24.4 Intel OpenVINO 2026.2.0 DCGM 4.5.3-1 TensorRT-LLM version release/1.2.1 vLLM version 0.22.1 Driver Requirements Release 26.06 is based on CUDA 13.3.0 which requires the NVIDIA Driver release. Please see CUDA Compatibility for more information. The CUDA driver's compatibility package only supports particular drivers. Thus, users should upgrade from all R418, R440, R450, R460, R510, R520, R530, R545 and R555 drivers, which are not forward-compatible with CUDA 12.6. For a complete list of supported drivers, see the CUDA Application Compatibility topic. For more information, see CUDA Compatibility and Upgrades. GPU Requirements Release 26.05 supports CUDA compute capability 7.5 and later. This corresponds to GPUs in the NVIDIA Turing™, NVIDIA Ampere architecture, NVIDIA Hopper™, NVIDIA Ada Lovelace, and NVIDIA Blackwell architecture families. For a list of GPUs to which this compute capability corresponds, see CUDA GPUs. For additional support details, see Deep Learning Frameworks Support Matrix. Key Features and Enhancements This Inference Server release includes the following key features and enhancements. Deprecated Windows support removed: dropped the Windows server build and removed Windows from the core build and documentation. (backend#124, client#899, core#499, core#501, dali_backend#292, server#8792, server#8812) Python client BF16 handling: the client now requires ml_dtypes.bfloat16 arrays for BF16 input/output tensors and no longer casts to/from np.float32. Scripts that passed BF16 data as np.float32 arrays must switch to ml_dtypes.bfloat16. TensorRT backend: added multi-device (multi-GPU) inference support. PyTorch backend: enabled PyTorch 2 dynamic batching. OpenAI-compatible frontend: added an HTTP request body size limit. Fixed a server crash when loading models from S3 after an idle-connection timeout. Hardened model environment unpacking and file-path handling against path traversal. Improved request validation in the SageMaker endpoint. Changed the container install tree under /opt/tritonserver/ to stay root-owned, with the triton-server user accessing it via group/other permissions. Fixed an issue caused by improper error handling. NVIDIA Triton Inference Server Container Versions The following table shows what versions of Ubuntu, CUDA, Triton Inference Server, and NVIDIA TensorRT™ are supported in each of the NVIDIA containers for Triton Inference Server. For older container versions, refer to the Frameworks Support Matrix.\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-06.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-06.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "## 4. [Triton Inference Server Release 26.05](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-05.html)\n\nTriton Inference Server Release 26.05 NVIDIA Docs｡Release Notes (PDF) - Last updated July 29, 2026 Triton Inference Server Release 26.05 The Triton Inference Server container image is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container includes, refer to Deep Learning Frameworks Support Matrix. The container also includes the following: Ubuntu 24.04 including Python 3.12 NVIDIA CUDA 13.2.1.009 NVIDIA cuBLAS 13.4.0.1 cuDNN 9.22.0.52 NVIDIA NCCL 2.30.4 TensorRT 10.16.1.11 OpenUCX 1.20.0 GDRCopy 2.5.1 NVIDIA HPC-X 2.25.1-RC2 OpenMPI 4.1.7 FIL NVIDIA DALI® 2.1.0 nvImageCodec 0.7.0 ONNX Runtime 1.24.4 Intel OpenVINO 2026.1.0 DCGM 4.5.3-1 TensorRT-LLM version release/1.2.1 vLLM version 0.20.1 Driver Requirements Release 26.05 is based on CUDA 13.2.1 which requires the NVIDIA Driver release. Please see CUDA Compatibility for more information. The CUDA driver's compatibility package only supports particular drivers. Thus, users should upgrade from all R418, R440, R450, R460, R510, R520, R530, R545 and R555 drivers, which are not forward-compatible with CUDA 12.6. For a complete list of supported drivers, see the CUDA Application Compatibility topic. For more information, see CUDA Compatibility and Upgrades. GPU Requirements Release 26.05 supports CUDA compute capability 7.5 and later. This corresponds to GPUs in the NVIDIA Turing™, NVIDIA Ampere architecture, NVIDIA Hopper™, NVIDIA Ada Lovelace, and NVIDIA Blackwell architecture families. For a list of GPUs to which this compute capability corresponds, see CUDA GPUs. For additional support details, see Deep Learning Frameworks Support Matrix. Key Features and Enhancements This Inference Server release includes the following key features and enhancements. Support request cancellation in gRPC C++ client. Added support for GPU_DEVICE_IDS in the vLLM backend to allow loading multi-GPU models on specific GPUs. Fixed memory inefficiency in gRPC BYTES input handling. Improved memory management in HTTP request decompression. Fixed memory inefficiency caused by duplicate output names in inference requests. Improved JSON input handling in HTTP requests. Fixed a server crash in SageMaker request processing. Fixed uncaught exception in Model Repository Load API. Prevented Triton reserved parameter keys being overwritten by forwarded request headers. Prevented memory exhaustion by capping HTTP request total chunks at 65536. Azure Managed Identity: Added Azure Managed Identity authentication support for Azure Storage model repositories, so Triton can load models from Azure without static credentials. Rust client: Added a Rust gRPC client library to the supported client languages. HTTP frontend hardening: Capped chunked HTTP request chunk count at 65536 to prevent memory exhaustion, prevented memory retention on failed compressed HTTP requests, pre-allocated the serialized buffer for gRPC BYTES input, and made deeply nested JSON in repository index requests safe by switching the parser to iterative mode. Reserved parameter keys: Triton now rejects inference requests whose parameters or forward headers use Triton-reserved keys; the Python client enforces the same rejection on the send side. Duplicate output names: Triton validates and rejects inference requests that contain duplicate output names in both HTTP and gRPC. Wheel platform tags: The tritonserver, tritonfrontend, and Python client wheels now carry arch-specific manylinux platform tags via auditwheel repair, so pip selects the correct wheel on each architecture. Container/SDK build: Added auditwheel to the Dockerfile.sdksdk_build stage and to the Model Analyzer devel container to support arch-specific manylinux wheel tagging. Robustness fixes: Safer handling of filesystem exceptions across core, server, and client; fixed a RequestTracker counter mismatch; fixed a null pointer dereference in SageMaker server logging;\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-05.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton-inference-server-2700/release-notes/rel-26-05.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6636b6088de447108941d8f3.result",
+      "evidence": {
+        "event_id": "call_6636b6088de447108941d8f3.result",
+        "quote": "## 5. [Triton Inference Server Release 26.04](https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-04.html)\n\nTriton Inference Server Release 26.04 NVIDIA Docs｡Release Notes (PDF) - Last updated May 27, 2026 Triton Inference Server Release 26.04 The Triton Inference Server container image is available on NGC and is open source on GitHub. Contents of the Triton Inference Server container The Triton Inference Server Docker image contains the inference server executable and related shared libraries in /opt/tritonserver. For a complete list of what the container includes, refer to Deep Learning Frameworks Support Matrix. The container also includes the following: Ubuntu 24.04 including Python 3.12 NVIDIA CUDA 13.2.1.009 NVIDIA cuBLAS 13.4.0.1 cuDNN 9.21.0.82 NVIDIA NCCL 2.29.7 TensorRT 10.16.1.11 OpenUCX 1.20.0 GDRCopy 2.5.1 NVIDIA HPC-X 2.25.1-RC2 OpenMPI 4.1.7 FIL NVIDIA DALI® 2.0.0 nvImageCodec 0.7.0 ONNX Runtime 1.24.4 Intel OpenVINO 2026.1.0 DCGM 4.5.3-1 TensorRT-LLM version release/1.2.1 vLLM version 0.19.0 Driver Requirements Release 26.04 is based on CUDA 13.2.1 which requires the NVIDIA Driver release. Please see CUDA Compatibility for more information. The CUDA driver's compatibility package only supports particular drivers. Thus, users should upgrade from all R418, R440, R450, R460, R510, R520, R530, R545 and R555 drivers, which are not forward-compatible with CUDA 12.6. For a complete list of supported drivers, see the CUDA Application Compatibility topic. For more information, see CUDA Compatibility and Upgrades. GPU Requirements Release 26.04 supports CUDA compute capability 7.5 and later. This corresponds to GPUs in the NVIDIA Turing™, NVIDIA Ampere architecture, NVIDIA Hopper™, NVIDIA Ada Lovelace, and NVIDIA Blackwell architecture families. For a list of GPUs to which this compute capability corresponds, see CUDA GPUs. For additional support details, see Deep Learning Frameworks Support Matrix. Key Features and Enhancements This Inference Server release includes the following key features and enhancements. Client shared memory is now disabled by default and must be explicitly enabled with --allow-client-shm=true. Users relying on the previous default behavior must add this flag to their server startup command. Enforced max_inflight_requests as a shared limit across ensemble requests, preventing unbounded queue growth in ensemble pipelines. Added support for explicit model control mode and model management in the OpenAI-compatible frontend. Fixed a UAF in gRPC streaming triton_grpc_error mode for concurrent streaming responses. Fixed integer overflows when reading JSON inputs. Improved Vertex AI redirect handling; applied HTTP restrictions to the SageMaker endpoint. /v2/health/ready now correctly returns 200 when a Python backend stub is dead, preventing false-negative health checks. Introduced safe GetElementCount and GetByteSize APIs with overflow protection across core and common libraries. Added model name validation while loading (follows POSIX standard). **PyTorch backend:**Added complex type support for model inputs and output; see Triton Inference Server PyTorch documentation for additional information.Fixed CUDA stream synchronization in error cases. Python backend: Fixed a use-after-free by correcting the pointer type in response handling. Performance Analyzer: Fixed memory overuse issues. NVIDIA Triton Inference Server Container Versions The following table shows what versions of Ubuntu, CUDA, Triton Inference Server, and NVIDIA TensorRT™ are supported in each of the NVIDIA containers for Triton Inference Server. For older container versions, refer to the Frameworks Support Matrix.\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-04.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/release-notes/rel-26-04.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

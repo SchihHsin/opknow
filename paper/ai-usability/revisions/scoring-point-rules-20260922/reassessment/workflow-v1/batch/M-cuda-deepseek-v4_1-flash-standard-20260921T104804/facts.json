@@ -1,0 +1,454 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_eUpVA04ygidGjLNBSPTP8120.result",
+      "evidence": {
+        "event_id": "call_00_eUpVA04ygidGjLNBSPTP8120.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_gCmvW3aqyTkTz2j239FH9080.result",
+      "evidence": {
+        "event_id": "call_00_gCmvW3aqyTkTz2j239FH9080.result",
+        "quote": "**标题**: Dynamic Shapes: Core Concepts — NVIDIA TensorRT\n\n# Dynamic Shapes: Core Concepts#\n\n## Specifying Runtime Dimensions#\n\n# Dynamic Shapes: Core Concepts#\n## Specifying Runtime Dimensions#\nWhen building a network, use `-1` to denote a runtime dimension for an input tensor. For example, to create a 3D input tensor named foo where the last two dimensions are specified at runtime, and the first dimension is fixed at build time, issue the following.\n\nC++\n\n```\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\nPython\n\n```\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\nAfter choosing an optimization profile, you must set the input dimensions at run t"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_UoWr6KmWZwYv0P4g92Pa5912.result",
+      "evidence": {
+        "event_id": "call_00_UoWr6KmWZwYv0P4g92Pa5912.result",
+        "quote": "**标题**: Migration Guide — NVIDIA TensorRT\n\nBack to top\n\n# Migration Guide[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html#migration-guide \"Link to this heading\")\n\nThis guide covers the API and tooling changes required to migrate NVIDIA TensorRT workloads on NVIDIA DriveOS 6.x and 7.x. The primary path is TensorRT 10.x to 11.x; an appendix covers TensorRT 8.x to 10.x. Platform-specific pages for DriveOS and Jetson/JetPack address deployment-target differences where they affect migration steps.\n\nIf you are unfamiliar with these changes, refer to the [TensorRT sample code](https://github.com/NVIDIA/TensorRT/tree/main/samples) for clarification.\n\n## Choose Your M"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_RwYFYAYpcaTqde1di36U0862.result",
+      "evidence": {
+        "event_id": "call_00_RwYFYAYpcaTqde1di36U0862.result",
+        "quote": "**标题**: Migrating C++ Code from TensorRT 10.x to 11.x — NVIDIA TensorRT\n\nBack to top\n\n# Migrating C++ Code from TensorRT 10.x to 11.x[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api.html#migrating-c-code-from-tensorrt-10-x-to-11-x \"Link to this heading\")\n\nThis page describes how to update C++ code when you migrate from TensorRT 10.x to 11.x: paired examples for strongly typed networks, explicit quantization, plugin migration, and updated runtime APIs, followed by lists of C++ APIs added and removed in 11.x.\n\nWarning\n\nEngine files are executable artifacts that contain compiled CUDA tactics. The `deserializeCudaEngine` examples in [Migrating from"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_9O2MwlmEZJRLkcfURKVc5943.result",
+      "evidence": {
+        "event_id": "call_00_9O2MwlmEZJRLkcfURKVc5943.result",
+        "quote": "**标题**: Removed C++ APIs and Replacements — NVIDIA TensorRT\n\nBack to top\n\n# Removed C++ APIs and Replacements[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api-reference.html#removed-c-apis-and-replacements \"Link to this heading\")\n\nWarning\n\nThe APIs listed below have been **removed** in TensorRT 11.x and will cause compile-time errors if used. Review each entry for its replacement before upgrading.\n\n`BuilderFlag::kFP16`\n\nStrong typing with ModelOpt AutoCast\n\n`BuilderFlag::kINT8`\n\nExplicit quantization with Q/DQ nodes\n\n`BuilderFlag::kFP8`\n\nExplicit quantization with Q/DQ nodes\n\n`BuilderFlag::kBF16`\n\nStrong typing with ModelOpt AutoCast\n\n`BuilderFl"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api-reference.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_KCEUml04Rg3xGjvQ7WaG3806.result",
+      "evidence": {
+        "event_id": "call_00_KCEUml04Rg3xGjvQ7WaG3806.result",
+        "quote": "**标题**: Appendix: Migrating C++ Code from TensorRT 8.x to 10.x — NVIDIA TensorRT\n\nBack to top\n\n# Appendix: Migrating C++ Code from TensorRT 8.x to 10.x[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-8x-to-10x-c-api.html#appendix-migrating-c-code-from-tensorrt-8-x-to-10-x \"Link to this heading\")\n\nThis page describes how to update C++ code when you migrate from TensorRT 8.x to 10.x: paired examples for `enqueueV3` and the name-based tensor API, guidance on 64-bit dimensions, and lists of C++ APIs added and removed in 10.x.\n\n**In this guide**\n\n- [Migrating from enqueueV2 to enqueueV3 (C++)](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensor"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-8x-to-10x-c-api.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_1OonOaZxsf42msYftlgd7728.result",
+      "evidence": {
+        "event_id": "call_00_1OonOaZxsf42msYftlgd7728.result",
+        "quote": "**标题**: 【TensorRT 10 C++ inference example】最新版本TensorRT c++ api的推理部署教程 - 萧霍之 - 博客园\n**发布时间**: 2025-05-16 10:44 阅读: 3313 评论: 4 推荐: 0\n\n[](https://www.cnblogs.com/xiaohuozhi/p/18879627)\n\n# [【TensorRT 10 C++ inference example】最新版本TensorRT c++ api的推理部署教程](https://www.cnblogs.com/xiaohuozhi/p/18879627 \"发布于 2025-05-16 10:44\")\n\n  TensorRT是英伟达推出的部署框架，我的工作经常需要封装我的AI算法和模型给到桌面软件使用，那么tensorRT对我来说就是不二之选。TensorRT和cuda深度绑定，在c++版本的推理教程中需要使用cuda进行数据的显存绑定，由于10之前的写法比较固定，我自己基于tensorRT和cuda写了一套部署框架，将模型转换和核心推理部分都封装了起来。\n\n  但是最近在一个新项目上，我把cuda升级到了12.4，随着的tensorRT也用上了最新的10.11版本，然后我发现原来的代码报错了，仔细检查发现tensorRT10修改了很多原来的api，我在网上查询了一些方案，大部分都没有解决或者不是很清楚，还有些文章需要付费所以也看不了。后来我发现英伟达自己在tensorRT项目中给了很多sample，但是这些sample有点臃肿，所以在这里我分享一"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.cnblogs.com/xiaohuozhi/p/18879627",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "06e34f49ab75378a483787ad76e61ff9c8136cb3003fa634948de3a5e143aa86",
+  "question": "TensorRT/CUDA kernel 处理动态 shape 输入怎么做（optimization profile / 运行时 shape）？",
+  "run_id": "M-cuda-deepseek-v4_1-flash-standard-20260921T104804",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "# Search Results for \"TensorRT optimization profile dynamic shape best practices\"\n\n## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n## 2. [TensorRT 动态形状（Dynamic Shapes）实战：基于 ...](https://blog.csdn.net/gitblog_00970/article/details/162996293)\n\n2026年9月14日 · 要在 TensorRT 中使用动态输入形状，必须在构建引擎时指定一组（或多组）可能的形状范围，TensorRT 提供的机 …\n\n**URL:** https://blog.csdn."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "## 2. [TensorRT 动态形状（Dynamic Shapes）实战：基于 ...](https://blog.csdn.net/gitblog_00970/article/details/162996293)\n\n2026年9月14日 · 要在 TensorRT 中使用动态输入形状，必须在构建引擎时指定一组（或多组）可能的形状范围，TensorRT 提供的机 …\n\n**URL:** https://blog.csdn.net/gitblog_00970/article/details/162996293\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/gitblog_00970/article/details/162996293"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "## 3. [动态形状支持 — Torch-TensorRT - PyTorch 文档](https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html)\n\n2026年7月31日 · 本页记录了 Torch-TensorRT 中动态形状支持的设计。 原始设计讨论请参阅： RFC #2014, RFC #2409, RFC #2634 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "## 4. [8. TensorRT 中的动态形状 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/)\n\n8.3. Layer Extensions For Dynamic Shapes 一些层具有允许指定动态形状信息的可选输入，并且有一个新层IShapeLayer用于在运行 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+      "evidence": {
+        "event_id": "call_00_VK4SYaOX5tVjxFQzd5VP1849.result",
+        "quote": "## 5. [突破性能瓶颈：TensorRT动态形状优化全指南-CSDN博客](https://blog.csdn.net/gitblog_00595/article/details/151248341)\n\n2025年9月6日 · 本文将系统讲解TensorRT动态形状（Dynamic Shape）优化技术，通过可落地的策略和实战案例，帮你实现平均30% …\n\n**URL:** https://blog.csdn.net/gitblog_00595/article/details/151248341\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/gitblog_00595/article/details/151248341"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_eUpVA04ygidGjLNBSPTP8120.result",
+      "evidence": {
+        "event_id": "call_00_eUpVA04ygidGjLNBSPTP8120.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_gCmvW3aqyTkTz2j239FH9080.result",
+      "evidence": {
+        "event_id": "call_00_gCmvW3aqyTkTz2j239FH9080.result",
+        "quote": "**标题**: Dynamic Shapes: Core Concepts — NVIDIA TensorRT\n\n# Dynamic Shapes: Core Concepts#\n\n## Specifying Runtime Dimensions#\n\n# Dynamic Shapes: Core Concepts#\n## Specifying Runtime Dimensions#\nWhen building a network, use `-1` to denote a runtime dimension for an input tensor. For example, to create a 3D input tensor named foo where the last two dimensions are specified at runtime, and the first dimension is fixed at build time, issue the following.\n\nC++\n\n```\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\nPython\n\n```\nnetwork_definition.add_input(\"foo\", trt.float32, (3, -1, -1))\n```\n\nAfter choosing an optimization profile, you must set the input dimensions at run t"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "# Search Results for \"trtexec --minShapes --optShapes --maxShapes dynamic shape TensorRT command line\"\n\n## 1. [Optimizing and Profiling with TensorRT](https://docs.nvidia.com/tao/tao-toolkit/7.1.0/text/trtexec_integration/index.html)\n\nOptimizing and Profiling with TensorRT NVIDIA Docs｡The NVIDIA TensorRT SDK facilitates high-performance inference for machine learning models. Models exported from TAO can be directly optimized and profiled with TensorRT using the trtexec tool, which is a command line wrapper that helps quickly utilize and prototype models with TensorRT, without requiring you to write your own inference application. It serves 3 main purposes: Bechmarking (profiling) networks on"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "## 1. [Optimizing and Profiling with TensorRT](https://docs.nvidia.com/tao/tao-toolkit/7.1.0/text/trtexec_integration/index.html)\n\nOptimizing and Profiling with TensorRT NVIDIA Docs｡The NVIDIA TensorRT SDK facilitates high-performance inference for machine learning models. Models exported from TAO can be directly optimized and profiled with TensorRT using the trtexec tool, which is a command line wrapper that helps quickly utilize and prototype models with TensorRT, without requiring you to write your own inference application. It serves 3 main purposes: Bechmarking (profiling) networks on random or user-provided input data Generating serialized TensorRT engines from models. In the case of TAO, models are in ONNX or UFF format. Generalizing a serialized timing cache from the TensorRT builder trtexec has several command line flags that help customize the inputs, outputs, and TensorRT build configuration of the models, including network precision, layer-wise precision, and number of iterations` to run profiling, etc. These are the most commonly used CLI arguments: --onnx=` : Specify the input ONNX model. --uff=` : Specify the input UFF model. --output=` : Specify output tensor names. Only required if the input models are in UFF. --maxBatch=` : Specify the maximum batch size to build the engine with. Only needed if the input models are in UFF or Caffe formats. If the input model is in ONNX format, use the –minShapes, –optShapes, and –maxShapes flags to control the range of input shapes including batch size. --minShapes=: Minimum shape of the input tensor. This input is formatted as “:NxCxHxW” where, input_node_name is the name of the model’s input node and N,C,H and W are input batch size, input channels, input height and input width of the tensor. This can be comma separated for models with multiple input nodes. Only required if the model is in ONNX format. --optShapes=: The optimum shape of the input tensor. This input is formatted as “:NxCxHxW” where, input_node_name is the name of the model’s input node and N,C,H and W are input batch size, input channels, input height and input width of the tensor. This can be comma separated for models with multiple input nodes. Only required if the model is in ONNX format. --maxShapes=:The maximum shape of the input tensor. This input is formatted as “:NxCxHxW” where, input_node_name is the name of the model’s input node and N,C,H and W are input batch size, input channels, input height and input width of the tensor. This can be comma separated for models with multiple input nodes. Only required if the model is in ONNX format. --saveEngine=: Specify the path to save the engine to. --fp16, --int8, --noTF32, and --best: Specify network-level precision. --timingCacheFile=: Specify the timing cache to load from and save to. --verbose: Turn on verbose logging. --skipInference: Build and save the engine without running inference. -–useDLACore=N: Use the specified DLA core for layers that support DLA. -–allowGPUFallback: Allow layers unsupported on DLA to run on GPU instead. --loadEngine=: Load the engine from a serialized plan file instead of building it from input ONNX, UFF, or Caffe model. --batch=: Specify the batch size to run the inference with. Only needed if the input models are in UFF or Caffe formats. If the input model is in ONNX format or if the engine is built with explicit batch dimension, use –shapes instead. --shapes=: Specify the input shapes to run the inference with. --calib=: Read INT8 calibration cache file The trtexec tool ships as part of the NVIDIA TensorRT SDK. Refer to the official TensorRT documentation for installation and usage details on each platform. TRTEXEC instructions by Model\n\n**URL:** https://docs.nvidia.com/tao/tao-toolkit/7.1.0/text/trtexec_integration/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://docs.nvidia.com/tao/tao-toolkit/7.1.0/text/trtexec_integration/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "## 2. [Abstract](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/quick-start-guide/index.html)\n\nAbstract NVIDIA Docs｡ trtexec --onnx=fcn-resnet101.onnx --fp16 --workspace=64 --minShapes=input:1x3x256x256 --optShapes=input:1x3x1026x1282 --maxShapes=input:1x3x1440x2560 --buildOnly --saveEngine=fcn-resnet101.engine Successful execution should result in an engine file being generated and see something similar to Successful in the command output. trtexec can build TensorRT engines with the build configuration options as described in the NVIDIA TensorRT Developer Guide. Optionally, validate the generated engine for random-valued input using trtexec. trtexec --shapes=input:1x3x1026x1282 --loadEngine=fcn-resnet101.engine Where --shapes sets the input sizes for the dynamic shaped inputs to be used for inference. If successful, you should see something similar to the following: &&&& PASSED TensorRT.trtexec # trtexec --shapes=input:1x3x1026x1282 --loadEngine=fcn-resnet101.engine 7.2. Running an Engine in C++ Compile and run the C++ segmentation tutorial within the test container. $ make $ ./bin/segmentation_tutorial The following steps show how to use the Deserializing A Plan for inference. Deserialize the TensorRT engine from a file. The file contents are read into a buffer and deserialized in-memory. std::vector engineData(fsize); engineFile.read(engineData.data(), fsize); std::unique_ptrnvinfer1::IRuntime runtime{nvinfer1::createInferRuntime(sample::gLogger.getTRTLogger())}; std::unique_ptrnvinfer1::ICudaEngine mEngine(runtime->deserializeCudaEngine(engineData.data(), fsize, nullptr)); A TensorRT execution context encapsulates execution state such as persistent device memory for holding intermediate activation tensors during inference. Since the segmentation model was built with dynamic shapes enabled, the shape of the input must be specified for inference execution. The network output shape may be queried to determine the corresponding dimensions of the output buffer. auto input_idx = mEngine->getBindingIndex(\"input\"); assert(mEngine->getBindingDataType(input_idx) == nvinfer1::DataType::kFLOAT); auto input_dims = nvinfer1::Dims4{1, 3 /* channels /, height, width}; context->setBindingDimensions(input_idx, input_dims); auto input_size = util::getMemorySize(input_dims, sizeof(float)); auto output_idx = mEngine->getBindingIndex(\"output\"); assert(mEngine->getBindingDataType(output_idx) == nvinfer1::DataType::kINT32); auto output_dims = context->getBindingDimensions(output_idx); auto output_size = util::getMemorySize(output_dims, sizeof(int32_t)); Note: The binding indices for network I/O can be queried by name. In preparation for inference, CUDA device memory is allocated for all inputs and outputs, image data is processed and copied into input memory, and a list of engine bindings is generated. For semantic segmentation, input image data is processed by fitting into a range of [0, 1] and normalized using mean [0.485, 0.456, 0.406] and std deviation [0.229, 0.224, 0.225]. Refer to the input-preprocessing requirements for the torchvision models here. This operation is abstracted by the utility class RGBImageReader. void input_mem{nullptr}; cudaMalloc(&input_mem, input_size); void* output_mem{nullptr}; cudaMalloc(&output_mem, output_size); const std::vector mean{0.485f, 0.456f, 0.406f}; const std::vector stddev{0.229f, 0.224f, 0.225f}; auto input_image{util::RGBImageReader(input_filename, input_dims, mean, stddev)}; input_image.read(); auto input_buffer = input_image.process(); cudaMemcpyAsync(input_mem, input_buffer.get(), input_size, cudaMemcpyHostToDevice, stream); Inference execution is kicked off using the context’s executeV2 or enqueueV2 methods. After the execution is complete, we copy the results back to a host buffer and release all device memory allocations. void* bindings[] = {input_mem, output_mem}; bool status = context->enqueueV2(bindings, stream, nullptr); auto output_buffer = std::unique_ptr{new int[output_size]}; cudaMemcpyAsync(output_buffer.get(), output_mem, output_size, cudaMemcpyDeviceToHost, stream); cudaStreamSynchronize(stream); cudaFree(input_mem); cudaFree(output_mem);\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/quick-start-guide/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/quick-start-guide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "## 3. [Performance Benchmarking#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/benchmarking.html)\n\nPerformance Benchmarking# NVIDIA Docs｡ for the exhaustive set of flags and detailed descriptions, run trtexec --help. Build Phase Flags# Note DLA support depends on platform and package. The DLA-specific flags in this table apply only where DLA is supported for your package. Refer to Working with DLA. Flag Description --allowGPUFallback Allow layers unsupported on DLA to run on GPU instead. --allowWeightStreaming Enables an engine that can stream its weights. Requires a strongly typed network, which is the default since TensorRT 11.0.0 (no explicit flag needed). TensorRT will automatically choose the appropriate weight streaming budget at runtime to ensure model execution. A specific amount can be set with --weightStreamingBudget. --builderOptimizationLevel=N Set the builder optimization level to use when building the engine. A higher level allows TensorRT to spend more building time on more optimization options. --dumpLayerInfo, --exportLayerInfo= Print and save the engine layer information. --dynamicPlugins= Load the plugin library dynamically and serialize it with the engine when included in --setPluginsToSerialize (can be specified multiple times). --excludeLeanRuntime When --versionCompatible is enabled, this flag indicates that the generated engine should not include an embedded lean runtime. If this is set, you must explicitly specify a valid lean runtime when loading the engine. Only supported with explicit batch and weights within the engine. --layerDeviceTypes=spec Explicitly set the per-layer device type to GPU or DLA. The specs are read left to right and later override earlier ones. --markDebug Specify a list of tensor names to be marked as debug tensors. Separate names with a comma. --markUnfusedTensorsAsDebugTensors Mark unfused tensors as debug tensors. --maxAuxStreams=N Set the maximum number of auxiliary streams per inference stream that TensorRT can use to run kernels in parallel if the network contains ops that can run in parallel, with the cost of more memory usage. Set this to 0 for optimal memory usage. Refer to the Within-Inference Multi-Streaming section for more information. --memPoolSize= Specify the maximum size of the workspace tactics allowed to be used and the sizes of the memory pools that DLA will allocate per loadable. Supported pool types include workspace, dlaSRAM, dlaLocalDRAM, dlaGlobalDRAM, and tacticSharedMem. --monitorMemory Print host and device memory usage during the build phase. Use this flag when sizing host RAM for large ONNX builds. Some networks consumed substantially more builder-time host memory in TensorRT 11.1 than in TensorRT 11.0; TensorRT 11.2.1 fixed this regression for affected networks (refer to the TensorRT 11.2.1 release notes Fixed Issues). Refer to How TensorRT Works (Memory) and Bounding TensorRT Memory in Production. --minShapes=, --optShapes=, and --maxShapes= Specify the range of input shapes with which to build the engine. This is only required if the input model is in ONNX format. --noCompilationCache Disable the compilation cache in the builder, which is part of the timing cache (the default is to enable the compilation cache). --noTF32 Disable TF32 tactics. --onnx= Specify the input ONNX model. If the input model is in ONNX format, use the --minShapes, --optShapes, and --maxShapes flags to control the range of input shapes, including batch size. --profilingVerbosity=[layer_names_only|detailed|none] Specify the profiling verbosity to build the engine. --saveEngine= Specify the path to save the engine. --setPluginsToSerialize= Set the plugin library to be serialized with the engine (can be specified multiple times). --skipInference Build and save the engine without running inference. --sparsity=[disable|enable|force] Specify whether to use tactics that support structured sparsity. disable: Disable all tactics using structured sparsity. This is the default. enable: Enable tactics using structured sparsity. Tactics will only be used if the ONNX file weights meet the structured sparsity requirements. [Deprecated] force: Use Polygraphy (polygraphy surgeon prune) to rewrite the weights of ONNX models to a structured-sparsity pattern, then run with --sparsity=enable. --stripWeights Strip weights from the plan. This flag works with either refit or refit with identical weights. It defaults to refit with identical weights; however, you can switch to refit by enabling both stripWeights and refit simultaneously. --stronglyTyped Kept for backward compatibility; no-op in TensorRT 11.0.0+ because strongly typed networks are now the default. --tempdir= This option overrides the TensorRT default temporary directory when creating temporary files. For more information, refer to the IRuntime::setTemporaryDirectory API documentation. --tempfileControls=controls Controls what TensorRT can use when creating temporary executable files.\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/benchmarking.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/benchmarking.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "## 4. [TensorRT/samples/trtexec at master · NVIDIA/TensorRT](https://github.com/NVIDIA/TensorRT/tree/master/samples/trtexec)\n\nTensorRT/samples/trtexec at master · NVIDIA/TensorRT GitHub｡ the example below shows how to load the engine and run inference on batch 16 inputs (randomly generated). trtexec --loadEngine=mnist16.trt --batch=16 Example 2: Profiling a custom layer You can profile a custom layer using the IPluginRegistry for the plugins and trtexec. You’ll need to first register the plugin with IPluginRegistry. If you are using TensorRT shipped plugins, you should load the libnvinfer_plugin.so file, as these plugins are pre-registered. If you have your own plugin, then it has to be registered explicitly. The following macro can be used to register the plugin creator YourPluginCreator with the IPluginRegistry. REGISTER_TENSORRT_PLUGIN(YourPluginCreator); Example 3: Running a network on DLA To run the AlexNet network on NVIDIA DLA (Deep Learning Accelerator) using trtexec in FP16 mode, issue: ./trtexec --deploy=data/AlexNet/AlexNet_N2.prototxt --output=prob --useDLACore=1 --fp16 --allowGPUFallback To run the AlexNet network on DLA using trtexec in INT8 mode, issue: ./trtexec --deploy=data/AlexNet/AlexNet_N2.prototxt --output=prob --useDLACore=1 --int8 --allowGPUFallback To run the MNIST network on DLA using trtexec, issue: ./trtexec --deploy=data/mnist/mnist.prototxt --output=prob --useDLACore=0 --fp16 --allowGPUFallback For more information about DLA, see Working With DLA. Example 4: Running an ONNX model with full dimensions and dynamic shapes To run an ONNX model in full-dimensions mode with static input shapes: ./trtexec --onnx=model.onnx The following examples assumes an ONNX model with one dynamic input with name input and dimensions [-1, 3, 244, 244] To run an ONNX model in full-dimensions mode with an given input shape: ./trtexec --onnx=model.onnx --shapes=input:32x3x244x244 To benchmark your ONNX model with a range of possible input shapes: ./trtexec --onnx=model.onnx --minShapes=input:1x3x244x244 --optShapes=input:16x3x244x244 --maxShapes=input:32x3x244x244 --shapes=input:5x3x244x244 Example 5: Collecting and printing a timing trace When running, trtexec prints the measured performance, but can also export the measurement trace to a json file: ./trtexec --deploy=data/AlexNet/AlexNet_N2.prototxt --output=prob --exportTimes=trace.json Once the trace is stored in a file, it can be printed using the tracer.py utility. This tool prints timestamps and duration of input, compute, and output, in different forms: ./tracer.py trace.json Similarly, profiles can also be printed and stored in a json file. The utility profiler.py can be used to read and print the profile from a json file. Example 6: Tune throughput with multi-streaming Tuning throughput may require running multiple concurrent streams of execution. This is the case for example when the latency achieved is well within the desired threshold, and we can increase the throughput, even at the expense of some latency. For example, saving engines for batch sizes 1 and 2 and assume that both execute within 2ms, the latency threshold: trtexec --deploy=GoogleNet_N2.prototxt --output=prob --batch=1 --saveEngine=g1.trt --int8 --buildOnly trtexec --deploy=GoogleNet_N2.prototxt --output=prob --batch=2 --saveEngine=g2.trt --int8 --buildOnly Now, the saved engines can be tried to find the combination batch/streams below 2 ms that maximizes the throughput: trtexec --loadEngine=g1.trt --batch=1 --streams=2 trtexec --loadEngine=g1.trt --batch=1 --streams=3 trtexec --loadEngine=g1.trt --batch=1 --streams=4 trtexec --loadEngine=g2.trt --batch=2 --streams=2 Tool command line arguments To see the full list of available options and their descriptions, issue the ./trtexec --help command. Note: Specifying the --safe parameter turns the safety mode switch ON. By default, the --safe parameter is not specified;\n\n**URL:** https://github.com/NVIDIA/TensorRT/tree/master/samples/trtexec\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://github.com/NVIDIA/TensorRT/tree/master/samples/trtexec"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+      "evidence": {
+        "event_id": "call_00_BXg6VWP1yDkEvqDlVyut5649.result",
+        "quote": "## 5. [YOLOv12模型转换与部署:从PyTorch到ONNX再到TensorRT全流程](https://blog.csdn.net/weixin_28988985/article/details/158788291)\n\nYOLOv12模型转换与部署:从PyTorch到ONNX再到TensorRT全流程 CSDN博客｡\") 3. 第二步:将ONNX模型转换为TensorRT引擎 有了ONNX模型,我们就可以用TensorRT的trtexec工具或者Python API把它转换成高度优化的TensorRT引擎(.engine文件)｡这一步会在目标GPU上进行一系列优化,比如层融合､ 精度 校准(如果使用INT8)､内核自动调优等｡ 3.1 使用trtexec命令行工具(快速上手) trtexec是TensorRT自带的一个命令行工具,非常适合快速测试和生成基准引擎｡ # 基础转换命令 $TRT_PATH/bin/trtexec \\ --onnx=yolov12s_sim.onnx \\ --saveEngine=yolov12s_fp32.engine \\ --workspace=4096 \\ # 设置GPU工作空间大小(MB),复杂模型需要更大 --fp16 # 如果GPU支持,可以添加此选项启用FP16精度,能提升速度 # 更完整的示例,支持动态尺寸 $TRT_PATH/bin/trtexec \\ --onnx=yolov12s_sim.onnx \\ --saveEngine=yolov12s_dynamic.engine \\ --minShapes=images:1x3x320x320 \\ # 最小输入尺寸 --optShapes=images:1x3x640x640 \\ # 优化输入尺寸(最常见尺寸) --maxShapes=images:4x3x1280x1280 \\ # 最大输入尺寸 --workspace=4096 \\ --fp16 # 如果想测试INT8量化(需要提供校准数据) $TRT_PATH/bin/trtexec \\ --onnx=yolov12s_sim.onnx \\ --saveEngine=yolov12s_int8.engine \\ --int8 \\ --calib= \\ # 需要先运行校准生成此文件 --workspace=4096 参数解释: --minShapes/optShapes/maxShapes:这组参数定义了动态尺寸的范围,TensorRT会为这个范围内的所有可能尺寸生成优化内核｡必须和ONNX导出时设置的dynamic_axes对应｡ --fp16:启用半精度浮点数推理,能在几乎不损失精度的情况下显著提升速度(尤其是安培架构及以后的GPU)｡\n\n**URL:** https://blog.csdn.net/weixin_28988985/article/details/158788291\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://blog.csdn.net/weixin_28988985/article/details/158788291"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "# Search Results for \"TensorRT 10 11 enqueueV2 setBindingDimensions deprecated removed setInputShape enqueueV3\"\n\n## 1. [【TensorRT 10 C++ inference example】最新版本TensorRT ...](https://www.cnblogs.com/xiaohuozhi/p/18879627)\n\n2025年5月16日 · TensorRT和cuda深度绑定，在c++版本的推理教程中需要使用cuda进行数据的显存绑定，由于10之前的写法比较固 …\n\n**URL:** https://www.cnblogs.com/xiaohuozhi/p/18879627\n\n---\n\n## 2. [TensorRT 系列 （1）模型推理_enqueuev2-CSDN博客](https://blog.csdn.net/weicao1990/article/details/125034572)\n\n2026年6月30日 · 6. bindings是tensorRT对输入输出张量的描述，bindings = input-tensor + output-tensor。比如input有a，output有b, …\n\n**URL:** https://blog.csdn.net/weicao1990/article/details/125034572\n\n---\n\n## 3. [【TensorRT 10 C++ inference example】最新版本TensorRT"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "## 1. [【TensorRT 10 C++ inference example】最新版本TensorRT ...](https://www.cnblogs.com/xiaohuozhi/p/18879627)\n\n2025年5月16日 · TensorRT和cuda深度绑定，在c++版本的推理教程中需要使用cuda进行数据的显存绑定，由于10之前的写法比较固 …\n\n**URL:** https://www.cnblogs.com/xiaohuozhi/p/18879627\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.cnblogs.com/xiaohuozhi/p/18879627"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "## 2. [TensorRT 系列 （1）模型推理_enqueuev2-CSDN博客](https://blog.csdn.net/weicao1990/article/details/125034572)\n\n2026年6月30日 · 6. bindings是tensorRT对输入输出张量的描述，bindings = input-tensor + output-tensor。比如input有a，output有b, …\n\n**URL:** https://blog.csdn.net/weicao1990/article/details/125034572\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/weicao1990/article/details/125034572"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "## 3. [【TensorRT 10 C++ inference example】最新版本TensorRT ...](https://blog.csdn.net/jike007gt/article/details/148097212)\n\n2025年5月20日 · TensorRT是英伟达推出的部署框架，我的工作经常需要封装我的AI算法和模型给到桌面软件使用，那么tensorRT对 …\n\n**URL:** https://blog.csdn.net/jike007gt/article/details/148097212\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.csdn.net/jike007gt/article/details/148097212"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "## 4. [Migration Guide — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html)\n\n2026年9月8日 · This guide covers the API and tooling changes required to migrate NVIDIA TensorRT workloads on NVIDIA DriveOS …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+      "evidence": {
+        "event_id": "call_00_NGCBg9E2nv2RZfMoX6tc9201.result",
+        "quote": "## 5. [C++ API Documentation — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/c-api-docs.html)\n\n2026年9月8日 · The TensorRT C++ API lets developers import, calibrate, generate, and deploy networks using C++. Networks can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/c-api-docs.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/c-api-docs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_UoWr6KmWZwYv0P4g92Pa5912.result",
+      "evidence": {
+        "event_id": "call_00_UoWr6KmWZwYv0P4g92Pa5912.result",
+        "quote": "**标题**: Migration Guide — NVIDIA TensorRT\n\nBack to top\n\n# Migration Guide[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html#migration-guide \"Link to this heading\")\n\nThis guide covers the API and tooling changes required to migrate NVIDIA TensorRT workloads on NVIDIA DriveOS 6.x and 7.x. The primary path is TensorRT 10.x to 11.x; an appendix covers TensorRT 8.x to 10.x. Platform-specific pages for DriveOS and Jetson/JetPack address deployment-target differences where they affect migration steps.\n\nIf you are unfamiliar with these changes, refer to the [TensorRT sample code](https://github.com/NVIDIA/TensorRT/tree/main/samples) for clarification.\n\n## Choose Your M"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RwYFYAYpcaTqde1di36U0862.result",
+      "evidence": {
+        "event_id": "call_00_RwYFYAYpcaTqde1di36U0862.result",
+        "quote": "**标题**: Migrating C++ Code from TensorRT 10.x to 11.x — NVIDIA TensorRT\n\nBack to top\n\n# Migrating C++ Code from TensorRT 10.x to 11.x[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api.html#migrating-c-code-from-tensorrt-10-x-to-11-x \"Link to this heading\")\n\nThis page describes how to update C++ code when you migrate from TensorRT 10.x to 11.x: paired examples for strongly typed networks, explicit quantization, plugin migration, and updated runtime APIs, followed by lists of C++ APIs added and removed in 11.x.\n\nWarning\n\nEngine files are executable artifacts that contain compiled CUDA tactics. The `deserializeCudaEngine` examples in [Migrating from"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_9O2MwlmEZJRLkcfURKVc5943.result",
+      "evidence": {
+        "event_id": "call_00_9O2MwlmEZJRLkcfURKVc5943.result",
+        "quote": "**标题**: Removed C++ APIs and Replacements — NVIDIA TensorRT\n\nBack to top\n\n# Removed C++ APIs and Replacements[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api-reference.html#removed-c-apis-and-replacements \"Link to this heading\")\n\nWarning\n\nThe APIs listed below have been **removed** in TensorRT 11.x and will cause compile-time errors if used. Review each entry for its replacement before upgrading.\n\n`BuilderFlag::kFP16`\n\nStrong typing with ModelOpt AutoCast\n\n`BuilderFlag::kINT8`\n\nExplicit quantization with Q/DQ nodes\n\n`BuilderFlag::kFP8`\n\nExplicit quantization with Q/DQ nodes\n\n`BuilderFlag::kBF16`\n\nStrong typing with ModelOpt AutoCast\n\n`BuilderFl"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-10x-to-11x-c-api-reference.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_KCEUml04Rg3xGjvQ7WaG3806.result",
+      "evidence": {
+        "event_id": "call_00_KCEUml04Rg3xGjvQ7WaG3806.result",
+        "quote": "**标题**: Appendix: Migrating C++ Code from TensorRT 8.x to 10.x — NVIDIA TensorRT\n\nBack to top\n\n# Appendix: Migrating C++ Code from TensorRT 8.x to 10.x[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-8x-to-10x-c-api.html#appendix-migrating-c-code-from-tensorrt-8-x-to-10-x \"Link to this heading\")\n\nThis page describes how to update C++ code when you migrate from TensorRT 8.x to 10.x: paired examples for `enqueueV3` and the name-based tensor API, guidance on 64-bit dimensions, and lists of C++ APIs added and removed in 10.x.\n\n**In this guide**\n\n- [Migrating from enqueueV2 to enqueueV3 (C++)](https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/api/migration/tensorrt-8x-to-10x-c-api.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_1OonOaZxsf42msYftlgd7728.result",
+      "evidence": {
+        "event_id": "call_00_1OonOaZxsf42msYftlgd7728.result",
+        "quote": "**标题**: 【TensorRT 10 C++ inference example】最新版本TensorRT c++ api的推理部署教程 - 萧霍之 - 博客园\n**发布时间**: 2025-05-16 10:44 阅读: 3313 评论: 4 推荐: 0\n\n[](https://www.cnblogs.com/xiaohuozhi/p/18879627)\n\n# [【TensorRT 10 C++ inference example】最新版本TensorRT c++ api的推理部署教程](https://www.cnblogs.com/xiaohuozhi/p/18879627 \"发布于 2025-05-16 10:44\")\n\n  TensorRT是英伟达推出的部署框架，我的工作经常需要封装我的AI算法和模型给到桌面软件使用，那么tensorRT对我来说就是不二之选。TensorRT和cuda深度绑定，在c++版本的推理教程中需要使用cuda进行数据的显存绑定，由于10之前的写法比较固定，我自己基于tensorRT和cuda写了一套部署框架，将模型转换和核心推理部分都封装了起来。\n\n  但是最近在一个新项目上，我把cuda升级到了12.4，随着的tensorRT也用上了最新的10.11版本，然后我发现原来的代码报错了，仔细检查发现tensorRT10修改了很多原来的api，我在网上查询了一些方案，大部分都没有解决或者不是很清楚，还有些文章需要付费所以也看不了。后来我发现英伟达自己在tensorRT项目中给了很多sample，但是这些sample有点臃肿，所以在这里我分享一"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.cnblogs.com/xiaohuozhi/p/18879627"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

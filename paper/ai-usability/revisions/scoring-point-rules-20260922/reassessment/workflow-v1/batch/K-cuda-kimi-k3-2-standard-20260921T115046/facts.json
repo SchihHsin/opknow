@@ -1,0 +1,194 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_20447e06.result",
+      "evidence": {
+        "event_id": "WebFetch_1_20447e06.result",
+        "quote": "**标题**: Installing the NVIDIA Container Toolkit — NVIDIA Container Toolkit\n\nBack to top\n\n# Installing the NVIDIA Container Toolkit[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit \"Permalink to this headline\")\n\n## Installation[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation \"Permalink to this headline\")\n\n### Prerequisites[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#prerequisites \"Permalink to this headline\")\n\n1. Review the [platform support documentation](https://docs.nvidia.com/datacenter/cloud-na"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_964f63d1.result",
+      "evidence": {
+        "event_id": "WebFetch_2_964f63d1.result",
+        "quote": "**标题**: PyTorch | NVIDIA NGC\n\nSkip to main content\n\nContainer\n\nPyTorch is a GPU accelerated tensor computational framework. Functionality can be extended with common Python libraries such as NumPy and SciPy. Automatic differentiation is done with a tape-based system at the functional and neural network layer levels.\n\n- NVIDIA AI Enterprise Supported\n\nGet Container\n\n26.08-py3\n\nSigned\n\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.\n\nScanned\n\nNo malware was found in this artifact.\n\nView all tags\n\nLatest (26.08-py3)Signed  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.  \n\\\nSca"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_72f422ba.result",
+      "evidence": {
+        "event_id": "WebFetch_3_72f422ba.result",
+        "quote": "# PyTorch Container — Latest Release Analysis\n\n## Summary of Findings\n\nThe **latest PyTorch container** in the matrix is **26.08** (released August 2026, per the year/month naming convention). Below are the exact versions extracted.\n\n---\n\n## 1. Latest PyTorch Container: Release 26.08\n\n**PyTorch build:** `2.14.0a0+4fdf77b940`\n\n**Bundled components (exact versions):**\n- Python 3.12\n- APEX\n- NVIDIA cuBLASMp **0.10.0**\n- TensorBoard **2.16.2**\n- Torch-TensorRT **2.14**\n- MAGMA **2.6.2**\n- JupyterLab **4.6.3** (including Jupyter-TensorBoard)\n- TensorRT Model Optimizer **0.45**\n- TransformerEngine **v2.18**\n\n**Architecture support:** Multi-arch — x86, Arm SBSA\n\n---\n\n## 2. CUDA Version for Containe"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "c0dd96940ed2147f90cd109c0682b46167b3d83bbf5d421e83bc1a40f42bd87a",
+  "question": "怎么用 nvidia-docker / NGC 镜像跑一个带 GPU 的 PyTorch 容器？要装 nvidia-container-toolkit、加 `--gpus` 吗？",
+  "run_id": "K-cuda-kimi-k3-2-standard-20260921T115046",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "# Search Results for \"nvidia-container-toolkit install guide official documentation apt\"\n\n## 1. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)\n\n3 天之前 · Install the NVIDIA GPU driver for your Linux distribution. NVIDIA recommends installing the driver by using the package …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html\n\n---\n\n## 2. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.14.3/install-guide.html)\n\n2024年5月13日 · Install an NVIDIA GPU Driver if you do not already have one installed. You "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "## 1. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)\n\n3 天之前 · Install the NVIDIA GPU driver for your Linux distribution. NVIDIA recommends installing the driver by using the package …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "## 2. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.14.3/install-guide.html)\n\n2024年5月13日 · Install an NVIDIA GPU Driver if you do not already have one installed. You can install a driver by using the package …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.14.3/install-guide.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.14.3/install-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "## 3. [Nvidia-container-toolkit 安装_nvidia container toolkit-CSDN博客](https://blog.csdn.net/DejaWu33/article/details/134339744)\n\nNvidia-container-toolkit 安装总结在安装了docker后，如果你的容器需要使用GPU运行一些软件，那么就需要安装nvidia的一些支持库。 …首先，建议通过官网推荐的安装方式安装。官网链接：nvidia-container-toolkit本文仅仅讨论用apt方式安装的情况，在官网中可以看到这样的步骤：在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/DejaWu33/article/details/134339744\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/DejaWu33/article/details/134339744"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "## 4. [Ubuntu系统安装NVIDIA Container Toolkit完整教程：apt包 ...](https://blog.csdn.net/gitblog_00975/article/details/151329652)\n\n2025年9月8日 · 本文将提供一套经过实战验证的完整解决方案，通过apt包管理器在Ubuntu系统中零障碍安装NVIDIA Container …\n\n**URL:** https://blog.csdn.net/gitblog_00975/article/details/151329652\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/gitblog_00975/article/details/151329652"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_52cf0b15.result",
+      "evidence": {
+        "event_id": "WebSearch_0_52cf0b15.result",
+        "quote": "## 5. [NVIDIA Container Toolkit - GitHub](https://github.com/NVIDIA/nvidia-container-toolkit)\n\n2026年9月10日 · The toolkit includes a container runtime library and utilities to automatically configure containers to leverage NVIDIA …\n\n**URL:** https://github.com/NVIDIA/nvidia-container-toolkit\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://github.com/NVIDIA/nvidia-container-toolkit"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_20447e06.result",
+      "evidence": {
+        "event_id": "WebFetch_1_20447e06.result",
+        "quote": "**标题**: Installing the NVIDIA Container Toolkit — NVIDIA Container Toolkit\n\nBack to top\n\n# Installing the NVIDIA Container Toolkit[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit \"Permalink to this headline\")\n\n## Installation[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation \"Permalink to this headline\")\n\n### Prerequisites[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#prerequisites \"Permalink to this headline\")\n\n1. Review the [platform support documentation](https://docs.nvidia.com/datacenter/cloud-na"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_964f63d1.result",
+      "evidence": {
+        "event_id": "WebFetch_2_964f63d1.result",
+        "quote": "**标题**: PyTorch | NVIDIA NGC\n\nSkip to main content\n\nContainer\n\nPyTorch is a GPU accelerated tensor computational framework. Functionality can be extended with common Python libraries such as NumPy and SciPy. Automatic differentiation is done with a tape-based system at the functional and neural network layer levels.\n\n- NVIDIA AI Enterprise Supported\n\nGet Container\n\n26.08-py3\n\nSigned\n\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.\n\nScanned\n\nNo malware was found in this artifact.\n\nView all tags\n\nLatest (26.08-py3)Signed  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.  \n\\\nSca"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_72f422ba.result",
+      "evidence": {
+        "event_id": "WebFetch_3_72f422ba.result",
+        "quote": "# PyTorch Container — Latest Release Analysis\n\n## Summary of Findings\n\nThe **latest PyTorch container** in the matrix is **26.08** (released August 2026, per the year/month naming convention). Below are the exact versions extracted.\n\n---\n\n## 1. Latest PyTorch Container: Release 26.08\n\n**PyTorch build:** `2.14.0a0+4fdf77b940`\n\n**Bundled components (exact versions):**\n- Python 3.12\n- APEX\n- NVIDIA cuBLASMp **0.10.0**\n- TensorBoard **2.16.2**\n- Torch-TensorRT **2.14**\n- MAGMA **2.6.2**\n- JupyterLab **4.6.3** (including Jupyter-TensorBoard)\n- TensorRT Model Optimizer **0.45**\n- TransformerEngine **v2.18**\n\n**Architecture support:** Multi-arch — x86, Arm SBSA\n\n---\n\n## 2. CUDA Version for Containe"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/frameworks/support-matrix/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

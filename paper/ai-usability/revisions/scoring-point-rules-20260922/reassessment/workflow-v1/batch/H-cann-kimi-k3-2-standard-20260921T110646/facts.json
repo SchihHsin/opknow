@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_9a6ed401.result",
+      "evidence": {
+        "event_id": "WebFetch_2_9a6ed401.result",
+        "quote": "**标题**: msmodelslim/README.md · Ascend/msit - Gitee.com\n\n# [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#msmodelslim)msModelSlim\n\n## [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#%E4%BB%8B%E7%BB%8D)介绍\n\nMindStudio ModelSlim，昇腾模型压缩工具。\n\n昇腾模型压缩工具，一个以加速为目标、压缩为技术、昇腾为根本的亲和压缩工具。支持训练加速和推理加速，包括模型低秩分解、稀疏训练、训练后量化、量化感知训练等功能，昇腾AI模型开发用户可以灵活调用Python API接口，对模型进行性能调优，并支持导出不同格式模型，在昇腾AI处理器上运行。\n\n## [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#%E7%8E%AF%E5%A2%83%E5%92%8C%E4%BE%9D%E8%B5%96)环境和依赖\n\n- 硬件环境请参见《[昇腾产品形态说明](https://gitee.com/link?target=https%3A%2F%2Fwww.hiascend.com%2Fdocument%2Fdetail%2Fzh%2Fcanncommercial%2F81RC1%2Fquickstart%2Fproductfor"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_c8c6970c.result",
+      "evidence": {
+        "event_id": "WebFetch_3_c8c6970c.result",
+        "quote": "**标题**: 快速入门-模型量化 msModelSlim-训练推理开发工具-MindStudio26.1.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_bd69dbc0.result",
+      "evidence": {
+        "event_id": "WebFetch_4_bd69dbc0.result",
+        "quote": "**标题**: 安全验证码-独立验证\n\n曲线滑块验证\n\n重新加载\n\n校验失败，请再试一次\n\n刷新[反馈](https://seccaptcha.baidu.com/v1/webapi/verint/pc_feedback.html)"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitee.com/ascend/msit/blob/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_d7eb56dc.result",
+      "evidence": {
+        "event_id": "WebFetch_5_d7eb56dc.result",
+        "quote": "````\n## 大模型量化\n\n大模型量化工具将高位浮点数转为低位的定点数，例如16bit降低到8bit，直接减少模型权重的体积，生成量化参数和权重文件。在无需训练成本的前提下，完成大模型的训练后压缩并最大程度保障其精度。\n\n### 前提条件\n\n- 仅支持在以下产品中使用。\n    - Atlas 推理系列产品（Atlas 300I Duo 推理卡）。\n    - Atlas 训练系列产品。\n    - Atlas A2训练系列产品/Atlas 800I A2推理产品。\n\n- 已参考环境准备，完成CANN开发环境的部署、以及PyTorch 2.1.0及以上版本的框架和npu插件、Python环境变量配置。\n- 大模型量化工具须执行命令安装如下依赖。\n  如下命令如果使用非root用户安装，需要在安装命令后加上--user，例如：pip3 install onnx --user。\n```\npip3 install numpy==1.25.2\npip3 install transformers        #需大于等于4.29.1版本，LLaMA模型需指定安装4.29.1版本\npip3 install accelerate==1.0.0  #若需要使用NPU多卡并行方式对模型进行量化，需大于等于0.28.0版本\npip3 install tqdm==4.66.1\n```\n- （可选）如果需要在大模型量化工具中使用NPU多卡并行的方式对模型进行量化，需关闭NPU设备中的虚拟内存，并手动配置量化将会执行的设备序列环境。\n```\nexport PYTORCH_NPU_ALLOC_CONF"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitee.com/ascend/msit/raw/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_a280e9be.result",
+      "evidence": {
+        "event_id": "WebFetch_7_a280e9be.result",
+        "quote": "````\n# W8A8\n\n## 简介\n\n此量化方式对权重和激活值均进行量化，将高位浮点数转为8 bit，减少模型权重的体积。使用int8格式的数据进行计算，可以减少MatMul算子计算量，以提升推理性能。\n\n量化后权重目录结构：\n\n```text\n├─ config.json\n├─ configuration.json\n├─ generation_config.json\n├─ quant_model_description.json\n├─ quant_model_weight_w8a8.safetensors\n└─ tokenizer.json\n```\n\n- 量化输出包含：权重文件`quant_model_weight_w8a8.safetensors`和权重描述文件`quant_model_description.json`。\n- 目录中的其余文件为推理时所需的配置文件，不同模型略有差异。\n\n以下展示了量化后权重描述文件`quant_model_description.json`中的部分内容：\n\n```json\n{\n  \"model.layers.0.self_attn.q_proj.weight\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.input_scale\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.input_offset\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.quant_bias\": \"W8A8\",\n  \"model.la"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "757954466063ff8bd63babd850a1e75b4e8802b5aa63bbd61f3adef9da3b4185",
+  "question": "怎么在昇腾上把大模型量化（W8A8）做推理部署？给出量化工具和流程。",
+  "run_id": "H-cann-kimi-k3-2-standard-20260921T110646",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "# Search Results for \"昇腾 ModelSlim W8A8 量化 LLM 大模型 推理部署 CANN 官方文档\"\n\n## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 从十亿参数到千亿参数，推理端的资源消耗已经成为部署的最大瓶颈。 在昇腾 AI 生态中，这一问题尤为显著——大 …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n## 2. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度，模 …\n\n**URL:** https://blog.csdn.net/2302_78391795/article/details/156204610\n\n---\n\n## 3. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NP"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 从十亿参数到千亿参数，推理端的资源消耗已经成为部署的最大瓶颈。 在昇腾 AI 生态中，这一问题尤为显著——大 …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://jishuzhan.net/article/2003625934021263362"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "## 2. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.csdn.net/2302_78391795/article/details/156204610)\n\n2026年4月1日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度，模 …\n\n**URL:** https://blog.csdn.net/2302_78391795/article/details/156204610\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/2302_78391795/article/details/156204610"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "## 3. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://blog.51cto.com/u_17398972/14405553\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.51cto.com/u_17398972/14405553"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "## 4. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://hwcomputing.csdn.net/695f6c48ea53844658f564b4.html)\n\n2025年12月23日 · 本文详细介绍了使用昇腾ModelSlim工具对Qwen2.5-72B大模型进行W8A8量化的全流程。 首先阐述了量化对于大模 …\n\n**URL:** https://hwcomputing.csdn.net/695f6c48ea53844658f564b4.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://hwcomputing.csdn.net/695f6c48ea53844658f564b4.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_421e6c83.result",
+      "evidence": {
+        "event_id": "WebSearch_0_421e6c83.result",
+        "quote": "## 5. [昇腾msmodelslim实现DeepSeek模型w8a8量化原理与代码 ...](https://developer.aliyun.com/article/1659301)\n\n2025年3月31日 · 想为DeepSeek等大模型减负提速？ 本文深入解析昇腾W8A8量化技术，从激活异常值抑制 (SmoothQuant)原理 …\n\n**URL:** https://developer.aliyun.com/article/1659301\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://developer.aliyun.com/article/1659301"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "# Search Results for \"gitee Ascend msit msmodelslim W8A8 量化 官方 文档 hiascend\"\n\n## 1. [msmodelslim/README.md · Ascend/msit - Gitee](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md)\n\n量化工具通常会将高位浮点数转换为低位定点数，从而直接减少模型权重的体积。\n\n**URL:** https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md\n\n---\n\n## 2. [昇腾msmodelslim实现DeepSeek模型w8a8量化原理与代码 ...](https://developer.aliyun.com/article/1659301)\n\n2025年3月31日 · 想为DeepSeek等大模型减负提速？ 本文深入解析昇腾W8A8量化技术，从激活异常值抑制 (SmoothQuant)原理 …\n\n**URL:** https://developer.aliyun.com/article/1659301\n\n---\n\n## 3. [昇腾 msmodelslim w8a8量化代码解析 - AI布道Mr-Jin - 博客园](https://www.cnblogs.com/ai-mr-jin/p/18801655)\n\n2025年3月31日 · 最近有很多朋友都在部署deepseek模型，而且都用到了模型量化这个功能，目的是减"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "## 1. [msmodelslim/README.md · Ascend/msit - Gitee](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md)\n\n量化工具通常会将高位浮点数转换为低位定点数，从而直接减少模型权重的体积。\n\n**URL:** https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "## 2. [昇腾msmodelslim实现DeepSeek模型w8a8量化原理与代码 ...](https://developer.aliyun.com/article/1659301)\n\n2025年3月31日 · 想为DeepSeek等大模型减负提速？ 本文深入解析昇腾W8A8量化技术，从激活异常值抑制 (SmoothQuant)原理 …\n\n**URL:** https://developer.aliyun.com/article/1659301\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://developer.aliyun.com/article/1659301"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "## 3. [昇腾 msmodelslim w8a8量化代码解析 - AI布道Mr-Jin - 博客园](https://www.cnblogs.com/ai-mr-jin/p/18801655)\n\n2025年3月31日 · 最近有很多朋友都在部署deepseek模型，而且都用到了模型量化这个功能，目的是减少显存占用、提升推理速度。  …\n\n**URL:** https://www.cnblogs.com/ai-mr-jin/p/18801655\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://www.cnblogs.com/ai-mr-jin/p/18801655"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "## 4. [快速入门-MindStudio26.1.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md)\n\nmsModelSlim 是面向昇腾生态的模型压缩工具，覆盖稠密 LLM、MoE 及多模态模型的量化与压缩。 本文以 Qwen3.6-27B 为例，带你 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_46eaa491.result",
+      "evidence": {
+        "event_id": "WebSearch_1_46eaa491.result",
+        "quote": "## 5. [昇腾 msmodelslim w8a8 量化代码解析 - OSCHINA](https://my.oschina.net/u/8764084/blog/18042771)\n\n2025年3月31日 · 这篇文章会从入口脚本出发，对 w8a8 量化的技术原理和代码进行解析。 上面的代码涉及到 2 个类：AntiOutlier 和 …\n\n**URL:** https://my.oschina.net/u/8764084/blog/18042771\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://my.oschina.net/u/8764084/blog/18042771"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_9a6ed401.result",
+      "evidence": {
+        "event_id": "WebFetch_2_9a6ed401.result",
+        "quote": "**标题**: msmodelslim/README.md · Ascend/msit - Gitee.com\n\n# [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#msmodelslim)msModelSlim\n\n## [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#%E4%BB%8B%E7%BB%8D)介绍\n\nMindStudio ModelSlim，昇腾模型压缩工具。\n\n昇腾模型压缩工具，一个以加速为目标、压缩为技术、昇腾为根本的亲和压缩工具。支持训练加速和推理加速，包括模型低秩分解、稀疏训练、训练后量化、量化感知训练等功能，昇腾AI模型开发用户可以灵活调用Python API接口，对模型进行性能调优，并支持导出不同格式模型，在昇腾AI处理器上运行。\n\n## [](https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md#%E7%8E%AF%E5%A2%83%E5%92%8C%E4%BE%9D%E8%B5%96)环境和依赖\n\n- 硬件环境请参见《[昇腾产品形态说明](https://gitee.com/link?target=https%3A%2F%2Fwww.hiascend.com%2Fdocument%2Fdetail%2Fzh%2Fcanncommercial%2F81RC1%2Fquickstart%2Fproductfor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://gitee.com/ascend/msit/blob/master/msmodelslim/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_c8c6970c.result",
+      "evidence": {
+        "event_id": "WebFetch_3_c8c6970c.result",
+        "quote": "**标题**: 快速入门-模型量化 msModelSlim-训练推理开发工具-MindStudio26.1.0开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/mindstudio/2610/msTT_msIT/msModelSlim/docs/zh/quick_start/quantization_quick_start.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_bd69dbc0.result",
+      "evidence": {
+        "event_id": "WebFetch_4_bd69dbc0.result",
+        "quote": "**标题**: 安全验证码-独立验证\n\n曲线滑块验证\n\n重新加载\n\n校验失败，请再试一次\n\n刷新[反馈](https://seccaptcha.baidu.com/v1/webapi/verint/pc_feedback.html)"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://gitee.com/ascend/msit/blob/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_d7eb56dc.result",
+      "evidence": {
+        "event_id": "WebFetch_5_d7eb56dc.result",
+        "quote": "````\n## 大模型量化\n\n大模型量化工具将高位浮点数转为低位的定点数，例如16bit降低到8bit，直接减少模型权重的体积，生成量化参数和权重文件。在无需训练成本的前提下，完成大模型的训练后压缩并最大程度保障其精度。\n\n### 前提条件\n\n- 仅支持在以下产品中使用。\n    - Atlas 推理系列产品（Atlas 300I Duo 推理卡）。\n    - Atlas 训练系列产品。\n    - Atlas A2训练系列产品/Atlas 800I A2推理产品。\n\n- 已参考环境准备，完成CANN开发环境的部署、以及PyTorch 2.1.0及以上版本的框架和npu插件、Python环境变量配置。\n- 大模型量化工具须执行命令安装如下依赖。\n  如下命令如果使用非root用户安装，需要在安装命令后加上--user，例如：pip3 install onnx --user。\n```\npip3 install numpy==1.25.2\npip3 install transformers        #需大于等于4.29.1版本，LLaMA模型需指定安装4.29.1版本\npip3 install accelerate==1.0.0  #若需要使用NPU多卡并行方式对模型进行量化，需大于等于0.28.0版本\npip3 install tqdm==4.66.1\n```\n- （可选）如果需要在大模型量化工具中使用NPU多卡并行的方式对模型进行量化，需关闭NPU设备中的虚拟内存，并手动配置量化将会执行的设备序列环境。\n```\nexport PYTORCH_NPU_ALLOC_CONF"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://gitee.com/ascend/msit/raw/master/msmodelslim/msmodelslim/pytorch/llm_ptq/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "# Search Results for \"MindIE 量化权重部署 config.json quantization w8a8 quant_model_description 官方文档 hiascend\"\n\n## 1. [Quantization Configuration | verylucky01/MindIE-LLM | DeepWiki](https://deepwiki.com/verylucky01/MindIE-LLM/7.3-quantization-configuration)\n\nMar 7, 2026 · This document explains the quantization configuration system in MindIE-LLM, which enables mixed-precision inference …\n\n**URL:** https://deepwiki.com/verylucky01/MindIE-LLM/7.3-quantization-configuration\n\n---\n\n## 2. [Configuration and Deployment | verylucky01/MindIE-LLM | DeepWiki](https://deepwiki.com/verylucky01/MindIE-LLM/7-configuration-and-deployment)\n\nJan 24, 2026 · This document provides a comprehensive guide to configurin"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "## 1. [Quantization Configuration | verylucky01/MindIE-LLM | DeepWiki](https://deepwiki.com/verylucky01/MindIE-LLM/7.3-quantization-configuration)\n\nMar 7, 2026 · This document explains the quantization configuration system in MindIE-LLM, which enables mixed-precision inference …\n\n**URL:** https://deepwiki.com/verylucky01/MindIE-LLM/7.3-quantization-configuration\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://deepwiki.com/verylucky01/MindIE-LLM/7.3-quantization-configuration"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "## 2. [Configuration and Deployment | verylucky01/MindIE-LLM | DeepWiki](https://deepwiki.com/verylucky01/MindIE-LLM/7-configuration-and-deployment)\n\nJan 24, 2026 · This document provides a comprehensive guide to configuring and deploying MindIE-LLM for various inference …\n\n**URL:** https://deepwiki.com/verylucky01/MindIE-LLM/7-configuration-and-deployment\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://deepwiki.com/verylucky01/MindIE-LLM/7-configuration-and-deployment"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "## 3. [master/msmodelslim/docs/zh/knowledge_base/quantization_format/mi…](https://github.com/mindstudio-docs/master/blob/master/msmodelslim/docs/zh/knowledge_base/quantization_format/mindie_sd/term_mindie_sd.md)\n\n核心特征是与 multimodal_sd_modelslim_v1 配置协议配合，并以 quant_model_description*.json + quant_model_weight*.safetensors …\n\n**URL:** https://github.com/mindstudio-docs/master/blob/master/msmodelslim/docs/zh/knowledge_base/quantization_format/mindie_sd/term_mindie_sd.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://github.com/mindstudio-docs/master/blob/master/msmodelslim/docs/zh/knowledge_base/quantization_format/mindie_sd/term_mindie_sd.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "## 4. [msit/msmodelslim/docs/加速库&MindIE-Torch场景下的量化权重使用 …](https://gitcode.com/Ascend/msit/blob/b444ba6bc26f4d80db1b833ea65d9c013468dcb0/msmodelslim/docs/加速库&MindIE-Torch场景下的量化权重使用案例.md)\n\n# W8A8量化权重的config.json中应包含quantize字段，其值为\"w8a8\"。 # MindIE量化脚本除了调用msmodelslim量化工具生成权重及 …\n\n**URL:** https://gitcode.com/Ascend/msit/blob/b444ba6bc26f4d80db1b833ea65d9c013468dcb0/msmodelslim/docs/加速库&MindIE-Torch场景下的量化权重使用案例.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://gitcode.com/Ascend/msit/blob/b444ba6bc26f4d80db1b833ea65d9c013468dcb0/msmodelslim/docs/加速库&MindIE-Torch场景下的量化权重使用案例.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_6_1147fcbe.result",
+      "evidence": {
+        "event_id": "WebSearch_6_1147fcbe.result",
+        "quote": "## 5. [MindIE-LLM/docs/zh/user_guide/feature/w8a8.md at master - GitHub](https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md)\n\n量化输出包含：权重文件 quant_model_weight_w8a8.safetensors 和权重描述文件 quant_model_description.json。 目录中的其余文 …\n\n**URL:** https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_a280e9be.result",
+      "evidence": {
+        "event_id": "WebFetch_7_a280e9be.result",
+        "quote": "````\n# W8A8\n\n## 简介\n\n此量化方式对权重和激活值均进行量化，将高位浮点数转为8 bit，减少模型权重的体积。使用int8格式的数据进行计算，可以减少MatMul算子计算量，以提升推理性能。\n\n量化后权重目录结构：\n\n```text\n├─ config.json\n├─ configuration.json\n├─ generation_config.json\n├─ quant_model_description.json\n├─ quant_model_weight_w8a8.safetensors\n└─ tokenizer.json\n```\n\n- 量化输出包含：权重文件`quant_model_weight_w8a8.safetensors`和权重描述文件`quant_model_description.json`。\n- 目录中的其余文件为推理时所需的配置文件，不同模型略有差异。\n\n以下展示了量化后权重描述文件`quant_model_description.json`中的部分内容：\n\n```json\n{\n  \"model.layers.0.self_attn.q_proj.weight\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.input_scale\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.input_offset\": \"W8A8\",\n  \"model.layers.0.self_attn.q_proj.quant_bias\": \"W8A8\",\n  \"model.la"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://github.com/Ascend/MindIE-LLM/blob/master/docs/zh/user_guide/feature/w8a8.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

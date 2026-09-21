@@ -1,0 +1,512 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_1f57bc72.result",
+      "evidence": {
+        "event_id": "WebFetch_2_1f57bc72.result",
+        "quote": "**标题**: 简介-图融合和UB融合规则参考-参考-CANN8.5.0.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html)\n\n# 简介\n\n#### 概述\n\n算子融合是整网性能提升的一种关键手段，包括图融合和UB融合。\n\n系统内置了一些图融合和UB融合规则，均为默认开启且能关闭的（如有其他情况，会特殊说明）。当前文档仅对这部分融合规则进行介绍。\n\n本文档涉及到的算子具体信息请参考“[Ascend IR算子规格说明](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/API/aolapi/operatorlist_00093.html)”章节。\n\n#### 图融合\n\n客户在使用图方式描述网络时，采用跟硬件无关的融合优化，实现算子性能提升。\n\n图融合是根据融合规则进行改图的过程。图融合用融合后算子替换图中融合前算子，提升计算效率。图融合的场景如下：\n\n- 在某些算子的数学计算量可以进行"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_4081367f.result",
+      "evidence": {
+        "event_id": "WebFetch_5_4081367f.result",
+        "quote": "**标题**: graph-autofusion:基于昇腾芯片的自动融合加速组件项目 - AtomGit\n\n# graph-autofusion:基于昇腾芯片的自动融合加速组件项目\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过自动融合技术加速模型执行。 目前已开源 SuperKernel 组件和 Autofuse 组件，未来将持续开放更多自动融合相关模块。\n\n# [](https://gitcode.com/cann/graph-autofusion#graph-autofusion)Graph-autofusion\n\n## [](https://gitcode.com/cann/graph-autofusion#latest-news)🔥Latest News\n\n- [2026/04] Autofuse 组件开源！ 在昇腾芯片上提供 Autofuse 自动融合功能，可以自动将相邻算子融合为1个，消除输入输出的搬运耗时，降低算子数量，优化算子总时长。\n- [2025/10] Graph-autofusion 项目开源！ 在昇腾芯片上提供 SuperKernel 融合功能，可以减少任务调度等待时间和调度开销，优化算子执行头开销。\n\n## [](https://gitcode.com/cann/graph-autofusion#%E6%A6%82%E8%BF%B0)🚀概述\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过各种融合相关技术，加速模型执行。 目前已开源 S"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/graph-autofusion",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_8b8383ae.result",
+      "evidence": {
+        "event_id": "WebFetch_6_8b8383ae.result",
+        "quote": "**标题**: CANN图自动融合规则编写与调试实战指南-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-14 12:24:36 发布\n2026-05-28 20:37:01\n\n# CANN图自动融合规则编写与调试实战指南 原创\n\n## [](https://blog.csdn.net/2601_96146717/article/details/161492991)前言\n\n在昇腾NPU上部署 深度学习 模型时，计算图中的小算子组合往往是性能瓶颈之一。多个细小算子之间频繁的核切换和数据搬运会产生大量开销，尤其在矩阵乘加操作之后如果接上一个激活函数，两者之间每次都要走一遍完整的内核调度流程，这对延时敏感的业务场景影响尤为明显。graph-autofusion 是昇腾 CANN 生态中专门解决这个问题的算子自动融合框架，核心思路是把符合特定模式的算子序列识别出来，然后把它们融合成一个大算子，一次内核调用就完成原来多次调用的计算量。这个框架以规则驱动为核心，用户可以通过编写 XML 规则文件灵活定义融合模式，无需修改算子内核代码。\n\n本文围绕 graph-autofusion 仓库，展开讲述如何编写自定义融合规则、理解规则匹配语法、掌握调试工具的使用方法，以及最后如何量化融合效果。整个实战流程覆盖从环境准备到验证环节的完整链路，适合想在昇腾NPU上进一步榨取性能的开发者。\n\n### [](https://blog.csdn.net/2601_96146717/article/details/161492991)什么是 graph-autofusion\n\ngraph-a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/2601_96146717/article/details/161492991",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_e04850ca.result",
+      "evidence": {
+        "event_id": "WebFetch_7_e04850ca.result",
+        "quote": "**标题**: graph-autofusion/autofuse/README.md-代码预览-graph-autofusion:基于昇腾芯片的自动融合加速组件项目 - AtomGit\n\n# [](https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md#autofuse)Autofuse\n\n## [](https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md#%E7%AE%80%E4%BB%8B)简介\n\nAutoFuse是基于Ascend C的自动融合框架，支持自动融合范围识别、自动算子代码生成、Auto Tiling优化、动态shape及混合精度等特性；在算法网络中，由于存在大量的Vector计算，各个Vector计算之间会产生大量的内存搬运，导致Memory Bound问题。而AutoFuse通过自动将多个算子融合为一个算子，减少网络中的算子数量和内存搬运，从而缓解了Memory Bound问题，释放昇腾算力，提升模型的执行性能。\n\n详细介绍，请参考《[Autofuse自动融合](https://link.gitcode.com/?target=https%3A%2F%2Fwww.hiascend.com%2Fdocument%2Fdetail%2Fzh%2Fcanncommercial%2F850%2Fgraph%2Fautofuse&from=https%3A%2F%2Fgitcode.com"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_c6dc2be1.result",
+      "evidence": {
+        "event_id": "WebFetch_8_c6dc2be1.result",
+        "quote": "# 分析结果\n\n## ✅ 页面确认：是 CANN ops-nn 开源仓库\n\n该页面是 **GitCode 上的 cann/ops-nn 仓库主页**（gitcode.com/cann/ops-nn），标题为\"ops-nn：基于 CANN 技术的神经网络高阶算子库项目\"。页面展示了仓库根目录文件列表（activation、matmul、norm、conv 等算子目录及 CMakeLists.txt、build.sh 等构建文件）和 README 正文。\n\n---\n\n## 图融合（Graph Fusion）相关内容提取\n\n### 一、README 正文本身：**无图融合专项说明** ⚠️\n\n页面上展示的 README 正文仅包含以下章节，**均未涉及图融合**：\n\n| README 章节 | 内容摘要 |\n|---|---|\n| 🚀 概述 | （正文未展开显示具体内容） |\n| 📌 版本配套 | 源码跟随 CANN 版本发布，版本对应关系见 release-management 仓库；警告使用 master 分支可能有版本不匹配风险 |\n| 🛠️ 环境准备 | 需先安装 NPU 驱动、CANN 包 |\n| ⬇️ 源码下载 | `git clone -b ${tag_version} https://gitcode.com/cann/ops-nn.git`（示例为 9.0.0 分支） |\n| 📖 学习教程 | 快速入门（编译、算子调用、开发调试）、进阶教程链接 |\n| 💬 相关信息 | 目录结构、贡献指南、安全声明、许可证链接 |\n\n### 二、从页面提交记录中可提取的图融合信息\n\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/ops-nn",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_207c5fe7.result",
+      "evidence": {
+        "event_id": "WebFetch_9_207c5fe7.result",
+        "quote": "**标题**: ops-nn/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md-代码预览-ops-nn:基于 CANN 技术的神经网络高阶算子库项目 - AtomGit\n\n# [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md#layernormremovebroadcastfusionpass)LayerNormRemoveBroadcastFusionPass\n\n## [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md#%E8%9E%8D%E5%90%88%E6%A8%A1%E5%BC%8F)融合模式\n\n融合模式一：Ascend 950PR/Ascend 950DT场景下，将LayerNorm算子gamma和beta输入前的BroadcastTo从图中删除，将gamma和beta直接作为LayerNorm算子的输入，并将begin_norm_axis和begin_params_axis统一设置为归一化维度的起始轴。如下图所示。\n\n## [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRem"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "a3026781b61396795125fa8a6bb93e1a1c511c48d0f0e05946c77b039fec6572",
+  "question": "昇腾 GE 图编译里算子融合规则怎么看、怎么自定义融合 pass（UB 融合/图融合）？",
+  "run_id": "N-cann-kimi-k3-2-standard-20260921T121536",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "# Search Results for \"昇腾 CANN GE 图编译 算子融合 UB融合 图融合 自定义融合 pass 文档\"\n\n## 1. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://blog.csdn.net/jin421352/article/details/162193834)\n\n2026年7月25日 · 昇腾AI处理器的软件栈中，CANN（Compute Architecture for Neural Networks）是连接上层深度学习框架与底层硬 …\n\n**URL:** https://blog.csdn.net/jin421352/article/details/162193834\n\n---\n\n## 2. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://hwcomputing.csdn.net/6a38a601662f9a54cb828f0c.html)\n\n2026年6月22日 · 昇腾AI处理器的软件栈中，CANN（Compute Architecture for Neural Networks）是连接上层深度学习框架与底层硬 …\n\n**URL:** https://hwcomputing.csdn.net/6a38a601662f9a54cb828f0c.html\n\n---\n\n## 3. [CANN图引擎GE深度解析：从图编译到算子融合的性能调优 ...](https://blog.csdn.net/weixin_29061531/article/details/164904"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "## 1. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://blog.csdn.net/jin421352/article/details/162193834)\n\n2026年7月25日 · 昇腾AI处理器的软件栈中，CANN（Compute Architecture for Neural Networks）是连接上层深度学习框架与底层硬 …\n\n**URL:** https://blog.csdn.net/jin421352/article/details/162193834\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/jin421352/article/details/162193834"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "## 2. [CANN昇腾图编译引擎GE的计算图优化与算子融合编译策略 ...](https://hwcomputing.csdn.net/6a38a601662f9a54cb828f0c.html)\n\n2026年6月22日 · 昇腾AI处理器的软件栈中，CANN（Compute Architecture for Neural Networks）是连接上层深度学习框架与底层硬 …\n\n**URL:** https://hwcomputing.csdn.net/6a38a601662f9a54cb828f0c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://hwcomputing.csdn.net/6a38a601662f9a54cb828f0c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "## 3. [CANN图引擎GE深度解析：从图编译到算子融合的性能调优 ...](https://blog.csdn.net/weixin_29061531/article/details/164904403)\n\n2026年9月10日 · 图优化与算子融合是其中决定计算效率的核心技术：通过将动态图编译为静态图，消除冗余内存搬运，合并相邻算 …\n\n**URL:** https://blog.csdn.net/weixin_29061531/article/details/164904403\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/weixin_29061531/article/details/164904403"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "## 4. [昇腾图引擎GE的算子图编译优化与自动微分切图策略和整图 ...](https://jishuzhan.net/article/2069282061369831425)\n\n2026年6月22日 · 上层框架无论是 PyTorch 还是 TensorFlow，在调用昇腾NPU执行训练或推理任务时，都需要把计算图转换成昇腾硬 …\n\n**URL:** https://jishuzhan.net/article/2069282061369831425\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://jishuzhan.net/article/2069282061369831425"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_ab1a68fe.result",
+      "evidence": {
+        "event_id": "WebSearch_0_ab1a68fe.result",
+        "quote": "## 5. [CANN图引擎GE架构原理深度剖析：昇腾NPU上计算图编译 ...](https://cann.csdn.net/6a2e7b2210ee7a33f27d09e3.html)\n\n2026年6月14日 · AI模型的推理和训练依赖深度学习框架（PyTorch、TensorFlow）表达的神经网络计算图，但框架自身的算子执行方 …\n\n**URL:** https://cann.csdn.net/6a2e7b2210ee7a33f27d09e3.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://cann.csdn.net/6a2e7b2210ee7a33f27d09e3.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "# Search Results for \"hiascend 文档 图融合 融合规则 fusion 自定义融合规则 GE CANN site:hiascend.com\"\n\n## 1. [图融合和UB融合规则参考](https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf)\n\n2024年11月15日 · 图融合:对图上算子进行数学相关的融合,将多个算子融合成一个或者几个算子,该融合跟硬件无关。 如图1-1 所 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf\n\n---\n\n## 2. [简介-图融合和UB融合规则参考-参考-CANN8.5.0.alpha002 ...](https://www.hiascend.com/document/det"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "## 1. [图融合和UB融合规则参考](https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf)\n\n2024年11月15日 · 图融合:对图上算子进行数学相关的融合,将多个算子融合成一个或者几个算子,该融合跟硬件无关。 如图1-1 所 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/canncommercial/601/reference/graphubfusionref/CANN%206.0.1%20%E5%9B%BE%E8%9E%8D%E5%90%88%E5%92%8CUB%E8%9E%8D%E5%90%88%E8%A7%84%E5%88%99%E5%8F%82%E8%80%83%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "## 2. [简介-图融合和UB融合规则参考-参考-CANN8.5.0.alpha002 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html)\n\n2025年4月10日 · 简介 概述 算子融合是整网性能提升的一种关键手段，包括图融合和UB融合。 系统内置了一些图融合和UB融合规 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "## 3. [CANN图自动融合规则编写与调试实战指南-CSDN博客](https://blog.csdn.net/2601_96146717/article/details/161492991)\n\n2026年5月31日 · 本文围绕 graph-autofusion 仓库，展开讲述如何编写自定义融合规则、理解规则匹配语法、掌握调试工具的使用方 …\n\n**URL:** https://blog.csdn.net/2601_96146717/article/details/161492991\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://blog.csdn.net/2601_96146717/article/details/161492991"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "## 4. [CANN graph-autofusion：自定义融合规则配置实战](https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html)\n\n2026年7月17日 · graph-autofusion 是 CANN 架构中负责自定义算子融合规则配置的关键模块。 它允许开发者通过声明式的 YAML 配 …\n\n**URL:** https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_907b9504.result",
+      "evidence": {
+        "event_id": "WebSearch_1_907b9504.result",
+        "quote": "## 5. [CANN ops-nn 图融合规则深度解析 ...](http://www.mhpn.cn/news/2285573)\n\n2 天之前 · 二、融合模式算子改写 按需插入 Transpose按照融合规则文档Conv3DBackpropFilterToV2FusionPass.md的描述该融合的 …\n\n**URL:** http://www.mhpn.cn/news/2285573\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "http://www.mhpn.cn/news/2285573"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_1f57bc72.result",
+      "evidence": {
+        "event_id": "WebFetch_2_1f57bc72.result",
+        "quote": "**标题**: 简介-图融合和UB融合规则参考-参考-CANN8.5.0.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html)\n\n# 简介\n\n#### 概述\n\n算子融合是整网性能提升的一种关键手段，包括图融合和UB融合。\n\n系统内置了一些图融合和UB融合规则，均为默认开启且能关闭的（如有其他情况，会特殊说明）。当前文档仅对这部分融合规则进行介绍。\n\n本文档涉及到的算子具体信息请参考“[Ascend IR算子规格说明](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/API/aolapi/operatorlist_00093.html)”章节。\n\n#### 图融合\n\n客户在使用图方式描述网络时，采用跟硬件无关的融合优化，实现算子性能提升。\n\n图融合是根据融合规则进行改图的过程。图融合用融合后算子替换图中融合前算子，提升计算效率。图融合的场景如下：\n\n- 在某些算子的数学计算量可以进行"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/maintenref/graphubfusionref/atlasrr_30_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "# Search Results for \"gitee ascend graph-autofusion 自定义融合规则 README\"\n\n## 1. [CANN graph-autofusion：自定义融合规则配置实战](https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html)\n\n2026年7月17日 · graph-autofusion 是 CANN 架构中负责自定义算子融合规则配置的关键模块。 它允许开发者通过声明式的 YAML 配 …\n\n**URL:** https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html\n\n---\n\n## 2. [自动融合规则的智能生成：graph-autofusion中模式匹配与 ...](https://hwcomputing.csdn.net/6a20e607662f9a54cb7963b8.html)\n\n2026年6月4日 · opbase的融合标签体系覆盖了常见的融合模式，包括逐元素融合、规约融合和转置融合等，为CANN的图编译器提供 …\n\n**URL:** https://hwcomputing.csdn.net/6a20e607662f9a54cb7963b8.html\n\n---\n\n## 3. [Graph-autofusion 昇腾图自动融合组件集：SuperKernel 与 ...](https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html)\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "## 1. [CANN graph-autofusion：自定义融合规则配置实战](https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html)\n\n2026年7月17日 · graph-autofusion 是 CANN 架构中负责自定义算子融合规则配置的关键模块。 它允许开发者通过声明式的 YAML 配 …\n\n**URL:** https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://hwcomputing.csdn.net/6a59ae08662f9a54cb9037a5.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "## 2. [自动融合规则的智能生成：graph-autofusion中模式匹配与 ...](https://hwcomputing.csdn.net/6a20e607662f9a54cb7963b8.html)\n\n2026年6月4日 · opbase的融合标签体系覆盖了常见的融合模式，包括逐元素融合、规约融合和转置融合等，为CANN的图编译器提供 …\n\n**URL:** https://hwcomputing.csdn.net/6a20e607662f9a54cb7963b8.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://hwcomputing.csdn.net/6a20e607662f9a54cb7963b8.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "## 3. [Graph-autofusion 昇腾图自动融合组件集：SuperKernel 与 ...](https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html)\n\n4 天之前 · Graph-autofusion 是面向昇腾（Ascend）芯片的轻量级、解耦式融合加速组件集合，目前已开源 SuperKernel 与 Autofuse  …\n\n**URL:** https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "## 4. [CANN图自动融合规则编写与调试实战指南-CSDN博客](https://blog.csdn.net/2601_96146717/article/details/161492991)\n\n2026年5月31日 · 本文围绕 graph-autofusion 仓库，展开讲述如何编写自定义融合规则、理解规则匹配语法、掌握调试工具的使用方 …\n\n**URL:** https://blog.csdn.net/2601_96146717/article/details/161492991\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/2601_96146717/article/details/161492991"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_3_98dfd602.result",
+      "evidence": {
+        "event_id": "WebSearch_3_98dfd602.result",
+        "quote": "## 5. [CANN-昇腾NPU-GE编译优化-graph-autofusion进阶](https://devpress.csdn.net/v1/article/detail/161388263)\n\n2026年5月25日 · 摘要：本文深入解析了昇腾CANN架构中GE（Graph Engine）的graph-autofusion技术。 该技术通过模式匹配和算子 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/161388263\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/161388263"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "# Search Results for \"\"gitee.com/ascend/graph-autofusion\" OR \"gitcode.com/ascend/graph-autofusion\" 融合规则\"\n\n## 1. [graph-autofusion:基于昇腾芯片的自动融合加速组件项目 ...](https://gitcode.com/cann/graph-autofusion)\n\n用户可利用该项目在昇腾芯片上实现SuperKernel自动融合，减少任务调度等待时间和开销，优化算子执行头开销。 项目是面向昇腾芯 …\n\n**URL:** https://gitcode.com/cann/graph-autofusion\n\n---\n\n## 2. [GitHub - ai2open/graph-autofusion](https://github.com/ai2open/graph-autofusion)\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过自动融合技术加速模型执行。 目前已开源 …\n\n**URL:** https://github.com/ai2open/graph-autofusion\n\n---\n\n## 3. [Graph-AutoFusion PyTorch 实战指南：通过 torch.compile ...](https://blog.gitcode.com/6943fc196063d7668ae5e10090ab83fd.html)\n\n4 天之前 · 本文基于 graph-autofusion 仓库"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "## 1. [graph-autofusion:基于昇腾芯片的自动融合加速组件项目 ...](https://gitcode.com/cann/graph-autofusion)\n\n用户可利用该项目在昇腾芯片上实现SuperKernel自动融合，减少任务调度等待时间和开销，优化算子执行头开销。 项目是面向昇腾芯 …\n\n**URL:** https://gitcode.com/cann/graph-autofusion\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://gitcode.com/cann/graph-autofusion"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "## 2. [GitHub - ai2open/graph-autofusion](https://github.com/ai2open/graph-autofusion)\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过自动融合技术加速模型执行。 目前已开源 …\n\n**URL:** https://github.com/ai2open/graph-autofusion\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://github.com/ai2open/graph-autofusion"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "## 3. [Graph-AutoFusion PyTorch 实战指南：通过 torch.compile ...](https://blog.gitcode.com/6943fc196063d7668ae5e10090ab83fd.html)\n\n4 天之前 · 本文基于 graph-autofusion 仓库的 AutoFuse 官方文档（PyTorch Inductor 路径），完整讲解如何在 PyTorch 环境中开启 …\n\n**URL:** https://blog.gitcode.com/6943fc196063d7668ae5e10090ab83fd.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://blog.gitcode.com/6943fc196063d7668ae5e10090ab83fd.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "## 4. [Graph-autofusion 昇腾图自动融合组件集：SuperKernel 与 ...](https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html)\n\n4 天之前 · Graph-autofusion 是面向昇腾（Ascend）芯片的轻量级、解耦式融合加速组件集合，目前已开源 SuperKernel 与 Autofuse  …\n\n**URL:** https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.gitcode.com/5ffa3eed7d8d49d620c9b6ad39a00d52.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_f82c56b9.result",
+      "evidence": {
+        "event_id": "WebSearch_4_f82c56b9.result",
+        "quote": "## 5. [graph-autofusion SuperKernel 极简示例解析：仅依赖 ...](https://blog.csdn.net/gitblog_00881/article/details/165852243)\n\n3 天之前 · graph-autofusion SuperKernel 极简示例解析：仅依赖 AscendC 与 Runtime 的算子融合、编译与执行全流程 【免费下载链 …\n\n**URL:** https://blog.csdn.net/gitblog_00881/article/details/165852243\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://blog.csdn.net/gitblog_00881/article/details/165852243"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_4081367f.result",
+      "evidence": {
+        "event_id": "WebFetch_5_4081367f.result",
+        "quote": "**标题**: graph-autofusion:基于昇腾芯片的自动融合加速组件项目 - AtomGit\n\n# graph-autofusion:基于昇腾芯片的自动融合加速组件项目\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过自动融合技术加速模型执行。 目前已开源 SuperKernel 组件和 Autofuse 组件，未来将持续开放更多自动融合相关模块。\n\n# [](https://gitcode.com/cann/graph-autofusion#graph-autofusion)Graph-autofusion\n\n## [](https://gitcode.com/cann/graph-autofusion#latest-news)🔥Latest News\n\n- [2026/04] Autofuse 组件开源！ 在昇腾芯片上提供 Autofuse 自动融合功能，可以自动将相邻算子融合为1个，消除输入输出的搬运耗时，降低算子数量，优化算子总时长。\n- [2025/10] Graph-autofusion 项目开源！ 在昇腾芯片上提供 SuperKernel 融合功能，可以减少任务调度等待时间和调度开销，优化算子执行头开销。\n\n## [](https://gitcode.com/cann/graph-autofusion#%E6%A6%82%E8%BF%B0)🚀概述\n\nGraph-autofusion 是一个面向昇腾（Ascend）芯片的轻量级、解耦式组件集合，旨在通过各种融合相关技术，加速模型执行。 目前已开源 S"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://gitcode.com/cann/graph-autofusion"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_8b8383ae.result",
+      "evidence": {
+        "event_id": "WebFetch_6_8b8383ae.result",
+        "quote": "**标题**: CANN图自动融合规则编写与调试实战指南-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-14 12:24:36 发布\n2026-05-28 20:37:01\n\n# CANN图自动融合规则编写与调试实战指南 原创\n\n## [](https://blog.csdn.net/2601_96146717/article/details/161492991)前言\n\n在昇腾NPU上部署 深度学习 模型时，计算图中的小算子组合往往是性能瓶颈之一。多个细小算子之间频繁的核切换和数据搬运会产生大量开销，尤其在矩阵乘加操作之后如果接上一个激活函数，两者之间每次都要走一遍完整的内核调度流程，这对延时敏感的业务场景影响尤为明显。graph-autofusion 是昇腾 CANN 生态中专门解决这个问题的算子自动融合框架，核心思路是把符合特定模式的算子序列识别出来，然后把它们融合成一个大算子，一次内核调用就完成原来多次调用的计算量。这个框架以规则驱动为核心，用户可以通过编写 XML 规则文件灵活定义融合模式，无需修改算子内核代码。\n\n本文围绕 graph-autofusion 仓库，展开讲述如何编写自定义融合规则、理解规则匹配语法、掌握调试工具的使用方法，以及最后如何量化融合效果。整个实战流程覆盖从环境准备到验证环节的完整链路，适合想在昇腾NPU上进一步榨取性能的开发者。\n\n### [](https://blog.csdn.net/2601_96146717/article/details/161492991)什么是 graph-autofusion\n\ngraph-a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://blog.csdn.net/2601_96146717/article/details/161492991"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_e04850ca.result",
+      "evidence": {
+        "event_id": "WebFetch_7_e04850ca.result",
+        "quote": "**标题**: graph-autofusion/autofuse/README.md-代码预览-graph-autofusion:基于昇腾芯片的自动融合加速组件项目 - AtomGit\n\n# [](https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md#autofuse)Autofuse\n\n## [](https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md#%E7%AE%80%E4%BB%8B)简介\n\nAutoFuse是基于Ascend C的自动融合框架，支持自动融合范围识别、自动算子代码生成、Auto Tiling优化、动态shape及混合精度等特性；在算法网络中，由于存在大量的Vector计算，各个Vector计算之间会产生大量的内存搬运，导致Memory Bound问题。而AutoFuse通过自动将多个算子融合为一个算子，减少网络中的算子数量和内存搬运，从而缓解了Memory Bound问题，释放昇腾算力，提升模型的执行性能。\n\n详细介绍，请参考《[Autofuse自动融合](https://link.gitcode.com/?target=https%3A%2F%2Fwww.hiascend.com%2Fdocument%2Fdetail%2Fzh%2Fcanncommercial%2F850%2Fgraph%2Fautofuse&from=https%3A%2F%2Fgitcode.com"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://gitcode.com/cann/graph-autofusion/blob/master/autofuse/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_c6dc2be1.result",
+      "evidence": {
+        "event_id": "WebFetch_8_c6dc2be1.result",
+        "quote": "# 分析结果\n\n## ✅ 页面确认：是 CANN ops-nn 开源仓库\n\n该页面是 **GitCode 上的 cann/ops-nn 仓库主页**（gitcode.com/cann/ops-nn），标题为\"ops-nn：基于 CANN 技术的神经网络高阶算子库项目\"。页面展示了仓库根目录文件列表（activation、matmul、norm、conv 等算子目录及 CMakeLists.txt、build.sh 等构建文件）和 README 正文。\n\n---\n\n## 图融合（Graph Fusion）相关内容提取\n\n### 一、README 正文本身：**无图融合专项说明** ⚠️\n\n页面上展示的 README 正文仅包含以下章节，**均未涉及图融合**：\n\n| README 章节 | 内容摘要 |\n|---|---|\n| 🚀 概述 | （正文未展开显示具体内容） |\n| 📌 版本配套 | 源码跟随 CANN 版本发布，版本对应关系见 release-management 仓库；警告使用 master 分支可能有版本不匹配风险 |\n| 🛠️ 环境准备 | 需先安装 NPU 驱动、CANN 包 |\n| ⬇️ 源码下载 | `git clone -b ${tag_version} https://gitcode.com/cann/ops-nn.git`（示例为 9.0.0 分支） |\n| 📖 学习教程 | 快速入门（编译、算子调用、开发调试）、进阶教程链接 |\n| 💬 相关信息 | 目录结构、贡献指南、安全声明、许可证链接 |\n\n### 二、从页面提交记录中可提取的图融合信息\n\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://gitcode.com/cann/ops-nn"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_207c5fe7.result",
+      "evidence": {
+        "event_id": "WebFetch_9_207c5fe7.result",
+        "quote": "**标题**: ops-nn/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md-代码预览-ops-nn:基于 CANN 技术的神经网络高阶算子库项目 - AtomGit\n\n# [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md#layernormremovebroadcastfusionpass)LayerNormRemoveBroadcastFusionPass\n\n## [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md#%E8%9E%8D%E5%90%88%E6%A8%A1%E5%BC%8F)融合模式\n\n融合模式一：Ascend 950PR/Ascend 950DT场景下，将LayerNorm算子gamma和beta输入前的BroadcastTo从图中删除，将gamma和beta直接作为LayerNorm算子的输入，并将begin_norm_axis和begin_params_axis统一设置为归一化维度的起始轴。如下图所示。\n\n## [](https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRem"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://gitcode.com/cann/ops-nn/blob/master/norm/layer_norm/docs/LayerNormRemoveBroadcastFusionPass.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

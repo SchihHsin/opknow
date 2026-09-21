@@ -1,0 +1,536 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_AUW0Rn1EVotHtEBHN31G1430.result",
+      "evidence": {
+        "event_id": "call_00_AUW0Rn1EVotHtEBHN31G1430.result",
+        "quote": "**标题**: 配置参数说明-MindIE Server-MindIE Service组件-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_pMkcFAx70RI5OUdRxpmc8937.result",
+      "evidence": {
+        "event_id": "call_00_pMkcFAx70RI5OUdRxpmc8937.result",
+        "quote": "# MindIE-LLM 服务参数配置 完整提取\n\n以下为该文档（服务参数配置）的完整正文提取，按原文层级（根配置 → ServerConfig → BackendConfig → ModelDeployConfig → ModelConfig → ScheduleConfig → LogConfig）组织，保留字段名、类型、默认值、端口号、必填/选填与约束说明。\n\n---\n\n## 一、概述与文件路径\n\n**说明**\n- Server 的配置文件为 `config.json`。\n- **whl 包安装方式**获取路径：`{MindIE安装目录}/mindie_llm/conf/config.json`\n- **run 包安装方式**获取路径：`{MindIE安装目录}/latest/mindie-service/conf/config.json`\n- 系统读取配置文件时，会**先校验文件大小**，若文件大小范围不在 **(0MB, 10MB]** 之间，将读取失败。\n\n---\n\n## 二、根级配置（配置文件参数说明）\n\n| 配置项 | 取值类型 | 取值范围 | 配置说明 |\n|---|---|---|---|\n| **Version** | std::string | `\"1.0.0\"` | 标注配置文件版本，当前版本指定为 1.0.0，不支持修改。 |\n| **ServerConfig** | map | - | 服务端相关配置，例如 ip:port、网络请求、网络安全等。 |\n| **BackendConfig** | map | - | 模型后端相关配置，包含调度、模型"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_xhEh3DQtnECjMF67juqk4891.result",
+      "evidence": {
+        "event_id": "call_00_xhEh3DQtnECjMF67juqk4891.result",
+        "quote": "**标题**: 访问被拦截！\n\n您的请求疑似攻击行为！\n\n事件ID：31-10-139-20260921112319-b9c88e99\n\n如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_wRLnVxqOMXIAEP2ATaJw3098.result",
+      "evidence": {
+        "event_id": "call_00_wRLnVxqOMXIAEP2ATaJw3098.result",
+        "quote": "**标题**: 启动服务-快速开始-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)\n\n# 启动服务\n\n- MindIE Server可以部署兼容Triton/OpenAI/TGI/vLLM第三方框架接口的服务应用。推荐用户开启HTTPS通信，并按照《MindIE安装指南》中“配置MindIE > 配置MindIE Server > [单机推理](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0026.html)”章节，配置开启HTTPS通信所需服务证书、私钥等证书文件。\n- MindIE Server启动的默认IP地址和端口号为https://127.0.0.1:1025，用户可修改config.json文件中的“ipAddress”和“port”参数来配置启动IP地址与端口号。\n- MindIE Server可实现服务状态查询，模型信息查询，文本/流式推理等功能"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_tkdessjSZ6FWlehGoRMK8554.result",
+      "evidence": {
+        "event_id": "call_00_tkdessjSZ6FWlehGoRMK8554.result",
+        "quote": "**标题**: 准备软件包-安装开发环境-MindIE安装指南-环境准备-MindIE1.0.RC2开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_ePq0xmuynR6jaDwqYeMR4390.result",
+      "evidence": {
+        "event_id": "call_00_ePq0xmuynR6jaDwqYeMR4390.result",
+        "quote": "**标题**: 准备软件包和依赖 - MindIE-LLM-Doc\n\n# 准备软件包和依赖[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#%E5%87%86%E5%A4%87%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%92%8C%E4%BE%9D%E8%B5%96 \"Permanent link\")\n\n介绍安装MindIE前，需要准备的软件包和依赖。\n\n## 版本配套[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#%E7%89%88%E6%9C%AC%E9%85%8D%E5%A5%97 \"Permanent link\")\n\nMindIE、CANN与Ascend Extension for Pytorch版本必须配套使用。其配套关系如[表1](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#table1)所示。\n\n**表 1** 版本配套列表[](https://mindie-llm-doc.readthedocs."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_ZVOJRxebF2HSopyiQc2i5298.result",
+      "evidence": {
+        "event_id": "call_00_ZVOJRxebF2HSopyiQc2i5298.result",
+        "quote": "**标题**: 安装MindIE-物理机部署MindIE-安装MindIE-MindIE安装指南-环境准备-MindIE1.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)\n\n# 安装MindIE\n\n#### 安装前必读\n\n执行安装前请确保安装环境满足[硬件环境](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0004.html)，[支持的操作系统](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0005.html)要求，并已参照[安装驱动和固件](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0006.html)和[安装开发环境](https://www.hiascend.com/docume"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "474d714d935207a68e54b2e78002544dc6e9a1d2556ef9bcb805a53cefcc0d80",
+  "question": "怎么把模型在昇腾上部署成推理服务？用 MindIE / 昇腾推理服务，怎么配和起服务？",
+  "run_id": "S-cann-deepseek-v4_1-flash-standard-20260921T112208",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "# Search Results for \"MindIE 昇腾 推理服务 部署 config.json mindieservice_daemon 官方文档\"\n\n## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 打开mindie-service目录中的config.json，修改server相关配置。 其中 modelWeightPath 和 backendType 必须修改配置为： …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n## 2. [服务化部署 | MindSpore Transformers 1.6.0 文档 | 昇思 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html)\n\n2026年9月7日 · 服务化部署 MindIE介绍 MindIE，全称Mind Inference Engine，是基于昇腾硬件的高性能推理框架。 详情参考 官方介 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/z"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 打开mindie-service目录中的config.json，修改server相关配置。 其中 modelWeightPath 和 backendType 必须修改配置为： …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "## 2. [服务化部署 | MindSpore Transformers 1.6.0 文档 | 昇思 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html)\n\n2026年9月7日 · 服务化部署 MindIE介绍 MindIE，全称Mind Inference Engine，是基于昇腾硬件的高性能推理框架。 详情参考 官方介 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "## 3. [服务参数配置 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/)\n\n2026年6月23日 · 如果网络环境不安全，不开启HTTPS通信，即\"httpsEnabled\"=\"false\"时，会存在较高的网络安全风险。 如果推理服 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "## 4. [配置参数说明-MindIE1.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html)\n\n如果推理服务所在的计算节点的网络为跨公网和局域网，绑定0.0.0.0的IP地址可能导致网络隔离失效，存在较大安全风险。 故该场景 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+      "evidence": {
+        "event_id": "call_00_P552USehvBr74HzsEoAA3481.result",
+        "quote": "## 5. [MindIE单机及多机服务化部署_docker mindie配置-CSDN博客](https://blog.csdn.net/qebrufoqibue/article/details/154350820)\n\n2025年11月4日 · 主要内容包括：1) 拉取官方Docker镜像并创建特权容器；2) 单机部署步骤，涉及配置参数修改、服务启停；3) 多机 …\n\n**URL:** https://blog.csdn.net/qebrufoqibue/article/details/154350820\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/qebrufoqibue/article/details/154350820"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_AUW0Rn1EVotHtEBHN31G1430.result",
+      "evidence": {
+        "event_id": "call_00_AUW0Rn1EVotHtEBHN31G1430.result",
+        "quote": "**标题**: 配置参数说明-MindIE Server-MindIE Service组件-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_pMkcFAx70RI5OUdRxpmc8937.result",
+      "evidence": {
+        "event_id": "call_00_pMkcFAx70RI5OUdRxpmc8937.result",
+        "quote": "# MindIE-LLM 服务参数配置 完整提取\n\n以下为该文档（服务参数配置）的完整正文提取，按原文层级（根配置 → ServerConfig → BackendConfig → ModelDeployConfig → ModelConfig → ScheduleConfig → LogConfig）组织，保留字段名、类型、默认值、端口号、必填/选填与约束说明。\n\n---\n\n## 一、概述与文件路径\n\n**说明**\n- Server 的配置文件为 `config.json`。\n- **whl 包安装方式**获取路径：`{MindIE安装目录}/mindie_llm/conf/config.json`\n- **run 包安装方式**获取路径：`{MindIE安装目录}/latest/mindie-service/conf/config.json`\n- 系统读取配置文件时，会**先校验文件大小**，若文件大小范围不在 **(0MB, 10MB]** 之间，将读取失败。\n\n---\n\n## 二、根级配置（配置文件参数说明）\n\n| 配置项 | 取值类型 | 取值范围 | 配置说明 |\n|---|---|---|---|\n| **Version** | std::string | `\"1.0.0\"` | 标注配置文件版本，当前版本指定为 1.0.0，不支持修改。 |\n| **ServerConfig** | map | - | 服务端相关配置，例如 ip:port、网络请求、网络安全等。 |\n| **BackendConfig** | map | - | 模型后端相关配置，包含调度、模型"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_xhEh3DQtnECjMF67juqk4891.result",
+      "evidence": {
+        "event_id": "call_00_xhEh3DQtnECjMF67juqk4891.result",
+        "quote": "**标题**: 访问被拦截！\n\n您的请求疑似攻击行为！\n\n事件ID：31-10-139-20260921112319-b9c88e99\n\n如果您是站长，您可以前往WAF控制台进行误报屏蔽设置，让您的访问不再被拦截"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "# Search Results for \"MindIE Service 服务化部署 启动 mindieservice_daemon 安装 CANN 版本配套\"\n\n## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 之后前往 MindIE资源下载中心 下载软件包进行安装。 MindIE与CANN版本必须配套使用，其版本配套关系如下所示。 若安装 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n## 2. [启动服务-快速开始-MindIE Service开发指南-服务化集成部署 ...](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)\n\nMindIE Server 可以部署兼容Triton/OpenAI/TGI/vLLM第三方框架接口的服务应用。 推荐用户开启HTTPS通信，并按照 《MindIE安装 …\n\n**URL:** https://www.hiascend.com/document/detail/z"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "## 1. [MindIE服务化部署 | MindSpore Transformers 1.3.2 文档 | 昇 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html)\n\n1 天前 · 之后前往 MindIE资源下载中心 下载软件包进行安装。 MindIE与CANN版本必须配套使用，其版本配套关系如下所示。 若安装 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.3.2/usage/mindie_deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "## 2. [启动服务-快速开始-MindIE Service开发指南-服务化集成部署 ...](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)\n\nMindIE Server 可以部署兼容Triton/OpenAI/TGI/vLLM第三方框架接口的服务应用。 推荐用户开启HTTPS通信，并按照 《MindIE安装 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "## 3. [启动服务-MindIE1.0.0-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/100/mindieservice/servicedev/mindie_service0004.html)\n\nMindIE Server 可以部署兼容Triton/OpenAI/TGI/vLLM第三方框架接口的服务应用。 推荐用户开启HTTPS通信，并按照 《MindIE安装 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/100/mindieservice/servicedev/mindie_service0004.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/100/mindieservice/servicedev/mindie_service0004.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "## 4. [服务化部署 | MindSpore Transformers 1.6.0 文档 | 昇思 ...](https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html)\n\n2026年9月7日 · MindSpore Transformers承载在模型应用层MindIE LLM中，通过MindIE Service可以部署MindSpore Transformers中 …\n\n**URL:** https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.mindspore.cn/mindformers/docs/zh-CN/r1.6.0/guide/deployment.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+      "evidence": {
+        "event_id": "call_00_GTCak0ZFyfMt4lwmlocT9100.result",
+        "quote": "## 5. [MindIE服务化部署及性能调优介绍 - 知乎](https://zhuanlan.zhihu.com/p/1924488831194858710)\n\n2025年7月4日 · 启动 MindIE 服务 修改MindIE配置文件 cd /usr/local/Ascend/mindie/latest/mindie-service/conf vim config.json 修 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1924488831194858710\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/1924488831194858710"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_wRLnVxqOMXIAEP2ATaJw3098.result",
+      "evidence": {
+        "event_id": "call_00_wRLnVxqOMXIAEP2ATaJw3098.result",
+        "quote": "**标题**: 启动服务-快速开始-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html)\n\n# 启动服务\n\n- MindIE Server可以部署兼容Triton/OpenAI/TGI/vLLM第三方框架接口的服务应用。推荐用户开启HTTPS通信，并按照《MindIE安装指南》中“配置MindIE > 配置MindIE Server > [单机推理](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0026.html)”章节，配置开启HTTPS通信所需服务证书、私钥等证书文件。\n- MindIE Server启动的默认IP地址和端口号为https://127.0.0.1:1025，用户可修改config.json文件中的“ipAddress”和“port”参数来配置启动IP地址与端口号。\n- MindIE Server可实现服务状态查询，模型信息查询，文本/流式推理等功能"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0004.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "# Search Results for \"MindIE 与 CANN 版本配套关系 安装指南 昇腾社区 MindIE 1.0.RC3 CANN 8.0\"\n\n## 1. [准备软件包-安装开发环境-MindIE安装指南-环境准备-MindIE1 ...](https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html)\n\nMindIE与CANN版本必须配套使用，其版本配套关系如表1所示。\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html\n\n---\n\n## 2. [MindIE安装部署-昇腾社区](https://www.hiascend.com/developer/software/mindie/download)\n\n2026年8月19日 · MindIE下载页面提供最新Release版本的下载方式，供开发者使用。 若您想查询昇腾全栈软件版本的配套关系和兼容 …\n\n**URL:** https://www.hiascend.com/developer/software/mindie/download\n\n---\n\n## 3. [安装软件包和依赖 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "## 1. [准备软件包-安装开发环境-MindIE安装指南-环境准备-MindIE1 ...](https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html)\n\nMindIE与CANN版本必须配套使用，其版本配套关系如表1所示。\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "## 2. [MindIE安装部署-昇腾社区](https://www.hiascend.com/developer/software/mindie/download)\n\n2026年8月19日 · MindIE下载页面提供最新Release版本的下载方式，供开发者使用。 若您想查询昇腾全栈软件版本的配套关系和兼容 …\n\n**URL:** https://www.hiascend.com/developer/software/mindie/download\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://www.hiascend.com/developer/software/mindie/download"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "## 3. [安装软件包和依赖 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/)\n\n2022年10月2日 · 介绍安装MindIE前，需要安装的相关软件包和依赖。 安装配套版本的NPU驱动固件、CANN软件（Toolkit、ops …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/installing_software_and_dependencies/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "## 4. [MindIE+MindFormers推理方案指导 - cc_beolus - 博客园](https://www.cnblogs.com/beolus/p/18675728)\n\n2025年1月16日 · CANN是什么 异构计算架构CANN（Compute Architecture for Neural Networks）是昇腾针对AI场景推出的异构计算 …\n\n**URL:** https://www.cnblogs.com/beolus/p/18675728\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://www.cnblogs.com/beolus/p/18675728"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+      "evidence": {
+        "event_id": "call_00_aacuzwo7bTTx85xxhXNC9851.result",
+        "quote": "## 5. [准备软件包和依赖 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/)\n\n2022年10月2日 · 主页 用户指南 安装指南 物理机安装 准备软件包和依赖 介绍安装MindIE前，需要准备的软件包和依赖。 版本配套 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_tkdessjSZ6FWlehGoRMK8554.result",
+      "evidence": {
+        "event_id": "call_00_tkdessjSZ6FWlehGoRMK8554.result",
+        "quote": "**标题**: 准备软件包-安装开发环境-MindIE安装指南-环境准备-MindIE1.0.RC2开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC2/envdeployment/instg/mindie_instg_0008.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ePq0xmuynR6jaDwqYeMR4390.result",
+      "evidence": {
+        "event_id": "call_00_ePq0xmuynR6jaDwqYeMR4390.result",
+        "quote": "**标题**: 准备软件包和依赖 - MindIE-LLM-Doc\n\n# 准备软件包和依赖[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#%E5%87%86%E5%A4%87%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%92%8C%E4%BE%9D%E8%B5%96 \"Permanent link\")\n\n介绍安装MindIE前，需要准备的软件包和依赖。\n\n## 版本配套[¶](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#%E7%89%88%E6%9C%AC%E9%85%8D%E5%A5%97 \"Permanent link\")\n\nMindIE、CANN与Ascend Extension for Pytorch版本必须配套使用。其配套关系如[表1](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/#table1)所示。\n\n**表 1** 版本配套列表[](https://mindie-llm-doc.readthedocs."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/install/source/preparing_software_and_dependencies/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "# Search Results for \"MindIE LLM 单机 快速开始 安装 set_env.sh Ascend-mindie run 包 安装 启动 curl v1/chat/completions\"\n\n## 1. [MindIE LLM源码安装-MindIE3.0.0-昇腾社区 - hiascend.com](https://www.hiascend.com/document/detail/zh/mindie/300/envdeployment/instg/docs/zh/developer_guide/build_guide_llm.md)\n\n本文档以Atlas 800I A2 推理服务器和Wan2.1模型为例，让开发者快速开始使用MindIE SD进行文生视频。 物理机部署场景，需要在物 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/300/envdeployment/instg/docs/zh/developer_guide/build_guide_llm.md\n\n---\n\n## 2. [安装MindIE-MindIE1.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)\n\n执行MindIE软件包的安装，会依次安装MindIE RT、MindIE Torch、MindIE Service、MindIE LLM"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "## 1. [MindIE LLM源码安装-MindIE3.0.0-昇腾社区 - hiascend.com](https://www.hiascend.com/document/detail/zh/mindie/300/envdeployment/instg/docs/zh/developer_guide/build_guide_llm.md)\n\n本文档以Atlas 800I A2 推理服务器和Wan2.1模型为例，让开发者快速开始使用MindIE SD进行文生视频。 物理机部署场景，需要在物 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/300/envdeployment/instg/docs/zh/developer_guide/build_guide_llm.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/300/envdeployment/instg/docs/zh/developer_guide/build_guide_llm.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "## 2. [安装MindIE-MindIE1.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)\n\n执行MindIE软件包的安装，会依次安装MindIE RT、MindIE Torch、MindIE Service、MindIE LLM和MindIE SD各组件，组件包的路径 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "## 3. [GitHub - Ascend/MindIE-LLM](https://github.com/Ascend/MindIE-LLM)\n\nMar 31, 2026 · MindIE LLM基于昇腾硬件，提供业界通用大模型推理能力，多并发请求的调度，包含Continuous Batching …\n\n**URL:** https://github.com/Ascend/MindIE-LLM\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://github.com/Ascend/MindIE-LLM"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "## 4. [MindIE-LLM/docs/zh at master · Ascend/MindIE-LLM · GitHub](https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh)\n\nMindIE LLM（Mind Inference Engine Large Language Model）是 MindIE 下的大语言模型推理组件，基于昇腾硬件提供业界通用大模 …\n\n**URL:** https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://github.com/Ascend/MindIE-LLM/tree/master/docs/zh"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+      "evidence": {
+        "event_id": "call_00_mlvxF1U4UtY1hHNTVT5V6262.result",
+        "quote": "## 5. [MindIE 单机部署指南 - CSDN博客](https://blog.csdn.net/adasdfadsa/article/details/147870055)\n\nMay 11, 2025 · MindIE 单机部署指南 1.镜像获取以及权重下载 1.1 镜像获取 随着MindIE版本更新，官方会提供与版本相对应的镜像， …\n\n**URL:** https://blog.csdn.net/adasdfadsa/article/details/147870055\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://blog.csdn.net/adasdfadsa/article/details/147870055"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ZVOJRxebF2HSopyiQc2i5298.result",
+      "evidence": {
+        "event_id": "call_00_ZVOJRxebF2HSopyiQc2i5298.result",
+        "quote": "**标题**: 安装MindIE-物理机部署MindIE-安装MindIE-MindIE安装指南-环境准备-MindIE1.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html)\n\n# 安装MindIE\n\n#### 安装前必读\n\n执行安装前请确保安装环境满足[硬件环境](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0004.html)，[支持的操作系统](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0005.html)要求，并已参照[安装驱动和固件](https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0006.html)和[安装开发环境](https://www.hiascend.com/docume"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/envdeployment/instg/mindie_instg_0019.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

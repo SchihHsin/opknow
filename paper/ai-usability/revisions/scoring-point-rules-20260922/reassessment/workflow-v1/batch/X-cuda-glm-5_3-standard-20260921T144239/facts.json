@@ -1,0 +1,406 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_22f83a348aa84dceb9835ed9.result",
+      "evidence": {
+        "event_id": "call_22f83a348aa84dceb9835ed9.result",
+        "quote": "**标题**: NVIDIA Compute Sanitizer | NVIDIA Developer\n\n[](https://developer.nvidia.com/compute-sanitizer)\n\n# NVIDIA Compute Sanitizer\n\n## Compute Sanitizer Tools & API\n\n**Compute Sanitizer** is a functional correctness checking suite. This suite contains multiple tools that can perform different type of checks. Tool features are described below.\n\nThe **Compute Sanitizer API** enables the creation of sanitizing and tracing tools that target CUDA applications. Examples of such tools are memory and race condition checkers. The Compute Sanitizer API is composed of three APIs: the callback API, the patching API and the memory API. It is delivered as a dynamic library on supported platforms.\n\n### [M"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.nvidia.com/compute-sanitizer",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_4c566c377bf4490a913a258b.result",
+      "evidence": {
+        "event_id": "call_4c566c377bf4490a913a258b.result",
+        "quote": "# Extracted from Compute Sanitizer Documentation\n\nBelow are verbatim extracts organized by your five requests, with the original section titles noted. **Note on item (5):** the provided documentation contains **no statement** about cuda-memcheck being deprecated/replaced — see the final section for details.\n\n---\n\n## 1. Invoking compute-sanitizer and the memcheck tool\n\n### Section: \"## Compute Sanitizer\"\n\n> Compute Sanitizer tools can be invoked by running the `compute-sanitizer` executable as follows:\n\n```\ncompute-sanitizer [options] app_name [app_options]\n```\n\n> For a full list of options that can be specified to compute-sanitizer and their default values, see Command Line Options\n\n### Sect"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/sanitizer-docs/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_92321c9e2700444386538e11.result",
+      "evidence": {
+        "event_id": "call_92321c9e2700444386538e11.result",
+        "quote": "# Analysis Results\n\nBelow are the verbatim extractions for each of your four requests. Two topics (cuda-memcheck deprecation; applicable toolkit version) are **not addressed** in this content, which I note explicitly.\n\n---\n\n## 1. cuda-memcheck Deprecation/Removal — **NOT FOUND**\n\nThe page contains **no statements** about a standalone `cuda-memcheck` tool being deprecated or removed from the CUDA toolkit. The document only describes \"the memcheck tool\" as a component *within* Compute Sanitizer. There is no mention of the legacy `cuda-memcheck` executable at all, nor any version associated with its removal.\n\n---\n\n## 2. Version Requirements/Compatibility (compute-sanitizer / CUDA toolkit / PTX "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_6a77253a0d5541ae934a104a.result",
+      "evidence": {
+        "event_id": "call_6a77253a0d5541ae934a104a.result",
+        "quote": "**标题**: CUDA 12.0 Release Notes\n\n# 1. CUDA 12.0 Release Notes\n\n## 1.2. New Features\n\n### 1.2.3. CUDA Developer Tools\n\n- For changes to nvprof and Visual Profiler, see the changelog.\n- For new features, improvements, and bug fixes in CUPTI, see the changelog.\n- For new features, improvements, and bug fixes in Nsight Compute, see the changelog.\n- For new features, improvements, and bug fixes in Compute Sanitizer, see the changelog.\n- For new features, improvements, and bug fixes in CUDA-GDB, see the changelog.\n\n## 1.3. Deprecated Features\n\n# 1. CUDA 12.0 Release Notes\n## 1.3. Deprecated Features\nThe following features are deprecated in the current release of the CUDA software. The featur"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_b132f10f3b494eb2bb875eb9.result",
+      "evidence": {
+        "event_id": "call_b132f10f3b494eb2bb875eb9.result",
+        "quote": "# Analysis Result: No Deprecation Statement Found\n\n## Direct Answer\n\n**No statement about cuda-memcheck/CUDA-MEMCHECK being deprecated exists in this document, and no statement about compute-sanitizer exists beyond a version listing.** I searched the entire CUDA 11.6 Release Notes content, including the \"Deprecated Features\" section (Section 1.6), and found no such statement.\n\n## What the Deprecated Features Section Actually Contains (Section 1.6)\n\nThe only items listed under \"Deprecated Features\" → \"General CUDA\" are:\n\n1. **`cudaDeviceSynchronize()` deprecation** — related to on-device fork/join parallelism:\n   > \"The `cudaDeviceSynchronize()` function used for on-device fork/join paralleli"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/archive/11.6.0/cuda-toolkit-release-notes/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "b4dbd3a9c69f16d038746fc99abe0111ab31ee6e84f8e06ac1eb90d7db35a98f",
+  "question": "我的 CUDA kernel 报 illegal memory access / 内存越界，怎么用 compute-sanitizer（旧 cuda-memcheck）定位是哪一行越界？",
+  "run_id": "X-cuda-glm-5_3-standard-20260921T144239",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "# Search Results for \"compute-sanitizer memcheck locate illegal memory access line nvcc -lineinfo\"\n\n## 1. [CUDA内存访问越界？手把手教你用cuda-memcheck和 ...](https://wenku.csdn.net/column/kd1un0dsmwl)\n\n2026年4月28日 · CUDA内存越界诊断实战：从工具链到调试策略深度解析 GPU程序员最头疼的瞬间之一，莫过于屏幕上突然跳 …\n\n**URL:** https://wenku.csdn.net/column/kd1un0dsmwl\n\n---\n\n## 2. [NVIDIA Compute Sanitizer工具链解析与CUDA 13实战 ...](https://blog.csdn.net/weixin_42545503/article/details/164818906)\n\n2026年9月9日 · NVIDIA Compute Sanitizer采用二进制插桩技术实现非侵入式检测，相比传统调试器具有更低性能开销。 该工具链包 …\n\n**URL:** https://blog.csdn.net/weixin_42545503/article/details/164818906\n\n---\n\n## 3. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nMemcheck "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "## 1. [CUDA内存访问越界？手把手教你用cuda-memcheck和 ...](https://wenku.csdn.net/column/kd1un0dsmwl)\n\n2026年4月28日 · CUDA内存越界诊断实战：从工具链到调试策略深度解析 GPU程序员最头疼的瞬间之一，莫过于屏幕上突然跳 …\n\n**URL:** https://wenku.csdn.net/column/kd1un0dsmwl\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://wenku.csdn.net/column/kd1un0dsmwl"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "## 2. [NVIDIA Compute Sanitizer工具链解析与CUDA 13实战 ...](https://blog.csdn.net/weixin_42545503/article/details/164818906)\n\n2026年9月9日 · NVIDIA Compute Sanitizer采用二进制插桩技术实现非侵入式检测，相比传统调试器具有更低性能开销。 该工具链包 …\n\n**URL:** https://blog.csdn.net/weixin_42545503/article/details/164818906\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_42545503/article/details/164818906"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "## 3. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nMemcheck The memcheck tool is a run time error detection tool for CUDA applications. The tool can precisely detect and report out …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "## 4. [NVIDIA_NVIDIA_Compute_Sanitizer_v2023.3.1说明书_百度文库](https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html)\n\nThe memcheck tool is capable of precisely detecting and attributing out of bounds and misaligned memory access errors in CUDA …\n\n**URL:** https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4a51c74d297c4b3eab677377.result",
+      "evidence": {
+        "event_id": "call_4a51c74d297c4b3eab677377.result",
+        "quote": "## 5. [第6板块·第3节：错误处理与调试工具（compute‑sanitizer ...](https://blog.csdn.net/qq_19988687/article/details/165889640)\n\n2 天之前 · 学习目标 学完本节你将能够： 建立 CUDA 错误处理的完整策略，覆盖同步、异步和内存错误 使用 compute‑sanitizer 检测 …\n\n**URL:** https://blog.csdn.net/qq_19988687/article/details/165889640\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/qq_19988687/article/details/165889640"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22f83a348aa84dceb9835ed9.result",
+      "evidence": {
+        "event_id": "call_22f83a348aa84dceb9835ed9.result",
+        "quote": "**标题**: NVIDIA Compute Sanitizer | NVIDIA Developer\n\n[](https://developer.nvidia.com/compute-sanitizer)\n\n# NVIDIA Compute Sanitizer\n\n## Compute Sanitizer Tools & API\n\n**Compute Sanitizer** is a functional correctness checking suite. This suite contains multiple tools that can perform different type of checks. Tool features are described below.\n\nThe **Compute Sanitizer API** enables the creation of sanitizing and tracing tools that target CUDA applications. Examples of such tools are memory and race condition checkers. The Compute Sanitizer API is composed of three APIs: the callback API, the patching API and the memory API. It is delivered as a dynamic library on supported platforms.\n\n### [M"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_4c566c377bf4490a913a258b.result",
+      "evidence": {
+        "event_id": "call_4c566c377bf4490a913a258b.result",
+        "quote": "# Extracted from Compute Sanitizer Documentation\n\nBelow are verbatim extracts organized by your five requests, with the original section titles noted. **Note on item (5):** the provided documentation contains **no statement** about cuda-memcheck being deprecated/replaced — see the final section for details.\n\n---\n\n## 1. Invoking compute-sanitizer and the memcheck tool\n\n### Section: \"## Compute Sanitizer\"\n\n> Compute Sanitizer tools can be invoked by running the `compute-sanitizer` executable as follows:\n\n```\ncompute-sanitizer [options] app_name [app_options]\n```\n\n> For a full list of options that can be specified to compute-sanitizer and their default values, see Command Line Options\n\n### Sect"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/cuda/sanitizer-docs/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "# Search Results for \"cuda-memcheck deprecated replaced by compute-sanitizer CUDA toolkit release notes\"\n\n## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The PTX compiler and compute-sanitizer must be from the same CUDA toolkit version for compile-time patching with …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n## 2. [调试cuda程序 - 知乎](https://zhuanlan.zhihu.com/p/660480914)\n\ncompute-sanitizer检测数组越界线程同步与线程束分叉问题可以在 C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.2\\bin 下找到。代替以前的 cuda-memcheck （自12.0开始，已经从CUDA Toolkit中移除），包括 cuda-memcheck 的下列功能：在zhuanlan.zhi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The PTX compiler and compute-sanitizer must be from the same CUDA toolkit version for compile-time patching with …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "## 2. [调试cuda程序 - 知乎](https://zhuanlan.zhihu.com/p/660480914)\n\ncompute-sanitizer检测数组越界线程同步与线程束分叉问题可以在 C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.2\\bin 下找到。代替以前的 cuda-memcheck （自12.0开始，已经从CUDA Toolkit中移除），包括 cuda-memcheck 的下列功能：在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/660480914\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/660480914"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "## 3. [NVIDIA_NVIDIA_Compute_Sanitizer_v2023.3.1说明书_百度文库](https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html)\n\nCompute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can …\n\n**URL:** https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://wenku.baidu.com/view/f66d794a56ea551810a6f524ccbff121dd36c5e6.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "## 4. [Compute Sanitizer - NERSC Documentation](https://docs.nersc.gov/tools/debug/compute-sanitizer/)\n\n2026年9月8日 · Compute Sanitizer, previously known as CUDA-MEMCHECK, is a functional correctness checking suite included in …\n\n**URL:** https://docs.nersc.gov/tools/debug/compute-sanitizer/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://docs.nersc.gov/tools/debug/compute-sanitizer/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_137b6813a5a94ce5b644ea94.result",
+      "evidence": {
+        "event_id": "call_137b6813a5a94ce5b644ea94.result",
+        "quote": "## 5. [使用 NVIDIA Compute Sanitizer 更有效地调试 CUDA](https://juejin.cn/post/7257029942856187963)\n\n2023年7月18日 · Compute Sanitizer 是一套工具，可以对代码的功能正确性执行不同类型的检查。 调试的一个关键挑战是找到错误的 …\n\n**URL:** https://juejin.cn/post/7257029942856187963\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://juejin.cn/post/7257029942856187963"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_92321c9e2700444386538e11.result",
+      "evidence": {
+        "event_id": "call_92321c9e2700444386538e11.result",
+        "quote": "# Analysis Results\n\nBelow are the verbatim extractions for each of your four requests. Two topics (cuda-memcheck deprecation; applicable toolkit version) are **not addressed** in this content, which I note explicitly.\n\n---\n\n## 1. cuda-memcheck Deprecation/Removal — **NOT FOUND**\n\nThe page contains **no statements** about a standalone `cuda-memcheck` tool being deprecated or removed from the CUDA toolkit. The document only describes \"the memcheck tool\" as a component *within* Compute Sanitizer. There is no mention of the legacy `cuda-memcheck` executable at all, nor any version associated with its removal.\n\n---\n\n## 2. Version Requirements/Compatibility (compute-sanitizer / CUDA toolkit / PTX "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "# Search Results for \"\"cuda-memcheck\" deprecated removed CUDA 12.0 toolkit\"\n\n## 1. [CUDA 12.0 Release Notes - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html)\n\n2025年10月29日 · Support for this OS is now removed from the CUDA Toolkit and is replaced by Rocky Linux 8. Server 2016 support …\n\n**URL:** https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html\n\n---\n\n## 2. [NVIDIA CUDA Toolkit 12](https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf)\n\n2023年1月28日 · Each release of the CUDA Toolkit requires a minimum version of the CUDA driver. The CUDA driver is backward"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "## 1. [CUDA 12.0 Release Notes - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html)\n\n2025年10月29日 · Support for this OS is now removed from the CUDA Toolkit and is replaced by Rocky Linux 8. Server 2016 support …\n\n**URL:** https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "## 2. [NVIDIA CUDA Toolkit 12](https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf)\n\n2023年1月28日 · Each release of the CUDA Toolkit requires a minimum version of the CUDA driver. The CUDA driver is backward …\n\n**URL:** https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://developer.download.nvidia.com/compute/cuda/12.0.1/docs/sidebar/CUDA_Toolkit_Release_Notes.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "## 3. [cuda-memcheck/compute-sanitizer工具使用-CSDN博客](https://blog.csdn.net/qq_33598781/article/details/136136951)\n\n3 天之前 · 注意：此 工具已在 CUDA 11.6 中被弃用，并在12.0 及更高版本中被删除。 Compute Sanitizer 已取代它的位置，用法差不 …\n\n**URL:** https://blog.csdn.net/qq_33598781/article/details/136136951\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://blog.csdn.net/qq_33598781/article/details/136136951"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "## 4. [调试cuda程序 - 知乎](https://zhuanlan.zhihu.com/p/660480914)\n\n2023年11月11日 · 可以在 C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.2\\bin 下找到。 代替以前的 cuda-memcheck （ …\n\n**URL:** https://zhuanlan.zhihu.com/p/660480914\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/660480914"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+      "evidence": {
+        "event_id": "call_a8e9d8b56de74b03b44a5576.result",
+        "quote": "## 5. [GPU驱动与CUDA Toolkit版本不兼容的报错与修复指南_gpu ...](https://blog.csdn.net/shejizuopin/article/details/148976826)\n\n2026年9月8日 · 引言 在深度学习与高性能计算领域，GPU驱动与CUDA Toolkit的版本兼容性问题已成为开发者面临的常见挑战。 本文 …\n\n**URL:** https://blog.csdn.net/shejizuopin/article/details/148976826\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://blog.csdn.net/shejizuopin/article/details/148976826"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6a77253a0d5541ae934a104a.result",
+      "evidence": {
+        "event_id": "call_6a77253a0d5541ae934a104a.result",
+        "quote": "**标题**: CUDA 12.0 Release Notes\n\n# 1. CUDA 12.0 Release Notes\n\n## 1.2. New Features\n\n### 1.2.3. CUDA Developer Tools\n\n- For changes to nvprof and Visual Profiler, see the changelog.\n- For new features, improvements, and bug fixes in CUPTI, see the changelog.\n- For new features, improvements, and bug fixes in Nsight Compute, see the changelog.\n- For new features, improvements, and bug fixes in Compute Sanitizer, see the changelog.\n- For new features, improvements, and bug fixes in CUDA-GDB, see the changelog.\n\n## 1.3. Deprecated Features\n\n# 1. CUDA 12.0 Release Notes\n## 1.3. Deprecated Features\nThe following features are deprecated in the current release of the CUDA software. The featur"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/cuda/archive/12.0.0/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b132f10f3b494eb2bb875eb9.result",
+      "evidence": {
+        "event_id": "call_b132f10f3b494eb2bb875eb9.result",
+        "quote": "# Analysis Result: No Deprecation Statement Found\n\n## Direct Answer\n\n**No statement about cuda-memcheck/CUDA-MEMCHECK being deprecated exists in this document, and no statement about compute-sanitizer exists beyond a version listing.** I searched the entire CUDA 11.6 Release Notes content, including the \"Deprecated Features\" section (Section 1.6), and found no such statement.\n\n## What the Deprecated Features Section Actually Contains (Section 1.6)\n\nThe only items listed under \"Deprecated Features\" → \"General CUDA\" are:\n\n1. **`cudaDeviceSynchronize()` deprecation** — related to on-device fork/join parallelism:\n   > \"The `cudaDeviceSynchronize()` function used for on-device fork/join paralleli"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/cuda/archive/11.6.0/cuda-toolkit-release-notes/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

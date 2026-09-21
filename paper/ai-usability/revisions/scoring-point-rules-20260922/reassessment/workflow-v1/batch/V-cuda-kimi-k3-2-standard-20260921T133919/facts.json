@@ -1,0 +1,146 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_8dc25f49.result",
+      "evidence": {
+        "event_id": "WebFetch_1_8dc25f49.result",
+        "quote": "# CUDA Asynchronous Execution — Full Content Extraction\n\n**Source**: Section 2.5 of the CUDA Programming Guide (\"Asynchronous Execution\"). The provided content appears **complete** — it spans sections 2.5.1 through 2.5.10 and ends with the section's natural summary. **No truncation detected.**\n\n---\n\n## 2.5.1 What is Asynchronous Concurrent Execution?\n\nCUDA allows concurrent (overlapping) execution of:\n\n- Computation on the host\n- Computation on the device\n- Memory transfers: host→device, device→host, within a device, and among devices\n\nConcurrency is expressed via an **asynchronous interface**: dispatching calls/kernel launches return immediately — possibly before the operation has even star"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "08e26ce9f5a8606aff9f5d992d9dce26c400c24389aeae42eee87bb315524270",
+  "question": "我想用 CUDA streams + 异步内存拷贝（`cudaMemcpyAsync`）让 H2D/D2H 数据传输与 kernel 计算重叠，怎么做（stream / event / pinned memory）？",
+  "run_id": "V-cuda-kimi-k3-2-standard-20260921T133919",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "# Search Results for \"CUDA C Programming Guide asynchronous concurrent execution streams cudaMemcpyAsync pinned memory overlap\"\n\n## 1. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the rest …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html\n\n---\n\n## 2. [Asynchronous CUDA Calls — Introduction to CUDA Programming …](https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html)\n\n2025年9月15日 · This section provides an example o"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "## 1. [2.5. Asynchronous Execution — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html)\n\n2026年9月10日 · The core API components for asynchronous execution in CUDA are CUDA Streams and CUDA Events. In the rest …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "## 2. [Asynchronous CUDA Calls — Introduction to CUDA Programming …](https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html)\n\n2025年9月15日 · This section provides an example of how to use asynchronous CUDA APIs to improve the performance of a simple …\n\n**URL:** https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://intro-to-cuda.readthedocs.io/en/latest/tutorial/asynchronous.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "## 3. [【CUDA-07】流与异步并发执行 - 知乎](https://zhuanlan.zhihu.com/p/2028857385049933193)\n\n2026年4月26日 · 1. 异步执行与流 (Asynchronous Execution & CUDA Streams) CUDA 允许包括 CPU 计算、GPU 计算、主机到设备 …\n\n**URL:** https://zhuanlan.zhihu.com/p/2028857385049933193\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/2028857385049933193"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "## 4. [CUDA 编程（八）- 异步并发执行 - 知乎](https://zhuanlan.zhihu.com/p/590077188)\n\n2022年12月7日 · Overlap of Data Transfer and Kernel Execution 有些设备可以在内核执行的同时执行到GPU或从GPU的异步内存拷贝 …\n\n**URL:** https://zhuanlan.zhihu.com/p/590077188\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/590077188"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_7985ec73.result",
+      "evidence": {
+        "event_id": "WebSearch_0_7985ec73.result",
+        "quote": "## 5. [CUDA Streams：异步执行、Event 同步与计算传输重叠](https://hd9568.github.io/blog/cuda-streams-events-overlap/)\n\n2026年5月29日 · 理解 CUDA Stream 的异步执行模型，掌握 Event 同步、cudaMemcpyAsync 和 Ping-Pong Buffer 实现计算与数据传 …\n\n**URL:** https://hd9568.github.io/blog/cuda-streams-events-overlap/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://hd9568.github.io/blog/cuda-streams-events-overlap/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_8dc25f49.result",
+      "evidence": {
+        "event_id": "WebFetch_1_8dc25f49.result",
+        "quote": "# CUDA Asynchronous Execution — Full Content Extraction\n\n**Source**: Section 2.5 of the CUDA Programming Guide (\"Asynchronous Execution\"). The provided content appears **complete** — it spans sections 2.5.1 through 2.5.10 and ends with the section's natural summary. **No truncation detected.**\n\n---\n\n## 2.5.1 What is Asynchronous Concurrent Execution?\n\nCUDA allows concurrent (overlapping) execution of:\n\n- Computation on the host\n- Computation on the device\n- Memory transfers: host→device, device→host, within a device, and among devices\n\nConcurrency is expressed via an **asynchronous interface**: dispatching calls/kernel launches return immediately — possibly before the operation has even star"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

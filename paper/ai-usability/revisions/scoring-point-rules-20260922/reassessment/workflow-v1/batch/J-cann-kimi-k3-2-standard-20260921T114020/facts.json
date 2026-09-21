@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_3_0fc079ff.result",
+      "evidence": {
+        "event_id": "WebFetch_3_0fc079ff.result",
+        "quote": "# 分析结果\n\n## ⚠️ 重要说明：返回内容为不完整/截断状态\n\n**您请求的安装命令正文在所提供的网页内容中不存在。** 以下是详细分析：\n\n---\n\n## 页面实际包含的内容\n\n该页面为「快速安装昇腾环境」文档页，正文中仅有：\n\n1. **一句引导语**：\n   > \"跟随指导，在您的机器上快速安装昇腾环境。\"\n\n2. **一组安装条件选择器（表单控件）**，包含以下选项字段（出现了两次，可能是页面重复渲染）：\n   - 版本（Version）\n   - 产品系列（Product Series）\n   - CPU架构（CPU Architecture）\n   - 操作系统（Operating System）\n   - 安装方式（Installation Method）\n\n3. **一个外链**：\n   - `更多版本 →` 指向：https://www.hiascend.com/developer/download/community/result?module=cann\n\n---\n\n## 您请求的内容均未在页面中出现\n\n| 请求项 | 是否存在 |\n|---|---|\n| Ubuntu 依赖安装命令（如 `apt-get install ...`） | ❌ 无 |\n| driver 安装命令及版本号 | ❌ 无 |\n| toolkit 安装命令及版本号 | ❌ 无 |\n| `set_env.sh` 的 source 路径 | ❌ 无 |\n| 需要配置的环境变量（如 `LD_LIBRARY_PATH`、`PATH`、`ASCEND_TOOLKIT_HOME` 等） | ❌"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://ascend.github.io/docs/sources/ascend/quick_install.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_cc13018c.result",
+      "evidence": {
+        "event_id": "WebFetch_4_cc13018c.result",
+        "quote": "**标题**: 安装包相关-安装配置相关-环境变量参考-CANN8.0.0.alpha002开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_60cae2f8.result",
+      "evidence": {
+        "event_id": "WebFetch_5_60cae2f8.result",
+        "quote": "# 分析结果：无法提取所请求的安装内容\n\n## 核心结论\n\n**此 RST 源文件中不包含任何实际的 Ubuntu CANN 安装内容。** 您请求的四项信息（依赖安装命令、driver/toolkit 安装命令与版本、`set_env.sh` 路径、环境变量配置）在该源码中**全部缺失**。\n\n## 原因分析\n\n这是一个 **JavaScript 动态渲染的安装向导页面**，而非静态内容页。关键证据如下：\n\n### 1. 页面自身声明依赖 JavaScript\n\n源码中 `<noscript>` 标签明确提示：\n\n> **注意：** 此页面需要 JavaScript 来显示安装步骤。请启用 JavaScript 或访问 CANN 官方安装文档。\n\n### 2. 内容由外部脚本注入\n\n```html\n<script type=\"text/javascript\" src=\"../../_static/ascend_actions.js\"></script>\n```\n\n所有安装逻辑和命令文本都由 `ascend_actions.js` 动态生成，不在 RST 源文件内。\n\n### 3. 内容容器全部为空\n\n页面仅有五个筛选维度的占位结构，无任何选项值或命令：\n\n| 维度 | 对应元素 ID | 源码中的内容 |\n|------|------------|-------------|\n| 版本 | `row-version` | 空 |\n| 产品系列 | `row-product` | 空 |\n| CPU架构 | `row-cpu_arch` | 空 |\n| 操作系统 | `row-"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://ascend.github.io/docs/_sources/sources/ascend/quick_install.rst.txt",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_d483ea20.result",
+      "evidence": {
+        "event_id": "WebFetch_6_d483ea20.result",
+        "quote": "**标题**: CANN安装部署-昇腾社区\n\n稳定版\n\n快速提供新特性的稳定版，供开发者提前试用"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/quickstart/instg_quick.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_dc0ab0a2.result",
+      "evidence": {
+        "event_id": "WebFetch_8_dc0ab0a2.result",
+        "quote": "**标题**: 快速安装CANN-软件安装-环境准备-CANN8.5.0.alpha002开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_2a3ff25c.result",
+      "evidence": {
+        "event_id": "WebFetch_9_2a3ff25c.result",
+        "quote": "**标题**: 昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大关键步骤-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-04 22:21:20 发布\n2026-07-08 09:54:33\n\n# 昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大关键步骤 原创\n\n## [](https://blog.csdn.net/weixin_29043895/article/details/162709158)昇腾 CANN 7.0 环境配置实战：Ubuntu 22.04 从零部署到模型迁移全流程\n\n当开发者第一次接触昇腾 AI 处理器时，最迫切的需求往往是如何快速搭建一个可用的开发环境。不同于传统GPU的即插即用特性，昇腾平台的CANN软件栈需要更精细的系统级配置。本文将基于Ubuntu 22.04系统，详细解析从硬件检查到PyTorch模型迁移的完整部署流程，帮助开发者避开常见陷阱。\n\n### [](https://blog.csdn.net/weixin_29043895/article/details/162709158)1. 系统环境预检与依赖准备\n\n在安装CANN 7.0之前，必须确保系统环境满足基础要求。许多安装失败案例都源于忽视了这个前置步骤。我们需要重点关注三个方面：\n\n**硬件兼容性检查** ：\n\n```bash\nlspci | grep -i ascend\n\n11\n```\n\n该命令应返回类似 `Device 0042: Huawei Technologies Co., Ltd. Asc"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/weixin_29043895/article/details/162709158",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_10_64e22411.result",
+      "evidence": {
+        "event_id": "WebFetch_10_64e22411.result",
+        "quote": "## 分析结论\n\n**此 JS 文件中并不包含任何实际的安装命令文本**，因此无法从中提取您要求的 Ubuntu apt 依赖命令、.run 安装命令、set_env.sh 路径或环境变量。\n\n### 原因：命令数据与渲染逻辑分离\n\n该文件只是一个**渲染引擎**，真正的命令模板存储在外部 JSON 配置文件中，通过 AJAX 动态加载：\n\n```javascript\n$.getJSON('../../_static/ascend_config.json', function(data) {\n    config = data;\n    initializeUI();\n});\n```\n\n安装步骤（含命令）来自配置文件的 `steps` 字段，渲染逻辑如下：\n\n```javascript\nvar steps = installMethod.steps;\n// ...\nstep.commands.forEach(function(command) {\n    instructionsHtml += '<pre>' + escapeHtml(command) + '</pre>';\n});\n```\n\n### 从该文件中可确认的信息\n\n**1. 配置文件路径**\n- `../../_static/ascend_config.json`（您需要的所有命令都在此文件中）\n\n**2. 数据层级结构**（命令所在位置）\n\n```\nversions（版本）\n └── product_series（产品系列）\n      └── cpu_architectures（CPU架构）\n         "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://ascend.github.io/docs/_static/ascend_actions.js",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_11_6a77fd37.result",
+      "evidence": {
+        "event_id": "WebFetch_11_6a77fd37.result",
+        "quote": "# Ubuntu 安装 CANN 步骤提取结果\n\n## 概要\n\n- **CANN 版本号：`9.0.0-beta.1`**（version id `673`；配置版本 `2deabbd`，更新时间 `2026-09-21 02:50:32`；下载路径为 `CANN 9.0.T2`）\n- JSON 中 Ubuntu（id `h0602`）出现在**两个产品系列**下，且 **AArch64 与 X86_64 两种架构均有**：\n  - `d105`：**200I/500 A2推理产品**（配套 ops 包为 `310b-ops`）\n  - `d500`：**推理系列产品**（配套 ops 包为 `310p-ops`）\n- Ubuntu 下仅提供两种安装方式：**在线安装 (Conda)**（h0701）和**离线安装 (Runfile)**（h0703），无 Yum 方式。\n\n---\n\n## 一、d105「200I/500 A2推理产品」+ Ubuntu\n\n### 1. 在线安装 (Conda)（AArch64 与 X86_64 内容完全相同）\n\n**步骤 1 — 安装Toolkit**\n```bash\n#conda所在目录需有755权限\nconda config --add channels https://repo.huaweicloud.com/ascend/repos/conda/ \nconda install ascend::cann-toolkit==9.0.0.beta.1\nconda install ascend::cann-310b-ops==9.0.0.bet"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://ascend.github.io/docs/_static/ascend_config.json",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "f3e14296b92a3715299bfce6831610ea0c5ebd6dc5a72aff93f4c2bb39e548f6",
+  "question": "Ubuntu 上从零安装 CANN toolkit，装完要 source 哪个 set_env.sh、配哪些环境变量？",
+  "run_id": "J-cann-kimi-k3-2-standard-20260921T114020",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "# Search Results for \"CANN toolkit Ubuntu 安装 set_env.sh 环境变量 昇腾官方文档\"\n\n## 1. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n## 2. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://blog.csdn.net/weixin_29043895/article/details/162709158)\n\n2026年7月30日 · 本文详细介绍了在Ubuntu 22.04系统上配置昇腾 CANN 7.0环境的5大关键步骤，包括系统环境预检、CANN组件化安 …\n\n**URL:** https://blog.csdn.net/weixin_29043895/article/details/162709158\n\n---\n\n## 3. [搭建第一个CANN开发环境：避坑指南](https://ascendai.csdn.net/69d7945372111d255bf879aa.html)\n\n2025年10月23日 · 说到环境搭"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "## 1. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/aasd23/article/details/153980447"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "## 2. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://blog.csdn.net/weixin_29043895/article/details/162709158)\n\n2026年7月30日 · 本文详细介绍了在Ubuntu 22.04系统上配置昇腾 CANN 7.0环境的5大关键步骤，包括系统环境预检、CANN组件化安 …\n\n**URL:** https://blog.csdn.net/weixin_29043895/article/details/162709158\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_29043895/article/details/162709158"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "## 3. [搭建第一个CANN开发环境：避坑指南](https://ascendai.csdn.net/69d7945372111d255bf879aa.html)\n\n2025年10月23日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到 …\n\n**URL:** https://ascendai.csdn.net/69d7945372111d255bf879aa.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://ascendai.csdn.net/69d7945372111d255bf879aa.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "## 4. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_ubuntu ...](https://cann.csdn.net/69ef0abd54b52172bc704615.html)\n\n2025年10月27日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。从Python环境准备、CANN软件包安装到环境变量配 …\n\n**URL:** https://cann.csdn.net/69ef0abd54b52172bc704615.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://cann.csdn.net/69ef0abd54b52172bc704615.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_15c1270e.result",
+      "evidence": {
+        "event_id": "WebSearch_0_15c1270e.result",
+        "quote": "## 5. [环境变量列表-CANN8.0.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html)\n\n本手册描述开发者基于CANN构建AI应用和业务过程中可使用的环境变量。 环境变量支持通过命令、接口、配置等方式实现，包 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "# Search Results for \"site:hiascend.com CANN 软件安装指南 Ubuntu toolkit 安装 set_env.sh\"\n\n## 1. [搭建第一个CANN开发环境：避坑指南_重装cann kernels ...](https://blog.csdn.net/qq_41397792/article/details/153776541)\n\n2026年8月19日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到环 …\n\n**URL:** https://blog.csdn.net/qq_41397792/article/details/153776541\n\n---\n\n## 2. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n## 3. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html)\n\n2026年"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "## 1. [搭建第一个CANN开发环境：避坑指南_重装cann kernels ...](https://blog.csdn.net/qq_41397792/article/details/153776541)\n\n2026年8月19日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到环 …\n\n**URL:** https://blog.csdn.net/qq_41397792/article/details/153776541\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://blog.csdn.net/qq_41397792/article/details/153776541"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "## 2. [CANN训练营环境搭建实战：Ubuntu系统安装全记录_cann ...](https://blog.csdn.net/aasd23/article/details/153980447)\n\n2026年2月26日 · 本文详细记录了2025年昇腾CANN训练营环境搭建全过程。 从Python环境准备、CANN软件包安装到环境变量配置， …\n\n**URL:** https://blog.csdn.net/aasd23/article/details/153980447\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://blog.csdn.net/aasd23/article/details/153980447"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "## 3. [昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大 ...](https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html)\n\n2026年7月8日 · 本文详细介绍了在Ubuntu 22.04系统上配置昇腾 CANN 7.0环境的5大关键步骤，包括系统环境预检、CANN组件化安 …\n\n**URL:** https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://aicoding.csdn.net/6a687d9c662f9a54cb954376.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "## 4. [CANN环境搭建与配置指南_c#_2501_94424430-昇腾开源 ...](https://ascendai.csdn.net/69d7982c72111d255bf883d2.html)\n\n2026年2月6日 · CANN环境搭建是开发昇腾AI应用的第一步，正确的环境配置可以避免很多后续问题。 本文详细介绍了从驱动安装 …\n\n**URL:** https://ascendai.csdn.net/69d7982c72111d255bf883d2.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://ascendai.csdn.net/69d7982c72111d255bf883d2.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_9d8a56e0.result",
+      "evidence": {
+        "event_id": "WebSearch_1_9d8a56e0.result",
+        "quote": "## 5. [【CANN训练营-模型部署入门】【CANN训练营0基础赢满分 ...](https://zhuanlan.zhihu.com/p/624038674)\n\n2023年4月22日 · 2023 · CANN训练营第一季:CANN的Ubuntu环境安装 安装需在联网环境下运行 一 、安装ubuntu和python环境 ( …\n\n**URL:** https://zhuanlan.zhihu.com/p/624038674\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/624038674"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "# Search Results for \"昇腾社区 CANN 安装开发环境 软件安装指南 Ascend-cann-toolkit run install hiascend document\"\n\n## 1. [CANN安装部署-昇腾社区](https://www.hiascend.com/cann/download)\n\n2026年9月1日 · CANN快速安装提供最新特性的版本下载方式，供开发者使用。 若您想查询昇腾全栈软件版本的配套关系和兼容关 …\n\n**URL:** https://www.hiascend.com/cann/download\n\n---\n\n## 2. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 华为昇腾CANN文档聚合页，涵盖开发指南、API参考、部署教程、故障排查及主流框架适配说明等，助力开发者快速 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n## 3. [快速安装昇腾环境 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/ascend/quick_install.html)\n\n3 天之前 · 跟随指导，在您的机器上快速安装昇腾环境。 1. 安装依赖. 2. 安装CANN. 3. 样例运行. 若您需要详细的操作步骤请参考  …\n\n**URL:** https://ascend.github.io/docs/sources"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "## 1. [CANN安装部署-昇腾社区](https://www.hiascend.com/cann/download)\n\n2026年9月1日 · CANN快速安装提供最新特性的版本下载方式，供开发者使用。 若您想查询昇腾全栈软件版本的配套关系和兼容关 …\n\n**URL:** https://www.hiascend.com/cann/download\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://www.hiascend.com/cann/download"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "## 2. [CANN-文档-昇腾社区](https://www.hiascend.com/cann/document)\n\n2026年9月1日 · 华为昇腾CANN文档聚合页，涵盖开发指南、API参考、部署教程、故障排查及主流框架适配说明等，助力开发者快速 …\n\n**URL:** https://www.hiascend.com/cann/document\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://www.hiascend.com/cann/document"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "## 3. [快速安装昇腾环境 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/ascend/quick_install.html)\n\n3 天之前 · 跟随指导，在您的机器上快速安装昇腾环境。 1. 安装依赖. 2. 安装CANN. 3. 样例运行. 若您需要详细的操作步骤请参考  …\n\n**URL:** https://ascend.github.io/docs/sources/ascend/quick_install.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://ascend.github.io/docs/sources/ascend/quick_install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "## 4. [04 CANN 安装 | 昇腾之家](https://revolutionla.github.io/AscendMate/setup/cann-install)\n\n2026年9月5日 · 什么时候读：驱动已识别设备后，安装昇腾算力使能平台 CANN。 CANN（Compute Architecture for Neural …\n\n**URL:** https://revolutionla.github.io/AscendMate/setup/cann-install\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://revolutionla.github.io/AscendMate/setup/cann-install"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_07e3de1d.result",
+      "evidence": {
+        "event_id": "WebSearch_2_07e3de1d.result",
+        "quote": "## 5. [CANN环境搭建与配置指南_c#_2501_94424430-昇腾开源 ...](https://ascendai.csdn.net/69d7982c72111d255bf883d2.html)\n\n2026年2月6日 · CANN环境搭建是开发昇腾AI应用的第一步，正确的环境配置可以避免很多后续问题。 本文详细介绍了从驱动安装 …\n\n**URL:** https://ascendai.csdn.net/69d7982c72111d255bf883d2.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://ascendai.csdn.net/69d7982c72111d255bf883d2.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_0fc079ff.result",
+      "evidence": {
+        "event_id": "WebFetch_3_0fc079ff.result",
+        "quote": "# 分析结果\n\n## ⚠️ 重要说明：返回内容为不完整/截断状态\n\n**您请求的安装命令正文在所提供的网页内容中不存在。** 以下是详细分析：\n\n---\n\n## 页面实际包含的内容\n\n该页面为「快速安装昇腾环境」文档页，正文中仅有：\n\n1. **一句引导语**：\n   > \"跟随指导，在您的机器上快速安装昇腾环境。\"\n\n2. **一组安装条件选择器（表单控件）**，包含以下选项字段（出现了两次，可能是页面重复渲染）：\n   - 版本（Version）\n   - 产品系列（Product Series）\n   - CPU架构（CPU Architecture）\n   - 操作系统（Operating System）\n   - 安装方式（Installation Method）\n\n3. **一个外链**：\n   - `更多版本 →` 指向：https://www.hiascend.com/developer/download/community/result?module=cann\n\n---\n\n## 您请求的内容均未在页面中出现\n\n| 请求项 | 是否存在 |\n|---|---|\n| Ubuntu 依赖安装命令（如 `apt-get install ...`） | ❌ 无 |\n| driver 安装命令及版本号 | ❌ 无 |\n| toolkit 安装命令及版本号 | ❌ 无 |\n| `set_env.sh` 的 source 路径 | ❌ 无 |\n| 需要配置的环境变量（如 `LD_LIBRARY_PATH`、`PATH`、`ASCEND_TOOLKIT_HOME` 等） | ❌"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://ascend.github.io/docs/sources/ascend/quick_install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_cc13018c.result",
+      "evidence": {
+        "event_id": "WebFetch_4_cc13018c.result",
+        "quote": "**标题**: 安装包相关-安装配置相关-环境变量参考-CANN8.0.0.alpha002开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha002/apiref/envref/envref_07_0003.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_60cae2f8.result",
+      "evidence": {
+        "event_id": "WebFetch_5_60cae2f8.result",
+        "quote": "# 分析结果：无法提取所请求的安装内容\n\n## 核心结论\n\n**此 RST 源文件中不包含任何实际的 Ubuntu CANN 安装内容。** 您请求的四项信息（依赖安装命令、driver/toolkit 安装命令与版本、`set_env.sh` 路径、环境变量配置）在该源码中**全部缺失**。\n\n## 原因分析\n\n这是一个 **JavaScript 动态渲染的安装向导页面**，而非静态内容页。关键证据如下：\n\n### 1. 页面自身声明依赖 JavaScript\n\n源码中 `<noscript>` 标签明确提示：\n\n> **注意：** 此页面需要 JavaScript 来显示安装步骤。请启用 JavaScript 或访问 CANN 官方安装文档。\n\n### 2. 内容由外部脚本注入\n\n```html\n<script type=\"text/javascript\" src=\"../../_static/ascend_actions.js\"></script>\n```\n\n所有安装逻辑和命令文本都由 `ascend_actions.js` 动态生成，不在 RST 源文件内。\n\n### 3. 内容容器全部为空\n\n页面仅有五个筛选维度的占位结构，无任何选项值或命令：\n\n| 维度 | 对应元素 ID | 源码中的内容 |\n|------|------------|-------------|\n| 版本 | `row-version` | 空 |\n| 产品系列 | `row-product` | 空 |\n| CPU架构 | `row-cpu_arch` | 空 |\n| 操作系统 | `row-"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://ascend.github.io/docs/_sources/sources/ascend/quick_install.rst.txt"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_d483ea20.result",
+      "evidence": {
+        "event_id": "WebFetch_6_d483ea20.result",
+        "quote": "**标题**: CANN安装部署-昇腾社区\n\n稳定版\n\n快速提供新特性的稳定版，供开发者提前试用"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/quickstart/instg_quick.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "# Search Results for \"\"set_env.sh\" ascend-toolkit 安装 CANN 8.0 Ubuntu \"./Ascend-cann-toolkit\" 安装开发环境\"\n\n## 1. [快速安装CANN-CANN8.5.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html)\n\n本节提供快速安装CANN软件的示例命令，帮助您快速部署CANN环境；若您需要详细的操作步骤请参考“ 安装指南 ”。 安装CANN前请 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html\n\n---\n\n## 2. [快速安装昇腾环境 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/ascend/quick_install.html)\n\n3 天之前 · 跟随指导，在您的机器上快速安装昇腾环境。 1. 安装依赖. 2. 安装CANN. 3. 样例运行. 若您需要详细的操作步骤请参考  …\n\n**URL:** https://ascend.github.io/docs/sources/ascend/quick"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "## 1. [快速安装CANN-CANN8.5.0.alpha002-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html)\n\n本节提供快速安装CANN软件的示例命令，帮助您快速部署CANN环境；若您需要详细的操作步骤请参考“ 安装指南 ”。 安装CANN前请 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "## 2. [快速安装昇腾环境 — 昇腾开源 文档 - GitHub Pages](https://ascend.github.io/docs/sources/ascend/quick_install.html)\n\n3 天之前 · 跟随指导，在您的机器上快速安装昇腾环境。 1. 安装依赖. 2. 安装CANN. 3. 样例运行. 若您需要详细的操作步骤请参考  …\n\n**URL:** https://ascend.github.io/docs/sources/ascend/quick_install.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://ascend.github.io/docs/sources/ascend/quick_install.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "## 3. [容器内安装CANN_ascend-toolkit安装-CSDN博客](https://blog.csdn.net/WWWzq_/article/details/147854137)\n\n3 天之前 · 本文介绍了在昊算平台使用910b NPU和docker容器环境下，安装CANN软件包的详细流程。 首先需要从昇腾社区下载中心 …\n\n**URL:** https://blog.csdn.net/WWWzq_/article/details/147854137\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/WWWzq_/article/details/147854137"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "## 4. [昇腾NPU安装指南：Ascend-cann-toolkit 8.0.RC3.alpha003 ...](https://wenku.baidu.com/noteview/4a98ff3663ec102de2bd960590c69ec3d5bbdb99.html)\n\n安装完成后，必须立即执行set_env.sh环境变量配置脚本。 这个脚本会设置包括LD_LIBRARY_PATH、PYTHONPATH在内的十余个 …\n\n**URL:** https://wenku.baidu.com/noteview/4a98ff3663ec102de2bd960590c69ec3d5bbdb99.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://wenku.baidu.com/noteview/4a98ff3663ec102de2bd960590c69ec3d5bbdb99.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_8d4dace1.result",
+      "evidence": {
+        "event_id": "WebSearch_7_8d4dace1.result",
+        "quote": "## 5. [搭建第一个CANN开发环境：避坑指南_重装cann kernels ...](https://blog.csdn.net/qq_41397792/article/details/153776541)\n\n2026年8月19日 · 说到环境搭建，我第一次装CANN的时候真的是踩了一堆坑。 从下载安装包找了半天，到装完发现版本不对，再到环 …\n\n**URL:** https://blog.csdn.net/qq_41397792/article/details/153776541\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://blog.csdn.net/qq_41397792/article/details/153776541"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_dc0ab0a2.result",
+      "evidence": {
+        "event_id": "WebFetch_8_dc0ab0a2.result",
+        "quote": "**标题**: 快速安装CANN-软件安装-环境准备-CANN8.5.0.alpha002开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha002/softwareinst/instg/instg_quick.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_2a3ff25c.result",
+      "evidence": {
+        "event_id": "WebFetch_9_2a3ff25c.result",
+        "quote": "**标题**: 昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大关键步骤-CSDN博客\n**发布时间**: 最新推荐文章于 2026-09-04 22:21:20 发布\n2026-07-08 09:54:33\n\n# 昇腾 CANN 7.0 环境配置指南：Ubuntu 22.04 单机部署 5 大关键步骤 原创\n\n## [](https://blog.csdn.net/weixin_29043895/article/details/162709158)昇腾 CANN 7.0 环境配置实战：Ubuntu 22.04 从零部署到模型迁移全流程\n\n当开发者第一次接触昇腾 AI 处理器时，最迫切的需求往往是如何快速搭建一个可用的开发环境。不同于传统GPU的即插即用特性，昇腾平台的CANN软件栈需要更精细的系统级配置。本文将基于Ubuntu 22.04系统，详细解析从硬件检查到PyTorch模型迁移的完整部署流程，帮助开发者避开常见陷阱。\n\n### [](https://blog.csdn.net/weixin_29043895/article/details/162709158)1. 系统环境预检与依赖准备\n\n在安装CANN 7.0之前，必须确保系统环境满足基础要求。许多安装失败案例都源于忽视了这个前置步骤。我们需要重点关注三个方面：\n\n**硬件兼容性检查** ：\n\n```bash\nlspci | grep -i ascend\n\n11\n```\n\n该命令应返回类似 `Device 0042: Huawei Technologies Co., Ltd. Asc"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://blog.csdn.net/weixin_29043895/article/details/162709158"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_10_64e22411.result",
+      "evidence": {
+        "event_id": "WebFetch_10_64e22411.result",
+        "quote": "## 分析结论\n\n**此 JS 文件中并不包含任何实际的安装命令文本**，因此无法从中提取您要求的 Ubuntu apt 依赖命令、.run 安装命令、set_env.sh 路径或环境变量。\n\n### 原因：命令数据与渲染逻辑分离\n\n该文件只是一个**渲染引擎**，真正的命令模板存储在外部 JSON 配置文件中，通过 AJAX 动态加载：\n\n```javascript\n$.getJSON('../../_static/ascend_config.json', function(data) {\n    config = data;\n    initializeUI();\n});\n```\n\n安装步骤（含命令）来自配置文件的 `steps` 字段，渲染逻辑如下：\n\n```javascript\nvar steps = installMethod.steps;\n// ...\nstep.commands.forEach(function(command) {\n    instructionsHtml += '<pre>' + escapeHtml(command) + '</pre>';\n});\n```\n\n### 从该文件中可确认的信息\n\n**1. 配置文件路径**\n- `../../_static/ascend_config.json`（您需要的所有命令都在此文件中）\n\n**2. 数据层级结构**（命令所在位置）\n\n```\nversions（版本）\n └── product_series（产品系列）\n      └── cpu_architectures（CPU架构）\n         "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://ascend.github.io/docs/_static/ascend_actions.js"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_11_6a77fd37.result",
+      "evidence": {
+        "event_id": "WebFetch_11_6a77fd37.result",
+        "quote": "# Ubuntu 安装 CANN 步骤提取结果\n\n## 概要\n\n- **CANN 版本号：`9.0.0-beta.1`**（version id `673`；配置版本 `2deabbd`，更新时间 `2026-09-21 02:50:32`；下载路径为 `CANN 9.0.T2`）\n- JSON 中 Ubuntu（id `h0602`）出现在**两个产品系列**下，且 **AArch64 与 X86_64 两种架构均有**：\n  - `d105`：**200I/500 A2推理产品**（配套 ops 包为 `310b-ops`）\n  - `d500`：**推理系列产品**（配套 ops 包为 `310p-ops`）\n- Ubuntu 下仅提供两种安装方式：**在线安装 (Conda)**（h0701）和**离线安装 (Runfile)**（h0703），无 Yum 方式。\n\n---\n\n## 一、d105「200I/500 A2推理产品」+ Ubuntu\n\n### 1. 在线安装 (Conda)（AArch64 与 X86_64 内容完全相同）\n\n**步骤 1 — 安装Toolkit**\n```bash\n#conda所在目录需有755权限\nconda config --add channels https://repo.huaweicloud.com/ascend/repos/conda/ \nconda install ascend::cann-toolkit==9.0.0.beta.1\nconda install ascend::cann-310b-ops==9.0.0.bet"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://ascend.github.io/docs/_static/ascend_config.json"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

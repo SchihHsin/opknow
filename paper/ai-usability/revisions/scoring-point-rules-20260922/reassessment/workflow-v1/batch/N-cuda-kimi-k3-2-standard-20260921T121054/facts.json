@@ -1,0 +1,300 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_5bf58b68.result",
+      "evidence": {
+        "event_id": "WebFetch_1_5bf58b68.result",
+        "quote": "**标题**: Engine Tools and Debugging — NVIDIA TensorRT\n\nBack to top\n\n# Engine Tools and Debugging[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-tools-and-debugging \"Link to this heading\")\n\nThis page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, optimizer callbacks, preview features, and debug tensors.\n\n## Engine Inspector[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-inspector \"Link to this heading\")\n\nTensorRT provides the `IEngineInspector` API to inspect the information inside a TensorRT engine. Call the `createEngineInspector()` from a de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_a2ea9991.result",
+      "evidence": {
+        "event_id": "WebFetch_3_a2ea9991.result",
+        "quote": "**标题**: Layer Fusion Catalog — NVIDIA TensorRT\n\nBack to top\n\n# Layer Fusion Catalog[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion-catalog \"Link to this heading\")\n\nThis page catalogs the fusion patterns TensorRT applies at build time. For an overview of why fusion matters and how to inspect fusion decisions in logs, refer to [Enabling Layer Fusion](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html#enable-fusion).\n\n## Layer Fusion[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion \"Link to this heading\")\n\nTensorRT attempts to perform many different types of "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_8f3ee6cd.result",
+      "evidence": {
+        "event_id": "WebFetch_4_8f3ee6cd.result",
+        "quote": "## 分析结果摘要\n\n在所提供的网页内容中，**\"Enabling Layer Fusion\" 章节完整存在且无截断**，但内容非常简短（只有 3 段正文 + 1 个 Tip 框）。需要提前说明：**该章节正文中没有出现 Myelin、任何 builder flag 或 preview feature 的字样**，也未提及 `trtexec --verbose`；融合的具体模式目录被移到了外部页面 \"Layer Fusion Catalog\"（该页面内容未包含在所给网页文本中，属于外部引用截断）。以下为逐条核对。\n\n---\n\n## 1. 章节定位（上下文）\n\n- 在页面中位于 **\"Limiting Compute Resources\"** 之后、**\"Optimizing Layer Performance\"** 之前。\n- 页面顶部 \"What You Will Learn\" 中的相关条目：\"How the TensorRT layer fusion and pointwise fusion work, and which patterns are supported\"。\n- 锚点说明：标题自身锚点为 `#enabling-layer-fusion`，但后文 \"Optimizing Layer Performance\" 章节内的交叉引用链接使用了 `#enable-fusion`（两种锚点形式在文档中同时存在）。\n\n## 2. 该章节完整正文（原文，无截断）\n\n> ## Enabling Layer Fusion\n>\n> Layer fusion is one of the"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_aab20622.result",
+      "evidence": {
+        "event_id": "WebFetch_5_aab20622.result",
+        "quote": "# cuDNN Graph API / Runtime Fusion 文档要点分析\n\n> **来源**：NVIDIA cuDNN 官方文档 \"Graphs\" 章节（graph-api.html）。所提供内容为该页面的**前半部分（已截断）**，缺少后端的 SDPA/注意力、预编译专用融合引擎、以及 C++/Python 完整代码示例等部分，下文「截断说明」中会标注。\n\n---\n\n## 1. 核心概念与工作流程（v8 Graph API 引入）\n\n- Graph API 自 **cuDNN 8.0** 引入，采用**声明式编程模型**：用户先构建 operation graph（算子数据流图，通常是整网的一个子图/分区），再为其选择并配置可执行的 **engine**。\n- 三个关键概念：\n  1. **Operations and Operation Graphs**：图是数学规格，与底层 engine 解耦；算子通过 I/O tensor 隐式连接（A 产出 X → B 消费 X 即构成依赖）。\n  2. **Engines and Engine Configurations**：一个图可能有 0 个、1 个或多个候选 engine；engine 带有可调 **knobs**（配置项）。\n  3. **Heuristics**（见第 5 节）。\n\n---\n\n## 2. Runtime Fusion 支持的图模式（含 Conv+Bias+Activation）\n\n### 2.1 四类引擎\n1. **Pre-compiled single operation engines**："
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "761a7ab01295c369e99172c88f6bc7537acac129bdc506afbd3dbaa49e85c991",
+  "question": "TensorRT/CUDA 里算子融合（layer/kernel fusion）怎么发生、怎么观察和控制？",
+  "run_id": "N-cuda-kimi-k3-2-standard-20260921T121054",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "# Search Results for \"TensorRT layer fusion how to observe control builder IEngineInspector trtexec verbose documentation\"\n\n## 1. [Engine Tools and Debugging — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html)\n\n2026年9月8日 · This page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html\n\n---\n\n## 2. [Engine Inspector — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/engine-tools.html)\n\n2026年5月23日 · The Layer Explorer window allows you to search for a particul"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "## 1. [Engine Tools and Debugging — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html)\n\n2026年9月8日 · This page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "## 2. [Engine Inspector — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/engine-tools.html)\n\n2026年5月23日 · The Layer Explorer window allows you to search for a particular layer or explore the layers in the network. The …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/engine-tools.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/engine-tools.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "## 3. [TensorRT 核心加速机制拆解：Layer Fusion、精度优化与图 ...](https://blog.csdn.net/sinat_28461591/article/details/147153076)\n\n2025年4月15日 · 1. Layer Fusion（层融合）机制详解：如何合并网络算子？ 当我们谈到 TensorRT 的“图优化能力”时，最常被提到的 …\n\n**URL:** https://blog.csdn.net/sinat_28461591/article/details/147153076\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/sinat_28461591/article/details/147153076"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "## 4. [TensorRT 核心加速机制拆解：Layer Fusion、精度优化与图 ...](https://www.e-com-net.com/article/1911002222456532992.htm)\n\n2026年5月16日 · 1. Layer Fusion（层融合）机制详解：如何合并网络算子？ 当我们谈到 TensorRT 的“图优化能力”时，最常被提到的 …\n\n**URL:** https://www.e-com-net.com/article/1911002222456532992.htm\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.e-com-net.com/article/1911002222456532992.htm"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_02616b4f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_02616b4f.result",
+        "quote": "## 5. [TensorRT课程笔记（3） | 暴躁小何的笔记 - GitHub Pages](https://shao-junliang.github.io/2024/06/17/cuda-tensorrt-basic/)\n\n2024年6月17日 · TensorRT 最终推理时需要一个 TensorRT Engine，这个 Engine 是由 TensorRT Builder 构建，而 Builder 构建 …\n\n**URL:** https://shao-junliang.github.io/2024/06/17/cuda-tensorrt-basic/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://shao-junliang.github.io/2024/06/17/cuda-tensorrt-basic/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_5bf58b68.result",
+      "evidence": {
+        "event_id": "WebFetch_1_5bf58b68.result",
+        "quote": "**标题**: Engine Tools and Debugging — NVIDIA TensorRT\n\nBack to top\n\n# Engine Tools and Debugging[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-tools-and-debugging \"Link to this heading\")\n\nThis page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, optimizer callbacks, preview features, and debug tensors.\n\n## Engine Inspector[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-inspector \"Link to this heading\")\n\nTensorRT provides the `IEngineInspector` API to inspect the information inside a TensorRT engine. Call the `createEngineInspector()` from a de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "# Search Results for \"NVIDIA TensorRT \"How TensorRT Works\" layer fusion vertical horizontal fusion builder documentation\"\n\n## 1. [TensorRT 核心加速机制拆解：Layer Fusion、精度优化与图 ...](https://blog.csdn.net/sinat_28461591/article/details/147153076)\n\n2025年4月15日 · 1. Layer Fusion（层融合）机制详解：如何合并网络算子？ 当我们谈到 TensorRT 的“图优化能力”时，最常被提到的 …\n\n**URL:** https://blog.csdn.net/sinat_28461591/article/details/147153076\n\n---\n\n## 2. [TensorRT层融合技术原理与性能实测分析-CSDN博客](https://blog.csdn.net/weixin_32099703/article/details/156342882)\n\n2025年12月26日 · 这正是 TensorRT 的价值所在——它不是另一个深度学习框架，而是一把专为NVIDIA GPU打造的“性能雕刻刀”。 通 …\n\n**URL:** https://blog.csdn.net/weixin_32099703/article/details/156342882\n\n---\n\n## 3. [Layer Fusion Catalog — NVIDIA T"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "## 1. [TensorRT 核心加速机制拆解：Layer Fusion、精度优化与图 ...](https://blog.csdn.net/sinat_28461591/article/details/147153076)\n\n2025年4月15日 · 1. Layer Fusion（层融合）机制详解：如何合并网络算子？ 当我们谈到 TensorRT 的“图优化能力”时，最常被提到的 …\n\n**URL:** https://blog.csdn.net/sinat_28461591/article/details/147153076\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://blog.csdn.net/sinat_28461591/article/details/147153076"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "## 2. [TensorRT层融合技术原理与性能实测分析-CSDN博客](https://blog.csdn.net/weixin_32099703/article/details/156342882)\n\n2025年12月26日 · 这正是 TensorRT 的价值所在——它不是另一个深度学习框架，而是一把专为NVIDIA GPU打造的“性能雕刻刀”。 通 …\n\n**URL:** https://blog.csdn.net/weixin_32099703/article/details/156342882\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://blog.csdn.net/weixin_32099703/article/details/156342882"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "## 3. [Layer Fusion Catalog — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html)\n\n2026年9月8日 · TensorRT attempts to perform many different types of optimizations in a network during the build phase. In the first …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "## 4. [TensorRT算子融合垂直顺序详解：自底向上还是自顶向下？](https://wenku.baidu.com/view/58c77ae806d276a20029bd64783e0912a3167c0c.html)\n\nTensorRT的层融合（Layer Fusion）主要分为两种类型：垂直融合与水平融合。 垂直融合针对计算图中沿深度方向串联的连续算子， …\n\n**URL:** https://wenku.baidu.com/view/58c77ae806d276a20029bd64783e0912a3167c0c.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://wenku.baidu.com/view/58c77ae806d276a20029bd64783e0912a3167c0c.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_81d8f84a.result",
+      "evidence": {
+        "event_id": "WebSearch_2_81d8f84a.result",
+        "quote": "## 5. [TensorRT层融合技术的实现原理及优化方向 | RayByte](https://raybyte.cn/post/2026/7/3/d649cac0)\n\n2026年7月3日 · 本文深入浅出地讲解了TensorRT层融合技术的实现原理，包括纵向融合、横向融合等核心方法，并结合Python示例演 …\n\n**URL:** https://raybyte.cn/post/2026/7/3/d649cac0\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://raybyte.cn/post/2026/7/3/d649cac0"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_a2ea9991.result",
+      "evidence": {
+        "event_id": "WebFetch_3_a2ea9991.result",
+        "quote": "**标题**: Layer Fusion Catalog — NVIDIA TensorRT\n\nBack to top\n\n# Layer Fusion Catalog[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion-catalog \"Link to this heading\")\n\nThis page catalogs the fusion patterns TensorRT applies at build time. For an overview of why fusion matters and how to inspect fusion decisions in logs, refer to [Enabling Layer Fusion](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html#enable-fusion).\n\n## Layer Fusion[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion \"Link to this heading\")\n\nTensorRT attempts to perform many different types of "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_8f3ee6cd.result",
+      "evidence": {
+        "event_id": "WebFetch_4_8f3ee6cd.result",
+        "quote": "## 分析结果摘要\n\n在所提供的网页内容中，**\"Enabling Layer Fusion\" 章节完整存在且无截断**，但内容非常简短（只有 3 段正文 + 1 个 Tip 框）。需要提前说明：**该章节正文中没有出现 Myelin、任何 builder flag 或 preview feature 的字样**，也未提及 `trtexec --verbose`；融合的具体模式目录被移到了外部页面 \"Layer Fusion Catalog\"（该页面内容未包含在所给网页文本中，属于外部引用截断）。以下为逐条核对。\n\n---\n\n## 1. 章节定位（上下文）\n\n- 在页面中位于 **\"Limiting Compute Resources\"** 之后、**\"Optimizing Layer Performance\"** 之前。\n- 页面顶部 \"What You Will Learn\" 中的相关条目：\"How the TensorRT layer fusion and pointwise fusion work, and which patterns are supported\"。\n- 锚点说明：标题自身锚点为 `#enabling-layer-fusion`，但后文 \"Optimizing Layer Performance\" 章节内的交叉引用链接使用了 `#enable-fusion`（两种锚点形式在文档中同时存在）。\n\n## 2. 该章节完整正文（原文，无截断）\n\n> ## Enabling Layer Fusion\n>\n> Layer fusion is one of the"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html#enable-fusion"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_aab20622.result",
+      "evidence": {
+        "event_id": "WebFetch_5_aab20622.result",
+        "quote": "# cuDNN Graph API / Runtime Fusion 文档要点分析\n\n> **来源**：NVIDIA cuDNN 官方文档 \"Graphs\" 章节（graph-api.html）。所提供内容为该页面的**前半部分（已截断）**，缺少后端的 SDPA/注意力、预编译专用融合引擎、以及 C++/Python 完整代码示例等部分，下文「截断说明」中会标注。\n\n---\n\n## 1. 核心概念与工作流程（v8 Graph API 引入）\n\n- Graph API 自 **cuDNN 8.0** 引入，采用**声明式编程模型**：用户先构建 operation graph（算子数据流图，通常是整网的一个子图/分区），再为其选择并配置可执行的 **engine**。\n- 三个关键概念：\n  1. **Operations and Operation Graphs**：图是数学规格，与底层 engine 解耦；算子通过 I/O tensor 隐式连接（A 产出 X → B 消费 X 即构成依赖）。\n  2. **Engines and Engine Configurations**：一个图可能有 0 个、1 个或多个候选 engine；engine 带有可调 **knobs**（配置项）。\n  3. **Heuristics**（见第 5 节）。\n\n---\n\n## 2. Runtime Fusion 支持的图模式（含 Conv+Bias+Activation）\n\n### 2.1 四类引擎\n1. **Pre-compiled single operation engines**："
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

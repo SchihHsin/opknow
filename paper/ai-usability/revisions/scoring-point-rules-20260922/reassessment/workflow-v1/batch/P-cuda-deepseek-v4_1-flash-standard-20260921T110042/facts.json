@@ -1,0 +1,300 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_Vv56T1RzMT6HRpJoZIQx4922.result",
+      "evidence": {
+        "event_id": "call_00_Vv56T1RzMT6HRpJoZIQx4922.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\n# Automatic Mixed Precision#\n\n# Automatic Mixed Precision#\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriate datatype, which can reduce your "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_QZG4TS2WVTB1sPvsFmgc3468.result",
+      "evidence": {
+        "event_id": "call_00_QZG4TS2WVTB1sPvsFmgc3468.result",
+        "quote": "**标题**: Automatic Mixed Precision package - torch.amp — PyTorch 2.14 documentation\n\n://docs.pytorch.org/docs/0.4.1/amp.html)v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# Automatic Mixed Precision package - torch.amp#\n\n# Automatic Mixed Precision package - torch.amp#\nCreated On: Jun 12, 2025 | Last Updated On: Jul 11, 2026\n\n`torch.amp` provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use lower precision floating point datatype (`lower_precision_fp`): `torch.float16` (`half`) or `torch.bfloat16`. Some ops, like linear layers and convolutions, are much faster in `lower_precision_fp`. Other ops, like reductions, o"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/amp.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_ynRGrPwSryulAjuqdRHY4059.result",
+      "evidence": {
+        "event_id": "call_00_ynRGrPwSryulAjuqdRHY4059.result",
+        "quote": "**标题**: Automatic Mixed Precision examples — PyTorch 2.14 documentation\n**发布时间**: Created On: May 07, 2026 | Last Updated On: May 07, 2026\n\n# Automatic Mixed Precision examples#\n\n# Automatic Mixed Precision examples#\n- Working with Multiple GPUs\n  \n  - DataParallel in a single process\n  - DistributedDataParallel, one GPU per process\n  - DistributedDataParallel, multiple GPUs per process\n- - Functions with multiple inputs or autocastable ops\n  - Functions that need a particular `dtype`\n\n[...]\n\n## Working with Unscaled Gradients#\n\nAll gradients produced by `scaler.scale(loss).backward()` are scaled. If you wish to modify or inspect the parameters’ `.grad` attributes between `backward()` and `s"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/docs/stable/notes/amp_examples.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_UIj8hQleGlfPSl7WjgGn0087.result",
+      "evidence": {
+        "event_id": "call_00_UIj8hQleGlfPSl7WjgGn0087.result",
+        "quote": "**标题**: PyTorch 混合精度训练 (AMP) | 菜鸟教程\n\n# PyTorch 混合精度训练 (AMP)\n\n混合精度训练是深度学习中最重要的性能优化技术之一。它通过同时使用 FP32（单精度）和 FP16（半精度）浮点数进行计算，可以在几乎不损失模型精度的前提下，显著提升训练速度并减少显存占用。本节详细介绍 PyTorch 中的自动混合精度（Automatic Mixed Precision，AMP）技术。\n\n> **适用版本：**本文代码基于 PyTorch 1.6+ 的 `torch.cuda.amp` API 编写。PyTorch 2.4+ 推荐使用 `torch.amp.autocast` 和 `torch.amp.GradScaler`，用法基本一致，文中会标注差异。\n\n* * *\n\n## 1. 混合精度训练基础\n\n### 1.1 为什么需要混合精度\n\n深度学习模型训练过程中涉及大量的矩阵运算。传统的 FP32（32位浮点）计算精度高，但占用显存大、计算速度慢。FP16（16位浮点）计算速度快、显存占用少，但数值表示范围较小，容易出现梯度下溢（underflow）问题。\n\n混合精度训练的核心理念是：对精度要求高的操作使用 FP32，对精度要求不高的操作使用 FP16。这样既能享受 FP16 的速度优势，又能避免精度问题。\n\n下图展示了三种浮点格式的位布局差异——**指数位**决定数值范围，**尾数位**决定精度：\n\n[...]\n\n### 1.3 Tensor Core 加速原理\n\nNVIDIA 的 Tensor Core 是一种专门用于矩阵运算的硬件单元"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.runoob.com/pytorch/pytorch-amp.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "949803dca4fd6f172c5bbe4ad09f5e7c1803a8b41e0aa2848080e43a7970b650",
+  "question": "PyTorch 训练怎么开混合精度（AMP）？`torch.cuda.amp.autocast` / GradScaler 怎么用？",
+  "run_id": "P-cuda-deepseek-v4_1-flash-standard-20260921T110042",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "# Search Results for \"PyTorch AMP autocast GradScaler mixed precision training\"\n\n## 1. [Automatic Mixed Precision - PyTorch](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · This recipe measures the performance of a simple network in default precision, then walks through adding autocast …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n## 2. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_reci"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "## 1. [Automatic Mixed Precision - PyTorch](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)\n\n2026年9月3日 · This recipe measures the performance of a simple network in default precision, then walks through adding autocast …\n\n**URL:** https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "## 2. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 通常，“自动混合精度训练”会同时使用 torch.autocast 和 torch.cuda.amp.GradScaler。 本教程演示了在默认精度下简 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "## 3. [PyTorch 混合精度训练 (AMP) - 菜鸟教程](https://www.runoob.com/pytorch/pytorch-amp.html)\n\n本节详细介绍 PyTorch 中的自动混合精度（Automatic Mixed Precision，AMP）技术。 适用版本： 本文代码基于 PyTorch 1.6+ 的 …\n\n**URL:** https://www.runoob.com/pytorch/pytorch-amp.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.runoob.com/pytorch/pytorch-amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "## 4. [自动混合精度示例 — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html)\n\n2026年5月7日 · Automatic Mixed Precision examples - Documentation for PyTorch, part of the PyTorch ecosystem.\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+      "evidence": {
+        "event_id": "call_00_cuAPjLwSk0b3HecmKAwN5390.result",
+        "quote": "## 5. [【Trick2】torch.cuda.amp自动混合精度训练 —— 节省显存 ...](https://blog.csdn.net/qq_38253797/article/details/116210911)\n\n2022年4月9日 · 本文详细介绍了PyTorch中的自动混合精度(AMP)训练，旨在加速计算并节省显存。 AMP利用半精度浮点型数据进行 …\n\n**URL:** https://blog.csdn.net/qq_38253797/article/details/116210911\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/qq_38253797/article/details/116210911"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Vv56T1RzMT6HRpJoZIQx4922.result",
+      "evidence": {
+        "event_id": "call_00_Vv56T1RzMT6HRpJoZIQx4922.result",
+        "quote": "**标题**: Automatic Mixed Precision — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Sep 15, 2020 | Last Updated: Jan 30, 2025 | Last Verified: Nov 05, 2024\n\n# Automatic Mixed Precision#\n\n# Automatic Mixed Precision#\n**Author**: Michael Carilli\n\ntorch.cuda.amp provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use `torch.float16` (`half`). Some ops, like linear layers and convolutions, are much faster in `float16` or `bfloat16`. Other ops, like reductions, often require the dynamic range of `float32`. Mixed precision tries to match each op to its appropriate datatype, which can reduce your "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QZG4TS2WVTB1sPvsFmgc3468.result",
+      "evidence": {
+        "event_id": "call_00_QZG4TS2WVTB1sPvsFmgc3468.result",
+        "quote": "**标题**: Automatic Mixed Precision package - torch.amp — PyTorch 2.14 documentation\n\n://docs.pytorch.org/docs/0.4.1/amp.html)v0.4.0v0.3.1v0.3.0v0.2.0v0.1.12\n\n[...]\n\n# Automatic Mixed Precision package - torch.amp#\n\n# Automatic Mixed Precision package - torch.amp#\nCreated On: Jun 12, 2025 | Last Updated On: Jul 11, 2026\n\n`torch.amp` provides convenience methods for mixed precision, where some operations use the `torch.float32` (`float`) datatype and other operations use lower precision floating point datatype (`lower_precision_fp`): `torch.float16` (`half`) or `torch.bfloat16`. Some ops, like linear layers and convolutions, are much faster in `lower_precision_fp`. Other ops, like reductions, o"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/docs/stable/amp.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_ynRGrPwSryulAjuqdRHY4059.result",
+      "evidence": {
+        "event_id": "call_00_ynRGrPwSryulAjuqdRHY4059.result",
+        "quote": "**标题**: Automatic Mixed Precision examples — PyTorch 2.14 documentation\n**发布时间**: Created On: May 07, 2026 | Last Updated On: May 07, 2026\n\n# Automatic Mixed Precision examples#\n\n# Automatic Mixed Precision examples#\n- Working with Multiple GPUs\n  \n  - DataParallel in a single process\n  - DistributedDataParallel, one GPU per process\n  - DistributedDataParallel, multiple GPUs per process\n- - Functions with multiple inputs or autocastable ops\n  - Functions that need a particular `dtype`\n\n[...]\n\n## Working with Unscaled Gradients#\n\nAll gradients produced by `scaler.scale(loss).backward()` are scaled. If you wish to modify or inspect the parameters’ `.grad` attributes between `backward()` and `s"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/docs/stable/notes/amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "# Search Results for \"torch.cuda.amp autocast GradScaler 混合精度训练 教程 用法\"\n\n## 1. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 本教程演示了在默认精度下简单网络的性能，然后通过添加 autocast 和 GradScaler 来运行相同的网络，从而实现混 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n## 2. [【Trick2】torch.cuda.amp自动混合精度训练 —— 节省显存 ...](https://blog.csdn.net/qq_38253797/article/details/116210911)\n\n什么是amp?为什么需要自动混合精度（Amp）？多gpu训练amp：Automatic mixed precision，自动混合精度，可以在神经网络推理过程中，针对不同的层，采用不同的数据精度进行计算，从而实现节省显存和加快速度的目的。 自动混合精度的关键词有两个：自动、混合精度。这是由PyTorch 1.6的torch.cuda.amp模块带来的： 混合精度预示着有不止一种精度的Tensor，那在PyTorch的AMP模块里是几种呢"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "## 1. [自动混合精度 (AMP) — PyTorch Tutorials 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html)\n\n2020年9月15日 · 本教程演示了在默认精度下简单网络的性能，然后通过添加 autocast 和 GradScaler 来运行相同的网络，从而实现混 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.pytorch.ac.cn/tutorials/recipes/recipes/amp_recipe.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "## 2. [【Trick2】torch.cuda.amp自动混合精度训练 —— 节省显存 ...](https://blog.csdn.net/qq_38253797/article/details/116210911)\n\n什么是amp?为什么需要自动混合精度（Amp）？多gpu训练amp：Automatic mixed precision，自动混合精度，可以在神经网络推理过程中，针对不同的层，采用不同的数据精度进行计算，从而实现节省显存和加快速度的目的。 自动混合精度的关键词有两个：自动、混合精度。这是由PyTorch 1.6的torch.cuda.amp模块带来的： 混合精度预示着有不止一种精度的Tensor，那在PyTorch的AMP模块里是几种呢？2种：torch.FloatTensor（浮点型 32位）和torch.Half…在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/qq_38253797/article/details/116210911\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/qq_38253797/article/details/116210911"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "## 3. [自动混合精度示例 — PyTorch 2.13 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html)\n\n2026年5月7日 · 自动混合精度会自动为操作选择精度，在保持准确性的同时提高性能。 torch.amp.GradScaler 的实例有助于方便地执 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://docs.pytorch.ac.cn/docs/2.13/notes/amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "## 4. [PyTorch混合精度训练原理与Java实现详解-CSDN博客](https://blog.csdn.net/weixin_34101914/article/details/166196861)\n\n混合精度训练是深度学习中的关键技术，通过结合FP16和FP32的计算，显著提升训练效率和显存利用率。其核心原理在于利用FP16加 …\n\n**URL:** https://blog.csdn.net/weixin_34101914/article/details/166196861\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/weixin_34101914/article/details/166196861"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+      "evidence": {
+        "event_id": "call_00_qFNhkURVbPPur7VaKnmi5833.result",
+        "quote": "## 5. [CUDA 自动混合精度示例 | PyTorch文档 v2.3.0 -- Pytorch ...](https://pytorch.it-docs.cn/docs/2.3/notes.amp_examples.html)\n\n通常，“自动混合精度训练”是指使用 torch.autocast 和 torch.cuda.amp.GradScaler 一起。 的实例 torch.autocast 为所选区域启用自动 …\n\n**URL:** https://pytorch.it-docs.cn/docs/2.3/notes.amp_examples.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://pytorch.it-docs.cn/docs/2.3/notes.amp_examples.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_UIj8hQleGlfPSl7WjgGn0087.result",
+      "evidence": {
+        "event_id": "call_00_UIj8hQleGlfPSl7WjgGn0087.result",
+        "quote": "**标题**: PyTorch 混合精度训练 (AMP) | 菜鸟教程\n\n# PyTorch 混合精度训练 (AMP)\n\n混合精度训练是深度学习中最重要的性能优化技术之一。它通过同时使用 FP32（单精度）和 FP16（半精度）浮点数进行计算，可以在几乎不损失模型精度的前提下，显著提升训练速度并减少显存占用。本节详细介绍 PyTorch 中的自动混合精度（Automatic Mixed Precision，AMP）技术。\n\n> **适用版本：**本文代码基于 PyTorch 1.6+ 的 `torch.cuda.amp` API 编写。PyTorch 2.4+ 推荐使用 `torch.amp.autocast` 和 `torch.amp.GradScaler`，用法基本一致，文中会标注差异。\n\n* * *\n\n## 1. 混合精度训练基础\n\n### 1.1 为什么需要混合精度\n\n深度学习模型训练过程中涉及大量的矩阵运算。传统的 FP32（32位浮点）计算精度高，但占用显存大、计算速度慢。FP16（16位浮点）计算速度快、显存占用少，但数值表示范围较小，容易出现梯度下溢（underflow）问题。\n\n混合精度训练的核心理念是：对精度要求高的操作使用 FP32，对精度要求不高的操作使用 FP16。这样既能享受 FP16 的速度优势，又能避免精度问题。\n\n下图展示了三种浮点格式的位布局差异——**指数位**决定数值范围，**尾数位**决定精度：\n\n[...]\n\n### 1.3 Tensor Core 加速原理\n\nNVIDIA 的 Tensor Core 是一种专门用于矩阵运算的硬件单元"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.runoob.com/pytorch/pytorch-amp.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

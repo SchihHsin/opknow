@@ -1,0 +1,442 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_3be41993f66e435a9c8a849d.result",
+      "evidence": {
+        "event_id": "call_3be41993f66e435a9c8a849d.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_1a966cd00e5a4c3e950349a1.result",
+      "evidence": {
+        "event_id": "call_1a966cd00e5a4c3e950349a1.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html)\n\n# --dynamic_dims\n\n#### 功能说明\n\n设置ND格式下动态维度的档位。适用于执行推理时，每次处理任意维度的场景。\n\n为支持Transformer等网络在输入格式的维度不确定的场景，通过该参数实现ND格式下任意维度的档位设置。ND表示支持任意格式。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0016.html)、[--input_format](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_76494b85f0ce4a0cac57bd90.result",
+      "evidence": {
+        "event_id": "call_76494b85f0ce4a0cac57bd90.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0018.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_0e8168bbe6f249fe93b865b4.result",
+      "evidence": {
+        "event_id": "call_0e8168bbe6f249fe93b865b4.result",
+        "quote": "**标题**: --dynamic_image_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html)\n\n# --dynamic_image_size\n\n#### 功能说明\n\n设置输入图片的动态分辨率参数。适用于执行推理时，每次处理图片宽和高不固定的场景。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0016.html)配合使用，不能与[--dynamic_batch_size](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0018.html)、[--dynamic_"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_e8bd37665ead496a8f307132.result",
+      "evidence": {
+        "event_id": "call_e8bd37665ead496a8f307132.result",
+        "quote": "**标题**: 性能调优流程-性能调优-MindIE Service-服务化集成部署-MindIE2.0.RC2开发文档-昇腾社区\n\n\n\n# 性能调优流程\n\n通过参数调优，使吞吐率（TPS）达到时延约束条件下的最大值。\n\n\n\n#### 性能调优环境变量配置\n\n性能调优环境变量配置如表1所示。\n\n\n\n**表1** 性能调优环境变量\n\n参数名称\n\n默认值\n\n说明\n\n推荐值\n\nMIES_USE_MB_SWAPPER\n\n0\n\n开启高性能Swap（不设置时默认关闭）；Atlas 推理系列产品（Atlas 300I Duo 推理卡A300I Duo 推理卡）上需要关闭该参数。\n\n- 0：关闭。\n- 1：开启。\n\nmaxPreemptCount>0时，表示使用Swap功能，此时建议开启高性能Swap。\n\nexport MIES_USE_MB_SWAPPER=1\n\nMIES_RECOMPUTE_THRESHOLD\n\n0.5\n\n表示当前可下发的请求block数占总block数的比例（也就是block资源利用率）。\n\n以0.5为例，当前可下发的请求资源利用率小于0.5时，就会触发重计算，释放少量请求的block，来保证其他请求资源使用。阈值范围只能是0,1)，值越大越容易触发重计算。0表示所有请求都无法下发。\n\n取值建议在0.5上下浮动调整。\n\nexport MIES_RECOMPUTE_THRESHOLD=0.5\n\n#### 最优性能参数配置\n\n最优性能配置各参数说明及取值如[表2所示。\n\n\n\n**表2** 最优性能参数配置\n\n配置类型\n\n配置项\n\n配置介绍\n\n推荐配置\n\n调度配置\n\nmaxPr"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/mindie_service0105.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_f8d89f7ba07e425ca1eccc51.result",
+      "evidence": {
+        "event_id": "call_f8d89f7ba07e425ca1eccc51.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html)\n\n# --dynamic_batch_size\n\n#### 功能说明\n\n设置动态BatchSize参数，适用于执行推理时，每次处理图片或者句子数量不固定的场景。\n\n在某些推理场景，如检测出目标后再执行目标识别网络，由于目标个数不固定导致目标识别网络输入BatchSize不固定。如果每次推理都按照最大的BatchSize或最大分辨率进行计算，会造成计算资源浪费。因此，推理需要支持动态BatchSize和动态分辨率的场景，使用ATC工具时，通过该参数设置支持的BatchSize，通过[--dynamic_image_size](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/deva"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "5458e891de4bc90e26f9809ddf461ffae7bd1a384de09bcb1553069b80b761bf",
+  "question": "我用昇腾 MindIE/ACL/ATC 部署模型，怎么配置动态 batch / 动态 shape 推理（dynamic_dims / 分档 / 动态分辨率）？",
+  "run_id": "T-cann-glm-5_3-standard-20260921T133012",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "# Search Results for \"昇腾 ATC --dynamic_dims --dynamic_batch_size --dynamic_image_size 官方文档 hiascend\"\n\n## 1. [昇腾实践丨ATC模型转换动态shape问题案例 - 技术栈](https://jishuzhan.net/article/1700074870097842177)\n\n2023年9月8日 · 使用ATC工具进行模型转换，如果使用了--dynamic_batch_size或--dynamic_image_size或--dynamic_dims动态shape …\n\n**URL:** https://jishuzhan.net/article/1700074870097842177\n\n---\n\n## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 知乎](https://zhuanlan.zhihu.com/p/655103539)\n\n概览原因分析解决措施05 更多介绍号外！本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。ATC（Ascend Tensor Compiler）是异构计算架构CANN体系下的模型转换工具：它可以将开源框架的网络模型（如TensorFlow等）以及Ascend IR定义的单算子描述文件转换为昇腾AI处理器支持的离线模型；模型转换过程中，ATC会进行算子调度优化、权重数据重排、内存使用优化等具体操作，对原始的 …本期就分享几个关于ATC模型转换动态shape相关问题的典型案例，并给出原因分析及解决方法"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "## 1. [昇腾实践丨ATC模型转换动态shape问题案例 - 技术栈](https://jishuzhan.net/article/1700074870097842177)\n\n2023年9月8日 · 使用ATC工具进行模型转换，如果使用了--dynamic_batch_size或--dynamic_image_size或--dynamic_dims动态shape …\n\n**URL:** https://jishuzhan.net/article/1700074870097842177\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://jishuzhan.net/article/1700074870097842177"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 知乎](https://zhuanlan.zhihu.com/p/655103539)\n\n概览原因分析解决措施05 更多介绍号外！本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。ATC（Ascend Tensor Compiler）是异构计算架构CANN体系下的模型转换工具：它可以将开源框架的网络模型（如TensorFlow等）以及Ascend IR定义的单算子描述文件转换为昇腾AI处理器支持的离线模型；模型转换过程中，ATC会进行算子调度优化、权重数据重排、内存使用优化等具体操作，对原始的 …本期就分享几个关于ATC模型转换动态shape相关问题的典型案例，并给出原因分析及解决方法：1.原始网络模型shape中存在不固定的维度值，模型转换未设置shape信息在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/655103539\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/655103539"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "## 3. [昇腾实践丨ATC模型转换动态shape问题案例 - PmDaddy](https://www.pmdaddy.cn/tech/5402.html)\n\n2023年7月7日 · 原因分析 使用ATC工具进行模型转换，如果使用了--dynamic_batch_size或--dynamic_image_size或--dynamic_dims …\n\n**URL:** https://www.pmdaddy.cn/tech/5402.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://www.pmdaddy.cn/tech/5402.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "## 4. [昇腾实践丨ATC模型转换动态shape问题案例 - 华为云开发者 ...](https://www.cnblogs.com/huaweiyun/p/17687854.html)\n\n2023年9月8日 · 本期就分享几个关于昇腾CANN中关于ATC模型转换动态shape相关问题的典型案例，并给出原因分析及解决方法。 本 …\n\n**URL:** https://www.cnblogs.com/huaweiyun/p/17687854.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.cnblogs.com/huaweiyun/p/17687854.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_efcd509dbf184de39f48bea5.result",
+      "evidence": {
+        "event_id": "call_efcd509dbf184de39f48bea5.result",
+        "quote": "## 5. [昇腾实践丨ATC模型转换动态shape问题案例本期就分享几个 ...](https://juejin.cn/post/7276113864123007039)\n\n2023年9月8日 · 原因分析 使用ATC工具进行模型转换，如果使用了--dynamic_image_size参数，shape中只有H、W支持设置为\"-1\"， …\n\n**URL:** https://juejin.cn/post/7276113864123007039\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://juejin.cn/post/7276113864123007039"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "# Search Results for \"site:hiascend.com ATC 工具 参数 动态shape dynamic_dims dynamic_input_shape\"\n\n## 1. [--dynamic_image_size-CANN8.1.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html)\n\n使用约束： 不支持含有过程动态shape算子（网络中间层shape不固定）的网络。 如果用户设置了动态分辨率，则请确保不同档位的分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html\n\n---\n\n## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 知乎](https://zhuanlan.zhihu.com/p/655103539)\n\n概览原因分析解决措施05 更多介绍号外！本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。ATC（Ascend Tensor Compiler）是异构计算架构CANN体系下的模型转换工具：它可以将开源框架的网络模型（如TensorFlo"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "## 1. [--dynamic_image_size-CANN8.1.RC1.alpha001-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html)\n\n使用约束： 不支持含有过程动态shape算子（网络中间层shape不固定）的网络。 如果用户设置了动态分辨率，则请确保不同档位的分 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 知乎](https://zhuanlan.zhihu.com/p/655103539)\n\n概览原因分析解决措施05 更多介绍号外！本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。ATC（Ascend Tensor Compiler）是异构计算架构CANN体系下的模型转换工具：它可以将开源框架的网络模型（如TensorFlow等）以及Ascend IR定义的单算子描述文件转换为昇腾AI处理器支持的离线模型；模型转换过程中，ATC会进行算子调度优化、权重数据重排、内存使用优化等具体操作，对原始的 …本期就分享几个关于ATC模型转换动态shape相关问题的典型案例，并给出原因分析及解决方法：1.原始网络模型shape中存在不固定的维度值，模型转换未设置shape信息在zhuanlan.zhihu.com上查看更多信息\n\n**URL:** https://zhuanlan.zhihu.com/p/655103539\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/655103539"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "## 3. [--dynamic_dims-输入选项-基础功能参数-参数说明-ATC工具 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html)\n\n--dynamic_dims 功能说明 设置ND格式下动态维度的档位。适用于执行推理时，每次处理任意维度的场景。 为支持Transformer等网络 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "## 4. [昇腾实践丨ATC模型转换动态shape问题案例本期就分享几个 ...](https://juejin.cn/post/7276113864123007039)\n\n2023年9月8日 · 本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。 ATC（Ascend Tensor Compiler） …\n\n**URL:** https://juejin.cn/post/7276113864123007039\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://juejin.cn/post/7276113864123007039"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5881002122d546e7874d177f.result",
+      "evidence": {
+        "event_id": "call_5881002122d546e7874d177f.result",
+        "quote": "## 5. [昇腾实践丨ATC模型转换动态shape问题案例_模型转换 昇腾 ...](https://blog.csdn.net/devcloud/article/details/132761975)\n\n2023年9月8日 · 本文分享自华为云社区《ATC模型转换动态shape问题案例》，作者：昇腾CANN。 ATC（Ascend Tensor Compiler） …\n\n**URL:** https://blog.csdn.net/devcloud/article/details/132761975\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/devcloud/article/details/132761975"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3be41993f66e435a9c8a849d.result",
+      "evidence": {
+        "event_id": "call_3be41993f66e435a9c8a849d.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_1a966cd00e5a4c3e950349a1.result",
+      "evidence": {
+        "event_id": "call_1a966cd00e5a4c3e950349a1.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html)\n\n# --dynamic_dims\n\n#### 功能说明\n\n设置ND格式下动态维度的档位。适用于执行推理时，每次处理任意维度的场景。\n\n为支持Transformer等网络在输入格式的维度不确定的场景，通过该参数实现ND格式下任意维度的档位设置。ND表示支持任意格式。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0016.html)、[--input_format](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8cf1c7f53dee4db3b66d9cc6.result",
+      "evidence": {
+        "event_id": "call_8cf1c7f53dee4db3b66d9cc6.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0018.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0e8168bbe6f249fe93b865b4.result",
+      "evidence": {
+        "event_id": "call_0e8168bbe6f249fe93b865b4.result",
+        "quote": "**标题**: --dynamic_image_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html)\n\n# --dynamic_image_size\n\n#### 功能说明\n\n设置输入图片的动态分辨率参数。适用于执行推理时，每次处理图片宽和高不固定的场景。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0016.html)配合使用，不能与[--dynamic_batch_size](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0018.html)、[--dynamic_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0019.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_76494b85f0ce4a0cac57bd90.result",
+      "evidence": {
+        "event_id": "call_76494b85f0ce4a0cac57bd90.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/atc/atlasatcparam_16_0018.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "# Search Results for \"MindIE Service 动态批量 batch 配置 maxBatchSize maxPrefetchBatch config.json 官方文档 hiascend\"\n\n## 1. [一文详解mindie服务化性能调优 - 知乎](https://zhuanlan.zhihu.com/p/909443325)\n\n2024年10月11日 · 调度配置参数 maxPrefillBatchSize：prefill阶段一个batch中包含的请求个数的上限。 小于等于maxBatchSize的值， …\n\n**URL:** https://zhuanlan.zhihu.com/p/909443325\n\n---\n\n## 2. [服务化参数调优实战 - cc_beolus - 博客园](https://www.cnblogs.com/beolus/articles/18832548)\n\n2025年4月18日 · 下面以Llama3-8B为例，讲解调优全流程. Llama3-8B权重为15GB. npuMemSize = Floor [ (61 - 3 - 15/1 )] * 0.8 = …\n\n**URL:** https://www.cnblogs.com/beolus/articles/18832548\n\n---\n\n## 3. [性能调优流程-MindIE2.0.RC2-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "## 1. [一文详解mindie服务化性能调优 - 知乎](https://zhuanlan.zhihu.com/p/909443325)\n\n2024年10月11日 · 调度配置参数 maxPrefillBatchSize：prefill阶段一个batch中包含的请求个数的上限。 小于等于maxBatchSize的值， …\n\n**URL:** https://zhuanlan.zhihu.com/p/909443325\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://zhuanlan.zhihu.com/p/909443325"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "## 2. [服务化参数调优实战 - cc_beolus - 博客园](https://www.cnblogs.com/beolus/articles/18832548)\n\n2025年4月18日 · 下面以Llama3-8B为例，讲解调优全流程. Llama3-8B权重为15GB. npuMemSize = Floor [ (61 - 3 - 15/1 )] * 0.8 = …\n\n**URL:** https://www.cnblogs.com/beolus/articles/18832548\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://www.cnblogs.com/beolus/articles/18832548"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "## 3. [性能调优流程-MindIE2.0.RC2-昇腾社区](https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/mindie_service0105.html)\n\n在队列中的请求数量达到最大maxBatchSize、maxPrefillBatchSize或maxPrefillTokens前，请求在队列中的最大等待时间，单位：us。 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/mindie_service0105.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/mindie_service0105.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "## 4. [MindIE在线推理性能优化：如何平衡maxBatchSize与时延 ...](https://blog.csdn.net/weixin_29240711/article/details/158912442)\n\n2026年3月18日 · 文章浏览阅读61次。 本文深入探讨了在昇腾硬件上使用MindIE推理引擎进行在线服务性能调优的核心挑战，即如何 …\n\n**URL:** https://blog.csdn.net/weixin_29240711/article/details/158912442\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://blog.csdn.net/weixin_29240711/article/details/158912442"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+      "evidence": {
+        "event_id": "call_3893db7899ac4fd9bf4bf9c1.result",
+        "quote": "## 5. [MindIE服务化部署及性能调优介绍 - 知乎](https://zhuanlan.zhihu.com/p/1924488831194858710)\n\n2025年7月4日 · 启动 MindIE 服务 修改MindIE配置文件 cd /usr/local/Ascend/mindie/latest/mindie-service/conf vim config.json 修 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1924488831194858710\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/1924488831194858710"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e8bd37665ead496a8f307132.result",
+      "evidence": {
+        "event_id": "call_e8bd37665ead496a8f307132.result",
+        "quote": "**标题**: 性能调优流程-性能调优-MindIE Service-服务化集成部署-MindIE2.0.RC2开发文档-昇腾社区\n\n\n\n# 性能调优流程\n\n通过参数调优，使吞吐率（TPS）达到时延约束条件下的最大值。\n\n\n\n#### 性能调优环境变量配置\n\n性能调优环境变量配置如表1所示。\n\n\n\n**表1** 性能调优环境变量\n\n参数名称\n\n默认值\n\n说明\n\n推荐值\n\nMIES_USE_MB_SWAPPER\n\n0\n\n开启高性能Swap（不设置时默认关闭）；Atlas 推理系列产品（Atlas 300I Duo 推理卡A300I Duo 推理卡）上需要关闭该参数。\n\n- 0：关闭。\n- 1：开启。\n\nmaxPreemptCount>0时，表示使用Swap功能，此时建议开启高性能Swap。\n\nexport MIES_USE_MB_SWAPPER=1\n\nMIES_RECOMPUTE_THRESHOLD\n\n0.5\n\n表示当前可下发的请求block数占总block数的比例（也就是block资源利用率）。\n\n以0.5为例，当前可下发的请求资源利用率小于0.5时，就会触发重计算，释放少量请求的block，来保证其他请求资源使用。阈值范围只能是0,1)，值越大越容易触发重计算。0表示所有请求都无法下发。\n\n取值建议在0.5上下浮动调整。\n\nexport MIES_RECOMPUTE_THRESHOLD=0.5\n\n#### 最优性能参数配置\n\n最优性能配置各参数说明及取值如[表2所示。\n\n\n\n**表2** 最优性能参数配置\n\n配置类型\n\n配置项\n\n配置介绍\n\n推荐配置\n\n调度配置\n\nmaxPr"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/20RC2/mindieservice/servicedev/mindie_service0105.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f8d89f7ba07e425ca1eccc51.result",
+      "evidence": {
+        "event_id": "call_f8d89f7ba07e425ca1eccc51.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC工具-训练&推理开发-CANN8.1.RC1.alpha001开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html)\n\n# --dynamic_batch_size\n\n#### 功能说明\n\n设置动态BatchSize参数，适用于执行推理时，每次处理图片或者句子数量不固定的场景。\n\n在某些推理场景，如检测出目标后再执行目标识别网络，由于目标个数不固定导致目标识别网络输入BatchSize不固定。如果每次推理都按照最大的BatchSize或最大分辨率进行计算，会造成计算资源浪费。因此，推理需要支持动态BatchSize和动态分辨率的场景，使用ATC工具时，通过该参数设置支持的BatchSize，通过[--dynamic_image_size](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/deva"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devaids/devtools/atc/atlasatcparam_16_0018.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

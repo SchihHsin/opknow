@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_ddeeb5d8f53e4287a688bc34.result",
+      "evidence": {
+        "event_id": "call_ddeeb5d8f53e4287a688bc34.result",
+        "quote": "**标题**: Layer Fusion Catalog — NVIDIA TensorRT\n\nBack to top\n\n# Layer Fusion Catalog[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion-catalog \"Link to this heading\")\n\nThis page catalogs the fusion patterns TensorRT applies at build time. For an overview of why fusion matters and how to inspect fusion decisions in logs, refer to [Enabling Layer Fusion](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html#enable-fusion).\n\n## Layer Fusion[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion \"Link to this heading\")\n\nTensorRT attempts to perform many different types of "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_d31f39e19da146a0bc7ca63e.result",
+      "evidence": {
+        "event_id": "call_d31f39e19da146a0bc7ca63e.result",
+        "quote": "**标题**: Optimizing TensorRT Performance — NVIDIA TensorRT\n\n# Optimizing TensorRT Performance#\n\nThe following sections focus on the general inference flow on GPUs and some general strategies to improve performance. These ideas apply to most CUDA programmers but cannot be as obvious to developers from other backgrounds.\n\n**What You Will Learn**\n\n- How batching, CUDA graphs, and multi-streaming improve throughput\n- How the TensorRT layer fusion and pointwise fusion work, and which patterns are supported\n- How to optimize specific layer types and target Tensor Core acceleration\n- Advanced techniques for deterministic tactic selection, Python performance, and accuracy/performance tradeoffs\n- How "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_14ec29f61128401fa82a7719.result",
+      "evidence": {
+        "event_id": "call_14ec29f61128401fa82a7719.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/trtexec/trtexec-diagnosis-guide.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_6c8511239dbd44028a31cbab.result",
+      "evidence": {
+        "event_id": "call_6c8511239dbd44028a31cbab.result",
+        "quote": "**标题**: Engine Tools and Debugging — NVIDIA TensorRT\n\nBack to top\n\n# Engine Tools and Debugging[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-tools-and-debugging \"Link to this heading\")\n\nThis page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, optimizer callbacks, preview features, and debug tensors.\n\n## Engine Inspector[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-inspector \"Link to this heading\")\n\nTensorRT provides the `IEngineInspector` API to inspect the information inside a TensorRT engine. Call the `createEngineInspector()` from a de"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_678fae27f32e452db514290a.result",
+      "evidence": {
+        "event_id": "call_678fae27f32e452db514290a.result",
+        "quote": "**标题**: Performance Benchmarking using trtexec — NVIDIA TensorRT\n\nBack to top\n\n# Performance Benchmarking using `trtexec`[#](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html#performance-benchmarking-using-trtexec \"Link to this heading\")\n\nThis section introduces how to use `trtexec`, a command-line tool designed for TensorRT performance benchmarking, to get the inference performance measurements of your deep learning models.\n\nIf you use the TensorRT NGC container, `trtexec` is installed at `/opt/tensorrt/bin/trtexec`.\n\nIf you manually installed TensorRT, `trtexec` is part of the installation.\n\nAlternatively, you can build `trtexec` from source code using the "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_b1661073ed53494eaa09150a.result",
+      "evidence": {
+        "event_id": "call_b1661073ed53494eaa09150a.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-systems/GettingStarted/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_35eaff37860c48e0812c2506.result",
+      "evidence": {
+        "event_id": "call_35eaff37860c48e0812c2506.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n## Preparing Your Application for Profiling#\n\nNsight Systems does not require any application changes to enable profiling; however, by making some simple modifications and additions, you can greatly increase the effectiveness of your profiling and the usability of the resulting data.\n\n[...]\n\n### Marking and Labeling Regions#\n\nTo understand what the application’s CPU threads are doing beyond CUDA function calls, you can use the NVIDIA Tools Extension API (NVTX). When you add NVTX markers and ranges to your application, the Timeline View shows when your CPU threads are executing within those regions. The Time"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_edc9ad4701134b9084ae08f1.result",
+      "evidence": {
+        "event_id": "call_edc9ad4701134b9084ae08f1.result",
+        "quote": "# cuDNN Graph API — Runtime Fusion Analysis\n\n## Summary\n\nThe document describes cuDNN's **declarative graph API** (introduced in cuDNN 8.0), where fusion is achieved by describing computation as a *dataflow graph of operations on tensors* that is compiled into a GPU kernel (or small set of kernels) at runtime. Note: the document covers the **cuDNN operation graph**, not CUDA Graphs (cudaGraph) — the terms \"cudaGraph\" and \"execution plan\" do not appear in this page. The closest equivalents are the **\"finalized graph\"**, **engine**, and **engine configuration** concepts described below.\n\n---\n\n## 1. How Operations Are Fused into a Single Kernel\n\n### The Graph API Model\n> \"The cuDNN library prov"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "ea201cf3fd4bca6d2acfbefeddd6b16a227cc6852084c3a9375f3aa8d6224e9d",
+  "question": "TensorRT/CUDA 里算子融合（layer/kernel fusion）怎么发生、怎么观察和控制？",
+  "run_id": "N-cuda-glm-5_3-standard-20260921T121638",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "# Search Results for \"TensorRT layer fusion documentation kernel fusion how it works\"\n\n## 1. [Layer Fusion Catalog — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html)\n\n2026年9月8日 · TensorRT attempts to perform many different types of optimizations in a network during the build phase. In the first …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html\n\n---\n\n## 2. [深入剖析TensorRT层融合机制（C语言实战篇）：从原理到 ...](https://blog.csdn.net/LogicNest/article/details/155522106)\n\n2025年12月3日 · 层融合是一种将多个神经网络层合并为单一计算单元的优化技术，旨在减少模型推理过程中的内存访问开销与计算延 …\n\n**URL:** https://blog.csdn.net/LogicNest/article/details/155522106\n\n---\n\n## "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "## 1. [Layer Fusion Catalog — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html)\n\n2026年9月8日 · TensorRT attempts to perform many different types of optimizations in a network during the build phase. In the first …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "## 2. [深入剖析TensorRT层融合机制（C语言实战篇）：从原理到 ...](https://blog.csdn.net/LogicNest/article/details/155522106)\n\n2025年12月3日 · 层融合是一种将多个神经网络层合并为单一计算单元的优化技术，旨在减少模型推理过程中的内存访问开销与计算延 …\n\n**URL:** https://blog.csdn.net/LogicNest/article/details/155522106\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/LogicNest/article/details/155522106"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "## 3. [一文搞懂TensorRT核心机制：层融合、精度校准与内核调优 ...](https://blog.csdn.net/weixin_33240461/article/details/156345499)\n\n2025年12月27日 · TensorRT 的第一招就是 层融合（Layer Fusion） ——把这些可以合并的操作“捏”成一个整体。 它在解析模型图 …\n\n**URL:** https://blog.csdn.net/weixin_33240461/article/details/156345499\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/weixin_33240461/article/details/156345499"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "## 4. [TensorRT层融合技术的实现原理及优化方向 | RayByte](https://raybyte.cn/post/2026/7/3/d649cac0)\n\n2026年7月3日 · 七、文章总结 层融合是 TensorRT 加速推理的核心技术之一，它通过把多个小算子合并成一个大内核，减少了显存读 …\n\n**URL:** https://raybyte.cn/post/2026/7/3/d649cac0\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://raybyte.cn/post/2026/7/3/d649cac0"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+      "evidence": {
+        "event_id": "call_7d7cfe57c80c474cbb3c18e6.result",
+        "quote": "## 5. [TensorRT 核心加速机制拆解：Layer Fusion、精度优化与图 ...](https://www.e-com-net.com/article/1911002222456532992.htm)\n\n2026年5月16日 · 这背后并不只是算力差异，更关键是它对网络结构、算子执行、内存管理等全链路做了高度优化。 本文将 …\n\n**URL:** https://www.e-com-net.com/article/1911002222456532992.htm\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.e-com-net.com/article/1911002222456532992.htm"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_ddeeb5d8f53e4287a688bc34.result",
+      "evidence": {
+        "event_id": "call_ddeeb5d8f53e4287a688bc34.result",
+        "quote": "**标题**: Layer Fusion Catalog — NVIDIA TensorRT\n\nBack to top\n\n# Layer Fusion Catalog[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion-catalog \"Link to this heading\")\n\nThis page catalogs the fusion patterns TensorRT applies at build time. For an overview of why fusion matters and how to inspect fusion decisions in logs, refer to [Enabling Layer Fusion](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html#enable-fusion).\n\n## Layer Fusion[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html#layer-fusion \"Link to this heading\")\n\nTensorRT attempts to perform many different types of "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/fusion-catalog.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_d31f39e19da146a0bc7ca63e.result",
+      "evidence": {
+        "event_id": "call_d31f39e19da146a0bc7ca63e.result",
+        "quote": "**标题**: Optimizing TensorRT Performance — NVIDIA TensorRT\n\n# Optimizing TensorRT Performance#\n\nThe following sections focus on the general inference flow on GPUs and some general strategies to improve performance. These ideas apply to most CUDA programmers but cannot be as obvious to developers from other backgrounds.\n\n**What You Will Learn**\n\n- How batching, CUDA graphs, and multi-streaming improve throughput\n- How the TensorRT layer fusion and pointwise fusion work, and which patterns are supported\n- How to optimize specific layer types and target Tensor Core acceleration\n- Advanced techniques for deterministic tactic selection, Python performance, and accuracy/performance tradeoffs\n- How "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/performance/optimization.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "# Search Results for \"Nsight Systems observe kernel fusion trtexec profiling CUDA kernels site:docs.nvidia.com\"\n\n## 1. [CUDA编程 -Nsight Systems调试 - 知乎](https://zhuanlan.zhihu.com/p/1974137222363112214)\n\n2025年11月18日 · 理想情况下，它们应该是 部分重叠 的。 通过查看这些 Kernel 的属性（如使用的 Stream ID、占用的资源 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1974137222363112214\n\n---\n\n## 2. [一文读懂nsight system与cuda kernel的时间线分析与可视化](https://zhuanlan.zhihu.com/p/691307737)\n\n2024年4月8日 · 该工具的基本原理，应该就是 链接器监听机制，劫持链接器的调用，从而为 动态链接库 中的每个符号（函数）加上计 …\n\n**URL:** https://zhuanlan.zhihu.com/p/691307737\n\n---\n\n## 3. [Part5-2-TensorRT性能优化性能分析工具 | 奔跑的IC](https://zmurder.github.io/TensorRT/TensorRT%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8E8.6.1/Part5-2-TensorRT"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "## 1. [CUDA编程 -Nsight Systems调试 - 知乎](https://zhuanlan.zhihu.com/p/1974137222363112214)\n\n2025年11月18日 · 理想情况下，它们应该是 部分重叠 的。 通过查看这些 Kernel 的属性（如使用的 Stream ID、占用的资源 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1974137222363112214\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://zhuanlan.zhihu.com/p/1974137222363112214"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "## 2. [一文读懂nsight system与cuda kernel的时间线分析与可视化](https://zhuanlan.zhihu.com/p/691307737)\n\n2024年4月8日 · 该工具的基本原理，应该就是 链接器监听机制，劫持链接器的调用，从而为 动态链接库 中的每个符号（函数）加上计 …\n\n**URL:** https://zhuanlan.zhihu.com/p/691307737\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://zhuanlan.zhihu.com/p/691307737"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "## 3. [Part5-2-TensorRT性能优化性能分析工具 | 奔跑的IC](https://zmurder.github.io/TensorRT/TensorRT%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8E8.6.1/Part5-2-TensorRT%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/)\n\n2024年12月1日 · In summary, it is normal that building GPT-J-6B would take ~10 mins since this is a pretty large model and …\n\n**URL:** https://zmurder.github.io/TensorRT/TensorRT%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8E8.6.1/Part5-2-TensorRT%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://zmurder.github.io/TensorRT/TensorRT%E6%95%99%E7%A8%8B-%E5%9F%BA%E4%BA%8E8.6.1/Part5-2-TensorRT%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "## 4. [GPU函数调用分析与可视化火焰图工具_gpu profiling-CSDN博客](https://blog.csdn.net/lovely_yoshino/article/details/147732093)\n\n2026年3月29日 · Nsight Systems提供系统级分析、时间轴视图和API跟踪，支持生成.qdrep报告文件；Nsight Compute则针对Kernel …\n\n**URL:** https://blog.csdn.net/lovely_yoshino/article/details/147732093\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://blog.csdn.net/lovely_yoshino/article/details/147732093"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+      "evidence": {
+        "event_id": "call_b79d5c1998fe40fdbfce1168.result",
+        "quote": "## 5. [GitHub - ZJtoast/kernel-profiler-skill: Kernel-only profiling …](https://github.com/ZJtoast/kernel-profiler-skill)\n\n2026年5月15日 · Kernel Profiler Skill is an agent skill for GPU kernel/operator profiling in Cursor, Claude Code, Codex, and Gemini …\n\n**URL:** https://github.com/ZJtoast/kernel-profiler-skill\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://github.com/ZJtoast/kernel-profiler-skill"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_14ec29f61128401fa82a7719.result",
+      "evidence": {
+        "event_id": "call_14ec29f61128401fa82a7719.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/trtexec/trtexec-diagnosis-guide.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "# Search Results for \"trtexec profilingVerbosity dumpLayerInfo docs.nvidia.com\"\n\n## 1. [Performance Benchmarking using trtexec — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html)\n\n2026年5月27日 · The --profilingVerbosity=detailed flag enables detailed layer information capturing, --dumpLayerInfo flag shows the …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html\n\n---\n\n## 2. [Engine Tools and Debugging — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html)\n\n2026年9月8日 · The trtexec tool provides the --profilingVerbosity, --dumpLayerInfo, and --exportLa"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "## 1. [Performance Benchmarking using trtexec — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html)\n\n2026年5月27日 · The --profilingVerbosity=detailed flag enables detailed layer information capturing, --dumpLayerInfo flag shows the …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "## 2. [Engine Tools and Debugging — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html)\n\n2026年9月8日 · The trtexec tool provides the --profilingVerbosity, --dumpLayerInfo, and --exportLayerInfo flags for getting engine …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "## 3. [Command-Line Programs — NVIDIA TensorRT 10.10.10 ... - NVIDIA …](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html)\n\n2025年7月11日 · Add the --dumpProfile flag to trtexec to show per-layer performance profiles, which allows users to understand which …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "## 4. [TensorRT trtexec 学习笔记_trtexec --fp16-CSDN博客](https://blog.csdn.net/szfhy/article/details/123145935)\n\n2022年4月17日 · 本文详细介绍了如何使用trtexec工具将ONNX模型转换为TensorRT引擎，包括动态形状支持、fp16精度设置、GIE推 …\n\n**URL:** https://blog.csdn.net/szfhy/article/details/123145935\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/szfhy/article/details/123145935"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_458fe4e8a2684bd280966d37.result",
+      "evidence": {
+        "event_id": "call_458fe4e8a2684bd280966d37.result",
+        "quote": "## 5. [TensorRT-Developer_Guide_in_Chinese/17.TensorRT的命令 ...](https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/17.TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F/TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F.md)\n\n2003年1月1日 · 示例目录中包含一个名为 trtexec 的命令行包装工具。 trtexec 是一种无需开发自己的应用程序即可快速使用 TensorRT …\n\n**URL:** https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/17.TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F/TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://github.com/HeKun-NVIDIA/TensorRT-Developer_Guide_in_Chinese/blob/main/17.TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F/TensorRT%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%A8%8B%E5%BA%8F.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_6c8511239dbd44028a31cbab.result",
+      "evidence": {
+        "event_id": "call_6c8511239dbd44028a31cbab.result",
+        "quote": "**标题**: Engine Tools and Debugging — NVIDIA TensorRT\n\nBack to top\n\n# Engine Tools and Debugging[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-tools-and-debugging \"Link to this heading\")\n\nThis page covers tools for examining and debugging TensorRT engines, including the Engine Inspector API, optimizer callbacks, preview features, and debug tensors.\n\n## Engine Inspector[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html#engine-inspector \"Link to this heading\")\n\nTensorRT provides the `IEngineInspector` API to inspect the information inside a TensorRT engine. Call the `createEngineInspector()` from a de"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/engine-tools.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_678fae27f32e452db514290a.result",
+      "evidence": {
+        "event_id": "call_678fae27f32e452db514290a.result",
+        "quote": "**标题**: Performance Benchmarking using trtexec — NVIDIA TensorRT\n\nBack to top\n\n# Performance Benchmarking using `trtexec`[#](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html#performance-benchmarking-using-trtexec \"Link to this heading\")\n\nThis section introduces how to use `trtexec`, a command-line tool designed for TensorRT performance benchmarking, to get the inference performance measurements of your deep learning models.\n\nIf you use the TensorRT NGC container, `trtexec` is installed at `/opt/tensorrt/bin/trtexec`.\n\nIf you manually installed TensorRT, `trtexec` is part of the installation.\n\nAlternatively, you can build `trtexec` from source code using the "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/performance/benchmarking.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b1661073ed53494eaa09150a.result",
+      "evidence": {
+        "event_id": "call_b1661073ed53494eaa09150a.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/nsight-systems/GettingStarted/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "# Search Results for \"nsys profile CUDA kernel timeline cuda_gpu_kern_sum Nsight Systems documentation\"\n\n## 1. [一文读懂nsight system与cuda kernel的时间线分析与可视化](https://zhuanlan.zhihu.com/p/691307737)\n\n2024年4月8日 · nsight system 是进行 GPU 性能优化的关键工具。 如果我们在服务器上安装了 cudatoolkit，那么 $ …\n\n**URL:** https://zhuanlan.zhihu.com/p/691307737\n\n---\n\n## 2. [cuda性能分析工具: nsight systems - CSDN博客](https://blog.csdn.net/MD2017/article/details/141457836)\n\n2024年9月8日 · 选择File->Open找到timeline.nsys-rep（注意这个nsys-rep文件是通用的，比如可以在linux上生成，在mac上用nsight …\n\n**URL:** https://blog.csdn.net/MD2017/article/details/141457836\n\n---\n\n## 3. [GPU性能瓶颈定位：Nsight Systems（nsys）实操技巧](https://zhuanlan.zhihu.com/p/1952331097288479733)\n\n2025年9月19日 · 由下图"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "## 1. [一文读懂nsight system与cuda kernel的时间线分析与可视化](https://zhuanlan.zhihu.com/p/691307737)\n\n2024年4月8日 · nsight system 是进行 GPU 性能优化的关键工具。 如果我们在服务器上安装了 cudatoolkit，那么 $ …\n\n**URL:** https://zhuanlan.zhihu.com/p/691307737\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://zhuanlan.zhihu.com/p/691307737"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "## 2. [cuda性能分析工具: nsight systems - CSDN博客](https://blog.csdn.net/MD2017/article/details/141457836)\n\n2024年9月8日 · 选择File->Open找到timeline.nsys-rep（注意这个nsys-rep文件是通用的，比如可以在linux上生成，在mac上用nsight …\n\n**URL:** https://blog.csdn.net/MD2017/article/details/141457836\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://blog.csdn.net/MD2017/article/details/141457836"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "## 3. [GPU性能瓶颈定位：Nsight Systems（nsys）实操技巧](https://zhuanlan.zhihu.com/p/1952331097288479733)\n\n2025年9月19日 · 由下图可见，当前在 CUDA 生态下， 英伟达 从 IDE debug 工具、profile 工具，到 …\n\n**URL:** https://zhuanlan.zhihu.com/p/1952331097288479733\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/1952331097288479733"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "## 4. [完整教程：使用Nsight Systems进行GPU性能分析](https://www.cnblogs.com/jzssuanfa/p/19474092)\n\n2026年1月12日 · NVIDIA Nsight Systems (NSys) 是一款专为异构计算系统设计的系统范围性能分析工具。 它提供了一个全局、整体的 …\n\n**URL:** https://www.cnblogs.com/jzssuanfa/p/19474092\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://www.cnblogs.com/jzssuanfa/p/19474092"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_39a8a008830e403e887dd6a8.result",
+      "evidence": {
+        "event_id": "call_39a8a008830e403e887dd6a8.result",
+        "quote": "## 5. [cuda性能分析工具nsys使用 | caijizhuo](https://caijizhuo.github.io/20240519171831_2854729219/)\n\n2024年5月19日 · 在可以使用 nsys 工具后，可以使用 nsys 来查看一些 kernel 的性能。 以上是一个 reduce_sum 的例子，有两个性能 …\n\n**URL:** https://caijizhuo.github.io/20240519171831_2854729219/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://caijizhuo.github.io/20240519171831_2854729219/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_35eaff37860c48e0812c2506.result",
+      "evidence": {
+        "event_id": "call_35eaff37860c48e0812c2506.result",
+        "quote": "**标题**: User Guide — Nsight Systems\n\n# User Guide#\n\nNVIDIA Nsight Systems user guide\n\n## Preparing Your Application for Profiling#\n\nNsight Systems does not require any application changes to enable profiling; however, by making some simple modifications and additions, you can greatly increase the effectiveness of your profiling and the usability of the resulting data.\n\n[...]\n\n### Marking and Labeling Regions#\n\nTo understand what the application’s CPU threads are doing beyond CUDA function calls, you can use the NVIDIA Tools Extension API (NVTX). When you add NVTX markers and ranges to your application, the Timeline View shows when your CPU threads are executing within those regions. The Time"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://docs.nvidia.com/nsight-systems/UserGuide/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_edc9ad4701134b9084ae08f1.result",
+      "evidence": {
+        "event_id": "call_edc9ad4701134b9084ae08f1.result",
+        "quote": "# cuDNN Graph API — Runtime Fusion Analysis\n\n## Summary\n\nThe document describes cuDNN's **declarative graph API** (introduced in cuDNN 8.0), where fusion is achieved by describing computation as a *dataflow graph of operations on tensors* that is compiled into a GPU kernel (or small set of kernels) at runtime. Note: the document covers the **cuDNN operation graph**, not CUDA Graphs (cudaGraph) — the terms \"cudaGraph\" and \"execution plan\" do not appear in this page. The closest equivalents are the **\"finalized graph\"**, **engine**, and **engine configuration** concepts described below.\n\n---\n\n## 1. How Operations Are Fused into a Single Kernel\n\n### The Graph API Model\n> \"The cuDNN library prov"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/developer/graph-api.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

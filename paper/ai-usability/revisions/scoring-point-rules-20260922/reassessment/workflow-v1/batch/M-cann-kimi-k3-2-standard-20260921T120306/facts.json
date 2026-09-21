@@ -1,0 +1,488 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_12e5736f.result",
+      "evidence": {
+        "event_id": "WebFetch_2_12e5736f.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_ac33c101.result",
+      "evidence": {
+        "event_id": "WebFetch_3_ac33c101.result",
+        "quote": "**标题**: 掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解_核函数中传入的tling指针需要调用哪一个宏函数-CSDN博客\n**发布时间**: 已于 2025-11-17 20:17:33 修改\n2025-10-30 20:33:06\n\n# 掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解 原创\n\n**训练营简介**  \n2025年昇腾CANN训练营第二季，基于CANN开源开放全场景，推出0基础入门系列、码力全开特辑、开发者案例等专题课程，助力不同阶段开发者快速提升算子开发技能。获得Ascend C算子中级认证，即可领取精美证书，完成社区任务更有机会赢取华为手机、平板、 开发板 等大奖。\n\n在参加训练营的过程中，我深入探索了CANN CV 算子架构的奥秘。CANN作为昇腾AI的核心基础软件平台，搭起了AI框架与昇腾硬件的桥梁，始终以 “使能每一位创新者” 为目标。本文将分享我在学习CANN CV算子架构过程中的理解、实战经验以及遇到的问题解决方案。  \n \n\nAscend C算子开发能力认证是昇腾社区为开发者提供的重要技能认证，其中Tiling计算是核心考核内容之一。本文将深入解析Tiling的基本概念，并详细介绍动态shape场景下Tiling的实现方法，帮助开发者系统掌握这一关键技术。\n\n##### 一、Tiling基本概念：为何需要数据分块\n\n在Ascend C算子开发中，Tiling是一个基础而重要的概念。大多数情况下， NPU 中AI Core的Local Memory存储空间有限，**无法完全容纳**算子的输"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/weixin_71147864/article/details/154141942",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_107e4189.result",
+      "evidence": {
+        "event_id": "WebFetch_5_107e4189.result",
+        "quote": "**标题**: Tiling实现-host侧算子实现-算子开发（进阶篇）-Ascend C算子开发-算子开发-CANN商用版7.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n# Tiling实现\n\n大多数情况下，Local Memory的存储，无法完整的容纳算子的输入与输出，需要每次搬运一部分输入进行计算然后搬出，再搬运下一部分输入进行计算，直到得到完整的最终结果，这个数据切分、分块计算的过程称之为**Tiling**。根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为**Tiling实现**。\n\nTiling实现完成后，获取到的Tiling切分算法相关参数，会传递给kernel侧，用于指导并行数据的切分。由于Tiling实现中完成的均为标量计算，AI Core并不擅长，所以我们将其独立出来放在host CPU上执行。\n\n**图1** Tiling实现的输入输出  \n![](https://www.hiascend.com/doc_center/source/z"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_e7106b1e.result",
+      "evidence": {
+        "event_id": "WebFetch_6_e7106b1e.result",
+        "quote": "**标题**: Host侧Tiling实现-开发流程-单算子API调用-算子调用-Ascend C算子开发-算子开发-CANN商用版8.0.RC2.2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC22/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0052.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_5b968245.result",
+      "evidence": {
+        "event_id": "WebFetch_8_5b968245.result",
+        "quote": "**标题**: kernel侧算子实现-算子开发（进阶篇）-Ascend C算子开发-算子开发-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)\n\n# kernel侧算子实现\n\n在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过**msopgen**工具自动生成，样例如下所示**。注意这里参数的顺序按照“输入、输出、workspace、tiling”的顺序排布，开发者不要调整其顺序。**\n\n```\n#include \"kernel_operator.h\"\nextern \"C\" __global__ __aicore__ void add_custom(GM_ADDR x, GM_ADDR y, GM_ADDR z, GM_ADDR workspace, GM_ADDR tiling) {\n    GET_TILING_DATA(tiling_data, tiling);// 获取Tiling参数，详见下"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "26c94f78e83d880ca81dfb4f91d2c5b11b1bbaf9ad229310416a6b8d691bd86f",
+  "question": "Ascend C 自定义算子做动态 shape，Tiling 怎么写、TilingData 怎么定义和传递？",
+  "run_id": "M-cann-kimi-k3-2-standard-20260921T120306",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "# Search Results for \"Ascend C 动态shape Tiling TilingData 自定义算子 开发指南\"\n\n## 1. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://blog.csdn.net/weixin_71147864/article/details/154141942)\n\n2025年11月17日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐明Tiling …\n\n**URL:** https://blog.csdn.net/weixin_71147864/article/details/154141942\n\n---\n\n## 2. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://devpress.csdn.net/v1/article/detail/154141942)\n\n2025年10月30日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/154141942\n\n---\n\n## 3. [Ascend C自定义Tiling参数解析 - 打造自适应算子](https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html)\n\n2025年12月5日 · 本文将以"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "## 1. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://blog.csdn.net/weixin_71147864/article/details/154141942)\n\n2025年11月17日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐明Tiling …\n\n**URL:** https://blog.csdn.net/weixin_71147864/article/details/154141942\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_71147864/article/details/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "## 2. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://devpress.csdn.net/v1/article/detail/154141942)\n\n2025年10月30日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/154141942\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://devpress.csdn.net/v1/article/detail/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "## 3. [Ascend C自定义Tiling参数解析 - 打造自适应算子](https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html)\n\n2025年12月5日 · 本文将以多年高性能计算老兵的视角，为你彻底拆解Ascend C中自定义Tiling机制的内核原理。 我们将超越官方文档 …\n\n**URL:** https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "## 4. [Ascend C自定义Tiling参数解析 - 打造自适应算子_ascend c ...](https://blog.csdn.net/LZL_SQ/article/details/155584224)\n\n2025年12月22日 · 本文将以多年高性能计算老兵的视角，为你彻底拆解Ascend C中自定义Tiling机制的内核原理。 我们将超越官方文 …\n\n**URL:** https://blog.csdn.net/LZL_SQ/article/details/155584224\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://blog.csdn.net/LZL_SQ/article/details/155584224"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_698b3cb1.result",
+      "evidence": {
+        "event_id": "WebSearch_0_698b3cb1.result",
+        "quote": "## 5. [深度解析Ascend C核心技术：Tiling计算、调试、交付件 ...](https://hwcomputing.csdn.net/695f755a0846ec2c4c5ae2fa.html)\n\n2025年11月24日 · Ascend C作为昇腾CANN生态的核心算子开发框架，为开发者提供了全场景开源开放的算子构建能力。 本文围 …\n\n**URL:** https://hwcomputing.csdn.net/695f755a0846ec2c4c5ae2fa.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://hwcomputing.csdn.net/695f755a0846ec2c4c5ae2fa.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "# Search Results for \"hiascend.com 文档 Ascend C 算子开发 TilingData REGISTER_TILING_DATA_CLASS 动态shape tiling 实现\"\n\n## 1. [Ascend C算子开发指南](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf)\n\n2026年3月17日 · Ascend C 是CANN 针对算子开发场景推出的编程语言,原生支持C 和C++标准规范,兼具开发效率和运行性能。 基 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf\n\n---\n\n## 2. [昇腾 AscendC Tiling 设计实战：Tilin"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "## 1. [Ascend C算子开发指南](https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf)\n\n2026年3月17日 · Ascend C 是CANN 针对算子开发场景推出的编程语言,原生支持C 和C++标准规范,兼具开发效率和运行性能。 基 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "## 2. [昇腾 AscendC Tiling 设计实战：TilingFunc/TilingData 完整 ...](https://juejin.cn/post/7685561582915616778)\n\n6 天之前 · 昇腾AscendC算子Tiling设计核心要点：AI Core存储有限需切块计算，通过TilingData从Host传给Kernel，包含TilingFunc主 …\n\n**URL:** https://juejin.cn/post/7685561582915616778\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://juejin.cn/post/7685561582915616778"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "## 3. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://blog.csdn.net/weixin_71147864/article/details/154141942)\n\n2025年11月17日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐明Tiling …\n\n**URL:** https://blog.csdn.net/weixin_71147864/article/details/154141942\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://blog.csdn.net/weixin_71147864/article/details/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "## 4. [【2023CANN训练营第二季】——Ascend C算子开发进阶 ...](https://blog.csdn.net/qq_45257495/article/details/134349953)\n\n2025年11月12日 · 本文介绍了Tiling计算在AscendC算子开发中的应用，区分了固定形状和动态形状两种场景，并提供了对应的核函数 …\n\n**URL:** https://blog.csdn.net/qq_45257495/article/details/134349953\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://blog.csdn.net/qq_45257495/article/details/134349953"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_ea996edf.result",
+      "evidence": {
+        "event_id": "WebSearch_1_ea996edf.result",
+        "quote": "## 5. [Ascend C自定义Tiling参数解析 - 打造自适应算子](https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html)\n\n2025年12月5日 · 本文将以多年高性能计算老兵的视角，为你彻底拆解Ascend C中自定义Tiling机制的内核原理。 我们将超越官方文档 …\n\n**URL:** https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://cann.csdn.net/69ef0b8c0a2f6a37c5a654ec.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_12e5736f.result",
+      "evidence": {
+        "event_id": "WebFetch_2_12e5736f.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/doc_center/source/zh/CANNCommunityEdition/900beta1/opdevg/Ascendcopdevg/CANN%E7%A4%BE%E5%8C%BA%E7%89%88%209.0.0-beta1%20Ascend%20C%E7%AE%97%E5%AD%90%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_ac33c101.result",
+      "evidence": {
+        "event_id": "WebFetch_3_ac33c101.result",
+        "quote": "**标题**: 掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解_核函数中传入的tling指针需要调用哪一个宏函数-CSDN博客\n**发布时间**: 已于 2025-11-17 20:17:33 修改\n2025-10-30 20:33:06\n\n# 掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解 原创\n\n**训练营简介**  \n2025年昇腾CANN训练营第二季，基于CANN开源开放全场景，推出0基础入门系列、码力全开特辑、开发者案例等专题课程，助力不同阶段开发者快速提升算子开发技能。获得Ascend C算子中级认证，即可领取精美证书，完成社区任务更有机会赢取华为手机、平板、 开发板 等大奖。\n\n在参加训练营的过程中，我深入探索了CANN CV 算子架构的奥秘。CANN作为昇腾AI的核心基础软件平台，搭起了AI框架与昇腾硬件的桥梁，始终以 “使能每一位创新者” 为目标。本文将分享我在学习CANN CV算子架构过程中的理解、实战经验以及遇到的问题解决方案。  \n \n\nAscend C算子开发能力认证是昇腾社区为开发者提供的重要技能认证，其中Tiling计算是核心考核内容之一。本文将深入解析Tiling的基本概念，并详细介绍动态shape场景下Tiling的实现方法，帮助开发者系统掌握这一关键技术。\n\n##### 一、Tiling基本概念：为何需要数据分块\n\n在Ascend C算子开发中，Tiling是一个基础而重要的概念。大多数情况下， NPU 中AI Core的Local Memory存储空间有限，**无法完全容纳**算子的输"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://blog.csdn.net/weixin_71147864/article/details/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "# Search Results for \"hiascend document Ascend C算子开发指南 Tiling实现 动态shape tiling函数 op_host add_custom.cpp html\"\n\n## 1. [Tiling实现-host侧算子实现-算子开发（进阶篇）-Ascend C ...](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为 Tiling实 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html\n\n---\n\n## 2. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://blog.csdn.net/weixin_71147864/article/details/154141942)\n\n2025年11月17日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐明Tiling …\n\n**URL:** https://blog.csdn."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "## 1. [Tiling实现-host侧算子实现-算子开发（进阶篇）-Ascend C ...](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为 Tiling实 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "## 2. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://blog.csdn.net/weixin_71147864/article/details/154141942)\n\n2025年11月17日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐明Tiling …\n\n**URL:** https://blog.csdn.net/weixin_71147864/article/details/154141942\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/weixin_71147864/article/details/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "## 3. [Host侧Tiling实现-开发流程-单算子API调用-算子调用-Ascend ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC22/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0052.html)\n\n根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为Tiling实 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC22/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0052.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC22/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0052.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "## 4. [Ascend C Tiling 技术深度解析：从原理到实战（含固定 ...](https://blog.csdn.net/2401_89199769/article/details/153833725)\n\n2026年7月18日 · 在 Ascend C 算子开发中，Tiling 技术是解决 Local Memory 空间有限的核心方案，通过数据分块实现大规模张量计 …\n\n**URL:** https://blog.csdn.net/2401_89199769/article/details/153833725\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://blog.csdn.net/2401_89199769/article/details/153833725"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_4_b3446fd8.result",
+      "evidence": {
+        "event_id": "WebSearch_4_b3446fd8.result",
+        "quote": "## 5. [掌握Ascend C算子开发核心：Tiling概念与动态Shape实现详解](https://devpress.csdn.net/v1/article/detail/154141942)\n\n2025年10月30日 · 本文系统介绍了AscendC算子开发中的Tiling计算技术，重点解析了动态shape场景的实现方法。 文章首先阐 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/154141942\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/154141942"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_107e4189.result",
+      "evidence": {
+        "event_id": "WebFetch_5_107e4189.result",
+        "quote": "**标题**: Tiling实现-host侧算子实现-算子开发（进阶篇）-Ascend C算子开发-算子开发-CANN商用版7.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html)\n\n# Tiling实现\n\n大多数情况下，Local Memory的存储，无法完整的容纳算子的输入与输出，需要每次搬运一部分输入进行计算然后搬出，再搬运下一部分输入进行计算，直到得到完整的最终结果，这个数据切分、分块计算的过程称之为**Tiling**。根据算子的shape等信息来确定数据切分算法相关参数（比如每次搬运的块大小，以及总共循环多少次）的计算程序，称之为**Tiling实现**。\n\nTiling实现完成后，获取到的Tiling切分算法相关参数，会传递给kernel侧，用于指导并行数据的切分。由于Tiling实现中完成的均为标量计算，AI Core并不擅长，所以我们将其独立出来放在host CPU上执行。\n\n**图1** Tiling实现的输入输出  \n![](https://www.hiascend.com/doc_center/source/z"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/700/operatordev/Ascendcopdevg/atlas_ascendc_10_0031.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_e7106b1e.result",
+      "evidence": {
+        "event_id": "WebFetch_6_e7106b1e.result",
+        "quote": "**标题**: Host侧Tiling实现-开发流程-单算子API调用-算子调用-Ascend C算子开发-算子开发-CANN商用版8.0.RC2.2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC22/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0052.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "# Search Results for \"hiascend.com atlas_ascendc kernel侧算子实现 动态shape GET_TILING_DATA Init Process CopyIn CopyOut\"\n\n## 1. [kernel侧算子实现-算子开发（进阶篇）-Ascend C算子开发 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)\n\n本节以实现一个支持动态shape的Add算子为例，重点进行动态shape与固定shape差异点的介绍。 动态Shape场景下，输入的Shape是 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html\n\n---\n\n## 2. [CANN ops-nn AddExample 算子全解析：从 y=x1+x2 到 ...](https://blog.csdn.net/gitblog_00330/article/details/166009867)\n\n2 天之前 · 本文基于 CANN ops-nn 仓库中的官方示例算子 AddExample，完整讲解该算子\"从产品支持、功能定义、参数"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "## 1. [kernel侧算子实现-算子开发（进阶篇）-Ascend C算子开发 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)\n\n本节以实现一个支持动态shape的Add算子为例，重点进行动态shape与固定shape差异点的介绍。 动态Shape场景下，输入的Shape是 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "## 2. [CANN ops-nn AddExample 算子全解析：从 y=x1+x2 到 ...](https://blog.csdn.net/gitblog_00330/article/details/166009867)\n\n2 天之前 · 本文基于 CANN ops-nn 仓库中的官方示例算子 AddExample，完整讲解该算子\"从产品支持、功能定义、参数规格，到 …\n\n**URL:** https://blog.csdn.net/gitblog_00330/article/details/166009867\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://blog.csdn.net/gitblog_00330/article/details/166009867"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "## 3. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://bbs.huaweicloud.com/blogs/439154)\n\n2024年11月9日 · 【摘要】 本次主要讨论下AscendC算子的开发流程，基于Kernel直调工程的算子开发。 1 AscendC算子开发的基本流 …\n\n**URL:** https://bbs.huaweicloud.com/blogs/439154\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://bbs.huaweicloud.com/blogs/439154"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "## 4. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://www.cnblogs.com/zjun3021/articles/18536668)\n\n2024年11月9日 · 本次主要讨论下AscendC算子的开发流程，基于Kernel直调工程的算子开发。 1 AscendC算子开发的基本流程 1、使 …\n\n**URL:** https://www.cnblogs.com/zjun3021/articles/18536668\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://www.cnblogs.com/zjun3021/articles/18536668"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_f32035ea.result",
+      "evidence": {
+        "event_id": "WebSearch_7_f32035ea.result",
+        "quote": "## 5. [AscendC从入门到精通系列（二）基于Kernel直调开发 ...](https://segmentfault.com/a/1190000045617479)\n\n2024年12月17日 · 本次主要讨论下AscendC算子的开发流程，基于Kernel直调工程的算子开发。 使用<<<>>>内核调用符完成算子核函 …\n\n**URL:** https://segmentfault.com/a/1190000045617479\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://segmentfault.com/a/1190000045617479"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_5b968245.result",
+      "evidence": {
+        "event_id": "WebFetch_8_5b968245.result",
+        "quote": "**标题**: kernel侧算子实现-算子开发（进阶篇）-Ascend C算子开发-算子开发-CANN商用版8.0.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html)\n\n# kernel侧算子实现\n\n在算子工程目录下的“op_kernel/xxx.cpp”文件中实现算子的核函数。核函数的定义模板已通过**msopgen**工具自动生成，样例如下所示**。注意这里参数的顺序按照“输入、输出、workspace、tiling”的顺序排布，开发者不要调整其顺序。**\n\n```\n#include \"kernel_operator.h\"\nextern \"C\" __global__ __aicore__ void add_custom(GM_ADDR x, GM_ADDR y, GM_ADDR z, GM_ADDR workspace, GM_ADDR tiling) {\n    GET_TILING_DATA(tiling_data, tiling);// 获取Tiling参数，详见下"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/developmentguide/opdevg/Ascendcopdevg/atlas_ascendc_10_0028.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

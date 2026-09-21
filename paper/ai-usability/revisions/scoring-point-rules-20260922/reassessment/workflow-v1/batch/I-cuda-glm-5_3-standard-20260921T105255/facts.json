@@ -1,0 +1,358 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_78e2e92a55e04406a25fe481.result",
+      "evidence": {
+        "event_id": "call_78e2e92a55e04406a25fe481.result",
+        "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_9f9173e5d90e4921ab3d162f.result",
+      "evidence": {
+        "event_id": "call_9f9173e5d90e4921ab3d162f.result",
+        "quote": "# PyTorch 2.x Installation Commands & CUDA Variants\n\n## Summary\n\nThis page provides pip (wheel) and conda installation commands for PyTorch 2.0.0 through **2.13.0**. Each version supports specific CUDA toolkit builds selected via `--index-url https://download.pytorch.org/whl/{variant}`. **No cuDNN information is mentioned anywhere on this page** (see note at the end).\n\n---\n\n## PyTorch 2.x ↔ CUDA Version Pairings (pip/wheel)\n\n| PyTorch | torchvision | torchaudio | CUDA Variants Available |\n|---------|-------------|------------|------------------------|\n| 2.13.0 | 0.28.0 | — | **cu126, cu130, cu132** |\n| 2.12.1 | 0.27.1 | — | **cu126, cu130, cu132** |\n| 2.12.0 | 0.27.0 | — | **cu126, cu130, cu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://pytorch.org/get-started/previous-versions/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_117127e5bbdf430d8772d8d4.result",
+      "evidence": {
+        "event_id": "call_117127e5bbdf430d8772d8d4.result",
+        "quote": "# CUDA Toolkit — Driver Version Requirements & Compatibility\n\nThe release notes contain three relevant tables: **Table 2** (CUDA 13.x driver branches), **Table 3** (minor version compatibility ranges), and **Table 4** (specific minimum driver versions for CUDA 12.9 and earlier). Details follow.\n\n## 1. CUDA 13.x — Corresponding Driver Branches (Table 2)\n\nNote: Update releases within a CUDA minor version use the same driver branch.\n\n| CUDA Toolkit | Corresponding Driver Branch |\n|---|---|\n| CUDA 13.4 | R615 |\n| CUDA 13.3 | R610 |\n| CUDA 13.2 | R595 |\n| CUDA 13.1 | R590 |\n| CUDA 13.0 | R580 |\n\n## 2. Minor Version Compatibility — Driver Ranges (Table 3)\n\n| CTK Version | Minimum Driver | Maximum "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "e57c9866bacbfcd2974f6e22bfaac6f93359f36cd1ce9c14f6744296653b3d56",
+  "question": "我的 PyTorch 跟 CUDA/cuDNN 版本对不上，怎么查 PyTorch、CUDA toolkit、cuDNN、驱动之间的版本配套关系？",
+  "run_id": "I-cuda-glm-5_3-standard-20260921T105255",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "# Search Results for \"PyTorch CUDA cuDNN version compatibility matrix official pytorch.org previous versions\"\n\n## 1. [Support Matrix — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n\n2026年9月9日 · The following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html\n\n---\n\n## 2. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏37次。PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/q"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "## 1. [Support Matrix — NVIDIA cuDNN Backend](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html)\n\n2026年9月9日 · The following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "## 2. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏37次。PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/qq_73472828/article/details/160484021\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/qq_73472828/article/details/160484021"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "## 3. [Supported Products — NVIDIA cuDNN](https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html)\n\n2026年9月2日 · For details, refer to the support matrix for the relevant cuDNN backend version: Earlier 9.x releases are available …\n\n**URL:** https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "## 4. [Pytorch torchvision与CUDA cuDNN版本对应关系查询及下载 ...](https://developer.aliyun.com/article/1081023)\n\n2022年11月16日 · 本文深入解析PyTorch、CUDA与cuDNN的版本对应关系，助您彻底规避因版本不匹配引发的环境配置难题，并提供 …\n\n**URL:** https://developer.aliyun.com/article/1081023\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.aliyun.com/article/1081023"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+      "evidence": {
+        "event_id": "call_e68ae44c7a0f43c8ba330ac3.result",
+        "quote": "## 5. [PyTorch、CUDA与显卡驱动版本对应关系及配置指南_文心快码](https://comate.baidu.com/zh/page/57ueeqzh4yj)\n\n2026年3月5日 · 本文系统阐述了PyTorch、CUDA与显卡驱动的版本对应关系，提出三步筛选法确定最佳配置组合：先满足PyTorch功 …\n\n**URL:** https://comate.baidu.com/zh/page/57ueeqzh4yj\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://comate.baidu.com/zh/page/57ueeqzh4yj"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_78e2e92a55e04406a25fe481.result",
+      "evidence": {
+        "event_id": "call_78e2e92a55e04406a25fe481.result",
+        "quote": "**标题**: Support Matrix — NVIDIA cuDNN Backend\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#support-matrix \"Link to this heading\")\n\n## GPU, CUDA Toolkit, and CUDA Driver Requirements[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html#gpu-cuda-toolkit-and-cuda-driver-requirements \"Link to this heading\")\n\nThe following sections highlight the compatibility of NVIDIA cuDNN versions with the various supported NVIDIA CUDA Toolkit, CUDA driver, and NVIDIA hardware versions.\n\nSupported NVIDIA Hardware and CUDA Version[#](https://docs.nvidia.com/deeplearning/cudnn/backend/latest/referen"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "# Search Results for \"pytorch.org get started previous versions install PyTorch CUDA 12.1 12.4 12.6 wheel\"\n\n## 1. [Previous PyTorch Versions](https://pytorch.org/get-started/previous-versions/)\n\nAccess and install previous PyTorch versions, including binaries and instructions for all platforms.\n\n**URL:** https://pytorch.org/get-started/previous-versions/\n\n---\n\n## 2. [Previous PyTorch Versions](https://docs.pytorch.org/get-started/previous-versions/)\n\n2026年9月2日 · Installing previous versions of PyTorch We’d prefer you install the latest version, but old binaries and installation …\n\n**URL:** https://docs.pytorch.org/get-started/previous-versions/\n\n---\n\n## 3. [以前的 PyTorch 版本 - PyTorch 框架](https"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "## 1. [Previous PyTorch Versions](https://pytorch.org/get-started/previous-versions/)\n\nAccess and install previous PyTorch versions, including binaries and instructions for all platforms.\n\n**URL:** https://pytorch.org/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "## 2. [Previous PyTorch Versions](https://docs.pytorch.org/get-started/previous-versions/)\n\n2026年9月2日 · Installing previous versions of PyTorch We’d prefer you install the latest version, but old binaries and installation …\n\n**URL:** https://docs.pytorch.org/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "## 3. [以前的 PyTorch 版本 - PyTorch 框架](https://pytorch.ac.cn/get-started/previous-versions/)\n\n2026年9月5日 · 您可以使用 git tag 列出 PyTorch git 仓库中的标签，并使用以下命令检出特定版本（将 ‘0.1.9’ 替换为所需的版本）： …\n\n**URL:** https://pytorch.ac.cn/get-started/previous-versions/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "https://pytorch.ac.cn/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "## 4. [在Anaconda下安装GPU版本的Pytorch的超详细步骤_torch ...](https://blog.csdn.net/qq_43361801/article/details/151187049)\n\n2025年9月4日 · ‌ 查看CUDA的版本。 在电脑左下角搜索cmd打开命令提示符，输入命令：nvidia-smi，所以CUDA的版本号为12.9。 打 …\n\n**URL:** https://blog.csdn.net/qq_43361801/article/details/151187049\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://blog.csdn.net/qq_43361801/article/details/151187049"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+      "evidence": {
+        "event_id": "call_2e9ffc11d3824488bd10b2a4.result",
+        "quote": "## 5. [Get Started - PyTorch](https://pytorch.org/get-started/locally/)\n\nPlease ensure that you have met the prerequisites below (e.g., numpy), depending on your package manager. You can also install …\n\n**URL:** https://pytorch.org/get-started/locally/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://pytorch.org/get-started/locally/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9f9173e5d90e4921ab3d162f.result",
+      "evidence": {
+        "event_id": "call_9f9173e5d90e4921ab3d162f.result",
+        "quote": "# PyTorch 2.x Installation Commands & CUDA Variants\n\n## Summary\n\nThis page provides pip (wheel) and conda installation commands for PyTorch 2.0.0 through **2.13.0**. Each version supports specific CUDA toolkit builds selected via `--index-url https://download.pytorch.org/whl/{variant}`. **No cuDNN information is mentioned anywhere on this page** (see note at the end).\n\n---\n\n## PyTorch 2.x ↔ CUDA Version Pairings (pip/wheel)\n\n| PyTorch | torchvision | torchaudio | CUDA Variants Available |\n|---------|-------------|------------|------------------------|\n| 2.13.0 | 0.28.0 | — | **cu126, cu130, cu132** |\n| 2.12.1 | 0.27.1 | — | **cu126, cu130, cu132** |\n| 2.12.0 | 0.27.0 | — | **cu126, cu130, cu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://pytorch.org/get-started/previous-versions/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_117127e5bbdf430d8772d8d4.result",
+      "evidence": {
+        "event_id": "call_117127e5bbdf430d8772d8d4.result",
+        "quote": "# CUDA Toolkit — Driver Version Requirements & Compatibility\n\nThe release notes contain three relevant tables: **Table 2** (CUDA 13.x driver branches), **Table 3** (minor version compatibility ranges), and **Table 4** (specific minimum driver versions for CUDA 12.9 and earlier). Details follow.\n\n## 1. CUDA 13.x — Corresponding Driver Branches (Table 2)\n\nNote: Update releases within a CUDA minor version use the same driver branch.\n\n| CUDA Toolkit | Corresponding Driver Branch |\n|---|---|\n| CUDA 13.4 | R615 |\n| CUDA 13.3 | R610 |\n| CUDA 13.2 | R595 |\n| CUDA 13.1 | R590 |\n| CUDA 13.0 | R580 |\n\n## 2. Minor Version Compatibility — Driver Ranges (Table 3)\n\n| CTK Version | Minimum Driver | Maximum "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "# Search Results for \"pytorch.org knowledge base check PyTorch CUDA version torch.version.cuda torch.backends.cudnn.version\"\n\n## 1. [pytorch 下查看cuda是否可用，cuda版本以及cudnn版本信息](https://juejin.cn/post/7429154076938043429)\n\n2024年10月24日 · 在 PyTorch 中，你可以很容易地检查 CUDA 是否可用、CUDA 的版本以及 cuDNN 的版本信息。 以下是如何在 …\n\n**URL:** https://juejin.cn/post/7429154076938043429\n\n---\n\n## 2. [PyTorch版本查看与CUDA、cudnn的协同使用指南-百度开发 ...](https://developer.baidu.com/article/details/2678934)\n\n2023年12月24日 · 本文将详细介绍如何查看PyTorch、torchvision、CUDA、cudnn的版本，以及如何检查PyTorch和CUDA的可用性。 …\n\n**URL:** https://developer.baidu.com/article/details/2678934\n\n---\n\n## 3. [pytorch 下查看cuda是否可用，cuda版本以及cudnn版本信息](https://www.cnblogs.com/wuhaoliu/p/18793231)\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "## 1. [pytorch 下查看cuda是否可用，cuda版本以及cudnn版本信息](https://juejin.cn/post/7429154076938043429)\n\n2024年10月24日 · 在 PyTorch 中，你可以很容易地检查 CUDA 是否可用、CUDA 的版本以及 cuDNN 的版本信息。 以下是如何在 …\n\n**URL:** https://juejin.cn/post/7429154076938043429\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://juejin.cn/post/7429154076938043429"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "## 2. [PyTorch版本查看与CUDA、cudnn的协同使用指南-百度开发 ...](https://developer.baidu.com/article/details/2678934)\n\n2023年12月24日 · 本文将详细介绍如何查看PyTorch、torchvision、CUDA、cudnn的版本，以及如何检查PyTorch和CUDA的可用性。 …\n\n**URL:** https://developer.baidu.com/article/details/2678934\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://developer.baidu.com/article/details/2678934"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "## 3. [pytorch 下查看cuda是否可用，cuda版本以及cudnn版本信息](https://www.cnblogs.com/wuhaoliu/p/18793231)\n\n2024年10月24日 · 在 PyTorch 中，你可以很容易地检查 CUDA 是否可用、CUDA 的版本以及 cuDNN 的版本信息。 以下是如何在 …\n\n**URL:** https://www.cnblogs.com/wuhaoliu/p/18793231\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.cnblogs.com/wuhaoliu/p/18793231"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "## 4. [【CUDA】版本对齐踩坑全记录：torch + CUDA + cuDNN ...](https://blog.csdn.net/qq_73472828/article/details/160484021)\n\n2026年4月27日 · 文章浏览阅读4.4k次，点赞21次，收藏36次。 PyTorch与CUDA版本对齐指南（2026最新） 本文详细讲解了PyTorch …\n\n**URL:** https://blog.csdn.net/qq_73472828/article/details/160484021\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/qq_73472828/article/details/160484021"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_a37c83e11ae6416998ce5f55.result",
+      "evidence": {
+        "event_id": "call_a37c83e11ae6416998ce5f55.result",
+        "quote": "## 5. [【PyTorch 】【CUDA】深入了解 PyTorch 中的 CUDA 和 ...](https://blog.csdn.net/Stromboli/article/details/143028861)\n\n2024年10月20日 · 在本文中，我们深入探讨了如何在 PyTorch 中检查 CUDA 和 cuDNN 版本、可用 GPU 的信息，以及如何测试 …\n\n**URL:** https://blog.csdn.net/Stromboli/article/details/143028861\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://blog.csdn.net/Stromboli/article/details/143028861"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

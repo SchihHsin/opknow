@@ -1,0 +1,278 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_503c0d5ba7614182b6076fbc.result",
+      "evidence": {
+        "event_id": "call_503c0d5ba7614182b6076fbc.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\n**The \"Post-installation Actions\" section is not included in the web content provided.** The content you've shared covers Sections 1 through 8 of the CUDA 13.4 Installation Guide, but the Post-installation Actions section (which would follow, typically as Section 9) does not appear anywhere in the provided text. I cannot extract it verbatim because it simply isn't there.\n\n## Content Boundaries (as requested)\n\n- **Content starts:** Section 1 \"Overview\"\n- **Content ends:** Mid-way through **Section 8.3 \"Packages\"** (Pip Wheels), abruptly ending mid-list at `nvidia-cuda-opencl`\n- **Missing:** Any section titled \"P"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_f37b5c94fcde441bb28a0782.result",
+      "evidence": {
+        "event_id": "call_f37b5c94fcde441bb28a0782.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/post-installation-actions",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_aa539dd1213f4ae28d6543c8.result",
+      "evidence": {
+        "event_id": "call_aa539dd1213f4ae28d6543c8.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\nI carefully scanned the entire provided web content, and **the \"Post-installation Actions\" section is not included in the document excerpt you provided**. The content is truncated and ends mid-way through **Section 8.3 (Pip Wheels → Packages)**, before the Post-installation Actions section appears. I cannot extract it verbatim because doing so would require fabricating content — no `export PATH`, `export LD_LIBRARY_PATH`, or post-install verification commands appear anywhere in the supplied text.\n\n---\n\n## Where the Section Is Referenced (But Not Included)\n\nThe section is referenced repeatedly as a linked cross-"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_cb981744bffe487799560583.result",
+      "evidence": {
+        "event_id": "call_cb981744bffe487799560583.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\n**The \"Post-installation Actions\" section (including the Environment Setup subsection) is not contained in the web content provided.** I cannot extract it verbatim because the document content ends before that section begins. I will not fabricate the export commands, deb/rpm vs. runfile instructions, or verification steps, as you specifically requested verbatim extraction.\n\n## Where the Provided Content Starts and Ends\n\n| Boundary | Location in Document |\n|---|---|\n| **Content starts** | Section 1 — \"Introduction\" (CUDA 12.4 Installation Guide for Linux) |\n| **Content ends** | Section 6 — \"Precompiled Streams\","
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/archive/12.4.0/cuda-installation-guide-linux/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_7ec7ba23d18a4d75b06b47b8.result",
+      "evidence": {
+        "event_id": "call_7ec7ba23d18a4d75b06b47b8.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf\"\n    # then call Read on the renamed path\n\nThe saved file name MUST end with the extension matching the real type"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_c1319406a8474ebfbfb36171.result",
+      "evidence": {
+        "event_id": "call_c1319406a8474ebfbfb36171.result",
+        "quote": "# CUDA 13.4 环境设置提取 — PATH & LD_LIBRARY_PATH\n\n## 总结\n\n在**CUDA Quick Start Guide 13.4** 文档中，相同的 “Set up the development environment”（设置开发环境）步骤——包含相同的两个 `export` 命令——在 **12 个 Linux 安装章节**中逐字出现。Ubuntu 专属的章节是 **§4.1.9.1 (Debian Installer)** 和 **§4.1.9.2 (Runfile Installer)**。所有提取内容均在下方逐字重现，并带有明确的 START/END（开始/结束）标记。\n\n---\n\n## 1. Ubuntu — Debian Installer (§4.1.9.1)\n\n**[VERBATIM START — Section 4.1.9.1 \"Debian Installer\", steps 3–5]**\n\n3. 重启系统以加载 NVIDIA 驱动程序：\n   \n   ```\n   sudo reboot\n   ```\n4. 通过修改 PATH 和 LD_LIBRARY_PATH 变量来设置开发环境：\n   \n   ```\n   export PATH=/usr/local/cuda-13.4/bin${PATH:+:${PATH}}\n   export LD_LIBRARY_PATH=/usr/local/cuda-13.4/lib64\\\n                            ${LD_LIBRARY_PATH:+"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "3eb801b38d351870c43176ef6a3a3a9cfb38e786363671cbeb90902ca70c8031",
+  "question": "Ubuntu 上从零安装 CUDA toolkit，装完要配哪些环境变量（PATH / LD_LIBRARY_PATH）？",
+  "run_id": "J-cuda-glm-5_3-standard-20260921T105802",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "# Search Results for \"CUDA installation guide Linux post-installation actions environment variables PATH LD_LIBRARY_PATH docs.nvidia.com\"\n\n## 1. [CUDA Installation Guide for Linux - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)\n\n5 天之前 · The NVIDIA CUDA Installation Guide for Linux provides comprehensive instructions for installing the CUDA Toolkit across …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-installation-guide-linux/\n\n---\n\n## 2. [【保姆教程】Linux系统安装Cuda完整步骤_linux安装cuda ...](https://blog.csdn.net/m0_57409671/article/details/154279396)\n\n2026年3月25日 · 本文介绍了Linux系统下CUDA工具包的安装配置流程。 主要内容包括：1）从NVIDIA官网下载指定版本CUDA安装 …\n\n**URL:** https://blog.csdn.net/m0_5740"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "## 1. [CUDA Installation Guide for Linux - NVIDIA Documentation Hub](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)\n\n5 天之前 · The NVIDIA CUDA Installation Guide for Linux provides comprehensive instructions for installing the CUDA Toolkit across …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-installation-guide-linux/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "## 2. [【保姆教程】Linux系统安装Cuda完整步骤_linux安装cuda ...](https://blog.csdn.net/m0_57409671/article/details/154279396)\n\n2026年3月25日 · 本文介绍了Linux系统下CUDA工具包的安装配置流程。 主要内容包括：1）从NVIDIA官网下载指定版本CUDA安装 …\n\n**URL:** https://blog.csdn.net/m0_57409671/article/details/154279396\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/m0_57409671/article/details/154279396"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "## 3. [NVIDIA CUDA Installation Guide for Linux](https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf)\n\n2023年2月23日 · NVIDIA CUDA Installation Guide for Linux Installation and Verification on Linux Systems DU-05347-001_v12.1 | …\n\n**URL:** https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "## 4. [NVIDIA CUDA Installation Guide for Linux](https://developer.download.nvidia.cn/compute/cuda/10.2/Prod/docs/sidebar/CUDA_Installation_Guide_Linux.pdf)\n\n2019年10月24日 · The PATH variable needs to include /usr/local/cuda-10.2/bin and /usr/local/ cuda-10.2/NsightCompute-<tool …\n\n**URL:** https://developer.download.nvidia.cn/compute/cuda/10.2/Prod/docs/sidebar/CUDA_Installation_Guide_Linux.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://developer.download.nvidia.cn/compute/cuda/10.2/Prod/docs/sidebar/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0c8851f8e8cb4170b0519089.result",
+      "evidence": {
+        "event_id": "call_0c8851f8e8cb4170b0519089.result",
+        "quote": "## 5. [NVIDIA CUDA Installation Guide for Linux (WSL-Ubuntu)](https://blog.csdn.net/chengyq116/article/details/145916380)\n\n2025年2月28日 · In addition, when using the runfile installation method, the LD_LIBRARY_PATH variable needs to contain …\n\n**URL:** https://blog.csdn.net/chengyq116/article/details/145916380\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.csdn.net/chengyq116/article/details/145916380"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_8e12dd1de0664b35a4fc757e.result",
+      "evidence": {
+        "event_id": "call_8e12dd1de0664b35a4fc757e.result",
+        "quote": "# Post-installation Actions / Environment Setup Section — Extraction Result\n\n## ⚠️ Key Finding: Section Not Present in Provided Content\n\nThe **\"Post-installation Actions\"** and **\"Environment Setup\"** sections are **not included** in the web content provided. The content is truncated — it ends mid-way through **Section 8.3 (Pip Wheels → Packages)**, cutting off at the package list item `nvidia-cuda-opencl`. In the full NVIDIA documentation, the Post-installation Actions section appears *after* the Pip Wheels section, so its contents were never captured.\n\n**Evidence the section exists in the full document but is missing here:**\n- The section is referenced via hyperlink **at least 10 times** t"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_503c0d5ba7614182b6076fbc.result",
+      "evidence": {
+        "event_id": "call_503c0d5ba7614182b6076fbc.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\n**The \"Post-installation Actions\" section is not included in the web content provided.** The content you've shared covers Sections 1 through 8 of the CUDA 13.4 Installation Guide, but the Post-installation Actions section (which would follow, typically as Section 9) does not appear anywhere in the provided text. I cannot extract it verbatim because it simply isn't there.\n\n## Content Boundaries (as requested)\n\n- **Content starts:** Section 1 \"Overview\"\n- **Content ends:** Mid-way through **Section 8.3 \"Packages\"** (Pip Wheels), abruptly ending mid-list at `nvidia-cuda-opencl`\n- **Missing:** Any section titled \"P"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/#post-installation-actions"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f37b5c94fcde441bb28a0782.result",
+      "evidence": {
+        "event_id": "call_f37b5c94fcde441bb28a0782.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/post-installation-actions"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_aa539dd1213f4ae28d6543c8.result",
+      "evidence": {
+        "event_id": "call_aa539dd1213f4ae28d6543c8.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\nI carefully scanned the entire provided web content, and **the \"Post-installation Actions\" section is not included in the document excerpt you provided**. The content is truncated and ends mid-way through **Section 8.3 (Pip Wheels → Packages)**, before the Post-installation Actions section appears. I cannot extract it verbatim because doing so would require fabricating content — no `export PATH`, `export LD_LIBRARY_PATH`, or post-install verification commands appear anywhere in the supplied text.\n\n---\n\n## Where the Section Is Referenced (But Not Included)\n\nThe section is referenced repeatedly as a linked cross-"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_cb981744bffe487799560583.result",
+      "evidence": {
+        "event_id": "call_cb981744bffe487799560583.result",
+        "quote": "# Analysis Result: Requested Section Not Present in Provided Content\n\n## Summary\n\n**The \"Post-installation Actions\" section (including the Environment Setup subsection) is not contained in the web content provided.** I cannot extract it verbatim because the document content ends before that section begins. I will not fabricate the export commands, deb/rpm vs. runfile instructions, or verification steps, as you specifically requested verbatim extraction.\n\n## Where the Provided Content Starts and Ends\n\n| Boundary | Location in Document |\n|---|---|\n| **Content starts** | Section 1 — \"Introduction\" (CUDA 12.4 Installation Guide for Linux) |\n| **Content ends** | Section 6 — \"Precompiled Streams\","
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/archive/12.4.0/cuda-installation-guide-linux/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7ec7ba23d18a4d75b06b47b8.result",
+      "evidence": {
+        "event_id": "call_7ec7ba23d18a4d75b06b47b8.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf\"\n    # then call Read on the renamed path\n\nThe saved file name MUST end with the extension matching the real type"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c1319406a8474ebfbfb36171.result",
+      "evidence": {
+        "event_id": "call_c1319406a8474ebfbfb36171.result",
+        "quote": "# CUDA 13.4 环境设置提取 — PATH & LD_LIBRARY_PATH\n\n## 总结\n\n在**CUDA Quick Start Guide 13.4** 文档中，相同的 “Set up the development environment”（设置开发环境）步骤——包含相同的两个 `export` 命令——在 **12 个 Linux 安装章节**中逐字出现。Ubuntu 专属的章节是 **§4.1.9.1 (Debian Installer)** 和 **§4.1.9.2 (Runfile Installer)**。所有提取内容均在下方逐字重现，并带有明确的 START/END（开始/结束）标记。\n\n---\n\n## 1. Ubuntu — Debian Installer (§4.1.9.1)\n\n**[VERBATIM START — Section 4.1.9.1 \"Debian Installer\", steps 3–5]**\n\n3. 重启系统以加载 NVIDIA 驱动程序：\n   \n   ```\n   sudo reboot\n   ```\n4. 通过修改 PATH 和 LD_LIBRARY_PATH 变量来设置开发环境：\n   \n   ```\n   export PATH=/usr/local/cuda-13.4/bin${PATH:+:${PATH}}\n   export LD_LIBRARY_PATH=/usr/local/cuda-13.4/lib64\\\n                            ${LD_LIBRARY_PATH:+"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

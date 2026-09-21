@@ -1,0 +1,408 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_8c844253.result",
+      "evidence": {
+        "event_id": "WebFetch_1_8c844253.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN8.2.RC1.alpha002开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_d8d458fc.result",
+      "evidence": {
+        "event_id": "WebFetch_2_d8d458fc.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html)\n\n# --dynamic_dims\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置ND格式下动态维度的档位。适用于执行推理时，每次处理任意维度的场景。\n\n为支持Transformer等网络在输入格式的维度不确定的场景，通过该参数实现ND格式下任意维度的档位设置。ND表示支持任意格式。\n\n#### 关联参数\n\n该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/at"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_82293f75.result",
+      "evidence": {
+        "event_id": "WebFetch_3_82293f75.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html)\n\n# --dynamic_batch_size\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置动态batch_size参数，适用于执行推理时，每次处理图片或者句子数量不固定的场景。\n\n在某些推理场景，如检测出目标后再执行目标识别网络，由于目标个数不固定导致目标识别网络输入batch_size不固定。如果每次推理都按照最大的batch_size或最大分辨率进行计算，会造成计算资源浪费。因此，推理需要支持动态batch_size和动态分辨率的场景，使用ATC工具时，通过该参数设置支持的b"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_c6dab9a7.result",
+      "evidence": {
+        "event_id": "WebFetch_4_c6dab9a7.result",
+        "quote": "**标题**: --dynamic_image_size-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html)\n\n# --dynamic_image_size\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置输入图片的动态分辨率参数。适用于执行推理时，每次处理图片宽和高不固定的场景。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0016.html)配合使用，不能与[--dynam"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_88fa3864.result",
+      "evidence": {
+        "event_id": "WebFetch_6_88fa3864.result",
+        "quote": "**标题**: 配置参数说明-MindIE Server-MindIE Service组件-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_7_32079022_51e6f79c.result",
+      "evidence": {
+        "event_id": "WebFetch_7_32079022_51e6f79c.result",
+        "quote": "# MindIE Server Batching/动态Batch 相关参数提取\n\n已从文档中提取与 batching/动态 batch 直接相关的参数。以下参数分别位于 **ModelDeployConfig**（序列/输入长度类）和 **ScheduleConfig**（调度/组batch类）配置节中。所有\"配置说明\"均为**原文完整摘录**（未删减、未改写）；个别参数原文中引用了流程图（图1/图2），图片内容无法以文本呈现，已单独标注。\n\n---\n\n## 一、ModelDeployConfig 参数（序列与输入长度）\n\n### 1. maxSeqLen\n| 项目 | 内容 |\n|---|---|\n| 取值类型 | uint32_t |\n| 取值范围 | 上限根据显存和用户需求来决定，最小值需大于0 |\n| 必填/默认值 | 必填，默认值：**2560** |\n\n**配置说明（原文）**：\n> 最大序列长度。请根据推理场景选择合适的maxSeqLen。\n> 如果maxSeqLen大于模型支持的最大序列长度，可能会影响推理精度。\n\n### 2. maxInputTokenLen\n| 项目 | 内容 |\n|---|---|\n| 取值类型 | uint32_t |\n| 取值范围 | [1, 4194304] |\n| 必填/默认值 | 必填，默认值：**2048** |\n\n**配置说明（原文）**：\n> 输入token id最大长度。\n> maxInputTokenLen = min(maxInputTokenLen, maxSeqLen -1)\n> - 当truncation=-1"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_0ff65814.result",
+      "evidence": {
+        "event_id": "WebFetch_8_0ff65814.result",
+        "quote": "**标题**: aclmdlSetInputDynamicDims-模型执行-模型管理-acl API（C）-应用开发接口-API-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html)\n\n# aclmdlSetInputDynamicDims\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n如果模型输入的Shape是动态的、输入数据Format为ND格式（ND表示支持任意格式），在模型执行前调用本接口设置模型推理时具体维度的值。\n\n#### 函数原型\n\n```\naclError aclmdlSetInputDynamicDims(uint32_t modelId, aclmdlDataset *dataset, size_t index, const aclmdlIODims *d"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_9_94eabdbc.result",
+      "evidence": {
+        "event_id": "WebFetch_9_94eabdbc.result",
+        "quote": "**标题**: aclmdlSetDynamicBatchSize-模型执行-模型管理-acl API（C）-应用开发接口-API-CANN商用版8.5.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0306.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "ecaee63cbc0923ef9245029104484180126bbf95fac44441f0eaee9c393dea92",
+  "question": "我用昇腾 MindIE/ACL/ATC 部署模型，怎么配置动态 batch / 动态 shape 推理（dynamic_dims / 分档 / 动态分辨率）？",
+  "run_id": "T-cann-kimi-k3-2-standard-20260921T132936",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "# Search Results for \"昇腾 ATC atc --dynamic_dims --dynamic_batch_size --dynamic_image_size 动态shape 文档 hiascend\"\n\n## 1. [--dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html)\n\n--dynamic_dims 产品支持情况 产品 是否支持 Atlas A2 训练系列产品/Atlas 800I A2 推理产品/A200I A2 Box 异构组件 √ Atlas 200I/500 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html\n\n---\n\n## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 华为云开发者 ...](https://www.cnblogs.com/huaweiyun/p/17687854.html)\n\n概览原因分析解决措施1.原始网络模型shape中存在不固定的维度值，模型转换未设置shape信息2.动态BatchSize/动态分辨率/动态维度场景，只设"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "## 1. [--dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html)\n\n--dynamic_dims 产品支持情况 产品 是否支持 Atlas A2 训练系列产品/Atlas 800I A2 推理产品/A200I A2 Box 异构组件 √ Atlas 200I/500 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "## 2. [昇腾实践丨ATC模型转换动态shape问题案例 - 华为云开发者 ...](https://www.cnblogs.com/huaweiyun/p/17687854.html)\n\n概览原因分析解决措施1.原始网络模型shape中存在不固定的维度值，模型转换未设置shape信息2.动态BatchSize/动态分辨率/动态维度场景，只设置一个档位，模型转换失败3.使用动态batchsize参数转模型时，其他档位设置了-1，模型转换失败4.使用动态分辨率参数转模型时，其他档位设置了-1，模型转换失败在cnblogs.com上查看更多信息\n\n**URL:** https://www.cnblogs.com/huaweiyun/p/17687854.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.cnblogs.com/huaweiyun/p/17687854.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "## 3. [昇腾实践丨ATC模型转换动态shape问题案例 - 技术栈](https://jishuzhan.net/article/1700074870097842177)\n\n2023年9月8日 · 原因分析 使用ATC工具进行模型转换，如果使用了--dynamic_batch_size或--dynamic_image_size或--dynamic_dims …\n\n**URL:** https://jishuzhan.net/article/1700074870097842177\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://jishuzhan.net/article/1700074870097842177"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "## 4. [昇腾实践丨ATC模型转换动态shape问题案例 - 知乎](https://zhuanlan.zhihu.com/p/655103539)\n\n2023年9月8日 · 原因分析 使用ATC工具进行模型转换，如果使用了--dynamic_batch_size或--dynamic_image_size或--dynamic_dims …\n\n**URL:** https://zhuanlan.zhihu.com/p/655103539\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/655103539"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6b862249.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6b862249.result",
+        "quote": "## 5. [--dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线 ...](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html)\n\n昇腾社区是基于昇腾系列处理器和基础软件构建的全栈 AI计算基础设施、行业应用及服务，包括昇腾系列处理器、系列硬件、CANN异 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_8c844253.result",
+      "evidence": {
+        "event_id": "WebFetch_1_8c844253.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN8.2.RC1.alpha002开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha002/devaids/atctool/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_d8d458fc.result",
+      "evidence": {
+        "event_id": "WebFetch_2_d8d458fc.result",
+        "quote": "**标题**: --dynamic_dims-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html)\n\n# --dynamic_dims\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置ND格式下动态维度的档位。适用于执行推理时，每次处理任意维度的场景。\n\n为支持Transformer等网络在输入格式的维度不确定的场景，通过该参数实现ND格式下任意维度的档位设置。ND表示支持任意格式。\n\n#### 关联参数\n\n该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/at"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_82293f75.result",
+      "evidence": {
+        "event_id": "WebFetch_3_82293f75.result",
+        "quote": "**标题**: --dynamic_batch_size-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html)\n\n# --dynamic_batch_size\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置动态batch_size参数，适用于执行推理时，每次处理图片或者句子数量不固定的场景。\n\n在某些推理场景，如检测出目标后再执行目标识别网络，由于目标个数不固定导致目标识别网络输入batch_size不固定。如果每次推理都按照最大的batch_size或最大分辨率进行计算，会造成计算资源浪费。因此，推理需要支持动态batch_size和动态分辨率的场景，使用ATC工具时，通过该参数设置支持的b"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0018.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_c6dab9a7.result",
+      "evidence": {
+        "event_id": "WebFetch_4_c6dab9a7.result",
+        "quote": "**标题**: --dynamic_image_size-输入选项-基础功能参数-参数说明-ATC离线模型编译工具-开发工具-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html)\n\n# --dynamic_image_size\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n设置输入图片的动态分辨率参数。适用于执行推理时，每次处理图片宽和高不固定的场景。\n\n#### 关联参数\n\n- 该参数需要与[--input_shape](https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0016.html)配合使用，不能与[--dynam"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/devaids/atctool/atlasatcparam_16_0019.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "# Search Results for \"MindIE Server config.json maxBatchSize continuous batching 动态batch 配置 hiascend 文档\"\n\n## 1. [配置参数说明-MindIE Server-MindIE Service组件-MindIE ...](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html)\n\n若用户仍需要使用0.0.0.0，请在环境具备全零监听防护能力的前提下，通过设置配置项 “allowAllZeroIpListening” =true手动打开允许配 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html\n\n---\n\n## 2. [MindIE在线推理性能优化：如何平衡maxBatchSize与时延 ...](https://blog.csdn.net/weixin_29240711/article/details/158912442)\n\n2026年3月18日 · 文章浏览阅读61次。 本文深入探讨了在昇腾硬件上使用MindIE推理引擎进行在线服务性能调优的核心挑战，即如何 …\n\n**URL:** https://blog.csdn.net/weixin_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "## 1. [配置参数说明-MindIE Server-MindIE Service组件-MindIE ...](https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html)\n\n若用户仍需要使用0.0.0.0，请在环境具备全零监听防护能力的前提下，通过设置配置项 “allowAllZeroIpListening” =true手动打开允许配 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "## 2. [MindIE在线推理性能优化：如何平衡maxBatchSize与时延 ...](https://blog.csdn.net/weixin_29240711/article/details/158912442)\n\n2026年3月18日 · 文章浏览阅读61次。 本文深入探讨了在昇腾硬件上使用MindIE推理引擎进行在线服务性能调优的核心挑战，即如何 …\n\n**URL:** https://blog.csdn.net/weixin_29240711/article/details/158912442\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://blog.csdn.net/weixin_29240711/article/details/158912442"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "## 3. [一文详解mindie服务化性能调优 - 知乎](https://zhuanlan.zhihu.com/p/909443325)\n\n2024年10月11日 · 调度配置参数 maxPrefillBatchSize：prefill阶段一个batch中包含的请求个数的上限。 小于等于maxBatchSize的值， …\n\n**URL:** https://zhuanlan.zhihu.com/p/909443325\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/909443325"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "## 4. [MindIE服务化部署及性能调优介绍 - CSDN博客](https://blog.csdn.net/wy746801669wy/article/details/149118148)\n\n2025年7月4日 · 过大会导致OOM。 建议设置为maxBatchSize的一半。 maxPrefillTokens：prefill阶段一个batch中包含的input token总 …\n\n**URL:** https://blog.csdn.net/wy746801669wy/article/details/149118148\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://blog.csdn.net/wy746801669wy/article/details/149118148"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_728f6c87.result",
+      "evidence": {
+        "event_id": "WebSearch_5_728f6c87.result",
+        "quote": "## 5. [服务参数配置 - MindIE-LLM-Doc](https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/)\n\n2026年6月23日 · 说明 健康检查方案：在每个Server实例中，周期性地同步执行虚拟推理（单Token推理）与NPU利用率检测，基于检 …\n\n**URL:** https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_88fa3864.result",
+      "evidence": {
+        "event_id": "WebFetch_6_88fa3864.result",
+        "quote": "**标题**: 配置参数说明-MindIE Server-MindIE Service组件-MindIE Service开发指南-服务化集成部署-MindIE1.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://www.hiascend.com/document/detail/zh/mindie/10RC3/mindieservice/servicedev/mindie_service0285.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_7_32079022_51e6f79c.result",
+      "evidence": {
+        "event_id": "WebFetch_7_32079022_51e6f79c.result",
+        "quote": "# MindIE Server Batching/动态Batch 相关参数提取\n\n已从文档中提取与 batching/动态 batch 直接相关的参数。以下参数分别位于 **ModelDeployConfig**（序列/输入长度类）和 **ScheduleConfig**（调度/组batch类）配置节中。所有\"配置说明\"均为**原文完整摘录**（未删减、未改写）；个别参数原文中引用了流程图（图1/图2），图片内容无法以文本呈现，已单独标注。\n\n---\n\n## 一、ModelDeployConfig 参数（序列与输入长度）\n\n### 1. maxSeqLen\n| 项目 | 内容 |\n|---|---|\n| 取值类型 | uint32_t |\n| 取值范围 | 上限根据显存和用户需求来决定，最小值需大于0 |\n| 必填/默认值 | 必填，默认值：**2560** |\n\n**配置说明（原文）**：\n> 最大序列长度。请根据推理场景选择合适的maxSeqLen。\n> 如果maxSeqLen大于模型支持的最大序列长度，可能会影响推理精度。\n\n### 2. maxInputTokenLen\n| 项目 | 内容 |\n|---|---|\n| 取值类型 | uint32_t |\n| 取值范围 | [1, 4194304] |\n| 必填/默认值 | 必填，默认值：**2048** |\n\n**配置说明（原文）**：\n> 输入token id最大长度。\n> maxInputTokenLen = min(maxInputTokenLen, maxSeqLen -1)\n> - 当truncation=-1"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://mindie-llm-doc.readthedocs.io/zh-cn/latest/user_guide/user_manual/service_parameter_configuration/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_0ff65814.result",
+      "evidence": {
+        "event_id": "WebFetch_8_0ff65814.result",
+        "quote": "**标题**: aclmdlSetInputDynamicDims-模型执行-模型管理-acl API（C）-应用开发接口-API-CANN商用版8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html)\n\n# aclmdlSetInputDynamicDims\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas A3 训练系列产品 / Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品 / Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 功能说明\n\n如果模型输入的Shape是动态的、输入数据Format为ND格式（ND表示支持任意格式），在模型执行前调用本接口设置模型推理时具体维度的值。\n\n#### 函数原型\n\n```\naclError aclmdlSetInputDynamicDims(uint32_t modelId, aclmdlDataset *dataset, size_t index, const aclmdlIODims *d"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0312.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_9_94eabdbc.result",
+      "evidence": {
+        "event_id": "WebFetch_9_94eabdbc.result",
+        "quote": "**标题**: aclmdlSetDynamicBatchSize-模型执行-模型管理-acl API（C）-应用开发接口-API-CANN商用版8.5.0开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0306.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_10_485736bb.result",
+      "evidence": {
+        "event_id": "WebFetch_10_485736bb.result",
+        "quote": "Error: BENCHMARK_BUDGET_DENIED fetch: 上限8次，本请求未派发。请使用已有材料完成回答，不再重试此类工具。"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/850/API/appdevgapi/aclcppdevg_03_0306.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

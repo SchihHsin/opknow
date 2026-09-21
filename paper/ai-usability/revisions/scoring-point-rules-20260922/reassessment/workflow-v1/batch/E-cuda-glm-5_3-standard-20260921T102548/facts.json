@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+      "evidence": {
+        "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+        "quote": "# NVIDIA Compute Sanitizer 文档信息提取\n\n## ⚠️ 页面截断说明（重要）\n\n**该页面内容存在截断**。文末标注 `[content truncated]`，截断位置在 **\"Compute Sanitizer Tool Examples → Example Use of Memcheck → `memcheck_demo` Output with Memcheck (Release Build)\"** 一节中间。因此以下内容缺失：\n- Memcheck 示例的剩余部分（如 Debug Build/带 lineinfo 构建的输出对比）\n- 可能存在的 Racecheck / Initcheck / Synccheck 示例章节\n\n以下提取基于**可见的完整部分**（从 Introduction 到 Usage Guide / OS Specific Behavior / CUDA Fortran Support 及 Memcheck 示例开头）。\n\n---\n\n## 1. Compute Sanitizer 是什么 & 包含的子工具\n\n原文定义：\n\n> \"Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks.\"\n\n**四个子工具**：\n\n| 工具 | 功能定位 |\n|--"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+      "evidence": {
+        "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+        "quote": "**标题**: 5.2. CUDA Environment Variables — CUDA Programming Guide\n\n# 5.2. CUDA Environment Variables#\n\n## 5.2.1. Device Enumeration and Properties#\n\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\n\n# 5.2. CUDA Environment Variables#\n## 5.2.1. Device Enumeration and Properties#\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\nThe device count returned by the `cudaGetDeviceCount()` API includes only the visible devices, so CUDA APIs that use integer device identifiers only support ordinals in the range [0, visible device count - 1]. The enumeration order of the GPU devices determines the ordinal values. For example, with `CUDA_VISIBLE_DEVICES=2,1`, calling `cudaSetDevice(0)` wi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_646376808b9a4abb8ca0f366.result",
+      "evidence": {
+        "event_id": "call_646376808b9a4abb8ca0f366.result",
+        "quote": "```\n#include <torch/csrc/Exceptions.h>\n#include <torch/csrc/python_headers.h>\n\n#include <array>\n#include <cstdarg>\n#include <exception>\n#include <utility>\n\n#include <fmt/format.h>\n#include <torch/csrc/THP.h>\n\n#include <c10/util/StringUtil.h>\n\nPyObject *THPException_FatalError, *THPException_LinAlgError,\n    *THPException_OutOfMemoryError, *THPException_DistError,\n    *THPException_DistBackendError, *THPException_DistNetworkError,\n    *THPException_DistStoreError, *THPException_DistQueueEmptyError,\n    *THPException_AcceleratorError;\n\n#define ASSERT_TRUE(cond) \\\n  if (!(cond))            \\\n  return false\nbool THPException_init(PyObject* module) {\n  // NOLINTNEXTLINE(bugprone-assignment-in-if-"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.cpp",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_2655714c75564f77b65c449a.result",
+      "evidence": {
+        "event_id": "call_2655714c75564f77b65c449a.result",
+        "quote": "# 检索结果摘要\n\n**该文件中不存在任何包含所询关键词的宏定义或注释。** 经对全部内容逐字检索,四个关键词及 `cuda_check_error` 均未出现。\n\n## 一、关键词逐项检索结果\n\n| 检索目标 | 是否存在 | 说明 |\n|---|---|---|\n| `device-side assert` | ❌ 未找到 | 全文无此字符串 |\n| `asynchronously reported` | ❌ 未找到 | 全文无此字符串 |\n| `CUDA_LAUNCH_BLOCKING` | ❌ 未找到 | 全文无此字符串 |\n| `TORCH_USE_CUDA_DSA` | ❌ 未找到 | 全文无此字符串 |\n| `cuda_check_error` 宏 | ❌ 未找到 | 本文件不含任何 CUDA 专用宏 |\n\n您寻找的这段著名提示信息(“CUDA error: device-side assert triggered … may be reported asynchronously … set CUDA_LAUNCH_BLOCKING=1 … TORCH_USE_CUDA_DSA”)出自 PyTorch 的 **`c10/cuda/CUDAException.h` / `CUDAException.cpp`**(即 `C10_CUDA_CHECK`、`C10_CUDA_KERNEL_LAUNCH_CHECK` 宏及 `c10_cuda_check_implementation` 函数),**并非**本文件 `torch/csrc/Exceptions.h` 的内容。"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.h",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_10a8c5412ece400a9b23cfc2.result",
+      "evidence": {
+        "event_id": "call_10a8c5412ece400a9b23cfc2.result",
+        "quote": "```\n#include <c10/cuda/CUDAException.h>\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/util/Exception.h>\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED)\n#include <c10/cuda/driver_api.h>\n#endif\n\n#include <algorithm>\n#include <array>\n#include <cstring>\n#include <string>\n#include <utility>\n\nnamespace c10::cuda {\n\nnamespace {\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED) && \\\n    defined(CUDA_VERSION) && (CUDA_VERSION >= 12090)\n// This size matches the one used by cuLogsDumpToMemory, however we could shrink\n// it as in our case this size is per-thread, and it only needs to be large\n// enough to contain the messages printed by a single CUD"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.cpp",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_0da97aad76ea4a89bb967979.result",
+      "evidence": {
+        "event_id": "call_0da97aad76ea4a89bb967979.result",
+        "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAMacros.h>\n#include <c10/cuda/CUDAMiscFunctions.h>\n#include <c10/macros/Macros.h>\n#include <c10/util/Exception.h>\n#include <c10/util/irange.h>\n#include <cuda.h>\n\n#include <string>\n\n// Note [CHECK macro]\n// ~~~~~~~~~~~~~~~~~~\n// This is a macro so that AT_ERROR can get accurate __LINE__\n// and __FILE__ information.  We could split this into a short\n// macro and a function implementation if we pass along __LINE__\n// and __FILE__, but no one has found this worth doing.\n\n// Used to denote errors from CUDA framework.\n// This needs to be declared here instead util/Exception.h for proper conversion\n// during hipif"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.h",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_2d012822d2154feda7893edb.result",
+      "evidence": {
+        "event_id": "call_2d012822d2154feda7893edb.result",
+        "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDAMacros.h>\n\n#include <cstdint>\n#include <memory>\n#include <mutex>\n#include <string>\n#include <utility>\n#include <vector>\n\n#if (defined(USE_CUDA) || defined(USE_ROCM)) && !defined(TORCH_USE_CUDA_DSA)\n#define TORCH_USE_CUDA_DSA\n#endif\n\n/// Number of assertion failure messages we can store. If this is too small\n/// threads will fail silently.\nconstexpr int C10_CUDA_DSA_ASSERTION_COUNT = 10;\nconstexpr int C10_CUDA_DSA_MAX_STR_LEN = 512;\n\nnamespace c10::cuda {\n\n/// Holds information about any device-side assertions that fail.\n/// Held in managed memory and access by both the CPU and the GPU.\nstruct DeviceAssertionData {\n  /// Stringification of the assertio"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.h",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+      "evidence": {
+        "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+        "quote": "```\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAException.h>\n#include <c10/cuda/CUDAFunctions.h>\n#include <c10/util/env.h>\n#include <c10/util/irange.h>\n\n#include <memory>\n#include <string>\n#ifdef TORCH_USE_CUDA_DSA\n#include <chrono>\n#include <thread>\n#endif\n\n#define C10_CUDA_CHECK_WO_DSA(EXPR)                                 \\\n  do {                                                              \\\n    c10::cuda::CUDAErrorLogCapture __cuda_error_log;                \\\n    const cudaError_t __err = EXPR;                                 \\\n    c10::cuda::c10_cuda_check_implementation(                       \\\n        static_cast<int32_t>(__err),                              "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.cpp",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "26cb25015709bd6c907f461a37243bb9ee350d37b1b0683d7ee641a453ba3371",
+  "question": "我的 PyTorch/CUDA 程序报 `RuntimeError: CUDA error: device-side assert triggered`，怎么定位是哪一行、哪个 kernel 出的问题？",
+  "run_id": "E-cuda-glm-5_3-standard-20260921T102548",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "# Search Results for \"pytorch \"device-side assert triggered\" locate which kernel CUDA_LAUNCH_BLOCKING\"\n\n## 1. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n## 2. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://blog.csdn.net/weixin_42652674/article/details/160732746)\n\n2 天之前 · 本文详细解析了PyTorch训练中常见的‘CUDA error: device-side assert triggered’报错问题，重点介绍了如何使 …\n\n**URL:** https://blog.csdn.net/weixin_42652674/article/details/160732746\n\n---\n\n##"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "## 1. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_42561040/article/details/160704542"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "## 2. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://blog.csdn.net/weixin_42652674/article/details/160732746)\n\n2 天之前 · 本文详细解析了PyTorch训练中常见的‘CUDA error: device-side assert triggered’报错问题，重点介绍了如何使 …\n\n**URL:** https://blog.csdn.net/weixin_42652674/article/details/160732746\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_42652674/article/details/160732746"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "## 3. [PyTorch训练报错‘CUDA error: device-side assert triggered ...](https://wenku.csdn.net/column/rce881q5su0)\n\n2026年4月19日 · 本文将带你深入理解这类CUDA异步报错的本质，并构建一套系统化的调试方法论，让你下次遇到类似问题时能够游 …\n\n**URL:** https://wenku.csdn.net/column/rce881q5su0\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://wenku.csdn.net/column/rce881q5su0"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "## 4. [CUDA error: device-side assert triggered-腾讯云开发者社区 ...](https://cloud.tencent.com/developer/article/2363866)\n\n2023年11月26日 · CUDA开发中常遇\"cuda error: device-side assert triggered\"错误，源于数组越界、线程同步错误等。 解决方法包括 …\n\n**URL:** https://cloud.tencent.com/developer/article/2363866\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://cloud.tencent.com/developer/article/2363866"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+      "evidence": {
+        "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+        "quote": "## 5. [【Debug日志 | device-side assert triggered】-腾讯云开发者 ...](https://cloud.tencent.com/developer/article/2567817)\n\n2025年9月14日 · PyTorch训练中遇到\"device-side assert triggered\"报错？ 本文深度解析CUDA错误根源，提供分类/分割任务解决方案 …\n\n**URL:** https://cloud.tencent.com/developer/article/2567817\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://cloud.tencent.com/developer/article/2567817"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "# Search Results for \"NVIDIA compute-sanitizer documentation assert device-side\"\n\n## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The Compute Sanitizer suite supports displaying mangled and demangled names for CUDA kernels and CUDA …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n## 2. [Compute Sanitizer - NVIDIA Documentation Hub](https://docs.nvidia.com/compute-sanitizer/)\n\n2026年2月1日 · Information on the NVIDIA Software License Agreement as well as third party software and tools used by Compute …\n\n**URL:** https://docs.nvidia.com/compute-sanitize"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The Compute Sanitizer suite supports displaying mangled and demangled names for CUDA kernels and CUDA …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "## 2. [Compute Sanitizer - NVIDIA Documentation Hub](https://docs.nvidia.com/compute-sanitizer/)\n\n2026年2月1日 · Information on the NVIDIA Software License Agreement as well as third party software and tools used by Compute …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://docs.nvidia.com/compute-sanitizer/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "## 3. [NVIDIA Compute Sanitizer - NVIDIA Developer](https://developer.nvidia.com/compute-sanitizer)\n\nThis tool can identify when device global memory is accessed without it being initialized via device side writes, or via CUDA memcpy …\n\n**URL:** https://developer.nvidia.com/compute-sanitizer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://developer.nvidia.com/compute-sanitizer"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "## 4. [高效 CUDA 调试：将 NVIDIA Compute Sanitizer 与 NVIDIA ...](https://zhuanlan.zhihu.com/p/689580387)\n\n2024年3月28日 · NVIDIA Compute Sanitizer 是一款功能强大的工具，可以节省您的时间和精力，同时提高 CUDA 应用程序的可靠性 …\n\n**URL:** https://zhuanlan.zhihu.com/p/689580387\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://zhuanlan.zhihu.com/p/689580387"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_b719882540904814affe1157.result",
+      "evidence": {
+        "event_id": "call_b719882540904814affe1157.result",
+        "quote": "## 5. [高效 CUDA 调试：将 NVIDIA Compute Sanitizer 与 NVIDIA ...](https://blog.csdn.net/kunhe0512/article/details/137119826)\n\n2026年7月29日 · 本文详细介绍了如何利用NVIDIAComputeSanitizer的强大功能，特别是在与NVIDIA工具扩展NVTX的集成下，用 …\n\n**URL:** https://blog.csdn.net/kunhe0512/article/details/137119826\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/kunhe0512/article/details/137119826"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+      "evidence": {
+        "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+        "quote": "# NVIDIA Compute Sanitizer 文档信息提取\n\n## ⚠️ 页面截断说明（重要）\n\n**该页面内容存在截断**。文末标注 `[content truncated]`，截断位置在 **\"Compute Sanitizer Tool Examples → Example Use of Memcheck → `memcheck_demo` Output with Memcheck (Release Build)\"** 一节中间。因此以下内容缺失：\n- Memcheck 示例的剩余部分（如 Debug Build/带 lineinfo 构建的输出对比）\n- 可能存在的 Racecheck / Initcheck / Synccheck 示例章节\n\n以下提取基于**可见的完整部分**（从 Introduction 到 Usage Guide / OS Specific Behavior / CUDA Fortran Support 及 Memcheck 示例开头）。\n\n---\n\n## 1. Compute Sanitizer 是什么 & 包含的子工具\n\n原文定义：\n\n> \"Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks.\"\n\n**四个子工具**：\n\n| 工具 | 功能定位 |\n|--"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "# Search Results for \"pytorch device-side assert triggered TORCH_USE_CUDA_DSA official documentation\"\n\n## 1. [【Debug日志 | device-side assert triggered】-腾讯云开发者 ...](https://cloud.tencent.com/developer/article/2567817)\n\n2025年9月14日 · PyTorch训练中遇到\"device-side assert triggered\"报错？ 本文深度解析CUDA错误根源，提供分类/分割任务解决方案 …\n\n**URL:** https://cloud.tencent.com/developer/article/2567817\n\n---\n\n## 2. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n## 3. [已解决—Pytorch CUDA runt"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "## 1. [【Debug日志 | device-side assert triggered】-腾讯云开发者 ...](https://cloud.tencent.com/developer/article/2567817)\n\n2025年9月14日 · PyTorch训练中遇到\"device-side assert triggered\"报错？ 本文深度解析CUDA错误根源，提供分类/分割任务解决方案 …\n\n**URL:** https://cloud.tencent.com/developer/article/2567817\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0004-rank-1",
+      "url": "https://cloud.tencent.com/developer/article/2567817"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "## 2. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0004-rank-2",
+      "url": "https://blog.csdn.net/weixin_42561040/article/details/160704542"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "## 3. [已解决—Pytorch CUDA runtime error: device-side assert ...](https://blog.csdn.net/qq_66931117/article/details/144469806)\n\n2024年12月15日 · CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be …\n\n**URL:** https://blog.csdn.net/qq_66931117/article/details/144469806\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0004-rank-3",
+      "url": "https://blog.csdn.net/qq_66931117/article/details/144469806"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "## 4. [怎样修改：RuntimeError: CUDA error: device-side assert ...](https://wenku.csdn.net/answer/vr8kqqfmer)\n\n2024年11月29日 · 遇到这个 RuntimeError: CUDA error: device-side assert triggered 错误通常是CUDA运行时检测到了可能导致程序 …\n\n**URL:** https://wenku.csdn.net/answer/vr8kqqfmer\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0004-rank-4",
+      "url": "https://wenku.csdn.net/answer/vr8kqqfmer"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_845dea7407a247a9a92f91c9.result",
+      "evidence": {
+        "event_id": "call_845dea7407a247a9a92f91c9.result",
+        "quote": "## 5. [CUDA error: device-side assert triggered-腾讯云开发者社区 ...](https://cloud.tencent.com/developer/article/2363866)\n\n2023年11月26日 · CUDA开发中常遇\"cuda error: device-side assert triggered\"错误，源于数组越界、线程同步错误等。 解决方法包括 …\n\n**URL:** https://cloud.tencent.com/developer/article/2363866\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0004-rank-5",
+      "url": "https://cloud.tencent.com/developer/article/2363866"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "# Search Results for \"CUDA_LAUNCH_BLOCKING environment variable\"\n\n## 1. [5.2. CUDA Environment Variables — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html)\n\n2026年9月10日 · The environment variable controls the order in which CUDA enumerates the available devices. Possible Values: …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html\n\n---\n\n## 2. [CUDA_LAUNCH_BLOCKING=1的作用 - CSDN博客](https://blog.csdn.net/weixin_43590796/article/details/131588761)\n\nCUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect. For …\n\n**URL:"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "## 1. [5.2. CUDA Environment Variables — CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html)\n\n2026年9月10日 · The environment variable controls the order in which CUDA enumerates the available devices. Possible Values: …\n\n**URL:** https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "## 2. [CUDA_LAUNCH_BLOCKING=1的作用 - CSDN博客](https://blog.csdn.net/weixin_43590796/article/details/131588761)\n\nCUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect. For …\n\n**URL:** https://blog.csdn.net/weixin_43590796/article/details/131588761\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://blog.csdn.net/weixin_43590796/article/details/131588761"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "## 3. [CUDA | CUDA_LAUNCH_BLOCKING - 知乎 - 知乎专栏](https://zhuanlan.zhihu.com/p/14373043490)\n\nCUDA_LAUNCH_BLOCKING=1 是一个 环境变量，它会使 CUDA 程序的所有 GPU 操作变成同步执行。 这意味着，CUDA 操作会在 …\n\n**URL:** https://zhuanlan.zhihu.com/p/14373043490\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://zhuanlan.zhihu.com/p/14373043490"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "## 4. [附录M - CUDA 环境变量 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/cuda-environment-variables-cn/)\n\n下表列出了 CUDA 环境变量。 与多进程服务相关的环境变量记录在 GPU 部署和管理指南的多进程服务部分 …\n\n**URL:** https://developer.nvidia.cn/blog/cuda-environment-variables-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://developer.nvidia.cn/blog/cuda-environment-variables-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+      "evidence": {
+        "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+        "quote": "## 5. [CUDA 环境变量 | 奔跑的IC](https://zmurder.github.io/CUDA/基础/CUDA 环境变量/)\n\n2024年12月1日 · When using CUDA MPS service, the set-aside size can only be controlled using this …\n\n**URL:** https://zmurder.github.io/CUDA/基础/CUDA 环境变量/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://zmurder.github.io/CUDA/基础/CUDA"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+      "evidence": {
+        "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+        "quote": "**标题**: 5.2. CUDA Environment Variables — CUDA Programming Guide\n\n# 5.2. CUDA Environment Variables#\n\n## 5.2.1. Device Enumeration and Properties#\n\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\n\n# 5.2. CUDA Environment Variables#\n## 5.2.1. Device Enumeration and Properties#\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\nThe device count returned by the `cudaGetDeviceCount()` API includes only the visible devices, so CUDA APIs that use integer device identifiers only support ordinals in the range [0, visible device count - 1]. The enumeration order of the GPU devices determines the ordinal values. For example, with `CUDA_VISIBLE_DEVICES=2,1`, calling `cudaSetDevice(0)` wi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_646376808b9a4abb8ca0f366.result",
+      "evidence": {
+        "event_id": "call_646376808b9a4abb8ca0f366.result",
+        "quote": "```\n#include <torch/csrc/Exceptions.h>\n#include <torch/csrc/python_headers.h>\n\n#include <array>\n#include <cstdarg>\n#include <exception>\n#include <utility>\n\n#include <fmt/format.h>\n#include <torch/csrc/THP.h>\n\n#include <c10/util/StringUtil.h>\n\nPyObject *THPException_FatalError, *THPException_LinAlgError,\n    *THPException_OutOfMemoryError, *THPException_DistError,\n    *THPException_DistBackendError, *THPException_DistNetworkError,\n    *THPException_DistStoreError, *THPException_DistQueueEmptyError,\n    *THPException_AcceleratorError;\n\n#define ASSERT_TRUE(cond) \\\n  if (!(cond))            \\\n  return false\nbool THPException_init(PyObject* module) {\n  // NOLINTNEXTLINE(bugprone-assignment-in-if-"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.cpp"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2655714c75564f77b65c449a.result",
+      "evidence": {
+        "event_id": "call_2655714c75564f77b65c449a.result",
+        "quote": "# 检索结果摘要\n\n**该文件中不存在任何包含所询关键词的宏定义或注释。** 经对全部内容逐字检索,四个关键词及 `cuda_check_error` 均未出现。\n\n## 一、关键词逐项检索结果\n\n| 检索目标 | 是否存在 | 说明 |\n|---|---|---|\n| `device-side assert` | ❌ 未找到 | 全文无此字符串 |\n| `asynchronously reported` | ❌ 未找到 | 全文无此字符串 |\n| `CUDA_LAUNCH_BLOCKING` | ❌ 未找到 | 全文无此字符串 |\n| `TORCH_USE_CUDA_DSA` | ❌ 未找到 | 全文无此字符串 |\n| `cuda_check_error` 宏 | ❌ 未找到 | 本文件不含任何 CUDA 专用宏 |\n\n您寻找的这段著名提示信息(“CUDA error: device-side assert triggered … may be reported asynchronously … set CUDA_LAUNCH_BLOCKING=1 … TORCH_USE_CUDA_DSA”)出自 PyTorch 的 **`c10/cuda/CUDAException.h` / `CUDAException.cpp`**(即 `C10_CUDA_CHECK`、`C10_CUDA_KERNEL_LAUNCH_CHECK` 宏及 `c10_cuda_check_implementation` 函数),**并非**本文件 `torch/csrc/Exceptions.h` 的内容。"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.h"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_10a8c5412ece400a9b23cfc2.result",
+      "evidence": {
+        "event_id": "call_10a8c5412ece400a9b23cfc2.result",
+        "quote": "```\n#include <c10/cuda/CUDAException.h>\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/util/Exception.h>\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED)\n#include <c10/cuda/driver_api.h>\n#endif\n\n#include <algorithm>\n#include <array>\n#include <cstring>\n#include <string>\n#include <utility>\n\nnamespace c10::cuda {\n\nnamespace {\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED) && \\\n    defined(CUDA_VERSION) && (CUDA_VERSION >= 12090)\n// This size matches the one used by cuLogsDumpToMemory, however we could shrink\n// it as in our case this size is per-thread, and it only needs to be large\n// enough to contain the messages printed by a single CUD"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.cpp"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_0da97aad76ea4a89bb967979.result",
+      "evidence": {
+        "event_id": "call_0da97aad76ea4a89bb967979.result",
+        "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAMacros.h>\n#include <c10/cuda/CUDAMiscFunctions.h>\n#include <c10/macros/Macros.h>\n#include <c10/util/Exception.h>\n#include <c10/util/irange.h>\n#include <cuda.h>\n\n#include <string>\n\n// Note [CHECK macro]\n// ~~~~~~~~~~~~~~~~~~\n// This is a macro so that AT_ERROR can get accurate __LINE__\n// and __FILE__ information.  We could split this into a short\n// macro and a function implementation if we pass along __LINE__\n// and __FILE__, but no one has found this worth doing.\n\n// Used to denote errors from CUDA framework.\n// This needs to be declared here instead util/Exception.h for proper conversion\n// during hipif"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.h"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2d012822d2154feda7893edb.result",
+      "evidence": {
+        "event_id": "call_2d012822d2154feda7893edb.result",
+        "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDAMacros.h>\n\n#include <cstdint>\n#include <memory>\n#include <mutex>\n#include <string>\n#include <utility>\n#include <vector>\n\n#if (defined(USE_CUDA) || defined(USE_ROCM)) && !defined(TORCH_USE_CUDA_DSA)\n#define TORCH_USE_CUDA_DSA\n#endif\n\n/// Number of assertion failure messages we can store. If this is too small\n/// threads will fail silently.\nconstexpr int C10_CUDA_DSA_ASSERTION_COUNT = 10;\nconstexpr int C10_CUDA_DSA_MAX_STR_LEN = 512;\n\nnamespace c10::cuda {\n\n/// Holds information about any device-side assertions that fail.\n/// Held in managed memory and access by both the CPU and the GPU.\nstruct DeviceAssertionData {\n  /// Stringification of the assertio"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.h"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+      "evidence": {
+        "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+        "quote": "```\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAException.h>\n#include <c10/cuda/CUDAFunctions.h>\n#include <c10/util/env.h>\n#include <c10/util/irange.h>\n\n#include <memory>\n#include <string>\n#ifdef TORCH_USE_CUDA_DSA\n#include <chrono>\n#include <thread>\n#endif\n\n#define C10_CUDA_CHECK_WO_DSA(EXPR)                                 \\\n  do {                                                              \\\n    c10::cuda::CUDAErrorLogCapture __cuda_error_log;                \\\n    const cudaError_t __err = EXPR;                                 \\\n    c10::cuda::c10_cuda_check_implementation(                       \\\n        static_cast<int32_t>(__err),                              "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.cpp"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

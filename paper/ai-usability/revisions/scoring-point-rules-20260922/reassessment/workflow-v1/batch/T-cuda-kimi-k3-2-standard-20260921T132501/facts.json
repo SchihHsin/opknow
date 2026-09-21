@@ -1,0 +1,430 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_2_6b66117c.result",
+      "evidence": {
+        "event_id": "WebFetch_2_6b66117c.result",
+        "quote": "**标题**: Model Configuration — NVIDIA Triton Inference Server\n\n# Model Configuration#\n\n**Is this your first time writing a config file?** Check out this guide or this example!\n\nEach model in a model repository must include a model configuration that provides required and optional information about the model. Typically, this configuration is provided in a config.pbtxt file specified as ModelConfig protobuf. In some cases, discussed in Auto-Generated Model Configuration, the model configuration can be generated automatically by Triton and so does not need to be provided explicitly.\n\nThis section describes the most important model configuration properties but the documentation in the ModelConfig"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_79eb9bdf.result",
+      "evidence": {
+        "event_id": "WebFetch_3_79eb9bdf.result",
+        "quote": "**标题**: IOptimizationProfile - NVIDIA TensorRT Standard Python API Documentation 11.3.0\n\n[Skip to content](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#furo-main-content)\n\n[Back to top](#)\n\n# IOptimizationProfile[¶](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#ioptimizationprofile \"Permalink to this heading\")\n\n*class* tensorrt.IOptimizationProfile[¶](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#tensorrt.IOptimizationProfile \"Permalink to this definition\")\n\nOptimization profile for dynamic input dimensions "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_6892816a.result",
+      "evidence": {
+        "event_id": "WebFetch_4_6892816a.result",
+        "quote": "**标题**: Dynamic Batching & Concurrent Model Execution — NVIDIA Triton Inference Server\n\n# Dynamic Batching & Concurrent Model Execution#\n\nNavigate to\n\nPart 1: Model Deployment\n\nPart 3: Optimizing Triton Configuration\n\nPart-1 of this series introduced the mechanisms to set up a Triton Inference Server. This iteration discusses the concept of dynamic batching and concurrent model execution. These are important features that can be used to reduce latency as well as increase throughput via higher resource utilization.\n\n## What is Dynamic Batching?#\n\n# Dynamic Batching & Concurrent Model Execution#\n## What is Dynamic Batching?#\nDynamic batching, in reference to the Triton Inference Server, refers"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_63db8c76.result",
+      "evidence": {
+        "event_id": "WebFetch_5_63db8c76.result",
+        "quote": "# Analysis: Dynamic-Shape Inference with `IExecutionContext`\n\n## Summary of Findings\n\nThe provided TensorRT 11.3.0 Python API documentation covers **`set_input_shape()`** and its supporting APIs (`infer_shapes()`, `get_tensor_shape()`, `update_device_memory_size_for_shapes()`, etc.) in detail. **However, the content contains no mention of `trtexec` or the `--minShapes` / `--optShapes` / `--maxShapes` flags** — this is the Python API reference only, not the trtexec command-line documentation. Verbatim quotes and truncation notes follow.\n\n---\n\n## 1. `set_input_shape()` — Verbatim Documentation\n\nThe method is documented as an overloaded function with three signatures:\n\n> **set_input_shape(\\*arg"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/ExecutionContext.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_9281c2b4.result",
+      "evidence": {
+        "event_id": "WebFetch_6_9281c2b4.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/command-line-programs.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_8_495d3686.result",
+      "evidence": {
+        "event_id": "WebFetch_8_495d3686.result",
+        "quote": "**标题**: Optimizing and Profiling with TensorRT — Tao Toolkit\n\nBack to top\n\n# Optimizing and Profiling with TensorRT[#](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html#optimizing-and-profiling-with-tensorrt \"Link to this heading\")\n\nThe NVIDIA TensorRT SDK facilitates high-performance inference for machine learning models. Models exported from TAO can be directly optimized and profiled with TensorRT using the `trtexec` tool, which is a command line wrapper that helps quickly utilize and prototype models with TensorRT, without requiring you to write your own inference application. It serves 3 main purposes:\n\n- Bechmarking (profiling) networks on random or user"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "54a1f01579157baff511226e300d4de6f0262b7a4c77ce1a3e6f2a0d2b82c793",
+  "question": "我用 TensorRT/Triton 部署模型，怎么配置动态 batch / 动态 shape 推理（optimization profile / dynamic batching / min-opt-max shape）？",
+  "run_id": "T-cuda-kimi-k3-2-standard-20260921T132501",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "# Search Results for \"TensorRT optimization profile min opt max shape dynamic shape official documentation\"\n\n## 1. [Dynamic Shape Support — Torch-TensorRT](https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html)\n\n5 天之前 · TensorRT’s optimization profile mechanism handles this: each engine is built with a (min, opt, max) shape range for every …\n\n**URL:** https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n## 2. [动态形状支持 — Torch-TensorRT - PyTorch 文档](https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html)\n\n2026年7月31日 · 本页记录了 Torch-TensorRT 中动态形状支持的设计。 原始设计讨论请参阅： RFC #2014, RFC #2409, RFC #2634 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/contrib"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "## 1. [Dynamic Shape Support — Torch-TensorRT](https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html)\n\n5 天之前 · TensorRT’s optimization profile mechanism handles this: each engine is built with a (min, opt, max) shape range for every …\n\n**URL:** https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "## 2. [动态形状支持 — Torch-TensorRT - PyTorch 文档](https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html)\n\n2026年7月31日 · 本页记录了 Torch-TensorRT 中动态形状支持的设计。 原始设计讨论请参阅： RFC #2014, RFC #2409, RFC #2634 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "## 3. [Torch-TensorRT 的动态形状 — Torch-TensorRT v2.12.0 ...](https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html)\n\n2026年9月4日 · 在输入形状动态的情况下，我们必须提供 (min_shape, opt_shape, max_shape) 参数，以便模型能够针对此范围的输 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "## 4. [動態形狀支援 — Torch-TensorRT - PyTorch 文件](https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html)\n\n2026年9月9日 · TensorRT 的 最佳化設定檔 (optimization profile) 機制處理了這一點：每個引擎在建置時，都會為每個動態維度設定一 …\n\n**URL:** https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.com.tw/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_6f338e5f.result",
+      "evidence": {
+        "event_id": "WebSearch_0_6f338e5f.result",
+        "quote": "## 5. [IOptimizationProfile - NVIDIA TensorRT Standard Python API ...](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html)\n\n2026年9月9日 · Set the minimum/optimum/maximum dimensions for a dynamic input tensor. This function must be called for any …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "# Search Results for \"Triton Inference Server dynamic batching config.pbtxt preferred_batch_size max_queue_delay_microseconds documentation\"\n\n## 1. [Triton config.pbtxt配置解析关键要点 config.pbtxt 是 Triton ...](https://juejin.cn/post/7483764347041071158)\n\n2025年3月21日 · 关键要点 config.pbtxt 是 Triton Inference Server 的模型配置文件，定义模型的加载和服务方式。 它包含模型名称、 …\n\n**URL:** https://juejin.cn/post/7483764347041071158\n\n---\n\n## 2. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\n2026年9月1日 · Typically, this configuration is provided in a config.pbtxt file specified as ModelConfig protobuf. In some cases,"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "## 1. [Triton config.pbtxt配置解析关键要点 config.pbtxt 是 Triton ...](https://juejin.cn/post/7483764347041071158)\n\n2025年3月21日 · 关键要点 config.pbtxt 是 Triton Inference Server 的模型配置文件，定义模型的加载和服务方式。 它包含模型名称、 …\n\n**URL:** https://juejin.cn/post/7483764347041071158\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://juejin.cn/post/7483764347041071158"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "## 2. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\n2026年9月1日 · Typically, this configuration is provided in a config.pbtxt file specified as ModelConfig protobuf. In some cases, …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "## 3. [Dynamic Batching & Concurrent Model Execution — NVIDIA Triton Inference ...](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html)\n\n2026年9月1日 · Users can also add preferred_batch_size and max_queue_delay_microseconds in the body of dynamic batching to …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "## 4. [Dynamic Batching | triton-inference-server/server | DeepWiki](https://deepwiki.com/triton-inference-server/server/5.2-dynamic-batching)\n\n2026年4月14日 · This page covers how Triton's dynamic batcher works: its configuration in config.pbtxt, the dispatch decision …\n\n**URL:** https://deepwiki.com/triton-inference-server/server/5.2-dynamic-batching\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://deepwiki.com/triton-inference-server/server/5.2-dynamic-batching"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_1_1fe7464b.result",
+      "evidence": {
+        "event_id": "WebSearch_1_1fe7464b.result",
+        "quote": "## 5. [Triton 概念指南（Part 2）：如何使用动态批处理和并行模型 ...](https://zhuanlan.zhihu.com/p/661163174)\n\n2023年10月27日 · 一、什么是动态批处理 (Dynamic batching)？ 动态批处理 (Dynamic batching)，是指 Triton Inference Server 中的 …\n\n**URL:** https://zhuanlan.zhihu.com/p/661163174\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/661163174"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_6b66117c.result",
+      "evidence": {
+        "event_id": "WebFetch_2_6b66117c.result",
+        "quote": "**标题**: Model Configuration — NVIDIA Triton Inference Server\n\n# Model Configuration#\n\n**Is this your first time writing a config file?** Check out this guide or this example!\n\nEach model in a model repository must include a model configuration that provides required and optional information about the model. Typically, this configuration is provided in a config.pbtxt file specified as ModelConfig protobuf. In some cases, discussed in Auto-Generated Model Configuration, the model configuration can be generated automatically by Triton and so does not need to be provided explicitly.\n\nThis section describes the most important model configuration properties but the documentation in the ModelConfig"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_79eb9bdf.result",
+      "evidence": {
+        "event_id": "WebFetch_3_79eb9bdf.result",
+        "quote": "**标题**: IOptimizationProfile - NVIDIA TensorRT Standard Python API Documentation 11.3.0\n\n[Skip to content](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#furo-main-content)\n\n[Back to top](#)\n\n# IOptimizationProfile[¶](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#ioptimizationprofile \"Permalink to this heading\")\n\n*class* tensorrt.IOptimizationProfile[¶](https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html#tensorrt.IOptimizationProfile \"Permalink to this definition\")\n\nOptimization profile for dynamic input dimensions "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/OptimizationProfile.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_6892816a.result",
+      "evidence": {
+        "event_id": "WebFetch_4_6892816a.result",
+        "quote": "**标题**: Dynamic Batching & Concurrent Model Execution — NVIDIA Triton Inference Server\n\n# Dynamic Batching & Concurrent Model Execution#\n\nNavigate to\n\nPart 1: Model Deployment\n\nPart 3: Optimizing Triton Configuration\n\nPart-1 of this series introduced the mechanisms to set up a Triton Inference Server. This iteration discusses the concept of dynamic batching and concurrent model execution. These are important features that can be used to reduce latency as well as increase throughput via higher resource utilization.\n\n## What is Dynamic Batching?#\n\n# Dynamic Batching & Concurrent Model Execution#\n## What is Dynamic Batching?#\nDynamic batching, in reference to the Triton Inference Server, refers"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/Conceptual_Guide/Part_2-improving_resource_utilization/README.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_63db8c76.result",
+      "evidence": {
+        "event_id": "WebFetch_5_63db8c76.result",
+        "quote": "# Analysis: Dynamic-Shape Inference with `IExecutionContext`\n\n## Summary of Findings\n\nThe provided TensorRT 11.3.0 Python API documentation covers **`set_input_shape()`** and its supporting APIs (`infer_shapes()`, `get_tensor_shape()`, `update_device_memory_size_for_shapes()`, etc.) in detail. **However, the content contains no mention of `trtexec` or the `--minShapes` / `--optShapes` / `--maxShapes` flags** — this is the Python API reference only, not the trtexec command-line documentation. Verbatim quotes and truncation notes follow.\n\n---\n\n## 1. `set_input_shape()` — Verbatim Documentation\n\nThe method is documented as an overloaded function with three signatures:\n\n> **set_input_shape(\\*arg"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/_static/python-api/infer/Core/ExecutionContext.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_9281c2b4.result",
+      "evidence": {
+        "event_id": "WebFetch_6_9281c2b4.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/command-line-programs.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "# Search Results for \"trtexec --minShapes --optShapes --maxShapes dynamic shapes example docs.nvidia.com\"\n\n## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n## 2. [Optimizing and Profiling with TensorRT — Tao Toolkit](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html)\n\n2026年8月4日 · If the input model is in ONNX format, use the –minShapes, –optShapes, and –maxShapes flags to control the range …\n\n**URL:** https://docs.nvidia.com/tao/tao-to"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://blog.csdn.net/weixin_29163857/article/details/158554770"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "## 2. [Optimizing and Profiling with TensorRT — Tao Toolkit](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html)\n\n2026年8月4日 · If the input model is in ONNX format, use the –minShapes, –optShapes, and –maxShapes flags to control the range …\n\n**URL:** https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "## 3. [TensorRT - 自带工具trtexec的参数使用说明-CSDN博客](https://blog.csdn.net/HW140701/article/details/120360642)\n\nModel Option 模型选项Build Options 构建选项Inference Options 推理选项Build and Inference Batch Options 构建和推理批处理选项Reporting Options 报告选项System Options 系统选项 –uff : UFF模型文件名–onnx : ONNX模型文件名–model : Caffe模型文件名，模式时无模型，使用随机权重–deploy : Caffe prototxt 文件名在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/HW140701/article/details/120360642\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://blog.csdn.net/HW140701/article/details/120360642"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "## 4. [trtexec 参数笔记 - qinchaojie - 博客园](https://www.cnblogs.com/qinchaojie/p/18884161)\n\n2025年5月8日 · 1.3 Inference Options 推理选项 –batch=N ： 为隐式批处理引擎设置批处理大小（默认值 = 1） –shapes=spec ： 为动 …\n\n**URL:** https://www.cnblogs.com/qinchaojie/p/18884161\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://www.cnblogs.com/qinchaojie/p/18884161"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_7_c74e17b7.result",
+      "evidence": {
+        "event_id": "WebSearch_7_c74e17b7.result",
+        "quote": "## 5. [【tensorrt】——trtexec动态batch支持与batch推理耗时评测 ...](https://blog.51cto.com/u_15357586/3783947)\n\n2021年9月6日 · minShapes：动态尺寸时的最小尺寸，格式为NCHW，需要给定输入node的 名字， optShapes：推理测试的尺 …\n\n**URL:** https://blog.51cto.com/u_15357586/3783947\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://blog.51cto.com/u_15357586/3783947"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_8_495d3686.result",
+      "evidence": {
+        "event_id": "WebFetch_8_495d3686.result",
+        "quote": "**标题**: Optimizing and Profiling with TensorRT — Tao Toolkit\n\nBack to top\n\n# Optimizing and Profiling with TensorRT[#](https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html#optimizing-and-profiling-with-tensorrt \"Link to this heading\")\n\nThe NVIDIA TensorRT SDK facilitates high-performance inference for machine learning models. Models exported from TAO can be directly optimized and profiled with TensorRT using the `trtexec` tool, which is a command line wrapper that helps quickly utilize and prototype models with TensorRT, without requiring you to write your own inference application. It serves 3 main purposes:\n\n- Bechmarking (profiling) networks on random or user"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://docs.nvidia.com/tao/tao-toolkit/latest/text/trtexec_integration/index.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_da457e0b.result",
+      "evidence": {
+        "event_id": "WebFetch_1_da457e0b.result",
+        "quote": "# TensorRT 动态 Shape 核心概念 — 完整提取报告\n\n## 完整性说明\n\n✅ **已取得完整正文**：所提供内容覆盖了该文档页面（Dynamic Shapes: Core Concepts）的全部小节，包括：\n\n1. Specifying Runtime Dimensions（指定运行时维度）\n2. Named Dimensions（命名维度）\n3. Dimension Constraint using `IAssertionLayer`（维度约束）\n4. Optimization Profiles（优化 profile）\n5. Dynamically Shaped Output（动态输出 shape）\n6. Legacy binding indices（enqueueV2 遗留绑定索引，附注）\n\n页面从标题开始，到 Legacy binding indices 节的 \"Always omit the suffix for `K=0`.\" 结束，**未发现截断**。所有 C++/Python 代码块均完整。\n\n---\n\n## 一、指定运行时维度（build 时用 `-1`）\n\n构建网络时用 `-1` 表示运行时维度。例如创建名为 `foo` 的 3D 输入张量，首维固定为 3，后两维运行时指定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_d82ee742.result",
+      "evidence": {
+        "event_id": "WebFetch_3_d82ee742.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_608e1f32.result",
+      "evidence": {
+        "event_id": "WebFetch_4_608e1f32.result",
+        "quote": "**标题**: Dynamic Shapes: Advanced Topics — NVIDIA TensorRT\n\nBack to top\n\n# Dynamic Shapes: Advanced Topics[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#dynamic-shapes-advanced-topics \"Link to this heading\")\n\n## Layer Extensions For Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#layer-extensions-for-dynamic-shapes \"Link to this heading\")\n\nSome layers have optional inputs that allow specifying dynamic shape information; `IShapeLayer` can access a tensor’s shape at runtime. Some layers also allow for calculating new shapes. The next section goes into semantic details a"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_e4572cd8.result",
+      "evidence": {
+        "event_id": "WebFetch_6_e4572cd8.result",
+        "quote": "**标题**: TensorRT trtexec命令实战：动态输入与精度优化参数详解-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-05 15:27:43 发布\n于 2026-03-02 00:39:23 发布 · 415 阅读\n\n# TensorRT trtexec命令实战：动态输入与精度优化参数详解\n\n### [](https://blog.csdn.net/weixin_29163857/article/details/158554770)1. 从零开始：认识trtexec，你的 模型 加速“瑞士军刀”\n\n如果你正在玩AI模型部署，尤其是用NVIDIA的GPU，那你大概率绕不开TensorRT。而`trtexec`，就是TensorRT工具箱里最趁手的那把“瑞士军刀”。它不是某个 深度学习 框架，而是一个命令行工具，专门用来干两件核心大事：**把模型转换成TensorRT引擎**，以及**对这个引擎进行性能测试和剖析**。简单来说，你训练好的 PyTorch 、TensorFlow模型，通常先转成ONNX格式，然后就可以交给`trtexec`了。它会帮你完成一系列复杂的优化——比如层融合、精度转换、内核自动选择——最终生成一个高度优化、专为你的GPU定制的`.engine`文件。这个文件就是模型在生产环境高速运行的“可执行程序”。\n\n我刚开始用的时候，觉得它参数多得吓人，文档读起来像天书。但实际用熟了才发现，它的强大恰恰在于这些参数的灵活组合。你不用写一行C++或 Python 的推理代码，就能快速验证模型在TensorRT下的精度和速度，对比不同优化"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://blog.csdn.net/weixin_29163857/article/details/158554770",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "0db0518022993875e2f860fdc4b7d614f2091422b6390ff9d1cbd310f9d91dd3",
+  "question": "TensorRT/CUDA kernel 处理动态 shape 输入怎么做（optimization profile / 运行时 shape）？",
+  "run_id": "M-cuda-kimi-k3-2-standard-20260921T120623",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "# Search Results for \"TensorRT optimization profile dynamic shapes setInputShape documentation\"\n\n## 1. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html)\n\n2026年9月8日 · The shapes defined by the optimization profile must define valid input shapes for the network. Here are the calls for …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html\n\n---\n\n## 2. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT for RTX](https://docs.nvidia.com/deeplearning/tensorrt-rtx/latest/inference-library/dynamic-shapes-basics.html)\n\n2026年7月28日 · If you are new to dy"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "## 1. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html)\n\n2026年9月8日 · The shapes defined by the optimization profile must define valid input shapes for the network. Here are the calls for …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "## 2. [Dynamic Shapes: Core Concepts — NVIDIA TensorRT for RTX](https://docs.nvidia.com/deeplearning/tensorrt-rtx/latest/inference-library/dynamic-shapes-basics.html)\n\n2026年7月28日 · If you are new to dynamic shapes, start with Working with Dynamic Shapes for the end-to-end build and inference …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt-rtx/latest/inference-library/dynamic-shapes-basics.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt-rtx/latest/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "## 3. [8. TensorRT 中的动态形状 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/)\n\n8.3. Layer Extensions For Dynamic Shapes 一些层具有允许指定动态形状信息的可选输入，并且有一个新 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "## 4. [Torch-TensorRT 的动态形状 — Torch-TensorRT v2.12.0 ...](https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html)\n\n2026年9月4日 · 对于动态形状输入，通过 torch_tensorrt.Input API 提供的 (min_shape, opt_shape, max_shape) 范围被用于构建 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_341562e9.result",
+      "evidence": {
+        "event_id": "WebSearch_0_341562e9.result",
+        "quote": "## 5. [动态形状支持 — Torch-TensorRT - PyTorch 文档](https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html)\n\n2026年7月31日 · 本页记录了 Torch-TensorRT 中动态形状支持的设计。 原始设计讨论请参阅： RFC #2014, RFC #2409, RFC #2634 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/contributors/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_da457e0b.result",
+      "evidence": {
+        "event_id": "WebFetch_1_da457e0b.result",
+        "quote": "# TensorRT 动态 Shape 核心概念 — 完整提取报告\n\n## 完整性说明\n\n✅ **已取得完整正文**：所提供内容覆盖了该文档页面（Dynamic Shapes: Core Concepts）的全部小节，包括：\n\n1. Specifying Runtime Dimensions（指定运行时维度）\n2. Named Dimensions（命名维度）\n3. Dimension Constraint using `IAssertionLayer`（维度约束）\n4. Optimization Profiles（优化 profile）\n5. Dynamically Shaped Output（动态输出 shape）\n6. Legacy binding indices（enqueueV2 遗留绑定索引，附注）\n\n页面从标题开始，到 Legacy binding indices 节的 \"Always omit the suffix for `K=0`.\" 结束，**未发现截断**。所有 C++/Python 代码块均完整。\n\n---\n\n## 一、指定运行时维度（build 时用 `-1`）\n\n构建网络时用 `-1` 表示运行时维度。例如创建名为 `foo` 的 3D 输入张量，首维固定为 3，后两维运行时指定：\n\n**C++**\n```cpp\nnetworkDefinition.addInput(\"foo\", DataType::kFLOAT, Dims3(3, -1, -1))\n```\n\n**Python**\n```python\nnetwork_definition.add_"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-basics.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "# Search Results for \"TensorRT \"working with dynamic shapes\" end-to-end build inference trtexec shapes\"\n\n## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n## 2. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html)\n\n2026年5月27日 · Dynamic Shapes is the abilit"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "## 1. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html)\n\n2026年9月8日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0003-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "## 2. [Working with Dynamic Shapes — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html)\n\n2026年5月27日 · Dynamic Shapes is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0003-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/work-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "## 3. [使用 Torch-TensorRT 处理动态形状 — Torch-TensorRT ...](http://docs.pytorch.ac.cn/TensorRT/user_guide/compilation/dynamic_shapes.html)\n\n2026年6月16日 · 在输入形状动态的情况下，通过 torch_tensorrt.Input API 提供的 (min_shape,opt_shape,max_shape) 范围被用于构 …\n\n**URL:** http://docs.pytorch.ac.cn/TensorRT/user_guide/compilation/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0003-rank-3",
+      "url": "http://docs.pytorch.ac.cn/TensorRT/user_guide/compilation/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "## 4. [Torch-TensorRT 的动态形状 — Torch-TensorRT v2.12.0 ...](https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html)\n\n2026年9月4日 · 对于动态形状输入，通过 torch_tensorrt.Input API 提供的 (min_shape, opt_shape, max_shape) 范围被用于构建 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0003-rank-4",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/user_guide/dynamic_shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_2_e7d72616.result",
+      "evidence": {
+        "event_id": "WebSearch_2_e7d72616.result",
+        "quote": "## 5. [8. TensorRT 中的动态形状 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/)\n\n8.3. Layer Extensions For Dynamic Shapes 一些层具有允许指定动态形状信息的可选输入，并且有一个新层IShapeLayer用于在运行 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0003-rank-5",
+      "url": "https://developer.nvidia.cn/blog/tensorrt-dynamic-shapes-cn/"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_d82ee742.result",
+      "evidence": {
+        "event_id": "WebFetch_3_d82ee742.result",
+        "quote": "**标题**: Working with Dynamic Shapes — NVIDIA TensorRT\n\nBack to top\n\n# Working with Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html#working-with-dynamic-shapes \"Link to this heading\")\n\n*Dynamic Shapes* is the ability to defer specifying some or all tensor dimensions until runtime. Dynamic shapes can be used through both the C++ and Python interfaces.\n\nThe following sections provide greater detail. Here is an overview of the steps for building an engine with dynamic shapes:\n\n1. Specify each runtime dimension of an input tensor by using `-1` as a placeholder for the dimension.\n2. Specify one or more *optimization profiles* a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-dynamic-shapes.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_608e1f32.result",
+      "evidence": {
+        "event_id": "WebFetch_4_608e1f32.result",
+        "quote": "**标题**: Dynamic Shapes: Advanced Topics — NVIDIA TensorRT\n\nBack to top\n\n# Dynamic Shapes: Advanced Topics[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#dynamic-shapes-advanced-topics \"Link to this heading\")\n\n## Layer Extensions For Dynamic Shapes[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html#layer-extensions-for-dynamic-shapes \"Link to this heading\")\n\nSome layers have optional inputs that allow specifying dynamic shape information; `IShapeLayer` can access a tensor’s shape at runtime. Some layers also allow for calculating new shapes. The next section goes into semantic details a"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/dynamic-shapes-advanced.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "# Search Results for \"trtexec --minShapes --optShapes --maxShapes --shapes dynamic shapes example\"\n\n## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n## 2. [TensorRT - 自带工具trtexec的参数使用说明-CSDN博客](https://blog.csdn.net/HW140701/article/details/120360642)\n\nModel Option 模型选项Build Options 构建选项Inference Options 推理选项Build and Inference Batch Options 构建和推理批处理选项Reporting Options 报告选项System Options 系统选项 –uff : UFF模型文件名–onnx : ONNX模型文件名–model : Caffe模型文件名，模式时无模型，使用随机权重–deploy : C"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "## 1. [TensorRT trtexec命令实战：动态输入与精度优化参数详解 ...](https://blog.csdn.net/weixin_29163857/article/details/158554770)\n\n2026年6月5日 · 本文深入解析TensorRT trtexec命令在模型部署中的核心应用，重点阐述如何通过--minShapes、--optShapes和- …\n\n**URL:** https://blog.csdn.net/weixin_29163857/article/details/158554770\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0006-rank-1",
+      "url": "https://blog.csdn.net/weixin_29163857/article/details/158554770"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "## 2. [TensorRT - 自带工具trtexec的参数使用说明-CSDN博客](https://blog.csdn.net/HW140701/article/details/120360642)\n\nModel Option 模型选项Build Options 构建选项Inference Options 推理选项Build and Inference Batch Options 构建和推理批处理选项Reporting Options 报告选项System Options 系统选项 –uff : UFF模型文件名–onnx : ONNX模型文件名–model : Caffe模型文件名，模式时无模型，使用随机权重–deploy : Caffe prototxt 文件名在blog.csdn.net上查看更多信息\n\n**URL:** https://blog.csdn.net/HW140701/article/details/120360642\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0006-rank-2",
+      "url": "https://blog.csdn.net/HW140701/article/details/120360642"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "## 3. [trtexec 参数笔记 - qinchaojie - 博客园](https://www.cnblogs.com/qinchaojie/p/18884161)\n\n2025年5月8日 · 1.3 Inference Options 推理选项 –batch=N ： 为隐式批处理引擎设置批处理大小（默认值 = 1） –shapes=spec ： 为动 …\n\n**URL:** https://www.cnblogs.com/qinchaojie/p/18884161\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0006-rank-3",
+      "url": "https://www.cnblogs.com/qinchaojie/p/18884161"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "## 4. [保姆级教程：用trtexec命令行工具，5分钟搞定TensorRT引擎 ...](https://devpress.csdn.net/v1/article/detail/96669542)\n\n2026年5月31日 · 本文提供了一份详细的trtexec命令行工具使用教程，帮助用户在5分钟内完成TensorRT引擎的生成与性能测试。 通过 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/96669542\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0006-rank-4",
+      "url": "https://devpress.csdn.net/v1/article/detail/96669542"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_5_1d3ff680.result",
+      "evidence": {
+        "event_id": "WebSearch_5_1d3ff680.result",
+        "quote": "## 5. [别再手动转模型了！用TensorRT的trtexec工具，5分钟搞定 ...](https://devpress.csdn.net/v1/article/detail/95468044)\n\n2026年5月27日 · 本文详细介绍了如何使用TensorRT的trtexec工具快速将ONNX模型转换为ENGINE格式，支持动态Batch配置，大幅 …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/95468044\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0006-rank-5",
+      "url": "https://devpress.csdn.net/v1/article/detail/95468044"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_e4572cd8.result",
+      "evidence": {
+        "event_id": "WebFetch_6_e4572cd8.result",
+        "quote": "**标题**: TensorRT trtexec命令实战：动态输入与精度优化参数详解-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-05 15:27:43 发布\n于 2026-03-02 00:39:23 发布 · 415 阅读\n\n# TensorRT trtexec命令实战：动态输入与精度优化参数详解\n\n### [](https://blog.csdn.net/weixin_29163857/article/details/158554770)1. 从零开始：认识trtexec，你的 模型 加速“瑞士军刀”\n\n如果你正在玩AI模型部署，尤其是用NVIDIA的GPU，那你大概率绕不开TensorRT。而`trtexec`，就是TensorRT工具箱里最趁手的那把“瑞士军刀”。它不是某个 深度学习 框架，而是一个命令行工具，专门用来干两件核心大事：**把模型转换成TensorRT引擎**，以及**对这个引擎进行性能测试和剖析**。简单来说，你训练好的 PyTorch 、TensorFlow模型，通常先转成ONNX格式，然后就可以交给`trtexec`了。它会帮你完成一系列复杂的优化——比如层融合、精度转换、内核自动选择——最终生成一个高度优化、专为你的GPU定制的`.engine`文件。这个文件就是模型在生产环境高速运行的“可执行程序”。\n\n我刚开始用的时候，觉得它参数多得吓人，文档读起来像天书。但实际用熟了才发现，它的强大恰恰在于这些参数的灵活组合。你不用写一行C++或 Python 的推理代码，就能快速验证模型在TensorRT下的精度和速度，对比不同优化"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://blog.csdn.net/weixin_29163857/article/details/158554770"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

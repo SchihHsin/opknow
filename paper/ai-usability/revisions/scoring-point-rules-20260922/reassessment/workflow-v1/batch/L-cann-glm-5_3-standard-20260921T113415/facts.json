@@ -1,0 +1,560 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_2387e106cc4744ff887d6e41.result",
+      "evidence": {
+        "event_id": "call_2387e106cc4744ff887d6e41.result",
+        "quote": "**标题**: 数据格式要求-附录-精度调试工具-开发工具-CANN8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n# 数据格式要求\n\n**msaccucmp.py**脚本精度比对工具支持多种比对方式，因此dump、npy文件命名需满足以下要求：\n\n**表1** 数据文件命名规则\n\n数据类型\n\n数据命名格式\n\n备注\n\n非量化离线模型在昇腾AI处理器上运行生成的dump数据文件\n\n*{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n\n当前包含如下三种文件名格式：\n\n- *{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n- *{op_type}.{op_name_lxsliceN}.({stream_id}.){task_id}.{timestamp}.{task_type}.{context_id}.{thread_id}.{device_id}*\n- *{op_t"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_5850d91060794df2b34da94e.result",
+      "evidence": {
+        "event_id": "call_5850d91060794df2b34da94e.result",
+        "quote": "**标题**: 命令格式说明-附录-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n# 命令格式说明\n\n#### 通用参数\n\n精度比对命令行格式如下：\n\n```\npython3 msaccucmp.py compare -m my_dump_path -g golden_dump_path [-f fusion_rule_file] [-cf close_fusion_rule_file] [-q quant_fusion_rule_file] [-out output] [-map] [-c custom_script_path] [-alg algorithm] [-v version] [-r range] [-overflow_detection] [-max]\n```\n\n命令行参数说明如[表1](https://www.hiascend.com/document/detail/zh/CANNCommu"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_982c0c8485544da1aca8a46c.result",
+      "evidence": {
+        "event_id": "call_982c0c8485544da1aca8a46c.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0035.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_63be1a66aaeb4056a9b62ff5.result",
+      "evidence": {
+        "event_id": "call_63be1a66aaeb4056a9b62ff5.result",
+        "quote": "**标题**: 使用前准备-精度调试工具-开发工具-CANN9.0.X开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_14098b5ecf724dff83630895.result",
+      "evidence": {
+        "event_id": "call_14098b5ecf724dff83630895.result",
+        "quote": "**标题**: 404页面_华为云\n\n很抱歉，没发现您要的页面"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_5f2bdda1ee8746548a40987c.result",
+      "evidence": {
+        "event_id": "call_5f2bdda1ee8746548a40987c.result",
+        "quote": "**标题**: 准备离线模型dump数据文件-比对数据准备-原compare_vector.py精度比对方式-附录-精度调试工具-开发工具-CANN9.1.0-beta.3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)\n\n# 准备离线模型dump数据文件\n\n#### 前提条件\n\n在准备dump数据前，请参见[ATC离线模型编译工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/atctool/atlasatc_16_0001.html)模型转换，准备好模型文件；如果涉及模型量化，请参见《[AMCT模型压缩工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/amct/atlasamct_16_0001.html)》完成量化操作后再进行模型转换"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_73b58815b1354080bd9bfdc7.result",
+      "evidence": {
+        "event_id": "call_73b58815b1354080bd9bfdc7.result",
+        "quote": "**标题**: 准备TensorFlow模型npy数据文件-比对数据准备-原compare_vector.py精度比对方式-附录-精度调试工具-开发工具-CANN8.3.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_3a2d487dd33a4ff4a3de4f2e.result",
+      "evidence": {
+        "event_id": "call_3a2d487dd33a4ff4a3de4f2e.result",
+        "quote": "**标题**: 准备GPU侧npy数据文件-GPU vs NPU（TensorFlow 1.x训练/在线推理）-精度调试工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/modelaccuracy/atlasaccuracy_16_0006.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "cd3f669be6e2b68fac702110968b9f9a6dadedea4d1b5eeec6d97d533cac0633",
+  "question": "我的昇腾算子输出和标杆不一致，怎么用昇腾精度比对工具（msaccucmp / 精度比对 / dump）定位？",
+  "run_id": "L-cann-glm-5_3-standard-20260921T113415",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "# Search Results for \"昇腾 CANN msaccucmp 精度比对工具 使用指南 官方文档\"\n\n## 1. [cann-tools - 昇腾CANN 工具集使用指南 - 技术栈](https://jishuzhan.net/article/2057990241323683841)\n\n2026年5月22日 · 第一次部署模型到昇腾NPU，最让我头秃的是模型转换太复杂了：后来发现 cann-tools 这个神器 —— 昇腾CANN的 …\n\n**URL:** https://jishuzhan.net/article/2057990241323683841\n\n---\n\n## 2. [命令格式说明-附录-精度比对工具-开发工具-CANN社区版8.0 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n支持多个dump数据文件的批量比对，可指定固定路径为dump_path/time/，仅支持TensorFlow为原始训练网络的比对。 指定的路径下 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html\n\n---\n\n## "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "## 1. [cann-tools - 昇腾CANN 工具集使用指南 - 技术栈](https://jishuzhan.net/article/2057990241323683841)\n\n2026年5月22日 · 第一次部署模型到昇腾NPU，最让我头秃的是模型转换太复杂了：后来发现 cann-tools 这个神器 —— 昇腾CANN的 …\n\n**URL:** https://jishuzhan.net/article/2057990241323683841\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://jishuzhan.net/article/2057990241323683841"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "## 2. [命令格式说明-附录-精度比对工具-开发工具-CANN社区版8.0 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n支持多个dump数据文件的批量比对，可指定固定路径为dump_path/time/，仅支持TensorFlow为原始训练网络的比对。 指定的路径下 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "## 3. [cann-tools - 昇腾CANN 工具集使用指南-CSDN博客](https://blog.csdn.net/2501_93350459/article/details/161322983)\n\n2026年5月22日 · cann-tools 是昇腾CANN生态的工具集，提供模型转换（ATC）、性能分析（msadvisor）、精度比 …\n\n**URL:** https://blog.csdn.net/2501_93350459/article/details/161322983\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://blog.csdn.net/2501_93350459/article/details/161322983"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "## 4. [数据格式要求-附录-精度调试工具-开发工具-CANN8.5.0开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n<!DOCTYPE html> 数据格式要求 msaccucmp.py脚本精度比对工具支持多种比对方式，因此dump、npy文件命名需满足以下要求：  …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+      "evidence": {
+        "event_id": "call_c54aae39a20a4f5da1d0da12.result",
+        "quote": "## 5. [cann-tools - 昇腾CANN 工具集使用指南_pytorch_山屿落星辰 ...](https://ai6s.net/6a104a6f662f9a54cb7664ef.html)\n\n2026年5月22日 · 顺便说一句，如果你要部署模型到昇腾NPU，cann-tools是必装的。 不改代码，部署时间缩短95%，何乐而不为？ ， …\n\n**URL:** https://ai6s.net/6a104a6f662f9a54cb7664ef.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://ai6s.net/6a104a6f662f9a54cb7664ef.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_2387e106cc4744ff887d6e41.result",
+      "evidence": {
+        "event_id": "call_2387e106cc4744ff887d6e41.result",
+        "quote": "**标题**: 数据格式要求-附录-精度调试工具-开发工具-CANN8.5.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html)\n\n# 数据格式要求\n\n**msaccucmp.py**脚本精度比对工具支持多种比对方式，因此dump、npy文件命名需满足以下要求：\n\n**表1** 数据文件命名规则\n\n数据类型\n\n数据命名格式\n\n备注\n\n非量化离线模型在昇腾AI处理器上运行生成的dump数据文件\n\n*{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n\n当前包含如下三种文件名格式：\n\n- *{op_type}.{op_name}.{task_id}.{stream_id}.{timestamp}*\n- *{op_type}.{op_name_lxsliceN}.({stream_id}.){task_id}.{timestamp}.{task_type}.{context_id}.{thread_id}.{device_id}*\n- *{op_t"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0062.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5850d91060794df2b34da94e.result",
+      "evidence": {
+        "event_id": "call_5850d91060794df2b34da94e.result",
+        "quote": "**标题**: 命令格式说明-附录-精度比对工具-开发工具-CANN8.0.RC3.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html)\n\n# 命令格式说明\n\n#### 通用参数\n\n精度比对命令行格式如下：\n\n```\npython3 msaccucmp.py compare -m my_dump_path -g golden_dump_path [-f fusion_rule_file] [-cf close_fusion_rule_file] [-q quant_fusion_rule_file] [-out output] [-map] [-c custom_script_path] [-alg algorithm] [-v version] [-r range] [-overflow_detection] [-max]\n```\n\n命令行参数说明如[表1](https://www.hiascend.com/document/detail/zh/CANNCommu"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0063.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_982c0c8485544da1aca8a46c.result",
+      "evidence": {
+        "event_id": "call_982c0c8485544da1aca8a46c.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n[昇腾社区首页](https://www.hiascend.com/zh)\n\n[![昇腾社区](https://www.hiascend.com/_static3/logo1.BQ2XZIjU.svg)](https://www.hiascend.com/)\n\n开发者\n\n[主页](https://www.hiascend.com/developer \"主页\")\n\n开发\n\n[文档](https://www.hiascend.com/document \"文档\")\n\n活动\n\n[学习](https://www.hiascend.com/developer/learn \"学习\")\n\n[论坛](https://www.hiascend.com/forum/ \"论坛\")\n\n[博客](https://www.hiascend.com/developer/blog \"博客\")\n\n开发者计划\n\n更多\n\n![](https://www.hiascend.com/_static3/color-search.C68ldlwr.svg)\n\n下载\n\n[支持](https://www.hiascend.com/support)\n\n[积分兑换 NEW](https://www.hiascend.com/developer/rewards)\n\n版权所有 © 2021-2026华为技术有限公司 保留一切权利 [粤A2-20044005号](https://beian.miit.gov.cn)\n\n[昇腾社区法律声明](https://www.hiascend."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha003/devaids/auxiliarydevtool/atlasaccuracy_16_0035.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "# Search Results for \"hiascend CANN 准备数据 dump 环境变量 \"精度比对\" site:hiascend.com\"\n\n## 1. [使用前准备-精度调试工具-开发工具-CANN社区版8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html)\n\n精度比对工具推荐环境配置：CPU 8核2.6GHz，内存16GB，低于该配置则工具执行迟缓。 本文中举例路径均需要确保运行用户具有读 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html\n\n---\n\n## 2. [使用前准备-精度调试工具-开发工具-CANN社区版9.0.X开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html)\n\n本工具依赖CANN软件包，使用本工具前，请先安装CANN软件包，并使用 source 命令"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "## 1. [使用前准备-精度调试工具-开发工具-CANN社区版8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html)\n\n精度比对工具推荐环境配置：CPU 8核2.6GHz，内存16GB，低于该配置则工具执行迟缓。 本文中举例路径均需要确保运行用户具有读 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "## 2. [使用前准备-精度调试工具-开发工具-CANN社区版9.0.X开发 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html)\n\n本工具依赖CANN软件包，使用本工具前，请先安装CANN软件包，并使用 source 命令执行CANN的set_env.sh环境变量文件，为保证 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "## 3. [准备TensorFlow模型npy数据文件_昇腾CANN社区版（5.1 ...](https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html)\n\n2022年3月11日 · 本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境并提前准备npy数据。 我们仅提供生 …\n\n**URL:** https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "## 4. [深入解析：昇腾CANN训练营 学习（day3）昇腾AI处理器 ...](https://www.cnblogs.com/yangykaifa/p/19318227)\n\n2025年12月7日 · 总结 本文详细介绍了昇腾AI处理器开发环境的完整构建流程，从基础环境准备到高级功能验证，提供了大量可直接使 …\n\n**URL:** https://www.cnblogs.com/yangykaifa/p/19318227\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://www.cnblogs.com/yangykaifa/p/19318227"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+      "evidence": {
+        "event_id": "call_22d37c6fc67f49c88e8b7012.result",
+        "quote": "## 5. [准备基于昇腾AI处理器运行生成的训练网络dump数据和计算 ...](https://support.huaweicloud.com/developmenttg-cann503alpha2training/atlasaccuracy_16_0009.html)\n\n2021年10月26日 · 在进行迁移后的训练网络dump数据前，您需要完成训练网络开发、编译和运行，确保具备可执行的训练工程。 如果 …\n\n**URL:** https://support.huaweicloud.com/developmenttg-cann503alpha2training/atlasaccuracy_16_0009.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://support.huaweicloud.com/developmenttg-cann503alpha2training/atlasaccuracy_16_0009.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_63be1a66aaeb4056a9b62ff5.result",
+      "evidence": {
+        "event_id": "call_63be1a66aaeb4056a9b62ff5.result",
+        "quote": "**标题**: 使用前准备-精度调试工具-开发工具-CANN9.0.X开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0002.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_14098b5ecf724dff83630895.result",
+      "evidence": {
+        "event_id": "call_14098b5ecf724dff83630895.result",
+        "quote": "**标题**: 404页面_华为云\n\n很抱歉，没发现您要的页面"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "# Search Results for \"hiascend.com 精度比对 \"dump数据\" 准备 \"npy\" TensorFlow CANN社区版\"\n\n## 1. [准备离线模型dump数据文件-比对数据准备-原compare ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)\n\n昇腾社区是基于昇腾系列处理器和基础软件构建的全栈 AI计算基础设施、行业应用及服务，包括昇腾系列处理器、系列硬件、CANN异 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html\n\n---\n\n## 2. [准备TensorFlow模型npy数据文件-比对数据准备-原compare ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html)\n\n本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "## 1. [准备离线模型dump数据文件-比对数据准备-原compare ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)\n\n昇腾社区是基于昇腾系列处理器和基础软件构建的全栈 AI计算基础设施、行业应用及服务，包括昇腾系列处理器、系列硬件、CANN异 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0008-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "## 2. [准备TensorFlow模型npy数据文件-比对数据准备-原compare ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html)\n\n本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境并提前准备npy数据。 本文仅提供生成numpy格 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0008-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "## 3. [准备TensorFlow模型npy数据文件_昇腾CANN社区版（5.1 ...](https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html)\n\n2022年3月11日 · 本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境并提前准备npy数据。 我们仅提供生 …\n\n**URL:** https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0008-rank-3",
+      "url": "https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "## 4. [CANN TensorFlow整网精度比对 - CSDN博客](https://blog.csdn.net/gitblog_00444/article/details/154413137)\n\n2026年5月9日 · 文章浏览阅读831次，点赞20次，收藏17次。 排除以上问题后，在训练网络精度仍未达预期时，通过采集训练过程中 …\n\n**URL:** https://blog.csdn.net/gitblog_00444/article/details/154413137\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0008-rank-4",
+      "url": "https://blog.csdn.net/gitblog_00444/article/details/154413137"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+      "evidence": {
+        "event_id": "call_f7cab32c0dbb408e9a20e80c.result",
+        "quote": "## 5. [【CANN文档速递12期】带你解锁精度比对工具_深度学习_昇 ...](https://ascendai.csdn.net/69d78dc072111d255bf8619b.html)\n\n2022年9月22日 · 通过以上数据准备操作获取到TensorFlow模型推理过程中生成的npy数据文件，以及推理过程中算子的输出数据 …\n\n**URL:** https://ascendai.csdn.net/69d78dc072111d255bf8619b.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0008-rank-5",
+      "url": "https://ascendai.csdn.net/69d78dc072111d255bf8619b.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_5f2bdda1ee8746548a40987c.result",
+      "evidence": {
+        "event_id": "call_5f2bdda1ee8746548a40987c.result",
+        "quote": "**标题**: 准备离线模型dump数据文件-比对数据准备-原compare_vector.py精度比对方式-附录-精度调试工具-开发工具-CANN9.1.0-beta.3开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html)\n\n# 准备离线模型dump数据文件\n\n#### 前提条件\n\n在准备dump数据前，请参见[ATC离线模型编译工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/atctool/atlasatc_16_0001.html)模型转换，准备好模型文件；如果涉及模型量化，请参见《[AMCT模型压缩工具](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/amct/atlasamct_16_0001.html)》完成量化操作后再进行模型转换"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/910beta3/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0068.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_73b58815b1354080bd9bfdc7.result",
+      "evidence": {
+        "event_id": "call_73b58815b1354080bd9bfdc7.result",
+        "quote": "**标题**: 准备TensorFlow模型npy数据文件-比对数据准备-原compare_vector.py精度比对方式-附录-精度调试工具-开发工具-CANN8.3.RC1.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha001/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "# Search Results for \"\"准备TensorFlow模型npy数据文件\" msaccucmp tfdump dump_data.py 昇腾\"\n\n## 1. [准备TensorFlow模型npy文件-CANN9.0.X-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html)\n\n本版本不提供TensorFlow模型npy文件生成功能，请自行安装TensorFlow环境并提前准备npy文件。 本文仅提供生成numpy格 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html\n\n---\n\n## 2. [准备TensorFlow模型npy数据文件_昇腾CANN社区版（5.1 ...](https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html)\n\n2022年3月11日 · 本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境并提前准备npy数据。 我们仅提供生 …\n\n**URL:** https:"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "## 1. [准备TensorFlow模型npy文件-CANN9.0.X-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html)\n\n本版本不提供TensorFlow模型npy文件生成功能，请自行安装TensorFlow环境并提前准备npy文件。 本文仅提供生成numpy格 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0011-rank-1",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/devaids/ModelAccuracyAnalyzer/atlasaccuracy_16_0070.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "## 2. [准备TensorFlow模型npy数据文件_昇腾CANN社区版（5.1 ...](https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html)\n\n2022年3月11日 · 本版本不提供TensorFlow模型npy数据生成功能，请自行安装TensorFlow环境并提前准备npy数据。 我们仅提供生 …\n\n**URL:** https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0011-rank-2",
+      "url": "https://support.huaweicloud.com/devtool-cann51RC1alpha1/atlasaccuracyinfer_16_0041.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "## 3. [准备GPU侧npy数据文件-CANN商用版8.0.RC3-昇腾社区](https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/modelaccuracy/atlasaccuracy_16_0006.html)\n\n本文主要介绍传统小模型场景的精度比对 msaccucmp.py 脚本工具，针对Caffe、ONNX和TensorFlow框架模型的 ATC 模型转换前后 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/modelaccuracy/atlasaccuracy_16_0006.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0011-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/modelaccuracy/atlasaccuracy_16_0006.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "## 4. [Dump功能调试 | MindSpore 1.7 教程 | 昇思MindSpore社区](https://www.mindspore.cn/tutorials/experts/zh-CN/r1.7/debug/dump.html)\n\n2026年9月13日 · 对于静态图模式，MindSpore提供了Dump功能，用来将模型训练中的图以及算子的输入输出数据保存到磁盘文件。  …\n\n**URL:** https://www.mindspore.cn/tutorials/experts/zh-CN/r1.7/debug/dump.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0011-rank-4",
+      "url": "https://www.mindspore.cn/tutorials/experts/zh-CN/r1.7/debug/dump.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_72a50e97c08e48529f966956.result",
+      "evidence": {
+        "event_id": "call_72a50e97c08e48529f966956.result",
+        "quote": "## 5. [基于MindStudio的TensorFlow模型开发精度调优（session ...](https://zhuanlan.zhihu.com/p/559817510)\n\n2022年8月31日 · Dump文件是用来给 驱动程序 编写人员调试驱动程序用的，这种文件必须用专用工具软件打开，比如使用 WinDbg 打 …\n\n**URL:** https://zhuanlan.zhihu.com/p/559817510\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0011-rank-5",
+      "url": "https://zhuanlan.zhihu.com/p/559817510"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_3a2d487dd33a4ff4a3de4f2e.result",
+      "evidence": {
+        "event_id": "call_3a2d487dd33a4ff4a3de4f2e.result",
+        "quote": "**标题**: 准备GPU侧npy数据文件-GPU vs NPU（TensorFlow 1.x训练/在线推理）-精度调试工具-训练&推理开发-CANN商用版8.0.RC3开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0012",
+      "url": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC3/devaids/devtools/modelaccuracy/atlasaccuracy_16_0006.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

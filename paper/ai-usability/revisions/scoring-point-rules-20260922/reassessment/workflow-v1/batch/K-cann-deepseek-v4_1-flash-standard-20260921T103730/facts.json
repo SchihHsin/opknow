@@ -1,0 +1,536 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_GC3nWcz34JsE95Y6I8oR5075.result",
+      "evidence": {
+        "event_id": "call_00_GC3nWcz34JsE95Y6I8oR5075.result",
+        "quote": "**标题**: 安装Ascend Docker Runtime-自行构建并部署容器镜像-容器部署常用操作-附录B：常用操作-软件安装-环境准备-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)\n\n# 安装Ascend Docker Runtime\n\nMindCluster Ascend Docker Runtime（容器引擎插件）为训推任务提供容器化支持，自动挂载所需文件和设备依赖。\n\n本节将提供快速安装Ascend Docker Runtime的步骤，用以后续部署容器镜像，更多使用方法请参考《MindCluster 集群调度用户指南》的“安装 > 安装部署 > 手动安装 > [Ascend Docker Runtime](https://www.hiascend.com/document/detail/zh/mindcluster/71RC1/clustersched/dlug/dlug_installation_017.html)”章节。\n\n#### 获取软件包\n\n软件类型\n\n软件包名称\n\n获取链接\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_8bo1bZmeY6xEXXCBXSw24387.result",
+      "evidence": {
+        "event_id": "call_00_8bo1bZmeY6xEXXCBXSw24387.result",
+        "quote": "**标题**: Ascend Docker Runtime-手动安装-安装部署-安装-集群调度组件-集群调度-MindCluster7.1.RC1开发文档-昇腾社区\n\n\n\n# Ascend Docker Runtime\n\n- 使用容器化支持、整卡调度、静态vNPU调度、动态vNPU调度、断点续训、弹性训练、推理卡故障恢复或推理卡故障重调度的用户，必须安装Ascend Docker Runtime。\n- 仅使用资源监测的用户，可以不安装Ascend Docker Runtime，请直接跳过本章节。\n\n#### 前提条件\n\n安装前，请确保runc文件的用户ID为0。\n\n#### 确认安装场景\n\n目前仅支持root用户安装Ascend Docker Runtime，请根据实际情况选择对应的安装方式。\n\n1. 在K8s管理节点执行以下命令，查询节点名称。\n   \n   ```\n   kubectl get node\n   ```\n   \n   回显示例如下：\n   \n   ```\n   1\n   2\n   ```\n   \n   ```\n   NAME       STATUS   ROLES           AGE   VERSION\n   ubuntu     Ready    worker          23h   v1.17.3\n   ```\n2. 查看当前节点的容器运行时。其中node-name为节点名称。\n   \n   - 不使用K8s场景：在任意节点执行以下命令。\n     \n     ```\n     docker --version      # Docker\n"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindcluster/71RC1/clustersched/dlug/dlug_installation_017.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_rbQyi0bEsQfLGi4QRnOZ5034.result",
+      "evidence": {
+        "event_id": "call_00_rbQyi0bEsQfLGi4QRnOZ5034.result",
+        "quote": "````\n# Docker安装\n\nDocker镜像中已预装PyTorch框架、TorchNPU插件及配套的CANN软件，用户无需再手动安装上述软件，仅需安装NPU驱动及固件即可。适用于需要快速搭建开箱即用的运行环境、避免手动配置依赖或需隔离运行环境的场景。\n\n## 启动容器\n\n1. 拉取Docker镜像，具体操作请参考[快速安装](https://www.hiascend.com/developer/software/ai-frameworks/pytorch/download?versionId=180&ids=89dda9ba9de741349efa03687a487678%2C204%2C200%2C1%2C6%2C177%2C)。\n2. 执行以下命令，启动容器。\n\n    ```bash\n    docker run -d --rm \\\n        --name torch-npu \\\n        --privileged \\\n        -v /dev:/dev \\\n        -v $(pwd):/home/pytorch \\\n        -v /usr/local/Ascend/driver:/usr/local/Ascend/driver \\\n        -v /usr/local/Ascend/add-ons:/usr/local/Ascend/add-ons \\\n        -v /usr/local/sbin/npu-smi:/usr/local/bin/npu-smi \\\n        -v /var/log/npu:/us"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/installation_guide/references/installing_with_docker.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_qSkKJbjxFOvdoU3tmPy04538.result",
+      "evidence": {
+        "event_id": "call_00_qSkKJbjxFOvdoU3tmPy04538.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf\"\n    # then call Read o"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_RxNaa8ITnIXvII9NAe9g4641.result",
+      "evidence": {
+        "event_id": "call_00_RxNaa8ITnIXvII9NAe9g4641.result",
+        "quote": "**标题**: 部署Ascend-Docker（容器引擎插件） - Atlas 800I A2 推理服务器 24.0.RC1 昇腾软件安装指南 - 华为\n**发布时间**: 更新时间： 2024-12-11\n\n# Atlas 800I A2 推理服务器 24.0.RC1 昇腾软件安装指南"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100373129/fc6f1a6f",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_rBBybNe87B8cl9cjr4k89347.result",
+      "evidence": {
+        "event_id": "call_00_rBBybNe87B8cl9cjr4k89347.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n抱歉，您访问的页面不存在"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/dockerruntimeug_0001.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_Gaftyo3gbKKkXjCRYt5v9576.result",
+      "evidence": {
+        "event_id": "call_00_Gaftyo3gbKKkXjCRYt5v9576.result",
+        "quote": "**标题**: 部署容器镜像-自行构建并部署容器镜像-容器部署常用操作-附录B：常用操作-软件安装-环境准备-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html)\n\n# 部署容器镜像\n\n当宿主机环境为CentOS系统时，由于CentOS的安全模块SELinux默认开启，会导致挂载到容器的本地目录没有执行权限，因此需要临时关闭SELinux，命令为：**su -c \"setenforce 0\"**。完成相关业务后再重新开启SELinux，命令为： **su -c \"setenforce 1\"**。\n\n1. 请执行如下命令基于新镜像运行一个容器。\n   \n   ```\n   1\n   ```\n   \n   ```\n   docker run -itd -e ASCEND_VISIBLE_DEVICES=xxx --pids-limit 409600 image-name:tag /bin/bash\n   ```\n   \n   命令示例：\n   \n   ```\n   1\n   ```\n   \n   ```\n   d"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "1caace2212513fb3f5cc711af9e79fd6f5bc5af36077b54b80eb95a3dc917758",
+  "question": "怎么用昇腾官方镜像 / Ascend docker 跑一个带 NPU 的 PyTorch 容器？要挂哪些 `/dev` 设备、用 ascend-docker-runtime 吗？",
+  "run_id": "K-cann-deepseek-v4_1-flash-standard-20260921T103730",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "# Search Results for \"昇腾 ascend-docker-runtime docker 运行 pytorch 容器 挂载 /dev/davinci_manager 官方文档\"\n\n## 1. [Ascend-Docker-Runtime：昇腾NPU容器化部署与设备挂载 ...](https://blog.csdn.net/weixin_29233333/article/details/165903858)\n\n3 天之前 · Ascend-Docker-Runtime通过声明式运行时插件，自动完成设备发现、驱动挂载与权限隔离，显著提升部署效率与可移植性 …\n\n**URL:** https://blog.csdn.net/weixin_29233333/article/details/165903858\n\n---\n\n## 2. [别再手动挂载NPU了！用Ascend-docker-runtime一键启动昇 ...](https://blog.csdn.net/weixin_28746223/article/details/160648162)\n\n2026年8月23日 · 文章浏览阅读443次，点赞9次，收藏5次。 本文详细介绍了如何使用Ascend-docker-runtime简化昇腾NPU容器的部 …\n\n**URL:** https://blog.csdn.net/weixin_28746223/article/details/160648162\n\n---\n\n## 3. [别再手动挂载NPU了！用Ascend-docker-runtime一键启动昇 ...](h"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "## 1. [Ascend-Docker-Runtime：昇腾NPU容器化部署与设备挂载 ...](https://blog.csdn.net/weixin_29233333/article/details/165903858)\n\n3 天之前 · Ascend-Docker-Runtime通过声明式运行时插件，自动完成设备发现、驱动挂载与权限隔离，显著提升部署效率与可移植性 …\n\n**URL:** https://blog.csdn.net/weixin_29233333/article/details/165903858\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://blog.csdn.net/weixin_29233333/article/details/165903858"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "## 2. [别再手动挂载NPU了！用Ascend-docker-runtime一键启动昇 ...](https://blog.csdn.net/weixin_28746223/article/details/160648162)\n\n2026年8月23日 · 文章浏览阅读443次，点赞9次，收藏5次。 本文详细介绍了如何使用Ascend-docker-runtime简化昇腾NPU容器的部 …\n\n**URL:** https://blog.csdn.net/weixin_28746223/article/details/160648162\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://blog.csdn.net/weixin_28746223/article/details/160648162"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "## 3. [别再手动挂载NPU了！用Ascend-docker-runtime一键启动昇 ...](https://wenku.csdn.net/column/0cxlp4f6qs1)\n\n2026年5月2日 · 用Ascend-docker-runtime一键启动昇腾AI容器（附Docker/Containerd配置） 1. 为什么需要专用容器运行时？ 2. 安装 …\n\n**URL:** https://wenku.csdn.net/column/0cxlp4f6qs1\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://wenku.csdn.net/column/0cxlp4f6qs1"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "## 4. [GitHub - hexchip/ascend-dockerfile](https://github.com/hexchip/ascend-dockerfile)\n\n基于ubuntu:22.04，安装了python3.10与昇腾开发所需软件与其依赖。 支持多平台构建。 执行如下命令拉取镜像： 如果不能访 …\n\n**URL:** https://github.com/hexchip/ascend-dockerfile\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://github.com/hexchip/ascend-dockerfile"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+      "evidence": {
+        "event_id": "call_00_dAjyylsYcHPUPquh1F914398.result",
+        "quote": "## 5. [CANN AMCT 昇腾环境部署指南：WebIDE / Docker / 手动 ...](https://blog.gitcode.com/b9cdeefb7703ecdc47506f7103ab4dc2.html)\n\n4 天之前 · AMCT（Ascend Model Compression Toolkit）是 CANN 提供的昇腾 AI 处理器亲和的模型压缩工具，使用前必须先完成 …\n\n**URL:** https://blog.gitcode.com/b9cdeefb7703ecdc47506f7103ab4dc2.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://blog.gitcode.com/b9cdeefb7703ecdc47506f7103ab4dc2.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "# Search Results for \"hiascend Ascend Docker Runtime 安装 使用指南 官方文档\"\n\n## 1. [Ascend Docker Runtime 用户指南](https://www.hiascend.com/doc_center/source/zh/mindx-dl/500/dockerruntime/dockerruntimeug/MindX%20DL%205.0.0.2%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf)\n\n2024年11月25日 · Ascend Docker Runtime (又称Ascend Docker ,又称昇腾容器运行时)是MindX DL的基础组件,用于为所有的训练或推 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/mindx-dl/500/dockerruntime/dockerruntimeug/MindX%20DL%205.0.0.2%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf\n\n---\n\n## 2. [安装Ascend Docker Runtime-CANN8.3.RC1.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunity"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "## 1. [Ascend Docker Runtime 用户指南](https://www.hiascend.com/doc_center/source/zh/mindx-dl/500/dockerruntime/dockerruntimeug/MindX%20DL%205.0.0.2%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf)\n\n2024年11月25日 · Ascend Docker Runtime (又称Ascend Docker ,又称昇腾容器运行时)是MindX DL的基础组件,用于为所有的训练或推 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/mindx-dl/500/dockerruntime/dockerruntimeug/MindX%20DL%205.0.0.2%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0002-rank-1",
+      "url": "https://www.hiascend.com/doc_center/source/zh/mindx-dl/500/dockerruntime/dockerruntimeug/MindX%20DL%205.0.0.2%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "## 2. [安装Ascend Docker Runtime-CANN8.3.RC1.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)\n\nMindCluster Ascend Docker Runtime （容器引擎插件）为训推任务提供容器化支持，自动挂载所需文件和设备依赖。 本节将提供快速 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0002-rank-2",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "## 3. [别再手动挂载NPU了！手把手教你用Ascend-Docker ...](https://blog.csdn.net/weixin_42662605/article/details/160468881)\n\n2026年8月8日 · 本文详细介绍了如何使用Ascend-Docker-Runtime一键启动昇腾AI容器，大幅简化NPU设备挂载流程。通过环境变 …\n\n**URL:** https://blog.csdn.net/weixin_42662605/article/details/160468881\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0002-rank-3",
+      "url": "https://blog.csdn.net/weixin_42662605/article/details/160468881"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "## 4. [部署Ascend-Docker（容器引擎插件） - Atlas 800I A2 推理 ...](https://support.huawei.com/enterprise/zh/doc/EDOC1100373129/fc6f1a6f)\n\n2024年12月11日 · 将软件包“Ascend-docker-runtime_6.0.RC1_linux-aarch64.run”上传到服务器任意目录（如“/home”）。 进入软件包 …\n\n**URL:** https://support.huawei.com/enterprise/zh/doc/EDOC1100373129/fc6f1a6f\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0002-rank-4",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100373129/fc6f1a6f"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+      "evidence": {
+        "event_id": "call_00_zJFZIk1IgQNNxLwiRxDj6914.result",
+        "quote": "## 5. [手把手教你用Ascend-Docker-Runtime部署昇腾AI推理容器 ...](https://blog.csdn.net/weixin_33046983/article/details/161468926)\n\n2026年8月17日 · 本文详细介绍了使用Ascend-Docker-Runtime部署昇腾AI推理容器的全流程，包括环境配置、避坑指南和性能优化。  …\n\n**URL:** https://blog.csdn.net/weixin_33046983/article/details/161468926\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0002-rank-5",
+      "url": "https://blog.csdn.net/weixin_33046983/article/details/161468926"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_GC3nWcz34JsE95Y6I8oR5075.result",
+      "evidence": {
+        "event_id": "call_00_GC3nWcz34JsE95Y6I8oR5075.result",
+        "quote": "**标题**: 安装Ascend Docker Runtime-自行构建并部署容器镜像-容器部署常用操作-附录B：常用操作-软件安装-环境准备-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)\n\n# 安装Ascend Docker Runtime\n\nMindCluster Ascend Docker Runtime（容器引擎插件）为训推任务提供容器化支持，自动挂载所需文件和设备依赖。\n\n本节将提供快速安装Ascend Docker Runtime的步骤，用以后续部署容器镜像，更多使用方法请参考《MindCluster 集群调度用户指南》的“安装 > 安装部署 > 手动安装 > [Ascend Docker Runtime](https://www.hiascend.com/document/detail/zh/mindcluster/71RC1/clustersched/dlug/dlug_installation_017.html)”章节。\n\n#### 获取软件包\n\n软件类型\n\n软件包名称\n\n获取链接\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_8bo1bZmeY6xEXXCBXSw24387.result",
+      "evidence": {
+        "event_id": "call_00_8bo1bZmeY6xEXXCBXSw24387.result",
+        "quote": "**标题**: Ascend Docker Runtime-手动安装-安装部署-安装-集群调度组件-集群调度-MindCluster7.1.RC1开发文档-昇腾社区\n\n\n\n# Ascend Docker Runtime\n\n- 使用容器化支持、整卡调度、静态vNPU调度、动态vNPU调度、断点续训、弹性训练、推理卡故障恢复或推理卡故障重调度的用户，必须安装Ascend Docker Runtime。\n- 仅使用资源监测的用户，可以不安装Ascend Docker Runtime，请直接跳过本章节。\n\n#### 前提条件\n\n安装前，请确保runc文件的用户ID为0。\n\n#### 确认安装场景\n\n目前仅支持root用户安装Ascend Docker Runtime，请根据实际情况选择对应的安装方式。\n\n1. 在K8s管理节点执行以下命令，查询节点名称。\n   \n   ```\n   kubectl get node\n   ```\n   \n   回显示例如下：\n   \n   ```\n   1\n   2\n   ```\n   \n   ```\n   NAME       STATUS   ROLES           AGE   VERSION\n   ubuntu     Ready    worker          23h   v1.17.3\n   ```\n2. 查看当前节点的容器运行时。其中node-name为节点名称。\n   \n   - 不使用K8s场景：在任意节点执行以下命令。\n     \n     ```\n     docker --version      # Docker\n"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://www.hiascend.com/document/detail/zh/mindcluster/71RC1/clustersched/dlug/dlug_installation_017.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "# Search Results for \"ascend-pytorch 镜像 docker run --device /dev/davinci_manager --runtime=ascend ASCEND_VISIBLE_DEVICES 官方 说明\"\n\n## 1. [GitHub - hexchip/ascend-dockerfile](https://github.com/hexchip/ascend-dockerfile)\n\n需要安装 Ascend Docker Runtime 通过命令 ls /dev 查看 /dev/davinciX 可挂载芯片，确定 挂载芯片参数 …\n\n**URL:** https://github.com/hexchip/ascend-dockerfile\n\n---\n\n## 2. [ascendai/pytorch Docker 镜像 | PyTorch Docker 下载部署 ...](https://xuanyuan.cloud/zh/r/ascendai/pytorch)\n\nascendai/pytorch 镜像简介：基于CANN镜像构建的Ascend PyTorch基础容器镜像，预安装torch、torchvision、torchaudio …\n\n**URL:** https://xuanyuan.cloud/zh/r/ascendai/pytorch\n\n---\n\n## 3. [pytorch/docs/zh/installation_guide/references/installing_with_docker…](https://gi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "## 1. [GitHub - hexchip/ascend-dockerfile](https://github.com/hexchip/ascend-dockerfile)\n\n需要安装 Ascend Docker Runtime 通过命令 ls /dev 查看 /dev/davinciX 可挂载芯片，确定 挂载芯片参数 …\n\n**URL:** https://github.com/hexchip/ascend-dockerfile\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://github.com/hexchip/ascend-dockerfile"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "## 2. [ascendai/pytorch Docker 镜像 | PyTorch Docker 下载部署 ...](https://xuanyuan.cloud/zh/r/ascendai/pytorch)\n\nascendai/pytorch 镜像简介：基于CANN镜像构建的Ascend PyTorch基础容器镜像，预安装torch、torchvision、torchaudio …\n\n**URL:** https://xuanyuan.cloud/zh/r/ascendai/pytorch\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://xuanyuan.cloud/zh/r/ascendai/pytorch"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "## 3. [pytorch/docs/zh/installation_guide/references/installing_with_docker…](https://github.com/Ascend/pytorch/blob/master/docs/zh/installation_guide/references/installing_with_docker.md)\n\nDocker安装 Docker镜像中已预装PyTorch框架、TorchNPU插件及配套的CANN软件，用户无需再手动安装上述软件，仅需安装NPU驱 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/docs/zh/installation_guide/references/installing_with_docker.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/installation_guide/references/installing_with_docker.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "## 4. [Ascend昇腾设备上启容器时映射NPU，解决无法找到npu ...](https://ascendai.csdn.net/695243d7836da32144889114.html)\n\n2025年12月29日 · 1. 检查宿主机的设备、驱动和权限 设备、驱动 ... 然后就可以在 docker run 的 --device 参数后面加上刚刚查询到的 …\n\n**URL:** https://ascendai.csdn.net/695243d7836da32144889114.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://ascendai.csdn.net/695243d7836da32144889114.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+      "evidence": {
+        "event_id": "call_00_aNbhlC4UETjRY2i15qYD7445.result",
+        "quote": "## 5. [07 Docker 镜像与离线部署 | 昇腾之家](https://revolutionla.github.io/AscendMate/setup/docker-offline)\n\n4 天之前 · 07 Docker 镜像与离线部署 什么时候读：想快速拿到可用环境，或部署在隔离内网（无外网），需要离线安装。 使用官方 …\n\n**URL:** https://revolutionla.github.io/AscendMate/setup/docker-offline\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://revolutionla.github.io/AscendMate/setup/docker-offline"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_rbQyi0bEsQfLGi4QRnOZ5034.result",
+      "evidence": {
+        "event_id": "call_00_rbQyi0bEsQfLGi4QRnOZ5034.result",
+        "quote": "````\n# Docker安装\n\nDocker镜像中已预装PyTorch框架、TorchNPU插件及配套的CANN软件，用户无需再手动安装上述软件，仅需安装NPU驱动及固件即可。适用于需要快速搭建开箱即用的运行环境、避免手动配置依赖或需隔离运行环境的场景。\n\n## 启动容器\n\n1. 拉取Docker镜像，具体操作请参考[快速安装](https://www.hiascend.com/developer/software/ai-frameworks/pytorch/download?versionId=180&ids=89dda9ba9de741349efa03687a487678%2C204%2C200%2C1%2C6%2C177%2C)。\n2. 执行以下命令，启动容器。\n\n    ```bash\n    docker run -d --rm \\\n        --name torch-npu \\\n        --privileged \\\n        -v /dev:/dev \\\n        -v $(pwd):/home/pytorch \\\n        -v /usr/local/Ascend/driver:/usr/local/Ascend/driver \\\n        -v /usr/local/Ascend/add-ons:/usr/local/Ascend/add-ons \\\n        -v /usr/local/sbin/npu-smi:/usr/local/bin/npu-smi \\\n        -v /var/log/npu:/us"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/installation_guide/references/installing_with_docker.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "# Search Results for \"Ascend Docker Runtime 使用 docker run --runtime=ascend 自动挂载 davinci_manager 官方文档\"\n\n## 1. [Ascend-Docker-Runtime：昇腾NPU容器化部署与设备挂载 ...](https://blog.csdn.net/weixin_29233333/article/details/165903858)\n\n3 天之前 · Ascend-Docker-Runtime 就是来终结这套繁琐操作的。它是昇腾官方提供的一个 Docker 运行时插件，装好之后，你只需要 …\n\n**URL:** https://blog.csdn.net/weixin_29233333/article/details/165903858\n\n---\n\n## 2. [别再手动挂载NPU了！手把手教你用Ascend-docker-runtime ...](https://blog.csdn.net/weixin_42548782/article/details/160755595)\n\n2026年8月13日 · 文章浏览阅读264次，点赞7次，收藏3次。本文详细介绍了如何使用Ascend-docker-runtime简化昇腾AI容器的部署流 …\n\n**URL:** https://blog.csdn.net/weixin_42548782/article/details/160755595\n\n---\n\n## 3. [安装Ascend Docker Runtime-CANN8.3.RC1."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "## 1. [Ascend-Docker-Runtime：昇腾NPU容器化部署与设备挂载 ...](https://blog.csdn.net/weixin_29233333/article/details/165903858)\n\n3 天之前 · Ascend-Docker-Runtime 就是来终结这套繁琐操作的。它是昇腾官方提供的一个 Docker 运行时插件，装好之后，你只需要 …\n\n**URL:** https://blog.csdn.net/weixin_29233333/article/details/165903858\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0007-rank-1",
+      "url": "https://blog.csdn.net/weixin_29233333/article/details/165903858"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "## 2. [别再手动挂载NPU了！手把手教你用Ascend-docker-runtime ...](https://blog.csdn.net/weixin_42548782/article/details/160755595)\n\n2026年8月13日 · 文章浏览阅读264次，点赞7次，收藏3次。本文详细介绍了如何使用Ascend-docker-runtime简化昇腾AI容器的部署流 …\n\n**URL:** https://blog.csdn.net/weixin_42548782/article/details/160755595\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0007-rank-2",
+      "url": "https://blog.csdn.net/weixin_42548782/article/details/160755595"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "## 3. [安装Ascend Docker Runtime-CANN8.3.RC1.alpha003-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html)\n\nMindCluster Ascend Docker Runtime （容器引擎插件）为训推任务提供容器化支持，自动挂载所需文件和设备依赖。 本节将提供快速 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0007-rank-3",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0020.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "## 4. [别再手动挂载NPU了！用Ascend-docker-runtime一键启动昇 ...](https://wenku.csdn.net/column/0cxlp4f6qs1)\n\n2026年5月2日 · 文章浏览阅读86次。# 昇腾AI容器开发实战：告别繁琐命令，用Ascend-docker-runtime高效管理NPU资源 在昇腾AI处 …\n\n**URL:** https://wenku.csdn.net/column/0cxlp4f6qs1\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0007-rank-4",
+      "url": "https://wenku.csdn.net/column/0cxlp4f6qs1"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+      "evidence": {
+        "event_id": "call_00_mDlLuJVe8HEhsG2jVoAF9587.result",
+        "quote": "## 5. [Ascend Docker Runtime 用户指南](https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf)\n\n2025年4月27日 · Ascend Docker Runtime (又称Ascend Docker,又称昇腾容器运行时)是MindX DL 的基础组件,用于为所有的训练或推 …\n\n**URL:** https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 4,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0007-rank-5",
+      "url": "https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_qSkKJbjxFOvdoU3tmPy04538.result",
+      "evidence": {
+        "event_id": "call_00_qSkKJbjxFOvdoU3tmPy04538.result",
+        "quote": "This URL returned a non-text resource (Content-Type: application/pdf).\nWebFetch cannot return images, PDFs, archives, audio or video — the bytes are dropped and you will see nothing useful.\n\nDo NOT retry WebFetch on this URL. Download it with Bash, then open it with Read:\n\n    out=$(mktemp /tmp/cb-fetch-XXXXXX); ct=$(curl -sL -o \"$out\" -w '%{content_type}' \"https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf\"); echo \"$ct\"\n    # image/png -> .png, image/jpeg -> .jpg, image/gif -> .gif, image/webp -> .webp\n    mv \"$out\" \"$out.pdf\"\n    # then call Read o"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://www.hiascend.com/doc_center/source/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/MindX%20DL%20%206.0.RC1%20Ascend%20Docker%20Runtime%20%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97%2001.pdf"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RxNaa8ITnIXvII9NAe9g4641.result",
+      "evidence": {
+        "event_id": "call_00_RxNaa8ITnIXvII9NAe9g4641.result",
+        "quote": "**标题**: 部署Ascend-Docker（容器引擎插件） - Atlas 800I A2 推理服务器 24.0.RC1 昇腾软件安装指南 - 华为\n**发布时间**: 更新时间： 2024-12-11\n\n# Atlas 800I A2 推理服务器 24.0.RC1 昇腾软件安装指南"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://support.huawei.com/enterprise/zh/doc/EDOC1100373129/fc6f1a6f"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_rBBybNe87B8cl9cjr4k89347.result",
+      "evidence": {
+        "event_id": "call_00_rBBybNe87B8cl9cjr4k89347.result",
+        "quote": "**标题**: 昇腾社区官网-昇腾万里 让智能无所不及\n\n抱歉，您访问的页面不存在"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": "https://www.hiascend.com/document/detail/zh/mindx-dl/60rc1/clusterscheduling/dockerruntimeug/dockerruntimeug_0001.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_Gaftyo3gbKKkXjCRYt5v9576.result",
+      "evidence": {
+        "event_id": "call_00_Gaftyo3gbKKkXjCRYt5v9576.result",
+        "quote": "**标题**: 部署容器镜像-自行构建并部署容器镜像-容器部署常用操作-附录B：常用操作-软件安装-环境准备-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html)\n\n# 部署容器镜像\n\n当宿主机环境为CentOS系统时，由于CentOS的安全模块SELinux默认开启，会导致挂载到容器的本地目录没有执行权限，因此需要临时关闭SELinux，命令为：**su -c \"setenforce 0\"**。完成相关业务后再重新开启SELinux，命令为： **su -c \"setenforce 1\"**。\n\n1. 请执行如下命令基于新镜像运行一个容器。\n   \n   ```\n   1\n   ```\n   \n   ```\n   docker run -itd -e ASCEND_VISIBLE_DEVICES=xxx --pids-limit 409600 image-name:tag /bin/bash\n   ```\n   \n   命令示例：\n   \n   ```\n   1\n   ```\n   \n   ```\n   d"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/softwareinst/instg/instg_0021.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

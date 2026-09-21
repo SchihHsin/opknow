@@ -1,0 +1,266 @@
+{
+  "fetches": [
+    {
+      "event_id": "WebFetch_1_640fa240.result",
+      "evidence": {
+        "event_id": "WebFetch_1_640fa240.result",
+        "quote": "**标题**: PyTorch Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Jun 18, 2024 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nBack to top\n\n# PyTorch Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html#pytorch-custom-operators \"Link to this heading\")\n\nPyTorch offers a large library of operators that work on Tensors (e.g. `torch.add`, `torch.sum`, etc). However, you may wish to bring a new custom operation to PyTorch and get it to work with subsystems like `torch.compile`, autograd, and `torch.vmap`. In order to do so, you must register the custom operation with PyTorch via the Python [torch.library docs]"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_2_be3a02e3.result",
+      "evidence": {
+        "event_id": "WebFetch_2_be3a02e3.result",
+        "quote": "**标题**: Custom Python Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Jun 16, 2026 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nBack to top\n\n# Custom Python Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html#custom-python-operators \"Link to this heading\")\n\nCreated On: Jun 16, 2026 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nWhat you will learn\n\n- When to create a Python custom operator\n- How to choose between functional and mutable operator contracts\n- Why the schema and mutation/aliasing contract are required\n- Where fake kernels, autograd, and other registrations fit\n\nPyTorch offers a large library o"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_3_1bfa6dd1.result",
+      "evidence": {
+        "event_id": "WebFetch_3_1bfa6dd1.result",
+        "quote": "# PyTorch C++ Operator Registration 文档提取报告\n\n## 摘要\n\n该页面是 PyTorch C++ API 中关于算子注册（Operator Registration）的参考文档，核心内容包括 **3 个注册宏**（`TORCH_LIBRARY` / `TORCH_LIBRARY_IMPL` / `TORCH_LIBRARY_FRAGMENT`）和 **3 个类**（`Library`、`CppFunction`、`OrderedDict`）。三个宏的说明与示例在正文中**基本完整**；但个别代码示例存在格式损坏/截断（详见文末\"完整性与截断标注\"）。\n\n---\n\n## 一、宏定义提取\n\n### 1. `TORCH_LIBRARY(ns, m)`\n\n**用途**：定义一个在**静态初始化时**运行的函数，用于在命名空间 `ns` 中定义一组算子库。适用于**定义 PyTorch 中尚不存在的全新自定义算子**。\n\n**参数**：\n| 参数 | 说明 |\n|---|---|\n| `ns` | 命名空间，**必须是有效的 C++ 标识符，不带引号** |\n| `m` | 绑定到 `torch::Library` 对象，通过其方法注册算子 |\n\n**底层展开**（预处理器宏展开形式，原文排版被重排）：\n\n```cpp\nstatic void TORCH_LIBRARY_init_##ns(torch::Library&);\nstatic const torch::detail::TorchLibraryInit TORCH_LIBRARY_stat"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/cppdocs/api/library/registration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_4_cc7b12a4.result",
+      "evidence": {
+        "event_id": "WebFetch_4_cc7b12a4.result",
+        "quote": "# PyTorch 官方 C++/CUDA Custom Ops 教程分析\n\n## 📋 内容完整性说明\n\n✅ **本教程内容完整，无截断**。涵盖从开头（What you will learn / Prerequisites）到结尾（Conclusion）的全部章节，包括：\n\n- 构建系统设置（含 CPython Agnosticism、LibTorch Stable ABI 两个子节）\n- 算子定义与后端实现注册\n- `torch.compile` 支持（FakeTensor kernel）\n- 混合 Python/C++ 注册的三种加载方式\n- autograd 训练支持\n- 算子测试（opcheck）\n- 可变算子（mutable operators）\n- 结论\n\n**教程基本信息**：作者 Richard Zou；要求 PyTorch 2.4+（stable ABI 需 2.10+）；支持 AMD ROCm 无需修改。完整示例在 [extension-cpp](https://github.com/pytorch/extension-cpp) 仓库（`extension_cpp/` 标准 API 与 `extension_cpp_stable/` stable ABI 两套实现）。\n\n---\n\n## 1️⃣ 构建系统（pybind / load）\n\n### 核心工具：`torch.utils.cpp_extension`\n\n- C++ 扩展可 **ahead-of-time**（setuptools）或 **just-in-time**（`load_inline`）编译"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_5_db4607d5.result",
+      "evidence": {
+        "event_id": "WebFetch_5_db4607d5.result",
+        "quote": "**标题**: Adding Training and Other Registrations to Python Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n\nBack to top\n\n[Go to the end](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html#sphx-glr-download-advanced-python-custom-ops-registrations-py) to download the full example code.\n\n# Adding Training and Other Registrations to Python Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html#adding-training-and-other-registrations-to-python-custom-operators \"Link to this heading\")\n\nStart here after a base operator passes `torch.library.opcheck`:\n\n- [Functional Python Custom Operators](https://docs.pytor"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "WebFetch_6_6a1214c8.result",
+      "evidence": {
+        "event_id": "WebFetch_6_6a1214c8.result",
+        "quote": "**标题**: Functional Python Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n\nBack to top\n\n[Go to the end](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html#sphx-glr-download-advanced-python-custom-ops-functional-py) to download the full example code.\n\n# Functional Python Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html#functional-python-custom-operators \"Link to this heading\")\n\nUse this path when the operator mutates no Tensor inputs and returns fresh Tensor outputs.\n\nIf the operator must work with `torch.compile` or `torch.export`, [register a fake kernel](https://docs.pytorch.org/tutorials/advanced/p"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "8832acefef66bd2ffd2fcbcb27ba3de9dc28848a277eed133759b9a298c41de1",
+  "question": "我写了个自定义算子，怎么注册进 PyTorch 让 `torch.ops` 能调（TORCH_LIBRARY / dispatcher / autograd 注册）？",
+  "run_id": "O-cuda-kimi-k3-2-standard-20260921T122629",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "# Search Results for \"PyTorch official TORCH_LIBRARY custom operators dispatcher autograd register torch.ops CUDA extension\"\n\n## 1. [PyTorch Custom Operators — PyTorch Tutorials 2.14.0+cu130 …](https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors (e.g. torch.add, torch.sum, etc). However, you may …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html\n\n---\n\n## 2. [Custom Python Operators — PyTorch Tutorials …](https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors, such as tor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "## 1. [PyTorch Custom Operators — PyTorch Tutorials 2.14.0+cu130 …](https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors (e.g. torch.add, torch.sum, etc). However, you may …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "## 2. [Custom Python Operators — PyTorch Tutorials …](https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html)\n\n2026年9月3日 · PyTorch offers a large library of operators that work on Tensors, such as torch.add and …\n\n**URL:** https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "## 3. [Custom Operators and Library Extension | pytorch/pytorch](https://deepwiki.com/pytorch/pytorch/6.2-custom-operators-and-library-extension)\n\n2026年9月11日 · The torch.library API provides a structured way to define new operators that integrate with PyTorch's dispatcher, …\n\n**URL:** https://deepwiki.com/pytorch/pytorch/6.2-custom-operators-and-library-extension\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://deepwiki.com/pytorch/pytorch/6.2-custom-operators-and-library-extension"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "## 4. [PyTorch 自定义算子 — PyTorch 2.13.0+cu130 文档 ...](https://docs.pytorch.ac.cn/tutorials/advanced/custom_ops_landing_page.html)\n\n2026年6月16日 · PyTorch 提供了一个庞大的算子库来处理张量（例如 torch.add 、 torch.sum 等）。 然而，您可能希望将新的自定义 …\n\n**URL:** https://docs.pytorch.ac.cn/tutorials/advanced/custom_ops_landing_page.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.pytorch.ac.cn/tutorials/advanced/custom_ops_landing_page.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebSearch_0_70ecefe8.result",
+      "evidence": {
+        "event_id": "WebSearch_0_70ecefe8.result",
+        "quote": "## 5. [运算符注册 — PyTorch 主文档 - PyTorch 文档](https://docs.pytorch.ac.cn/cppdocs/api/library/registration.html)\n\n2026年7月31日 · 该宏用于定义一个函数，该函数将在静态初始化时运行，以在命名空间 ns （必须是有效的 C++ 标识符，无需引号） …\n\n**URL:** https://docs.pytorch.ac.cn/cppdocs/api/library/registration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.pytorch.ac.cn/cppdocs/api/library/registration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_1_640fa240.result",
+      "evidence": {
+        "event_id": "WebFetch_1_640fa240.result",
+        "quote": "**标题**: PyTorch Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Jun 18, 2024 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nBack to top\n\n# PyTorch Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html#pytorch-custom-operators \"Link to this heading\")\n\nPyTorch offers a large library of operators that work on Tensors (e.g. `torch.add`, `torch.sum`, etc). However, you may wish to bring a new custom operation to PyTorch and get it to work with subsystems like `torch.compile`, autograd, and `torch.vmap`. In order to do so, you must register the custom operation with PyTorch via the Python [torch.library docs]"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.pytorch.org/tutorials/advanced/custom_ops_landing_page.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_2_be3a02e3.result",
+      "evidence": {
+        "event_id": "WebFetch_2_be3a02e3.result",
+        "quote": "**标题**: Custom Python Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n**发布时间**: Created On: Jun 16, 2026 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nBack to top\n\n# Custom Python Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html#custom-python-operators \"Link to this heading\")\n\nCreated On: Jun 16, 2026 | Last Updated: Jun 16, 2026 | Last Verified: Nov 05, 2024\n\nWhat you will learn\n\n- When to create a Python custom operator\n- How to choose between functional and mutable operator contracts\n- Why the schema and mutation/aliasing contract are required\n- Where fake kernels, autograd, and other registrations fit\n\nPyTorch offers a large library o"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_3_1bfa6dd1.result",
+      "evidence": {
+        "event_id": "WebFetch_3_1bfa6dd1.result",
+        "quote": "# PyTorch C++ Operator Registration 文档提取报告\n\n## 摘要\n\n该页面是 PyTorch C++ API 中关于算子注册（Operator Registration）的参考文档，核心内容包括 **3 个注册宏**（`TORCH_LIBRARY` / `TORCH_LIBRARY_IMPL` / `TORCH_LIBRARY_FRAGMENT`）和 **3 个类**（`Library`、`CppFunction`、`OrderedDict`）。三个宏的说明与示例在正文中**基本完整**；但个别代码示例存在格式损坏/截断（详见文末\"完整性与截断标注\"）。\n\n---\n\n## 一、宏定义提取\n\n### 1. `TORCH_LIBRARY(ns, m)`\n\n**用途**：定义一个在**静态初始化时**运行的函数，用于在命名空间 `ns` 中定义一组算子库。适用于**定义 PyTorch 中尚不存在的全新自定义算子**。\n\n**参数**：\n| 参数 | 说明 |\n|---|---|\n| `ns` | 命名空间，**必须是有效的 C++ 标识符，不带引号** |\n| `m` | 绑定到 `torch::Library` 对象，通过其方法注册算子 |\n\n**底层展开**（预处理器宏展开形式，原文排版被重排）：\n\n```cpp\nstatic void TORCH_LIBRARY_init_##ns(torch::Library&);\nstatic const torch::detail::TorchLibraryInit TORCH_LIBRARY_stat"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.pytorch.org/cppdocs/api/library/registration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_4_cc7b12a4.result",
+      "evidence": {
+        "event_id": "WebFetch_4_cc7b12a4.result",
+        "quote": "# PyTorch 官方 C++/CUDA Custom Ops 教程分析\n\n## 📋 内容完整性说明\n\n✅ **本教程内容完整，无截断**。涵盖从开头（What you will learn / Prerequisites）到结尾（Conclusion）的全部章节，包括：\n\n- 构建系统设置（含 CPython Agnosticism、LibTorch Stable ABI 两个子节）\n- 算子定义与后端实现注册\n- `torch.compile` 支持（FakeTensor kernel）\n- 混合 Python/C++ 注册的三种加载方式\n- autograd 训练支持\n- 算子测试（opcheck）\n- 可变算子（mutable operators）\n- 结论\n\n**教程基本信息**：作者 Richard Zou；要求 PyTorch 2.4+（stable ABI 需 2.10+）；支持 AMD ROCm 无需修改。完整示例在 [extension-cpp](https://github.com/pytorch/extension-cpp) 仓库（`extension_cpp/` 标准 API 与 `extension_cpp_stable/` stable ABI 两套实现）。\n\n---\n\n## 1️⃣ 构建系统（pybind / load）\n\n### 核心工具：`torch.utils.cpp_extension`\n\n- C++ 扩展可 **ahead-of-time**（setuptools）或 **just-in-time**（`load_inline`）编译"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": "https://docs.pytorch.org/tutorials/advanced/cpp_custom_ops.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_5_db4607d5.result",
+      "evidence": {
+        "event_id": "WebFetch_5_db4607d5.result",
+        "quote": "**标题**: Adding Training and Other Registrations to Python Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n\nBack to top\n\n[Go to the end](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html#sphx-glr-download-advanced-python-custom-ops-registrations-py) to download the full example code.\n\n# Adding Training and Other Registrations to Python Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html#adding-training-and-other-registrations-to-python-custom-operators \"Link to this heading\")\n\nStart here after a base operator passes `torch.library.opcheck`:\n\n- [Functional Python Custom Operators](https://docs.pytor"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops_registrations.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "WebFetch_6_6a1214c8.result",
+      "evidence": {
+        "event_id": "WebFetch_6_6a1214c8.result",
+        "quote": "**标题**: Functional Python Custom Operators — PyTorch Tutorials 2.14.0+cu130 documentation\n\nBack to top\n\n[Go to the end](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html#sphx-glr-download-advanced-python-custom-ops-functional-py) to download the full example code.\n\n# Functional Python Custom Operators[#](https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html#functional-python-custom-operators \"Link to this heading\")\n\nUse this path when the operator mutates no Tensor inputs and returns fresh Tensor outputs.\n\nIf the operator must work with `torch.compile` or `torch.export`, [register a fake kernel](https://docs.pytorch.org/tutorials/advanced/p"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.pytorch.org/tutorials/advanced/python_custom_ops_functional.html"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}

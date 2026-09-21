@@ -1,0 +1,3 @@
+# Parent content review
+
+All three search returns, eight dispatched fetches, the blocked fetch response, prior and final were read. The initial draft incorrectly assigned all official returns body5 and reused a final heading as evidence; those judgments were rejected. M2 is now 27/8 with a wrong-target shell and three title-only returns. Source ownership for cann/docs remains unresolved, unlike explicit hiascend documents. The numpy problem snippet retains its missing referent rather than being weakened into generic ONNX conversion. Claims were not verified with their own text. M7/M10 retain specifically identified environment and compatibility uncertainty, not unperformed scoring. No new collection or hardware execution.

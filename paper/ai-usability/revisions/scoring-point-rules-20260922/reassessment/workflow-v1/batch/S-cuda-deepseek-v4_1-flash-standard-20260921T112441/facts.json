@@ -1,0 +1,478 @@
+{
+  "fetches": [
+    {
+      "event_id": "call_00_1BDqOwNDcaWSBYm5shIw3660.result",
+      "evidence": {
+        "event_id": "call_00_1BDqOwNDcaWSBYm5shIw3660.result",
+        "quote": "**标题**: Model Repository — NVIDIA Triton Inference Server\n\n# Model Repository#\n\n**Is this your first time setting up a model repository?** Check out these tutorials to begin your Triton journey!\n\nThe Triton Inference Server serves models from one or more model repositories that are specified when the server is started. While Triton is running, the models being served can be modified as described in Model Management.\n\n## Repository Layout#\n\n# Model Repository#\n## Repository Layout#\nThese repository paths are specified when Triton is started using the `--model-repository` option. The `--model-repository` option can be specified multiple times to included models from multiple repositories. The "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_NQC9DcWYihduLMVssAQt2681.result",
+      "evidence": {
+        "event_id": "call_00_NQC9DcWYihduLMVssAQt2681.result",
+        "quote": "# NVIDIA Triton Inference Server — Model Configuration: Extracted Structure & Content\n\n## Summary of Findings\n\nThe provided document is the **\"Model Configuration\"** chapter of the NVIDIA Triton Inference Server user guide. It covers how to write `config.pbtxt` files using the **ModelConfig protobuf**.\n\n**Important notes on scope and truncation:**\n- The document is **truncated/partial** relative to the user's full request. Several requested topics are **NOT present** in this content:\n  - ❌ `default_model_filename` — mentioned only in passing (\"Similar to the `default_model_filename` field...\") but not defined here.\n  - ❌ `dynamic_batching` — referenced via links and default-behavior discussi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_O2zVgxsCFxKxFxWvxMke9388.result",
+      "evidence": {
+        "event_id": "call_00_O2zVgxsCFxKxFxWvxMke9388.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/server.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_tyDslrtAuvKQ6s9c0kdW9808.result",
+      "evidence": {
+        "event_id": "call_00_tyDslrtAuvKQ6s9c0kdW9808.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_6knq5YLJ6HiZoTa84b5E5046.result",
+      "evidence": {
+        "event_id": "call_00_6knq5YLJ6HiZoTa84b5E5046.result",
+        "quote": "**标题**: Optimization — NVIDIA Triton Inference Server\n\n# Optimization#\n\n# Optimization#\nThe Triton Inference Server has many features that you can use to decrease latency and increase throughput for your model. This section discusses these features and demonstrates how you can use them to improve the performance of your model. As a prerequisite you should follow the QuickStart to get Triton and client examples running with the example model repository.\n\nThis section focuses on understanding latency and throughput tradeoffs for a single model. The Model Analyzer section describes a tool that helps you understand the GPU memory utilization of your models so you can decide how to best run multi"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/optimization.html",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_8Ap2uKpnvExJfa7ltJAb0352.result",
+      "evidence": {
+        "event_id": "call_00_8Ap2uKpnvExJfa7ltJAb0352.result",
+        "quote": "````\n<!--\n# Copyright 2021-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Redistribution and use in source and binary forms, with or without\n# modification, are permitted provided that the following conditions\n# are met:\n#  * Redistributions of source code must retain the above copyright\n#    notice, this list of conditions and the following disclaimer.\n#  * Redistributions in binary form must reproduce the above copyright\n#    notice, this list of conditions and the following disclaimer in the\n#    documentation and/or other materials provided with the distribution.\n#  * Neither the name of NVIDIA CORPORATION nor the names of its\n#    contributors may be used to endorse or "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://github.com/triton-inference-server/tensorrt_backend/blob/main/README.md",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_QhbUybjjZnNzJ3nOz4th7568.result",
+      "evidence": {
+        "event_id": "call_00_QhbUybjjZnNzJ3nOz4th7568.result",
+        "quote": "# Analysis: ModelOptimizationPolicy, TensorRT Optimization Profiles, and ModelConfig Fields\n\n## Important Finding First\n\n**The request asks for an `OptimizationProfile` message with `min/opt/max` dims (the TensorRT dynamic-shape optimization profile). This construct does NOT exist in the provided proto file.** The file defines (and I quote it below) `ModelOptimizationPolicy` and its sub-messages, but **no `OptimizationProfile` message, and no `min`/`opt`/`max` dim fields are present anywhere in the content.**\n\nInstead, the closest dynamic-shape related content in this file is:\n- `ModelTensorReshape` (general reshape)\n- `ModelInstanceGroup.profile` (selecting existing TensorRT optimization pr"
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/triton-inference-server/common/main/protobuf/model_config.proto",
+      "target_match": "unknown"
+    },
+    {
+      "event_id": "call_00_TxRVMQ2fo8ODHZxaFvJ15232.result",
+      "evidence": {
+        "event_id": "call_00_TxRVMQ2fo8ODHZxaFvJ15232.result",
+        "quote": "````\n<!--\n# Copyright 2021-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Redistribution and use in source and binary forms, with or without\n# modification, are permitted provided that the following conditions\n# are met:\n#  * Redistributions of source code must retain the above copyright\n#    notice, this list of conditions and the following disclaimer.\n#  * Redistributions in binary form must reproduce the above copyright\n#    notice, this list of conditions and the following disclaimer in the\n#    documentation and/or other materials provided with the distribution.\n#  * Neither the name of NVIDIA CORPORATION nor the names of its\n#    contributors may be used to endorse or "
+      },
+      "observed_defect": null,
+      "ownership": "unknown",
+      "representation": "unknown",
+      "request_url": "https://raw.githubusercontent.com/triton-inference-server/tensorrt_backend/main/README.md",
+      "target_match": "unknown"
+    }
+  ],
+  "m1": {
+    "budget_exhausted": null,
+    "decisive_records_verified": null,
+    "first_hit_source_id": null,
+    "first_query": null,
+    "first_rank": null
+  },
+  "m10": {
+    "content_check_complete": null,
+    "content_repairs": [],
+    "environment_substitutions": []
+  },
+  "m4": {
+    "conflicts": [],
+    "missing_relations": [],
+    "mode": "none"
+  },
+  "m5": {
+    "possible_counts": []
+  },
+  "m6": {
+    "checked_event_ids": [],
+    "claims": [],
+    "confirmed_unavailable": {},
+    "no_third_party_material": null
+  },
+  "packet_sha256": "3327a91c6ff01ecff74c6d443af0befd1be3b6b211d8e784ae6fd8a3c03e25f0",
+  "question": "怎么把模型部署成推理服务？用 Triton Inference Server / TensorRT，怎么配 model repository 和起服务？",
+  "run_id": "S-cuda-deepseek-v4_1-flash-standard-20260921T112441",
+  "source_items": [
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "# Search Results for \"Triton Inference Server model repository configuration TensorRT deploy\"\n\n## 1. [使用 Triton 服务化 Torch-TensorRT 模型 — Torch-TensorRT ...](https://docs.pytorch.ac.cn/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html)\n\n2026年9月5日 · 让我们一步一步地讨论使用 Torch-TensorRT 优化模型、将其部署在 Triton 推理服务器上以及构建客户端查询模型的 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html\n\n---\n\n## 2. [Serving a Torch-TensorRT model with Triton — Torch-TensorRT](http://docs.pytorch.org/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html)\n\n2026年9月5日 · # Make sure that the TensorRT version in the Triton container# and TensorRT v"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0001",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "## 1. [使用 Triton 服务化 Torch-TensorRT 模型 — Torch-TensorRT ...](https://docs.pytorch.ac.cn/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html)\n\n2026年9月5日 · 让我们一步一步地讨论使用 Torch-TensorRT 优化模型、将其部署在 Triton 推理服务器上以及构建客户端查询模型的 …\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0001-rank-1",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "## 2. [Serving a Torch-TensorRT model with Triton — Torch-TensorRT](http://docs.pytorch.org/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html)\n\n2026年9月5日 · # Make sure that the TensorRT version in the Triton container# and TensorRT version in the environment used to …\n\n**URL:** http://docs.pytorch.org/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0001-rank-2",
+      "url": "http://docs.pytorch.org/TensorRT/tutorials/deployment/serving_torch_tensorrt_with_triton.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "## 3. [使用 Triton 部署 Torch-TensorRT 模型 — Torch-TensorRT v2 ...](https://docs.pytorch.ac.cn/TensorRT/tutorials/serving_torch_tensorrt_with_triton.html)\n\n2026年7月31日 · 使用 Triton 部署 Torch-TensorRT 模型 — Torch-TensorRT v2.12.0.dev0+c0dfd5d 文档 - PyTorch 文档\n\n**URL:** https://docs.pytorch.ac.cn/TensorRT/tutorials/serving_torch_tensorrt_with_triton.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0001-rank-3",
+      "url": "https://docs.pytorch.ac.cn/TensorRT/tutorials/serving_torch_tensorrt_with_triton.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "## 4. [Model Repository — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)\n\n2026年9月1日 · Check out these tutorials to begin your Triton journey! The Triton Inference Server serves models from one or more …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0001-rank-4",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+      "evidence": {
+        "event_id": "call_00_zMthtbTQgy3xFDhgeSEs2228.result",
+        "quote": "## 5. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\n2026年9月1日 · Each model in a model repository must include a model configuration that provides required and optional information …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 1,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0001-rank-5",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_1BDqOwNDcaWSBYm5shIw3660.result",
+      "evidence": {
+        "event_id": "call_00_1BDqOwNDcaWSBYm5shIw3660.result",
+        "quote": "**标题**: Model Repository — NVIDIA Triton Inference Server\n\n# Model Repository#\n\n**Is this your first time setting up a model repository?** Check out these tutorials to begin your Triton journey!\n\nThe Triton Inference Server serves models from one or more model repositories that are specified when the server is started. While Triton is running, the models being served can be modified as described in Model Management.\n\n## Repository Layout#\n\n# Model Repository#\n## Repository Layout#\nThese repository paths are specified when Triton is started using the `--model-repository` option. The `--model-repository` option can be specified multiple times to included models from multiple repositories. The "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0002",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_NQC9DcWYihduLMVssAQt2681.result",
+      "evidence": {
+        "event_id": "call_00_NQC9DcWYihduLMVssAQt2681.result",
+        "quote": "# NVIDIA Triton Inference Server — Model Configuration: Extracted Structure & Content\n\n## Summary of Findings\n\nThe provided document is the **\"Model Configuration\"** chapter of the NVIDIA Triton Inference Server user guide. It covers how to write `config.pbtxt` files using the **ModelConfig protobuf**.\n\n**Important notes on scope and truncation:**\n- The document is **truncated/partial** relative to the user's full request. Several requested topics are **NOT present** in this content:\n  - ❌ `default_model_filename` — mentioned only in passing (\"Similar to the `default_model_filename` field...\") but not defined here.\n  - ❌ `dynamic_batching` — referenced via links and default-behavior discussi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0003",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_O2zVgxsCFxKxFxWvxMke9388.result",
+      "evidence": {
+        "event_id": "call_00_O2zVgxsCFxKxFxWvxMke9388.result",
+        "quote": "**标题**: Page Not Found\n\nPage Not Found\n\nThis page no longer exists. It is a non-supported format."
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0004",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/server.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "# Search Results for \"tritonserver --model-repository start server HTTP port 8000 quickstart docs.nvidia.com\"\n\n## 1. [Quickstart — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html)\n\n2026年9月1日 · An example model repository is included in the docs/examples/model_repository. Before using the repository, you …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html\n\n---\n\n## 2. [Model Repository — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)\n\n2026年"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0005",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "## 1. [Quickstart — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html)\n\n2026年9月1日 · An example model repository is included in the docs/examples/model_repository. Before using the repository, you …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0005-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "## 2. [Model Repository — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html)\n\n2026年9月1日 · The Triton Inference Server serves models from one or more model repositories that are specified when the server is …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0005-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "## 3. [server/docs/getting_started/quickstart.md-代码预览-server ...](https://gitcode.com/gh_mirrors/server117/server/blob/main/docs/getting_started/quickstart.md)\n\n2024年12月19日 · server/docs/getting_started/quickstart.md-代码预览-Triton Inference Server简化AI推理流程，支持TensorRT …\n\n**URL:** https://gitcode.com/gh_mirrors/server117/server/blob/main/docs/getting_started/quickstart.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0005-rank-3",
+      "url": "https://gitcode.com/gh_mirrors/server117/server/blob/main/docs/getting_started/quickstart.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "## 4. [tritonserver/docs/getting_started/quickstart.md at main - GitHub](https://github.com/yuchenericwu2/tritonserver/blob/main/docs/getting_started/quickstart.md)\n\nAn example model repository is included in the docs/examples/model_repository. Before using the repository, you must fetch any …\n\n**URL:** https://github.com/yuchenericwu2/tritonserver/blob/main/docs/getting_started/quickstart.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0005-rank-4",
+      "url": "https://github.com/yuchenericwu2/tritonserver/blob/main/docs/getting_started/quickstart.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+      "evidence": {
+        "event_id": "call_00_RURaS7ZlvQ94vHUD3JqY1637.result",
+        "quote": "## 5. [深度学习模型部署 - Triton 篇Triton Server Triton Server 是 ...](https://juejin.cn/post/7221444501956067388)\n\n2023年4月13日 · Triton Server Triton Server 是 NVIDIA 推出的一个用于机器学习模型部署的开源平台，它支持 TensorFlow、PyTorch …\n\n**URL:** https://juejin.cn/post/7221444501956067388\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 2,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0005-rank-5",
+      "url": "https://juejin.cn/post/7221444501956067388"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_tyDslrtAuvKQ6s9c0kdW9808.result",
+      "evidence": {
+        "event_id": "call_00_tyDslrtAuvKQ6s9c0kdW9808.result",
+        "quote": "**标题**: Quickstart — NVIDIA Triton Inference Server\n\nBack to top\n\n# Quickstart[#](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html#quickstart \"Link to this heading\")\n\n**New to Triton Inference Server and want do just deploy your model quickly?** Make use of [these tutorials](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/tutorials/README.html#quick-deploy) to begin your Triton journey!\n\nThe Triton Inference Server is available as [buildable source code](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/customization_guide/build.html), but the easiest way to install and run Tri"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0006",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/getting_started/quickstart.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_6knq5YLJ6HiZoTa84b5E5046.result",
+      "evidence": {
+        "event_id": "call_00_6knq5YLJ6HiZoTa84b5E5046.result",
+        "quote": "**标题**: Optimization — NVIDIA Triton Inference Server\n\n# Optimization#\n\n# Optimization#\nThe Triton Inference Server has many features that you can use to decrease latency and increase throughput for your model. This section discusses these features and demonstrates how you can use them to improve the performance of your model. As a prerequisite you should follow the QuickStart to get Triton and client examples running with the example model repository.\n\nThis section focuses on understanding latency and throughput tradeoffs for a single model. The Model Analyzer section describes a tool that helps you understand the GPU memory utilization of your models so you can decide how to best run multi"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0007",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/optimization.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_8Ap2uKpnvExJfa7ltJAb0352.result",
+      "evidence": {
+        "event_id": "call_00_8Ap2uKpnvExJfa7ltJAb0352.result",
+        "quote": "````\n<!--\n# Copyright 2021-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Redistribution and use in source and binary forms, with or without\n# modification, are permitted provided that the following conditions\n# are met:\n#  * Redistributions of source code must retain the above copyright\n#    notice, this list of conditions and the following disclaimer.\n#  * Redistributions in binary form must reproduce the above copyright\n#    notice, this list of conditions and the following disclaimer in the\n#    documentation and/or other materials provided with the distribution.\n#  * Neither the name of NVIDIA CORPORATION nor the names of its\n#    contributors may be used to endorse or "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0008",
+      "url": "https://github.com/triton-inference-server/tensorrt_backend/blob/main/README.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_QhbUybjjZnNzJ3nOz4th7568.result",
+      "evidence": {
+        "event_id": "call_00_QhbUybjjZnNzJ3nOz4th7568.result",
+        "quote": "# Analysis: ModelOptimizationPolicy, TensorRT Optimization Profiles, and ModelConfig Fields\n\n## Important Finding First\n\n**The request asks for an `OptimizationProfile` message with `min/opt/max` dims (the TensorRT dynamic-shape optimization profile). This construct does NOT exist in the provided proto file.** The file defines (and I quote it below) `ModelOptimizationPolicy` and its sub-messages, but **no `OptimizationProfile` message, and no `min`/`opt`/`max` dim fields are present anywhere in the content.**\n\nInstead, the closest dynamic-shape related content in this file is:\n- `ModelTensorReshape` (general reshape)\n- `ModelInstanceGroup.profile` (selecting existing TensorRT optimization pr"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0009",
+      "url": "https://raw.githubusercontent.com/triton-inference-server/common/main/protobuf/model_config.proto"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "# Search Results for \"Triton Inference Server TensorRT 部署 config.pbtxt model repository 教程\"\n\n## 1. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\nEach model in a model repository must include a model configuration that provides required and optional information about the …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n## 2. [Model Configuration — NVIDIA Triton Inference Server 1.12.0 …](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/trito"
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0010",
+      "url": null
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "## 1. [Model Configuration — NVIDIA Triton Inference Server](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html)\n\nEach model in a model repository must include a model configuration that provides required and optional information about the …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 1,
+      "relevant": null,
+      "source_id": "source-0010-rank-1",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "## 2. [Model Configuration — NVIDIA Triton Inference Server 1.12.0 …](https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html)\n\nWhen serving a classification model, keep in mind that label_filenamecan not be automatically derived. You will need to either create …\n\n**URL:** https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 2,
+      "relevant": null,
+      "source_id": "source-0010-rank-2",
+      "url": "https://docs.nvidia.com/deeplearning/triton-inference-server/archives/triton_inference_server_1120/triton-inference-server-guide/docs/model_configuration.html"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "## 3. [推理加速：TensorRT模型部署到Triton Inference Server - CSDN博客](https://blog.csdn.net/sinat_37574187/article/details/144348076)\n\nDec 9, 2024 · Triton Inference Server（简称Triton）是一个由NVIDIA开发的开源推理服务平台，它支持多种深度学习框架和模型格 …\n\n**URL:** https://blog.csdn.net/sinat_37574187/article/details/144348076\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 3,
+      "relevant": null,
+      "source_id": "source-0010-rank-3",
+      "url": "https://blog.csdn.net/sinat_37574187/article/details/144348076"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "## 4. [Triton config.pbtxt配置解析关键要点 config.pbtxt 是 Triton Inference](https://juejin.cn/post/7483764347041071158)\n\nMar 21, 2025 · 关键要点 config.pbtxt 是 Triton Inference Server 的模型配置文件，定义模型的加载和服务方式。 它包含模型名称、平 …\n\n**URL:** https://juejin.cn/post/7483764347041071158\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 4,
+      "relevant": null,
+      "source_id": "source-0010-rank-4",
+      "url": "https://juejin.cn/post/7483764347041071158"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+      "evidence": {
+        "event_id": "call_00_k0JTFFquiYMvBPFinnKo4742.result",
+        "quote": "## 5. [server/docs/user_guide/model_configuration.md at main · triton ...](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md)\n\nEach model in a model repository must include a model configuration that provides required and optional information about the …\n\n**URL:** https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md\n\n---\n\n"
+      },
+      "ownership": "unknown",
+      "query_index": 3,
+      "rank": 5,
+      "relevant": null,
+      "source_id": "source-0010-rank-5",
+      "url": "https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md"
+    },
+    {
+      "content_group": "",
+      "event_id": "call_00_TxRVMQ2fo8ODHZxaFvJ15232.result",
+      "evidence": {
+        "event_id": "call_00_TxRVMQ2fo8ODHZxaFvJ15232.result",
+        "quote": "````\n<!--\n# Copyright 2021-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n#\n# Redistribution and use in source and binary forms, with or without\n# modification, are permitted provided that the following conditions\n# are met:\n#  * Redistributions of source code must retain the above copyright\n#    notice, this list of conditions and the following disclaimer.\n#  * Redistributions in binary form must reproduce the above copyright\n#    notice, this list of conditions and the following disclaimer in the\n#    documentation and/or other materials provided with the distribution.\n#  * Neither the name of NVIDIA CORPORATION nor the names of its\n#    contributors may be used to endorse or "
+      },
+      "ownership": "unknown",
+      "relevant": null,
+      "source_id": "source-0011",
+      "url": "https://raw.githubusercontent.com/triton-inference-server/tensorrt_backend/main/README.md"
+    }
+  ],
+  "task_requirements": {
+    "main": [],
+    "secondary": [],
+    "version_relations": []
+  }
+}
