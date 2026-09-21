@@ -1,0 +1,274 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "H-cuda-glm-5_3-standard-20260921T104327",
+  "process_sha256": "273458959af5079aad05b36eeeffe057440cd99ced50945299ff14bf2f921c18",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "First query first-five results contain the first reviewed relevant official source at the recorded rank.",
+      "evidence": [
+        {
+          "event_id": "call_aab686cf857d4a488fae5bf7.result",
+          "quote": "## 1. [7. TensorRT 中的 INT8 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-int8-cn/)\n\n训练后量化 (PTQ: Post-training quantization) 在网络经过训练后得出比例因子。 TensorRT 为 PTQ 提供了 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-int8-cn/\n\n---\n\n"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.5,
+      "reason": "Eight official fetched documents: API navigation2, Chinese guide body4 because referenced diagrams are absent, remaining direct bodies5. Mean36/8. Overview pages with actual explanations/release constraints are body, unlike pure API index.",
+      "evidence": [
+        {
+          "event_id": "call_a6984921b5dd443da6049403.result",
+          "quote": "# Int8[¶](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/pyInt8.html#int8 \"Permalink to this heading\")\n\n- [IInt8Calibrator](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-ap"
+        },
+        {
+          "event_id": "call_d6a60ecb834448569ceab816.result",
+          "quote": "下图描述 DQ 前向传播和 Q 后向传播的插图。"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/pyInt8.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.nvidia.cn/blog/tensorrt-int8-cn/",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/_static/python-api/infer/Int8/Calibrator.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/index.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/work-with-quantized-types.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.pytorch.org/TensorRT/ts/ptq.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/quantized-types-workflows.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Official calibration guide/API plus Torch-TensorRT PTQ body cover representative data, preprocessing, algorithm selection, callbacks/cache, compile settings and use of resulting module for inference. Main calibration/deployment route is explained; hardware/version selection is evaluated separately.",
+      "evidence": [
+        {
+          "event_id": "call_80afebd2f9a04262a4b25358.result",
+          "quote": "testing_dataset = torchvision.datasets.CIFAR10(\n    root=\"./data\",\n    train=False,\n    download=True,\n    transform=transforms.Compose(\n        [\n            transforms.ToTensor(),\n            transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),\n        ]\n    ),\n)\n\ntesting_dataloader = torch.utils.data.DataLoader(\n    testing_dataset, batch_size=1, shuffle=False, num_workers=1\n)\ncalibrator = torch_tensorrt.ptq.DataLoaderCalibrator(\n    testing_dataloader,\n    cache_file=\"./calibration.cac"
+        },
+        {
+          "event_id": "call_80afebd2f9a04262a4b25358.result",
+          "quote": "Data should remain in FP32 precision when it’s passed into trt_mod.forward."
+        },
+        {
+          "event_id": "call_1529bcda33854363b9b8dcbd.result",
+          "quote": "Get a batch of input for calibration. The batch size of the input must match the batch size returned by [`get_batch_size()`](https://docs.nvidia.com/deeplearning/te"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official material provides partial version/component constraints, but not a complete direct compatibility relation for all required components.",
+      "evidence": [
+        {
+          "event_id": "call_3d41a11fa91c4785a560d9fd.result",
+          "quote": "**标题**: NVIDIA TensorRT Documentation — NVIDIA TensorRT\n\nBack to top\n\n# NVIDIA TensorRT Documentation[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/index.html#nvidia-tensorrt-documentation \"Link to this heading\")\n\nNVIDIA® TensorRT™ is an SDK for optimizing deep learning inference on NVIDIA GPUs. It takes trained models from frameworks such as PyTorch and ONNX, and compiles them into engines for GPU deployment with support for mixed precision (FP32/FP16/BF16/FP8/INT8/FP4/INT4), dynamic shapes, and specialized optimizations for transformers and large language models (LLMs). Measure latency and throughput on your own model and hardware; refer to [Best Practices](https://docs.nvidia.co"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Four independent relevant third-party articles after repeated URLs and official guide translations are excluded. Chinese Torch-TensorRT documentation is identifiable translated official content, not an independent source.",
+      "evidence": [
+        {
+          "event_id": "call_aab686cf857d4a488fae5bf7.result",
+          "quote": "## 2. [TensorRT INT8量化原理以及如何编写校准器类进行校准 ...](https://blog.csdn.net/zsf10220208/article/details/107006003)\n\n2026年6月12日 · 本文详细介绍使用NVIDIA TensorRT进行深度学习模型INT8量化的全过程，包括原理讲解、校准器编写及量化实践。 …\n\n**URL:** https://blog.csdn.net/zsf10220208/article/details/107006003\n\n---\n\n## 3. [tensorrt官方int8量"
+        },
+        {
+          "event_id": "call_062cfcbd9e4847c9af75645d.result",
+          "quote": "## 5. [TensorRT自定义校准器开发：提升INT8量化精度的终极指南](https://blog.csdn.net/gitblog_00188/article/details/151246514)\n\n2025年9月6日 · 本文将系统讲解校准器工作原理、实现步骤及工业级优化策略，帮助开发者攻克INT8量化精度瓶颈。 INT8量化通过线 …\n\n**URL:** https://blog.csdn.net/gitblog_00188/article/details/151246514\n\n---\n\n*Found 5 results • Provider: 0 "
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The single identifiable third-party assertion recommends QAT for accuracy; official workflow explicitly says QAT generally recovers more accuracy than PTQ. Independent publisher evidence supports the qualified recommendation. Generic descriptions and unspecified-function fragment do not constitute further evaluable assertions.",
+      "evidence": [
+        {
+          "event_id": "call_aab686cf857d4a488fae5bf7.result",
+          "quote": "QAT (追求精度时推荐)"
+        },
+        {
+          "event_id": "call_0fd7a8496af044ddbd267ba1.result",
+          "quote": "Generally achieves superior accuracy recovery compared to PTQ"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior contains supported calibration principles, algorithms and callback fragments, but prescribes a general500–1000-image requirement and build_engine API whose stated7/8 applicability is not fully verified in saved materials. The official example only establishes about500 for ImageNet. Cannot certify a correct complete route from absence of contradiction; expressly uncertain CLI flags are not treated as errors.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "500~1000 张有代表性的样本"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "builder.build_engine(network, config)"
+        },
+        {
+          "event_id": "call_d6a60ecb834448569ceab816.result",
+          "quote": "所需的输入数据量取决于应用程序，但实验表明大约 500 张图像足以校准 ImageNet 分类网络。"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Actual dispatched search/fetch events: 12.",
+      "event_refs": [
+        "call_aab686cf857d4a488fae5bf7.dispatch",
+        "call_062cfcbd9e4847c9af75645d.dispatch",
+        "call_78412ebb797746058f75ad5f.dispatch",
+        "call_3d41a11fa91c4785a560d9fd.dispatch",
+        "call_a9f35137791c485abd94d3d0.dispatch",
+        "call_a6984921b5dd443da6049403.dispatch",
+        "call_d6a60ecb834448569ceab816.dispatch",
+        "call_1529bcda33854363b9b8dcbd.dispatch",
+        "call_0ce6b1589ee049f0a938c8ab.dispatch",
+        "call_07625496d0c54b6aaaea0659.dispatch",
+        "call_80afebd2f9a04262a4b25358.dispatch",
+        "call_0fd7a8496af044ddbd267ba1.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final distinguishes10.x calibration and11.x Q/DQ routes with supported API transition boundaries, but leaves CUDA/GPU applicability of selected10.x route unresolved. Version ranges alone would permit4 only when all necessary relations are supported.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "TensorRT 8.x – 10.x"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "TRT 10.16.1 Python API 文档原文"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Claimed complete Python sample leaves device_input as Ellipsis, reads self.batches never initialized, lacks cuda import/context and defines no batchstream. These require actual implementation repairs, independent of unexecuted status. Model-specific inference buffer/runtime steps also remain absent.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "self.device_input = ..."
+        },
+        {
+          "event_id": "run-end",
+          "quote": "data = next(self.batches)"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "config.int8_calibrator = MyCalibrator(batchstream)"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Prior positive API/sample-size assertions lack complete applicable verification."
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna",
+    "task": "H",
+    "ecosystem": "cuda",
+    "model": "glm-5.3",
+    "primary_need": "怎么用 TensorRT 把模型量化成 INT8 做推理部署？给出校准（calibration）流程。",
+    "manual_adjudication": true
+  },
+  "channel_states": {}
+}

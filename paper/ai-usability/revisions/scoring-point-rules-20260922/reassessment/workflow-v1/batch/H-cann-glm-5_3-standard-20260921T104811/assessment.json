@@ -1,0 +1,234 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "H-cann-glm-5_3-standard-20260921T104811",
+  "process_sha256": "0ce49bc0ad3d676620d1a13c3536abcd637c6055091f327a429459307f6ccc3f",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 4,
+      "reason": "First query first-five results contain the first reviewed relevant official source at the recorded rank.",
+      "evidence": [
+        {
+          "event_id": "call_f7d68b128d314ff3a11a12df.result",
+          "quote": "## 2. [msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/)\n\n2026年8月29日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/\n\n---\n\n"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 5.0,
+      "reason": "3 official fetches scored from actual returned representations; body returns score 5 and title-only returns score 2; mean=5.0.",
+      "evidence": [
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "**标题**: 快速入门 - msModelSlim Documentation\n\n# msModelSlim 快速入门¶\n\n## 1. 概述¶\n\nmsModelSlim 是面向昇腾生态的模型压缩工具，覆盖稠密 LLM、MoE 及多模态模型的量化与压缩。本文以 Qwen3.6-27B 为例，带你体验如何通过一键量化将模型权重压缩为 W8A8 格式，并基于vLLM-Ascend完成推理部署验证。\n\n**体验地图（核心操作约 10 分钟，不含镜像与模型下载等网络传输时间）**\n\n步骤 环节 核心工具 操作耗时 原理学习 1 容器环境准备 vLLM-Ascend 容器 约 1 分钟（不含镜像下载时间） 5 分钟 2 模型文件准备 modelscope 约 1 分钟（不含模型下载时间） 2 分钟 3 模型量化 msModelSlim 约 3 分钟 5 分钟 4 量化结果验证 vLLM-Ascend 约 5 分钟 10 分钟\n\n## 2. 操作步骤¶\n\n### 2.1 环境准备（必做）¶\n\n🛑 **本节为强制前置步骤！跳过本节可能导致后续多项操作失败。**\n\n本教程**仅支持**在标准化 vLLM-Ascend 容器中执行，不支持直接在裸机、虚拟机或其他非标准容器环境中运行。\n\n#### 2.1.1 前置条件¶\n\n开始前，请确认服务器满足以下要求：\n\n项目 要求 验证方法 **硬件算力** Linux 服务器配备至少 2 张 NPU 卡（昇腾A2系列产品或昇腾A3系列产品），驱动与固件已安装 执行 `npu-smi info`，确认 NPU 卡状态正常 **容器运行** 已安装并运行 D"
+        },
+        {
+          "event_id": "call_977411b909a549a0a185f217.result",
+          "quote": "**标题**: W8A8 精度调优策略 - msModelSlim Documentation\n\n# W8A8量化精度调优策略[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/case_studies/w8a8_accuracy_tuning_policy/#w8a8%E9%87%8F%E5%8C%96%E7%B2%BE%E5%BA%A6%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5 \"Permanent link\")\n\n## 概述[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/case_studies/w8a8_accuracy_tuning_policy/#%E6%A6%82%E8%BF%B0 \"Permanent link\")\n\nW8A8量化精度调优策略是结合msModelSlim量化工具和精度测试工具precision tool进行精度验证和调优开展。大模型经过W8A8量化后精度损失大，可以参考本文的精度调优策略进行调优。\n\n注：  \n1、针对模型的特殊配置建议：若使用 ChatGLM 模型（如 ChatGLM2-6B），建议手动设置线程数，可提升运行效率；其他模型无需额外配置线程数。\n\n2、Transformers 版本适配说明：ChatGLM2-6B 模型需依赖 4.40.2 版本的 Transformers 库，若运行时出现 Transformers 相关报错，可尝试将库版本降至 4.40.2 以解决兼容性问题。\n\n```\n#"
+        },
+        {
+          "event_id": "call_50ece96ecf8a498b95ef698d.result",
+          "quote": "**标题**: W8A8-量化特性介绍-MindIE LLM开发指南-大模型开发-MindIE1.0.RC2开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC2/mindiellm/llmdev/mindie_llm0014.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC2/mindiellm/llmdev/mindie_llm0014.html)\n\n# W8A8\n\n#### 简介\n\n此量化方式对权重和激活值同时进行量化，将高位浮点数转为8 bit，减少模型权重的体积。使用int8格式的数据进行计算，可以减少MatMul算子计算量，以提升推理性能。\n\n量化后权重目录结构：\n\n```\n├─ config.json\n├─ quant_model_weight_w8a8.safetensors\n├─ quant_model_description_w8a8.json\n├─ tokenizer_config.json\n├─ tokenizer.json\n└─ tokenizer.model\n```\n\n- 量化输出包含：权重文件quant_model_weight_w8a8.safetensors和权重描述文件quant_model_description_w8a8.json。\n- 目录中的其余文件为推理时所需的配置文件，不同模型略有差异。\n\n以下展示了量化后权重描述文件quant_model_description_w8"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://msmodelslim.readthedocs.io/zh-cn/latest/zh/quick_start/quantization_quick_start/",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://modelslim.readthedocs.io/zh-cn/latest/zh/case_studies/w8a8_accuracy_tuning_policy/",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/mindie/10RC2/mindiellm/llmdev/mindie_llm0014.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The official quick-start body covers the requested W8A8 quantization-to-service route; optional MindIE version pairing remains an M4/M9 issue rather than an operational-body gap.",
+      "evidence": [
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "**标题**: 快速入门 - msModelSlim Documentation\n\n# msModelSlim 快速入门¶\n\n## 1. 概述¶\n\nmsModelSlim 是面向昇腾生态的模型压缩工具，覆盖稠密 LLM、MoE 及多模态模型的量化与压缩。本文以 Qwen3.6-27B 为例，带你体验如何通过一键量化将模型权重压缩为 W8A8 格式，并基于vLLM-Ascend完成推理部署验证。\n\n**体验地图（核心操作约 10 分钟，不含镜像与模型下载等网络传输时间）**\n\n步骤 环节 核心工具 操作耗时 原理学习 1 容器环境准备 vLLM-Ascend 容器 约 1 分钟（不含镜像下载时间） 5 分钟 2 模型文件准备 modelscope 约 1 分钟（不含模型下载时间） 2 分钟 3 模型量化 msModelSlim 约 3 分钟 5 分钟 4 量化结果验证 vLLM-Ascend 约 5 分钟 10 分钟\n\n## 2. 操作步骤¶\n\n### 2.1 环境准备（必做）¶\n\n🛑 **本节为强制前置步骤！跳过本节可能导致后续多项操作失败。**\n\n本教程**仅支持**在标准化 vLLM-Ascend 容器中执行，不支持直接在裸机、虚拟机或其他非标准容器环境中运行。\n\n#### 2.1.1 前置条件¶\n\n开始前，请确认服务器满足以下要求：\n\n项目 要求 验证方法 **硬件算力** Linux 服务器配备至少 2 张 NPU 卡（昇腾A2系列产品或昇腾A3系列产品），驱动与固件已安装 执行 `npu-smi info`，确认 NPU 卡状态正常 **容器运行** 已安装并运行 D"
+        },
+        {
+          "event_id": "call_977411b909a549a0a185f217.result",
+          "quote": "**标题**: W8A8 精度调优策略 - msModelSlim Documentation\n\n# W8A8量化精度调优策略[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/case_studies/w8a8_accuracy_tuning_policy/#w8a8%E9%87%8F%E5%8C%96%E7%B2%BE%E5%BA%A6%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5 \"Permanent link\")\n\n## 概述[¶](https://modelslim.readthedocs.io/zh-cn/latest/zh/case_studies/w8a8_accuracy_tuning_policy/#%E6%A6%82%E8%BF%B0 \"Permanent link\")\n\nW8A8量化精度调优策略是结合msModelSlim量化工具和精度测试工具precision tool进行精度验证和调优开展。大模型经过W8A8量化后精度损失大，可以参考本文的精度调优策略进行调优。\n\n注：  \n1、针对模型的特殊配置建议：若使用 ChatGLM 模型（如 ChatGLM2-6B），建议手动设置线程数，可提升运行效率；其他模型无需额外配置线程数。\n\n2、Transformers 版本适配说明：ChatGLM2-6B 模型需依赖 4.40.2 版本的 Transformers 库，若运行时出现 Transformers 相关报错，可尝试将库版本降至 4.40.2 以解决兼容性问题。\n\n```\n#"
+        },
+        {
+          "event_id": "call_50ece96ecf8a498b95ef698d.result",
+          "quote": "**标题**: W8A8-量化特性介绍-MindIE LLM开发指南-大模型开发-MindIE1.0.RC2开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/mindie/10RC2/mindiellm/llmdev/mindie_llm0014.html)[](https://www.hiascend.com/document/detail/zh/mindie/10RC2/mindiellm/llmdev/mindie_llm0014.html)\n\n# W8A8\n\n#### 简介\n\n此量化方式对权重和激活值同时进行量化，将高位浮点数转为8 bit，减少模型权重的体积。使用int8格式的数据进行计算，可以减少MatMul算子计算量，以提升推理性能。\n\n量化后权重目录结构：\n\n```\n├─ config.json\n├─ quant_model_weight_w8a8.safetensors\n├─ quant_model_description_w8a8.json\n├─ tokenizer_config.json\n├─ tokenizer.json\n└─ tokenizer.model\n```\n\n- 量化输出包含：权重文件quant_model_weight_w8a8.safetensors和权重描述文件quant_model_description_w8a8.json。\n- 目录中的其余文件为推理时所需的配置文件，不同模型略有差异。\n\n以下展示了量化后权重描述文件quant_model_description_w8"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 5,
+      "reason": "For the selected container quick-start, official rules directly select A2/A3 image0.18.0, msModelSlim26.1.0, transformers5.2.0 for quantization and4.57.6 for inference. Container encapsulates the framework stack; preinstalled functioning driver is an explicit prerequisite. Missing optional MindIE pairing does not invalidate this complete selected route.",
+      "evidence": [
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "本教程**仅支持**在标准化 vLLM-Ascend 容器中执行"
+        },
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "quay.io/ascend/vllm-ascend:v0.18.0"
+        },
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "transformers==5.2.0 \\\n    https://gitcode.com/Ascend/msmodelslim/releases/download/tag_MindStudio_26.1.0.B100_002/msmodelslim-26.1.0-py3-none-any.whl\n```\n\n> [!NOTE]说明\n> "
+        },
+        {
+          "event_id": "call_76bf4ed41e0046158836a7cb.result",
+          "quote": "transformers==4.57.6"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Four deduplicated relevant third-party content groups remain after merging the jishuzhan/51cto repost pair; official entries and search containers are excluded.",
+      "evidence": [
+        {
+          "event_id": "call_f7d68b128d314ff3a11a12df.result",
+          "quote": "# Search Results for \"msModelSlim W8A8 量化 昇腾 大模型 官方文档 hiascend\"\n\n## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著------大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n## 2. [msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/)\n\n2026年8月29日 · MindStudio ModelSlim（昇腾模型压缩工具，msModelSlim），一个以加速为目标、压缩为技术、昇腾为根本的亲和 …\n\n**URL:** https://msmodelslim.readthedocs.io/zh-cn/latest/\n\n---\n\n## 3. [快速入门 - msModelSlim Documentation](https://msmodelslim.readthedocs.io/zh-cn/latest/zh/quick_start/quantization_quick_start/)\n\n2026年9月8日 · msModelSlim 快速入门 1."
+        },
+        {
+          "event_id": "call_f7d68b128d314ff3a11a12df.result",
+          "quote": "## 1. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著------大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n"
+        },
+        {
+          "event_id": "call_f7d68b128d314ff3a11a12df.result",
+          "quote": "## 5. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://blog.51cto.com/u_17398972/14405553)\n\n2025年12月23日 · 在昇腾 AI 生态中，这一问题尤为显著——大模型虽能充分利用 NPU 的算力优势，但受限于显存容量与计算密度， …\n\n**URL:** https://blog.51cto.com/u_17398972/14405553\n\n---\n\n"
+        },
+        {
+          "event_id": "call_e0abf8b83efa4f1197854fbf.result",
+          "quote": "# Search Results for \"msModelSlim 大模型量化 Calibrator CalibConfig W8A8 llm_ptq_tools 使用指南\"\n\n## 1. [msit/msmodelslim/docs/案例集/w8a8精度调优策略.md at main ...](https://github.com/Ascend/msit/blob/main/msmodelslim/docs/%E6%A1%88%E4%BE%8B%E9%9B%86/w8a8%E7%B2%BE%E5%BA%A6%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5.md)\n\n大模型经过W8A8量化后精度损失大，可以参考本文的精度调优策略进行调优。 注： 1、针对模型的特殊配置建议：若使用 ChatGLM  …\n\n**URL:** https://github.com/Ascend/msit/blob/main/msmodelslim/docs/%E6%A1%88%E4%BE%8B%E9%9B%86/w8a8%E7%B2%BE%E5%BA%A6%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5.md\n\n---\n\n## 2. [昇腾msmodelslim实现DeepSeek模型w8a8量化原理与代码 ...](https://developer.aliyun.com/article/1659301)\n\n2025年3月31日 · 想为DeepSeek等大模型减负提速？ 本文深入解析昇腾W8A8量化技术，从激活异常值抑制 (SmoothQuant)"
+        },
+        {
+          "event_id": "call_e0abf8b83efa4f1197854fbf.result",
+          "quote": "## 2. [昇腾msmodelslim实现DeepSeek模型w8a8量化原理与代码 ...](https://developer.aliyun.com/article/1659301)\n\n2025年3月31日 · 想为DeepSeek等大模型减负提速？ 本文深入解析昇腾W8A8量化技术，从激活异常值抑制 (SmoothQuant)原理 …\n\n**URL:** https://developer.aliyun.com/article/1659301\n\n---\n\n"
+        },
+        {
+          "event_id": "call_e0abf8b83efa4f1197854fbf.result",
+          "quote": "## 4. [昇腾大模型量化实战：ModelSlim 工具上手与 W8A8 精度 ...](https://jishuzhan.net/article/2003625934021263362)\n\n2025年12月23日 · 本文将以 Qwen2.5-72B 模型 为例，基于 MindStudio ModelSlim 工具 ，完整演示 W8A8（权重量化8bit，激活量 …\n\n**URL:** https://jishuzhan.net/article/2003625934021263362\n\n---\n\n"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Specific ModelSlim/Qwen2.5-72B W8A8 applicability is identifiable but lacks matching support in saved official Qwen3.6-27B, ChatGLM2 and Llama2 examples. Generic introductions and unfinished feature lists are not independently assessable claims; no proven contradiction.",
+      "evidence": [
+        {
+          "event_id": "call_e0abf8b83efa4f1197854fbf.result",
+          "quote": "本文将以 Qwen2.5-72B 模型 为例，基于 MindStudio ModelSlim 工具 ，完整演示 W8A8"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "The prior contains operational claims about CalibConfig, USE_REPACKER, ASCEND_RT_VISIBLE_DEVICES and msprof whose correctness is not fully resolved by the fixed packet; this can change the grade.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "仅凭已有知识的回答：\n\n在昇腾（CANN 生态）上做大模型 W8A8 量化推理部署，大致路径：\n\n1. 量化工具：华为官方的 **msModelSlim**（模型压缩工具，早期叫 msit/modelslim），配合 **ATB（Ascend Transformer Boost）** 模型库使用。核心入口通常是 Python API：`msmodelslim.pytorch.llm_ptq.llm_ptq_tools.Calibrator`，配 `CalibConfig`，量化模式选 W8A8（per-channel 权重、per-token 激活，静态校准）。\n2. 流程：准备 HF 权重 → 转 ATB 权重格式（`convert_weights` 脚本，设置 `USE_REPACKER`、分词器转换）→ 用校准数据集（`--calib_input` 一般用 `--dataset`，如 ceval/中文数据集）跑离线校准生成量化权重 → 部署侧用 **MindIE**（推理引擎，配 MindIE Service）或 llm-inference/llm deploy 加载量化权重，`config.json` 中开启相应量化配置。\n\n不确定处：\n- msModelSlim 的精确版本号、与 CANN/ATB/MindIE 的版本配套关系；\n- 具体命令行参数（如 `anti_outlier`、`disable_names`、`input_algo`、dev_id 等的确切拼写与默认值）；\n- MindIE 部署侧 config.json 中量化字段的确切写法；\n- 官方文档的当前 URL（hiascend.com 上的 msModelSlim 和 MindIE 文档路径）。\n\n需要检索确认以上细节。"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Actual dispatched search/fetch events: 6; score 3.",
+      "event_refs": [
+        "call_f7d68b128d314ff3a11a12df.dispatch",
+        "call_76bf4ed41e0046158836a7cb.dispatch",
+        "call_e0abf8b83efa4f1197854fbf.dispatch",
+        "call_977411b909a549a0a185f217.dispatch",
+        "call_be6de196a1e846c1b2c22484.dispatch",
+        "call_50ece96ecf8a498b95ef698d.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Final explicitly selects the same A2/A3 container0.18.0, msModelSlim26.1.0 and stage-specific transformers5.2.0 then4.57.6 as the official primary route. Optional MindIE1.0RC2 relation is flagged separately and is not required for the selected container workflow.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "快速入门路线：vLLM-Ascend 镜像 `v0.18.0`（A2）/ `v0.18.0-a3`（A3）+ msModelSlim `26.1.0` + transformers `5.2.0`（量化）→ `4.57.6`（推理）。\n- MindIE 路线文档版本为 MindIE 1.0.RC2"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "The final omits the container startup/configuration command, selects one idle card before a TP2 deployment without configuring two visible cards, and calls an undefined get_calib_dataset API. These are content/step repairs, separate from the unexecuted status.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "≥2 张昇腾 NPU（A2/A3 系列），驱动固件已装，`npu-smi info` 正常。宿主机按 NPU PCI ID 选择官方镜像（A2：`quay.io/ascend/vllm-ascend:v0.18.0`；A3：`v0.18.0-a3`），`docker pull` 后启动容器，容器内安装：\n\n```bash\npip install -i htt"
+        }
+      ],
+      "observations": {
+        "execution_status": "content_checked_not_executed",
+        "content_repairs": [
+          "add concrete container startup and device mapping configuration",
+          "make TP2 device visibility consistent with the selected two-card deployment",
+          "define or remove get_calib_dataset and provide the actual calibration-data path"
+        ]
+      }
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Prior API/route correctness lacks sufficient verification in the fixed packet; no invented point input."
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna",
+    "task": "H",
+    "ecosystem": "cann",
+    "model": "glm-5.3",
+    "primary_need": "怎么在昇腾上把大模型量化（W8A8）做推理部署？给出量化工具和流程。",
+    "manual_adjudication": true
+  },
+  "channel_states": {}
+}
