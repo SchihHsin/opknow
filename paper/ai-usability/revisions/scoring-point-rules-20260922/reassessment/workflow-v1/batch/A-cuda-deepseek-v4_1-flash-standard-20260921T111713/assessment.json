@@ -1,0 +1,479 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
+          "quote": "## 1. [Example Deployment Using ONNX — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html)"
+        }
+      ],
+      "observations": {
+        "first_hit_source_id": "source-0001-rank-1",
+        "first_query": 1,
+        "first_rank": 1
+      },
+      "reason": "第1次查询第1位即命中与PyTorch→ONNX→TensorRT部署直接相关的NVIDIA官方页面。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "def build_engine(onnx_path: str, engine_path: str) -> bytes:"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "（运行：`python3 trt_end_to_end.py resnet50-v1-12.onnx`）"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "context.set_input_shape(input_name, (1, 3, height, width))"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "context.set_tensor_address(input_name, int(d_input))"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "context.execute_async_v3(stream)"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "torch.onnx.export(resnet50, dummy_input, \"resnet50_pytorch.onnx\", verbose=False)"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "trtexec --onnx=resnet50/model.onnx --saveEngine=resnet_engine_intro.engine --stronglyTyped"
+        }
+      ],
+      "observations": {
+        "content_repairs": [
+          "Add a __main__/CLI call that invokes build_engine; the answer defines the function but then gives a run command without the entry point.",
+          "Define engine_path, height, width, d_input, d_output, and stream and add device allocation, input copy, execution, output copy, and synchronization around execute_async_v3.",
+          "Make the exported resnet50_pytorch.onnx filename feed the subsequent trtexec command; the answer currently uses resnet50/model.onnx instead."
+        ],
+        "environment_substitutions": [
+          "Replace example model, ONNX, engine, cache, and log paths with local files.",
+          "Set input names, batch sizes, and dynamic shape dimensions to the model.",
+          "Use the locally installed TensorRT/CUDA/Python environment and target GPU.",
+          "Choose precision and optional profiling flags for the deployment workload."
+        ],
+        "execution_status": "content checked only"
+      },
+      "reason": "最终答案有具体主路线命令，但Python build_engine只有函数定义却配了入口运行命令；runtime片段使用未定义的engine_path/height/width/d_input/d_output/stream且缺少分配、拷贝、同步；导出文件名与后续trtexec输入也未衔接。这些需要补写代码/参数，故为3分；未实际运行本身不扣分。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "missing_inputs": [
+        "M6",
+        "M7"
+      ],
+      "reason": "M6 与 M7 均为 unscorable，按规则不能计算综合指数；不以其他分项补齐。",
+      "score": null,
+      "status": "unscorable",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html",
+          "observations": {
+            "completeness_verification": "not_independently_verified",
+            "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+            "observed_defect": false,
+            "representation": "direct body"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html",
+          "observations": {
+            "completeness_verification": "not_independently_verified",
+            "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
+            "observed_defect": false,
+            "representation": "direct body"
+          },
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
+          "observations": {
+            "completeness_verification": "confirmed_incomplete",
+            "defect": "interactive compatibility table not returned",
+            "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
+            "observed_defect": true,
+            "representation": "direct body"
+          },
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.pytorch.org/docs/main/onnx.html",
+          "observations": {
+            "completeness_verification": "not_independently_verified",
+            "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
+            "observed_defect": true,
+            "representation": "direct body"
+          },
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-runtime-tutorial.html",
+          "observations": {
+            "completeness_verification": "not_independently_verified",
+            "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
+            "observed_defect": true,
+            "representation": "explicit extracted report"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html",
+          "observations": {
+            "completeness_verification": "not_independently_verified",
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "observed_defect": true,
+            "representation": "explicit extracted report"
+          },
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/python-api-docs.html",
+          "observations": {
+            "completeness_verification": "confirmed_incomplete",
+            "defect": "literal [...] and code/indentation omissions",
+            "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
+            "observed_defect": true,
+            "representation": "direct body"
+          },
+          "score": 4,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+          "quote": "**标题**: Example Deployment Using ONNX — NVIDIA TensorRT"
+        },
+        {
+          "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
+          "quote": "**标题**: Support Matrix — NVIDIA TensorRT"
+        },
+        {
+          "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
+          "quote": "# TensorRT Runtime API Tutorial — Extracted Content"
+        },
+        {
+          "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+          "quote": "# trtexec — Extracted Command-Line Reference"
+        },
+        {
+          "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
+          "quote": "importtorch"
+        },
+        {
+          "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
+          "quote": "[...]"
+        },
+        {
+          "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
+          "quote": "[...]"
+        }
+      ],
+      "observations": {
+        "classification_basis": "All seven official fetch URLs retained; third-party tingsongyu excluded.",
+        "document_count": 7,
+        "scores": [
+          5,
+          5,
+          4,
+          4,
+          3,
+          3,
+          4
+        ]
+      },
+      "reason": "按URL去fragment并取每份文档最后一次返回：5、5、4、4、3、3、4，等权均值为28/7；支持矩阵交互表、PyTorch正文与Python API正文均有明确可观察缺损，两个目标页为明确摘录报告。",
+      "score": 4.0,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+          "quote": "One common approach is to use `trtexec`, a command-line tool included with TensorRT"
+        },
+        {
+          "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+          "quote": "ONNX models can be generated from PyTorch models using PyTorch [torch.onnx.export]"
+        },
+        {
+          "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+          "quote": "--minShapes=<shapes>"
+        },
+        {
+          "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
+          "quote": "The TensorRT Python API enables developers in Python-based development environments"
+        }
+      ],
+      "observations": {
+        "covered": [
+          "PyTorch→ONNX export",
+          "ONNX→engine via trtexec and Python API",
+          "runtime deployment and verification",
+          "shape/precision/debugging guidance"
+        ],
+        "missing": []
+      },
+      "reason": "官方ONNX部署正文、PyTorch exporter正文、TensorRT Python API与运行教程共同覆盖导出、trtexec/Python构建、动态shape/精度、反序列化和推理主流程；用户请求的步骤与命令已形成完整路线。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
+          "quote": "Values below match the [TensorRT Support Matrix]"
+        },
+        {
+          "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
+          "quote": "TensorRT supports NVIDIA hardware with compute capability SM 7.5 or higher."
+        },
+        {
+          "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
+          "quote": "Built with CUDA Toolkit 12.9. Compatible with CUDA 12.x versions only."
+        }
+      ],
+      "observations": {
+        "missing_relations": [
+          "Support Matrix interactive compatibility row",
+          "TRT↔CUDA footnote linkage to the selected route"
+        ],
+        "mode": "partial",
+        "relations_found": [
+          "PyTorch exporter↔ONNX guidance",
+          "ONNX↔TRT 11.x",
+          "generic GPU SM floor"
+        ]
+      },
+      "reason": "官方材料明确给出 TRT 11.x↔ONNX 1.20/opset 9–25 及 SM 7.5+，但 Support Matrix 交互表和所选 TRT↔CUDA 适用链路未返回，版本关系仍不完整。",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
+          "quote": "## 2. [12.3 trtexec 工具使用 · PyTorch实用教程（第二版 ..."
+        },
+        {
+          "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
+          "quote": "## 4. [从Onnx到TensorRT Engine：手把手教你用trtexec转换模型 ..."
+        },
+        {
+          "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
+          "quote": "## 2. [TensorRT与CUDA版本对应：驱动、显卡到ONNX推理部署]"
+        }
+      ],
+      "observations": {
+        "excluded": [
+          "official publishers and official-content mirrors"
+        ],
+        "independent_groups": [
+          "tp:tingsongyu-trtexec",
+          "tp:csdn-wenku-column-39mx6343djt",
+          "tp:csdn-weixin26891599",
+          "tp:csdn-weixin34246529",
+          "tp:csdn-wenku-doc-7gx3idd463",
+          "tp:runebook-opset"
+        ],
+        "possible_counts": [
+          6
+        ],
+        "search_count": 4
+      },
+      "reason": "按内容去重后有6个相关独立第三方来源组（tingsongyu、两篇CSDN/Wenku转换文、两篇版本/兼容性文、Runebook），n≥6映射为5分。",
+      "score": 5,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--onnx=<model>: onnx文件路径"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--saveEngine=<file>: 保存的文件输出路径"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--loadInputs=<specs>: Load input values from files. Default is to generate random inputs."
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--warmUp=<duration in ms>,  热身阶段最短运行时间，单位ms\n--duration=<duration in seconds>, 测试阶段最短运行时间，单位s\n--iterations=<N>: 测试阶段最小迭代次数"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--useCudaGraph: 采用 CUDA graph 捕获和执行推理过程"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--noDataTransfers: 关闭host与device之间的数据传输"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--dumpProfile, --exportProfile=<file>: 打印及保存每一层性能信息"
+        },
+        {
+          "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+          "quote": "--dumpLayerInfo, --exportLayerInfo=<file>: 打印及保存每一层详细信息"
+        },
+        {
+          "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+          "quote": "Specify the timing cache to load from and save to."
+        },
+        {
+          "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+          "quote": "If the input model is in ONNX format or the engine is built with explicit batch dimensions, use `--shapes` instead."
+        }
+      ],
+      "observations": {
+        "claim_count": 24,
+        "contradicted_claims": [],
+        "independent_crosscheck": false,
+        "non_prescriptive_snapshots": [
+          "The third-party tutorial reports producer PyTorch 1.12.0, opset 13, SM 8.6/8.9, and empirical throughput/latency; these are observations from its example, not universal compatibility claims."
+        ],
+        "supported_claims": 18,
+        "unsupported_claims": [
+          "The CSDN result states that the exported ONNX opset affects the minimum TensorRT requirement.",
+          "The CSDN result describes exporting trained PyTorch/TensorFlow models to ONNX before using an inference engine.",
+          "The tutorial claims that --timingCacheFile records per-tensor min/max values and run times for quantization analysis; the official packet only states load/save timing-cache semantics, which is insufficient to directly refute this detail.",
+          "The tutorial says --verbose defaults to not printing detailed information.",
+          "trtexec displays per-layer information of ONNX files or Plan files; archived official layer flag confirms engine information but does not independently establish the whole ONNX-file assertion."
+        ],
+        "unresolved_claims": [
+          "--batch=128 applicability to explicit-batch engine/version"
+        ],
+        "excluded_fragments": [
+          "Runebook incomplete explanation",
+          "CSDN article plan",
+          "empirical measurements not generalized guarantees"
+        ],
+        "verdict_counts": {
+          "supported": 18,
+          "unsupported": 5,
+          "unresolved": 1
+        }
+      },
+      "reason": "已穷尽固定包中的第三方 trtexec 参数说法并建账（含 --onnx/--saveEngine/--verbose/--shapes、完整 run-phase flags）。timingCacheFile 的 min/max/量化说法只有官方 load/save 定义，不能直接反驳；--batch=128 是否与 --shapes 冲突取决于 packet 未提供的 engine explicit-batch mode 与 TensorRT generation。该未决事实会改变 M6 档位，故不猜分。",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "TensorRT 8 里 `create_network` 需带 EXPLICIT_BATCH"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "TensorRT 10 移除了该 flag（默认 explicit batch）"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "目标 GPU 决定 `soc_version`（Jetson）或 SM 架构"
+        }
+      ],
+      "observations": {
+        "execution_status": "prior_only",
+        "unresolved_applicability": [
+          "TensorRT 8/10 API generation boundary",
+          "Jetson soc_version branch"
+        ]
+      },
+      "reason": "固定包外的先验回答包含 TensorRT 8/10 EXPLICIT_BATCH API 迁移、build API 变化及 Jetson soc_version 分支；固定 packet 未提供足以裁决这些版本/平台适用性的证据，可能改变档位，故不猜分。",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M8": {
+      "event_refs": [
+        "call_00_2DAJfQHiY0k7ANSUWNW80887.dispatch",
+        "call_00_UtYDg4dwpBBHPLLVyUS82544.dispatch",
+        "call_00_I6pvnSclFyLFKQWDClqG3218.dispatch",
+        "call_00_ii2PTg66OdopZnETlxpF4997.dispatch",
+        "call_00_hu8NcoJJtbNh3Co5B4ei8697.dispatch",
+        "call_00_1TXWL6x11MmwsKPH2Mot0086.dispatch",
+        "call_00_1Eff5BB69dukpV9eQLw02555.dispatch",
+        "call_00_azZEvyWqXK2rks9aa4mH8089.dispatch",
+        "call_00_vFYL034y1GDJcibI9Mqi6398.dispatch",
+        "call_00_hLZIftPWLHMynU1uWWFN9799.dispatch",
+        "call_00_iPWI165Wv5Th6aD2vtBV6735.dispatch",
+        "call_00_vLM4j8Fpvnek4mopkTUY6218.dispatch"
+      ],
+      "observations": {
+        "fetch_dispatches": 8,
+        "search_dispatches": 4,
+        "total_dispatches": 12
+      },
+      "reason": "实际派发4次搜索+8次抓取=12次，按C≥9映射为1分。",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "- TensorRT：11.x（本轮官方“latest”）；支持 compute capability **SM 7.5+**。"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "**TRT↔CUDA↔GPU 具体配版表未取回**"
+        }
+      ],
+      "observations": {
+        "unresolved_relations": [
+          "TensorRT↔CUDA applicability; isolated CUDA footnotes are not linked to the selected route"
+        ],
+        "versioned_components": [
+          "TensorRT",
+          "ONNX package/opset",
+          "PyTorch exporter",
+          "generic GPU floor"
+        ]
+      },
+      "reason": "最终答案有TRT 11.x、ONNX 1.20/opset 9–25、PyTorch 2.6+/2.9和SM 7.5+依据，但CUDA 12.x/13.x只以孤立脚注出现，未建立TRT↔CUDA适用范围；必要关系有一项缺失，故为3分。",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {
+    "M11_status_basis": "M7 unresolved; no saturation shortcut",
+    "execution_status": "content_checked_only",
+    "model_id": "deepseek-v4.1-flash",
+    "source_boundary": "fixed packet only",
+    "assessor": "GPT-5.6 Luna"
+  },
+  "process_sha256": "84acb16a36c5a25416b608c34054085b7a2223f773eefb22cd9e75150d7f6211",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "A-cuda-deepseek-v4_1-flash-standard-20260921T111713"
+}

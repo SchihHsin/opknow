@@ -14,6 +14,16 @@ from validate_point_assessment import validate_assessment
 
 METRICS = [f"M{i}" for i in range(1, 12)]
 ARTIFACTS = ("facts.json", "assessment.json", "check.json", "review.json", "receipt.json")
+ALIASES = {"check.json": ("check.json", "check-report.json"),
+           "receipt.json": ("receipt.json", "review-receipt.json")}
+
+def artifact_path(directory, name):
+    """Resolve canonical names while accepting archived artifact aliases."""
+    for candidate in ALIASES.get(name, (name,)):
+        path = directory / candidate
+        if path.exists():
+            return path
+    return directory / name
 
 def read(p):
     try: return json.loads(p.read_text(encoding="utf-8"))
@@ -38,14 +48,26 @@ def manifest_ids(path):
     return ids, {r["run_id"]: r for r in rows}
 
 def discover(root):
+    # Production roots contain formal batch/pilot trees. Exclude fresh and
+    # rejected/history copies, which may duplicate a formal run. A root with
+    # neither child is retained for synthetic validator fixtures.
+    formal = [root / name for name in ("batch", "pilot") if (root / name).is_dir()]
+    search_roots = formal or [root]
     found = {}
-    for p in root.rglob("*"):
+    candidates = (p for sr in search_roots for p in sr.rglob("*"))
+    for p in candidates:
         if not p.is_dir(): continue
+        # prepared/ and similar nested directories belong to their enclosing
+        # run; never treat their packet index as a second run record.
+        if any(parent != p and parent.is_relative_to(sr) and
+               ((parent / "facts.json").exists() or (parent / "packet-index.json").exists())
+               for sr in search_roots for parent in p.parents):
+            continue
         names = {x.name for x in p.iterdir() if x.is_file()}
         if not ({"facts.json", "packet-index.json"} & names): continue
         vals = []
         for n in ("facts.json", "packet-index.json", "assessment.json", "check.json", "review.json", "receipt.json"):
-            q = p / n
+            q = artifact_path(p, n)
             if q.exists():
                 try: vals.append((n, read(q).get("run_id")))
                 except GateError: pass
@@ -77,7 +99,7 @@ def parse_identity(rid):
 
 def validate_run(rid, d, manifest_row=None):
     def path_for(name):
-        q = d / name
+        q = artifact_path(d, name)
         if q.exists(): return q
         if name in ("facts.json", "packet-index.json") and (d / "prepared" / name).exists(): return d / "prepared" / name
         return q

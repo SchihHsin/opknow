@@ -6,11 +6,12 @@
         "event_id": "call_bee97519a82e48ee8d831a87.result",
         "quote": "**标题**: 使用msprof-analyze工具分析性能数据-性能数据分析-模型性能调优（PyTorch）-训练场景工具快速入门-开发工具快速入门-开发工具-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_19137ae3379b4b6db57d4bc9.result",
@@ -18,11 +19,12 @@
         "event_id": "call_19137ae3379b4b6db57d4bc9.result",
         "quote": "````\n<h1 align=\"center\">MindStudio Profiler</h1>\n\n<div align=\"center\">\n<p><b><span style=\"font-size:24px;\">昇腾性能采集工具</span></b></p>\n\n [![快速入门](https://badgen.net/badge/快速入门/QuickStart/blue)](docs/zh/quick_start/msprof_quick_start.md)\n [![AI问答 DeepWiki](https://badgen.net/badge/AI问答/DeepWiki/blue)](https://deepwiki.com/Ascend/msprof)\n [![AI问答 ZRead](https://badgen.net/badge/AI问答/ZRead/blue)](https://zread.ai/Ascend/msprof)\n [![精确搜索](https://badgen.net/badge/精确搜索/ReadTheDocs/blue)](https://mindstudio-docs-master.readthedocs.io/zh-cn/latest/msprof/)\n [![昇腾社区](https://badgen.net/badge/昇腾社区/Community/blue)](https://www.hiascend.com/cn/developer/software/mindstudio)\n [![报告问题](https://badgen.net/bad"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://github.com/Ascend/msprof/blob/master/README.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_66bd0b22b2de4b5cba3318be.result",
@@ -30,11 +32,12 @@
         "event_id": "call_66bd0b22b2de4b5cba3318be.result",
         "quote": "# Ascend PyTorch Profiler 用户指南（完整提取）\n\n> ⚠️ **说明**：原文档末尾标注 `[content truncated]`，即源页面在 \"analysis.db数据\" 章节处被截断。以下为可获取的完整内容，缺失部分（analysis.db 详情、experimental_config/schedule 参数说明、profiler_config.json 文件说明、版本配套表等）会在文末统一标注。\n\n---\n\n## 一、工具使用导航\n\nAscend PyTorch调优工具支持性能数据采集和解析功能，可参照如下顺序使用：\n\n| 流程 | 对应章节 |\n| ---- | -------- |\n| 数据采集 | 根据实际需求任选其一，**同一进程中不可同时选用两种以上方式**：<br>• **torch_npu.profiler.profile**（推荐）：提供完整的采集接口，手动在代码中添加接口，自由选择采集内容<br>• **dynamic_profile**（推荐）：支持训练过程中随时启动采集，可不修改用户代码直接启动，方式更灵活 |\n| （可选）扩展采集功能 | • 采集并解析mstx数据<br>• 采集环境变量信息<br>• 标记性能数据采集过程<br>• 显存可视化<br>• 创建Profiler子线程采集 |\n| （可选）数据解析 | 离线解析（一般采集时会自动解析，离线解析适用于未解析的原始数据） |\n| 数据分析 | 查看性能数据目录下的结果文件，或导入 **MindStudio Insight** 工具分析 |\n\n---\n\n## "
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_3aface1e7e2c4f5ba2f8c30d.result",
@@ -42,11 +45,12 @@
         "event_id": "call_3aface1e7e2c4f5ba2f8c30d.result",
         "quote": "````\n# torch_npu.profiler._ExperimentalConfig\n\n## 产品支持情况\n\n| 产品                               | 是否支持 |\n| ---------------------------------- | :------: |\n| <term>Ascend 950DT</term> |  √  |\n| <term>Atlas A3 训练系列产品</term> |    √     |\n| <term>Atlas A2 训练系列产品</term> |    √     |\n| <term>Atlas 训练系列产品</term>    |    √     |\n\n## 功能说明\n\n性能数据采集扩展参数。用于构造torch_npu.profiler.profile的experimental_config参数。\n\n## 函数原型\n\n```python\ntorch_npu.profiler._ExperimentalConfig(export_type=[torch_npu.profiler.ExportType.Text], profiler_level=torch_npu.profiler.ProfilerLevel.Level0, mstx=False, mstx_domain_include=[], mstx_domain_exclude=[], aic_metrics=torch_npu.profiler.AiCMetrics.AiCoreNone, l2_cache=False, op_attr=Fa"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_ef7e78966eba4aa8a03a6c5d.result",
@@ -54,11 +58,12 @@
         "event_id": "call_ef7e78966eba4aa8a03a6c5d.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/README.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: ef1df69e 创建于 8月4日 历史提交\n\n[![cann-robot](https://cdn-img.gitcode.com/bf/ad/b7f29486a040d7b2f52bf6c78414692d7d585eb1ec628cea3eb01c9d63f68618.png?time=1755691472703)cann-robot](https://gitcode.com/cann-robot \"cann-robot\")[【docs】修改显示不正常问题 和引用aclapi的手册名称变更](https://gitcode.com/cann/oam-tools/commit/ef1df69e66adfe02cedefe345498057c6c1b694e?ref=master)\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/README.md#%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86)性能数据采集\n\n- [使用前准备](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/preparation/before_you_start.m"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "title",
       "request_url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/README.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_25e8b5998c82439080a17321.result",
@@ -66,11 +71,12 @@
         "event_id": "call_25e8b5998c82439080a17321.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/msprof_cmd/general_collect_commands.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: 1a4bf651 创建于 6月17日 历史提交\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md#msprof%E9%87%87%E9%9B%86%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4)msprof采集通用命令\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md#%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E)功能说明\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/m"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_252eb4305c954e6a9da09f02.result",
@@ -78,295 +84,381 @@
         "event_id": "call_252eb4305c954e6a9da09f02.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: 160516bc 创建于 15 小时前 历史提交\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E9%87%87%E9%9B%86ai%E4%BB%BB%E5%8A%A1%E8%BF%90%E8%A1%8C%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE)采集AI任务运行性能数据\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E)功能说明\n\nmsprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E5%91%BD%E4%BB"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": false,
+    "decisive_records_verified": true,
+    "first_source_id": "source-0001-rank-1",
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
+    "content_check_complete": true,
     "content_repairs": [],
-    "environment_substitutions": []
+    "environment_substitutions": [
+      "steps/train_one_step对应用户既有训练循环",
+      "train.py用户训练脚本",
+      "./result与/home/projects/output用户输出目录"
+    ]
   },
   "m4": {
+    "mode": "partial",
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "CANN/torch_npu/PyTorch完整配套关系未取得"
+    ]
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      0
+    ],
+    "actual_searches": 2,
+    "stop_reason": "仅完成2次搜索，预算未耗尽；不据此确认渠道不可用",
+    "budget_exhausted": false
   },
   "m6": {
-    "checked_event_ids": [],
+    "checked_event_ids": [
+      "call_bee97519a82e48ee8d831a87.result",
+      "call_19137ae3379b4b6db57d4bc9.result",
+      "call_66bd0b22b2de4b5cba3318be.result",
+      "call_3aface1e7e2c4f5ba2f8c30d.result",
+      "call_ef7e78966eba4aa8a03a6c5d.result",
+      "call_25e8b5998c82439080a17321.result",
+      "call_252eb4305c954e6a9da09f02.result"
+    ],
     "claims": [],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": true
   },
   "packet_sha256": "521dfaca001320b24ec7f21a8175334cea6f8d349c0a947a0a5fd2264349329a",
   "question": "昇腾上跑 PyTorch 想定位瓶颈，怎么用 msprof / Ascend PyTorch Profiler 采集分析？给出代码和步骤。",
   "run_id": "B-cann-glm-5_3-standard-20260921T100328",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "third_party",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "# Search Results for \"昇腾 PyTorch Profiler 性能分析 msprof 官方文档 hiascend\"\n\n## 1. [msprof-analyze/README.md-代码预览-MindStudio-Profiler ...](https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md)\n\n2025年12月30日 · 简体中文 | English 最新消息 🔹 [2025.12.30]：新增 module_statistic 功能：自动解析PyTorch模型层级结构，精准定 …\n\n**URL:** https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md\n\n---\n\n## 2. [msprof/README.md at master · Ascend/msprof · GitHub](https://github.com/Ascend/msprof/blob/master/README.md)\n\n2025年12月30日 · ℹ️ 简介 MindStudio Profiler（msProf）是面向 AI 训练与推理场景的性能分析工具，支持采集与解析 CANN 层和昇 …\n\n**URL:** https://github.com/Ascend/msprof/blob/master/README.md\n\n---\n\n## 3. [msprof/README.md-代码预览-MindStudio-Profiler:基"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0001",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "## 1. [msprof-analyze/README.md-代码预览-MindStudio-Profiler ...](https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md)\n\n2025年12月30日 · 简体中文 | English 最新消息 🔹 [2025.12.30]：新增 module_statistic 功能：自动解析PyTorch模型层级结构，精准定 …\n\n**URL:** https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
-      "url": "https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md"
+      "url": "https://gitcode.com/Ascend/msprof-analyze/blob/master/README.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "## 2. [msprof/README.md at master · Ascend/msprof · GitHub](https://github.com/Ascend/msprof/blob/master/README.md)\n\n2025年12月30日 · ℹ️ 简介 MindStudio Profiler（msProf）是面向 AI 训练与推理场景的性能分析工具，支持采集与解析 CANN 层和昇 …\n\n**URL:** https://github.com/Ascend/msprof/blob/master/README.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
-      "url": "https://github.com/Ascend/msprof/blob/master/README.md"
+      "url": "https://github.com/Ascend/msprof/blob/master/README.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "## 3. [msprof/README.md-代码预览-MindStudio-Profiler:基于昇腾 ...](https://gitcode.com/Ascend/msprof/blob/master/README.md)\n\n2025年12月30日 · msprof/README.md-代码预览-可用于定位模型训练或推理中的性能问题，提供AI任务运行性能数据、昇腾AI处理 …\n\n**URL:** https://gitcode.com/Ascend/msprof/blob/master/README.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
-      "url": "https://gitcode.com/Ascend/msprof/blob/master/README.md"
+      "url": "https://gitcode.com/Ascend/msprof/blob/master/README.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "## 4. [GitHub - Ascend/msprof](https://github.com/Ascend/msprof)\n\nmsProf 也是其他 Profiling 采集接口的基础能力，许多上层性能采集与分析能力最终都依赖 msProf 完成底层数据采集。 若希望了解昇 …\n\n**URL:** https://github.com/Ascend/msprof\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
-      "url": "https://github.com/Ascend/msprof"
+      "url": "https://github.com/Ascend/msprof",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_17b71c97a09640068291d7c2.result",
       "evidence": {
         "event_id": "call_17b71c97a09640068291d7c2.result",
         "quote": "## 5. [使用msprof-analyze工具分析性能数据-CANN8.3.RC1 ...](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html)\n\nAscend PyTorch Profiler接口采集的性能数据可以使用mstt的msprof-analyze工具进行辅助分析，也可以直接使用 MindStudio Insight  …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_bee97519a82e48ee8d831a87.result",
       "evidence": {
         "event_id": "call_bee97519a82e48ee8d831a87.result",
         "quote": "**标题**: 使用msprof-analyze工具分析性能数据-性能数据分析-模型性能调优（PyTorch）-训练场景工具快速入门-开发工具快速入门-开发工具-CANN8.3.RC1.alpha003开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
-      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html"
+      "url": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/83RC1alpha003/devaids/devtoolquickstart/atlasquick_train_0034.html",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_19137ae3379b4b6db57d4bc9.result",
       "evidence": {
         "event_id": "call_19137ae3379b4b6db57d4bc9.result",
         "quote": "````\n<h1 align=\"center\">MindStudio Profiler</h1>\n\n<div align=\"center\">\n<p><b><span style=\"font-size:24px;\">昇腾性能采集工具</span></b></p>\n\n [![快速入门](https://badgen.net/badge/快速入门/QuickStart/blue)](docs/zh/quick_start/msprof_quick_start.md)\n [![AI问答 DeepWiki](https://badgen.net/badge/AI问答/DeepWiki/blue)](https://deepwiki.com/Ascend/msprof)\n [![AI问答 ZRead](https://badgen.net/badge/AI问答/ZRead/blue)](https://zread.ai/Ascend/msprof)\n [![精确搜索](https://badgen.net/badge/精确搜索/ReadTheDocs/blue)](https://mindstudio-docs-master.readthedocs.io/zh-cn/latest/msprof/)\n [![昇腾社区](https://badgen.net/badge/昇腾社区/Community/blue)](https://www.hiascend.com/cn/developer/software/mindstudio)\n [![报告问题](https://badgen.net/bad"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0003",
-      "url": "https://github.com/Ascend/msprof/blob/master/README.md"
+      "url": "https://github.com/Ascend/msprof/blob/master/README.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "third_party",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "# Search Results for \"\"Ascend PyTorch Profiler\" torch_npu profiler ExperimentalConfig site:hiascend.com\"\n\n## 1. [torch_npu.profiler._ExperimentalConfig-torch_npu.profiler ...](https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md)\n\ntorch_npu.profiler._ExperimentalConfig-torch_npu.profiler-Python接口-Ascend Extension for PyTorch自定义API-API-TorchNPU7.3.0 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md\n\n---\n\n## 2. [torch_npu.profiler._ExperimentalConfig-torch_npu.profiler ...](https://www.hiascend.com/document/detail"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": false,
       "source_id": "source-0004",
-      "url": null
+      "url": null,
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "## 1. [torch_npu.profiler._ExperimentalConfig-torch_npu.profiler ...](https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md)\n\ntorch_npu.profiler._ExperimentalConfig-torch_npu.profiler-Python接口-Ascend Extension for PyTorch自定义API-API-TorchNPU7.3.0 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-1",
-      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md"
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/730/apiref/torchnpuCustomsapi/docs/context/torch_npu-profiler-_ExperimentalConfig.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "## 2. [torch_npu.profiler._ExperimentalConfig-torch_npu.profiler ...](https://www.hiascend.com/document/detail/zh/Pytorch/720/apiref/torchnpuCustomsapi/context/torch_npu-profiler-_ExperimentalConfig.md)\n\ntorch_npu.profiler.ProfilerLevel.None时，该参数不生效。 data_simplification ([object Object])：可选参数，开启后将在导出性能数据后 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/Pytorch/720/apiref/torchnpuCustomsapi/context/torch_npu-profiler-_ExperimentalConfig.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-2",
-      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/720/apiref/torchnpuCustomsapi/context/torch_npu-profiler-_ExperimentalConfig.md"
+      "url": "https://www.hiascend.com/document/detail/zh/Pytorch/720/apiref/torchnpuCustomsapi/context/torch_npu-profiler-_ExperimentalConfig.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "## 3. [op-plugin/docs/zh/custom_APIs/torch_npu-profiler/torch_npu](https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md)\n\n5 天之前 · torch_npu.profiler._ExperimentalConfig 产品支持情况 ... 功能说明 性能数据采集扩展参数。 用于构 …\n\n**URL:** https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-3",
-      "url": "https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md"
+      "url": "https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "## 4. [ascend_pytorch_profiler_user_guide.md - GitHub](https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md)\n\nAscend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过在PyTorch训练/在线推理脚本中 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-4",
-      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md"
+      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_edcb9317323e4e5296a2d49f.result",
       "evidence": {
         "event_id": "call_edcb9317323e4e5296a2d49f.result",
         "quote": "## 5. [pytorch/docs/zh/ascend_pytorch_profiler/ascend_pytorch ...](https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md)\n\n2024年8月21日 · 简介 Ascend PyTorch调优工具（Ascend PyTorch Profiler）是针对PyTorch框架开发的性能分析工具，通过 …\n\n**URL:** https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0004-rank-5",
-      "url": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md"
+      "url": "https://gitcode.com/Ascend/pytorch/blob/v2.7.1/docs/zh/ascend_pytorch_profiler/ascend_pytorch_profiler_user_guide.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_66bd0b22b2de4b5cba3318be.result",
       "evidence": {
         "event_id": "call_66bd0b22b2de4b5cba3318be.result",
         "quote": "# Ascend PyTorch Profiler 用户指南（完整提取）\n\n> ⚠️ **说明**：原文档末尾标注 `[content truncated]`，即源页面在 \"analysis.db数据\" 章节处被截断。以下为可获取的完整内容，缺失部分（analysis.db 详情、experimental_config/schedule 参数说明、profiler_config.json 文件说明、版本配套表等）会在文末统一标注。\n\n---\n\n## 一、工具使用导航\n\nAscend PyTorch调优工具支持性能数据采集和解析功能，可参照如下顺序使用：\n\n| 流程 | 对应章节 |\n| ---- | -------- |\n| 数据采集 | 根据实际需求任选其一，**同一进程中不可同时选用两种以上方式**：<br>• **torch_npu.profiler.profile**（推荐）：提供完整的采集接口，手动在代码中添加接口，自由选择采集内容<br>• **dynamic_profile**（推荐）：支持训练过程中随时启动采集，可不修改用户代码直接启动，方式更灵活 |\n| （可选）扩展采集功能 | • 采集并解析mstx数据<br>• 采集环境变量信息<br>• 标记性能数据采集过程<br>• 显存可视化<br>• 创建Profiler子线程采集 |\n| （可选）数据解析 | 离线解析（一般采集时会自动解析，离线解析适用于未解析的原始数据） |\n| 数据分析 | 查看性能数据目录下的结果文件，或导入 **MindStudio Insight** 工具分析 |\n\n---\n\n## "
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
-      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md"
+      "url": "https://github.com/Ascend/pytorch/blob/master/docs/zh/developer_notes/ascend_pytorch_profiler_user_guide.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_3aface1e7e2c4f5ba2f8c30d.result",
       "evidence": {
         "event_id": "call_3aface1e7e2c4f5ba2f8c30d.result",
         "quote": "````\n# torch_npu.profiler._ExperimentalConfig\n\n## 产品支持情况\n\n| 产品                               | 是否支持 |\n| ---------------------------------- | :------: |\n| <term>Ascend 950DT</term> |  √  |\n| <term>Atlas A3 训练系列产品</term> |    √     |\n| <term>Atlas A2 训练系列产品</term> |    √     |\n| <term>Atlas 训练系列产品</term>    |    √     |\n\n## 功能说明\n\n性能数据采集扩展参数。用于构造torch_npu.profiler.profile的experimental_config参数。\n\n## 函数原型\n\n```python\ntorch_npu.profiler._ExperimentalConfig(export_type=[torch_npu.profiler.ExportType.Text], profiler_level=torch_npu.profiler.ProfilerLevel.Level0, mstx=False, mstx_domain_include=[], mstx_domain_exclude=[], aic_metrics=torch_npu.profiler.AiCMetrics.AiCoreNone, l2_cache=False, op_attr=Fa"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0006",
-      "url": "https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md"
+      "url": "https://github.com/Ascend/op-plugin/blob/master/docs/zh/custom_APIs/torch_npu-profiler/torch_npu-profiler-_ExperimentalConfig.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_ef7e78966eba4aa8a03a6c5d.result",
       "evidence": {
         "event_id": "call_ef7e78966eba4aa8a03a6c5d.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/README.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: ef1df69e 创建于 8月4日 历史提交\n\n[![cann-robot](https://cdn-img.gitcode.com/bf/ad/b7f29486a040d7b2f52bf6c78414692d7d585eb1ec628cea3eb01c9d63f68618.png?time=1755691472703)cann-robot](https://gitcode.com/cann-robot \"cann-robot\")[【docs】修改显示不正常问题 和引用aclapi的手册名称变更](https://gitcode.com/cann/oam-tools/commit/ef1df69e66adfe02cedefe345498057c6c1b694e?ref=master)\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/README.md#%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86)性能数据采集\n\n- [使用前准备](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/preparation/before_you_start.m"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
-      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/README.md"
+      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/README.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_25e8b5998c82439080a17321.result",
       "evidence": {
         "event_id": "call_25e8b5998c82439080a17321.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/msprof_cmd/general_collect_commands.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: 1a4bf651 创建于 6月17日 历史提交\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md#msprof%E9%87%87%E9%9B%86%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4)msprof采集通用命令\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md#%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E)功能说明\n\nmsprof命令行工具提供了**AI任务运行性能数据**、**AI处理器系统数据**等性能数据的采集和解析能力。\n\n其中，msprof采集通用命令是性能数据采集的基础，用于提供性能数据采集时的基本信息，包括参数说明、AI任务文件、数据存放路径、自定义环境变量等。\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/m"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0008",
-      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md"
+      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/general_collect_commands.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     },
     {
-      "content_group": "",
+      "content_group": "official",
       "event_id": "call_252eb4305c954e6a9da09f02.result",
       "evidence": {
         "event_id": "call_252eb4305c954e6a9da09f02.result",
         "quote": "**标题**: oam-tools/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md-代码预览-oam-tools:基于 CANN 生态的运维与性能调优工具项目 - AtomGit\n**发布时间**: 160516bc 创建于 15 小时前 历史提交\n\n# [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E9%87%87%E9%9B%86ai%E4%BB%BB%E5%8A%A1%E8%BF%90%E8%A1%8C%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE)采集AI任务运行性能数据\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E)功能说明\n\nmsprof支持采集AI任务运行时相关的性能数据，并且在采集后可以自动进行性能数据解析和文件落盘。\n\n## [](https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md#%E5%91%BD%E4%BB"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0009",
-      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md"
+      "url": "https://gitcode.com/cann/oam-tools/blob/master/docs/zh/profiling/msprof_cmd/ai_runtime_profile_data.md",
+      "target_match": "matched",
+      "observed_defect": false,
+      "representation": "excerpt"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "可执行的采集命令或代码",
+      "分析时间线/算子瓶颈的步骤"
+    ],
+    "secondary": [
+      "前置条件与关键采集参数",
+      "结果查看方式"
+    ],
+    "version_relations": [
+      "工具与运行环境的必要版本/适用关系"
+    ]
   }
 }

@@ -6,11 +6,11 @@
         "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
         "quote": "**标题**: Example Deployment Using ONNX — NVIDIA TensorRT\n\nBack to top\n\n# Example Deployment Using ONNX[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html#example-deployment-using-onnx \"Link to this heading\")\n\n[ONNX](https://github.com/onnx/onnx/blob/main/docs/IR.md) is a framework-agnostic model format that can be exported from most major frameworks, including TensorFlow and PyTorch. TensorRT provides a library for directly converting ONNX into a TensorRT engine through the [ONNX-TRT parser](https://github.com/onnx/onnx-tensorrt).\n\nThis section walks through converting a pre-trained ResNet-50 model from the ONNX model zoo into a TensorRT e"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
@@ -18,11 +18,11 @@
         "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
         "quote": "**标题**: ONNX Opset Guide — NVIDIA TensorRT\n\nBack to top\n\n# ONNX Opset Guide[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html#onnx-opset-guide \"Link to this heading\")\n\nThis reference summarizes ONNX opset support for the TensorRT ONNX parser and points to exporter settings, operator coverage, and common import failures.\n\n## Supported ONNX and Opset Versions[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html#supported-onnx-and-opset-versions \"Link to this heading\")\n\nValues below match the [TensorRT Support Matrix](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#support-matrix) a"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
@@ -30,11 +30,11 @@
         "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
         "quote": "**标题**: Support Matrix — NVIDIA TensorRT\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#support-matrix-interactive \"Link to this heading\")\n\nThis support matrix provides filterable access to TensorRT compatibility information across all releases from 10.0.0 EA through 11.3.0. Use the three explorers below to find information about system requirements, hardware capabilities, and feature support.\n\n## Software and System Requirements[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#software-and-system-requirements \"Link to this heading\")\n\nUse this when you need to know what to i"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
@@ -42,11 +42,11 @@
         "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
         "quote": "**标题**: torch.onnx — PyTorch main documentation\n\n# torch.onnx#\n\nCreated On: Jun 10, 2025 | Last Updated On: Sep 10, 2025\n\n## Overview#\n\nOpen Neural Network eXchange (ONNX) is an open standard format for representing machine learning models. The `torch.onnx` module captures the computation graph from a native PyTorch `torch.nn.Module` model and converts it into an ONNX graph.\n\nThe exported model can be consumed by any of the many runtimes that support ONNX, including Microsoft’s ONNX Runtime.\n\nNext example shows how to export a simple model.\n\n```\nimporttorch\n\nclassMyModel(torch.nn.Module):\n    def__init__(self):\n        super(MyModel, self).__init__()\n        self.conv1 = torch.nn.Conv2d(1, 1"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.pytorch.org/docs/main/onnx.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
@@ -54,11 +54,11 @@
         "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
         "quote": "# TensorRT Runtime API Tutorial — Extracted Content\n\n## Summary\n\nThe page is **NVIDIA's official \"Using the TensorRT Runtime API\" tutorial**, covering semantic segmentation with an FCN-ResNet-101 model. It provides complete, verbatim code for **both C++ and Python** runtime workflows. The content appears **complete** — it flows from setup through engine building, C++ inference, Python inference, and references an interactive notebook, ending cleanly with no truncation indicators.\n\n**Sections found:**\n1. Using the TensorRT Runtime API (intro)\n2. Setting Up the Test Container and Building the TensorRT Engine\n3. Running an Engine\n   - C++ (with Listing 1: `tutorial-runtime.cpp`)\n   - Python (wi"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-runtime-tutorial.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
@@ -66,11 +66,11 @@
         "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
         "quote": "# trtexec: ONNX → TensorRT Engine Conversion — Extracted Content\n\n## Summary\n\nThe page is **Section 12.3 \"trtexec 工具使用\"** from a Chinese PyTorch tutorial. It covers trtexec's three main uses (engine generation, model info inspection, performance testing) with exact commands and parameters across 6 cases. **Note upfront:** the page is **navigation-heavy with content only partially present** — see the \"Completeness\" section at the end.\n\n---\n\n## 1. Headings Present\n\n- `# 12.3 trtexec 工具使用` (page title, repeated as H1)\n- `## trtexec`\n- `### 案例0：固定batchsize` (Case 0: Fixed batch size)\n- `### 案例1: 动态batchsize使用` (Case 1: Dynamic batch size)\n- `### 案例2：fp32、fp16、int8 性能比较` (Case 2: Precision compar"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "third_party",
+      "representation": "excerpt",
       "request_url": "https://tingsongyu.github.io/PyTorch-Tutorial-2nd/chapter-12/12.3-trt-trtexec.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
@@ -78,11 +78,11 @@
         "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
         "quote": "# trtexec — Extracted Command-Line Reference\n\n## Summary\n\nThe page is the **NVIDIA TensorRT 10.x \"Command-Line Programs\"** reference. The content covers the `trtexec` tool thoroughly: its three purposes, benchmarking details, engine generation, timing cache generation, and full flag tables. **Note:** The content does **not** contain any concrete example commands (no `trtexec --onnx=... --saveEngine=...` samples) — it only describes flags and refers users elsewhere for examples. The content appears **complete** for what it presents (ends with a \"Refer to…\" pointer), though the requested example commands are absent from this excerpt.\n\n---\n\n## Section Headings Present\n\n1. `Command-Line Programs"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "excerpt",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     },
     {
       "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
@@ -90,38 +90,486 @@
         "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
         "quote": "**标题**: Python API Documentation — NVIDIA TensorRT\n\n# Python API Documentation#\n\nThe TensorRT Python API enables developers in Python-based development environments, and those looking to experiment with TensorRT, to parse models (for example, from ONNX) and generate and run PLAN files.\n\nTo view API changes between releases, refer to the TensorRT GitHub repository and use the compare tool.\n\nThis section illustrates the basic usage of the Python API, assuming you are starting with an ONNX model. The onnx_resnet50.py sample illustrates this use case in more detail. For the same workflow using the C++ API, refer to C++ API Documentation.\n\nThe Python API can be accessed through the `tensorrt` mod"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/python-api-docs.html",
-      "target_match": "unknown"
+      "target_match": "matched"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Add a __main__/CLI call that invokes build_engine; the answer defines the function but then gives a run command without the entry point.",
+      "Define engine_path, height, width, d_input, d_output, and stream and add device allocation, input copy, execution, output copy, and synchronization around execute_async_v3.",
+      "Make the exported resnet50_pytorch.onnx filename feed the subsequent trtexec command; the answer currently uses resnet50/model.onnx instead."
+    ],
+    "environment_substitutions": [
+      "Replace example model, ONNX, engine, cache, and log paths with local files.",
+      "Set input names, batch sizes, and dynamic shape dimensions to the model.",
+      "Use the locally installed TensorRT/CUDA/Python environment and target GPU.",
+      "Choose precision and optional profiling flags for the deployment workload."
+    ]
   },
   "m4": {
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "Support Matrix interactive compatibility row and linkage from its CUDA 12.9/13.4 footnotes to the selected TensorRT route are not returned."
+    ],
+    "mode": "partial"
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      6
+    ]
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
+      "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+      "call_00_I6pvnSclFyLFKQWDClqG3218.result",
+      "call_00_ii2PTg66OdopZnETlxpF4997.result",
+      "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
+      "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
+      "call_00_1Eff5BB69dukpV9eQLw02555.result",
+      "call_00_azZEvyWqXK2rks9aa4mH8089.result",
+      "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+      "call_00_hLZIftPWLHMynU1uWWFN9799.result",
+      "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+      "call_00_vLM4j8Fpvnek4mopkTUY6218.result"
+    ],
+    "claims": [
+      {
+        "claim": "The tutorial presents trtexec as a command-line tool whose uses include generating serialized TensorRT engine/Plan files from ONNX.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "trtexec是官方提供的命令行工具，主要用于一下三个方面\n> - 生成模型序列化文件：由ONNX文件生成 TensorRT 引擎并序列化为 Plan文件/engine文件"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Generating serialized engines from models"
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The CSDN article describes using trtexec to convert ONNX models to TensorRT engines; the saved snippet ends before its claimed further focus.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
+            "quote": "本文详细介绍了如何使用TensorRT的trtexec工具快速将ONNX模型转换为高性能的TensorRT引擎，特别关注动"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0001-rank-5",
+        "support_evidence": [
+          {
+            "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
+            "quote": "One common approach is to use `trtexec`, a command-line tool included with TensorRT"
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The CSDN result states that the exported ONNX opset affects the minimum TensorRT requirement.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
+            "quote": "如果走 PyTorch → ONNX → TensorRT 这条路，那么 ONNX 导出时的 opset 版本决定了 TensorRT 的最低要求。 opset 11"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0003-rank-2",
+        "support_evidence": [],
+        "verdict": "unsupported"
+      },
+      {
+        "claim": "The CSDN result describes exporting trained PyTorch/TensorFlow models to ONNX before using an inference engine.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
+            "quote": "开发者可以将使用PyTorch、TensorFlow等训练好的模型导出为ONNX格式，然后在支持ONNX的推理引擎中进行部"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0003-rank-5",
+        "support_evidence": [],
+        "verdict": "unsupported"
+      },
+      {
+        "claim": "The tutorial describes --minShapes/--optShapes/--maxShapes as the dynamic input-shape range for ONNX engine building.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--minShapes=<shapes>, \n--optShapes=<shapes>, and \n--maxShapes=<shapes>: 当是onnx模型时，可指定batchsize的动态范围。"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Specify the range of input shapes with which to build the engine."
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The tutorial describes --memPoolSize as the maximum memory usable during optimization.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "–-memPoolSize=<pool_spec>: 优化过程可使用的最大内存"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Specify the maximum size of the workspace tactics allowed to be used"
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The tutorial describes precision flags --fp16/--int8/--noTF32/--best for selecting precision.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--fp16, --int8, --noTF32, and --best: 指定数据精度"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Specify network-level precision."
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The tutorial describes --skipInference as building and saving an engine without running inference.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--skipInference: 创建并保存引擎文件，不执行推理过程。"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Build and save the engine without running inference."
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The tutorial describes --loadEngine for loading an engine and --shapes for inference input shapes.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--loadEngine=<file>: 要加载的模型文件"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Load the engine from a serialized plan file instead of building it from the input ONNX model."
+          }
+        ],
+        "verdict": "supported"
+      },
+      {
+        "claim": "The tutorial claims that --timingCacheFile records per-tensor min/max values and run times for quantization analysis; the official packet only states load/save timing-cache semantics, which is insufficient to directly refute this detail.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--timingCacheFile=<file>: 记录每个tensor的最小最大值、运行时间等,可以用来分析量化效果。"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Specify the timing cache to load from and save to."
+          }
+        ],
+        "verdict": "unsupported"
+      },
+      {
+        "claim": "The tutorial presents a --batch=128 inference command; whether this is applicable depends on the engine's explicit-batch mode and TensorRT generation, which the packet does not establish.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "trtexec --loadEngine=resnet50_bs_128_fp32.engine --batch=128 --useCudaGraph --dumpProfile --dumpLayerInfo > inference.log"
+          }
+        ],
+        "independent_crosscheck": false,
+        "source_id": "source-0009",
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "If the input model is in ONNX format or the engine is built with explicit batch dimensions, use `--shapes` instead."
+          }
+        ],
+        "verdict": "unresolved"
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial lists --loadInputs for loading input values from files, with random-input generation as the default.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--loadInputs=<specs>: Load input values from files. Default is to generate random inputs."
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--loadInputs=<specs>` | Load input values from files. Default is to generate random inputs."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial groups --warmUp, --duration, and --iterations as minimum warm-up duration, inference duration, and iteration controls.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--warmUp=<duration in ms>,  热身阶段最短运行时间，单位ms\n--duration=<duration in seconds>, 测试阶段最短运行时间，单位s\n--iterations=<N>: 测试阶段最小迭代次数"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--warmUp=<duration in ms>`, `--duration=<duration in seconds>`, `--iterations=<N>` | Specify the minimum duration of the warm-up runs, the minimum duration for the inference runs, and the minimum iterations."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial describes --useCudaGraph as capturing and executing inference through a CUDA Graph.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--useCudaGraph: 采用 CUDA graph 捕获和执行推理过程"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--useCudaGraph` | Capture the inference to a CUDA Graph and run the inference by launching the graph."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial describes --noDataTransfers as disabling host/device data transfers.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--noDataTransfers: 关闭host与device之间的数据传输"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--noDataTransfers` | Turn off host-to-device and device-to-host data transfers."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial groups --dumpProfile and --exportProfile as printing and saving per-layer performance information.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--dumpProfile, --exportProfile=<file>: 打印及保存每一层性能信息"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--dumpProfile`, `--exportProfile=<file>` | Print and save the per-layer performance profile."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial groups --dumpLayerInfo and --exportLayerInfo as printing and saving per-layer engine information.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--dumpLayerInfo, --exportLayerInfo=<file>: 打印及保存每一层详细信息"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--dumpLayerInfo`, `--exportLayerInfo=<file>` | Print and save the engine layer information."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial lists --onnx as the input ONNX model path.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--onnx=<model>: onnx文件路径"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--onnx=<model>` | Specify the input ONNX model."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial lists --saveEngine as the serialized engine output path.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--saveEngine=<file>: 保存的文件输出路径"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--saveEngine=<file>` | Specify the path to save the engine."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial says --verbose turns on detailed logging.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--verbose: 是否需要打印详细信息。默认是不打印详细信息。"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--verbose` | Turn on verbose logging."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial says --verbose defaults to not printing detailed information.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--verbose: 是否需要打印详细信息。默认是不打印详细信息。"
+          }
+        ],
+        "support_evidence": [],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "The tutorial lists --shapes as the runtime input tensor shape.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "--shapes=<shapes>:指定输入张量的形状"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "`--shapes=<shapes>` | Specify the input shapes with which to run the inference."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "trtexec tests engines using random or supplied input.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "模型性能测试：测试 TensorRT 引擎基于随机输入或给定输入下的性能"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Benchmarking networks on random or user-provided input data"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": false
+      },
+      {
+        "source_id": "source-0009",
+        "claim": "trtexec displays per-layer information of ONNX files or Plan files; archived official layer flag confirms engine information but does not independently establish the whole ONNX-file assertion.",
+        "claim_evidence": [
+          {
+            "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
+            "quote": "查看模型文件信息：查看 ONNX文件或 Plan 文件的网络逐层信息"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
+            "quote": "Print and save the engine layer information."
+          }
+        ],
+        "verdict": "unsupported",
+        "independent_crosscheck": false
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "no_third_party_material": false,
+    "non_prescriptive_snapshots": [
+      "The third-party tutorial reports producer PyTorch 1.12.0, opset 13, SM 8.6/8.9, and empirical throughput/latency; these are observations from its example, not universal compatibility claims.",
+      "The Runebook search result ends before preserving an explanation; it is excluded from the claim inventory rather than completed by inference."
+    ]
   },
   "packet_sha256": "9ebe45da16b0631f0bbf529891e3cc6eaafcf7656c0a8c3e34d21bc2dd9b6d0d",
   "question": "训练好的 PyTorch 模型怎么导出成 TensorRT engine 部署？给出 PyTorch→ONNX→TensorRT 完整步骤和命令。",
@@ -140,84 +588,84 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html",
       "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
       "evidence": {
         "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
         "quote": "## 1. [Example Deployment Using ONNX — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html)\n\n2026年9月8日 · TensorRT provides a library for directly converting ONNX into a TensorRT engine through the ONNX-TRT parser. …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:tingsongyu-trtexec",
       "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
       "evidence": {
         "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
         "quote": "## 2. [12.3 trtexec 工具使用 · PyTorch实用教程（第二版 ...](https://tingsongyu.github.io/PyTorch-Tutorial-2nd/chapter-12/12.3-trt-trtexec.html)\n\n2026年8月19日 · 本小节介绍trtexec工具的使用，trtexec可以实现onnx模型导出trt模型、耗时分析和模型优化分析等功能，本节将 …\n\n**URL:** https://tingsongyu.github.io/PyTorch-Tutorial-2nd/chapter-12/12.3-trt-trtexec.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
       "url": "https://tingsongyu.github.io/PyTorch-Tutorial-2nd/chapter-12/12.3-trt-trtexec.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-guide.html",
       "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
       "evidence": {
         "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
         "quote": "## 3. [Quick Start Guide — NVIDIA TensorRT - NVIDIA …](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-guide.html)\n\n2026年9月8日 · ONNX conversion results in a singular TensorRT engine that allows less overhead than …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-guide.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:csdn-wenku-column-39mx6343djt",
       "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
       "evidence": {
         "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
         "quote": "## 4. [从Onnx到TensorRT Engine：手把手教你用trtexec转换模型 ...](https://wenku.csdn.net/column/39mx6343djt)\n\n2026年4月6日 · 本文将聚焦TensorRT的核心价值——如何将训练好的Onnx模型高效转换为TensorRT Engine，并构建可复用的Python …\n\n**URL:** https://wenku.csdn.net/column/39mx6343djt\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://wenku.csdn.net/column/39mx6343djt"
     },
     {
-      "content_group": "",
+      "content_group": "tp:csdn-weixin26891599",
       "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
       "evidence": {
         "event_id": "call_00_2DAJfQHiY0k7ANSUWNW80887.result",
         "quote": "## 5. [别再手动转模型了！用TensorRT的trtexec工具，5分钟搞定 ...](https://blog.csdn.net/weixin_26891599/article/details/161133598)\n\n2026年8月17日 · 本文详细介绍了如何使用TensorRT的trtexec工具快速将ONNX模型转换为高性能的TensorRT引擎，特别关注动 …\n\n**URL:** https://blog.csdn.net/weixin_26891599/article/details/161133598\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://blog.csdn.net/weixin_26891599/article/details/161133598"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html",
       "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
       "evidence": {
         "event_id": "call_00_UtYDg4dwpBBHPLLVyUS82544.result",
         "quote": "**标题**: Example Deployment Using ONNX — NVIDIA TensorRT\n\nBack to top\n\n# Example Deployment Using ONNX[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html#example-deployment-using-onnx \"Link to this heading\")\n\n[ONNX](https://github.com/onnx/onnx/blob/main/docs/IR.md) is a framework-agnostic model format that can be exported from most major frameworks, including TensorFlow and PyTorch. TensorRT provides a library for directly converting ONNX into a TensorRT engine through the [ONNX-TRT parser](https://github.com/onnx/onnx-tensorrt).\n\nThis section walks through converting a pre-trained ResNet-50 model from the ONNX model zoo into a TensorRT e"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-onnx-deployment.html"
     },
@@ -234,96 +682,96 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
       "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
       "evidence": {
         "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
         "quote": "## 1. [Support Matrix — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html)\n\n2026年9月8日 · This support matrix provides filterable access to TensorRT compatibility information across all releases from 10.0.0 …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-1",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:csdn-weixin34246529",
       "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
       "evidence": {
         "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
         "quote": "## 2. [TensorRT与CUDA版本对应：驱动、显卡到ONNX推理部署](https://blog.csdn.net/weixin_34246529/article/details/165652771)\n\n5 天之前 · 如果走 PyTorch → ONNX → TensorRT 这条路，那么 ONNX 导出时的 opset 版本决定了 TensorRT 的最低要求。 opset 11 …\n\n**URL:** https://blog.csdn.net/weixin_34246529/article/details/165652771\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-2",
       "url": "https://blog.csdn.net/weixin_34246529/article/details/165652771"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html",
       "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
       "evidence": {
         "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
         "quote": "## 3. [ONNX Opset Guide — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html)\n\n2026年9月8日 · ONNX Opset Guide # This reference summarizes ONNX opset support for the TensorRT ONNX parser and points to …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-3",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:www.sekorm.com/doc/578261821.html",
       "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
       "evidence": {
         "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
         "quote": "## 4. [NVIDIA TensorRT Support Matrix | NVIDIA Docs](https://www.sekorm.com/doc/578261821.html)\n\n2025年7月15日 · NVIDIA TensorRT支持矩阵文档概述了TensorRT在不同平台和软件上的支持特性。 文档详细列出了支持的CUDA版 …\n\n**URL:** https://www.sekorm.com/doc/578261821.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-4",
       "url": "https://www.sekorm.com/doc/578261821.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:csdn-wenku-doc-7gx3idd463",
       "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
       "evidence": {
         "event_id": "call_00_I6pvnSclFyLFKQWDClqG3218.result",
         "quote": "## 5. [ONNX与TensorRT版本兼容性及opset对应关系解析 - CSDN文库](https://wenku.csdn.net/doc/7gx3idd463)\n\n2025年12月31日 · 开发者可以将使用PyTorch、TensorFlow等训练好的模型导出为ONNX格式，然后在支持ONNX的推理引擎中进行部 …\n\n**URL:** https://wenku.csdn.net/doc/7gx3idd463\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-5",
       "url": "https://wenku.csdn.net/doc/7gx3idd463"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html",
       "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
       "evidence": {
         "event_id": "call_00_ii2PTg66OdopZnETlxpF4997.result",
         "quote": "**标题**: ONNX Opset Guide — NVIDIA TensorRT\n\nBack to top\n\n# ONNX Opset Guide[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html#onnx-opset-guide \"Link to this heading\")\n\nThis reference summarizes ONNX opset support for the TensorRT ONNX parser and points to exporter settings, operator coverage, and common import failures.\n\n## Supported ONNX and Opset Versions[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html#supported-onnx-and-opset-versions \"Link to this heading\")\n\nValues below match the [TensorRT Support Matrix](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#support-matrix) a"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/reference/onnx-opset-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html",
       "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
       "evidence": {
         "event_id": "call_00_hu8NcoJJtbNh3Co5B4ei8697.result",
         "quote": "**标题**: Support Matrix — NVIDIA TensorRT\n\nBack to top\n\n# Support Matrix[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#support-matrix-interactive \"Link to this heading\")\n\nThis support matrix provides filterable access to TensorRT compatibility information across all releases from 10.0.0 EA through 11.3.0. Use the three explorers below to find information about system requirements, hardware capabilities, and feature support.\n\n## Software and System Requirements[#](https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html#software-and-system-requirements \"Link to this heading\")\n\nUse this when you need to know what to i"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/support-matrix.html"
     },
@@ -340,108 +788,108 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.pytorch.wiki/en/onnx.html",
       "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
       "evidence": {
         "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
         "quote": "## 1. [torch.onnx — PyTorch 1.11.0 documentation](http://docs.pytorch.wiki/en/onnx.html)\n\n2022年3月27日 · The torch.onnx module can export PyTorch models to ONNX. The model can then be consumed by any of the …\n\n**URL:** http://docs.pytorch.wiki/en/onnx.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-1",
       "url": "http://docs.pytorch.wiki/en/onnx.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.pytorch.org/docs/main/onnx.html",
       "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
       "evidence": {
         "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
         "quote": "## 2. [torch.onnx — PyTorch main documentation](https://docs.pytorch.org/docs/main/onnx.html)\n\n2025年6月10日 · The torch.export-based ONNX exporter is the newest exporter for PyTorch 2.6 and newer. torch.export engine is …\n\n**URL:** https://docs.pytorch.org/docs/main/onnx.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-2",
       "url": "https://docs.pytorch.org/docs/main/onnx.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:runebook-opset",
       "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
       "evidence": {
         "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
         "quote": "## 3. [模型部署利器：opset_version 参数在 PyTorch ONNX 转换中 ...](https://runebook.dev/zh/docs/pytorch/onnx_dynamo/torch.onnx.OnnxRegistry.opset_version)\n\n2025年12月6日 · 这个设置在将你的 PyTorch 模型导出为 ONNX (Open Neural Network Exchange) 格式时非常重要。 它决定了导出的 …\n\n**URL:** https://runebook.dev/zh/docs/pytorch/onnx_dynamo/torch.onnx.OnnxRegistry.opset_version\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 3,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-3",
       "url": "https://runebook.dev/zh/docs/pytorch/onnx_dynamo/torch.onnx.OnnxRegistry.opset_version"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.pytorch.ac.cn/docs/2.14/onnx.html",
       "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
       "evidence": {
         "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
         "quote": "## 4. [torch.onnx — PyTorch 2.14 文档 - PyTorch 文档](https://docs.pytorch.ac.cn/docs/2.14/onnx.html)\n\n2025年6月10日 · 概述 # Open Neural Network eXchange (ONNX) 是一种用于表示机器学习模型的开放标准格式。 torch.onnx 模块从 …\n\n**URL:** https://docs.pytorch.ac.cn/docs/2.14/onnx.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-4",
       "url": "https://docs.pytorch.ac.cn/docs/2.14/onnx.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.pytorch.org/docs/main/onnx_export.html",
       "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
       "evidence": {
         "event_id": "call_00_1TXWL6x11MmwsKPH2Mot0086.result",
         "quote": "## 5. [torch.export-based ONNX Exporter — PyTorch main documentation](https://docs.pytorch.org/docs/main/onnx_export.html)\n\n2025年6月10日 · This method provides a convenient wrapper around torch.onnx.export that automatically uses the example …\n\n**URL:** https://docs.pytorch.org/docs/main/onnx_export.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 3,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0006-rank-5",
       "url": "https://docs.pytorch.org/docs/main/onnx_export.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.pytorch.org/docs/main/onnx.html",
       "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
       "evidence": {
         "event_id": "call_00_1Eff5BB69dukpV9eQLw02555.result",
         "quote": "**标题**: torch.onnx — PyTorch main documentation\n\n# torch.onnx#\n\nCreated On: Jun 10, 2025 | Last Updated On: Sep 10, 2025\n\n## Overview#\n\nOpen Neural Network eXchange (ONNX) is an open standard format for representing machine learning models. The `torch.onnx` module captures the computation graph from a native PyTorch `torch.nn.Module` model and converts it into an ONNX graph.\n\nThe exported model can be consumed by any of the many runtimes that support ONNX, including Microsoft’s ONNX Runtime.\n\nNext example shows how to export a simple model.\n\n```\nimporttorch\n\nclassMyModel(torch.nn.Module):\n    def__init__(self):\n        super(MyModel, self).__init__()\n        self.conv1 = torch.nn.Conv2d(1, 1"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0007",
       "url": "https://docs.pytorch.org/docs/main/onnx.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-runtime-tutorial.html",
       "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
       "evidence": {
         "event_id": "call_00_azZEvyWqXK2rks9aa4mH8089.result",
         "quote": "# TensorRT Runtime API Tutorial — Extracted Content\n\n## Summary\n\nThe page is **NVIDIA's official \"Using the TensorRT Runtime API\" tutorial**, covering semantic segmentation with an FCN-ResNet-101 model. It provides complete, verbatim code for **both C++ and Python** runtime workflows. The content appears **complete** — it flows from setup through engine building, C++ inference, Python inference, and references an interactive notebook, ending cleanly with no truncation indicators.\n\n**Sections found:**\n1. Using the TensorRT Runtime API (intro)\n2. Setting Up the Test Container and Building the TensorRT Engine\n3. Running an Engine\n   - C++ (with Listing 1: `tutorial-runtime.cpp`)\n   - Python (wi"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0008",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/getting-started/quick-start-runtime-tutorial.html"
     },
     {
-      "content_group": "",
+      "content_group": "tp:tingsongyu-trtexec",
       "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
       "evidence": {
         "event_id": "call_00_vFYL034y1GDJcibI9Mqi6398.result",
         "quote": "# trtexec: ONNX → TensorRT Engine Conversion — Extracted Content\n\n## Summary\n\nThe page is **Section 12.3 \"trtexec 工具使用\"** from a Chinese PyTorch tutorial. It covers trtexec's three main uses (engine generation, model info inspection, performance testing) with exact commands and parameters across 6 cases. **Note upfront:** the page is **navigation-heavy with content only partially present** — see the \"Completeness\" section at the end.\n\n---\n\n## 1. Headings Present\n\n- `# 12.3 trtexec 工具使用` (page title, repeated as H1)\n- `## trtexec`\n- `### 案例0：固定batchsize` (Case 0: Fixed batch size)\n- `### 案例1: 动态batchsize使用` (Case 1: Dynamic batch size)\n- `### 案例2：fp32、fp16、int8 性能比较` (Case 2: Precision compar"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "third_party",
+      "relevant": true,
       "source_id": "source-0009",
       "url": "https://tingsongyu.github.io/PyTorch-Tutorial-2nd/chapter-12/12.3-trt-trtexec.html"
     },
@@ -458,103 +906,114 @@
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html",
       "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
       "evidence": {
         "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
         "quote": "## 1. [Command-Line Programs — NVIDIA TensorRT](https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html)\n\n2026年5月23日 · If you have a model saved as an ONNX file, you can use the trtexec tool to test the performance of running …\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-1",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:github.com/nvidia/tensorrt/tree/main/samples/trtexec",
       "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
       "evidence": {
         "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
         "quote": "## 2. [TensorRT/samples/trtexec at main · NVIDIA/TensorRT · GitHub](https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec)\n\n2026年3月10日 · trtexec can be used to build engines, using different TensorRT features (see command line arguments), and run …\n\n**URL:** https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-2",
       "url": "https://github.com/NVIDIA/TensorRT/tree/main/samples/trtexec"
     },
     {
-      "content_group": "",
+      "content_group": "official:developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html",
       "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
       "evidence": {
         "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
         "quote": "## 3. [Command-Line Programs — NVIDIA TensorRT 10.10.10](https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html)\n\n2025年7月11日 · If you have a model saved as an ONNX file, you can use the trtexec tool to test the performance of running …\n\n**URL:** https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-3",
       "url": "https://developer.nvidia.com/docs/drive/drive-os/7.0.3/public/drive-os-tensorrt-developer-guide/command-line-programs.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:developer.nvidia.cn/blog/tensorrt-trtexec-cn/",
       "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
       "evidence": {
         "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
         "quote": "## 4. [17. TensorRT 的命令行程序 - NVIDIA 技术博客](https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/)\n\nA.3.1. trtexec 示例目录中包含一个名为 trtexec 的命令行包装工具。 trtexec 是一种无需开发自己的应用程序 …\n\n**URL:** https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-4",
       "url": "https://developer.nvidia.cn/blog/tensorrt-trtexec-cn/"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/",
       "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
       "evidence": {
         "event_id": "call_00_hLZIftPWLHMynU1uWWFN9799.result",
         "quote": "## 5. [NVIDIA TensorRT Documentation](https://docs.nvidia.com/deeplearning/tensorrt/latest/)\n\n2026年9月8日 · NVIDIA® TensorRT™ is an SDK for optimizing deep learning inference on NVIDIA GPUs.\n\n**URL:** https://docs.nvidia.com/deeplearning/tensorrt/latest/\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 4,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0010-rank-5",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html",
       "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
       "evidence": {
         "event_id": "call_00_iPWI165Wv5Th6aD2vtBV6735.result",
         "quote": "# trtexec — Extracted Command-Line Reference\n\n## Summary\n\nThe page is the **NVIDIA TensorRT 10.x \"Command-Line Programs\"** reference. The content covers the `trtexec` tool thoroughly: its three purposes, benchmarking details, engine generation, timing cache generation, and full flag tables. **Note:** The content does **not** contain any concrete example commands (no `trtexec --onnx=... --saveEngine=...` samples) — it only describes flags and refers users elsewhere for examples. The content appears **complete** for what it presents (ends with a \"Refer to…\" pointer), though the requested example commands are absent from this excerpt.\n\n---\n\n## Section Headings Present\n\n1. `Command-Line Programs"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0011",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/reference/command-line-programs.html"
     },
     {
-      "content_group": "",
+      "content_group": "official:docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/python-api-docs.html",
       "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
       "evidence": {
         "event_id": "call_00_vLM4j8Fpvnek4mopkTUY6218.result",
         "quote": "**标题**: Python API Documentation — NVIDIA TensorRT\n\n# Python API Documentation#\n\nThe TensorRT Python API enables developers in Python-based development environments, and those looking to experiment with TensorRT, to parse models (for example, from ONNX) and generate and run PLAN files.\n\nTo view API changes between releases, refer to the TensorRT GitHub repository and use the compare tool.\n\nThis section illustrates the basic usage of the Python API, assuming you are starting with an ONNX model. The onnx_resnet50.py sample illustrates this use case in more detail. For the same workflow using the C++ API, refer to C++ API Documentation.\n\nThe Python API can be accessed through the `tensorrt` mod"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0012",
       "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/inference-library/python-api-docs.html"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "Export a trained PyTorch model to ONNX with a concrete torch.onnx.export procedure and inputs.",
+      "Convert ONNX to a TensorRT engine with executable trtexec and/or TensorRT Python API commands, including shape and precision handling.",
+      "Deploy/run the serialized engine with concrete runtime API calls or commands."
+    ],
+    "secondary": [
+      "State prerequisites, unsupported-operator/debugging guidance, and engine portability constraints."
+    ],
+    "version_relations": [
+      "PyTorch exporter and ONNX opset/package compatibility.",
+      "ONNX opset/package and TensorRT compatibility.",
+      "TensorRT and CUDA compatibility.",
+      "TensorRT and target-GPU compute capability/engine portability compatibility."
+    ]
   }
 }

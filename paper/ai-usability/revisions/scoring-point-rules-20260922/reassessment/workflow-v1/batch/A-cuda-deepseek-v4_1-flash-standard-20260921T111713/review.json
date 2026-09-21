@@ -1,0 +1,11 @@
+{
+  "run_id": "A-cuda-deepseek-v4_1-flash-standard-20260921T111713",
+  "reviewer": "root",
+  "findings_resolved": true,
+  "review_scope": "逐项核查 M1 M2 M3 M4 M5 M6 M7 M8 M9 M10 M11。核对固定packet全部检索/抓取、检索前与最终回答；PyTorch导出、ONNX/opset、TensorRT构建/运行、CUDA/GPU关系；24条第三方断言及不纳入的残片/经验观察。",
+  "limitations": "未执行硬件测试，非全面专家认证。M6 engine batch模式/代际与M7精确API/Jetson适用性在固定材料内无法裁决，保留unscorable；M11不计算。",
+  "assessment_sha256": "c7f4587adb6373f3d3851679261562046f5aa506e261652fd863847edbae7a06",
+  "facts_sha256": "fa20ab2618b317e765eaebccc421a937c58fc09734bc8fa209590e85cec5e6bf",
+  "check_report_sha256": "cc72b5d19416304f714f63d59940318d75102fb83e3295e07e3e3c014427c687",
+  "packet_sha256": "9ebe45da16b0631f0bbf529891e3cc6eaafcf7656c0a8c3e34d21bc2dd9b6d0d"
+}

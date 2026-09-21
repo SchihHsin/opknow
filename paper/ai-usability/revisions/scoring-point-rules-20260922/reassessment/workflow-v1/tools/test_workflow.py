@@ -43,4 +43,35 @@ class WorkflowGateTests(unittest.TestCase):
         (d / "assessment.json").unlink()
         self.assertEqual(progress.status(rid, d), "prepared")
 
+    def test_discover_ignores_fresh_and_rejected_and_accepts_aliases(self):
+        root = Path(tempfile.mkdtemp())
+        formal = root / "batch" / "run"
+        formal.parent.mkdir(parents=True)
+        shutil.copytree(SMOKE, formal)
+        review = formal / "review.json"
+        obj = json.loads(review.read_text())
+        obj["review_scope"] = "Per-metric review: " + " ".join(f"M{i}" for i in range(1, 12))
+        review.write_text(json.dumps(obj))
+        # Archived products may use these explicit names.
+        (formal / "check.json").rename(formal / "check-report.json")
+        (formal / "receipt.json").rename(formal / "review-receipt.json")
+        scratch = root / "fresh-b-glm" / "duplicate"
+        scratch.parent.mkdir()
+        shutil.copytree(SMOKE, scratch)
+        rejected = root / "rejected-history" / "duplicate-2"
+        rejected.parent.mkdir()
+        shutil.copytree(SMOKE, rejected)
+        found = consolidate.discover(root)
+        self.assertEqual(set(found), {"synthetic-run-1"})
+        self.assertEqual(progress.status("synthetic-run-1", found["synthetic-run-1"]), "parent_reviewed")
+
+    def test_duplicate_formal_runs_still_fail(self):
+        root = Path(tempfile.mkdtemp())
+        for name in ("batch", "pilot"):
+            d = root / name / "run"
+            d.parent.mkdir(parents=True)
+            shutil.copytree(SMOKE, d)
+        with self.assertRaises(consolidate.GateError):
+            consolidate.discover(root)
+
 if __name__ == "__main__": unittest.main()
