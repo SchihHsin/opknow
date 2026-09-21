@@ -1,0 +1,266 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "E-cann-kimi-k3-2-standard-20260921T104302",
+  "process_sha256": "763d8c278e1aa14e547f7c55d4d9abb80dc8195cffb80cda16edca0966859fb0",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 4,
+      "reason": "First query rank2 related official AI Core Error guide.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_504d325e.result",
+          "quote": "## 2. [AI Core Error问题现象描述-CANN8.2.RC1-昇腾社区](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/troubleshooting/troubleshooting_0004.html)\n\n本文主要以开发者在执行推理、训练过程中可能遇到的各类异常故障现象为入口，提供自助式问题定位、问题处理方法，方便开发者快 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/troubleshooting/troubleshooting_0004.html\n\n--"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3.7142857142857144,
+      "reason": "Seven official targets including identified official log-guide reproduction: four direct bodies5, three title/ratings-only2. No independent completeness certification.",
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/troubleshooting/troubleshooting_0004.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900beta2/maintenref/troubleshooting/atlaserrorcode_15_0314.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/maintenref/troubleshooting/troubleshooting_0004.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0314.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/850alpha001/maintenref/logreference/logreference_0002.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/apiref/envref/envref_07_0109.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://zhuanlan.zhihu.com/p/614503563",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_083676bd.result",
+          "quote": "**标题**: AI Core Error问题现象描述-AI Core Error问题定位专题-典型故障专题-故障处理-参考-CANN8.2.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/troubleshooting/troubleshooting_0004.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1/maintenref/troubleshooting/troubleshooting_0004.html)\n\n# AI Core Error问题现象描述\n\n用户在执行任务过程中出现aicore/aivector执行失败后报错退出，打屏日志错误码为EZ9999，且日志中包含“**there is an aivec error exception**”或“**there is an aicore error exception**”；或者plog日志中存在报错日志“**Aicore kernel execute failed**”。\n\n**打屏报错示例如下所示**：\n\n```\n-----------------------------------------\n   Ascend Error Message:\n-----------------------------------------\nEZ9999: Inner E"
+        },
+        {
+          "event_id": "WebFetch_3_86fa1995.result",
+          "quote": "**标题**: E*9*** Inner Error-错误码参考-故障处理-参考-CANN9.0.0-beta.2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_4_4791d0cc.result",
+          "quote": "**标题**: AI Core Error问题现象描述-AI Core Error问题定位专题-典型故障专题-故障处理-参考-CANN8.1.RC1开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/maintenref/troubleshooting/troubleshooting_0004.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1beta1/maintenref/troubleshooting/troubleshooting_0004.html)\n\n# AI Core Error问题现象描述\n\n用户在执行任务过程中出现aicore/aivector执行失败后报错退出，打屏日志错误码为EZ9999，且日志中包含“**there is an aivec error exception**”或“**there is an aicore error exception**”；或者plog日志中存在报错日志“**Aicore kernel execute failed**”。\n\n**打屏报错示例如下所示**：\n\n```\n-----------------------------------------\n   Ascend Error Message:\n-----------------------------------------\nEZ999"
+        },
+        {
+          "event_id": "WebFetch_5_13b6f654.result",
+          "quote": "**标题**: E*9*** Inner Error-错误码参考-故障处理-维护参考-CANN商用版8.0.RC2开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_7_f67073a7.result",
+          "quote": "**标题**: 查看日志（Ascend EP标准形态）-日志参考-参考-CANN8.5.0.alpha001开发文档-昇腾社区\n\n文档评分\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        },
+        {
+          "event_id": "WebFetch_8_b7c1d335.result",
+          "quote": "**标题**: ASCEND_GLOBAL_LOG_LEVEL-日志-辅助功能-环境变量参考-CANN8.0.RC2.alpha002开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/apiref/envref/envref_07_0109.html)[](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC2alpha002/apiref/envref/envref_07_0109.html)\n\n# ASCEND_GLOBAL_LOG_LEVEL\n\n#### 功能描述\n\n设置应用类日志的日志级别及各模块日志级别，仅支持调试日志。\n\n取值为：\n\n- 0：对应DEBUG级别。\n- 1：对应INFO级别。\n- 2：对应WARNING级别。\n- 3：对应ERROR级别，默认为ERROR级别。\n- 4：对应NULL级别，不输出日志。\n- 其他值为非法值。\n\n<!--THE END-->\n\n- 设置的值仅在当前shell下生效。\n- 通过执行**echo $ASCEND_GLOBAL_LOG_LEVEL**命令可以查看环境变量设置的日志级别。\n- 若环境变量未配置或配置为非法值或配置为空，采用默认日志级别。\n- 设置为DEBUG级别后，可能会因为日志流量过大影响业务性能。\n\n#### 配置示例\n\n```\nexport ASCEND_GLOBAL_LOG_LEVEL=1\n"
+        },
+        {
+          "event_id": "WebFetch_10_2fb13ebf.result",
+          "quote": "**标题**: 带你掌握如何查看并读懂昇腾平台的应用日志 - 知乎\n**发布时间**: 发布于 2023-03-16 15:31 ・ 广东\n\n# 带你掌握如何查看并读懂昇腾平台的应用日志\n\n> **摘要：**本文介绍了昇腾平台日志分类、日志级别设置、日志内容格式，以及如何获取日志文件的方法。\n\n本文分享自[华为云社区](https://zhida.zhihu.com/search?content_id=224687810&content_type=Article&match_order=1&q=%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%A4%BE%E5%8C%BA&zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3OTAxMzE0OTgsInEiOiLljY7kuLrkupHnpL7ljLoiLCJ6aGlkYV9zb3VyY2UiOiJlbnRpdHkiLCJjb250ZW50X2lkIjoyMjQ2ODc4MTAsImNvbnRlbnRfdHlwZSI6IkFydGljbGUiLCJtYXRjaF9vcmRlciI6MSwiemRfdG9rZW4iOm51bGx9.kagpRMqv3DjF3I1_gytsCONhotnCcBq6QD15BShno_U&zhida_source=entity)《[如何查看并读懂昇腾平台的应用日志](https://link.zhihu.com/?target=https%3A%2F%2Fbbs.huaw"
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official sources explain first-error fields, log paths/collection/levels and example symptoms; root-cause isolation and specific operator/HCCL/dump remediation steps remain absent from acquired official bodies.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_083676bd.result",
+          "quote": "**报错日志解读：**\n\n- **chipId、dieId**：分别表示报错芯片chipId及dieid，可用于判定是否固定chipId报错；\n- **core id：**表示报错芯片核id，可用于判定是否在同一个core上执行报错；\n- **errcode**、**errorStr**：分别表示AI Core Error的报错错误码、错误描述；\n- **fault kernel_name/fault kernel info ext：**表示报错kernel名字，可用于查看报错算子。\n  \n  异步任务执行场景下，例如连续下发多个算子执行任务，可能会有多个算子报错，错误信息中可能包含多个算子错误，用户需从首报错算子开始排查问题。"
+        },
+        {
+          "event_id": "WebFetch_10_2fb13ebf.result",
+          "quote": "这类日志生成时默认存放在Device侧/var/log/npu/slog路径下，需要在Host侧通过msnpureport工具将其导出到Host侧再进行查看。\n\n命令举例：\n\n```text\n$Driver_HOME/driver/tools/msnpureport -a\n```\n\n通过msnpureport工具导出到Host侧后，系统类日志按Device侧"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Product support for log-level setting and version-labelled error examples are present, but full diagnostic CANN/driver tool applicability is absent.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_8_b7c1d335.result",
+          "quote": "#### 支持的型号\n\nAtlas 200/300/500 推理产品\n\nAtlas 训练系列产品\n\nAtlas 推理系列产品\n\nAtlas A2训练系列产品\n\nAtlas 200/500 A2推理产品"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Three independent third-party content groups after deduplicating original/reproductions and excluding official-author log tutorial mirrors.",
+      "observations": {
+        "possible_counts": [
+          3
+        ]
+      },
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_504d325e.result",
+          "quote": "## 4. [故障排查方法论：CANN日志分析与常见错误代码解读](https://devpress.csdn.net/v1/article/detail/157128456)\n\n2026年1月19日 · 当终端屏幕上滚动出现一连串红色的 EZ9999 或 ACL Stream Synchronize Failed 报错时，那种无力感是真实的。  …\n\n**URL:** https://devpress.csdn.net/v1/article/detail/157128456\n\n---\n\n## 5. [昇腾AI故障定位神器：oam-tools全解析-CSDN博客](https://blog.csdn.net/love_hibor1/article/details/157812122)\n\n2026年2月6日 · oam-tools是华为昇腾CANN平台为开发者提供的一套故障定位工具集，专门用于昇腾AI处理器的运维管理和故障诊断 …\n\n**URL:** https://blog.csdn.net/love_hibor1/article/details/157812122\n\n---\n\n*Found 5 results • Provider: 0 • Search performed on 2026-09-21*"
+        },
+        {
+          "event_id": "WebSearch_2_eb779b89.result",
+          "quote": "## 3. [Ascend 950 芯片错误码怎么查：从 EE9999/EI0002/507001 ...](https://juejin.cn/post/7683729270129197102)\n\n2026年9月10日 · 三层编码各查各的 第 1 层：字母前缀码 = 组件定位。 CANN Runtime 有两层错误码：EE 系列（Runtime 核心层） …\n\n**URL:** https://juejin.cn/post/7683729270129197102\n\n---\n\n## 4. [Ascend 950 芯片错误码怎么查：从 EE9999/EI0002/507001 ...](https://hwcomputing.csdn.net/6aa2674061de6467390e4953.html)\n\n2026年9月10日 · 三层编码各查各的 第 1 层：字母前缀码 = 组件定位。 CANN Runtime 有两层错误码：EE 系列（Runtime 核心层） …\n\n**URL:** https://hwcomputing.csdn.net/6aa2674061de6467390e4953.html\n\n---\n\n## 5. [故障排查方法论：CANN日志分析与常见错误代码解读 ...](https://blog.csdn.net/qq_46207024/article/details/157128456)\n\n2026年1月19日 · 当终端屏幕上滚动出现一连串红色的 EZ9999 或 ACL Stream Synchronize Failed 报错时，那"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Log-level numeric mapping is independently supported. Remaining precise path, causal frequency, API, threshold and repair assertions were checked across the fixed packet and lack adequate support; no confirmed version-applicable contradiction. Unsupported does not mean false.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_9_438b3fac.result",
+          "quote": "CANN提供了灵活的日志级别控制，通过环境变量 `ASCEND_GLOBAL_LOG_LEVEL` 进行设置：\n\n- `3` (ERROR)：默认级别，仅记录严重错误。生产环境推荐。\n- `1` (INFO)：记录关键流程节点。排查逻辑问题时推荐。\n- `0` (DEBUG)：记录所有细节，包括每个算子的输入输出描述。**慎用**，这会产生GB级别的日志，严重拖慢运行速度，仅在定位“疑难杂症”时开启。\n\n此外，还可以通过 `ASCEND_SLOG_PRINT_TO_STDOUT=1` 让日志直接输出到终端，省去来回切换文件的麻烦。\n\n### [](https://blog.csdn.net/qq_46207024/article/details/157128456)[]("
+        },
+        {
+          "event_id": "WebFetch_8_b7c1d335.result",
+          "quote": "取值为：\n\n- 0：对应DEBUG级别。\n- 1：对应INFO级别。\n- 2：对应WARNING级别。\n- 3：对应ERROR级别，默认为ERROR级别。\n- 4：对应NULL级别，不输出日志。\n- 其他值为非法值。\n\n<!--THE END-->\n\n- 设置的值仅在当前shell下生效。\n- 通过执行**echo $ASCEND_GLOBAL_LOG_LEVEL**命令可以查"
+        }
+      ]
+    },
+    "M7": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Prior has supported log-level and first-error fragments, but the concrete device-log collection step uses msnpureport -g error as collection. Archived official-author guide explicitly identifies -g as system-level setting and -a as export: key collection method is wrong. Other unverified dump/environment claims are not treated as proven false.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "- Device 侧日志通过 `msnpureport -g error` 或用 AOE/AICPU 相关 dump 工具收集。\n3. **dump 数据定位算子问题**：算子编译/执行失败时可开 `export ASCEND_OP_PRE"
+        },
+        {
+          "event_id": "WebFetch_10_2fb13ebf.result",
+          "quote": "EP形态通过msnpureport工具设置系统类日志级别。例如：\n\n```text\n$Driver_HOME/driver/tools/msnpureport –g info\n```\n\n## **05 更多介绍**\n\n关于昇腾平台"
+        },
+        {
+          "event_id": "WebFetch_10_2fb13ebf.result",
+          "quote": "命令举例：\n\n```text\n$Driver_HOME/driver/tools/msnpureport -a\n```\n\n通过msnpureport工具导出到Host侧后"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 1,
+      "reason": "Actual3 searches+8 fetches=11 dispatches; final claim4 searches ignored.",
+      "event_refs": [
+        "WebSearch_0_504d325e.dispatch",
+        "WebFetch_1_083676bd.dispatch",
+        "WebSearch_2_eb779b89.dispatch",
+        "WebFetch_3_86fa1995.dispatch",
+        "WebFetch_4_4791d0cc.dispatch",
+        "WebFetch_5_13b6f654.dispatch",
+        "WebSearch_6_f348e3b0.dispatch",
+        "WebFetch_7_f67073a7.dispatch",
+        "WebFetch_8_b7c1d335.dispatch",
+        "WebFetch_9_438b3fac.dispatch",
+        "WebFetch_10_2fb13ebf.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final identifies CANN document ranges and supported Atlas logging families; complete driver/tool applicability remains unlocked.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "## 版本适用性\n\n以上文档证据覆盖 CANN 社区版 8.0.RC2 / 8.1.RC1 / 8.2.RC1 / 9.0.0-beta.2 与商用版 8.0.RC2；`ASCEND_GLOBAL_LOG_LEVEL` 官方页明确支持 Atlas 训练系列、Atlas 推理系列、Atlas A2 训练系列、Atlas 200/500 A2 推理产品等。错误码页与日志页本身在 8.x/9.x 各版本文档中均存在，结构一致；具体取值未见版本间冲突证据。\n\n## 来源\n\n- 官方《AI Core Error问题现象描述》"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Concrete workflow exists but wrongly labels -g error a log-collection command, and advised dump/comparison and HCCL operations need parameters/steps. These are content repairs, distinct from environment replacements.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "$Driver_HOME/driver/tools/msnpureport -g error  # 收集 error 级\n```\n\nRC 形态日志直接在 `/var/lo"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "可用算子 Dump + `msaccucmp.py` 与 CPU/GPU 逐层比对定位首错层。\n- **OOM / 显存不足**：看 plog 中内存申请失败记录与 `npu-sm"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "**HCCL 多卡错误**：检查 `/etc/hccn.conf`、用 `hccn_tool` 查链路、调大 `HCCL_EXEC_TIMEOUT`。\n- **版本/环境问题**：跑官方 sample"
+        }
+      ]
+    },
+    "M11": {
+      "status": "scored",
+      "score": 54.28890770285714,
+      "reason": "Calculated from adjudicated point inputs; not a probability.",
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ]
+    }
+  },
+  "channel_states": {},
+  "observations": {
+    "execution_status": "content_checked_not_executed",
+    "source_ownership_correction": "Official-authored Ascend CANN log guide reproduced on Zhihu is not independent third-party."
+  }
+}

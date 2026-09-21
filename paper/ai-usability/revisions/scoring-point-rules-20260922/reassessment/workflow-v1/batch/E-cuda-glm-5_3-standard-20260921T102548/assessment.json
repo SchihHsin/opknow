@@ -1,0 +1,265 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_b719882540904814affe1157.result",
+          "quote": "## 1. [Compute Sanitizer — Compute Sanitizer - NVIDIA Documentation …](https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html)\n\n2026年9月9日 · The Compute Sanitizer suite supports displaying mangled and demangled names for CUDA kernels and CUDA …\n\n**URL:** https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html\n\n---\n\n"
+        }
+      ],
+      "reason": "First official result appears query 2 rank 1.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "# 需要同时打出 kernel 启动点的完整回溯时：\nPYTORCH_USE_CUDA_DSA=1 PYTORCH_CUDA_DSA_STACKTRACING=1 python train.py\n```\n\n依据 `c10/cuda/CUDADeviceAssertionHost.cpp`（逐字核实）"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "启用后报错会调用 `c10_retrieve_device_side_assertion_info()`，输出内容包括：GPU 断言消息、**断言所在的 CUDA 源文件：行号**、device 函数名、失败线程的 thread ID / block ID、**kernel 启动处的 Python/C++ 侧文件：行号、函数名、kernel 名、stream**，以及可选的启动点回溯；\n- 前提条件：所有 GPU compute capability ≥ 6（需要 "
+        }
+      ],
+      "reason": "Concrete synchronization/sanitizer route exists. DSA instructions omit kernel launch instrumentation prerequisite shown in TORCH_DSA_KERNEL_LAUNCH, and promise stacktrace display with flag1 despite archived source printing disabled in that branch. Correct these content conditions; no hardware execution claimed.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "missing_inputs": [
+        "M7"
+      ],
+      "reason": "M7 remains unscorable.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html",
+          "score": 4,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.cpp",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/torch/csrc/Exceptions.h",
+          "score": 3,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.cpp",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDAException.h",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.h",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://raw.githubusercontent.com/pytorch/pytorch/main/c10/cuda/CUDADeviceAssertionHost.cpp",
+          "score": 5,
+          "status": "scored"
+        }
+      ],
+      "evidence": [
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "# NVIDIA Compute Sanitizer 文档信息提取\n\n## ⚠️ 页面截断说明（重要）\n\n**该页面内容存在截断**。文末标注 `[content truncated]`，截断位置在 **\"Compute Sanitizer Tool Examples → Example Use of Memcheck → `memcheck_demo` Output with Memcheck (Release Build)\"** 一节中间。因此以下内容缺失：\n- Memcheck 示例的剩余部分（如 Debug Build/带 lineinfo 构建的输出对比）\n- 可能存在的 Racecheck / Initcheck / Synccheck 示例章节\n\n以下提取基于**可见的完整部分**（从 Introduction 到 Usage Guide / OS Specific Behavior / CUDA Fortran Support 及 Memcheck 示例开头）。\n\n---\n\n## 1. Compute Sanitizer 是什么 & 包含的子工具\n\n原文定义：\n\n> \"Compute Sanitizer is a functional correctness checking suite included in the CUDA toolkit. This suite contains multiple tools that can perform different type of checks.\"\n\n**四个子工具**：\n\n| 工具 | 功能定位 |\n|--"
+        },
+        {
+          "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+          "quote": "**标题**: 5.2. CUDA Environment Variables — CUDA Programming Guide\n\n# 5.2. CUDA Environment Variables#\n\n## 5.2.1. Device Enumeration and Properties#\n\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\n\n# 5.2. CUDA Environment Variables#\n## 5.2.1. Device Enumeration and Properties#\n### 5.2.1.1. `CUDA_VISIBLE_DEVICES`CUDA_VISIBLE_DEVICES#\nThe device count returned by the `cudaGetDeviceCount()` API includes only the visible devices, so CUDA APIs that use integer device identifiers only support ordinals in the range [0, visible device count - 1]. The enumeration order of the GPU devices determines the ordinal values. For example, with `CUDA_VISIBLE_DEVICES=2,1`, calling `cudaSetDevice(0)` wi"
+        },
+        {
+          "event_id": "call_646376808b9a4abb8ca0f366.result",
+          "quote": "```\n#include <torch/csrc/Exceptions.h>\n#include <torch/csrc/python_headers.h>\n\n#include <array>\n#include <cstdarg>\n#include <exception>\n#include <utility>\n\n#include <fmt/format.h>\n#include <torch/csrc/THP.h>\n\n#include <c10/util/StringUtil.h>\n\nPyObject *THPException_FatalError, *THPException_LinAlgError,\n    *THPException_OutOfMemoryError, *THPException_DistError,\n    *THPException_DistBackendError, *THPException_DistNetworkError,\n    *THPException_DistStoreError, *THPException_DistQueueEmptyError,\n    *THPException_AcceleratorError;\n\n#define ASSERT_TRUE(cond) \\\n  if (!(cond))            \\\n  return false\nbool THPException_init(PyObject* module) {\n  // NOLINTNEXTLINE(bugprone-assignment-in-if-"
+        },
+        {
+          "event_id": "call_2655714c75564f77b65c449a.result",
+          "quote": "# 检索结果摘要\n\n**该文件中不存在任何包含所询关键词的宏定义或注释。** 经对全部内容逐字检索,四个关键词及 `cuda_check_error` 均未出现。\n\n## 一、关键词逐项检索结果\n\n| 检索目标 | 是否存在 | 说明 |\n|---|---|---|\n| `device-side assert` | ❌ 未找到 | 全文无此字符串 |\n| `asynchronously reported` | ❌ 未找到 | 全文无此字符串 |\n| `CUDA_LAUNCH_BLOCKING` | ❌ 未找到 | 全文无此字符串 |\n| `TORCH_USE_CUDA_DSA` | ❌ 未找到 | 全文无此字符串 |\n| `cuda_check_error` 宏 | ❌ 未找到 | 本文件不含任何 CUDA 专用宏 |\n\n您寻找的这段著名提示信息(“CUDA error: device-side assert triggered … may be reported asynchronously … set CUDA_LAUNCH_BLOCKING=1 … TORCH_USE_CUDA_DSA”)出自 PyTorch 的 **`c10/cuda/CUDAException.h` / `CUDAException.cpp`**(即 `C10_CUDA_CHECK`、`C10_CUDA_KERNEL_LAUNCH_CHECK` 宏及 `c10_cuda_check_implementation` 函数),**并非**本文件 `torch/csrc/Exceptions.h` 的内容。"
+        },
+        {
+          "event_id": "call_10a8c5412ece400a9b23cfc2.result",
+          "quote": "```\n#include <c10/cuda/CUDAException.h>\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/util/Exception.h>\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED)\n#include <c10/cuda/driver_api.h>\n#endif\n\n#include <algorithm>\n#include <array>\n#include <cstring>\n#include <string>\n#include <utility>\n\nnamespace c10::cuda {\n\nnamespace {\n\n#if !defined(USE_ROCM) && defined(PYTORCH_C10_DRIVER_API_SUPPORTED) && \\\n    defined(CUDA_VERSION) && (CUDA_VERSION >= 12090)\n// This size matches the one used by cuLogsDumpToMemory, however we could shrink\n// it as in our case this size is per-thread, and it only needs to be large\n// enough to contain the messages printed by a single CUD"
+        },
+        {
+          "event_id": "call_0da97aad76ea4a89bb967979.result",
+          "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAMacros.h>\n#include <c10/cuda/CUDAMiscFunctions.h>\n#include <c10/macros/Macros.h>\n#include <c10/util/Exception.h>\n#include <c10/util/irange.h>\n#include <cuda.h>\n\n#include <string>\n\n// Note [CHECK macro]\n// ~~~~~~~~~~~~~~~~~~\n// This is a macro so that AT_ERROR can get accurate __LINE__\n// and __FILE__ information.  We could split this into a short\n// macro and a function implementation if we pass along __LINE__\n// and __FILE__, but no one has found this worth doing.\n\n// Used to denote errors from CUDA framework.\n// This needs to be declared here instead util/Exception.h for proper conversion\n// during hipif"
+        },
+        {
+          "event_id": "call_2d012822d2154feda7893edb.result",
+          "quote": "```\n#pragma once\n\n#include <c10/cuda/CUDAMacros.h>\n\n#include <cstdint>\n#include <memory>\n#include <mutex>\n#include <string>\n#include <utility>\n#include <vector>\n\n#if (defined(USE_CUDA) || defined(USE_ROCM)) && !defined(TORCH_USE_CUDA_DSA)\n#define TORCH_USE_CUDA_DSA\n#endif\n\n/// Number of assertion failure messages we can store. If this is too small\n/// threads will fail silently.\nconstexpr int C10_CUDA_DSA_ASSERTION_COUNT = 10;\nconstexpr int C10_CUDA_DSA_MAX_STR_LEN = 512;\n\nnamespace c10::cuda {\n\n/// Holds information about any device-side assertions that fail.\n/// Held in managed memory and access by both the CPU and the GPU.\nstruct DeviceAssertionData {\n  /// Stringification of the assertio"
+        },
+        {
+          "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+          "quote": "```\n#include <c10/cuda/CUDADeviceAssertionHost.h>\n#include <c10/cuda/CUDAException.h>\n#include <c10/cuda/CUDAFunctions.h>\n#include <c10/util/env.h>\n#include <c10/util/irange.h>\n\n#include <memory>\n#include <string>\n#ifdef TORCH_USE_CUDA_DSA\n#include <chrono>\n#include <thread>\n#endif\n\n#define C10_CUDA_CHECK_WO_DSA(EXPR)                                 \\\n  do {                                                              \\\n    c10::cuda::CUDAErrorLogCapture __cuda_error_log;                \\\n    const cudaError_t __err = EXPR;                                 \\\n    c10::cuda::c10_cuda_check_implementation(                       \\\n        static_cast<int32_t>(__err),                              "
+        }
+      ],
+      "reason": "Eight official documents score [3,4,5,3,5,5,5,5], mean 35/8.",
+      "score": 4.375,
+      "status": "scored"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "compute-sanitizer [options] app_name [app_options]\n```\n\n### 各工具的启用命令\n\n```bash\n# Memch"
+        },
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "### 典型错误报告及逐行解读（原文示例）\n\n```\n========= Invalid __global__ write of size 4 bytes\n=========     at unaligned_kernel():0x160 in memcheck_demo.cu:6\n=========     by thread (0,0,0) in block (0,0,0)\n=========     Address 0x7f6510c00001 is misaligned\n```\n\n- **第 1 行**：内存段（`__global__`/`__shared__`/`__local__`）、读/写类型、访问字节数\n- **第 2 行**：kernel 名（`unaligned_kernel`）、指令偏移（`0x160`）、**源文件与行号**（`memcheck_demo.cu:6`，需编译带行号信息）\n- **第 3 行**：出错线程的 threadIdx 和 blockIdx\n- **第 4 行**：被访问地址及错误类型（out of bounds 或 misaligned）\n\n### Release 构建与带行号构建的区别（原文明确说明）\n\n> \"In this case, since th"
+        },
+        {
+          "event_id": "call_11dfd1e21b224d79bf538b8e.result",
+          "quote": "Disabling asynchronous execution results in slower execution but is useful for debugging. It forces GPU work to run synchronously from the CPU’s perspective. This allows CUDA API errors to be observed at the exact API call that triggered them, rather than later in the execution. Synchronous execution is useful for debugging purposes.\n\n**Possible Values**:\n\n- `1`: Disables async"
+        },
+        {
+          "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+          "quote": "bool CUDAKernelLaunchRegistry::check_env_for_dsa_enabled() const {\n  return env_flag_set(\"PYTORCH_USE_CUDA_DSA\");\n}\n\nuint32_t CUDAKernelLaunchRegistry"
+        }
+      ],
+      "reason": "Official docs provide synchronization, sanitizer, source-code attribution, DSA data and hardware prerequisites sufficient for the requested diagnosis.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "| Coredump 支持（`--generate-coredump`） | **CUDA 11.6 起** |\n| OptiX 支持（memcheck/initcheck） | "
+        },
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "| 编译期插桩要求 | PTX 编译器与 compute-sanitizer 须来自**同一 CUDA toolkit 版本** |\n\n---\n\n## 5. 关于 cuda-memcheck"
+        },
+        {
+          "event_id": "call_f743c20cb6744fa1ab01de2b.result",
+          "quote": "if (dsa_get_device_compute_capability(i) < 6) {\n      return false;\n    }\n  }\n  retur"
+        }
+      ],
+      "reason": "coredump and DSA compute capability/toolkit relations are present, but DSA release relation is missing.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "evidence": [
+        {
+          "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+          "quote": "## 1. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n"
+        },
+        {
+          "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+          "quote": "## 4. [CUDA error: device-side assert triggered-腾讯云开发者社区 ...](https://cloud.tencent.com/developer/article/2363866)\n\n2023年11月26日 · CUDA开发中常遇\"cuda error: device-side assert triggered\"错误，源于数组越界、线程同步错误等。 解决方法包括 …\n\n**URL:** https://cloud.tencent.com/developer/article/2363866\n\n---\n\n"
+        },
+        {
+          "event_id": "call_845dea7407a247a9a92f91c9.result",
+          "quote": "## 3. [已解决—Pytorch CUDA runtime error: device-side assert ...](https://blog.csdn.net/qq_66931117/article/details/144469806)\n\n2024年12月15日 · CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be …\n\n**URL:** https://blog.csdn.net/qq_66931117/article/details/144469806\n\n---\n\n"
+        },
+        {
+          "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+          "quote": "## 2. [CUDA_LAUNCH_BLOCKING=1的作用 - CSDN博客](https://blog.csdn.net/weixin_43590796/article/details/131588761)\n\nCUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect. For …\n\n**URL:** https://blog.csdn.net/weixin_43590796/article/details/131588761\n\n---\n\n"
+        },
+        {
+          "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+          "quote": "## 3. [CUDA | CUDA_LAUNCH_BLOCKING - 知乎 - 知乎专栏](https://zhuanlan.zhihu.com/p/14373043490)\n\nCUDA_LAUNCH_BLOCKING=1 是一个 环境变量，它会使 CUDA 程序的所有 GPU 操作变成同步执行。 这意味着，CUDA 操作会在 …\n\n**URL:** https://zhuanlan.zhihu.com/p/14373043490\n\n---\n\n"
+        }
+      ],
+      "reason": "At least six independent relevant groups after excluding official NVIDIA/translation pages, normalizing repeated URLs, and retaining same-title article reproduction candidates. Counts all remain in >=6 score5 band.",
+      "score": 5,
+      "status": "scored"
+    },
+    "M6": {
+      "evidence": [
+        {
+          "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+          "quote": "## 1. [PyTorch训练报错‘CUDA device-side assert triggered’？别慌 ...](https://blog.csdn.net/weixin_42561040/article/details/160704542)\n\n2026年5月2日 · 本文深入解析PyTorch训练中常见的'CUDA device-side assert triggered'错误，特别关注输出层维度不匹配这一关键诱 …\n\n**URL:** https://blog.csdn.net/weixin_42561040/article/details/160704542\n\n---\n\n"
+        },
+        {
+          "event_id": "call_9e92dd52bf044a1cad31adbf.result",
+          "quote": "## 4. [CUDA error: device-side assert triggered-腾讯云开发者社区 ...](https://cloud.tencent.com/developer/article/2363866)\n\n2023年11月26日 · CUDA开发中常遇\"cuda error: device-side assert triggered\"错误，源于数组越界、线程同步错误等。 解决方法包括 …\n\n**URL:** https://cloud.tencent.com/developer/article/2363866\n\n---\n\n"
+        },
+        {
+          "event_id": "call_845dea7407a247a9a92f91c9.result",
+          "quote": "## 3. [已解决—Pytorch CUDA runtime error: device-side assert ...](https://blog.csdn.net/qq_66931117/article/details/144469806)\n\n2024年12月15日 · CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be …\n\n**URL:** https://blog.csdn.net/qq_66931117/article/details/144469806\n\n---\n\n"
+        },
+        {
+          "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+          "quote": "## 2. [CUDA_LAUNCH_BLOCKING=1的作用 - CSDN博客](https://blog.csdn.net/weixin_43590796/article/details/131588761)\n\nCUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect. For …\n\n**URL:** https://blog.csdn.net/weixin_43590796/article/details/131588761\n\n---\n\n"
+        },
+        {
+          "event_id": "call_2b3c1c32f1b5460eab4a3820.result",
+          "quote": "## 3. [CUDA | CUDA_LAUNCH_BLOCKING - 知乎 - 知乎专栏](https://zhuanlan.zhihu.com/p/14373043490)\n\nCUDA_LAUNCH_BLOCKING=1 是一个 环境变量，它会使 CUDA 程序的所有 GPU 操作变成同步执行。 这意味着，CUDA 操作会在 …\n\n**URL:** https://zhuanlan.zhihu.com/p/14373043490\n\n---\n\n"
+        }
+      ],
+      "reason": "Some async-reporting claims have official support; other specific causes and broad synchronization claims remain checked unsupported.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "2. 用 `compute-sanitizer`（旧版叫 `cuda-memcheck`，CUDA 11.x 后已被 compute-sanitizer 取代）运行程序，可精确指出失败的 kernel 名、线程坐标。\n3. 在可疑位置插入 `torch.cuda.synchronize()"
+        },
+        {
+          "event_id": "call_7fe0ba0ed2c34baf9a92e1f0.result",
+          "quote": "Imprecise errors are errors reported by the hardware error reporting mechanism that could not be precisely attributed to a particular thread... in many cases, memcheck may not be able to attribute the cause of the error back to the source file and line.\"\n\ndevi"
+        }
+      ],
+      "reason": "Supported synchronization method is present, but prior promises precise sanitizer kernel/thread coordinates for this assert diagnosis; the archived manual distinguishes imprecise hardware exceptions and its extraction itself says assert-specific applicability is not authoritative. Resolving this can change key-error versus method-fragment level. Fixed packet does not settle it; no imputed score.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M8": {
+      "event_refs": [
+        "call_9e92dd52bf044a1cad31adbf.dispatch",
+        "call_b719882540904814affe1157.dispatch",
+        "call_7fe0ba0ed2c34baf9a92e1f0.dispatch",
+        "call_845dea7407a247a9a92f91c9.dispatch",
+        "call_2b3c1c32f1b5460eab4a3820.dispatch",
+        "call_11dfd1e21b224d79bf538b8e.dispatch",
+        "call_646376808b9a4abb8ca0f366.dispatch",
+        "call_2655714c75564f77b65c449a.dispatch",
+        "call_10a8c5412ece400a9b23cfc2.dispatch",
+        "call_0da97aad76ea4a89bb967979.dispatch",
+        "call_2d012822d2154feda7893edb.dispatch",
+        "call_f743c20cb6744fa1ab01de2b.dispatch"
+      ],
+      "reason": "Actual dispatch count is 12: 4 searches and 8 fetches.",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "## 版本适用性（M9 范围）\n\n- `CUDA_LAUNCH_BLOCKING`、`CUDA_DEVICE_WAITS_ON_EXCEPTION`：当前 CUDA Programming Guide（页面更新于 2026-09）记载，适用于现行 CUDA 工具链；引入版本未在所取正文中给出（未核实）。\n- `compute-sanitizer`：随 CUDA toolkit 安装（文档正文未给最低版本号）；`--generate-coredump` 需 CUDA 11.6 起。\n- `PYTORCH_USE_CUDA_DSA` / `PYTORCH_CUDA_DSA_STACKTRACING`：以 PyTorch main 分支源码为准（2026-09 抓取）；确切引入版本未核实。\n- 上述均未能在本轮锁定到具体引入版本号，只能给出有依据的适用条件。\n\n## 来源清单\n\n官方（正文已取得）：\n1. https://docs.nvidia.com/compute-sanitizer/ComputeSanitizer/index.html （有截断）\n2. https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices"
+        }
+      ],
+      "reason": "Current environment and sanitizer versions are documented, but required release compatibility is incomplete.",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {},
+  "process_sha256": "c9936217cf0e2adcd581acbcb188d6b85ca44bb60eda1cd78c4cb7ff794b281f",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "E-cuda-glm-5_3-standard-20260921T102548"
+}

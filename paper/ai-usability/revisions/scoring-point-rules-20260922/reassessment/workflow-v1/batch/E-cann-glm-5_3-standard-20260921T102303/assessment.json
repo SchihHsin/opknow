@@ -1,0 +1,160 @@
+{
+  "channel_states": {},
+  "metrics": {
+    "M1": {
+      "evidence": [
+        {
+          "event_id": "call_5427b2a7800f49b2b2dad390.result",
+          "quote": "## 3. [E*9*** Inner Error-错误码参考-故障处理-维护参考-CANN商用 ...](https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0314.html)\n\n<!DOCTYPE html> E*9*** Inner Error E*9***表示系统内部错误码，请根据报错信息进行问题排查。 如果问题仍然存在，请联系技术支 …\n\n**URL:** https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0314.html\n\n---\n\n"
+        }
+      ],
+      "reason": "The first relevant official result is query 1 rank 3.",
+      "score": 4,
+      "status": "scored"
+    },
+    "M10": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "### 第 4 步：单算子复现定位（msaicerr 工具）\n\n收集信息后，用 **msaicerr** 工具复现和分析 AI Core Error（官方文档路径：【昇腾文档】→【故障处理】→【典型故障专题】→【AI Core Error问题定位专题】）。定位到具体算子后，按错误码方向检查输入（索引、shape、dtype、地址越界）。\n\n### 第 5 步：求助\n\n- 昇腾社区提工单：https"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "## 未核实处\n\n- msaicerr 工具的具体命令行用法（文档路径已知，未抓取具体页面）\n- 旧工具 `ascend-log-collect.sh`（华为支持站，V100R020C30 时代）与新版 asys 的版本适用边界\n- asys 工具的安装方式（原文未含安装章节，可能在同手册其他页）\n- 旧版本 CANN（如 7.x）的对应文档路径\n\n</answer>\n\n<stop_reason>\n搜索预算 4 次已用完（4/4），WebFetch 已用 7/8。官方错误码定义、排查流程、asys 收集命令及含 e"
+        }
+      ],
+      "reason": "The final route is concrete, but the answer itself admits that the msaicerr core CLI and installation details need to be added.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M11": {
+      "missing_inputs": [
+        "M5",
+        "M6",
+        "M7"
+      ],
+      "reason": "M5, M6 and M7 remain unscorable; no combined point is imputed.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M2": {
+      "documents": [
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/80RC2/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0314.html",
+          "score": 2,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/maintenref/troubleshooting/troubleshooting_0001.html",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/81RC1alpha001/devguide/maintenref/troubleshooting/atlaserrorcode_15_0313.html",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/800/developmentguide/maintenref/troubleshooting/atlaserrorcode_15_0313.html",
+          "score": 5,
+          "status": "scored"
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/canncommercial/900/maintenref/troubleshooting/troubleshooting_0501.html",
+          "score": 5,
+          "status": "scored"
+        }
+      ],
+      "reason": "Five official documents score [2,5,5,5,5] (mean 4.4), but the ops-math fetch has unknown publisher ownership and its inclusion changes the admissible document set.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M3": {
+      "evidence": [
+        {
+          "event_id": "call_e7adc45c52e240bcaf41627f.result",
+          "quote": "**标题**: 故障信息收集-asys工具使用指导-故障定位工具-故障处理-参考-CANN商用版9.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/maintenref/troubleshooting/troubleshooting_0501.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/maintenref/troubleshooting/troubleshooting_0501.html)\n\n# 故障信息收集\n\n#### 功能说明\n\n不复跑业务，仅收集故障信息，例如软硬件信息、日志等。\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas 350 加速卡\n\n√\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 命令格式\n\n```\nasys collect --task_dir=path1 --tar=\"True\" --output=path2\n```\n\n#### 参数说明\n\n- **task_dir**：可选参数，用于指定收集算子编译文件（包括.o、.json等文件）和dump文件（包括GE dump图、TF Adapter d"
+        }
+      ],
+      "reason": "Official material provides asys collection guidance, but the msaicerr root-cause procedure is missing.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M4": {
+      "evidence": [
+        {
+          "event_id": "call_e7adc45c52e240bcaf41627f.result",
+          "quote": "**标题**: 故障信息收集-asys工具使用指导-故障定位工具-故障处理-参考-CANN商用版9.0.0开发文档-昇腾社区\n\n[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/maintenref/troubleshooting/troubleshooting_0501.html)[](https://www.hiascend.com/document/detail/zh/canncommercial/latest/maintenref/troubleshooting/troubleshooting_0501.html)\n\n# 故障信息收集\n\n#### 功能说明\n\n不复跑业务，仅收集故障信息，例如软硬件信息、日志等。\n\n#### 产品支持情况\n\n产品\n\n是否支持\n\nAtlas 350 加速卡\n\n√\n\nAtlas A3 训练系列产品/Atlas A3 推理系列产品\n\n√\n\nAtlas A2 训练系列产品/Atlas A2 推理系列产品\n\n√\n\nAtlas 200I/500 A2 推理产品\n\n√\n\nAtlas 推理系列产品\n\n√\n\nAtlas 训练系列产品\n\n√\n\n#### 命令格式\n\n```\nasys collect --task_dir=path1 --tar=\"True\" --output=path2\n```\n\n#### 参数说明\n\n- **task_dir**：可选参数，用于指定收集算子编译文件（包括.o、.json等文件）和dump文件（包括GE dump图、TF Adapter d"
+        }
+      ],
+      "reason": "An asys 9.0 hardware support relation is present, but the complete tool/version relation is missing.",
+      "score": 3,
+      "status": "scored"
+    },
+    "M5": {
+      "observations": {
+        "possible_counts": [
+          5,
+          6
+        ]
+      },
+      "reason": "Five independent groups are certain and ops-math remains publisher-unknown, yielding possible counts 5 or 6 across the 4/5 boundary.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M6": {
+      "observations": {
+        "admission_source_id": "source-0009"
+      },
+      "reason": "Known asys collect no-rerun claim supported. Unknown ops-math author admission materially changes whether its specific technical claims enter third-party assessment; preserve unscorable after full packet check.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M7": {
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "4. 定位到具体算子：开 dump（`dump_config` 或环境变量 `DUMP_GE_GRAPH`、`DUMP_OP` 之类，具体变量名我不完全确定），对比溢出检测 `detect_overflow` 配置（ASCEND_GLOBAL_LOG_LEVEL 等环境变量的具体取值我也不完全确定）。\n5. 一键收集日志：CANN 提供 `ascend_log_collect.sh` 或 `msnpureport -d` 之类的日志收集工具（工具名记忆不确定），用于给华为支持人员提供完整现场。\n6. 升级 CANN"
+        }
+      ],
+      "reason": "Prior gives concrete dump variables, ascend_log_collect.sh and msnpureport -d claims, but the saved packet does not establish those exact commands; treating them as false would improperly penalize unverified knowledge.",
+      "score": null,
+      "status": "unscorable"
+    },
+    "M8": {
+      "event_refs": [
+        "call_5427b2a7800f49b2b2dad390.dispatch",
+        "call_f76398f572f04caaafda910c.dispatch",
+        "call_67256542727849bd8a7f6582.dispatch",
+        "call_9e46f31d895743b5969deb1c.dispatch",
+        "call_513fe1380eee443c806fc66a.dispatch",
+        "call_c3e8177dbb9942cdabada4cf.dispatch",
+        "call_294643dd403d41db8c017b89.dispatch",
+        "call_e7adc45c52e240bcaf41627f.dispatch",
+        "call_78a15857ed854ee28fd01092.dispatch"
+      ],
+      "reason": "Actual dispatch count is 9: 3 searches and 6 fetches.",
+      "score": 1,
+      "status": "scored"
+    },
+    "M9": {
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "### 第 3 步：一键收集故障信息（asys 工具，CANN 9.0.0，适用于 Atlas 200I/500 A2、A2 训练/推理、A3 系列、训练/推理系列等）\n\n```bash\nasys collect --task_dir=path1 --tar=\"True\" --output=path2\n# 示例\nasys collect --task_dir=$HOME/cac"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "来源：CANN 商用版 8.0.0 与社区版 8.1.RC1.alpha001 错误码参考\n- https://www.hiascend.com/document/detail/zh/canncomm"
+        }
+      ],
+      "reason": "The final answer names partial CANN/asys 9.0 product/version scope, but does not lock the complete required tool/version choice.",
+      "score": 3,
+      "status": "scored"
+    }
+  },
+  "observations": {},
+  "process_sha256": "d53cc746c17a0b4adc13539230f7e7acf8f8379736403245ba01eea0b6a20d9a",
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "E-cann-glm-5_3-standard-20260921T102303"
+}
