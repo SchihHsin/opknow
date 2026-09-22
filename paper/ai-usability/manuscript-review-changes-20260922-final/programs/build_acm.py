@@ -22,7 +22,11 @@ import zipfile
 ROOT = Path(__file__).resolve().parent
 PAPER = ROOT.parent
 PROJECT = PAPER.parent.parent
-EXPECTED_TITLE = "Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems"
+EXPECTED_TITLES = {
+    "Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems",
+    "AI 能找到开发者所需的知识吗？开发者生态中面向 AI 的知识可得性的定义与度量",
+}
+CJK_RE = re.compile(r"[\u3000-\u9fff\uf900-\ufaff\uff00-\uffef]")
 
 
 def find_binary(name: str) -> str:
@@ -74,6 +78,43 @@ def walk(value):
             yield from walk(child)
 
 
+def latex_escape_text(value: str) -> str:
+    """Escape plain-text characters before placing a CJK run in raw LaTeX."""
+    replacements = [
+        ("\\", r"\textbackslash{}"),
+        ("&", r"\&"),
+        ("%", r"\%"),
+        ("$", r"\$"),
+        ("#", r"\#"),
+        ("_", r"\_"),
+        ("{", r"\{"),
+        ("}", r"\}"),
+        ("~", r"\textasciitilde{}"),
+        ("^", r"\textasciicircum{}"),
+    ]
+    for source_text, escaped_text in replacements:
+        value = value.replace(source_text, escaped_text)
+    # Without xeCJK, TeX does not know that adjacent Han characters are valid
+    # line-break points. Add discretionary breaks so paragraphs and table cells
+    # wrap instead of running past the ACM text block.
+    return "".join(
+        character + (r"\penalty0" if CJK_RE.fullmatch(character) else "")
+        for character in value
+    )
+
+
+def wrap_cjk_runs(value):
+    """Use the local CJK face without changing the ACM Latin face."""
+    if isinstance(value, dict):
+        if value.get("t") == "Str" and CJK_RE.search(value.get("c", "")):
+            escaped = latex_escape_text(value["c"])
+            return {"t": "RawInline", "c": ["latex", "{\\CJKfont " + escaped + "}"]}
+        return {key: wrap_cjk_runs(child) for key, child in value.items()}
+    if isinstance(value, list):
+        return [wrap_cjk_runs(child) for child in value]
+    return value
+
+
 def prepare(document: dict, source: Path, stage: Path, bibliography: Path) -> dict:
     meta = document["meta"]
     blocks = document["blocks"]
@@ -81,7 +122,7 @@ def prepare(document: dict, source: Path, stage: Path, bibliography: Path) -> di
     if blocks and blocks[0].get("t") == "Header" and blocks[0]["c"][0] == 1:
         meta.setdefault("title", {"t": "MetaInlines", "c": blocks.pop(0)["c"][2]})
     title = flatten(meta.get("title", {})).strip()
-    if title != EXPECTED_TITLE:
+    if title not in EXPECTED_TITLES:
         raise ValueError(f"The manuscript must retain the agreed title. Found: {title!r}")
 
     remaining = []
@@ -91,16 +132,16 @@ def prepare(document: dict, source: Path, stage: Path, bibliography: Path) -> di
         if block.get("t") == "Header":
             level, _, text = block["c"]
             heading = flatten(text).strip().lower()
-            if heading in {"abstract", "keywords"}:
+            if heading in {"abstract", "摘要", "keywords", "关键词"}:
                 collected = []
                 i += 1
                 while i < len(blocks) and not (blocks[i].get("t") == "Header" and blocks[i]["c"][0] <= level):
                     collected.append(blocks[i])
                     i += 1
-                if heading == "abstract":
-                    meta[heading] = {"t": "MetaBlocks", "c": collected}
+                if heading in {"abstract", "摘要"}:
+                    meta["abstract"] = {"t": "MetaBlocks", "c": collected}
                 else:
-                    meta[heading] = {"t": "MetaString", "c": " ".join(flatten(item) for item in collected).strip()}
+                    meta["keywords"] = {"t": "MetaString", "c": " ".join(flatten(item) for item in collected).strip()}
                 continue
         remaining.append(block)
         i += 1
@@ -135,9 +176,16 @@ def prepare(document: dict, source: Path, stage: Path, bibliography: Path) -> di
         target = node["c"][2][0]
         if re.match(r"^[a-z]+:", target, flags=re.I):
             raise ValueError(f"Use a local figure file, not a remote/absolute URI: {target}")
-        image = (source.parent / target).resolve()
-        if image.suffix.lower() == ".svg":
-            image = image.with_suffix(".pdf")
+        requested = Path(target)
+        roots = [source.parent, PAPER.parent]
+        candidates = []
+        for root in roots:
+            candidate = (root / requested).resolve()
+            if candidate.suffix.lower() == ".svg":
+                candidates.extend([candidate.with_suffix(".pdf"), candidate.with_suffix(".png")])
+            else:
+                candidates.append(candidate)
+        image = next((candidate for candidate in candidates if candidate.is_file()), candidates[0])
         if not image.is_file():
             raise ValueError(f"Missing PDF/raster figure: {image}. Export SVG figures to adjacent PDFs first.")
         if image.suffix.lower() not in {".pdf", ".png", ".jpg", ".jpeg"}:
@@ -188,6 +236,7 @@ def main() -> None:
         pandoc, str(source), "--from=markdown+tex_math_dollars+raw_tex+implicit_figures", "--to=json"
     ]))
     manifest = prepare(document, source, stage, bibliography)
+    document = wrap_cjk_runs(document)
     latex = run([
         pandoc, "--from=json", "--to=latex", "--standalone", "--natbib", "--number-sections",
         "--syntax-highlighting=none", "--wrap=none", "--template", str(template),

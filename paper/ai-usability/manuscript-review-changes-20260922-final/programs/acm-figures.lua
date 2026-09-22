@@ -1,0 +1,54 @@
+-- Keep Pandoc figure numbering/captions while adding ACM accessibility text.
+-- Every Markdown figure must carry description="..." on its image or figure.
+function Table(tbl)
+  if #tbl.colspecs == 3 then
+    local header = pandoc.utils.stringify(tbl.head)
+    local widths = header:match("^ID") and {0.07, 0.27, 0.66} or {0.25, 0.31, 0.44}
+    if header:match("^Indicator") then widths = {0.54, 0.23, 0.23} end
+    for i=1,3 do tbl.colspecs[i][2] = widths[i] end
+    if header:match("^Indicator") then
+      return {pandoc.RawBlock("latex", "\\ifdefined\\Needspace\\Needspace{14\\baselineskip}\\fi"), tbl}
+    end
+  elseif #tbl.colspecs == 4 then
+    local widths = {0.40, 0.12, 0.24, 0.24}
+    for i=1,4 do tbl.colspecs[i][2] = widths[i] end
+    return {pandoc.RawBlock("latex", "\\ifdefined\\Needspace\\Needspace{16\\baselineskip}\\fi"), tbl}
+  elseif #tbl.colspecs == 5 then
+    local widths = {0.40, 0.10, 0.16, 0.16, 0.18}
+    for i=1,5 do tbl.colspecs[i][2] = widths[i] end
+  end
+  return tbl
+end
+
+function Figure(figure)
+  local description = figure.attributes.description
+  local function inspect(image)
+    description = description or image.attributes.description
+    image.attributes.description = nil
+    image.caption = {}
+    if not image.attributes.width then image.attributes.width = "100%" end
+    return image
+  end
+  figure = figure:walk({Image = inspect})
+  if not description or description == "" then
+    error("Figure " .. figure.identifier .. " needs a description attribute for ACM accessibility.")
+  end
+  local escaped = pandoc.write(pandoc.Pandoc({pandoc.Plain({pandoc.Str(description)})}), "latex")
+  escaped = escaped:gsub("%s+$", "")
+  local inserted = false
+  for _, block in ipairs(figure.content) do
+    if block.t == "Plain" or block.t == "Para" then
+      block.content:insert(pandoc.RawInline("latex", "\\Description{" .. escaped .. "}"))
+      inserted = true
+      break
+    end
+  end
+  if not inserted then error("Figure requires an image paragraph.") end
+  figure.attributes.description = nil
+  if figure.identifier:match("^fig:scoring%-") then
+    local rendered = pandoc.write(pandoc.Pandoc({figure}), "latex")
+    rendered = rendered:gsub("\\begin{figure}", "\\begin{figure}[H]", 1)
+    return pandoc.RawBlock("latex", rendered)
+  end
+  return figure
+end
