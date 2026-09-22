@@ -282,9 +282,49 @@
 
     .analysis-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(330px, .9fr);
+      grid-template-columns: minmax(0, .6fr) minmax(520px, 1.4fr);
       gap: 18px;
       align-items: start;
+    }
+
+    #design .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    #design .material-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #design .card-cover.page-preview {
+      width: 100%;
+      align-self: stretch;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    #papers .card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    #papers .material-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #papers .card-cover.page-preview {
+      width: 100%;
+      align-self: stretch;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    #papers .paper-preview iframe {
+      width: 300%;
+      height: 300%;
+      transform: scale(.333333);
     }
 
     .featured-report {
@@ -304,9 +344,10 @@
       transform: scale(.5);
     }
 
-    .featured-report .card-body { padding: 18px 20px 18px; }
-    .featured-report .card-title { font-size: 21px; }
-    .featured-report .card-description { -webkit-line-clamp: 3; font-size: 13px; }
+    .featured-report .card-body { padding: 14px 16px 13px; }
+    .featured-report .card-title { font-size: 18px; }
+    .featured-report .card-description { -webkit-line-clamp: 2; font-size: 12px; line-height: 1.45; }
+    .featured-report .card-footer { padding-top: 7px; }
 
     .material-list {
       min-width: 0;
@@ -328,10 +369,10 @@
     .material-list-item {
       min-width: 0;
       display: grid;
-      grid-template-columns: 32px minmax(0, 1fr) auto;
+      grid-template-columns: minmax(0, 1fr);
       align-items: start;
-      gap: 9px;
-      padding: 12px 0 14px;
+      gap: 0;
+      padding: 8px 0 9px;
       border-bottom: 1px solid #dfe4ed;
       transition: background .2s ease, border-color .2s ease;
     }
@@ -341,31 +382,20 @@
       background: rgba(255, 255, 255, .48);
     }
 
-    .material-list-index {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: #eef1ff;
-      color: var(--blue-strong);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .03em;
-    }
-
     .material-list-content { min-width: 0; }
-    .material-list-meta { display: flex; align-items: center; gap: 7px; color: #9ca4b0; font-size: 10px; }
-    .material-list-title { margin: 4px 0 0; font-size: 15px; line-height: 1.35; letter-spacing: -.025em; }
+    .material-list-meta { display: flex; align-items: center; gap: 6px; color: #9ca4b0; font-size: 9px; }
+    .material-list-title { margin: 2px 0 0; font-size: 14px; line-height: 1.3; letter-spacing: -.025em; }
+    .material-list-title a { color: inherit; }
+    .material-list-title a:hover { color: var(--blue-strong); }
     .material-list-description {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
       overflow: hidden;
-      margin: 4px 0 0;
+      margin: 3px 0 0;
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.55;
+      font-size: 10px;
+      line-height: 1.4;
     }
 
     .material-list-action {
@@ -373,8 +403,8 @@
       align-items: center;
       gap: 4px;
       color: var(--blue-strong);
-      padding-top: 2px;
-      font-size: 10px;
+      padding-top: 1px;
+      font-size: 9px;
       font-weight: 800;
       white-space: nowrap;
     }
@@ -528,6 +558,29 @@
       letter-spacing: -.035em;
     }
 
+    .card-title-with-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-icon {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 9px;
+      background: var(--blue-pale);
+      color: var(--blue-strong);
+    }
+
+    .card-title-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.9;
+    }
+
     .card-description {
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -640,7 +693,7 @@
     }
 
     @media (max-width: 900px) and (min-width: 761px) {
-      .analysis-layout { grid-template-columns: minmax(0, 1.2fr) minmax(235px, .85fr); }
+      .analysis-layout { grid-template-columns: minmax(0, .7fr) minmax(300px, 1.3fr); }
       .featured-report { display: flex; flex-direction: column; }
       .featured-report .card-cover.page-preview { width: 100%; }
       .featured-report .card-cover.page-preview iframe { width: 300%; height: 300%; transform: scale(.333333); }
@@ -663,6 +716,8 @@
       .collection-head { display: block; }
       .collection-count { display: inline-block; margin-top: 10px; }
       .card-grid { grid-template-columns: 1fr; }
+      #design .card-grid { grid-template-columns: 1fr; }
+      #papers .card-grid { grid-template-columns: 1fr; }
       .material-card { grid-template-columns: 1fr; }
       .card-cover.page-preview { width: 100%; margin: 0; border-radius: 0; }
       .material-list { grid-template-columns: 1fr; }
@@ -722,14 +777,14 @@
         </div>
         <div class="analysis-layout">
           <article class="material-card featured-report" data-search="昇腾社区 可用性 综合分析 synthesis ascend nvidia ux 主报告">
-            <a href="file:///Users/hsin/Documents/Coding/ascend-vs-nvidia-ux/reports/synthesis/index.html" target="_blank" rel="noopener" class="card-cover page-preview" aria-label="打开昇腾社区可用性分析本地报告">
-              <iframe src="http://127.0.0.1:8766/reports/synthesis/index.html" data-file-src="file:///Users/hsin/Documents/Coding/ascend-vs-nvidia-ux/reports/synthesis/index.html" title="昇腾社区可用性分析本地报告页面预览" loading="eager"></iframe>
+            <a href="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/synthesis/index.html" target="_blank" rel="noopener" class="card-cover page-preview" aria-label="打开昇腾社区可用性分析报告">
+              <iframe src="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/synthesis/index.html" title="昇腾社区可用性分析报告页面预览" loading="eager"></iframe>
             </a>
             <div class="card-body">
               <div class="card-meta"><span class="tag local">主报告</span><span>综合分析</span></div>
               <h3 class="card-title">昇腾社区可用性分析</h3>
               <p class="card-description">汇总昇腾与对照生态的社区、内容和体验观察，连接研究证据与开发者网站的改进方向。</p>
-              <div class="card-footer"><span class="card-source">ascend-vs-nvidia-ux</span><a class="card-action" href="file:///Users/hsin/Documents/Coding/ascend-vs-nvidia-ux/reports/synthesis/index.html" target="_blank" rel="noopener">打开本地报告<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+              <div class="card-footer"><span class="card-source">ascend-vs-nvidia-ux</span><a class="card-action" href="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/synthesis/index.html" target="_blank" rel="noopener">打开报告<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
           </article>
 
@@ -737,73 +792,59 @@
             <div class="material-list-heading">Supporting links / 相关材料与链接</div>
 
             <article class="material-list-item" data-search="17 官方网站热力图 任务 可用性 证据">
-              <span class="material-list-index">17</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">研究证据</span><span>任务级矩阵</span></div>
-                <h3 class="material-list-title">全任务可用性热力图</h3>
+                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/17_official_site_focus.html" target="_blank" rel="noopener">全任务可用性热力图</a></h3>
                 <p class="material-list-description">逐任务查看 CANN / CUDA 在发现、获取、版本和回答支撑上的差异。</p>
               </div>
-              <a class="material-list-action" href="17_official_site_focus.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="18 指标 定义 方法 任务评分 研究协议">
-              <span class="material-list-index">18</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">方法说明</span><span>评分与协议</span></div>
-                <h3 class="material-list-title">指标定义与研究方法</h3>
+                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/18_metric_definition.html" target="_blank" rel="noopener">指标定义与研究方法</a></h3>
                 <p class="material-list-description">说明任务选择、指标形成、评分方式和证据链如何连接。</p>
               </div>
-              <a class="material-list-action" href="18_metric_definition.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="19 发现 UX 综合分析 问题清单 Agent 体验">
-              <span class="material-list-index">19</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">体验洞察</span><span>UX synthesis</span></div>
-                <h3 class="material-list-title">发现与 UX 综合分析</h3>
+                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/19_findings_ux_synthesis.html" target="_blank" rel="noopener">发现与 UX 综合分析</a></h3>
                 <p class="material-list-description">从实测问题整理 UX 发力点，以及 Agent 时代的交互体验启示。</p>
               </div>
-              <a class="material-list-action" href="19_findings_ux_synthesis.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="20 人机协同旅程 时序图 开发者 Agent 自定义算子">
-              <span class="material-list-index">20</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">体验洞察</span><span>协同旅程</span></div>
-                <h3 class="material-list-title">人机协同旅程</h3>
+                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/20_human_ai_journey.html" target="_blank" rel="noopener">人机协同旅程</a></h3>
                 <p class="material-list-description">以自定义算子开发为例，展示开发者、Agent、网站和工具的交接过程。</p>
               </div>
-              <a class="material-list-action" href="20_human_ai_journey.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="NVIDIA Ascend 英伟达 昇腾 开发者 基础体验 竞品分析">
-              <span class="material-list-index">NV</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag local">NVIDIA vs Ascend</span><span>竞品分析</span></div>
-                <h3 class="material-list-title">开发者基础体验竞品分析</h3>
+                <h3 class="material-list-title"><a href="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/ascend-vs-nvidia-2026-06-13-visual.html" target="_blank" rel="noopener">开发者基础体验竞品分析</a></h3>
                 <p class="material-list-description">对比昇腾与 NVIDIA 的导航、学习、资源获取和支持旅程，补充主报告的生态视角。</p>
               </div>
-              <a class="material-list-action" href="file:///Users/hsin/Documents/Coding/ascend-vs-nvidia-ux/reports/ascend-vs-nvidia-2026-06-13-visual.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="友商对照 GitHub Pages Ascend NVIDIA 英伟达 昇腾 网站 竞品">
-              <span class="material-list-index">VS</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag external">GitHub Pages / 友商对照</span><span>生态比较</span></div>
-                <h3 class="material-list-title">友商对照</h3>
+                <h3 class="material-list-title"><a href="https://liminshuo.github.io/ascend-ai/nvidia.html" target="_blank" rel="noopener">友商对照</a></h3>
                 <p class="material-list-description">从开发者进入、检索和理解信息的路径，对照昇腾与 NVIDIA 生态的基础体验。</p>
               </div>
-              <a class="material-list-action" href="https://liminshuo.github.io/ascend-ai/mintlify.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
 
             <article class="material-list-item" data-search="社区诊断 GitHub Pages Ascend 社区 可用性 诊断 问题">
-              <span class="material-list-index">诊</span>
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag external">GitHub Pages / 社区诊断</span><span>可用性诊断</span></div>
-                <h3 class="material-list-title">社区诊断</h3>
+                <h3 class="material-list-title"><a href="https://liminshuo.github.io/ascend-ai/reachability.html" target="_blank" rel="noopener">社区诊断</a></h3>
                 <p class="material-list-description">定位社区内容、导航和任务路径中的可用性问题，补充主报告的现状观察。</p>
               </div>
-              <a class="material-list-action" href="https://liminshuo.github.io/ascend-ai/reachability.html" target="_blank" rel="noopener">打开<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
             </article>
           </div>
         </div>
@@ -814,43 +855,40 @@
           <div>
             <div class="section-kicker">02 / DESIGN FINDINGS</div>
             <h2 class="collection-title" id="designTitle">设计发现</h2>
-            <p class="collection-intro">把研究中的问题转成可落地的 AI 亲和原则、社区 UI 组件和图片信息转文字模式。</p>
+            <p class="collection-intro">把研究中的问题转成可落地的亲和原则、组件亲和与设计模式。</p>
           </div>
           <span class="collection-count">3 份材料</span>
         </div>
         <div class="card-grid">
-          <article class="material-card" data-search="AI 亲和 原则 principles overview 设计发现 网站 内容">
+          <article class="material-card" data-search="亲和原则 AI affinity principles overview 设计发现 网站 内容">
             <a href="https://liminshuo.github.io/ascend-ai/principles-overview.html" target="_blank" rel="noopener" class="card-cover page-preview">
-              <iframe src="https://liminshuo.github.io/ascend-ai/principles-overview.html" title="AI 亲和原则页面预览" loading="eager"></iframe>
+              <iframe src="https://liminshuo.github.io/ascend-ai/principles-overview.html" title="亲和原则页面预览" loading="eager"></iframe>
             </a>
             <div class="card-body">
-              <div class="card-meta"><span class="tag external">设计发现</span><span>Principles</span></div>
-              <h3 class="card-title">AI 亲和原则</h3>
-              <p class="card-description">从 Agent 查找知识的流程出发，提炼内容可发现、可读取、可理解、可引用和可核验的基本原则。</p>
+              <div class="card-title-with-icon"><span class="card-title-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span><h3 class="card-title">亲和原则</h3></div>
+              <p class="card-description">从 Agent 查找知识的流程出发，提炼内容可发现、可读取、可理解、可引用和可核验的亲和原则。</p>
               <div class="card-footer"><span class="card-source">ascend-ai</span><a class="card-action" href="https://liminshuo.github.io/ascend-ai/principles-overview.html" target="_blank" rel="noopener">打开页面<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
           </article>
 
-          <article class="material-card" data-search="社区 UI 组件 community ui 导航 操作 输入 展示 容器 反馈">
+          <article class="material-card" data-search="组件亲和 community ui 导航 操作 输入 展示 容器 反馈">
             <a href="https://liminshuo.github.io/ascend-ai/community-ui.html" target="_blank" rel="noopener" class="card-cover page-preview">
-              <iframe src="https://liminshuo.github.io/ascend-ai/community-ui.html" title="社区 UI 组件页面预览" loading="eager"></iframe>
+              <iframe src="https://liminshuo.github.io/ascend-ai/community-ui.html" title="组件亲和页面预览" loading="eager"></iframe>
             </a>
             <div class="card-body">
-              <div class="card-meta"><span class="tag external">设计发现</span><span>UI patterns</span></div>
-              <h3 class="card-title">社区 UI 组件</h3>
-              <p class="card-description">整理导航、操作、输入、展示、容器和反馈等组件，观察社区网站怎样承载查找、理解和行动。</p>
+              <div class="card-title-with-icon"><span class="card-title-icon"><i data-lucide="blocks" aria-hidden="true"></i></span><h3 class="card-title">组件亲和</h3></div>
+              <p class="card-description">整理导航、操作、输入、展示、容器和反馈等组件，形成面向开发者社区的组件亲和模式。</p>
               <div class="card-footer"><span class="card-source">ascend-ai</span><a class="card-action" href="https://liminshuo.github.io/ascend-ai/community-ui.html" target="_blank" rel="noopener">打开页面<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
           </article>
 
-          <article class="material-card" data-search="图片信息转文字 image text design guide 图片 文字 多模态">
+          <article class="material-card" data-search="设计模式 image text design guide 图片 文字 多模态 内容模式">
             <a href="https://liminshuo.github.io/ascend-ai/design-guide-image-text.html" target="_blank" rel="noopener" class="card-cover page-preview">
-              <iframe src="https://liminshuo.github.io/ascend-ai/design-guide-image-text.html" title="图片信息转文字页面预览" loading="eager"></iframe>
+              <iframe src="https://liminshuo.github.io/ascend-ai/design-guide-image-text.html" title="设计模式页面预览" loading="eager"></iframe>
             </a>
             <div class="card-body">
-              <div class="card-meta"><span class="tag external">设计发现</span><span>Content pattern</span></div>
-              <h3 class="card-title">图片信息转文字</h3>
-              <p class="card-description">将图片中的结构、关系和操作信息转成可理解、可复制、可检索的文字内容，减少 Agent 获取障碍。</p>
+              <div class="card-title-with-icon"><span class="card-title-icon"><i data-lucide="layout-template" aria-hidden="true"></i></span><h3 class="card-title">设计模式</h3></div>
+              <p class="card-description">以图片信息转文字为例，整理结构、关系和操作信息如何被表达为可理解、可复制、可检索的设计模式。</p>
               <div class="card-footer"><span class="card-source">ascend-ai</span><a class="card-action" href="https://liminshuo.github.io/ascend-ai/design-guide-image-text.html" target="_blank" rel="noopener">打开页面<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
           </article>
@@ -868,15 +906,15 @@
         </div>
         <div class="card-grid">
           <article class="material-card" data-search="当前论文 AI 能找到开发者所需的知识 知识可得性 定义 度量 CANN CUDA">
-            <a href="paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" target="_blank" rel="noopener" class="card-cover page-preview">
-              <iframe src="paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" title="当前论文中文审阅稿页面预览" loading="eager"></iframe>
+            <a href="https://schihhsin.github.io/opknow/paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" target="_blank" rel="noopener" class="card-cover page-preview paper-preview">
+              <iframe src="https://schihhsin.github.io/opknow/paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" title="当前论文中文审阅稿页面预览" loading="eager"></iframe>
               <span class="card-index">P1</span>
             </a>
             <div class="card-body">
-              <div class="card-meta"><span class="tag">近完成</span><span>AI 与开发者交互</span></div>
+              <div class="card-meta"><span class="tag">近完成</span><span>度量框架</span></div>
               <h3 class="card-title">AI 能找到开发者所需的知识吗？</h3>
               <p class="card-description">提出面向 AI 的知识可得性构念、任务级测量协议和十一项指标，并以 CANN / CUDA 案例进行验证。</p>
-              <div class="card-footer"><span class="card-source">论文审阅稿</span><a class="card-action" href="paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" target="_blank" rel="noopener">阅读论文<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+              <div class="card-footer"><span class="card-source">论文审阅稿</span><a class="card-action" href="https://schihhsin.github.io/opknow/paper/ai-usability/revisions/full-rerun-20260921/manuscript-cn-review.html" target="_blank" rel="noopener">阅读论文<i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
           </article>
 
@@ -922,7 +960,7 @@
 
       <footer class="footer">
         <div>AI 可用性研究聚合页 · 本地研究材料导航</div>
-        <div>本页保留原始材料的独立阅读入口；本地报告链接仅在当前机器上可用。</div>
+        <div>本页的研究材料入口统一指向 GitHub Pages，并在新标签页打开。</div>
       </footer>
     </div>
   </main>
@@ -1005,12 +1043,6 @@
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
     });
-
-    if (window.location.protocol === 'file:') {
-      document.querySelectorAll('iframe[data-file-src]').forEach((frame) => {
-        frame.src = frame.dataset.fileSrc;
-      });
-    }
 
     lucide.createIcons();
   </script>
