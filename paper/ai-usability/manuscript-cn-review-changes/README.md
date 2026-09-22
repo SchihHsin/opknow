@@ -25,3 +25,7 @@
 | `knowledge-availability-ai-chi2027-en-before-20260912.pdf` | 2026-09-12 前版本 PDF。 |
 
 英文 Markdown、Word 和 PDF 是 v0.2 或更早的已生成稿；目前没有与 `manuscript-en-review-changes.html` 完全同步生成的英文 Markdown/PDF。论文工作区的 `README.md` 也记录了这一版本关系。
+
+## 生成程序
+
+对应的 Python、Pandoc 配置和 PDF 构建脚本已放在 [`programs/`](programs/)；生成链路和依赖见 [`programs/BUILD.md`](programs/BUILD.md)。
