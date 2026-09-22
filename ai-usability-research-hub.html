@@ -369,9 +369,9 @@
     .material-list-item {
       min-width: 0;
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: start;
-      gap: 0;
+      gap: 10px;
       padding: 8px 0 9px;
       border-bottom: 1px solid #dfe4ed;
       transition: background .2s ease, border-color .2s ease;
@@ -382,11 +382,16 @@
       background: rgba(255, 255, 255, .48);
     }
 
+    .material-list-item:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
     .material-list-content { min-width: 0; }
     .material-list-meta { display: flex; align-items: center; gap: 6px; color: #9ca4b0; font-size: 9px; }
     .material-list-title { margin: 2px 0 0; font-size: 14px; line-height: 1.3; letter-spacing: -.025em; }
-    .material-list-title a { color: inherit; }
-    .material-list-title a:hover { color: var(--blue-strong); }
+    .material-list-item:hover .material-list-title { color: var(--blue-strong); }
     .material-list-description {
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -407,6 +412,15 @@
       font-size: 9px;
       font-weight: 800;
       white-space: nowrap;
+      opacity: 0;
+      transform: translate(-3px, 3px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .material-list-item:hover .material-list-action,
+    .material-list-item:focus-visible .material-list-action {
+      opacity: 1;
+      transform: translate(0, 0);
     }
 
     .material-list-action svg { width: 14px; height: 14px; stroke-width: 2; }
@@ -778,61 +792,68 @@
           <div class="material-list" aria-label="现状分析支撑材料">
             <div class="material-list-heading">Supporting links / 相关材料与链接</div>
 
-            <article class="material-list-item" data-search="17 官方网站热力图 任务 可用性 证据">
+            <a class="material-list-item" href="https://schihhsin.github.io/opknow/17_official_site_focus.html" target="_blank" rel="noopener" data-search="17 官方网站热力图 任务 可用性 证据">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">研究证据</span><span>任务级矩阵</span></div>
-                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/17_official_site_focus.html" target="_blank" rel="noopener">全任务可用性热力图</a></h3>
+                <h3 class="material-list-title">全任务可用性热力图</h3>
                 <p class="material-list-description">逐任务查看 CANN / CUDA 在发现、获取、版本和回答支撑上的差异。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="18 指标 定义 方法 任务评分 研究协议">
+            <a class="material-list-item" href="https://schihhsin.github.io/opknow/18_metric_definition.html" target="_blank" rel="noopener" data-search="18 指标 定义 方法 任务评分 研究协议">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">方法说明</span><span>评分与协议</span></div>
-                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/18_metric_definition.html" target="_blank" rel="noopener">指标定义与研究方法</a></h3>
+                <h3 class="material-list-title">指标定义与研究方法</h3>
                 <p class="material-list-description">说明任务选择、指标形成、评分方式和证据链如何连接。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="19 发现 UX 综合分析 问题清单 Agent 体验">
+            <a class="material-list-item" href="https://schihhsin.github.io/opknow/19_findings_ux_synthesis.html" target="_blank" rel="noopener" data-search="19 发现 UX 综合分析 问题清单 Agent 体验">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">体验洞察</span><span>UX synthesis</span></div>
-                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/19_findings_ux_synthesis.html" target="_blank" rel="noopener">发现与 UX 综合分析</a></h3>
+                <h3 class="material-list-title">发现与 UX 综合分析</h3>
                 <p class="material-list-description">从实测问题整理 UX 发力点，以及 Agent 时代的交互体验启示。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="20 人机协同旅程 时序图 开发者 Agent 自定义算子">
+            <a class="material-list-item" href="https://schihhsin.github.io/opknow/20_human_ai_journey.html" target="_blank" rel="noopener" data-search="20 人机协同旅程 时序图 开发者 Agent 自定义算子">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag">体验洞察</span><span>协同旅程</span></div>
-                <h3 class="material-list-title"><a href="https://schihhsin.github.io/opknow/20_human_ai_journey.html" target="_blank" rel="noopener">人机协同旅程</a></h3>
+                <h3 class="material-list-title">人机协同旅程</h3>
                 <p class="material-list-description">以自定义算子开发为例，展示开发者、Agent、网站和工具的交接过程。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="NVIDIA Ascend 英伟达 昇腾 开发者 基础体验 竞品分析">
+            <a class="material-list-item" href="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/ascend-vs-nvidia-2026-06-13-visual.html" target="_blank" rel="noopener" data-search="NVIDIA Ascend 英伟达 昇腾 开发者 基础体验 竞品分析">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag local">NVIDIA vs Ascend</span><span>竞品分析</span></div>
-                <h3 class="material-list-title"><a href="https://schihhsin.github.io/ascend-vs-nvidia-ux/reports/ascend-vs-nvidia-2026-06-13-visual.html" target="_blank" rel="noopener">开发者基础体验竞品分析</a></h3>
+                <h3 class="material-list-title">开发者基础体验竞品分析</h3>
                 <p class="material-list-description">对比昇腾与 NVIDIA 的导航、学习、资源获取和支持旅程，补充主报告的生态视角。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="友商对照 GitHub Pages Ascend NVIDIA 英伟达 昇腾 网站 竞品">
+            <a class="material-list-item" href="https://liminshuo.github.io/ascend-ai/nvidia.html" target="_blank" rel="noopener" data-search="友商对照 GitHub Pages Ascend NVIDIA 英伟达 昇腾 网站 竞品">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag external">GitHub Pages / 友商对照</span><span>生态比较</span></div>
-                <h3 class="material-list-title"><a href="https://liminshuo.github.io/ascend-ai/nvidia.html" target="_blank" rel="noopener">友商对照</a></h3>
+                <h3 class="material-list-title">友商对照</h3>
                 <p class="material-list-description">从开发者进入、检索和理解信息的路径，对照昇腾与 NVIDIA 生态的基础体验。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
 
-            <article class="material-list-item" data-search="社区诊断 GitHub Pages Ascend 社区 可用性 诊断 问题">
+            <a class="material-list-item" href="https://liminshuo.github.io/ascend-ai/reachability.html" target="_blank" rel="noopener" data-search="社区诊断 GitHub Pages Ascend 社区 可用性 诊断 问题">
               <div class="material-list-content">
                 <div class="material-list-meta"><span class="tag external">GitHub Pages / 社区诊断</span><span>可用性诊断</span></div>
-                <h3 class="material-list-title"><a href="https://liminshuo.github.io/ascend-ai/reachability.html" target="_blank" rel="noopener">社区诊断</a></h3>
+                <h3 class="material-list-title">社区诊断</h3>
                 <p class="material-list-description">定位社区内容、导航和任务路径中的可用性问题，补充主报告的现状观察。</p>
               </div>
-            </article>
+              <span class="material-list-action" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+            </a>
           </div>
         </div>
       </section>
