@@ -4,273 +4,404 @@
       "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
       "evidence": {
         "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
-        "quote": "**标题**: Installing the NVIDIA Container Toolkit — NVIDIA Container Toolkit\n\nBack to top\n\n# Installing the NVIDIA Container Toolkit[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit \"Permalink to this headline\")\n\n## Installation[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation \"Permalink to this headline\")\n\n### Prerequisites[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#prerequisites \"Permalink to this headline\")\n\n1. Review the [platform support documentation](https://docs.nvidia.com/datacenter/cloud-na"
+        "quote": "**标题**: Installing the NVIDIA Container Toolkit — NVIDIA Container Toolkit\n\nBack to top\n\n# Installing the NVIDIA Container Toolkit[#](https:"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": false,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "not_independently_verified"
     },
     {
       "event_id": "call_a8356c17cf764d27adc4c480.result",
       "evidence": {
         "event_id": "call_a8356c17cf764d27adc4c480.result",
-        "quote": "**标题**: Running PyTorch - NVIDIA Docs\n\n[Is this page helpful?](https://surveys.hotjar.com/4904bf71-6484-47a7-83ff-4715cceabdb5?utm_source=https%3A%2F%2Fdocs.nvidia.com%2Fdeeplearning%2Fframeworks%2Fpytorch-release-notes%2Frunning.html)\n\n# [Running PyTorch](#)\n\n## [Before you begin](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html#running)\n\n[](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html)\n\nBefore you can run an NGC deep learning framework container, your Docker® environment must support NVIDIA GPUs. To run a container, issue the appropriate command as explained in [Running A Container](https://docs.nvidia.com/deeplearning"
+        "quote": "**标题**: Running PyTorch - NVIDIA Docs\n\n[Is this page helpful?](https://surveys.hotjar.com/4904bf71-6484-47a7-83ff-4715cceabdb5?utm_source=ht"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     },
     {
       "event_id": "call_be6afdc8d25d4125a8782bd5.result",
       "evidence": {
         "event_id": "call_be6afdc8d25d4125a8782bd5.result",
-        "quote": "**标题**: PyTorch | NVIDIA NGC\n\nSkip to main content\n\nContainer\n\nPyTorch is a GPU accelerated tensor computational framework. Functionality can be extended with common Python libraries such as NumPy and SciPy. Automatic differentiation is done with a tape-based system at the functional and neural network layer levels.\n\n- NVIDIA AI Enterprise Supported\n\nGet Container\n\n26.08-py3\n\nSigned\n\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.\n\nScanned\n\nNo malware was found in this artifact.\n\nView all tags\n\nLatest (26.08-py3)Signed  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.  \n\\\nSca"
+        "quote": "**标题**: PyTorch | NVIDIA NGC\n\nSkip to main content\n\nContainer\n\nPyTorch is a GPU accelerated tensor computational framework. Functionality ca"
       },
-      "observed_defect": null,
-      "ownership": "unknown",
-      "representation": "unknown",
+      "observed_defect": true,
+      "ownership": "official",
+      "representation": "body",
       "request_url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch",
-      "target_match": "unknown"
+      "target_match": "matched",
+      "completeness_verification": "confirmed_incomplete"
     }
   ],
   "m1": {
-    "budget_exhausted": null,
-    "decisive_records_verified": null,
-    "first_hit_source_id": null,
-    "first_query": null,
-    "first_rank": null
+    "budget_exhausted": true,
+    "decisive_records_verified": true,
+    "first_hit_source_id": "source-0001-rank-1",
+    "first_query": 1,
+    "first_rank": 1
   },
   "m10": {
-    "content_check_complete": null,
-    "content_repairs": [],
-    "environment_substitutions": []
+    "content_check_complete": true,
+    "content_repairs": [
+      "Explain host and absolute container mount paths, or omit optional -v for validation.",
+      "Provide chosen image driver requirements."
+    ],
+    "environment_substitutions": [],
+    "execution_status": "content_checked_only"
   },
   "m4": {
     "conflicts": [],
-    "missing_relations": [],
-    "mode": "none"
+    "missing_relations": [
+      "官方材料未给出宿主驱动与镜像CUDA的具体兼容版本关系"
+    ],
+    "mode": "partial"
   },
   "m5": {
-    "possible_counts": []
+    "possible_counts": [
+      5
+    ],
+    "third_party_sources": [
+      {
+        "source_id": "source-0001-rank-2",
+        "relevant": true,
+        "independent": true,
+        "reason": "与NVIDIA容器工具包或NGC/PyTorch容器运行相关"
+      },
+      {
+        "source_id": "source-0001-rank-4",
+        "relevant": true,
+        "independent": true,
+        "reason": "与NVIDIA容器工具包或NGC/PyTorch容器运行相关"
+      },
+      {
+        "source_id": "source-0001-rank-5",
+        "relevant": true,
+        "independent": true,
+        "reason": "与NVIDIA容器工具包或NGC/PyTorch容器运行相关"
+      },
+      {
+        "source_id": "source-0003-rank-3",
+        "relevant": true,
+        "independent": true,
+        "reason": "与NVIDIA容器工具包或NGC/PyTorch容器运行相关"
+      },
+      {
+        "source_id": "source-0003-rank-5",
+        "relevant": true,
+        "independent": true,
+        "reason": "与NVIDIA容器工具包或NGC/PyTorch容器运行相关"
+      }
+    ]
   },
   "m6": {
-    "checked_event_ids": [],
-    "claims": [],
+    "checked_event_ids": [
+      "call_e0a4dc254785425fbeb049dc.result",
+      "call_34222d736f4b4fc6a21d9ec9.result",
+      "call_fa8451f3c13846b5b28f736f.result",
+      "call_a8356c17cf764d27adc4c480.result",
+      "call_be6afdc8d25d4125a8782bd5.result"
+    ],
+    "no_third_party_material": false,
+    "claims": [
+      {
+        "source_id": "source-0001-rank-4",
+        "claim": "需要搭建支持调用NV GPU的Docker环境，这就需要NVIDIA Container Toolkit工具",
+        "claim_evidence": [
+          {
+            "event_id": "call_e0a4dc254785425fbeb049dc.result",
+            "quote": "需要搭建支持调用NV GPU的Docker环境，这就需要NVIDIA Container Toolkit工具"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "You installed a supported container engine (Docker, Containerd, CRI-O, Podman)."
+          },
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "The file is updated so that Docker can use the NVIDIA Container Runtime."
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      },
+      {
+        "source_id": "source-0001-rank-5",
+        "claim": "第一步：添加 NVIDIA 官方仓库 ... 第二步：安装 Toolkit ... 第三步：配置 Docker 运行时 ... 第四步：验证安装",
+        "claim_evidence": [
+          {
+            "event_id": "call_e0a4dc254785425fbeb049dc.result",
+            "quote": "第一步：添加 NVIDIA 官方仓库 ... 第二步：安装 Toolkit ... 第三步：配置 Docker 运行时 ... 第四步：验证安装"
+          }
+        ],
+        "support_evidence": [
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "Configure the production repository:"
+          },
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "Install the NVIDIA Container Toolkit packages:"
+          },
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "Configure the container runtime by using the `nvidia-ctk` command:"
+          },
+          {
+            "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+            "quote": "Running a Sample Workload"
+          }
+        ],
+        "verdict": "supported",
+        "independent_crosscheck": true
+      }
+    ],
     "confirmed_unavailable": {},
-    "no_third_party_material": null
+    "source_coverage": [
+      {
+        "source_id": "source-0001-rank-2",
+        "reason": "All saved snippets read. Toolkit requirement and explicit four-stage installation sequence are actual assertions supported by official guide. Generic standard-environment statement and article promises excluded; no exact commands inferred from titles."
+      },
+      {
+        "source_id": "source-0001-rank-4",
+        "reason": "All saved snippets read. Toolkit requirement and explicit four-stage installation sequence are actual assertions supported by official guide. Generic standard-environment statement and article promises excluded; no exact commands inferred from titles."
+      },
+      {
+        "source_id": "source-0001-rank-5",
+        "reason": "All saved snippets read. Toolkit requirement and explicit four-stage installation sequence are actual assertions supported by official guide. Generic standard-environment statement and article promises excluded; no exact commands inferred from titles."
+      },
+      {
+        "source_id": "source-0003-rank-3",
+        "reason": "All saved snippets read. Toolkit requirement and explicit four-stage installation sequence are actual assertions supported by official guide. Generic standard-environment statement and article promises excluded; no exact commands inferred from titles."
+      },
+      {
+        "source_id": "source-0003-rank-5",
+        "reason": "All saved snippets read. Toolkit requirement and explicit four-stage installation sequence are actual assertions supported by official guide. Generic standard-environment statement and article promises excluded; no exact commands inferred from titles."
+      }
+    ]
   },
   "packet_sha256": "66459f955bf9d4e8a4bdd0afa6fda44b4665f50fa9e4e3064b79acf31f169e59",
   "question": "怎么用 nvidia-docker / NGC 镜像跑一个带 GPU 的 PyTorch 容器？要装 nvidia-container-toolkit、加 `--gpus` 吗？",
   "run_id": "K-cuda-glm-5_3-standard-20260921T111548",
   "source_items": [
     {
-      "content_group": "",
+      "content_group": "search-results",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "# Search Results for \"NVIDIA Container Toolkit installation guide docker nvidia-ctk runtime configure\"\n\n## 1. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)\n\n3 天之前 · Install the NVIDIA GPU driver for your Linux distribution. NVIDIA recommends installing the driver by using the package …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html\n\n---\n\n## 2. [Ubuntu下Docker与NVIDIA Container Toolkit完整安装教程 ...](https://www.cnblogs.com/jzssuanfa/p/19683602)\n\n2026年3月7日 · 在Linux环境下做容器化开发或GPU加速计算时，Docker结合NVIDIA Container Toolkit是标配环境。 本文基于Ubuntu …\n\n**URL:** https://www.c"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0001",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "## 1. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)\n\n3 天之前 · Install the NVIDIA GPU driver for your Linux distribution. NVIDIA recommends installing the driver by using the package …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-1",
       "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://www.cnblogs.com/jzssuanfa/p/19683602",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "## 2. [Ubuntu下Docker与NVIDIA Container Toolkit完整安装教程 ...](https://www.cnblogs.com/jzssuanfa/p/19683602)\n\n2026年3月7日 · 在Linux环境下做容器化开发或GPU加速计算时，Docker结合NVIDIA Container Toolkit是标配环境。 本文基于Ubuntu …\n\n**URL:** https://www.cnblogs.com/jzssuanfa/p/19683602\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-2",
       "url": "https://www.cnblogs.com/jzssuanfa/p/19683602"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.18.0/install-guide.html",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "## 3. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.18.0/install-guide.html)\n\n2025年11月19日 · You installed the NVIDIA Container Toolkit. The nvidia-ctk command modifies the /etc/docker/daemon.json file on …\n\n**URL:** https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.18.0/install-guide.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 1,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-3",
       "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/1.18.0/install-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://zhuanlan.zhihu.com/p/689473287",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "## 4. [NVIDIA Container Toolkit (NVIDIA Docker)安装教程 - 知乎](https://zhuanlan.zhihu.com/p/689473287)\n\n2024年3月28日 · 在做算法服务容器化部署的时候需要搭建支持调用NV GPU的Docker环境，这就需要NVIDIA Container Toolkit工具 …\n\n**URL:** https://zhuanlan.zhihu.com/p/689473287\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-4",
       "url": "https://zhuanlan.zhihu.com/p/689473287"
     },
     {
-      "content_group": "",
+      "content_group": "https://juejin.cn/post/7585808181239955507",
       "event_id": "call_e0a4dc254785425fbeb049dc.result",
       "evidence": {
         "event_id": "call_e0a4dc254785425fbeb049dc.result",
         "quote": "## 5. [ubuntu 24.04 安装NVIDIA Container Toolkit 在docker容器中 ...](https://juejin.cn/post/7585808181239955507)\n\n2025年12月22日 · 第一步：添加 NVIDIA 官方仓库 ... 第二步：安装 Toolkit ... 第三步：配置 Docker 运行时 ... 第四步：验证安装 ... 成 …\n\n**URL:** https://juejin.cn/post/7585808181239955507\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 1,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0001-rank-5",
       "url": "https://juejin.cn/post/7585808181239955507"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
       "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
       "evidence": {
         "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
         "quote": "**标题**: Installing the NVIDIA Container Toolkit — NVIDIA Container Toolkit\n\nBack to top\n\n# Installing the NVIDIA Container Toolkit[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installing-the-nvidia-container-toolkit \"Permalink to this headline\")\n\n## Installation[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation \"Permalink to this headline\")\n\n### Prerequisites[#](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#prerequisites \"Permalink to this headline\")\n\n1. Review the [platform support documentation](https://docs.nvidia.com/datacenter/cloud-na"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0002",
       "url": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
     },
     {
-      "content_group": "",
+      "content_group": "search-results",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "# Search Results for \"NGC PyTorch container nvcr.io pull run documentation\"\n\n## 1. [PyTorch | NVIDIA NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)\n\n2026年8月28日 · To run a container, issue the appropriate command as explained in the Running A Container chapter in the NVIDIA …\n\n**URL:** https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch\n\n---\n\n## 2. [Running PyTorch - NVIDIA Docs - NVIDIA Documentation Hub](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html)\n\n2026年9月8日 · To pull data and model descriptions from locations outside the container for use by PyTorch or save results to …\n\n**URL:** https://docs.nvidia.com/deeplearning/fra"
       },
       "ownership": "unknown",
-      "relevant": null,
+      "relevant": false,
       "source_id": "source-0003",
       "url": null
     },
     {
-      "content_group": "",
+      "content_group": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "## 1. [PyTorch | NVIDIA NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch)\n\n2026年8月28日 · To run a container, issue the appropriate command as explained in the Running A Container chapter in the NVIDIA …\n\n**URL:** https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 1,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-1",
       "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "## 2. [Running PyTorch - NVIDIA Docs - NVIDIA Documentation Hub](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html)\n\n2026年9月8日 · To pull data and model descriptions from locations outside the container for use by PyTorch or save results to …\n\n**URL:** https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 2,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-2",
       "url": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://ai-hpc.org/guide/09-framework/pytorch-docker",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "## 3. [Docker 部署 NVIDIA PyTorch 环境指南 | AI-HPC 联盟门户](https://ai-hpc.org/guide/09-framework/pytorch-docker)\n\n2026年3月8日 · 摘要: 本文档详细介绍了如何在 GPU 节点上使用 Docker 拉取并运行 NVIDIA PyTorch 官方容器镜像。 内容涵盖容器 …\n\n**URL:** https://ai-hpc.org/guide/09-framework/pytorch-docker\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 3,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-3",
       "url": "https://ai-hpc.org/guide/09-framework/pytorch-docker"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "## 4. [Containers For Deep Learning Frameworks User Guide - NVIDIA …](https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html)\n\n2026年9月8日 · These containers are made available via the NGC container registry, nvcr.io, so that you can use them directly or use …\n\n**URL:** https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "official",
       "query_index": 2,
       "rank": 4,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-4",
       "url": "https://docs.nvidia.com/deeplearning/frameworks/user-guide/index.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://blog.csdn.net/Farm_Coder/article/details/100201320",
       "event_id": "call_fa8451f3c13846b5b28f736f.result",
       "evidence": {
         "event_id": "call_fa8451f3c13846b5b28f736f.result",
         "quote": "## 5. [Nvidia-NGC容器配置全过程+ssh配置+镜像定时备份](https://blog.csdn.net/Farm_Coder/article/details/100201320)\n\n2026年8月26日 · 本文详述了NVIDIA NGC容器的使用流程，包括注册账户、镜像下载、自定义镜像构建及容器定期备份方法。 特别介 …\n\n**URL:** https://blog.csdn.net/Farm_Coder/article/details/100201320\n\n---\n\n"
       },
-      "ownership": "unknown",
+      "ownership": "third_party",
       "query_index": 2,
       "rank": 5,
-      "relevant": null,
+      "relevant": true,
       "source_id": "source-0003-rank-5",
       "url": "https://blog.csdn.net/Farm_Coder/article/details/100201320"
     },
     {
-      "content_group": "",
+      "content_group": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html",
       "event_id": "call_a8356c17cf764d27adc4c480.result",
       "evidence": {
         "event_id": "call_a8356c17cf764d27adc4c480.result",
         "quote": "**标题**: Running PyTorch - NVIDIA Docs\n\n[Is this page helpful?](https://surveys.hotjar.com/4904bf71-6484-47a7-83ff-4715cceabdb5?utm_source=https%3A%2F%2Fdocs.nvidia.com%2Fdeeplearning%2Fframeworks%2Fpytorch-release-notes%2Frunning.html)\n\n# [Running PyTorch](#)\n\n## [Before you begin](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html#running)\n\n[](https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html)\n\nBefore you can run an NGC deep learning framework container, your Docker® environment must support NVIDIA GPUs. To run a container, issue the appropriate command as explained in [Running A Container](https://docs.nvidia.com/deeplearning"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0004",
       "url": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html"
     },
     {
-      "content_group": "",
+      "content_group": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch",
       "event_id": "call_be6afdc8d25d4125a8782bd5.result",
       "evidence": {
         "event_id": "call_be6afdc8d25d4125a8782bd5.result",
         "quote": "**标题**: PyTorch | NVIDIA NGC\n\nSkip to main content\n\nContainer\n\nPyTorch is a GPU accelerated tensor computational framework. Functionality can be extended with common Python libraries such as NumPy and SciPy. Automatic differentiation is done with a tape-based system at the functional and neural network layer levels.\n\n- NVIDIA AI Enterprise Supported\n\nGet Container\n\n26.08-py3\n\nSigned\n\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.\n\nScanned\n\nNo malware was found in this artifact.\n\nView all tags\n\nLatest (26.08-py3)Signed  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.  \n\\\nSca"
       },
-      "ownership": "unknown",
-      "relevant": null,
+      "ownership": "official",
+      "relevant": true,
       "source_id": "source-0005",
       "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch"
     }
   ],
   "task_requirements": {
-    "main": [],
-    "secondary": [],
-    "version_relations": []
+    "main": [
+      "怎么用 nvidia-docker / NGC 镜像跑一个带 GPU 的 PyTorch 容器？要装 nvidia-container-toolkit、加 `--gpus` 吗？"
+    ],
+    "secondary": [
+      "安装toolkit、配置Docker运行时、使用--gpus运行NGC PyTorch并验证"
+    ],
+    "version_relations": [
+      "Docker版本与--gpus/旧nvidia-docker关系",
+      "toolkit与宿主GPU驱动前提"
+    ]
   }
 }

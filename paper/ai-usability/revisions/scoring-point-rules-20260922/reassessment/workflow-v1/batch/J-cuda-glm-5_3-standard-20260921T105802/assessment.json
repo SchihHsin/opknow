@@ -1,0 +1,222 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "J-cuda-glm-5_3-standard-20260921T105802",
+  "process_sha256": "afcd81d5ef1d38868d6e5310b33879690ea08a0c13955ba0b64c3defbd7891c8",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第一轮第1位即为相关NVIDIA官方CUDA安装指南。",
+      "evidence": [
+        {
+          "event_id": "call_0c8851f8e8cb4170b0519089.result",
+          "quote": "## 1. [CUDA Installation Guide for Linux - NVIDIA Documentation Hub"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 2.3333333333333335,
+      "reason": "Six URL-deduplicated official documents: four explicit analyses/extractions3 and two failed targets1. Same root URL retry uses last return. Wrongtarget failure and PDF bytes dropped are not title-only. Mean14/6.",
+      "evidence": [
+        {
+          "event_id": "call_c1319406a8474ebfbfb36171.result",
+          "quote": "# CUDA 13.4 环境设置提取 — PATH & LD_LIBRARY_PATH\n\n## 总结\n\n在**CUDA Quick Start Guide 13.4** 文档中，相同的 “Set up the development environment”（设置开发环境）步骤——包含相同的两个 `export` 命令——在 **12 个 Linux 安装章节**中逐字出现。Ubuntu 专属的章节是 **§4.1.9.1 (Debian Installer)** 和 **§4.1.9.2 (Runfile Installer)**。所有提取内容均在下方逐字重"
+        },
+        {
+          "event_id": "call_7ec7ba23d18a4d75b06b47b8.result",
+          "quote": "This URL returned a non-text resource (Content-Type: application/pdf)."
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/post-installation-actions",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "error",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/archive/12.4.0/cuda-installation-guide-linux/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://developer.download.nvidia.com/compute/cuda/12.1.0/docs/sidebar/CUDA_Installation_Guide_Linux.pdf",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "error",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html",
+          "status": "scored",
+          "score": 3,
+          "observations": {
+            "representation": "excerpt",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "官方材料覆盖了部分主流程或命令，但抓取缺失使安装分支、完整变量解释或前提约束仍需补齐。",
+      "evidence": [
+        {
+          "event_id": "call_c1319406a8474ebfbfb36171.result",
+          "quote": "export PATH=/usr/local/cuda-13.4/bin${PATH:+:${PATH}}"
+        },
+        {
+          "event_id": "call_503c0d5ba7614182b6076fbc.result",
+          "quote": "The \"Post-installation Actions\" section is not included"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Saved13.4 Ubuntu instructions explicitly require a separate driver but give no applicable driver version relation for this toolkit.",
+      "evidence": [
+        {
+          "event_id": "call_c1319406a8474ebfbfb36171.result",
+          "quote": "Starting with CUDA 13.4, the NVIDIA Linux driver is no longer bundled with the CUDA Toolkit and must be installed separately."
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 2,
+      "reason": "One independent third-party tutorial; NVIDIA .cn PDF is official and identified translated installation guide is official-content reproduction.",
+      "evidence": [
+        {
+          "event_id": "call_0c8851f8e8cb4170b0519089.result",
+          "quote": "## 2. [【保姆教程】Linux系统安装Cuda完整步骤_linux安装cuda ...](https://blog.csdn.net/m0_57409671/article/details/154279396)\n\n2026年3月25日 · 本文介绍了Linux系统下CUDA工具包的安装配置流程。 主要内容包括：1）从NVIDIA官网下载指定版本CUDA安装 …\n\n**URL:** https://blog.csdn.net/m0_57409671/article/details/154279396\n\n---\n\n## 3. [NVIDIA CUDA Installation Guide for Linux](https://developer.down"
+        }
+      ]
+    },
+    "M6": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Only independent third-party item has generic tutorial scope and an unfinished installation/download clause; no complete assessable technical assertion. Official/translated documentation is not third-party support.",
+      "evidence": [
+        {
+          "event_id": "call_0c8851f8e8cb4170b0519089.result",
+          "quote": "本文介绍了Linux系统下CUDA工具包的安装配置流程。 主要内容包括：1）从NVIDIA官网下载指定版本CUDA安装 …\n\n**URL:** https://blog.csdn."
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior env-variable form is recognizable, but asserts apt nvcc installation into/usr/bin and no PATH setup, CUDA_HOME use and symlink/library behavior without applicable verification. Older-version uncertainty cannot be resolved from13.4 extraction alone. Do not count only supported fragments then assume main correctness.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "NVIDIA 的包会把 nvcc 等装入 /usr/bin"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "PATH 通常无需手动配置"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "实际派发事件共8次，按成本档位计分。",
+      "evidence": [
+        {
+          "event_id": "call_0c8851f8e8cb4170b0519089.result",
+          "quote": "# Search Results for \"CUDA ins"
+        }
+      ],
+      "event_refs": [
+        "call_0c8851f8e8cb4170b0519089.dispatch",
+        "call_8e12dd1de0664b35a4fc757e.dispatch",
+        "call_503c0d5ba7614182b6076fbc.dispatch",
+        "call_f37b5c94fcde441bb28a0782.dispatch",
+        "call_aa539dd1213f4ae28d6543c8.dispatch",
+        "call_cb981744bffe487799560583.dispatch",
+        "call_7ec7ba23d18a4d75b06b47b8.dispatch",
+        "call_c1319406a8474ebfbfb36171.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "最终答案锁定CUDA 13.4路径并覆盖Ubuntu安装分支，但未锁定toolkit与驱动的具体兼容版本。",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "<answer>\n\n## Ubuntu 从零安装 CUDA toolkit 后需配置的环境变量\n\n### 官方推荐配置（NVIDIA CUDA 13.4 Quick Start Guide，Ubuntu 章节 §4.1.9.1 Debian Installer / §4.1.9.2 Runfile Installer 逐字）\n\n```bash\nexport "
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final provides exports but omits a complete Ubuntu toolkit install route despite from-zero request. The continued LD_LIBRARY_PATH line has leading whitespace after newline: shell removes backslash-newline, leaving a separate word, so existing LD_LIBRARY_PATH is not concatenated correctly. Write one continuous quoted assignment and provide actual install steps.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "export LD_LIBRARY_PATH=/usr/local/cuda-13.4/lib64\\\n                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M6",
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "No identifiable independent third-party claim; prior material assertions unverified."
+    }
+  },
+  "observations": {},
+  "channel_states": {}
+}

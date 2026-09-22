@@ -1,0 +1,200 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "K-cuda-glm-5_3-standard-20260921T111548",
+  "process_sha256": "e2921d4d4810ff10b07ec1e99396940d47ae75058fbc01d852b8dba28290132a",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "第一轮第1位即为相关NVIDIA官方Toolkit安装指南。",
+      "evidence": [
+        {
+          "event_id": "call_e0a4dc254785425fbeb049dc.result",
+          "quote": "## 1. [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 4.333333333333333,
+      "reason": "Installation body5; running guide4 with blank selected-release tag in commands; catalog4 with explicit omitted tag-list sections. Mean13/3.",
+      "evidence": [
+        {
+          "event_id": "call_a8356c17cf764d27adc4c480.result",
+          "quote": "docker pull nvcr.io/nvidia/pytorch:-py3"
+        },
+        {
+          "event_id": "call_be6afdc8d25d4125a8782bd5.result",
+          "quote": "26.06-py3Signed  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted since its signing.  \n\\\nScanned  \n\\\nNo malware was found in this artifact.\n\n[...]\n\n25.04-py3-igpuSigned  \n\\\nThis image has a digital signature verifying that it has not been altered or corrupted s"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/running.html",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        },
+        {
+          "id": "https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch",
+          "status": "scored",
+          "score": 4,
+          "observations": {
+            "representation": "body",
+            "observed_defect": true,
+            "completeness_verification": "confirmed_incomplete"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 5,
+      "reason": "官方正文覆盖toolkit安装、Docker runtime配置、--gpus运行、NGC tag和验证所需主流程。",
+      "evidence": [
+        {
+          "event_id": "call_34222d736f4b4fc6a21d9ec9.result",
+          "quote": "### With `apt`: Ubuntu, Debian"
+        },
+        {
+          "event_id": "call_a8356c17cf764d27adc4c480.result",
+          "quote": "docker run --gpus all -it --rm"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Docker 19.03运行分支、toolkit示例版本和NGC tag有依据，但宿主驱动与镜像CUDA的具体兼容版本关系未建立。",
+      "evidence": [
+        {
+          "event_id": "call_a8356c17cf764d27adc4c480.result",
+          "quote": "Starting in Docker 19.03"
+        },
+        {
+          "event_id": "call_be6afdc8d25d4125a8782bd5.result",
+          "quote": "26.08-py3"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 4,
+      "reason": "预算内去重后有5个相关独立第三方来源，映射为4分。",
+      "evidence": [
+        {
+          "event_id": "call_e0a4dc254785425fbeb049dc.result",
+          "quote": "# Search Results for \"NVIDIA Container Toolkit installation guide docker nvidia-ctk runtime configure\""
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Two identifiable third-party instructions concern Toolkit requirement and installation order; official guide independently supports both. Other snippets merely announce article scope. No unsupported exact flags or unseen body claims are invented.",
+      "evidence": [
+        {
+          "event_id": "call_e0a4dc254785425fbeb049dc.result",
+          "quote": "需要搭建支持调用NV GPU的Docker环境，这就需要NVIDIA Container Toolkit工具"
+        },
+        {
+          "event_id": "call_e0a4dc254785425fbeb049dc.result",
+          "quote": "第一步：添加 NVIDIA 官方仓库 ... 第二步：安装 Toolkit ... 第三步：配置 Docker 运行时 ... 第四步：验证安装"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior apt/config/run fragments have official support, but positive nvidia-docker history, NGC authentication requirements, capabilities flag and exact24.01 image component assumptions are not fully verified in saved packet. These cannot be silently excluded to certify a correct complete prior route.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "需要先 `docker login nvcr.io`"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "--gpus 'capabilities=compute,utility'"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 3,
+      "reason": "实际派发5次（2次搜索、3次抓取），按5–6次成本档计3分。",
+      "evidence": [
+        {
+          "event_id": "call_e0a4dc254785425fbeb049dc.result",
+          "quote": "# Search Results for \"NVIDIA Container Toolkit installation guide docker nvidia-ctk runtime configure\""
+        }
+      ],
+      "event_refs": [
+        "call_e0a4dc254785425fbeb049dc.dispatch",
+        "call_34222d736f4b4fc6a21d9ec9.dispatch",
+        "call_fa8451f3c13846b5b28f736f.dispatch",
+        "call_a8356c17cf764d27adc4c480.dispatch",
+        "call_be6afdc8d25d4125a8782bd5.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final pins Toolkit1.20.1-1 and image26.08-py3 and Docker>=19.03, but selected image GPU-driver compatibility is missing. Version strings alone do not establish all applicable relationships.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "NVIDIA_CONTAINER_TOOLKIT_VERSION=1.20.1-1"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "26.08-py3"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Installation/configuration steps are concrete, but mounted local_dir:container_dir placeholders are not explained as host/container paths or replaced with absolute paths; literal container_dir is not a valid absolute mount target. Add parameter guidance or omit optional mount for a direct validation run. Also give selected image driver prerequisites.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "docker run --gpus all -it --rm -v local_dir:container_dir nvcr.io/nvidia/pytorch:26.08-py3"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Material prior authentication/flag assertions remain unverified."
+    }
+  },
+  "observations": {},
+  "channel_states": {}
+}
