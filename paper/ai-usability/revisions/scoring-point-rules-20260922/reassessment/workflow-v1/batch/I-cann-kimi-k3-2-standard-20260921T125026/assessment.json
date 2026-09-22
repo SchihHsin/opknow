@@ -1,0 +1,192 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "I-cann-kimi-k3-2-standard-20260921T125026",
+  "process_sha256": "8b650b58fc000129a599948aee8de18dff3db0abbfa7928ad23325d56f61225d",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 5,
+      "reason": "The first search returned the relevant official Ascend compatibility document at rank 1.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_c3d03d38.result",
+          "quote": "# Search Results for \"torch_npu CANN PyTorch 固件驱动 版本配套表\""
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Three official targets: compatibility body5, firmware navigation2, CANN installation navigation2. Community-authored Huawei Cloud article excluded. Mean9/3.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_3c9e3bfc.result",
+          "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+        },
+        {
+          "event_id": "WebFetch_4_a29cc2ce.result",
+          "quote": "**标题**: 安装说明-软件安装-CANN8.0.0.alpha001开发文档-昇腾社区\n\n获取效率\n\n正确性\n\n完整性\n\n易理解"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/hardware/firmware-drivers/commercial",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/800alpha001/softwareinst/instg/instg_0002.html",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official table explains package matching but main local diagnostic commands and hardware-specific firmware/driver results are absent. Third-party walkthrough cannot be counted as official-body coverage.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_ad458439.result",
+          "quote": "固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/co"
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Package/PyTorch/CANN table supplies partial relationships; actual firmware/driver requirements for hardware remain unavailable behind navigation-only page.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_2_3c9e3bfc.result",
+          "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+        },
+        {
+          "event_id": "WebFetch_1_ad458439.result",
+          "quote": "| 26.1.0 | 2.12.0 | 2.12.0 | CANN 9.1.0 |"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Seven/eight independent groups including community-authored Huawei Cloud article, allowing same-title version tutorial duplication. Both possibilities map5.",
+      "evidence": [
+        {
+          "event_id": "WebSearch_0_c3d03d38.result",
+          "quote": "# Search Results for \"torch_npu CANN PyTorch 固件驱动 版本配套表\""
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Some compatibility and npu-smi claims have independent saved support. Specific driver flags, files/fields, firmware filenames, GUI path and performance claims do not. No direct contradiction is proven in this packet; do not borrow another run’s negative observation as if it were present here.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_6_4afe38ea.result",
+          "quote": "npu-smi info -t driver -i 0"
+        },
+        {
+          "event_id": "WebFetch_6_4afe38ea.result",
+          "quote": "因为没有及时更新驱动版本，导致模型训练速度慢了近30%"
+        },
+        {
+          "event_id": "WebFetch_1_ad458439.result",
+          "quote": "固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior supplies matching-table approach but exact version.cfg path, API behavior and installation-package assertions are not fully verifiable from fixed packet; preserve unscorable rather than a guessed correct-main-flow score.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "仅凭已有知识，我可以这样回答：\n\nCANN / torch_npu / 固件驱动 / PyTorch 的配套关系查询方法："
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "The run dispatched 6 counted retrieval events, which maps to the 3-point cost band.",
+      "evidence": [
+        {
+          "event_id": "WebFetch_1_ad458439.result",
+          "quote": "```\n# 版本配套\n\nTorchNPU需与特定版本的PyT"
+        }
+      ],
+      "event_refs": []
+    },
+    "M9": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Final tells user torch and torch_npu versions must match including.postN, contradicted by official rows such as torch_npu2.7.1.post8 with torch2.7.1. It also renders sparse supported versions as continuous ranges. Correct key package-matching rule; hardware-specific firmware/driver values remain absent.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "确认 torch 版本与 torch_npu 安装包版本一致（含 .postN）"
+        },
+        {
+          "event_id": "WebFetch_1_ad458439.result",
+          "quote": "| 26.1.0 | 2.7.1.post8 | 2.7.1 | CANN 9.1.0 |"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Replace instruction requiring exact torch/torch_npu equality including.postN with table-based base-version matching. Preserve discrete supported versions rather than expanding into a continuous range; add executable firmware/version diagnostic alternatives where field behavior remains unverified.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "确认 torch 版本与 torch_npu 安装包版本一致（含 .postN）"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "26.1.1 → torch 2.7.1~2.12.0"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Prior technical verification insufficient for point input."
+    }
+  }
+}

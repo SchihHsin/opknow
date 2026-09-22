@@ -1,0 +1,250 @@
+{
+  "rule_version": "point-rubric-20260922-v1",
+  "run_id": "I-cann-glm-5_3-standard-20260921T105011",
+  "process_sha256": "bde3a591647008d9aabd59485b364df36769e35fae7ae97d5f98715ec31af915",
+  "metrics": {
+    "M1": {
+      "status": "scored",
+      "score": 4,
+      "reason": "First query first-five results contain the first reviewed relevant official source at the recorded rank.",
+      "evidence": [
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "## 5. [pytorch/COMPATIBILITY.md at master · Ascend/pytorch ...](https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md)\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。 各版本间的匹配关系由昇腾社区统一维护，建议优先使 …\n\n**URL:** https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md\n\n---\n\n"
+        }
+      ]
+    },
+    "M2": {
+      "status": "scored",
+      "score": 2.5,
+      "reason": "Four official targets: compatibility body5, Gitee CAPTCHA1, firmware page navigation2, CANN landing navigation2. Mean10/4; community blog excluded.",
+      "evidence": [
+        {
+          "event_id": "call_08ea3814de0c4508bb4a6ddd.result",
+          "quote": "```\n# 版本配套\n\nTorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。各版本间的匹配关系由昇腾社区统一维护，建议优先使用推荐版本组合以确保最佳兼容性和性能。固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/commercial)。\n\n## 推荐版本组合\n\n|    组件    |               推荐版本               |\n|:--------:|:--------------------------------:|\n| TorchNPU |              2.12.0（安装包版本）             |\n| PyTorch  |              2.12.0              |\n|   CANN   |              9.1.0               |\n|  Python  | 3.10 / 3.11 / 3.12 / 3.13 / 3.14 |\n\n## TorchNPU 版本配套表\n\n下表中的TorchNPU版本与`torch_npu`安装包版本采用不同的命名规则：\n\n- **TorchNPU版本**：标识产品的发布版本，采用独立于PyTorch的版本编号，如`26.1.0`、`26.1.1`。正式版本通常使用三段数字，历史预发布版本包含`RC`标识，如`6.0.RC3`。同一个TorchNPU产品版"
+        },
+        {
+          "event_id": "call_699bccaa88854e9b99140b1c.result",
+          "quote": "**标题**: 安全验证码-独立验证\n\n曲线滑块验证\n\n重新加载\n\n校验失败，请再试一次\n\n刷新[反馈](https://seccaptcha.baidu.com/v1/webapi/verint/pc_feedback.html)"
+        },
+        {
+          "event_id": "call_b43c84e49c714423923675f5.result",
+          "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+        },
+        {
+          "event_id": "call_7cbab53f5f09482d8f329627.result",
+          "quote": "**标题**: CANN安装部署-昇腾社区\n\n稳定版\n\n快速提供新特性的稳定版，供开发者提前试用"
+        },
+        {
+          "event_id": "call_25f85906a1474335a28f630b.result",
+          "quote": "**标题**: 搞定昇腾软件版本配套问题-云社区-华为云\n**发布时间**: yd_294961020 发表于 2025/06/20 15:36:28 2025/06/20\n\n# 搞定昇腾软件版本配套问题\n\n【摘要】 场景开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。 物理机安装场景1.先看安装指导：点击链接2.查询操作系统兼容性：点击链接3.确认固件驱动和CANN版本配套：点击链接一般建议选择新版本CANN和固件驱动，固件驱动有多个兼容版本，建议选最新版本。（可以...\n\n## [](https://bbs.huaweicloud.com/blogs/454517)场景\n\n开发者拿到一个裸机环境，如800I A2/800T A2, 或Atlas 800 3000推理服务器（里面插了Iduo卡），需要用户根据OS版本去安装配套的固件驱动、Mind系列软件等。\n\n## [](https://bbs.huaweicloud.com/blogs/454517)物理机安装场景\n\n**1.先看安装指导：**  \n点击[链接](https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/82RC1alpha001/softwareinst/instg/instg_0005.html?Mode=PmIns&OS=openEuler&Software=cannToolKit)\n\n**2."
+        },
+        {
+          "event_id": "call_5a70fef00932475083c3b80b.result",
+          "quote": "**标题**: 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询）_查看cann版本-CSDN博客\n**发布时间**: 最新推荐文章于 2026-06-28 14:53:47 发布\n2025-02-21 17:14:57\n\n# 华为昇腾服务器（固件版本查询、驱动版本查询、CANN版本查询） 原创\n\n![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/cb848392c9724e439b38caa0e94fb801.png)\n\n#### [](https://blog.csdn.net/Dontla/article/details/145781563)文章目录\n\n- - - [1. **查看固件和驱动版本**](https://blog.csdn.net/Dontla/article/details/145781563#1__6)\n    - [2. **查看CANN版本**](https://blog.csdn.net/Dontla/article/details/145781563#2_CANN_19)\n    - [3. **其他辅助方法**](https://blog.csdn.net/Dontla/article/details/145781563#3__47)\n    - [注意事项](https://blog.csdn.net/Dontla/article/details/145781563#_57)\n\n在华为昇腾服务器上查看固件、驱动和CANN版本的常用方法如下：\n\n#### [](https://blog.cs"
+        }
+      ],
+      "documents": [
+        {
+          "id": "https://github.com/Ascend/pytorch/blob/master/COMPATIBILITY.md",
+          "status": "scored",
+          "score": 5,
+          "observations": {
+            "representation": "body",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://gitee.com/ascend/pytorch/blob/master/README.md",
+          "status": "scored",
+          "score": 1,
+          "observations": {
+            "representation": "error",
+            "observed_defect": true,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/hardware/firmware-drivers/commercial",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        },
+        {
+          "id": "https://www.hiascend.com/cann/download",
+          "status": "scored",
+          "score": 2,
+          "observations": {
+            "representation": "title",
+            "observed_defect": false,
+            "completeness_verification": "not_independently_verified"
+          }
+        }
+      ]
+    },
+    "M3": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official compatibility table provides package/product naming and PyTorch/CANN choices, but no local diagnostic commands or actual firmware/driver lookup result. Main mismatch diagnosis still needs those steps; captured navigation cannot substitute for them.",
+      "evidence": [
+        {
+          "event_id": "call_08ea3814de0c4508bb4a6ddd.result",
+          "quote": "TorchNPU需与特定版本的PyTorch、CANN、Python及固件与驱动配合使用。"
+        },
+        {
+          "event_id": "call_b43c84e49c714423923675f5.result",
+          "quote": "**标题**: 商用版-固件与驱动-昇腾社区\n\n社区版\n\n快速提供新特性的体验版，供开发者提前试用\n\n商用版\n\n满足商用标准的稳定版本\n\n获取CANN软件包： [资源下载](https://www.hiascend.com/developer/download?)\n\n配套版本号发布日期说明操作\n\n加载中..."
+        }
+      ]
+    },
+    "M4": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Official package/PyTorch/CANN relationships are tabulated; required hardware-specific firmware/driver pairing is only linked, with no captured values.",
+      "evidence": [
+        {
+          "event_id": "call_08ea3814de0c4508bb4a6ddd.result",
+          "quote": "固件与驱动的版本配套与所使用的昇腾硬件及CANN版本相关，具体选择请参考 [固件与驱动安装页面](https://www.hiascend.com/hardware/firmware-drivers/co"
+        }
+      ]
+    },
+    "M5": {
+      "status": "scored",
+      "score": 5,
+      "reason": "Seven/eight independent groups after same-URL dedup and unresolved same-title version article duplication; both counts map5.",
+      "evidence": [
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "# Search Results for \"torch_npu CANN 固件驱动 PyTorch 版本配套关系 昇腾\"\n\n## 1. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n## 2. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://blog.csdn.net/jieph01/article/details/165593745)\n\n3 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），通过get_cann_version与环境变量校验版本 …\n\n**URL:** https://blog.csdn.net/jieph01/article/details/165593745\n\n---\n\n## 3. [Ascend昇腾npu设备上安装cann和torch，昇腾npu驱动 ...](https://blog.csdn.net/m0_52182894/article/details/156616648)\n\n2026年1月5日 · 在昇腾设备上跑"
+        },
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "## 1. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://juejin.cn/post/7685774019191799859)\n\n5 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），容器需初始化Ascend环境等。 详询昇腾知识 …\n\n**URL:** https://juejin.cn/post/7685774019191799859\n\n---\n\n"
+        },
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "## 2. [昇腾CANN与Pytorch版本配套表，以及import torch_npu ...](https://blog.csdn.net/jieph01/article/details/165593745)\n\n3 天之前 · 核心要点：torch_npu、PyTorch、CANN严格对应（如2.4.0.x配CANN 8.0），通过get_cann_version与环境变量校验版本 …\n\n**URL:** https://blog.csdn.net/jieph01/article/details/165593745\n\n---\n\n"
+        },
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "## 3. [Ascend昇腾npu设备上安装cann和torch，昇腾npu驱动 ...](https://blog.csdn.net/m0_52182894/article/details/156616648)\n\n2026年1月5日 · 在昇腾设备上跑深度学习，就一定需要安装 npu 驱动、CANN，如果是跑pytorch框架的，就还要安装torch …\n\n**URL:** https://blog.csdn.net/m0_52182894/article/details/156616648\n\n---\n\n"
+        },
+        {
+          "event_id": "call_8fe70bcd8560430dab8e7857.result",
+          "quote": "## 4. [昇腾 + PyTorch 环境构建：环境检查与依赖校验在昇腾 NPU ...](https://juejin.cn/post/7686318450944458795)\n\n4 天之前 · 七、总结 昇腾 PyTorch 环境构建的核心是版本匹配 + 环境变量 + 依赖校验，任何一个环节缺失都会导致 NPU 无法使用。  …\n\n**URL:** https://juejin.cn/post/7686318450944458795\n\n---\n\n"
+        },
+        {
+          "event_id": "call_699bccaa88854e9b99140b1c.result",
+          "quote": "**标题**: 安全验证码-独立验证\n\n曲线滑块验证\n\n重新加载\n\n校验失败，请再试一次\n\n刷新[反馈](https://seccaptcha.baidu.com/v1/webapi/verint/pc_feedback.html)"
+        }
+      ]
+    },
+    "M6": {
+      "status": "scored",
+      "score": 1,
+      "reason": "The fetched query tutorial asserts firmware visibility/file availability, then explicitly records firmware not visible and installation file not found/invalid. These same-context negative observations contradict the operational guidance. Priority1 applies; other unsupported instructions are not declared false.",
+      "evidence": [
+        {
+          "event_id": "call_5a70fef00932475083c3b80b.result",
+          "quote": "可以看到驱动版本（drive）是24.1.rc1（固件版本看不到）"
+        },
+        {
+          "event_id": "call_5a70fef00932475083c3b80b.result",
+          "quote": "该命令会列出NPU设备的详细信息，包括固件版本（Firmware Version）和驱动版本（Driver Version）。"
+        },
+        {
+          "event_id": "call_5a70fef00932475083c3b80b.result",
+          "quote": "上面找不到`ascend_toolkit_install.info`文件"
+        }
+      ]
+    },
+    "M7": {
+      "status": "unscorable",
+      "score": null,
+      "reason": "Prior matching-table method is supported, but positive query behavior and specific2.1.0.post1/CANN7 example lack reliable applicable verification. Memory caveats are not deductions; missing table row does not by itself prove a false version. Cannot certify correct main route.",
+      "evidence": [
+        {
+          "event_id": "client-note-00005",
+          "quote": "2.1.0.post1 ↔ CANN 7.0.0"
+        },
+        {
+          "event_id": "client-note-00005",
+          "quote": "npu-smi info"
+        }
+      ]
+    },
+    "M8": {
+      "status": "scored",
+      "score": 2,
+      "reason": "Actual dispatched search/fetch events: 8.",
+      "event_refs": [
+        "call_8fe70bcd8560430dab8e7857.dispatch",
+        "call_08ea3814de0c4508bb4a6ddd.dispatch",
+        "call_699bccaa88854e9b99140b1c.dispatch",
+        "call_b43c84e49c714423923675f5.dispatch",
+        "call_aa247d961a714d148f4d2806.dispatch",
+        "call_7cbab53f5f09482d8f329627.dispatch",
+        "call_25f85906a1474335a28f630b.dispatch",
+        "call_5a70fef00932475083c3b80b.dispatch"
+      ]
+    },
+    "M9": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final supported package/PyTorch/CANN choices remain incomplete for firmware/driver version requirements. Browser lookup entry is not a locked applicable relationship.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "固件驱动配套表的具体数值本次未能抓取"
+        }
+      ]
+    },
+    "M10": {
+      "status": "scored",
+      "score": 3,
+      "reason": "Final repeats firmware discovery through npu-smi while acknowledging it may not expose firmware, yet gives no working alternative firmware query. It also offers file-path lookup that captured tutorial reports unavailable without adequate fallback identification. Add actual supported diagnostic alternatives and release-specific upgrade procedure.",
+      "evidence": [
+        {
+          "event_id": "run-end",
+          "quote": "npu-smi info` → 记下驱动/固件版本"
+        },
+        {
+          "event_id": "run-end",
+          "quote": "是否同时显示固件版本因驱动版本而异"
+        }
+      ]
+    },
+    "M11": {
+      "status": "unscorable",
+      "score": null,
+      "missing_inputs": [
+        "M7"
+      ],
+      "derived_from": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "reason": "Prior version-specific query/mapping assertions not fully verified."
+    }
+  },
+  "observations": {
+    "assessor": "GPT-5.6 Luna",
+    "task": "I",
+    "ecosystem": "cann",
+    "model": "glm-5.3",
+    "primary_need": "我装了 torch_npu 报版本不匹配，怎么查 CANN、torch_npu、固件驱动、PyTorch 之间的版本配套关系？",
+    "manual_adjudication": true
+  },
+  "channel_states": {}
+}
