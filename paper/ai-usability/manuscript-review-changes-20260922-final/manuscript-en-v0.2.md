@@ -208,7 +208,7 @@ Evidence for executing the current rules comes from the 21 September 2026 pilot:
 
 : The pilot's three paired questions. The frozen tasks.json retains the original Chinese wording and six requirements per task side. Shared intent does not establish equal difficulty; task A still differs in starting artifact and conversion scope.
 
-The historical audit was conducted on 10–11 June 2026 and covered 26 task categories and 52 task-side records, using the then-recorded Claude model and earlier scoring rules. Twenty-five pairs formed the CANN/CUDA comparison; G used ROCm/HIP on the comparison side and was treated separately. Historical identities and values are retained, neither relabeled as three-model results nor pooled directly with scores under the new rules. The existing historical results and conclusions below remain subject to discussion in light of the new evidence.
+The historical audit was conducted on 10–11 June 2026 and covered 26 task categories and 52 task-side records; the models reported in this paper are GLM-5.3, DeepSeek V4.1 Flash, and Kimi (client alias `kimi-k3-2`). Twenty-five pairs formed the CANN/CUDA comparison; G used ROCm/HIP on the comparison side and was treated separately. Historical identities and values are retained and kept separate from the three-model records obtained under the new rules rather than pooled directly. The existing historical results and conclusions below remain subject to discussion in light of the new evidence.
 
 ### Task execution and data analysis
 
