@@ -29,8 +29,8 @@ PALETTE={**{f'M{i}':BLUE for i in range(1,5)},'M5':M5_COLOR,'M6':M6_COLOR,'M7':M
 ROWS = {
 'M1': ([ '预算内未发现', '第3次及之后\n查询首次发现', '第2次查询\n首次发现', '首查第2–5条', '首查第1条'],
        ['No relevant official hit within budget','First hit on query 3 or later','First hit on query 2','First query, position 2–5','First query, position 1']),
-'M2': (['未取得可识别\n目标内容','仅标题、导航\n或元数据','明确摘要／摘录\n未取得直接正文','直接正文\n有截断／缺失证据','直接正文\n完整起止有据'],
-       ['No identifiable target content','Title, navigation or metadata only','Explicit summary / excerpt; no direct body','Direct body with evidence of truncation / gaps','Direct body with verified complete boundaries']),
+'M2': (['未取得可识别\n目标内容','仅标题、导航\n或元数据','明确摘要／摘录\n未取得直接正文','直接正文\n有截断／缺失证据','直接正文\n未观察到上述缺损'],
+       ['No identifiable target content','Title, navigation or metadata only','Explicit summary / excerpt; no direct body','Direct body with evidence of truncation / gaps','Direct body with none of those defects observed']),
 'M3': (['只有概述\n无相关细节','零散相关细节\n未成完整段落','已有完整段落\n关键内容仍缺','主流程与前提齐\n所需分支仍缺','原题所需解释、\n步骤、参数、约束齐'],
        ['Overview only; no relevant details','Isolated details; no complete passage','Complete passages; key task content missing','Main procedure and prerequisites; required branches incomplete','All required explanations, steps, parameters and constraints']),
 'M4': (['无版本信息','有版本，但无选择依据，\n或官方说明冲突且\n无法消解','已明确部分适用关系，\n但仍缺少完成版本选择\n所需的对应关系','需自行合并官方约束，\n才能确定适用版本','官方已明确适用关系，\n直接查表或套用规则\n即可确定'],
@@ -91,7 +91,7 @@ def rubric(lang, group, ids):
             label(ax,x,y+12,s,8.8 if cn else 8.1,width=None if cn else 22)
     y=height-67
     foot = {
-      'official': ('M2：按独立文档最终状态等权平均；重试不重复计数；完整性未知保留4–5，不删除未知项。\nM3/M4：只看原题与实际取得的官方内容；无正文记受阻；版本多不扣分。', 'M2: equal weight per final document state; merge retries; unknown completeness stays 4–5, without dropping documents.\nM3/M4: assess acquired official material against the task; missing body is blocked; version count incurs no penalty.'),
+      'official': ('M2：按独立文档最终状态等权平均；重试不重复计数；完整性单独核验，5分不证明全文完整，不删除未知项。\nM3/M4：只看原题与实际取得的官方内容；无正文记受阻；版本多不扣分。', 'M2: equal weight per final document state; merge retries; completeness is verified separately, and grade 5 does not prove full completeness; do not drop unknown documents.\nM3/M4: assess acquired official material against the task; missing body is blocked; version count incurs no penalty.'),
       'support': ('M5：转载／镜像不作独立来源；M6：无第三方材料记N/A；M7：核查检索前答案，不用自评。\nM8：C=S+F；失败调用只计一次；C=0或异常中断不自动给高分。', 'M5: reposts/mirrors are not independent. M6: no third-party material is N/A. M7: inspect the prior answer, not confidence.\nM8: C=S+F; a failed call counts once. Zero calls or abnormal interruption do not automatically earn a high grade.'),
       'answers': ('M9：先固定原题需要定版的组件；无版本要求记N/A。\nM10：4分不能包含内容纠错；运行状态另记，未实际运行不是4/5分界。', 'M9: fix required components before assessment; no version requirement is N/A.\nM10: grade 4 excludes correcting content errors. Execution status is separate and does not distinguish grades 4 and 5.')}
     label(ax,18,y,foot[group][0 if cn else 1],8,color=MUTED)
