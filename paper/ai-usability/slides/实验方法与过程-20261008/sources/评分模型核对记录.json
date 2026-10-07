@@ -1,0 +1,82 @@
+{
+  "scope": "2026-09-21正式批次；仅核实初评与复核模型身份及分工，不修改实验评分",
+  "verified_on": "2026-10-08",
+  "roles": [
+    {
+      "role": "统一初评",
+      "model_display": "GLM-5.3",
+      "model_id": "glm-5.3",
+      "evidence": [
+        "assess.py:12、113、125",
+        "protocol.json:10、78",
+        "assessment-status.json选中的312份阶段评价均请求glm-5.3；302份provider model为glm-5.3，其余10份形状恢复记录未保存provider model"
+      ]
+    },
+    {
+      "role": "程序检查",
+      "model_display": null,
+      "scope": "引文原文定位、字段和评分逻辑、算术；不能独立证明技术正确性",
+      "evidence": [
+        "review_gate.py:67",
+        "audit_batch.py:35",
+        "audit_arithmetic.py"
+      ]
+    },
+    {
+      "role": "辅助内容复核",
+      "model_display": "GPT-5.6 Luna",
+      "model_id": "gpt-5.6-luna",
+      "scope": "部分批次证据核对及M10/版本来源等指定内容复核，提出修订供主代理审定",
+      "evidence": [
+        "RUNNING.md:3、31",
+        "consolidate_evaluations.py:89",
+        "相关复核代理会话turn_context模型元数据"
+      ]
+    },
+    {
+      "role": "主代理审定",
+      "model_display": "GPT-6 Astra",
+      "model_id": "gpt-6-astra",
+      "scope": "核对原文，批准、调整或驳回修订",
+      "evidence": [
+        "RUNNING.md:31",
+        "m10-closeout-review.json:2307–2314",
+        "相关父会话09-21 turn_context模型元数据"
+      ]
+    }
+  ],
+  "protocol_directory": "/Users/hsin/Documents/Coding/ai-usability-benchmark/experiments/full-rerun-protocol-20260921",
+  "model_metadata": [
+    {
+      "role": "主代理",
+      "type": "turn_context",
+      "timestamp_utc": "2026-09-21T14:22:19.363Z",
+      "model": "gpt-6-astra",
+      "source_line": 31844
+    },
+    {
+      "role": "主代理",
+      "type": "turn_context",
+      "timestamp_utc": "2026-09-21T14:49:21.849Z",
+      "model": "gpt-6-astra",
+      "source_line": 32456
+    },
+    {
+      "role": "M10内容复核代理",
+      "agent_path": "/root/m10_closeout",
+      "type": "turn_context",
+      "timestamp_utc": "2026-09-21T14:22:53.572Z",
+      "model": "gpt-5.6-luna",
+      "source_line": 8
+    },
+    {
+      "role": "版本来源复核代理",
+      "agent_path": "/root/version_source_closeout",
+      "type": "turn_context",
+      "timestamp_utc": "2026-09-21T14:23:07.703Z",
+      "model": "gpt-5.6-luna",
+      "source_line": 8
+    }
+  ],
+  "provenance_note": "已在本地核对复核代理session_meta的父任务关系，以及父任务工具调用与正式批次M10/版本来源复核和字段修订文件的对应关系。仅摘录上述身份与时间元数据，未复制原始会话正文。复核记录文件中的model字段多指被测模型，不能据该字段推断复核模型。"
+}
