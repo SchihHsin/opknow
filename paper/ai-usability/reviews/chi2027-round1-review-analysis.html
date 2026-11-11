@@ -11,7 +11,7 @@
 @media(max-width:800px){.layout{grid-template-columns:1fr;margin-top:12px}.side{position:static}.side nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.top h1{font-size:21px}}
 @media print{body{background:#fff}.top{background:#fff;color:#111;border-bottom:2px solid #25384e;padding:18px 0}.paper-title,.brand{color:#444}.layout{display:block;max-width:none;margin:12px 0;padding:0}.side,.backtop{display:none}.section,.review{box-shadow:none;break-inside:avoid}.section-head{background:#f4f4f4}.footer{padding:0}}
 
-.tabstrip{max-width:1180px;margin:18px auto 0;padding:0 18px;display:flex;gap:4px;border-bottom:1px solid #cbd3db}.tabbtn{appearance:none;border:1px solid transparent;border-bottom:0;background:transparent;color:#526170;padding:10px 17px;font:600 14px/1.2 system-ui,sans-serif;cursor:pointer;border-radius:5px 5px 0 0}.tabbtn[aria-selected="true"]{background:#fff;border-color:#cbd3db;color:#183654;box-shadow:0 -2px 0 #376d9c inset}.tabbtn:focus-visible{outline:3px solid #91b8dc;outline-offset:2px}.tab-panel{display:none}.tab-panel.active{display:block}.original .review-body{font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1.68}.original .review-body h4{font-family:system-ui,-apple-system,sans-serif}.original-intro{font-size:13px;color:#536270;margin:0 0 12px}
+.tabstrip{max-width:1180px;margin:4px auto 24px;padding:12px 18px 0;display:flex;justify-content:flex-end;align-items:center;gap:3px;border-top:1px solid #d7dde3}.switch-label{font-size:11px;color:#8994a0;margin-right:2px}.tabbtn{appearance:none;border:0;background:transparent;color:#75818e;padding:5px 8px;font:500 11px/1.2 system-ui,sans-serif;cursor:pointer;border-radius:3px}.tabbtn[aria-selected="true"]{background:#f0f3f6;color:#445566}.tabbtn:focus-visible{outline:3px solid #91b8dc;outline-offset:2px}.tab-panel{display:none}.tab-panel.active{display:block}.original .review-body{font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1.68}.original .review-body h4{font-family:system-ui,-apple-system,sans-serif}.original-intro{font-size:13px;color:#536270;margin:0 0 12px}
 </style>
 </head>
 <body id="top">
@@ -21,7 +21,6 @@
   <div class="paper-title">Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems</div>
   <div class="meta"><span class="pill">投稿 #7561</span><span class="pill">AC：Major Revisions Required</span><span class="pill">修改稿截止：2026 年 12 月 3 日</span><span class="pill">最终通知：2026 年 12 月 17 日</span></div>
 </header>
-<div class="tabstrip" role="tablist" aria-label="Review language"><button class="tabbtn" id="tab-original" role="tab" aria-selected="true" aria-controls="panel-original">English Original</button><button class="tabbtn" id="tab-cn" role="tab" aria-selected="false" aria-controls="panel-cn">中文解读</button></div>
 <section class="tab-panel active" id="panel-original" role="tabpanel" aria-labelledby="tab-original"><div class="layout original"><aside class="side"><h2>Review navigation</h2><nav><a href="#original-ac">Meta-review (AC)</a><a href="#original-r1">Reviewer 1</a><a href="#original-r2">Reviewer 2</a><a href="#original-r3">Reviewer 3</a></nav><div class="mini">English text from PCS. Reviewers are identified only by their PCS labels.</div></aside><main class="content">
 <p class="original-intro">English review text for submission #7561, in PCS order. Ratings are listed after each review.</p>
 <section class="section" id="original-ac"><div class="section-head"><h2>Reviewer 4 (AC) · The Meta-Review</h2><span class="badge must">MAJOR REVISIONS REQUIRED</span></div><div class="section-body review-body">
@@ -229,6 +228,7 @@
 </main></div>
 <footer class="footer">依据 PCS 中投稿 #7561 的 AC Meta-review 与三份 Round 1 Review 整理。中文内容为评审意见的翻译、归纳与解释；若与 PCS 原文表述存在出入，以 PCS 原文为准。页面仅用于作者内部审阅与修改规划。</footer>
 </section>
+<div class="tabstrip" role="tablist" aria-label="Review language"><span class="switch-label">版本：</span><button class="tabbtn" id="tab-original" role="tab" aria-selected="true" aria-controls="panel-original">English Original</button><button class="tabbtn" id="tab-cn" role="tab" aria-selected="false" aria-controls="panel-cn">中文解读</button></div>
 <a class="backtop" href="#top">回到顶部 ↑</a>
 <script>(()=>{const tabs=[...document.querySelectorAll("[role=tab]")];function choose(which){for(const t of tabs){const on=t.id==="tab-"+which;t.setAttribute("aria-selected",String(on));document.getElementById(t.getAttribute("aria-controls")).classList.toggle("active",on)}history.replaceState(null,"",which==="cn"?"#cn":"#original")}tabs.forEach(t=>t.addEventListener("click",()=>choose(t.id==="tab-cn"?"cn":"original")));choose(location.hash==="#cn"?"cn":"original")})();</script>
 </body>
