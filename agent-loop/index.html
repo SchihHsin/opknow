@@ -154,37 +154,42 @@
     .loop-svg-node:focus{outline:none}
     .loop-svg-node:focus .loop-svg-mark{stroke-width:3.5}
     .loop-svg-small{font-size:7.7px;fill:#8b95a5}
-    .taxonomy-map{padding:16px 18px 14px;overflow:hidden}
-    .taxonomy-track{padding:2px 1px 4px}
-    .taxonomy-track + .taxonomy-track{margin-top:2px}
-    .taxonomy-head{display:flex;align-items:center;gap:10px;margin:0 2px 11px}
-    .taxonomy-axis-num{display:flex;align-items:center;justify-content:center;flex:none;width:27px;height:27px;border-radius:50%;background:#f0edf8;color:#6b5ba8;font-size:9px;font-weight:900}
-    .taxonomy-track.mechanism-track .taxonomy-axis-num{background:#eaf4ef;color:#3f7d72}
-    .taxonomy-head h3{font-size:13px;margin:0;color:#34425e}
-    .taxonomy-head p{font-size:9.5px;color:#7b8698;margin:1px 0 0;line-height:1.5}
-    .taxonomy-axis-tag{margin-left:auto;padding:4px 8px;border-radius:99px;background:#f7f8fb;border:1px solid #e8ebf0;color:#7b8698;font-size:8.5px;white-space:nowrap}
-    .taxonomy-row-scroll{overflow-x:auto;scrollbar-color:#c4cbda #f2f4f8}
-    .taxonomy-node-row{position:relative;display:grid;grid-template-columns:repeat(5,minmax(132px,1fr));gap:0;min-width:740px;padding:1px 4px 5px}
-    .taxonomy-node-row.mechanism-row{grid-template-columns:repeat(8,minmax(126px,1fr));min-width:1080px}
-    .taxonomy-node-row::before{content:"";position:absolute;left:10%;right:10%;top:14px;height:1px;background:#d7deea}
-    .taxonomy-node{position:relative;z-index:1;min-height:108px;padding:0 10px 7px;text-align:center;color:inherit}
-    .taxonomy-pin{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px;margin:0 auto 8px;border:1.5px solid var(--node-color,#6b5ba8);border-radius:50%;background:#fff;color:var(--node-color,#6b5ba8);font-size:8px;font-weight:900;box-shadow:0 0 0 4px #fff}
-    .taxonomy-node h4,.taxonomy-node .node-title{display:block;font-size:10.5px;line-height:1.35;font-weight:820;color:#34425e;margin:0 0 4px}
-    .taxonomy-node p{font-size:8.9px;line-height:1.55;color:#7b8698;margin:0 auto;max-width:180px}
-    .taxonomy-node article{border:0;background:transparent}
-    .taxonomy-node details{border:0}
-    details.taxonomy-node{cursor:pointer;list-style:none}
-    details.taxonomy-node summary{list-style:none;cursor:pointer}
-    details.taxonomy-node summary::-webkit-details-marker{display:none}
-    details.taxonomy-node[open] .taxonomy-pin{background:color-mix(in srgb,var(--node-color,#3f7d72) 9%,white);box-shadow:0 0 0 4px #fff,0 0 0 6px color-mix(in srgb,var(--node-color,#3f7d72) 18%,white)}
-    details.taxonomy-node p{padding:7px 8px;margin-top:6px;border-radius:7px;background:#f7f8fb;text-align:left}
-    .taxonomy-bridge{display:flex;align-items:center;justify-content:center;gap:9px;margin:1px auto 5px;color:#718097}
-    .taxonomy-bridge-line{height:1px;width:min(11vw,120px);background:#d9deea}
-    .taxonomy-bridge-node{display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid #e4e8ef;border-radius:99px;background:#fafbfd;white-space:nowrap}
-    .taxonomy-bridge-node i{display:flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:#e9edf5;color:#465675;font-style:normal;font-size:11px;font-weight:800}
-    .taxonomy-bridge-node b{font-size:9px;color:#465675}
-    .taxonomy-bridge-node span{font-size:8.5px;color:#8590a0}
-    .taxonomy-hint{margin:8px 3px 0;padding-top:8px;border-top:1px solid #edf0f4;color:#8791a1;font-size:8.8px;line-height:1.55}
+    .matrix-shell{padding:15px 16px 12px;overflow:hidden}
+    .matrix-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 2px 10px}
+    .matrix-intro h3{margin:0 0 2px;font-size:12.5px;color:#34425e}
+    .matrix-intro p{margin:0;font-size:9.5px;line-height:1.55;color:#7b8698}
+    .matrix-size{flex:none;padding:4px 8px;border-radius:99px;background:#f7f8fb;border:1px solid #e8ebf0;color:#7b8698;font-size:8.5px}
+    .matrix-scroll{overflow-x:auto;border-radius:8px;scrollbar-color:#c4cbda #f2f4f8}
+    .axis-matrix{width:100%;min-width:1030px;border-collapse:collapse;table-layout:fixed;background:#fff}
+    .axis-matrix th,.axis-matrix td{border:1px solid #edf0f4}
+    .axis-matrix thead th{height:76px;padding:8px 7px;background:#fafbfd;text-align:center;vertical-align:middle}
+    .axis-matrix .matrix-corner{position:sticky;left:0;z-index:4;width:212px;text-align:left;padding:10px 12px;color:#6c778b;background:#fafbfd}
+    .matrix-corner .axis-y{display:block;font-size:8px;color:#a0a8b5;letter-spacing:.06em;margin-bottom:5px}
+    .matrix-corner b{display:block;font-size:10px;color:#53627b}
+    .matrix-corner small{display:block;font-size:8px;font-weight:500;color:#8a94a3;margin-top:2px}
+    .matrix-label{appearance:none;border:0;background:transparent;color:#394862;font:inherit;cursor:pointer}
+    .matrix-label:focus-visible,.matrix-example:focus-visible{outline:2px solid #536f9e;outline-offset:2px;border-radius:5px}
+    .matrix-label:hover b{color:#6b5ba8}
+    .matrix-col-label{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%;min-height:57px;padding:0 3px}
+    .matrix-col-label .matrix-index{display:flex;align-items:center;justify-content:center;width:22px;height:22px;border:1.5px solid var(--axis-color);border-radius:50%;color:var(--axis-color);background:#fff;font-size:7.5px;font-weight:900}
+    .matrix-col-label b{font-size:9.4px;line-height:1.25;font-weight:800}
+    .axis-matrix tbody th{position:sticky;left:0;z-index:2;width:212px;padding:0 9px;background:#fff;text-align:left}
+    .matrix-row-label{display:flex;align-items:center;gap:8px;width:100%;padding:7px 2px;text-align:left}
+    .matrix-row-label .matrix-index{display:flex;align-items:center;justify-content:center;flex:none;width:21px;height:21px;border-radius:50%;color:var(--axis-color);border:1.4px solid var(--axis-color);font-size:7.5px;font-weight:900;background:#fff}
+    .matrix-row-label b{font-size:8.9px;line-height:1.25;font-weight:760;color:#52617a}
+    .axis-matrix td{height:39px;text-align:center;background:#fff}
+    .matrix-point{display:inline-block;width:5px;height:5px;border-radius:50%;background:#e1e6ee;vertical-align:middle}
+    .matrix-example{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:0;background:transparent;cursor:pointer}
+    .matrix-example .matrix-point{width:10px;height:10px;background:#6b5ba8;box-shadow:0 0 0 4px #f0edf8,0 0 0 1px #6b5ba8}
+    .matrix-example[data-example="ledger"] .matrix-point{background:#3f7d72;box-shadow:0 0 0 4px #eaf4ef,0 0 0 1px #3f7d72}
+    .matrix-example:hover .matrix-point{transform:scale(1.2)}
+    .matrix-legend{display:flex;align-items:center;gap:8px 17px;flex-wrap:wrap;padding:8px 10px;margin-top:9px;background:#fafbfd;border:1px solid #edf0f4;border-radius:7px}
+    .matrix-legend-item{display:inline-flex;align-items:center;gap:6px;color:#69758a;font-size:8.7px}
+    .matrix-legend .matrix-point.example-purple{width:9px;height:9px;background:#6b5ba8;box-shadow:0 0 0 3px #f0edf8}
+    .matrix-legend .matrix-point.example-green{width:9px;height:9px;background:#3f7d72;box-shadow:0 0 0 3px #eaf4ef}
+    .matrix-detail{display:flex;align-items:flex-start;gap:8px;min-height:34px;padding:8px 2px 0;color:#6f7a8d;font-size:8.9px;line-height:1.5}
+    .matrix-detail::before{content:"";flex:none;width:6px;height:6px;margin-top:4px;border-radius:50%;background:#9ba5b5}
+    .matrix-detail b{color:#45536d;margin-right:4px}
     .vendors{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
     .vendor{padding:12px 14px}
     .vendor h3{font-size:11px;margin:0 0 4px;color:#33425d}
@@ -227,7 +232,7 @@
       .sequence-card{padding:11px}.tabbar{gap:5px}.tab{font-size:10px;padding:7px 9px}.tab-note{width:100%;margin-left:0}
       .diagram-foot,.twocol,.illustration-grid,.evidence-grid{grid-template-columns:1fr}.exit-grid{grid-template-columns:repeat(2,1fr)}
       .loop-diagram-foot{grid-template-columns:1fr}.loop-topology-tabs .tab-note{width:100%;margin-left:0}.loop-topology-heading{flex-direction:column}
-      .taxonomy-map{padding:13px 12px}.taxonomy-axis-tag{font-size:8px}.taxonomy-bridge{gap:5px}.taxonomy-bridge-line{width:8vw}.taxonomy-bridge-node{gap:5px;padding:5px 8px}.taxonomy-bridge-node span{font-size:7.8px}.vendors{grid-template-columns:1fr}
+      .matrix-shell{padding:12px 10px}.matrix-intro{align-items:flex-start}.matrix-size{font-size:7.8px}.matrix-detail{font-size:8.5px}.vendors{grid-template-columns:1fr}
       .case-limit{width:100%;margin-left:0}.footer{flex-direction:column}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
@@ -338,34 +343,31 @@
 
     <section class="section" id="patterns">
       <div class="section-head"><div><div class="section-kicker">04 / Design choices</div><h2>任务组织模式与执行机制是两条轴</h2><p class="section-intro">模式说明任务怎样组织；机制说明下一轮由什么控制信号触发。它们可以组合，不应该混成一个互斥分类。</p></div></div>
-      <div class="card taxonomy-map" aria-label="任务组织模式与执行机制节点图">
-        <div class="taxonomy-track">
-          <div class="taxonomy-head"><span class="taxonomy-axis-num">01</span><div><h3>任务组织模式</h3><p>决定任务如何拆解、推进和协作</p></div><span class="taxonomy-axis-tag">组织任务 · 5 个节点</span></div>
-          <div class="taxonomy-row-scroll"><div class="taxonomy-node-row">
-            <article class="taxonomy-node" style="--node-color:#6b5ba8"><span class="taxonomy-pin">01</span><h4>反馈驱动</h4><p>根据当前观察决定下一步，适合路径未知的探索任务。</p></article>
-            <article class="taxonomy-node" style="--node-color:#5578ae"><span class="taxonomy-pin">02</span><h4>计划驱动</h4><p>维护阶段、依赖与进度；假设失效或停滞时重规划。</p></article>
-            <article class="taxonomy-node" style="--node-color:#3f7d72"><span class="taxonomy-pin">03</span><h4>流程约束</h4><p>用显式节点和条件限制合法路径，便于审计与权限管理。</p></article>
-            <article class="taxonomy-node" style="--node-color:#b77b2c"><span class="taxonomy-pin">04</span><h4>验证修复</h4><p>按测试或外部证据检查产出，针对失败项迭代。</p></article>
-            <article class="taxonomy-node" style="--node-color:#c34c54"><span class="taxonomy-pin">05</span><h4>多 Agent 协作</h4><p>拆分职责后协调整合；角色更多不代表质量更高。</p></article>
-          </div></div>
-        </div>
-        <div class="taxonomy-bridge" aria-label="两个维度共同作用于同一个 Agent Loop">
-          <span class="taxonomy-bridge-line"></span><span class="taxonomy-bridge-node"><i>×</i><b>同一个 Agent Loop</b><span>分别选择、组合使用</span></span><span class="taxonomy-bridge-line"></span>
-        </div>
-        <div class="taxonomy-track mechanism-track">
-          <div class="taxonomy-head"><span class="taxonomy-axis-num">02</span><div><h3>执行机制</h3><p>决定下一轮由什么信号触发；点选节点展开说明</p></div><span class="taxonomy-axis-tag">调度下一步 · 8 个节点</span></div>
-          <div class="taxonomy-row-scroll"><div class="taxonomy-node-row mechanism-row">
-            <details class="taxonomy-node" style="--node-color:#6b5ba8"><summary><span class="taxonomy-pin">01</span><span class="node-title">Tool Calling Loop</span></summary><p>模型发出工具请求，运行系统执行并回写结果后继续调用模型。</p></details>
-            <details class="taxonomy-node" style="--node-color:#5578ae"><summary><span class="taxonomy-pin">02</span><span class="node-title">Handoff Loop</span></summary><p>当前 Agent 发起交接，运行系统切换活动 Agent；需要明确目的地与交接上下文。</p></details>
-            <details class="taxonomy-node" style="--node-color:#3f7d72"><summary><span class="taxonomy-pin">03</span><span class="node-title">Agent as Tool</span></summary><p>主 Agent 调用有边界的专家任务；专家返回后由主 Agent 恢复并汇总。</p></details>
-            <details class="taxonomy-node" style="--node-color:#b77b2c"><summary><span class="taxonomy-pin">04</span><span class="node-title">Conditional Graph</span></summary><p>状态和条件函数选择后续节点，回边构成循环，END 或人工节点处理出口。</p></details>
-            <details class="taxonomy-node" style="--node-color:#c34c54"><summary><span class="taxonomy-pin">05</span><span class="node-title">Explicit Iteration</span></summary><p>框架按固定顺序重复一组子步骤；需要明确退出信号和最大迭代数。</p></details>
-            <details class="taxonomy-node" style="--node-color:#71809b"><summary><span class="taxonomy-pin">06</span><span class="node-title">Speaker Selection</span></summary><p>团队调度器根据共享上下文选择下一位执行者，而不是由当前 Agent 自行交接。</p></details>
-            <details class="taxonomy-node" style="--node-color:#a46e2a"><summary><span class="taxonomy-pin">07</span><span class="node-title">Ledger-driven Nested Loop</span></summary><p>内层按进度分派子任务；停滞信号触发外层更新整体计划。</p></details>
-            <details class="taxonomy-node" style="--node-color:#52647e"><summary><span class="taxonomy-pin">08</span><span class="node-title">Programmatic Workflow</span></summary><p>用程序条件、循环、并行和恢复逻辑编排；副作用要考虑幂等或检查点。</p></details>
-          </div></div>
-        </div>
-        <div class="taxonomy-hint">连线表示节点同属一个维度，不表示执行先后或固定配对。一个任务可以同时选择组织方式和多种执行机制，例如主 Agent 使用工具循环、图路由负责验收、Ledger 负责长任务重规划。</div>
+      <div class="card matrix-shell" aria-label="任务组织模式与执行机制交叉矩阵">
+        <div class="matrix-intro"><div><h3>两条轴在同一个任务中组合</h3><p>横轴选择任务怎么组织；纵轴选择下一轮由什么机制触发。点击轴标签查看定义；窄屏可横向滑动。</p></div><span class="matrix-size">5 × 8 · 组合空间</span></div>
+        <div class="matrix-scroll"><table class="axis-matrix" aria-describedby="matrixLegend matrixDetail">
+          <caption style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">任务组织模式为横轴，执行机制为纵轴；格点表示组合空间。</caption>
+          <thead><tr>
+            <th class="matrix-corner" scope="col"><span class="axis-y">纵轴 ↓</span><b>执行机制</b><small>下一轮由什么信号触发</small><small style="margin-top:5px;color:#a0a8b5">横轴 → 任务组织模式</small></th>
+            <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:feedback" aria-label="反馈驱动：根据当前观察决定下一步，适合路径未知的探索任务"><span class="matrix-index" style="--axis-color:#6b5ba8">01</span><b>反馈驱动</b></button></th>
+            <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:plan" aria-label="计划驱动：维护阶段、依赖与进度，假设失效或停滞时重规划"><span class="matrix-index" style="--axis-color:#5578ae">02</span><b>计划驱动</b></button></th>
+            <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:flow" aria-label="流程约束：用显式节点和条件限制合法路径，便于审计与权限管理"><span class="matrix-index" style="--axis-color:#3f7d72">03</span><b>流程约束</b></button></th>
+            <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:verify" aria-label="验证修复：按测试或外部证据检查产出，针对失败项迭代"><span class="matrix-index" style="--axis-color:#b77b2c">04</span><b>验证修复</b></button></th>
+            <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:multi" aria-label="多 Agent 协作：拆分职责后协调整合，角色更多不代表质量更高"><span class="matrix-index" style="--axis-color:#c34c54">05</span><b>多 Agent 协作</b></button></th>
+          </tr></thead>
+          <tbody>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:tool"><span class="matrix-index" style="--axis-color:#6b5ba8">01</span><b>Tool Calling Loop</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:handoff"><span class="matrix-index" style="--axis-color:#5578ae">02</span><b>Handoff Loop</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:agentTool"><span class="matrix-index" style="--axis-color:#3f7d72">03</span><b>Agent as Tool</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:graph"><span class="matrix-index" style="--axis-color:#b77b2c">04</span><b>Conditional Graph</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><button type="button" class="matrix-example" data-example="verification" aria-label="示例组合：验证修复 × Conditional Graph，图路由负责验收"><span class="matrix-point"></span></button></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:iteration"><span class="matrix-index" style="--axis-color:#c34c54">05</span><b>Explicit Iteration</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:speaker"><span class="matrix-index" style="--axis-color:#71809b">06</span><b>Speaker Selection</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:ledger"><span class="matrix-index" style="--axis-color:#a46e2a">07</span><b>Ledger-driven Nested Loop</b></button></th><td><span class="matrix-point"></span></td><td><button type="button" class="matrix-example" data-example="ledger" aria-label="示例组合：计划驱动 × Ledger-driven Nested Loop，Ledger 负责长任务重规划"><span class="matrix-point"></span></button></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:programmatic"><span class="matrix-index" style="--axis-color:#52647e">08</span><b>Programmatic Workflow</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+          </tbody>
+        </table></div>
+        <div class="matrix-legend" id="matrixLegend"><span class="matrix-legend-item"><i class="matrix-point"></i>组合空间 · 不表示每种组合都适用</span><span class="matrix-legend-item"><i class="matrix-point example-purple"></i>验证修复 × Conditional Graph</span><span class="matrix-legend-item"><i class="matrix-point example-green"></i>计划驱动 × Ledger Loop</span></div>
+        <div class="matrix-detail" id="matrixDetail" aria-live="polite"><span>点击横轴或纵轴节点查看定义；点击高亮交点查看正文示例。示例点不代表固定配对。</span></div>
       </div>
     </section>
 
@@ -603,6 +605,26 @@
       svg.querySelectorAll('.loop-svg-node').forEach(node=>{const choose=()=>selectLoopEvent(+node.dataset.loopEvent);node.addEventListener('click',choose);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});selectLoopEvent(0);
     }
     function selectLoopEvent(index){const sc=loopTopologies[currentLoopTopology],ev=sc.events[index];if(!ev)return;document.querySelectorAll('#loopTopologySvg .loop-svg-node').forEach((n,i)=>n.classList.toggle('selected',i===index));const actor=ev.actor||ev.from,p=sc.participants.find(x=>x[0]===actor);document.getElementById('loopTopologyDetail').innerHTML=`<div class="d-top"><span class="d-index">STEP ${String(index+1).padStart(2,'0')} · ${esc(p?p[1]:'运行系统')}</span><h3>${esc(ev.title)}</h3></div><p>${esc(ev.detail)}</p>`;}
+    const matrixDetails={
+      'mode:feedback':['反馈驱动 · 任务组织模式','根据当前观察决定下一步，适合路径未知、需要探索的任务。'],
+      'mode:plan':['计划驱动 · 任务组织模式','维护阶段、依赖与进度；当假设失效或持续停滞时更新计划。'],
+      'mode:flow':['流程约束 · 任务组织模式','用显式节点和条件限制合法路径，便于审计与权限管理。'],
+      'mode:verify':['验证修复 · 任务组织模式','按测试或外部证据检查产出，再针对失败项迭代。'],
+      'mode:multi':['多 Agent 协作 · 任务组织模式','拆分相对独立的职责，再协调和整合结果；角色更多不代表质量更高。'],
+      'mechanism:tool':['Tool Calling Loop · 执行机制','模型发出工具请求，运行系统执行并回写结果后继续调用模型。'],
+      'mechanism:handoff':['Handoff Loop · 执行机制','当前 Agent 发起交接，运行系统切换活动 Agent；需要明确目的地与交接上下文。'],
+      'mechanism:agentTool':['Agent as Tool · 执行机制','主 Agent 调用有边界的专家任务；专家返回后由主 Agent 恢复并汇总。'],
+      'mechanism:graph':['Conditional Graph · 执行机制','状态和条件函数选择后续节点，回边构成循环，END 或人工节点处理出口。'],
+      'mechanism:iteration':['Explicit Iteration · 执行机制','框架按固定顺序重复一组子步骤；需要明确退出信号和最大迭代数。'],
+      'mechanism:speaker':['Speaker Selection · 执行机制','团队调度器根据共享上下文选择下一位执行者，而不是由当前 Agent 自行交接。'],
+      'mechanism:ledger':['Ledger-driven Nested Loop · 执行机制','内层按进度分派子任务；停滞信号触发外层更新整体计划。'],
+      'mechanism:programmatic':['Programmatic Workflow · 执行机制','用程序条件、循环、并行和恢复逻辑编排；副作用要考虑幂等或检查点。'],
+      'example:verification':['验证修复 × Conditional Graph · 正文组合示例','图路由负责验收：验证结果决定进入交付还是回到修复。'],
+      'example:ledger':['计划驱动 × Ledger-driven Nested Loop · 正文组合示例','Ledger 负责长任务重规划：内层跟踪子任务，停滞时外层调整整体计划。']
+    };
+    function showMatrixDetail(key){const d=matrixDetails[key];if(!d)return;document.getElementById('matrixDetail').innerHTML=`<b>${esc(d[0])}</b><span>${esc(d[1])}</span>`;document.querySelectorAll('.matrix-example').forEach(n=>n.classList.toggle('selected',n.dataset.example===key.split(':')[1]));}
+    document.querySelectorAll('[data-matrix-detail]').forEach(b=>b.addEventListener('click',()=>showMatrixDetail(b.dataset.matrixDetail)));
+    document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>showMatrixDetail(`example:${b.dataset.example==='verification'?'verification':'ledger'}`)));
     document.querySelectorAll('[data-loop-topology]').forEach(b=>b.addEventListener('click',()=>renderLoopTopology(b.dataset.loopTopology)));
     document.querySelectorAll('[data-scene]').forEach(b=>b.addEventListener('click',()=>renderSequence(b.dataset.scene)));
     document.querySelectorAll('[data-control]').forEach(b=>b.addEventListener('click',()=>renderControl(b.dataset.control)));
