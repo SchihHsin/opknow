@@ -154,25 +154,37 @@
     .loop-svg-node:focus{outline:none}
     .loop-svg-node:focus .loop-svg-mark{stroke-width:3.5}
     .loop-svg-small{font-size:7.7px;fill:#8b95a5}
-    .pattern-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:12px}
-    .pattern{padding:13px 13px 12px;min-height:125px;position:relative;overflow:hidden}
-    .pattern::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
-    .pattern small{font-size:8.5px;font-weight:850;letter-spacing:.1em;color:#9099a9}
-    .pattern h3{font-size:12px;margin:5px 0 5px}
-    .pattern p{font-size:9.5px;line-height:1.6;color:#758095;margin:0}
-    .mechanism-wrap{display:grid;grid-template-columns:minmax(250px,.75fr) minmax(0,1.25fr);gap:14px;margin-top:14px}
-    .mechanism-intro{padding:17px 18px}
-    .mechanism-intro h3{font-size:14px;margin:0 0 5px}
-    .mechanism-intro p{font-size:10.5px;color:#758095;margin:0 0 10px;line-height:1.65}
-    .pill-list{display:flex;gap:5px;flex-wrap:wrap}
-    .pill{font-size:9px;color:#5e6b81;border:1px solid #e4e8ef;border-radius:6px;background:#fafbfd;padding:4px 7px}
-    .mechanisms{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-    details.mechanism{padding:10px 11px;min-height:76px}
-    details.mechanism summary{list-style:none;cursor:pointer;display:flex;align-items:flex-start;gap:7px;color:#33425d;font-size:10px;font-weight:820}
-    details.mechanism summary::-webkit-details-marker{display:none}
-    .m-num{display:inline-flex;align-items:center;justify-content:center;flex:none;width:17px;height:17px;border-radius:5px;background:#eef1f7;color:#576887;font-size:8px}
-    details.mechanism p{font-size:9px;color:#748095;line-height:1.55;margin:7px 0 0}
-    .mechanism-hint{font-size:9px;color:#9ba3b0;padding:4px 1px 0}
+    .taxonomy-map{padding:16px 18px 14px;overflow:hidden}
+    .taxonomy-track{padding:2px 1px 4px}
+    .taxonomy-track + .taxonomy-track{margin-top:2px}
+    .taxonomy-head{display:flex;align-items:center;gap:10px;margin:0 2px 11px}
+    .taxonomy-axis-num{display:flex;align-items:center;justify-content:center;flex:none;width:27px;height:27px;border-radius:50%;background:#f0edf8;color:#6b5ba8;font-size:9px;font-weight:900}
+    .taxonomy-track.mechanism-track .taxonomy-axis-num{background:#eaf4ef;color:#3f7d72}
+    .taxonomy-head h3{font-size:13px;margin:0;color:#34425e}
+    .taxonomy-head p{font-size:9.5px;color:#7b8698;margin:1px 0 0;line-height:1.5}
+    .taxonomy-axis-tag{margin-left:auto;padding:4px 8px;border-radius:99px;background:#f7f8fb;border:1px solid #e8ebf0;color:#7b8698;font-size:8.5px;white-space:nowrap}
+    .taxonomy-row-scroll{overflow-x:auto;scrollbar-color:#c4cbda #f2f4f8}
+    .taxonomy-node-row{position:relative;display:grid;grid-template-columns:repeat(5,minmax(132px,1fr));gap:0;min-width:740px;padding:1px 4px 5px}
+    .taxonomy-node-row.mechanism-row{grid-template-columns:repeat(8,minmax(126px,1fr));min-width:1080px}
+    .taxonomy-node-row::before{content:"";position:absolute;left:10%;right:10%;top:14px;height:1px;background:#d7deea}
+    .taxonomy-node{position:relative;z-index:1;min-height:108px;padding:0 10px 7px;text-align:center;color:inherit}
+    .taxonomy-pin{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px;margin:0 auto 8px;border:1.5px solid var(--node-color,#6b5ba8);border-radius:50%;background:#fff;color:var(--node-color,#6b5ba8);font-size:8px;font-weight:900;box-shadow:0 0 0 4px #fff}
+    .taxonomy-node h4,.taxonomy-node .node-title{display:block;font-size:10.5px;line-height:1.35;font-weight:820;color:#34425e;margin:0 0 4px}
+    .taxonomy-node p{font-size:8.9px;line-height:1.55;color:#7b8698;margin:0 auto;max-width:180px}
+    .taxonomy-node article{border:0;background:transparent}
+    .taxonomy-node details{border:0}
+    details.taxonomy-node{cursor:pointer;list-style:none}
+    details.taxonomy-node summary{list-style:none;cursor:pointer}
+    details.taxonomy-node summary::-webkit-details-marker{display:none}
+    details.taxonomy-node[open] .taxonomy-pin{background:color-mix(in srgb,var(--node-color,#3f7d72) 9%,white);box-shadow:0 0 0 4px #fff,0 0 0 6px color-mix(in srgb,var(--node-color,#3f7d72) 18%,white)}
+    details.taxonomy-node p{padding:7px 8px;margin-top:6px;border-radius:7px;background:#f7f8fb;text-align:left}
+    .taxonomy-bridge{display:flex;align-items:center;justify-content:center;gap:9px;margin:1px auto 5px;color:#718097}
+    .taxonomy-bridge-line{height:1px;width:min(11vw,120px);background:#d9deea}
+    .taxonomy-bridge-node{display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid #e4e8ef;border-radius:99px;background:#fafbfd;white-space:nowrap}
+    .taxonomy-bridge-node i{display:flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:#e9edf5;color:#465675;font-style:normal;font-size:11px;font-weight:800}
+    .taxonomy-bridge-node b{font-size:9px;color:#465675}
+    .taxonomy-bridge-node span{font-size:8.5px;color:#8590a0}
+    .taxonomy-hint{margin:8px 3px 0;padding-top:8px;border-top:1px solid #edf0f4;color:#8791a1;font-size:8.8px;line-height:1.55}
     .vendors{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
     .vendor{padding:12px 14px}
     .vendor h3{font-size:11px;margin:0 0 4px;color:#33425d}
@@ -206,8 +218,7 @@
     .svg-small{font-size:8px;fill:#8b95a5}
     @media(max-width:980px){
       .hero-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.58fr);gap:18px}.hero-art{max-width:330px}.hero{padding:35px 30px}
-      .pattern-grid{grid-template-columns:repeat(3,1fr)}.mechanisms{grid-template-columns:repeat(2,1fr)}
-      .mechanism-wrap{grid-template-columns:1fr}.vendors{grid-template-columns:repeat(2,1fr)}
+      .vendors{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:720px){
       .topbar-in{padding:0 14px;height:52px;gap:8px}.brand{font-size:10px}.source-tag{display:none}.nav a{font-size:10px;padding:7px 8px}
@@ -216,7 +227,7 @@
       .sequence-card{padding:11px}.tabbar{gap:5px}.tab{font-size:10px;padding:7px 9px}.tab-note{width:100%;margin-left:0}
       .diagram-foot,.twocol,.illustration-grid,.evidence-grid{grid-template-columns:1fr}.exit-grid{grid-template-columns:repeat(2,1fr)}
       .loop-diagram-foot{grid-template-columns:1fr}.loop-topology-tabs .tab-note{width:100%;margin-left:0}.loop-topology-heading{flex-direction:column}
-      .pattern-grid{grid-template-columns:repeat(2,1fr)}.pattern{min-height:112px;padding:11px}.vendors{grid-template-columns:1fr}
+      .taxonomy-map{padding:13px 12px}.taxonomy-axis-tag{font-size:8px}.taxonomy-bridge{gap:5px}.taxonomy-bridge-line{width:8vw}.taxonomy-bridge-node{gap:5px;padding:5px 8px}.taxonomy-bridge-node span{font-size:7.8px}.vendors{grid-template-columns:1fr}
       .case-limit{width:100%;margin-left:0}.footer{flex-direction:column}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
@@ -327,25 +338,34 @@
 
     <section class="section" id="patterns">
       <div class="section-head"><div><div class="section-kicker">04 / Design choices</div><h2>任务组织模式与执行机制是两条轴</h2><p class="section-intro">模式说明任务怎样组织；机制说明下一轮由什么控制信号触发。它们可以组合，不应该混成一个互斥分类。</p></div></div>
-      <div class="pattern-grid">
-        <article class="card pattern" style="--c:#6b5ba8"><small>组织模式 01</small><h3>反馈驱动</h3><p>根据当前观察决定下一步。适合信息不足、路径未知的探索任务。</p></article>
-        <article class="card pattern" style="--c:#5578ae"><small>组织模式 02</small><h3>计划驱动</h3><p>维护阶段、依赖与进度；假设失效或停滞时需要重规划。</p></article>
-        <article class="card pattern" style="--c:#3f7d72"><small>组织模式 03</small><h3>流程约束</h3><p>用显式节点与条件限制合法路径，便于审计和权限管理。</p></article>
-        <article class="card pattern" style="--c:#b77b2c"><small>组织模式 04</small><h3>验证修复</h3><p>按测试、规则或外部证据检查产出，并针对失败项迭代。</p></article>
-        <article class="card pattern" style="--c:#c34c54"><small>组织模式 05</small><h3>多 Agent 协作</h3><p>拆分相对独立的职责，再协调和整合结果；角色变多不保证质量更高。</p></article>
-      </div>
-      <div class="mechanism-wrap">
-        <div class="card mechanism-intro"><h3>八种执行机制</h3><p>按下一轮触发信号理解具体实现。一个任务可以组合多种机制，例如主 Agent 使用工具循环、图路由负责验收、账本负责长任务重规划。</p><div class="pill-list"><span class="pill">当前 Agent 决定</span><span class="pill">运行系统路由</span><span class="pill">状态驱动重规划</span></div><div class="mechanism-hint">点开机制卡查看控制对象与触发信号。</div></div>
-        <div class="mechanisms">
-          <details class="card mechanism"><summary><span class="m-num">01</span>Tool Calling Loop</summary><p>模型发出工具请求，运行系统执行并回写结果后继续调用模型。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">02</span>Handoff Loop</summary><p>当前 Agent 发起交接，运行系统切换活动 Agent；需要明确目的地和交接上下文。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">03</span>Agent as Tool</summary><p>主 Agent 调用有边界的专家任务；专家返回，主 Agent 恢复并汇总。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">04</span>Conditional Graph</summary><p>状态和条件函数选择后续节点，回边构成循环，END 或人工节点处理出口。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">05</span>Explicit Iteration</summary><p>框架按固定顺序重复一组子步骤；需要明确退出信号和最大迭代数。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">06</span>Speaker Selection</summary><p>团队调度器根据共享上下文选择下一位执行者，而非当前 Agent 自行交接。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">07</span>Ledger-driven Nested Loop</summary><p>内层根据进度分配子任务；停滞检测触发外层更新计划。</p></details>
-          <details class="card mechanism"><summary><span class="m-num">08</span>Programmatic Workflow</summary><p>用程序条件、循环、并行和恢复逻辑编排步骤；副作用需要幂等或检查点设计。</p></details>
+      <div class="card taxonomy-map" aria-label="任务组织模式与执行机制节点图">
+        <div class="taxonomy-track">
+          <div class="taxonomy-head"><span class="taxonomy-axis-num">01</span><div><h3>任务组织模式</h3><p>决定任务如何拆解、推进和协作</p></div><span class="taxonomy-axis-tag">组织任务 · 5 个节点</span></div>
+          <div class="taxonomy-row-scroll"><div class="taxonomy-node-row">
+            <article class="taxonomy-node" style="--node-color:#6b5ba8"><span class="taxonomy-pin">01</span><h4>反馈驱动</h4><p>根据当前观察决定下一步，适合路径未知的探索任务。</p></article>
+            <article class="taxonomy-node" style="--node-color:#5578ae"><span class="taxonomy-pin">02</span><h4>计划驱动</h4><p>维护阶段、依赖与进度；假设失效或停滞时重规划。</p></article>
+            <article class="taxonomy-node" style="--node-color:#3f7d72"><span class="taxonomy-pin">03</span><h4>流程约束</h4><p>用显式节点和条件限制合法路径，便于审计与权限管理。</p></article>
+            <article class="taxonomy-node" style="--node-color:#b77b2c"><span class="taxonomy-pin">04</span><h4>验证修复</h4><p>按测试或外部证据检查产出，针对失败项迭代。</p></article>
+            <article class="taxonomy-node" style="--node-color:#c34c54"><span class="taxonomy-pin">05</span><h4>多 Agent 协作</h4><p>拆分职责后协调整合；角色更多不代表质量更高。</p></article>
+          </div></div>
         </div>
+        <div class="taxonomy-bridge" aria-label="两个维度共同作用于同一个 Agent Loop">
+          <span class="taxonomy-bridge-line"></span><span class="taxonomy-bridge-node"><i>×</i><b>同一个 Agent Loop</b><span>分别选择、组合使用</span></span><span class="taxonomy-bridge-line"></span>
+        </div>
+        <div class="taxonomy-track mechanism-track">
+          <div class="taxonomy-head"><span class="taxonomy-axis-num">02</span><div><h3>执行机制</h3><p>决定下一轮由什么信号触发；点选节点展开说明</p></div><span class="taxonomy-axis-tag">调度下一步 · 8 个节点</span></div>
+          <div class="taxonomy-row-scroll"><div class="taxonomy-node-row mechanism-row">
+            <details class="taxonomy-node" style="--node-color:#6b5ba8"><summary><span class="taxonomy-pin">01</span><span class="node-title">Tool Calling Loop</span></summary><p>模型发出工具请求，运行系统执行并回写结果后继续调用模型。</p></details>
+            <details class="taxonomy-node" style="--node-color:#5578ae"><summary><span class="taxonomy-pin">02</span><span class="node-title">Handoff Loop</span></summary><p>当前 Agent 发起交接，运行系统切换活动 Agent；需要明确目的地与交接上下文。</p></details>
+            <details class="taxonomy-node" style="--node-color:#3f7d72"><summary><span class="taxonomy-pin">03</span><span class="node-title">Agent as Tool</span></summary><p>主 Agent 调用有边界的专家任务；专家返回后由主 Agent 恢复并汇总。</p></details>
+            <details class="taxonomy-node" style="--node-color:#b77b2c"><summary><span class="taxonomy-pin">04</span><span class="node-title">Conditional Graph</span></summary><p>状态和条件函数选择后续节点，回边构成循环，END 或人工节点处理出口。</p></details>
+            <details class="taxonomy-node" style="--node-color:#c34c54"><summary><span class="taxonomy-pin">05</span><span class="node-title">Explicit Iteration</span></summary><p>框架按固定顺序重复一组子步骤；需要明确退出信号和最大迭代数。</p></details>
+            <details class="taxonomy-node" style="--node-color:#71809b"><summary><span class="taxonomy-pin">06</span><span class="node-title">Speaker Selection</span></summary><p>团队调度器根据共享上下文选择下一位执行者，而不是由当前 Agent 自行交接。</p></details>
+            <details class="taxonomy-node" style="--node-color:#a46e2a"><summary><span class="taxonomy-pin">07</span><span class="node-title">Ledger-driven Nested Loop</span></summary><p>内层按进度分派子任务；停滞信号触发外层更新整体计划。</p></details>
+            <details class="taxonomy-node" style="--node-color:#52647e"><summary><span class="taxonomy-pin">08</span><span class="node-title">Programmatic Workflow</span></summary><p>用程序条件、循环、并行和恢复逻辑编排；副作用要考虑幂等或检查点。</p></details>
+          </div></div>
+        </div>
+        <div class="taxonomy-hint">连线表示节点同属一个维度，不表示执行先后或固定配对。一个任务可以同时选择组织方式和多种执行机制，例如主 Agent 使用工具循环、图路由负责验收、Ledger 负责长任务重规划。</div>
       </div>
     </section>
 
