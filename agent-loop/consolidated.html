@@ -479,6 +479,15 @@
       let top=anchorRect.top+anchorRect.height/2-hostRect.top-popupRect.height/2;
       if(top<pad)top=anchorRect.bottom-hostRect.top+10;
       if(top+popupRect.height>host.clientHeight-pad)top=anchorRect.top-hostRect.top-popupRect.height-10;
+      const laneHeader=host.querySelector('.lane-sticky');
+      if(laneHeader){
+        const laneRect=laneHeader.getBoundingClientRect(),headerTop=Math.max(0,laneRect.top-hostRect.top),headerBottom=Math.min(host.clientHeight,laneRect.bottom-hostRect.top);
+        if(headerBottom>headerTop&&top<headerBottom+8&&top+popupRect.height>headerTop){
+          const below=headerBottom+8,above=headerTop-popupRect.height-8;
+          if(below+popupRect.height<=host.clientHeight-pad)top=below;
+          else if(above>=pad)top=above;
+        }
+      }
       top=Math.max(pad,Math.min(top,host.clientHeight-popupRect.height-pad));
       popup.style.left=`${left}px`;popup.style.top=`${top}px`;
     }
@@ -511,6 +520,8 @@
     }
     document.addEventListener('click',e=>{if(!e.target.closest('.svg-node,.loop-svg-node,.node-popover'))hideNodePopup(true);});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')hideNodePopup(true);});
+    window.addEventListener('scroll',()=>{if(activeNodePopup)requestAnimationFrame(positionNodePopup);},{passive:true});
+    window.addEventListener('resize',()=>{if(activeNodePopup)positionNodePopup();},{passive:true});
     function stickyLaneParts(kind){return kind==='sequence'?{body:document.getElementById('sequenceSvg'),header:document.getElementById('sequenceLaneHeader'),sticky:document.getElementById('sequenceLaneSticky'),scroll:document.getElementById('sequenceScroll'),viewWidth:1180}:{body:document.getElementById('loopTopologySvg'),header:document.getElementById('loopTopologyLaneHeader'),sticky:document.getElementById('loopTopologyLaneSticky'),scroll:document.getElementById('loopTopologyScroll'),viewWidth:parseFloat(document.getElementById('loopTopologySvg').style.width)||1260};}
     function syncStickyLaneHeader(kind){const p=stickyLaneParts(kind);if(!p.body||!p.header||!p.sticky||!p.scroll)return;const width=p.body.getBoundingClientRect().width||p.viewWidth,height=width*72/p.viewWidth;p.header.style.width=`${width}px`;p.header.style.height=`${height}px`;p.header.style.transform=`translateX(${-p.scroll.scrollLeft}px)`;p.sticky.style.height=`${height}px`;p.sticky.style.marginBottom=`-${height}px`;}
     function renderStickyLaneHeader(kind,participants,xs,colors,viewWidth,boxWidth=150,loopStyle=false){
