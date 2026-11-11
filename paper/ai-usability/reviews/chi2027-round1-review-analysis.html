@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="CHI 2027 投稿 #7561 第一轮评审意见的中文解读与修改要求梳理">
+<title>CHI 2027 · 第一轮评审意见解读</title>
+<style>
+:root{color-scheme:light;--bg:#eef1f4;--panel:#fff;--ink:#202b36;--muted:#687684;--line:#d7dde3;--navy:#172b45;--blue:#2563a5;--blue-soft:#eaf2fb;--green:#28734f;--green-soft:#eaf5ef;--amber:#8a5a12;--amber-soft:#fff4dc;--red:#963e3e;--red-soft:#fbeeee;--shadow:0 2px 8px #172b4510}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:#145da0;text-decoration:none}a:hover{text-decoration:underline}.top{background:var(--navy);color:#fff;padding:24px max(22px,calc((100vw - 1180px)/2)) 20px}.brand{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#b7c9dc}.top h1{font-size:25px;line-height:1.3;margin:7px 0 5px;font-weight:650}.paper-title{color:#dae4ef;font-size:14px}.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.pill{border:1px solid #ffffff35;border-radius:4px;padding:3px 9px;color:#e8eef5;font-size:12px}.layout{max-width:1180px;margin:22px auto;padding:0 18px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px}.side{position:sticky;top:16px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);padding:15px}.side h2{font-size:13px;margin:0 0 10px;color:#4c5b69}.side a{display:block;padding:6px 8px;color:#314253;font-size:13px;border-radius:4px}.side a:hover{background:#f1f4f7;text-decoration:none}.side .mini{border-top:1px solid var(--line);margin-top:12px;padding-top:12px;color:var(--muted);font-size:12px}.content{min-width:0}.notice{background:var(--blue-soft);border:1px solid #c8d9ed;border-left:4px solid var(--blue);padding:13px 16px;border-radius:5px;margin-bottom:16px}.section{background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);margin:0 0 16px;overflow:hidden;scroll-margin-top:16px}.section-head{padding:12px 17px;background:#f8fafb;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.section-head h2{font-size:17px;margin:0}.section-body{padding:17px}.badge{font-size:11px;line-height:1.6;border-radius:4px;padding:2px 8px;white-space:nowrap;background:#edf1f5;color:#46596a}.badge.must{background:var(--red-soft);color:var(--red)}.badge.support{background:var(--green-soft);color:var(--green)}.badge.suggest{background:var(--amber-soft);color:var(--amber)}.decision{background:#f8f9fb;border:1px solid var(--line);border-radius:5px;padding:14px 16px;margin-bottom:12px}.decision strong{font-size:16px}.decision p{margin:6px 0 0}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.metric{padding:13px;border:1px solid var(--line);border-radius:5px;background:#fff}.metric b{display:block;font-size:14px;margin-bottom:4px}.metric p{margin:0;color:#43515f;font-size:13px}.req{border:1px solid var(--line);border-radius:5px;margin:0 0 12px;overflow:hidden}.req h3{font-size:15px;margin:0;padding:10px 13px;background:#f4f7f9;border-bottom:1px solid var(--line)}.req .body{padding:11px 14px}.req p{margin:4px 0}.req ul{margin:6px 0 0;padding-left:21px}.req li{margin:4px 0}.review{border:1px solid var(--line);border-radius:5px;margin:0 0 14px;overflow:hidden}.review-head{background:#f5f7f9;padding:10px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:center}.review-head h3{margin:0;font-size:15px}.review-body{padding:13px 15px}.review-body h4{font-size:13px;color:#425466;margin:14px 0 4px}.review-body h4:first-child{margin-top:0}.review-body p{margin:4px 0}.review-body ul{margin:5px 0;padding-left:21px}.review-body li{margin:5px 0}.small{font-size:12px;color:var(--muted)}.callout{background:#fff8e8;border:1px solid #f0dfb9;border-radius:4px;padding:10px 12px;margin:9px 0}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid var(--line);padding:8px 9px;text-align:left;vertical-align:top}th{background:#f5f7f9;color:#344657}code{background:#f1f3f5;border-radius:3px;padding:1px 4px;font-size:.92em}.flow{counter-reset:item}.flow div{position:relative;padding:0 0 13px 35px}.flow div:before{counter-increment:item;content:counter(item);position:absolute;left:0;top:1px;width:23px;height:23px;border-radius:50%;background:#e8eff7;color:#214e7a;text-align:center;font-weight:700;font-size:12px;line-height:23px}.footer{max-width:1180px;margin:0 auto;padding:0 18px 30px;color:var(--muted);font-size:12px}.backtop{position:fixed;bottom:18px;right:18px;background:#fff;border:1px solid var(--line);border-radius:5px;padding:8px 12px;box-shadow:var(--shadow);font-size:12px}
+@media(max-width:800px){.layout{grid-template-columns:1fr;margin-top:12px}.side{position:static}.side nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.top h1{font-size:21px}}
+@media print{body{background:#fff}.top{background:#fff;color:#111;border-bottom:2px solid #25384e;padding:18px 0}.paper-title,.brand{color:#444}.layout{display:block;max-width:none;margin:12px 0;padding:0}.side,.backtop{display:none}.section,.review{box-shadow:none;break-inside:avoid}.section-head{background:#f4f4f4}.footer{padding:0}}
+</style>
+</head>
+<body id="top">
+<header class="top">
+  <div class="brand">CHI 2027 Papers · Review Round 1</div>
+  <h1>第一轮评审意见解读</h1>
+  <div class="paper-title">Can AI Find What Developers Need? Defining and Measuring Knowledge Availability for AI in Developer Ecosystems</div>
+  <div class="meta"><span class="pill">投稿 #7561</span><span class="pill">AC：Major Revisions Required</span><span class="pill">修改稿截止：2026 年 12 月 3 日</span><span class="pill">最终通知：2026 年 12 月 17 日</span></div>
+</header>
+<div class="layout">
+<aside class="side">
+  <h2>本页导航</h2>
+  <nav>
+    <a href="#overview">总体判断</a><a href="#ac">AC 必须满足的修改</a>
+    <a href="#r1">Reviewer 1</a><a href="#r2">Reviewer 2</a>
+    <a href="#r3">Reviewer 3</a><a href="#meaning">对论文主张的影响</a>
+    <a href="#plan">建议执行顺序</a><a href="#minor">次要与编辑意见</a>
+  </nav>
+  <div class="mini">这是 PCS 英文评审意见的中文梳理与解释，优先级以 AC Meta-review 的 “Required Changes” 为准。审稿人的额外建议单独标注，不自动视为硬性要求。</div>
+</aside>
+<main class="content">
+<div class="notice"><b>阅读提示：</b>AC 列出的四项是本轮修改的决策要求。审稿人提出的重复运行、第二套检索配置、参与者/维护者评估等建议，具有参考价值，但 AC 没有把它们全部列为必须完成的条件。回应时应逐项说明采纳、部分采纳或为何不采纳，并用证据支撑。</div>
+
+<section class="section" id="overview">
+<div class="section-head"><h2>总体判断</h2><span class="badge">Meta-review 概览</span></div>
+<div class="section-body">
+  <div class="decision"><strong>AC 建议：Major Revisions Required（需要重大修改后再次评审）</strong><p>AC 的原话说明：最初倾向 Reject，但评审讨论后认为，基于现有研究材料有一条范围明确且可核查的修改路径。R2 提供了方法修正与有限可靠性核查的具体方案；R1 认为该方向可接受；R3 表示只要适当限定主张，不一定必须补做从业者评估。</p></div>
+  <div class="grid2">
+    <div class="metric"><b>得到认可的部分</b><p>研究问题与人机交互相关；把 Agent 的知识供给条件与最终答案质量区分开具有潜力；任务级指标、案例和可追溯记录能形成诊断框架。</p></div>
+    <div class="metric"><b>核心风险</b><p>M11 目前可能让模型先验自评掩盖外部证据；若干指标依赖解释性判分但缺少一致性证据；目前的比较设计不足以支持一般化的生态系统结论。</p></div>
+  </div>
+  <p><b>三位审稿人的建议：</b>R1 建议 Revise and Resubmit；R2 建议 Revise and Resubmit；R3 表示 Reject 或 Revise and Resubmit 均可接受。意见的共同焦点不是否定研究主题，而是要求让测量和结论强度匹配现有证据。</p>
+</div></section>
+
+<section class="section" id="ac">
+<div class="section-head"><h2>AC 列出的四项必需修改</h2><span class="badge must">优先级最高</span></div>
+<div class="section-body">
+<article class="req"><h3>1 · 修订并检查综合指标 M11</h3><div class="body"><ul>
+  <li>从主综合分中移除模型自评的先验知识 M7；M7 单独报告。</li>
+  <li>修正归一化：M1=1（“仍未找到”）对官方来源支持的贡献应为 0。</li>
+  <li>按修改后的规则重新计算主要结果。</li>
+  <li>对权重方案与分档阈值做敏感性分析，说明主要比较结果是否稳健。</li>
+  <li>报告单项指标，解释改变公式后主要发现是否仍然成立。</li>
+</ul><p><b>要回答的问题：</b>移除 M7 并改正 M1 映射后，CANN/CUDA 的关键差异和任务级模式还在不在？综合分变化是否主要由少数指标或任务驱动？</p></div></article>
+<article class="req"><h3>2 · 对评分程序做范围有限的可靠性核查</h3><div class="body"><ul>
+  <li>明确每个指标由谁评分，并标出哪些指标需要解释性判断。</li>
+  <li>请独立评估者对约 10–15 份既有任务记录中的 M3、M6、M9、M10 重新评分。</li>
+  <li>报告合适的一致性统计、具体分歧和分歧如何处理。</li>
+  <li>若原评分由 LLM 完成，样本必须加入独立人工核验。</li>
+  <li>醒目说明：未抽样的全部解释性判断没有经过完整的独立评审者间信度验证；讨论其影响并相应收敛结论。</li>
+</ul><p><b>这不是要求：</b>AC 要求的是对已有记录做有限抽样核查，并未要求把全部记录重新双人编码。</p></div></article>
+<article class="req"><h3>3 · 限定并澄清实证结论</h3><div class="body"><ul>
+  <li>明确 CANN 与 CUDA 的对比依赖本研究测试的具体模型、检索工具、任务和执行条件。</li>
+  <li>区分文档来源本身的观察，与可能由 Agent 或检索配置造成的结果。</li>
+  <li>避免普遍的生态系统排名，也不要声称测量方法已获得超出当前证据的验证。</li>
+</ul></div></article>
+<article class="req"><h3>4 · 说清概念定位与 HCI 贡献</h3><div class="body"><ul>
+  <li>把知识可用性放到信息检索、文档可用性和 Agent 评测的相关概念中定位。</li>
+  <li>解释整合框架能提供哪些单独看各组成部分时不容易得到的诊断区分。</li>
+  <li>把协议定位为探索性的诊断方法，而不是完整验证过的测量工具。</li>
+  <li>把开发者或文档团队可能获得的益处写成潜在应用，而非已被本研究证明的效果。</li>
+  <li>讨论未来怎样通过开发者或文档团队评估框架是否有用。</li>
+</ul></div></article>
+</div></section>
+
+<section class="section" id="r1">
+<div class="section-head"><h2>Reviewer 1 · 总体支持，强调边界透明</h2><span class="badge support">建议重投</span></div>
+<div class="section-body review-body">
+<p>R1 认为论文提出了一个有潜力的新视角：把 AI Agent 所处的知识环境作为研究对象，而不只看检索成功或任务表现。11 项任务级协议和跨生态诊断有整合上的新意，工作案例也能展示诊断框架的作用。</p>
+<h4>主要肯定</h4><ul><li>把外部知识可得性与 Agent 推理能力、最终答案正确性分开，具有 HCI 研究价值。</li><li>案例和记录有可追溯性；论文结构较完整，局限性也较坦诚。</li><li>方法可补充现有 Agent benchmark，并可能帮助文档团队审查知识入口。</li></ul>
+<h4>保留意见</h4><ul><li>没有评审者间信度检验。</li><li>只测试一种 Agent 配置。</li><li>M7 依赖模型间接自评先验知识。</li><li>设计示例尚未实际评估。</li></ul>
+<p><b>解读：</b>R1 的态度较正面，接受探索性、方法型论文的定位，但希望论文不要把“提出并演示了方法”写成“已充分验证的方法”。</p>
+</div></section>
+
+<section class="section" id="r2">
+<div class="section-head"><h2>Reviewer 2 · 最具体的方法学审查</h2><span class="badge must">与 AC 要求高度相关</span></div>
+<div class="section-body review-body">
+<p>R2 认可概念框架、案例和材料透明度，但认为论文把测量方法作为主要贡献，却几乎没有证据证明它可以稳定测量。以下意见中，AC 已吸收的部分属于本轮硬要求；其余是审稿人提出的增强建议。</p>
+<h4>1. M11 与 M7 先验自评</h4><ul><li>论文说模型内部知识不能让不可得的外部来源变得可得，但 M11 又把 M7 当作与检索内容等权的独立渠道。</li><li>按现公式，M7=5 时可让综合值 K=1，无论外部检索证据如何。R2 指出，25 个 CUDA 记录中有 14 个 M7=5，因此外部指标在这些记录中的作用会被抵消。</li><li>R2 重算了不含 M7 的示例结果：CANN/CUDA 从 0.731/0.922 变为约 0.599/0.846；差距仍在，但总值更低。正式修改应使用原始数据和冻结后的最终公式重新计算，不应直接把审稿人的示例数当成最终结果。</li></ul>
+<h4>2. 序数评分、权重和阈值</h4><ul><li>将等级用 <code>s/5</code> 线性缩放并相乘，隐含等级可按比例解释的假设；分档锚点并未证明具备这种比例尺度性质。</li><li>M1=1“仍未找到”仍贡献 0.2 官方支持，与语义不符。</li><li>权重和分档切点尚无论证或敏感性验证；应比较合理替代方案，并同时报告中位数、分布与均值。</li></ul>
+<h4>3. 可靠性与编码过程</h4><ul><li>M3、M6、M9、M10 属于解释性判断；方法部分未说明评分者是人、LLM，还是两者。</li><li>如果是模型给自己检索结果打分，可能有自偏好问题；如果由人打分，则需交代评分者数量、是否对生态盲法以及一致性。</li><li>R2 认为对方法型论文而言，至少对一部分记录做一致性检查非常重要。AC 将其收敛为约 10–15 份既有记录的独立复评。</li></ul>
+<h4>4. 生态差异与工具差异可能混淆</h4><ul><li>每个任务侧只运行一次，使用一个模型与一个会总结所选 URL HTML 的抓取工具；重要发现可能反映摘要器行为，而非原始页面内容。</li><li>中文提问会影响搜索地区、排名和第三方来源；任务对之间的范围差异、任务要求由谁制定和校验也需交代。</li><li><b>R2 的建议：</b>每侧至少重复三次，并对部分任务加入第二种检索配置（例如渲染 DOM）。<b>AC 的要求：</b>将结论明确限定在本研究的配置条件内；AC 没有把全量重复运行列为必需修改。</li></ul>
+<h4>5. 聚合比较与分组</h4><ul><li>“调试差异最大”等表述只依赖每侧两个任务；部分分组看起来像事后形成，开发者角色分组也未定义。</li><li>建议去掉排名式描述，预先说明分组逻辑；若保留聚合，提供 bootstrap 区间并同时呈现任务层面的变异。</li></ul>
+<h4>6. 指标受 Agent 自身行为影响</h4><ul><li>M5 与 M8 部分依赖 Agent 何时停止搜索，搜索增加时两项指标可能朝相反方向变化。</li><li>论文提到应设置检索预算，却没有报告实际预算；需要补充预算并讨论该耦合关系。</li></ul>
+<h4>7. HCI 贡献、相关工作与篇幅</h4><ul><li>没有从业者参与，也没有评估设计示例，因此不能证明框架已经改善开发者决策或团队优先级判断。</li><li>建议补充 API 弃用与 LLM 代码生成、程序员信息觅食、Agent 可读文档（如 llms.txt）相关工作。</li><li>建议删减重复图表和六个未评估设计示例中的一部分，为验证证据腾出篇幅；指出约 15–20% 的压缩空间。</li></ul>
+<p><b>解读：</b>R2 提出的“重复运行三次、加第二种检索配置”等能加强外部效度，但耗时较大。应优先完成 AC 明确要求的 M11 修正、敏感性分析和有限复评；对未采纳的扩展建议，要在回复信中解释其与当前探索性研究范围的关系，并收窄结论。</p>
+</div></section>
+
+<section class="section" id="r3">
+<div class="section-head"><h2>Reviewer 3 · 追问构念边界与指标效度</h2><span class="badge suggest">可接受任一建议</span></div>
+<div class="section-body review-body">
+<p>R3 认为 AI 知识可用性与 HCI 相关，也认可研究从“回答质量”转向“回答背后的知识条件”。主要疑问是：新构念的分析价值是否讲清楚，指标究竟测量知识源、检索工具还是二者交互。</p>
+<h4>1. 知识可用性的独特贡献是什么？</h4><p>发现性、页面访问、文档细节和版本标签等都是已有研究会关注的性质。R3 希望论文说明把它们整合后能揭示什么新的分析区分，并建议用对照表与信息检索、文档可用性、Agent 评测比较分析单位、测量维度和输出。</p>
+<h4>2. 指标可能奖励了工具实现方式，而非任务结果</h4><ul><li>如果静态页面和服务端渲染页面都成功返回完整任务相关内容，为什么评分应不同？</li><li>M1 用搜索排名和改写查询衡量发现性，但这可能受搜索工具、语言区域影响。</li><li>应逐指标说明其主要测量对象是知识生态属性、Agent/工具属性，还是交互结果，并考虑替代评分规则下结论是否变化。</li></ul>
+<h4>3. 综合公式的依据与稳健性</h4><p>虽然论文说明综合分不是校准后的正确概率，它仍是结果章节的中心量。R3 要求解释聚合为何代表有意义的知识支持，并考虑不同权重或不用综合分时，CANN/CUDA 顺序与工作流模式是否稳定。</p>
+<h4>4. 评分可复现性</h4><ul><li>区分从日志直接读取的评分与解释性编码。</li><li>报告独立评分、一致性或分歧裁决。</li><li>发布若干完整工作例子，连接原始观察、任务要求、评分理由与最终诊断。</li></ul>
+<h4>5. HCI 效果主张应保持准确</h4><p>本研究展示框架能组织观察、生成诊断；尚未直接证明这些诊断能改善开发者决策或团队干预效果。R3 明确说这不一定是缺陷，但论文应把两类贡献区分开。</p>
+<h4>补充细节</h4><ul><li>解释 acquisition-effort 公式系数是经验校准值还是启发式相对成本。</li><li>给出模型自评与技术变化扣分的完整算例，包括技术变化率分档。</li><li>报告任务层面的变异，并解释综合差异由哪些任务或指标驱动。</li></ul>
+</div></section>
+
+<section class="section" id="meaning">
+<div class="section-head"><h2>对论文主张的影响</h2><span class="badge">建议修订表述</span></div>
+<div class="section-body">
+<div class="grid2">
+<div class="metric"><b>当前证据能支持的主张</b><p>提出并演示一种探索性的任务级诊断框架；在特定模型、检索配置和任务下，将 Agent 获取任务相关知识时的障碍拆分并记录，展示该框架如何用于案例诊断。</p></div>
+<div class="metric"><b>当前证据不足以支持的主张</b><p>该量表已被充分验证；综合分是普遍可靠的知识可用性度量；CANN 或 CUDA 在一般意义上整体优于另一方；框架已经改善开发者决策或文档团队工作。</p></div>
+</div>
+<div class="callout"><b>叙事重点：</b>不是放弃“知识可用性”贡献，而是明确它目前是一种有潜力的整合诊断视角；本轮补充公式稳健性与有限可靠性证据，同时把经验结论限定为特定实验条件下的发现。</div>
+</div></section>
+
+<section class="section" id="plan">
+<div class="section-head"><h2>建议执行顺序</h2><span class="badge">按依赖关系排序</span></div>
+<div class="section-body flow">
+<div><b>冻结并复核公式口径。</b>定义去除 M7 后的主 M11、M1=1 的零贡献规则、权重和阈值敏感性方案；保存旧公式结果用于对照。</div>
+<div><b>重新计算并拆解结果。</b>重算主结果和单指标结果，报告均值、中位数、分布及任务层变异；检查主要发现是否对权重、阈值和个别任务敏感。</div>
+<div><b>完成抽样独立复评。</b>选取约 10–15 条现有记录，对 M3、M6、M9、M10 独立评分；报告评分者、抽样方法、一致性统计、分歧与裁决。</div>
+<div><b>据证据收敛比较结论。</b>删去普遍排名和未经支持的因果表述；把文档观察、Agent/工具行为及二者交互分开说明。</div>
+<div><b>重写概念贡献和限制。</b>用对照明确框架相较相关工作的新增诊断能力；把开发者/文档团队收益写成后续待验证的潜在用途。</div>
+<div><b>精简并完善可复核材料。</b>补工作示例、预算和系数说明，修正文稿与图表交叉引用，压缩重复图表和设计示例；逐条回应审稿意见。</div>
+</div></section>
+
+<section class="section" id="minor">
+<div class="section-head"><h2>次要问题与编辑修改</h2><span class="badge suggest">应顺手修正</span></div>
+<div class="section-body"><ul>
+<li>R2 指出 Fig. 9 副标题引用 Figures 2–4，可能应为 Figures 6–8。</li>
+<li>D 任务的 M3 在图中标为“未观察”，正文和表格却标为“受阻”；统一术语。</li>
+<li>结果和讨论部分存在较多名词化句式；尽量具体写页面、步骤、版本和证据。</li>
+<li>Reviewer 3 要求解释“静态正文可取回”与“SSR 正文可取回”的差别；说明 acquisition-effort 系数性质；给 M7/技术变化折减算例。</li>
+<li>把开发者角色分组与场景分组定义清楚，并在展示前说明分组依据。</li>
+</ul></div></section>
+
+<section class="section">
+<div class="section-head"><h2>审稿人建议补充的文献方向</h2><span class="badge">按评审原文</span></div>
+<div class="section-body"><ul>
+<li>Wang et al. (2025), <i>How and Why LLMs Use Deprecated APIs in Code Completion? An Empirical Study</i>（API 演化与代码生成）。</li>
+<li>Lawrance et al. (2013), <i>How Programmers Debug, Revisited: An Information Foraging Theory Perspective</i>（程序员调试与信息觅食）。</li>
+<li>Howard (2024), <i>The /llms.txt file</i>（面向 LLM 的网站内容组织倡议）。</li>
+<li>可靠性与测量讨论可结合 R2 列出的 McDonald et al. (2019)、Jacobs & Wallach (2021)，以及序数尺度讨论 Liddell & Kruschke (2018)、Stevens (1946)。</li>
+</ul><p class="small">此处仅按 PCS 评审中点名的文献整理；正式引用前应核对书目信息并结合论文论点判断是否纳入。</p></div></section>
+
+<section class="section">
+<div class="section-head"><h2>评审信号与解释边界</h2><span class="badge">避免过度解读</span></div>
+<div class="section-body"><div class="table-wrap"><table><thead><tr><th>观察到的信号</th><th>可以说明</th><th>不能说明</th></tr></thead><tbody>
+<tr><td>AC 从初始 Reject 调整为 Major Revisions Required</td><td>讨论后认为存在基于现有材料的可行修改路径</td><td>不等于已经接收或保证修改后接收</td></tr>
+<tr><td>R1 与 R2 建议 Revise and Resubmit</td><td>两位评审认为论文有重投价值</td><td>不等于他们会接受任何版本的修改稿</td></tr>
+<tr><td>R3 可接受 Reject 或 Revise and Resubmit</td><td>R3 对是否继续评估持开放态度</td><td>不等于 R3 已经支持接收</td></tr>
+<tr><td>AC 说可以用 existing research materials 完成</td><td>本轮主要修改可围绕现有材料开展</td><td>不意味着完全不需要新增分析、人工复评或补充证据</td></tr>
+</tbody></table></div></div></section>
+</main></div>
+<footer class="footer">依据 PCS 中投稿 #7561 的 AC Meta-review 与三份 Round 1 Review 整理。中文内容为评审意见的翻译、归纳与解释；若与 PCS 原文表述存在出入，以 PCS 原文为准。页面仅用于作者内部审阅与修改规划。</footer>
+<a class="backtop" href="#top">回到顶部 ↑</a>
+</body>
+</html>
