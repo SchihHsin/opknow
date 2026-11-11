@@ -41,8 +41,8 @@
     .button{display:inline-flex;align-items:center;gap:8px;border-radius:9px;padding:9px 14px;font-weight:750;font-size:11.5px;border:1px solid var(--line);background:#fff;color:#34425e;cursor:pointer}
     .button.primary{background:var(--navy);border-color:var(--navy);color:#fff}
     .button:hover{transform:translateY(-1px);text-decoration:none;box-shadow:0 5px 15px rgba(35,49,75,.12)}
-    .hero-loop{width:100%;max-width:440px;justify-self:end}
-    .hero-loop svg{display:block;width:100%;height:auto}
+    .hero-art{width:100%;max-width:470px;justify-self:end;align-self:center}
+    .hero-art img{display:block;width:100%;height:auto;object-fit:contain}
     .stats{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}
     .stat{padding:7px 11px;border-radius:8px;background:rgba(255,255,255,.75);border:1px solid #e1e6ef;color:#647086;font-size:10px}
     .stat b{color:#293954;font-size:12px;margin-right:4px}
@@ -158,13 +158,13 @@
     .svg-node:focus .svg-mark{stroke-width:3.5}
     .svg-small{font-size:8px;fill:#8b95a5}
     @media(max-width:980px){
-      .hero-grid{grid-template-columns:1fr}.hero-loop{display:none}.hero{padding:35px 30px}
+      .hero-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.58fr);gap:18px}.hero-art{max-width:330px}.hero{padding:35px 30px}
       .pattern-grid{grid-template-columns:repeat(3,1fr)}.mechanisms{grid-template-columns:repeat(2,1fr)}
       .mechanism-wrap{grid-template-columns:1fr}.vendors{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:720px){
       .topbar-in{padding:0 14px;height:52px;gap:8px}.brand{font-size:10px}.source-tag{display:none}.nav a{font-size:10px;padding:7px 8px}
-      main{padding:0 13px 55px}.hero{margin:14px 0;padding:26px 20px;border-radius:15px}.hero p{font-size:13px}.stats{gap:6px}.stat{font-size:9px;padding:6px 8px}
+      main{padding:0 13px 55px}.hero{margin:14px 0;padding:26px 20px;border-radius:15px}.hero-grid{grid-template-columns:1fr}.hero-art{max-width:250px;justify-self:center;margin:-8px auto -4px}.hero p{font-size:13px}.stats{gap:6px}.stat{font-size:9px;padding:6px 8px}
       .section{margin-top:22px}.section-head{align-items:flex-start;flex-direction:column;gap:4px}h2{font-size:21px}.section-intro{font-size:11px}
       .sequence-card{padding:11px}.tabbar{gap:5px}.tab{font-size:10px;padding:7px 9px}.tab-note{width:100%;margin-left:0}
       .diagram-foot,.twocol,.illustration-grid,.evidence-grid{grid-template-columns:1fr}.exit-grid{grid-template-columns:repeat(2,1fr)}
@@ -195,19 +195,8 @@
           <div class="hero-actions"><a class="button primary" href="#runtime">进入运行时序 <span>↓</span></a><a class="button" href="#csv-replay">看 CSV 实际回放</a></div>
           <div class="stats"><div class="stat"><b>5</b>个运行参与者</div><div class="stat"><b>8</b>种执行机制</div><div class="stat"><b>4</b>类退出状态</div><div class="stat"><b>12</b>项案例检查</div></div>
         </div>
-        <div class="hero-loop" aria-hidden="true">
-          <svg viewBox="0 0 440 230">
-            <defs><marker id="heroArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8170b0"/></marker></defs>
-            <path d="M92 66H334V162H92Z" fill="none" stroke="#c9c4da" stroke-width="2" marker-end="url(#heroArrow)"/>
-            <path d="M334 162H91V66" fill="none" stroke="#7d6bae" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#heroArrow)"/>
-            <g><rect x="28" y="35" width="128" height="62" rx="11" fill="#fff" stroke="#dfe4ed"/><text x="92" y="61" text-anchor="middle" font-size="12" font-weight="800" fill="#293954">目标与状态</text><text x="92" y="80" text-anchor="middle" font-size="9" fill="#8490a2">上下文 / 进度</text></g>
-            <g><rect x="156" y="35" width="128" height="62" rx="11" fill="#f1eef8" stroke="#ded8ee"/><text x="220" y="61" text-anchor="middle" font-size="12" font-weight="800" fill="#5f4f98">模型决策</text><text x="220" y="80" text-anchor="middle" font-size="9" fill="#8476ad">行动 / 答案</text></g>
-            <g><rect x="284" y="35" width="128" height="62" rx="11" fill="#fff" stroke="#dfe4ed"/><text x="348" y="61" text-anchor="middle" font-size="12" font-weight="800" fill="#293954">运行调度</text><text x="348" y="80" text-anchor="middle" font-size="9" fill="#8490a2">检查 / 执行</text></g>
-            <g><rect x="284" y="132" width="128" height="62" rx="11" fill="#edf5f1" stroke="#d9e8e1"/><text x="348" y="158" text-anchor="middle" font-size="12" font-weight="800" fill="#39796e">环境反馈</text><text x="348" y="177" text-anchor="middle" font-size="9" fill="#718c83">产物 / 错误</text></g>
-            <g><rect x="156" y="132" width="128" height="62" rx="11" fill="#fff" stroke="#dfe4ed"/><text x="220" y="158" text-anchor="middle" font-size="12" font-weight="800" fill="#293954">状态更新</text><text x="220" y="177" text-anchor="middle" font-size="9" fill="#8490a2">保存进展</text></g>
-            <g><rect x="28" y="132" width="128" height="62" rx="11" fill="#faf1e5" stroke="#eee0c9"/><text x="92" y="158" text-anchor="middle" font-size="12" font-weight="800" fill="#94672c">出口判断</text><text x="92" y="177" text-anchor="middle" font-size="9" fill="#a88c60">继续 / 结束</text></g>
-            <text x="214" y="220" text-anchor="middle" font-size="9" fill="#7765a6" font-weight="700">反馈改变下一轮，验收决定是否交付</text>
-          </svg>
+        <div class="hero-art" aria-hidden="true">
+          <img src="assets/agent-loop-cover.png" alt="">
         </div>
       </div>
     </section>
