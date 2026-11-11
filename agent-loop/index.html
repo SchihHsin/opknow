@@ -107,6 +107,53 @@
     .illustration figcaption{padding:8px 5px 3px;font-size:10px;color:#69758a;line-height:1.55}
     .illustration figcaption b{color:#293954}
     .caption-tag{display:block;font-size:8.5px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#9aa3b1;margin-bottom:2px}
+    .loop-topology-card{padding:15px 16px 13px}
+    .loop-topology-tabs{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+    .loop-topology-tabs .tab-note{margin-left:auto}
+    .loop-topology-heading{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:0 3px 8px}
+    .loop-topology-heading h3{font-size:13px;margin:0 0 2px;color:#2d3b56}
+    .loop-topology-heading p{font-size:10px;color:#768196;margin:0;line-height:1.55}
+    .loop-topology-type{flex:none;font-size:9px;font-weight:800;color:#68599c;background:#f2f0f8;border:1px solid #e8e2f4;border-radius:6px;padding:4px 7px}
+    .loop-diagram-scroll{overflow-x:auto;border:1px solid #e6eaf1;border-radius:10px;background:linear-gradient(180deg,#fbfcfe,#fff);scrollbar-color:#c4cbda #f2f4f8}
+    #loopTopologySvg{display:block;width:100%;min-width:1160px;height:auto}
+    #loopTopologySvg text{font-family:Inter,"Noto Sans SC","PingFang SC",system-ui,sans-serif}
+    .loop-diagram-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);gap:10px;margin-top:10px;align-items:stretch}
+    .loop-legend{display:flex;align-content:center;align-items:center;gap:7px 13px;flex-wrap:wrap;padding:9px 11px;border-radius:8px;background:#f8f9fb;border:1px solid #edf0f4}
+    .loop-legend .legend-item{font-size:9px}
+    .loop-detail{padding:9px 12px;background:#f7f8fb;border:1px solid #edf0f4;border-radius:8px;min-height:57px}
+    .loop-detail .d-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:3px}
+    .loop-detail .d-index{font-size:8.5px;color:#8993a4;font-weight:800;letter-spacing:.08em}
+    .loop-detail h3{margin:0;font-size:10.5px}
+    .loop-detail p{margin:0;font-size:9.3px;line-height:1.55;color:#69758a}
+    .loop-model-note{margin-top:9px;padding:8px 11px;border-radius:8px;background:#fcf8f0;border:1px solid #f0e6d1;color:#786642;font-size:9.5px;line-height:1.6}
+    .loop-source-figures{margin-top:10px;padding:10px 13px;border:1px solid #e5e9ef;border-radius:10px;background:#fff}
+    .loop-source-figures summary{cursor:pointer;font-size:10px;font-weight:780;color:#59677e}
+    .loop-source-figures .illustration-grid{margin-top:10px}
+    .loop-svg-phase{stroke:#e5e9ef}
+    .loop-svg-stage{font-size:8.5px;fill:#52617a;font-weight:820}
+    .loop-svg-owner{font-size:7.5px;fill:#8993a4}
+    .loop-svg-lane{stroke:#e1e5ec;stroke-width:1.3}
+    .loop-svg-row{stroke:#eef0f4;stroke-width:1;stroke-dasharray:2 5}
+    .loop-svg-msg{stroke:#7663ad;stroke-width:1.7}
+    .loop-svg-neutral{stroke:#78879a;stroke-width:1.7}
+    .loop-svg-text{font-size:9.2px;font-weight:650;fill:#28364d;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+    .loop-svg-id{font-size:7.5px;font-weight:850;text-anchor:middle;dominant-baseline:central}
+    .loop-svg-action{fill:#f8f9fb;stroke:#cbd3df;stroke-width:1.2}
+    .loop-svg-action-text{font-size:8.3px;font-weight:650;fill:#40506b}
+    .loop-svg-decision{fill:#fbf0dc;stroke:#b18137;stroke-width:1.4}
+    .loop-svg-decision-text{font-size:7.4px;font-weight:850;fill:#815c23;text-anchor:middle;dominant-baseline:central}
+    .loop-svg-fragment{fill:rgba(249,250,252,.48);stroke:#cfd6e1;stroke-width:1;stroke-dasharray:4 4}
+    .loop-svg-fragment-label{font-size:7.8px;font-weight:850;fill:#7b8698}
+    .loop-svg-loop{fill:none;stroke:#765fa9;stroke-width:1.6;stroke-dasharray:5 4;opacity:.88}
+    .loop-svg-loop.outer{stroke:#a46e2a}
+    .loop-svg-loop-label{font-size:7.7px;font-weight:820;fill:#6e5c99;paint-order:stroke;stroke:#fff;stroke-width:3px}
+    .loop-svg-loop-label.outer{fill:#8e6123}
+    .loop-svg-node{cursor:pointer}
+    .loop-svg-node:hover .loop-svg-msg,.loop-svg-node:hover .loop-svg-neutral{stroke-width:2.6}
+    .loop-svg-node.selected .loop-svg-mark{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
+    .loop-svg-node:focus{outline:none}
+    .loop-svg-node:focus .loop-svg-mark{stroke-width:3.5}
+    .loop-svg-small{font-size:7.7px;fill:#8b95a5}
     .pattern-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:12px}
     .pattern{padding:13px 13px 12px;min-height:125px;position:relative;overflow:hidden}
     .pattern::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
@@ -168,6 +215,7 @@
       .section{margin-top:22px}.section-head{align-items:flex-start;flex-direction:column;gap:4px}h2{font-size:21px}.section-intro{font-size:11px}
       .sequence-card{padding:11px}.tabbar{gap:5px}.tab{font-size:10px;padding:7px 9px}.tab-note{width:100%;margin-left:0}
       .diagram-foot,.twocol,.illustration-grid,.evidence-grid{grid-template-columns:1fr}.exit-grid{grid-template-columns:repeat(2,1fr)}
+      .loop-diagram-foot{grid-template-columns:1fr}.loop-topology-tabs .tab-note{width:100%;margin-left:0}.loop-topology-heading{flex-direction:column}
       .pattern-grid{grid-template-columns:repeat(2,1fr)}.pattern{min-height:112px;padding:11px}.vendors{grid-template-columns:1fr}
       .case-limit{width:100%;margin-left:0}.footer{flex-direction:column}
     }
@@ -254,12 +302,26 @@
 
     <section class="section" id="loop-shapes">
       <div class="section-head"><div><div class="section-kicker">03 / Loop topologies</div><h2>分支、停滞与重规划</h2><p class="section-intro">有些回路只修当前缺陷；有些需要改变整体计划。循环图应区分“推进当前步骤”和“重新决定路线”。</p></div></div>
-      <div class="illustration-grid">
-        <figure class="card illustration"><img src="assets/03-conditional-graph-routing.png" alt="条件图根据验证结果路由到交付、局部修复、重新规划或暂停"><figcaption><span class="caption-tag">Conditional graph</span><b>验证与路由</b>：通过则交付；失败则局部修复；持续停滞则重规划；缺输入或预算不足时暂停或停止。</figcaption></figure>
-        <figure class="card illustration"><img src="assets/04-magentic-one-ledger-layers.png" alt="Task Ledger 外层重规划，Progress Ledger 内层推进并分配任务"><figcaption><span class="caption-tag">Nested loop</span><b>Ledger 分层</b>：Progress Ledger 推进当前计划；持续停滞或假设失效时，Task Ledger 调整整体策略。</figcaption></figure>
+      <div class="card loop-topology-card">
+        <div class="loop-topology-tabs" role="tablist" aria-label="循环与重规划时序图">
+          <button class="tab active" data-loop-topology="conditional" role="tab" aria-selected="true">条件路由</button>
+          <button class="tab" data-loop-topology="ledger" role="tab" aria-selected="false">Ledger 双层循环</button>
+          <span class="tab-note">点选时序节点查看解释 · 时间自上而下</span>
+        </div>
+        <div class="loop-topology-heading"><div><h3 id="loopTopologyTitle"></h3><p id="loopTopologySubtitle"></p></div><span class="loop-topology-type" id="loopTopologyType"></span></div>
+        <div class="loop-diagram-scroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
+        <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div><div class="loop-detail" id="loopTopologyDetail" aria-live="polite"></div></div>
+        <div class="loop-model-note" id="loopTopologyNote"></div>
       </div>
-      <div class="card" style="margin-top:12px;padding:13px 16px;display:flex;gap:14px;align-items:flex-start">
-        <span class="concept-badge">文章原图</span><div style="flex:1;color:#6c778b;font-size:10px;line-height:1.65">图1展示一次 Loop 的六个运行环节，并把完成、失败、暂停、资源耗尽分开；本页主图将其转换为多参与者时序。<details style="margin-top:5px"><summary style="cursor:pointer;color:#53627b;font-weight:750">展开查看原图</summary><img src="assets/01-agent-loop-flow.png" alt="Agent Loop 运行流程原图" style="display:block;width:min(100%,900px);height:auto;margin:10px auto 2px;border:1px solid #e6eaf0;border-radius:8px"></details></div>
+      <details class="loop-source-figures">
+        <summary>查看文章原图（图 3、图 4）</summary>
+        <div class="illustration-grid">
+          <figure class="card illustration"><img src="assets/03-conditional-graph-routing.png" alt="文章原图：条件图根据验证结果路由到交付、局部修复、重新规划或暂停"><figcaption><span class="caption-tag">Source figure 03</span><b>条件图路由</b>：原文配图，作为上方时序重绘的来源参考。</figcaption></figure>
+          <figure class="card illustration"><img src="assets/04-magentic-one-ledger-layers.png" alt="文章原图：Task Ledger 外层重规划，Progress Ledger 内层推进并分配任务"><figcaption><span class="caption-tag">Source figure 04</span><b>Magentic-One Ledger 分层</b>：原文配图，作为上方嵌套回路时序图的来源参考。</figcaption></figure>
+        </div>
+      </details>
+      <div class="card" style="margin-top:10px;padding:12px 15px;display:flex;gap:12px;align-items:flex-start">
+        <span class="concept-badge">运行主图</span><div style="flex:1;color:#6c778b;font-size:9.7px;line-height:1.65">图 1 展示一次 Loop 的六个运行环节，并把完成、失败、暂停、资源耗尽分开；本节用参与者时序把图 3 的条件路由与图 4 的 Ledger 分层展开。<details style="margin-top:5px"><summary style="cursor:pointer;color:#53627b;font-weight:750">展开查看图 1</summary><img src="assets/01-agent-loop-flow.png" alt="文章原图：Agent Loop 运行流程" style="display:block;width:min(100%,900px);height:auto;margin:10px auto 2px;border:1px solid #e6eaf0;border-radius:8px"></details></div>
       </div>
     </section>
 
@@ -414,9 +476,117 @@
       c.lanes.forEach((l,i)=>{const x=xs[i];s+=`<line x1="${x}" y1="58" x2="${x}" y2="${h-20}" class="svg-lane-line"/><rect x="${x-82}" y="20" width="164" height="34" rx="7" fill="#fff" stroke="#e4e8ef"/><circle cx="${x-65}" cy="37" r="4" fill="${l[2]}"/><text x="${x-53}" y="40.5" text-anchor="start" font-size="10" font-weight="820" fill="${l[2]}">${esc(l[1])}</text>`;});
       c.events.forEach((ev,i)=>{const y=y0+i*gap,fi=c.lanes.findIndex(l=>l[0]===ev.from),ti=c.lanes.findIndex(l=>l[0]===ev.to),x1=xs[fi],x2=xs[ti];if(ev.from===ev.to){s+=`<rect x="${x1-11}" y="${y-10}" width="22" height="23" rx="5" fill="#faf1e5" stroke="#b18137"/><text x="${x1+19}" y="${y+4}" text-anchor="start" class="svg-self-label">${esc(ev.text)}</text>`;}else{const dir=x2>x1?1:-1,neutral=key==='tool'&&ev.from==='runner'||key==='handoff'&&ev.from==='runner',color=neutral?'#78879a':'#7663ad',mark=neutral?'ctrlNeutral':'ctrlArrow';s+=`<line x1="${x1+13*dir}" y1="${y}" x2="${x2-13*dir}" y2="${y}" stroke="${color}" stroke-width="1.8" marker-end="url(#${mark})"/><text x="${(x1+x2)/2}" y="${y-8}" text-anchor="middle" class="svg-label">${esc(ev.text)}</text><circle cx="${x1}" cy="${y}" r="10" fill="#fff" stroke="${c.lanes[fi][2]}" stroke-width="2"/><text x="${x1}" y="${y+0.5}" class="svg-id" fill="${c.lanes[fi][2]}">${i+1}</text>`;}});
       s+=`<text x="20" y="${h-12}" class="svg-small">${esc(c.title)} · 箭头按时间向下排列</text>`;svg.setAttribute('viewBox',`0 0 1000 ${h}`);svg.setAttribute('height',h);svg.innerHTML=s;document.getElementById('controlNote').innerHTML=`<b>${esc(c.title)}：</b>${esc(c.note)}`;document.querySelectorAll('[data-control]').forEach(b=>{const on=b.dataset.control===key;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});}
+    const loopPalette={owner:'#2f3d63',runtime:'#435575',agent:'#6b5ba8',environment:'#3f7d72',verifier:'#a46e2a',progress:'#3f7d72',task:'#a46e2a',executor:'#3f7d72'};
+    const loopTopologies={
+      conditional:{
+        title:'条件路由：验证结果决定下一步进入哪条路径',subtitle:'主路径自上而下；底部 alt 区域表示互斥结果。局部修复回到当前执行，持续停滞才触发整体重规划。',type:'条件分支 · 单次路由',width:1240,
+        participants:[['owner','任务方'],['runtime','运行系统 / 路由器'],['agent','Agent'],['environment','工具与执行环境'],['verifier','状态与验收']],
+        phases:[
+          {label:'目标与上下文',owner:'任务方 ↔ 运行时',start:0,end:2,color:'#edf1f8'},
+          {label:'执行与验收',owner:'Agent ↔ 环境',start:3,end:6,color:'#edf4f1'},
+          {label:'通过交付',owner:'验收通过',start:7,end:7,color:'#eaf4ef'},
+          {label:'局部修复',owner:'明确失败',start:8,end:9,color:'#fbefee'},
+          {label:'整体重规划',owner:'持续停滞',start:10,end:11,color:'#faf2e6'},
+          {label:'暂停或停止',owner:'缺输入 / 预算',start:12,end:13,color:'#f0edf8'}
+        ],
+        fragments:[
+          {start:7,end:7,label:'alt · 验收通过'},
+          {start:8,end:9,label:'else · 明确失败，局部修复'},
+          {start:10,end:11,label:'else · 持续停滞，整体重规划'},
+          {start:12,end:13,label:'else · 缺输入或预算耗尽'}
+        ],
+        events:[
+          {from:'owner',to:'runtime',phase:0,title:'提交目标与成功标准',detail:'任务方提供目标、约束和可观察的验收标准。'},
+          {from:'runtime',to:'agent',phase:0,title:'提供当前计划、状态与运行限制',detail:'运行系统把计划、已有证据、失败尝试、剩余预算等状态传给 Agent，让下一轮从当前进度继续。'},
+          {from:'agent',to:'runtime',phase:0,title:'提出下一步动作或工具请求',detail:'Agent 根据当前上下文提出要执行的动作。请求仍需经过运行系统的权限与预算检查。'},
+          {from:'runtime',to:'environment',phase:1,title:'检查权限与边界，然后执行',detail:'运行系统验证请求并调度工具或环境。真正的文件、网络或计算动作发生在执行环境。'},
+          {from:'environment',to:'verifier',phase:1,title:'返回产物、错误与执行证据',detail:'环境报告实际执行结果；动作执行成功本身不等于目标已经满足。'},
+          {from:'verifier',to:'runtime',phase:1,title:'给出验收结果、失败项与进展',detail:'状态与验收层记录通过项、未解决问题及进展，供路由判断使用。'},
+          {actor:'runtime',phase:1,title:'结合验收、停滞与预算选择路由',kind:'decision',detail:'运行系统用验收结果和进度信号区分局部可修复失败、持续停滞、缺输入和资源边界；这些情况不能都归为“继续循环”。'},
+          {from:'runtime',to:'owner',phase:2,title:'通过：交付结果并说明验证范围',route:'通过',detail:'验收通过后进入交付。交付说明结果覆盖了哪些标准，以及仍有哪些范围限制。'},
+          {from:'runtime',to:'agent',phase:3,title:'明确失败：只修当前缺陷',route:'局部修复',detail:'若失败项明确且仍可行动，沿当前计划修复局部缺陷，保留已验证通过的部分。'},
+          {from:'agent',to:'runtime',phase:3,title:'提交修复结果与新增证据',route:'局部修复',detail:'Agent 返回修复结果后，运行系统更新状态并重新执行验证；修复路径回到当前执行与验收。'},
+          {from:'runtime',to:'agent',phase:4,title:'持续停滞：要求重拆任务或改变策略',route:'整体重规划',detail:'连续没有有效进展，或原计划依赖的假设失效时，停止重复原动作并要求重新规划。'},
+          {from:'agent',to:'runtime',phase:4,title:'返回替代步骤、依赖与新假设',route:'整体重规划',detail:'Agent 提交新的任务分解或策略。运行系统用更新后的计划和状态启动下一轮。'},
+          {from:'runtime',to:'owner',phase:5,title:'缺少输入：暂停并列出待补信息',route:'暂停',detail:'缺少必要资料、权限或人工决定时，暂停任务并明确等待什么输入。'},
+          {from:'runtime',to:'owner',phase:5,title:'预算耗尽或不可行：停止并说明原因',route:'停止',detail:'预算耗尽或任务在现有边界内不可行时停止，说明已完成部分、限制和未解决项。'}
+        ],
+        loops:[
+          {from:9,to:1,actor:'runtime',targetActor:'agent',label:'局部修复后回到当前计划',rail:1100},
+          {from:11,to:1,actor:'runtime',targetActor:'agent',label:'新计划重新进入执行',rail:1150,outer:true}
+        ],
+        note:'时序重建：把文章的条件路由展开为多参与者交互。验收通过、明确失败、持续停滞、缺少输入和预算边界是不同路由；节点详情用于解释各路径。'
+      },
+      ledger:{
+        title:'Ledger 双层循环：进度更新留在内层，计划变化进入外层',subtitle:'Progress Ledger 跟踪当前计划里的子任务；Task Ledger 保存较高层的目标、假设与整体计划，并在停滞时重规划。',type:'嵌套循环 · 两层状态',width:1260,
+        participants:[['owner','任务方'],['runtime','Orchestrator'],['executor','Agent / 工具'],['verifier','结果与验证'],['progress','Progress Ledger'],['task','Task Ledger']],
+        phases:[
+          {label:'计划初始化',owner:'目标 → Task Ledger',start:0,end:2,color:'#edf1f8'},
+          {label:'当前计划推进',owner:'Progress Ledger 内层',start:3,end:8,color:'#edf4f1'},
+          {label:'继续当前计划',owner:'有进展',start:9,end:9,color:'#eaf4ef'},
+          {label:'外层重规划',owner:'持续停滞 / 假设失效',start:10,end:12,color:'#faf2e6'},
+          {label:'暂停或停止',owner:'输入 / 预算边界',start:13,end:13,color:'#f0edf8'}
+        ],
+        fragments:[
+          {start:9,end:9,label:'alt · 有进展：留在当前计划'},
+          {start:10,end:12,label:'else · 停滞或假设失效：更新整体计划'},
+          {start:13,end:13,label:'else · 缺输入或预算耗尽'}
+        ],
+        events:[
+          {from:'owner',to:'runtime',phase:0,title:'提交目标、成功标准与约束',detail:'任务方定义目标、验收条件和运行边界。'},
+          {from:'runtime',to:'task',phase:0,title:'建立整体计划、依赖与关键假设',detail:'Orchestrator 把高层任务分解和当前策略写入 Task Ledger，保留计划依赖的关键假设。'},
+          {from:'task',to:'progress',phase:0,title:'下发计划步骤与优先级',detail:'Task Ledger 把可执行步骤和优先级交给 Progress Ledger，作为当前执行计划。'},
+          {from:'progress',to:'runtime',phase:1,title:'选择下一项可执行任务',detail:'Progress Ledger 根据已完成事项、依赖和阻塞情况挑出下一项任务。'},
+          {from:'runtime',to:'executor',phase:1,title:'调度 Agent 或工具执行该任务',detail:'Orchestrator 将选中的子任务交给 Agent 或工具执行。'},
+          {from:'executor',to:'verifier',phase:1,title:'返回执行结果、错误与证据',detail:'执行者提交产物和实际观察结果，供验证和进度记录使用。'},
+          {from:'verifier',to:'progress',phase:1,title:'报告当前子任务的验证结果',detail:'验证结果映射到当前子任务，指出哪些条件通过、哪些仍未满足。'},
+          {actor:'progress',phase:1,title:'更新完成项、证据、剩余项与阻塞',kind:'action',detail:'Progress Ledger 保存可追踪的局部状态，避免遗漏已完成工作或重复无效尝试。'},
+          {actor:'progress',phase:1,title:'判断当前计划是否仍可推进',kind:'decision',detail:'若仍有可执行任务或局部可修复问题，内层继续；若持续停滞或计划假设失效，则升级到 Task Ledger。'},
+          {from:'progress',to:'runtime',phase:2,title:'有进展：分派当前计划的下一项',route:'内层继续',detail:'当前计划仍有效时，Progress Ledger 继续分派下一项。回边留在内层，不改写 Task Ledger 的整体策略。'},
+          {from:'progress',to:'task',phase:3,title:'持续停滞或假设失效：升级重规划',route:'外层重规划',detail:'停滞信号或假设失效从 Progress Ledger 上报到 Task Ledger，触发计划层面的调整。'},
+          {actor:'task',phase:3,title:'重排依赖、替换策略或缩小目标',kind:'action',detail:'Task Ledger 调整整体任务组织：可以重排依赖、替换策略、更新假设或缩小目标。'},
+          {from:'task',to:'progress',phase:3,title:'发布新计划与任务优先级',detail:'更新后的计划回到 Progress Ledger，重新建立内层的待办、依赖和进度追踪。'},
+          {from:'runtime',to:'owner',phase:4,title:'缺输入则暂停；预算耗尽则说明并停止',route:'暂停 / 停止',detail:'等待必要输入时暂停；运行预算耗尽或任务不可行时停止并汇报状态，不把这两种情况伪装成重规划成功。'}
+        ],
+        loops:[
+          {from:9,to:3,actor:'progress',targetActor:'progress',label:'内层：分派下一任务',rail:1110},
+          {from:12,to:3,actor:'progress',targetActor:'progress',label:'外层：新计划回到进度追踪',rail:1170,outer:true}
+        ],
+        note:'结构重建：Ledger 是文章描述的协调状态层，不是额外的执行者。内层回边表示在同一整体计划中更新进度并继续；外层回边表示 Task Ledger 修改计划后重新驱动内层。'
+      }
+    };
+    let currentLoopTopology='conditional';
+    function renderLoopTopology(key){
+      currentLoopTopology=key;const sc=loopTopologies[key],svg=document.getElementById('loopTopologySvg'),xs=sc.participants.length===5?[270,455,640,825,1010]:[245,400,555,710,865,1020],base=112,gap=58,h=base+sc.events.length*gap+62,headW=sc.participants.length===5?174:150;
+      document.getElementById('loopTopologyTitle').textContent=sc.title;document.getElementById('loopTopologySubtitle').textContent=sc.subtitle;document.getElementById('loopTopologyType').textContent=sc.type;document.getElementById('loopTopologyNote').textContent=sc.note;
+      document.querySelectorAll('[data-loop-topology]').forEach(b=>{const on=b.dataset.loopTopology===key;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
+      let s=`<defs>
+        <marker id="loopMsgArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7663ad"/></marker>
+        <marker id="loopNeutralArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#78879a"/></marker>
+        <marker id="loopBackArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#765fa9"/></marker>
+        <marker id="loopOuterArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#a46e2a"/></marker>
+      </defs><rect width="${sc.width}" height="${h}" fill="#fff"/>`;
+      sc.participants.forEach((p,i)=>{const x=xs[i],c=loopPalette[p[0]]||loopPalette.runtime;s+=`<line x1="${x}" y1="76" x2="${x}" y2="${h-24}" class="loop-svg-lane"/><rect x="${x-headW/2}" y="22" width="${headW}" height="38" rx="8" fill="#fff" stroke="#e4e8ef"/><circle cx="${x-headW/2+16}" cy="41" r="4" fill="${c}"/><text x="${x-headW/2+27}" y="44.5" text-anchor="start" font-size="9.2" font-weight="820" fill="${c}">${esc(p[1])}</text>`;});
+      sc.phases.forEach(ph=>{const y=base+ph.start*gap-25,hh=(ph.end-ph.start+1)*gap-4,stage=splitText(ph.label,6),owner=splitText(ph.owner,9);s+=`<rect x="13" y="${y}" width="92" height="${hh}" rx="7" fill="${ph.color}" class="loop-svg-phase"/><rect x="111" y="${y}" width="105" height="${hh}" rx="7" fill="#f8f9fb" class="loop-svg-phase"/>`;s+=svgText(59,y+hh/2-(stage.length-1)*5,stage,'loop-svg-stage');s+=svgText(163.5,y+hh/2-(owner.length-1)*5,owner,'loop-svg-owner');});
+      sc.fragments.forEach(f=>{const y1=base+f.start*gap-23,y2=base+f.end*gap+28;s+=`<rect x="232" y="${y1}" width="${sc.width-249}" height="${y2-y1}" rx="9" class="loop-svg-fragment"/><text x="243" y="${y1+12}" class="loop-svg-fragment-label">${esc(f.label)}</text>`;});
+      sc.events.forEach((ev,i)=>{const y=base+i*gap;s+=`<line x1="235" y1="${y+28}" x2="${sc.width-14}" y2="${y+28}" class="loop-svg-row"/>`;});
+      sc.loops.forEach(lp=>{const y1=base+lp.from*gap,y2=base+lp.to*gap+19,x1=xs[sc.participants.findIndex(p=>p[0]===lp.actor)]+15,x2=xs[sc.participants.findIndex(p=>p[0]===lp.targetActor)]+14,marker=lp.outer?'loopOuterArrow':'loopBackArrow',cls=lp.outer?'loop-svg-loop outer':'loop-svg-loop',lab=lp.outer?'loop-svg-loop-label outer':'loop-svg-loop-label',mid=(y1+y2)/2,path=`M ${x1} ${y1} H ${lp.rail} V ${y2} H ${x2}`;s+=`<path d="${path}" fill="none" stroke="#fff" stroke-width="4.2"/><path d="${path}" class="${cls}" marker-end="url(#${marker})"/><text x="${lp.rail-6}" y="${mid}" transform="rotate(-90 ${lp.rail-6} ${mid})" text-anchor="middle" class="${lab}">${esc(lp.label)}</text>`;});
+      sc.events.forEach((ev,i)=>{const y=base+i*gap,actor=ev.actor||ev.from,idx=sc.participants.findIndex(p=>p[0]===actor),x1=xs[Math.max(idx,0)],c=loopPalette[actor]||loopPalette.runtime,selected=i===0?' selected':'';s+=`<g class="loop-svg-node${selected}" data-loop-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
+        if(ev.kind==='decision'){s+=`<rect x="${x1-13}" y="${y-14}" width="26" height="29" rx="6" class="loop-svg-decision"/><text x="${x1}" y="${y+1}" class="loop-svg-decision-text">判</text><text x="${x1+20}" y="${y-3}" text-anchor="start" class="loop-svg-text">${esc(ev.title)}</text><circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="15" fill="none" stroke="${c}" stroke-width="1" opacity=".25"/>`;
+        }else if(ev.kind==='action'){const boxW=ev.actionWidth||177,boxX=x1-boxW/2,lines=splitText(ev.title,25);s+=`<circle class="loop-svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="loop-svg-action"/>${svgText(x1,y-2,lines,'loop-svg-action-text')}`;
+        }else{const j=sc.participants.findIndex(p=>p[0]===ev.to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,neutral=['environment','executor','verifier'].includes(actor)||['environment','executor','verifier'].includes(ev.to),cls=neutral?'loop-svg-neutral':'loop-svg-msg',marker=neutral?'loopNeutralArrow':'loopMsgArrow',dist=Math.abs(x2-x1),lines=splitText(ev.title,Math.max(16,Math.floor(dist/9)));s+=`<line x1="${x1+dir*14}" y1="${y}" x2="${x2-dir*12}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/>${svgText((x1+x2)/2,y-8-(lines.length-1)*4.5,lines,'loop-svg-text')}<circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="11" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text>`;}
+        s+=`<title>${esc(ev.title)} · ${esc(ev.detail)}</title></g>`;});
+      s+=`<text x="15" y="${h-9}" class="loop-svg-small">时间向下 ↓ · 实线为跨参与者消息 · 虚线回边显示重新进入的步骤</text><text x="${sc.width-16}" y="${h-9}" text-anchor="end" class="loop-svg-small">概念重建 · 点击节点查看说明</text>`;
+      svg.setAttribute('viewBox',`0 0 ${sc.width} ${h}`);svg.setAttribute('height',h);svg.style.width=`${sc.width}px`;svg.innerHTML=s;
+      const participants=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${loopPalette[p[0]]||loopPalette.runtime}"></i>${esc(p[1])}</span>`).join('');
+      document.getElementById('loopTopologyLegend').innerHTML=participants+`<span class="legend-item"><i class="legend-line"></i>消息 / 结果</span><span class="legend-item"><i class="legend-line dash"></i>循环回边</span><span class="legend-item"><b style="display:inline-block;padding:1px 5px;border:1px dashed #cfd6e1;border-radius:4px;color:#7b8698">alt</b>互斥路由</span><span class="legend-item"><b style="color:#a46e2a">判</b>路由判断</span>`;
+      svg.querySelectorAll('.loop-svg-node').forEach(node=>{const choose=()=>selectLoopEvent(+node.dataset.loopEvent);node.addEventListener('click',choose);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});selectLoopEvent(0);
+    }
+    function selectLoopEvent(index){const sc=loopTopologies[currentLoopTopology],ev=sc.events[index];if(!ev)return;document.querySelectorAll('#loopTopologySvg .loop-svg-node').forEach((n,i)=>n.classList.toggle('selected',i===index));const actor=ev.actor||ev.from,p=sc.participants.find(x=>x[0]===actor);document.getElementById('loopTopologyDetail').innerHTML=`<div class="d-top"><span class="d-index">STEP ${String(index+1).padStart(2,'0')} · ${esc(p?p[1]:'运行系统')}</span><h3>${esc(ev.title)}</h3></div><p>${esc(ev.detail)}</p>`;}
+    document.querySelectorAll('[data-loop-topology]').forEach(b=>b.addEventListener('click',()=>renderLoopTopology(b.dataset.loopTopology)));
     document.querySelectorAll('[data-scene]').forEach(b=>b.addEventListener('click',()=>renderSequence(b.dataset.scene)));
     document.querySelectorAll('[data-control]').forEach(b=>b.addEventListener('click',()=>renderControl(b.dataset.control)));
-    renderSequence('generic');renderControl('tool');
+    renderSequence('generic');renderControl('tool');renderLoopTopology('conditional');
   </script>
 </body>
 </html>
