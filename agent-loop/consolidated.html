@@ -61,10 +61,11 @@
     .diagram-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 4px 6px;color:#68758a;font-size:10.5px}
     .concept-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:6px;background:#f2f0f8;color:#68599c;font-size:9px;font-weight:820;white-space:nowrap}
     .concept-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#7b68b1}
+    .diagram-viewport,.loop-diagram-viewport{position:relative;isolation:isolate}
     .timeline-scroll{overflow-x:auto;border:1px solid #e6eaf1;border-radius:11px;background:linear-gradient(180deg,#fbfcfe,#fff);scrollbar-color:#c4cbda #f2f4f8}
     #sequenceSvg{display:block;width:100%;min-width:900px;height:auto}
     #sequenceSvg text{font-family:Inter,"Noto Sans SC","PingFang SC",system-ui,sans-serif}
-    .diagram-foot{display:grid;grid-template-columns:1fr minmax(260px,.58fr);gap:11px;margin-top:12px;align-items:stretch}
+    .diagram-foot{display:grid;grid-template-columns:1fr;gap:11px;margin-top:10px;align-items:stretch}
     .legend{display:flex;align-content:center;align-items:center;gap:7px 14px;flex-wrap:wrap;padding:10px 12px;border-radius:9px;background:#f8f9fb;border:1px solid #edf0f4}
     .legend-item{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;color:#657187}
     .legend-dot{height:10px;width:10px;border-radius:50%;border:2px solid var(--c);background:#fff}
@@ -72,11 +73,15 @@
     .legend-line::after{content:"";position:absolute;right:-1px;top:-4px;border:4px solid transparent;border-left-color:#8156c9}
     .legend-line.dash{border-top-style:dashed;border-color:var(--navy)}
     .legend-line.dash::after{border-left-color:var(--navy)}
-    .detail-panel{padding:10px 13px;background:#f7f8fb;border:1px solid #edf0f4;border-radius:9px;min-height:60px}
-    .detail-panel .d-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:3px}
-    .detail-panel .d-index{font-size:9px;color:#8993a4;font-weight:800;letter-spacing:.08em}
-    .detail-panel h3{margin:0;font-size:11.5px}
-    .detail-panel p{margin:0;font-size:10px;line-height:1.6;color:#69758a}
+    .node-popover{position:absolute;z-index:30;display:none;width:min(310px,calc(100% - 20px));max-height:190px;overflow:auto;padding:11px 13px 12px;border:1px solid #dce3ed;border-radius:10px;background:rgba(255,255,255,.97);box-shadow:0 12px 30px rgba(35,49,75,.16);backdrop-filter:blur(8px);color:#394862}
+    .node-popover.is-visible{display:block;pointer-events:auto}
+    .node-popover .popover-top{display:flex;align-items:center;gap:9px;margin:0 0 5px;padding-right:20px}
+    .node-popover .popover-step{font-size:8.5px;color:#8a94a5;font-weight:850;letter-spacing:.06em}
+    .node-popover .popover-state{margin-left:auto;font-size:8px;color:#6c7690;font-weight:750}
+    .node-popover .popover-close{position:absolute;top:7px;right:7px;width:21px;height:21px;padding:0;border:0;border-radius:50%;background:#f1f3f7;color:#6d788b;font-size:14px;line-height:1;cursor:pointer}
+    .node-popover .popover-close:hover{background:#e7ebf2;color:#34425e}
+    .node-popover h3{margin:0 0 4px;font-size:11px;line-height:1.4;color:#2f3d56}
+    .node-popover p{margin:0;font-size:9.5px;line-height:1.6;color:#68758b}
     .evidence-note{margin-top:11px;padding:10px 13px;border-left:3px solid #d2a65c;border-radius:0 8px 8px 0;background:#fcf8f0;color:#786440;font-size:10.5px;line-height:1.65}
     .evidence-note strong{color:#654a20}
     .exit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:11px}
@@ -115,14 +120,9 @@
     .loop-diagram-scroll{overflow-x:auto;border:1px solid #e6eaf1;border-radius:10px;background:linear-gradient(180deg,#fbfcfe,#fff);scrollbar-color:#c4cbda #f2f4f8}
     #loopTopologySvg{display:block;width:100%;min-width:1160px;height:auto}
     #loopTopologySvg text{font-family:Inter,"Noto Sans SC","PingFang SC",system-ui,sans-serif}
-    .loop-diagram-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.8fr);gap:10px;margin-top:10px;align-items:stretch}
+    .loop-diagram-foot{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-top:10px;align-items:stretch}
     .loop-legend{display:flex;align-content:center;align-items:center;gap:7px 13px;flex-wrap:wrap;padding:9px 11px;border-radius:8px;background:#f8f9fb;border:1px solid #edf0f4}
     .loop-legend .legend-item{font-size:9px}
-    .loop-detail{padding:9px 12px;background:#f7f8fb;border:1px solid #edf0f4;border-radius:8px;min-height:57px}
-    .loop-detail .d-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:3px}
-    .loop-detail .d-index{font-size:8.5px;color:#8993a4;font-weight:800;letter-spacing:.08em}
-    .loop-detail h3{margin:0;font-size:10.5px}
-    .loop-detail p{margin:0;font-size:9.3px;line-height:1.55;color:#69758a}
     .loop-model-note{margin-top:9px;padding:8px 11px;border-radius:8px;background:#fcf8f0;border:1px solid #f0e6d1;color:#786642;font-size:9.5px;line-height:1.6}
     .loop-source-figures{margin-top:10px;padding:10px 13px;border:1px solid #e5e9ef;border-radius:10px;background:#fff}
     .loop-source-figures summary{cursor:pointer;font-size:10px;font-weight:780;color:#59677e}
@@ -274,11 +274,11 @@
           <span class="tab-note" id="sceneNote">概念视图：描述运行系统常见职责，不代表任一厂商的私有内部实现。</span>
         </div>
         <div class="diagram-caption"><span id="diagramTitle">运行时序 · 目标 → 决策 → 调度 → 反馈 → 判断</span><span class="concept-badge" id="diagramType">解释性抽象</span></div>
-        <div class="timeline-scroll"><svg id="sequenceSvg" role="img" aria-label="Agent Loop 参与者时序图"></svg></div>
-        <div class="diagram-foot">
-          <div class="legend" id="sequenceLegend"></div>
-          <div class="detail-panel" id="eventDetail" aria-live="polite"></div>
+        <div class="diagram-viewport" id="sequenceViewport">
+          <div class="timeline-scroll"><svg id="sequenceSvg" role="img" aria-label="Agent Loop 参与者时序图"></svg></div>
+          <aside class="node-popover" id="sequencePopover" role="dialog" aria-label="时序节点详情" aria-live="polite" aria-hidden="true"></aside>
         </div>
+        <div class="diagram-foot"><div class="legend" id="sequenceLegend"></div></div>
         <div class="exit-grid" id="exitGrid">
           <div class="exit" style="--c:#398267"><div class="exit-top"><i class="exit-dot"></i>完成</div><p>明确验收条件全部满足，并保留可复核证据。</p></div>
           <div class="exit" style="--c:#c34c54"><div class="exit-top"><i class="exit-dot"></i>失败</div><p>当前条件无法完成，说明原因与已尝试路径。</p></div>
@@ -306,11 +306,14 @@
           <button class="tab active" data-loop-topology="conditional" role="tab" aria-selected="true">条件路由</button>
           <button class="tab" data-loop-topology="ledger" role="tab" aria-selected="false">Ledger 双层循环</button>
           <button class="tab" data-loop-topology="csv-repair" role="tab" aria-selected="false">CSV 局部修复例</button>
-          <span class="tab-note">点选时序节点查看解释 · 时间自上而下</span>
+          <span class="tab-note">悬浮查看，点击固定，点空白关闭 · 时间自上而下</span>
         </div>
         <div class="loop-topology-heading"><div><h3 id="loopTopologyTitle"></h3><p id="loopTopologySubtitle"></p></div><span class="loop-topology-type" id="loopTopologyType"></span></div>
-        <div class="loop-diagram-scroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
-        <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div><div class="loop-detail" id="loopTopologyDetail" aria-live="polite"></div></div>
+        <div class="loop-diagram-viewport" id="loopTopologyViewport">
+          <div class="loop-diagram-scroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
+          <aside class="node-popover" id="loopTopologyPopover" role="dialog" aria-label="时序节点详情" aria-live="polite" aria-hidden="true"></aside>
+        </div>
+        <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div></div>
         <div class="loop-model-note" id="loopTopologyNote"></div>
         <div class="csv-replay-support" id="csvReplaySupport" hidden>
           <figure class="card illustration"><img src="assets/05-csv-repair-12-checks.png" alt="CSV 案例从 v0 通过 6/12，到 v1 通过 11/12，再到 v2 通过 12/12"><figcaption><span class="caption-tag">Fixed-step repair · 12 checks</span><b>6/12 → 11/12 → 12/12</b>。每轮重跑全部检查，针对剩余失败修复。</figcaption></figure>
@@ -454,9 +457,57 @@
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     function splitText(s,max){const out=[];let line='';for(const ch of Array.from(s)){line+=ch;if(line.length>=max){out.push(line);line='';}}if(line)out.push(line);return out;}
     function svgText(x,y,lines,cls,anchor='middle',color=null){return `<text x="${x}" y="${y}" text-anchor="${anchor}" class="${cls}"${color?` fill="${color}"`:''}>${lines.map((l,i)=>`<tspan x="${x}"${i?` dy="12"`:''}>${esc(l)}</tspan>`).join('')}</text>`;}
+    let activeNodePopup=null,pinnedNodePopup=false,nodePopupTimer=null;
+    function hideNodePopup(force=false){
+      if(pinnedNodePopup&&!force)return;
+      clearTimeout(nodePopupTimer);nodePopupTimer=null;
+      if(activeNodePopup){activeNodePopup.node.removeAttribute('aria-describedby');activeNodePopup.popup.classList.remove('is-visible');activeNodePopup.popup.setAttribute('aria-hidden','true');activeNodePopup.svg.querySelectorAll('.svg-node,.loop-svg-node').forEach(n=>n.classList.remove('selected'));}
+      activeNodePopup=null;pinnedNodePopup=false;
+    }
+    function positionNodePopup(){
+      if(!activeNodePopup)return;
+      const {node,popup,host}=activeNodePopup,anchor=node.querySelector('.svg-mark')||node,hostRect=host.getBoundingClientRect(),anchorRect=anchor.getBoundingClientRect(),popupRect=popup.getBoundingClientRect(),pad=10;
+      let left=anchorRect.right-hostRect.left+12;
+      if(left+popupRect.width>host.clientWidth-pad)left=anchorRect.left-hostRect.left-popupRect.width-12;
+      left=Math.max(pad,Math.min(left,host.clientWidth-popupRect.width-pad));
+      let top=anchorRect.top+anchorRect.height/2-hostRect.top-popupRect.height/2;
+      if(top<pad)top=anchorRect.bottom-hostRect.top+10;
+      if(top+popupRect.height>host.clientHeight-pad)top=anchorRect.top-hostRect.top-popupRect.height-10;
+      top=Math.max(pad,Math.min(top,host.clientHeight-popupRect.height-pad));
+      popup.style.left=`${left}px`;popup.style.top=`${top}px`;
+    }
+    function scheduleNodePopupHide(){clearTimeout(nodePopupTimer);nodePopupTimer=setTimeout(()=>hideNodePopup(),180);}
+    function showNodePopup(kind,index,node,pin=false){
+      const same=activeNodePopup&&activeNodePopup.kind===kind&&activeNodePopup.index===index;
+      if(pinnedNodePopup&&!same&&!pin)return;
+      if(!same)hideNodePopup(true);
+      clearTimeout(nodePopupTimer);nodePopupTimer=null;
+      const scene=kind==='sequence'?scenes[currentScene]:loopTopologies[currentLoopTopology],svg=document.getElementById(kind==='sequence'?'sequenceSvg':'loopTopologySvg'),host=document.getElementById(kind==='sequence'?'sequenceViewport':'loopTopologyViewport'),scroller=host.querySelector('.timeline-scroll,.loop-diagram-scroll'),popup=document.getElementById(kind==='sequence'?'sequencePopover':'loopTopologyPopover'),ev=scene.events[index];
+      if(!ev)return;
+      const actor=ev.actor||ev.from,participant=scene.participants.find(p=>p[0]===actor);
+      activeNodePopup={kind,index,node,svg,host,popup};pinnedNodePopup=pin||(same&&pinnedNodePopup);
+      svg.querySelectorAll('.svg-node,.loop-svg-node').forEach((n,i)=>n.classList.toggle('selected',n===node));
+      node.setAttribute('aria-describedby',popup.id);
+      popup.innerHTML=`<div class="popover-top"><span class="popover-step">STEP ${String(index+1).padStart(2,'0')} · ${esc(participant?participant[1]:'运行系统')}</span><span class="popover-state">${pinnedNodePopup?'已固定':'悬浮预览'}</span></div><button class="popover-close" type="button" aria-label="关闭节点详情">×</button><h3>${esc(ev.title)}</h3><p>${esc(ev.detail)}</p>`;
+      popup.classList.add('is-visible');popup.setAttribute('aria-hidden','false');
+      popup.querySelector('.popover-close').addEventListener('click',e=>{e.stopPropagation();hideNodePopup(true);});
+      if(!popup.dataset.pointerBound){popup.dataset.pointerBound='true';popup.addEventListener('pointerenter',()=>{clearTimeout(nodePopupTimer);nodePopupTimer=null;});popup.addEventListener('pointerleave',scheduleNodePopupHide);popup.addEventListener('focusin',()=>{clearTimeout(nodePopupTimer);nodePopupTimer=null;});popup.addEventListener('focusout',scheduleNodePopupHide);}
+      if(!scroller.dataset.popupScrollBound){scroller.dataset.popupScrollBound='true';scroller.addEventListener('scroll',()=>{if(activeNodePopup&&activeNodePopup.host===host)positionNodePopup();},{passive:true});}
+      requestAnimationFrame(positionNodePopup);
+    }
+    function bindNodePopup(node,kind,index){
+      node.addEventListener('pointerenter',()=>{if(!pinnedNodePopup||activeNodePopup?.kind===kind&&activeNodePopup?.index===index)showNodePopup(kind,index,node);});
+      node.addEventListener('pointerleave',scheduleNodePopupHide);
+      node.addEventListener('focus',()=>{if(!pinnedNodePopup)showNodePopup(kind,index,node);});
+      node.addEventListener('blur',scheduleNodePopupHide);
+      node.addEventListener('click',()=>{if(pinnedNodePopup&&activeNodePopup?.kind===kind&&activeNodePopup?.index===index)hideNodePopup(true);else showNodePopup(kind,index,node,true);});
+      node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();node.click();}else if(e.key==='Escape')hideNodePopup(true);});
+    }
+    document.addEventListener('click',e=>{if(!e.target.closest('.svg-node,.loop-svg-node,.node-popover'))hideNodePopup(true);});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')hideNodePopup(true);});
     function renderSequence(sceneKey){
-      currentScene=sceneKey;const sc=scenes[sceneKey],svg=document.getElementById('sequenceSvg'),xs=sc.participants.length===3?[365,640,915]:[250,435,620,805,990],base=126,gap=62,h=base+sc.events.length*gap+113;
-      document.getElementById('sceneNote').textContent=sc.note;document.getElementById('diagramTitle').textContent=sc.title;document.getElementById('diagramType').textContent=sc.type;
+      hideNodePopup(true);currentScene=sceneKey;const sc=scenes[sceneKey],svg=document.getElementById('sequenceSvg'),xs=sc.participants.length===3?[365,640,915]:[250,435,620,805,990],base=126,gap=62,h=base+sc.events.length*gap+113;
+      document.getElementById('sceneNote').textContent=sc.note+'　·　悬浮查看详情，点击固定，点空白关闭';document.getElementById('diagramTitle').textContent=sc.title;document.getElementById('diagramType').textContent=sc.type;
       document.getElementById('exitGrid').style.display=sceneKey==='generic'?'grid':'none';
       document.querySelectorAll('[data-scene]').forEach(b=>{const on=b.dataset.scene===sceneKey;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
       let html=`<defs>
@@ -467,12 +518,12 @@
       html+=`<rect x="0" y="0" width="1180" height="${h}" fill="#fff"/>`;
       sc.participants.forEach((p,i)=>{const x=xs[i],c=palette[p[0]]||palette.runtime;html+=`<line x1="${x}" y1="81" x2="${x}" y2="${h-26}" class="svg-lane-line"/><rect x="${x-75}" y="25" width="150" height="39" rx="8" fill="#fff" stroke="#e4e8ef"/><circle cx="${x-59}" cy="44.5" r="4" fill="${c}"/><text x="${x-49}" y="48" text-anchor="start" class="svg-lane-head" fill="${c}">${esc(p[1])}</text>`;});
       sc.phases.forEach(ph=>{const y=base+ph.start*gap-27,hh=(ph.end-ph.start+1)*gap-3;html+=`<rect x="14" y="${y}" width="93" height="${hh}" rx="7" fill="${ph.color}" stroke="#e5e9ef"/><rect x="113" y="${y}" width="102" height="${hh}" rx="7" fill="#f8f9fb" stroke="#e8ebf0"/>`;const stageLines=splitText(ph.label,6),ownLines=splitText(ph.owner,9);html+=svgText(60.5,y+hh/2-(stageLines.length-1)*5,stageLines,'svg-stage-title');html+=svgText(164,y+hh/2-(ownLines.length-1)*5,ownLines,'svg-stage-owner');if(ph.score)html+=`<text x="164" y="${y+hh/2+18}" text-anchor="middle" font-size="8" font-weight="850" fill="#826232">${esc(ph.score)}</text>`;});
-      sc.events.forEach((ev,i)=>{const y=base+i*gap,from=ev.actor||ev.from,to=ev.to,idx=sc.participants.findIndex(p=>p[0]===from),x1=xs[Math.max(idx,0)],c=palette[from]||palette.runtime,selected=i===0?' selected':'';html+=`<line x1="220" y1="${y+28}" x2="1155" y2="${y+28}" class="svg-row"/>`;
+      sc.events.forEach((ev,i)=>{const y=base+i*gap,from=ev.actor||ev.from,to=ev.to,idx=sc.participants.findIndex(p=>p[0]===from),x1=xs[Math.max(idx,0)],c=palette[from]||palette.runtime,selected='';html+=`<line x1="220" y1="${y+28}" x2="1155" y2="${y+28}" class="svg-row"/>`;
         html+=`<g class="svg-node${selected}" data-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
-        if(ev.decision){html+=`<rect x="${x1-12}" y="${y-13}" width="24" height="32" rx="6" class="svg-decision"/><text x="${x1}" y="${y+3}" class="svg-decision-text">判</text><text x="${x1+22}" y="${y+3}" text-anchor="start" class="svg-self-label">${esc(ev.title)}</text>`;}
+        if(ev.decision){html+=`<rect x="${x1-12}" y="${y-13}" width="24" height="32" rx="6" class="svg-decision svg-mark"/><text x="${x1}" y="${y+3}" class="svg-decision-text">判</text><text x="${x1+22}" y="${y+3}" text-anchor="start" class="svg-self-label">${esc(ev.title)}</text>`;}
         else if(ev.kind==='action'||from===to){const boxW=190,boxX=x1-boxW/2,lines=splitText(ev.title,22);html+=`<circle class="svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="svg-action"/>${svgText(x1,y-2,lines,'svg-action-text')}`;}
         else{const j=sc.participants.findIndex(p=>p[0]===to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,ln=Math.max(13,Math.floor(Math.abs(x2-x1)/8.1)-3),lines=splitText(ev.title,ln),ty=y-8-(lines.length-1)*5,cls=['tool','exporter','verify','expert'].includes(from)||['tool','exporter','verify','expert'].includes(to)?'svg-message-neutral':'svg-message',marker=cls==='svg-message-neutral'?'seqToolArrow':'seqArrow';html+=`<line x1="${x1+dir*15}" y1="${y}" x2="${x2-dir*9}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/>`;html+=svgText((x1+x2)/2,ty,lines,'svg-label');html+=`<circle class="svg-mark" cx="${x1}" cy="${y}" r="12" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+0.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text>`;}
-        html+=`<title>${esc(ev.title)} · ${esc(ev.detail)}</title></g>`;
+        html+='</g>';
       });
       if(sceneKey==='generic'){
         const routeY=base+9*gap,modelY=base+2*gap;
@@ -482,9 +533,8 @@
       svg.setAttribute('viewBox',`0 0 1180 ${h}`);svg.setAttribute('height',h);svg.innerHTML=html;
       const extraLegend=sceneKey==='generic'?'<span class="legend-item"><i class="legend-line dash"></i>继续下一轮</span>':'<span class="legend-item"><i style="display:inline-block;width:14px;height:9px;border:1px solid #cbd3df;border-radius:4px;background:#f8f9fb"></i>参与者内部动作</span>';
       document.getElementById('sequenceLegend').innerHTML=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${palette[p[0]]||palette.runtime}"></i>${esc(p[1])}</span>`).join('')+'<span class="legend-item"><i class="legend-line"></i>跨参与者消息</span>'+extraLegend;
-      svg.querySelectorAll('.svg-node').forEach(node=>{const choose=()=>selectEvent(+node.dataset.event);node.addEventListener('click',choose);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});selectEvent(0);
+      svg.querySelectorAll('.svg-node').forEach(node=>bindNodePopup(node,'sequence',+node.dataset.event));
     }
-    function selectEvent(index){const sc=scenes[currentScene],ev=sc.events[index];if(!ev)return;document.querySelectorAll('#sequenceSvg .svg-node').forEach((n,i)=>n.classList.toggle('selected',i===index));const from=ev.actor||ev.from;const p=sc.participants.find(x=>x[0]===from);document.getElementById('eventDetail').innerHTML=`<div class="d-top"><span class="d-index">STEP ${String(index+1).padStart(2,'0')} · ${esc(p?p[1]:'运行系统')}</span><h3>${esc(ev.title)}</h3></div><p>${esc(ev.detail)}</p>`;}
     const loopPalette={owner:'#2f3d63',runtime:'#435575',agent:'#6b5ba8',environment:'#3f7d72',verifier:'#a46e2a',progress:'#3f7d72',task:'#a46e2a',executor:'#3f7d72',flow:'#435575',exporter:'#3f7d72',verify:'#a46e2a'};
     const loopTopologies={
       conditional:{
@@ -597,7 +647,7 @@
     };
     let currentLoopTopology='conditional';
     function renderLoopTopology(key){
-      currentLoopTopology=key;const sc=loopTopologies[key],svg=document.getElementById('loopTopologySvg'),xs=sc.participants.length===5?[270,455,640,825,1010]:[245,400,555,710,865,1020],base=112,gap=58,h=base+sc.events.length*gap+62,headW=sc.participants.length===5?174:150;
+      hideNodePopup(true);currentLoopTopology=key;const sc=loopTopologies[key],svg=document.getElementById('loopTopologySvg'),xs=sc.participants.length===5?[270,455,640,825,1010]:[245,400,555,710,865,1020],base=112,gap=58,h=base+sc.events.length*gap+62,headW=sc.participants.length===5?174:150;
       document.getElementById('loopTopologyTitle').textContent=sc.title;document.getElementById('loopTopologySubtitle').textContent=sc.subtitle;document.getElementById('loopTopologyType').textContent=sc.type;document.getElementById('loopTopologyNote').textContent=sc.note;document.getElementById('csvReplaySupport').hidden=key!=='csv-repair';
       document.querySelectorAll('[data-loop-topology]').forEach(b=>{const on=b.dataset.loopTopology===key;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
       let s=`<defs>
@@ -611,18 +661,17 @@
       sc.fragments.forEach(f=>{const y1=base+f.start*gap-23,y2=base+f.end*gap+28;s+=`<rect x="232" y="${y1}" width="${sc.width-249}" height="${y2-y1}" rx="9" class="loop-svg-fragment"/><text x="243" y="${y1+12}" class="loop-svg-fragment-label">${esc(f.label)}</text>`;});
       sc.events.forEach((ev,i)=>{const y=base+i*gap;s+=`<line x1="235" y1="${y+28}" x2="${sc.width-14}" y2="${y+28}" class="loop-svg-row"/>`;});
       sc.loops.forEach(lp=>{const y1=base+lp.from*gap,y2=base+lp.to*gap+19,x1=xs[sc.participants.findIndex(p=>p[0]===lp.actor)]+15,x2=xs[sc.participants.findIndex(p=>p[0]===lp.targetActor)]+14,marker=lp.outer?'loopOuterArrow':'loopBackArrow',cls=lp.outer?'loop-svg-loop outer':'loop-svg-loop',lab=lp.outer?'loop-svg-loop-label outer':'loop-svg-loop-label',mid=(y1+y2)/2,path=`M ${x1} ${y1} H ${lp.rail} V ${y2} H ${x2}`;s+=`<path d="${path}" fill="none" stroke="#fff" stroke-width="4.2"/><path d="${path}" class="${cls}" marker-end="url(#${marker})"/><text x="${lp.rail-6}" y="${mid}" transform="rotate(-90 ${lp.rail-6} ${mid})" text-anchor="middle" class="${lab}">${esc(lp.label)}</text>`;});
-      sc.events.forEach((ev,i)=>{const y=base+i*gap,actor=ev.actor||ev.from,idx=sc.participants.findIndex(p=>p[0]===actor),x1=xs[Math.max(idx,0)],c=loopPalette[actor]||loopPalette.runtime,selected=i===0?' selected':'';s+=`<g class="loop-svg-node${selected}" data-loop-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
+      sc.events.forEach((ev,i)=>{const y=base+i*gap,actor=ev.actor||ev.from,idx=sc.participants.findIndex(p=>p[0]===actor),x1=xs[Math.max(idx,0)],c=loopPalette[actor]||loopPalette.runtime,selected='';s+=`<g class="loop-svg-node${selected}" data-loop-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
         if(ev.kind==='decision'){s+=`<rect x="${x1-13}" y="${y-14}" width="26" height="29" rx="6" class="loop-svg-decision"/><text x="${x1}" y="${y+1}" class="loop-svg-decision-text">判</text><text x="${x1+20}" y="${y-3}" text-anchor="start" class="loop-svg-text">${esc(ev.title)}</text><circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="15" fill="none" stroke="${c}" stroke-width="1" opacity=".25"/>`;
         }else if(ev.kind==='action'){const boxW=ev.actionWidth||177,boxX=x1-boxW/2,lines=splitText(ev.title,25);s+=`<circle class="loop-svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="loop-svg-action"/>${svgText(x1,y-2,lines,'loop-svg-action-text')}`;
         }else{const j=sc.participants.findIndex(p=>p[0]===ev.to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,neutral=['environment','executor','verifier'].includes(actor)||['environment','executor','verifier'].includes(ev.to),cls=neutral?'loop-svg-neutral':'loop-svg-msg',marker=neutral?'loopNeutralArrow':'loopMsgArrow',dist=Math.abs(x2-x1),lines=splitText(ev.title,Math.max(16,Math.floor(dist/9)));s+=`<line x1="${x1+dir*14}" y1="${y}" x2="${x2-dir*12}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/>${svgText((x1+x2)/2,y-8-(lines.length-1)*4.5,lines,'loop-svg-text')}<circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="11" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text>`;}
-        s+=`<title>${esc(ev.title)} · ${esc(ev.detail)}</title></g>`;});
-      s+=`<text x="15" y="${h-9}" class="loop-svg-small">${esc(sc.flowNote||'时间向下 ↓ · 实线为跨参与者消息 · 虚线回边显示重新进入的步骤')}</text><text x="${sc.width-16}" y="${h-9}" text-anchor="end" class="loop-svg-small">概念重建 · 点击节点查看说明</text>`;
+        s+='</g>';});
+      s+=`<text x="15" y="${h-9}" class="loop-svg-small">${esc(sc.flowNote||'时间向下 ↓ · 实线为跨参与者消息 · 虚线回边显示重新进入的步骤')}</text><text x="${sc.width-16}" y="${h-9}" text-anchor="end" class="loop-svg-small">概念重建 · 悬浮 / 点击节点查看说明</text>`;
       svg.setAttribute('viewBox',`0 0 ${sc.width} ${h}`);svg.setAttribute('height',h);svg.style.width=`${sc.width}px`;svg.innerHTML=s;
       const participants=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${loopPalette[p[0]]||loopPalette.runtime}"></i>${esc(p[1])}</span>`).join('');
       document.getElementById('loopTopologyLegend').innerHTML=participants+`<span class="legend-item"><i class="legend-line"></i>消息 / 结果</span><span class="legend-item"><i class="legend-line dash"></i>${key==='csv-repair'?'失败后定向修复':'循环回边'}</span>${sc.fragments.length?`<span class="legend-item"><b style="display:inline-block;padding:1px 5px;border:1px dashed #cfd6e1;border-radius:4px;color:#7b8698">alt</b>互斥路由</span>`:''}${sc.events.some(e=>e.kind==='decision')?`<span class="legend-item"><b style="color:#a46e2a">判</b>路由判断</span>`:''}${sc.events.some(e=>e.kind==='action')?`<span class="legend-item"><i style="display:inline-block;width:14px;height:9px;border:1px solid #cbd3df;border-radius:4px;background:#f8f9fb"></i>参与者内部动作</span>`:''}`;
-      svg.querySelectorAll('.loop-svg-node').forEach(node=>{const choose=()=>selectLoopEvent(+node.dataset.loopEvent);node.addEventListener('click',choose);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}});});selectLoopEvent(0);
+      svg.querySelectorAll('.loop-svg-node').forEach(node=>bindNodePopup(node,'loop',+node.dataset.loopEvent));
     }
-    function selectLoopEvent(index){const sc=loopTopologies[currentLoopTopology],ev=sc.events[index];if(!ev)return;document.querySelectorAll('#loopTopologySvg .loop-svg-node').forEach((n,i)=>n.classList.toggle('selected',i===index));const actor=ev.actor||ev.from,p=sc.participants.find(x=>x[0]===actor);document.getElementById('loopTopologyDetail').innerHTML=`<div class="d-top"><span class="d-index">STEP ${String(index+1).padStart(2,'0')} · ${esc(p?p[1]:'运行系统')}</span><h3>${esc(ev.title)}</h3></div><p>${esc(ev.detail)}</p>`;}
     const matrixDetails={
       'mode:feedback':['反馈驱动 · 任务组织模式','根据当前观察决定下一步，适合路径未知、需要探索的任务。'],
       'mode:plan':['计划驱动 · 任务组织模式','维护阶段、依赖与进度；当假设失效或持续停滞时更新计划。'],
