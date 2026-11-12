@@ -163,11 +163,17 @@
     .matrix-intro p{margin:0;font-size:9.5px;line-height:1.55;color:#7b8698}
     .matrix-size{flex:none;padding:4px 8px;border-radius:99px;background:#f7f8fb;border:1px solid #e8ebf0;color:#7b8698;font-size:8.5px}
     .matrix-scroll{overflow-x:auto;border-radius:8px;scrollbar-color:#c4cbda #f2f4f8}
+    .matrix-axis-x{display:grid;grid-template-columns:212px repeat(5,minmax(0,1fr));min-width:1030px;margin-bottom:5px}
+    .matrix-axis-x-title{grid-column:2/7;display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;background:#eef2f8;color:#53627b}
+    .matrix-axis-tag{padding:3px 6px;border-radius:5px;background:#fff;color:#52648a;font-size:8px;font-weight:850;white-space:nowrap}
+    .matrix-axis-x-title b{font-size:9.5px}
+    .matrix-axis-x-title small{font-size:8.5px;color:#7b8698}
+    .matrix-axis-arrow{margin-left:auto;color:#53648a;font-size:17px;font-weight:800;line-height:1}
     .axis-matrix{width:100%;min-width:1030px;border-collapse:collapse;table-layout:fixed;background:#fff}
-    .axis-matrix th,.axis-matrix td{border:1px solid #edf0f4}
+    .axis-matrix th,.axis-matrix td{border:1px solid #e8ecf2}
     .axis-matrix thead th{height:76px;padding:8px 7px;background:#fafbfd;text-align:center;vertical-align:middle}
-    .axis-matrix .matrix-corner{position:sticky;left:0;z-index:4;width:212px;text-align:left;padding:10px 12px;color:#6c778b;background:#fafbfd}
-    .matrix-corner .axis-y{display:block;font-size:8px;color:#a0a8b5;letter-spacing:.06em;margin-bottom:5px}
+    .axis-matrix .matrix-corner{position:sticky;left:0;z-index:4;width:212px;text-align:left;padding:10px 12px;color:#6c778b;background:#f5f7fb}
+    .matrix-corner .axis-y{display:block;font-size:8px;color:#52648a;letter-spacing:.04em;margin-bottom:5px;font-weight:850}
     .matrix-corner b{display:block;font-size:10px;color:#53627b}
     .matrix-corner small{display:block;font-size:8px;font-weight:500;color:#8a94a3;margin-top:2px}
     .matrix-label{appearance:none;border:0;background:transparent;color:#394862;font:inherit;cursor:pointer}
@@ -180,16 +186,19 @@
     .matrix-row-label{display:flex;align-items:center;gap:8px;width:100%;padding:7px 2px;text-align:left}
     .matrix-row-label .matrix-index{display:flex;align-items:center;justify-content:center;flex:none;width:21px;height:21px;border-radius:50%;color:var(--axis-color);border:1.4px solid var(--axis-color);font-size:7.5px;font-weight:900;background:#fff}
     .matrix-row-label b{font-size:8.9px;line-height:1.25;font-weight:760;color:#52617a}
-    .axis-matrix td{height:39px;text-align:center;background:#fff}
-    .matrix-point{display:inline-block;width:5px;height:5px;border-radius:50%;background:#e1e6ee;vertical-align:middle}
-    .matrix-example{display:inline-flex;align-items:center;justify-content:center;width:30px;height:28px;border:0;background:transparent;cursor:pointer}
-    .matrix-example .matrix-point{width:10px;height:10px;background:#6b5ba8;box-shadow:0 0 0 4px #f0edf8,0 0 0 1px #6b5ba8}
-    .matrix-example[data-example="ledger"] .matrix-point{background:#3f7d72;box-shadow:0 0 0 4px #eaf4ef,0 0 0 1px #3f7d72}
-    .matrix-example:hover .matrix-point{transform:scale(1.2)}
+    .axis-matrix td{height:44px;text-align:center;background:#fbfcfe}
+    .axis-matrix td.matrix-cell{background:#fbfcfe}
+    .matrix-example{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:calc(100% - 12px);min-height:32px;padding:4px 6px;border:1px solid transparent;border-radius:7px;cursor:pointer;font:inherit}
+    .matrix-example b{font-size:8.5px;font-weight:800}
+    .matrix-example[data-example="verification"]{color:#554786;background:#f0edf8;border-color:#e0daf1}
+    .matrix-example[data-example="ledger"]{color:#326c5e;background:#eaf4ef;border-color:#d7e8e0}
+    .matrix-example:hover,.matrix-example.selected{filter:saturate(1.15);box-shadow:0 2px 8px rgba(47,61,84,.12);transform:translateY(-1px)}
+    .matrix-case-mark{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:#fff;color:inherit;font-size:8px;font-weight:900;flex:none}
     .matrix-legend{display:flex;align-items:center;gap:8px 17px;flex-wrap:wrap;padding:8px 10px;margin-top:9px;background:#fafbfd;border:1px solid #edf0f4;border-radius:7px}
     .matrix-legend-item{display:inline-flex;align-items:center;gap:6px;color:#69758a;font-size:8.7px}
-    .matrix-legend .matrix-point.example-purple{width:9px;height:9px;background:#6b5ba8;box-shadow:0 0 0 3px #f0edf8}
-    .matrix-legend .matrix-point.example-green{width:9px;height:9px;background:#3f7d72;box-shadow:0 0 0 3px #eaf4ef}
+    .matrix-cell-swatch{display:inline-block;width:12px;height:10px;border:1px solid #e0e5ec;border-radius:3px;background:#fbfcfe}
+    .matrix-example-swatch{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:#6b5ba8;color:#fff;font-size:7px;font-weight:900}
+    .matrix-example-swatch.green{background:#3f7d72}
     .matrix-detail{display:flex;align-items:flex-start;gap:8px;min-height:34px;padding:8px 2px 0;color:#6f7a8d;font-size:8.9px;line-height:1.5}
     .matrix-detail::before{content:"";flex:none;width:6px;height:6px;margin-top:4px;border-radius:50%;background:#9ba5b5}
     .matrix-detail b{color:#45536d;margin-right:4px}
@@ -343,13 +352,15 @@
     </section>
 
     <section class="section" id="patterns">
-      <div class="section-head"><div><div class="section-kicker">03 / Design choices</div><h2>任务组织模式与执行机制是两条轴</h2><p class="section-intro">模式说明任务怎样组织；机制说明下一轮由什么控制信号触发。它们可以组合，不应该混成一个互斥分类。</p></div></div>
+      <div class="section-head"><div><div class="section-kicker">03 / Design choices</div><h2>任务怎么组织 × 下一步由什么机制触发</h2><p class="section-intro">组织模式描述任务如何推进，执行机制描述运行系统如何触发下一步。一个任务可以同时采用两者。</p></div></div>
       <div class="card matrix-shell" aria-label="任务组织模式与执行机制交叉矩阵">
-        <div class="matrix-intro"><div><h3>两条轴在同一个任务中组合</h3><p>横轴选择任务怎么组织；纵轴选择下一轮由什么机制触发。点击轴标签查看定义；窄屏可横向滑动。</p></div><span class="matrix-size">5 × 8 · 组合空间</span></div>
-        <div class="matrix-scroll"><table class="axis-matrix" aria-describedby="matrixLegend matrixDetail">
-          <caption style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">任务组织模式为横轴，执行机制为纵轴；格点表示组合空间。</caption>
+        <div class="matrix-intro"><div><h3>先选列，再选行，看它们如何组合</h3><p>横向是任务组织模式；纵向是执行机制。点击标签读定义，点击 A / B 查看正文案例。</p></div><span class="matrix-size">5 列 × 8 行 · 40 个交叉位置</span></div>
+        <div class="matrix-scroll">
+          <div class="matrix-axis-x" aria-hidden="true"><div></div><div class="matrix-axis-x-title"><span class="matrix-axis-tag">横轴 X →</span><b>任务组织模式</b><small>任务怎么组织</small><span class="matrix-axis-arrow">→</span></div></div>
+          <table class="axis-matrix" aria-describedby="matrixLegend matrixDetail">
+          <caption style="position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden">横轴是任务组织模式，纵轴是执行机制。彩色单元格是文章展开的两个示例；其他组合未在此页展开。</caption>
           <thead><tr>
-            <th class="matrix-corner" scope="col"><span class="axis-y">纵轴 ↓</span><b>执行机制</b><small>下一轮由什么信号触发</small><small style="margin-top:5px;color:#a0a8b5">横轴 → 任务组织模式</small></th>
+            <th class="matrix-corner" scope="col"><span class="axis-y">纵轴 Y ↓</span><b>执行机制</b><small>下一步由什么信号触发</small></th>
             <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:feedback" aria-label="反馈驱动：根据当前观察决定下一步，适合路径未知的探索任务"><span class="matrix-index" style="--axis-color:#6b5ba8">01</span><b>反馈驱动</b></button></th>
             <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:plan" aria-label="计划驱动：维护阶段、依赖与进度，假设失效或停滞时重规划"><span class="matrix-index" style="--axis-color:#5578ae">02</span><b>计划驱动</b></button></th>
             <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:flow" aria-label="流程约束：用显式节点和条件限制合法路径，便于审计与权限管理"><span class="matrix-index" style="--axis-color:#3f7d72">03</span><b>流程约束</b></button></th>
@@ -357,18 +368,19 @@
             <th scope="col"><button type="button" class="matrix-label matrix-col-label" data-matrix-detail="mode:multi" aria-label="多 Agent 协作：拆分职责后协调整合，角色更多不代表质量更高"><span class="matrix-index" style="--axis-color:#c34c54">05</span><b>多 Agent 协作</b></button></th>
           </tr></thead>
           <tbody>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:tool"><span class="matrix-index" style="--axis-color:#6b5ba8">01</span><b>Tool Calling Loop</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:handoff"><span class="matrix-index" style="--axis-color:#5578ae">02</span><b>Handoff Loop</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:agentTool"><span class="matrix-index" style="--axis-color:#3f7d72">03</span><b>Agent as Tool</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:graph"><span class="matrix-index" style="--axis-color:#b77b2c">04</span><b>Conditional Graph</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><button type="button" class="matrix-example" data-example="verification" aria-label="示例组合：验证修复 × Conditional Graph，图路由负责验收"><span class="matrix-point"></span></button></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:iteration"><span class="matrix-index" style="--axis-color:#c34c54">05</span><b>Explicit Iteration</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:speaker"><span class="matrix-index" style="--axis-color:#71809b">06</span><b>Speaker Selection</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:ledger"><span class="matrix-index" style="--axis-color:#a46e2a">07</span><b>Ledger-driven Nested Loop</b></button></th><td><span class="matrix-point"></span></td><td><button type="button" class="matrix-example" data-example="ledger" aria-label="示例组合：计划驱动 × Ledger-driven Nested Loop，Ledger 负责长任务重规划"><span class="matrix-point"></span></button></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
-            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:programmatic"><span class="matrix-index" style="--axis-color:#52647e">08</span><b>Programmatic Workflow</b></button></th><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td><td><span class="matrix-point"></span></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:tool"><span class="matrix-index" style="--axis-color:#6b5ba8">01</span><b>Tool Calling Loop</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:handoff"><span class="matrix-index" style="--axis-color:#5578ae">02</span><b>Handoff Loop</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:agentTool"><span class="matrix-index" style="--axis-color:#3f7d72">03</span><b>Agent as Tool</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:graph"><span class="matrix-index" style="--axis-color:#b77b2c">04</span><b>Conditional Graph</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"><button type="button" class="matrix-example" data-example="verification" aria-label="正文案例 A：验证修复 × Conditional Graph，图路由负责验收"><span class="matrix-case-mark">A</span><b>正文案例</b></button></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:iteration"><span class="matrix-index" style="--axis-color:#c34c54">05</span><b>Explicit Iteration</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:speaker"><span class="matrix-index" style="--axis-color:#71809b">06</span><b>Speaker Selection</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:ledger"><span class="matrix-index" style="--axis-color:#a46e2a">07</span><b>Ledger-driven Nested Loop</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"><button type="button" class="matrix-example" data-example="ledger" aria-label="正文案例 B：计划驱动 × Ledger-driven Nested Loop，Ledger 负责长任务重规划"><span class="matrix-case-mark">B</span><b>正文案例</b></button></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
+            <tr><th scope="row"><button type="button" class="matrix-label matrix-row-label" data-matrix-detail="mechanism:programmatic"><span class="matrix-index" style="--axis-color:#52647e">08</span><b>Programmatic Workflow</b></button></th><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td><td class="matrix-cell"></td></tr>
           </tbody>
-        </table></div>
-        <div class="matrix-legend" id="matrixLegend"><span class="matrix-legend-item"><i class="matrix-point"></i>组合空间 · 不表示每种组合都适用</span><span class="matrix-legend-item"><i class="matrix-point example-purple"></i>验证修复 × Conditional Graph</span><span class="matrix-legend-item"><i class="matrix-point example-green"></i>计划驱动 × Ledger Loop</span></div>
-        <div class="matrix-detail" id="matrixDetail" aria-live="polite"><span>点击横轴或纵轴节点查看定义；点击高亮交点查看正文示例。示例点不代表固定配对。</span></div>
+          </table>
+        </div>
+        <div class="matrix-legend" id="matrixLegend"><span class="matrix-legend-item"><i class="matrix-cell-swatch"></i>空格：本文未展开此组合</span><span class="matrix-legend-item"><i class="matrix-example-swatch">A</i>验证修复 × Conditional Graph</span><span class="matrix-legend-item"><i class="matrix-example-swatch green">B</i>计划驱动 × Ledger Loop</span></div>
+        <div class="matrix-detail" id="matrixDetail" aria-live="polite"><b>读图方式</b><span>先选一列（任务组织模式），再选一行（执行机制）；交叉处表示它们可以在同一任务中组合。A / B 是文章展开的两个案例。空格只是本文未说明，不代表不适用。</span></div>
       </div>
     </section>
 
