@@ -1,0 +1,2452 @@
+{
+  "analysis_type": "Arithmetic re-analysis of the submitted 25-pair study; no new empirical runs or independent validation.",
+  "scope": {
+    "primary_tasks": 25,
+    "task_side_units": 50,
+    "excluded_task": "G",
+    "reason": "G is a migration analogy rather than a CANN/CUDA development task pair.",
+    "M1_score_distribution": {
+      "2": 8,
+      "3": 9,
+      "4": 9,
+      "5": 24
+    },
+    "M1_score_1_observed": false
+  },
+  "source_files": [
+    {
+      "path": "data/manifest.json",
+      "sha256": "4b87b28e81a1a8cc843e2bde0efb29f70f5fc77db4c38dd67957f754d7edf93e"
+    },
+    {
+      "path": "data/raw_original.json",
+      "sha256": "a8a73518cbf1924a1dc49e2b13712ccc6684affcca076d8b5ee62b9fb4202ec3"
+    },
+    {
+      "path": "data/legacy_scores_original.json",
+      "sha256": "0d92a73a7037d9d6e911241effb6d5302b125246a704a69b3ede002a9a7fc1ae"
+    },
+    {
+      "path": "data/m2_scoring.json",
+      "sha256": "8e4de135e08e805c02db7aa7c85f38bc5509451fab9d5b90dc27c3b39ffda833"
+    },
+    {
+      "path": "data/tasks.json",
+      "sha256": "07946c190b56c71bfe87da384770c6bd3300c360dce97c61aa3a755361a3ef66"
+    },
+    {
+      "path": "data/legacy_score_metrics.py",
+      "sha256": "338efccf3576617d9a12f7251a07c97c35e6ee6e5142d672b7158413024de414"
+    }
+  ],
+  "m2_rule": "Uses the existing revised m2_scoring.json mapping; underlying retrieval observations are retained, not re-collected.",
+  "old_formula": "100*[1-(1-OFF)(1-SEC)(1-OWN)]*(1-a+a*x4)*(1-b+b*x8); OFF=(M1/5)(M2/5)(M3/5); SEC=(M5/5)(M6/5); OWN=M7/5; a=.30,b=.10",
+  "candidate_formula": "100*[1-(1-OFF)(1-SEC)]*(1-a+a*x4)*(1-b+b*x8); OFF=((M1-1)/4)(M2/5)(M3/5); SEC=(M5/5)(M6/5); M7 excluded; a=.30,b=.10",
+  "coefficient_sensitivity": "candidate formula with a,b jointly halved to .15,.05 or doubled to .60,.20; each attenuation factor is (1-coefficient)+coefficient*x, so the composite remains within 0–100.",
+  "band_cuts": {
+    "legacy_cut_points_0_to_100": [
+      24,
+      45,
+      63,
+      80
+    ],
+    "use": "count descriptive category changes only; not validation of thresholds"
+  },
+  "scenarios": {
+    "old": {
+      "cann": {
+        "n": 25,
+        "mean": 73.076775,
+        "min": 41.03936,
+        "max": 90.0864,
+        "bands": {
+          "2": 1,
+          "3": 2,
+          "4": 16,
+          "5": 6
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 92.206671,
+        "min": 83.49184,
+        "max": 100.0,
+        "bands": {
+          "5": 25
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 19.129896,
+        "cuda_higher": 25,
+        "cann_higher": 0,
+        "tie": 0,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 74.712942,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 19.287058
+          },
+          {
+            "task_id": "B",
+            "cann": 70.320786,
+            "cuda": 92.6464,
+            "delta_cuda_minus_cann": 22.325614
+          },
+          {
+            "task_id": "C",
+            "cann": 74.967552,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 25.032448
+          },
+          {
+            "task_id": "D",
+            "cann": 41.03936,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 46.96064
+          },
+          {
+            "task_id": "E",
+            "cann": 55.426542,
+            "cuda": 98.56,
+            "delta_cuda_minus_cann": 43.133458
+          },
+          {
+            "task_id": "F",
+            "cann": 71.755904,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 16.244096
+          },
+          {
+            "task_id": "H",
+            "cann": 68.459005,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 19.540995
+          },
+          {
+            "task_id": "I",
+            "cann": 72.896594,
+            "cuda": 85.330944,
+            "delta_cuda_minus_cann": 12.43435
+          },
+          {
+            "task_id": "J",
+            "cann": 80.2944,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 7.7056
+          },
+          {
+            "task_id": "K",
+            "cann": 86.48,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 11.52
+          },
+          {
+            "task_id": "L",
+            "cann": 68.993882,
+            "cuda": 84.4928,
+            "delta_cuda_minus_cann": 15.498918
+          },
+          {
+            "task_id": "M",
+            "cann": 62.847468,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 31.152532
+          },
+          {
+            "task_id": "N",
+            "cann": 74.5216,
+            "cuda": 83.49184,
+            "delta_cuda_minus_cann": 8.97024
+          },
+          {
+            "task_id": "O",
+            "cann": 72.151552,
+            "cuda": 84.48,
+            "delta_cuda_minus_cann": 12.328448
+          },
+          {
+            "task_id": "P",
+            "cann": 82.699305,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 15.300695
+          },
+          {
+            "task_id": "Q",
+            "cann": 86.486016,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 7.513984
+          },
+          {
+            "task_id": "R",
+            "cann": 75.342643,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 22.657357
+          },
+          {
+            "task_id": "S",
+            "cann": 73.573069,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 20.426931
+          },
+          {
+            "task_id": "T",
+            "cann": 72.170496,
+            "cuda": 92.0,
+            "delta_cuda_minus_cann": 19.829504
+          },
+          {
+            "task_id": "U",
+            "cann": 88.052608,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 11.947392
+          },
+          {
+            "task_id": "V",
+            "cann": 72.203139,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 25.796861
+          },
+          {
+            "task_id": "W",
+            "cann": 70.281953,
+            "cuda": 92.0448,
+            "delta_cuda_minus_cann": 21.762847
+          },
+          {
+            "task_id": "X",
+            "cann": 73.802624,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 14.197376
+          },
+          {
+            "task_id": "Y",
+            "cann": 67.353539,
+            "cuda": 92.12,
+            "delta_cuda_minus_cann": 24.766461
+          },
+          {
+            "task_id": "Z",
+            "cann": 90.0864,
+            "cuda": 92.0,
+            "delta_cuda_minus_cann": 1.9136
+          }
+        ]
+      }
+    },
+    "remove_m7_only": {
+      "cann": {
+        "n": 25,
+        "mean": 59.92144,
+        "min": 18.1056,
+        "max": 86.48,
+        "bands": {
+          "1": 1,
+          "2": 2,
+          "3": 13,
+          "4": 6,
+          "5": 3
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 84.636941,
+        "min": 49.4592,
+        "max": 100.0,
+        "bands": {
+          "3": 2,
+          "4": 4,
+          "5": 19
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 24.715501,
+        "cuda_higher": 23,
+        "cann_higher": 1,
+        "tie": 1,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 66.242355,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 27.757645
+          },
+          {
+            "task_id": "B",
+            "cann": 55.261965,
+            "cuda": 87.232,
+            "delta_cuda_minus_cann": 31.970035
+          },
+          {
+            "task_id": "C",
+            "cann": 55.41888,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 44.58112
+          },
+          {
+            "task_id": "D",
+            "cann": 18.1056,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 69.8944
+          },
+          {
+            "task_id": "E",
+            "cann": 38.804237,
+            "cuda": 92.8,
+            "delta_cuda_minus_cann": 53.995763
+          },
+          {
+            "task_id": "F",
+            "cann": 56.38976,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 31.61024
+          },
+          {
+            "task_id": "H",
+            "cann": 50.607514,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 37.392486
+          },
+          {
+            "task_id": "I",
+            "cann": 61.334323,
+            "cuda": 65.69472,
+            "delta_cuda_minus_cann": 4.360397
+          },
+          {
+            "task_id": "J",
+            "cann": 73.472,
+            "cuda": 78.848,
+            "delta_cuda_minus_cann": 5.376
+          },
+          {
+            "task_id": "K",
+            "cann": 86.48,
+            "cuda": 87.808,
+            "delta_cuda_minus_cann": 1.328
+          },
+          {
+            "task_id": "L",
+            "cann": 51.944704,
+            "cuda": 54.464,
+            "delta_cuda_minus_cann": 2.519296
+          },
+          {
+            "task_id": "M",
+            "cann": 44.585779,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 49.414221
+          },
+          {
+            "task_id": "N",
+            "cann": 69.536,
+            "cuda": 49.4592,
+            "delta_cuda_minus_cann": -20.0768
+          },
+          {
+            "task_id": "O",
+            "cann": 58.93888,
+            "cuda": 84.48,
+            "delta_cuda_minus_cann": 25.54112
+          },
+          {
+            "task_id": "P",
+            "cann": 60.056525,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 37.943475
+          },
+          {
+            "task_id": "Q",
+            "cann": 80.85504,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 13.14496
+          },
+          {
+            "task_id": "R",
+            "cann": 61.636608,
+            "cuda": 65.3856,
+            "delta_cuda_minus_cann": 3.748992
+          },
+          {
+            "task_id": "S",
+            "cann": 65.128448,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 28.871552
+          },
+          {
+            "task_id": "T",
+            "cann": 62.34624,
+            "cuda": 66.976,
+            "delta_cuda_minus_cann": 4.62976
+          },
+          {
+            "task_id": "U",
+            "cann": 73.13152,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 26.86848
+          },
+          {
+            "task_id": "V",
+            "cann": 59.967846,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 38.032154
+          },
+          {
+            "task_id": "W",
+            "cann": 48.984883,
+            "cuda": 84.224,
+            "delta_cuda_minus_cann": 35.239117
+          },
+          {
+            "task_id": "X",
+            "cann": 69.43104,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 18.56896
+          },
+          {
+            "task_id": "Y",
+            "cann": 46.943846,
+            "cuda": 92.12,
+            "delta_cuda_minus_cann": 45.176154
+          },
+          {
+            "task_id": "Z",
+            "cann": 82.432,
+            "cuda": 82.432,
+            "delta_cuda_minus_cann": 0.0
+          }
+        ]
+      }
+    },
+    "remap_m1_only": {
+      "cann": {
+        "n": 25,
+        "mean": 72.301474,
+        "min": 41.03936,
+        "max": 90.0864,
+        "bands": {
+          "2": 1,
+          "3": 2,
+          "4": 16,
+          "5": 6
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 91.994515,
+        "min": 81.9904,
+        "max": 100.0,
+        "bands": {
+          "5": 25
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 19.693041,
+        "cuda_higher": 25,
+        "cann_higher": 0,
+        "tie": 0,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 74.342643,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 19.657357
+          },
+          {
+            "task_id": "B",
+            "cann": 69.662477,
+            "cuda": 92.308,
+            "delta_cuda_minus_cann": 22.645523
+          },
+          {
+            "task_id": "C",
+            "cann": 74.63808,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 25.36192
+          },
+          {
+            "task_id": "D",
+            "cann": 41.03936,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 46.96064
+          },
+          {
+            "task_id": "E",
+            "cann": 54.439078,
+            "cuda": 98.2,
+            "delta_cuda_minus_cann": 43.760922
+          },
+          {
+            "task_id": "F",
+            "cann": 71.08416,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 16.91584
+          },
+          {
+            "task_id": "H",
+            "cann": 67.656691,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 20.343309
+          },
+          {
+            "task_id": "I",
+            "cann": 71.094682,
+            "cuda": 84.10368,
+            "delta_cuda_minus_cann": 13.008998
+          },
+          {
+            "task_id": "J",
+            "cann": 80.2944,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 7.7056
+          },
+          {
+            "task_id": "K",
+            "cann": 86.48,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 11.52
+          },
+          {
+            "task_id": "L",
+            "cann": 66.988096,
+            "cuda": 82.616,
+            "delta_cuda_minus_cann": 15.627904
+          },
+          {
+            "task_id": "M",
+            "cann": 59.312947,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 34.687053
+          },
+          {
+            "task_id": "N",
+            "cann": 74.5216,
+            "cuda": 81.9904,
+            "delta_cuda_minus_cann": 7.4688
+          },
+          {
+            "task_id": "O",
+            "cann": 70.59712,
+            "cuda": 84.48,
+            "delta_cuda_minus_cann": 13.88288
+          },
+          {
+            "task_id": "P",
+            "cann": 82.111181,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 15.888819
+          },
+          {
+            "task_id": "Q",
+            "cann": 86.486016,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 7.513984
+          },
+          {
+            "task_id": "R",
+            "cann": 73.936896,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 24.063104
+          },
+          {
+            "task_id": "S",
+            "cann": 73.573069,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 20.426931
+          },
+          {
+            "task_id": "T",
+            "cann": 71.16288,
+            "cuda": 92.0,
+            "delta_cuda_minus_cann": 20.83712
+          },
+          {
+            "task_id": "U",
+            "cann": 87.40032,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 12.59968
+          },
+          {
+            "task_id": "V",
+            "cann": 71.668262,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 26.331738
+          },
+          {
+            "task_id": "W",
+            "cann": 69.016781,
+            "cuda": 92.0448,
+            "delta_cuda_minus_cann": 23.028019
+          },
+          {
+            "task_id": "X",
+            "cann": 73.802624,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 14.197376
+          },
+          {
+            "task_id": "Y",
+            "cann": 66.141082,
+            "cuda": 92.12,
+            "delta_cuda_minus_cann": 25.978918
+          },
+          {
+            "task_id": "Z",
+            "cann": 90.0864,
+            "cuda": 92.0,
+            "delta_cuda_minus_cann": 1.9136
+          }
+        ]
+      }
+    },
+    "candidate": {
+      "cann": {
+        "n": 25,
+        "mean": 58.135171,
+        "min": 18.1056,
+        "max": 86.48,
+        "bands": {
+          "1": 1,
+          "2": 3,
+          "3": 12,
+          "4": 6,
+          "5": 3
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 83.033696,
+        "min": 41.952,
+        "max": 100.0,
+        "bands": {
+          "2": 1,
+          "3": 4,
+          "4": 1,
+          "5": 19
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 24.898525,
+        "cuda_higher": 22,
+        "cann_higher": 2,
+        "tie": 1,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 65.316608,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 28.683392
+          },
+          {
+            "task_id": "B",
+            "cann": 53.616192,
+            "cuda": 85.54,
+            "delta_cuda_minus_cann": 31.923808
+          },
+          {
+            "task_id": "C",
+            "cann": 54.5952,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 45.4048
+          },
+          {
+            "task_id": "D",
+            "cann": 18.1056,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 69.8944
+          },
+          {
+            "task_id": "E",
+            "cann": 37.158464,
+            "cuda": 91.0,
+            "delta_cuda_minus_cann": 53.841536
+          },
+          {
+            "task_id": "F",
+            "cann": 54.7104,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 33.2896
+          },
+          {
+            "task_id": "H",
+            "cann": 48.601728,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 39.398272
+          },
+          {
+            "task_id": "I",
+            "cann": 58.331136,
+            "cuda": 59.5584,
+            "delta_cuda_minus_cann": 1.227264
+          },
+          {
+            "task_id": "J",
+            "cann": 73.472,
+            "cuda": 76.56,
+            "delta_cuda_minus_cann": 3.088
+          },
+          {
+            "task_id": "K",
+            "cann": 86.48,
+            "cuda": 87.808,
+            "delta_cuda_minus_cann": 1.328
+          },
+          {
+            "task_id": "L",
+            "cann": 46.93024,
+            "cuda": 45.08,
+            "delta_cuda_minus_cann": -1.85024
+          },
+          {
+            "task_id": "M",
+            "cann": 38.694912,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 55.305088
+          },
+          {
+            "task_id": "N",
+            "cann": 69.536,
+            "cuda": 41.952,
+            "delta_cuda_minus_cann": -27.584
+          },
+          {
+            "task_id": "O",
+            "cann": 55.0528,
+            "cuda": 84.48,
+            "delta_cuda_minus_cann": 29.4272
+          },
+          {
+            "task_id": "P",
+            "cann": 57.115904,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 40.884096
+          },
+          {
+            "task_id": "Q",
+            "cann": 80.85504,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 13.14496
+          },
+          {
+            "task_id": "R",
+            "cann": 58.12224,
+            "cuda": 60.368,
+            "delta_cuda_minus_cann": 2.24576
+          },
+          {
+            "task_id": "S",
+            "cann": 65.128448,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 28.871552
+          },
+          {
+            "task_id": "T",
+            "cann": 59.8272,
+            "cuda": 60.72,
+            "delta_cuda_minus_cann": 0.8928
+          },
+          {
+            "task_id": "U",
+            "cann": 71.5008,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 28.4992
+          },
+          {
+            "task_id": "V",
+            "cann": 58.630656,
+            "cuda": 98.0,
+            "delta_cuda_minus_cann": 39.369344
+          },
+          {
+            "task_id": "W",
+            "cann": 45.821952,
+            "cuda": 84.224,
+            "delta_cuda_minus_cann": 38.402048
+          },
+          {
+            "task_id": "X",
+            "cann": 69.43104,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 18.56896
+          },
+          {
+            "task_id": "Y",
+            "cann": 43.912704,
+            "cuda": 92.12,
+            "delta_cuda_minus_cann": 48.207296
+          },
+          {
+            "task_id": "Z",
+            "cann": 82.432,
+            "cuda": 82.432,
+            "delta_cuda_minus_cann": 0.0
+          }
+        ]
+      }
+    },
+    "candidate_half_coefficients": {
+      "cann": {
+        "n": 25,
+        "mean": 63.425537,
+        "min": 20.9664,
+        "max": 93.12,
+        "bands": {
+          "1": 1,
+          "2": 2,
+          "3": 10,
+          "4": 8,
+          "5": 4
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 86.029264,
+        "min": 43.776,
+        "max": 100.0,
+        "bands": {
+          "2": 1,
+          "3": 3,
+          "4": 1,
+          "5": 20
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 22.603727,
+        "cuda_higher": 19,
+        "cann_higher": 5,
+        "tie": 1,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 73.225152,
+            "cuda": 97.0,
+            "delta_cuda_minus_cann": 23.774848
+          },
+          {
+            "task_id": "B",
+            "cann": 60.108048,
+            "cuda": 88.27,
+            "delta_cuda_minus_cann": 28.161952
+          },
+          {
+            "task_id": "C",
+            "cann": 58.3176,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 41.6824
+          },
+          {
+            "task_id": "D",
+            "cann": 20.9664,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 73.0336
+          },
+          {
+            "task_id": "E",
+            "cann": 41.657616,
+            "cuda": 91.0,
+            "delta_cuda_minus_cann": 49.342384
+          },
+          {
+            "task_id": "F",
+            "cann": 60.7152,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 33.2848
+          },
+          {
+            "task_id": "H",
+            "cann": 54.486432,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 39.513568
+          },
+          {
+            "task_id": "I",
+            "cann": 61.446784,
+            "cuda": 62.7396,
+            "delta_cuda_minus_cann": 1.292816
+          },
+          {
+            "task_id": "J",
+            "cann": 81.536,
+            "cuda": 81.78,
+            "delta_cuda_minus_cann": 0.244
+          },
+          {
+            "task_id": "K",
+            "cann": 93.12,
+            "cuda": 88.704,
+            "delta_cuda_minus_cann": -4.416
+          },
+          {
+            "task_id": "L",
+            "cann": 52.61256,
+            "cuda": 47.04,
+            "delta_cuda_minus_cann": -5.57256
+          },
+          {
+            "task_id": "M",
+            "cann": 40.761728,
+            "cuda": 97.0,
+            "delta_cuda_minus_cann": 56.238272
+          },
+          {
+            "task_id": "N",
+            "cann": 77.168,
+            "cuda": 43.776,
+            "delta_cuda_minus_cann": -33.392
+          },
+          {
+            "task_id": "O",
+            "cann": 61.3632,
+            "cuda": 92.12,
+            "delta_cuda_minus_cann": 30.7568
+          },
+          {
+            "task_id": "P",
+            "cann": 60.819776,
+            "cuda": 99.0,
+            "delta_cuda_minus_cann": 38.180224
+          },
+          {
+            "task_id": "Q",
+            "cann": 85.17376,
+            "cuda": 97.0,
+            "delta_cuda_minus_cann": 11.82624
+          },
+          {
+            "task_id": "R",
+            "cann": 63.37856,
+            "cuda": 60.984,
+            "delta_cuda_minus_cann": -2.39456
+          },
+          {
+            "task_id": "S",
+            "cann": 70.278912,
+            "cuda": 97.0,
+            "delta_cuda_minus_cann": 26.721088
+          },
+          {
+            "task_id": "T",
+            "cann": 67.7768,
+            "cuda": 63.36,
+            "delta_cuda_minus_cann": -4.4168
+          },
+          {
+            "task_id": "U",
+            "cann": 72.2304,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 27.7696
+          },
+          {
+            "task_id": "V",
+            "cann": 65.729664,
+            "cuda": 99.0,
+            "delta_cuda_minus_cann": 33.270336
+          },
+          {
+            "task_id": "W",
+            "cann": 49.965888,
+            "cuda": 86.912,
+            "delta_cuda_minus_cann": 36.946112
+          },
+          {
+            "task_id": "X",
+            "cann": 77.83776,
+            "cuda": 94.0,
+            "delta_cuda_minus_cann": 16.16224
+          },
+          {
+            "task_id": "Y",
+            "cann": 48.946176,
+            "cuda": 96.03,
+            "delta_cuda_minus_cann": 47.083824
+          },
+          {
+            "task_id": "Z",
+            "cann": 86.016,
+            "cuda": 86.016,
+            "delta_cuda_minus_cann": 0.0
+          }
+        ]
+      }
+    },
+    "candidate_double_coefficients": {
+      "cann": {
+        "n": 25,
+        "mean": 47.89793,
+        "min": 12.9024,
+        "max": 75.264,
+        "bands": {
+          "1": 1,
+          "2": 11,
+          "3": 9,
+          "4": 4
+        }
+      },
+      "cuda": {
+        "n": 25,
+        "mean": 77.088064,
+        "min": 38.304,
+        "max": 100.0,
+        "bands": {
+          "2": 2,
+          "3": 3,
+          "4": 8,
+          "5": 12
+        }
+      },
+      "paired_delta": {
+        "n": 25,
+        "mean": 29.190134,
+        "cuda_higher": 23,
+        "cann_higher": 1,
+        "tie": 1,
+        "pairs": [
+          {
+            "task_id": "A",
+            "cann": 49.938432,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 38.061568
+          },
+          {
+            "task_id": "B",
+            "cann": 40.992768,
+            "cuda": 80.08,
+            "delta_cuda_minus_cann": 39.087232
+          },
+          {
+            "task_id": "C",
+            "cann": 47.1504,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 52.8496
+          },
+          {
+            "task_id": "D",
+            "cann": 12.9024,
+            "cuda": 76.0,
+            "delta_cuda_minus_cann": 63.0976
+          },
+          {
+            "task_id": "E",
+            "cann": 28.409856,
+            "cuda": 91.0,
+            "delta_cuda_minus_cann": 62.590144
+          },
+          {
+            "task_id": "F",
+            "cann": 42.7008,
+            "cuda": 76.0,
+            "delta_cuda_minus_cann": 33.2992
+          },
+          {
+            "task_id": "H",
+            "cann": 37.158912,
+            "cuda": 76.0,
+            "delta_cuda_minus_cann": 38.841088
+          },
+          {
+            "task_id": "I",
+            "cann": 52.332544,
+            "cuda": 53.4336,
+            "delta_cuda_minus_cann": 1.101056
+          },
+          {
+            "task_id": "J",
+            "cann": 57.344,
+            "cuda": 66.12,
+            "delta_cuda_minus_cann": 8.776
+          },
+          {
+            "task_id": "K",
+            "cann": 73.92,
+            "cuda": 86.016,
+            "delta_cuda_minus_cann": 12.096
+          },
+          {
+            "task_id": "L",
+            "cann": 35.88096,
+            "cuda": 41.16,
+            "delta_cuda_minus_cann": 5.27904
+          },
+          {
+            "task_id": "M",
+            "cann": 34.715648,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 53.284352
+          },
+          {
+            "task_id": "N",
+            "cann": 54.272,
+            "cuda": 38.304,
+            "delta_cuda_minus_cann": -15.968
+          },
+          {
+            "task_id": "O",
+            "cann": 43.4112,
+            "cuda": 69.92,
+            "delta_cuda_minus_cann": 26.5088
+          },
+          {
+            "task_id": "P",
+            "cann": 50.057216,
+            "cuda": 96.0,
+            "delta_cuda_minus_cann": 45.942784
+          },
+          {
+            "task_id": "Q",
+            "cann": 72.54016,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 15.45984
+          },
+          {
+            "task_id": "R",
+            "cann": 48.10496,
+            "cuda": 59.136,
+            "delta_cuda_minus_cann": 11.03104
+          },
+          {
+            "task_id": "S",
+            "cann": 55.099392,
+            "cuda": 88.0,
+            "delta_cuda_minus_cann": 32.900608
+          },
+          {
+            "task_id": "T",
+            "cann": 44.7488,
+            "cuda": 55.44,
+            "delta_cuda_minus_cann": 10.6912
+          },
+          {
+            "task_id": "U",
+            "cann": 70.0416,
+            "cuda": 100.0,
+            "delta_cuda_minus_cann": 29.9584
+          },
+          {
+            "task_id": "V",
+            "cann": 44.826624,
+            "cuda": 96.0,
+            "delta_cuda_minus_cann": 51.173376
+          },
+          {
+            "task_id": "W",
+            "cann": 37.924608,
+            "cuda": 78.848,
+            "delta_cuda_minus_cann": 40.923392
+          },
+          {
+            "task_id": "X",
+            "cann": 53.08416,
+            "cuda": 76.0,
+            "delta_cuda_minus_cann": 22.91584
+          },
+          {
+            "task_id": "Y",
+            "cann": 34.626816,
+            "cuda": 84.48,
+            "delta_cuda_minus_cann": 49.853184
+          },
+          {
+            "task_id": "Z",
+            "cann": 75.264,
+            "cuda": 75.264,
+            "delta_cuda_minus_cann": 0.0
+          }
+        ]
+      }
+    }
+  },
+  "old_vs_candidate": {
+    "task_sides_changed_band": 24,
+    "task_sides_unchanged_band": 26,
+    "changed_band_units": [
+      {
+        "unit_id": "B.cann",
+        "old": 70.320786,
+        "candidate": 53.616192,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "C.cann",
+        "old": 74.967552,
+        "candidate": 54.5952,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "D.cann",
+        "old": 41.03936,
+        "candidate": 18.1056,
+        "old_band": 2,
+        "candidate_band": 1
+      },
+      {
+        "unit_id": "E.cann",
+        "old": 55.426542,
+        "candidate": 37.158464,
+        "old_band": 3,
+        "candidate_band": 2
+      },
+      {
+        "unit_id": "F.cann",
+        "old": 71.755904,
+        "candidate": 54.7104,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "H.cann",
+        "old": 68.459005,
+        "candidate": 48.601728,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "I.cann",
+        "old": 72.896594,
+        "candidate": 58.331136,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "I.cuda",
+        "old": 85.330944,
+        "candidate": 59.5584,
+        "old_band": 5,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "J.cann",
+        "old": 80.2944,
+        "candidate": 73.472,
+        "old_band": 5,
+        "candidate_band": 4
+      },
+      {
+        "unit_id": "J.cuda",
+        "old": 88.0,
+        "candidate": 76.56,
+        "old_band": 5,
+        "candidate_band": 4
+      },
+      {
+        "unit_id": "L.cann",
+        "old": 68.993882,
+        "candidate": 46.93024,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "L.cuda",
+        "old": 84.4928,
+        "candidate": 45.08,
+        "old_band": 5,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "M.cann",
+        "old": 62.847468,
+        "candidate": 38.694912,
+        "old_band": 3,
+        "candidate_band": 2
+      },
+      {
+        "unit_id": "N.cuda",
+        "old": 83.49184,
+        "candidate": 41.952,
+        "old_band": 5,
+        "candidate_band": 2
+      },
+      {
+        "unit_id": "O.cann",
+        "old": 72.151552,
+        "candidate": 55.0528,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "P.cann",
+        "old": 82.699305,
+        "candidate": 57.115904,
+        "old_band": 5,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "R.cann",
+        "old": 75.342643,
+        "candidate": 58.12224,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "R.cuda",
+        "old": 98.0,
+        "candidate": 60.368,
+        "old_band": 5,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "T.cann",
+        "old": 72.170496,
+        "candidate": 59.8272,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "T.cuda",
+        "old": 92.0,
+        "candidate": 60.72,
+        "old_band": 5,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "U.cann",
+        "old": 88.052608,
+        "candidate": 71.5008,
+        "old_band": 5,
+        "candidate_band": 4
+      },
+      {
+        "unit_id": "V.cann",
+        "old": 72.203139,
+        "candidate": 58.630656,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "W.cann",
+        "old": 70.281953,
+        "candidate": 45.821952,
+        "old_band": 4,
+        "candidate_band": 3
+      },
+      {
+        "unit_id": "Y.cann",
+        "old": 67.353539,
+        "candidate": 43.912704,
+        "old_band": 4,
+        "candidate_band": 2
+      }
+    ],
+    "paired_direction_reversals": [
+      {
+        "task_id": "L",
+        "old_delta": 15.498918,
+        "candidate_delta": -1.85024
+      },
+      {
+        "task_id": "N",
+        "old_delta": 8.97024,
+        "candidate_delta": -27.584
+      }
+    ]
+  },
+  "units": [
+    {
+      "unit_id": "A.cann",
+      "task_id": "A",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        4,
+        4,
+        2,
+        4,
+        4,
+        3,
+        4
+      ],
+      "old": 74.71294208,
+      "remove_m7_only": 66.2423552,
+      "remap_m1_only": 74.34264319999998,
+      "candidate": 65.31660799999999,
+      "candidate_half_coefficients": 73.225152,
+      "candidate_double_coefficients": 49.938432000000006,
+      "legacy_saved": 74.7
+    },
+    {
+      "unit_id": "A.cuda",
+      "task_id": "A",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "old": 94.0,
+      "remove_m7_only": 94.0,
+      "remap_m1_only": 94.0,
+      "candidate": 94.0,
+      "candidate_half_coefficients": 97.0,
+      "candidate_double_coefficients": 88.0,
+      "legacy_saved": 94.0
+    },
+    {
+      "unit_id": "B.cann",
+      "task_id": "B",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        4,
+        4,
+        2,
+        3,
+        3,
+        3,
+        4
+      ],
+      "old": 70.32078592,
+      "remove_m7_only": 55.261964799999994,
+      "remap_m1_only": 69.6624768,
+      "candidate": 53.61619199999999,
+      "candidate_half_coefficients": 60.108048,
+      "candidate_double_coefficients": 40.992768000000005,
+      "legacy_saved": 70.3
+    },
+    {
+      "unit_id": "B.cuda",
+      "task_id": "B",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        4,
+        5,
+        5,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "old": 92.6464,
+      "remove_m7_only": 87.232,
+      "remap_m1_only": 92.30799999999999,
+      "candidate": 85.53999999999999,
+      "candidate_half_coefficients": 88.27,
+      "candidate_double_coefficients": 80.08,
+      "legacy_saved": 92.60000000000001
+    },
+    {
+      "unit_id": "C.cann",
+      "task_id": "C",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        3,
+        3,
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "old": 74.96755199999998,
+      "remove_m7_only": 55.418879999999994,
+      "remap_m1_only": 74.63807999999999,
+      "candidate": 54.5952,
+      "candidate_half_coefficients": 58.317600000000006,
+      "candidate_double_coefficients": 47.150400000000005,
+      "legacy_saved": 75.0
+    },
+    {
+      "unit_id": "C.cuda",
+      "task_id": "C",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        4,
+        5,
+        5
+      ],
+      "old": 100.0,
+      "remove_m7_only": 100.0,
+      "remap_m1_only": 100.0,
+      "candidate": 100.0,
+      "candidate_half_coefficients": 100.0,
+      "candidate_double_coefficients": 100.0,
+      "legacy_saved": 100.0
+    },
+    {
+      "unit_id": "D.cann",
+      "task_id": "D",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        2,
+        "受阻",
+        2,
+        3,
+        2,
+        2,
+        1
+      ],
+      "old": 41.03936,
+      "remove_m7_only": 18.1056,
+      "remap_m1_only": 41.03936,
+      "candidate": 18.1056,
+      "candidate_half_coefficients": 20.966399999999997,
+      "candidate_double_coefficients": 12.9024,
+      "legacy_saved": 41.0
+    },
+    {
+      "unit_id": "D.cuda",
+      "task_id": "D",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "old": 87.99999999999999,
+      "remove_m7_only": 87.99999999999999,
+      "remap_m1_only": 87.99999999999999,
+      "candidate": 87.99999999999999,
+      "candidate_half_coefficients": 94.0,
+      "candidate_double_coefficients": 76.0,
+      "legacy_saved": 88.0
+    },
+    {
+      "unit_id": "E.cann",
+      "task_id": "E",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        2,
+        2,
+        3,
+        3,
+        2,
+        4
+      ],
+      "old": 55.42654208,
+      "remove_m7_only": 38.8042368,
+      "remap_m1_only": 54.43907839999999,
+      "candidate": 37.158464,
+      "candidate_half_coefficients": 41.657616,
+      "candidate_double_coefficients": 28.409856000000005,
+      "legacy_saved": 55.400000000000006
+    },
+    {
+      "unit_id": "E.cuda",
+      "task_id": "E",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        4,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "old": 98.56,
+      "remove_m7_only": 92.80000000000001,
+      "remap_m1_only": 98.2,
+      "candidate": 91.0,
+      "candidate_half_coefficients": 91.0,
+      "candidate_double_coefficients": 91.0,
+      "legacy_saved": 98.6
+    },
+    {
+      "unit_id": "F.cann",
+      "task_id": "F",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        4,
+        4,
+        2,
+        3,
+        3,
+        3,
+        5
+      ],
+      "old": 71.755904,
+      "remove_m7_only": 56.389759999999995,
+      "remap_m1_only": 71.08416,
+      "candidate": 54.71039999999999,
+      "candidate_half_coefficients": 60.715199999999996,
+      "candidate_double_coefficients": 42.7008,
+      "legacy_saved": 71.8
+    },
+    {
+      "unit_id": "F.cuda",
+      "task_id": "F",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 87.99999999999999,
+      "remove_m7_only": 87.99999999999999,
+      "remap_m1_only": 87.99999999999999,
+      "candidate": 87.99999999999999,
+      "candidate_half_coefficients": 94.0,
+      "candidate_double_coefficients": 76.0,
+      "legacy_saved": 88.0
+    },
+    {
+      "unit_id": "H.cann",
+      "task_id": "H",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        3,
+        2,
+        4,
+        3,
+        3,
+        4
+      ],
+      "old": 68.45900544,
+      "remove_m7_only": 50.6075136,
+      "remap_m1_only": 67.6566912,
+      "candidate": 48.601728,
+      "candidate_half_coefficients": 54.486432,
+      "candidate_double_coefficients": 37.158912,
+      "legacy_saved": 68.5
+    },
+    {
+      "unit_id": "H.cuda",
+      "task_id": "H",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 87.99999999999999,
+      "remove_m7_only": 87.99999999999999,
+      "remap_m1_only": 87.99999999999999,
+      "candidate": 87.99999999999999,
+      "candidate_half_coefficients": 94.0,
+      "candidate_double_coefficients": 76.0,
+      "legacy_saved": 88.0
+    },
+    {
+      "unit_id": "I.cann",
+      "task_id": "I",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        4,
+        4,
+        3,
+        4,
+        2,
+        3
+      ],
+      "old": 72.89659391999999,
+      "remove_m7_only": 61.33432319999999,
+      "remap_m1_only": 71.09468159999999,
+      "candidate": 58.33113600000001,
+      "candidate_half_coefficients": 61.446784000000015,
+      "candidate_double_coefficients": 52.33254400000002,
+      "legacy_saved": 72.89999999999999
+    },
+    {
+      "unit_id": "I.cuda",
+      "task_id": "I",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        3,
+        5,
+        5,
+        4,
+        2,
+        4,
+        4,
+        3
+      ],
+      "old": 85.33094399999999,
+      "remove_m7_only": 65.69471999999999,
+      "remap_m1_only": 84.10368,
+      "candidate": 59.5584,
+      "candidate_half_coefficients": 62.739599999999996,
+      "candidate_double_coefficients": 53.4336,
+      "legacy_saved": 85.3
+    },
+    {
+      "unit_id": "J.cann",
+      "task_id": "J",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        5,
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 80.2944,
+      "remove_m7_only": 73.47200000000001,
+      "remap_m1_only": 80.2944,
+      "candidate": 73.47200000000001,
+      "candidate_half_coefficients": 81.536,
+      "candidate_double_coefficients": 57.34400000000001,
+      "legacy_saved": 80.30000000000001
+    },
+    {
+      "unit_id": "J.cuda",
+      "task_id": "J",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        4,
+        5,
+        5,
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "old": 87.99999999999999,
+      "remove_m7_only": 78.848,
+      "remap_m1_only": 87.99999999999999,
+      "candidate": 76.55999999999999,
+      "candidate_half_coefficients": 81.78,
+      "candidate_double_coefficients": 66.12,
+      "legacy_saved": 88.0
+    },
+    {
+      "unit_id": "K.cann",
+      "task_id": "K",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        4,
+        2,
+        2,
+        3,
+        1
+      ],
+      "old": 86.48,
+      "remove_m7_only": 86.48,
+      "remap_m1_only": 86.48,
+      "candidate": 86.48,
+      "candidate_half_coefficients": 93.11999999999999,
+      "candidate_double_coefficients": 73.92,
+      "legacy_saved": 86.5
+    },
+    {
+      "unit_id": "K.cuda",
+      "task_id": "K",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        4,
+        5,
+        3,
+        4,
+        5,
+        4
+      ],
+      "old": 98.0,
+      "remove_m7_only": 87.808,
+      "remap_m1_only": 98.0,
+      "candidate": 87.808,
+      "candidate_half_coefficients": 88.70400000000001,
+      "candidate_double_coefficients": 86.01600000000002,
+      "legacy_saved": 98.0
+    },
+    {
+      "unit_id": "L.cann",
+      "task_id": "L",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        4,
+        5,
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "old": 68.9938816,
+      "remove_m7_only": 51.94470400000001,
+      "remap_m1_only": 66.988096,
+      "candidate": 46.93024,
+      "candidate_half_coefficients": 52.61255999999999,
+      "candidate_double_coefficients": 35.88096,
+      "legacy_saved": 69.0
+    },
+    {
+      "unit_id": "L.cuda",
+      "task_id": "L",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        2,
+        5,
+        5,
+        5,
+        2,
+        4,
+        4,
+        1
+      ],
+      "old": 84.4928,
+      "remove_m7_only": 54.46400000000001,
+      "remap_m1_only": 82.616,
+      "candidate": 45.080000000000005,
+      "candidate_half_coefficients": 47.04,
+      "candidate_double_coefficients": 41.160000000000004,
+      "legacy_saved": 84.5
+    },
+    {
+      "unit_id": "M.cann",
+      "task_id": "M",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        4,
+        4,
+        4,
+        2,
+        4,
+        2,
+        3
+      ],
+      "old": 62.847467519999995,
+      "remove_m7_only": 44.585779200000005,
+      "remap_m1_only": 59.3129472,
+      "candidate": 38.69491200000001,
+      "candidate_half_coefficients": 40.761728000000005,
+      "candidate_double_coefficients": 34.71564800000001,
+      "legacy_saved": 62.8
+    },
+    {
+      "unit_id": "M.cuda",
+      "task_id": "M",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        4,
+        2,
+        4,
+        5,
+        5
+      ],
+      "old": 94.0,
+      "remove_m7_only": 94.0,
+      "remap_m1_only": 94.0,
+      "candidate": 94.0,
+      "candidate_half_coefficients": 97.0,
+      "candidate_double_coefficients": 88.0,
+      "legacy_saved": 94.0
+    },
+    {
+      "unit_id": "N.cann",
+      "task_id": "N",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        5,
+        2,
+        2,
+        3,
+        2,
+        5
+      ],
+      "old": 74.5216,
+      "remove_m7_only": 69.536,
+      "remap_m1_only": 74.5216,
+      "candidate": 69.536,
+      "candidate_half_coefficients": 77.168,
+      "candidate_double_coefficients": 54.272000000000006,
+      "legacy_saved": 74.5
+    },
+    {
+      "unit_id": "N.cuda",
+      "task_id": "N",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        2,
+        5,
+        4,
+        5,
+        2,
+        4,
+        4,
+        1
+      ],
+      "old": 83.49184,
+      "remove_m7_only": 49.45920000000001,
+      "remap_m1_only": 81.99040000000001,
+      "candidate": 41.95200000000001,
+      "candidate_half_coefficients": 43.776,
+      "candidate_double_coefficients": 38.30400000000001,
+      "legacy_saved": 83.5
+    },
+    {
+      "unit_id": "O.cann",
+      "task_id": "O",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        4,
+        5,
+        3,
+        3,
+        5,
+        3,
+        1
+      ],
+      "old": 72.151552,
+      "remove_m7_only": 58.93888,
+      "remap_m1_only": 70.59711999999999,
+      "candidate": 55.05279999999999,
+      "candidate_half_coefficients": 61.36319999999999,
+      "candidate_double_coefficients": 43.4112,
+      "legacy_saved": 72.2
+    },
+    {
+      "unit_id": "O.cuda",
+      "task_id": "O",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        3,
+        2,
+        4,
+        5,
+        3
+      ],
+      "old": 84.47999999999999,
+      "remove_m7_only": 84.47999999999999,
+      "remap_m1_only": 84.47999999999999,
+      "candidate": 84.47999999999999,
+      "candidate_half_coefficients": 92.12,
+      "candidate_double_coefficients": 69.92,
+      "legacy_saved": 84.5
+    },
+    {
+      "unit_id": "P.cann",
+      "task_id": "P",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        4,
+        4,
+        3,
+        4,
+        4,
+        2
+      ],
+      "old": 82.69930495999999,
+      "remove_m7_only": 60.0565248,
+      "remap_m1_only": 82.1111808,
+      "candidate": 57.115904000000015,
+      "candidate_half_coefficients": 60.81977600000001,
+      "candidate_double_coefficients": 50.05721600000002,
+      "legacy_saved": 82.69999999999999
+    },
+    {
+      "unit_id": "P.cuda",
+      "task_id": "P",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        5,
+        4
+      ],
+      "old": 98.0,
+      "remove_m7_only": 98.0,
+      "remap_m1_only": 98.0,
+      "candidate": 98.0,
+      "candidate_half_coefficients": 99.0,
+      "candidate_double_coefficients": 96.00000000000001,
+      "legacy_saved": 98.0
+    },
+    {
+      "unit_id": "Q.cann",
+      "task_id": "Q",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        5,
+        4,
+        3,
+        4,
+        3,
+        3
+      ],
+      "old": 86.486016,
+      "remove_m7_only": 80.85504,
+      "remap_m1_only": 86.486016,
+      "candidate": 80.85504,
+      "candidate_half_coefficients": 85.17376,
+      "candidate_double_coefficients": 72.54016000000001,
+      "legacy_saved": 86.5
+    },
+    {
+      "unit_id": "Q.cuda",
+      "task_id": "Q",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        5,
+        2
+      ],
+      "old": 94.0,
+      "remove_m7_only": 94.0,
+      "remap_m1_only": 94.0,
+      "candidate": 94.0,
+      "candidate_half_coefficients": 97.0,
+      "candidate_double_coefficients": 88.00000000000001,
+      "legacy_saved": 94.0
+    },
+    {
+      "unit_id": "R.cann",
+      "task_id": "R",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        5,
+        3,
+        3,
+        4,
+        3,
+        3
+      ],
+      "old": 75.34264319999998,
+      "remove_m7_only": 61.636608,
+      "remap_m1_only": 73.93689599999999,
+      "candidate": 58.12223999999999,
+      "candidate_half_coefficients": 63.37855999999999,
+      "candidate_double_coefficients": 48.10496,
+      "legacy_saved": 75.3
+    },
+    {
+      "unit_id": "R.cuda",
+      "task_id": "R",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        3,
+        5,
+        4,
+        5,
+        3,
+        3,
+        5,
+        4
+      ],
+      "old": 98.0,
+      "remove_m7_only": 65.3856,
+      "remap_m1_only": 98.0,
+      "candidate": 60.368,
+      "candidate_half_coefficients": 60.984,
+      "candidate_double_coefficients": 59.136,
+      "legacy_saved": 98.0
+    },
+    {
+      "unit_id": "S.cann",
+      "task_id": "S",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        4,
+        3,
+        2,
+        4,
+        2,
+        4
+      ],
+      "old": 73.5730688,
+      "remove_m7_only": 65.12844799999999,
+      "remap_m1_only": 73.5730688,
+      "candidate": 65.12844799999999,
+      "candidate_half_coefficients": 70.278912,
+      "candidate_double_coefficients": 55.099392000000016,
+      "legacy_saved": 73.6
+    },
+    {
+      "unit_id": "S.cuda",
+      "task_id": "S",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 94.0,
+      "remove_m7_only": 94.0,
+      "remap_m1_only": 94.0,
+      "candidate": 94.0,
+      "candidate_half_coefficients": 97.0,
+      "candidate_double_coefficients": 88.0,
+      "legacy_saved": 94.0
+    },
+    {
+      "unit_id": "T.cann",
+      "task_id": "T",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        3,
+        4,
+        5,
+        2,
+        3,
+        5,
+        3,
+        3
+      ],
+      "old": 72.17049599999999,
+      "remove_m7_only": 62.34624,
+      "remap_m1_only": 71.16288,
+      "candidate": 59.82719999999999,
+      "candidate_half_coefficients": 67.7768,
+      "candidate_double_coefficients": 44.7488,
+      "legacy_saved": 72.2
+    },
+    {
+      "unit_id": "T.cuda",
+      "task_id": "T",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        3,
+        5,
+        5,
+        5,
+        2,
+        4,
+        5,
+        1
+      ],
+      "old": 92.0,
+      "remove_m7_only": 66.976,
+      "remap_m1_only": 92.0,
+      "candidate": 60.720000000000006,
+      "candidate_half_coefficients": 63.36,
+      "candidate_double_coefficients": 55.440000000000005,
+      "legacy_saved": 92.0
+    },
+    {
+      "unit_id": "U.cann",
+      "task_id": "U",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        4,
+        4,
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "old": 88.05260799999999,
+      "remove_m7_only": 73.13152,
+      "remap_m1_only": 87.40032,
+      "candidate": 71.50080000000001,
+      "candidate_half_coefficients": 72.2304,
+      "candidate_double_coefficients": 70.04160000000002,
+      "legacy_saved": 88.1
+    },
+    {
+      "unit_id": "U.cuda",
+      "task_id": "U",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        5,
+        5
+      ],
+      "old": 100.0,
+      "remove_m7_only": 100.0,
+      "remap_m1_only": 100.0,
+      "candidate": 100.0,
+      "candidate_half_coefficients": 100.0,
+      "candidate_double_coefficients": 100.0,
+      "legacy_saved": 100.0
+    },
+    {
+      "unit_id": "V.cann",
+      "task_id": "V",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        4,
+        4,
+        4,
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "old": 72.20313856,
+      "remove_m7_only": 59.96784639999999,
+      "remap_m1_only": 71.66826239999999,
+      "candidate": 58.630656,
+      "candidate_half_coefficients": 65.729664,
+      "candidate_double_coefficients": 44.82662400000001,
+      "legacy_saved": 72.2
+    },
+    {
+      "unit_id": "V.cuda",
+      "task_id": "V",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        5,
+        3,
+        4,
+        5,
+        4
+      ],
+      "old": 98.0,
+      "remove_m7_only": 98.0,
+      "remap_m1_only": 98.0,
+      "candidate": 98.0,
+      "candidate_half_coefficients": 99.0,
+      "candidate_double_coefficients": 96.00000000000001,
+      "legacy_saved": 98.0
+    },
+    {
+      "unit_id": "W.cann",
+      "task_id": "W",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        4,
+        3,
+        3,
+        3,
+        4,
+        3,
+        3
+      ],
+      "old": 70.28195327999998,
+      "remove_m7_only": 48.98488319999999,
+      "remap_m1_only": 69.01678079999999,
+      "candidate": 45.821951999999996,
+      "candidate_half_coefficients": 49.965888,
+      "candidate_double_coefficients": 37.924608,
+      "legacy_saved": 70.3
+    },
+    {
+      "unit_id": "W.cuda",
+      "task_id": "W",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        4,
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 92.0448,
+      "remove_m7_only": 84.224,
+      "remap_m1_only": 92.0448,
+      "candidate": 84.224,
+      "candidate_half_coefficients": 86.912,
+      "candidate_double_coefficients": 78.84800000000001,
+      "legacy_saved": 92.0
+    },
+    {
+      "unit_id": "X.cann",
+      "task_id": "X",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        5,
+        2,
+        2,
+        4,
+        2,
+        4
+      ],
+      "old": 73.80262400000001,
+      "remove_m7_only": 69.43104,
+      "remap_m1_only": 73.80262400000001,
+      "candidate": 69.43104,
+      "candidate_half_coefficients": 77.83775999999999,
+      "candidate_double_coefficients": 53.08416000000001,
+      "legacy_saved": 73.8
+    },
+    {
+      "unit_id": "X.cuda",
+      "task_id": "X",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "old": 87.99999999999999,
+      "remove_m7_only": 87.99999999999999,
+      "remap_m1_only": 87.99999999999999,
+      "candidate": 87.99999999999999,
+      "candidate_half_coefficients": 94.0,
+      "candidate_double_coefficients": 76.0,
+      "legacy_saved": 88.0
+    },
+    {
+      "unit_id": "Y.cann",
+      "task_id": "Y",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        2,
+        3,
+        4,
+        3,
+        3,
+        4,
+        3,
+        1
+      ],
+      "old": 67.35353855999999,
+      "remove_m7_only": 46.9438464,
+      "remap_m1_only": 66.14108159999999,
+      "candidate": 43.912704,
+      "candidate_half_coefficients": 48.946175999999994,
+      "candidate_double_coefficients": 34.626816000000005,
+      "legacy_saved": 67.4
+    },
+    {
+      "unit_id": "Y.cuda",
+      "task_id": "Y",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        5,
+        4,
+        3,
+        4,
+        5,
+        4
+      ],
+      "old": 92.12,
+      "remove_m7_only": 92.12,
+      "remap_m1_only": 92.12,
+      "candidate": 92.12,
+      "candidate_half_coefficients": 96.03,
+      "candidate_double_coefficients": 84.48,
+      "legacy_saved": 92.10000000000001
+    },
+    {
+      "unit_id": "Z.cann",
+      "task_id": "Z",
+      "ecosystem": "cann",
+      "scores_M1_M8": [
+        5,
+        4,
+        5,
+        5,
+        3,
+        4,
+        4,
+        1
+      ],
+      "old": 90.08640000000001,
+      "remove_m7_only": 82.43200000000002,
+      "remap_m1_only": 90.08640000000001,
+      "candidate": 82.43200000000002,
+      "candidate_half_coefficients": 86.016,
+      "candidate_double_coefficients": 75.26400000000001,
+      "legacy_saved": 90.10000000000001
+    },
+    {
+      "unit_id": "Z.cuda",
+      "task_id": "Z",
+      "ecosystem": "cuda",
+      "scores_M1_M8": [
+        5,
+        5,
+        4,
+        5,
+        3,
+        4,
+        5,
+        1
+      ],
+      "old": 92.0,
+      "remove_m7_only": 82.43200000000002,
+      "remap_m1_only": 92.0,
+      "candidate": 82.43200000000002,
+      "candidate_half_coefficients": 86.016,
+      "candidate_double_coefficients": 75.26400000000001,
+      "legacy_saved": 92.0
+    }
+  ],
+  "interpretation": "The reference literature can support transparent composite construction and sensitivity disclosure, but cannot establish that this formula or its coefficients are valid. Without an independent criterion or prespecified decision target, these data cannot identify a uniquely best coefficient. The candidate also changes the operationalization, so old/new absolute values are not a pure same-scale comparison."
+}
