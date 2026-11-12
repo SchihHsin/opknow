@@ -150,11 +150,12 @@
     .loop-svg-loop.outer{stroke:#a46e2a}
     .loop-svg-loop-label{font-size:7.7px;font-weight:820;fill:#6e5c99;paint-order:stroke;stroke:#fff;stroke-width:3px}
     .loop-svg-loop-label.outer{fill:#8e6123}
-    .loop-svg-node{cursor:pointer}
-    .loop-svg-node:hover .loop-svg-msg,.loop-svg-node:hover .loop-svg-neutral{stroke-width:2.6}
-    .loop-svg-node.selected .loop-svg-mark{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
-    .loop-svg-node:focus{outline:none}
-    .loop-svg-node:focus .loop-svg-mark{stroke-width:3.5}
+    .loop-svg-event-node,.loop-svg-message-edge{cursor:pointer}
+    .loop-svg-message-edge:hover .loop-svg-msg,.loop-svg-message-edge:hover .loop-svg-neutral{stroke-width:2.6}
+    .loop-svg-message-hit{stroke:transparent;stroke-width:14;pointer-events:stroke}
+    .loop-svg-event-node.selected .loop-svg-mark,.loop-svg-message-edge.selected .loop-svg-msg,.loop-svg-message-edge.selected .loop-svg-neutral{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
+    .loop-svg-event-node:focus,.loop-svg-message-edge:focus{outline:none}
+    .loop-svg-event-node:focus .loop-svg-mark,.loop-svg-message-edge:focus .loop-svg-msg,.loop-svg-message-edge:focus .loop-svg-neutral{stroke-width:3.5}
     .loop-svg-small{font-size:7.7px;fill:#8b95a5}
     .matrix-shell{padding:15px 16px 12px;overflow:hidden}
     .matrix-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin:0 2px 10px}
@@ -217,11 +218,14 @@
     .svg-loop{fill:none;stroke:#765fa9;stroke-width:1.6;stroke-dasharray:6 5;opacity:.75}
     .svg-decision{fill:#fbf0dc;stroke:#b18137;stroke-width:1.5}
     .svg-decision-text{font-size:8px;font-weight:850;fill:#815c23;text-anchor:middle;dominant-baseline:central}
-    .svg-node{cursor:pointer;transition:opacity .15s}
-    .svg-node:hover .svg-message{stroke-width:2.8}
-    .svg-node.selected .svg-mark{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
-    .svg-node:focus{outline:none}
-    .svg-node:focus .svg-mark{stroke-width:3.5}
+    .svg-event-node,.svg-message-edge{cursor:pointer;transition:opacity .15s}
+    .svg-message-edge:hover .svg-message,.svg-message-edge:hover .svg-message-neutral{stroke-width:2.8}
+    .svg-message-hit{stroke:transparent;stroke-width:14;pointer-events:stroke}
+    .svg-node-label{font-size:7.4px;font-weight:700;fill:#707d91;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+    .svg-event-node.selected .svg-mark{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
+    .svg-message-edge.selected .svg-message,.svg-message-edge.selected .svg-message-neutral{stroke-width:3.2;filter:drop-shadow(0 1px 3px rgba(52,61,87,.18))}
+    .svg-event-node:focus,.svg-message-edge:focus{outline:none}
+    .svg-event-node:focus .svg-mark,.svg-message-edge:focus .svg-message,.svg-message-edge:focus .svg-message-neutral{stroke-width:3.5}
     .svg-small{font-size:8px;fill:#8b95a5}
     @media(max-width:980px){
       .hero-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.58fr);gap:18px}.hero-art{max-width:330px}.hero{padding:35px 30px}
@@ -281,7 +285,7 @@
         <div class="diagram-viewport" id="sequenceViewport">
           <div class="lane-sticky" id="sequenceLaneSticky"><div class="lane-sticky-window"><svg id="sequenceLaneHeader" role="img" aria-label="时序参与者名称"></svg></div></div>
           <div class="timeline-scroll" id="sequenceScroll"><svg id="sequenceSvg" role="img" aria-label="Agent Loop 参与者时序图"></svg></div>
-          <aside class="node-popover" id="sequencePopover" role="dialog" aria-label="时序节点详情" aria-live="polite" aria-hidden="true"></aside>
+          <aside class="node-popover" id="sequencePopover" role="dialog" aria-label="时序节点与消息详情" aria-live="polite" aria-hidden="true"></aside>
         </div>
         <div class="diagram-foot"><div class="legend" id="sequenceLegend"></div></div>
         <div class="exit-grid" id="exitGrid">
@@ -311,13 +315,13 @@
           <button class="tab active" data-loop-topology="conditional" role="tab" aria-selected="true">条件路由</button>
           <button class="tab" data-loop-topology="ledger" role="tab" aria-selected="false">Ledger 双层循环</button>
           <button class="tab" data-loop-topology="csv-repair" role="tab" aria-selected="false">CSV 局部修复例</button>
-          <span class="tab-note">悬浮查看，点击固定，点空白关闭 · 时间自上而下</span>
+          <span class="tab-note">悬浮节点看角色动作、悬浮箭头看传递内容；点击固定 · 时间自上而下</span>
         </div>
         <div class="loop-topology-heading"><div><h3 id="loopTopologyTitle"></h3><p id="loopTopologySubtitle"></p></div><span class="loop-topology-type" id="loopTopologyType"></span></div>
         <div class="loop-diagram-viewport" id="loopTopologyViewport">
           <div class="lane-sticky" id="loopTopologyLaneSticky"><div class="lane-sticky-window"><svg id="loopTopologyLaneHeader" role="img" aria-label="时序参与者名称"></svg></div></div>
           <div class="loop-diagram-scroll" id="loopTopologyScroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
-          <aside class="node-popover" id="loopTopologyPopover" role="dialog" aria-label="时序节点详情" aria-live="polite" aria-hidden="true"></aside>
+          <aside class="node-popover" id="loopTopologyPopover" role="dialog" aria-label="时序节点与消息详情" aria-live="polite" aria-hidden="true"></aside>
         </div>
         <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div></div>
         <div class="loop-model-note" id="loopTopologyNote"></div>
@@ -413,15 +417,15 @@
           {label:'反馈·路由',owner:'状态 ↔ 运行时',start:7,end:9,color:'#fbf2e7'}
         ],
         events:[
-          {from:'owner',to:'runtime',phase:0,title:'提交目标与验收条件',detail:'请求方给出目标、约束和可观察的验收标准。完成标准应独立于模型停止信号。'},
-          {from:'state',to:'runtime',phase:0,title:'装载进度、证据与尝试记录',detail:'状态应告诉下一轮已经发生什么、当前在哪一步、什么仍未解决；不能让 Agent 每轮从头开始。'},
-          {from:'runtime',to:'model',phase:1,title:'组装当前轮上下文',detail:'运行时将目标、历史和任务状态提供给当前模型或 Agent。完整历史、当前状态与长期记忆应区分管理。'},
-          {from:'model',to:'runtime',phase:1,title:'提出工具请求、交接或候选答案',detail:'模型输出是运行系统的下一步信号。它可以请求工具、发起交接，也可以返回一个候选终答。'},
+          {from:'owner',to:'runtime',phase:0,title:'提交目标与验收条件',messageLabel:'目标 · 约束 · 验收标准',detail:'请求方给出目标、约束和可观察的验收标准。完成标准应独立于模型停止信号。'},
+          {from:'state',to:'runtime',phase:0,title:'装载进度、证据与尝试记录',messageLabel:'已完成项 · 证据 · 未解决尝试',detail:'状态应告诉下一轮已经发生什么、当前在哪一步、什么仍未解决；不能让 Agent 每轮从头开始。'},
+          {from:'runtime',to:'model',phase:1,title:'组装当前轮上下文',messageLabel:'目标 · 历史 · 当前状态',detail:'运行时将目标、历史和任务状态提供给当前模型或 Agent。完整历史、当前状态与长期记忆应区分管理。'},
+          {from:'model',to:'runtime',phase:1,title:'提出工具请求、交接或候选答案',messageLabel:'工具请求 / 交接 / 候选答案',detail:'模型输出是运行系统的下一步信号。它可以请求工具、发起交接，也可以返回一个候选终答。'},
           {actor:'runtime',phase:2,title:'检查参数、权限与运行边界',decision:true,detail:'运行时校验请求结构、工具权限、预算和合法目的地。需要批准或权限不足时，应进入人工节点或暂停状态。'},
-          {from:'runtime',to:'tool',phase:2,title:'调用工具或执行环境',detail:'运行系统执行搜索、读取、文件修改、计算或测试。代码和工具真正影响环境的动作发生在这一侧。'},
-          {from:'tool',to:'runtime',phase:2,title:'返回产物、错误与证据',detail:'环境返回真实观察结果。工具调用成功只说明动作已执行，不证明目标已经满足。'},
-          {from:'runtime',to:'state',phase:3,title:'保存反馈与失败尝试',detail:'记录返回内容、产物位置、执行结果和已尝试的方法；保留足够细节以防止重复无效动作。'},
-          {from:'state',to:'runtime',phase:3,title:'提供进度、停滞信号与预算',detail:'验证结果、剩余问题和运行边界进入下一次判断。测试质量限制了验证修复模式的上限。'},
+          {from:'runtime',to:'tool',phase:2,title:'调用工具或执行环境',messageLabel:'已授权动作 · 工具参数',detail:'运行系统执行搜索、读取、文件修改、计算或测试。代码和工具真正影响环境的动作发生在这一侧。'},
+          {from:'tool',to:'runtime',phase:2,title:'返回产物、错误与证据',messageLabel:'产物 · 错误 · 执行证据',detail:'环境返回真实观察结果。工具调用成功只说明动作已执行，不证明目标已经满足。'},
+          {from:'runtime',to:'state',phase:3,title:'保存反馈与失败尝试',messageLabel:'执行结果 · 失败尝试 · 状态更新',detail:'记录返回内容、产物位置、执行结果和已尝试的方法；保留足够细节以防止重复无效动作。'},
+          {from:'state',to:'runtime',phase:3,title:'提供进度、停滞信号与预算',messageLabel:'验收状态 · 进度 · 剩余预算',detail:'验证结果、剩余问题和运行边界进入下一次判断。测试质量限制了验证修复模式的上限。'},
           {actor:'runtime',phase:3,title:'决定继续、重规划、暂停或退出',decision:true,detail:'通过验收则交付；尚有可行动问题则继续；连续无进展则重规划；缺输入或审批则暂停；无法完成或预算耗尽时如实退出。'}
         ]
       },
@@ -430,10 +434,10 @@
         participants:[['caller','当前 Agent'],['runner','运行系统'],['tool','普通工具']],
         phases:[{label:'发起请求',owner:'Agent → Runner',start:0,end:0,color:'#f0edf8'},{label:'执行工具',owner:'Runner ↔ 工具',start:1,end:2,color:'#edf4f1'},{label:'返回调用方',owner:'结果写回上下文',start:3,end:3,color:'#edf1f8'}],
         events:[
-          {from:'caller',to:'runner',phase:0,title:'请求执行工具',detail:'当前 Agent 通过结构化请求说明要调用哪个工具及参数。'},
-          {from:'runner',to:'tool',phase:1,title:'校验权限并调度工具',detail:'运行系统检查请求、权限与运行边界，再把动作交给普通工具或外部环境。'},
-          {from:'tool',to:'runner',phase:1,title:'返回工具结果',detail:'工具返回结果或错误；这只说明动作执行情况，不等同于任务验收。'},
-          {from:'runner',to:'caller',phase:2,title:'写回上下文，当前 Agent 继续',detail:'工具结果回到原调用方。Agent 可以继续调用工具，也可以提出候选答案。'}
+          {from:'caller',to:'runner',phase:0,title:'请求执行工具',messageLabel:'工具名 + 结构化参数',detail:'当前 Agent 通过结构化请求说明要调用哪个工具及参数。'},
+          {from:'runner',to:'tool',phase:1,title:'校验权限并调度工具',messageLabel:'已校验的工具调用',detail:'运行系统检查请求、权限与运行边界，再把动作交给普通工具或外部环境。'},
+          {from:'tool',to:'runner',phase:1,title:'返回工具结果',messageLabel:'工具输出 / 错误 / 执行状态',detail:'工具返回结果或错误；这只说明动作执行情况，不等同于任务验收。'},
+          {from:'runner',to:'caller',phase:2,title:'写回上下文，当前 Agent 继续',messageLabel:'工具结果回写原调用方',detail:'工具结果回到原调用方。Agent 可以继续调用工具，也可以提出候选答案。'}
         ]
       },
       handoff:{
@@ -441,8 +445,8 @@
         participants:[['a','Agent A'],['runner','运行系统'],['b','Agent B']],
         phases:[{label:'发起交接',owner:'Agent A → Runner',start:0,end:0,color:'#f0edf8'},{label:'切换活动方',owner:'Runner → Agent B',start:1,end:1,color:'#edf1f8'},{label:'接收方处理',owner:'Agent B 主导',start:2,end:2,color:'#edf4f1'}],
         events:[
-          {from:'a',to:'runner',phase:0,title:'指定交接目的地与上下文',detail:'Agent A 通过交接信号指定接收方，并提供接收方继续工作所需的任务状态。'},
-          {from:'runner',to:'b',phase:1,title:'切换活动 Agent',detail:'运行系统把后续控制权交给 Agent B；这不等同于 Agent B 作为工具返回一个结果。'},
+          {from:'a',to:'runner',phase:0,title:'指定交接目的地与上下文',messageLabel:'目标 Agent + 交接上下文',detail:'Agent A 通过交接信号指定接收方，并提供接收方继续工作所需的任务状态。'},
+          {from:'runner',to:'b',phase:1,title:'切换活动 Agent',messageLabel:'活动 Agent：A → B',detail:'运行系统把后续控制权交给 Agent B；这不等同于 Agent B 作为工具返回一个结果。'},
           {actor:'b',kind:'action',phase:2,title:'Agent B 继续处理任务',detail:'Agent B 成为当前活动方，沿交接后的上下文继续工作。流程不会默认回到 Agent A。'}
         ]
       },
@@ -451,10 +455,10 @@
         participants:[['main','主 Agent'],['runner','运行系统'],['expert','专家 Agent']],
         phases:[{label:'委派子任务',owner:'主 Agent → Runner',start:0,end:0,color:'#f0edf8'},{label:'专家执行',owner:'Runner ↔ 专家',start:1,end:2,color:'#edf4f1'},{label:'回到主 Agent',owner:'结果返回并整合',start:3,end:3,color:'#edf1f8'}],
         events:[
-          {from:'main',to:'runner',phase:0,title:'调用有边界的专家子任务',detail:'主 Agent 把范围清楚的任务委派出去，保留整体任务和最终答案的责任。'},
-          {from:'runner',to:'expert',phase:1,title:'启动专家 Agent',detail:'运行系统把子任务及必要上下文交给专家 Agent。'},
-          {from:'expert',to:'runner',phase:1,title:'返回专家结果',detail:'专家 Agent 完成子任务并返回结果；内部可以存在自己的工具调用与验证回路。'},
-          {from:'runner',to:'main',phase:2,title:'主 Agent 恢复并整合',detail:'运行系统把子任务结果交还给主 Agent，由主 Agent 继续决策、整合并负责最终交付。'}
+          {from:'main',to:'runner',phase:0,title:'调用有边界的专家子任务',messageLabel:'有边界的专家子任务',detail:'主 Agent 把范围清楚的任务委派出去，保留整体任务和最终答案的责任。'},
+          {from:'runner',to:'expert',phase:1,title:'启动专家 Agent',messageLabel:'任务范围 + 必要上下文',detail:'运行系统把子任务及必要上下文交给专家 Agent。'},
+          {from:'expert',to:'runner',phase:1,title:'返回专家结果',messageLabel:'专家结果 + 执行证据',detail:'专家 Agent 完成子任务并返回结果；内部可以存在自己的工具调用与验证回路。'},
+          {from:'runner',to:'main',phase:2,title:'主 Agent 恢复并整合',messageLabel:'子任务结果回交主 Agent',detail:'运行系统把子任务结果交还给主 Agent，由主 Agent 继续决策、整合并负责最终交付。'}
         ]
       }
     };
@@ -462,18 +466,19 @@
     const svgNs='http://www.w3.org/2000/svg';
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     function splitText(s,max){const out=[];let line='';for(const ch of Array.from(s)){line+=ch;if(line.length>=max){out.push(line);line='';}}if(line)out.push(line);return out;}
+    function shortNodeLabel(s,max=10){const chars=Array.from(String(s||''));return chars.length>max?`${chars.slice(0,max).join('')}…`:chars.join('');}
     function svgText(x,y,lines,cls,anchor='middle',color=null){return `<text x="${x}" y="${y}" text-anchor="${anchor}" class="${cls}"${color?` fill="${color}"`:''}>${lines.map((l,i)=>`<tspan x="${x}"${i?` dy="12"`:''}>${esc(l)}</tspan>`).join('')}</text>`;}
     let activeNodePopup=null,pinnedNodePopup=false,nodePopupTimer=null;
     function hideNodePopup(force=false){
       if(pinnedNodePopup&&!force)return;
       clearTimeout(nodePopupTimer);nodePopupTimer=null;
-      if(activeNodePopup){activeNodePopup.node.removeAttribute('aria-describedby');activeNodePopup.popup.classList.remove('is-visible');activeNodePopup.popup.setAttribute('aria-hidden','true');activeNodePopup.svg.querySelectorAll('.svg-node,.loop-svg-node').forEach(n=>n.classList.remove('selected'));}
+      if(activeNodePopup){activeNodePopup.node.removeAttribute('aria-describedby');activeNodePopup.popup.classList.remove('is-visible');activeNodePopup.popup.setAttribute('aria-hidden','true');activeNodePopup.svg.querySelectorAll('.svg-event-node,.loop-svg-event-node,.svg-message-edge,.loop-svg-message-edge').forEach(n=>n.classList.remove('selected'));}
       activeNodePopup=null;pinnedNodePopup=false;
     }
     function positionNodePopup(){
       if(!activeNodePopup)return;
-      const {node,popup,host}=activeNodePopup,anchor=node.querySelector('.svg-mark')||node,hostRect=host.getBoundingClientRect(),anchorRect=anchor.getBoundingClientRect(),popupRect=popup.getBoundingClientRect(),pad=10;
-      let left=anchorRect.right-hostRect.left+12;
+      const {node,popup,host,targetType}=activeNodePopup,anchor=node.querySelector(targetType==='edge'?'.svg-message-hit':'.svg-mark')||node,hostRect=host.getBoundingClientRect(),anchorRect=anchor.getBoundingClientRect(),popupRect=popup.getBoundingClientRect(),pad=10;
+      let left=targetType==='edge'?(anchorRect.left+anchorRect.right)/2-hostRect.left-popupRect.width/2:anchorRect.right-hostRect.left+12;
       if(left+popupRect.width>host.clientWidth-pad)left=anchorRect.left-hostRect.left-popupRect.width-12;
       left=Math.max(pad,Math.min(left,host.clientWidth-popupRect.width-pad));
       let top=anchorRect.top+anchorRect.height/2-hostRect.top-popupRect.height/2;
@@ -492,33 +497,35 @@
       popup.style.left=`${left}px`;popup.style.top=`${top}px`;
     }
     function scheduleNodePopupHide(){clearTimeout(nodePopupTimer);nodePopupTimer=setTimeout(()=>hideNodePopup(),180);}
-    function showNodePopup(kind,index,node,pin=false){
-      const same=activeNodePopup&&activeNodePopup.kind===kind&&activeNodePopup.index===index;
+    function showNodePopup(kind,index,node,targetType='node',pin=false){
+      const same=activeNodePopup&&activeNodePopup.kind===kind&&activeNodePopup.index===index&&activeNodePopup.targetType===targetType;
       if(pinnedNodePopup&&!same&&!pin)return;
       if(!same)hideNodePopup(true);
       clearTimeout(nodePopupTimer);nodePopupTimer=null;
       const scene=kind==='sequence'?scenes[currentScene]:loopTopologies[currentLoopTopology],svg=document.getElementById(kind==='sequence'?'sequenceSvg':'loopTopologySvg'),host=document.getElementById(kind==='sequence'?'sequenceViewport':'loopTopologyViewport'),scroller=host.querySelector('.timeline-scroll,.loop-diagram-scroll'),popup=document.getElementById(kind==='sequence'?'sequencePopover':'loopTopologyPopover'),ev=scene.events[index];
       if(!ev)return;
-      const actor=ev.actor||ev.from,participant=scene.participants.find(p=>p[0]===actor);
-      activeNodePopup={kind,index,node,svg,host,popup};pinnedNodePopup=pin||(same&&pinnedNodePopup);
-      svg.querySelectorAll('.svg-node,.loop-svg-node').forEach((n,i)=>n.classList.toggle('selected',n===node));
+      const actor=ev.actor||ev.from,participant=scene.participants.find(p=>p[0]===actor),receiver=scene.participants.find(p=>p[0]===ev.to),isMessage=targetType==='edge',label=ev.messageLabel||ev.title;
+      activeNodePopup={kind,index,node,svg,host,popup,targetType};pinnedNodePopup=pin||(same&&pinnedNodePopup);
+      svg.querySelectorAll('.svg-event-node,.loop-svg-event-node,.svg-message-edge,.loop-svg-message-edge').forEach(n=>n.classList.toggle('selected',n===node));
       node.setAttribute('aria-describedby',popup.id);
-      popup.innerHTML=`<div class="popover-top"><span class="popover-step">STEP ${String(index+1).padStart(2,'0')} · ${esc(participant?participant[1]:'运行系统')}</span><span class="popover-state">${pinnedNodePopup?'已固定':'悬浮预览'}</span></div><button class="popover-close" type="button" aria-label="关闭节点详情">×</button><h3>${esc(ev.title)}</h3><p>${esc(ev.detail)}</p>`;
+      const context=isMessage?`消息 · ${participant?participant[1]:'运行系统'} → ${receiver?receiver[1]:'接收方'}`:`节点动作 · ${participant?participant[1]:'运行系统'}`;
+      const title=isMessage?label:ev.title,detail=isMessage?ev.messageDetail:(ev.nodeDetail||ev.detail);
+      popup.innerHTML=`<div class="popover-top"><span class="popover-step">STEP ${String(index+1).padStart(2,'0')} · ${esc(context)}</span><span class="popover-state">${pinnedNodePopup?'已固定':'悬浮预览'}</span></div><button class="popover-close" type="button" aria-label="关闭详情">×</button><h3>${esc(title)}</h3>${detail?`<p>${esc(detail)}</p>`:''}`;
       popup.classList.add('is-visible');popup.setAttribute('aria-hidden','false');
       popup.querySelector('.popover-close').addEventListener('click',e=>{e.stopPropagation();hideNodePopup(true);});
       if(!popup.dataset.pointerBound){popup.dataset.pointerBound='true';popup.addEventListener('pointerenter',()=>{clearTimeout(nodePopupTimer);nodePopupTimer=null;});popup.addEventListener('pointerleave',scheduleNodePopupHide);popup.addEventListener('focusin',()=>{clearTimeout(nodePopupTimer);nodePopupTimer=null;});popup.addEventListener('focusout',scheduleNodePopupHide);}
       if(!scroller.dataset.popupScrollBound){scroller.dataset.popupScrollBound='true';scroller.addEventListener('scroll',()=>{if(activeNodePopup&&activeNodePopup.host===host)positionNodePopup();},{passive:true});}
       requestAnimationFrame(positionNodePopup);
     }
-    function bindNodePopup(node,kind,index){
-      node.addEventListener('pointerenter',()=>{if(!pinnedNodePopup||activeNodePopup?.kind===kind&&activeNodePopup?.index===index)showNodePopup(kind,index,node);});
+    function bindNodePopup(node,kind,index,targetType='node'){
+      node.addEventListener('pointerenter',()=>{if(!pinnedNodePopup||activeNodePopup?.kind===kind&&activeNodePopup?.index===index&&activeNodePopup?.targetType===targetType)showNodePopup(kind,index,node,targetType);});
       node.addEventListener('pointerleave',scheduleNodePopupHide);
-      node.addEventListener('focus',()=>{if(!pinnedNodePopup)showNodePopup(kind,index,node);});
+      node.addEventListener('focus',()=>{if(!pinnedNodePopup)showNodePopup(kind,index,node,targetType);});
       node.addEventListener('blur',scheduleNodePopupHide);
-      node.addEventListener('click',()=>{if(pinnedNodePopup&&activeNodePopup?.kind===kind&&activeNodePopup?.index===index)hideNodePopup(true);else showNodePopup(kind,index,node,true);});
+      node.addEventListener('click',()=>{if(pinnedNodePopup&&activeNodePopup?.kind===kind&&activeNodePopup?.index===index&&activeNodePopup?.targetType===targetType)hideNodePopup(true);else showNodePopup(kind,index,node,targetType,true);});
       node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();node.click();}else if(e.key==='Escape')hideNodePopup(true);});
     }
-    document.addEventListener('click',e=>{if(!e.target.closest('.svg-node,.loop-svg-node,.node-popover'))hideNodePopup(true);});
+    document.addEventListener('click',e=>{if(!e.target.closest('.svg-event-node,.loop-svg-event-node,.svg-message-edge,.loop-svg-message-edge,.node-popover'))hideNodePopup(true);});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')hideNodePopup(true);});
     window.addEventListener('scroll',()=>{if(activeNodePopup)requestAnimationFrame(positionNodePopup);},{passive:true});
     window.addEventListener('resize',()=>{if(activeNodePopup)positionNodePopup();},{passive:true});
@@ -539,7 +546,7 @@
     window.addEventListener('resize',()=>{syncStickyLaneHeader('sequence');syncStickyLaneHeader('loop');});
     function renderSequence(sceneKey){
       hideNodePopup(true);currentScene=sceneKey;const sc=scenes[sceneKey],svg=document.getElementById('sequenceSvg'),xs=sc.participants.length===3?[365,640,915]:[250,435,620,805,990],base=126,gap=62,h=base+sc.events.length*gap+113;
-      document.getElementById('sceneNote').textContent=sc.note+'　·　悬浮查看详情，点击固定，点空白关闭';document.getElementById('diagramTitle').textContent=sc.title;document.getElementById('diagramType').textContent=sc.type;
+      document.getElementById('sceneNote').textContent=sc.note+'　·　悬浮节点看角色动作，悬浮箭头看传递内容；点击固定';document.getElementById('diagramTitle').textContent=sc.title;document.getElementById('diagramType').textContent=sc.type;
       document.getElementById('exitGrid').style.display=sceneKey==='generic'?'grid':'none';
       document.querySelectorAll('[data-scene]').forEach(b=>{const on=b.dataset.scene===sceneKey;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
       let html=`<defs>
@@ -550,22 +557,26 @@
       html+=`<rect x="0" y="0" width="1180" height="${h}" fill="#fff"/>`;
       sc.participants.forEach((p,i)=>{const x=xs[i],c=palette[p[0]]||palette.runtime;html+=`<line x1="${x}" y1="72" x2="${x}" y2="${h-26}" class="svg-lane-line" style="stroke:${c};stroke-opacity:.28;stroke-width:1.35"/>`;});
       sc.phases.forEach(ph=>{const y=base+ph.start*gap-27,hh=(ph.end-ph.start+1)*gap-3;html+=`<rect x="14" y="${y}" width="93" height="${hh}" rx="7" fill="${ph.color}" stroke="#e5e9ef"/><rect x="113" y="${y}" width="102" height="${hh}" rx="7" fill="#f8f9fb" stroke="#e8ebf0"/>`;const stageLines=splitText(ph.label,6),ownLines=splitText(ph.owner,9);html+=svgText(60.5,y+hh/2-(stageLines.length-1)*5,stageLines,'svg-stage-title');html+=svgText(164,y+hh/2-(ownLines.length-1)*5,ownLines,'svg-stage-owner');if(ph.score)html+=`<text x="164" y="${y+hh/2+18}" text-anchor="middle" font-size="8" font-weight="850" fill="#826232">${esc(ph.score)}</text>`;});
-      sc.events.forEach((ev,i)=>{const y=base+i*gap,from=ev.actor||ev.from,to=ev.to,idx=sc.participants.findIndex(p=>p[0]===from),x1=xs[Math.max(idx,0)],c=palette[from]||palette.runtime,selected='';html+=`<line x1="220" y1="${y+28}" x2="1155" y2="${y+28}" class="svg-row"/>`;
-        html+=`<g class="svg-node${selected}" data-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
+      sc.events.forEach((ev,i)=>{const y=base+i*gap,from=ev.actor||ev.from,to=ev.to,idx=sc.participants.findIndex(p=>p[0]===from),x1=xs[Math.max(idx,0)],c=palette[from]||palette.runtime,isMessage=Boolean(ev.from&&ev.to&&ev.from!==ev.to);html+=`<line x1="220" y1="${y+28}" x2="1155" y2="${y+28}" class="svg-row"/>`;
+        if(isMessage){const j=sc.participants.findIndex(p=>p[0]===to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,ln=Math.max(13,Math.floor(Math.abs(x2-x1)/8.1)-3),message=ev.messageLabel||ev.title,lines=splitText(message,ln),ty=y-8-(lines.length-1)*5,cls=['tool','exporter','verify','expert'].includes(from)||['tool','exporter','verify','expert'].includes(to)?'svg-message-neutral':'svg-message',marker=cls==='svg-message-neutral'?'seqToolArrow':'seqArrow',source=sc.participants[idx]?.[1]||from,target=sc.participants[j]?.[1]||to;
+          html+=`<g class="svg-message-edge" data-event="${i}" tabindex="0" role="button" aria-label="消息：${esc(source)} 到 ${esc(target)}，${esc(message)}"><line x1="${x1+dir*15}" y1="${y}" x2="${x2-dir*9}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/><line x1="${x1+dir*15}" y1="${y}" x2="${x2-dir*9}" y2="${y}" class="svg-message-hit"/>${svgText((x1+x2)/2,ty,lines,'svg-label')}</g>`;
+        }
+        html+=`<g class="svg-event-node" data-event="${i}" tabindex="0" role="button" aria-label="节点动作：${esc(sc.participants[idx]?.[1]||'运行系统')}，${esc(ev.title)}">`;
         if(ev.decision){html+=`<rect x="${x1-12}" y="${y-13}" width="24" height="32" rx="6" class="svg-decision svg-mark"/><text x="${x1}" y="${y+3}" class="svg-decision-text">判</text><text x="${x1+22}" y="${y+3}" text-anchor="start" class="svg-self-label">${esc(ev.title)}</text>`;}
-        else if(ev.kind==='action'||from===to){const boxW=190,boxX=x1-boxW/2,lines=splitText(ev.title,22);html+=`<circle class="svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="svg-action"/>${svgText(x1,y-2,lines,'svg-action-text')}`;}
-        else{const j=sc.participants.findIndex(p=>p[0]===to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,ln=Math.max(13,Math.floor(Math.abs(x2-x1)/8.1)-3),lines=splitText(ev.title,ln),ty=y-8-(lines.length-1)*5,cls=['tool','exporter','verify','expert'].includes(from)||['tool','exporter','verify','expert'].includes(to)?'svg-message-neutral':'svg-message',marker=cls==='svg-message-neutral'?'seqToolArrow':'seqArrow';html+=`<line x1="${x1+dir*15}" y1="${y}" x2="${x2-dir*9}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/>`;html+=svgText((x1+x2)/2,ty,lines,'svg-label');html+=`<circle class="svg-mark" cx="${x1}" cy="${y}" r="12" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+0.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text>`;}
+        else if(ev.kind==='action'||!isMessage){const boxW=190,boxX=x1-boxW/2,lines=splitText(ev.title,22);html+=`<circle class="svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="svg-action"/>${svgText(x1,y-2,lines,'svg-action-text')}`;}
+        else{html+=`<circle class="svg-mark" cx="${x1}" cy="${y}" r="12" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+0.5}" class="svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><text x="${x1}" y="${y+20}" text-anchor="middle" class="svg-node-label">${esc(shortNodeLabel(ev.title))}</text>`;}
         html+='</g>';
       });
       if(sceneKey==='generic'){
         const routeY=base+9*gap,modelY=base+2*gap;
         html+=`<path d="M 635 ${routeY+17} H 1150 V ${modelY-30} H 435 V ${modelY-14}" class="svg-loop" marker-end="url(#seqLoopArrow)"/><text x="1134" y="${(routeY+modelY)/2}" transform="rotate(-90 1134 ${(routeY+modelY)/2})" text-anchor="middle" font-size="8.5" font-weight="800" fill="#7764a9">继续 · 带回更新状态</text>`;
         html+=`<text x="18" y="${h-12}" class="svg-small">时间向下 ↓</text><text x="1152" y="${h-12}" text-anchor="end" class="svg-small">主路径为抽象示意 · 切换视图比较控制权去向</text>`;
-      } else {html+=`<text x="18" y="${h-12}" class="svg-small">时间向下 ↓ · 控制权按所选方式流转</text><text x="1152" y="${h-12}" text-anchor="end" font-size="8" font-weight="800" fill="#66758b">概念时序 · 点击节点查看解释</text>`;}
+      } else {html+=`<text x="18" y="${h-12}" class="svg-small">时间向下 ↓ · 控制权按所选方式流转</text><text x="1152" y="${h-12}" text-anchor="end" font-size="8" font-weight="800" fill="#66758b">节点动作与箭头消息可分别悬浮查看</text>`;}
       svg.setAttribute('viewBox',`0 0 1180 ${h}`);svg.setAttribute('height',h);svg.innerHTML=html;renderStickyLaneHeader('sequence',sc.participants,xs,palette,1180,false);
       const extraLegend=sceneKey==='generic'?'<span class="legend-item"><i class="legend-line dash"></i>继续下一轮</span>':'<span class="legend-item"><i style="display:inline-block;width:14px;height:9px;border:1px solid #cbd3df;border-radius:4px;background:#f8f9fb"></i>参与者内部动作</span>';
-      document.getElementById('sequenceLegend').innerHTML=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${palette[p[0]]||palette.runtime}"></i>${esc(p[1])}</span>`).join('')+'<span class="legend-item"><i class="legend-line"></i>跨参与者消息</span>'+extraLegend;
-      svg.querySelectorAll('.svg-node').forEach(node=>bindNodePopup(node,'sequence',+node.dataset.event));
+      document.getElementById('sequenceLegend').innerHTML=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${palette[p[0]]||palette.runtime}"></i>${esc(p[1])}</span>`).join('')+'<span class="legend-item"><i class="legend-line"></i>箭头：传递内容</span><span class="legend-item"><i class="legend-dot" style="--c:#6b5ba8"></i>编号点：角色动作</span>'+extraLegend;
+      svg.querySelectorAll('.svg-event-node').forEach(node=>bindNodePopup(node,'sequence',+node.dataset.event,'node'));
+      svg.querySelectorAll('.svg-message-edge').forEach(edge=>bindNodePopup(edge,'sequence',+edge.dataset.event,'edge'));
     }
     const loopPalette={owner:'#2f3d63',runtime:'#435575',agent:'#6b5ba8',environment:'#3f7d72',verifier:'#a46e2a',progress:'#3f7d72',task:'#a46e2a',executor:'#3f7d72',flow:'#435575',exporter:'#3f7d72',verify:'#a46e2a'};
     const loopTopologies={
@@ -587,20 +598,20 @@
           {start:12,end:13,label:'else · 缺输入或预算耗尽'}
         ],
         events:[
-          {from:'owner',to:'runtime',phase:0,title:'提交目标与成功标准',detail:'任务方提供目标、约束和可观察的验收标准。'},
-          {from:'runtime',to:'agent',phase:0,title:'提供当前计划、状态与运行限制',detail:'运行系统把计划、已有证据、失败尝试、剩余预算等状态传给 Agent，让下一轮从当前进度继续。'},
-          {from:'agent',to:'runtime',phase:0,title:'提出下一步动作或工具请求',detail:'Agent 根据当前上下文提出要执行的动作。请求仍需经过运行系统的权限与预算检查。'},
-          {from:'runtime',to:'environment',phase:1,title:'检查权限与边界，然后执行',detail:'运行系统验证请求并调度工具或环境。真正的文件、网络或计算动作发生在执行环境。'},
-          {from:'environment',to:'verifier',phase:1,title:'返回产物、错误与执行证据',detail:'环境报告实际执行结果；动作执行成功本身不等于目标已经满足。'},
-          {from:'verifier',to:'runtime',phase:1,title:'给出验收结果、失败项与进展',detail:'状态与验收层记录通过项、未解决问题及进展，供路由判断使用。'},
+          {from:'owner',to:'runtime',phase:0,title:'提交目标与成功标准',messageLabel:'目标 + 约束 + 验收标准',detail:'任务方提供目标、约束和可观察的验收标准。'},
+          {from:'runtime',to:'agent',phase:0,title:'提供当前计划、状态与运行限制',messageLabel:'计划 + 状态 + 运行边界',detail:'运行系统把计划、已有证据、失败尝试、剩余预算等状态传给 Agent，让下一轮从当前进度继续。'},
+          {from:'agent',to:'runtime',phase:0,title:'提出下一步动作或工具请求',messageLabel:'下一步动作 / 工具请求',detail:'Agent 根据当前上下文提出要执行的动作。请求仍需经过运行系统的权限与预算检查。'},
+          {from:'runtime',to:'environment',phase:1,title:'检查权限与边界，然后执行',messageLabel:'权限校验后的执行指令',detail:'运行系统验证请求并调度工具或环境。真正的文件、网络或计算动作发生在执行环境。'},
+          {from:'environment',to:'verifier',phase:1,title:'返回产物、错误与执行证据',messageLabel:'产物 + 错误 + 执行证据',detail:'环境报告实际执行结果；动作执行成功本身不等于目标已经满足。'},
+          {from:'verifier',to:'runtime',phase:1,title:'给出验收结果、失败项与进展',messageLabel:'通过项 + 失败项 + 进展',detail:'状态与验收层记录通过项、未解决问题及进展，供路由判断使用。'},
           {actor:'runtime',phase:1,title:'结合验收、停滞与预算选择路由',kind:'decision',detail:'运行系统用验收结果和进度信号区分局部可修复失败、持续停滞、缺输入和资源边界；这些情况不能都归为“继续循环”。'},
-          {from:'runtime',to:'owner',phase:2,title:'通过：交付结果并说明验证范围',route:'通过',detail:'验收通过后进入交付。交付说明结果覆盖了哪些标准，以及仍有哪些范围限制。'},
-          {from:'runtime',to:'agent',phase:3,title:'明确失败：只修当前缺陷',route:'局部修复',detail:'若失败项明确且仍可行动，沿当前计划修复局部缺陷，保留已验证通过的部分。'},
-          {from:'agent',to:'runtime',phase:3,title:'提交修复结果与新增证据',route:'局部修复',detail:'Agent 返回修复结果后，运行系统更新状态并重新执行验证；修复路径回到当前执行与验收。'},
-          {from:'runtime',to:'agent',phase:4,title:'持续停滞：要求重拆任务或改变策略',route:'整体重规划',detail:'连续没有有效进展，或原计划依赖的假设失效时，停止重复原动作并要求重新规划。'},
-          {from:'agent',to:'runtime',phase:4,title:'返回替代步骤、依赖与新假设',route:'整体重规划',detail:'Agent 提交新的任务分解或策略。运行系统用更新后的计划和状态启动下一轮。'},
-          {from:'runtime',to:'owner',phase:5,title:'缺少输入：暂停并列出待补信息',route:'暂停',detail:'缺少必要资料、权限或人工决定时，暂停任务并明确等待什么输入。'},
-          {from:'runtime',to:'owner',phase:5,title:'预算耗尽或不可行：停止并说明原因',route:'停止',detail:'预算耗尽或任务在现有边界内不可行时停止，说明已完成部分、限制和未解决项。'}
+          {from:'runtime',to:'owner',phase:2,title:'确认通过并交付结果',messageLabel:'通过 · 交付结果 + 验收范围',route:'通过',detail:'验收通过后进入交付。交付说明结果覆盖了哪些标准，以及仍有哪些范围限制。'},
+          {from:'runtime',to:'agent',phase:3,title:'定位明确失败并分派局部修复',messageLabel:'明确失败 · 待修缺陷',route:'局部修复',detail:'若失败项明确且仍可行动，沿当前计划修复局部缺陷，保留已验证通过的部分。'},
+          {from:'agent',to:'runtime',phase:3,title:'提交修复结果与新增证据',messageLabel:'修复结果 + 新证据',route:'局部修复',detail:'Agent 返回修复结果后，运行系统更新状态并重新执行验证；修复路径回到当前执行与验收。'},
+          {from:'runtime',to:'agent',phase:4,title:'识别持续停滞并触发重规划',messageLabel:'持续停滞 · 原计划需要调整',route:'整体重规划',detail:'连续没有有效进展，或原计划依赖的假设失效时，停止重复原动作并要求重新规划。'},
+          {from:'agent',to:'runtime',phase:4,title:'返回替代步骤、依赖与新假设',messageLabel:'替代步骤 + 新依赖 + 新假设',route:'整体重规划',detail:'Agent 提交新的任务分解或策略。运行系统用更新后的计划和状态启动下一轮。'},
+          {from:'runtime',to:'owner',phase:5,title:'确认缺少必要输入并暂停',messageLabel:'缺少必要输入 · 等待补充',route:'暂停',detail:'缺少必要资料、权限或人工决定时，暂停任务并明确等待什么输入。'},
+          {from:'runtime',to:'owner',phase:5,title:'处理预算边界并停止运行',messageLabel:'预算耗尽 / 当前条件不可行',route:'停止',detail:'预算耗尽或任务在现有边界内不可行时停止，说明已完成部分、限制和未解决项。'}
         ],
         loops:[
           {from:9,to:1,actor:'runtime',targetActor:'agent',label:'局部修复后回到当前计划',rail:1100},
@@ -624,20 +635,20 @@
           {start:13,end:13,label:'else · 缺输入或预算耗尽'}
         ],
         events:[
-          {from:'owner',to:'runtime',phase:0,title:'提交目标、成功标准与约束',detail:'任务方定义目标、验收条件和运行边界。'},
-          {from:'runtime',to:'task',phase:0,title:'建立整体计划、依赖与关键假设',detail:'Orchestrator 把高层任务分解和当前策略写入 Task Ledger，保留计划依赖的关键假设。'},
-          {from:'task',to:'progress',phase:0,title:'下发计划步骤与优先级',detail:'Task Ledger 把可执行步骤和优先级交给 Progress Ledger，作为当前执行计划。'},
-          {from:'progress',to:'runtime',phase:1,title:'选择下一项可执行任务',detail:'Progress Ledger 根据已完成事项、依赖和阻塞情况挑出下一项任务。'},
-          {from:'runtime',to:'executor',phase:1,title:'调度 Agent 或工具执行该任务',detail:'Orchestrator 将选中的子任务交给 Agent 或工具执行。'},
-          {from:'executor',to:'verifier',phase:1,title:'返回执行结果、错误与证据',detail:'执行者提交产物和实际观察结果，供验证和进度记录使用。'},
-          {from:'verifier',to:'progress',phase:1,title:'报告当前子任务的验证结果',detail:'验证结果映射到当前子任务，指出哪些条件通过、哪些仍未满足。'},
+          {from:'owner',to:'runtime',phase:0,title:'提交目标、成功标准与约束',messageLabel:'目标 + 验收标准 + 运行约束',detail:'任务方定义目标、验收条件和运行边界。'},
+          {from:'runtime',to:'task',phase:0,title:'建立整体计划、依赖与关键假设',messageLabel:'任务分解 + 依赖 + 关键假设',detail:'Orchestrator 把高层任务分解和当前策略写入 Task Ledger，保留计划依赖的关键假设。'},
+          {from:'task',to:'progress',phase:0,title:'下发计划步骤与优先级',messageLabel:'待执行步骤 + 优先级',detail:'Task Ledger 把可执行步骤和优先级交给 Progress Ledger，作为当前执行计划。'},
+          {from:'progress',to:'runtime',phase:1,title:'选择下一项可执行任务',messageLabel:'下一项可执行任务',detail:'Progress Ledger 根据已完成事项、依赖和阻塞情况挑出下一项任务。'},
+          {from:'runtime',to:'executor',phase:1,title:'调度 Agent 或工具执行该任务',messageLabel:'已分派的 Agent / 工具任务',detail:'Orchestrator 将选中的子任务交给 Agent 或工具执行。'},
+          {from:'executor',to:'verifier',phase:1,title:'返回执行结果、错误与证据',messageLabel:'产物 + 错误 + 执行证据',detail:'执行者提交产物和实际观察结果，供验证和进度记录使用。'},
+          {from:'verifier',to:'progress',phase:1,title:'报告当前子任务的验证结果',messageLabel:'当前子任务的通过项 / 未满足项',detail:'验证结果映射到当前子任务，指出哪些条件通过、哪些仍未满足。'},
           {actor:'progress',phase:1,title:'更新完成项、证据、剩余项与阻塞',kind:'action',detail:'Progress Ledger 保存可追踪的局部状态，避免遗漏已完成工作或重复无效尝试。'},
           {actor:'progress',phase:1,title:'判断当前计划是否仍可推进',kind:'decision',detail:'若仍有可执行任务或局部可修复问题，内层继续；若持续停滞或计划假设失效，则升级到 Task Ledger。'},
-          {from:'progress',to:'runtime',phase:2,title:'有进展：分派当前计划的下一项',route:'内层继续',detail:'当前计划仍有效时，Progress Ledger 继续分派下一项。回边留在内层，不改写 Task Ledger 的整体策略。'},
-          {from:'progress',to:'task',phase:3,title:'持续停滞或假设失效：升级重规划',route:'外层重规划',detail:'停滞信号或假设失效从 Progress Ledger 上报到 Task Ledger，触发计划层面的调整。'},
+          {from:'progress',to:'runtime',phase:2,title:'确认计划仍可推进并分派下一项',messageLabel:'当前计划仍有效 · 下一项任务',route:'内层继续',detail:'当前计划仍有效时，Progress Ledger 继续分派下一项。回边留在内层，不改写 Task Ledger 的整体策略。'},
+          {from:'progress',to:'task',phase:3,title:'升级停滞信号并触发外层重规划',messageLabel:'停滞信号 / 关键假设失效',route:'外层重规划',detail:'停滞信号或假设失效从 Progress Ledger 上报到 Task Ledger，触发计划层面的调整。'},
           {actor:'task',phase:3,title:'重排依赖、替换策略或缩小目标',kind:'action',detail:'Task Ledger 调整整体任务组织：可以重排依赖、替换策略、更新假设或缩小目标。'},
-          {from:'task',to:'progress',phase:3,title:'发布新计划与任务优先级',detail:'更新后的计划回到 Progress Ledger，重新建立内层的待办、依赖和进度追踪。'},
-          {from:'runtime',to:'owner',phase:4,title:'缺输入则暂停；预算耗尽则说明并停止',route:'暂停 / 停止',detail:'等待必要输入时暂停；运行预算耗尽或任务不可行时停止并汇报状态，不把这两种情况伪装成重规划成功。'}
+          {from:'task',to:'progress',phase:3,title:'发布新计划与任务优先级',messageLabel:'新计划 + 新任务优先级',detail:'更新后的计划回到 Progress Ledger，重新建立内层的待办、依赖和进度追踪。'},
+          {from:'runtime',to:'owner',phase:4,title:'按输入与预算边界暂停或停止',messageLabel:'缺少输入 / 预算边界 / 不可行状态',route:'暂停 / 停止',detail:'等待必要输入时暂停；运行预算耗尽或任务不可行时停止并汇报状态，不把这两种情况伪装成重规划成功。'}
         ],
         loops:[
           {from:9,to:3,actor:'progress',targetActor:'progress',label:'内层：分派下一任务',rail:1110},
@@ -655,19 +666,19 @@
         ],
         fragments:[],
         events:[
-          {from:'owner',to:'flow',phase:0,title:'提交字段规则与 12 项验收条件',detail:'要求涵盖中文、列顺序、空值、逗号、引号、换行、回车换行和 UTF-8 BOM。'},
-          {from:'flow',to:'exporter',phase:0,title:'生成 v0 · 朴素拼接',detail:'初始实现用逗号连接字段、用换行连接记录，没有处理 CSV 转义、空值语义和 BOM。'},
-          {from:'exporter',to:'verify',phase:0,title:'导出样例并回读检查',detail:'验证使用 Python 标准库 csv.reader 读取输出，并用字节断言检查 BOM。'},
-          {from:'verify',to:'state',phase:0,title:'6 / 12 通过 · 6 项失败',detail:'失败集中在特殊字段转义、空值和 BOM。检查把模糊的“导出有问题”缩小成可定位失败项。'},
-          {from:'state',to:'flow',phase:1,title:'路由到序列化修复',detail:'状态将失败集合交给工作流：先修复 CSV 序列化和空值，保留已通过的基础字段行为。'},
-          {from:'flow',to:'exporter',phase:1,title:'生成 v1 · csv.writer + CRLF',detail:'第一次修复改用 csv.writer 与 CRLF 行结束符，覆盖引号、逗号、换行和空值。'},
-          {from:'exporter',to:'verify',phase:1,title:'重新运行全部 12 项',detail:'全量回归而非只重跑刚修复的案例，检查修复没有破坏已通过项。'},
-          {from:'verify',to:'state',phase:1,title:'11 / 12 通过 · 仅 BOM 失败',detail:'错误范围缩小到 UTF-8 BOM 字节标记；其余 11 项仍然通过。'},
-          {from:'state',to:'flow',phase:2,title:'保留通过项，只补编码标记',detail:'状态记录将未解决项缩小为 BOM，避免再次修改已经正确的转义规则。'},
-          {from:'flow',to:'exporter',phase:2,title:'生成 v2 · 增加 UTF-8 BOM',detail:'在最终输出前写入 BOM 字节，随后重新执行整个验证集。'},
-          {from:'exporter',to:'verify',phase:2,title:'再次运行全部 12 项',detail:'重复完整验证，确认本次改动符合全部既定验收条件。'},
-          {from:'verify',to:'state',phase:2,title:'12 / 12 通过 · 进入 END',detail:'所有本实验检查通过，流程结束。该结论只覆盖这 12 项验收。'},
-          {from:'flow',to:'owner',phase:2,title:'交付验证记录与 CSV 样例',detail:'交付结果同时说明本案例的范围：固定修复步骤、没有模型调用，不代表大模型自主修复率。'}
+          {from:'owner',to:'flow',phase:0,title:'提交字段规则与 12 项验收条件',messageLabel:'字段规则 + 12 项验收条件',detail:'要求涵盖中文、列顺序、空值、逗号、引号、换行、回车换行和 UTF-8 BOM。'},
+          {from:'flow',to:'exporter',phase:0,title:'生成 v0 · 朴素拼接',messageLabel:'v0 样例 · 朴素拼接',detail:'初始实现用逗号连接字段、用换行连接记录，没有处理 CSV 转义、空值语义和 BOM。'},
+          {from:'exporter',to:'verify',phase:0,title:'导出样例并回读检查',messageLabel:'CSV 样例 + 回读结果',detail:'验证使用 Python 标准库 csv.reader 读取输出，并用字节断言检查 BOM。'},
+          {from:'verify',to:'state',phase:0,title:'汇总首轮验证结果',messageLabel:'6 项通过 / 6 项失败',detail:'失败集中在特殊字段转义、空值和 BOM。检查把模糊的“导出有问题”缩小成可定位失败项。'},
+          {from:'state',to:'flow',phase:1,title:'路由到序列化修复',messageLabel:'失败清单 → 序列化修复',detail:'状态将失败集合交给工作流：先修复 CSV 序列化和空值，保留已通过的基础字段行为。'},
+          {from:'flow',to:'exporter',phase:1,title:'生成 v1 · csv.writer + CRLF',messageLabel:'v1 样例 · csv.writer + CRLF',detail:'第一次修复改用 csv.writer 与 CRLF 行结束符，覆盖引号、逗号、换行和空值。'},
+          {from:'exporter',to:'verify',phase:1,title:'重新运行全部 12 项',messageLabel:'12 项完整回归结果',detail:'全量回归而非只重跑刚修复的案例，检查修复没有破坏已通过项。'},
+          {from:'verify',to:'state',phase:1,title:'汇总第二轮验证结果',messageLabel:'11 项通过 / 仅 BOM 失败',detail:'错误范围缩小到 UTF-8 BOM 字节标记；其余 11 项仍然通过。'},
+          {from:'state',to:'flow',phase:2,title:'保留通过项，只补编码标记',messageLabel:'剩余 BOM 问题 → 定向修复',detail:'状态记录将未解决项缩小为 BOM，避免再次修改已经正确的转义规则。'},
+          {from:'flow',to:'exporter',phase:2,title:'生成 v2 · 增加 UTF-8 BOM',messageLabel:'v2 样例 · 增加 UTF-8 BOM',detail:'在最终输出前写入 BOM 字节，随后重新执行整个验证集。'},
+          {from:'exporter',to:'verify',phase:2,title:'再次运行全部 12 项',messageLabel:'12 项完整回归结果',detail:'重复完整验证，确认本次改动符合全部既定验收条件。'},
+          {from:'verify',to:'state',phase:2,title:'汇总最终验证结果',messageLabel:'全部通过 · END',detail:'所有本实验检查通过，流程结束。该结论只覆盖这 12 项验收。'},
+          {from:'flow',to:'owner',phase:2,title:'交付验证记录与 CSV 样例',messageLabel:'CSV 样例 + 验收记录',detail:'交付结果同时说明本案例的范围：固定修复步骤、没有模型调用，不代表大模型自主修复率。'}
         ],
         loops:[
           {from:3,to:5,actor:'verify',targetActor:'flow',label:'6 项失败 → 定向修复',rail:1110},
@@ -693,16 +704,21 @@
       sc.fragments.forEach(f=>{const y1=base+f.start*gap-23,y2=base+f.end*gap+28;s+=`<rect x="232" y="${y1}" width="${sc.width-249}" height="${y2-y1}" rx="9" class="loop-svg-fragment"/><text x="243" y="${y1+12}" class="loop-svg-fragment-label">${esc(f.label)}</text>`;});
       sc.events.forEach((ev,i)=>{const y=base+i*gap;s+=`<line x1="235" y1="${y+28}" x2="${sc.width-14}" y2="${y+28}" class="loop-svg-row"/>`;});
       sc.loops.forEach(lp=>{const y1=base+lp.from*gap,y2=base+lp.to*gap+19,x1=xs[sc.participants.findIndex(p=>p[0]===lp.actor)]+15,x2=xs[sc.participants.findIndex(p=>p[0]===lp.targetActor)]+14,marker=lp.outer?'loopOuterArrow':'loopBackArrow',cls=lp.outer?'loop-svg-loop outer':'loop-svg-loop',lab=lp.outer?'loop-svg-loop-label outer':'loop-svg-loop-label',mid=(y1+y2)/2,path=`M ${x1} ${y1} H ${lp.rail} V ${y2} H ${x2}`;s+=`<path d="${path}" fill="none" stroke="#fff" stroke-width="4.2"/><path d="${path}" class="${cls}" marker-end="url(#${marker})"/><text x="${lp.rail-6}" y="${mid}" transform="rotate(-90 ${lp.rail-6} ${mid})" text-anchor="middle" class="${lab}">${esc(lp.label)}</text>`;});
-      sc.events.forEach((ev,i)=>{const y=base+i*gap,actor=ev.actor||ev.from,idx=sc.participants.findIndex(p=>p[0]===actor),x1=xs[Math.max(idx,0)],c=loopPalette[actor]||loopPalette.runtime,selected='';s+=`<g class="loop-svg-node${selected}" data-loop-event="${i}" tabindex="0" role="button" aria-label="步骤 ${i+1}：${esc(ev.title)}">`;
-        if(ev.kind==='decision'){s+=`<rect x="${x1-13}" y="${y-14}" width="26" height="29" rx="6" class="loop-svg-decision"/><text x="${x1}" y="${y+1}" class="loop-svg-decision-text">判</text><text x="${x1+20}" y="${y-3}" text-anchor="start" class="loop-svg-text">${esc(ev.title)}</text><circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="15" fill="none" stroke="${c}" stroke-width="1" opacity=".25"/>`;
+      sc.events.forEach((ev,i)=>{const y=base+i*gap,actor=ev.actor||ev.from,idx=sc.participants.findIndex(p=>p[0]===actor),x1=xs[Math.max(idx,0)],c=loopPalette[actor]||loopPalette.runtime,isMessage=Boolean(ev.from&&ev.to&&ev.from!==ev.to);
+        if(isMessage){const j=sc.participants.findIndex(p=>p[0]===ev.to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,neutral=['environment','executor','verifier'].includes(actor)||['environment','executor','verifier'].includes(ev.to),cls=neutral?'loop-svg-neutral':'loop-svg-msg',marker=neutral?'loopNeutralArrow':'loopMsgArrow',dist=Math.abs(x2-x1),message=ev.messageLabel||ev.title,lines=splitText(message,Math.max(16,Math.floor(dist/9))),source=sc.participants[idx]?.[1]||actor,target=sc.participants[j]?.[1]||ev.to;
+          s+=`<g class="loop-svg-message-edge" data-loop-event="${i}" tabindex="0" role="button" aria-label="消息：${esc(source)} 到 ${esc(target)}，${esc(message)}"><line x1="${x1+dir*14}" y1="${y}" x2="${x2-dir*12}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/><line x1="${x1+dir*14}" y1="${y}" x2="${x2-dir*12}" y2="${y}" class="loop-svg-message-hit"/>${svgText((x1+x2)/2,y-8-(lines.length-1)*4.5,lines,'loop-svg-text')}</g>`;
+        }
+        s+=`<g class="loop-svg-event-node" data-loop-event="${i}" tabindex="0" role="button" aria-label="节点动作：${esc(sc.participants[idx]?.[1]||'运行系统')}，${esc(ev.title)}">`;
+        if(ev.kind==='decision'){s+=`<rect x="${x1-13}" y="${y-14}" width="26" height="29" rx="6" class="loop-svg-decision loop-svg-mark"/><text x="${x1}" y="${y+1}" class="loop-svg-decision-text">判</text><text x="${x1+20}" y="${y-3}" text-anchor="start" class="loop-svg-text">${esc(ev.title)}</text><circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="15" fill="none" stroke="${c}" stroke-width="1" opacity=".25"/>`;
         }else if(ev.kind==='action'){const boxW=ev.actionWidth||177,boxX=x1-boxW/2,lines=splitText(ev.title,25);s+=`<circle class="loop-svg-mark" cx="${boxX-12}" cy="${y}" r="10" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${boxX-12}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><rect x="${boxX}" y="${y-14}" width="${boxW}" height="28" rx="7" class="loop-svg-action"/>${svgText(x1,y-2,lines,'loop-svg-action-text')}`;
-        }else{const j=sc.participants.findIndex(p=>p[0]===ev.to),x2=xs[Math.max(j,0)],dir=x2>=x1?1:-1,neutral=['environment','executor','verifier'].includes(actor)||['environment','executor','verifier'].includes(ev.to),cls=neutral?'loop-svg-neutral':'loop-svg-msg',marker=neutral?'loopNeutralArrow':'loopMsgArrow',dist=Math.abs(x2-x1),lines=splitText(ev.title,Math.max(16,Math.floor(dist/9)));s+=`<line x1="${x1+dir*14}" y1="${y}" x2="${x2-dir*12}" y2="${y}" class="${cls}" marker-end="url(#${marker})"/>${svgText((x1+x2)/2,y-8-(lines.length-1)*4.5,lines,'loop-svg-text')}<circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="11" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text>`;}
+        }else if(isMessage){s+=`<circle class="loop-svg-mark" cx="${x1}" cy="${y}" r="11" fill="#fff" stroke="${c}" stroke-width="2"/><text x="${x1}" y="${y+.5}" class="loop-svg-id" fill="${c}">${String(i+1).padStart(2,'0')}</text><text x="${x1}" y="${y+20}" text-anchor="middle" class="svg-node-label">${esc(shortNodeLabel(ev.title))}</text>`;}
         s+='</g>';});
-      s+=`<text x="15" y="${h-9}" class="loop-svg-small">${esc(sc.flowNote||'时间向下 ↓ · 实线为跨参与者消息 · 虚线回边显示重新进入的步骤')}</text><text x="${sc.width-16}" y="${h-9}" text-anchor="end" class="loop-svg-small">概念重建 · 悬浮 / 点击节点查看说明</text>`;
+      s+=`<text x="15" y="${h-9}" class="loop-svg-small">${esc(sc.flowNote||'时间向下 ↓ · 实线为跨参与者消息 · 虚线回边显示重新进入的步骤')}</text><text x="${sc.width-16}" y="${h-9}" text-anchor="end" class="loop-svg-small">概念重建 · 节点动作与箭头消息分别悬浮查看</text>`;
       svg.setAttribute('viewBox',`0 0 ${sc.width} ${h}`);svg.setAttribute('height',h);svg.style.width=`${sc.width}px`;svg.innerHTML=s;renderStickyLaneHeader('loop',sc.participants,xs,loopPalette,sc.width,true);
       const participants=sc.participants.map(p=>`<span class="legend-item"><i class="legend-dot" style="--c:${loopPalette[p[0]]||loopPalette.runtime}"></i>${esc(p[1])}</span>`).join('');
-      document.getElementById('loopTopologyLegend').innerHTML=participants+`<span class="legend-item"><i class="legend-line"></i>消息 / 结果</span><span class="legend-item"><i class="legend-line dash"></i>${key==='csv-repair'?'失败后定向修复':'循环回边'}</span>${sc.fragments.length?`<span class="legend-item"><b style="display:inline-block;padding:1px 5px;border:1px dashed #cfd6e1;border-radius:4px;color:#7b8698">alt</b>互斥路由</span>`:''}${sc.events.some(e=>e.kind==='decision')?`<span class="legend-item"><b style="color:#a46e2a">判</b>路由判断</span>`:''}${sc.events.some(e=>e.kind==='action')?`<span class="legend-item"><i style="display:inline-block;width:14px;height:9px;border:1px solid #cbd3df;border-radius:4px;background:#f8f9fb"></i>参与者内部动作</span>`:''}`;
-      svg.querySelectorAll('.loop-svg-node').forEach(node=>bindNodePopup(node,'loop',+node.dataset.loopEvent));
+      document.getElementById('loopTopologyLegend').innerHTML=participants+`<span class="legend-item"><i class="legend-line"></i>箭头：传递内容</span><span class="legend-item"><i class="legend-dot" style="--c:#6b5ba8"></i>编号点：角色动作</span><span class="legend-item"><i class="legend-line dash"></i>${key==='csv-repair'?'失败后定向修复':'循环回边'}</span>${sc.fragments.length?`<span class="legend-item"><b style="display:inline-block;padding:1px 5px;border:1px dashed #cfd6e1;border-radius:4px;color:#7b8698">alt</b>互斥路由</span>`:''}${sc.events.some(e=>e.kind==='decision')?`<span class="legend-item"><b style="color:#a46e2a">判</b>路由判断</span>`:''}${sc.events.some(e=>e.kind==='action')?`<span class="legend-item"><i style="display:inline-block;width:14px;height:9px;border:1px solid #cbd3df;border-radius:4px;background:#f8f9fb"></i>参与者内部动作</span>`:''}`;
+      svg.querySelectorAll('.loop-svg-event-node').forEach(node=>bindNodePopup(node,'loop',+node.dataset.loopEvent,'node'));
+      svg.querySelectorAll('.loop-svg-message-edge').forEach(edge=>bindNodePopup(edge,'loop',+edge.dataset.loopEvent,'edge'));
     }
     const matrixDetails={
       'mode:feedback':['反馈驱动 · 任务组织模式','根据当前观察决定下一步，适合路径未知、需要探索的任务。'],
