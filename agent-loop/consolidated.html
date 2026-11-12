@@ -236,6 +236,21 @@
     .svg-event-node:focus,.svg-message-edge:focus{outline:none}
     .svg-event-node:focus .svg-mark,.svg-message-edge:focus .svg-message,.svg-message-edge:focus .svg-message-neutral{stroke-width:3.5}
     .svg-small{font-size:8px;fill:#8b95a5}
+    #overviewView[hidden],#agent-loop[hidden]{display:none!important}
+    #agent-loop{min-height:100vh}
+    .loop-route-topbar .topbar-in{gap:13px}
+    .loop-return{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid var(--line);border-radius:8px;color:#40506b;font-size:10px;font-weight:780;white-space:nowrap}
+    .loop-return:hover{background:#f5f7fa;text-decoration:none}
+    .route-divider{color:#c4cad4;font-size:14px}
+    .loop-route-main{max-width:1440px;margin:0 auto;padding:0 34px 90px}
+    .loop-route-hero{margin:25px 0 22px;padding:34px 40px;border:1px solid #dce3ef;border-radius:18px;background:linear-gradient(125deg,#fff 0%,#f3f6fc 58%,#f1eff8 100%);box-shadow:var(--shadow)}
+    .loop-route-hero h1{margin:13px 0 10px;font-size:clamp(30px,3.6vw,46px);max-width:850px}
+    .loop-route-hero p{max-width:900px;margin:0;color:#5f6b80;font-size:13px;line-height:1.8}
+    .loop-route-path{display:flex;align-items:center;gap:9px;margin-top:17px;color:#7c8798;font-size:9.5px}
+    .loop-route-path b{color:#aab2c0}.loop-route-path strong{padding:5px 9px;border-radius:6px;background:#f0edf8;color:#65559d;font-weight:820}
+    .loop-entry-card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:17px 19px}
+    .loop-entry-card b{font-size:13px;color:#34425e}.loop-entry-card p{margin:4px 0 0;color:#748095;font-size:10.5px;line-height:1.6}
+    body[data-view="agent-loop"]{background:#f4f6fa}
     @media(max-width:980px){
       .hero-grid{grid-template-columns:minmax(0,1fr) minmax(220px,.58fr);gap:18px}.hero-art{max-width:330px}.hero{padding:35px 30px}
       .vendors{grid-template-columns:repeat(2,1fr)}
@@ -243,6 +258,7 @@
     @media(max-width:720px){
       .topbar-in{padding:0 14px;height:52px;gap:8px}.brand{font-size:10px}.source-tag{display:none}.nav a{font-size:10px;padding:7px 8px}
       main{padding:0 13px 55px}.hero{margin:14px 0;padding:26px 20px;border-radius:15px}.hero-grid{grid-template-columns:1fr}.hero-art{max-width:250px;justify-self:center;margin:-8px auto -4px}.hero p{font-size:13px}.stats{gap:6px}.stat{font-size:9px;padding:6px 8px}
+      .loop-route-main{padding:0 13px 55px}.loop-route-hero{margin:14px 0;padding:25px 20px;border-radius:14px}.loop-route-hero p{font-size:11.5px}.loop-route-topbar .topbar-in{gap:7px}.loop-return{padding:6px 8px;font-size:9px}.route-divider{display:none}.loop-entry-card{align-items:flex-start;flex-direction:column;padding:14px}
       .section{margin-top:22px}.section-head{align-items:flex-start;flex-direction:column;gap:4px}h2{font-size:21px}.section-intro{font-size:11px}
       .sequence-card{padding:11px}.tabbar{gap:5px}.tab{font-size:10px;padding:7px 9px}.tab-note{width:100%;margin-left:0}
       .diagram-foot,.twocol,.illustration-grid,.evidence-grid,.csv-replay-support{grid-template-columns:1fr}.exit-grid{grid-template-columns:repeat(2,1fr)}.runtime-roles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -254,11 +270,12 @@
   </style>
 </head>
 <body>
+  <div id="overviewView">
   <header class="topbar">
     <div class="topbar-in">
       <div class="brand"><i></i>AGENT LOOP / FIELD GUIDE</div>
       <nav class="nav" aria-label="页面目录">
-        <a href="#runtime">执行与控制</a><a href="#loop-shapes">反馈与重规划</a><a href="#patterns">模式与机制</a><a href="#evidence">证据</a>
+        <a href="#runtime">执行与控制</a><a href="#loop-shapes">Agent Loop 展开</a><a href="#patterns">模式与机制</a><a href="#evidence">证据</a>
       </nav>
       <a class="source-tag" href="https://mp.weixin.qq.com/s/VEHPsg-VEumehm_-5cvEmw" target="_blank" rel="noreferrer">原文 · Rena 陈</a>
     </div>
@@ -271,8 +288,8 @@
           <div class="eyebrow">Execution design · 2026</div>
           <h1 id="hero-title">Agent Loop<br><span>从模型判断到任务交付</span></h1>
           <p>让模型连续完成任务的关键，不只是“再问一次”。运行系统要把行动送到正确环境、把结果写回状态，并根据验收、停滞和预算选择下一步。</p>
-          <div class="hero-actions"><a class="button primary" href="#runtime">进入时序图 <span>↓</span></a><a class="button" href="#loop-shapes" onclick="document.querySelector('[data-loop-topology=csv-repair]').click()">看 CSV 局部修复</a></div>
-          <div class="stats"><div class="stat"><b>5</b>个运行参与者</div><div class="stat"><b>8</b>种执行机制</div><div class="stat"><b>4</b>类退出状态</div><div class="stat"><b>12</b>项案例检查</div></div>
+          <div class="hero-actions"><a class="button primary" href="#runtime">进入整体时序图 <span>↓</span></a><a class="button" href="#agent-loop">单独查看 Agent Loop ↗</a></div>
+          <div class="stats"><div class="stat"><b>4</b>个核心交互角色</div><div class="stat"><b>8</b>种执行机制</div><div class="stat"><b>4</b>类退出状态</div><div class="stat"><b>12</b>项案例检查</div></div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <img src="assets/agent-loop-cover.png" alt="">
@@ -303,12 +320,12 @@
           <div class="exit" style="--c:#5578ae"><div class="exit-top"><i class="exit-dot"></i>暂停</div><p>等待必要输入、权限或人工批准后恢复。</p></div>
           <div class="exit" style="--c:#b77b2c"><div class="exit-top"><i class="exit-dot"></i>资源耗尽</div><p>达到轮次、时间或预算边界，报告当前进度。</p></div>
         </div>
-        <div class="evidence-note"><strong>判断边界：</strong>工具成功返回不等于任务完成；模型停止调用工具也不等于业务验收通过。技术停止信号必须经过独立验收判断。</div>
-        <div class="runtime-roles" aria-label="执行链中的角色职责">
+        <div class="evidence-note"><strong>判断边界：</strong>工具成功返回不等于任务完成；模型停止调用工具也不等于业务验收通过。技术停止信号要对照独立定义的验收标准判断。</div>
+        <div class="runtime-roles" aria-label="执行链中的参与者与贯穿信息">
           <div><b><i style="--c:#6b5ba8">M</i>模型</b><span>提出下一步动作或候选答案</span></div>
           <div><b><i style="--c:#435575">R</i>运行系统</b><span>检查请求、调度执行并维护状态</span></div>
           <div><b><i style="--c:#3f7d72">E</i>执行环境</b><span>产生文件、网络或计算结果</span></div>
-          <div><b><i style="--c:#a46e2a">S</i>状态与验收</b><span>记录证据并判断目标是否达成</span></div>
+          <div class="runtime-context"><b><i>↔</i>贯穿信息 · 不是角色</b><span>运行状态、执行证据与验收标准会随消息在参与者间流转。</span></div>
         </div>
         <details class="loop-source-figures">
           <summary>查看文章原图（图 2：Tool Calling / Handoff / Agent as Tool）</summary>
@@ -317,38 +334,9 @@
       </div>
     </section>
 
-    <section class="section" id="loop-shapes">
-      <div class="section-head"><div><div class="section-kicker">02 / Feedback & replanning</div><h2>反馈、局部修复与整体重规划</h2><p class="section-intro">验证结果连接两组时序图：执行层把结果交给路由判断；这里再展开局部修复、条件分支和计划级重规划。</p></div><span class="concept-badge">一组 · 三种视图</span></div>
-      <div class="card loop-topology-card">
-        <div class="loop-topology-tabs" role="tablist" aria-label="反馈与重规划时序图">
-          <button class="tab active" data-loop-topology="conditional" role="tab" aria-selected="true">条件路由</button>
-          <button class="tab" data-loop-topology="ledger" role="tab" aria-selected="false">Ledger 双层循环</button>
-          <button class="tab" data-loop-topology="csv-repair" role="tab" aria-selected="false">CSV 局部修复例</button>
-          <span class="tab-note">悬浮节点看角色动作、悬浮箭头看传递内容；点击固定 · 时间自上而下</span>
-        </div>
-        <div class="loop-topology-heading"><div><h3 id="loopTopologyTitle"></h3><p id="loopTopologySubtitle"></p></div><span class="loop-topology-type" id="loopTopologyType"></span></div>
-        <div class="loop-diagram-viewport" id="loopTopologyViewport">
-          <div class="lane-sticky" id="loopTopologyLaneSticky"><div class="lane-sticky-window"><svg id="loopTopologyLaneHeader" role="img" aria-label="时序参与者名称"></svg></div></div>
-          <div class="loop-diagram-scroll" id="loopTopologyScroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
-          <aside class="node-popover" id="loopTopologyPopover" role="dialog" aria-label="时序节点与消息详情" aria-live="polite" aria-hidden="true"></aside>
-        </div>
-        <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div></div>
-        <div class="loop-model-note" id="loopTopologyNote"></div>
-        <div class="csv-replay-support" id="csvReplaySupport" hidden>
-          <figure class="card illustration"><img src="assets/05-csv-repair-12-checks.png" alt="CSV 案例从 v0 通过 6/12，到 v1 通过 11/12，再到 v2 通过 12/12"><figcaption><span class="caption-tag">Fixed-step repair · 12 checks</span><b>6/12 → 11/12 → 12/12</b>。每轮重跑全部检查，针对剩余失败修复。</figcaption></figure>
-          <div class="csv-replay-copy"><h3>这个例子展示的是局部反馈</h3><p>v0 朴素拼接导致转义、空值与 BOM 相关失败；v1 改用标准库 <code>csv.writer</code> 与 CRLF 后，通过 11 项；v2 补上 UTF-8 BOM，通过全部 12 项。</p><div class="csv-scores"><span><b>v0</b> 6 / 12</span><span><b>v1</b> 11 / 12</span><span><b>v2</b> 12 / 12</span></div><p class="csv-boundary"><b>证据边界：</b>这是固定修复步骤的程序化复现，真实执行了导出与验证，模型调用数为 0。它展示反馈闭环，不衡量大模型自主修复能力。</p></div>
-        </div>
-      </div>
-      <details class="loop-source-figures">
-        <summary>查看文章原图（图 3、图 4）</summary>
-        <div class="illustration-grid">
-          <figure class="card illustration"><img src="assets/03-conditional-graph-routing.png" alt="文章原图：条件图根据验证结果路由到交付、局部修复、重新规划或暂停"><figcaption><span class="caption-tag">Source figure 03</span><b>条件图路由</b>：原文配图，作为上方时序重绘的来源参考。</figcaption></figure>
-          <figure class="card illustration"><img src="assets/04-magentic-one-ledger-layers.png" alt="文章原图：Task Ledger 外层重规划，Progress Ledger 内层推进并分配任务"><figcaption><span class="caption-tag">Source figure 04</span><b>Magentic-One Ledger 分层</b>：原文配图，作为上方嵌套回路时序图的来源参考。</figcaption></figure>
-        </div>
-      </details>
-      <div class="card" style="margin-top:10px;padding:12px 15px;display:flex;gap:12px;align-items:flex-start">
-        <span class="concept-badge">运行主图</span><div style="flex:1;color:#6c778b;font-size:9.7px;line-height:1.65">图 1 展示一次 Loop 的六个运行环节，并把完成、失败、暂停、资源耗尽分开；本节用参与者时序把图 3 的条件路由与图 4 的 Ledger 分层展开。<details style="margin-top:5px"><summary style="cursor:pointer;color:#53627b;font-weight:750">展开查看图 1</summary><img src="assets/01-agent-loop-flow.png" alt="文章原图：Agent Loop 运行流程" style="display:block;width:min(100%,900px);height:auto;margin:10px auto 2px;border:1px solid #e6eaf0;border-radius:8px"></details></div>
-      </div>
+    <section class="section loop-route-preview" id="loop-shapes">
+      <div class="section-head"><div><div class="section-kicker">02 / Agent Loop · Deep dive</div><h2>把 Agent Loop 控制过程单独展开</h2><p class="section-intro">整体图说明模型、运行系统与执行环境如何交接；深入视图把结果评估、局部修复、重规划与退出分支展开成独立时序线。</p></div><span class="concept-badge">独立视图 · 共用网址</span></div>
+      <div class="card loop-entry-card"><div><b>Agent Loop 控制回路</b><p>从整体执行流程进入，查看一轮结果如何写回上下文，以及系统如何选择下一条路径。</p></div><a class="button primary" href="#agent-loop">放大查看时序图 <span>↗</span></a></div>
     </section>
 
     <section class="section" id="patterns">
@@ -405,11 +393,63 @@
       <div class="refs"><strong>来源：</strong><a href="https://mp.weixin.qq.com/s/VEHPsg-VEumehm_-5cvEmw" target="_blank" rel="noreferrer">AI 产品 Rena ·《AI Agent 的 Loop 设计模式：执行机制与厂商实践》</a>· 2026-11-09。配图来自原文资产；文字为围绕交互时序图重组的摘要。</div>
     </footer>
   </main>
+  </div>
+
+  <div id="agent-loop" hidden>
+    <header class="topbar loop-route-topbar">
+      <div class="topbar-in">
+        <a class="loop-return" id="loopRouteBack" href="#runtime">← 返回整体图</a>
+        <span class="route-divider">/</span><span class="brand"><i></i>AGENT LOOP / DEEP DIVE</span>
+        <a class="source-tag" href="https://mp.weixin.qq.com/s/VEHPsg-VEumehm_-5cvEmw" target="_blank" rel="noreferrer">原文 · Rena 陈 ↗</a>
+      </div>
+    </header>
+    <div class="loop-route-main">
+      <section class="loop-route-hero" aria-labelledby="loop-route-title">
+        <div class="eyebrow">Control flow · zoomed view</div>
+        <h1 id="loop-route-title">Agent Loop 的控制过程</h1>
+        <p>把一轮运行单独抽出来看：Agent 提出动作，运行系统调度并记录结果，Agent 根据证据决定继续、修复或重规划。状态是贯穿过程的信息；只有真正独立的执行者才作为泳道。</p>
+        <div class="loop-route-path"><span>整体执行流程</span><b>→</b><strong>Agent Loop 控制时序</strong></div>
+      </section>
+    <section class="section" id="loop-detail-diagrams">
+      <div class="section-head"><div><div class="section-kicker">01 / Loop control paths</div><h2>反馈、局部修复与整体重规划</h2><p class="section-intro">先看一次运行如何依据结果分流，再对照 Ledger 的外层重规划和 CSV 的局部修复实例。</p></div><span class="concept-badge">一组 · 三种视图</span></div>
+      <div class="card loop-topology-card">
+        <div class="loop-topology-tabs" role="tablist" aria-label="反馈与重规划时序图">
+          <button class="tab active" data-loop-topology="conditional" role="tab" aria-selected="true">条件路由</button>
+          <button class="tab" data-loop-topology="ledger" role="tab" aria-selected="false">Ledger 双层循环</button>
+          <button class="tab" data-loop-topology="csv-repair" role="tab" aria-selected="false">CSV 局部修复例</button>
+          <span class="tab-note">悬浮节点看角色动作、悬浮箭头看传递内容；点击固定 · 时间自上而下</span>
+        </div>
+        <div class="loop-topology-heading"><div><h3 id="loopTopologyTitle"></h3><p id="loopTopologySubtitle"></p></div><span class="loop-topology-type" id="loopTopologyType"></span></div>
+        <div class="loop-diagram-viewport" id="loopTopologyViewport">
+          <div class="lane-sticky" id="loopTopologyLaneSticky"><div class="lane-sticky-window"><svg id="loopTopologyLaneHeader" role="img" aria-label="时序参与者名称"></svg></div></div>
+          <div class="loop-diagram-scroll" id="loopTopologyScroll"><svg id="loopTopologySvg" role="img" aria-label="分支、停滞与重规划交互时序图"></svg></div>
+          <aside class="node-popover" id="loopTopologyPopover" role="dialog" aria-label="时序节点与消息详情" aria-live="polite" aria-hidden="true"></aside>
+        </div>
+        <div class="loop-diagram-foot"><div class="loop-legend" id="loopTopologyLegend" aria-label="时序图图例"></div></div>
+        <div class="loop-model-note" id="loopTopologyNote"></div>
+        <div class="csv-replay-support" id="csvReplaySupport" hidden>
+          <figure class="card illustration"><img src="assets/05-csv-repair-12-checks.png" alt="CSV 案例从 v0 通过 6/12，到 v1 通过 11/12，再到 v2 通过 12/12"><figcaption><span class="caption-tag">Fixed-step repair · 12 checks</span><b>6/12 → 11/12 → 12/12</b>。每轮重跑全部检查，针对剩余失败修复。</figcaption></figure>
+          <div class="csv-replay-copy"><h3>这个例子展示的是局部反馈</h3><p>v0 朴素拼接导致转义、空值与 BOM 相关失败；v1 改用标准库 <code>csv.writer</code> 与 CRLF 后，通过 11 项；v2 补上 UTF-8 BOM，通过全部 12 项。</p><div class="csv-scores"><span><b>v0</b> 6 / 12</span><span><b>v1</b> 11 / 12</span><span><b>v2</b> 12 / 12</span></div><p class="csv-boundary"><b>证据边界：</b>这是固定修复步骤的程序化复现，真实执行了导出与验证，模型调用数为 0。它展示反馈闭环，不衡量大模型自主修复能力。</p></div>
+        </div>
+      </div>
+      <details class="loop-source-figures">
+        <summary>查看文章原图（图 3、图 4）</summary>
+        <div class="illustration-grid">
+          <figure class="card illustration"><img src="assets/03-conditional-graph-routing.png" alt="文章原图：条件图根据验证结果路由到交付、局部修复、重新规划或暂停"><figcaption><span class="caption-tag">Source figure 03</span><b>条件图路由</b>：原文配图，作为上方时序重绘的来源参考。</figcaption></figure>
+          <figure class="card illustration"><img src="assets/04-magentic-one-ledger-layers.png" alt="文章原图：Task Ledger 外层重规划，Progress Ledger 内层推进并分配任务"><figcaption><span class="caption-tag">Source figure 04</span><b>Magentic-One Ledger 分层</b>：原文配图，作为上方嵌套回路时序图的来源参考。</figcaption></figure>
+        </div>
+      </details>
+      <div class="card" style="margin-top:10px;padding:12px 15px;display:flex;gap:12px;align-items:flex-start">
+        <span class="concept-badge">运行主图</span><div style="flex:1;color:#6c778b;font-size:9.7px;line-height:1.65">图 1 展示一次 Loop 的六个运行环节，并把完成、失败、暂停、资源耗尽分开；本节用参与者时序把图 3 的条件路由与图 4 的 Ledger 分层展开。<details style="margin-top:5px"><summary style="cursor:pointer;color:#53627b;font-weight:750">展开查看图 1</summary><img src="assets/01-agent-loop-flow.png" alt="文章原图：Agent Loop 运行流程" style="display:block;width:min(100%,900px);height:auto;margin:10px auto 2px;border:1px solid #e6eaf0;border-radius:8px"></details></div>
+      </div>
+    </section>
+    </div>
+  </div>
 
   <style>
     .role-list{display:grid;gap:7px;margin-top:12px}.role-row{display:flex;gap:9px;align-items:center;padding:8px 9px;border:1px solid #edf0f4;border-radius:8px;background:#fafbfd}.role-mark{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:7px;background:color-mix(in srgb,var(--c) 13%,white);color:var(--c);font-size:9px;font-weight:900;flex:none}.role-row b{display:block;font-size:10.5px;color:#35445e}.role-row small{display:block;font-size:9px;color:#7b8698;line-height:1.5}
     .runtime-roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:11px;padding:10px;border:1px solid #edf0f4;border-radius:9px;background:#fafbfd}
-    .runtime-roles>div{display:grid;gap:4px}.runtime-roles b{display:flex;align-items:center;gap:6px;color:#394862;font-size:9.5px}.runtime-roles i{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-style:normal;font-size:8px;color:#fff;background:var(--c)}.runtime-roles span{font-size:8.7px;line-height:1.45;color:#7b8698}
+    .runtime-roles>div{display:grid;gap:4px}.runtime-roles b{display:flex;align-items:center;gap:6px;color:#394862;font-size:9.5px}.runtime-roles i{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;font-style:normal;font-size:8px;color:#fff;background:var(--c)}.runtime-roles span{font-size:8.7px;line-height:1.45;color:#7b8698}.runtime-context b i{background:#eef0f4;color:#718096;font-size:11px}
     .svg-action{fill:#f8f9fb;stroke:#cbd3df;stroke-width:1.2}.svg-action-text{font-size:8.8px;font-weight:650;fill:#40506b}
     .csv-replay-support{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:12px;margin-top:11px;padding-top:11px;border-top:1px solid #e9edf2}
     .csv-replay-support[hidden]{display:none}.csv-replay-support .illustration{padding:8px}.csv-replay-support .illustration figcaption{font-size:9px}
@@ -420,25 +460,27 @@
     const palette={owner:'#2f3d63',model:'#6b5ba8',runtime:'#435575',tool:'#3f7d72',state:'#a46e2a',verify:'#a46e2a',flow:'#435575',exporter:'#3f7d72',red:'#c34c54',caller:'#6b5ba8',runner:'#435575',a:'#6b5ba8',b:'#3f7d72',main:'#6b5ba8',expert:'#3f7d72'};
     const scenes={
       generic:{
-        note:'概念视图：描述运行系统常见职责，不代表任一厂商的私有内部实现。',title:'运行时序 · 目标 → 决策 → 调度 → 反馈 → 判断',type:'解释性抽象',
-        participants:[['owner','任务方'],['model','当前 Agent / 模型'],['runtime','Runner / Orchestrator'],['tool','工具与环境'],['state','状态 / 验证']],
+        note:'概念视图：描述运行系统常见职责，不代表任一厂商的私有内部实现。状态与验收证据作为上下文流转；泳道只代表实际参与交互的角色。',title:'运行时序 · 目标 → 决策 → 调度 → 反馈 → 判断',type:'解释性抽象',
+        participants:[['owner','任务方'],['model','当前 Agent / 模型'],['runtime','Runner / Orchestrator'],['tool','工具与环境']],
         phases:[
-          {label:'目标·状态',owner:'请求方 ↔ 运行时',start:0,end:1,color:'#edf1f8'},
-          {label:'模型决策',owner:'运行时 ↔ 模型',start:2,end:3,color:'#f0edf8'},
-          {label:'调度·执行',owner:'运行时 → 工具',start:4,end:6,color:'#edf4f1'},
-          {label:'反馈·路由',owner:'状态 ↔ 运行时',start:7,end:9,color:'#fbf2e7'}
+          {label:'目标·初始化',owner:'请求方 → 运行时',start:0,end:1,color:'#edf1f8'},
+          {label:'Agent 决策',owner:'运行时 ↔ Agent',start:2,end:3,color:'#f0edf8'},
+          {label:'调度·执行',owner:'运行时 ↔ 环境',start:4,end:6,color:'#edf4f1'},
+          {label:'反馈·路由',owner:'状态作为上下文',start:7,end:11,color:'#fbf2e7'}
         ],
         events:[
           {from:'owner',to:'runtime',phase:0,title:'提交目标与验收条件',messageLabel:'目标 · 约束 · 验收标准',detail:'请求方给出目标、约束和可观察的验收标准。完成标准应独立于模型停止信号。'},
-          {from:'state',to:'runtime',phase:0,title:'装载进度、证据与尝试记录',messageLabel:'已完成项 · 证据 · 未解决尝试',detail:'状态应告诉下一轮已经发生什么、当前在哪一步、什么仍未解决；不能让 Agent 每轮从头开始。'},
-          {from:'runtime',to:'model',phase:1,title:'组装当前轮上下文',messageLabel:'目标 · 历史 · 当前状态',detail:'运行时将目标、历史和任务状态提供给当前模型或 Agent。完整历史、当前状态与长期记忆应区分管理。'},
+          {actor:'runtime',phase:0,kind:'action',title:'初始化任务状态、尝试记录与运行边界',detail:'运行系统维护进度、已有证据、历史尝试和预算。这些是跨轮传递的信息，不是独立参与者。'},
+          {from:'runtime',to:'model',phase:1,title:'组装当前轮上下文',messageLabel:'目标 · 历史 · 当前状态',detail:'运行时将目标、历史和当前任务状态提供给 Agent。短期执行状态与长期记忆应区分管理。'},
           {from:'model',to:'runtime',phase:1,title:'提出工具请求、交接或候选答案',messageLabel:'工具请求 / 交接 / 候选答案',detail:'模型输出是运行系统的下一步信号。它可以请求工具、发起交接，也可以返回一个候选终答。'},
           {actor:'runtime',phase:2,title:'检查参数、权限与运行边界',decision:true,detail:'运行时校验请求结构、工具权限、预算和合法目的地。需要批准或权限不足时，应进入人工节点或暂停状态。'},
           {from:'runtime',to:'tool',phase:2,title:'调用工具或执行环境',messageLabel:'已授权动作 · 工具参数',detail:'运行系统执行搜索、读取、文件修改、计算或测试。代码和工具真正影响环境的动作发生在这一侧。'},
           {from:'tool',to:'runtime',phase:2,title:'返回产物、错误与证据',messageLabel:'产物 · 错误 · 执行证据',detail:'环境返回真实观察结果。工具调用成功只说明动作已执行，不证明目标已经满足。'},
-          {from:'runtime',to:'state',phase:3,title:'保存反馈与失败尝试',messageLabel:'执行结果 · 失败尝试 · 状态更新',detail:'记录返回内容、产物位置、执行结果和已尝试的方法；保留足够细节以防止重复无效动作。'},
-          {from:'state',to:'runtime',phase:3,title:'提供进度、停滞信号与预算',messageLabel:'验收状态 · 进度 · 剩余预算',detail:'验证结果、剩余问题和运行边界进入下一次判断。测试质量限制了验证修复模式的上限。'},
-          {actor:'runtime',phase:3,title:'决定继续、重规划、暂停或退出',decision:true,detail:'通过验收则交付；尚有可行动问题则继续；连续无进展则重规划；缺输入或审批则暂停；无法完成或预算耗尽时如实退出。'}
+          {actor:'runtime',phase:3,kind:'action',title:'写回工具结果、证据与已尝试步骤',detail:'运行系统把实际观察、产物位置和失败尝试加入当前状态，避免下一轮重复无效动作。'},
+          {from:'runtime',to:'model',phase:3,title:'带着更新后的状态进入下一轮',messageLabel:'工具结果 · 进度 · 未解决项 · 剩余预算',detail:'运行系统把本轮观察和任务状态交回 Agent。状态是消息上下文的一部分，不需要额外建成一条“状态角色”泳道。'},
+          {actor:'model',phase:3,kind:'action',title:'评估证据并提出下一步',detail:'Agent 对照目标检查结果，判断是否继续当前步骤、修复已知问题、调整计划或提出候选终答。若验收依赖外部测试，则把测试结果作为证据处理。'},
+          {from:'model',to:'runtime',phase:3,title:'返回下一步动作或完成建议',messageLabel:'继续 / 修复 / 重规划 / 候选终答',detail:'Agent 提交下一步建议；运行系统再结合验收规则、停滞信号和剩余预算决定实际路由。'},
+          {actor:'runtime',phase:3,title:'决定继续、重规划、暂停或停止',decision:true,detail:'运行系统检查验收结果、进度、输入依赖与预算。通过则交付；可修复则继续；持续停滞则重规划；缺输入时暂停；不可行或预算耗尽时停止。'}
         ]
       },
       tool:{
@@ -557,7 +599,7 @@
     document.getElementById('loopTopologyScroll').addEventListener('scroll',()=>syncStickyLaneHeader('loop'),{passive:true});
     window.addEventListener('resize',()=>{syncStickyLaneHeader('sequence');syncStickyLaneHeader('loop');});
     function renderSequence(sceneKey){
-      hideNodePopup(true);currentScene=sceneKey;const sc=scenes[sceneKey],svg=document.getElementById('sequenceSvg'),xs=sc.participants.length===3?[365,640,915]:[250,435,620,805,990],base=126,gap=62,h=base+sc.events.length*gap+113;
+      hideNodePopup(true);currentScene=sceneKey;const sc=scenes[sceneKey],svg=document.getElementById('sequenceSvg'),xs=sc.participants.length===3?[365,640,915]:sc.participants.length===4?[280,490,700,910]:[250,435,620,805,990],base=126,gap=62,h=base+sc.events.length*gap+113;
       document.getElementById('sceneNote').textContent=sc.note+'　·　悬浮节点看角色动作，悬浮箭头看传递内容；点击固定';document.getElementById('diagramTitle').textContent=sc.title;document.getElementById('diagramType').textContent=sc.type;
       document.getElementById('exitGrid').style.display=sceneKey==='generic'?'grid':'none';
       document.querySelectorAll('[data-scene]').forEach(b=>{const on=b.dataset.scene===sceneKey;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
@@ -580,8 +622,8 @@
         html+='</g>';
       });
       if(sceneKey==='generic'){
-        const routeY=base+9*gap,modelY=base+2*gap;
-        html+=`<path d="M 635 ${routeY+17} H 1150 V ${modelY-30} H 435 V ${modelY-14}" class="svg-loop" marker-end="url(#seqLoopArrow)"/><text x="1134" y="${(routeY+modelY)/2}" transform="rotate(-90 1134 ${(routeY+modelY)/2})" text-anchor="middle" font-size="8.5" font-weight="800" fill="#7764a9">继续 · 带回更新状态</text>`;
+        const routeY=base+11*gap,modelY=base+2*gap,routeX=xs[2]+15,modelX=xs[1];
+        html+=`<path d="M ${routeX} ${routeY+17} H 1150 V ${modelY-30} H ${modelX} V ${modelY-14}" class="svg-loop" marker-end="url(#seqLoopArrow)"/><text x="1134" y="${(routeY+modelY)/2}" transform="rotate(-90 1134 ${(routeY+modelY)/2})" text-anchor="middle" font-size="8.5" font-weight="800" fill="#7764a9">继续 · 带回更新状态</text>`;
         html+=`<text x="18" y="${h-12}" class="svg-small">时间向下 ↓</text><text x="1152" y="${h-12}" text-anchor="end" class="svg-small">主路径为抽象示意 · 切换视图比较控制权去向</text>`;
       } else {html+=`<text x="18" y="${h-12}" class="svg-small">时间向下 ↓ · 控制权按所选方式流转</text><text x="1152" y="${h-12}" text-anchor="end" font-size="8" font-weight="800" fill="#66758b">节点动作与箭头消息可分别悬浮查看</text>`;}
       svg.setAttribute('viewBox',`0 0 1180 ${h}`);svg.setAttribute('height',h);svg.innerHTML=html;renderStickyLaneHeader('sequence',sc.participants,xs,palette,1180,false);
@@ -590,50 +632,55 @@
       svg.querySelectorAll('.svg-event-node').forEach(node=>bindNodePopup(node,'sequence',+node.dataset.event,'node'));
       svg.querySelectorAll('.svg-message-edge').forEach(edge=>bindNodePopup(edge,'sequence',+edge.dataset.event,'edge'));
     }
-    const loopPalette={owner:'#2f3d63',runtime:'#435575',agent:'#6b5ba8',environment:'#3f7d72',verifier:'#a46e2a',progress:'#3f7d72',task:'#a46e2a',executor:'#3f7d72',flow:'#435575',exporter:'#3f7d72',verify:'#a46e2a'};
+    const loopPalette={owner:'#2f3d63',runtime:'#435575',agent:'#6b5ba8',environment:'#3f7d72',progress:'#3f7d72',task:'#a46e2a',executor:'#3f7d72',flow:'#435575',exporter:'#3f7d72',verify:'#a46e2a'};
     const loopTopologies={
       conditional:{
-        title:'条件路由：验证结果决定下一步进入哪条路径',subtitle:'主路径自上而下；底部 alt 区域表示互斥结果。局部修复回到当前执行，持续停滞才触发整体重规划。',type:'条件分支 · 单次路由',width:1240,
-        participants:[['owner','任务方'],['runtime','运行系统 / 路由器'],['agent','Agent'],['environment','工具与执行环境'],['verifier','状态与验收']],
+        title:'Agent Loop：执行结果触发继续、修复、重规划或退出',subtitle:'先读一轮动作与反馈，再看互斥出口。局部修复回到当前动作；持续停滞或假设失效才进入整体重规划。',type:'控制循环 · 概念重建',width:1280,
+        participants:[['owner','任务方'],['agent','Agent'],['runtime','运行系统'],['environment','工具与环境']],
         phases:[
-          {label:'目标与上下文',owner:'任务方 ↔ 运行时',start:0,end:2,color:'#edf1f8'},
-          {label:'执行与验收',owner:'Agent ↔ 环境',start:3,end:6,color:'#edf4f1'},
-          {label:'通过交付',owner:'验收通过',start:7,end:7,color:'#eaf4ef'},
-          {label:'局部修复',owner:'明确失败',start:8,end:9,color:'#fbefee'},
-          {label:'整体重规划',owner:'持续停滞',start:10,end:11,color:'#faf2e6'},
-          {label:'暂停或停止',owner:'缺输入 / 预算',start:12,end:13,color:'#f0edf8'}
+          {label:'目标与上下文',owner:'任务方 → 运行时',start:0,end:1,color:'#edf1f8'},
+          {label:'Agent 执行',owner:'Agent ↔ 运行时 / 环境',start:2,end:6,color:'#edf4f1'},
+          {label:'反馈与决策',owner:'状态作为信息 · 不单列角色',start:7,end:10,color:'#f0edf8'},
+          {label:'验收通过',owner:'交付结果',start:11,end:11,color:'#eaf4ef'},
+          {label:'局部修复',owner:'明确且可行动的失败',start:12,end:13,color:'#fbefee'},
+          {label:'整体重规划',owner:'持续停滞 / 假设失效',start:14,end:15,color:'#faf2e6'},
+          {label:'暂停 / 停止',owner:'等待输入 / 运行边界',start:16,end:17,color:'#f0edf8'}
         ],
         fragments:[
-          {start:7,end:7,label:'alt · 验收通过'},
-          {start:8,end:9,label:'else · 明确失败，局部修复'},
-          {start:10,end:11,label:'else · 持续停滞，整体重规划'},
-          {start:12,end:13,label:'else · 缺输入或预算耗尽'}
+          {start:11,end:11,label:'alt · 满足验收：交付'},
+          {start:12,end:13,label:'else · 明确失败：局部修复'},
+          {start:14,end:15,label:'else · 持续停滞：整体重规划'},
+          {start:16,end:17,label:'else · 缺输入时暂停，预算耗尽或不可行时停止'}
         ],
         events:[
-          {from:'owner',to:'runtime',phase:0,title:'提交目标与成功标准',messageLabel:'目标 + 约束 + 验收标准',detail:'任务方提供目标、约束和可观察的验收标准。'},
-          {from:'runtime',to:'agent',phase:0,title:'提供当前计划、状态与运行限制',messageLabel:'计划 + 状态 + 运行边界',detail:'运行系统把计划、已有证据、失败尝试、剩余预算等状态传给 Agent，让下一轮从当前进度继续。'},
-          {from:'agent',to:'runtime',phase:0,title:'提出下一步动作或工具请求',messageLabel:'下一步动作 / 工具请求',detail:'Agent 根据当前上下文提出要执行的动作。请求仍需经过运行系统的权限与预算检查。'},
-          {from:'runtime',to:'environment',phase:1,title:'检查权限与边界，然后执行',messageLabel:'权限校验后的执行指令',detail:'运行系统验证请求并调度工具或环境。真正的文件、网络或计算动作发生在执行环境。'},
-          {from:'environment',to:'verifier',phase:1,title:'返回产物、错误与执行证据',messageLabel:'产物 + 错误 + 执行证据',detail:'环境报告实际执行结果；动作执行成功本身不等于目标已经满足。'},
-          {from:'verifier',to:'runtime',phase:1,title:'给出验收结果、失败项与进展',messageLabel:'通过项 + 失败项 + 进展',detail:'状态与验收层记录通过项、未解决问题及进展，供路由判断使用。'},
-          {actor:'runtime',phase:1,title:'结合验收、停滞与预算选择路由',kind:'decision',detail:'运行系统用验收结果和进度信号区分局部可修复失败、持续停滞、缺输入和资源边界；这些情况不能都归为“继续循环”。'},
-          {from:'runtime',to:'owner',phase:2,title:'确认通过并交付结果',messageLabel:'通过 · 交付结果 + 验收范围',route:'通过',detail:'验收通过后进入交付。交付说明结果覆盖了哪些标准，以及仍有哪些范围限制。'},
-          {from:'runtime',to:'agent',phase:3,title:'定位明确失败并分派局部修复',messageLabel:'明确失败 · 待修缺陷',route:'局部修复',detail:'若失败项明确且仍可行动，沿当前计划修复局部缺陷，保留已验证通过的部分。'},
-          {from:'agent',to:'runtime',phase:3,title:'提交修复结果与新增证据',messageLabel:'修复结果 + 新证据',route:'局部修复',detail:'Agent 返回修复结果后，运行系统更新状态并重新执行验证；修复路径回到当前执行与验收。'},
-          {from:'runtime',to:'agent',phase:4,title:'识别持续停滞并触发重规划',messageLabel:'持续停滞 · 原计划需要调整',route:'整体重规划',detail:'连续没有有效进展，或原计划依赖的假设失效时，停止重复原动作并要求重新规划。'},
-          {from:'agent',to:'runtime',phase:4,title:'返回替代步骤、依赖与新假设',messageLabel:'替代步骤 + 新依赖 + 新假设',route:'整体重规划',detail:'Agent 提交新的任务分解或策略。运行系统用更新后的计划和状态启动下一轮。'},
-          {from:'runtime',to:'owner',phase:5,title:'确认缺少必要输入并暂停',messageLabel:'缺少必要输入 · 等待补充',route:'暂停',detail:'缺少必要资料、权限或人工决定时，暂停任务并明确等待什么输入。'},
-          {from:'runtime',to:'owner',phase:5,title:'处理预算边界并停止运行',messageLabel:'预算耗尽 / 当前条件不可行',route:'停止',detail:'预算耗尽或任务在现有边界内不可行时停止，说明已完成部分、限制和未解决项。'}
+          {from:'owner',to:'runtime',phase:0,title:'提交目标与成功标准',messageLabel:'目标 + 约束 + 验收标准',detail:'任务方提供目标、约束和可观察的验收标准。通过标准来自任务要求或外部检查，不由 Agent 停止信号代替。'},
+          {from:'runtime',to:'agent',phase:0,title:'提供任务上下文与运行边界',messageLabel:'目标 · 当前状态 · 已有证据 · 预算',detail:'运行系统维护当前进度、历史尝试、可用工具和预算，并把 Agent 继续工作所需的信息放进上下文。状态是信息，不是额外执行者。'},
+          {from:'agent',to:'runtime',phase:1,title:'提出下一步动作或工具请求',messageLabel:'动作请求 / 工具参数 / 候选答案',detail:'Agent 根据当前上下文选择下一步。它可以请求工具、提出候选结果或返回计划调整建议。'},
+          {actor:'runtime',phase:1,title:'检查请求权限、参数与预算',kind:'decision',detail:'运行系统检查动作是否在权限、参数和预算边界内；需要审批或缺少必要输入时转为暂停，而不是把请求直接交给环境。'},
+          {from:'runtime',to:'environment',phase:1,title:'调度工具或执行环境',messageLabel:'已校验的执行动作',detail:'运行系统把通过边界检查的动作交给工具或环境。文件、网络、计算和测试等实际副作用发生在此处。'},
+          {from:'environment',to:'runtime',phase:1,title:'返回产物、错误与可观察证据',messageLabel:'产物 · 错误 · 执行证据',detail:'环境返回实际观察结果。工具调用成功只表示动作完成，不表示任务验收通过。'},
+          {actor:'runtime',phase:1,kind:'action',title:'写回结果与失败尝试',detail:'运行系统保存产物位置、执行结果、失败尝试和可用证据，为下一轮建立当前状态。这里没有假设额外的“状态角色”。'},
+          {from:'runtime',to:'agent',phase:2,title:'把本轮反馈送回上下文',messageLabel:'执行结果 · 进度 · 未解决项 · 剩余预算',detail:'Agent 在下一轮拿到最新观察和进度。验证结果如果来自测试工具或业务检查，也作为证据随上下文传递。'},
+          {actor:'agent',phase:2,kind:'action',title:'评估证据并选择候选路径',detail:'Agent 对照目标检查证据，判断是否继续、修复、改变计划或提出完成建议。Agent 的判断是下一步信号，不自动等于独立验收通过。'},
+          {from:'agent',to:'runtime',phase:2,title:'返回下一步动作或停止建议',messageLabel:'继续 / 修复 / 重规划 / 完成建议',detail:'Agent 提交的路由建议由运行系统结合验收条件、进展与运行边界处理。'},
+          {actor:'runtime',phase:2,title:'结合验收、停滞与预算选择出口',kind:'decision',detail:'运行系统区分验收通过、明确可修复失败、持续停滞、缺输入、预算耗尽和当前条件不可行。各类出口有不同含义，不能都压成“继续循环”。'},
+          {from:'runtime',to:'owner',phase:3,title:'交付通过验收的结果',messageLabel:'结果 + 验收范围 + 证据',route:'验收通过',detail:'验收条件满足后交付，并说明实际覆盖的范围和证据。'},
+          {from:'runtime',to:'agent',phase:4,title:'指出明确失败项并保留已通过部分',messageLabel:'失败项 + 局部修复边界',route:'局部修复',detail:'失败范围明确且仍可行动时，提供需要修复的部分，避免重做已经通过的工作。'},
+          {from:'agent',to:'runtime',phase:4,title:'返回局部修复结果与新证据',messageLabel:'修复结果 + 新证据',route:'局部修复',detail:'Agent 完成本地修复后返回结果，运行系统记录变化并进入下一轮验证。'},
+          {from:'runtime',to:'agent',phase:5,title:'报告持续停滞或关键假设失效',messageLabel:'停滞信号 / 失效假设',route:'整体重规划',detail:'重复动作没有有效进展，或计划依赖的假设不再成立时，运行系统让 Agent 放弃原路线并重规划。'},
+          {from:'agent',to:'runtime',phase:5,title:'提交新计划、依赖与假设',messageLabel:'替代步骤 + 新依赖 + 新假设',route:'整体重规划',detail:'Agent 返回调整后的步骤和假设。运行系统更新计划上下文，再启动新的执行轮次。'},
+          {from:'runtime',to:'owner',phase:6,title:'请求缺失输入并暂停',messageLabel:'等待必要资料 / 权限 / 决策',route:'暂停',detail:'任务依赖缺失输入、权限或人工决定时暂停，并明确列出恢复执行所需的内容。'},
+          {from:'runtime',to:'owner',phase:6,title:'达到预算或可行性边界后停止',messageLabel:'预算耗尽 / 当前条件不可行',route:'停止',detail:'无法在现有预算或约束内继续时停止，报告已完成部分、边界和未解决项。'}
         ],
         loops:[
-          {from:9,to:1,actor:'runtime',targetActor:'agent',label:'局部修复后回到当前计划',rail:1100},
-          {from:11,to:1,actor:'runtime',targetActor:'agent',label:'新计划重新进入执行',rail:1150,outer:true}
+          {from:13,to:2,actor:'runtime',targetActor:'agent',label:'局部修复结果回到当前执行',rail:1140},
+          {from:15,to:1,actor:'runtime',targetActor:'agent',label:'新计划重新进入执行',rail:1200,outer:true}
         ],
-        note:'时序重建：把文章的条件路由展开为多参与者交互。验收通过、明确失败、持续停滞、缺少输入和预算边界是不同路由；节点详情用于解释各路径。'
+        note:'概念重建：参与者是任务方、Agent、运行系统和工具环境。状态与证据作为上下文传递；常规判断由 Agent 或运行系统承担。只有确有独立测试器、审批者或执行 Agent 时，才应增加对应泳道。'
       },
       ledger:{
-        title:'Ledger 双层循环：进度更新留在内层，计划变化进入外层',subtitle:'Progress Ledger 跟踪当前计划里的子任务；Task Ledger 保存较高层的目标、假设与整体计划，并在停滞时重规划。',type:'嵌套循环 · 两层状态',width:1260,
-        participants:[['owner','任务方'],['runtime','Orchestrator'],['executor','Agent / 工具'],['verifier','结果与验证'],['progress','Progress Ledger'],['task','Task Ledger']],
+        title:'Ledger 双层循环：进度更新留在内层，计划变化进入外层',subtitle:'Progress Ledger 跟踪当前计划里的子任务；Task Ledger 保存较高层的目标、假设与整体计划，并在停滞时重规划。两者是状态层，不是人或 Agent 角色。',type:'嵌套循环 · 两层状态',width:1260,
+        participants:[['owner','任务方'],['runtime','Orchestrator'],['executor','Agent / 工具'],['progress','Progress Ledger'],['task','Task Ledger']],
         phases:[
           {label:'计划初始化',owner:'目标 → Task Ledger',start:0,end:2,color:'#edf1f8'},
           {label:'当前计划推进',owner:'Progress Ledger 内层',start:3,end:8,color:'#edf4f1'},
@@ -648,12 +695,12 @@
         ],
         events:[
           {from:'owner',to:'runtime',phase:0,title:'提交目标、成功标准与约束',messageLabel:'目标 + 验收标准 + 运行约束',detail:'任务方定义目标、验收条件和运行边界。'},
-          {from:'runtime',to:'task',phase:0,title:'建立整体计划、依赖与关键假设',messageLabel:'任务分解 + 依赖 + 关键假设',detail:'Orchestrator 把高层任务分解和当前策略写入 Task Ledger，保留计划依赖的关键假设。'},
+          {from:'runtime',to:'task',phase:0,title:'建立整体计划、依赖与关键假设',messageLabel:'任务分解 + 依赖 + 关键假设',detail:'Orchestrator 把高层任务分解和当前策略写入 Task Ledger，保留计划依赖的关键假设。Task Ledger 在此表示持久化的计划状态。'},
           {from:'task',to:'progress',phase:0,title:'下发计划步骤与优先级',messageLabel:'待执行步骤 + 优先级',detail:'Task Ledger 把可执行步骤和优先级交给 Progress Ledger，作为当前执行计划。'},
           {from:'progress',to:'runtime',phase:1,title:'选择下一项可执行任务',messageLabel:'下一项可执行任务',detail:'Progress Ledger 根据已完成事项、依赖和阻塞情况挑出下一项任务。'},
           {from:'runtime',to:'executor',phase:1,title:'调度 Agent 或工具执行该任务',messageLabel:'已分派的 Agent / 工具任务',detail:'Orchestrator 将选中的子任务交给 Agent 或工具执行。'},
-          {from:'executor',to:'verifier',phase:1,title:'返回执行结果、错误与证据',messageLabel:'产物 + 错误 + 执行证据',detail:'执行者提交产物和实际观察结果，供验证和进度记录使用。'},
-          {from:'verifier',to:'progress',phase:1,title:'报告当前子任务的验证结果',messageLabel:'当前子任务的通过项 / 未满足项',detail:'验证结果映射到当前子任务，指出哪些条件通过、哪些仍未满足。'},
+          {from:'executor',to:'runtime',phase:1,title:'返回执行结果、错误与证据',messageLabel:'产物 + 错误 + 执行证据',detail:'执行者提交产物和实际观察结果。实际存在的测试输出也由运行系统作为证据接收，不假设一个抽象“验证角色”。'},
+          {from:'runtime',to:'progress',phase:1,title:'写回子任务结果与验收证据',messageLabel:'当前子任务结果 + 通过项 / 未满足项',detail:'运行系统将执行结果和可验证证据写入 Progress Ledger；若需要独立测试工具，它应以真实工具身份出现在具体案例里。'},
           {actor:'progress',phase:1,title:'更新完成项、证据、剩余项与阻塞',kind:'action',detail:'Progress Ledger 保存可追踪的局部状态，避免遗漏已完成工作或重复无效尝试。'},
           {actor:'progress',phase:1,title:'判断当前计划是否仍可推进',kind:'decision',detail:'若仍有可执行任务或局部可修复问题，内层继续；若持续停滞或计划假设失效，则升级到 Task Ledger。'},
           {from:'progress',to:'runtime',phase:2,title:'确认计划仍可推进并分派下一项',messageLabel:'当前计划仍有效 · 下一项任务',route:'内层继续',detail:'当前计划仍有效时，Progress Ledger 继续分派下一项。回边留在内层，不改写 Task Ledger 的整体策略。'},
@@ -666,11 +713,11 @@
           {from:9,to:3,actor:'progress',targetActor:'progress',label:'内层：分派下一任务',rail:1110},
           {from:12,to:3,actor:'progress',targetActor:'progress',label:'外层：新计划回到进度追踪',rail:1170,outer:true}
         ],
-        note:'结构重建：Ledger 是文章描述的协调状态层，不是额外的执行者。内层回边表示在同一整体计划中更新进度并继续；外层回边表示 Task Ledger 修改计划后重新驱动内层。'
+        note:'结构重建：Progress Ledger 与 Task Ledger 表示共享进度和计划状态层，不是承担独立动作的人或 Agent。运行系统负责写入；Agent / 工具执行工作；验收信息作为证据进入状态。'
       },
       'csv-repair':{
-        title:'CSV 局部修复：失败清单驱动两次定向回路',subtitle:'每轮都重跑同一组 12 项检查；失败从 6 项缩到 1 项，再到 0。两条虚线把验收失败连回对应修复步骤。',type:'固定工作流 · 局部反馈',width:1240,
-        participants:[['owner','需求方'],['flow','固定工作流'],['exporter','CSV 导出器'],['verify','12 项验证'],['state','运行记录']],
+        title:'CSV 局部修复：失败清单驱动两次定向回路',subtitle:'每轮都重跑同一组 12 项检查；失败从 6 项缩到 1 项，再到 0。这里的检查脚本是实际执行测试的工具。',type:'固定工作流 · 局部反馈',width:1240,
+        participants:[['owner','需求方'],['flow','固定工作流'],['exporter','CSV 导出器'],['verify','12 项检查脚本']],
         phases:[
           {label:'v0 首检',owner:'发现 6 项失败',start:0,end:3,color:'#fbefee'},
           {label:'v1 修复',owner:'再剩 1 项失败',start:4,end:7,color:'#faf2e6'},
@@ -680,29 +727,29 @@
         events:[
           {from:'owner',to:'flow',phase:0,title:'提交字段规则与 12 项验收条件',messageLabel:'字段规则 + 12 项验收条件',detail:'要求涵盖中文、列顺序、空值、逗号、引号、换行、回车换行和 UTF-8 BOM。'},
           {from:'flow',to:'exporter',phase:0,title:'生成 v0 · 朴素拼接',messageLabel:'v0 样例 · 朴素拼接',detail:'初始实现用逗号连接字段、用换行连接记录，没有处理 CSV 转义、空值语义和 BOM。'},
-          {from:'exporter',to:'verify',phase:0,title:'导出样例并回读检查',messageLabel:'CSV 样例 + 回读结果',detail:'验证使用 Python 标准库 csv.reader 读取输出，并用字节断言检查 BOM。'},
-          {from:'verify',to:'state',phase:0,title:'汇总首轮验证结果',messageLabel:'6 项通过 / 6 项失败',detail:'失败集中在特殊字段转义、空值和 BOM。检查把模糊的“导出有问题”缩小成可定位失败项。'},
-          {from:'state',to:'flow',phase:1,title:'路由到序列化修复',messageLabel:'失败清单 → 序列化修复',detail:'状态将失败集合交给工作流：先修复 CSV 序列化和空值，保留已通过的基础字段行为。'},
+          {from:'exporter',to:'verify',phase:0,title:'导出样例并回读检查',messageLabel:'CSV 样例 + 回读结果',detail:'12 项检查脚本使用 Python 标准库 csv.reader 读取输出，并用字节断言检查 BOM。'},
+          {from:'verify',to:'flow',phase:0,title:'报告首轮测试结果',messageLabel:'6 项通过 / 6 项失败',detail:'失败集中在特殊字段转义、空值和 BOM。检查把模糊的“导出有问题”缩小成可定位失败项。'},
+          {actor:'flow',phase:1,kind:'action',title:'筛出失败项并保留通过行为',detail:'固定工作流把失败集合交给修复步骤：先修复 CSV 序列化和空值，保留已通过的基础字段行为。'},
           {from:'flow',to:'exporter',phase:1,title:'生成 v1 · csv.writer + CRLF',messageLabel:'v1 样例 · csv.writer + CRLF',detail:'第一次修复改用 csv.writer 与 CRLF 行结束符，覆盖引号、逗号、换行和空值。'},
           {from:'exporter',to:'verify',phase:1,title:'重新运行全部 12 项',messageLabel:'12 项完整回归结果',detail:'全量回归而非只重跑刚修复的案例，检查修复没有破坏已通过项。'},
-          {from:'verify',to:'state',phase:1,title:'汇总第二轮验证结果',messageLabel:'11 项通过 / 仅 BOM 失败',detail:'错误范围缩小到 UTF-8 BOM 字节标记；其余 11 项仍然通过。'},
-          {from:'state',to:'flow',phase:2,title:'保留通过项，只补编码标记',messageLabel:'剩余 BOM 问题 → 定向修复',detail:'状态记录将未解决项缩小为 BOM，避免再次修改已经正确的转义规则。'},
+          {from:'verify',to:'flow',phase:1,title:'报告第二轮测试结果',messageLabel:'11 项通过 / 仅 BOM 失败',detail:'错误范围缩小到 UTF-8 BOM 字节标记；其余 11 项仍然通过。'},
+          {actor:'flow',phase:2,kind:'action',title:'只处理剩余的 BOM 失败项',detail:'工作流将未解决项缩小为 BOM，避免再次修改已经正确的转义规则。'},
           {from:'flow',to:'exporter',phase:2,title:'生成 v2 · 增加 UTF-8 BOM',messageLabel:'v2 样例 · 增加 UTF-8 BOM',detail:'在最终输出前写入 BOM 字节，随后重新执行整个验证集。'},
           {from:'exporter',to:'verify',phase:2,title:'再次运行全部 12 项',messageLabel:'12 项完整回归结果',detail:'重复完整验证，确认本次改动符合全部既定验收条件。'},
-          {from:'verify',to:'state',phase:2,title:'汇总最终验证结果',messageLabel:'全部通过 · END',detail:'所有本实验检查通过，流程结束。该结论只覆盖这 12 项验收。'},
+          {from:'verify',to:'flow',phase:2,title:'报告最终测试结果',messageLabel:'全部通过 · END',detail:'所有本实验检查通过。该结论只覆盖这 12 项实际运行的验收检查。'},
           {from:'flow',to:'owner',phase:2,title:'交付验证记录与 CSV 样例',messageLabel:'CSV 样例 + 验收记录',detail:'交付结果同时说明本案例的范围：固定修复步骤、没有模型调用，不代表大模型自主修复率。'}
         ],
         loops:[
-          {from:3,to:5,actor:'verify',targetActor:'flow',label:'6 项失败 → 定向修复',rail:1110},
-          {from:7,to:9,actor:'verify',targetActor:'flow',label:'仅 BOM 未过 → 补齐标记',rail:1170}
+          {from:3,to:5,actor:'flow',targetActor:'exporter',label:'6 项失败 → 定向修复',rail:1100},
+          {from:7,to:9,actor:'flow',targetActor:'exporter',label:'仅 BOM 未过 → 补齐标记',rail:1160}
         ],
-        flowNote:'时间向下 ↓ · 实线为跨参与者消息 · 虚线连接验收失败与对应修复步骤',
-        note:'案例边界：这是固定工作流的程序化复现，真实执行了 CSV 导出和验证，模型调用数为 0。它用来说明失败证据如何缩小修复范围，不衡量大模型自主修复能力。'
+        flowNote:'时间向下 ↓ · 实线为跨参与者消息 · 虚线连接检查失败与对应修复步骤',
+        note:'案例边界：12 项检查是实际运行的 Python CSV 检查工具，不是抽象的“状态 / 验收”角色。该案例固定修复步骤，模型调用数为 0。'
       }
     };
     let currentLoopTopology='conditional';
     function renderLoopTopology(key){
-      hideNodePopup(true);currentLoopTopology=key;const sc=loopTopologies[key],svg=document.getElementById('loopTopologySvg'),xs=sc.participants.length===5?[270,455,640,825,1010]:[245,400,555,710,865,1020],base=112,gap=58,h=base+sc.events.length*gap+62;
+      hideNodePopup(true);currentLoopTopology=key;const sc=loopTopologies[key],svg=document.getElementById('loopTopologySvg'),xs=sc.participants.length===4?[300,520,740,960]:sc.participants.length===5?[270,455,640,825,1010]:[245,400,555,710,865,1020],base=112,gap=58,h=base+sc.events.length*gap+62;
       document.getElementById('loopTopologyTitle').textContent=sc.title;document.getElementById('loopTopologySubtitle').textContent=sc.subtitle;document.getElementById('loopTopologyType').textContent=sc.type;document.getElementById('loopTopologyNote').textContent=sc.note;document.getElementById('csvReplaySupport').hidden=key!=='csv-repair';
       document.querySelectorAll('[data-loop-topology]').forEach(b=>{const on=b.dataset.loopTopology===key;b.classList.toggle('active',on);b.setAttribute('aria-selected',String(on));});
       let s=`<defs>
@@ -754,6 +801,19 @@
     document.querySelectorAll('[data-example]').forEach(b=>b.addEventListener('click',()=>showMatrixDetail(`example:${b.dataset.example==='verification'?'verification':'ledger'}`)));
     document.querySelectorAll('[data-loop-topology]').forEach(b=>b.addEventListener('click',()=>renderLoopTopology(b.dataset.loopTopology)));
     document.querySelectorAll('[data-scene]').forEach(b=>b.addEventListener('click',()=>renderSequence(b.dataset.scene)));
+    const overviewView=document.getElementById('overviewView'),agentLoopView=document.getElementById('agent-loop');
+    let lastOverviewHash=location.hash&&location.hash!=='#agent-loop'?location.hash:'#overview';
+    function syncHashRoute(){
+      const isAgentLoop=location.hash==='#agent-loop';
+      if(!isAgentLoop&&location.hash)lastOverviewHash=location.hash;
+      overviewView.hidden=isAgentLoop;agentLoopView.hidden=!isAgentLoop;document.body.dataset.view=isAgentLoop?'agent-loop':'overview';
+      document.title=isAgentLoop?'Agent Loop 控制时序 · 深入视图':'Agent Loop · 时序图合并版';
+      if(isAgentLoop){hideNodePopup(true);requestAnimationFrame(()=>{window.scrollTo(0,0);syncStickyLaneHeader('loop');});}
+    }
+    if(!location.hash)history.replaceState(null,'',`${location.pathname}${location.search}#overview`);
+    document.getElementById('loopRouteBack').addEventListener('click',event=>{event.preventDefault();location.hash=lastOverviewHash||'#overview';});
+    window.addEventListener('hashchange',syncHashRoute);
+    syncHashRoute();
     renderSequence('generic');renderLoopTopology('conditional');
   </script>
 </body>
